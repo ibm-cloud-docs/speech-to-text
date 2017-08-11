@@ -1,0 +1,64 @@
+{:navgroup: .navgroup}
+{:topicgroup: .topicgroup}
+
+{: .toc subcollection="speech-to-text" audience="service" href="/docs/services/speech-to-text/index.html"}
+Speech to Text
+
+    {: .navgroup id="learn"}
+    getting-started.md
+    index.md
+    developer-overview.md
+
+    {: .topicgroup}
+    Demos
+        [Quick demo](https://speech-to-text-demo.mybluemix.net/)
+
+    {: .topicgroup}
+    Additional resources
+        [Blog](https://developer.ibm.com/watson/blog/)
+        [Webinars](https://www.ibm.com/watson/webinars/)
+        [Watson videos](https://www.youtube.com/user/IBMWatsonSolutions/)
+    {: .navgroup-end}
+
+    {: .navgroup id="reference"}
+    [API reference](https://www.ibm.com/watson/developercloud/speech-to-text/api)
+
+    {: .topicgroup}
+    Watson SDKs
+        [Android SDK](https://github.com/watson-developer-cloud/android-sdk)
+        [Apple iOS SDK](https://github.com/watson-developer-cloud/ios-sdk)
+        [Java SDK](https://github.com/watson-developer-cloud/java-sdk)
+        [Node.js SDK](https://github.com/watson-developer-cloud/node-sdk)
+        [Python SDK](https://github.com/watson-developer-cloud/python-sdk)
+        [Unity SDK](https://github.com/watson-developer-cloud/unity-sdk)
+
+    [Watson GitHub repos](https://github.com/watson-developer-cloud/)
+    {: .navgroup-end}
+
+    {: .navgroup id="howto"}
+    input.md
+    output.md
+    websockets.md
+    http.md
+    async.md
+
+    {: topicgroup}
+    Customization
+        custom.md
+        custom-methods.md
+
+    {: topicgroup}
+    Service background
+        science.md
+    {: .navgroup-end}
+
+    {: .navgroup id="help"}
+    faq.md
+    release-notes.md
+
+    {: .topicgroup}
+    Developer community
+        [StackOverflow](http://stackoverflow.com/questions/tagged/ibm-watson-cognitive+speech-to-text)
+        [developerWorks Answers](https://developer.ibm.com/answers/topics/speech-to-text/)
+        [WDC Slack channel](http://wdc-slack-inviter.mybluemix.net/)
+    {: .navgroup-end}
