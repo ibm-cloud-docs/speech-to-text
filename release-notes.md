@@ -49,7 +49,7 @@ The following sections document the new features and changes that were included 
     For more information about the pricing updates, see the following:
     -   The blog post [{{site.data.keyword.IBM_notm}} {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} API - Pricing Updates ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/blogs/bluemix/2017/05/ibm-watson-speech-text-api-pricing-updates/){: new_window}
     -   The [{{site.data.keyword.speechtotextshort}} service in the {{site.data.keyword.Bluemix_short}} Catalog ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.ng.bluemix.net/catalog/services/speech-to-text){: new_window}
-    -   The [Pricing](/docs/services/speech-to-text/faq.html#pricing) section of the FAQs
+    -   The [Pricing FAQs](/docs/services/speech-to-text/faq-pricing.html)
 -   You no longer need to pass an empty data object as the body for the following `POST` requests:
     -   `POST /v1/sessions`
     -   `POST /v1/register_callback`
