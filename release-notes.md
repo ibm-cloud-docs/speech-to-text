@@ -61,7 +61,6 @@ The following sections document the new features and changes that were included 
     For example, you now call the `POST /v1/sessions` method with cURL as follows:
 
     ```bash
-
     curl -X POST -u "{username}":"{password}"
     --cookie-jar cookies.txt
     "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions"
