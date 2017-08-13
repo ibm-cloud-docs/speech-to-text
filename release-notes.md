@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-11"
+lastupdated: "2017-08-13"
 
 ---
 
@@ -46,6 +46,7 @@ The following sections document the new features and changes that were included 
     -   Eliminating the add-on price for using {{site.data.keyword.speechtotextshort}} narrowband models
     -   Providing Graduated Tiered Pricing for high-volume customers
     -   Charging an additional $0.03 (USD) per minute of audio for recognition requests that use US English or Japanese custom language models
+
     For more information about the pricing updates, see the following:
     -   The blog post [{{site.data.keyword.IBM_notm}} {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} API - Pricing Updates ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/blogs/bluemix/2017/05/ibm-watson-speech-text-api-pricing-updates/){: new_window}
     -   The [{{site.data.keyword.speechtotextshort}} service in the {{site.data.keyword.Bluemix_short}} Catalog ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.ng.bluemix.net/catalog/services/speech-to-text){: new_window}
