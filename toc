@@ -53,7 +53,17 @@ Speech to Text
     {: .navgroup-end}
 
     {: .navgroup id="help"}
-    faq.md
+    {: .topicgroup}
+    FAQs
+        faq-basic-usage.md
+        faq-http.md
+        faq-websockets.md
+        faq-recognition.md
+        faq-speaker-labels.md
+        faq-smart-formatting.md
+        faq-customization.md
+        faq-pricing.md
+
     release-notes.md
 
     {: .topicgroup}
