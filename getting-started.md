@@ -37,7 +37,7 @@ If you already know the credentials for your {{site.data.keyword.speechtotextsho
     1.  Click **View credentials** under **Actions**.
     1.  Copy the `username` and `password` values.
 
-## Step 2. Transcribe audio with no options
+## Step 2: Transcribe audio with no options
 {: #transcribe}
 
 Call the `POST /v1/recognize` method to request a basic transcription of an audio file named `audio-file.flac` with no additional request parameters.
@@ -77,7 +77,7 @@ swept through colorado on sunday "
 ```
 {: codeblock}
 
-## Step 3. Transcribe audio with additional options
+## Step 3: Transcribe audio with additional options
 {: #transcribeOptions}
 
 Call the `POST /v1/recognize` method to transcribe the same audio file, `audio-file.flac`, but specify two of the method's many additional transcription parameters.
