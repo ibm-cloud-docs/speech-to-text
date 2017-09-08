@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-11"
+lastupdated: "2017-09-08"
 
 ---
 
@@ -19,7 +19,7 @@ lastupdated: "2017-08-11"
 
 # About
 
-> ** Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on July 14, 2017. The service now supports the transcription of audio in the MP3 (MPEG) format, the language model customization interface now supports Spanish as beta functionality, and the names of the UK English language models have changed from `en-UK*` to `en-GB*`. The service was previously updated on July 1 to change language model customization for US English and Japanese from beta to generally available (GA) and to change the service's pricing models. For more information about these and all recent changes to the service, see the [Release notes](/docs/services/speech-to-text/release-notes.html).*
+> ** Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on July 14, 2017. The service now supports the transcription of audio in the MP3 (MPEG) format, the language model customization interface now supports Spanish as beta functionality, and the names of the UK English language models have changed from `en-UK_{model}` to `en-GB_{model}`. The service was previously updated on July 1 to change language model customization for US English and Japanese from beta to generally available (GA) and to change the service's pricing models. For more information about these and all recent changes to the service, see the [Release notes](/docs/services/speech-to-text/release-notes.html).*
 
 The {{site.data.keyword.speechtotextfull}} service provides an Application Programming Interface (API) that lets you add speech transcription capabilities to your applications. To transcribe the human voice accurately, the service leverages machine intelligence to combine information about grammar and language structure with knowledge of the composition of the audio signal. The service continuously returns and retroactively updates the transcription as more speech is heard.
 {: shortdesc}
