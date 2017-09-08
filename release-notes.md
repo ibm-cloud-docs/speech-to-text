@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-13"
+lastupdated: "2017-09-08"
 
 ---
 
@@ -36,7 +36,7 @@ The following sections document the new features and changes that were included 
     The `GET /v1/customizations` and `GET /v1/customizations/{customization_id}` methods of the customization interface include the dialect of a custom model in their output. For more information, see [Creating a custom language model](/docs/services/speech-to-text/custom.html#createModel) and [Listing custom language models](/docs/services/speech-to-text/custom-methods.html#listModels).
 -   The names of the language models `en-UK_BroadbandModel` and `en-UK_NarrowbandModel` have been deprecated. The models are now available with the names `en-GB_BroadbandModel` and `en-GB_NarrowbandModel`.
 
-    The deprecated `en-UK*` names will continue to function for backward compatibility, but they will no longer be returned among the list of available models returned by the `GET /v1/models` method. You can still query them directly with the `GET /v1/models/{model_id}` method.
+    The deprecated `en-UK_{model}` names will continue to function for backward compatibility, but they will no longer be returned among the list of available models returned by the `GET /v1/models` method. You can still query them directly with the `GET /v1/models/{model_id}` method.
 
 ## 1 July 2017
 {: #July2017a}
