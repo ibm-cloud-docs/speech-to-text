@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-09-08"
+lastupdated: "2017-09-09"
 
 ---
 
@@ -83,8 +83,8 @@ A WebSocket client calls this method with the following query parameters to esta
       you establish a connection, you can keep it alive indefinitely. As
       long as the connection remains open, you do not need to pass the
       token with subsequent calls. For more information, see
-      <a href="https://www.ibm.com/watson/developercloud/doc/common/getting-started-tokens.html">Tokens for authentication
-      ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.
+      <a href="/docs/services/watson/getting-started-tokens.html">Tokens
+        for authentication</a>.
     </td>
   </tr>
   <tr>
@@ -125,8 +125,8 @@ A WebSocket client calls this method with the following query parameters to esta
       You can also opt out of request logging by passing a value of
       <code>true</code> with the <code>X-Watson-Learning-Opt-Out</code>
       request header. For more information, see
-      <a href="https://www.ibm.com/watson/developercloud/doc/common/getting-started-logging.html">Controlling request logging for Watson services
-      ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.
+      <a href="/docs/services/watson/getting-started-logging.html">Controlling
+        request logging for Watson services</a>.
     </td>
   </tr>
 </table>
