@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-11"
+lastupdated: "2017-09-09"
 
 ---
 
@@ -73,7 +73,7 @@ For more information about request logging, see [Authentication tokens and reque
 
 The examples that follow use cURL to demonstrate the methods of the customization interface. To run the examples, create an instance of the {{site.data.keyword.speechtotextshort}} service in {{site.data.keyword.Bluemix_notm}}. Then replace `{username}:{password}` in each example with the values of your *username* and *password* from the credentials for the service instance. Concatenate the two values with an embedded colon to create a single string of the form *username*:*password*.
 
-Note that you must use your service credentials, *not* your {{site.data.keyword.Bluemix_notm}} ID and password. For more information, see [Service credentials for {{site.data.keyword.watson}} services ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/doc/common/getting-started-credentials.html){: new_window}.
+Note that you must use your service credentials, *not* your {{site.data.keyword.Bluemix_notm}} ID and password. For more information, see [Service credentials for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-credentials.html).
 
 ## Creating a custom language model
 {: #createModel}
@@ -739,7 +739,7 @@ Follow these steps to use the Python script:
     ```
     {: screen}
 
-    For more information, see [Service credentials for {{site.data.keyword.watson}} services ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/doc/common/getting-started-credentials.html){: new_window}. Note that you must use your service credentials, *not* your {{site.data.keyword.Bluemix_notm}} ID and password.
+    For more information, see [Service credentials for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-credentials.html). Note that you must use your service credentials, *not* your {{site.data.keyword.Bluemix_notm}} ID and password.
 1.  Run the script by entering the following command:
 
     ```bash
@@ -763,7 +763,7 @@ Follow these steps to use the Bash shell script:
     ```
     {: screen}
 
-    For more information, see [Service credentials for {{site.data.keyword.watson}} services ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/doc/common/getting-started-credentials.html){: new_window}. Note that you must use your service credentials, *not* your {{site.data.keyword.Bluemix_notm}} ID and password.
+    For more information, see [Service credentials for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-credentials.html). Note that you must use your service credentials, *not* your {{site.data.keyword.Bluemix_notm}} ID and password.
 1.  Run the script by entering the following command. Make sure the script has executable permissions before running it.
 
     ```bash

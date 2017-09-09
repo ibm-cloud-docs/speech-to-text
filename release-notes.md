@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-09-08"
+lastupdated: "2017-09-09"
 
 ---
 
@@ -245,7 +245,7 @@ The {{site.data.keyword.speechtotextshort}} service moved from beta to general a
     This line specified the default model, `WatsonModel`, for the beta version of the service. If your application also specified this model, you need to change it to use one of the new models supported with the GA version. See the next bullet for more information.
 -   The service now supports a new programming model for direct interaction between a client and the service over a WebSocket. This model allows a client to obtain an authentication token for communicating directly with the service, bypassing the need for a server-side proxy application in {{site.data.keyword.Bluemix_notm}} to call the service on the client's behalf. This is the preferred means for clients to interact with the service.
 
-    The service continues to support the old programming model that relied on a server-side proxy to relay audio and messages between the client and the service. But the new model is more efficient and provides higher throughput. For more information about the new programming model, see [Programming models for {{site.data.keyword.watson}} services ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/doc/common/getting-started-develop.html){: new_window}.
+    The service continues to support the old programming model that relied on a server-side proxy to relay audio and messages between the client and the service. But the new model is more efficient and provides higher throughput. For more information about the new programming model, see [Programming models for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-develop.html).
 -   The `sessions` and `recognize` methods now support a `model` query parameter. You use this parameter to specify the language, currently *English*, *Japanese*, or *Spanish*, and the minimum sampling rate, *broadband* (16 KHz) or *narrowband* (8 KHz), of the audio data in a single specification. For more information, see [Languages and models](/docs/services/speech-to-text/input.html#models).
 -   The `Content-Type` header of the `recognize` method now supports `audio/wav` for Waveform Audio File Format (WAV) files, in addition to `audio/flac` and `audio/l16`. For more information about the supported audio formats, see [Audio formats](/docs/services/speech-to-text/input.html#formats).
 -   The `sessions/{session_id}/recognize` and `recognize` methods now support a number of additional query parameters that let you tailor the service to suit your application needs:

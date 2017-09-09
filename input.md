@@ -30,7 +30,7 @@ You need to specify only the audio format of the input; all other parameters are
 
 The {{site.data.keyword.speechtotextshort}} service leverages the following two {{site.data.keyword.watson}} service-independent features and parameters:
 
--   **Authentication tokens** are an alternative to service credentials that allow you to make authenticated requests to {{site.data.keyword.watson}} services without embedding your service credentials in every call. You use your service credentials to obtain a token for the service and then call the service directly, without relying on an intermediate server-side application for handling communications to and from the service. Note that you must use authentication tokens when working with the WebSocket interface. For more information, see [Tokens for authentication ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/doc/common/getting-started-tokens.html){: new_window}.
+-   **Authentication tokens** are an alternative to service credentials that allow you to make authenticated requests to {{site.data.keyword.watson}} services without embedding your service credentials in every call. You use your service credentials to obtain a token for the service and then call the service directly, without relying on an intermediate server-side application for handling communications to and from the service. Note that you must use authentication tokens when working with the WebSocket interface. For more information, see [Tokens for authentication](/docs/services/watson/getting-started-tokens.html).
 
     <table>
       <caption>Table 1. Specifying an authentication token</caption>
@@ -66,7 +66,7 @@ The {{site.data.keyword.speechtotextshort}} service leverages the following two 
 
     To prevent {{site.data.keyword.IBM_notm}} from accessing your data for general service improvements, set the `X-Watson-Learning-Opt-Out` request header to `true` for all requests. When you use the header to opt out of request logging, {{site.data.keyword.IBM_notm}} stores none of your data. Your data exists within {{site.data.keyword.watson}} only while it is in transit (in memory while the service processes your request). Because the data is never stored in any way, {{site.data.keyword.IBM_notm}} provides no mechanism to delete it.
 
-    In either case, your data is always encrypted both in motion and at rest. For more information about opting out of request logging, see [Controlling request logging for {{site.data.keyword.watson}} services ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/doc/common/getting-started-logging.html){: new_window}.
+    In either case, your data is always encrypted both in motion and at rest. For more information about opting out of request logging, see [Controlling request logging for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-logging.html).
 
     <table>
       <caption>Table 2. Specifying request logging</caption>
