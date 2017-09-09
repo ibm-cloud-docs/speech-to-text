@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-11"
+lastupdated: "2017-09-09"
 
 ---
 
@@ -490,35 +490,43 @@ For information about the different timeouts associated with audio transmission,
 With either approach, streaming or one-shot delivery, the service imposes a size limit of 100 MB on the audio data that you can transcribe at one time. When recognizing long continuous audio streams or large files, you can take the following steps to ensure that your audio does not exceed the 100 MB limit:
 
 -   Use a sampling rate no greater than 16 KHz (16,000 samples per second) and 16 bits per sample. Because the service converts audio recorded at higher sampling rates to 16 KHz prior to recognition, larger frequencies do not result in enhanced recognition accuracy.
--   Encode your audio with a format such as `audio/ogg;codecs=opus` or `audio/flac`, which offer far better data compression.
+-   Encode your audio in a format that offers data compression. By encoding your data more efficiently, you can send far more audio without exceeding the 100 MB data limit. Audio formats such as `audio/flac`, `audio/mp3`, or `audio/ogg;codecs=opus` significantly reduce the size of your audio stream, allowing you to send greater lengths of audio with a single recognition request.
 
-By encoding your data more efficiently, you can send far more audio without exceeding the 100 MB data limit. The following table reports the approximate size of the data stream that results from two hours of continuous speech transmission sampled at 16 KHz and at 16 bits per sample. Actual values can vary depending on the compression rate and the complexity of the audio.
+The following table shows the effects of compression on the size and length of the audio stream. For each audio format, the table reports
+
+-   The approximate size of the data stream that results from two hours of continuous speech transmission that is sampled at 16 KHz and at 16 bits per sample.
+-   The approximate maximum length of audio that can be sent with a single request.
+
+Actual values can vary depending on the achieved compression rate and the complexity of the audio.
 
 <table>
-  <caption>Table 9. Approximate audio stream sizes</caption>
+  <caption>Table 9. Approximate audio sizes and durations</caption>
   <tr>
     <th style="text-align:left">Audio format</th>
-    <th style="text-align:left">Size of data stream</th>
+    <th style="text-align:center">Size of two-hour data stream</th>
+    <th style="text-align:center">Maximum length of audio</th>
   </tr>
   <tr>
     <td><code>audio/wav</code></td>
-    <td>230 MB (well beyond the 100 MB limit)</td>
+    <td style="text-align:center">230 MB<br/>well beyond the limit</td>
+    <td style="text-align:center">0.9 hours</td>
   </tr>
   <tr>
     <td><code>audio/flac</code></td>
-    <td>115 MB (slightly beyond the 100 MB limit)</td>
+    <td style="text-align:center">115 MB<br/>slightly beyond the limit</td>
+    <td style="text-align:center">1.7 hours</td>
   </tr>
   <tr>
     <td><code>audio/mp3</code></td>
-    <td>60 MB (below the 100 MB limit)</td>
+    <td style="text-align:center">60 MB<br/>below the limit</td>
+    <td style="text-align:center">3.3 hours</td>
   </tr>
   <tr>
     <td><code>audio/ogg;codecs=opus</code></td>
-    <td>23 MB (well below the 100 MB limit)</td>
+    <td style="text-align:center">23 MB<br/>well below the limit</td>
+    <td style="text-align:center">8.7 hours</td>
   </tr>
 </table>
-
-By using `audio/flac`, `audio/mp3`, or `audio/ogg;codecs=opus`, you can reduce significantly the size of your audio stream.
 
 Note that if you compress the audio too severely with the `audio/ogg` format, you can lose some recognition accuracy; retaining at least 5 KB per second of audio is typically safe. Note also that `audio/ogg;codecs=opus` and `audio/webm;codecs=opus` are essentially equivalent, and their file sizes should be almost identical. They use the same codec internally; only the container format is different.
 
