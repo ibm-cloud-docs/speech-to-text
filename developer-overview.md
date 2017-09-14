@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-09-09"
+lastupdated: "2017-09-13"
 
 ---
 
@@ -41,7 +41,7 @@ The {{site.data.keyword.speechtotextshort}} service provides a customization int
 
 The service's base vocabulary contains many words that are used in everyday conversation, but it can lack knowledge of terms that are associated with specific domains. The customization interface enables you to improve the accuracy of speech recognition for particular domains. You can create custom language models that expand the service's base vocabulary with terminology specific to domains such as medicine and law.
 
-You can use a custom language model with any of the interfaces described in the previous section. For more information about creating and using custom models, see [Using customization](/docs/services/speech-to-text/custom.html) and [Additional customization methods](/docs/services/speech-to-text/custom-methods.html).
+You can use a custom language model with any of the interfaces described in the previous section. For more information about creating and using custom models, see [Using customization](/docs/services/speech-to-text/custom.html).
 
 ## Using Software Development Kits
 {: #sdks}

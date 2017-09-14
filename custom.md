@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-09-09"
+lastupdated: "2017-09-13"
 
 ---
 
@@ -27,7 +27,13 @@ The language model customization interface lets you improve the accuracy of spee
 
 The following sections describe the steps you follow to create and use a custom language model. The sections introduce basic customization terminology. The final section provides [Example scripts](#exampleScripts) that create a custom language model and populate it with words.
 
-The customization interface offers a rich set of methods for managing custom models and the words they contain; for more information about using these additional methods, see [Additional customization methods](/docs/services/speech-to-text/custom-methods.html). For detailed information about all customization methods, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+In addition to the methods described in this page, the customization interface offers a rich set of methods for managing custom models and the words they contain. For more information about these additional methods, see
+
+-   [Managing custom language models](/docs/services/speech-to-text/custom-language-models.html)
+-   [Managing corpora](/docs/services/speech-to-text/custom-corpora.html)
+-   [Managing custom words](/docs/services/speech-to-text/custom-words.html)
+
+For detailed information about all customization methods, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
 
 > **Note:** The language model customization interface is available only for US English and Japanese (GA) and for Spanish (beta).
 
@@ -246,7 +252,7 @@ The response includes a `status` field that has one of the following values:
 -   `being_processed` indicates that the service is still analyzing the corpus.
 -   `undetermined` indicates that the service encountered an error while processing the corpus.
 
-Use a loop to check the status of the corpus every 10 seconds until it becomes `analyzed`. For more information about checking the status of a model's corpora, see [Listing corpora for a custom language model](/docs/services/speech-to-text/custom-methods.html#listCorpora).
+Use a loop to check the status of the corpus every 10 seconds until it becomes `analyzed`. For more information about checking the status of a model's corpora, see [Listing corpora for a custom language model](/docs/services/speech-to-text/custom-corpora.html#listCorpora).
 
 ### Preparing a corpus file
 {: #prepareCorpus}
@@ -322,9 +328,9 @@ When you add a corpus to a custom language model, it is good practice to examine
 
 To validate and, if necessary, correct the words for a custom model, use the following methods:
 
--   List all of the words from a custom model by using the `GET /v1/customizations/{customization_id}/words` method or query an individual word with the `GET /v1/customizations/{customization_id}/words/{word_name}` method; see [Listing words from a custom language model](/docs/services/speech-to-text/custom-methods.html#listWords). You can also use these methods to examine new custom words that you add directly to a custom model.
+-   List all of the words from a custom model by using the `GET /v1/customizations/{customization_id}/words` method or query an individual word with the `GET /v1/customizations/{customization_id}/words/{word_name}` method; see [Listing words from a custom language model](/docs/services/speech-to-text/custom-words.html#listWords). You can also use these methods to examine new custom words that you add directly to a custom model.
 -   Modify words in a custom model to correct errors or to add data for a word by using the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method; see [Modifying words in a model's words resource](#modifyWord).
--   Delete extraneous words introduced in error (for example, by typographical or other mistakes in a corpus) by using the `DELETE /v1/customizations/{customization_id}/words/{word_name}` method; see [Deleting a word from a custom language model](/docs/services/speech-to-text/custom-methods.html#deleteWord). You can also update the corpus text file to correct the mistakes that caused the errors and then reload the corpus by using the `allow_overwrite` parameter of the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method; see [Adding corpora to a custom language model](#addCorpora).
+-   Delete extraneous words introduced in error (for example, by typographical or other mistakes in a corpus) by using the `DELETE /v1/customizations/{customization_id}/words/{word_name}` method; see [Deleting a word from a custom language model](/docs/services/speech-to-text/custom-words.html#deleteWord). You can also update the corpus text file to correct the mistakes that caused the errors and then reload the corpus by using the `allow_overwrite` parameter of the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method; see [Adding corpora to a custom language model](#addCorpora).
 
 ## Adding words to a custom language model
 {: #addWords}
@@ -565,7 +571,7 @@ How the service handles the addition of a custom word depends on what values you
   </tr>
 </table>
 
-You can list all of the words from a custom model or query individual words with methods of the customization API; see [Listing words from a custom language model](/docs/services/speech-to-text/custom-methods.html#listWords).
+You can list all of the words from a custom model or query individual words with methods of the customization API; see [Listing words from a custom language model](/docs/services/speech-to-text/custom-words.html#listWords).
 
 ### Modifying words in a model's words resource
 {: #modifyWord}
@@ -590,7 +596,7 @@ curl -X POST -u {username}:{password}
 You can use the optional `word_type_to_add` query parameter to specify the words from the words resource on which the custom model is to be trained:
 
 -   Specify `all` or omit the parameter to train the model on all words from its words resource, regardless of their origin.
--   Specify `user` to train the model only on words that were added or modified by the user, ignoring OOV words that were extracted only from corpora. This is useful if you add corpora with noisy data, such as words that contain typographical errors. Before training the model on such data, you can use the `word_type` query parameter of the `GET /v1/customizations/{customization_id}/words` method to review words extracted from corpora, as described in [Listing words from a custom language model](/docs/services/speech-to-text/custom-methods.html#listWords).
+-   Specify `user` to train the model only on words that were added or modified by the user, ignoring OOV words that were extracted only from corpora. This is useful if you add corpora with noisy data, such as words that contain typographical errors. Before training the model on such data, you can use the `word_type` query parameter of the `GET /v1/customizations/{customization_id}/words` method to review words extracted from corpora, as described in [Listing words from a custom language model](/docs/services/speech-to-text/custom-words.html#listWords).
 
 The method is asynchronous. Training can take on the order of minutes to complete depending on the number of new words on which the model is being trained and the current load on the service. For information about checking the status of a training operation, see [Monitoring the train model request](#monitorTraining).
 
@@ -633,12 +639,12 @@ The response includes `status` and `progress` fields that report the current sta
 -   `available` indicates that the model is trained and ready to use. The `progress` field is `100`.
 -   `failed` indicates that training of the model failed. The `progress` field is `0`.
 
-Use a loop to check the status every 10 seconds until it becomes `available`. For more information about checking the status of a custom model, see [Listing custom language models](/docs/services/speech-to-text/custom-methods.html#listModels).
+Use a loop to check the status every 10 seconds until it becomes `available`. For more information about checking the status of a custom model, see [Listing custom language models](/docs/services/speech-to-text/custom-language-models.html#listModels).
 
 ### Training failures
 {: #failedTraining}
 
-If the status of a custom model's training is `failed`, use methods of the customization API to examine the words in the model's words resource and fix any errors that you find; see [Listing words from a custom language model](/docs/services/speech-to-text/custom-methods.html#listWords). Training can fail to start for the following reasons:
+If the status of a custom model's training is `failed`, use methods of the customization API to examine the words in the model's words resource and fix any errors that you find; see [Listing words from a custom language model](/docs/services/speech-to-text/custom-words.html#listWords). Training can fail to start for the following reasons:
 
 -   No training data (corpora or words) have been added to the custom model since it was created or last trained.
 -   Pre-processing of corpora to generate a list of OOV words is not complete.
