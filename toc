@@ -45,7 +45,9 @@ Speech to Text
     {: topicgroup}
     Customization
         custom.md
-        custom-methods.md
+        custom-language-models.md
+        custom-corpora.md
+        custom-words.md
 
     {: topicgroup}
     Service background
