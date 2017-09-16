@@ -163,13 +163,13 @@ To initiate a recognition request, the client sends a JSON text message to the s
     <td style="text-align:left">
       The action to be performed:
       <ul style="margin-left:20px; padding:0px;">
-        <li style="margin:10px 0px; color:#404040; line-height:120%;">
+        <li style="margin:10px 0px; line-height:120%;">
           <code>start</code> initiates a recognition request or specifies
           new parameters for subsequent requests (see
           <a href="#WSmore">Sending additional requests and modifying
             parameters</a>).
         </li>
-        <li style="margin:10px 0px; color:#404040; line-height:120%;">
+        <li style="margin:10px 0px; line-height:120%;">
           <code>stop</code> signals that all audio for a request has
           been sent (see <a href="#WSstop">Ending a recognition
             request</a>).

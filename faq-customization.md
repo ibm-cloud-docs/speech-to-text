@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-13"
+lastupdated: "2017-09-16"
 
 ---
 
@@ -24,7 +24,7 @@ lastupdated: "2017-08-13"
 
     Yes. The service's base vocabulary contains many words that are used in everyday conversation by a broad, general audience. Its models provide sufficiently accurate recognition for a variety of applications but can lack knowledge of specific terms that are associated with particular domains; these are referred to as *out-of-vocabulary (OOV) words*.
 
-    The language model customization interface lets you improve the accuracy of speech recognition for specialized domains. You can use customization to expand and tailor the vocabulary of a base model to include domain-specific data and terminology. See [Using customization](/docs/services/speech-to-text/custom.html). Note that customization is currently available only for US English and Japanese (GA) and for Spanish (beta).
+    The language model customization interface lets you improve the accuracy of speech recognition for specialized domains. You can use customization to expand and tailor the vocabulary of a base model to include domain-specific data and terminology. See [Using language model customization](/docs/services/speech-to-text/custom.html). Note that customization is currently available only for US English and Japanese (GA) and for Spanish (beta).
 
 1.  <span style="color:#003F69">How secure is the data that I add to a custom model?</span>
 
