@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-09-13"
+lastupdated: "2017-09-16"
 
 ---
 
@@ -27,7 +27,7 @@ The following sections document the new features and changes that were included 
 {: #July2017b}
 
 -   The service now supports the transcription of audio in the MP3 or Motion Picture Experts Group (MPEG) format. For more information about supported audio formats, see [Audio formats](/docs/services/speech-to-text/input.html#formats).
--   The language model customization interface now supports Spanish as beta functionality. You can create a custom model based on either of the base Spanish language models: `es-ES_BroadbandModel` or `es-ES_NarrowbandModel`; for more information, see [Using customization](/docs/services/speech-to-text/custom.html). Pricing for recognition requests that use Spanish custom language models is the same as for requests that use US English and Japanese models.
+-   The language model customization interface now supports Spanish as beta functionality. You can create a custom model based on either of the base Spanish language models: `es-ES_BroadbandModel` or `es-ES_NarrowbandModel`; for more information, see [Using language model customization](/docs/services/speech-to-text/custom.html). Pricing for recognition requests that use Spanish custom language models is the same as for requests that use US English and Japanese models.
 -   The JSON `CustomModel` object that you pass to the `POST /v1/customizations` method to create a new custom language model now includes a `dialect` field. The field specifies the dialect of the language that is to be used with the custom model. By default, the dialect matches the language of the base language model. The parameter is meaningful only for Spanish models, for which the service lets you create a custom model that is suited for speech in one of the following dialects:
     -   `es-ES` for Castilian Spanish (the default)
     -   `es-LA` for Latin-American Spanish
@@ -141,7 +141,7 @@ The following deprecations first announced in March 2017 are now in effect:
 
 -   The service now offers a beta speaker labels feature for narrowband audio in US English, Spanish, or Japanese. The feature identifies which words were spoken by which speakers in a multi-person exchange. The sessionless, session-based, asynchronous, and WebSocket recognition methods each include a `speaker_labels` parameter that accepts a boolean value to indicate whether speaker labels are to be included in the response. For more information about the feature, see [Speaker labels](/docs/services/speech-to-text/output.html#speaker_labels).
 -   The beta language model customization interface is now supported for Japanese in addition to US English. All methods of the interface support Japanese. For more information, see the following sections:
-    -   For information about using the customization interface, see [Using customization](/docs/services/speech-to-text/custom.html).
+    -   For information about using the customization interface, see [Using language customization](/docs/services/speech-to-text/custom.html).
     -   For general and Japanese-specific considerations when adding a corpus text file, see [Preparing a corpus file](/docs/services/speech-to-text/custom.html#prepareCorpus) and [Language-specific considerations](/docs/services/speech-to-text/custom.html#corpusLanguages).
     -   For Japanese-specific considerations when specifying the `sounds_like` field for a custom word, see [Language-specific considerations](/docs/services/speech-to-text/custom.html#wordLanguages).
     -   For detailed information about all methods of the customization interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
@@ -161,7 +161,7 @@ For detailed documentation about the service's interface, see the [API reference
 {: #September2016}
 
 -   The service now offers a new beta language model customization interface for US English. The interface lets you tailor the service's base vocabulary and language models via the creation of custom language models that include domain-specific terminology. You can add custom words individually or have the service extract them from corpora. You can use your custom models with the speech recognition methods offered by any of the service's interfaces by passing the `customization_id` query parameter. For more information, see
-    -   [Using customization](/docs/services/speech-to-text/custom.html)
+    -   [Using language model customization](/docs/services/speech-to-text/custom.html)
     -   [Managing custom language models](/docs/services/speech-to-text/custom-language-models.html)
     -   [Managing corpora](/docs/services/speech-to-text/custom-corpora.html)
     -   [Managing custom words](/docs/services/speech-to-text/custom-words.html)

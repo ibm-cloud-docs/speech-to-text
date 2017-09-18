@@ -43,8 +43,9 @@ Speech to Text
     async.md
 
     {: topicgroup}
-    Customization
+    Language model customization
         custom.md
+        custom-resource.md
         custom-language-models.md
         custom-corpora.md
         custom-words.md

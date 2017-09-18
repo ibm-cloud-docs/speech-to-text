@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-09-14"
+lastupdated: "2017-09-16"
 
 ---
 
@@ -202,13 +202,13 @@ You must specify the audio format, or MIME type, of the data that you pass to th
       <a target="_blank" href="https://www.xiph.org/ogg/">www.xiph.org/ogg/ ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.
       You can use audio streams compressed with the following codecs:
       <ul style="margin-left:20px; padding:0px;">
-        <li style="margin:10px 0px; color:#404040; line-height:120%;">
+        <li style="margin:10px 0px; line-height:120%;">
           <em>Opus</em>. For more information, see
           <a target="_blank" href="https://www.opus-codec.org/">opus-codec.org ![External link icon](../../icons/launch-glyph.svg "External link icon")</a> and
           <a target="_blank" href="https://en.wikipedia.org/wiki/Opus">en.wikipedia.org/wiki/Opus (audio format) ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>, especially the
           <em>Containers</em> section.
         </li>
-        <li style="margin:10px 0px; color:#404040; line-height:120%;">
+        <li style="margin:10px 0px; line-height:120%;">
           <em>Vorbis</em>. For more information, see
           <a target="_blank" href="https://xiph.org/vorbis/">xiph.org/vorbis ![External link icon](../../icons/launch-glyph.svg "External link icon")</a> and
           <a target="_blank" href="https://en.wikipedia.org/wiki/Vorbis">en.wikipedia.org/wiki/Vorbis ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.
@@ -436,7 +436,7 @@ To retrieve the complete list of supported model names, use the `GET models` met
 
 All interfaces allow you to pass a custom language model to the service for use in a recognition request. Custom language models let you expand the service's base vocabulary with terminology from specific domains. In all cases, you pass the customization ID (GUID) of the custom model via a method's `customization_id` query parameter. You must issue the request with the service credentials of the model's owner.
 
-Each custom language model is based on one of the language models described in [Language and models](#models) and can be used only with that base language model. If your custom language model is based on a model other than `en-US_BroadbandModel`, the default, you must also specify the name of the model with the request. For more information about creating and using custom language models, see [Using customization](/docs/services/speech-to-text/custom.html).
+Each custom language model is based on one of the language models described in [Language and models](#models) and can be used only with that base language model. If your custom language model is based on a model other than `en-US_BroadbandModel`, the default, you must also specify the name of the model with the request. For more information about creating and using custom language models, see [Using language model customization](/docs/services/speech-to-text/custom.html).
 
 ## Audio transmission
 {: #transmission}
