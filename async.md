@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-11"
+lastupdated: "2017-10-02"
 
 ---
 
@@ -17,7 +17,7 @@ lastupdated: "2017-08-11"
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Using the asynchronous HTTP interface
+# The asynchronous HTTP interface
 {: #async}
 
 The asynchronous HTTP interface of the {{site.data.keyword.speechtotextshort}} service provides methods for transcribing audio via non-blocking calls to the service. The interface lets you employ user-specified secret strings and digital signatures to provide a level of security for requests made over the HTTP protocol. You can use the asynchronous interface in one of two ways:
@@ -34,21 +34,21 @@ The two approaches are not mutually exclusive; you can elect to receive callback
 When working with the service's asynchronous HTTP interface, you can elect to learn about job status and receive results in the following ways:
 
 -   By using callback notifications:
-    1.  Call the `POST register_callback` method to register a callback URL with the service. You can provide an optional user-specified secret string to enable authentication and data integrity for callbacks sent to the URL.
-    1.  Call the `POST recognitions` method with an already registered callback URL to which the service sends notifications when the status of the job changes. You specify a list of events of which to be notified. By default, the service sends notifications when a job is started, when it is complete, and if an error occurs. You can request that the completion notification also include the results of the request; otherwise, you need to use the `GET recognitions/{id}` method to retrieve the results.
+    1.  Call the `POST /v1/register_callback` method to register a callback URL with the service. You can provide an optional user-specified secret string to enable authentication and data integrity for callbacks sent to the URL.
+    1.  Call the `POST /v1/recognitions` method with an already registered callback URL to which the service sends notifications when the status of the job changes. You specify a list of events of which to be notified. By default, the service sends notifications when a job is started, when it is complete, and if an error occurs. You can request that the completion notification also include the results of the request; otherwise, you need to use the `GET /v1/recognitions/{id}` method to retrieve the results.
 -   By polling the service:
-    1.  Call the `POST recognitions` method without a callback URL, events, or a user token.
-    1.  Periodically call the `GET recognitions` method to check the status of all of your current jobs or the `GET recognitions/{id}` method to check the status of the specific job.
-    1.  If you check job status with the `GET recognitions` method, call the `GET recognitions/{id}` method to retrieve the results of the job once it is complete.
+    1.  Call the `POST /v1/recognitions` method without a callback URL, events, or a user token.
+    1.  Periodically call the `GET /v1/recognitions` method to check the status of all of your current jobs or the `GET /v1/recognitions/{id}` method to check the status of the specific job.
+    1.  If you check job status with the `GET /v1/recognitions` method, call the `GET /v1/recognitions/{id}` method to retrieve the results of the job once it is complete.
 
 As mentioned previously, the two approaches are not mutually exclusive. You can still poll the service to obtain the latest status for a job that is created with a callback URL. For example, you may want to obtain the status of a job if notifications are taking a while to arrive or if you suspect that you may have missed one or more notifications due to a service or network error.
 
 ## Registering a callback URL
 {: #register}
 
-You register a callback URL by calling the `POST register_callback` method. Once you register a callback URL, you can use it to receive notifications for an indefinite number of jobs. The registration process comprises four steps:
+You register a callback URL by calling the `POST /v1/register_callback` method. Once you register a callback URL, you can use it to receive notifications for an indefinite number of jobs. The registration process comprises four steps:
 
-1.  You call the `POST register_callback` method and pass a callback URL and, optionally, a user-specified secret. The service uses the secret to compute keyed-hash message authentication code (HMAC) Secure Hash Algorithm 1 (SHA1) signatures for authentication and data integrity. The following example registers a user callback that responds at the URL `http://{user_callback_path}/results`. The call includes a user secret of `ThisIsMySecret`.
+1.  You call the `POST /v1/register_callback` method and pass a callback URL and, optionally, a user-specified secret. The service uses the secret to compute keyed-hash message authentication code (HMAC) Secure Hash Algorithm 1 (SHA1) signatures for authentication and data integrity. The following example registers a user callback that responds at the URL `http://{user_callback_path}/results`. The call includes a user secret of `ThisIsMySecret`.
 
     ```bash
     curl -X POST -u {username}:{password}
@@ -64,7 +64,7 @@ You register a callback URL by calling the `POST register_callback` method. Once
     GET http://{user_callback_path}/results?challenge_string=n9ArPGMQ36Hiu7QC
     header: X-Callback-Signature {HMAC-SHA1_signature}
     ```
-    {: screen}
+    {: codeblock}
 
 1.  You respond to the `GET` request from the service with status code 200. Include the challenge string sent by the service in plain text in the body of the response, and set the `Content-Type` response header to `text/plain`.
 
@@ -74,7 +74,7 @@ You register a callback URL by calling the `POST register_callback` method. Once
     response code: 200 OK
     body: n9ArPGMQ36Hiu7QC
     ```
-    {: screen}
+    {: codeblock}
 
 1.  The service checks whether the challenge string is returned in the body of the response to its `GET` request. If it is, the service white-lists the callback URL and responds to your original `POST` request with status code 201. The body of the response includes a JSON object with a `status` field that has the value `created` and a `url` field that has the value of your callback URL.
 
@@ -85,14 +85,14 @@ You register a callback URL by calling the `POST register_callback` method. Once
       "url": "http://{user_callback_path}/results"
     }
     ```
-    {: screen}
+    {: codeblock}
 
-The service sends only a single `GET` request to a callback URL during the registration process. If the service does not receive a reply with response code 200 that includes the challenge string in its body within five seconds, it does not white-list the URL; it instead sends status code 400 in response to the `POST register_callback` request. If the callback URL was already successfully white-listed, the service sends status code 200 in response to the initial `POST` request.
+The service sends only a single `GET` request to a callback URL during the registration process. If the service does not receive a reply with response code 200 that includes the challenge string in its body within five seconds, it does not white-list the URL; it instead sends status code 400 in response to the `POST /v1/register_callback` request. If the callback URL was already successfully white-listed, the service sends status code 200 in response to the initial `POST` request.
 
 ### Security considerations
 {: #security}
 
-When you successfully use the `POST register_callback` method to register a callback URL, the service white-lists the URL to indicate that it has been verified for use with callback notifications. If you specify a user secret with the registration call, white-listing also means that the URL has been validated for additional security. Specifying a user secret provides authentication and data integrity for requests that use the callback URL with the asynchronous HTTP interface.
+When you successfully use the `POST /v1/register_callback` method to register a callback URL, the service white-lists the URL to indicate that it has been verified for use with callback notifications. If you specify a user secret with the registration call, white-listing also means that the URL has been validated for additional security. Specifying a user secret provides authentication and data integrity for requests that use the callback URL with the asynchronous HTTP interface.
 
 The service uses the user secret to compute an HMAC-SHA1 signature over the payload of every callback notification that it sends to the URL. The service sends the signature via the `X-Callback-Signature` header with each notification. The client can use the secret to compute its own signature of each notification payload. If its signature matches the value of the `X-Callback-Signature` header, the client knows that the notification was sent by the service and that its contents have not been altered during transmission. This guarantees that the client is not the victim of a man-in-middle-attack.
 
@@ -100,7 +100,7 @@ HTTPS is ideal for production applications. But during application development a
 
 <!--
 
-However, communicating over the HTTPS protocol is always the most secure means of learning job status and retrieving results. Using the HTTPS `GET recognitions/{id}` method to retrieve the results of a job is therefore more secure that receiving the results via callback notification. While the use of HMAC-SHA1 signatures based on a user secret ensures authentication and data integrity for callback notifications, it does not provide confidentiality. Conversely, because it encrypts the body of the response, HTTPS can provide authentication, integrity, *and* confidentiality.
+However, communicating over the HTTPS protocol is always the most secure means of learning job status and retrieving results. Using the HTTPS `GET /v1/recognitions/{id}` method to retrieve the results of a job is therefore more secure that receiving the results via callback notification. While the use of HMAC-SHA1 signatures based on a user secret ensures authentication and data integrity for callback notifications, it does not provide confidentiality. Conversely, because it encrypts the body of the response, HTTPS can provide authentication, integrity, *and* confidentiality.
 
 HTTPS, however, is not ideal in terms of additional development overhead. Moreover, although the service validates SSL certificates to prevent man-in-the-middle attacks when you use HTTPS, validation is not foolproof if you use self-signed certificates, which enable encryption but not authentication or data integrity. During application development, user secrets and digital signatures provide a suitable level of security for requests made over the HTTP protocol. You can work with HTTP callback notifications during prototyping and move to HTTPS only for application deployment.
 
@@ -109,21 +109,21 @@ HTTPS, however, is not ideal in terms of additional development overhead. Moreov
 ### Unregistering a callback URL
 {: #unregister}
 
-You can unregister a white-listed callback URL at any time by calling the `POST unregister_callback` method. Unregistering a callback URL can be useful for testing your application with the service. Once you unregister a callback URL, you can no longer use it with asynchronous recognition requests.
+You can unregister a white-listed callback URL at any time by calling the `POST /v1/unregister_callback` method. Unregistering a callback URL can be useful for testing your application with the service. Once you unregister a callback URL, you can no longer use it with asynchronous recognition requests.
 
 ## Creating a job
 {: #create}
 
-You create a recognition job by calling the `POST recognitions` method. How you learn the status and results of the job depends on the approach you use and the parameters you pass:
+You create a recognition job by calling the `POST /v1/recognitions` method. How you learn the status and results of the job depends on the approach you use and the parameters you pass:
 
 -   *To use callback notifications*, include the `callback_url` query parameter to specify a URL to which the service is to send callback notifications when the status of the job changes. You can also specify the following optional query parameters:
     -   `events` to subscribe to a list of notification events. By default, the service sends callback notifications when the job is started (the `recognitions.started` event), when the job is complete (the `recognitions.completed` event), and if an error occurs (the `recognitions.failed` event). You can specify a subset of the events or use the `recognitions.completed_with_results` event instead of the `recognitions.completed` event to include the results with the job-completed notification.
     -   `user_token` to specify a string that is to be included with each notification for the job. Because you can use the same callback URL with an indefinite number of jobs, you can leverage user tokens to differentiate notifications for different jobs.
--   *To use polling*, omit the `callback_url`, `events`, and `user_token` query parameters. You must then use the `GET recognitions` or `GET recognitions/{id}` methods to check the status of the job, using the latter to retrieve the results when the job is complete.
+-   *To use polling*, omit the `callback_url`, `events`, and `user_token` query parameters. You must then use the `GET /v1/recognitions` or `GET /v1/recognitions/{id}` methods to check the status of the job, using the latter to retrieve the results when the job is complete.
 
 In both cases, you can include the `results_ttl` query parameter to specify the number of minutes for which the results are to remain available after the job completes.
 
-In addition to the previous parameters, which are specific to the asynchronous interface, the `POST recognitions` method supports most of the same parameters as the WebSocket and HTTP REST interfaces; for more information, see [Input features and parameters](/docs/services/speech-to-text/input.html) and [Output features and parameters](/docs/services/speech-to-text/output.html). Note that the asynchronous interface does not support interim results and that the service imposes a data size limit of 100 MB on the audio that you submit with the request (see [Data limits and compression](/docs/services/speech-to-text/input.html#limits)).
+In addition to the previous parameters, which are specific to the asynchronous interface, the `POST /v1/recognitions` method supports most of the same parameters as the WebSocket and HTTP REST interfaces; for more information, see [Input features and parameters](/docs/services/speech-to-text/input.html) and [Output features and parameters](/docs/services/speech-to-text/output.html). Note that the asynchronous interface does not support interim results and that the service imposes a data size limit of 100 MB on the audio that you submit with the request (see [Data limits and compression](/docs/services/speech-to-text/input.html#limits)).
 
 ### Callback notifications
 {: #notifications}
@@ -154,7 +154,7 @@ signature = hashed.digest().encode("base64").rstrip('\n')
 ### Callback example
 {: #callback}
 
-The following example creates a job associated with the previously white-listed callback URL `http://{user_callback_path}/results`. The user token `job25` is passed to identify the job in callback notifications sent by the service. The call uses the default events, so the user must call the `GET recognitions/{id}` method to retrieve the results when the service sends a callback notification indicating that the job is complete. The call sets the `timestamps` query parameter of the recognition request to `true`.
+The following example creates a job associated with the previously white-listed callback URL `http://{user_callback_path}/results`. The user token `job25` is passed to identify the job in callback notifications sent by the service. The call uses the default events, so the user must call the `GET /v1/recognitions/{id}` method to retrieve the results when the service sends a callback notification indicating that the job is complete. The call sets the `timestamps` query parameter of the recognition request to `true`.
 
 ```bash
 curl -X POST -u {username}:{password}
@@ -179,7 +179,7 @@ The service returns the status of the request, which is `waiting` to indicate th
 ### Polling example
 {: #polling}
 
-The following example creates a job that is not associated with a callback URL. The user must poll the service to learn when the job is complete and then retrieve the results with the `GET recognitions/{id}` method. Like the previous example, the call sets the `timestamps` parameter of the recognition request to `true`.
+The following example creates a job that is not associated with a callback URL. The user must poll the service to learn when the job is complete and then retrieve the results with the `GET /v1/recognitions/{id}` method. Like the previous example, the call sets the `timestamps` parameter of the recognition request to `true`.
 
 ```bash
 curl -X POST -u {username}:{password}
@@ -204,14 +204,14 @@ The service returns a status of `processing` to indicate that it is already proc
 ## Checking the status and retrieving the results of a job
 {: #job}
 
-You call the `GET recognitions/{id}` method to check the status of the job specified with the `id` path parameter. The response always includes the ID and status of the job and its creation and update times. If the status is `completed`, the response also includes the results of the recognition request.
+You call the `GET /v1/recognitions/{id}` method to check the status of the job specified with the `id` path parameter. The response always includes the ID and status of the job and its creation and update times. If the status is `completed`, the response also includes the results of the recognition request.
 
-The `GET recognitions/{id}` method is the only way to retrieve job results if
+The `GET /v1/recognitions/{id}` method is the only way to retrieve job results if
 
 -   The job was submitted without a callback URL.
 -   The job was submitted with a callback URL but without specifying the `recognitions.completed_with_results` event.
 
-However, you can still use the method to retrieve the results for a job that specified a callback URL and the `recognitions.completed_with_results` event. You can retrieve the results for any job as many times as you want as long as they remain available. A job and its results remain available until you delete them with the `DELETE recognitions/{id}` method or until the job's time to live expires, whichever comes first. By default, results expire after one week unless you specify a different time to live with the `results_ttl` parameter of the `POST recognitions` method.
+However, you can still use the method to retrieve the results for a job that specified a callback URL and the `recognitions.completed_with_results` event. You can retrieve the results for any job as many times as you want as long as they remain available. A job and its results remain available until you delete them with the `DELETE /v1/recognitions/{id}` method or until the job's time to live expires, whichever comes first. By default, results expire after one week unless you specify a different time to live with the `results_ttl` parameter of the `POST /v1/recognitions` method.
 
 ### Example of status without results
 {: #withoutResults}
@@ -292,14 +292,14 @@ curl -X GET -u {username}:{password}
 ## Checking the status of all jobs
 {: #jobs}
 
-You call the `GET recognitions` method to check the status of all outstanding jobs. The method returns the status of all current jobs associated with the server credentials with which it is called. The method returns the ID and status of each job, along with its creation and update times; if a job was created with a callback URL and a user token, the method also returns the user token for the job. The status is one of the following:
+You call the `GET /v1/recognitions` method to check the status of all outstanding jobs. The method returns the status of all current jobs associated with the service credentials with which it is called. The method returns the ID and status of each job, along with its creation and update times; if a job was created with a callback URL and a user token, the method also returns the user token for the job. The status is one of the following:
 
 -   `waiting` if the service is preparing the job for processing. This is the initial state of all jobs. The job remains in this state until the service has the capacity to begin processing it.
 -   `processing` if the service is actively processing the job.
--   `completed` if the service has finished processing the job. If the job specified a callback URL and the event `recognitions.completed_with_results`, the service sent the results with the callback notification. Otherwise, use the `GET recognitions/{id}` method to obtain the results.
+-   `completed` if the service has finished processing the job. If the job specified a callback URL and the event `recognitions.completed_with_results`, the service sent the results with the callback notification. Otherwise, use the `GET /v1/recognitions/{id}` method to obtain the results.
 -   `failed` if the job failed for some reason.
 
-A job and its results remain available until you delete them with the `DELETE recognitions/{id}` method or until the job's time to live expires, whichever comes first.
+A job and its results remain available until you delete them with the `DELETE /v1/recognitions/{id}` method or until the job's time to live expires, whichever comes first.
 
 ### Example
 {: #statusExample}
@@ -342,9 +342,9 @@ curl -X GET -u {username}:{password}
 ## Deleting a job
 {: #delete}
 
-You can use the `DELETE recognitions/{id}` method to delete the job specified with the `id` path parameter. You typically delete a job after you have obtained its results from the service. Once you delete a job, its results are no longer available. You cannot delete a job that the service is actively processing.
+You can use the `DELETE /v1/recognitions/{id}` method to delete the job specified with the `id` path parameter. You typically delete a job after you have obtained its results from the service. Once you delete a job, its results are no longer available. You cannot delete a job that the service is actively processing.
 
-By default, the service maintains the results of each job until the job expires because its time to live has elapsed. The default TTL is one week, but you can use the `results_ttl` parameter of the `POST recognitions` method to specify the number of minutes that the service is to maintain the results.
+By default, the service maintains the results of each job until the job expires because its time to live has elapsed. The default TTL is one week, but you can use the `results_ttl` parameter of the `POST /v1/recognitions` method to specify the number of minutes that the service is to maintain the results.
 
 ### Example
 {: #deleteExample}

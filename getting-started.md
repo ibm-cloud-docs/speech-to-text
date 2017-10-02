@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-11"
+lastupdated: "2017-10-02"
 
 ---
 
@@ -135,6 +135,6 @@ swept through colorado on sunday "
 ## Next steps
 
 -   For more information about the parameters of the `/v1/recognize` method, see [Input features and parameters](/docs/services/speech-to-text/input.html) and [Output features and parameters](/docs/services/speech-to-text/output.html).
--   For more information about using the service's HTTP interface, see [Using the HTTP REST interface](/docs/services/speech-to-text/http.html).
+-   For more information about using the service's HTTP interface, see [The HTTP REST interface](/docs/services/speech-to-text/http.html).
 -   For detailed information about all methods of the service's interfaces, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
 -   Interact with the API in the [API explorer ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://watson-api-explorer.mybluemix.net/apis/speech-to-text-v1){: new_window}.

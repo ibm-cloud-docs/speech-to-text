@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-09-09"
+lastupdated: "2017-10-02"
 
 ---
 
@@ -17,7 +17,7 @@ lastupdated: "2017-09-09"
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Using the WebSocket interface
+# The WebSocket interface
 {: #websockets}
 
 The WebSocket interface of the {{site.data.keyword.speechtotextshort}} service is the most natural way for a client to interact with the service. It has a number of advantages over the HTTP interface:
@@ -29,7 +29,7 @@ The WebSocket interface of the {{site.data.keyword.speechtotextshort}} service i
 -   It reduces network utilization. The WebSocket protocol is very lightweight. It requires only a single connection to perform live recognition. When using sessions with the REST interface, conversely, you need at least four connections to achieve the same results.
 -   It enables audio to be streamed directly from browsers (HTML5 WebSocket clients) to the service.
 
-The WebSocket interface uses the `recognize` method to establish a connection with the service. It then relies on text and binary messages sent over the persistent connection to initiate and manage recognition requests. (If your application needs to call the `GET models` method, you must use the HTTP interface.)
+The WebSocket interface uses the `recognize` method to establish a connection with the service. It then relies on text and binary messages sent over the persistent connection to initiate and manage recognition requests. (If your application needs to call the `GET /v1/models` method, you must use the HTTP interface.)
 
 For information about the steps you need to follow to use the WebSocket interface, see [Making recognition requests](#WSsteps). Subsequent sections describe [WebSocket return codes](#WSreturn) and present an [Example WebSocket session](#WSexample) that shows example messages exchanged between the client and the service.
 
@@ -58,7 +58,7 @@ The {{site.data.keyword.speechtotextshort}} service uses the WebSocket Secure (W
 ```
 wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize
 ```
-{: screen}
+{: codeblock}
 
 A WebSocket client calls this method with the following query parameters to establish an authenticated connection with the service.
 
@@ -95,8 +95,9 @@ A WebSocket client calls this method with the following query parameters to esta
       Specifies the language and model to be used for transcription.
       If you do not specify a model, the service uses the
       <code>en-US_BroadbandModel</code> model by default. For more
-      information, see <a href="input.html#models">Languages and
-        models</a>.
+      information, see
+      <a href="/docs/services/speech-to-text/input.html#models">Languages
+        and models</a>.
     </td>
   </tr>
   <tr>
@@ -106,10 +107,25 @@ A WebSocket client calls this method with the following query parameters to esta
     <td style="text-align:left">
       Specifies the Globally Unique Identifier (GUID) of a custom
       language model that is to be used for all requests sent over
-      the connection. The base language model of the custom model
+      the connection. The base model of the custom language model
       must match the value of the <code>model</code> parameter. By
-      default, no custom model is used. For more information, see
-      <a href="input.html#custom">Custom language models</a>.
+      default, no custom language model is used. For more information, see
+      <a href="/docs/services/speech-to-text/input.html#custom">Custom
+        models</a>.
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left"><code>acoustic_customization_id</code>
+      <br/><em>Optional</em></td>
+    <td style="text-align:center">String</td>
+    <td style="text-align:left">
+      Specifies the Globally Unique Identifier (GUID) of a custom
+      acoustic model that is to be used for all requests sent over
+      the connection. The base model of the custom acoustic model
+      must match the value of the <code>model</code> parameter. By
+      default, no custom acoustic model is used. For more information, see
+      <a href="/docs/services/speech-to-text/input.html#custom">Custom
+        models</a>.
     </td>
   </tr>
   <tr>
@@ -183,7 +199,8 @@ To initiate a recognition request, the client sends a JSON text message to the s
     <td style="text-align:left">
       The format (MIME type) of the audio data for the request. For
       detailed information about the available audio formats, see
-      <a href="input.html#formats">Audio formats</a>.
+      <a href="/docs/services/speech-to-text/input.html#formats">Audio
+        formats</a>.
     </td>
   </tr>
 </table>
@@ -328,7 +345,7 @@ Server<< {"results": [{"alternatives": [{"transcript": "name the mayflower "}],
           "final": true}],"result_index": 0}
 Server<< {"state":"listening"}
 ```
-{: screen}
+{: codeblock}
 
 In the second example, the client sends audio that contains the string `Second audio transcript`. The client sends the audio in a single binary message and uses the same parameters that it specified for the first request.
 
@@ -339,7 +356,7 @@ Server<< {"results": [{"alternatives": [{"transcript": "second audio transcript 
           "final": true}],"result_index": 0}
 Server<< {"state":"listening"}
 ```
-{: screen}
+{: codeblock}
 
 In the third example, the client again sends audio that contains the string `Name the Mayflower`. As with the first example, the client sends the audio in two chunks in PCM format. This time, the client asks the server to send interim results for the transcription.
 
@@ -360,4 +377,4 @@ Server<< {"results": [{"alternatives": [{"transcript": "name the mayflower "}],
           "final": true}],"result_index": 0}
 Server<< {"state":"listening"}
 ```
-{: screen}
+{: codeblock}

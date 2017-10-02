@@ -41,14 +41,24 @@ Speech to Text
     websockets.md
     http.md
     async.md
+    custom.md
 
     {: topicgroup}
     Language model customization
-        custom.md
-        custom-resource.md
-        custom-language-models.md
-        custom-corpora.md
-        custom-words.md
+        language-create.md
+        language-use.md
+        language-resource.md
+        language-models.md
+        language-corpora.md
+        language-words.md
+
+    {: topicgroup}
+    Acoustic model customization
+        acoustic-create.md
+        acoustic-use.md
+        acoustic-resource.md
+        acoustic-models.md
+        acoustic-audio.md
 
     {: topicgroup}
     Service background

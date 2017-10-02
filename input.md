@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-09-16"
+lastupdated: "2017-10-02"
 
 ---
 
@@ -62,7 +62,7 @@ The {{site.data.keyword.speechtotextshort}} service leverages the following two 
       </tr>
     </table>
 
--   **Request logging** is used by all {{site.data.keyword.watson}} services to log each request to a service and its results. When you agree (opt in) to have your data logged, {{site.data.keyword.IBM_notm}} reserves the right to store and use the data to improve the service's base speech models. {{site.data.keyword.IBM_notm}} stores the data only to improve the service for future users; the logged data is never shared or made public. Once you opt in, {{site.data.keyword.IBM_notm}} offers no mechanism to delete the stored audio or transcripts.
+-   **Request logging** is used by all {{site.data.keyword.watson}} services to log each request to a service and its results. When you agree (opt in) to have your data logged, {{site.data.keyword.IBM_notm}} reserves the right to store and use the data to improve the service's base language models. {{site.data.keyword.IBM_notm}} stores the data only to improve the service for future users; the logged data is never shared or made public. Once you opt in, {{site.data.keyword.IBM_notm}} offers no mechanism to delete the stored audio or transcripts.
 
     To prevent {{site.data.keyword.IBM_notm}} from accessing your data for general service improvements, set the `X-Watson-Learning-Opt-Out` request header to `true` for all requests. When you use the header to opt out of request logging, {{site.data.keyword.IBM_notm}} stores none of your data. Your data exists within {{site.data.keyword.watson}} only while it is in transit (in memory while the service processes your request). Because the data is never stored in any way, {{site.data.keyword.IBM_notm}} provides no mechanism to delete it.
 
@@ -124,7 +124,9 @@ The {{site.data.keyword.speechtotextshort}} service leverages the following two 
   </tr>
 </table>
 
-You must specify the audio format, or MIME type, of the data that you pass to the service. The service automatically detects the endianness of the incoming audio. For audio that includes multiple channels, the service downmixes the audio to one-channel mono during transcoding. The following table lists the supported formats and, where necessary, documents the maximum number of supported channels.
+You must specify the audio format, or MIME type, of the data that you pass to the service. The service automatically detects the endianness of the incoming audio. (For the `audio/l16` format, you can specify the endianness.) For audio that includes multiple channels, the service downmixes the audio to one-channel mono during transcoding.
+
+The following table lists the supported formats and documents required and optional parameters where applicable.
 
 <table>
   <caption>Table 4. Supported audio formats</caption>
@@ -134,12 +136,79 @@ You must specify the audio format, or MIME type, of the data that you pass to th
   </tr>
   <tr>
     <td>
+      <code>audio/basic</code>
+    </td>
+    <td>
+      <em>Basic audio files</em> provide single-channel audio that is encoded
+      using 8-bit u-law (or mu-law) data sampled at 8 kHz. This subtype
+      provides a lowest-common denominator format to indicate a media type
+      of audio. For more information, see the IETF
+      <a target="_blank" href="https://tools.ietf.org/html/rfc2046">Request
+        for Comment (RFC) 2046 ![External link icon](../../icons/launch-glyph.svg "External link icon")</a> and
+      <a target="_blank" href="http://www.iana.org/assignments/media-types/audio/basic">iana.org/assignments/media-types/audio/basic ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.<br/><br/>
+      The service supports the use of files in <code>audio/basic</code>
+      format only with narrowband models (for example,
+      <code>en-US_NarrowbandModel</code>).
+    </td>
+  </tr>
+  <tr>
+    <td>
       <code>audio/flac</code>
     </td>
     <td>
       <em>Free Lossless Audio Codec (FLAC)</em>, a lossless compressed
       audio coding format. For more information, see
       <a target="_blank" href="https://en.wikipedia.org/wiki/FLAC">en.wikipedia.org/wiki/FLAC ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>audio/l16</code>
+    </td>
+    <td>
+      <em>Linear 16-bit Pulse-Code Modulation (PCM)</em>, an uncompressed
+      audio data format. Use this media type to pass a raw PCM file.
+      Note that linear PCM audio can also reside inside a container
+      Waveform Audio File Format (WAV) file. For more information,
+      see the Internet Engineering Task Force (IETF)
+      <a target="_blank" href="https://tools.ietf.org/html/rfc2586">Request
+        for Comment (RFC) 2586 ![External link icon](../../icons/launch-glyph.svg "External link icon")</a> and
+      <a target="_blank" href="https://en.wikipedia.org/wiki/Pulse-code_modulation">en.wikipedia.org/wiki/Pulse-code_modulation ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.<br/><br/>
+      When you use this media type, the service accepts additional required
+      and optional parameters on the format specification:
+      <ul style="margin-left:20px; padding:0px;">
+        <li style="margin:10px 0px; line-height:120%">
+          You must identify the sampling rate at which the audio is captured
+          by specifying an integer for the <code>rate</code> parameter. For
+          example, specify the following for audio data captured at 16
+           kHz:<br/><br/>
+          <code>audio/l16;rate=16000</code>
+        </li>
+        <li style="margin:10px 0px; line-height:120%">
+          If the audio has more than one channel, you must identify
+          the number of channels by specifying an integer for the
+          <code>channels</code> parameter. The service accepts a maximum
+          of 16 channels; it downmixes the audio to one channel during
+          transcoding. For example, specify the following for two-channel
+          audio data captured at 16 kHz:<br/><br/>
+          <code>audio/l16;rate=16000;channels=2</code>
+        </li>
+        <li style="margin:10px 0px; line-height:120%">
+          You can optionally identify the endianness of the audio by
+          specifying <code>big-endian</code> or <code>little-endian</code>
+          for the <code>endianness</code> parameter. The service auto-detects
+          the endianness of incoming audio, but its auto-detection can
+          sometimes fail and drop the connection for short audio. Specifying
+          the endianness with this parameter disables auto-detection. For
+          example, specify the following for audio data captured at 16 kHz
+          in little-endian format:<br/><br/>
+          <code>audio/l16;rate=16000;endianness=little-endian</code><br/><br/>
+          Note that Section 5.1 of
+          <a target="_blank" href="https://tools.ietf.org/html/rfc2045#section-5.1">Request for Comment (RFC) 2045 ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>
+          specifies big-endian format for <code>audio/l16</code>, but
+          many people use little-endian format.
+        </li>
+      </ul>
     </td>
   </tr>
   <tr>
@@ -156,38 +225,16 @@ You must specify the audio format, or MIME type, of the data that you pass to th
   </tr>
   <tr>
     <td>
-      <code>audio/l16</code>
+      <code>audio/mulaw</code>
     </td>
     <td>
-      <em>Linear 16-bit Pulse-Code Modulation (PCM)</em>, an uncompressed
-      audio data format. Use this media type to pass a raw PCM file.
-      Note that linear PCM audio can also reside inside a container
-      Waveform Audio File Format (WAV) file. For more information,
-      see the Internet Engineering Task Force (IETF)
-      <a target="_blank" href="https://tools.ietf.org/html/rfc2586">Request
-        for Comment (RFC) 2586 ![External link icon](../../icons/launch-glyph.svg "External link icon")</a> and
-      <a target="_blank" href="https://en.wikipedia.org/wiki/Pulse-code_modulation">en.wikipedia.org/wiki/Pulse-code_modulation ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.<br/><br/>
+      <em>Mu-law (or u-law) audio files</em> provide single-channel
+      audio encoded using the u-law (or mu-law) data algorithm. For
+      more information, see
+      <a target="_blank" href="https://en.wikipedia.org/wiki/M-law_algorithm">en.wikipedia.org/wiki/M-law_algorithm ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.<br/><br/>
       When you use this media type, you must specify the sampling rate
-      at which the audio is captured. You must also specify the number of
-      channels for the recording if it is greater than one. The service
-      can accept a maximum of 16 channels; it downmixes the audio to one
-      channel during transcoding. For example, specify the following for
-      two-channel, 16-bit PCM data captured at 48 KHz:
-      <code>audio/l16;rate=48000;channels=2</code>.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>audio/wav</code>
-    </td>
-    <td>
-      <em>Waveform Audio File Format (WAV)</em>, a standard created
-      by Microsoft&reg; and IBM. A WAV file is a container that is
-      often used for uncompressed audio bitstreams but can contain
-      compressed audio, as well. For more information, see
-      <a target="_blank" href="https://en.wikipedia.org/wiki/WAV">en.wikipedia.org/wiki/WAV ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.<br/><br/>
-      The service supports WAV files that use any encoding. It accepts
-      audio with a maximum of nine channels (due to an FFmpeg limitation).
+      at which the audio is captured. For example, specify the following
+      for audio data sampled at 8 kHz: <code>audio/mulaw;rate=8000</code>.
     </td>
   </tr>
   <tr>
@@ -205,7 +252,8 @@ You must specify the audio format, or MIME type, of the data that you pass to th
         <li style="margin:10px 0px; line-height:120%;">
           <em>Opus</em>. For more information, see
           <a target="_blank" href="https://www.opus-codec.org/">opus-codec.org ![External link icon](../../icons/launch-glyph.svg "External link icon")</a> and
-          <a target="_blank" href="https://en.wikipedia.org/wiki/Opus">en.wikipedia.org/wiki/Opus (audio format) ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>, especially the
+          <a target="_blank" href="https://en.wikipedia.org/wiki/Opus">en.wikipedia.org/wiki/Opus (audio format) ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.
+          On the <em>Opus (audio format)</em> page, look especially at the
           <em>Containers</em> section.
         </li>
         <li style="margin:10px 0px; line-height:120%;">
@@ -217,6 +265,20 @@ You must specify the audio format, or MIME type, of the data that you pass to th
        Both codecs are free, open, lossy audio-compression formats. Opus is
       the preferred codec. If you omit the codec, the service automatically
       detects it from the input audio.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>audio/wav</code>
+    </td>
+    <td>
+      <em>Waveform Audio File Format (WAV)</em>, a standard created
+      by Microsoft&reg; and IBM. A WAV file is a container that is
+      often used for uncompressed audio bitstreams but can contain
+      compressed audio, as well. For more information, see
+      <a target="_blank" href="https://en.wikipedia.org/wiki/WAV">en.wikipedia.org/wiki/WAV ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.<br/><br/>
+      The service supports WAV files that use any encoding. It accepts
+      audio with a maximum of nine channels (due to an FFmpeg limitation).
     </td>
   </tr>
   <tr>
@@ -236,37 +298,6 @@ You must specify the audio format, or MIME type, of the data that you pass to th
       in a Chrome browser and encode it into a WebM data stream, see
       <a target="_blank" href="https://jsbin.com/hedujihuqo/edit?js,console">jsbin.com/hedujihuqo/edit?js,console ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>. Note that the code does not submit
       the captured audio to the service.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>audio/mulaw</code>
-    </td>
-    <td>
-      <em>Mu-law (or u-law) audio files</em> provide single-channel
-      audio encoded using the u-law (or mu-law) data algorithm. For
-      more information, see
-      <a target="_blank" href="https://en.wikipedia.org/wiki/M-law_algorithm">en.wikipedia.org/wiki/M-law_algorithm ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.<br/><br/>
-      When you use this media type, you must specify the sampling rate
-      at which the audio is captured. For example, specify the following
-      for audio data sampled at 8 KHz: <code>audio/mulaw;rate=8000</code>.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>audio/basic</code>
-    </td>
-    <td>
-      <em>Basic audio files</em> provide single-channel audio that is encoded
-      using 8-bit u-law (or mu-law) data sampled at 8 KHz. This subtype
-      provides a lowest-common denominator format to indicate a media type
-      of audio. For more information, see the IETF
-      <a target="_blank" href="https://tools.ietf.org/html/rfc2046">Request
-        for Comment (RFC) 2046 ![External link icon](../../icons/launch-glyph.svg "External link icon")</a> and
-      <a target="_blank" href="http://www.iana.org/assignments/media-types/audio/basic">iana.org/assignments/media-types/audio/basic ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.<br/><br/>
-      The service supports the use of files in <code>audio/basic</code>
-      format only with narrowband models (for example,
-      <code>en-US_NarrowbandModel</code>).
     </td>
   </tr>
 </table>
@@ -313,97 +344,69 @@ Each of these tools offers cross-platform support for multiple audio formats. Pl
   </tr>
 </table>
 
-You can specify the language in which the audio is spoken and the rate at which it was sampled. For most languages, the service supports two models:
+You use a language model to specify the language in which the audio is spoken and the rate at which it was sampled. For most languages, the service supports two models:
 
--   Use the *broadband model* for audio that is sampled at greater than or equal to 16 KHz. {{site.data.keyword.IBM}} recommends that you use the broadband model for responsive, real-time applications (for example, for live-speech applications).
--   Use the *narrowband model* for audio that is sampled at 8 KHz. This rate typically corresponds to audio derived from the telephone. (Narrowband is not supported for Modern Standard Arabic or French.)
+-   A *broadband model* for audio that is sampled at greater than or equal to 16 kHz. {{site.data.keyword.IBM}} recommends that you use the broadband model for responsive, real-time applications (for example, for live-speech applications).
+-   A *narrowband model* for audio that is sampled at 8 kHz. This rate typically corresponds to audio derived from the telephone.
 
-The service automatically adjusts the incoming sampling rate to match the model. For example, the service converts audio recorded at higher sampling rates to 16 KHz prior to performing speech recognition with broadband models. In theory, therefore, you can send 44 KHz audio with the narrowband model. Note, however, that the service does not accept audio sampled at a lower rate than the intrinsic sampling rate of the model. The following table lists the supported model names, their languages, and their minimum sampling rates.
+The service automatically adjusts the sampling rate of your audio to match the model you specify. For example, the service converts audio recorded at higher sampling rates to 16 kHz prior to performing speech recognition with broadband models. In theory, therefore, you can send 44 kHz audio with the narrowband model. Note, however, that the service does not accept audio sampled at a lower rate than the intrinsic sampling rate of the model.
+
+The following table lists the supported model names for each language. If you omit the model from any request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
 
 <table>
-  <caption>Table 6. Supported models</caption>
+  <caption>Table 6. Supported language models</caption>
   <tr>
-    <th style="text-align:left">Model Name</th>
-    <th style="text-align:center">Language</th>
-    <th style="text-align:center">Minimum Sampling Rate</th>
+    <th style="text-align:left">Language</th>
+    <th style="text-align:center">Broadband model</th>
+    <th style="text-align:center">Narrowband model</th>
   </tr>
   <tr>
-    <td><code>ar-AR_BroadbandModel</code></td>
-    <td style="text-align:center">Modern Standard Arabic</td>
-    <td style="text-align:center">16 KHz</td>
+    <td>Brazilian Portuguese</td>
+    <td style="text-align:center"><code>pt-BR_BroadbandModel</code></td>
+    <td style="text-align:center"><code>pt-BR_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td><code>en-GB_BroadbandModel</code></td>
-    <td style="text-align:center">UK English</td>
-    <td style="text-align:center">16 KHz</td>
+    <td>French</td>
+    <td style="text-align:center"><code>fr-FR_BroadbandModel</code></td>
+    <td style="text-align:center">Not supported</td>
   </tr>
   <tr>
-    <td><code>en-GB_NarrowbandModel</code></td>
-    <td style="text-align:center">UK English</td>
-    <td style="text-align:center">8 KHz</td>
+    <td>Japanese</td>
+    <td style="text-align:center"><code>ja-JP_BroadbandModel</code></td>
+    <td style="text-align:center"><code>ja-JP_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td><code>en-US_BroadbandModel</code> (<em>Default</em>)</td>
-    <td style="text-align:center">US English</td>
-    <td style="text-align:center">16 KHz</td>
+    <td>Mandarin Chinese</td>
+    <td style="text-align:center"><code>zh-CN_BroadbandModel</code></td>
+    <td style="text-align:center"><code>zh-CN_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td><code>en-US_NarrowbandModel</code></td>
-    <td style="text-align:center">US English</td>
-    <td style="text-align:center">8 KHz</td>
+    <td>Modern Standard Arabic</td>
+    <td style="text-align:center"><code>ar-AR_BroadbandModel</code></td>
+    <td style="text-align:center">Not supported</td>
   </tr>
   <tr>
-    <td><code>es-ES_BroadbandModel</code></td>
-    <td style="text-align:center">Spanish</td>
-    <td style="text-align:center">16 KHz</td>
+    <td>Spanish</td>
+    <td style="text-align:center"><code>es-ES_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-ES_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td><code>es-ES_NarrowbandModel</code></td>
-    <td style="text-align:center">Spanish</td>
-    <td style="text-align:center">8 KHz</td>
+    <td>UK English</td>
+    <td style="text-align:center"><code>en-GB_BroadbandModel</code></td>
+    <td style="text-align:center"><code>en-GB_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td><code>fr-FR_BroadbandModel</code></td>
-    <td style="text-align:center">French</td>
-    <td style="text-align:center">16 KHz</td>
-  </tr>
-  <tr>
-    <td><code>ja-JP_BroadbandModel</code></td>
-    <td style="text-align:center">Japanese</td>
-    <td style="text-align:center">16 KHz</td>
-  </tr>
-  <tr>
-    <td><code>ja-JP_NarrowbandModel</code></td>
-    <td style="text-align:center">Japanese</td>
-    <td style="text-align:center">8 KHz</td>
-  </tr>
-  <tr>
-    <td><code>pt-BR_BroadbandModel</code></td>
-    <td style="text-align:center">Brazilian Portuguese</td>
-    <td style="text-align:center">16 KHz</td>
-  </tr>
-  <tr>
-    <td><code>pt-BR_NarrowbandModel</code></td>
-    <td style="text-align:center">Brazilian Portuguese</td>
-    <td style="text-align:center">8 KHz</td>
-  </tr>
-  <tr>
-    <td><code>zh-CN_BroadbandModel</code></td>
-    <td style="text-align:center">Mandarin Chinese</td>
-    <td style="text-align:center">16 KHz</td>
-  </tr>
-  <tr>
-    <td><code>zh-CN_NarrowbandModel</code></td>
-    <td style="text-align:center">Mandarin Chinese</td>
-    <td style="text-align:center">8 KHz</td>
+    <td>US English</td>
+    <td style="text-align:center"><code>en-US_BroadbandModel</code></td>
+    <td style="text-align:center"><code>en-US_NarrowbandModel</code></td>
   </tr>
 </table>
 
-To retrieve the complete list of supported model names, use the `GET models` method. To retrieve detailed information about a specific model, use the `GET models/{model_id}` method.
+To see the complete list of supported models, use the `GET /v1/models` method. To retrieve detailed information about a specific model, use the `GET /v1/models/{model_id}` method.
 
 > **Note:** The service capitalizes many proper nouns for the US English language models, `en-US_BroadbandModel` and `en-US_NarrowbandModel`. For example, for US English transcriptions, the service returns text that reads "Barack Obama graduated from Columbia University" instead of "barack obama graduated from columbia university," as it does for other language models.
 
-## Custom language models
+## Custom models
 {: #custom}
 
 <table>
@@ -416,27 +419,38 @@ To retrieve the complete list of supported model names, use the `GET models` met
   </tr>
   <tr>
     <td style="text-align:center">
-      <code>customization_id</code> query parameter of
-      <code>recognize</code> connection request
+      <code>customization\_id</code>,
+      <code>acoustic\_<br/>customization\_id</code>,
+      and <code>customization\_weight</code>
+      query parameters of <code>recognize</code> connection request
     </td>
     <td style="text-align:center">
-      <code>customization_id</code> query parameter of <code>POST
-        sessions</code> method
+      <code>customization\_id</code>,
+      <code>acoustic\_<br/>customization\_id</code>,
+      and <code>customization\_weight</code>
+      query parameters of <code>POST sessions</code> method
     </td>
     <td style="text-align:center">
-      <code>customization_id</code> query parameter of <code>POST
-        recognize</code> method
+      <code>customization\_id</code>,
+      <code>acoustic\_<br/>customization\_id</code>,
+      and <code>customization\_weight</code>
+      query parameters of <code>POST recognize</code> method
     </td>
     <td style="text-align:center">
-      <code>customization_id</code> query parameter of <code>POST
-        recognitions</code> method
+      <code>customization\_id</code>,
+      <code>acoustic\_<br/>customization\_id</code>,
+      and <code>customization\_weight</code>
+      query parameters of <code>POST recognitions</code> method
     </td>
   </tr>
 </table>
 
-All interfaces allow you to pass a custom language model to the service for use in a recognition request. Custom language models let you expand the service's base vocabulary with terminology from specific domains. In all cases, you pass the customization ID (GUID) of the custom model via a method's `customization_id` query parameter. You must issue the request with the service credentials of the model's owner.
+All interfaces allow you to pass a custom model to the service for use in a recognition request:
 
-Each custom language model is based on one of the language models described in [Language and models](#models) and can be used only with that base language model. If your custom language model is based on a model other than `en-US_BroadbandModel`, the default, you must also specify the name of the model with the request. For more information about creating and using custom language models, see [Using language model customization](/docs/services/speech-to-text/custom.html).
+-   Custom language models let you expand the service's base vocabulary with terminology from specific domains. Use the `customization_id` parameter to include a custom language model with a request. You can also specify an optional `customization_weight` parameter to indicate the relative weight given to words from the custom model compared to those from the base vocabulary. For more information, see [Using a custom language model](/docs/services/speech-to-text/language-use.html).
+-   Custom acoustic models let you adapt the service's base acoustic model for the acoustic characteristics of your environment and speakers. Use the `acoustic_customization_id` parameter to include a custom acoustic model with a request. You can specify both a custom language model and a custom acoustic model with a request. For more information, see [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html).
+
+Custom models are based on one of the language models described in [Languages and models](#models) and can be used only with the base model for which they are created. If your custom model is based on a model other than the `en-US_BroadbandModel`, the default, you must also specify the name of the model with the request. To use a custom model, you must issue the request with service credentials created for the instance of the service that owns the custom model. For an introduction to customization, see [The customization interface](/docs/services/speech-to-text/custom.html).
 
 ## Audio transmission
 {: #transmission}
@@ -489,10 +503,10 @@ For information about the different timeouts associated with audio transmission,
 
 With either approach, streaming or one-shot delivery, the service imposes a size limit of 100 MB on the audio data that you can transcribe at one time. When recognizing long continuous audio streams or large files, you can take the following steps to ensure that your audio does not exceed the 100 MB limit:
 
--   Use a sampling rate no greater than 16 KHz (when using a broadband model) or 8 KHz (when using a narrowband model), and use 16 bits per sample. The service converts audio recorded at a sampling rate that is higher than the target model (16 KHz or 8 KHz) to the rate of the model. So larger frequencies do not result in enhanced recognition accuracy, but they do increase the size of the audio stream.
+-   Use a sampling rate no greater than 16 kHz (when using a broadband model) or 8 kHz (when using a narrowband model), and use 16 bits per sample. The service converts audio recorded at a sampling rate that is higher than the target model (16 kHz or 8 kHz) to the rate of the model. So larger frequencies do not result in enhanced recognition accuracy, but they do increase the size of the audio stream.
 -   Encode your audio in a format that offers data compression. By encoding your data more efficiently, you can send far more audio without exceeding the 100 MB data limit. Audio formats such as `audio/mp3` and `audio/ogg` significantly reduce the size of your audio stream, allowing you to send greater lengths of audio with a single recognition request.
 
-For example, consider the approximate size of the data stream that results from two hours of continuous speech transmission that is sampled at 16 KHz and at 16 bits per sample. If the data is encoded with the `audio/wav` format, the two-hour stream has a size of 230 MB, well beyond the service's 100 MB limit. But the same two-hour stream encoded in the `audio/ogg` format has a size of only 23 MB, which is well below the service's limit.
+For example, consider the approximate size of the data stream that results from two hours of continuous speech transmission that is sampled at 16 kHz and at 16 bits per sample. If the data is encoded with the `audio/wav` format, the two-hour stream has a size of 230 MB, well beyond the service's 100 MB limit. But the same two-hour stream encoded in the `audio/ogg` format has a size of only 23 MB, which is well below the service's limit.
 
 The following table approximates the maximum duration of audio that can be sent with a recognition request in different formats given the 100 MB service limit. Actual values can vary depending on the complexity of the audio and the achieved compression rate.
 
@@ -530,7 +544,7 @@ Note that if you compress the audio too severely with the `audio/ogg` format, yo
 {: #timeouts}
 
 <table>
-  <caption>Table 11. Specifying an inactivity timeout</caption>
+  <caption>Table 10. Specifying an inactivity timeout</caption>
   <tr>
     <th style="width:25%; text-align:center">WebSocket</th>
     <th style="width:25%; text-align:center">HTTP with Sessions</th>

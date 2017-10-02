@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-11"
+lastupdated: "2017-10-02"
 
 ---
 
@@ -562,7 +562,7 @@ curl -X POST -u {username}:{password}
 
 Interim results are intermediate hypotheses of a transcription that are likely to change before the service returns its final results. The service returns interim results as soon as it generates them. This is useful for interactive applications and for real-time transcription. To receive interim results
 
--   *With the HTTP interface*, call the `GET sessions/{session_id}/observe_result` method with the `interim_results` query parameter set to `true`. You must request interim results before the call to the `POST sessions/{session_id}/recognize` method completes. You can obtain interim results only when you use sessions.
+-   *With the HTTP interface*, call the `GET /v1/sessions/{session_id}/observe_result` method with the `interim_results` query parameter set to `true`. You must request interim results before the call to the `POST /v1/sessions/{session_id}/recognize` method completes. You can obtain interim results only when you use sessions.
 -   *With the WebSocket interface*, set the `interim_results` JSON parameter to `true` in the `start` message for a recognition request.
 
 If you omit the `interim_results` parameter or set it to `false`, the service returns only a single JSON transcription result at the end of the audio. Follow these guidelines when using the parameter:
