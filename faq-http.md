@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-13"
+lastupdated: "2017-10-02"
 
 ---
 
@@ -26,7 +26,7 @@ lastupdated: "2017-08-13"
 
 1.  <span style="color:#003F69">How do I use cookies with sessions?</span>
 
-    When you use session-based methods, the initial `POST sessions` request to create the session returns a cookie in the `Set-Cookie` response header. You must return this cookie with each call that uses that session. For more information, see [Using cookies with sessions](/docs/services/speech-to-text/http.html#cookies).
+    When you use session-based methods, the initial `POST /v1/sessions` request to create the session returns a cookie in the `Set-Cookie` response header. You must return this cookie with each call that uses that session. For more information, see [Using cookies with sessions](/docs/services/speech-to-text/http.html#cookies).
 
 1.  <span style="color:#003F69">How do I diagnose request failures related to the use of cookies with sessions?</span>
 

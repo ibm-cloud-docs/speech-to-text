@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-09-16"
+lastupdated: "2017-10-02"
 
 ---
 
@@ -17,42 +17,118 @@ lastupdated: "2017-09-16"
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Using language model customization
-{: #custom}
+# The customization interface
+{: #customization}
 
-The {{site.data.keyword.speechtotextshort}} service was developed with a broad, general audience in mind. The service's base vocabulary contains many words that are used in everyday conversation. The general model provides sufficiently accurate recognition for a variety of applications, but it can lack knowledge of specific terms that are associated with particular domains.
+The {{site.data.keyword.speechtotextshort}} service offers a customization interface that you can use to augment its speech recognition capabilities. You can use customization to improve the accuracy of speech recognition requests by customizing a base model for your domain and audio. Customization is available for only some languages and at different levels of support for different languages; see [Language support for customization](#languageSupport).
 {: shortdesc}
 
-The language model customization interface lets you improve the accuracy of speech recognition for domains such as medicine, law, information technology, and so on. Customization lets you expand and tailor the vocabulary of a base model to include domain-specific terminology. Once you provide terminology for your domain and build a custom language model that reflects that data, you can use the model with your applications to provide customized speech recognition.
+Speech recognition works the same either with or without a custom model. When using a custom model, you can use all of the input and output parameters that are normally available with a recognition request. For more information, see [Input features and parameters](/docs/services/speech-to-text/input.html) and [Output features and parameters](/docs/services/speech-to-text/output.html).
 
-The following sections describe the steps that you follow to create and use a custom language model. The final section provides [Example scripts](#exampleScripts) that create a custom language model and populate it with words.
+## Language model customization
+{: #customLanguage}
 
-> **Note:** The language model customization interface is available only for US English and Japanese (GA) and for Spanish (beta).
+The service was developed with a broad, general audience in mind. The service's base vocabulary contains many words that are used in everyday conversation. The general model provides sufficiently accurate recognition for a variety of applications, but it can lack knowledge of specific terms that are associated with particular domains.
 
-## Usage model
-{: #usage}
+The *language model customization* interface lets you improve the accuracy of speech recognition for domains such as medicine, law, information technology, and others. Language model customization lets you expand and tailor the vocabulary of a base model to include domain-specific terminology. You create a custom language model and provide corpora and words specific to your domain. Once you train the custom language model on your enhanced vocabulary, you can use it for customized speech recognition. For more information, see
 
-The typical usage model to create and use a custom language model for the {{site.data.keyword.speechtotextshort}} service comprises the following steps:
+-   [Creating a custom language model](/docs/services/speech-to-text/language-create.html)
+-   [Using a custom language model](/docs/services/speech-to-text/language-use.html)
 
-1.  [Create a custom language model.](#createModel) You can create multiple custom models for the same or different domains. The process is the same for any model you create. However, you can specify only a single custom model at a time with a recognition request.
-1.  [Add data from corpora to the custom language model.](#addCorpora) A corpus is a plain text document that uses terminology from the domain in context. The service builds a vocabulary for a custom model by extracting terms from corpora that do not exist in its base vocabulary. You can add multiple corpora to a custom model.
-1.  [Add words to the custom language model.](#addWords) You can also add custom words to a model individually. In addition, you can use the same methods to modify custom words extracted from corpora. The methods let you specify the pronunciation of words and how the words are displayed in a speech transcript.
-1.  [Train the custom language model.](#trainModel) Once you add words to the custom model (from corpora, individually, or both), you must train the model on the custom words in your domain-specific vocabulary. Training prepares the custom model for use in speech recognition. The model does not use new words you add until you train it on the new data.
-1.  [Use the custom language model in a recognition request.](#useModel) After you train your custom model, you can use it with a recognition request. The results of the request reflect the enhanced vocabulary available with the custom model.
+## Acoustic model customization
+{: #customAcoustic}
 
-The steps involved in preparing a custom model for use in speech recognition are iterative. You can add corpora, add words, and train or retrain a model as often as needed. The recommended approach is to add corpora to the model, since providing sentences allows the service to learn the words in context. You can then augment or modify the model's words individually. Training a model only on individual words as opposed to words added from corpora is more time-consuming and can produce less effective results.
+Similarly, the service was developed with a base acoustic model that works well with a variety of audio characteristics. But in cases like the following, adapting a base model to suit your audio can improve speech recognition:
 
-## Usage notes
-{: #customGuidelines}
+-   Your acoustic channel environment is unique. For example, the environment is noisy, microphone quality or positioning are suboptimal, or the audio suffers from far-field effects.
+-   Your speakers' speech patterns are atypical. For example, a speaker talks abnormally fast or the audio includes casual conversations.
+-   Your speakers' accents are pronounced. For example, the audio includes speakers talking in a non-native or second language.
 
-Keep the following in mind when working with the customization interface.
+The *acoustic model customization* interface lets you adapt a base model to your environment and speakers. You create a custom acoustic model and provide example audio that closely matches the acoustic signature of the audio that you want to transcribe. Once you train the custom acoustic model with your audio resources, you can use it for customized speech recognition. For more information, see
 
-### Ownership of custom language models
+-   [Creating a custom acoustic model](/docs/services/speech-to-text/acoustic-create.html)
+-   [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html)
+
+## Using acoustic and language customization together
+{: #combined}
+
+Using a custom acoustic model alone can improve the service's recognition capabilities. But if transcriptions or related corpora are available for your example audio, you can use that data to further improve the quality of speech recognition based on the custom acoustic model.
+
+By creating a custom language model that complements your custom acoustic model, you can enhance speech recognition by using the two models together. When training a custom acoustic model, you can specify a custom language model that includes transcriptions of the audio resources or a vocabulary of domain-specific words found in the resources. Similarly, when you transcribe audio, the service accepts a custom language model, a custom acoustic model, or both. For more information, see [Using custom acoustic and custom language models together](/docs/services/speech-to-text/acoustic-use.html#useBoth).
+
+## Language support for customization
+{: #languageSupport}
+
+Language and acoustic model customization are available for only some languages. The following table documents the level at which the service supports customization for each language. *GA* indicates that the interface is generally available for production use; *Beta* indicates that the interface is available as a beta offering; and *Not supported* means that the interface is not available for that language. You can use both broadband and narrowband models with any supported language.
+
+<table>
+  <caption>Table 1. Language support for customization</caption>
+  <tr>
+    <th style="text-align:left; vertical-align:bottom; width 24%">
+      Language
+    </th>
+    <th style="text-align:center; vertical-align:bottom; width 37%">
+      Support for<br/>language model customization
+    </th>
+    <th style="text-align:center; vertical-align:bottom; width 37%">
+      Support for <br/>acoustic model customization
+    </th>
+  </tr>
+  <tr>
+    <td>Brazilian Portuguese</td>
+    <td style="text-align:center">Not supported</td>
+    <td style="text-align:center">Not supported</td>
+  </tr>
+  <tr>
+    <td>French</td>
+    <td style="text-align:center">Not supported</td>
+    <td style="text-align:center">Not supported</td>
+  </tr>
+  <tr>
+    <td>Japanese</td>
+    <td style="text-align:center">GA</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
+    <td>Mandarin Chinese</td>
+    <td style="text-align:center">Not supported</td>
+    <td style="text-align:center">Not supported</td>
+  </tr>
+  <tr>
+    <td>Modern Standard Arabic</td>
+    <td style="text-align:center">Not supported</td>
+    <td style="text-align:center">Not supported</td>
+  </tr>
+  <tr>
+    <td>Spanish</td>
+    <td style="text-align:center">Beta</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
+    <td>UK English</td>
+    <td style="text-align:center">Not supported</td>
+    <td style="text-align:center">Not supported</td>
+  </tr>
+  <tr>
+    <td>US English</td>
+    <td style="text-align:center">GA</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+</table>
+
+You can also use the `GET /v1/models` and `GET /v1/models/{model_id}` methods to check whether a language model supports language model customization. If the base model supports language model customization, the `supported_features` field of the methods' output for the model sets the `custom_language_model` field to `true`.
+
+## Usage notes for customization
+{: #customUsage}
+
+The following usage notes apply to both language model customization and acoustic model customization.
+
+### Ownership of custom models
 {: #customOwner}
 
-A custom language model is owned by the instance of the {{site.data.keyword.speechtotextshort}} service whose credentials are used to create it. To work with the custom model in any way, you must use service credentials created for that instance of the service with methods of the customization interface. Credentials created for other instances of the service cannot view or access the custom model. The data associated with a custom model is encrypted both at rest (when it is stored) and in motion (when it is used).
+A custom model is owned by the instance of the {{site.data.keyword.speechtotextshort}} service whose credentials are used to create it. To work with the custom model in any way, you must use service credentials created for that instance of the service with methods of the customization interface. Credentials created for other instances of the service cannot view or access the custom model. The data associated with a custom model is encrypted both at rest (when it is stored) and in motion (when it is used).
 
-All service credentials obtained for the same instance of the {{site.data.keyword.speechtotextshort}} service share access to all custom models created for that service instance. If you want to restrict access to a custom model, create a separate instance of the service and use only the credentials for that service instance to create and work with the model. Credentials for other service instances cannot affect the custom model.
+All service credentials obtained for the same instance of the {{site.data.keyword.speechtotextshort}} service share access to all custom models created for that service instance. To restrict access to a custom model, create a separate instance of the service and use only the credentials for that service instance to create and work with the model. Credentials for other service instances cannot affect the custom model.
 
 An advantage of sharing ownership across credentials for a service instance is that you can cancel a set of credentials, for example, if they become compromised. You can then create new credentials for the same service instance and still maintain ownership of and access to custom models created with the original credentials.
 
@@ -61,442 +137,14 @@ An advantage of sharing ownership across credentials for a service instance is t
 
 How the service handles request logging for calls to the customization interface depends on the request:
 
--   The service *does not* log data (corpora and words) that are used to build custom language models. You do not need to set the `X-Watson-Learning-Opt-Out` request header when using the customization interface to manage the corpora and words in a custom model. Your training data is never used to improve the service's base models.
--   The service *does* log data when a custom model is used with a recognition request. You must set the `X-Watson-Learning-Opt-Out` request header to prevent logging for recognition requests.
+-   The service *does not* log data that are used to build custom models. For example, when working with corpora and words in a custom language model, you do not need to set the `X-Watson-Learning-Opt-Out` request header. Your training data is never used to improve the service's base models.
+-   The service *does* log data when a custom model is used with a recognition request. You must set the `X-Watson-Learning-Opt-Out` request header to `true` to prevent logging for recognition requests.
 
 For more information about request logging, see [Authentication tokens and request logging](/docs/services/speech-to-text/input.html#common).
 
 ### Using the examples
 {: #customCurl}
 
-The examples that follow use cURL to demonstrate the methods of the customization interface. To run the examples, create an instance of the {{site.data.keyword.speechtotextshort}} service in {{site.data.keyword.Bluemix_notm}}. Then replace `{username}:{password}` in each example with the values of your *username* and *password* from the credentials for the service instance. Concatenate the two values with an embedded colon to create a single string as shown.
+The documentation includes examples that use cURL to demonstrate the methods of the customization interface. To run the examples, create an instance of the {{site.data.keyword.speechtotextshort}} service in {{site.data.keyword.Bluemix_notm}}. Then replace `{username}:{password}` in each example with the values of your *username* and *password* from the credentials for the service instance. Concatenate the two values with an embedded colon to create a single string as shown.
 
 Note that you must use your service credentials, *not* your {{site.data.keyword.Bluemix_notm}} ID and password. For more information, see [Service credentials for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-credentials.html).
-
-## Creating a custom language model
-{: #createModel}
-
-You use the the `POST /v1/customizations` method to create a new custom language model. You can create any number of custom language models, but you can use only one model at a time with a speech recognition request. The method accepts a JSON object that defines the attributes of the new custom model as the body of the request.
-
-<table>
-  <caption>Table 1. Attributes of a new custom language model</caption>
-  <tr>
-    <th style="width:20%; text-align:left">Parameter</th>
-    <th style="width:12%; text-align:center">Data type</th>
-    <th style="text-align:left">Description</th>
-  </tr>
-  <tr>
-    <td><code>name</code><br/><em>Required</em></td>
-    <td style="text-align:center">String</td>
-    <td>
-      A user-defined name for the new custom model. Use a name that
-      describes the domain of the custom model, such as <code>Medical
-        custom model</code> or <code>Legal custom model</code>. Use a
-      name that is unique among all custom models that you own. Use a
-      localized name that matches the language of the custom model.
-    </td>
-  </tr>
-  <tr>
-    <td><code>base_model_name</code><br/><em>Required</em></td>
-    <td style="text-align:center">String</td>
-    <td>
-      The name of the language model that is to be customized by the
-      new custom model. The interface currently supports only US English
-      and Japanese (GA) and Spanish (beta), so you must specify the name
-      of one of the <code>en-US</code>, <code>es-ES</code>, or
-      <code>ja-JP</code> language models returned by the <code>GET
-        /v1/models</code> method. The new model can be used only with
-      the base language model that it customizes.
-    </td>
-  </tr>
-  <tr>
-    <td><code>dialect</code><br/><em>Optional</em></td>
-    <td style="text-align:center">String</td>
-    <td>
-      The dialect of the specified language that is to be used with the
-      custom model. By default, the dialect matches the language of the
-      base language model; for example, the dialect is <code>en-US</code>
-      for either of the US English language models,
-      <code>en-US_BroadbandModel</code> or
-      <code>en-US_NarrowbandModel</code>.<br/></br>
-      The parameter is meaningful only for Spanish models, for which
-      the service creates a custom model that is suited for speech in
-      the indicated dialect:
-      <ul style="margin-left:20px; padding:0px;">
-        <li style="margin:10px 0px; line-height:120%;">
-          <code>es-ES</code> for Castilian Spanish (the default)
-        </li>
-        <li style="margin:10px 0px; line-height:120%;">
-          <code>es-LA</code> for Latin-American Spanish
-        </li>
-        <li style="margin:10px 0px; line-height:120%;">
-          <code>es-US</code> for North-American (Mexican) Spanish
-        </li>
-      </ul>
-      If you specify a dialect, it must be valid for the base language
-      model.
-    </td>
-  </tr>
-  <tr>
-    <td><code>description</code><br/><em>Optional</em></td>
-    <td style="text-align:center">String</td>
-    <td>
-      A description of the new model. Use a localized description that
-      matches the language of the custom model.
-    </td>
-  </tr>
-</table>
-
-The following example creates a new custom language model named `Example model`. The model is created for the base language model `en-US-BroadbandModel` and has the description `Example custom language model`. The `Content-Type` header specifies that JSON data is being passed to the method.
-
-```bash
-curl -X POST -u {username}:{password}
---header "Content-Type: application/json"
---data "{\"name\": \"Example model\",
-  \"base_model_name\": \"en-US_BroadbandModel\",
-  \"description\": \"Example custom language model\"}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations"
-```
-{: pre}
-
-The example returns the customization ID of the new model. Each custom model is identified by a unique customization ID, which is a Globally Unique Identifier (GUID). You specify a custom model's GUID with the `customization_id` parameter of calls associated with the model.
-
-```javascript
-{
-  "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96"
-}
-```
-{: codeblock}
-
-The new custom model is owned by the service instance whose credentials are used to create it. For more information, see [Ownership of custom language models](#customOwner).
-
-## Adding corpora to a custom language model
-{: #addCorpora}
-
-Once you create your custom language model, the next step is to add data (domain-specific words) to it. The recommended means of adding data to a custom model is to add one or more corpora to the model. A corpus is a plain text file that ideally contains sample sentences from your domain. The service parses the file's contents and extracts any words that are not in its base vocabulary. Such words are referred to out-of-vocabulary (OOV) words. For more information, see [Working with corpora](/docs/services/speech-to-text/custom-resource.html#workingCorpora).
-
-You use the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method to add a corpus to a custom model. Specify the GUID of the custom model for the `customization_id` path parameter and a name for the corpus for the `corpus_name` parameter. The corpus name cannot contain spaces and cannot be the string `user`, which is reserved by the service to denote custom words added or modified by the user. Use a localized name that matches the language of the custom model.
-
-Specify the text file for the corpus via the body of the request. The following example adds the corpus text file `healthcare.txt` to the custom model with the specified ID:
-
-```bash
-curl -X POST -u {username}:{password}
---data-binary @healthcare.txt
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/corpora/healthcare"
-```
-{: pre}
-
-The method also accepts an optional `allow_overwrite` query parameter that lets you overwrite an existing corpus for a custom model. Use this option if you need to update a corpus file after you have added it to a model.
-
-The method is asynchronous. It can take on the order of a minute or two to complete depending on the total number of words in the corpus, the number of new words that the service finds in the corpus, and the current load on the service. For information about checking the status of a corpus, see [Monitoring the add corpus request](#monitorCorpus).
-
-You can use this method to add any number of corpora to a custom model by calling the method once for each corpus text file. But the addition of one corpus must be fully complete before you can add another.
-
-After adding a corpus to a custom model, it is good practice to examine the new custom words to check for typographical and other errors. For more information, see [Validating a words resource](/docs/services/speech-to-text/custom-resource.html#validateModel).
-
-### Monitoring the add corpus request
-{: #monitorCorpus}
-
-The service returns a 201 response code if the corpus is valid. It then asynchronously pre-processes the contents of the corpus and automatically extracts new words. You cannot submit requests to add additional corpora or words to a custom model, or to train the model, until the service's analysis of the corpus for the current request completes.
-
-To determine the status of the analysis, use the `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` method to poll the status of the corpus. The method accepts the ID of the model and the name of the corpus, as shown in the following example:
-
-```bash
-curl -X GET -u {username}:{password}
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/corpora/corpus1"
-```
-{: pre}
-
-The response includes the status of the corpus:
-
-```javascript
-{
-  "name": "corpus1",
-  "total_words": 5037,
-  "out_of_vocabulary_words": 401,
-  "status": "analyzed"
-}
-```
-{: codeblock}
-
-The `status` field has one of the following values:
-
--   `analyzed` indicates that the service has successfully analyzed the corpus.
--   `being_processed` indicates that the service is still analyzing the corpus.
--   `undetermined` indicates that the service encountered an error while processing the corpus.
-
-Use a loop to check the status of the corpus every 10 seconds until it becomes `analyzed`. For more information about checking the status of a model's corpora, see [Listing corpora for a custom language model](/docs/services/speech-to-text/custom-corpora.html#listCorpora).
-
-## Adding words to a custom language model
-{: #addWords}
-
-Although adding corpora is the recommended means of adding words to a custom language model, you can also add individual custom words to the model directly. The service adds the custom words to the custom model just as it does OOV words that it discovers from corpora. If you have only one or a few words to add to a model, using corpora to add the words is neither practical nor viable. For more information, see [Working with custom words](/docs/services/speech-to-text/custom-resource.html#workingWords).
-
-The simplest approach is to add a word with only its spelling, but you can also provide multiple pronunciations for the word and indicate how the word is to be displayed; for more information, see [Using the sounds_like field](/docs/services/speech-to-text/custom-resource.html#soundsLike) and [Using the display_as field](/docs/services/speech-to-text/custom-resource.html#displayAs). For information about how the service adds custom words to a model, see [What happens when you add a custom word](/docs/services/speech-to-text/custom-resource.html#parseWord).
-
-You can use the following methods to add words to a custom model:
-
--   The `POST /v1/customizations/{customization_id}/words` method lets you add multiple words at one time. You pass a JSON object that provides information about each word via the body of the request. The following example adds two words, `HHonors` and `IEEE`, to the custom model with the specified ID. The `Content-Type` header specifies that JSON data is being passed to the method.
-
-    ```bash
-    curl -X POST -u {username}:{password}
-    --header "Content-Type: application/json"
-    --data "{\"words\": [
-      {\"word\": \"HHonors\", \"sounds_like\": [\"hilton honors\", \"h. honors\"], \"display_as\": \"HHonors\"},
-      {\"word\": \"IEEE\", \"sounds_like\": [\"i triple e\"]}]}"
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words"
-    ```
-    {: pre}
-
-    This method is asynchronous. The time that it takes to complete depends on the number of words that you add and the current load on the service. For information about checking the status of the operation, see [Monitoring the add words request](#monitorWords).
--   The `PUT /v1/customizations/{customization_id}/words/{word_name}` method lets you add individual words. You pass a JSON object that provides information about the word. The following example adds the word `NCAA` to the model with the specified ID. The `Content-Type` header again indicates that JSON data is being passed to the method.
-
-    ```bash
-    curl -X PUT -u {username}:{password}
-    --header "Content-Type: application/json"
-    --data "{\"sounds_like\": [\"N. C. A. A.\", \"N. C. double A.\"]}"
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words/NCAA"
-    ```
-    {: pre}
-
-    This method is synchronous. The service returns a response code that reports the success or failure of the request immediately.
-
-As with adding corpora, it is a good idea to examine the new custom words to check for typographical and other errors, especially when adding multiple words at once. For more information, see [Validating a words resource](/docs/services/speech-to-text/custom-resource.html#validateModel).
-
-### Monitoring the add words request
-{: #monitorWords}
-
-When you use the `POST /v1/customizations/{customization_id}/words` method, the service returns a 201 response code if the input data is valid. It then asynchronously pre-processes the words to add them to the model. The operation is generally faster than adding a corpus or training a model, but it can still take some time depending on the number of new words and the current load on the service. You cannot submit requests to add additional corpora or words to the custom model, or to train the model, until the service completes the request to add new words.
-
-To determine the status of the request, use the `GET /v1/customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the model and returns information that includes the model's current status, as in the following example:
-
-```bash
-curl -X GET -u {username}:{password}
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}"
-```
-{: pre}
-
-```javascript
-{
-  "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
-  "created": "2016-06-01T18:42:25.324Z",
-  "language": "en-US",
-  "dialect": "en-US",
-  "owner": "297cfd08-330a-22ba-93ce-1a73f454dd98",
-  "name": "Example model",
-  "description": "Example custom language model",
-  "base_model_name": "en-US_BroadbandModel",
-  "status": "pending",
-  "progress": 0
-}
-```
-{: codeblock}
-
-The `status` field reports the current state of the model. While the service is processing new words, the status remains `pending`. Use a loop to check the status every 10 seconds until it becomes `ready` to indicate that the operation is complete. For more information about possible `status` values, see [Monitoring the train model request](#monitorTraining).
-
-### Modifying words in a custom model
-{: #modifyWord}
-
-You can also use the `POST /v1/customizations/{customization_id}/words` and `PUT /v1/customizations/{customization_id}/words/{word_name}` methods to modify or augment a word in a custom model. You might need to use the methods to correct a typographical error or other mistake made when a word was added from a corpus or directly. You might also need to add sounds-like definitions for an existing word.
-
-You use the methods to modify the definition of an existing word exactly as you do to add a new word. The new data that you provide for the word overrides the word's existing definition.
-
-## Training a custom language model
-{: #trainModel}
-
-Once you populate a custom language model with new words, either by adding corpora or by adding new words directly, you must train the model on the new data. Training prepares the custom model to use the data in speech recognition. The model does not use words that you add via either means until you train it on the new data.
-
-You train a custom model by using the `POST /v1/customizations/{customization_id}/train` method. You pass the method the customization ID of the model that you want to train, as in the following example:
-
-```bash
-curl -X POST -u {username}:{password}
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/train"
-```
-{: pre}
-
-You can use the optional `word_type_to_add` query parameter to specify the words on which the custom model is to be trained:
-
--   Specify `all` or omit the parameter to train the model on all of its words, regardless of their origin.
--   Specify `user` to train the model only on words that were added or modified by the user, ignoring words that were extracted only from corpora. This is useful if you add corpora with noisy data, such as words that contain typographical errors. Before training the model on such data, you can use the `word_type` query parameter of the `GET /v1/customizations/{customization_id}/words` method to review words extracted from corpora, as described in [Listing words from a custom language model](/docs/services/speech-to-text/custom-words.html#listWords).
-
-The method is asynchronous. Training can take on the order of minutes to complete depending on the number of new words on which the model is being trained and the current load on the service. For information about checking the status of a training operation, see [Monitoring the train model request](#monitorTraining).
-
-### Monitoring the train model request
-{: #monitorTraining}
-
-The service returns a 200 response code if the training process is successfully initiated. The service cannot accept subsequent training requests, or requests to add new corpora or words, until the existing request completes.
-
-To determine the status of a training request, use the `GET /v1/customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the model and returns information about the model.
-
-```bash
-curl -X GET -u {username}:{password}
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}"
-```
-{: pre}
-
-```javascript
-{
-  "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
-  "created": "2016-06-01T18:42:25.324Z",
-  "language": "en-US",
-  "dialect": "en-US",
-  "owner": "297cfd08-330a-22ba-93ce-1a73f454dd98",
-  "name": "Example model",
-  "description": "Example custom language model",
-  "base_model_name": "en-US_BroadbandModel",
-  "status": "training",
-  "progress": 0
-}
-```
-{: codeblock}
-
-The response includes `status` and `progress` fields that report the current state of the custom model; the meaning of the `progress` field depends on the model's status. The `status` field can have one of the following values:
-
--   `pending` indicates that the model was created but is waiting either for training data to be added or for the service to finish analyzing data that was added. The `progress` field is `0`.
--   `ready` indicates that the model is ready to be trained. The `progress` field is `0`.
--   `training` indicates that the model is currently being trained. The `progress` field indicates the progress of the training as a percentage complete.
-
-    > **Note:** The `progress` field does not currently reflect the progress of the training. The field changes from `0` to `100` when training is complete.
--   `available` indicates that the model is trained and ready to use. The `progress` field is `100`.
--   `failed` indicates that training of the model failed. The `progress` field is `0`.
-
-Use a loop to check the status every 10 seconds until it becomes `available`. For more information about checking the status of a custom model, see [Listing custom language models](/docs/services/speech-to-text/custom-language-models.html#listModels).
-
-### Training failures
-{: #failedTraining}
-
-Training fails to start if the service is currently handling another request for the custom model, such as a training request or a request to add a corpus or words to the model. For instance, a training request fails to start if the service is
-
--   Pre-processing a corpus to generate a list of OOV words
--   Pre-processing words to validate or auto-generate sounds-like pronunciations
-
-Training can also fail to start for the following reasons:
-
--   No training data (corpora or words) were added to the custom model since it was created or last trained.
--   One or more words that were added to the custom model have invalid sounds-like pronunciations that you must fix.
-
-If the status of a custom model's training is `failed`, use methods of the customization API to examine the model's words and fix any errors that you find. For more information, see [Validating a words resource](/docs/services/speech-to-text/custom-resource.html#validateModel).
-
-## Using a custom language model
-{: #useModel}
-
-Once you have created and trained your custom language model, you can use it in speech recognition requests. You specify the customization ID (GUID) of the custom model that is to be used with a request via the `customization_id` query parameter, as shown in the following examples. You must issue the request with the service credentials of the owning service instance.
-
--   For the WebSocket interface, with the `recognize` method:
-
-    ```javascript
-    var token = {authentication-token};
-    var wsURI = 'wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize?watson-token=' + token
-      + '&model=es-ES_BroadbandModel&customization_id={customization_id}';
-    var websocket = new WebSocket(wsURI);
-    ```
-    {: codeblock}
-
-    For more information, see [Using the WebSocket interface](/docs/services/speech-to-text/websockets.html).
--   For a sessionless request with the HTTP REST interface, with the `POST /v1/recognize` method:
-
-    ```bash
-    curl -X POST -u {username}:{password}
-    --header "Content-Type: audio/flac"
-    --data-binary @audio-file1.flac
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?customization_id={customization_id}"
-    ```
-    {: pre}
-
-    For more information about sessionless requests, see [Making sessionless requests](/docs/services/speech-to-text/http.html#HTTP-sessionless).
--   For a session-based request with the HTTP REST interface, with the `POST /v1/sessions` method:
-
-    ```bash
-    curl -X POST -u {username}:{password}
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions?customization_id={customization_id}"
-    ```
-    {: pre}
-
-    For more information about session-based requests, see [Making session-based requests](/docs/services/speech-to-text/http.html#HTTP-sessions).
--   For the HTTP asynchronous interface, with the `POST /v1/recognitions` method:
-
-    ```bash
-    curl -X POST -u {username}:{password}
-    --header "Content-Type: audio/flac"
-    --data-binary @audio-file.flac
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions?customization_id={customization_id}"
-    ```
-    {: pre}
-
-    For more information, see [Using the asynchronous HTTP interface](/docs/services/speech-to-text/async.html).
-
-You can omit the base language model from the request if the custom model is based on the default language model, `en-US_BroadbandModel`; otherwise, you must use the `model` parameter to specify the base model, as shown for the WebSocket example. A custom model can be used only with the base language model for which it is created.
-
-Speech recognition works the same either with or without a custom model. When using a custom model, you can use all of the input and output parameters that are normally available with a recognition request. For more information, see [Input features and parameters](/docs/services/speech-to-text/input.html) and [Output features and parameters](/docs/services/speech-to-text/output.html).
-
-## Example scripts
-{: #exampleScripts}
-
-You can use the following scripts to experiment with the steps for creating and working with a custom language model:
-
--   A Python script named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.py" download="testSTTcustom.py">testSTTcustom.py <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon" class="style-scope doc-content"></a>; see [Example Python script](#pythonScript) for more information.
--   A Bash shell script named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.sh" download="testSTTcustom.sh">testSTTcustom.sh <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon" class="style-scope doc-content"></a>; see [Example shell script](#shellScript) for more information.
-
-The two scripts provide identical functionality. Each script creates a custom model, adds words from a corpus text file, and adds both single and multiple words to the model directly. The script queries the model to list words added from a corpus and directly by the user. It also trains the model and demonstrates the polling that is recommended for monitoring the results of asynchronous operations.
-
-You can use either of two provided corpus text files with the scripts, or you can test with your own corpus files:
-
--   <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/corpus.txt" download="corpus.txt">corpus.txt <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon" class="style-scope doc-content"></a> is an abbreviated 6 KB corpus that adds six healthcare-related terms to a model. This file produces a small amount of output when used with the script. The script uses this file by default.
--   <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/healthcare.txt" download="healthcare.txt">healthcare.txt <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon" class="style-scope doc-content"></a> is a richer 164 KB corpus that adds many healthcare-related terms to a model. This file produces much more output when used with the script.
-
-By default, the new custom model that you create with either script is available for use with recognition requests. The scripts include an optional step for deleting the new custom model, which can be helpful when experimenting with the process; follow the comments in the scripts to enable the deletion step.
-
-### Example Python script
-{: #pythonScript}
-
-Follow these steps to use the Python script:
-
-1.  Download the Python script named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.py" download="testSTTcustom.py">testSTTcustom.py <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon" class="style-scope doc-content"></a>.
-1.  Download the example corpus text files to use with the script. You are free to test with either of the corpus text files or with a file of your own choosing. By default, all corpus text files must reside in the same directory as the script.
-1.  The script uses the Python `requests` library for HTTP requests to the service. Use `pip` or `easy_install` to install the library for use by the script, for example:
-
-    ```bash
-    pip install requests
-    ```
-    {: pre}
-
-    For more information about the library, see [pypi.python.org/pypi/requests ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://pypi.python.org/pypi/requests){: new_window}.
-1.  Edit the script to replace the following two variables with the username and password from your {{site.data.keyword.speechtotextshort}} service credentials:
-
-    ```
-    username = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    password = "zzzzzzzzzzzz"
-    ```
-    {: screen}
-
-    For more information, see [Service credentials for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-credentials.html). Note that you must use your service credentials, *not* your {{site.data.keyword.Bluemix_notm}} ID and password.
-1.  Run the script by entering the following command:
-
-    ```bash
-    python testSTTcustom.py
-    ```
-    {: pre}
-
-### Example shell script
-{: #shellScript}
-
-Follow these steps to use the Bash shell script:
-
-1.  Download the shell script named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.sh" download="testSTTcustom.sh">testSTTcustom.sh <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon" class="style-scope doc-content"></a>.
-1.  Download the example corpus text files to use with the script. You are free to test with either of the corpus text files or with a file of your own choosing. By default, all corpus text files must reside in the same directory as the script.
-1.  The script uses cURL for HTTP requests to the service. If you have not already downloaded the `curl` executable, you can install the version for your operating system from [curl.haxx.se ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://curl.haxx.se){: new_window}. Install the version that supports the Secure Sockets Layer (SSL) protocol, and make sure to include the installed binary file on your `PATH` environment variable.
-1.  Edit the script to replace the following two variables with the username and password from your {{site.data.keyword.speechtotextshort}} service credentials:
-
-    ```
-    USERNAME="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    PASSWORD="zzzzzzzzzzzz"
-    ```
-    {: screen}
-
-    For more information, see [Service credentials for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-credentials.html). Note that you must use your service credentials, *not* your {{site.data.keyword.Bluemix_notm}} ID and password.
-1.  Make sure that the script has executable permissions, and then run the script by entering the following command:
-
-    ```bash
-    ./testSTTcustom.sh
-    ```
-    {: pre}

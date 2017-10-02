@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-11"
+lastupdated: "2017-10-02"
 
 ---
 
@@ -17,34 +17,27 @@ lastupdated: "2017-08-11"
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Using the HTTP REST interface
+# The HTTP REST interface
 {: #http}
 
-You can use the HTTP REST interface of the {{site.data.keyword.speechtotextshort}} service to transcribe audio with or without sessions. Sessionless recognition requests are simpler to use, but sessions enable more robust communication patterns and additional functionality. Note that the HTTP interface also provides the `GET models` and `GET models/{model_id}` methods, which you can use to learn the languages and models available for transcribing audio with methods from any of the service's interface.
+You can use the HTTP REST interface of the {{site.data.keyword.speechtotextshort}} service to transcribe audio with or without sessions. Sessionless recognition requests are simpler to use, but sessions enable more robust communication patterns and additional functionality. Note that the HTTP interface also provides the `GET /v1/models` and `GET /v1/models/{model_id}` methods, which you can use to learn the languages and models available for transcribing audio with methods from any of the service's interface.
 {: shortdesc}
 
 The HTTP interface, unlike the WebSocket interface, requires you to authenticate each call by using either your service credentials or a token. The WebSocket interface lets you establish and use a single authenticated connection indefinitely, and all audio and results travel over this single connection. The HTTP interface instead requires four distinct requests and connections to achieve the same results, and each request must be authenticated separately, incurring additional latency.
 
-For information about tailoring recognition requests to suit your application's needs, see the following sections:
-
--   [Input features and parameters](/docs/services/speech-to-text/input.html)
--   [Output features and parameters](/docs/services/speech-to-text/output.html)
-
-For complete details about all methods of the HTTP interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
-
-> **Note:** The examples in this section use cURL to demonstrate requests to the service. For more information about using cURL, see [Getting started tutorial](/docs/services/speech-to-text/getting-started.html).
+For information about tailoring recognition requests to suit your application's needs, see [Input features and parameters](/docs/services/speech-to-text/input.html) and [Output features and parameters](/docs/services/speech-to-text/output.html). For complete details about all methods of the HTTP interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
 
 ## Making sessionless requests
 {: #HTTP-sessionless}
 
-The {{site.data.keyword.speechtotextshort}} service provides a single sessionless method, `POST recognize`, with its HTTP interface. This method provides a simple means of transcribing audio without the overhead of establishing and maintaining a session. However, it can return transcription results only after all of the audio for the request has been processed; to obtain interim results, you must use either sessions or the WebSocket interface. Sessionless calls are appropriate for batch processing but not for live speech recognition.
+The {{site.data.keyword.speechtotextshort}} service provides a single sessionless method, `POST /v1/recognize`, with its HTTP interface. This method provides a simple means of transcribing audio without the overhead of establishing and maintaining a session. However, it can return transcription results only after all of the audio for the request has been processed; to obtain interim results, you must use either sessions or the WebSocket interface. Sessionless calls are appropriate for batch processing but not for live speech recognition.
 
-The `POST recognize` method offers two ways of submitting a recognition request:
+The `POST /v1/recognize` method offers two ways of submitting a recognition request:
 
 -   The first sends all of the audio in a single stream via the body of the request. You specify the parameters of the operation as request headers and query parameters.
 -   The second sends the audio as a multipart request. You specify the parameters of the request as a combination of request headers and JSON metadata (see [Submitting multipart requests](#HTTP-multi)).
 
-The following example sends a recognition request for a single FLAC file named `audio-file.flac`. The request omits the `model` query parameter to use the default language and model, `en-US_BroadbandModel`.
+The following example sends a recognition request for a single FLAC file named `audio-file.flac`. The request omits the `model` query parameter to use the default language model, `en-US_BroadbandModel`.
 
 ```bash
 curl -X POST -u {username}:{password}
@@ -81,7 +74,7 @@ The {{site.data.keyword.speechtotextshort}} service provides a number of session
 
 The typical pattern for using sessions with the HTTP REST interface follows:
 
-1.  *Create a session* by calling the `POST sessions` method. The method locks a transcription engine to the session. You can use the session to process multiple recognition requests with the same engine. Use the method's `model` query parameter to specify the language and model to be used for all requests sent within the session; by default, the session uses the model `en-US_BroadbandModel`.
+1.  *Create a session* by calling the `POST /v1/sessions` method. The method locks a transcription engine to the session. You can use the session to process multiple recognition requests with the same engine. Use the method's `model` query parameter to specify the language and model to be used for all requests sent within the session; by default, the session uses the model `en-US_BroadbandModel`.
 
     ```bash
     curl -X POST -u {username}:{password}
@@ -92,7 +85,7 @@ The typical pattern for using sessions with the HTTP REST interface follows:
 
     The method returns a cookie via the `Set-Cookie` header. You must pass the cookie with each request that uses the session (see [Using cookies with sessions](#cookies)).
 
-    The method also returns the ID for the new session, the secure URI for the session, and the secure URLs for calls to the session's `GET sessions/{session_id}/observe_result` and `POST sessions/{session_id}/recognize` methods. (The method also returns the secure URL for calling the `recognize` method of the WebSocket interface; you do *not* use the WebSocket URL when interacting with the service's HTTP interface.)
+    The method also returns the ID for the new session, the secure URI for the session, and the secure URLs for calls to the session's `GET /v1/sessions/{session_id}/observe_result` and `POST /v1/sessions/{session_id}/recognize` methods. (The method also returns the secure URL for calling the `recognize` method of the WebSocket interface; you do *not* use the WebSocket URL when interacting with the service's HTTP interface.)
 
     ```javascript
     {
@@ -105,7 +98,7 @@ The typical pattern for using sessions with the HTTP REST interface follows:
     ```
     {: codeblock}
 
-1.  *To request interim results* for subsequent recognition requests with the `POST sessions/{session_id}/recognize` method, call the `GET sessions/{session_id}/observe_result` method and set the `interim_results` query parameter to `true`. Interim results are intermediate hypotheses that are likely to change before the service returns the final result; by default, the service returns only the final results (see [Interim results](/docs/services/speech-to-text/output.html#interim)).
+1.  *To request interim results* for subsequent recognition requests with the `POST /v1/sessions/{session_id}/recognize` method, call the `GET /v1/sessions/{session_id}/observe_result` method and set the `interim_results` query parameter to `true`. Interim results are intermediate hypotheses that are likely to change before the service returns the final result; by default, the service returns only the final results (see [Interim results](/docs/services/speech-to-text/output.html#interim)).
 
     To enable polling when you transcribe long audio requests, specify a sequence ID with the `sequence_id` query parameter, and then specify the same sequence ID with the recognition request (see [Transcribing long audio files with sessions](#HTTP-long)).
 
@@ -116,7 +109,7 @@ The typical pattern for using sessions with the HTTP REST interface follows:
     ```
     {: pre}
 
-1.  *Submit a recognition request* by calling the `POST sessions/{session_id}/recognize` method. As with sessionless requests, you can send all of the audio in a single request stream via the body of the request or you can send the audio as a multipart request (see [Submitting multipart requests](#HTTP-multi)). Both approaches support the `sequence_id` parameter to enable polling of long requests. The following example, like its sessionless counterpart, omits the `model` query parameter to use the default value, `en-US_BroadbandModel`.
+1.  *Submit a recognition request* by calling the `POST /v1/sessions/{session_id}/recognize` method. As with sessionless requests, you can send all of the audio in a single request stream via the body of the request or you can send the audio as a multipart request (see [Submitting multipart requests](#HTTP-multi)). Both approaches support the `sequence_id` parameter to enable polling of long requests. The following example, like its sessionless counterpart, omits the `model` query parameter to use the default value, `en-US_BroadbandModel`.
 
     ```bash
     curl -X POST -u {username}:{password}
@@ -146,7 +139,7 @@ The typical pattern for using sessions with the HTTP REST interface follows:
     ```
     {: codeblock}
 
-1.  *Check whether the session can accept a new recognition request* by calling the `GET sessions/{session_id}/recognize` method. The service does not allow concurrent recognition tasks during the same session; this method returns a state of `initialized` if the service is ready to accept a new request.
+1.  *Check whether the session can accept a new recognition request* by calling the `GET /v1/sessions/{session_id}/recognize` method. The service does not allow concurrent recognition tasks during the same session; this method returns a state of `initialized` if the service is ready to accept a new request.
 
     ```bash
     curl -X GET -u {username}:{password}
@@ -155,7 +148,7 @@ The typical pattern for using sessions with the HTTP REST interface follows:
     ```
     {: pre}
 
-    In addition to the state of the session and the model that it uses, the method also returns the secure URLs for calls to the session's `POST sessions/{session_id}/recognize` and `GET sessions/{session_id}/observe_result` methods.
+    In addition to the state of the session and the model that it uses, the method also returns the secure URLs for calls to the session's `POST /v1/sessions/{session_id}/recognize` and `GET /v1/sessions/{session_id}/observe_result` methods.
 
     ```javascript
     {
@@ -184,15 +177,15 @@ The typical pattern for using sessions with the HTTP REST interface follows:
     ```
     {: pre}
 
-### Using cookies with sessions
+## Using cookies with sessions
 {: #cookies}
 
-For session-based requests to succeed, the client must enable cookies. The initial `POST sessions` request to establish a session returns a cookie for the session via the `Set-Cookie` response header; the client must return the cookie with all requests that use the session. To exchange cookies with the service, the cURL examples provided for session-based requests use the following options:
+For session-based requests to succeed, the client must enable cookies. The initial `POST /v1/sessions` request to establish a session returns a cookie for the session via the `Set-Cookie` response header; the client must return the cookie with all requests that use the session. To exchange cookies with the service, the cURL examples provided for session-based requests use the following options:
 
 -   The `--cookie-jar` (`-c`) option directs cURL to write the cookie that it receives from the service to the specified file (`cookies.txt`).
 -   The `--cookie` (`-b`) option causes cURL to pass the cookie to the service. The command reads the cookie from the specified file.
 
-Cookies are stored as key-value pairs in the cookie-jar file. For example, for a session with ID `3080818927c8b9d82c578404381dcf4b`, the service returns the following `Set-Cookie` request header with its response to the `POST sessions` method:
+Cookies are stored as key-value pairs in the cookie-jar file. For example, for a session with ID `3080818927c8b9d82c578404381dcf4b`, the service returns the following `Set-Cookie` request header with its response to the `POST /v1/sessions` method:
 
 ```bash
 Set-Cookie: SESSIONID=3080818927c8b9d82c578404381dcf4b26832997; Secure; HttpOnly
@@ -239,19 +232,19 @@ If you pass an invalid cookie with a request to a session-based method, the serv
 
 If you receive this error, you can compare the session ID to the value of the cookie that was passed to determine whether the error was caused by a bad cookie. The error can also be caused by an expired session, but the comparison can help you eliminate one source of failure.
 
-### Transcribing long audio files with sessions
+## Transcribing long audio files with sessions
 {: #HTTP-long}
 
 When you transcribe long audio files with session-based methods, requests can time out if not handled properly. Timeouts cannot occur while data is being uploaded, but they can occur if the time between submitting the recognition request and observing the results is too long. The recommended means of submitting long audio files is to use the WebSocket interface, but you can overcome possible timeouts with the HTTP interface by using a long polling pattern with sessions.
 
-The `GET sessions/{session_id}/observe_result` and `POST sessions/{session_id}/recognize` methods include a `sequence_id` parameter that lets you associate an arbitrary integer value with a recognition task. Including the same sequence ID with the methods gives you considerable latitude for when you call the `sessions/{session_id}/observe_result` method: You can poll the service by calling `sessions/{session_id}/observe_result` before, during, or after you call `sessions/{session_id}/recognize`. The method always returns the full transcription, including interim results if requested, regardless of when you call it.
+The `GET /v1/sessions/{session_id}/observe_result` and `POST /v1/sessions/{session_id}/recognize` methods include a `sequence_id` parameter that lets you associate an arbitrary integer value with a recognition task. Including the same sequence ID with the methods gives you considerable latitude for when you call the `/v1/sessions/{session_id}/observe_result` method: You can poll the service by calling `/v1/sessions/{session_id}/observe_result` before, during, or after you call `/v1/sessions/{session_id}/recognize`. The method always returns the full transcription, including interim results if requested, regardless of when you call it.
 
-When you specify matching sequence IDs with the methods, the call to the `sessions/{session_id}/observe_result` method either returns the results for the `sessions/{session_id}/recognize` request or times out. You can repeat the call to `sessions/{session_id}/observe_result` if it times out, but you must separate the calls by no more than 30 seconds. If the results are ready and no request for them arrives within 30 seconds, the service closes the session.
+When you specify matching sequence IDs with the methods, the call to the `/v1/sessions/{session_id}/observe_result` method either returns the results for the `/v1/sessions/{session_id}/recognize` request or times out. You can repeat the call to `/v1/sessions/{session_id}/observe_result` if it times out, but you must separate the calls by no more than 30 seconds. If the results are ready and no request for them arrives within 30 seconds, the service closes the session.
 
-#### Behavior with and without sequence IDs
+### Behavior with and without sequence IDs
 {: #HTTP-long-behavior}
 
-The following table describes the behavior of the `GET sessions/{session_id}/observe_result` and `POST sessions/{session_id}/recognize` methods when you call them both with and without sequence IDs, when the sequence IDs of the calls match, and when they do not. When you specify a sequence ID with the `sessions/{session_id}/observe_result` method, the `sessions/{session_id}/recognize` method must include the same sequence ID for the calls to match. If the `sessions/{session_id}/observe_result` call includes a sequence ID but the `sessions/{session_id}/recognize` call does not, the service does not consider the IDs as matching.
+The following table describes the behavior of the `GET /v1/sessions/{session_id}/observe_result` and `POST /v1/sessions/{session_id}/recognize` methods when you call them both with and without sequence IDs, when the sequence IDs of the calls match, and when they do not. When you specify a sequence ID with the `/v1/sessions/{session_id}/observe_result` method, the `/v1/sessions/{session_id}/recognize` method must include the same sequence ID for the calls to match. If the `/v1/sessions/{session_id}/observe_result` call includes a sequence ID but the `/v1/sessions/{session_id}/recognize` call does not, the service does not consider the IDs as matching.
 
 <table>
   <caption>Table 1. Behavior of methods with sequence IDs</caption>
@@ -267,7 +260,7 @@ The following table describes the behavior of the `GET sessions/{session_id}/obs
     </th>
   </tr>
   <tr>
-    <td style="color:#444">
+    <td>
       <em>1.</em> Includes a sequence ID
     </td>
     <td>
@@ -297,7 +290,7 @@ The following table describes the behavior of the `GET sessions/{session_id}/obs
     </td>
   </tr>
   <tr>
-    <td style="color:#444">
+    <td>
       <em>2.</em> Does not include a sequence ID
     </td>
     <td>
@@ -322,14 +315,14 @@ The following figure shows examples of the behavior described in the previous ta
 
 ![Speech to Text Sequence ID Example](images/STT-Sequence-ID.png)
 
-In the figure, the first `POST` request calls the `sessions/{session_id}/recognize` method with sequence ID **1** to initiate a recognition task. The task continues for the duration of time shown by the shaded blue bar. The following four `GET` requests to the `sessions/{session_id}/observe_result` method are associated with this first recognition task:
+In the figure, the first `POST` request calls the `/v1/sessions/{session_id}/recognize` method with sequence ID **1** to initiate a recognition task. The task continues for the duration of time shown by the shaded blue bar. The following four `GET` requests to the `/v1/sessions/{session_id}/observe_result` method are associated with this first recognition task:
 
 -   The first request with sequence ID **1** arrives while the task is ongoing. It matches the sequence ID of the ongoing task and succeeds, returning the results for the task when they are ready (case *1.A.1*).
 -   The request with sequence ID **2** arrives while the task is ongoing. It does not match the sequence of the ongoing task and fails immediately, returning a 404 status code (case *1.A.2*).
 -   The request with no sequence ID arrives while the task is ongoing. It succeeds, returning the results for the task when they are ready (case *2.A*).
 -   The second request with sequence ID **1** arrives after the task completes and while no other task is ongoing. It matches the sequence ID of the previous task and succeeds, returning the results for the task immediately (case *1.B.1*).
 
-The following three `GET` requests to the `sessions/{session_id}/observe_result` method are associated with the recognition task for the second `POST` request to the `sessions/{session_id}/recognize` method. This recognition task has a sequence ID of **2**. The three calls to the `sessions/{session_id}/observe_result` method respond as follows:
+The following three `GET` requests to the `/v1/sessions/{session_id}/observe_result` method are associated with the recognition task for the second `POST` request to the `/v1/sessions/{session_id}/recognize` method. This recognition task has a sequence ID of **2**. The three calls to the `/v1/sessions/{session_id}/observe_result` method respond as follows:
 
 -   The request with sequence ID **2** arrives while no task is ongoing. It does not match the sequence ID of the previous task, so it waits. It matches the sequence ID of the next task and succeeds, returning the results for the task when they are ready (case *1.B.2* success).
 -   The request with sequence ID **3** arrives while no task is ongoing. It does not match the sequence ID of the previous task, so it waits. It also does not match the sequence ID of the next task, so it fails as soon as the request for that task arrives, returning a 404 status code (case *1.B.2* failure).
