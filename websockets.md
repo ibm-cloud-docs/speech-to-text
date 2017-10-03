@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-02"
+lastupdated: "2017-10-03"
 
 ---
 
@@ -109,9 +109,9 @@ A WebSocket client calls this method with the following query parameters to esta
       language model that is to be used for all requests sent over
       the connection. The base model of the custom language model
       must match the value of the <code>model</code> parameter. By
-      default, no custom language model is used. For more information, see
-      <a href="/docs/services/speech-to-text/input.html#custom">Custom
-        models</a>.
+      default, no custom language model is used. For more information,
+      see <a href="/docs/services/speech-to-text/custom.html">The
+      customization interface</a>.
     </td>
   </tr>
   <tr>
@@ -123,9 +123,22 @@ A WebSocket client calls this method with the following query parameters to esta
       acoustic model that is to be used for all requests sent over
       the connection. The base model of the custom acoustic model
       must match the value of the <code>model</code> parameter. By
-      default, no custom acoustic model is used. For more information, see
-      <a href="/docs/services/speech-to-text/input.html#custom">Custom
-        models</a>.
+      default, no custom acoustic model is used. For more information,
+      see <a href="/docs/services/speech-to-text/custom.html">The
+      customization interface</a>.
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left"><code>customization_weight</code>
+      <br/><em>Optional</em></td>
+    <td style="text-align:center">Double</td>
+    <td style="text-align:left">
+      Specifies the weight the service gives to words from a specified
+      custom language model compared to those from the base model for
+      all requests sent over the connection. Specify a value between
+      0.0 and 1.0; the default value is 0.3. For more information, see
+      <a href="/docs/services/speech-to-text/language-use.html#weight">Using
+      customization weight</a>.
     </td>
   </tr>
   <tr>
