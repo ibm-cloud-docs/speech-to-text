@@ -66,7 +66,7 @@ The service offers models for the following languages: Brazilian Portuguese, Fre
 
 -   The WebSocket, HTTP REST, and asynchronous HTTP interfaces are generally available for all supported languages.
 -   The service offers broadband, narrowband, or both types of model for different languages. For more information, see [Languages and models](/docs/services/speech-to-text/input.html#models).
--   Some input and output features are available for only some languages. For more information, see [Input features and parameters](/docs/services/speech-to-text/input.html) and [Output features and parameters](/docs/services/speech-to-text/output.html).
+-   Some features are available for only some languages. For more information, see [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html).
 -   The language and acoustic model customization interfaces are available for different languages at different levels of support. For more information, see [Language support for customization](/docs/services/speech-to-text/custom.html#languageSupport).
 
 ## Use cases

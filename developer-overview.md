@@ -28,11 +28,11 @@ You can access the capabilities of the {{site.data.keyword.speechtotextshort}} s
 
 The {{site.data.keyword.speechtotextshort}} service offers three programming interfaces for transcribing speech to text:
 
--   [The WebSocket interface](/docs/services/speech-to-text/websockets.html) provides a single version of the `recognize` method for transcribing audio. The interface offers efficient implementation, low latency, and high throughput over a full-duplex connection.
+-   [The WebSocket interface](/docs/services/speech-to-text/websockets.html) provides a single version of the `/v1/recognize` method for transcribing audio. The interface offers efficient implementation, low latency, and high throughput over a full-duplex connection.
 -   [The HTTP REST interface](/docs/services/speech-to-text/http.html) provides HTTP `POST` versions of the `/v1/recognize` method that transcribe audio with or without establishing a session with the service. The methods let you send audio via the body of the request or as multipart form data that consists of one or more audio files. Additional methods of the interface let you establish and maintain sessions with the service and obtain information about supported languages and models.
 -   [The asynchronous HTTP interface](/docs/services/speech-to-text/async.html) provides a non-blocking `POST /v1/recognitions` method for transcribing audio. Additional methods of the interface enable you to register a callback URL to which the service sends job status and optional results or to check the status of jobs and retrieve results manually. The interface uses HMAC-SHA1 signatures based on a user-specified secret to provide authentication and data integrity for callback notifications sent over the HTTP protocol.
 
-While the various recognition methods share many common capabilities, you might specify the same parameter as a request header, a query parameter, or a parameter of a JSON object depending on the interface and method you are using. For more information about the service's features, see [Input features and parameters](/docs/services/speech-to-text/input.html) and [Output features and parameters](/docs/services/speech-to-text/output.html).
+While the various recognition methods share many common capabilities, you might specify the same parameter as a request header, a query parameter, or a parameter of a JSON object depending on the interface and method you are using. For more information about the service's features, see [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html).
 
 ## Customizing the service
 {: #custom}

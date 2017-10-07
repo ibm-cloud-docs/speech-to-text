@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-02"
+lastupdated: "2017-10-07"
 
 ---
 
@@ -17,119 +17,34 @@ lastupdated: "2017-10-02"
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Input features and parameters
+# Input features
 {: #input}
 
-The {{site.data.keyword.speechtotextshort}} service offers many features for specifying the audio that is to be transcribed and how the service is to perform the transcription. The following sections describe the parameters that you can use to control how the service performs a transcription. The information also introduces the service-independent authentication token and request logging features.
+The {{site.data.keyword.speechtotextshort}} service offers the following features for specifying the audio that is to be transcribed and how the service is to perform the transcription. The information includes the service-independent authentication token and request logging features. For an alphabetized list of all available parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
 {: shortdesc}
-
-You need to specify only the audio format of the input; all other parameters are optional. If you specify an invalid query parameter or JSON field as part of the input for a recognition request, the JSON object that is returned by the service includes a `warnings` field that describes each invalid argument. The request succeeds despite the warnings.
 
 ## Authentication tokens and request logging
 {: #common}
 
 The {{site.data.keyword.speechtotextshort}} service leverages the following two {{site.data.keyword.watson}} service-independent features and parameters:
 
--   **Authentication tokens** are an alternative to service credentials that allow you to make authenticated requests to {{site.data.keyword.watson}} services without embedding your service credentials in every call. You use your service credentials to obtain a token for the service and then call the service directly, without relying on an intermediate server-side application for handling communications to and from the service. Note that you must use authentication tokens when working with the WebSocket interface. For more information, see [Tokens for authentication](/docs/services/watson/getting-started-tokens.html).
+-   *Authentication tokens* are an alternative to service credentials that allow you to make authenticated requests to {{site.data.keyword.watson}} services without embedding your service credentials in every call. You use your service credentials to obtain a token for the service and then call the service directly, without relying on an intermediate server-side application for handling communications to and from the service. Note that you must use authentication tokens when working with the WebSocket interface. For more information, see [Tokens for authentication](/docs/services/watson/getting-started-tokens.html).
 
-    <table>
-      <caption>Table 1. Specifying an authentication token</caption>
-      <tr>
-        <th style="width:25%; text-align:center">WebSocket</th>
-        <th style="width:25%; text-align:center">HTTP with Sessions</th>
-        <th style="width:25%; text-align:center">HTTP Sessionless</th>
-        <th style="text-align:center">Asynchronous HTTP</th>
-      </tr>
-      <tr>
-        <td style="text-align:center">
-          <code>watson-token</code> query parameter of <code>recognize</code>
-          connection request
-        </td>
-        <td style="text-align:center">
-          <code>watson-token</code> query parameter or
-          <code>X-Watson-Authorization-Token</code> header of each request
-        </td>
-        <td style="text-align:center">
-          <code>watson-token</code> query parameter or
-          <code>X-Watson-Authorization-Token</code> header of each
-          request
-        </td>
-        <td style="text-align:center">
-          <code>watson-token</code> query parameter or
-          <code>X-Watson-Authorization-Token</code> header of each
-          request
-        </td>
-      </tr>
-    </table>
+-   *Request logging* is used by all {{site.data.keyword.watson}} services to log each request to a service and its results. When you agree (opt in) to have your data logged, {{site.data.keyword.IBM_notm}} reserves the right to store and use the data to improve the service's base language models. {{site.data.keyword.IBM_notm}} stores the data only to improve the service for future users; the logged data is never shared or made public. Once you opt in, {{site.data.keyword.IBM_notm}} offers no mechanism to delete the stored audio or transcripts.
 
--   **Request logging** is used by all {{site.data.keyword.watson}} services to log each request to a service and its results. When you agree (opt in) to have your data logged, {{site.data.keyword.IBM_notm}} reserves the right to store and use the data to improve the service's base language models. {{site.data.keyword.IBM_notm}} stores the data only to improve the service for future users; the logged data is never shared or made public. Once you opt in, {{site.data.keyword.IBM_notm}} offers no mechanism to delete the stored audio or transcripts.
-
-    To prevent {{site.data.keyword.IBM_notm}} from accessing your data for general service improvements, set the `X-Watson-Learning-Opt-Out` request header to `true` for all requests. When you use the header to opt out of request logging, {{site.data.keyword.IBM_notm}} stores none of your data. Your data exists within {{site.data.keyword.watson}} only while it is in transit (in memory while the service processes your request). Because the data is never stored in any way, {{site.data.keyword.IBM_notm}} provides no mechanism to delete it.
+    To prevent {{site.data.keyword.IBM_notm}} from accessing your data for general service improvements, set the `X-Watson-Learning-Opt-Out` request header to `true` for all requests. When you use the header to opt out of request logging, {{site.data.keyword.IBM_notm}} stores none of your data. Your data exists within {{site.data.keyword.watson}} only while it is in transit (in memory while the service processes your request).
 
     In either case, your data is always encrypted both in motion and at rest. For more information about opting out of request logging, see [Controlling request logging for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-logging.html).
-
-    <table>
-      <caption>Table 2. Specifying request logging</caption>
-      <tr>
-        <th style="width:25%; text-align:center">WebSocket</th>
-        <th style="width:25%; text-align:center">HTTP with Sessions</th>
-        <th style="width:25%; text-align:center">HTTP Sessionless</th>
-        <th style="text-align:center">Asynchronous HTTP</th>
-      </tr>
-      <tr>
-        <td style="text-align:center">
-          <code>x-watson-learning-opt-out</code> query parameter of
-          <code>recognize</code> connection request
-        </td>
-        <td style="text-align:center">
-          <code>X-Watson-Learning-Opt-Out</code> header of each request
-        </td>
-        <td style="text-align:center">
-          <code>X-Watson-Learning-Opt-Out</code> header of each request
-        </td>
-        <td style="text-align:center">
-          <code>X-Watson-Learning-Opt-Out</code> header of each request
-        </td>
-      </tr>
-    </table>
 
 ## Audio formats
 {: #formats}
 
-<table>
-  <caption>Table 3. Specifying an audio format</caption>
-  <tr>
-    <th style="width:25%; text-align:center">WebSocket</th>
-    <th style="width:25%; text-align:center">HTTP with Sessions</th>
-    <th style="width:25%; text-align:center">HTTP Sessionless</th>
-    <th style="text-align:center">Asynchronous HTTP</th>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <code>content-type</code> JSON parameter of <code>start</code>
-      message
-    </td>
-    <td style="text-align:center">
-      <code>Content-Type</code> header of
-      <code>POST sessions/{session_id}/recognize</code> method
-    </td>
-    <td style="text-align:center">
-      <code>Content-Type</code> header of <code>POST recognize</code>
-      method
-    </td>
-    <td style="text-align:center">
-      <code>Content-Type</code> header of <code>POST recognitions</code>
-      method
-    </td>
-  </tr>
-</table>
-
-You must specify the audio format, or MIME type, of the data that you pass to the service. The service automatically detects the endianness of the incoming audio. (For the `audio/l16` format, you can specify the endianness.) For audio that includes multiple channels, the service downmixes the audio to one-channel mono during transcoding.
+You must use the `Content-Type` request header to specify the audio format, or MIME type, of the data that you pass to the service. The service automatically detects the endianness of the incoming audio. (For the `audio/l16` format, you can specify the endianness.) For audio that includes multiple channels, the service downmixes the audio to one-channel mono during transcoding.
 
 The following table lists the supported formats and documents required and optional parameters where applicable.
 
 <table>
-  <caption>Table 4. Supported audio formats</caption>
+  <caption>Table 1. Supported audio formats</caption>
   <tr>
     <th style="width:20%; text-align:left">Audio format</th>
     <th style="text-align:left">Description</th>
@@ -316,45 +231,17 @@ Each of these tools offers cross-platform support for multiple audio formats. Pl
 ## Languages and models
 {: #models}
 
-<table>
-  <caption>Table 5. Specifying a model</caption>
-  <tr>
-    <th style="width:25%; text-align:center">WebSocket</th>
-    <th style="width:25%; text-align:center">HTTP with Sessions</th>
-    <th style="width:25%; text-align:center">HTTP Sessionless</th>
-    <th style="text-align:center">Asynchronous HTTP</th>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <code>model</code> query parameter of <code>recognize</code>
-      connection request
-    </td>
-    <td style="text-align:center">
-      <code>model</code> query parameter of <code>POST sessions</code>
-      method
-    </td>
-    <td style="text-align:center">
-      <code>model</code> query parameter of <code>POST recognize</code>
-      method
-    </td>
-    <td style="text-align:center">
-      <code>model</code> query parameter of <code>POST recognitions</code>
-      method
-    </td>
-  </tr>
-</table>
-
-You use a language model to specify the language in which the audio is spoken and the rate at which it was sampled. For most languages, the service supports two models:
+You can use the `model` parameter to specify a language model for the request. The model indicates the language in which the audio is spoken and the rate at which it is sampled. For most languages, the service supports two models:
 
 -   A *broadband model* for audio that is sampled at greater than or equal to 16 kHz. {{site.data.keyword.IBM}} recommends that you use the broadband model for responsive, real-time applications (for example, for live-speech applications).
 -   A *narrowband model* for audio that is sampled at 8 kHz. This rate typically corresponds to audio derived from the telephone.
 
 The service automatically adjusts the sampling rate of your audio to match the model you specify. For example, the service converts audio recorded at higher sampling rates to 16 kHz prior to performing speech recognition with broadband models. In theory, therefore, you can send 44 kHz audio with the narrowband model. Note, however, that the service does not accept audio sampled at a lower rate than the intrinsic sampling rate of the model.
 
-The following table lists the supported model names for each language. If you omit the model from any request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
+The following table lists the supported models for each language. If you omit the model from any request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
 
 <table>
-  <caption>Table 6. Supported language models</caption>
+  <caption>Table 2. Supported language models</caption>
   <tr>
     <th style="text-align:left">Language</th>
     <th style="text-align:center">Broadband model</th>
@@ -409,41 +296,7 @@ To see the complete list of supported models, use the `GET /v1/models` method. T
 ## Custom models
 {: #custom}
 
-<table>
-  <caption>Table 7. Specifying a custom language model</caption>
-  <tr>
-    <th style="width:25%; text-align:center">WebSocket</th>
-    <th style="width:25%; text-align:center">HTTP with Sessions</th>
-    <th style="width:25%; text-align:center">HTTP Sessionless</th>
-    <th style="text-align:center">Asynchronous HTTP</th>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <code>customization\_id</code>,
-      <code>acoustic\_<br/>customization\_id</code>,
-      and <code>customization\_weight</code>
-      query parameters of <code>recognize</code> connection request
-    </td>
-    <td style="text-align:center">
-      <code>customization\_id</code>,
-      <code>acoustic\_<br/>customization\_id</code>,
-      and <code>customization\_weight</code>
-      query parameters of <code>POST sessions</code> method
-    </td>
-    <td style="text-align:center">
-      <code>customization\_id</code>,
-      <code>acoustic\_<br/>customization\_id</code>,
-      and <code>customization\_weight</code>
-      query parameters of <code>POST recognize</code> method
-    </td>
-    <td style="text-align:center">
-      <code>customization\_id</code>,
-      <code>acoustic\_<br/>customization\_id</code>,
-      and <code>customization\_weight</code>
-      query parameters of <code>POST recognitions</code> method
-    </td>
-  </tr>
-</table>
+> **Note:** Language and acoustic model customization are available only for US English, Japanese, and Spanish. The features are available at different levels of support, generally available or beta, for the different languages. For more information, see [Language support for customization](#languageSupport).
 
 All interfaces allow you to pass a custom model to the service for use in a recognition request:
 
@@ -455,39 +308,12 @@ Custom models are based on one of the language models described in [Languages an
 ## Audio transmission
 {: #transmission}
 
-<table>
-  <caption>Table 8. Specifying audio transmission</caption>
-  <tr>
-    <th style="width:25%; text-align:center">WebSocket</th>
-    <th style="width:25%; text-align:center">HTTP with Sessions</th>
-    <th style="width:25%; text-align:center">HTTP Sessionless</th>
-    <th style="text-align:center">Asynchronous HTTP</th>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      Always streamed
-    </td>
-    <td style="text-align:center">
-      <code>Transfer-Encoding</code> header of
-      <code>POST sessions/{session_id}/recognize</code> method
-    </td>
-    <td style="text-align:center">
-      <code>Transfer-Encoding</code> header of <code>POST recognize</code>
-      method
-    </td>
-    <td style="text-align:center">
-      <code>Transfer-Encoding</code> header of <code>POST recognitions</code>
-      method
-    </td>
-  </tr>
-</table>
+*With the WebSocket interface,* audio data is always streamed to the service over the connection. You can pass data through the socket all at once or, for the live-use case, as it becomes available.
 
-With the WebSocket interface, audio data is always streamed to the {{site.data.keyword.speechtotextshort}} service over the connection. You can pass data through the socket all at once or, for the live-use case, as it becomes available.
-
-With the HTTP interface, you can transmit audio to the service in one of two ways:
+*With the HTTP interface,* you can transmit audio to the service in one of two ways:
 
 -   *One-shot delivery:* You omit the `Transfer-Encoding` header and pass all of the audio data to the service at one time as a single delivery.
--   *Streaming:* You pass the `Transfer-Encoding` header with the value `chunked` and stream the data over a persistent connection. The data does not need to exist fully before being streamed to the service; you can stream the data as it becomes available. For more information about the header, see [en.wikipedia.org/wiki/Chunked_transfer_encoding ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/Chunked_transfer_encoding){: new_window}.
+-   *Streaming:* You set the `Transfer-Encoding` request header to the value `chunked` and stream the data over a persistent connection. The data does not need to exist fully before being streamed to the service; you can stream the data as it becomes available. For more information about the header, see [en.wikipedia.org/wiki/Chunked_transfer_encoding ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/Chunked_transfer_encoding){: new_window}.
 
 With either interface, the service always transcribes the entire audio stream until it terminates. Transcription results can include multiple `transcript` elements to indicate phrases separated by pauses. Concatenate the `transcript` elements to assemble the complete transcription of the audio stream.
 
@@ -504,14 +330,14 @@ For information about the different timeouts associated with audio transmission,
 With either approach, streaming or one-shot delivery, the service imposes a size limit of 100 MB on the audio data that you can transcribe at one time. When recognizing long continuous audio streams or large files, you can take the following steps to ensure that your audio does not exceed the 100 MB limit:
 
 -   Use a sampling rate no greater than 16 kHz (when using a broadband model) or 8 kHz (when using a narrowband model), and use 16 bits per sample. The service converts audio recorded at a sampling rate that is higher than the target model (16 kHz or 8 kHz) to the rate of the model. So larger frequencies do not result in enhanced recognition accuracy, but they do increase the size of the audio stream.
--   Encode your audio in a format that offers data compression. By encoding your data more efficiently, you can send far more audio without exceeding the 100 MB data limit. Audio formats such as `audio/mp3` and `audio/ogg` significantly reduce the size of your audio stream, allowing you to send greater lengths of audio with a single recognition request.
+-   Encode your audio in a format that offers data compression. By encoding your data more efficiently, you can send far more audio without exceeding the 100 MB data limit. Audio formats such as `audio/mp3` and `audio/ogg` significantly reduce the size of your audio stream, allowing you to send greater amounts of audio with a single recognition request.
 
 For example, consider the approximate size of the data stream that results from two hours of continuous speech transmission that is sampled at 16 kHz and at 16 bits per sample. If the data is encoded with the `audio/wav` format, the two-hour stream has a size of 230 MB, well beyond the service's 100 MB limit. But the same two-hour stream encoded in the `audio/ogg` format has a size of only 23 MB, which is well below the service's limit.
 
 The following table approximates the maximum duration of audio that can be sent with a recognition request in different formats given the 100 MB service limit. Actual values can vary depending on the complexity of the audio and the achieved compression rate.
 
 <table style="width:75%">
-  <caption>Table 9. Maximum duration of audio in different formats</caption>
+  <caption>Table 3. Maximum duration of audio in different formats</caption>
   <tr>
     <th style="text-align:left; vertical-align:bottom; width 50%">
       Audio format
@@ -542,34 +368,6 @@ Note that if you compress the audio too severely with the `audio/ogg` format, yo
 
 ## Timeouts
 {: #timeouts}
-
-<table>
-  <caption>Table 10. Specifying an inactivity timeout</caption>
-  <tr>
-    <th style="width:25%; text-align:center">WebSocket</th>
-    <th style="width:25%; text-align:center">HTTP with Sessions</th>
-    <th style="width:25%; text-align:center">HTTP Sessionless</th>
-    <th style="text-align:center">Asynchronous HTTP</th>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <code>inactivity_timeout</code> JSON parameter of
-      <code>start</code> message
-    </td>
-    <td style="text-align:center">
-      <code>inactivity_timeout</code> query parameter of
-      <code>POST sessions/{session_id}/recognize</code> method
-    </td>
-    <td style="text-align:center">
-      <code>inactivity_timeout</code> query parameter of
-      <code>POST recognize</code> method
-    </td>
-    <td style="text-align:center">
-      <code>inactivity_timeout</code> query parameter of
-      <code>POST recognitions</code> method
-    </td>
-  </tr>
-</table>
 
 To preserve resources when you stream audio data, the service enforces various timeouts. If one of these timeouts lapses, the service closes the connection.
 

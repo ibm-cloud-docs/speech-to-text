@@ -23,7 +23,7 @@ lastupdated: "2017-10-02"
 The {{site.data.keyword.speechtotextshort}} service offers a customization interface that you can use to augment its speech recognition capabilities. You can use customization to improve the accuracy of speech recognition requests by customizing a base model for your domain and audio. Customization is available for only some languages and at different levels of support for different languages; see [Language support for customization](#languageSupport).
 {: shortdesc}
 
-Speech recognition works the same either with or without a custom model. When using a custom model, you can use all of the input and output parameters that are normally available with a recognition request. For more information, see [Input features and parameters](/docs/services/speech-to-text/input.html) and [Output features and parameters](/docs/services/speech-to-text/output.html).
+Speech recognition works the same either with or without a custom model. When using a custom model, you can use all of the input and output parameters that are normally available with a recognition request. For more information, see [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html).
 
 ## Language model customization
 {: #customLanguage}

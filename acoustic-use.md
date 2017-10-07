@@ -23,7 +23,7 @@ lastupdated: "2017-10-02"
 Once you have created and trained your custom acoustic model, you can use it in speech recognition requests. You specify the customization ID of the custom acoustic model that is to be used with a request via the `acoustic_customization_id` query parameter, as shown in the following examples. You must issue the request with the service credentials of the service instance that owns the model.
 {: shortdesc}
 
--   For the WebSocket interface, use the `recognize` method:
+-   For the WebSocket interface, use the `/v1/recognize` method:
 
     ```javascript
     var token = {authentication-token};

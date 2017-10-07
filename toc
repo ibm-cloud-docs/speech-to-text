@@ -38,6 +38,7 @@ Speech to Text
     {: .navgroup id="howto"}
     input.md
     output.md
+    summary.md
     websockets.md
     http.md
     async.md
