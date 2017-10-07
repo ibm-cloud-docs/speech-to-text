@@ -25,7 +25,7 @@ You can use the HTTP REST interface of the {{site.data.keyword.speechtotextshort
 
 The HTTP interface, unlike the WebSocket interface, requires you to authenticate each call by using either your service credentials or a token. The WebSocket interface lets you establish and use a single authenticated connection indefinitely, and all audio and results travel over this single connection. The HTTP interface instead requires four distinct requests and connections to achieve the same results, and each request must be authenticated separately, incurring additional latency.
 
-For information about tailoring recognition requests to suit your application's needs, see [Input features and parameters](/docs/services/speech-to-text/input.html) and [Output features and parameters](/docs/services/speech-to-text/output.html). For complete details about all methods of the HTTP interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+For information about tailoring recognition requests to suit your application's needs, see [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html). For complete details about all methods of the HTTP interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
 
 ## Making sessionless requests
 {: #HTTP-sessionless}
@@ -85,7 +85,7 @@ The typical pattern for using sessions with the HTTP REST interface follows:
 
     The method returns a cookie via the `Set-Cookie` header. You must pass the cookie with each request that uses the session (see [Using cookies with sessions](#cookies)).
 
-    The method also returns the ID for the new session, the secure URI for the session, and the secure URLs for calls to the session's `GET /v1/sessions/{session_id}/observe_result` and `POST /v1/sessions/{session_id}/recognize` methods. (The method also returns the secure URL for calling the `recognize` method of the WebSocket interface; you do *not* use the WebSocket URL when interacting with the service's HTTP interface.)
+    The method also returns the ID for the new session, the secure URI for the session, and the secure URLs for calls to the session's `GET /v1/sessions/{session_id}/observe_result` and `POST /v1/sessions/{session_id}/recognize` methods. (The method also returns the secure URL for calling the `/v1/recognize` method of the WebSocket interface; you do *not* use the WebSocket URL when interacting with the service's HTTP interface.)
 
     ```javascript
     {
@@ -343,7 +343,7 @@ With the second approach, you pass all audio data as multipart form data. You sp
     -   You must use the `part_content_type` parameter of the metadata to indicate the MIME type of the audio in the following parts, all of which which must be in the same audio format.
     -   You can optionally pass the `data_parts_count` parameter to indicate the number of audio files sent with the request. The service applies end-of-stream detection to the last (and possibly the only) data part. If you omit the parameter, the service determines the number of parts from the request.
 
-    All other parameters for controlling the transcription request are optional, as described in [Input features and parameters](/docs/services/speech-to-text/input.html) and [Output features and parameters](/docs/services/speech-to-text/output.html).
+    All other parameters for controlling the transcription request are optional, as described in [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html).
 -   Pass `upload` data that consists of one or more audio files as the remainder of the form data.
 
 The multipart approach is intended for two use cases:

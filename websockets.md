@@ -29,7 +29,7 @@ The WebSocket interface of the {{site.data.keyword.speechtotextshort}} service i
 -   It reduces network utilization. The WebSocket protocol is very lightweight. It requires only a single connection to perform live recognition. When using sessions with the REST interface, conversely, you need at least four connections to achieve the same results.
 -   It enables audio to be streamed directly from browsers (HTML5 WebSocket clients) to the service.
 
-The WebSocket interface uses the `recognize` method to establish a connection with the service. It then relies on text and binary messages sent over the persistent connection to initiate and manage recognition requests. (If your application needs to call the `GET /v1/models` method, you must use the HTTP interface.)
+The WebSocket interface uses the `/v1/recognize` method to establish a connection with the service. It then relies on text and binary messages sent over the persistent connection to initiate and manage recognition requests. (If your application needs to call the `GET /v1/models` method, you must use the HTTP interface.)
 
 For information about the steps you need to follow to use the WebSocket interface, see [Making recognition requests](#WSsteps). Subsequent sections describe [WebSocket return codes](#WSreturn) and present an [Example WebSocket session](#WSexample) that shows example messages exchanged between the client and the service.
 
@@ -53,7 +53,7 @@ When the client sends data to the service, it *must* pass all JSON messages as t
 ### Opening a connection and passing credentials
 {: #WSopen}
 
-The {{site.data.keyword.speechtotextshort}} service uses the WebSocket Secure (WSS) protocol to make the `recognize` method available at the following endpoint:
+The {{site.data.keyword.speechtotextshort}} service uses the WebSocket Secure (WSS) protocol to make the `/v1/recognize` method available at the following endpoint:
 
 ```
 wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize
@@ -63,7 +63,7 @@ wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize
 A WebSocket client calls this method with the following query parameters to establish an authenticated connection with the service.
 
 <table>
-  <caption>Table 1. Parameters of the <code>recognize</code>
+  <caption>Table 1. Parameters of the <code>/v1/recognize</code>
     method</caption>
   <tr>
     <th style="width:23%; text-align:left">Parameter</th>
@@ -160,7 +160,7 @@ A WebSocket client calls this method with the following query parameters to esta
   </tr>
 </table>
 
-The following snippet of JavaScript code opens a connection with the service. The call to the `recognize` method passes the `watson-token` and `model` query parameters, the latter to direct the service to use the Spanish broadband model. Once the connection is established, the event listeners (`onOpen`, `onClose`, and so on) are defined to respond to events from the service, and the client can use the connection for multiple recognition requests.
+The following snippet of JavaScript code opens a connection with the service. The call to the `/v1/recognize` method passes the `watson-token` and `model` query parameters, the latter to direct the service to use the Spanish broadband model. Once the connection is established, the event listeners (`onOpen`, `onClose`, and so on) are defined to respond to events from the service, and the client can use the connection for multiple recognition requests.
 
 ```javascript
 var token = {authentication-token};
@@ -218,7 +218,7 @@ To initiate a recognition request, the client sends a JSON text message to the s
   </tr>
 </table>
 
-The message can also include optional parameters to specify additional aspects of how the request is to be processed and the information that is to be returned. For more information, see [Input features and parameters](/docs/services/speech-to-text/input.html) and [Output features and parameters](/docs/services/speech-to-text/output.html). Note that a language model and the ID of a custom language model can be specified only as query parameters of the WebSocket URL. (The same is true of the authentication token and the parameter that controls request logging.)
+The message can also include optional parameters to specify additional aspects of how the request is to be processed and the information that is to be returned. For more information, see [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html). Note that a language model and the ID of a custom language model can be specified only as query parameters of the WebSocket URL. (The same is true of the authentication token and the parameter that controls request logging.)
 
 The following snippet of JavaScript code sends initialization parameters for the recognition request over the WebSocket connection. The calls are included in the client's `onOpen` function defined to ensure that they are sent only after the connection is established.
 

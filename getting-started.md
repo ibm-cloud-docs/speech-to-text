@@ -30,7 +30,7 @@ The {{site.data.keyword.speechtotextfull}} service transcribes audio to text to 
 If you already know the credentials for your {{site.data.keyword.speechtotextshort}} service instance, skip this step.
 {: tip}
 
-1.  Go to the [{{site.data.keyword.speechtotextshort}} service ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/catalog/services/speech-to-text/){: new_window} and either sign up for a free Bluemix account or log in.
+1.  Go to the [{{site.data.keyword.speechtotextshort}} service ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/catalog/services/speech-to-text/){: new_window} and either sign up for a free {{site.data.keyword.Bluemix_notm}} account or log in.
 1.  After you log in, enter `speech-to-text-tutorial` in the **Service name field** of the {{site.data.keyword.speechtotextshort}} page. Click **Create**.
 1.  Copy your credentials:
     1.  Click **Service credentials**.
@@ -134,7 +134,7 @@ swept through colorado on sunday "
 
 ## Next steps
 
--   For more information about the parameters of the `/v1/recognize` method, see [Input features and parameters](/docs/services/speech-to-text/input.html) and [Output features and parameters](/docs/services/speech-to-text/output.html).
+-   For more information about the parameters of the `/v1/recognize` method, see [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html).
 -   For more information about using the service's HTTP interface, see [The HTTP REST interface](/docs/services/speech-to-text/http.html).
 -   For detailed information about all methods of the service's interfaces, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
 -   Interact with the API in the [API explorer ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://watson-api-explorer.mybluemix.net/apis/speech-to-text-v1){: new_window}.

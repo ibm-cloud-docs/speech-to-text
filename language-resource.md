@@ -197,7 +197,7 @@ The `display_as` field specifies how a word is displayed in a transcription. It 
 ```bash
 curl -X PUT -u {username}:{password}
 --header "Content-Type: application/json"
---data "{\"sounds_like": [\"hilton honors\", \"h. honors\"], \"display_as\": \"HHonors\"}"
+--data "{\"sounds_like": [\"hilton honors\", \"H. honors\"], \"display_as\": \"HHonors\"}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words/hhonors"
 ```
 {: pre}
