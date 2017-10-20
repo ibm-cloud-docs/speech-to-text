@@ -54,7 +54,7 @@ The following sample applications can help you get started:
 -   You can access an application that uses the Node.js SDK at the [speech-to-text-nodejs repository ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/speech-to-text-nodejs){: new_window}.
 -   You can access a Python client that interacts with the service through its WebSocket interface at the [speech-to-text-websockets-python repository ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/speech-to-text-websockets-python){: new_window}.
 
-For mobile development, see the [{{site.data.keyword.watson}} Developer Cloud SDK for Apple&reg; iOS ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/ios-sdk){: new_window} and the [{{site.data.keyword.watson}} Speech SDK for the Google Android&trade; platform ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/speech-android-sdk){: new_window}.
+For mobile development, see the [{{site.data.keyword.watson}} Developer Cloud Swift SDK ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/swift-sdk){: new_window} and the [{{site.data.keyword.watson}} Speech Android SDK ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/speech-android-sdk){: new_window}.
 
 ## Learning more about application development
 {: #learn}
