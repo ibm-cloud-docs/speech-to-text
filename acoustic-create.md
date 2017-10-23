@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-10-02"
+lastupdated: "2017-10-23"
 
 ---
 
@@ -80,7 +80,7 @@ You use the `POST /v1/acoustic_customizations` method to create a new custom aco
   </tr>
 </table>
 
-The following example creates a new custom acoustic model named `Example acoustic model`. The model is created for the base model `en-US-BroadbandModel` and has the description `Example custom acoustic model`. The `Content-Type` header specifies that JSON data is being passed to the method.
+The following example creates a new custom acoustic model named `Example acoustic model`. The model is created for the base model `en-US_BroadbandModel` and has the description `Example custom acoustic model`. The `Content-Type` header specifies that JSON data is being passed to the method.
 
 ```bash
 curl -X POST -u {username}:{password}
@@ -138,7 +138,7 @@ The method also accepts an optional `allow_overwrite` query parameter that lets 
 
 The method is asynchronous. It can take several seconds to complete depending on the duration of the audio and, in the case of an archive file, the total number of audio files being processed. For information about checking the status of a request to add an audio resource, see [Monitoring the add audio request](#monitorAudio).
 
-You can add any number of audio resources to a custom model by calling the method once for each audio or archive file. The addition of one audio resource must be fully complete before you can add another. For guidance about adding audio to a custom model, see [Guidelines for adding audio resources](/docs/services/speech-to-text/acoustic-resource.html#audioGuidelines).
+You can add any number of audio resources to a custom model by calling the method once for each audio or archive file. The addition of one audio resource must be fully complete before you can add another. You must add a minimum of 10 minutes and a maximum of 50 hours of audio that includes speech, not just silence, to a custom model before you can train it. No audio resource, audio- or archive-type, can be larger than 100 MB. For further guidance about adding audio to a custom model, see [Guidelines for adding audio resources](/docs/services/speech-to-text/acoustic-resource.html#audioGuidelines).
 
 ### Monitoring the add audio request
 {: #monitorAudio}
