@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-07"
+lastupdated: "2017-10-23"
 
 ---
 
@@ -458,6 +458,8 @@ If you omit the `interim_results` parameter or set it to `false`, the service re
 -   Use `true` if you want results to arrive progressively as the service processes the audio or if you want the results with minimum latency. Keep in mind that the service can update interim results as it processes more audio.
 
 Interim results are indicated in the JSON response with the `final` field set to `false`; the service can update such results with more accurate transcriptions as it processes additional audio. Final results are identified with the `final` field set to `true`; the service makes no further updates to such results.
+
+> **Note:** You can pass the `interim_results` parameter to a recognition request made with the HTTP sessionless or asynchronous interface. However, the service sends all results, both interim and final, at the same time, when the request completes. The service does *not* return interim results as it generates them.
 
 The following example requests interim results for a session-based request. The `final` attribute is set to `true` only for the final result.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-10-02"
+lastupdated: "2017-10-23"
 
 ---
 
@@ -71,8 +71,9 @@ curl -X POST -u {username}:{password}
 
 Follow these guidelines when adding audio resources to a custom acoustic model:
 
--   Add audio content that reflects the acoustic channel conditions of the audio that you plan to transcribe. For example, if your application deals with audio that has background noise from a car, use the same type of data to build the custom model.
 -   The custom model must contain at least 10 minutes and no more than 50 hours of audio that includes speech, not just silence.
+-   Add audio resources that are no larger than 100 MB. All audio- and archive-type resources are limited to a maximum size of 100 MB.
+-   Add audio content that reflects the acoustic channel conditions of the audio that you plan to transcribe. For example, if your application deals with audio that has background noise from a car, use the same type of data to build the custom model.
 -   The sampling rate of an audio file must match the sampling rate of the base model for the custom acoustic model:
     -   For broadband models, the sampling rate must be at least 16 kHz (16,000 samples per second).
     -   For narrowband models, the sampling rate must be at least 8 kHz (8000 samples per second).
