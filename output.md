@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-23"
+lastupdated: "2017-10-24"
 
 ---
 
@@ -119,17 +119,20 @@ Other languages can use different markers; for example, Japanese uses the token 
 
 > **Note:** The speaker labels feature is currently beta functionality that is available for US English, Japanese, and Spanish.
 
-Speaker labels let you identify which individuals spoke which words in a multi-participant exchange. You can use the information to develop a person-by-person transcript of an audio stream, such as contact to a call center, or to animate an exchange with a conversational robot or avatar. The feature works best for audio files of telephone conversations that involve two people in an extended conversation. For best performance, the audio should be at least a minute in length. (Labelling who spoke and when is sometimes referred to as *speaker diarization*.)
+Speaker labels let you identify which individuals spoke which words in a multi-participant exchange. (Labelling who spoke and when is sometimes referred to as *speaker diarization*.) You can use the information to develop a person-by-person transcript of an audio stream, such as contact to a call center, or to animate an exchange with a conversational robot or avatar. For best performance, use audio that is at least a minute in length.
 
-The feature is optimized for two-speaker scenarios. It can handle up to six speakers, but more than two speakers can result in variable performance. Two-person exchanges are typically conducted over narrowband media, but the feature is supported for the following models:
+Speaker labels are optimized for two-speaker scenarios. They work best for telephone conversations that involve two people in an extended exchange. They can handle up to six speakers, but more than two speakers can result in variable performance. Two-person exchanges are typically conducted over narrowband media, but you can use speaker labels with the following models:
 
 -   `en-US_NarrowbandModel` and `en-US_BroadbandModel`
 -   `es-ES_NarrowbandModel` and `es-ES_BroadbandModel`
 -   `ja-JP_NarrowbandModel` and `ja-JP_BroadbandModel`
 
-To use the feature, you set the `speaker_labels` parameter to `true` for a recognition request; the parameter is `false` by default. Because the service identifies speakers by individual words of the audio, relying on a word's start and end time to identify its speaker, enabling speaker labels also forces the `timestamps` parameter to be `true` (see [Word timestamps](/docs/services/speech-to-text/output.html#word_timestamps)).
+To use the feature, you set the `speaker_labels` parameter to `true` for a recognition request; the parameter is `false` by default. The service identifies speakers by individual words of the audio. It relies on a word's start and end time to identify its speaker. Therefore, enabling speaker labels also forces the `timestamps` parameter to be `true` (see [Word timestamps](/docs/services/speech-to-text/output.html#word_timestamps)).
 
-The following example request shows a response that includes speaker labels. The numeric values associated with each element of the `timestamps` array are the start and end time of the word in the audio.
+### Speaker labels example
+{: #speakerLabelsExample}
+
+The following example request shows a response that includes speaker labels. The numeric values associated with each element of the `timestamps` array are the start and end times of the word in the audio.
 
 ```bash
 curl -X POST -u {username}:{password}
@@ -311,21 +314,28 @@ From the results, it is clear that this two-person exchange began with the follo
 
 In the example, the `confidence` fields indicate the service's confidence in its identification of the speakers. The `final` field has a value of `false` for each word, indicating that the service is still processing the audio and might change its identification of the speaker or its confidence for individual words before it is done.
 
+### Speaker IDs for speaker labels
+{: #speakerLabelsIDs}
+
 The example also illustrates an interesting aspect of speaker IDs. In the `speaker` fields, note that the first speaker has an ID of `2` and the second has an ID of `1`. The service develops a better understanding of the speaker patterns as it processes the audio. Therefore, it can change speaker IDs for individual words, and can also add and remove speakers, until it generates its final results.
 
 As a result, speaker IDs might not be sequential, contiguous, or ordered. For instance, IDs typically start at `0`, but in the previous example, the earliest ID is `1`. The service likely omitted an earlier word assignment for speaker `0` based on further analysis of the audio. This can happen for later speakers, as well, resulting in gaps in the numbering and producing results for two speakers who are labeled, for example, `0` and `2`. Another consideration is that speakers can leave a conversation, so a participant who contributes only to the early stages of a conversation does not appear in later results.
 
-You can request both speaker labels and interim results with a recognition request. On average, final results are generally better than interim results. But interim results can help identify the evolution of the transcription and the assignment of speaker labels, indicating where transient speakers and IDs appeared or disappeared. Be aware that the service can reuse the IDs of speakers that it initially identifies and later reconsiders and omits, so an ID might refer to two different speakers in interim and final results.
+### Requesting interim results for speaker labels
+{: #speakerLabelsInterim}
+
+You can request both speaker labels and interim results with a recognition request (see [Interim results](/docs/services/speech-to-text/output.html#interim)). On average, final results are generally better than interim results. But interim results can help identify the evolution of a transcription and the assignment of speaker labels, indicating where transient speakers and IDs appeared or disappeared. Be aware that the service can reuse the IDs of speakers that it initially identifies and later reconsiders and omits, so an ID might refer to two different speakers in interim and final results.
 
 The service sends final results when the audio stream is complete or in response to a timeout period, whichever occurs first. The service sets the `final` field to `true` only for the last word that it returns in either case. If you request interim results, final results for long audio streams might arrive well after initial interim results are returned. If you do not request interim results, the service returns final results as a single JSON `speaker_labels` object.
 
-### Performance considerations
+### Performance considerations for speaker labels
+{: #speakerLabelsPerformance}
 
 As noted previously, the speaker labels feature is optimized for two-person conversations, such as communications with a call center. With this in mind, you need to be aware of the following potential issues with the feature's performance:
 
--   Performance for audio with a single speaker can be poor. Variations in audio quality or in the speaker's voice can cause the service to identify additional speakers who are not present (sometimes called hallucinations).
+-   Performance for audio with a single speaker can be poor. Variations in audio quality or in the speaker's voice can cause the service to identify additional speakers who are not present. Such speakers are referred to as hallucinations.
 -   Similarly, performance for audio with a dominant speaker, such as a podcast, can be poor. The service tends to miss speakers who talk for shorter amounts of time, and it can also produce hallucinations.
--   Performance for short utterances can be less accurate than those for long utterances. The service produces better results when participants speak for longer amounts of time.
+-   Performance for short utterances can be less accurate than for long utterances. The service produces better results when participants speak for longer amounts of time.
 -   Performance can be somewhat degraded for the first 30 seconds of speech. It usually improves to a reasonable level after one minute of audio.
 
 Bear in mind that, as with all transcription, performance can also be affected by audio noise, a person's manner of speech, overlapping speakers, and other aspects of the audio.
