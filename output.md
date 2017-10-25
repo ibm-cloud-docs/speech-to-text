@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-24"
+lastupdated: "2017-10-25"
 
 ---
 
@@ -326,7 +326,9 @@ As a result, speaker IDs might not be sequential, contiguous, or ordered. For in
 
 You can request both speaker labels and interim results with a recognition request (see [Interim results](/docs/services/speech-to-text/output.html#interim)). On average, final results are generally better than interim results. But interim results can help identify the evolution of a transcription and the assignment of speaker labels, indicating where transient speakers and IDs appeared or disappeared. Be aware that the service can reuse the IDs of speakers that it initially identifies and later reconsiders and omits, so an ID might refer to two different speakers in interim and final results.
 
-The service sends final results when the audio stream is complete or in response to a timeout period, whichever occurs first. The service sets the `final` field to `true` only for the last word that it returns in either case. If you request interim results, final results for long audio streams might arrive well after initial interim results are returned. If you do not request interim results, the service returns final results as a single JSON `speaker_labels` object.
+When you request both interim results and speaker labels, final results for long audio streams might arrive well after initial interim results are returned. It is also possible for some interim results to include only a `speaker_labels` object without the `results` and `result_index` fields. If you do not request interim results, the service returns final results that include `results` and `result_index` fields and a single `speaker_labels` object.
+
+The service sends final results when the audio stream is complete or in response to a timeout period, whichever occurs first. The service sets the `final` field to `true` only for the last word of the speaker labels that it returns in either case.
 
 ### Performance considerations for speaker labels
 {: #speakerLabelsPerformance}
