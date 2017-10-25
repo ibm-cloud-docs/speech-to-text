@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-07"
+lastupdated: "2017-10-25"
 
 ---
 
@@ -332,7 +332,7 @@ With either approach, streaming or one-shot delivery, the service imposes a size
 -   Use a sampling rate no greater than 16 kHz (when using a broadband model) or 8 kHz (when using a narrowband model), and use 16 bits per sample. The service converts audio recorded at a sampling rate that is higher than the target model (16 kHz or 8 kHz) to the rate of the model. So larger frequencies do not result in enhanced recognition accuracy, but they do increase the size of the audio stream.
 -   Encode your audio in a format that offers data compression. By encoding your data more efficiently, you can send far more audio without exceeding the 100 MB data limit. Audio formats such as `audio/mp3` and `audio/ogg` significantly reduce the size of your audio stream, allowing you to send greater amounts of audio with a single recognition request.
 
-For example, consider the approximate size of the data stream that results from two hours of continuous speech transmission that is sampled at 16 kHz and at 16 bits per sample. If the data is encoded with the `audio/wav` format, the two-hour stream has a size of 230 MB, well beyond the service's 100 MB limit. But the same two-hour stream encoded in the `audio/ogg` format has a size of only 23 MB, which is well below the service's limit.
+For example, consider the approximate size of the data stream that results from two hours of continuous speech transmission that is sampled at 16 kHz and at 16 bits per sample. If the data is encoded with the `audio/wav` format, the two-hour stream has a size of 230 MB, well beyond the service's 100 MB limit. But the same two-hour stream encoded in the `audio/ogg` format has a size of only 23 MB, which is well below the service's limit. (For a general discussion of sampling rates and bit rates, see [What are Bit Rates](http://www.richardfarrar.com/what-are-bit-rates/){: new_window} and [Choosing Bit Rates for Podcasts](http://www.richardfarrar.com/choosing-bit-rates-for-podcasts/){: new_window}).
 
 The following table approximates the maximum duration of audio that can be sent with a recognition request in different formats given the 100 MB service limit. Actual values can vary depending on the complexity of the audio and the achieved compression rate.
 
