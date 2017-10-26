@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-25"
+lastupdated: "2017-10-26"
 
 ---
 
@@ -369,6 +369,11 @@ A keyword for which the service finds no matches is omitted from the array. A ke
 
     The service matches a multi-token keyword only if the keyword's tokens are in the same block *and* they are either adjacent or separated by a gap of no more than 0.1 second. (The latter case can occur if a brief filler or non-lexical utterance, such as "uhm" or "well," lies between two tokens of the keyword.)
 
+Keyword spotting is necessary to identify keywords in an audio stream. You cannot identify keywords by processing the transcript that the service returns to the client because the transcript represents the best decoding results for the input audio. It does not include tokens with lower confidence scores that might represent a word of interest. So applying text processing tools to a transcript on the client side might not catch keywords. A richer representation of decoding results is needed, and such a representation is available only at the server.
+
+### Keyword spotting example
+{: #keywordSpottingExample}
+
 The following example request sets the `keywords` parameter to a URL-encoded array of three strings (`colorado`, `tornado`, and `tornadoes`) and the `keywords_threshold` parameter to `0.5`. The service finds qualifying occurrences of `colorado` and `tornadoes`.
 
 ```bash
@@ -415,14 +420,17 @@ curl -X POST -u {username}:{password}
 ```
 {: codeblock}
 
-Keyword spotting is necessary to identify keywords in an audio stream. You cannot identify keywords by processing the transcript that the service returns to the client because the transcript represents the best decoding results for the input audio. It does not include tokens with lower confidence scores that might represent a word of interest. So applying text processing tools to a transcript on the client side might not catch keywords. A richer representation of decoding results is needed, and such a representation is available only at the server.
-
 ## Maximum alternatives
 {: #max_alternatives}
 
 The `max_alternatives` parameter accepts an integer value that tells the service to return the *n*-best alternative hypotheses. By default, the service returns only a single transcription result, which is equivalent to setting the parameter to `1`. By setting `max_alternatives` to a number greater than 1, you ask the service to return that number of the best alternative transcriptions.
 
-The service reports a confidence score only for the best alternative that it returns. In most cases, that is the alternative to choose. The following example request sets the `max_alternatives` parameter to `3`; the service reports a confidence for the most likely of the three alternatives.
+The service reports a confidence score only for the best alternative that it returns. In most cases, that is the alternative to choose.
+
+### Maximum alternatives example
+{: #maximumAlternativesExample}
+
+The following example request sets the `max_alternatives` parameter to `3`; the service reports a confidence for the most likely of the three alternatives.
 
 ```bash
 curl -X POST -u {username}:{password}
@@ -472,6 +480,9 @@ If you omit the `interim_results` parameter or set it to `false`, the service re
 Interim results are indicated in the JSON response with the `final` field set to `false`; the service can update such results with more accurate transcriptions as it processes additional audio. Final results are identified with the `final` field set to `true`; the service makes no further updates to such results.
 
 > **Note:** You can pass the `interim_results` parameter to a recognition request made with the HTTP sessionless or asynchronous interface. However, the service sends all results, both interim and final, at the same time, when the request completes. The service does *not* return interim results as it generates them.
+
+### Interim results example
+{: #interimResultsExample}
 
 The following example requests interim results for a session-based request. The `final` attribute is set to `true` only for the final result.
 
@@ -567,6 +578,9 @@ The service returns the results as an array of `word_alternatives` that is an el
 -   `end_time` indicates the time in seconds at which the word for which hypotheses are returned ends in the input audio.
 -   `alternatives` is an array of hypothesis objects. Each object includes a `confidence` that indicates the service's confidence score for the hypothesis and a `word` that identifies the hypothesis. The confidence must be at least as great as the specified threshold to be included in the results. The service orders the alternatives by confidence.
 
+### Word alternatives example
+{: #wordAlternativesExample}
+
 The following example request specifies a `word_alternatives_threshold` of `0.9`. The output includes potential hypotheses and confidence scores for a number of words, along with their start and end times.
 
 ```bash
@@ -654,6 +668,9 @@ The `word_confidence` parameter tells the service whether to provide confidence 
 
 A confidence measure indicates the service's estimation that the transcribed word is correct. Confidences scores range from 0.0 to 1.0. A score of 1.0 for a word indicates that the current transcription reflects the most likely result based on the acoustic evidence; a score of 0.5 means that the word has a 50-percent chance of being correct.
 
+### Word confidence example
+{: #wordConfidenceExample}
+
 The following example requests word confidence scores for the words of the transcription.
 
 ```bash
@@ -713,6 +730,9 @@ curl -X POST -u {username}:{password}
 {: #word_timestamps}
 
 The `timestamps` parameter tells the service whether to produce timestamps for the words it transcribes. By default, the service reports no timestamps. Setting `timestamps` to `true` directs the service to report the beginning and ending time in seconds for each word relative to the start of the audio.
+
+### Word timestamps example
+{: #wordTimestampsExample}
 
 The following example requests timestamps for the words of the transcription.
 
@@ -784,6 +804,9 @@ The `profanity_filter` parameter indicates whether the service is to censor prof
 
 The service censors profanity from all final and any alternative transcripts and from results associated with word alternatives, word confidence, and word timestamps. The sole exception is keyword spotting, for which the service returns all words as specified by the user, regardless of whether `profanity_filter` is `true`.
 
+### Profanity filtering example
+{: #profanityFilteringExample}
+
 The following example shows the results for a brief audio file that is transcribed with the default `true` value for the `profanity_filter` parameter. The request also sets the `word_alternatives_threshold` parameter to a relatively high value of `0.99` and the `word_confidence` and `timestamps` parameters to `true`.
 
 ```bash
@@ -849,6 +872,13 @@ curl -X POST -u {username}:{password}
 
 The `smart_formatting` parameter converts dates, times, series of digits and numbers, phone numbers, currency values, and Internet addresses into more conventional representations in the final transcript of a recognition request. The conversion makes the transcript more readable and enables better post-processing of the transcription results. You set the parameter to `true` to enable smart formatting, as in the following example; by default, the parameter is `false` and smart formatting is not performed.
 
+Smart formatting is based on the presence of obvious keywords in the transcript. For example, times are identified by keywords such as *AM* or *EST*, and military times are converted if identified by the keyword *hours*. Phone numbers must be either *911* or a number with 10 digits or with 11 digits that start with the number *1*.
+
+### Smart formatting example
+{: #smartFormattingExample}
+
+The following example requests smart formatting with a recognition request by setting the `smart_formatting` parameter to `true`. The tables that follow show the effects of smart formatting on the results of a request.
+
 ```bash
 curl -X POST -u {username}:{password}
 --header "Content-Type: audio/flac"
@@ -857,7 +887,7 @@ curl -X POST -u {username}:{password}
 ```
 {: pre}
 
-Smart formatting is based on the presence of obvious keywords in the transcript. For example, times are identified by keywords such as *AM* or *EST*, and military times are converted if identified by the keyword *hours*. Phone numbers must be either *911* or a number with 10 digits or with 11 digits that start with the number *1*. The following table shows examples of final transcripts both with and without smart formatting.
+The following table shows examples of final transcripts both with and without smart formatting.
 
 <table>
   <caption>Table 2. Smart formatting examples</caption>
