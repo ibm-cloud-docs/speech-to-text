@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-02"
+lastupdated: "2017-10-27"
 
 ---
 
@@ -28,7 +28,7 @@ You can also add individual custom words to a model directly. The service adds w
 ## The words resource
 {: #wordsResource}
 
-Each word that you add to a custom language model, either from a corpus or directly, is stored in the model's *words resource*. The purpose of the words resource is to define words that are not already present in the service's base vocabulary. Such words are referred to as *out-of-vocabulary (OOV) words*. The definitions in the words resource tell the service how to transcribe the OOV words.
+Each word that you add to a custom language model, either from a corpus or directly, is stored in the model's *words resource*. The purpose of the words resource is to define words that are not already present in the service's base vocabulary. The definitions tell the service how to transcribe the words. Such words are referred to as *out-of-vocabulary (OOV) words*. You can add a maximum of 30 thousand OOV words, including words that the service extracts from corpora and words that you add directly.
 
 The words resource contains the following information about each OOV word. The service creates the definitions for words extracted from corpora. You specify the characteristics for words that you add directly.
 
@@ -79,7 +79,7 @@ Follow these guidelines to prepare a corpus text file:
 -   Use consistent capitalization for words in the corpus. The words resource is case-sensitive; mix upper- and lowercase letters and use capitalization only when intended.
 -   Beware of typographical errors. The service assumes that typos are new words. Unless you correct them before training the model, the service adds them to the model's vocabulary. Remember the adage *Garbage in, garbage out!*
 
-While more sentences result in better accuracy, the service does limit the overall amount of data that you can add to a custom model. You can add a maximum of 10 million total words from all corpora combined, and no more than 30 thousand new (OOV) words, including words that the service extracts from corpora and words that you add directly.
+More sentences result in better accuracy, but the service does limit a model to a maximum of 10 million total words from all corpora combined, and no more than 30 thousand new (OOV) words, including words that the service extracts from corpora and words that you add directly.
 
 ### What happens when you add a corpus file
 {: #parseCorpus}
