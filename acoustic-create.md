@@ -108,7 +108,7 @@ The new custom model is owned by the service instance whose credentials are used
 
 Once you create your custom acoustic model, the next step is to add audio resources to it. You can add
 
--   An individual audio file in any format that is supported for speech recognition (see [Audio formats](/docs/services/speech-to-text/input.html#formats)). For more information about using audio-type resources, see [Working with audio files](/docs/services/speech-to-text/acoustic-resource.html#workingAudio).
+-   An individual audio file in any format that is supported for speech recognition (see [Audio formats](/docs/services/speech-to-text/audio-formats.html)). For more information about using audio-type resources, see [Working with audio files](/docs/services/speech-to-text/acoustic-resource.html#workingAudio).
 -   An archive file (a **.zip** or **.tar.gz** file) that includes multiple audio files. All audio files added with the same archive file must have the same audio format. When loading many audio files, gathering the files into a single archive file and loading that file is significantly more efficient than adding the files individually. For more information about using archive-type resources, see [Working with archive files](/docs/services/speech-to-text/acoustic-resource.html#workingArchive.)
 
 You use the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to add an audio resource of either type to a custom acoustic model:

@@ -33,7 +33,7 @@ The following sections describe required request headers for audio- and archive-
 ## Working with audio files
 {: #workingAudio}
 
-To add an individual audio file to a custom acoustic model, you specify the format (MIME type) of the audio with the `Content-Type` header. You can add audio with any format that is supported for use with recognition requests. Include `rate`, `channels`, and `endianness` parameters with the specification of formats that require them. For a complete list of supported formats, see [Audio formats](/docs/services/speech-to-text/input.html#formats).
+To add an individual audio file to a custom acoustic model, you specify the format (MIME type) of the audio with the `Content-Type` header. You can add audio with any format that is supported for use with recognition requests. Include `rate`, `channels`, and `endianness` parameters with the specification of formats that require them. For a complete list of supported formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 
 The following example from [Add audio to the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#addAudio) adds an `audio/wav` file:
 
@@ -53,7 +53,7 @@ The preferred means of adding audio to a custom acoustic model is to add an arch
 -   A **.zip** file by specifying `application/zip`
 -   A **.tar.gz** file by specifying `application/gzip`
 
-All audio files added with a single archive file must have the same audio format. By default, the method accepts an archive of WAV files. If your archive includes any other type of audio, you must include the `Contained-Content-Type` header with the request to specify the format of the audio. The header accepts all of the audio formats supported for use with recognition requests, including the `rate`, `channels`, and `endianness` parameters that are used with some formats. For a complete list of supported formats, see [Audio formats](/docs/services/speech-to-text/input.html#formats).
+All audio files added with a single archive file must have the same audio format. By default, the method accepts an archive of WAV files. If your archive includes any other type of audio, you must include the `Contained-Content-Type` header with the request to specify the format of the audio. The header accepts all of the audio formats supported for use with recognition requests, including the `rate`, `channels`, and `endianness` parameters that are used with some formats. For a complete list of supported formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 
 The following example from [Add audio to the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#addAudio) adds an `application/zip` file that contains audio files in `audio/l16` format that are sampled at 16 kHz:
 

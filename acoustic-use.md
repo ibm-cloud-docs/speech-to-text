@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-10-02"
+lastupdated: "2017-11-10"
 
 ---
 
@@ -76,7 +76,7 @@ You can omit the language model from the request if the custom model is based on
 
 As described in [Using acoustic and language customization together](/docs/services/speech-to-text/custom.html#combined), you can improve speech recognition accuracy by using complementary custom language and custom acoustic models. You can use both types of model during training of your acoustic model and during speech recognition. Note that both models must be owned by the same service credentials.
 
-Using a custom acoustic model alone or with a custom language on which it was not trained can still be useful. If the custom model was trained on acoustic characteristics that match the audio being transcribed, it can improve the quality of transcription.
+Using a custom acoustic model alone or with a custom language model on which it was not trained can still be useful. If the custom acoustic model was trained on acoustic characteristics that match the audio being transcribed, it can improve the quality of transcription.
 
 ### Training a custom acoustic model with a custom language model
 {: #useBothTrain}
@@ -86,7 +86,11 @@ Create and use a custom language model to help train a custom acoustic model in 
 -   You have transcriptions of the audio files that you have added to the custom acoustic model (meaning that you have the verbatim text for each of the audio files).
 -   You have either corpora (text files) or a list of words that are relevant to the contents of the audio files. For example, the audio data comes from call-center audio for a specific product or service, and you have transcriptions of previous calls or a list of names of specific products or services that are handled by the call center.
 
-Either form of custom language model can improve the effectiveness of your custom acoustic model. This is particularly important if your audio data contains domain-specific words that do not exist in the service's base vocabulary. Because transcriptions contain the exact contents of the audio, creating a custom language model based on transcriptions is especially helpful. The service can parse the contents of the transcriptions in context and extract OOV words and n-grams that can help it make the most effective use of your audio. For more information, see [Creating a custom language model](/docs/services/speech-to-text/language-create.html). (You can also train with an existing custom language model that includes OOV words from the same domain as your audio data.)
+Either form of custom language model can improve the effectiveness of your custom acoustic model. This is particularly important if your audio data contains domain-specific words that do not exist in the service's base vocabulary. Because transcriptions contain the exact contents of the audio, creating a custom language model based on transcriptions is especially helpful. The service can parse the contents of the transcriptions in context and extract OOV words and n-grams that can help it make the most effective use of your audio. (You can also train with an existing custom language model that includes OOV words from the same domain as your audio data.)
+
+Using a custom language model to train a custom acoustic model is effective only if the custom language model was built with direct transcriptions of the audio data or contains words from the same domain as the audio. If the audio contains many OOV words, it is wise to use a custom language model during training, even if the custom language model merely adds a list of custom words. For more information, see [Creating a custom language model](/docs/services/speech-to-text/language-create.html).
+
+> **Note:** Using audio data alone is referred to as *unsupervised training*. Using a custom language model during training is referred to as *lightly supervised training*.
 
 Use the optional `custom_language_model_id` query parameter of the `POST /v1/acoustic_customizations/{customization_id}/train` method to train your custom acoustic model with a custom language model, as in the following example. Pass the GUID of the acoustic model with the `customization_id` parameter and the GUID of the custom language model with the `custom_language_model_id` parameter. Both models must be owned by the service credentials passed with the request.
 

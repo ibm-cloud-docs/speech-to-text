@@ -41,7 +41,7 @@ Once you have created and trained your custom language model, you can use it in 
     ```bash
     curl -X POST -u {username}:{password}
     --header "Content-Type: audio/flac"
-    --data-binary @audio-file1.flac
+    --data-binary @audio-file.flac
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?customization_id={customization_id}"
     ```
     {: pre}

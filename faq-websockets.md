@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-13"
+lastupdated: "2017-11-07"
 
 ---
 
@@ -26,4 +26,4 @@ lastupdated: "2017-08-13"
 
 1.  <span style="color:#003F69">My WebSocket connection times out before I receive the final hypothesis. What can I do?</span>
 
-    Make sure that you signal the end of the audio by sending either a `stop` message or an empty binary message to the service. See [Ending a recognition request](/docs/services/speech-to-text/websockets.html#WSstop).
+    Make sure that you signal the end of the audio by sending either a `stop` message or an empty binary message to the service. See [End a recognition request](/docs/services/speech-to-text/websockets.html#WSstop).

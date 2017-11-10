@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-24"
+lastupdated: "2017-11-07"
 
 ---
 
@@ -209,7 +209,7 @@ To initiate a recognition request, the client sends a JSON text message to the s
     <td style="text-align:left">
       The format (MIME type) of the audio data for the request. For
       detailed information about the available audio formats, see
-      <a href="/docs/services/speech-to-text/input.html#formats">Audio
+      <a href="/docs/services/speech-to-text/audio-formats.html">Audio
         formats</a>.
     </td>
   </tr>

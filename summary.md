@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-07"
+lastupdated: "2017-11-10"
 
 ---
 
@@ -81,7 +81,7 @@ An optional customization ID for a custom acoustic model that is adapted for the
 
 ## Content-Type
 
-A required audio format (MIME type) that specifies the format of the audio data that you pass to the service. See [Audio formats](/docs/services/speech-to-text/input.html#formats).
+A required audio format (MIME type) that specifies the format of the audio data that you pass to the service. See [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 
 <table>
   <tr>
@@ -680,8 +680,7 @@ An optional boolean that indicates whether the service produces timestamps for t
       **HTTP sessionless**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/sessions/{session_id}/recognize</code>
-      method
+      Query parameter of <code>POST /v1/recognize</code> method
     </td>
   </tr>
   <tr>
@@ -689,7 +688,8 @@ An optional boolean that indicates whether the service produces timestamps for t
       **HTTP sessions**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Query parameter of <code>POST /v1/sessions/{session_id}/recognize</code>
+      method
     </td>
   </tr>
   <tr>

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-02"
+lastupdated: "2017-11-10"
 
 ---
 
@@ -23,7 +23,7 @@ lastupdated: "2017-10-02"
 The {{site.data.keyword.speechtotextshort}} service offers a customization interface that you can use to augment its speech recognition capabilities. You can use customization to improve the accuracy of speech recognition requests by customizing a base model for your domain and audio. Customization is available for only some languages and at different levels of support for different languages; see [Language support for customization](#languageSupport).
 {: shortdesc}
 
-Speech recognition works the same either with or without a custom model. When using a custom model, you can use all of the input and output parameters that are normally available with a recognition request. For more information, see [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html).
+Speech recognition works the same either with or without a custom model. When using a custom model, you can use all of the input and output parameters that are normally available with a recognition request. For more information, see [Input features](/docs/services/speech-to-text/input.html), [Output features](/docs/services/speech-to-text/output.html), and the [Parameter summary](/docs/services/speech-to-text/summary.html).
 
 ## Language model customization
 {: #customLanguage}
@@ -126,7 +126,7 @@ The following usage notes apply to both language model customization and acousti
 ### Ownership of custom models
 {: #customOwner}
 
-A custom model is owned by the instance of the {{site.data.keyword.speechtotextshort}} service whose credentials are used to create it. To work with the custom model in any way, you must use service credentials created for that instance of the service with methods of the customization interface. Credentials created for other instances of the service cannot view or access the custom model. The data associated with a custom model is encrypted both at rest (when it is stored) and in motion (when it is used).
+A custom model is owned by the instance of the {{site.data.keyword.speechtotextshort}} service whose credentials are used to create it. To work with the custom model in any way, you must use service credentials created for that instance of the service with methods of the customization interface. Credentials created for other instances of the service cannot view or access the custom model. The data associated with a custom model is encrypted both at rest (when it is stored) and in motion (when it is traveling over the network).
 
 All service credentials obtained for the same instance of the {{site.data.keyword.speechtotextshort}} service share access to all custom models created for that service instance. To restrict access to a custom model, create a separate instance of the service and use only the credentials for that service instance to create and work with the model. Credentials for other service instances cannot affect the custom model.
 

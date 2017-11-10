@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-02"
+lastupdated: "2017-11-07"
 
 ---
 
@@ -89,11 +89,11 @@ The typical pattern for using sessions with the HTTP REST interface follows:
 
     ```javascript
     {
-      "recognize": "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions/<session_id>/recognize",
-      "recognizeWS": "wss://stream.watsonplatform.net/speech-to-text/api/v1/sessions/<session_id>/recognize",
-      "observe_result": "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions/<session_id>/observe_result",
-      "session_id": "<session_id>",
-      "new_session_uri": "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions/<session_id>"
+      "recognize": "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions/{session_id}/recognize",
+      "recognizeWS": "wss://stream.watsonplatform.net/speech-to-text/api/v1/sessions/{session_id}/recognize",
+      "observe_result": "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions/{session_id}/observe_result",
+      "session_id": {session_id}",
+      "new_session_uri": "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions/{session_id}"
     }
     ```
     {: codeblock}
@@ -105,7 +105,7 @@ The typical pattern for using sessions with the HTTP REST interface follows:
     ```bash
     curl -X GET -u {username}:{password}
     --cookie cookies.txt
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions/<session_id>/observe_result?interim_results=true"
+    "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions/{session_id}/observe_result?interim_results=true"
     ```
     {: pre}
 
@@ -113,9 +113,10 @@ The typical pattern for using sessions with the HTTP REST interface follows:
 
     ```bash
     curl -X POST -u {username}:{password}
+    --cookie cookies.txt
     --header "Content-Type: audio/flac"
     --data-binary @{path}audio-file.flac
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions/<session_id>/recognize"
+    "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions/{session_id}/recognize"
     ```
     {: pre}
 
@@ -144,7 +145,7 @@ The typical pattern for using sessions with the HTTP REST interface follows:
     ```bash
     curl -X GET -u {username}:{password}
     --cookie cookies.txt
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions/<session_id>/recognize"
+    "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions/{session_id}/recognize"
     ```
     {: pre}
 
@@ -153,10 +154,10 @@ The typical pattern for using sessions with the HTTP REST interface follows:
     ```javascript
     {
       "session": {
-        "recognize": "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions/<session_id>/recognize",
-        "recognizeWS": "wss://stream.watsonplatform.net/speech-to-text/api/v1/sessions/<session_id>/recognize",
+        "recognize": "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions/{session_id}/recognize",
+        "recognizeWS": "wss://stream.watsonplatform.net/speech-to-text/api/v1/sessions/{session_id}/recognize",
         "state": "initialized",
-        "observe_result": "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions/<session_id>/observe_result",
+        "observe_result": "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions/{session_id}/observe_result",
         "model": "https://stream.watsonplatform.net/speech-to-text/api/v1/models/en-US_BroadbandModel"
       }
     }
@@ -173,7 +174,7 @@ The typical pattern for using sessions with the HTTP REST interface follows:
     ```bash
     curl -X DELETE -u {username}:{password}
     --cookie cookies.txt
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions/<session_id>"
+    "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions/{session_id}"
     ```
     {: pre}
 
