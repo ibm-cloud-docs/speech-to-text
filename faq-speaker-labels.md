@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-13"
+lastupdated: "2017-11-07"
 
 ---
 
@@ -26,7 +26,7 @@ lastupdated: "2017-08-13"
 
 1.  <span style="color:#003F69">How do I synchronize the results from the JSON `speaker_labels` field with individual words of the transcription to re-create a conversation?</span>
 
-    When you set the `speaker_labels` parameter to `true`, the service also forces the `timestamps` parameter to be `true`. You need to match the `from` and `to` fields of the individual speaker labels to the equivalent start and end times of the individually timestamped words. For an example of the fields to use and the results that can be achieved, see [Speaker labels](/docs/services/speech-to-text/output.html#speaker_labels).
+    When you set the `speaker_labels` parameter to `true`, the service also forces the `timestamps` parameter to be `true`. You need to match the `from` and `to` fields of the individual speaker labels to the equivalent start and end times of the individually timestamped words. For an example of the fields to use and the results that can be achieved, see [Speaker labels example](/docs/services/speech-to-text/output.html#speakerLabelsExample).
 
 1.  <span style="color:#003F69">I have an audio file with ten individual speakers, but the service identifies no more than six of the speakers. Why?</span>
 

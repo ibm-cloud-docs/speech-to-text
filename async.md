@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-02"
+lastupdated: "2017-11-07"
 
 ---
 
@@ -123,7 +123,9 @@ You create a recognition job by calling the `POST /v1/recognitions` method. How 
 
 In both cases, you can include the `results_ttl` query parameter to specify the number of minutes for which the results are to remain available after the job completes.
 
-In addition to the previous parameters, which are specific to the asynchronous interface, the `POST /v1/recognitions` method supports most of the same parameters as the WebSocket and HTTP REST interfaces; for more information, see [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html). Note that the asynchronous interface does not support interim results and that the service imposes a data size limit of 100 MB on the audio that you submit with the request (see [Data limits and compression](/docs/services/speech-to-text/input.html#limits)).
+In addition to the previous parameters, which are specific to the asynchronous interface, the `POST /v1/recognitions` method supports most of the same parameters as the WebSocket and HTTP REST interfaces. For more information, see [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html).
+
+The asynchronous interface does not support interim results, and it imposes a data size limit of 100 MB on the audio that you submit with the request. For more information about audio formats and about using compression to increase the amount of audio that you can send with a request, see [Audio Formats](/docs/services/speech-to-text/audio-formats.html).
 
 ### Callback notifications
 {: #notifications}

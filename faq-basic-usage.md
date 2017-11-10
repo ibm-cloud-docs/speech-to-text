@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-08-13"
+lastupdated: "2017-11-07"
 
 ---
 
@@ -20,9 +20,13 @@ lastupdated: "2017-08-13"
 # Basic usage
 {: #basic}
 
-1.  <span style="color:#003F69">My audio file is larger than 100 MB, which is too big for the service to accept. Is there a way that I can process the file?</span>
+1.  <span style="color:#003F69">My audio data is larger than 100 MB, which is too big for the service to accept. Is there a way that I can process the data?</span>
 
-    One solution is to manually divide the file into smaller pieces. Alternatively, although you risk degrading the quality of the audio, you can compress the file by using tools such as Sound eXchange ([sox.sourceforge.net ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://sox.sourceforge.net){: new_window}) or FFmpeg ([www.ffmpeg.org ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ffmpeg.org){: new_window}). For information about encoding your audio efficiently, see [Data limits and compression](/docs/services/speech-to-text/input.html#limits).
+    One solution is to manually divide the audio data into smaller chunks. Alternatively, because the service supports a variety of [Audio formats](/docs/services/speech-to-text/audio-formats.html), you can convert the audio to a compressed, lossy format to increase the amount of data that you can send with a single request. Especially if the audio is in WAV or FLAC format, converting it to a lossy format can make an enormous difference.
+
+    -   [Data limits and compression](/docs/services/speech-to-text/audio-formats.html#limits) compares the approximate duration of the audio that you can send with different formats.
+    -   [Audio conversion](/docs/services/speech-to-text/audio-formats.html#conversion) describes the tools that you can use to convert your audio to a more efficient format
+    -   [Converting to audio/ogg with the Opus codec](/docs/services/speech-to-text/audio-formats.html#conversionOgg) describes the **opusenc** tool, which you can use, for example, to convert a WAV or FLAC file to an Ogg file that uses the Opus code. This can greatly reduce the size of the audio, allowing you to send much more audio with a request.
 
 1.  <span style="color:#003F69">I passed a one-hour long audio file to the service but did not see results until the full transcription completed. How can I see my results sooner?</span>
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-02"
+lastupdated: "2017-11-04"
 
 ---
 
@@ -20,29 +20,29 @@ lastupdated: "2017-10-02"
 # Overview for developers
 {: #developerOverview}
 
-You can access the capabilities of the {{site.data.keyword.speechtotextshort}} service via a WebSocket interface, an HTTP Representational State Transfer (REST) interface, or an asynchronous HTTP interface. You can also customize the service's language models to suit your domain and environment. Several Software Development Kits (SDKs) are also available to simplify application development in various languages and environments. The following sections provide an overview of application development with the service.
+You can access the capabilities of the {{site.data.keyword.speechtotextshort}} service via a WebSocket interface, an HTTP Representational State Transfer (REST) interface, or an asynchronous HTTP interface. You can also customize the service's language models to suit your domain and environment. Several Software Development Kits (SDKs) are also available to simplify application development in various languages and environments.
 {: shortdesc}
 
 ## Programming with the service
 {: #programming}
 
-The {{site.data.keyword.speechtotextshort}} service offers three programming interfaces for transcribing speech to text:
+[Making a recognition request](/docs/services/speech-to-text/basic-request.html) shows you how to request a basic transcription with each of the service's programming interfaces:
 
--   [The WebSocket interface](/docs/services/speech-to-text/websockets.html) provides a single version of the `/v1/recognize` method for transcribing audio. The interface offers efficient implementation, low latency, and high throughput over a full-duplex connection.
--   [The HTTP REST interface](/docs/services/speech-to-text/http.html) provides HTTP `POST` versions of the `/v1/recognize` method that transcribe audio with or without establishing a session with the service. The methods let you send audio via the body of the request or as multipart form data that consists of one or more audio files. Additional methods of the interface let you establish and maintain sessions with the service and obtain information about supported languages and models.
--   [The asynchronous HTTP interface](/docs/services/speech-to-text/async.html) provides a non-blocking `POST /v1/recognitions` method for transcribing audio. Additional methods of the interface enable you to register a callback URL to which the service sends job status and optional results or to check the status of jobs and retrieve results manually. The interface uses HMAC-SHA1 signatures based on a user-specified secret to provide authentication and data integrity for callback notifications sent over the HTTP protocol.
+-   [The WebSocket interface](/docs/services/speech-to-text/websockets.html) offers an efficient, low latency, and high throughput implementation over a full-duplex connection.
+-   [The HTTP REST interface](/docs/services/speech-to-text/http.html) lets you transcribe audio with or without establishing a session with the service.
+-   [The asynchronous HTTP interface](/docs/services/speech-to-text/async.html) provides a non-blocking interface that lets you register a callback URL to receive notifications or poll the service for job status and results.
 
-While the various recognition methods share many common capabilities, you might specify the same parameter as a request header, a query parameter, or a parameter of a JSON object depending on the interface and method you are using. For more information about the service's features, see [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html).
+The interfaces provide the same recognition capabilities, but you might specify the same parameter as a request header, a query parameter, or a parameter of a JSON object depending on the interface and method you use. For a complete list of all available parameters, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
 
 ## Customizing the service
 {: #custom}
 
-The {{site.data.keyword.speechtotextshort}} service provides a customization interface that lets you create custom models for use in speech recognition requests:
+[The customization interface](/docs/services/speech-to-text/custom.html) lets you create custom models to improve the service's speech recognition capabilities:
 
--   *Custom language models.* The service's base vocabulary contains many words that are used in everyday conversation, but it can lack knowledge of terms that are associated with specific domains. The customization interface enables you to improve the accuracy of speech recognition for particular domains. You can create custom language models that expand the service's base vocabulary with terminology specific to domains such as medicine and law.
--   *Custom acoustic models.* The service was developed with a base acoustic model that works well with a variety of audio characteristics. But in some cases, adapting the base model for the acoustic characteristics of your environment and speakers can improve speech recognition. The customization interface allows you to provide example audio that matches the acoustic signature of the audio that you want to transcribe.
+-   *Custom language models* let you define domain-specific words for a base model. Custom language models expand the service's base vocabulary with terminology specific to domains such as medicine and law.
+-   *Custom acoustic models* let you adapt a base model for the acoustic characteristics of your environment and speakers. Custom acoustic models improve the service's ability to recognize speech for specific acoustic characteristics.
 
-You can use a custom language model, a custom acoustic model, or both for speech recognition with any of the interfaces described in the previous section. For more information, see [The customization interface](/docs/services/speech-to-text/custom.html).
+You can use a custom language model, a custom acoustic model, or both for speech recognition with any of the service's interfaces.
 
 ## Using Software Development Kits
 {: #sdks}
@@ -75,6 +75,6 @@ For more information about working with {{site.data.keyword.watson}} Developer C
 
 Converting speech to text is a difficult problem. Some general things to consider when using the {{site.data.keyword.speechtotextshort}} service in your applications follow:
 
--   *Speech recognition can be very sensitive to input audio quality.* When you experiment with the demo application or build an application of your own that uses the service, please try to ensure that the input audio quality is as good as possible. To obtain the best possible accuracy, use a close, speech-oriented microphone (such as a headset) whenever possible and adjust the microphone settings if necessary. Try to avoid using a laptop's built-in microphone.
--   *Choosing the correct model is important.* For most supported languages, the service supports two models: broadband and narrowband. {{site.data.keyword.IBM}} recommends that you use the broadband model for responsive, real-time applications and the narrowband model for offline decoding of telephone speech. For more information about the models and the sampling rates they support, see [Languages and models](/docs/services/speech-to-text/input.html#models).
+-   *Speech recognition can be very sensitive to input audio quality.* When you experiment with a demo application or build an application of your own that uses the service, try to ensure that the input audio quality is as good as possible. To obtain the best possible accuracy, use a close, speech-oriented microphone (such as a headset) whenever possible and adjust the microphone settings if necessary. Try to avoid using a laptop's built-in microphone.
+-   *Choosing the correct model is important.* For most supported languages, the service supports two models: broadband and narrowband. {{site.data.keyword.IBM}} recommends that you use the broadband model for responsive, real-time applications and the narrowband model for offline decoding of telephone speech.
 -   *Conversion of speech to text may not be perfect.* Tremendous progress has been made over the last several years. Today, speech recognition technology is successfully used in many domains and applications. However, in addition to audio quality, speech recognition systems are sensitive to nuances of human speech, such as regional accents and differences in pronunciation, and may not always successfully transcribe audio input.

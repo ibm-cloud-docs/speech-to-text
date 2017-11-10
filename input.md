@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-25"
+lastupdated: "2017-11-08"
 
 ---
 
@@ -20,13 +20,17 @@ lastupdated: "2017-10-25"
 # Input features
 {: #input}
 
-The {{site.data.keyword.speechtotextshort}} service offers the following features for specifying the audio that is to be transcribed and how the service is to perform the transcription. The information includes the service-independent authentication token and request logging features. For an alphabetized list of all available parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
+The {{site.data.keyword.speechtotextshort}} service offers the following features to specify how the service is to perform the recognition request. All of the input parameters described on this page are optional; only the input audio and its format are required.
 {: shortdesc}
+
+-   For examples of simple requests and responses for each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text/basic-request.html).
+-   For information about the supported audio formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
+-   For an alphabetized list of all available parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
 
 ## Authentication tokens and request logging
 {: #common}
 
-The {{site.data.keyword.speechtotextshort}} service leverages the following two {{site.data.keyword.watson}} service-independent features and parameters:
+The {{site.data.keyword.speechtotextshort}} service leverages the following two {{site.data.keyword.watson}} service-independent features:
 
 -   *Authentication tokens* are an alternative to service credentials that allow you to make authenticated requests to {{site.data.keyword.watson}} services without embedding your service credentials in every call. You use your service credentials to obtain a token for the service and then call the service directly, without relying on an intermediate server-side application for handling communications to and from the service. Note that you must use authentication tokens when working with the WebSocket interface. For more information, see [Tokens for authentication](/docs/services/watson/getting-started-tokens.html).
 
@@ -36,211 +40,19 @@ The {{site.data.keyword.speechtotextshort}} service leverages the following two 
 
     In either case, your data is always encrypted both in motion and at rest. For more information about opting out of request logging, see [Controlling request logging for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-logging.html).
 
-## Audio formats
-{: #formats}
-
-You must use the `Content-Type` request header to specify the audio format, or MIME type, of the data that you pass to the service. The service automatically detects the endianness of the incoming audio. (For the `audio/l16` format, you can specify the endianness.) For audio that includes multiple channels, the service downmixes the audio to one-channel mono during transcoding.
-
-The following table lists the supported formats and documents required and optional parameters where applicable.
-
-<table>
-  <caption>Table 1. Supported audio formats</caption>
-  <tr>
-    <th style="width:20%; text-align:left">Audio format</th>
-    <th style="text-align:left">Description</th>
-  </tr>
-  <tr>
-    <td>
-      <code>audio/basic</code>
-    </td>
-    <td>
-      <em>Basic audio files</em> provide single-channel audio that is encoded
-      using 8-bit u-law (or mu-law) data sampled at 8 kHz. This subtype
-      provides a lowest-common denominator format to indicate a media type
-      of audio. For more information, see the IETF
-      <a target="_blank" href="https://tools.ietf.org/html/rfc2046">Request
-        for Comment (RFC) 2046 ![External link icon](../../icons/launch-glyph.svg "External link icon")</a> and
-      <a target="_blank" href="http://www.iana.org/assignments/media-types/audio/basic">iana.org/assignments/media-types/audio/basic ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.<br/><br/>
-      The service supports the use of files in <code>audio/basic</code>
-      format only with narrowband models (for example,
-      <code>en-US_NarrowbandModel</code>).
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>audio/flac</code>
-    </td>
-    <td>
-      <em>Free Lossless Audio Codec (FLAC)</em>, a lossless compressed
-      audio coding format. For more information, see
-      <a target="_blank" href="https://en.wikipedia.org/wiki/FLAC">en.wikipedia.org/wiki/FLAC ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>audio/l16</code>
-    </td>
-    <td>
-      <em>Linear 16-bit Pulse-Code Modulation (PCM)</em>, an uncompressed
-      audio data format. Use this media type to pass a raw PCM file.
-      Note that linear PCM audio can also reside inside a container
-      Waveform Audio File Format (WAV) file. For more information,
-      see the Internet Engineering Task Force (IETF)
-      <a target="_blank" href="https://tools.ietf.org/html/rfc2586">Request
-        for Comment (RFC) 2586 ![External link icon](../../icons/launch-glyph.svg "External link icon")</a> and
-      <a target="_blank" href="https://en.wikipedia.org/wiki/Pulse-code_modulation">en.wikipedia.org/wiki/Pulse-code_modulation ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.<br/><br/>
-      When you use this media type, the service accepts additional required
-      and optional parameters on the format specification:
-      <ul style="margin-left:20px; padding:0px;">
-        <li style="margin:10px 0px; line-height:120%">
-          You must identify the sampling rate at which the audio is captured
-          by specifying an integer for the <code>rate</code> parameter. For
-          example, specify the following for audio data captured at 16
-           kHz:<br/><br/>
-          <code>audio/l16;rate=16000</code>
-        </li>
-        <li style="margin:10px 0px; line-height:120%">
-          If the audio has more than one channel, you must identify
-          the number of channels by specifying an integer for the
-          <code>channels</code> parameter. The service accepts a maximum
-          of 16 channels; it downmixes the audio to one channel during
-          transcoding. For example, specify the following for two-channel
-          audio data captured at 16 kHz:<br/><br/>
-          <code>audio/l16;rate=16000;channels=2</code>
-        </li>
-        <li style="margin:10px 0px; line-height:120%">
-          You can optionally identify the endianness of the audio by
-          specifying <code>big-endian</code> or <code>little-endian</code>
-          for the <code>endianness</code> parameter. The service auto-detects
-          the endianness of incoming audio, but its auto-detection can
-          sometimes fail and drop the connection for short audio. Specifying
-          the endianness with this parameter disables auto-detection. For
-          example, specify the following for audio data captured at 16 kHz
-          in little-endian format:<br/><br/>
-          <code>audio/l16;rate=16000;endianness=little-endian</code><br/><br/>
-          Note that Section 5.1 of
-          <a target="_blank" href="https://tools.ietf.org/html/rfc2045#section-5.1">Request for Comment (RFC) 2045 ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>
-          specifies big-endian format for <code>audio/l16</code>, but
-          many people use little-endian format.
-        </li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>audio/mp3</code><br/>
-      <code>audio/mpeg</code>
-    </td>
-    <td>
-      <em>MP3</em> or <em>Motion Picture Experts Group (MPEG)</em>, a lossy
-      data compression format (MP3 and MPEG refer to the same format).
-      For more information, see
-      <a target="_blank" href="https://en.wikipedia.org/wiki/MP3">en.wikipedia.org/wiki/MP3 ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>audio/mulaw</code>
-    </td>
-    <td>
-      <em>Mu-law (or u-law) audio files</em> provide single-channel
-      audio encoded using the u-law (or mu-law) data algorithm. For
-      more information, see
-      <a target="_blank" href="https://en.wikipedia.org/wiki/M-law_algorithm">en.wikipedia.org/wiki/M-law_algorithm ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.<br/><br/>
-      When you use this media type, you must specify the sampling rate
-      at which the audio is captured. For example, specify the following
-      for audio data sampled at 8 kHz: <code>audio/mulaw;rate=8000</code>.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>audio/ogg</code><br/>
-      <code>audio/ogg;codecs=opus</code><br/>
-      <code>audio/ogg;codecs=vorbis</code>
-    </td>
-    <td>
-      <em>Ogg</em> is a free, open container format maintained by the
-      Xiph.org Foundation; for more information, see
-      <a target="_blank" href="https://www.xiph.org/ogg/">www.xiph.org/ogg/ ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.
-      You can use audio streams compressed with the following codecs:
-      <ul style="margin-left:20px; padding:0px;">
-        <li style="margin:10px 0px; line-height:120%;">
-          <em>Opus</em>. For more information, see
-          <a target="_blank" href="https://www.opus-codec.org/">opus-codec.org ![External link icon](../../icons/launch-glyph.svg "External link icon")</a> and
-          <a target="_blank" href="https://en.wikipedia.org/wiki/Opus">en.wikipedia.org/wiki/Opus (audio format) ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.
-          On the <em>Opus (audio format)</em> page, look especially at the
-          <em>Containers</em> section.
-        </li>
-        <li style="margin:10px 0px; line-height:120%;">
-          <em>Vorbis</em>. For more information, see
-          <a target="_blank" href="https://xiph.org/vorbis/">xiph.org/vorbis ![External link icon](../../icons/launch-glyph.svg "External link icon")</a> and
-          <a target="_blank" href="https://en.wikipedia.org/wiki/Vorbis">en.wikipedia.org/wiki/Vorbis ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.
-        </li>
-      </ul>
-       Both codecs are free, open, lossy audio-compression formats. Opus is
-      the preferred codec. If you omit the codec, the service automatically
-      detects it from the input audio.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>audio/wav</code>
-    </td>
-    <td>
-      <em>Waveform Audio File Format (WAV)</em>, a standard created
-      by Microsoft&reg; and IBM. A WAV file is a container that is
-      often used for uncompressed audio bitstreams but can contain
-      compressed audio, as well. For more information, see
-      <a target="_blank" href="https://en.wikipedia.org/wiki/WAV">en.wikipedia.org/wiki/WAV ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.<br/><br/>
-      The service supports WAV files that use any encoding. It accepts
-      audio with a maximum of nine channels (due to an FFmpeg limitation).
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>audio/webm</code><br/>
-      <code>audio/webm;codecs=opus</code><br/>
-      <code>audio/webm;codecs=vorbis</code>
-    </td>
-    <td>
-      <em>Web Media (WebM)</em> is an open media-file format; for more
-      information, see
-      <a target="_blank" href="https://www.webmproject.org/">webmproject.org ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>.
-      WebM supports audio streams compressed with the Opus and Vorbis audio
-      codecs; Opus is the preferred codec. If you omit the codec, the service
-      automatically detects it from the input audio.<br/><br/>
-      For JavaScript code that shows how to capture audio from a microphone
-      in a Chrome browser and encode it into a WebM data stream, see
-      <a target="_blank" href="https://jsbin.com/hedujihuqo/edit?js,console">jsbin.com/hedujihuqo/edit?js,console ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>. Note that the code does not submit
-      the captured audio to the service.
-    </td>
-  </tr>
-</table>
-
-### Audio tools
-{: #audioTools}
-
-If your audio files are not in a format supported by the service, you can use one of a number of freeware tools available for converting audio between formats and for playing audio files:
-
--   Sound eXchange (SoX) ([sox.sourceforge.net ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://sox.sourceforge.net){: new_window})
--   FFmpeg ([ffmpeg.org ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ffmpeg.org){: new_window})
--   Audacity&reg; ([audacityteam.org ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://www.audacityteam.org/){: new_window})
-
-Each of these tools offers cross-platform support for multiple audio formats. Please do not use the tools to violate applicable copyright laws.
-
 ## Languages and models
 {: #models}
 
 You can use the `model` parameter to specify a language model for the request. The model indicates the language in which the audio is spoken and the rate at which it is sampled. For most languages, the service supports two models:
 
 -   A *broadband model* for audio that is sampled at greater than or equal to 16 kHz. {{site.data.keyword.IBM}} recommends that you use the broadband model for responsive, real-time applications (for example, for live-speech applications).
--   A *narrowband model* for audio that is sampled at 8 kHz. This rate typically corresponds to audio derived from the telephone.
+-   A *narrowband model* for audio that is sampled at 8 kHz. This rate is used typically for telephonic audio.
 
-The service automatically adjusts the sampling rate of your audio to match the model you specify. For example, the service converts audio recorded at higher sampling rates to 16 kHz prior to performing speech recognition with broadband models. In theory, therefore, you can send 44 kHz audio with the narrowband model. Note, however, that the service does not accept audio sampled at a lower rate than the intrinsic sampling rate of the model.
+The service automatically adjusts the sampling rate of your audio to match the model that you specify; for more information, see [Sampling rate](/docs/services/speech-to-text/audio-formats.html#samplingRate).
 
-The following table lists the supported models for each language. If you omit the model from any request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
+The following table lists the supported models for each language. If you omit the model from a request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
 
-<table>
+<table style="width:80%">
   <caption>Table 2. Supported language models</caption>
   <tr>
     <th style="text-align:left">Language</th>
@@ -291,12 +103,23 @@ The following table lists the supported models for each language. If you omit th
 
 To see the complete list of supported models, use the `GET /v1/models` method. To retrieve detailed information about a specific model, use the `GET /v1/models/{model_id}` method.
 
-> **Note:** The service capitalizes many proper nouns for the US English language models, `en-US_BroadbandModel` and `en-US_NarrowbandModel`. For example, for US English transcriptions, the service returns text that reads "Barack Obama graduated from Columbia University" instead of "barack obama graduated from columbia university," as it does for other language models.
+### Language model example
+{: #modelsExample}
+
+The following example request uses the model `en-US-NarrowbandModel`:
+
+```bash
+curl -X POST -u {username}:{password}
+--header "Content-Type: audio/flac"
+--data-binary @{path}audio-file.flac
+"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?model=en-US_NarrowbandModel"
+```
+{: pre}
 
 ## Custom models
 {: #custom}
 
-> **Note:** Language and acoustic model customization are available only for US English, Japanese, and Spanish. The features are available at different levels of support, generally available or beta, for the different languages. For more information, see [Language support for customization](#languageSupport).
+> **Note:** Language and acoustic model customization are available only for US English, Japanese, and Spanish. The features are available at different levels of support, generally available or beta, for the different languages. For more information, see [Language support for customization](/docs/services/speech-to-text/custom.html#languageSupport).
 
 All interfaces allow you to pass a custom model to the service for use in a recognition request:
 
@@ -304,6 +127,31 @@ All interfaces allow you to pass a custom model to the service for use in a reco
 -   Custom acoustic models let you adapt the service's base acoustic model for the acoustic characteristics of your environment and speakers. Use the `acoustic_customization_id` parameter to include a custom acoustic model with a request. You can specify both a custom language model and a custom acoustic model with a request. For more information, see [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html).
 
 Custom models are based on one of the language models described in [Languages and models](#models) and can be used only with the base model for which they are created. If your custom model is based on a model other than the `en-US_BroadbandModel`, the default, you must also specify the name of the model with the request. To use a custom model, you must issue the request with service credentials created for the instance of the service that owns the custom model. For an introduction to customization, see [The customization interface](/docs/services/speech-to-text/custom.html).
+
+### Custom model examples
+{: #customExample}
+
+The following example request includes the `customization_id` parameter to use the custom language model with the specified ID. It includes the `customization_weight` parameter to indicate that words from the custom model are to be given a relative weight of `0.5`.
+
+```bash
+curl -X POST -u {username}:{password}
+--header "Content-Type: audio/flac"
+--data-binary @{path}audio-file.flac
+"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?customization_id={customization_id}&customization_weight=0.5"
+```
+{: pre}
+
+The following example request uses both a custom language model and a custom acoustic model. The former is identified with the `customization_id` parameter, the latter with the `acoustic_customization_id` parameter.
+
+```bash
+curl -X POST -u {username}:{password}
+--header "Content-Type: audio/flac"
+--data-binary @{path}audio-file1.flac
+"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?customization_id={customization_id}&acoustic_customization_id={customization_id}"
+```
+{: pre}
+
+For examples of using custom models with each of the service's interfaces, see [Using a custom language model](/docs/services/speech-to-text/language-use.html) and [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html).
 
 ## Audio transmission
 {: #transmission}
@@ -313,58 +161,26 @@ Custom models are based on one of the language models described in [Languages an
 *With the HTTP interface,* you can transmit audio to the service in one of two ways:
 
 -   *One-shot delivery:* You omit the `Transfer-Encoding` header and pass all of the audio data to the service at one time as a single delivery.
--   *Streaming:* You set the `Transfer-Encoding` request header to the value `chunked` and stream the data over a persistent connection. The data does not need to exist fully before being streamed to the service; you can stream the data as it becomes available. For more information about the header, see [en.wikipedia.org/wiki/Chunked_transfer_encoding ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/Chunked_transfer_encoding){: new_window}.
+-   *Streaming:* You set the `Transfer-Encoding` request header to the value `chunked` and stream the data over a persistent connection. The data does not need to exist fully before being streamed to the service; you can stream the data as it becomes available. You also need to set the header to `chunked` for a request that passes more than one audio file. For more information about the header, see [en.wikipedia.org/wiki/Chunked_transfer_encoding ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/Chunked_transfer_encoding){: new_window}.
 
 With either interface, the service always transcribes the entire audio stream until it terminates. Transcription results can include multiple `transcript` elements to indicate phrases separated by pauses. Concatenate the `transcript` elements to assemble the complete transcription of the audio stream.
 
-To preserve system resources when you stream audio data, the service enforces timeouts, terminating the request if
+To preserve system resources when you stream audio data, the service enforces timeouts, terminating a request if the operation is started but the service receives no audio or if the service detects an extended period of silence in the audio. For information about the different timeouts associated with audio transmission, see [Timeouts](#timeouts).
 
--   The operation is started but the service receives no audio.
--   The service is receiving audio but it detects an extended period of silence.
+### Audio transmission example
+{: #transmissionExample}
 
-For information about the different timeouts associated with audio transmission, see [Timeouts](#timeouts).
+The following example request specifies `chunked` for the `Transfer-Encoding` header to use streaming mode. The header is necessary because the request passes two audio files.
 
-## Data limits and compression
-{: #limits}
-
-With either approach, streaming or one-shot delivery, the service imposes a size limit of 100 MB on the audio data that you can transcribe at one time. When recognizing long continuous audio streams or large files, you can take the following steps to ensure that your audio does not exceed the 100 MB limit:
-
--   Use a sampling rate no greater than 16 kHz (when using a broadband model) or 8 kHz (when using a narrowband model), and use 16 bits per sample. The service converts audio recorded at a sampling rate that is higher than the target model (16 kHz or 8 kHz) to the rate of the model. So larger frequencies do not result in enhanced recognition accuracy, but they do increase the size of the audio stream.
--   Encode your audio in a format that offers data compression. By encoding your data more efficiently, you can send far more audio without exceeding the 100 MB data limit. Audio formats such as `audio/mp3` and `audio/ogg` significantly reduce the size of your audio stream, allowing you to send greater amounts of audio with a single recognition request.
-
-For example, consider the approximate size of the data stream that results from two hours of continuous speech transmission that is sampled at 16 kHz and at 16 bits per sample. If the data is encoded with the `audio/wav` format, the two-hour stream has a size of 230 MB, well beyond the service's 100 MB limit. But the same two-hour stream encoded in the `audio/ogg` format has a size of only 23 MB, which is well below the service's limit. (For a general discussion of sampling rates and bit rates, see [What are Bit Rates](http://www.richardfarrar.com/what-are-bit-rates/){: new_window} and [Choosing Bit Rates for Podcasts](http://www.richardfarrar.com/choosing-bit-rates-for-podcasts/){: new_window}).
-
-The following table approximates the maximum duration of audio that can be sent with a recognition request in different formats given the 100 MB service limit. Actual values can vary depending on the complexity of the audio and the achieved compression rate.
-
-<table style="width:75%">
-  <caption>Table 3. Maximum duration of audio in different formats</caption>
-  <tr>
-    <th style="text-align:left; vertical-align:bottom; width 50%">
-      Audio format
-    </th>
-    <th style="text-align:center; vertical-align:bottom; width 50%">
-      Maximum duration of audio (approximate)
-    </th>
-  </tr>
-  <tr>
-    <td><code>audio/wav</code></td>
-    <td style="text-align:center">55 minutes</td>
-  </tr>
-  <tr>
-    <td><code>audio/flac</code></td>
-    <td style="text-align:center">1 hour 40 minutes</td>
-  </tr>
-  <tr>
-    <td><code>audio/mp3</code></td>
-    <td style="text-align:center">3 hours 20 minutes</td>
-  </tr>
-  <tr>
-    <td><code>audio/ogg</code></td>
-    <td style="text-align:center">8 hours 40 minutes</td>
-  </tr>
-</table>
-
-Note that if you compress the audio too severely with the `audio/ogg` format, you can lose some recognition accuracy; retaining at least 5 KB per second of audio is typically safe. Note also that `audio/ogg;codecs=opus` and `audio/webm;codecs=opus` are essentially equivalent, and their sizes should be almost identical. They use the same codec internally; only the container format is different.
+```bash
+curl -X POST -u {username}:{password}
+--header "Content-Type: audio/flac"
+--header "Transfer-Encoding: chunked"
+--data-binary @{path}audio-file1.flac
+--data-binary @{path}audio-file2.flac
+"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
+```
+{: pre}
 
 ## Timeouts
 {: #timeouts}
@@ -381,3 +197,18 @@ To preserve resources when you stream audio data, the service enforces various t
     You can override this timeout by specifying a different value for the `inactivity_timeout` parameter. Specify a value of `-1` to set the inactivity timeout to infinity.
 
 To improve usability for long audio files, the service avoids HTTP REST inactivity timeouts by sending a space character every 20 seconds in the response JSON object to keep the connection alive as long as recognition is ongoing. The WebSocket interface is not subject to such platform timeouts.
+
+### Inactivity timeout example
+{: #timeoutsExample}
+
+The following example request sets the inactivity timeout to 60 seconds for recognition of the specified files:
+
+```bash
+curl -X POST -u {username}:{password}
+--header "Content-Type: audio/flac"
+--header "Transfer-Encoding: chunked"
+--data-binary @{path}audio-file1.flac
+--data-binary @{path}audio-file2.flac
+"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?inactivity_timeout=60"
+```
+{: pre}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-27"
+lastupdated: "2017-11-09"
 
 ---
 
@@ -42,7 +42,7 @@ The words resource contains the following information about each OOV word. The s
 ## Working with corpora
 {: #workingCorpora}
 
-You use the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method to add a corpus to a custom model. A corpus is a plain text file that contains sample sentences from your domain. The following example shows an abbreviated corpus for the healthcare domain. A corpus file is typically much longer.
+You use the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method to add a corpus to a custom model. A corpus is a plain text file that contains sample sentences from your domain. The following example shows an abbreviated corpus for the healthcare domain; a corpus file is typically much longer.
 
 ```
 Am I at risk for health problems during travel?
@@ -68,6 +68,8 @@ The accuracy of transcription can depend largely on how words are defined in a m
 The service does not apply a simple word-matching algorithm. Its transcription depends on the context in which words are used. When it parses a corpus, the service includes information about n-grams (bi-grams, tri-grams, and so on) from the sentences of the corpus in the custom model. This information helps the service transcribe audio with greater accuracy, and it explains why training a custom model on corpora is more valuable than training it on custom words alone.
 
 For example, accountants adhere to a common set of standards and procedures known as Generally Accepted Accounting Principles (GAAP). When creating a custom model for a financial domain, the more sentences you provide that use the term GAAP in context, the better the service can distinguish between general sentences such as "the gap between them is small" and domain-centric sentences such as "GAAP provides guidelines for measuring and disclosing financial information."
+
+In general, it is better for corpora to use words in different contexts. However, if users speak the words in only one or two contexts, then showing the words in other contexts does not improve the quality of the custom model, since speakers never use the words in those contexts. If speakers are likely to use the same phrase frequently, then repeating that phrase in the corpora can improve the quality of the model. (In some cases, even adding a few custom words directly to a custom model can make a positive difference.)
 
 ### Preparing a corpus text file
 {: #prepareCorpus}

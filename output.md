@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-26"
+lastupdated: "2017-11-07"
 
 ---
 
@@ -20,99 +20,11 @@ lastupdated: "2017-10-26"
 # Output features
 {: #output}
 
-The {{site.data.keyword.speechtotextshort}} service offers the following features for indicating what the service is to return with its transcription. All output parameters are optional. The first section shows a default basic transcription with no output parameters. For an alphabetized list of all available parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
+The {{site.data.keyword.speechtotextshort}} service offers the following features to indicate the information that the service is to include in its transcription. All output parameters are optional.
 {: shortdesc}
 
-## Basic transcription
-{: #basic}
-
-By default, the service returns a basic transcription of the input audio. The following example cURL command submits a brief FLAC file named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac" download="audio-file.flac">audio-file.flac <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon" class="style-scope doc-content"></a> with no additional output parameters, and the service returns basic transcription results.
-
-```bash
-curl -X POST -u {username}:{password}
---header "Content-Type: audio/flac"
---data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
-```
-{: pre}
-
-```javascript
-{
-  "results": [
-    {
-      "alternatives": [
-        {
-          "confidence": 0.891,
-          "transcript": "several tornadoes touch down as a line of severe thunderstorms swept through Colorado on Sunday "
-        }
-      ],
-      "final": true
-    }
-  ],
-  "result_index": 0
-}
-```
-{: codeblock}
-
-The `results` field provides an array with a single `alternatives` element. As indicated by the value `true` in the `final` field, this is the final (and, in this case, only) transcription result for the audio. Because this is the final result, the output includes the service's `confidence` in the transcription, which approaches 90 percent. The `result_index` is `0` because this is the first (and only) result grouping provided for the response.
-
-### Hesitation markers
-{: #hesitation}
-
-The service can include hesitation markers in a transcript when it discovers brief fillers or pauses in speech. Also referred to as disfluencies, such pauses can include fillers such as "uhm", "uh", "hmm", and related non-lexical utterances. In English, the service uses the hesitation token `%HESITATION`, as shown in the following example.
-
-```javascript
-{
-  "results": [
-    {
-      "alternatives": [
-        {
-          "timestamps": [
-            [
-              "that",
-              7.31,
-              7.69
-            ],
-            [
-              "%HESITATION",
-              7.69,
-              7.98
-            ],
-            [
-              "that",
-              7.98,
-              8.31
-            ],
-            [
-              "there's",
-              8.31,
-              8.53
-            ],
-            [
-              "a",
-              8.53,
-              8.6
-            ],
-            [
-              "company",
-              8.6,
-              8.98
-            ],
-            . . .
-          ],
-          "confidence": 0.99,
-          "transcript": "that %HESITATION that there's a company "
-        }
-      ],
-      "final": true
-    }
-  ],
-  "result_index": 0
-}
-```
-{: codeblock}
-
-Other languages can use different markers; for example, Japanese uses the token `D_`. As shown in the example, the `%HESITATION` marker can appear in multiple fields of the output, such as the `transcript` and `timestamps` fields. Unless you need to use it for your application, you can safely filter the marker from the output.
+-   For examples of simple requests and responses for each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text/basic-request.html).
+-   For an alphabetized list of all available parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
 
 ## Speaker labels
 {: #speaker_labels}
@@ -347,12 +259,17 @@ Bear in mind that, as with all transcription, performance can also be affected b
 
 > **Note:** The keyword spotting feature is currently beta functionality that is available for all languages.
 
-The keyword spotting feature lets you detect specified strings in a transcript. The service can spot the same keyword multiple times and report each occurrence. The service spots keywords only in the final hypothesis, not in interim results.
+The keyword spotting feature lets you detect specified strings in a transcript. The service can spot the same keyword multiple times and report each occurrence. The service spots keywords only in the final hypothesis, not in interim results. By default, the service does no keyword spotting.
 
-By default, the service does no keyword spotting. You must specify both of the following parameters to use the feature:
+To use keyword spotting, you must specify both of the following parameters to use the feature:
 
 -   Use the `keywords` parameter to specify an array of strings to be spotted. The service spots no keywords if you omit the parameter or specify an empty array. A keyword string can include more than one token; for example, the keyword `Speech to Text` has three tokens. For US English, the service normalizes each keyword to match spoken versus written strings; for example, it normalizes numbers to match how they are spoken as opposed to written. For other languages, keywords must be specified as they are spoken.
 -   Use the `keywords_threshold` parameter to specify a probability between 0.0 and 1.0 for a keyword match. The threshold indicates the lower bound for the level of confidence the service must have for a word to match the keyword. A keyword is spotted in the transcript only if its confidence is greater than or equal to the specified threshold. Specifying a small threshold can potentially produce a large number of matches. If you specify a threshold, you must also specify one or more keywords. Omit the parameter to return no matches.
+
+Keyword spotting is necessary to identify keywords in an audio stream. You cannot identify keywords by processing the transcript that the service returns to the client because the transcript represents the best decoding results for the input audio. It does not include tokens with lower confidence scores that might represent a word of interest. So applying text processing tools to a transcript on the client side might not catch keywords. A richer representation of decoding results is needed, and such a representation is available only at the server.
+
+### Keyword spotting results
+{: #keywordSpottingResults}
 
 The service returns the results as a `keywords_result` object that is an element of the `results` array. The `keywords_result` object is a dictionary, or associative array, of enumerable properties of the object. Each property is identified by a specified keyword and includes an array of objects, with one element of the array returned for each match found for the keyword. The object for each match includes the following fields:
 
@@ -368,8 +285,6 @@ A keyword for which the service finds no matches is omitted from the array. A ke
 -   A keyword string that contains multiple tokens (for example, `Speech to Text`) is spoken with too much silence between its tokens. When the service transcribes audio, it chops the stream into a series of blocks. Each block represents a continuous chunk of audio that does not have an interval of silence that exceeds 0.5 second. It constructs an array of result objects that consists of these blocks.
 
     The service matches a multi-token keyword only if the keyword's tokens are in the same block *and* they are either adjacent or separated by a gap of no more than 0.1 second. (The latter case can occur if a brief filler or non-lexical utterance, such as "uhm" or "well," lies between two tokens of the keyword.)
-
-Keyword spotting is necessary to identify keywords in an audio stream. You cannot identify keywords by processing the transcript that the service returns to the client because the transcript represents the best decoding results for the input audio. It does not include tokens with lower confidence scores that might represent a word of interest. So applying text processing tools to a transcript on the client side might not catch keywords. A richer representation of decoding results is needed, and such a representation is available only at the server.
 
 ### Keyword spotting example
 {: #keywordSpottingExample}
@@ -571,6 +486,9 @@ The word alternatives feature (also known as Confusion Networks) reports hypothe
 By default, the service does not report word alternatives. To indicate that you want to receive alternative hypotheses, you use the `word_alternatives_threshold` parameter to specify a probability between 0.0 and 1.0. The threshold indicates the lower bound for the level of confidence the service must have in a hypothesis to return it as a word alternative. A hypothesis is returned only if its confidence is greater than or equal to the specified threshold.
 
 You can think of word alternatives as the timeline for a transcript chopped into smaller intervals, or bins. Each bin can have one or more hypotheses with different spellings and confidence. The `word_alternatives_threshold` parameter controls the density of the results that the service returns. Specifying a small threshold can potentially produce a large number of hypotheses.
+
+### Word alternatives results
+{: #wordAlternativesResults}
 
 The service returns the results as an array of `word_alternatives` that is an element of the `results` array. Each element of the `word_alternatives` array is an object that includes the following fields:
 
@@ -873,6 +791,8 @@ curl -X POST -u {username}:{password}
 The `smart_formatting` parameter converts dates, times, series of digits and numbers, phone numbers, currency values, and Internet addresses into more conventional representations in the final transcript of a recognition request. The conversion makes the transcript more readable and enables better post-processing of the transcription results. You set the parameter to `true` to enable smart formatting, as in the following example; by default, the parameter is `false` and smart formatting is not performed.
 
 Smart formatting is based on the presence of obvious keywords in the transcript. For example, times are identified by keywords such as *AM* or *EST*, and military times are converted if identified by the keyword *hours*. Phone numbers must be either *911* or a number with 10 digits or with 11 digits that start with the number *1*.
+
+> **Note:** The service capitalizes many proper nouns for the US English language models, `en-US_BroadbandModel` and `en-US_NarrowbandModel`. For example, for US English transcriptions, the service returns text that reads "Barack Obama graduated from Columbia University" instead of "barack obama graduated from columbia university," as it does for other language models. The services always performs this capitalization, regardless of whether you use smart formatting.
 
 ### Smart formatting example
 {: #smartFormattingExample}

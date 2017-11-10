@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-02"
+lastupdated: "2017-11-08"
 
 ---
 
@@ -38,12 +38,12 @@ The following sections document the new features and changes that were included 
     -   For complete details about all methods of the customization interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
 -   For language model customization, the service now includes a beta feature that lets you set an optional customization weight for a custom language model. A customization weight specifies the relative weight to be given to words from a custom language model as opposed to those from the service's base vocabulary. You can set a customization weight during both training and speech recognition. For more information, see [Using customization weight](/docs/services/speech-to-text/language-use.html#weight).
 -   The `ja-JP_BroadbandModel` language model was upgraded to capture improvements in the base model. The upgrade does not affect existing custom models based on the model.
--   The service now lets you specify the endianness of audio submitted in `audio/l16` (Linear 16-bit Pulse-Code Modulation (PCM)) format. In addition to specifying `rate` and `channels` parameters with the format, you can now also specify `big-endian` or `little-endian` with the `endianness` parameter. For more information, see [Audio formats](/docs/services/speech-to-text/input.html#formats).
+-   The service now lets you specify the endianness of audio submitted in `audio/l16` (Linear 16-bit Pulse-Code Modulation (PCM)) format. In addition to specifying `rate` and `channels` parameters with the format, you can now also specify `big-endian` or `little-endian` with the `endianness` parameter. For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 
 ## 14 July 2017
 {: #July2017b}
 
--   The service now supports the transcription of audio in the MP3 or Motion Picture Experts Group (MPEG) format. For more information about supported audio formats, see [Audio formats](/docs/services/speech-to-text/input.html#formats).
+-   The service now supports the transcription of audio in the MP3 or Motion Picture Experts Group (MPEG) format. For more information about supported audio formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 -   The language model customization interface now supports Spanish as beta functionality. You can create a custom model based on either of the base Spanish language models: `es-ES_BroadbandModel` or `es-ES_NarrowbandModel`; for more information, see [Creating a custom language model](/docs/services/speech-to-text/language-create.html). Pricing for recognition requests that use Spanish custom language models is the same as for requests that use US English and Japanese models.
 -   The JSON `CustomModel` object that you pass to the `POST /v1/customizations` method to create a new custom language model now includes a `dialect` field. The field specifies the dialect of the language that is to be used with the custom model. By default, the dialect matches the language of the base model. The parameter is meaningful only for Spanish models, for which the service lets you create a custom model that is suited for speech in one of the following dialects:
     -   `es-ES` for Castilian Spanish (the default)
@@ -143,7 +143,7 @@ The following deprecations first announced in March 2017 are now in effect:
     -   `ja-JP_BroadbandModel`
 
     For more information, see [Speaker labels](/docs/services/speech-to-text/output.html#speaker_labels).
--   The service now supports the Web Media (WebM) audio format with the Opus or Vorbis codec. The service now also supports the Ogg audio format with the Vorbis codec in addition to the Opus codec. For more information about supported audio formats, see [Audio formats](/docs/services/speech-to-text/input.html#formats).
+-   The service now supports the Web Media (WebM) audio format with the Opus or Vorbis codec. The service now also supports the Ogg audio format with the Vorbis codec in addition to the Opus codec. For more information about supported audio formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 -   The asynchronous HTTP interface now offers a `POST /v1/unregister_callback` method that allows you to remove the registration for a white-listed callback URL. For more information, see [Unregistering a callback URL](/docs/services/speech-to-text/async.html#unregister).
 -   The WebSocket interface no longer times out when handling recognition requests for especially long audio files. You no longer need to request interim results with the JSON `start` message to avoid the timeout. (This issue was described in the release notes for March 10, 2016.)
 -   The `DELETE /v1/customizations/{customization_id}` method now returns HTTP response code 401 if you attempt to delete a nonexistent custom model.
@@ -152,7 +152,7 @@ The following deprecations first announced in March 2017 are now in effect:
 ### 8 March 2017
 {: #March2017}
 
--   The asynchronous HTTP interface is now generally available. Prior to this date, it was beta functionality.
+The asynchronous HTTP interface is now generally available. Prior to this date, it was beta functionality.
 
 ### 1 December 2016
 {: #December2016}
@@ -182,7 +182,7 @@ For detailed documentation about the service's interface, see the [API reference
     -   [Creating a custom language model](/docs/services/speech-to-text/language-create.html)
     -   [Using a custom language model](/docs/services/speech-to-text/language-use.html)
     -   [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}
--   The list of supported audio formats now includes `audio/mulaw`, which provides single-channel audio encoded using the u-law (or mu-law) data algorithm. When you use this format, you must also specify the sampling rate at which the audio is captured. For more information, see [Audio formats](/docs/services/speech-to-text/input.html#formats).
+-   The list of supported audio formats now includes `audio/mulaw`, which provides single-channel audio encoded using the u-law (or mu-law) data algorithm. When you use this format, you must also specify the sampling rate at which the audio is captured. For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 -   The `GET /v1/models` and `GET /v1/models/{model_id}` methods now return an additional `supported_features` object as part of their output for each language model. The additional information describes whether the model supports customization. For more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
 
 ### 30 June 2016
@@ -196,14 +196,14 @@ The beta asynchronous HTTP interface now provides full support for all languages
 -   A beta asynchronous HTTP interface is now available. The interface provides full recognition capabilities for US English transcription via non-blocking HTTP calls. You can register callback URLs and provide user-specified secret strings to achieve authentication and data integrity with digital signatures. For more information, see [The asynchronous HTTP interface](/docs/services/speech-to-text/async.html) and the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
 -   A beta smart formatting feature that converts dates, times, series of digits and numbers, phone numbers, currency values, and Internet addresses into more conventional representations in final transcripts. The feature is enabled by setting the `smart_formatting` parameter to `true` on a recognition request. It is currently beta functionality that is available for US English only. For more information, see [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting).
 -   The list of supported models for speech recognition now includes `fr-FR_BroadbandModel` for audio in the French language that is sampled at a minimum of 16 kHz. For more information, see [Languages and models](/docs/services/speech-to-text/input.html#models).
--   The list of supported audio formats now includes `audio/basic`, which provides single-channel audio encoded using 8-bit u-law (or mu-law) data sampled at 8 kHz. For more information, see [Audio formats](/docs/services/speech-to-text/input.html#formats).
+-   The list of supported audio formats now includes `audio/basic`, which provides single-channel audio encoded using 8-bit u-law (or mu-law) data sampled at 8 kHz. For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 -   The various recognition methods can return a `warnings` response that includes messages about invalid query parameters or JSON fields included with a request. The format of the warnings has changed. For example, `"warnings": "Unknown arguments: [u'invalid_arg_1', u'invalid_arg_2']."` is now `"warnings": "Unknown arguments: invalid_arg_1, invalid_arg_2."`
 -   For HTTP `POST` requests that do not otherwise pass data to the service, you must include an empty request body of the form `{}`. With cURL, you use the `--data` option to pass the empty data.
 
 ### 10 March 2016
 {: #March2016}
 
--   Both forms of data transmission (one-shot delivery and streaming) now impose a size limit of 100 MB on the audio data, as does the WebSocket interface. Formerly, the one-shot approach had a maximum limit of 4MB of data. For more information, see [Audio transmission](/docs/services/speech-to-text/input.html#transmission) (for all interfaces) and [Sending audio and receiving recognition results](/docs/services/speech-to-text/websockets.html#WSaudio) (for the WebSocket interface). The WebSocket section also discusses the maximum frame or message size of 4 MB enforced by the WebSocket interface.
+-   Both forms of data transmission (one-shot delivery and streaming) now impose a size limit of 100 MB on the audio data, as does the WebSocket interface. Formerly, the one-shot approach had a maximum limit of 4MB of data. For more information, see [Audio transmission](/docs/services/speech-to-text/input.html#transmission) (for all interfaces) and [Send audio and receive recognition results](/docs/services/speech-to-text/websockets.html#WSaudio) (for the WebSocket interface). The WebSocket section also discusses the maximum frame or message size of 4 MB enforced by the WebSocket interface.
 -   The JSON response returned by the `POST /v1/sessions/{session_id}/recognize` and `POST /v1/recognize` methods of the HTTP interface, as well as the `/v1/recognize` method of the WebSocket interface, can now include an array of warning messages for invalid query parameters or JSON fields included with a request. Each element of the array is a string that describes the nature of the warning followed by an array of invalid argument strings; for example, `"warnings": [ "Unknown arguments: [u'invalid_arg_1', u'invalid_arg_2']." ]`. For more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
 -   The beta *{{site.data.keyword.watson}} Speech Software Development Kit (SDK) for the Apple&reg; iOS operating system* has been deprecated and replaced by the *{{site.data.keyword.watson}} Developer Cloud SDK for the Apple&reg; iOS operating system*. The new SDK is available from the [ios-sdk repository ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/ios-sdk){: new_window} in the `watson-developer-cloud` namespace on GitHub.
 
@@ -243,7 +243,7 @@ The {{site.data.keyword.speechtotextshort}} service was updated to include a new
 
     > **Note:** Because the SDKs are beta at this time, they are subject to change in the future.
 -   The service supports two new languages, Brazilian Portuguese and Mandarin Chinese. The models for these new languages are `pt-BR_BroadbandModel`, `pt-BR_NarrowbandModel`, `zh-CN_BroadbandModel`, and `zh-CN_NarrowbandModel`. For more information, see [Languages and models](/docs/services/speech-to-text/input.html#models).
--   The HTTP `POST` requests `/v1/sessions/{session_id}/recognize` and `/v1/recognize`, as well as the WebSocket `/v1/recognize` request, support transcription of an additional media type: `audio/ogg;codecs=opus` for Ogg format files that use the Opus codec. In addition, the `audio/wav` format for the methods now supports any encoding; the restriction regarding the use of linear PCM encoding has been removed. For more information, see [Audio formats](/docs/services/speech-to-text/input.html#formats).
+-   The HTTP `POST` requests `/v1/sessions/{session_id}/recognize` and `/v1/recognize`, as well as the WebSocket `/v1/recognize` request, support transcription of an additional media type: `audio/ogg;codecs=opus` for Ogg format files that use the Opus codec. In addition, the `audio/wav` format for the methods now supports any encoding; the restriction regarding the use of linear PCM encoding has been removed. For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 -   The service provides support for overcoming timeouts when you transcribe long audio files with the HTTP interface. When you use sessions, you can employ a long polling pattern by specifying sequence IDs with the `GET /v1/sessions/{session_id}/observe_result` and `POST /v1/sessions/{session_id}/recognize` methods for long-running recognition tasks. The new `sequence_id` parameter of these methods lets you request results for a recognition task before, during, or after you submit the recognition request. For more information, see [Transcribing long audio files with sessions](/docs/services/speech-to-text/http.html#HTTP-long).
 -   For the US English language models, `en_US_BroadbandModel` and `en_US_NarrowbandModel`, the service now correctly capitalizes many proper nouns. For example, the service would new return text that reads "Barack Obama graduated from Columbia University" instead of "barack obama graduated from columbia university." This change might be of interest to you if your application is sensitive in any way to the case of proper nouns.
 -   The HTTP `DELETE /v1/sessions/{session_id}` request does not return status code 415 "Unsupported Media Type." This return code has been removed from the documentation for the method.
@@ -265,7 +265,7 @@ The {{site.data.keyword.speechtotextshort}} service moved from beta to general a
 
     The service continues to support the old programming model that relied on a server-side proxy to relay audio and messages between the client and the service. But the new model is more efficient and provides higher throughput. For more information about the new programming model, see [Programming models for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-develop.html).
 -   The `POST /v1/sessions` and `POST /v1/recognize` methods, along with the WebSocket `/v1/recognize` method, now support a `model` query parameter. You use this parameter to specify the language, currently *English*, *Japanese*, or *Spanish*, and the minimum sampling rate, *broadband* (16 kHz) or *narrowband* (8 kHz), of the audio data in a single specification. For more information, see [Languages and models](/docs/services/speech-to-text/input.html#models).
--   The `Content-Type` header of the `recognize` methods now supports `audio/wav` for Waveform Audio File Format (WAV) files, in addition to `audio/flac` and `audio/l16`. For more information about the supported audio formats, see [Audio formats](/docs/services/speech-to-text/input.html#formats).
+-   The `Content-Type` header of the `recognize` methods now supports `audio/wav` for Waveform Audio File Format (WAV) files, in addition to `audio/flac` and `audio/l16`. For more information about the supported audio formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 -   The `recognize` methods now support a number of additional query parameters that let you tailor the service to suit your application needs:
     -   The `inactivity_timeout` parameter sets the timeout value in seconds after which the service closes the connection if it detects silence (no speech) in streaming mode. By default, the service terminates the session after 30 seconds of silence. See [Timeouts](/docs/services/speech-to-text/input.html#timeouts).
     -   The `max_alternatives` parameter instructs the service to return the *n*-best alternative hypotheses for the audio transcription. See [Maximum alternatives](/docs/services/speech-to-text/output.html#max_alternatives).

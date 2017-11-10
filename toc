@@ -36,6 +36,8 @@ Speech to Text
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
+    basic-request.md
+    audio-formats.md
     input.md
     output.md
     summary.md
