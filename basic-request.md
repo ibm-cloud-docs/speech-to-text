@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-07"
+lastupdated: "2017-11-14"
 
 ---
 
@@ -28,7 +28,7 @@ The {{site.data.keyword.speechtotextshort}} service offers three interfaces for 
 
 The following sections show very basic transcription requests, with no optional parameters, for each of the service's interfaces. The examples submit a brief FLAC file named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac" download="audio-file.flac">audio-file.flac <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon" class="style-scope doc-content"></a> and use the default language model, `en-US_BroadbandModel`. The service makes available a number of [Input features](/docs/services/speech-to-text/input.html) to control the audio that you send and many [Output features](/docs/services/speech-to-text/output.html) to request additional information in the resulting transcription. For a brief overview of all available parameters, see [Parameter summary](/docs/services/speech-to-text/summary.html).
 
-Regardless of the interface that you use, the service responds with a transcript of your audio that reflects the input and output parameters that you specified. The final sections show the basic transcription response that is returned for the examples that follow, including a description of the hesitation markers that can appear in a transcription.
+Regardless of the interface that you use, the service responds with a transcript of your audio that reflects the input and output parameters that you specified. The final sections show the basic transcription response that is returned for the examples that follow. They describe the meaning and possible contents of the different fields of the response, including a description of the hesitation markers that can appear in a transcript.
 
 ## Using the WebSocket interface
 
@@ -121,7 +121,25 @@ The service returns the following basic transcript of the input audio for the ex
 ```
 {: codeblock}
 
-The `results` field provides an array with a single `alternatives` element. As indicated by the value `true` in the `final` field, this is the final (and, in this case, only) transcription result for the audio. Because this is the final result, the output includes the service's `confidence` in the transcription, which approaches 90 percent. The `result_index` is `0` because this is the first (and only) result grouping provided for the response.
+The fields of the response provide the following information:
+
+-   `results` provides an array with information about the transcription. For a simple request like this one, with no additional parameters, the service sends a single `results` field. If you use the `interim_results` parameter to request interim results, the service sends evolving interim hypotheses in the form of multiple `results` fields as it transcribes the audio; for more information, see [Interim results](/docs/services/speech-to-text/output.html#interim).
+
+    The `results` field includes an array of elements that provide the following information:
+
+    -   `alternatives` provides an array of transcription results. For a simple request, the array includes a single element. If you use the `max_alternatives` parameter to request multiple alternative transcripts, the array includes a separate element for each alternative; for more information, see [Maximum alternatives](/docs/services/speech-to-text/output.html#max_alternatives).
+
+        -   `transcript` provides the results of the transcription.
+        -   `confidence` is a score that indicates the service's confidence in the transcription results, which for this example approaches 90 percent. If you request multiple alternative transcripts, the service returns a confidence score only for the best alternative.
+
+    -   `final` indicates whether the transcript shows final transcription results, results that are guaranteed not to change. The field is `true` for final results; it is `false` for interim results.
+
+-   `result_index` provides an identifier for the results. Because the example shows final results for a simple transcription request with only a single audio file and no additional request parameters, the service returns a single `result_index` field with an index of `0`.
+
+    -   If you request interim results, all interim and final results for the request have the same index. But once you receive results for which the `final` field is `true`, the service sends no further results with that index.
+    -   For a WebSocket connection, once you receive final results with a given index, the service sends no further results with that index for the duration of the connection. For example, the index for the next set of results sent over the connection is incremented by one.
+
+If you include additional output parameters with the request, the `results` field can include additional elements such as `keywords_result` and `word_alternatives`. Similarly, depending on the parameters that you include, the `alternatives` array can include additional fields such as `word_confidence` and `timestamps`. For more information about requesting additional information, see [Output parameters](/docs/services/speech-to-text/output.html).
 
 ## Hesitation markers
 {: #hesitation}
@@ -148,7 +166,7 @@ In English, the service uses the hesitation token `%HESITATION`, as shown in the
 ```
 {: codeblock}
 
-Hesitation markers can also appear in other fields of a transcript. For example, if you request [word timestamps](/docs/services/speech-to-text/output.html#word_timestamps) for the individual words of a transcript, the service reports the start and end time of each hesitation marker.
+Hesitation markers can also appear in other fields of a transcript. For example, if you request [Word timestamps](/docs/services/speech-to-text/output.html#word_timestamps) for the individual words of a transcript, the service reports the start and end time of each hesitation marker.
 
 ```javascript
 {
