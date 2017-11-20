@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-09"
+lastupdated: "2017-11-20"
 
 ---
 
@@ -76,7 +76,7 @@ In general, it is better for corpora to use words in different contexts. However
 
 Follow these guidelines to prepare a corpus text file:
 
--   Provide a plain text file that is encoded in UTF-8 if it contains non-ASCII characters. The service assumes UTF-8 encoding if it encounters such characters. (If your domain data is in a format other than ASCII or UTF-8, consider using the [{{site.data.keyword.watson}} {{site.data.keyword.documentconversionshort}} service ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/docs/services/document-conversion/index.html) to convert it to a text file.)
+-   Provide a plain text file that is encoded in UTF-8 if it contains non-ASCII characters. The service assumes UTF-8 encoding if it encounters such characters.
 -   Include each sentence of the corpus on its own line, terminating each line with a carriage return. Including multiple sentences on the same line can degrade accuracy.
 -   Use consistent capitalization for words in the corpus. The words resource is case-sensitive; mix upper- and lowercase letters and use capitalization only when intended.
 -   Beware of typographical errors. The service assumes that typos are new words. Unless you correct them before training the model, the service adds them to the model's vocabulary. Remember the adage *Garbage in, garbage out!*
