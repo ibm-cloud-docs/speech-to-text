@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-20"
+lastupdated: "2017-11-27"
 
 ---
 
@@ -35,7 +35,7 @@ The words resource contains the following information about each OOV word. The s
 -   `word`: The spelling of the word as found in a corpus or as added by you.
 -   `sounds_like`: How the word is pronounced. For words extracted from corpora, the value represents how the service believes the word is pronounced based on its language rules. In many cases, the pronunciation reflects the spelling of the `word` field, but you can modify the value of the field to change the word's pronunciation. You can use the field to specify multiple pronunciations for a word. For more information, see [Using the sounds_like field](#soundsLike).
 -   `display_as`: The spelling of the word that the service uses in transcriptions. The field indicates how the word is to be displayed. In most cases, the spelling matches the value of the `word` field, but you can use the `display_as` field to specify a different spelling for the word. For more information, see [Using the display_as field](#displayAs).
--   `source`: Where the word came from. If the service extracted the word from a corpus, the field lists the name of the corpus. Because the service can encounter the same word in multiple corpora, the field can list multiple corpus names. The field includes the string `user` if you add or modify the word in any way.
+-   `source`: How the word was added to the words resource. If the service extracted the word from a corpus, the field lists the name of the corpus. Because the service can encounter the same word in multiple corpora, the field can list multiple corpus names. The field includes the string `user` if you add or modify the word directly.
 
 > **Note:** When you update a model's words resource, you must train the model for the changes to take effect during transcription. See [Train the custom language model](/docs/services/speech-to-text/custom.md#trainModel).
 

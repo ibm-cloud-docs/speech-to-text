@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-08"
+lastupdated: "2017-11-27"
 
 ---
 
@@ -183,7 +183,7 @@ For detailed documentation about the service's interface, see the [API reference
     -   [Using a custom language model](/docs/services/speech-to-text/language-use.html)
     -   [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}
 -   The list of supported audio formats now includes `audio/mulaw`, which provides single-channel audio encoded using the u-law (or mu-law) data algorithm. When you use this format, you must also specify the sampling rate at which the audio is captured. For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
--   The `GET /v1/models` and `GET /v1/models/{model_id}` methods now return an additional `supported_features` object as part of their output for each language model. The additional information describes whether the model supports customization. For more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+-   The `GET /v1/models` and `GET /v1/models/{model_id}` methods now return an additional `supported_features` field as part of their output for each language model. The additional information describes whether the model supports customization. For more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
 
 ### 30 June 2016
 {: #June2016b}
@@ -273,7 +273,7 @@ The {{site.data.keyword.speechtotextshort}} service moved from beta to general a
     -   The `timestamps` parameter instructs the service to return the beginning and ending time relative to the start of the audio for each word of the transcription. See [Word timestamps](/docs/services/speech-to-text/output.html#word_timestamps).
 -   The `GET /v1/sessions/{session_id}/observeResult` method is now named `GET /v1/sessions/{session_id}/observe_result`. The name `observeResult` is still supported for backward compatibility.
 -   The `GET /v1/sessions/{session_id}/observe_result`, `POST /v1/sessions/{session_id}/recognize`, and `POST /v1/recognize` methods now include the header parameter `X-WDC-PL-OPT-OUT` to control whether the service uses the audio and transcription data from a request to improve future results. The WebSocket interface includes an equivalent query parameter. Specify a value of `1` to prevent the service from using the audio and transcription results. The parameter applies only to the current request. The new header replaces the `X-logging` header from the beta API. See [Controlling request logging for {{site.data.keyword.watson}} services](../common/getting-started-logging.html).
--   The service now has a limit of 100 MB of data per session in streaming mode. You specify streaming mode by specifying the value `chunked` with the header `Transfer-encoding`. One-shot delivery of an audio file still imposes a size limit of 4 MB on the data that is sent. See [Audio transmission](/docs/services/speech-to-text/input.html#transmission).
+-   The service now has a limit of 100 MB of data per session in streaming mode. You specify streaming mode by specifying the value `chunked` with the header `Transfer-Encoding`. One-shot delivery of an audio file still imposes a size limit of 4 MB on the data that is sent. See [Audio transmission](/docs/services/speech-to-text/input.html#transmission).
 -   For the `/v1/models`, `/v1/models/{model_id}`, `/v1/sessions`, `/v1/sessions/{session_id}`, `/v1/sessions/{session_id}/observe_result`, `/v1/sessions/{session_id}/recognize`, and `/v1/recognize` methods, error code 415 ("Unsupported Media Type") has been added.
 -   For `POST` and `GET` requests to the `/v1/sessions/{session_id}/recognize` method, the following error codes have been modified:
     -   Error code 404 ("Session_id not found") has a more descriptive message (`POST` and `GET`).

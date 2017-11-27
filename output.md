@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-07"
+lastupdated: "2017-11-27"
 
 ---
 
@@ -238,7 +238,7 @@ As a result, speaker IDs might not be sequential, contiguous, or ordered. For in
 
 You can request both speaker labels and interim results with a recognition request (see [Interim results](/docs/services/speech-to-text/output.html#interim)). On average, final results are generally better than interim results. But interim results can help identify the evolution of a transcription and the assignment of speaker labels, indicating where transient speakers and IDs appeared or disappeared. Be aware that the service can reuse the IDs of speakers that it initially identifies and later reconsiders and omits, so an ID might refer to two different speakers in interim and final results.
 
-When you request both interim results and speaker labels, final results for long audio streams might arrive well after initial interim results are returned. It is also possible for some interim results to include only a `speaker_labels` object without the `results` and `result_index` fields. If you do not request interim results, the service returns final results that include `results` and `result_index` fields and a single `speaker_labels` object.
+When you request both interim results and speaker labels, final results for long audio streams might arrive well after initial interim results are returned. It is also possible for some interim results to include only a `speaker_labels` field without the `results` and `result_index` fields. If you do not request interim results, the service returns final results that include `results` and `result_index` fields and a single `speaker_labels` field.
 
 The service sends final results when the audio stream is complete or in response to a timeout period, whichever occurs first. The service sets the `final` field to `true` only for the last word of the speaker labels that it returns in either case.
 
@@ -259,7 +259,7 @@ Bear in mind that, as with all transcription, performance can also be affected b
 
 > **Note:** The keyword spotting feature is currently beta functionality that is available for all languages.
 
-The keyword spotting feature lets you detect specified strings in a transcript. The service can spot the same keyword multiple times and report each occurrence. The service spots keywords only in the final hypothesis, not in interim results. By default, the service does no keyword spotting.
+The keyword spotting feature lets you detect specified strings in a transcript. The service can spot the same keyword multiple times and report each occurrence. The service spots keywords only in the final results, not in interim results. By default, the service does no keyword spotting.
 
 To use keyword spotting, you must specify both of the following parameters to use the feature:
 
@@ -271,7 +271,7 @@ Keyword spotting is necessary to identify keywords in an audio stream. You canno
 ### Keyword spotting results
 {: #keywordSpottingResults}
 
-The service returns the results as a `keywords_result` object that is an element of the `results` array. The `keywords_result` object is a dictionary, or associative array, of enumerable properties of the object. Each property is identified by a specified keyword and includes an array of objects, with one element of the array returned for each match found for the keyword. The object for each match includes the following fields:
+The service returns the results in a `keywords_result` field that is an element of the `results` array. The `keywords_result` field is a dictionary, or associative array, of enumerable properties. Each property is identified by a specified keyword and includes an array of objects, with one element of the array returned for each match found for the keyword. The object for each match includes the following fields:
 
 -   `normalized_text` is the specified keyword normalized to the spoken phrase that matched in the input audio.
 -   `start_time` is the start time in seconds of the match.
@@ -338,7 +338,7 @@ curl -X POST -u {username}:{password}
 ## Maximum alternatives
 {: #max_alternatives}
 
-The `max_alternatives` parameter accepts an integer value that tells the service to return the *n*-best alternative hypotheses. By default, the service returns only a single transcription result, which is equivalent to setting the parameter to `1`. By setting `max_alternatives` to a number greater than 1, you ask the service to return that number of the best alternative transcriptions.
+The `max_alternatives` parameter accepts an integer value that tells the service to return the *n*-best alternative hypotheses for the results. By default, the service returns only a single transcription result, which is equivalent to setting the parameter to `1`. By setting `max_alternatives` to a number greater than 1, you ask the service to return that number of the best alternative transcriptions.
 
 The service reports a confidence score only for the best alternative that it returns. In most cases, that is the alternative to choose.
 
@@ -490,7 +490,7 @@ You can think of word alternatives as the timeline for a transcript chopped into
 ### Word alternatives results
 {: #wordAlternativesResults}
 
-The service returns the results as an array of `word_alternatives` that is an element of the `results` array. Each element of the `word_alternatives` array is an object that includes the following fields:
+The service returns the results in a `word_alternatives` field that is an element of the `results` array. The `word_alternatives` field is an array of objects, each of which provides the following fields for an alternative word:
 
 -   `start_time` indicates the time in seconds at which the word for which hypotheses are returned starts in the input audio.
 -   `end_time` indicates the time in seconds at which the word for which hypotheses are returned ends in the input audio.
@@ -582,7 +582,7 @@ curl -X POST -u {username}:{password}
 ## Word confidence
 {: #word_confidence}
 
-The `word_confidence` parameter tells the service whether to provide confidence measures for the words of the transcript. By default, the service reports a confidence measure only for the final phrase as a whole. Setting `word_confidence` to `true` directs the service to report a confidence measure for each individual word of the phrase.
+The `word_confidence` parameter tells the service whether to provide confidence measures for the words of the transcript. By default, the service reports a confidence measure only for the final transcript as a whole. Setting `word_confidence` to `true` directs the service to report a confidence measure for each individual word of the transcript.
 
 A confidence measure indicates the service's estimation that the transcribed word is correct. Confidences scores range from 0.0 to 1.0. A score of 1.0 for a word indicates that the current transcription reflects the most likely result based on the acoustic evidence; a score of 0.5 means that the word has a 50-percent chance of being correct.
 
