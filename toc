@@ -59,6 +59,7 @@ Speech to Text
     Acoustic model customization
         acoustic-create.md
         acoustic-use.md
+        acoustic-both.md
         acoustic-resource.md
         acoustic-models.md
         acoustic-audio.md

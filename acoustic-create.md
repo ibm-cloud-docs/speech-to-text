@@ -27,10 +27,10 @@ Follow these steps to create a custom acoustic model for the {{site.data.keyword
 1.  [Add audio to the custom acoustic model](#addAudio). The service accepts the same audio file formats for acoustic modeling that it accepts for recognition requests. It also accepts archive files that contain multiple audio files, which is the preferred means of adding audio resources. You can repeat the method to add additional audio or archive files to a custom model.
 1.  [Train the custom acoustic model](#trainModel). Once you add audio resources to the custom model, you must train the model. Training prepares the custom acoustic model for use in speech recognition. Training can take a significant amount of time depending on the amount of audio data that the model contains.
 
-    You can specify a helper custom language model during training of your custom acoustic model. A custom language model that includes transcriptions of your audio files or OOV words from the domain of your audio files can improve the quality of the custom acoustic model. For more information, see [Training a custom acoustic model with a custom language model](/docs/services/speech-to-text/acoustic-use.html#useBothTrain).
+    You can specify a helper custom language model during training of your custom acoustic model. A custom language model that includes transcriptions of your audio files or OOV words from the domain of your audio files can improve the quality of the custom acoustic model. For more information, see [Training a custom acoustic model with a custom language model](/docs/services/speech-to-text/acoustic-both.html#useBothTrain).
 1.  After you train your custom model, you can use it with recognition requests. If the audio passed for transcription has acoustic qualities that are similar to the audio of the custom model, the results reflect the service's enhanced understanding. For more information, see [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html).
 
-    You can pass both a custom acoustic model and a custom language model in the same recognition request to further improve recognition accuracy. For more information, see [Using custom language and custom acoustic models during speech recognition](/docs/services/speech-to-text/acoustic-use.html#useBothRecognize).
+    You can pass both a custom acoustic model and a custom language model in the same recognition request to further improve recognition accuracy. For more information, see [Using custom language and custom acoustic models during speech recognition](/docs/services/speech-to-text/acoustic-both.html#useBothRecognize).
 
 The steps for creating a custom acoustic model are iterative. You can add or delete audio and train or retrain a model as often as needed. You must retrain a model for any changes to its audio to take effect. When retraining a model, all audio data is used in the training (not just the new data), so the training time is commensurate with the total amount of audio contained in the model.
 
@@ -115,24 +115,24 @@ You use the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_na
 
 -   The following example adds an audio-type resource to the acoustic custom model with the specified `customization_id`. The `Content-Type` header identifies the type of the audio as `audio/wav`. The audio file itself, **audio1.wav**, is passed as the body of the request, and the resource is given the named `audio1`.
 
-```bash
-curl -X POST -u {username}:{password}
---header "Content-Type: audio/wav"
---data-binary @audio1.wav
-"https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio1"
-```
-{: pre}
+    ```bash
+    curl -X POST -u {username}:{password}
+    --header "Content-Type: audio/wav"
+    --data-binary @audio1.wav
+    "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio1"
+    ```
+    {: pre}
 
 -   The following example adds an archive-type resource to the specified custom acoustic model. The `Content-Type` header identifies the type of the archive as `application/zip`, and the `Contained-Contented-Type` header indicates that all files in the archive have the format `audio/l16` and are sampled at a rate of 16 kHz. The archive file, **audio2.zip**, is passed as the body of the request, and the resource is given the name `audio2`.
 
-```bash
-curl -X POST -u {username}:{password}
---header "Content-Type: application/zip"
---header "Contained-Content-Type: audio/116;rate=16000"
---data-binary @audio2.zip
-"https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio2"
-```
-{: pre}
+    ```bash
+    curl -X POST -u {username}:{password}
+    --header "Content-Type: application/zip"
+    --header "Contained-Content-Type: audio/116;rate=16000"
+    --data-binary @audio2.zip
+    "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio2"
+    ```
+    {: pre}
 
 The method also accepts an optional `allow_overwrite` query parameter that lets you overwrite an existing audio resource for a custom model. Use the parameter if you need to update an audio resource after you have added it to a model.
 
@@ -189,7 +189,7 @@ curl -X POST -u {username}:{password}
 ```
 {: pre}
 
-The method also accepts an optional `custom_language_model_id` query parameter that lets you specify a separately created custom language model that is to be used during training. Create a custom language model that contains transcriptions of your audio files or corpora (text files) or a list of words that are relevant to the contents of the audio files, or use an existing custom language model that contains related OOV words. For more information, see [Training a custom acoustic model with a custom language model](/docs/services/speech-to-text/acoustic-use.html#useBothTrain).
+The method also accepts an optional `custom_language_model_id` query parameter that lets you specify a separately created custom language model that is to be used during training. Create a custom language model that contains transcriptions of your audio files or corpora (text files) or a list of words that are relevant to the contents of the audio files, or use an existing custom language model that contains related OOV words. For more information, see [Training a custom acoustic model with a custom language model](/docs/services/speech-to-text/acoustic-both.html#useBothTrain).
 
 The training method is asynchronous. Training can take on the order of minutes or hours to complete, depending on the amount of audio data that the model contains and the current load on the service. A rule of thumb is that training takes approximately twice the length of its audio data. For example, it can take four hours to train a model with two hours of audio. For information about checking the status of a training operation, see [Monitoring the train model request](#monitorTraining).
 

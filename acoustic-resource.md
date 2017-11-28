@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-10-23"
+lastupdated: "2017-11-28"
 
 ---
 
@@ -79,5 +79,5 @@ Follow these guidelines when adding audio resources to a custom acoustic model:
     -   For narrowband models, the sampling rate must be at least 8 kHz (8000 samples per second).
 
     If the sampling rate of the audio is higher than the minimum required sampling rate, the service down-samples the audio to the appropriate rate. If the sampling rate of the audio is lower than the minimum required rate, the service labels the audio file as `invalid`. If any audio file contained in an archive file is invalid, the service considers the entire archive invalid.
--    If your audio data is less than an hour long, {{site.data.keyword.IBM_notm}} recommends that you create a custom language model based on transcriptions of the audio to achieve the best results.
--    If your audio is domain-specific and contains unique words that are not found in the service's base vocabulary, acoustic model customization alone will not produce those words during transcription. You must use language model customization to expand the service's base vocabulary. For more information, see [Using custom acoustic and custom language models together](/docs/services/speech-to-text/acoustic-use.html#useBoth).
+-    If your audio data is less than an hour long, {{site.data.keyword.IBM_notm}} recommends that you create a custom language model based on transcriptions of the audio to achieve the best results. For more information, see [Using custom acoustic and custom language models together](/docs/services/speech-to-text/acoustic-both.html).
+-    If your audio is domain-specific and contains unique words that are not found in the service's base vocabulary, acoustic model customization alone will not produce those words during transcription. You must use language model customization to expand the service's base vocabulary. See [Using custom acoustic and custom language models together](/docs/services/speech-to-text/acoustic-both.html).

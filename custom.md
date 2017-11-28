@@ -54,7 +54,7 @@ The *acoustic model customization* interface lets you adapt a base model to your
 
 Using a custom acoustic model alone can improve the service's recognition capabilities. But if transcriptions or related corpora are available for your example audio, you can use that data to further improve the quality of speech recognition based on the custom acoustic model.
 
-By creating a custom language model that complements your custom acoustic model, you can enhance speech recognition by using the two models together. When training a custom acoustic model, you can specify a custom language model that includes transcriptions of the audio resources or a vocabulary of domain-specific words found in the resources. Similarly, when you transcribe audio, the service accepts a custom language model, a custom acoustic model, or both. For more information, see [Using custom acoustic and custom language models together](/docs/services/speech-to-text/acoustic-use.html#useBoth).
+By creating a custom language model that complements your custom acoustic model, you can enhance speech recognition by using the two models together. When training a custom acoustic model, you can specify a custom language model that includes transcriptions of the audio resources or a vocabulary of domain-specific words found in the resources. Similarly, when you transcribe audio, the service accepts a custom language model, a custom acoustic model, or both. For more information, see [Using custom acoustic and custom language models together](/docs/services/speech-to-text/acoustic-both.html).
 
 ## Language support for customization
 {: #languageSupport}

@@ -95,8 +95,8 @@ lastupdated: "2017-11-27"
 
     To use a transcription or list of words, you first create a custom language model with the textual data. You can then use both the custom language model and the custom acoustic model together as follows:
 
-    -   You can train the custom acoustic model with the custom language model. For more information, see [Training a custom acoustic model with a custom language model](/docs/services/speech-to-text/acoustic-use.html#useBothTrain).
-    -   You can use the custom language model with the custom acoustic model in speech recognition requests. For more information, see [Using custom language and custom acoustic models during speech recognition](/docs/services/speech-to-text/acoustic-use.html#useBothRecognize).
+    -   You can train the custom acoustic model with the custom language model. For more information, see [Training a custom acoustic model with a custom language model](/docs/services/speech-to-text/acoustic-both.html#useBothTrain).
+    -   You can use the custom language model with the custom acoustic model in speech recognition requests. For more information, see [Using custom language and custom acoustic models during speech recognition](/docs/services/speech-to-text/acoustic-both.html#useBothRecognize).
 
    Both of these approaches can improve the accuracy of speech recognition with a custom acoustic model.
 

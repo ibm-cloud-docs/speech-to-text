@@ -151,7 +151,7 @@ curl -X POST -u {username}:{password}
 ```
 {: pre}
 
-For examples of using custom models with each of the service's interfaces, see [Using a custom language model](/docs/services/speech-to-text/language-use.html) and [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html).
+For examples that use custom models with each of the service's interfaces, see [Using a custom language model](/docs/services/speech-to-text/language-use.html) and [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html).
 
 ## Audio transmission
 {: #transmission}

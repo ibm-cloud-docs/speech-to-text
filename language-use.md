@@ -20,7 +20,7 @@ lastupdated: "2017-11-27"
 # Using a custom language model
 {: #languageUse}
 
-Once you have created and trained your custom language model, you can use it in speech recognition requests. You specify the customization ID of the custom language model that is to be used with a request via the `customization_id` query parameter, as shown in the following examples. You can also specify the optional `customization_weight` query parameter to tell the service how much weight to give to words from the custom model; see [Using customization weight](#weight). You must issue the request with the service credentials of the service instance that owns the model.
+Once you have created and trained your custom language model, you can use it in speech recognition requests. You use the `customization_id` query parameter to specify the custom language model for a request, as shown in the following examples. You can also tell the service how much weight to give to words from the custom model; for more information, see [Using customization weight](#weight). You must issue the request with service credentials for the instance of the service that owns the model.
 {: shortdesc}
 
 -   For the WebSocket interface, use the `/v1/recognize` method:
