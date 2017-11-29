@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-07"
+lastupdated: "2017-11-28"
 
 ---
 
@@ -80,7 +80,7 @@ For information about the pricing plans available for the service, see the [{{si
 
 For examples of the {{site.data.keyword.speechtotextshort}} service in action, see
 
--   A [quick demo ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://speech-to-text-demo.mybluemix.net/){: new_window} that transcribes text from streaming audio input or from a file that you upload.
+-   A [quick demo ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://speech-to-text-demo.ng.bluemix.net/){: new_window} that transcribes text from streaming audio input or from a file that you upload.
 -   Applications in the {{site.data.keyword.watson}} Developer Cloud [Starter Kits ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://www.ibm.com/watson/developercloud/starter-kits.html){: new_window} that demonstrate the service.
 -   An [Application Starter Kit ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://audio-analysis-application-starter-kit.mybluemix.net/){: new_window} that also uses the Natural Language Understanding service to demonstrate live-audio analysis.
 -   The {{site.data.keyword.IBM_notm}} Watson blog post [Getting robots to listen: Using {{site.data.keyword.watson}}'s {{site.data.keyword.speechtotextshort}} service ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/blogs/watson/2016/07/getting-robots-listen-using-watsons-speech-text-service/){: new_window} that shows how to use the service's WebSocket interface with Python to extract speech from audio. The post provides a thorough tutorial that demonstrates the code and steps involved.

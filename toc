@@ -11,7 +11,7 @@ Speech to Text
 
     {: .topicgroup}
     Demos
-        [Quick demo](https://speech-to-text-demo.mybluemix.net/)
+        [Quick demo](https://speech-to-text-demo.ng.bluemix.net/)
 
     {: .topicgroup}
     Additional resources
