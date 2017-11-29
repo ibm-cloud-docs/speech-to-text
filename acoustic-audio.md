@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-10-02"
+lastupdated: "2017-11-28"
 
 ---
 
@@ -58,7 +58,7 @@ In the following example, three audio resources have been added to the custom ac
 
 ```javascript
 {
-  "total_minutes_of_audio": 355.1147255897521973,
+  "total_minutes_of_audio": 5.9185787598292032,
   "audio": [
     {
       "duration": 3.8428750038146973,
