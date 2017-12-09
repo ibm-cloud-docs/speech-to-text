@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-07"
+lastupdated: "2017-12-09"
 
 ---
 
@@ -140,7 +140,7 @@ The typical pattern for using sessions with the HTTP REST interface follows:
     ```
     {: codeblock}
 
-1.  *Check whether the session can accept a new recognition request* by calling the `GET /v1/sessions/{session_id}/recognize` method. The service does not allow concurrent recognition tasks during the same session; this method returns a state of `initialized` if the service is ready to accept a new request.
+1.  *Check whether the session can accept a new recognition request* by calling the `GET /v1/sessions/{session_id}/recognize` method. The service does not allow concurrent recognition tasks during the same session. The `GET /v1/sessions/{session_id}/recognize` method blocks until the session's state is `initialized`, indicating that it is ready to accept a new request.
 
     ```bash
     curl -X GET -u {username}:{password}
