@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-07"
+lastupdated: "2017-12-09"
 
 ---
 
@@ -230,19 +230,21 @@ function onOpen(evt) {
 ```
 {: codeblock}
 
-If it receives the request successfully, the service returns the following text message:
+If it receives the request successfully, the service returns the following text message to indicate that it is `listening`:
 
 ```javascript
 {'state': 'listening'}
 ```
 {: codeblock}
 
+The `listening` state indicates that the service instance is configured (your JSON `start` message was valid) and is ready to process a new utterance for a recognition request. Once it begins listening, the service processes any audio that was sent prior to the `listening` message.
+
 If the client specifies an invalid query parameter or JSON field as part of the input for a recognition request, the service's JSON response includes a `warnings` field that describes each invalid argument. The request succeeds despite the warnings.
 
 ## Send audio and receive recognition results
 {: #WSaudio}
 
-After it sends the initial `start` message, the client can begin sending audio data to the service. The client does not need to wait for the service to respond to the `start` message. The service returns the results of the transcription asynchronously in the same format as it returns results for the HTTP API.
+After it sends the initial `start` message, the client can begin sending audio data to the service. The client does not need to wait for the service to respond to the `start` message with the `listening` message. The service returns the results of the transcription asynchronously in the same format as it returns results for the HTTP API.
 
 The client must send the audio as binary data. The client can stream a maximum of 100 MB of audio data with a single utterance (per `send` request). The client can send multiple utterances over a single WebSocket connection.
 
