@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-28"
+lastupdated: "2017-12-14"
 
 ---
 
@@ -19,7 +19,7 @@ lastupdated: "2017-11-28"
 
 # About
 
-> ** Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on October 2, 2017. The service now supports beta acoustic model customization, which lets you develop custom acoustic models that are trained on the acoustic characteristics of your environment and speakers. The service now also supports a beta customization weight feature for custom language models, and it allows you to specify the endianness of audio submitted in `audio/l16` format. For information about all recent changes to the service, see the [Release notes](/docs/services/speech-to-text/release-notes.html).*
+> ** Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on December 14, 2017. The service now supports beta acoustic model customization for all available languages and models, it supports language model customization for UK English models, and language model customization is generally available (GA) for all languages for which it is supported. The service has also updated its base models for US English. Owners of custom language or custom acoustic models based on either of the US English models must upgrade their custom models to take advantage of the improvements. For information about these and all recent changes to the service, see the [Release notes](/docs/services/speech-to-text/release-notes.html).*
 
 The {{site.data.keyword.speechtotextfull}} service provides Application Programming Interfaces (APIs) that let you add speech transcription capabilities to your applications. To transcribe the human voice accurately, the service leverages machine intelligence to combine information about grammar and language structure with knowledge of the composition of the audio signal. The service continuously returns and retroactively updates a transcription as more speech is heard.
 {: shortdesc}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-10-23"
+lastupdated: "2017-12-14"
 
 ---
 
@@ -229,6 +229,7 @@ The response includes `status` and `progress` fields that report the current sta
 
     > **Note:** The `progress` field does not currently reflect the current progress of the training; the field changes from `0` to `100` when training is complete.
 -   `available` indicates that the model is trained and ready to use. The `progress` field is `100`.
+-   `upgrading` indicates that the model is currently being upgraded. The `progress` field is `0`.
 -   `failed` indicates that training of the model failed. The `progress` field is `0`.
 
 Use a loop to check the status of the training once a minute until the model becomes `available`. For information about other fields returned by the method, see [Listing custom acoustic models](/docs/services/speech-to-text/acoustic-models.html#listModels).

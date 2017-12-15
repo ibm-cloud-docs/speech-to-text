@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-10-02"
+lastupdated: "2017-12-14"
 
 ---
 
@@ -39,6 +39,7 @@ Both methods return the following information about a custom acoustic model:
 -   `name`: The name of the custom model.
 -   `description`: The description of the custom model, if one was provided at its creation.
 -   `base_model_name`: The name of the language model for which the custom model was created.
+-   `versions`: A list of the available versions of the custom model. Each element of the array indicates a version of the base model with which the custom model can be used. Multiple versions exist only if the custom model has been upgraded; otherwise, only a single version is shown.
 
 The methods also return a `status` field that indicates the current status of the custom model:
 
@@ -46,9 +47,10 @@ The methods also return a `status` field that indicates the current status of th
 -   `ready` indicates that the model contains audio data and is ready to be trained.
 -   `training` indicates that the model is currently being trained on audio data.
 -   `available` indicates that the model is trained and ready to use with recognition requests.
+-   `upgrading` indicates that the model is currently being upgraded.
 -   `failed` indicates that training of the model failed. Examine the model's audio resources to determine the errors that prevented the model from being trained (for example, not enough audio, too much audio, or an invalid audio resource).
 
-Additionally, the output includes a `progress` field that indicates the current progress of the custom model's training. If you used the `POST /v1/acoustic_customizations/{customization_id}/train` method to initiate training of the model, this field indicates the current progress of that request as a percentage complete. At this time, the value of the field is `0` if the status is `pending`, `ready`, `training`, or `failed`; the value is `100` if the status is `available`.
+Additionally, the output includes a `progress` field that indicates the current progress of the custom model's training. If you used the `POST /v1/acoustic_customizations/{customization_id}/train` method to initiate training of the model, this field indicates the current progress of that request as a percentage complete. At this time, the value of the field is `100` if the status is `available`; otherwise, it is `0`.
 
 ### Example requests and responses
 {: #listExample}
@@ -70,6 +72,10 @@ Two such models are owned by the service credentials. The first is awaiting data
       "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
       "created": "2016-06-01T18:42:25.324Z",
       "language": "en-US",
+      "versions": [
+        "en-US_BroadbandModel.v07-06082016.06202016",
+        "en-US_BroadbandModel.v2017-11-15"
+      ],
       "owner": "297cfd08-330a-22ba-93ce-1a73f454dd98",
       "name": "Example model one",
       "description": "Example custom acoustic model",
@@ -81,10 +87,13 @@ Two such models are owned by the service credentials. The first is awaiting data
       "customization_id": "8391f918-3b76-e109-763c-b7732fae4829",
       "created": "2016-06-01T18:51:37.291Z",
       "language": "en-US",
+      "versions": [
+        "en-US_BroadbandModel.v2017-11-15"
+      ],
       "owner": "297cfd08-330a-22ba-93ce-1a73f454dd98",
       "name": "Example model two",
       "description": "Example custom acoustic model two",
-      "base_model_name": "en-US_NarrowbandModel",
+      "base_model_name": "en-US_BroadbandModel",
       "status": "available",
       "progress": 100
     }
@@ -106,6 +115,10 @@ https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
   "created": "2016-06-01T18:42:25.324Z",
   "language": "en-US",
+  "versions": [
+    "en-US_BroadbandModel.v07-06082016.06202016",
+    "en-US_BroadbandModel.v2017-11-15"
+  ],
   "owner": "297cfd08-330a-22ba-93ce-1a73f454dd98",
   "name": "Example model one",
   "description": "Example custom acoustic model",

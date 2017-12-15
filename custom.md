@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-10"
+lastupdated: "2017-12-14"
 
 ---
 
@@ -56,6 +56,8 @@ Using a custom acoustic model alone can improve the service's recognition capabi
 
 By creating a custom language model that complements your custom acoustic model, you can enhance speech recognition by using the two models together. When training a custom acoustic model, you can specify a custom language model that includes transcriptions of the audio resources or a vocabulary of domain-specific words found in the resources. Similarly, when you transcribe audio, the service accepts a custom language model, a custom acoustic model, or both. For more information, see [Using custom acoustic and custom language models together](/docs/services/speech-to-text/acoustic-both.html).
 
+> **Note:** Some languages do not support both language and acoustic customization; see the following section for more information.
+
 ## Language support for customization
 {: #languageSupport}
 
@@ -77,12 +79,12 @@ Language and acoustic model customization are available for only some languages.
   <tr>
     <td>Brazilian Portuguese</td>
     <td style="text-align:center">Not supported</td>
-    <td style="text-align:center">Not supported</td>
+    <td style="text-align:center">Beta</td>
   </tr>
   <tr>
     <td>French</td>
     <td style="text-align:center">Not supported</td>
-    <td style="text-align:center">Not supported</td>
+    <td style="text-align:center">Beta</td>
   </tr>
   <tr>
     <td>Japanese</td>
@@ -92,22 +94,22 @@ Language and acoustic model customization are available for only some languages.
   <tr>
     <td>Mandarin Chinese</td>
     <td style="text-align:center">Not supported</td>
-    <td style="text-align:center">Not supported</td>
+    <td style="text-align:center">Beta</td>
   </tr>
   <tr>
     <td>Modern Standard Arabic</td>
     <td style="text-align:center">Not supported</td>
-    <td style="text-align:center">Not supported</td>
+    <td style="text-align:center">Beta</td>
   </tr>
   <tr>
     <td>Spanish</td>
-    <td style="text-align:center">Beta</td>
+    <td style="text-align:center">GA</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
     <td>UK English</td>
-    <td style="text-align:center">Not supported</td>
-    <td style="text-align:center">Not supported</td>
+    <td style="text-align:center">GA</td>
+    <td style="text-align:center">Beta</td>
   </tr>
   <tr>
     <td>US English</td>

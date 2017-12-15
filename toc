@@ -64,6 +64,8 @@ Speech to Text
         acoustic-models.md
         acoustic-audio.md
 
+    custom-upgrade.md
+
     {: topicgroup}
     Service background
         science.md

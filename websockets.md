@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-12-09"
+lastupdated: "2017-12-14"
 
 ---
 
@@ -136,6 +136,20 @@ A WebSocket client calls this method with the following query parameters to esta
       0.0 and 1.0; the default value is 0.3. See
       <a href="/docs/services/speech-to-text/language-use.html#weight">Using
       customization weight</a>.
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left"><code>version</code>
+      <br/><em>Optional</em></td>
+    <td style="text-align:center">String</td>
+    <td style="text-align:left">
+      Specifies the version of the base `model` that is to be used for all
+      requests sent over the connection. The parameter is intended primarily
+      for use with custom models that have been upgraded for a new base
+      model. The default value depends on whether the parameter is used with
+      or without a custom model. See
+      <a href="/docs/services/speech-to-text/input.html#version">Base model
+      version</a>.
     </td>
   </tr>
   <tr>
