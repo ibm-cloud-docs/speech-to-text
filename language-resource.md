@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-27"
+lastupdated: "2017-12-14"
 
 ---
 
@@ -88,7 +88,7 @@ More sentences result in better accuracy, but the service does limit a model to 
 
 When you add a corpus file, the service analyzes the file's contents, extracts any new (OOV) words that it finds, and adds each OOV word to the custom model's words resource. To distill the most meaning from the content, the service tokenizes and parses the data that it reads from a corpus file. The following sections describe how the service parses a corpus file for each supported language.
 
-#### Parsing of US English
+#### Parsing of English (US and UK)
 {: #corpusLanguages-enUS}
 
 -   Converts numbers to their equivalent words. For example, `500` becomes `five hundred`, and `0.15` becomes `zero point fifteen`.
@@ -96,6 +96,7 @@ When you add a corpus file, the service analyzes the file's contents, extracts a
 -   Ignores phrases enclosed in `( )` (parentheses), `< >` (angle brackets), `[ ]` (square brackets), or `{ }` (curly braces).
 -   Converts tokens that include certain symbols to meaningful strings. For example, the service
     -   Converts a `$` (dollar sign) followed by a number to its string representation: `$100` becomes `one hundred dollars`.
+    -   Converts a <code>&euro;</code> (euro sign) followed by a number to a string representation: <code>&euro;100</code> becomes `one hundred euros`.
     -   Converts a `%` (percent sign) preceded by a number to its string representation: `100%` becomes `one hundred percent`.
 
     This list is not exhaustive; the service makes similar adjustments for other characters as needed.
@@ -108,6 +109,7 @@ When you add a corpus file, the service analyzes the file's contents, extracts a
 -   Ignores phrases enclosed in `( )` (parentheses), `< >` (angle brackets), `[ ]` (square brackets), or `{ }` (curly braces).
 -   Converts tokens that include certain symbols to meaningful strings. For example, the service
     -   Converts a `$` (dollar sign) followed by a number to its string representation: `$100` becomes <code>cien d&oacute;lares</code> (or `cien pesos` if the dialect is `es-LA`).
+    -   Converts a <code>&euro;</code> (euro sign) followed by a number to a string representation: <code>&euro;100</code> becomes `cien euros`.
     -   Converts a `%` (percent sign) preceded by a number to its string representation: `100%` becomes `cien por ciento`.
 
     This list is not exhaustive; the service makes similar adjustments for other characters as needed.
@@ -157,6 +159,16 @@ Speech recognition uses statistical algorithms to analyze audio, so adding a wor
 -   Use the spelling of numbers, for example, `seventy-five` for `75`.
 -   You can include multiple words separated by spaces, but the service enforces a maximum of 40 total characters not including spaces.
 
+#### Guidelines for UK English
+{: #wordLanguages-enGB}
+
+You **cannot** use periods or dashes in sounds-like pronunciations for UK English. Specific differences from the US English guidelines are
+
+-   To pronounce a single letter, use the letter followed by a space. For example, use `N C A A`, *not* `N. C. A. A.`, `N.C.A.A.`, or `NCAA`.
+-   Use the spelling of numbers without dashes, for example, `seventy five` for `75`.
+
+Otherwise, the guidelines for UK English (`en-GB` models) are generally the same as those for US English (`en-US` models).
+
 #### Guidelines for Spanish
 {: #wordLanguages-esES}
 
@@ -199,7 +211,7 @@ The `display_as` field specifies how a word is displayed in a transcription. It 
 ```bash
 curl -X PUT -u {username}:{password}
 --header "Content-Type: application/json"
---data "{\"sounds_like": [\"hilton honors\", \"H. honors\"], \"display_as\": \"HHonors\"}"
+--data "{\"sounds_like\": [\"hilton honors\", \"H. honors\"], \"display_as\": \"HHonors\"}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words/hhonors"
 ```
 {: pre}

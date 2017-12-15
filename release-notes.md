@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-27"
+lastupdated: "2017-12-14"
 
 ---
 
@@ -22,6 +22,23 @@ lastupdated: "2017-11-27"
 
 The following sections document the new features and changes that were included for each release and update of the {{site.data.keyword.speechtotextshort}} service. Unless otherwise noted, all changes are backward-compatible and are automatically and transparently available to all new and existing applications.
 {: shortdesc}
+
+## 14 December 2017
+{: #December2017}
+
+-   The US English models, `en-US_BroadbandModel` and `en-US_NarrowbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. However, if you have custom language or custom acoustic models based on the US English models, you must upgrade your custom models to take advantage of the updated base models by using the following methods:
+
+    -   `POST /v1/customizations/{customization_id}/upgrade_model`
+    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+
+    [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html) provides complete details about the upgrade procedure. It presents rules for upgrading custom models, the effects of upgrading, and approaches for using the models following upgrade. At this time, the methods apply only to the new US English base models, but the same information will apply to upgrades of other base models that become available in the future.
+
+-   The various methods for making recognition requests now include a new `version` parameter that lets you initiate speech recognition requests that use either the older or upgraded versions of base and custom models. Although it is intended primarily for use with custom models that have been upgraded, the `version` parameter can also be used without custom models. For more information, see [Base model version](/docs/services/speech-to-text/input.html#version).
+-   The service now supports acoustic model customization as beta functionality for all available languages. You can create custom acoustic models for broadband or narrowband models for all languages. For an introduction to customization, including acoustic model customization, see [The customization interface](/docs/services/speech-to-text/custom.html).
+-   The service now supports language model customization for the UK English models, `en-GB_BroadbandModel` and `en-GB_NarrowbandModel`. Although the service handles UK and US English corpora and custom words in a generally similar fashion, some important differences exist:
+    -   For information about how the service parses corpora for UK English, see [Parsing of English (US and UK)](/docs/services/speech-to-text/language-resource.html#corpusLanguages-enUS).
+    -   For information about creating sounds-like pronunciations for custom words in UK English, see [Guidelines for UK English](/docs/services/speech-to-text/language-resource.html#wordLanguages-enGB). Specifically, for UK English, you cannot use periods or dashes in sounds-like pronunciations.
+-   Language model customization is now generally available (GA) for all supported languages: Japanese, Spanish, UK English, and US English.
 
 ## 2 October 2017
 {: #October2017}
@@ -45,7 +62,7 @@ The following sections document the new features and changes that were included 
 
 -   The service now supports the transcription of audio in the MP3 or Motion Picture Experts Group (MPEG) format. For more information about supported audio formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 -   The language model customization interface now supports Spanish as beta functionality. You can create a custom model based on either of the base Spanish language models: `es-ES_BroadbandModel` or `es-ES_NarrowbandModel`; for more information, see [Creating a custom language model](/docs/services/speech-to-text/language-create.html). Pricing for recognition requests that use Spanish custom language models is the same as for requests that use US English and Japanese models.
--   The JSON `CustomModel` object that you pass to the `POST /v1/customizations` method to create a new custom language model now includes a `dialect` field. The field specifies the dialect of the language that is to be used with the custom model. By default, the dialect matches the language of the base model. The parameter is meaningful only for Spanish models, for which the service lets you create a custom model that is suited for speech in one of the following dialects:
+-   The JSON `CreateLanguageModel` object that you pass to the `POST /v1/customizations` method to create a new custom language model now includes a `dialect` field. The field specifies the dialect of the language that is to be used with the custom model. By default, the dialect matches the language of the base model. The parameter is meaningful only for Spanish models, for which the service lets you create a custom model that is suited for speech in one of the following dialects:
     -   `es-ES` for Castilian Spanish (the default)
     -   `es-LA` for Latin-American Spanish
     -   `es-US` for North-American (Mexican) Spanish
@@ -55,7 +72,24 @@ The following sections document the new features and changes that were included 
 
     The deprecated `en-UK_{model}` names will continue to function for backward compatibility, but they will no longer be returned among the list of available models returned by the `GET /v1/models` method. You can still query them directly with the `GET /v1/models/{model_id}` method.
 
-## 1 July 2017
+## Older releases
+{: #older}
+
+-   [1 July 2017](#July2017a)
+-   [22 May 2017](#May2017)
+-   [10 April 2017](#April2017)
+-   [8 March 2017](#March2017)
+-   [1 December 2016](#December2016)
+-   [22 September 2016](#September2016)
+-   [30 June 2016](#June2016b)
+-   [23 June 2016](#June2016a)
+-   [10 March 2016](#March2016)
+-   [19 January 2016](#January2016)
+-   [17 December 2015](#December2015)
+-   [21 September 2015](#September2015)
+-   [1 July 2015](#July2015)
+
+### 1 July 2017
 {: #July2017a}
 
 -   The language model customization interface of the {{site.data.keyword.speechtotextshort}} service is now generally available (GA) for both of its supported languages, US English and Japanese. {{site.data.keyword.IBM_notm}} does not charge for creating, hosting, or managing custom language models. As described in the next bullet, {{site.data.keyword.IBM_notm}} now charges an additional $0.03 (USD) per minute of audio for recognition requests that use custom models.
@@ -87,22 +121,6 @@ The following sections document the new features and changes that were included 
     You no longer need to pass the following cURL option with the request: `--data "{}"`.
 
     > **Note:** If you experience any problems with one of these `POST` requests, try passing an empty data object with the body of the request. Passing an empty object does not change the nature or meaning of the request in any way.
-
-## Older releases
-{: #older}
-
--   [22 May 2017](#May2017)
--   [10 April 2017](#April2017)
--   [8 March 2017](#March2017)
--   [1 December 2016](#December2016)
--   [22 September 2016](#September2016)
--   [30 June 2016](#June2016b)
--   [23 June 2016](#June2016a)
--   [10 March 2016](#March2016)
--   [19 January 2016](#January2016)
--   [17 December 2015](#December2015)
--   [21 September 2015](#September2015)
--   [1 July 2015](#July2015)
 
 ### 22 May 2017
 {: #May2017}

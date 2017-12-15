@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-08"
+lastupdated: "2017-12-14"
 
 ---
 
@@ -119,12 +119,12 @@ curl -X POST -u {username}:{password}
 ## Custom models
 {: #custom}
 
-> **Note:** Language and acoustic model customization are available only for US English, Japanese, and Spanish. The features are available at different levels of support, generally available or beta, for the different languages. For more information, see [Language support for customization](/docs/services/speech-to-text/custom.html#languageSupport).
+> **Note:** Language and acoustic model customization are available at different levels of support (generally available or beta) for different languages. For more information, see [Language support for customization](/docs/services/speech-to-text/custom.html#languageSupport).
 
 All interfaces allow you to pass a custom model to the service for use in a recognition request:
 
--   Custom language models let you expand the service's base vocabulary with terminology from specific domains. Use the `customization_id` parameter to include a custom language model with a request. You can also specify an optional `customization_weight` parameter to indicate the relative weight given to words from the custom model compared to those from the base vocabulary. For more information, see [Using a custom language model](/docs/services/speech-to-text/language-use.html).
--   Custom acoustic models let you adapt the service's base acoustic model for the acoustic characteristics of your environment and speakers. Use the `acoustic_customization_id` parameter to include a custom acoustic model with a request. You can specify both a custom language model and a custom acoustic model with a request. For more information, see [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html).
+-   *Custom language models* let you expand the service's base vocabulary with terminology from specific domains. Use the `customization_id` parameter to include a custom language model with a request. You can also specify an optional `customization_weight` parameter to indicate the relative weight given to words from the custom model compared to those from the base vocabulary. For more information, see [Using a custom language model](/docs/services/speech-to-text/language-use.html).
+-   *Custom acoustic models* let you adapt the service's base acoustic model for the acoustic characteristics of your environment and speakers. Use the `acoustic_customization_id` parameter to include a custom acoustic model with a request. You can specify both a custom language model and a custom acoustic model with a request. For more information, see [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html).
 
 Custom models are based on one of the language models described in [Languages and models](#models) and can be used only with the base model for which they are created. If your custom model is based on a model other than the `en-US_BroadbandModel`, the default, you must also specify the name of the model with the request. To use a custom model, you must issue the request with service credentials created for the instance of the service that owns the custom model. For an introduction to customization, see [The customization interface](/docs/services/speech-to-text/custom.html).
 
@@ -152,6 +152,25 @@ curl -X POST -u {username}:{password}
 {: pre}
 
 For examples that use custom models with each of the service's interfaces, see [Using a custom language model](/docs/services/speech-to-text/language-use.html) and [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html).
+
+## Base model version
+{: #version}
+
+To improve the quality of speech recognition, the service occasionally updates the base language models described in [Languages and models](#models). The base models for languages are independent of each other, as are the broadband and narrowband models for a given language. Updates to base models therefore occur independently of each other and have no effect on other models.
+
+When multiple versions of a base model exist, the optional `version` parameter lets you specify the version of the model to be used with a recognition request. The parameter is intended primarily for use with custom models that have been updated for a new base model, but it can be used without a custom model. The version of a base model that is used for a request depends on whether you pass the `version` parameter and whether you specify a custom model (language, acoustic, or both) with the request:
+
+-   *If you do not specify a custom model with the request:*
+
+    -   Omit the `version` parameter to use the latest version of the base model.
+    -   Specify the `version` parameter to use a specific version of the base model.
+
+-   *If you specify a custom model with the request:*
+
+    -   Omit the `version` parameter to use the latest version of the base model to which the custom model has been upgraded. For example, if the custom model has been upgraded to the latest version of the base model, the service uses the latest versions of the base and custom models.
+    -   Specify the `version` parameter to use the specified versions of both the base and custom models.
+
+Because the parameter is intended for use with custom models, you can learn about the available versions of a base model only by listing information about a custom model that is based on it. For complete information about upgrading custom models and about using different versions of base and custom models for speech recognition, see [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html), especially [Making recognition requests with upgraded custom models](/docs/services/speech-to-text/custom-upgrade.html#upgradeRecognition).
 
 ## Audio transmission
 {: #transmission}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-10-02"
+lastupdated: "2017-12-14"
 
 ---
 
@@ -61,12 +61,9 @@ You use the the `POST /v1/customizations` method to create a new custom language
     <td style="text-align:center">String</td>
     <td>
       The name of the language model that is to be customized by the
-      new custom model. The interface currently supports only US English
-      and Japanese (GA) and Spanish (beta), so you must specify the name
-      of one of the <code>en-US</code>, <code>es-ES</code>, or
-      <code>ja-JP</code> language models returned by the <code>GET
-        /v1/models</code> method. The new model can be used only with
-      the base model that it customizes.
+      new custom model. Specify one of the supported language models
+      returned by the <code>GET /v1/models</code> method. The new model
+      can be used only with the base model that it customizes.
     </td>
   </tr>
   <tr>
@@ -343,6 +340,7 @@ The response includes `status` and `progress` fields that report the current sta
 
     > **Note:** The `progress` field does not currently reflect the progress of the training. The field changes from `0` to `100` when training is complete.
 -   `available` indicates that the model is trained and ready to use. The `progress` field is `100`.
+-   `upgrading` indicates that the model is currently being upgraded. The `progress` field is `0`.
 -   `failed` indicates that training of the model failed. The `progress` field is `0`.
 
 Use a loop to check the status every 10 seconds until it becomes `available`. For more information about checking the status of a custom model, see [Listing custom language models](/docs/services/speech-to-text/language-models.html#listModels).
