@@ -42,7 +42,7 @@ An optional customization ID for a custom acoustic model that is adapted for the
       **Availability**
     </td>
     <td style="text-align:left">
-      Beta for US English, Japanese, and Spanish
+      Beta for all languages
     </td>
   </tr>
   <tr>
@@ -138,8 +138,7 @@ An optional customization ID for a custom language model that includes terminolo
       **Availability**
     </td>
     <td style="text-align:left">
-      Generally available for US English and Japanese<br/>
-      Beta for Spanish
+      Generally available for US English, UK English, Japanese, and Spanish
     </td>
   </tr>
   <tr>
@@ -186,7 +185,7 @@ An optional double between 0.0 and 1.0 that indicates the relative weight that t
       **Availability**
     </td>
     <td style="text-align:left">
-      Beta for US English, Japanese, and Spanish
+      Generally available for US English, UK English, Japanese, and Spanish
     </td>
   </tr>
   <tr>
@@ -465,7 +464,7 @@ An optional integer that specifies the maximum number of alternative hypotheses 
 
 ## model
 
-An optional model that specifies the language in which the audio is spoken and the rate at which it was sampled, broadband or narrowband. By default, the `en-US_BroadbandModel` model is used. See [Language and models](/docs/services/speech-to-text/input.html#models).
+An optional model that specifies the language in which the audio is spoken and the rate at which it was sampled, broadband or narrowband. By default, `en-US_BroadbandModel` is used. See [Language and models](/docs/services/speech-to-text/input.html#models).
 
 <table>
   <tr>
