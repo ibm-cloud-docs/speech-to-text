@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-12-14"
+  years: 2015, 2018
+lastupdated: "2018-01-23"
 
 ---
 
@@ -193,7 +193,7 @@ An optional double between 0.0 and 1.0 that indicates the relative weight that t
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>/v1/recognize</code> connection request
+      Parameter of JSON <code>start</code> message
     </td>
   </tr>
   <tr>

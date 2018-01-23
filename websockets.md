@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-12-14"
+  years: 2015, 2018
+lastupdated: "2018-01-23"
 
 ---
 
@@ -126,19 +126,6 @@ A WebSocket client calls this method with the following query parameters to esta
     </td>
   </tr>
   <tr>
-    <td style="text-align:left"><code>customization_weight</code>
-      <br/><em>Optional</em></td>
-    <td style="text-align:center">Double</td>
-    <td style="text-align:left">
-      Specifies the weight the service gives to words from a specified
-      custom language model compared to those from the base model for
-      all requests sent over the connection. Specify a value between
-      0.0 and 1.0; the default value is 0.3. See
-      <a href="/docs/services/speech-to-text/language-use.html#weight">Using
-      customization weight</a>.
-    </td>
-  </tr>
-  <tr>
     <td style="text-align:left"><code>version</code>
       <br/><em>Optional</em></td>
     <td style="text-align:center">String</td>
@@ -229,7 +216,7 @@ To initiate a recognition request, the client sends a JSON text message to the s
   </tr>
 </table>
 
-The message can also include optional parameters to specify additional aspects of how the request is to be processed and the information that is to be returned. For more information, see [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html). Note that you can specify a language model, custom language model, custom acoustic model, and customization weight only as query parameters of the WebSocket URL.
+The message can also include optional parameters to specify additional aspects of how the request is to be processed and the information that is to be returned. For more information, see [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html). Note that you can specify a language model, custom language model, and custom acoustic model only as query parameters of the WebSocket URL.
 
 The following snippet of JavaScript code sends initialization parameters for the recognition request over the WebSocket connection. The calls are included in the client's `onOpen` function to ensure that they are sent only after the connection is established.
 
