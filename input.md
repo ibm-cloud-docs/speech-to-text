@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-12-14"
+  years: 2015, 2018
+lastupdated: "2018-01-25"
 
 ---
 
@@ -73,6 +73,11 @@ The following table lists the supported models for each language. If you omit th
     <td>Japanese</td>
     <td style="text-align:center"><code>ja-JP_BroadbandModel</code></td>
     <td style="text-align:center"><code>ja-JP_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>Korean</td>
+    <td style="text-align:center"><code>ko-KR_BroadbandModel</code></td>
+    <td style="text-align:center"><code>ko-KR_NarrowbandModel</code></td>
   </tr>
   <tr>
     <td>Mandarin Chinese</td>
