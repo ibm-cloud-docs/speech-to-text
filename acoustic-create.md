@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-12-14"
+  years: 2017, 2018
+lastupdated: "2018-02-13"
 
 ---
 
@@ -128,7 +128,7 @@ You use the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_na
     ```bash
     curl -X POST -u {username}:{password}
     --header "Content-Type: application/zip"
-    --header "Contained-Content-Type: audio/116;rate=16000"
+    --header "Contained-Content-Type: audio/l16;rate=16000"
     --data-binary @audio2.zip
     "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio2"
     ```
@@ -191,7 +191,7 @@ curl -X POST -u {username}:{password}
 
 The method also accepts an optional `custom_language_model_id` query parameter that lets you specify a separately created custom language model that is to be used during training. Create a custom language model that contains transcriptions of your audio files or corpora (text files) or a list of words that are relevant to the contents of the audio files, or use an existing custom language model that contains related OOV words. For more information, see [Training a custom acoustic model with a custom language model](/docs/services/speech-to-text/acoustic-both.html#useBothTrain).
 
-The training method is asynchronous. Training can take on the order of minutes or hours to complete, depending on the amount of audio data that the model contains and the current load on the service. A rule of thumb is that training takes approximately twice the length of its audio data. For example, it can take four hours to train a model with two hours of audio. For information about checking the status of a training operation, see [Monitoring the train model request](#monitorTraining).
+The training method is asynchronous. Training can take on the order of minutes or hours to complete, depending on the amount of audio data that the model contains and the current load on the service. A rule of thumb is that training takes approximately two to four times the length of its audio data. The range of time depends on the model being trained and the nature of the audio, such as whether the audio is clean or noisy. For example, it can take between four and eight hours to train a model with two hours of audio. For information about checking the status of a training operation, see [Monitoring the train model request](#monitorTraining).
 
 ### Monitoring the train model request
 {: #monitorTraining}

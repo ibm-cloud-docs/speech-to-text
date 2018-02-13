@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-28"
+  years: 2017, 2018
+lastupdated: "2018-02-13"
 
 ---
 
@@ -60,7 +60,7 @@ The following example from [Add audio to the custom acoustic model](/docs/servic
 ```bash
 curl -X POST -u {username}:{password}
 --header "Content-Type: application/zip"
---header "Contained-Content-Type: audio/116;rate=16000"
+--header "Contained-Content-Type: audio/l16;rate=16000"
 --data-binary @audio2.zip
 "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio2"
 ```
