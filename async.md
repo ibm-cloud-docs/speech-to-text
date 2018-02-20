@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-11-07"
+  years: 2015, 2018
+lastupdated: "2018-02-20"
 
 ---
 
@@ -38,7 +38,7 @@ When working with the service's asynchronous HTTP interface, you can elect to le
     1.  Call the `POST /v1/recognitions` method with an already registered callback URL to which the service sends notifications when the status of the job changes. You specify a list of events of which to be notified. By default, the service sends notifications when a job is started, when it is complete, and if an error occurs. You can request that the completion notification also include the results of the request; otherwise, you need to use the `GET /v1/recognitions/{id}` method to retrieve the results.
 -   By polling the service:
     1.  Call the `POST /v1/recognitions` method without a callback URL, events, or a user token.
-    1.  Periodically call the `GET /v1/recognitions` method to check the status of all of your current jobs or the `GET /v1/recognitions/{id}` method to check the status of the specific job.
+    1.  Periodically call the `GET /v1/recognitions` method to check the status of the 100 most recent jobs or the `GET /v1/recognitions/{id}` method to check the status of the specific job.
     1.  If you check job status with the `GET /v1/recognitions` method, call the `GET /v1/recognitions/{id}` method to retrieve the results of the job once it is complete.
 
 As mentioned previously, the two approaches are not mutually exclusive. You can still poll the service to obtain the latest status for a job that is created with a callback URL. For example, you may want to obtain the status of a job if notifications are taking a while to arrive or if you suspect that you may have missed one or more notifications due to a service or network error.
@@ -212,6 +212,7 @@ The `GET /v1/recognitions/{id}` method is the only way to retrieve job results i
 
 -   The job was submitted without a callback URL.
 -   The job was submitted with a callback URL but without specifying the `recognitions.completed_with_results` event.
+-   The job is not one of the 100 latest jobs. When the `id` path parameter isn't specified, only the 100 latest jobs are returned.
 
 However, you can still use the method to retrieve the results for a job that specified a callback URL and the `recognitions.completed_with_results` event. You can retrieve the results for any job as many times as you want as long as they remain available. A job and its results remain available until you delete them with the `DELETE /v1/recognitions/{id}` method or until the job's time to live expires, whichever comes first. By default, results expire after one week unless you specify a different time to live with the `results_ttl` parameter of the `POST /v1/recognitions` method.
 
@@ -291,10 +292,10 @@ curl -X GET -u {username}:{password}
 ```
 {: codeblock}
 
-## Checking the status of all jobs
+## Checking the status of the 100 latest jobs
 {: #jobs}
 
-You call the `GET /v1/recognitions` method to check the status of all outstanding jobs. The method returns the status of all current jobs associated with the service credentials with which it is called. The method returns the ID and status of each job, along with its creation and update times; if a job was created with a callback URL and a user token, the method also returns the user token for the job. The status is one of the following:
+You call the `GET /v1/recognitions` method to check the status of the 100 latest outstanding jobs. The method returns the status of the 100 latest current jobs associated with the service credentials with which it is called. The method returns the ID and status of each job, along with its creation and update times; if a job was created with a callback URL and a user token, the method also returns the user token for the job. The status is one of the following:
 
 -   `waiting` if the service is preparing the job for processing. This is the initial state of all jobs. The job remains in this state until the service has the capacity to begin processing it.
 -   `processing` if the service is actively processing the job.
@@ -306,7 +307,7 @@ A job and its results remain available until you delete them with the `DELETE /v
 ### Example
 {: #statusExample}
 
-The following example requests the status of all current jobs associated with the caller's service credentials. The user has three outstanding jobs in various states; the first job was created with a callback URL and a user token.
+The following example requests the status of 100 latest current jobs associated with the caller's service credentials. The user has three outstanding jobs in various states; the first job was created with a callback URL and a user token.
 
 ```bash
 curl -X GET -u {username}:{password}
