@@ -163,17 +163,17 @@ For examples that use custom models with each of the service's interfaces, see [
 
 To improve the quality of speech recognition, the service occasionally updates the base language models described in [Languages and models](#models). The base models for languages are independent of each other, as are the broadband and narrowband models for a given language. Updates to base models therefore occur independently of each other and have no effect on other models.
 
-When multiple versions of a base model exist, the optional `version` parameter lets you specify the version of the model to be used with a recognition request. The parameter is intended primarily for use with custom models that have been updated for a new base model, but it can be used without a custom model. The version of a base model that is used for a request depends on whether you pass the `version` parameter and whether you specify a custom model (language, acoustic, or both) with the request:
+When multiple versions of a base model exist, the optional `base_model_version` parameter lets you specify the version of the model to be used with a recognition request. The parameter is intended primarily for use with custom models that have been updated for a new base model, but it can be used without a custom model. The version of a base model that is used for a request depends on whether you pass the `base_model_version` parameter and whether you specify a custom model (language, acoustic, or both) with the request:
 
 -   *If you do not specify a custom model with the request:*
 
-    -   Omit the `version` parameter to use the latest version of the base model.
-    -   Specify the `version` parameter to use a specific version of the base model.
+    -   Omit the `base_model_version` parameter to use the latest version of the base model.
+    -   Specify the `base_model_version` parameter to use a specific version of the base model.
 
 -   *If you specify a custom model with the request:*
 
-    -   Omit the `version` parameter to use the latest version of the base model to which the custom model has been upgraded. For example, if the custom model has been upgraded to the latest version of the base model, the service uses the latest versions of the base and custom models.
-    -   Specify the `version` parameter to use the specified versions of both the base and custom models.
+    -   Omit the `base_model_version` parameter to use the latest version of the base model to which the custom model has been upgraded. For example, if the custom model has been upgraded to the latest version of the base model, the service uses the latest versions of the base and custom models.
+    -   Specify the `base_model_version` parameter to use the specified versions of both the base and custom models.
 
 Because the parameter is intended for use with custom models, you can learn about the available versions of a base model only by listing information about a custom model that is based on it. For complete information about upgrading custom models and about using different versions of base and custom models for speech recognition, see [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html), especially [Making recognition requests with upgraded custom models](/docs/services/speech-to-text/custom-upgrade.html#upgradeRecognition).
 

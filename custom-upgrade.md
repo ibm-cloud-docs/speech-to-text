@@ -131,7 +131,7 @@ The `versions` field indicates that the custom model is available for two versio
 ## Making recognition requests with upgraded custom models
 {: #upgradeRecognition}
 
-By default, the service uses the latest version of a custom model specified with a recognition request. However, even after a custom model is upgraded, you can continue to make recognition requests with the older version of the model. You use the `version` parameter of a recognition method to specify the version of a base model that is to be used for speech recognition.
+By default, the service uses the latest version of a custom model specified with a recognition request. However, even after a custom model is upgraded, you can continue to make recognition requests with the older version of the model. You use the `base_model_version` parameter of a recognition method to specify the version of a base model that is to be used for speech recognition.
 
 For example, the following sessionless HTTP request specifies that the older version of the base model is to be used, in which case the older version of the specified custom language model is also used:
 
@@ -145,7 +145,7 @@ curl -X POST -u {username}:{password}
 
 This feature lets you test the performance and accuracy of a custom model against both the old and new versions of the base model. If after upgrading a custom model you find that its performance is lacking in some way (perhaps certain words are no longer recognized as expected), you can continue to use the older version with recognition requests.
 
-[Base model version](/docs/services/speech-to-text/input.html#version) describes the `version` parameter and how the service determines what versions of the base and custom models to use with a recognition request. In addition to the information in that section, keep the following in mind when passing both custom language and custom acoustic models with a recognition request:
+[Base model version](/docs/services/speech-to-text/input.html#version) describes the `base_model_version` parameter and how the service determines what versions of the base and custom models to use with a recognition request. In addition to the information in that section, keep the following in mind when passing both custom language and custom acoustic models with a recognition request:
 
 -   If both custom models are based on the older base model, the service uses the old base model for recognition.
 -   If both custom models are based on the newer base model, the service uses the new base model for recognition.
