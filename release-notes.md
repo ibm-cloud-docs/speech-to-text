@@ -23,6 +23,16 @@ lastupdated: "2017-12-14"
 The following sections document the new features and changes that were included for each release and update of the {{site.data.keyword.speechtotextshort}} service. Unless otherwise noted, all changes are backward-compatible and are automatically and transparently available to all new and existing applications.
 {: shortdesc}
 
+## 26 March 2018
+{: #March2018b}
+
+-   The Spanish and Korean narrowband models, `es-ES_NarrowbandModel` and `ko-KO_NarrowbandModel`, and the French broadband model `fr-FR_BroadbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. However, if you have custom language or custom acoustic models based on either of these models, you must upgrade your custom models to take advantage of the updated base models by using the following methods:
+
+    -   `POST /v1/customizations/{customization_id}/upgrade_model`
+    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+
+    [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html) provides complete details about the upgrade procedure. It presents rules for upgrading custom models, the effects of upgrading, and approaches for using the models following upgrade.
+
 ## 1 March 2018
 {: #March2018}
 
