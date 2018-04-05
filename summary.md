@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-23"
+lastupdated: "2018-04-05"
 
 ---
 
@@ -43,6 +43,53 @@ An optional customization ID for a custom acoustic model that is adapted for the
     </td>
     <td style="text-align:left">
       Beta for all languages
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      **WebSocket**
+    </td>
+    <td style="text-align:left">
+      Query parameter of <code>/v1/recognize</code> connection request
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      **HTTP sessionless**
+    </td>
+    <td style="text-align:left">
+      Query parameter of <code>POST /v1/recognize</code> method
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      **HTTP sessions**
+    </td>
+    <td style="text-align:left">
+      Query parameter of <code>POST /v1/sessions</code> method
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      **HTTP asynchronous**
+    </td>
+    <td style="text-align:left">
+      Query parameter of <code>POST /v1/recognitions</code> method
+    </td>
+  </tr>
+</table>
+
+## base_model_version
+
+An optional version of a base model. The parameter is intended primarily for use with custom models that have been updated for a new base model, but it can be used without a custom model. The default value depends on whether the parameter is used with or without a custom model. See [Base model version](/docs/services/speech-to-text/input.html#version).
+
+<table>
+  <tr>
+    <td style="text-align:left; width:30%">
+      **Availability**
+    </td>
+    <td style="text-align:left">
+      Generally available for all languages
     </td>
   </tr>
   <tr>
@@ -138,7 +185,7 @@ An optional customization ID for a custom language model that includes terminolo
       **Availability**
     </td>
     <td style="text-align:left">
-      Generally available for US English, UK English, Japanese, and Spanish
+      Generally available for US English, UK English, Japanese, Korean, and Spanish
     </td>
   </tr>
   <tr>
@@ -185,7 +232,7 @@ An optional double between 0.0 and 1.0 that indicates the relative weight that t
       **Availability**
     </td>
     <td style="text-align:left">
-      Generally available for US English, UK English, Japanese, and Spanish
+      Generally available for US English, UK English, Japanese, Korean, and Spanish
     </td>
   </tr>
   <tr>
@@ -745,53 +792,6 @@ An optional value of `chunked` that causes the audio to be streamed to the servi
     </td>
     <td style="text-align:left">
       Request header of <code>POST /v1/recognitions</code> method
-    </td>
-  </tr>
-</table>
-
-## version
-
-An optional version of a base model. The parameter is intended primarily for use with custom models that have been updated for a new base model, but it can be used without a custom model. The default value depends on whether the parameter is used with or without a custom model. See [Base model version](/docs/services/speech-to-text/input.html#version).
-
-<table>
-  <tr>
-    <td style="text-align:left; width:30%">
-      **Availability**
-    </td>
-    <td style="text-align:left">
-      Generally available for all languages
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **WebSocket**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>/v1/recognize</code> connection request
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessionless**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/sessions</code> method
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP asynchronous**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
     </td>
   </tr>
 </table>

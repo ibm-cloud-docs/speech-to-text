@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-27"
+  years: 2017, 2018
+lastupdated: "2018-04-05"
 
 ---
 
@@ -23,7 +23,9 @@ lastupdated: "2017-11-27"
 Once you have created and trained your custom acoustic model, you can use it in speech recognition requests. You use the `acoustic_customization_id` query parameter to specify the custom acoustic model for a request, as shown in the following examples. You can also specify a custom language model to be used with the request, which can increase transcription accuracy; for more information, see [Using custom language and custom acoustic models during speech recognition](/docs/services/speech-to-text/acoustic-both.html#useBothRecognize). You must issue the request with service credentials for the instance of the service that owns the model.
 {: shortdesc}
 
--   For the WebSocket interface, use the `/v1/recognize` method:
+You can create multiple custom acoustic models for the same or different domains or environments. However, you can specify only one custom acoustic model at a time with the `acoustic_customization_id` parameter.
+
+-   For the WebSocket interface, use the `/v1/recognize` method. The specified custom model is used for all requests sent over the connection.
 
     ```javascript
     var token = {authentication-token};
@@ -36,7 +38,7 @@ Once you have created and trained your custom acoustic model, you can use it in 
     {: codeblock}
 
    For more information, see [The WebSocket interface](/docs/services/speech-to-text/websockets.html).
--   For a sessionless request with the HTTP REST interface, use the `POST /v1/recognize` method:
+-   For a sessionless request with the HTTP REST interface, use the `POST /v1/recognize` method. The specified custom model is used for that request.
 
     ```bash
     curl -X POST -u {username}:{password}
@@ -48,7 +50,7 @@ Once you have created and trained your custom acoustic model, you can use it in 
 
     For more information, see [Making sessionless requests](/docs/services/speech-to-text/http.html#HTTP-sessionless).
 
--   For a session-based request with the HTTP REST interface, use the `POST /v1/sessions` method:
+-   For a session-based request with the HTTP REST interface, use the `POST /v1/sessions` method. The specified custom model is used for all requests sent over the session.
 
     ```bash
     curl -X POST -u {username}:{password}
@@ -57,7 +59,7 @@ Once you have created and trained your custom acoustic model, you can use it in 
     {: pre}
 
     For more information, see [Making session-based requests](/docs/services/speech-to-text/http.html#HTTP-sessions).
--   For the HTTP asynchronous interface, use the `POST /v1/recognitions` method:
+-   For the HTTP asynchronous interface, use the `POST /v1/recognitions` method. The specified custom model is used for that request.
 
     ```bash
     curl -X POST -u {username}:{password}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-23"
+lastupdated: "2018-04-05"
 
 ---
 
@@ -126,7 +126,7 @@ A WebSocket client calls this method with the following query parameters to esta
     </td>
   </tr>
   <tr>
-    <td style="text-align:left"><code>version</code>
+    <td style="text-align:left"><code>base_model_version</code>
       <br/><em>Optional</em></td>
     <td style="text-align:center">String</td>
     <td style="text-align:left">

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-12-14"
+  years: 2015, 2018
+lastupdated: "2018-04-05"
 
 ---
 
@@ -26,24 +26,59 @@ The following sections document the new features and changes that were included 
 ## 26 March 2018
 {: #March2018b}
 
--   The Spanish and Korean narrowband models, `es-ES_NarrowbandModel` and `ko-KO_NarrowbandModel`, and the French broadband model `fr-FR_BroadbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. However, if you have custom language or custom acoustic models based on either of these models, you must upgrade your custom models to take advantage of the updated base models by using the following methods:
+-   The Spanish and Korean narrowband models, `es-ES_NarrowbandModel` and `ko-KR_NarrowbandModel`, and the French broadband model `fr-FR_BroadbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. However, if you have custom language or custom acoustic models based on either of these models, you must upgrade your custom models to take advantage of the updated base models by using the following methods:
 
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
     -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
     [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html) provides complete details about the upgrade procedure. It presents rules for upgrading custom models, the effects of upgrading, and approaches for using the models following upgrade.
+-   The `version` parameter of the following methods has been renamed `base_model_version`:
+
+    -   `/v1/recognize` for WebSocket requests
+    -   `POST /v1/recognize` for sessionless HTTP requests
+    -   `POST /v1/sessions` for session-based HTTP requests
+    -   `POST /v1/recognitions` for asynchronous HTTP requests
+
+    The `base_model_version` parameter lets you specify the version of a base model that is to be used for speech recognition. For more information, see [Making recognition requests with upgraded custom models](/docs/services/speech-to-text/custom-upgrade.html#upgradeRecognition) and [Base model version](/docs/services/speech-to-text/input.html#version).
 
 ## 1 March 2018
-{: #March2018}
+{: #March2018a}
 
--   The Spanish and French broadband models, `es-ES_BroadbandModel` and `fr-FR_BroadbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. However, if you have custom language or custom acoustic models based on either of these models, you must upgrade your custom models to take advantage of the updated base models by using the following methods:
+The Spanish and French broadband models, `es-ES_BroadbandModel` and `fr-FR_BroadbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. However, if you have custom language or custom acoustic models based on either of these models, you must upgrade your custom models to take advantage of the updated base models by using the following methods:
 
-    -   `POST /v1/customizations/{customization_id}/upgrade_model`
-    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+-   `POST /v1/customizations/{customization_id}/upgrade_model`
+-   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-    [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html) provides complete details about the upgrade procedure. It presents rules for upgrading custom models, the effects of upgrading, and approaches for using the models following upgrade.
+[Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html) provides complete details about the upgrade procedure. It presents rules for upgrading custom models, the effects of upgrading, and approaches for using the models following upgrade.
 
-## 14 December 2017
+## 1 February 2018
+{: #February2018}
+
+The service now offers models for the Korean language for speech recognition: `ko-KR_BroadbandModel` for audio that is sampled at a minimum of 16 kHz, and `ko-KR_NarrowbandModel` for audio that is sampled at a minimum of 8 kHz. For more information, see [Languages and models](/docs/services/speech-to-text/input.html#models).
+
+For language model customization, the Korean models are generally available for production use; for acoustic model customization, they are beta functionality. For more information, see [Language support for customization](/docs/services/speech-to-text/custom.html#languageSupport).
+
+## Older releases
+{: #older}
+
+-   [14 December 2017](#December2017)
+-   [2 October 2017](#October2017)
+-   [14 July 2017](#July2017b)
+-   [1 July 2017](#July2017a)
+-   [22 May 2017](#May2017)
+-   [10 April 2017](#April2017)
+-   [8 March 2017](#March2017)
+-   [1 December 2016](#December2016)
+-   [22 September 2016](#September2016)
+-   [30 June 2016](#June2016b)
+-   [23 June 2016](#June2016a)
+-   [10 March 2016](#March2016)
+-   [19 January 2016](#January2016)
+-   [17 December 2015](#December2015)
+-   [21 September 2015](#September2015)
+-   [1 July 2015](#July2015)
+
+### 14 December 2017
 {: #December2017}
 
 -   The US English models, `en-US_BroadbandModel` and `en-US_NarrowbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. However, if you have custom language or custom acoustic models based on the US English models, you must upgrade your custom models to take advantage of the updated base models by using the following methods:
@@ -53,14 +88,14 @@ The following sections document the new features and changes that were included 
 
     [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html) provides complete details about the upgrade procedure. It presents rules for upgrading custom models, the effects of upgrading, and approaches for using the models following upgrade. At this time, the methods apply only to the new US English base models, but the same information will apply to upgrades of other base models that become available in the future.
 
--   The various methods for making recognition requests now include a new `version` parameter that lets you initiate speech recognition requests that use either the older or upgraded versions of base and custom models. Although it is intended primarily for use with custom models that have been upgraded, the `version` parameter can also be used without custom models. For more information, see [Base model version](/docs/services/speech-to-text/input.html#version).
+-   The various methods for making recognition requests now include a new `base_model_version` parameter that lets you initiate speech recognition requests that use either the older or upgraded versions of base and custom models. Although it is intended primarily for use with custom models that have been upgraded, the `base_model_version` parameter can also be used without custom models. For more information, see [Base model version](/docs/services/speech-to-text/input.html#version).
 -   The service now supports acoustic model customization as beta functionality for all available languages. You can create custom acoustic models for broadband or narrowband models for all languages. For an introduction to customization, including acoustic model customization, see [The customization interface](/docs/services/speech-to-text/custom.html).
 -   The service now supports language model customization for the UK English models, `en-GB_BroadbandModel` and `en-GB_NarrowbandModel`. Although the service handles UK and US English corpora and custom words in a generally similar fashion, some important differences exist:
     -   For information about how the service parses corpora for UK English, see [Parsing of English (US and UK)](/docs/services/speech-to-text/language-resource.html#corpusLanguages-enUS).
     -   For information about creating sounds-like pronunciations for custom words in UK English, see [Guidelines for UK English](/docs/services/speech-to-text/language-resource.html#wordLanguages-enGB). Specifically, for UK English, you cannot use periods or dashes in sounds-like pronunciations.
 -   Language model customization is now generally available (GA) for all supported languages: Japanese, Spanish, UK English, and US English.
 
-## 2 October 2017
+### 2 October 2017
 {: #October2017}
 
 -   The customization interface now offers acoustic model customization. You can create custom acoustic models that adapt the service's base models to your environment and speakers. You populate and train a custom acoustic model on audio that more closely matches the acoustic signature of the audio that you want to transcribe. You then use the custom acoustic model with recognition requests to increase the accuracy of speech recognition.
@@ -77,7 +112,7 @@ The following sections document the new features and changes that were included 
 -   The `ja-JP_BroadbandModel` language model was upgraded to capture improvements in the base model. The upgrade does not affect existing custom models based on the model.
 -   The service now lets you specify the endianness of audio submitted in `audio/l16` (Linear 16-bit Pulse-Code Modulation (PCM)) format. In addition to specifying `rate` and `channels` parameters with the format, you can now also specify `big-endian` or `little-endian` with the `endianness` parameter. For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 
-## 14 July 2017
+### 14 July 2017
 {: #July2017b}
 
 -   The service now supports the transcription of audio in the MP3 or Motion Picture Experts Group (MPEG) format. For more information about supported audio formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
@@ -91,23 +126,6 @@ The following sections document the new features and changes that were included 
 -   The names of the language models `en-UK_BroadbandModel` and `en-UK_NarrowbandModel` have been deprecated. The models are now available with the names `en-GB_BroadbandModel` and `en-GB_NarrowbandModel`.
 
     The deprecated `en-UK_{model}` names will continue to function for backward compatibility, but they will no longer be returned among the list of available models returned by the `GET /v1/models` method. You can still query them directly with the `GET /v1/models/{model_id}` method.
-
-## Older releases
-{: #older}
-
--   [1 July 2017](#July2017a)
--   [22 May 2017](#May2017)
--   [10 April 2017](#April2017)
--   [8 March 2017](#March2017)
--   [1 December 2016](#December2016)
--   [22 September 2016](#September2016)
--   [30 June 2016](#June2016b)
--   [23 June 2016](#June2016a)
--   [10 March 2016](#March2016)
--   [19 January 2016](#January2016)
--   [17 December 2015](#December2015)
--   [21 September 2015](#September2015)
--   [1 July 2015](#July2015)
 
 ### 1 July 2017
 {: #July2017a}

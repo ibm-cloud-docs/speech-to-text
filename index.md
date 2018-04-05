@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-12-18"
+  years: 2015, 2018
+lastupdated: "2018-04-05"
 
 ---
 
@@ -18,8 +18,9 @@ lastupdated: "2017-12-18"
 {:swift: .ph data-hd-programlang='swift'}
 
 # About
+{: #about}
 
-> ** Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on December 14, 2017. The service now supports beta acoustic model customization for all available languages and models, it supports language model customization for UK English models, and language model customization is generally available (GA) for all languages for which it is supported. The service has also updated its base models for US English. Owners of custom language or custom acoustic models based on either of the US English models must upgrade their custom models to take advantage of the improvements. For information about these and all recent changes to the service, see the [Release notes](/docs/services/speech-to-text/release-notes.html).*
+> ** Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on March 26 and March 1, 2018. Multiple language models were updated for improved speech recognition. You must upgrade any custom language or custom acoustic models based on the updated models to take advantage of the improvements. For information about these and all recent changes to the service, see the [Release notes](/docs/services/speech-to-text/release-notes.html).*
 
 The {{site.data.keyword.speechtotextfull}} service provides Application Programming Interfaces (APIs) that let you add speech transcription capabilities to your applications. To transcribe the human voice accurately, the service leverages machine intelligence to combine information about grammar and language structure with knowledge of the composition of the audio signal. The service continuously returns and retroactively updates a transcription as more speech is heard.
 {: shortdesc}
@@ -63,7 +64,7 @@ The interfaces also support the following output features:
 ## Language support
 {: #languages}
 
-The service offers models for the following languages: Brazilian Portuguese, French, Japanese, Mandarin Chinese, Modern Standard Arabic, Spanish, UK English, and US English. The service does not support all features for all languages. In addition, it supports some features as generally available (GA) for production use and others as beta offerings for different languages.
+The service offers models for the following languages: Brazilian Portuguese, French, Japanese, Korean, Mandarin Chinese, Modern Standard Arabic, Spanish, UK English, and US English. The service does not support all features for all languages. In addition, it supports some features as generally available (GA) for production use and others as beta offerings for different languages.
 
 -   The WebSocket, HTTP REST, and asynchronous HTTP interfaces are generally available for all supported languages.
 -   The service offers broadband models, narrowband models, or both for different languages. For more information, see [Languages and models](/docs/services/speech-to-text/input.html#models).
