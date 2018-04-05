@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-11-27"
+  years: 2015, 2018
+lastupdated: "2018-04-05"
 
 ---
 
@@ -23,7 +23,9 @@ lastupdated: "2017-11-27"
 Once you have created and trained your custom language model, you can use it in speech recognition requests. You use the `customization_id` query parameter to specify the custom language model for a request, as shown in the following examples. You can also tell the service how much weight to give to words from the custom model; for more information, see [Using customization weight](#weight). You must issue the request with service credentials for the instance of the service that owns the model.
 {: shortdesc}
 
--   For the WebSocket interface, use the `/v1/recognize` method:
+You can create multiple custom language models for the same or different domains. However, you can specify only one custom language model at a time with the `customization_id` parameter.
+
+-   For the WebSocket interface, use the `/v1/recognize` method. The specified custom model is used for all requests sent over the connection.
 
     ```javascript
     var token = {authentication-token};
@@ -36,7 +38,7 @@ Once you have created and trained your custom language model, you can use it in 
     {: codeblock}
 
     For more information, see [The WebSocket interface](/docs/services/speech-to-text/websockets.html).
--   For a sessionless request with the HTTP REST interface, use the `POST /v1/recognize` method:
+-   For a sessionless request with the HTTP REST interface, use the `POST /v1/recognize` method. The specified custom model is used for that request.
 
     ```bash
     curl -X POST -u {username}:{password}
@@ -47,7 +49,7 @@ Once you have created and trained your custom language model, you can use it in 
     {: pre}
 
     For more information, see [Making sessionless requests](/docs/services/speech-to-text/http.html#HTTP-sessionless).
--   For a session-based request with the HTTP REST interface, use the `POST /v1/sessions` method:
+-   For a session-based request with the HTTP REST interface, use the `POST /v1/sessions` method. The specified custom model is used for all requests sent over the session.
 
     ```bash
     curl -X POST -u {username}:{password}
@@ -56,7 +58,7 @@ Once you have created and trained your custom language model, you can use it in 
     {: pre}
 
     For more information, see [Making session-based requests](/docs/services/speech-to-text/http.html#HTTP-sessions).
--   For the HTTP asynchronous interface, use the `POST /v1/recognitions` method:
+-   For the HTTP asynchronous interface, use the `POST /v1/recognitions` method. The specified custom model is used for that request.
 
     ```bash
     curl -X POST -u {username}:{password}

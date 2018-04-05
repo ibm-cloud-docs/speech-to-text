@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-12-14"
+  years: 2017, 2018
+lastupdated: "2018-04-05"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2017-12-14"
 # Upgrading custom models
 {: #customUpgrade}
 
-To improve the quality of speech recognition, the {{site.data.keyword.speechtotextshort}} service occasionally updates base models. For example, the US English models, `en-US_BroadbandModel` and `en-US_NarrowbandModel`, were both updated on December 14, 2017. Because base models for languages are independent of each other, as are the broadband and narrowband models for a given language, updates to individual base models do not effect other models.
+To improve the quality of speech recognition, the {{site.data.keyword.speechtotextshort}} service occasionally updates base models. Because base models for different languages are independent of each other, as are the broadband and narrowband models for a given language, updates to individual base models do not affect other models. The [Release notes](/docs/services/speech-to-text/release-notes.html) document all base model updates.
 {: shortdesc}
 
 When a new version of a base model is released, you must upgrade any custom language and custom acoustic models built on the base model to take advantage of the updates. Your custom models continue to use the older version of the base model until you complete the upgrade. As with all customization operations, you must use credentials for the instance of the service that owns a model to upgrade it.

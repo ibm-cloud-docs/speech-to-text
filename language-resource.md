@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-12-14"
+  years: 2015, 2018
+lastupdated: "2018-04-04"
 
 ---
 
@@ -146,7 +146,7 @@ The `sounds_like` field specifies how a word is pronounced by speakers. By defau
 
 -   Handle foreign words. For example, the French word <code>gar&ccedil;on</code> contains a character that is not found in the English language. You can specify a sounds-like of `gaarson`, replacing <code>&ccedil;</code> with `s`, to tell the service how English speakers would pronounce the word.
 
-Speech recognition uses statistical algorithms to analyze audio, so adding a word does not guarantee that the service will transcode it with complete accuracy. When adding a word, consider how it might be pronounced; use the `sounds_like` field to provide a variety of pronunciations that reflect how a word can be spoken. The following sections provide language-specific guidelines for specifying a sounds-like.
+Speech recognition uses statistical algorithms to analyze audio, so adding a word does not guarantee that the service will transcode it with complete accuracy. When adding a word, consider how it might be pronounced; use the `sounds_like` field to provide a variety of pronunciations that reflect how a word can be spoken. The following sections provide language-specific guidelines for specifying a sounds-like pronunciation.
 
 #### Guidelines for US English
 {: #wordLanguages-enUS}
