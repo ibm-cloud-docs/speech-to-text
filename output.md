@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-12-14"
+  years: 2015, 2018
+lastupdated: "2018-04-06"
 
 ---
 
@@ -263,7 +263,7 @@ The keyword spotting feature lets you detect specified strings in a transcript. 
 
 To use keyword spotting, you must specify both of the following parameters to use the feature:
 
--   Use the `keywords` parameter to specify an array of strings to be spotted. The service spots no keywords if you omit the parameter or specify an empty array. A keyword string can include more than one token; for example, the keyword `Speech to Text` has three tokens. For US English, the service normalizes each keyword to match spoken versus written strings; for example, it normalizes numbers to match how they are spoken as opposed to written. For other languages, keywords must be specified as they are spoken.
+-   Use the `keywords` parameter to specify an array of strings to be spotted. The service spots no keywords if you omit the parameter or specify an empty array. A keyword string can include more than one token; for example, the keyword `Speech to Text` has three tokens. For US English, the service normalizes each keyword to match spoken versus written strings; for example, it normalizes numbers to match how they are spoken as opposed to written. For other languages, keywords must be specified as they are spoken. You can spot a maximum of 1000 keywords with a single request.
 -   Use the `keywords_threshold` parameter to specify a probability between 0.0 and 1.0 for a keyword match. The threshold indicates the lower bound for the level of confidence the service must have for a word to match the keyword. A keyword is spotted in the transcript only if its confidence is greater than or equal to the specified threshold. Specifying a small threshold can potentially produce a large number of matches. If you specify a threshold, you must also specify one or more keywords. Omit the parameter to return no matches.
 
 Keyword spotting is necessary to identify keywords in an audio stream. You cannot identify keywords by processing the transcript that the service returns to the client because the transcript represents the best decoding results for the input audio. It does not include tokens with lower confidence scores that might represent a word of interest. So applying text processing tools to a transcript on the client side might not catch keywords. A richer representation of decoding results is needed, and such a representation is available only at the server.
