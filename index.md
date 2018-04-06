@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-04-05"
+lastupdated: "2018-04-06"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2018-04-05"
 # About
 {: #about}
 
-> ** Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on March 26 and March 1, 2018. Multiple language models were updated for improved speech recognition. You must upgrade any custom language or custom acoustic models based on the updated models to take advantage of the improvements. For information about these and all recent changes to the service, see the [Release notes](/docs/services/speech-to-text/release-notes.html).*
+> ** Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on March 26 and March 1, 2018. The service now supports language model customization for the French broadband model. In addition, multiple language models were updated for improved speech recognition; you must upgrade any custom language or custom acoustic models based on the updated models to take advantage of the improvements. For information about these and all recent changes to the service, see the [Release notes](/docs/services/speech-to-text/release-notes.html).*
 
 The {{site.data.keyword.speechtotextfull}} service provides Application Programming Interfaces (APIs) that let you add speech transcription capabilities to your applications. To transcribe the human voice accurately, the service leverages machine intelligence to combine information about grammar and language structure with knowledge of the composition of the audio signal. The service continuously returns and retroactively updates a transcription as more speech is heard.
 {: shortdesc}

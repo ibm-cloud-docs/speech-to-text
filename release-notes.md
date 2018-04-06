@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-04-05"
+lastupdated: "2018-04-06"
 
 ---
 
@@ -26,6 +26,7 @@ The following sections document the new features and changes that were included 
 ## 26 March 2018
 {: #March2018b}
 
+-   The service now supports language model customization for the French language model, `fr-FR_BroadbandModel`. The French model is generally available for production use with language model customization.
 -   The Spanish and Korean narrowband models, `es-ES_NarrowbandModel` and `ko-KR_NarrowbandModel`, and the French broadband model `fr-FR_BroadbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. However, if you have custom language or custom acoustic models based on either of these models, you must upgrade your custom models to take advantage of the updated base models by using the following methods:
 
     -   `POST /v1/customizations/{customization_id}/upgrade_model`

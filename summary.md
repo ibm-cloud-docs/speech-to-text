@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-04-05"
+lastupdated: "2018-04-06"
 
 ---
 
@@ -185,7 +185,7 @@ An optional customization ID for a custom language model that includes terminolo
       **Availability**
     </td>
     <td style="text-align:left">
-      Generally available for US English, UK English, Japanese, Korean, and Spanish
+      Generally available for US English, UK English, French, Japanese, Korean, and Spanish
     </td>
   </tr>
   <tr>
@@ -232,7 +232,7 @@ An optional double between 0.0 and 1.0 that indicates the relative weight that t
       **Availability**
     </td>
     <td style="text-align:left">
-      Generally available for US English, UK English, Japanese, Korean, and Spanish
+      Generally available for US English, UK English, French, Japanese, Korean, and Spanish
     </td>
   </tr>
   <tr>

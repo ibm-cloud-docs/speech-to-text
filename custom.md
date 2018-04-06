@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-01-24"
+lastupdated: "2018-04-06"
 
 ---
 
@@ -83,7 +83,7 @@ Language and acoustic model customization are available for only some languages.
   </tr>
   <tr>
     <td>French</td>
-    <td style="text-align:center">Not supported</td>
+    <td style="text-align:center">GA</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
