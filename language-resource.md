@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-04-04"
+lastupdated: "2018-04-06"
 
 ---
 
@@ -153,7 +153,7 @@ Speech recognition uses statistical algorithms to analyze audio, so adding a wor
 
 -   Use English alphabetic characters: `a-z` and `A-Z`.
 -   To pronounce a single letter, use the letter followed by a period. If the period is followed by another character, be sure to use a space between the period and the next character. For example, use `N. C. A. A.`, *not* `N.C.A.A.`
--   Use real or made-up words that are pronounceable in English, for example, `shuchensnie` for the word `Sczcesny`.
+-   Use real or made-up words that are pronounceable in English, for example, `shuchesnie` for the word `Sczcesny`.
 -   Substitute equivalent English letters for non-English letters, for example, `s` for <code>&ccedil;</code> or `ny` for <code>&ntilde;</code>.
 -   Substitute non-accented letters for accented letters, for example, `a` for <code>&agrave;</code> or `e` for <code>&egrave;</code>.
 -   Use the spelling of numbers, for example, `seventy-five` for `75`.
@@ -174,7 +174,7 @@ Otherwise, the guidelines for UK English (`en-GB` models) are generally the same
 
 -   Use Spanish alphabetic characters: `a-z` and `A-Z` including valid Spanish accented letters.
 -   To pronounce a single letter, use the letter followed by a period. If the period is followed by another character, be sure to use a space between the period and the next character. For example, use `N. C. A. A.`, *not* `N.C.A.A.`
--   Use real or made-up words that are pronounceable in Spanish, for example, `shuchensni` for the word `Sczcesny`.
+-   Use real or made-up words that are pronounceable in Spanish, for example, `shuchesnie` for the word `Sczcesny`.
 -   Use the spelling of numbers, for example, `setenta y cinco` for `75`.
 -   You can include multiple words separated by spaces, but the service enforces a maximum of 40 total characters not including spaces.
 
