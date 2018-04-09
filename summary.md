@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-04-06"
+lastupdated: "2018-04-09"
 
 ---
 
@@ -23,14 +23,18 @@ lastupdated: "2018-04-06"
 This page summarizes all of the parameters available for speech recognition. Each parameter includes a link to its description in [Input features](/docs/services/speech-to-text/input.html) or [Output features](/docs/services/speech-to-text/output.html). For complete details about all methods of the {{site.data.keyword.speechtotextshort}} service, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
 {: shortdesc}
 
-When making a request, keep the following in mind:
+Keep the following in mind when making any request:
 
 -   Method names are case-sensitive.
 -   HTTP request headers are case-insensitive.
 -   HTTP query parameters are case-sensitive.
 -   JSON field names are case-sensitive.
+-   All JSON response content is in the UTF-8 character set.
 
-You need to specify only the input audio and its format (`Content-Type`); all other parameters are optional. If you specify an invalid query parameter or JSON field as part of the input for a recognition request, the response includes a `warnings` field that describes the invalid argument. The request succeeds despite the warnings.
+And when making a speech recognition request:
+
+-   You need to specify only the input audio and its format (`Content-Type`). All other parameters are optional.
+-   If you specify an invalid query parameter or JSON field as part of the input, the response includes a `warnings` field that describes the invalid argument. The request succeeds despite any warnings.
 
 ## acoustic_customization_id
 

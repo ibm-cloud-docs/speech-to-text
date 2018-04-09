@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-11-04"
+  years: 2015, 2018
+lastupdated: "2018-04-09"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2017-11-04"
 # Overview for developers
 {: #developerOverview}
 
-You can access the capabilities of the {{site.data.keyword.speechtotextshort}} service via a WebSocket interface, an HTTP Representational State Transfer (REST) interface, or an asynchronous HTTP interface. You can also customize the service's language models to suit your domain and environment. Several Software Development Kits (SDKs) are also available to simplify application development in various languages and environments.
+You can access the capabilities of the {{site.data.keyword.speechtotextshort}} service via a WebSocket interface, an HTTP Representational State Transfer (REST) interface, or an asynchronous HTTP interface. You can also customize the service's language models to suit your domain and environment. Several Software Development Kits (SDKs) are also available to simplify application development in various languages and environments. The service returns all JSON response content in the UTF-8 character set.
 {: shortdesc}
 
 ## Programming with the service

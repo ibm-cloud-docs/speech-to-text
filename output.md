@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-04-06"
+lastupdated: "2018-04-09"
 
 ---
 
@@ -25,6 +25,8 @@ The {{site.data.keyword.speechtotextshort}} service offers the following feature
 
 -   For examples of simple requests and responses for each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text/basic-request.html).
 -   For an alphabetized list of all available parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
+
+The service returns all JSON response content in the UTF-8 character set.
 
 ## Speaker labels
 {: #speaker_labels}
