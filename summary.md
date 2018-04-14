@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-04-09"
+lastupdated: "2018-04-13"
 
 ---
 
@@ -260,7 +260,8 @@ An optional double between 0.0 and 1.0 that indicates the relative weight that t
       **HTTP sessions**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/sessions</code> method
+      Query parameter of <code>POST /v1/sessions/{session_id}/recognize</code>
+      method
     </td>
   </tr>
   <tr>
@@ -604,6 +605,54 @@ An optional boolean that indicates whether the service censors profanity from a 
     </td>
     <td style="text-align:left">
       Query parameter of <code>POST /v1/recognitions</code> method
+    </td>
+  </tr>
+</table>
+
+## sequence_id
+
+For session-based requests to transcribe long audio files, an optional integer that associates an identifier with a <code>POST /v1/sessions/{session_id}/recognize</code> request. You can use the identifier to overcome timeouts by polling the results of the recognition request with the <code>POST /v1/sessions/{session_id}/observe_result</code> method. By default, no sequence ID is associated with a request. See [Transcribing long audio files with sessions](/docs/services/speech-to-text/http.html#HTTP-long).
+
+<table>
+  <tr>
+    <td style="text-align:left; width:30%">
+      **Availability**
+    </td>
+    <td style="text-align:left">
+      Generally available for all languages
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      **WebSocket**
+    </td>
+    <td style="text-align:left">
+      Not supported
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      **HTTP sessionless**
+    </td>
+    <td style="text-align:left">
+      Not supported
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      **HTTP sessions**
+    </td>
+    <td style="text-align:left">
+      Query parameter of <code>POST /v1/sessions/{session_id}/recognize</code>
+      and <code>POST /v1/sessions/{session_id}/observe_result</code> methods
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      **HTTP asynchronous**
+    </td>
+    <td style="text-align:left">
+      Not supported
     </td>
   </tr>
 </table>

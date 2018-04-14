@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-04-05"
+lastupdated: "2018-04-13"
 
 ---
 
@@ -75,7 +75,7 @@ You can omit the language model from the request if the custom model is based on
 ## Using customization weight
 {: #weight}
 
-> **Note:** Customization weight is a beta feature that is available for all languages supported for language model customization.
+> **Note:** Customization weight is a beta feature that is available for all languages that are supported for language model customization.
 
 A custom language model is a combination of the custom model and the base model that it customizes. You can tell the service how much weight to give to words from the custom language model compared to those from the base model for speech recognition. The weight assigned to a custom model is referred to as its *customization weight*.
 
@@ -83,7 +83,7 @@ You specify the relative weight given to a custom language model as a double bet
 
 However, in cases where the audio to be transcribed makes frequent use of OOV words from the custom model, increasing the customization weight can improve the accuracy of transcription results. Exercise caution when setting the customization weight. While a higher weight can improve the accuracy of phrases from the domain of the custom model, it can also negatively impact performance on non-domain phrases. (Note that even when setting the weight to 0.0, there is a small probability that the transcription can include custom words due to the implementation of language model customization.)
 
-You specify the customization weight for a custom language model by using the `customization_weight` query parameter with a request. You can specify the parameter when you train a custom language model or when you use it for speech recognition. (For session-based requests, you specify the weight when you create the session, and for WebSockets, when you establish the connection.)
+You specify a customization weight by using the `customization_weight` parameter. You can specify the parameter when you train a custom language model or when you use it with a speech recognition request.
 
 -   For a training request, the following example specifies a customization weight of `0.5` with the `POST /v1/customizations/{customization_id}/train` method:
 
@@ -105,4 +105,4 @@ You specify the customization weight for a custom language model by using the `c
     ```
     {: pre}
 
-    Setting a customization weight during recognition overrides a weight that was saved with the model during training.
+    Setting a customization weight during speech recognition overrides a weight that was saved with the model during training.
