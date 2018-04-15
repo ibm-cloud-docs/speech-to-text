@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-12-09"
+  years: 2015, 2018
+lastupdated: "2018-04-13"
 
 ---
 
@@ -261,13 +261,13 @@ The following table describes the behavior of the `GET /v1/sessions/{session_id}
     </th>
   </tr>
   <tr>
-    <td>
+    <td style="vertical-align:top">
       <em>1.</em> Includes a sequence ID
     </td>
-    <td>
+    <td style="vertical-align:top">
       <em>A.</em> Is ongoing
     </td>
-    <td>
+    <td style="vertical-align:top">
       <em>1. If the sequence ID matches the ongoing recognition task</em>,
       the service returns the results for the ongoing task.
       <br/><br/>
@@ -277,10 +277,10 @@ The following table describes the behavior of the `GET /v1/sessions/{session_id}
   </tr>
   <tr>
     <td></td>
-    <td>
+    <td style="vertical-align:top">
       <em>B.</em> Is not ongoing
     </td>
-    <td>
+    <td style="vertical-align:top">
       <em>1. If the sequence ID matches the previous recognition task</em>,
       the service returns the results for the previous task.
       <br/><br/>
@@ -291,22 +291,22 @@ The following table describes the behavior of the `GET /v1/sessions/{session_id}
     </td>
   </tr>
   <tr>
-    <td>
+    <td style="vertical-align:top">
       <em>2.</em> Does not include a sequence ID
     </td>
-    <td>
+    <td style="vertical-align:top">
       <em>A.</em> Is ongoing
     </td>
-    <td>
+    <td style="vertical-align:top">
       The service returns the results for the ongoing recognition task.
     </td>
   </tr>
   <tr>
     <td></td>
-    <td>
+    <td style="vertical-align:top">
       <em>B.</em> Is not ongoing
     </td>
-    <td>
+    <td style="vertical-align:top">
       The call waits for the next recognition task.
     </td>
   </tr>
