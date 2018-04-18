@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-04-06"
+lastupdated: "2018-04-18"
 
 ---
 
@@ -27,6 +27,8 @@ The following sections document the new features and changes that were included 
 {: #March2018b}
 
 -   The service now supports language model customization for the French language model, `fr-FR_BroadbandModel`. The French model is generally available for production use with language model customization.
+    -   For information about how the service parses corpora for French, see [Parsing of English (US and UK), Spanish, and French](/docs/services/speech-to-text/language-resource.html#corpusLanguages).
+    -   For information about creating sounds-like pronunciations for custom words in French, see [Guidelines for Spanish and French](/docs/services/speech-to-text/language-resource.html#wordLanguages-esES-frFR).
 -   The Spanish and Korean narrowband models, `es-ES_NarrowbandModel` and `ko-KR_NarrowbandModel`, and the French broadband model `fr-FR_BroadbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. However, if you have custom language or custom acoustic models based on either of these models, you must upgrade your custom models to take advantage of the updated base models by using the following methods:
 
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
@@ -92,8 +94,8 @@ For language model customization, the Korean models are generally available for 
 -   The various methods for making recognition requests now include a new `base_model_version` parameter that lets you initiate speech recognition requests that use either the older or upgraded versions of base and custom models. Although it is intended primarily for use with custom models that have been upgraded, the `base_model_version` parameter can also be used without custom models. For more information, see [Base model version](/docs/services/speech-to-text/input.html#version).
 -   The service now supports acoustic model customization as beta functionality for all available languages. You can create custom acoustic models for broadband or narrowband models for all languages. For an introduction to customization, including acoustic model customization, see [The customization interface](/docs/services/speech-to-text/custom.html).
 -   The service now supports language model customization for the UK English models, `en-GB_BroadbandModel` and `en-GB_NarrowbandModel`. Although the service handles UK and US English corpora and custom words in a generally similar fashion, some important differences exist:
-    -   For information about how the service parses corpora for UK English, see [Parsing of English (US and UK)](/docs/services/speech-to-text/language-resource.html#corpusLanguages-enUS).
-    -   For information about creating sounds-like pronunciations for custom words in UK English, see [Guidelines for UK English](/docs/services/speech-to-text/language-resource.html#wordLanguages-enGB). Specifically, for UK English, you cannot use periods or dashes in sounds-like pronunciations.
+    -   For information about how the service parses corpora for UK English, see [Parsing of English (US and UK), Spanish, and French](/docs/services/speech-to-text/language-resource.html#corpusLanguages).
+    -   For information about creating sounds-like pronunciations for custom words in UK English, see [Guidelines for English (US and UK)](/docs/services/speech-to-text/language-resource.html#wordLanguages-enUS-enGB). Specifically, for UK English, you cannot use periods or dashes in sounds-like pronunciations.
 -   Language model customization is now generally available (GA) for all supported languages: Japanese, Spanish, UK English, and US English.
 
 ### 2 October 2017

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-04-06"
+lastupdated: "2018-04-18"
 
 ---
 
@@ -88,29 +88,31 @@ More sentences result in better accuracy, but the service does limit a model to 
 
 When you add a corpus file, the service analyzes the file's contents, extracts any new (OOV) words that it finds, and adds each OOV word to the custom model's words resource. To distill the most meaning from the content, the service tokenizes and parses the data that it reads from a corpus file. The following sections describe how the service parses a corpus file for each supported language.
 
-#### Parsing of English (US and UK)
-{: #corpusLanguages-enUS}
+#### Parsing of English (US and UK), Spanish, and French
+{: #corpusLanguages}
 
--   Converts numbers to their equivalent words. For example, `500` becomes `five hundred`, and `0.15` becomes `zero point fifteen`.
-- Removes the following punctuation and special characters: `! ? @ # $ % ^ & * - + = ~ _ . , ; : ( ) < > [ ] { }`
+-   Converts numbers to their equivalent words, for example:
+    -   *For English,* `500` becomes `five hundred`, and `0.15` becomes `zero point fifteen`.
+    -   *For Spanish,* `500` becomes `quinientos`, and `0,15` becomes `cero coma quince`.
+    -   *For French,* `500` becomes `cinq cents`, and `0,15` becomes <code>z&eacute;ro quinze</code>.
+- Removes the following punctuation and special characters:
+    -   *For English,* `! ? @ # $ % ^ & * - + = ~ _ . , ; : ( ) < > [ ] { }`
+    -   *For Spanish,* <code>! &iexcl; ? &iquest; ^ . , ; ( ) < > [ ] { }</code>
+    -   *For French,* `! ? ^ . , ; ( ) < > [ ] { }`
 -   Ignores phrases enclosed in `( )` (parentheses), `< >` (angle brackets), `[ ]` (square brackets), or `{ }` (curly braces).
--   Converts tokens that include certain symbols to meaningful strings. For example, the service
-    -   Converts a `$` (dollar sign) followed by a number to its string representation: `$100` becomes `one hundred dollars`.
-    -   Converts a <code>&euro;</code> (euro sign) followed by a number to a string representation: <code>&euro;100</code> becomes `one hundred euros`.
-    -   Converts a `%` (percent sign) preceded by a number to its string representation: `100%` becomes `one hundred percent`.
-
-    This list is not exhaustive; the service makes similar adjustments for other characters as needed.
-
-#### Parsing of Spanish
-{: #corpusLanguages-esES}
-
--   Converts numbers to their equivalent words. For example, `500` becomes `quinientos`, and `0,15` becomes `cero coma quince`.
--   Removes the following punctuation and special characters: <code>! &iexcl; ? &iquest; ^ . , ; : ( ) < > [ ] { }</code>
--   Ignores phrases enclosed in `( )` (parentheses), `< >` (angle brackets), `[ ]` (square brackets), or `{ }` (curly braces).
--   Converts tokens that include certain symbols to meaningful strings. For example, the service
-    -   Converts a `$` (dollar sign) followed by a number to its string representation: `$100` becomes <code>cien d&oacute;lares</code> (or `cien pesos` if the dialect is `es-LA`).
-    -   Converts a <code>&euro;</code> (euro sign) followed by a number to a string representation: <code>&euro;100</code> becomes `cien euros`.
-    -   Converts a `%` (percent sign) preceded by a number to its string representation: `100%` becomes `cien por ciento`.
+-   Converts tokens that include certain symbols to meaningful string representations, for example:
+    -   Converts a `$` (dollar sign) followed by a number:
+        -   *For English,* `$100` becomes `one hundred dollars`.
+        -   *For Spanish,* `$100` becomes <code>cien d&oacute;lares</code> (or `cien pesos` if the dialect is `es-LA`).
+        -   *For French,* `$100` becomes `cent dollar`.
+    -   Converts a <code>&euro;</code> (euro sign) followed by a number:
+        -   *For English,* <code>&euro;100</code> becomes `one hundred euros`.
+        -   *For Spanish,* <code>&euro;100</code> becomes `cien euros`.
+        -   *For French,* <code>&euro;100</code> becomes `cent euros`.
+    -   Converts a `%` (percent sign) preceded by a number:
+        -   *For English,* `100%` becomes `one hundred percent`.
+        -   *For Spanish,* `100%` becomes `cien por ciento`.
+        -   *For French,* `100%` becomes `cent pourcent`.
 
     This list is not exhaustive; the service makes similar adjustments for other characters as needed.
 
@@ -118,14 +120,14 @@ When you add a corpus file, the service analyzes the file's contents, extracts a
 {: #corpusLanguages-jaJP}
 
 -   Converts all characters to full-width characters.
--   Converts numbers to their equivalent words. For example, `500` becomes <code>&#20116;&#30334;</code>, and `0.15` becomes <code>&#12295;&#12539;&#19968;&#20116;</code>.
--   Does not convert tokens that include symbols to equivalent strings. For example, `100%` becomes <code>&#30334;&#65285;</code>.
+-   Converts numbers to their equivalent words, for example, `500` becomes <code>&#20116;&#30334;</code>, and `0.15` becomes <code>&#12295;&#12539;&#19968;&#20116;</code>.
+-   Does not convert tokens that include symbols to equivalent strings, for example, `100%` becomes <code>&#30334;&#65285;</code>.
 -   Does not automatically remove punctuation. {{site.data.keyword.IBM_notm}} highly recommends that you remove punctuation if your application is transcription-based as opposed to dictation-based.
 
 ## Working with custom words
 {: #workingWords}
 
-You can use the `POST /v1/customizations/{customization_id}/words` and `PUT /v1/customizations/{customization_id}/words/{word_name}` methods to add new words to a model's words resource. You can also use the methods to modify or augment a word in a words resource.
+You can use the `POST /v1/customizations/{customization_id}/words` and `PUT /v1/customizations/{customization_id}/words/{word_name}` methods to add new words to a custom model's words resource. You can also use the methods to modify or augment a word in a words resource.
 
 You might, for instance, need to use the methods to correct a typographical error or other mistake made when a word was added from a corpus. You might also need to add sounds-like definitions for an existing word. If you modify an existing word, the new data that you provide overwrites the word's existing definition in the words resource. The rules for adding a new word also apply to modifying an existing word.
 
@@ -148,34 +150,36 @@ The `sounds_like` field specifies how a word is pronounced by speakers. By defau
 
 Speech recognition uses statistical algorithms to analyze audio, so adding a word does not guarantee that the service will transcode it with complete accuracy. When adding a word, consider how it might be pronounced; use the `sounds_like` field to provide a variety of pronunciations that reflect how a word can be spoken. The following sections provide language-specific guidelines for specifying a sounds-like pronunciation.
 
-#### Guidelines for US English
-{: #wordLanguages-enUS}
+#### Guidelines for English (US and UK)
+{: #wordLanguages-enUS-enGB}
+
+*Guidelines for both US and UK English:*
 
 -   Use English alphabetic characters: `a-z` and `A-Z`.
--   To pronounce a single letter, use the letter followed by a period. If the period is followed by another character, be sure to use a space between the period and the next character. For example, use `N. C. A. A.`, *not* `N.C.A.A.`
--   Use real or made-up words that are pronounceable in English, for example, `shuchesnie` for the word `Sczcesny`.
+-   Use real or made-up words that are pronounceable in English for words that are difficult to pronounce, for example, `shuchesnie` for the word `Sczcesny`.
 -   Substitute equivalent English letters for non-English letters, for example, `s` for <code>&ccedil;</code> or `ny` for <code>&ntilde;</code>.
 -   Substitute non-accented letters for accented letters, for example, `a` for <code>&agrave;</code> or `e` for <code>&egrave;</code>.
--   Use the spelling of numbers, for example, `seventy-five` for `75`.
 -   You can include multiple words separated by spaces, but the service enforces a maximum of 40 total characters not including spaces.
 
-#### Guidelines for UK English
-{: #wordLanguages-enGB}
+*Guidelines for US English only:*
 
-You **cannot** use periods or dashes in sounds-like pronunciations for UK English. Specific differences from the US English guidelines are
+-   To pronounce a single letter, use the letter followed by a period. If the period is followed by another character, be sure to use a space between the period and the next character. For example, use `N. C. A. A.`, *not* `N.C.A.A.`
+-   Use the spelling of numbers, for example, `seventy-five` for `75`.
 
+*Guidelines for UK English only:*
+
+-   You **cannot** use periods or dashes in sounds-like pronunciations for UK English.
 -   To pronounce a single letter, use the letter followed by a space. For example, use `N C A A`, *not* `N. C. A. A.`, `N.C.A.A.`, or `NCAA`.
 -   Use the spelling of numbers without dashes, for example, `seventy five` for `75`.
 
-Otherwise, the guidelines for UK English (`en-GB` models) are generally the same as those for US English (`en-US` models).
+#### Guidelines for Spanish and French
+{: #wordLanguages-esES-frFR}
 
-#### Guidelines for Spanish
-{: #wordLanguages-esES}
-
--   Use Spanish alphabetic characters: `a-z` and `A-Z` including valid Spanish accented letters.
+-   You **cannot** use dashes in sounds-like pronunciations for Spanish or French.
+-   Use Spanish or French alphabetic characters: `a-z` and `A-Z` including valid accented letters.
 -   To pronounce a single letter, use the letter followed by a period. If the period is followed by another character, be sure to use a space between the period and the next character. For example, use `N. C. A. A.`, *not* `N.C.A.A.`
--   Use real or made-up words that are pronounceable in Spanish, for example, `shuchesnie` for the word `Sczcesny`.
--   Use the spelling of numbers, for example, `setenta y cinco` for `75`.
+-   Use real or made-up words that are pronounceable in Spanish or French for words that are difficult to pronounce.
+-   Use the spelling of numbers without dashes, for example, for `75` use `setenta y cinco` (for Spanish) or `soixante quinze` (for French).
 -   You can include multiple words separated by spaces, but the service enforces a maximum of 40 total characters not including spaces.
 
 #### Guidelines for Japanese
@@ -238,90 +242,115 @@ How the service responds to a request to add or modify a custom word depends on 
 <table>
   <caption>Table 1. Adding custom words with different fields</caption>
   <tr>
-    <th style="width:20%; text-align:center">The <code>sounds_like</code> field is...</th>
-    <th style="width:20%; text-align:center">The <code>display_as</code> field is...</th>
-    <th style="vertical-align:bottom; text-align:left">Response</th>
+    <th style="width:20%; text-align:center; vertical-align:bottom">The <code>sounds_like</code> field is...</th>
+    <th style="width:20%; text-align:center; vertical-align:bottom">The <code>display_as</code> field is...</th>
+    <th style="text-align:left; vertical-align:bottom">Response</th>
   </tr>
   <tr>
-    <td style="text-align:center">
+    <td style="text-align:center; vertical-align:top">
       Not specified
     </td>
-    <td style="text-align:center">
+    <td style="text-align:center; vertical-align:top">
       Not specified
     </td>
-    <td style="text-align:left">
-      <em>If the word does not exist in the service's base vocabulary,</em>
-      the service sets the <code>sounds_like</code> field to its
-      pronunciation of the word and sets the <code>display_as</code>
-      field to the value of the <code>word</code> field.<br/><br/>
-      <em>If the word exists in the service's base vocabulary,</em> the
-      service leaves the <code>sounds_like</code> and
-      <code>display_as</code> fields empty. These fields are empty only
-      if the word already exists in the service's base vocabulary; the
-      word's presence in the model's words resource is harmless but
-      unnecessary.
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      Specified
-    </td>
-    <td style="text-align:center">
-      Not specified
-    </td>
-    <td style="text-align:left">
-      <em>If the <code>sounds_like</code> field is valid,</em> the
-      service sets the <code>display_as</code> field to the value of
-      the <code>word</code> field.<br/><br/>
-      <em>If the <code>sounds_like</code> field is invalid:</em>
-      <ul style="margin-left:20px; padding:0px;">
-        <li style="margin:10px 0px; line-height:120%;">
-          The <code>POST
-            /v1/customizations/{customization_id}/words</code>
-          method adds an <code>error</code> field to the word in the
-          model's words resource.
+    <td style="text-align:left; vertical-align:top">
+      <ul style="margin-left:20px; padding:0px">
+        <li style="margin:10px 0px; line-height:120%">
+          <em>If the word does not exist in the service's base
+          vocabulary,</em> the service sets the <code>sounds_like</code>
+          field to its pronunciation of the word and sets the
+          <code>display_as</code> field to the value of the
+          <code>word</code> field.
         </li>
-        <li style="margin:10px 0px; line-height:120%;">
-          The <code>PUT
-            /v1/customizations/{customization_id}/words/{word_name}</code>
-          method fails with a 400 response code and an error message;
-          it does not add the word to the words resource.
+        <li style="margin:10px 0px; line-height:120%">
+          <em>If the word exists in the service's base vocabulary,</em>
+          the service leaves the <code>sounds_like</code> and
+          <code>display_as</code> fields empty. These fields are empty
+          only if the word already exists in the service's base vocabulary;
+          the word's presence in the model's words resource is harmless but
+          unnecessary.
         </li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td style="text-align:center">
-      Not specified
-    </td>
-    <td style="text-align:center">
+    <td style="text-align:center; vertical-align:top">
       Specified
     </td>
-    <td style="text-align:left">
-      <em>If the word does not exist in the service's base vocabulary,</em>
-      the service sets the <code>sounds_like</code> field to its
-      pronunciation of the word and leaves the <code>display_as</code>
-      field as specified.<br/><br/>
-      <em>If the word exists in the service's base vocabulary,</em> the
-      service leaves the <code>sounds_like</code> empty and leaves the
-      <code>display_as</code> field as specified.
+    <td style="text-align:center; vertical-align:top">
+      Not specified
+    </td>
+    <td style="text-align:left; vertical-align:top">
+      <ul style="margin-left:20px; padding:0px">
+        <li style="margin:10px 0px; line-height:120%">
+          <em>If the <code>sounds_like</code> field is valid,</em> the
+          service sets the <code>display_as</code> field to the value
+          of the <code>word</code> field.
+        </li>
+        <li style="margin:10px 0px; line-height:120%">
+          <em>If the <code>sounds_like</code> field is invalid:</em>
+          <ul style="margin-left:20px; padding:0px">
+            <li style="margin:10px 0px; line-height:120%">
+              The <code>POST
+                /v1/customizations/{customization_id}/words</code>
+              method adds an <code>error</code> field to the word in the
+              model's words resource.
+            </li>
+            <li style="margin:10px 0px; line-height:120%">
+              The <code>PUT
+                /v1/customizations/{customization_id}/words/{word_name}</code>
+              method fails with a 400 response code and an error message;
+              it does not add the word to the words resource.
+            </li>
+          </ul>
+        </li>
+      </ul>
     </td>
   </tr>
   <tr>
-    <td style="text-align:center">
+    <td style="text-align:center; vertical-align:top">
+      Not specified
+    </td>
+    <td style="text-align:center; vertical-align:top">
       Specified
     </td>
-    <td style="text-align:center">
+    <td style="text-align:left; vertical-align:top">
+      <ul style="margin-left:20px; padding:0px">
+        <li style="margin:10px 0px; line-height:120%">
+          <em>If the word does not exist in the service's base
+          vocabulary,</em> the service sets the <code>sounds_like</code>
+          field to its pronunciation of the word and leaves the
+          <code>display_as</code> field as specified.
+        </li>
+        <li style="margin:10px 0px; line-height:120%">
+          <em>If the word exists in the service's base vocabulary,</em>
+          the service leaves the <code>sounds_like</code> empty and
+          leaves the <code>display_as</code> field as specified.
+        </li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:center; vertical-align:top">
       Specified
     </td>
-    <td style="text-align:left">
-      <em>If the <code>sounds_like</code> field is valid,</em> the
-      service sets the <code>sounds_like</code> and <code>display_as</code>
-      fields to the specified values.<br/><br/>
-      <em>If the <code>sounds_like</code> field is invalid,</em> the
-      service responds as it does in the case where the
-      <code>sounds_like</code> field is specified but the
-      <code>display_as</code> field is not.
+    <td style="text-align:center; vertical-align:top">
+      Specified
+    </td>
+    <td style="text-align:left; vertical-align:top">
+      <ul style="margin-left:20px; padding:0px">
+        <li style="margin:10px 0px; line-height:120%">
+          <em>If the <code>sounds_like</code> field is valid,</em> the
+          service sets the <code>sounds_like</code> and <code>display_as</code>
+          fields to the specified values.
+        </li>
+        <li style="margin:10px 0px; line-height:120%">
+          <em>If the <code>sounds_like</code> field is invalid,</em>
+          the service responds as it does in the case where the
+          <code>sounds_like</code> field is specified but the
+          <code>display_as</code> field is not.
+        </li>
+      </ul>
     </td>
   </tr>
 </table>
