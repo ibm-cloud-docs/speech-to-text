@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-04-18"
+lastupdated: "2018-04-21"
 
 ---
 
@@ -124,6 +124,26 @@ When you add a corpus file, the service analyzes the file's contents, extracts a
 -   Does not convert tokens that include symbols to equivalent strings, for example, `100%` becomes <code>&#30334;&#65285;</code>.
 -   Does not automatically remove punctuation. {{site.data.keyword.IBM_notm}} highly recommends that you remove punctuation if your application is transcription-based as opposed to dictation-based.
 
+#### Parsing of Korean
+{: #corpusLanguages-koKR}
+
+-   Converts numbers to their equivalent words, for example, <code>10&#48516;</code> becomes <code>&#49901;&#49104;</code>.
+-   Removes some punctuation and special characters, including the following: `- ( ) * : . , ' "`. However, not all punctuation and special characters that are removed for other languages are removed for Korean, for example:
+    -   Removes a period (`.`) symbol only when it occurs at the end of a line of input.
+    -   Does not remove a tilde (`~`) symbol.
+    -   Does not remove or otherwise process Unicode wide-character symbols, for example, <code>&#8230;</code> (triple dot, or ellipsis).
+
+    In general, {{site.data.keyword.IBM_notm}} recommends that you remove punctuation, special characters, and Unicode wide-characters before processing a corpus file.
+-   Does not remove or ignore phrases enclosed in `( )` (parentheses), `< >` (angle brackets), `[ ]` (square brackets), or `{ }` (curly braces).
+-   Converts tokens that include certain symbols to meaningful string representations, for example:
+    -   `24%` becomes <code>&#51060;&#49901;&#49324;&#54140;&#49468;&#53944;</code>.
+    -   `$10` becomes <code>&#49901;&#45804;&#47084;</code>.
+
+    This list is not exhaustive; the service makes similar adjustments for other characters as needed.
+-   For phrases that consist of Latin (English) characters or a mix of Hangul and Latin characters, the service creates OOV words for the phrases exactly as they appear in the corpus file *and* creates sounds-like pronunciations for the words based on Hangul transcriptions, for example:
+   - Gives the OOV word `Verizon` a sounds-like of <code>&#48260;&#46972;&#51060;&#51204;</code>.
+   - Gives the OOV word <code>AIA&#54856;&#54168;&#51060;&#51648;</code> a sounds-like of <code>&#50640;&#51060;&#32;&#50500;&#51060;&#32;&#50640;&#51060;&#32;&#54856;&#54168;&#51060;&#51648;</code>.
+
 ## Working with custom words
 {: #workingWords}
 
@@ -206,6 +226,13 @@ Speech recognition uses statistical algorithms to analyze audio, so adding a wor
 -   Do not use <code>&#12531;</code> as the first character of a word. For example, use <code>&#12454;&#12540;&#12531;&#12488;</code> instead of <code>&#12531;&#12540;&#12488;</code>, the latter of which is invalid.
 -   Many compound words consist of *prefix+noun* or *noun+suffix*. The service's base vocabulary covers most compound words that occur frequently (for example, <code>&#x9577;&#x96FB;&#x8A71;</code> and <code>&#x53E4;&#x65B0;&#x805E;</code>) but not those that occur infrequently. If your corpus commonly contains compound words, add them as one word as the first step of your customization. For example, <code>&#x53E4;&#x925B;&#x7B46;</code> is not common in general Japanese text; if you use it often, add it to your custom model to improve transcription accuracy.
 -   Do not use a trailing assimilated sound.
+
+#### Guidelines for Korean
+{: #wordLanguages-koKR}
+
+-   Use Korean Hangul characters, symbols, and syllables.
+-   You can also use Latin (English) alphabetic characters: `a-z` and `A-Z`.
+-   Do not use any other characters or symbols not included in the previous sets.
 
 ### Using the display_as field
 {: #displayAs}

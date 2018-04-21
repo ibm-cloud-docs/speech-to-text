@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-04-18"
+lastupdated: "2018-04-21"
 
 ---
 
@@ -60,6 +60,9 @@ The Spanish and French broadband models, `es-ES_BroadbandModel` and `fr-FR_Broad
 The service now offers models for the Korean language for speech recognition: `ko-KR_BroadbandModel` for audio that is sampled at a minimum of 16 kHz, and `ko-KR_NarrowbandModel` for audio that is sampled at a minimum of 8 kHz. For more information, see [Languages and models](/docs/services/speech-to-text/input.html#models).
 
 For language model customization, the Korean models are generally available for production use; for acoustic model customization, they are beta functionality. For more information, see [Language support for customization](/docs/services/speech-to-text/custom.html#languageSupport).
+
+-   For information about how the service parses corpora for Korean, see [Parsing of Korean](/docs/services/speech-to-text/language-resource.html#corpusLanguages-koKR).
+-   For information about creating sounds-like pronunciations for custom words in Korean, see [Guidelines for Korean](/docs/services/speech-to-text/language-resource.html#wordLanguages-koKR).
 
 ## Older releases
 {: #older}
