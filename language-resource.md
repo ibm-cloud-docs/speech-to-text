@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-04-21"
+lastupdated: "2018-04-24"
 
 ---
 
@@ -28,7 +28,7 @@ You can also add individual custom words to a model directly. The service adds w
 ## The words resource
 {: #wordsResource}
 
-Each word that you add to a custom language model, either from a corpus or directly, is stored in the model's *words resource*. The purpose of the words resource is to define words that are not already present in the service's base vocabulary. The definitions tell the service how to transcribe the words. Such words are referred to as *out-of-vocabulary (OOV) words*. You can add a maximum of 30 thousand OOV words, including words that the service extracts from corpora and words that you add directly.
+Each word that you add to a custom language model, either from a corpus or directly, is stored in the model's *words resource*. The purpose of the words resource is to define words that are not already present in the service's base vocabulary. The definitions tell the service how to transcribe the words. Such words are referred to as *out-of-vocabulary (OOV) words*. You can add a maximum of 30 thousand OOV words to the words resource, including words that the service extracts from corpora and words that you add directly.
 
 The words resource contains the following information about each OOV word. The service creates the definitions for words extracted from corpora. You specify the characteristics for words that you add directly.
 
@@ -127,7 +127,7 @@ When you add a corpus file, the service analyzes the file's contents, extracts a
 #### Parsing of Korean
 {: #corpusLanguages-koKR}
 
--   Converts numbers to their equivalent words, for example, <code>10&#48516;</code> becomes <code>&#49901;&#49104;</code>.
+-   Converts numbers to their equivalent words, for example, <code>10</code> becomes <code>&#49901;</code>.
 -   Removes some punctuation and special characters, including the following: `- ( ) * : . , ' "`. However, not all punctuation and special characters that are removed for other languages are removed for Korean, for example:
     -   Removes a period (`.`) symbol only when it occurs at the end of a line of input.
     -   Does not remove a tilde (`~`) symbol.
@@ -141,8 +141,8 @@ When you add a corpus file, the service analyzes the file's contents, extracts a
 
     This list is not exhaustive; the service makes similar adjustments for other characters as needed.
 -   For phrases that consist of Latin (English) characters or a mix of Hangul and Latin characters, the service creates OOV words for the phrases exactly as they appear in the corpus file *and* creates sounds-like pronunciations for the words based on Hangul transcriptions, for example:
-   - Gives the OOV word `Verizon` a sounds-like of <code>&#48260;&#46972;&#51060;&#51204;</code>.
-   - Gives the OOV word <code>AIA&#54856;&#54168;&#51060;&#51648;</code> a sounds-like of <code>&#50640;&#51060;&#32;&#50500;&#51060;&#32;&#50640;&#51060;&#32;&#54856;&#54168;&#51060;&#51648;</code>.
+   - Gives the OOV word `London` a sounds-like of <code>&#47088;&#45912;</code>.
+   - Gives the OOV word <code>IBM&#54856;&#54168;&#51060;&#51648;</code> a sounds-like of <code>&#50500;&#51060;&#32;&#48708;&#32;&#50656;&#32;&#54856;&#54168;&#51060;&#51648;</code>.
 
 ## Working with custom words
 {: #workingWords}
