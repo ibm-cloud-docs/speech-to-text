@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-11-07"
+  years: 2015, 2018
+lastupdated: "2018-04-26"
 
 ---
 
@@ -36,6 +36,10 @@ lastupdated: "2017-11-07"
 
     By default, the service responds with an inactivity timeout if it detects 30 seconds of continuous silence or non-speech activity at any time. To prevent the timeout, set the `inactivity_timeout` parameter for your request to a value greater than 30 seconds; set the parameter to `-1` to specify an inactivity timeout of infinity. See [Timeouts](/docs/services/speech-to-text/input.html#timeouts).
 
+1.  <span style="color:#003F69">My request is being made from a browser that does not enable JavaScript, or the size of my request exceeds the maximum request length because it includes a large number of keywords. How can I submit my request?</span>
+
+    You can submit a multipart recognition request with the sessionless (`POST /v1/recognize`) or session-based (`POST /v1/sessions/{session_id}/recognize`) method. With multipart requests, you pass all audio data as multipart form data. You specify some parameters as request headers and query parameters, but you pass JSON metadata as form data to control most aspects of the transcription. See [Submitting multipart requests as form data](/docs/services/speech-to-text/http.html#HTTP-multi).
+
 1.  <span style="color:#003F69">My audio includes pauses of varying lengths. How does the service respond to them?</span>
 
     The service transcribes an entire audio stream until either the stream ends or a timeout occurs, whichever comes first. If your input includes pauses, transcription results can include multiple `transcript` elements to indicate phrases separated by the pauses. Concatenate the `transcript` elements to assemble the complete transcription of the audio stream.
@@ -52,4 +56,4 @@ lastupdated: "2017-11-07"
 
 1.  <span style="color:#003F69">What is {{site.data.keyword.IBM_notm}}'s data-storage policy for audio that I submit to the service?</span>
 
-    By default, {{site.data.keyword.IBM_notm}} logs each request to the service and its results; {{site.data.keyword.IBM_notm}} uses the data only to improve the service's base speech models for future users. You can prevent {{site.data.keyword.IBM_notm}} from storing your data by setting the `X-Watson-Learning-Opt-Out` request header to `true` for all requests. When you use the header to opt out of request logging, {{site.data.keyword.IBM_notm}} stores none of your data; your data exists within {{site.data.keyword.watson}} only while it is in transit (while the service is processing your request). In either case, your data is always encrypted both in motion and at rest. For more information, see [Authentication tokens and request logging](/docs/services/speech-to-text/input.html#common).
+    By default, {{site.data.keyword.IBM_notm}} logs each request to the service and its results; {{site.data.keyword.IBM_notm}} uses the data only to improve the service's base speech models for future users. You can prevent {{site.data.keyword.IBM_notm}} from storing your data by setting the `X-Watson-Learning-Opt-Out` request header to `true` for all requests. When you use the header to opt out of request logging, {{site.data.keyword.IBM_notm}} stores none of your data; your data exists within {{site.data.keyword.watson}} only while it is in transit (while the service is processing your request). In either case, your data is always encrypted both in motion and at rest. For more information, see [Request logging](/docs/services/speech-to-text/input.html#logging).

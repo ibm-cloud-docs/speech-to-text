@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-04-13"
+lastupdated: "2018-04-26"
 
 ---
 
@@ -334,22 +334,192 @@ This example assumes that the requests arrive in a timely manner and that none o
 ## Submitting multipart requests as form data
 {: #HTTP-multi}
 
-Both the sessionless and session-based versions of the HTTP REST interface support two approaches for sending audio. With the first approach, you pass all audio via the body of the request, specifying the parameters of the transcription request as request headers and query parameters. If your data consists of multiple audio files, the recommended means of submitting the audio is by sending multiple requests, one for each audio file. You can submit the requests in a loop, optionally with parallelism to improve performance.
+Both the sessionless (`POST /v1/recognize`) and session-based (`POST /v1/sessions/{session_id}/recognize`) methods support two approaches for speech recognition:
 
-With the second approach, you pass all audio data as multipart form data. You specify some parameters as request headers and query parameters, but you pass JSON metadata as form data to control most aspects of the transcription. To send a multipart request, do the following:
-
--   Set the `Content-Type` header to `multipart/form-data`.
--   Set the `Transfer-Encoding` header to `chunked` to stream the data to the service if your request includes more than one audio file.
--   Pass `metadata` that describes the remaining parameters of the request as the first part of the form data:
-    -   You must use the `part_content_type` parameter of the metadata to indicate the MIME type of the audio in the following parts, all of which which must be in the same audio format.
-    -   You can optionally pass the `data_parts_count` parameter to indicate the number of audio files sent with the request. The service applies end-of-stream detection to the last (and possibly the only) data part. If you omit the parameter, the service determines the number of parts from the request.
-
-    All other parameters for controlling the transcription request are optional, as described in [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html).
--   Pass `upload` data that consists of one or more audio files as the remainder of the form data.
+-   With the *non-multipart* approach, you pass all audio via the body of the request and specify the parameters as request headers and query parameters. If your data consists of multiple audio files, the recommended means of submitting the audio is by sending multiple requests, one for each audio file. You can submit the requests in a loop, optionally with parallelism to improve performance.
+-   With the *multipart* approach, you pass all audio data as multipart form data. You specify some parameters as request headers and query parameters, but you pass JSON metadata as form data to control most aspects of the transcription.
 
 The multipart approach is intended for two use cases:
 
 -   For use with browsers for which JavaScript is disabled. Multipart requests based on form data do not require the use of JavaScript.
 -   When the parameters used with the recognition request are greater than the 8 KB limit imposed by most HTTP servers and proxies. This can occur, for example, if you want to spot a very large number of keywords. Passing the parameters as form data avoids this limit.
 
-For examples showing the use of the multipart approach to send both a single audio file and multiple files, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+The following sections describe the parameters that you use for multipart requests and show an example request.
+
+### Request headers, query parameters, and form data
+{: #multipartParameters}
+
+You specify the following parameters of multipart speech recognition as request headers, query parameters, and form data. Some parameters are available with both sessionless and session-based requests; others are specific to sessionless requests.
+
+<table>
+  <caption>Table 2. Request headers, query parameters, and form data</caption>
+  <tr>
+    <th style="text-align:left; width:20%">Parameter</th>
+    <th style="text-align:center; width:40%">Sessionless</th>
+    <th style="text-align:center; width:40%">Session-based</th>
+  </tr>
+  <tr>
+    <td>
+      <code>Content-Type</code>
+      <br/><em>Header</em>
+      <br/><em>String</em>
+    </td>
+    <td colspan="2" style="text-align:center">
+      <em>Required.</em> Specify `multipart/form-data`.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>metadata</code>
+      <br/><em>Form data</em>
+      <br/><em>Object</em>
+    </td>
+    <td colspan="2" style="text-align:center">
+      <em>Required.</em> A JSON object that provides the transcription
+      parameters for the request. The object must be the first part of
+      the form data. The information describes the audio in the subsequent
+      parts of the form data. See [JSON metadata](#multipartJSON).
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>upload</code>
+      <br/><em>Form data</em>
+      <br/><em>File</em>
+    </td>
+    <td colspan="2" style="text-align:center">
+      <em>Required.</em> One or more audio files as the remainder of the
+      form data for the request. All audio files must have the same format.
+      With cURL, include a separate `--form` option for each file of the
+      request.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>Transfer-Encoding</code>
+      <br/><em>Header</em>
+      <br/><em>String</em>
+    </td>
+    <td colspan="2" style="text-align:center">
+      <em>Optional.</em> If your request includes more than one audio file,
+      specify `chunked` to stream the audio data to the service.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>model</code>
+      <br/><em>Query</em>
+      <br/><em>String</em>
+    </td>
+    <td>
+      <em>Optional.</em> The identifier of the model that is to be
+      used for the request. The default is `en-US_BroadbandModel`.
+    </td>
+    <td>
+      <em>Not applicable.</em> Passed with the `POST /v1/sessions`
+      method.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>customization_id</code>
+      <br/><em>Query</em>
+      <br/><em>String</em>
+    </td>
+    <td>
+      <em>Optional.</em> The GUID of a custom language model that is
+      to be used with the request.
+    </td>
+    <td>
+      <em>Not applicable.</em> Passed with the `POST /v1/sessions`
+      method.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>acoustic_customization_id</code>
+      <br/><em>Query</em>
+      <br/><em>String</em>
+    </td>
+    <td>
+      <em>Optional.</em> The GUID of a custom acoustic model that is
+      to be used with the request.
+    </td>
+    <td>
+      <em>Not applicable.</em> Passed with the `POST /v1/sessions`
+      method.
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <code>base_model_version</code>
+      <br/><em>Query</em>
+      <br/><em>String</em>
+    </td>
+    <td>
+      <em>Optional.</em> The version of the specified base model that
+      is to be used with the request.
+    </td>
+    <td>
+      <em>Not applicable.</em> Passed with the `POST /v1/sessions`
+      method.
+    </td>
+  </tr>
+</table>
+
+For more information about the query parameters, see [Input features](/docs/services/speech-to-text/input.html).
+
+### JSON metadata
+{: #multipartJSON}
+
+The JSON metadata that you pass with a multipart request can include the following fields:
+
+-   `part_content_type` (string)
+-   `data_parts_count` (integer)
+-   `customization_weight` (number)
+-   `inactivity_timeout` (integer)
+-   `keywords` (string[&nbsp;])
+-   `keywords_threshold` (number)
+-   `max_alternatives` (integer)
+-   `word_alternatives_threshold` (number)
+-   `word_confidence` (boolean)
+-   `timestamps` (boolean)
+-   `profanity_filter` (boolean)
+-   `smart_formatting` (boolean)
+-   `speaker_labels` (boolean)
+-   `sequence_id` (integer, *session-based requests only*)
+
+Only the following two parameters are specific to multipart requests:
+
+-   The `part_content_type` field is *required*. Specify the format (MIME type) of the audio in the following parts of the request. All audio files must be in the same format.
+-   The `data_parts_count` field is *optional*. You can specify the number of audio files sent with the request. The service applies end-of-stream detection to the last (and possibly the only) data part. If you omit the parameter, the service determines the number of parts from the request.
+
+All other parameters of the metadata are optional, as described in [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html). For a summary of all available recognition parameters, see [Parameter summary](/docs/services/speech-to-text/summary.html).
+
+### Example multipart request
+
+The following cURL example shows how to pass a multipart recognition request with the sessionless `POST /v1/recognize` method. The request passes two audio files, **audio-file1.flac** and **audio-file2.flac**. The `metadata` parameter provides most parameters of the request; the `upload` parameters provide the audio files.
+
+```bash
+curl -X POST -u {username}:{password}
+--header "Transfer-Encoding: chunked"
+--form metadata="{\"part_content_type\":\"audio/flac\",
+  \"data_parts_count\":2,
+  \"timestamps\":true,
+  \"word_alternatives_threshold\":0.9,
+  \"keywords\":[\"colorado\",\"tornado\",\"tornadoes\"],
+  \"keywords_threshold\":0.5}"
+--form upload="@audio-file1.flac"
+--form upload="@audio-file2.flac"
+"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
+```
+
+The following example shows an equivalent non-multipart request with the same sessionless `POST /v1/recognize` method:
+
+```bash
+curl -X POST -u {username}:{password}
+--header "Content-Type: audio/flac"
+--data-binary "@audio-file1.flac"
+--data-binary "@audio-file2.flac"
+"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?timestamps=true&word_alternatives_threshold=0.9&keywords=%22colorado%22%2C%22tornado%22%2C%22tornadoes%22&keywords_threshold=0.5"
+```
