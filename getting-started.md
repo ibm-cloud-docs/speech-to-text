@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2017
-lastupdated: "2017-11-04"
+lastupdated: "2018-04-27"
 
 ---
 
@@ -27,27 +27,18 @@ The {{site.data.keyword.speechtotextfull}} service transcribes audio to text to 
 ## Before you begin
 {: #before-you-begin}
 
+- {: download} If you're seeing this, you created your service instance. Now get your credentials.
 - Create an instance of the service:
-    - {: download} If you're seeing this, you created your service instance. Now get your credentials.
-    - Create a project from a service:
-        1.  Go to the {{site.data.keyword.watson}} Developer Console [Services ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.{DomainName}/developer/watson/services){: new_window} page.
-        1.  Select {{site.data.keyword.speechtotextshort}}, click **Add Services**, and either sign up for a free {{site.data.keyword.Bluemix_notm}} account or log in.
-        1.  Type `speech-tutorial` as the project name and click **Create Project**.
+    1.  Go to the [{{site.data.keyword.speechtotextshort}} ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.{DomainName}/catalog/services/speech-to-text){: new_window} page in the {{site.data.keyword.Bluemix_notm}} Catalog.
+    1.  Sign up for a free {{site.data.keyword.Bluemix_notm}} account or log in.
+    1.  Click **Create**.
 - Copy the credentials to authenticate to your service instance:
-    - {: download} From the service dashboard (what you're looking at):
-        1.  Click the **Service credentials** tab.
-        1.  Click **View credentials** under **Actions**.
-        1.  Copy the `username`, `password`, and `url` values.
-        {: download}
-    - From your **speech-tutorial** project in the Developer Console, copy the `username`,  `password`, and `url` values for `"speech_to_text"` from the  **Credentials** section.
+    1.  On the service dashboard, click the **Service credentials** tab.
+    1.  Click **View credentials** under **Actions**.
+    1.  Copy the `username`, `password`, and `url` values.
 - Make sure you have cURL:
     - The examples use cURL to call methods of the HTTP interface. Install the version for your operating system from [curl.haxx.se ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://curl.haxx.se/){: new_window}. Install the version that supports the Secure Sockets Layer (SSL) protocol. Make sure to include the installed binary file on your `PATH` environment variable.
 
-<!-- Remove this text after dedicated instances have the Developer Console: begin -->
-
-If you use {{site.data.keyword.Bluemix_dedicated_notm}}, you create a service instance from the [{{site.data.keyword.speechtotextshort}} ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.{DomainName}/catalog/services/speech-to-text/){: new_window} page in the Catalog. For details about how to find your service credentials, see [Service credentials for Watson services ![External link icon](../../icons/launch-glyph.svg "External link icon")](/docs/services/watson/getting-started-credentials.html#getting-credentials-manually){: new_window}.
-
-<!-- Remove this text after dedicated instances have the Developer Console: end -->
 
 ## Step 1: Transcribe audio with no options
 {: #transcribe}
