@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-10-02"
+  years: 2015, 2019
+lastupdated: "2018-05-15"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2017-10-02"
 # Managing corpora
 {: #manageCorpora}
 
-In addition to the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method, which is used to add a corpus to a custom language model (see [Add corpora to the custom language model](/docs/services/speech-to-text/language-create.html#addCorpora)), the customization interface includes methods for listing and deleting corpora for a custom model.
+The customization interface includes the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method, which is used to add a corpus to a custom language model. For more information, see [Add corpora to the custom language model](/docs/services/speech-to-text/language-create.html#addCorpora)). The interface includes methods for listing and deleting corpora for a custom model.
 
 ## Listing corpora for a custom language model
 {: #listCorpora}
@@ -30,11 +30,11 @@ The customization interface provides two methods for listing information about t
 -   The `GET /v1/customizations/{customization_id}/corpora` method lists information about all corpora that have been added to a custom model.
 -   The `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` method lists information about a specified corpus for a custom model.
 
-Both methods return the `name` of the corpus, the `total_words` read from the corpus, and the number of `out-of-vocabulary_words` extracted from the corpus. The methods also list the status of the corpus, which is important for checking the service's analysis of a corpus in response to a request to add it to a custom model:
+Both methods return the `name` of the corpus, the `total_words` read from the corpus, and the number of `out-of-vocabulary_words` extracted from the corpus. The methods also list the status of the corpus. The status is important for checking the service's analysis of a corpus in response to a request to add it to a custom model:
 
--   `analyzed` indicates that the service has successfully analyzed the corpus. The custom model can be trained with data from the corpus.
+-   `analyzed` indicates that the service successfully analyzed the corpus. The custom model can be trained with data from the corpus.
 -   `being_processed` indicates that the service is still analyzing the corpus. The service cannot accept requests to add new corpora or words, or to train the custom model, until its analysis is complete.
--   `undetermined` indicates that the service encountered an error while processing the corpus. The information returned for the corpus includes an error message that offers guidance for correcting the error, for example, if you tried to add a corpus with the same name without including the `allow_overwrite` option. In response to an error, you can also delete the corpus and try adding it again.
+-   `undetermined` indicates that the service encountered an error while processing the corpus. The information that is returned for the corpus includes an error message that offers guidance for correcting the error. For example, you might have tried to add a corpus with the same name without including the `allow_overwrite` option. In response to an error, you can also delete the corpus and try adding it again.
 
 ### Example requests and responses
 {: #listExample}
@@ -47,7 +47,7 @@ curl -X GET -u {username}:{password}
 ```
 {: pre}
 
-Three corpora have been added to the custom model. The service has successfully analyzed `corpus1`, it is currently analyzing `corpus2`, and its analysis of `corpus3` failed.
+Three corpora are added to the custom model. The service successfully analyzed `corpus1`. It is still analyzing `corpus2`, and its analysis of `corpus3` failed.
 
 ```javascript
 {
@@ -76,7 +76,7 @@ Three corpora have been added to the custom model. The service has successfully 
 ```
 {: codeblock}
 
-The following example returns information about the corpus named `corpus1` for the custom model with the specified customization ID:
+The following example returns information about the corpus that is named `corpus1` for the custom model with the specified customization ID.
 
 ```bash
 curl -X GET -u {username}:{password}
@@ -97,7 +97,7 @@ curl -X GET -u {username}:{password}
 ## Deleting a corpus from a custom language model
 {: #deleteCorpus}
 
-Use the `DELETE /v1/customizations/{customization_id}/corpora/{corpus_name}` method to remove an existing corpus from a custom language model. When it deletes the corpus, the service removes any OOV words associated with the corpus from the custom model's words resource unless
+Use the `DELETE /v1/customizations/{customization_id}/corpora/{corpus_name}` method to remove an existing corpus from a custom language model. When it deletes the corpus, the service removes any OOV words that are associated with the corpus from the custom model's words resource unless
 
 -   The word was also added by another corpus.
 -   The word has been modified in some way with the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method.
@@ -107,7 +107,7 @@ Removing a corpus does not affect the custom model until you train the model on 
 ### Example request
 {: #deleteExample}
 
-The following example deletes the corpus named `corpus3` from the custom model with the specified customization ID:
+The following example deletes the corpus that is named `corpus3` from the custom model with the specified customization ID.
 
 ```bash
 curl -X DELETE -u {username}:{password}

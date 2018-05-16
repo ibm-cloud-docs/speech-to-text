@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-08-11"
+  years: 2015, 2018
+lastupdated: "2018-05-15"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2017-08-11"
 # The science behind the service
 {: #science}
 
-{{site.data.keyword.IBM}} has been pioneering speech recognition and audio generation research and systems since the early 1960s. The following research and academic papers are especially relevant to the technical foundations of the {{site.data.keyword.speechtotextshort}} service.
+{{site.data.keyword.IBM}} pioneered speech recognition and audio generation research and systems since the early 1960s. The following research and academic papers are especially relevant to the technical foundations of the {{site.data.keyword.speechtotextshort}} service.
 {: shortdesc}
 
 1.  Bahl, Lalit R., Frederick Jelinek, and Robert L. Mercer. [*A Maximum Likelihood Approach to Continuous Speech Recognition.* ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=4767370&url=http%3A%2F%2Fieeexplore.ieee.org%2Fiel5%2F34%2F4767360%2F04767370.pdf%3Farnumber%3D4767370){: new_window} IEEE Transactions on Pattern Analysis and Machine Intelligence, Vol. 5(2) (March 1983): pp. 179-190.
