@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-04-05"
+lastupdated: "2018-05-15"
 
 ---
 
@@ -23,7 +23,7 @@ lastupdated: "2018-04-05"
 The WebSocket interface of the {{site.data.keyword.speechtotextshort}} service is the most natural way for a client to interact with the service. To use the WebSocket interface for speech recognition, you first use the `/v1/recognize` method to establish a persistent connection with the service. You then send text and binary messages over the connection to initiate and manage the recognition requests.
 {: shortdesc}
 
-The recognition request and response cycle comprises the following steps:
+The recognition request and response cycle has the following steps:
 
 1.  [Open a connection](#WSopen)
 1.  [Initiate a recognition request](#WSstart)
@@ -45,7 +45,7 @@ The WebSocket interface has a number of advantages over the HTTP interface:
 -   The WebSocket interface, unlike the REST interface, provides a single-socket, full-duplex communication channel. The interface lets the client send requests and audio to the service and receive results over a single connection in an asynchronous fashion.
 -   It provides a much simpler and more powerful programming experience. The service sends event-driven responses to the client's messages, eliminating the need for the client to poll the server.
 -   It reduces latency. Recognition results arrive faster because the service sends them directly to the client.
--   It reduces network utilization. The WebSocket protocol is very lightweight. It requires only a single connection to perform live recognition. Conversely, when using sessions with the REST interface, you need at least four connections to achieve the same results.
+-   It reduces network utilization. The WebSocket protocol is lightweight. It requires only a single connection to perform live recognition. Conversely, when you use sessions with the REST interface, you need at least four connections to achieve the same results.
 -   It enables audio to be streamed directly from browsers (HTML5 WebSocket clients) to the service.
 
 ## Open a connection
@@ -79,10 +79,10 @@ A WebSocket client calls this method with the following query parameters to esta
       but you must pass a token in one of these two ways.<br/><br/>
       You pass a token only to establish an authenticated connection with
       the service. Once you establish a connection, you can keep it alive
-      indefinitely. As long as the connection remains open, you do not need
-      to pass the token with subsequent calls. See
-      <a href="/docs/services/speech-to-text/input.html#common">Authentication
-      tokens and request logging</a>.
+      indefinitely. While the connection remains open, you do not need to
+      pass the token with subsequent calls. See
+      <a href="/docs/services/speech-to-text/input.html#tokens">Authentication
+      tokens</a>.
     </td>
   </tr>
   <tr>
@@ -103,8 +103,8 @@ A WebSocket client calls this method with the following query parameters to esta
     <td style="text-align:center">String</td>
     <td style="text-align:left">
       Specifies the Globally Unique Identifier (GUID) of a custom
-      language model that is to be used for all requests sent over
-      the connection. The base model of the custom language model
+      language model that is to be used for all requests that are sent
+      over the connection. The base model of the custom language model
       must match the value of the <code>model</code> parameter. By
       default, no custom language model is used. See
       <a href="/docs/services/speech-to-text/custom.html">The
@@ -117,8 +117,8 @@ A WebSocket client calls this method with the following query parameters to esta
     <td style="text-align:center">String</td>
     <td style="text-align:left">
       Specifies the Globally Unique Identifier (GUID) of a custom
-      acoustic model that is to be used for all requests sent over
-      the connection. The base model of the custom acoustic model
+      acoustic model that is to be used for all requests that are sent
+      over the connection. The base model of the custom acoustic model
       must match the value of the <code>model</code> parameter. By
       default, no custom acoustic model is used. See
       <a href="/docs/services/speech-to-text/custom.html">The
@@ -131,10 +131,10 @@ A WebSocket client calls this method with the following query parameters to esta
     <td style="text-align:center">String</td>
     <td style="text-align:left">
       Specifies the version of the base `model` that is to be used for all
-      requests sent over the connection. The parameter is intended primarily
-      for use with custom models that have been upgraded for a new base
-      model. The default value depends on whether the parameter is used with
-      or without a custom model. See
+      requests that are sent over the connection. The parameter is intended
+      primarily for use with custom models that are upgraded for a new base
+      model. The default value depends on whether the parameter is used
+      with or without a custom model. See
       <a href="/docs/services/speech-to-text/input.html#version">Base model
       version</a>.
     </td>
@@ -144,16 +144,29 @@ A WebSocket client calls this method with the following query parameters to esta
       <br/><em>Optional</em></td>
     <td style="text-align:center">Boolean</td>
     <td style="text-align:left">
-      Specifies whether the service logs requests and results sent over
-      the connection. Logging is done only to improve the service for
-      future users. The logged data is not shared or made public.<br/><br/>
-      To prevent IBM from accessing your data for general service
-      improvements, specify <code>true</code> for the parameter.
-      You can also opt out of request logging by passing a value of
-      <code>true</code> with the <code>X-Watson-Learning-Opt-Out</code>
-      request header. See
-      <a href="/docs/services/speech-to-text/input.html#common">Authentication
-      tokens and request logging</a>.
+      Specifies whether the service logs requests and results that are sent
+      over the connection. Logging is done only to improve the service for
+      future users. The logged data is not shared or made public. To prevent
+      IBM from accessing your data for general service improvements, specify
+      <code>true</code> for the parameter. See
+      <a href="/docs/services/speech-to-text/input.html#logging">Request
+      logging</a>.
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left"><code>x-watson-metadata</code>
+      <br/><em>Optional</em></td>
+    <td style="text-align:center">String</td>
+    <td style="text-align:left">
+      Associates a customer ID with all data that is passed over the
+      connection. The parameter accepts the argument
+      <code>customer_id={id}</code>, where <code>id</code> is a random
+      or generic string that is to be associated with the data. You must
+      URL-encode the argument to the parameter, for example,
+      `customer_id%3dmy_ID`. By default, no customer ID is associated
+      with the data. See
+      <a href="/docs/services/speech-to-text/information-security.html">Information
+      security</a>.
     </td>
   </tr>
 </table>
@@ -189,17 +202,17 @@ To initiate a recognition request, the client sends a JSON text message to the s
     <td style="text-align:left"><code>action</code><br/><em>Required</em></td>
     <td style="text-align:center">String</td>
     <td style="text-align:left">
-      The action to be performed:
+      Specifies the action to be performed:
       <ul style="margin-left:20px; padding:0px;">
         <li style="margin:10px 0px; line-height:120%;">
-          <code>start</code> initiates a recognition request or specifies
-          new parameters for subsequent requests; see
+          <code>start</code> starts a recognition request or specifies
+          new parameters for subsequent requests. See
           <a href="#WSmore">Send additional requests and modify request
             parameters</a>.
         </li>
         <li style="margin:10px 0px; line-height:120%;">
           <code>stop</code> signals that all audio for a request has
-          been sent; see <a href="#WSstop">End a recognition request</a>.
+          been sent. See <a href="#WSstop">End a recognition request</a>.
         </li>
       </ul>
     </td>
@@ -208,15 +221,15 @@ To initiate a recognition request, the client sends a JSON text message to the s
     <td style="text-align:left"><code>content-type</code><br/><em>Required</em></td>
     <td style="text-align:center">String</td>
     <td style="text-align:left">
-      The format (MIME type) of the audio data for the request. For
-      detailed information about the available audio formats, see
+      Identifies the format (MIME type) of the audio data for the request.
+      For more information about the available audio formats, see
       <a href="/docs/services/speech-to-text/audio-formats.html">Audio
         formats</a>.
     </td>
   </tr>
 </table>
 
-The message can also include optional parameters to specify additional aspects of how the request is to be processed and the information that is to be returned. For more information, see [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html). Note that you can specify a language model, custom language model, and custom acoustic model only as query parameters of the WebSocket URL.
+The message can also include optional parameters to specify other aspects of how the request is to be processed and the information that is to be returned. For more information, see [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html). You can specify a language model, custom language model, and custom acoustic model only as query parameters of the WebSocket URL.
 
 The following snippet of JavaScript code sends initialization parameters for the recognition request over the WebSocket connection. The calls are included in the client's `onOpen` function to ensure that they are sent only after the connection is established.
 
@@ -238,9 +251,9 @@ If it receives the request successfully, the service returns the following text 
 ```
 {: codeblock}
 
-The `listening` state indicates that the service instance is configured (your JSON `start` message was valid) and is ready to process a new utterance for a recognition request. Once it begins listening, the service processes any audio that was sent prior to the `listening` message.
+The `listening` state indicates that the service instance is configured (your JSON `start` message was valid) and is ready to process a new utterance for a recognition request. Once it begins listening, the service processes any audio that was sent before the `listening` message.
 
-If the client specifies an invalid query parameter or JSON field as part of the input for a recognition request, the service's JSON response includes a `warnings` field that describes each invalid argument. The request succeeds despite the warnings.
+If the client specifies an invalid query parameter or JSON field for the recognition request, the service's JSON response includes a `warnings` field. The field describes each invalid argument. The request succeeds despite the warnings.
 
 ## Send audio and receive recognition results
 {: #WSaudio}
@@ -249,7 +262,7 @@ After it sends the initial `start` message, the client can begin sending audio d
 
 The client must send the audio as binary data. The client can stream a maximum of 100 MB of audio data with a single utterance (per `send` request). The client can send multiple utterances over a single WebSocket connection.
 
-The WebSocket interface imposes a maximum frame size of 4 MB. The client can set the maximum frame size to less than 4 MB or, if that is not practical, set the maximum message size to less than 4 MB and send the audio data as a sequence of messages.
+The WebSocket interface imposes a maximum frame size of 4 MB. The client can set the maximum frame size to less than 4 MB. If it is not practical to set the frame size, the client can set the maximum message size to less than 4 MB and send the audio data as a sequence of messages.
 
 The following snippet of JavaScript code sends audio data to the service as a binary message (blob):
 
@@ -270,7 +283,7 @@ function onMessage(evt) {
 ## End a recognition request
 {: #WSstop}
 
-When it is done sending the audio data for a request to the service, the client *must* signal the end of the binary transmission to the service in one of two ways:
+When it is done sending the audio data for a request to the service, the client *must* signal the end of the binary transmission to the service:
 
 -   By sending a JSON text message with the `action` parameter set to the value `stop`:
 
@@ -286,16 +299,16 @@ When it is done sending the audio data for a request to the service, the client 
     ```
     {: codeblock}
 
-After it returns the final result for the transcription to the client, the service returns another `{"state":"listening"}` message to the client. This message indicates that the service is ready to receive another recognition request. Before sending another request, the client must already have signaled the end of transmission for the previous request as just described. Otherwise, the service returns no new results.
+After it returns the final result for the transcription to the client, the service returns another `{"state":"listening"}` message to the client. This message indicates that the service is ready to receive another recognition request. Before it sends another request, the client must signal the end of transmission for the previous request. Otherwise, the service returns no new results.
 
 ## Send additional requests and modify request parameters
 {: #WSmore}
 
-As long as the WebSocket connection remains active, the client can continue to use the connection to make additional recognition requests with new audio. By default, the service continues to use the parameters sent with the previous `start` message for all subsequent requests sent over the same connection.
+While the WebSocket connection remains active, the client can continue to use the connection to send further recognition requests with new audio. By default, the service continues to use the parameters that were sent with the previous `start` message for all subsequent requests that are sent over the same connection.
 
-To change the parameters for subsequent requests, the client can send another `start` message with the new parameters after it receives the final recognition results and `{"state":"listening"}` message from the service. The client can change any parameters except for those specified when the connection is opened (`model`, `customization_id`, and so on).
+To change the parameters for subsequent requests, the client can send another `start` message with the new parameters after it receives the final recognition results and `{"state":"listening"}` message from the service. The client can change any parameters except for those parameters that are specified when the connection is opened (`model`, `customization_id`, and so on).
 
-The following example sends a `start` message with new parameters for subsequent recognition requests sent over the connection. The message specifies the same `content-type` as the previous example, but it directs the service to return confidence measures and timestamps for the words of the transcription.
+The following example sends a `start` message with new parameters for subsequent recognition requests that are sent over the connection. The message specifies the same `content-type` as the previous example, but it directs the service to return confidence measures and timestamps for the words of the transcription.
 
 ```javascript
 var message = {
@@ -321,7 +334,7 @@ For more information, see [Timeouts](/docs/services/speech-to-text/input.html#ti
 ## Close a connection
 {: #WSclose}
 
-When the client is done interacting with the service, it can close the WebSocket connection. Once the connection is closed, the client can no longer use it to send requests or to receive results. Close the connection only after you have received all results for a request. The connection eventually times out and closes if you do not explicitly close it.
+When the client is done interacting with the service, it can close the WebSocket connection. Once the connection is closed, the client can no longer use it to send requests or to receive results. Close the connection only after you receive all results for a request. The connection eventually times out and closes if you do not explicitly close it.
 
 The following snippet of JavaScript code closes an open connection:
 
@@ -346,7 +359,7 @@ If the socket closes with an error, the client receives an informative message o
 ## Example WebSocket session
 {: #WSexample}
 
-The following example shows a WebSocket session between a client and the {{site.data.keyword.speechtotextshort}} service. The session is shown as three separate exchanges to make it easier to follow, but all three exchanges are part of a single session with the service. The example focuses on the exchange of messages and does not reflect opening and closing the connection.
+The following example shows a WebSocket session between a client and the {{site.data.keyword.speechtotextshort}} service. The session is shown as three separate exchanges to make it easier to follow. But all three exchanges are part of a single session with the service. The example focuses on the exchange of messages; it does not show opening and closing the connection.
 
 ### First example exchange
 {: #firstExample}
@@ -404,7 +417,7 @@ In the second exchange, the client sends audio that contains the string `Second 
 ### Third example exchange
 {: #thirdExample}
 
-In the third exchange, the client again sends audio that contains the string `Name the Mayflower`. The client again sends a binary message with a single chunk of PCM audio data. This time, however, the client requests interim results with the transcription.
+In the third exchange, the client again sends audio that contains the string `Name the Mayflower`. The client again sends a binary message with a single chunk of PCM audio data. But this time, the client requests interim results with the transcription.
 
 -   The *client* sends:
 

@@ -22,6 +22,7 @@ Speech to Text
 
     {: .navgroup id="reference"}
     [API reference](https://www.ibm.com/watson/developercloud/speech-to-text/api)
+    information-security.md
 
     {: .topicgroup}
     Watson SDKs

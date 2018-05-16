@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-12-14"
+  years: 2015, 2018
+lastupdated: "2018-05-15"
 
 ---
 
@@ -18,46 +18,50 @@ lastupdated: "2017-12-14"
 {:swift: .ph data-hd-programlang='swift'}
 
 # Managing custom language models
-{: #manageModels}
+{: #manageLanguageModels}
 
-The customization interface offers the `POST /v1/customizations` method for creating a custom language model (see [Creating a new custom language model](/docs/services/speech-to-text/language-create.html#createModel)) and the `POST /v1/customizations/train` method for training a custom model on the latest data from its words resource (see [Train the custom language model](/docs/services/speech-to-text/language-create.html#trainModel)). In addition, the interface includes methods for listing information about custom models, for resetting a custom model to its initial state, and for deleting a custom model.
+The customization interface offers the `POST /v1/customizations` method for creating a custom language model. For more information, see [Create a custom language model](/docs/services/speech-to-text/language-create.html#createModel).
 {: shortdesc}
+
+The interface also offers the `POST /v1/customizations/train` method for training a custom model on the latest data from its words resource. For more information, see [Train the custom language model](/docs/services/speech-to-text/language-create.html#trainModel).
+
+In addition, the interface includes methods for listing information about custom models, for resetting a custom model to its initial state, and for deleting a custom model.
 
 ## Listing custom language models
 {: #listModels}
 
-The customization interface provides two methods for listing information about the custom language models owned by the specified service credentials:
+The customization interface provides two methods for listing information about the custom language models that are owned by the specified service credentials:
 
 -   The `GET /v1/customizations` method lists information about all custom language models or about all custom language models for a specified language.
 -   The `GET /v1/customizations/{customization_id}` method lists information about a specified custom language model. Use this method to poll the service about the status of a training request or a request to add new words.
 
 Both methods return the following information about a custom model:
 
--   `customization_id`: The custom model's Globally Unique Identifier (GUID), which is used to identify the model in methods of the interface.
--   `created`: The date and time in Coordinated Universal Time (UTC) at which the custom model was created.
--   `language`: The language of the custom model.
--   `dialect`: The dialect of the language for the custom language model.
--   `owner`: The credentials of the service instance that owns the custom model.
--   `name`: The name of the custom model.
--   `description`: The description of the custom model, if one was provided at its creation.
--   `base_model`: The name of the language model for which the custom model was created.
--   `versions`: A list of the available versions of the custom model. Each element of the array indicates a version of the base model with which the custom model can be used. Multiple versions exist only if the custom model has been upgraded; otherwise, only a single version is shown.
+-   `customization_id` identifies the custom model's Globally Unique Identifier (GUID). The GUID is used to identify the model in methods of the interface.
+-   `created` is the date and time in Coordinated Universal Time (UTC) at which the custom model was created.
+-   `language` is the language of the custom model.
+-   `dialect` is the dialect of the language for the custom language model.
+-   `owner` identifies the credentials of the service instance that owns the custom model.
+-   `name` is the name of the custom model.
+-   `description` shows the description of the custom model, if one was provided at its creation.
+-   `base_model` indicates the name of the language model for which the custom model was created.
+-   `versions` provides a list of the available versions of the custom model. Each element of the array indicates a version of the base model with which the custom model can be used. Multiple versions exist only if the custom model is upgraded. Otherwise, only a single version is shown.
 
-The methods also returns a `status` field that indicates the current status of the custom model:
+The method also returns a `status` field that indicates the state of the custom model:
 
--   `pending` indicates that the model was created but is waiting either for training data to be added or for the service to finish analyzing data that has been added.
+-   `pending` indicates that the model was created but is waiting either for training data to be added or for the service to finish analyzing data that was added.
 -   `ready` indicates that the model contains data and is ready to be trained.
--   `training` indicates that the model is currently being trained on data.
+-   `training` indicates that the model is being trained on data.
 -   `available` indicates that the model is trained and ready to use with a recognition request.
--   `upgrading` indicates that the model is currently being upgraded.
+-   `upgrading` indicates that the model is being upgraded.
 -   `failed` indicates that training of the model failed. Examine the words in the model's words resource to determine the errors that prevented the model from being trained.
 
-Additionally, the output includes a `progress` field that indicates the current progress of the custom model's training. If you used the `POST /v1/customizations/{customization_id}/train` method to initiate training of the model, this field indicates the current progress of that request as a percentage complete. At this time, the value of the field is `100` if the status is `available`; otherwise, it is `0`.
+Additionally, the output includes a `progress` field that indicates the current progress of the custom model's training. If you used the `POST /v1/customizations/{customization_id}/train` method to start training the model, this field indicates the current progress of that request as a percentage complete. At this time, the value of the field is `100` if the status is `available`; otherwise, it is `0`.
 
 ### Example requests and responses
 {: #listExample}
 
-The following example includes the `language` query parameter to list all US English custom language models owned by the service credentials:
+The following example includes the `language` query parameter to list all US English custom language models that are owned by the service credentials:
 
 ```bash
 curl -X GET -u {username}:{password}
@@ -65,7 +69,7 @@ curl -X GET -u {username}:{password}
 ```
 {: pre}
 
-The service credentials own two such models. The first is awaiting data or is currently being processed by the service; the second is fully trained and ready for use.
+The service credentials own two such models. The first model is awaiting data or is being processed by the service. The second model is fully trained and ready for use.
 
 ```javascript
 {
@@ -153,7 +157,7 @@ curl -X POST -u {username}:{password}
 ## Deleting a custom language model
 {: #deleteModel}
 
-Use the `DELETE /v1/customizations/{customization_id}` method to delete a custom language model that you no longer need. The method deletes all corpora and words associated with the custom model as well as the model itself. Use this method with caution: a custom model and the data associated with it cannot be reclaimed once you delete the model.
+Use the `DELETE /v1/customizations/{customization_id}` method to delete a custom language model that you no longer need. The method deletes all corpora and words that are associated with the custom model as well as the model itself. Use this method with caution: a custom model and its data cannot be reclaimed once you delete the model.
 
 ### Example request
 {: #deleteExample}

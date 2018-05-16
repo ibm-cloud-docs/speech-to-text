@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-11-07"
+  years: 2015, 2018
+lastupdated: "2018-05-14"
 
 ---
 
@@ -22,7 +22,7 @@ lastupdated: "2017-11-07"
 
 1.  <span style="color:#003F69">Can the service create a transcript that identifies individual speakers?</span>
 
-    Yes. The speaker labels feature lets you identify which individuals spoke which words in a multi-participant exchange. To use the feature, set the `speaker_labels` parameter to `true` in a recognition request. See [Speaker labels](/docs/services/speech-to-text/output.html#speaker_labels).
+    Yes. The speaker labels feature identifies which individuals spoke which words in a multi-participant exchange. To use the feature, set the `speaker_labels` parameter to `true` in a recognition request. See [Speaker labels](/docs/services/speech-to-text/output.html#speaker_labels).
 
 1.  <span style="color:#003F69">How do I synchronize the results from the JSON `speaker_labels` field with individual words of the transcription to re-create a conversation?</span>
 
@@ -34,8 +34,14 @@ lastupdated: "2017-11-07"
 
 1.  <span style="color:#003F69">I have an audio file with a single speaker, but when I set `speaker_labels` to `true`, the service identifies multiple speakers. Why?</span>
 
-    Because the feature is optimized for two-speaker conversations, applying it to audio with a single speaker can produce incorrect results. Variations in audio quality or in the speaker's voice can cause the service to identify additional speakers who are not present (sometimes called *hallucinations*). Do not use the feature for audio that has only a single speaker.
+    Because the feature is optimized for two-speaker conversations, applying it to audio with a single speaker can produce incorrect results. Variations in audio quality or in the speaker's voice can cause the service to identify speakers who are not present (sometimes called *hallucinations*). Do not use the feature for audio that has only a single speaker.
 
 1.  <span style="color:#003F69">I have a recording of an interview with two speakers, but the speaker labels feature does not always identify the correct speaker. In fact, only a single speaker is identified in the final transcript. Why?</span>
 
-    Many factors can affect performance. These include audio quality and background noise, how much audio is available for each speaker (it is better to have more than 30 seconds per speaker), the relative amount of audio that is available for each speaker, and so on. The nature of your audio and the conversation it contains may by inappropriate for the feature.
+    Many factors can affect performance. The factors include
+
+    -   Audio quality and background noise.
+    -   How much audio is available for each speaker (it is better to have more than 30 seconds per speaker).
+    -   The relative amount of audio that is available for each speaker.
+
+   The nature of your audio and the conversation it contains might be inappropriate for the feature.

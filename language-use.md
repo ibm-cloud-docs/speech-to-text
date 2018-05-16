@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-04-13"
+lastupdated: "2018-05-14"
 
 ---
 
@@ -20,12 +20,12 @@ lastupdated: "2018-04-13"
 # Using a custom language model
 {: #languageUse}
 
-Once you have created and trained your custom language model, you can use it in speech recognition requests. You use the `customization_id` query parameter to specify the custom language model for a request, as shown in the following examples. You can also tell the service how much weight to give to words from the custom model; for more information, see [Using customization weight](#weight). You must issue the request with service credentials for the instance of the service that owns the model.
+Once you create and train your custom language model, you can use it in speech recognition requests. You use the `customization_id` query parameter to specify the custom language model for a request, as shown in the following examples. You can also tell the service how much weight to give to words from the custom model. For more information, see [Using customization weight](#weight). You must issue the request with service credentials for the instance of the service that owns the model.
 {: shortdesc}
 
 You can create multiple custom language models for the same or different domains. However, you can specify only one custom language model at a time with the `customization_id` parameter.
 
--   For the WebSocket interface, use the `/v1/recognize` method. The specified custom model is used for all requests sent over the connection.
+-   For the WebSocket interface, use the `/v1/recognize` method. The specified custom model is used for all requests that are sent over the connection.
 
     ```javascript
     var token = {authentication-token};
@@ -49,7 +49,7 @@ You can create multiple custom language models for the same or different domains
     {: pre}
 
     For more information, see [Making sessionless requests](/docs/services/speech-to-text/http.html#HTTP-sessionless).
--   For a session-based request with the HTTP REST interface, use the `POST /v1/sessions` method. The specified custom model is used for all requests sent over the session.
+-   For a session-based request with the HTTP REST interface, use the `POST /v1/sessions` method. The specified custom model is used for all requests that are sent over the session.
 
     ```bash
     curl -X POST -u {username}:{password}
@@ -70,18 +70,18 @@ You can create multiple custom language models for the same or different domains
 
     For more information, see [The asynchronous HTTP interface](/docs/services/speech-to-text/async.html).
 
-You can omit the language model from the request if the custom model is based on the default language model, `en-US_BroadbandModel`; otherwise, you must use the `model` parameter to specify the base model, as shown for the WebSocket example. A custom model can be used only with the base model for which it is created.
+You can omit the language model from the request if the custom model is based on the default language model, `en-US_BroadbandModel`. Otherwise, you must use the `model` parameter to specify the base model, as shown for the WebSocket example. A custom model can be used only with the base model for which it is created.
 
 ## Using customization weight
 {: #weight}
 
 > **Note:** Customization weight is a beta feature that is available for all languages that are supported for language model customization.
 
-A custom language model is a combination of the custom model and the base model that it customizes. You can tell the service how much weight to give to words from the custom language model compared to those from the base model for speech recognition. The weight assigned to a custom model is referred to as its *customization weight*.
+A custom language model is a combination of the custom model and the base model that it customizes. You can tell the service how much weight to give to words from the custom language model compared to words from the base model for speech recognition. The weight that is assigned to a custom model is referred to as its *customization weight*.
 
-You specify the relative weight given to a custom language model as a double between 0.0 to 1.0. By default, each custom language model has a weight of 0.3. The default weight yields the best performance in the general case; it allows both OOV words from the custom model and words from the base vocabulary to be recognized.
+You specify the relative weight for a custom language model as a double between 0.0 to 1.0. By default, each custom language model has a weight of 0.3. The default weight yields the best performance in the general case. It allows both OOV words from the custom model and words from the base vocabulary to be recognized.
 
-However, in cases where the audio to be transcribed makes frequent use of OOV words from the custom model, increasing the customization weight can improve the accuracy of transcription results. Exercise caution when setting the customization weight. While a higher weight can improve the accuracy of phrases from the domain of the custom model, it can also negatively impact performance on non-domain phrases. (Note that even when setting the weight to 0.0, there is a small probability that the transcription can include custom words due to the implementation of language model customization.)
+However, in cases where the audio to be transcribed makes frequent use of OOV words from the custom model, increasing the customization weight can improve the accuracy of transcription results. Exercise caution when you set the customization weight. While a higher weight can improve the accuracy of phrases from the domain of the custom model, it can also negatively impact performance on non-domain phrases. (Even if you set the weight to 0.0, a small probability exists that the transcription can include custom words due to the implementation of language model customization.)
 
 You specify a customization weight by using the `customization_weight` parameter. You can specify the parameter when you train a custom language model or when you use it with a speech recognition request.
 

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2017-11-07"
+  years: 2015, 2018
+lastupdated: "2018-05-14"
 
 ---
 
@@ -22,8 +22,10 @@ lastupdated: "2017-11-07"
 
 1.  <span style="color:#003F69">If I use the WebSocket API, do I need to use sessions?</span>
 
-    No. When you use the WebSocket interface, the WebSocket is the connection to the service, and the connection is the session. A WebSocket connection provides all of the advantages of sessions and more. For example, it provides a single-socket, full-duplex communication channel; the client sends requests to the service and receives results over a single connection in an asynchronous fashion. In addition, the WebSocket protocol is very lightweight, which further reduces network latency. See [The WebSocket interface](/docs/services/speech-to-text/websockets.html).
+    No. When you use the WebSocket interface, the WebSocket *is* the connection to the service, and the connection is the session. A WebSocket connection provides all of the advantages of sessions and more.
+
+    For example, the interface provides a single-socket, full-duplex communication channel. The client sends requests to the service and receives results over a single connection in an asynchronous fashion. In addition, the WebSocket protocol is lightweight, which further reduces network latency. For more information, see [The WebSocket interface](/docs/services/speech-to-text/websockets.html).
 
 1.  <span style="color:#003F69">My WebSocket connection times out before I receive the final hypothesis. What can I do?</span>
 
-    Make sure that you signal the end of the audio by sending either a `stop` message or an empty binary message to the service. See [End a recognition request](/docs/services/speech-to-text/websockets.html#WSstop).
+    Make sure that you signal the end of the audio by sending either a `stop` message or an empty binary message to the service. For more information, see [End a recognition request](/docs/services/speech-to-text/websockets.html#WSstop).

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-02-13"
+lastupdated: "2018-05-14"
 
 ---
 
@@ -53,7 +53,7 @@ The preferred means of adding audio to a custom acoustic model is to add an arch
 -   A **.zip** file by specifying `application/zip`
 -   A **.tar.gz** file by specifying `application/gzip`
 
-All audio files added with a single archive file must have the same audio format. By default, the method accepts an archive of WAV files. If your archive includes any other type of audio, you must include the `Contained-Content-Type` header with the request to specify the format of the audio. The header accepts all of the audio formats supported for use with recognition requests, including the `rate`, `channels`, and `endianness` parameters that are used with some formats. For a complete list of supported formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
+All audio files added with a single archive file must have the same audio format. By default, the method accepts an archive of WAV files. If your archive includes any other type of audio, you must include the `Contained-Content-Type` header with the request to specify the format of the audio. The header accepts all of the audio formats that are supported for use with recognition requests, including the `rate`, `channels`, and `endianness` parameters that are used with some formats. For more information about the supported formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 
 The following example from [Add audio to the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#addAudio) adds an `application/zip` file that contains audio files in `audio/l16` format that are sampled at 16 kHz:
 
@@ -69,15 +69,15 @@ curl -X POST -u {username}:{password}
 ## Guidelines for adding audio resources
 {: #audioGuidelines}
 
-Follow these guidelines when adding audio resources to a custom acoustic model:
+Follow these guidelines when you add audio resources to a custom acoustic model:
 
--   The custom model must contain at least 10 minutes and no more than 50 hours of audio that includes speech, not just silence.
+-   The custom model must contain at least 10 minutes and no more than 50 hours of audio that includes speech, not silence.
 -   Add audio resources that are no larger than 100 MB. All audio- and archive-type resources are limited to a maximum size of 100 MB.
 -   Add audio content that reflects the acoustic channel conditions of the audio that you plan to transcribe. For example, if your application deals with audio that has background noise from a car, use the same type of data to build the custom model.
 -   The sampling rate of an audio file must match the sampling rate of the base model for the custom acoustic model:
     -   For broadband models, the sampling rate must be at least 16 kHz (16,000 samples per second).
     -   For narrowband models, the sampling rate must be at least 8 kHz (8000 samples per second).
 
-    If the sampling rate of the audio is higher than the minimum required sampling rate, the service down-samples the audio to the appropriate rate. If the sampling rate of the audio is lower than the minimum required rate, the service labels the audio file as `invalid`. If any audio file contained in an archive file is invalid, the service considers the entire archive invalid.
+    If the sampling rate of the audio is higher than the minimum required sampling rate, the service down-samples the audio to the appropriate rate. If the sampling rate of the audio is lower than the minimum required rate, the service labels the audio file as `invalid`. If any audio file that is contained in an archive file is invalid, the service considers the entire archive invalid.
 -    If your audio data is less than an hour long, {{site.data.keyword.IBM_notm}} recommends that you create a custom language model based on transcriptions of the audio to achieve the best results. For more information, see [Using custom acoustic and custom language models together](/docs/services/speech-to-text/acoustic-both.html).
--    If your audio is domain-specific and contains unique words that are not found in the service's base vocabulary, acoustic model customization alone will not produce those words during transcription. You must use language model customization to expand the service's base vocabulary. See [Using custom acoustic and custom language models together](/docs/services/speech-to-text/acoustic-both.html).
+-    If your audio is domain-specific and contains unique words that are not found in the service's base vocabulary, acoustic model customization alone does not produce those words during transcription. You must use language model customization to expand the service's base vocabulary. For more information, see [Using custom acoustic and custom language models together](/docs/services/speech-to-text/acoustic-both.html).

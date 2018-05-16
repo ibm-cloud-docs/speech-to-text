@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2017
-lastupdated: "2018-04-27"
+  years: 2015, 2018
+lastupdated: "2018-05-14"
 
 ---
 
@@ -27,7 +27,7 @@ The {{site.data.keyword.speechtotextfull}} service transcribes audio to text to 
 ## Before you begin
 {: #before-you-begin}
 
-- {: download} If you're seeing this, you created your service instance. Now get your credentials.
+- {: download} If you're seeing this text, you created your service instance. Now get your credentials.
 - Create an instance of the service:
     1.  Go to the [{{site.data.keyword.speechtotextshort}} ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.{DomainName}/catalog/services/speech-to-text){: new_window} page in the {{site.data.keyword.Bluemix_notm}} Catalog.
     1.  Sign up for a free {{site.data.keyword.Bluemix_notm}} account or log in.
@@ -36,9 +36,8 @@ The {{site.data.keyword.speechtotextfull}} service transcribes audio to text to 
     1.  On the service dashboard, click the **Service credentials** tab.
     1.  Click **View credentials** under **Actions**.
     1.  Copy the `username`, `password`, and `url` values.
-- Make sure you have cURL:
+- Make sure that you have cURL:
     - The examples use cURL to call methods of the HTTP interface. Install the version for your operating system from [curl.haxx.se ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://curl.haxx.se/){: new_window}. Install the version that supports the Secure Sockets Layer (SSL) protocol. Make sure to include the installed binary file on your `PATH` environment variable.
-
 
 ## Step 1: Transcribe audio with no options
 {: #transcribe}
@@ -79,13 +78,13 @@ Call the `POST /v1/recognize` method to request a basic transcription of a FLAC 
     ```
     {: codeblock}
 
-## Step 2: Transcribe audio with additional options
+## Step 2: Transcribe audio with two options
 {: #transcribeOptions}
 
-Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but specify two of the method's many additional transcription features.
+Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but specify two transcription parameters.
 
 1.  If necessary, download the sample audio file <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac" download="audio-file.flac">audio-file.flac <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon" class="style-scope doc-content"></a>.
-1.  Issue the following command to call the service's `/v1/recognize` method with two additional parameters. The `timestamps` parameter is set to `true` to indicate the beginning and end of each word in the audio stream, and the `max_alternatives` parameter is set to `3` to receive the three most likely alternatives for the transcription. The example uses the `Content-Type` header to indicate the type of the audio, `audio/flac`, and the request uses the default model, `en-US_BroadbandModel`.
+1.  Issue the following command to call the service's `/v1/recognize` method with two extra parameters. Set the `timestamps` parameter to `true` to indicate the beginning and end of each word in the audio stream. Set the `max_alternatives` parameter to `3` to receive the three most likely alternatives for the transcription. The example uses the `Content-Type` header to indicate the type of the audio, `audio/flac`, and the request uses the default model, `en-US_BroadbandModel`.
     -   Replace `{username}` and `{password}` with your service credentials.
     -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
 
@@ -97,7 +96,7 @@ Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but
     ```
     {: pre}
 
-    The service returns the following results, which includes timestamps and three alternative transcriptions:
+    The service returns the following results, which include timestamps and three alternative transcriptions:
 
     ```javascript
     {
@@ -139,4 +138,4 @@ Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but
 -   Learn more about the interfaces and SDKs that are available for making speech recognition requests in the [Overview for developers](/docs/services/speech-to-text/developer-overview.html).
 -   See basic recognition requests for each of the service's interfaces in [Making a recognition request](/docs/services/speech-to-text/basic-request.html).
 -   Find detailed information about all methods of the service's interfaces in the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
--   Interact with the API in the [API explorer ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://watson-api-explorer.mybluemix.net/apis/speech-to-text-v1){: new_window}.
+-   Interact with the API in the [API explorer ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://watson-api-explorer.ng.bluemix.net/apis/speech-to-text-v1){: new_window}.
