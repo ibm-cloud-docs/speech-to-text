@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-09"
+lastupdated: "2018-05-17"
 
 ---
 
@@ -20,31 +20,31 @@ lastupdated: "2018-05-09"
 # Input features
 {: #input}
 
-The {{site.data.keyword.speechtotextshort}} service offers the following features to specify how the service is to perform the recognition request. All of the input parameters described on this page are optional; only the input audio and its format are required.
+The {{site.data.keyword.speechtotextshort}} service offers the following features to specify how the service is to perform the recognition request. All of the input parameters that are described in the following sections are optional. Only the input audio and its format are required.
 {: shortdesc}
 
 -   For examples of simple requests and responses for each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text/basic-request.html).
--   For information about the supported audio formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
+-   For more information about the supported audio formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 -   For an alphabetized list of all available parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
 
 ## Authentication tokens
 {: #tokens}
 
-*Authentication tokens* are an alternative to service credentials that allow you to make authenticated requests to {{site.data.keyword.watson}} services without embedding your service credentials in every call. You use your service credentials to obtain a token for the service and then call the service directly, without relying on an intermediate server-side application for handling communications to and from the service. Note that you must use authentication tokens when working with the WebSocket interface. For more information, see [Tokens for authentication](/docs/services/watson/getting-started-tokens.html).
+*Authentication tokens* are an alternative to service credentials. By using tokens, you can make authenticated requests to {{site.data.keyword.watson}} services without embedding your service credentials in every call. You use your service credentials to obtain a token for the service. You then call the service directly, without relying on an intermediate server-side application for handling communications to and from the service. You must use authentication tokens with the WebSocket interface. For more information, see [Tokens for authentication](/docs/services/watson/getting-started-tokens.html).
 
 ## Request logging
 {: #logging}
 
-*Request logging* is used by all {{site.data.keyword.watson}} services to log each request to a service and its results. When you agree (opt in) to have your data logged, {{site.data.keyword.IBM_notm}} reserves the right to store and use the data to improve the service's base language models. {{site.data.keyword.IBM_notm}} stores the data only to improve the service for future users; the logged data is never shared or made public. Once you opt in, {{site.data.keyword.IBM_notm}} offers no mechanism to delete the stored audio or transcripts.
+*Request logging* is used by all {{site.data.keyword.watson}} services to log each request to a service and its results. When you agree (opt in) to request logging, {{site.data.keyword.IBM_notm}} reserves the right to store and use the data to improve the service's base language models. {{site.data.keyword.IBM_notm}} accesses the data only to improve the service for future users. It never shares or makes public the logged data. Once you opt in, {{site.data.keyword.IBM_notm}} offers no mechanism to delete the stored audio or transcripts.
 
-To prevent {{site.data.keyword.IBM_notm}} from accessing your data for general service improvements, set the `X-Watson-Learning-Opt-Out` request header to `true` for all requests. When you use the header to opt out of request logging, {{site.data.keyword.IBM_notm}} stores none of your data. Your data exists within {{site.data.keyword.watson}} only while it is in transit (in memory while the service processes your request).
+To prevent {{site.data.keyword.IBM_notm}} from accessing your data for general service improvements, set the `X-Watson-Learning-Opt-Out` request header to `true` for all requests. When you use the header to opt out of request logging, {{site.data.keyword.IBM_notm}} does not access your data for service improvements. Your data exists within {{site.data.keyword.watson}} only while it is in transit (in memory while the service processes your request).
 
 In either case, your data is always encrypted both in motion and at rest. For more information about opting out of request logging, see [Controlling request logging for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-logging.html).
 
 ## Information security
 {: #security}
 
-*Information security* allows you to associate a customer ID with data that is passed to the service with a recognition request. You associate a customer ID with the data by passing the `X-Watson-Metadata` header with the request. If necessary, you can then delete the data by using the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/services/speech-to-text/information-security.html).
+*Information security* includes features to associate a customer ID with data that is passed to the service with a request. You associate a customer ID with the data by passing the `X-Watson-Metadata` header with the request. If necessary, you can then delete the data by using the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/services/speech-to-text/information-security.html).
 
 ## Languages and models
 {: #models}
@@ -54,7 +54,7 @@ You can use the `model` parameter to specify a language model for the request. T
 -   A *broadband model* for audio that is sampled at greater than or equal to 16 kHz. {{site.data.keyword.IBM}} recommends that you use the broadband model for responsive, real-time applications (for example, for live-speech applications).
 -   A *narrowband model* for audio that is sampled at 8 kHz. This rate is used typically for telephonic audio.
 
-The service automatically adjusts the sampling rate of your audio to match the model that you specify; for more information, see [Sampling rate](/docs/services/speech-to-text/audio-formats.html#samplingRate).
+The service automatically adjusts the sampling rate of your audio to match the model that you specify. For more information, see [Sampling rate](/docs/services/speech-to-text/audio-formats.html#samplingRate).
 
 The following table lists the supported models for each language. If you omit the model from a request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
 
@@ -132,12 +132,12 @@ curl -X POST -u {username}:{password}
 
 > **Note:** Language and acoustic model customization are available at different levels of support (generally available or beta) for different languages. For more information, see [Language support for customization](/docs/services/speech-to-text/custom.html#languageSupport).
 
-All interfaces allow you to pass a custom model to the service for use in a recognition request:
+All interfaces accept a custom model for use in a recognition request:
 
--   *Custom language models* let you expand the service's base vocabulary with terminology from specific domains. Use the `customization_id` parameter to include a custom language model with a request. You can also specify an optional `customization_weight` parameter to indicate the relative weight given to words from the custom model compared to those from the base vocabulary. For more information, see [Using a custom language model](/docs/services/speech-to-text/language-use.html).
--   *Custom acoustic models* let you adapt the service's base acoustic model for the acoustic characteristics of your environment and speakers. Use the `acoustic_customization_id` parameter to include a custom acoustic model with a request. You can specify both a custom language model and a custom acoustic model with a request. For more information, see [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html).
+-   *Custom language models* expand the service's base vocabulary with terminology from specific domains. Use the `customization_id` parameter to include a custom language model with a request. You can also specify an optional `customization_weight` parameter. The parameter indicates the relative weight that is given to words from the custom model as opposed to words from the base vocabulary. For more information, see [Using a custom language model](/docs/services/speech-to-text/language-use.html).
+-   *Custom acoustic models* adapt the service's base acoustic model for the acoustic characteristics of your environment and speakers. Use the `acoustic_customization_id` parameter to include a custom acoustic model with a request. You can specify both a custom language model and a custom acoustic model with a request. For more information, see [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html).
 
-Custom models are based on one of the language models described in [Languages and models](#models) and can be used only with the base model for which they are created. If your custom model is based on a model other than the `en-US_BroadbandModel`, the default, you must also specify the name of the model with the request. To use a custom model, you must issue the request with service credentials created for the instance of the service that owns the custom model. For an introduction to customization, see [The customization interface](/docs/services/speech-to-text/custom.html).
+Custom models are based on one of the language models that are described in [Languages and models](#models). A custom model can be used only with the base model for which it is created. If your custom model is based on a model other than the `en-US_BroadbandModel`, the default, you must also specify the name of the model with the request. To use a custom model, you must issue the request with service credentials that are created for the instance of the service that owns the custom model. For an introduction to customization, see [The customization interface](/docs/services/speech-to-text/custom.html).
 
 ### Custom model examples
 {: #customExample}
@@ -167,35 +167,35 @@ For examples that use custom models with each of the service's interfaces, see [
 ## Base model version
 {: #version}
 
-To improve the quality of speech recognition, the service occasionally updates the base language models described in [Languages and models](#models). The base models for languages are independent of each other, as are the broadband and narrowband models for a given language. Updates to base models therefore occur independently of each other and have no effect on other models.
+To improve the quality of speech recognition, the service occasionally updates the base language models described in [Languages and models](#models). The base models for languages are independent of each other, as are the broadband and narrowband models for a language. Therefore, updates to base models occur independently of each other and have no effect on other models.
 
-When multiple versions of a base model exist, the optional `base_model_version` parameter lets you specify the version of the model to be used with a recognition request. The parameter is intended primarily for use with custom models that have been updated for a new base model, but it can be used without a custom model. The version of a base model that is used for a request depends on whether you pass the `base_model_version` parameter and whether you specify a custom model (language, acoustic, or both) with the request:
+When multiple versions of a base model exist, the optional `base_model_version` parameter specifies the version of the model to be used with a recognition request. The parameter is intended primarily for use with custom models that are updated for a new base model, but it can be used without a custom model. The version of a base model that is used for a request depends on whether you pass the `base_model_version` parameter. It also depends on whether you specify a custom model (language, acoustic, or both) with the request.
 
--   *If you do not specify a custom model with the request:*
+-   *If you do not specify a custom model with the request*
 
     -   Omit the `base_model_version` parameter to use the latest version of the base model.
     -   Specify the `base_model_version` parameter to use a specific version of the base model.
 
--   *If you specify a custom model with the request:*
+-   *If you specify a custom model with the request*
 
-    -   Omit the `base_model_version` parameter to use the latest version of the base model to which the custom model has been upgraded. For example, if the custom model has been upgraded to the latest version of the base model, the service uses the latest versions of the base and custom models.
+    -   Omit the `base_model_version` parameter to use the latest version of the base model to which the custom model is upgraded. For example, if the custom model is upgraded to the latest version of the base model, the service uses the latest versions of the base and custom models.
     -   Specify the `base_model_version` parameter to use the specified versions of both the base and custom models.
 
-Because the parameter is intended for use with custom models, you can learn about the available versions of a base model only by listing information about a custom model that is based on it. For complete information about upgrading custom models and about using different versions of base and custom models for speech recognition, see [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html), especially [Making recognition requests with upgraded custom models](/docs/services/speech-to-text/custom-upgrade.html#upgradeRecognition).
+The parameter is intended for use with custom models. Therefore, you can learn about the available versions of a base model only by listing information about a custom model that is based on it. For more information about upgrading custom models and about using different versions of base and custom models for speech recognition, see [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html). See especially [Making recognition requests with upgraded custom models](/docs/services/speech-to-text/custom-upgrade.html#upgradeRecognition).
 
 ## Audio transmission
 {: #transmission}
 
-*With the WebSocket interface,* audio data is always streamed to the service over the connection. You can pass data through the socket all at once or, for the live-use case, as it becomes available.
+*With the WebSocket interface,* audio data is always streamed to the service over the connection. You can pass data through the socket all at once, or you can pass data for the live-use case as it becomes available.
 
-*With the HTTP interface,* you can transmit audio to the service in one of two ways:
+*With the HTTP interface,* you can transmit audio to the service in either of the following ways:
 
--   *One-shot delivery:* You omit the `Transfer-Encoding` header and pass all of the audio data to the service at one time as a single delivery.
--   *Streaming:* You set the `Transfer-Encoding` request header to the value `chunked` and stream the data over a persistent connection. The data does not need to exist fully before being streamed to the service; you can stream the data as it becomes available. You also need to set the header to `chunked` for a request that passes more than one audio file. For more information about the header, see [en.wikipedia.org/wiki/Chunked_transfer_encoding ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/Chunked_transfer_encoding){: new_window}.
+-   *One-shot delivery* - You omit the `Transfer-Encoding` header and pass all of the audio data to the service at one time as a single delivery.
+-   *Streaming* - You set the `Transfer-Encoding` request header to the value `chunked` and stream the data over a persistent connection. The data does not need to exist fully before you stream it to the service. You can stream the data as it becomes available. You also need to set the header to `chunked` for a request that passes more than one audio file. For more information about the header, see [en.wikipedia.org/wiki/Chunked_transfer_encoding ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/Chunked_transfer_encoding){: new_window}.
 
-With either interface, the service always transcribes the entire audio stream until it terminates. Transcription results can include multiple `transcript` elements to indicate phrases separated by pauses. Concatenate the `transcript` elements to assemble the complete transcription of the audio stream.
+With either interface, the service always transcribes the entire audio stream until it terminates. Transcription results can include multiple `transcript` elements to indicate phrases that are separated by pauses. Concatenate the `transcript` elements to assemble the complete transcription of the audio stream.
 
-To preserve system resources when you stream audio data, the service enforces timeouts, terminating a request if the operation is started but the service receives no audio or if the service detects an extended period of silence in the audio. For information about the different timeouts associated with audio transmission, see [Timeouts](#timeouts).
+To preserve system resources when you stream audio data, the service enforces timeouts. The service terminates a request if the operation is started but the service receives no audio. The service can also end the request if the service detects an extended period of silence in the audio. For more information about the timeouts for audio transmission, see [Timeouts](#timeouts).
 
 ### Audio transmission example
 {: #transmissionExample}
@@ -215,18 +215,18 @@ curl -X POST -u {username}:{password}
 ## Timeouts
 {: #timeouts}
 
-To preserve resources when you stream audio data, the service enforces various timeouts. If one of these timeouts lapses, the service closes the connection.
+To preserve resources when you stream audio data, the service enforces timeouts. If a timeouts lapses, the service closes the connection.
 
--   A *session timeout* (HTTP status code 408) occurs when a client starts a session but the service receives no audio for 30 seconds. It also occurs when a session is active but no request is received from the client for 30 seconds. The latter condition occurs only if the service receives no data from the client for 30 seconds and it has not yet received the last chunk of data. If the client has sent all data, the service can take more than 30 seconds to generate a response; in this case, the request does not time out.
+-   A *session timeout* (HTTP status code 408) occurs when a client starts a session but the service receives no audio for 30 seconds. It also occurs when a session is active but no request is received from the client for 30 seconds. The latter condition occurs only if the service receives no data from the client for 30 seconds but has not yet received the last chunk of data. If the client has sent all data, the service can take more than 30 seconds to generate a response; in this case, the request does not time out.
 
     For both WebSocket connections and HTTP sessions, you can keep a session active by sending any audio data, including just silence, before the 30-second session timeout occurs. (You must also set the `inactivity_timeout` parameter to `-1`, as described in the next bullet.) You are charged for the duration of any data that you send to the service, including the silence that you send to extend a session.
 
-    Ideally, you would establish a session just before you obtain audio for transcription and maintain it by sending audio at a rate that is close to real time. Your application should also recover gracefully from closed connections.
+    Ideally, you would establish a session just before you obtain audio for transcription and maintain it by sending audio at a rate that is close to real time. Your application must also recover gracefully from closed connections.
 -   An *inactivity timeout* (HTTP status code 400) occurs when the service is receiving audio from the client but it detects silence (no speech) for 30 seconds. The service uses the inactivity timeout to ensure that a session remains active. The timeout is useful, for example, for terminating a session when a user simply walks away from a live microphone.
 
     You can override this timeout by specifying a different value for the `inactivity_timeout` parameter. Specify a value of `-1` to set the inactivity timeout to infinity.
 
-To improve usability for long audio files, the service avoids HTTP REST inactivity timeouts by sending a space character every 20 seconds in the response JSON object to keep the connection alive as long as recognition is ongoing. The WebSocket interface is not subject to such platform timeouts.
+To improve usability for long audio files, the service avoids HTTP REST inactivity timeouts by sending a space character every 20 seconds in the response JSON object. Sending the character keeps the connection alive while recognition is ongoing. The WebSocket interface is not subject to such platform timeouts.
 
 ### Inactivity timeout example
 {: #timeoutsExample}

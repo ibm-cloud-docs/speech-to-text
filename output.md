@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-14"
+lastupdated: "2018-05-17"
 
 ---
 
@@ -222,9 +222,9 @@ The `transcript` field shows the final transcript of the audio, which lists the 
 
 The results clearly indicate how this two-person exchange began:
 
--   **Speaker 2:** "Hello?"
--   **Speaker 1:** "Yeah?"
--   **Speaker 2:** "Yeah, how's Billy?"
+-   **Speaker 2** - "Hello?"
+-   **Speaker 1** - "Yeah?"
+-   **Speaker 2** - "Yeah, how's Billy?"
 
 In the example, the `confidence` fields indicate the service's confidence in its identification of the speakers. The `final` field has a value of `false` for each word. This value indicates that the service is still processing the audio and might change its identification of the speaker or its confidence for individual words before it is done.
 
@@ -252,7 +252,7 @@ As noted previously, the speaker labels feature is optimized for two-person conv
 -   Performance for audio with a single speaker can be poor. Variations in audio quality or in the speaker's voice can cause the service to identify extra speakers who are not present. Such speakers are referred to as hallucinations.
 -   Similarly, performance for audio with a dominant speaker, such as a podcast, can be poor. The service tends to miss speakers who talk for shorter amounts of time, and it can also produce hallucinations.
 -   Performance for short utterances can be less accurate than for long utterances. The service produces better results when participants speak for longer amounts of time.
--   Performance can degrade for the first 30 seconds of speech. It usually improves to a reasonable level after one minute of audio.
+-   Performance can degrade for the first 30 seconds of speech. It usually improves to a reasonable level after 1 minute of audio.
 
 Bear in mind that, as with all transcription, performance can also be affected by audio noise, a person's manner of speech, overlapping speakers, and other aspects of the audio.
 
@@ -289,7 +289,7 @@ A keyword for which the service finds no matches is omitted from the array. A ke
     The service matches a multi-token keyword only if
 
     -   The keyword's tokens are in the same block.
-    -   The tokens are either adjacent or separated by a gap of no more than a tenth of a second.
+    -   The tokens are either adjacent or separated by a gap of no more than 0.1 second.
 
     The latter case can occur if a brief filler or non-lexical utterance, such as "uhm" or "well," lies between two tokens of the keyword.
 
@@ -589,7 +589,10 @@ curl -X POST -u {username}:{password}
 
 The `word_confidence` parameter tells the service whether to provide confidence measures for the words of the transcript. By default, the service reports a confidence measure only for the final transcript as a whole. Setting `word_confidence` to `true` directs the service to report a confidence measure for each individual word of the transcript.
 
-A confidence measure indicates the service's estimation that the transcribed word is correct. Confidences scores range from 0.0 to 1.0. A score of 1.0 for a word indicates that the current transcription reflects the most likely result, based on the acoustic evidence. A score of 0.5 means that the word has a 50-percent chance of being correct.
+A confidence measure indicates the service's estimation that the transcribed word is correct based on the acoustic evidence. Confidence scores range from 0.0 to 1.0.
+
+-   A score of 1.0 indicates that the current transcription of the word reflects the most likely result.
+-   A score of 0.5 means that the word has a 50-percent chance of being correct.
 
 ### Word confidence example
 {: #wordConfidenceExample}
@@ -793,7 +796,7 @@ curl -X POST -u {username}:{password}
 
 > **Note:** The smart formatting feature is beta functionality that is available for US English only.
 
-The `smart_formatting` parameter directs the service to convert dates, times, series of digits and numbers, phone numbers, currency values, and Internet addresses into more conventional representations. The service performs smart formatting only on the final transcript of a recognition request, just before the result is returned to the client, when text normalization is complete. The conversion makes the transcript more readable and enables better post-processing of the transcription results. You set the parameter to `true` to enable smart formatting; by default, no smart formatting is performed.
+The `smart_formatting` parameter directs the service to convert dates, times, series of digits and numbers, phone numbers, currency values, and internet addresses into more conventional representations. The service performs smart formatting only on the final transcript of a recognition request, just before the result is returned to the client, when text normalization is complete. The conversion makes the transcript more readable and enables better post-processing of the transcription results. You set the parameter to `true` to enable smart formatting; by default, no smart formatting is performed.
 
 Smart formatting is based on the presence of obvious keywords in the transcript. For example, times are identified by keywords such as *AM* or *EST*, and military times are converted if identified by the keyword *hours*. Phone numbers must be either *911* or a number with 10 digits or with 11 digits that start with the number *1*.
 
@@ -810,7 +813,7 @@ The feature also directs the service to substitute punctuation symbols for the f
   </tr>
   <tr>
     <td>
-      comma
+      Comma
     </td>
     <td style="text-align:center">
       <code>,</code>
@@ -818,7 +821,7 @@ The feature also directs the service to substitute punctuation symbols for the f
   </tr>
   <tr>
     <td>
-      period
+      Period
     </td>
     <td style="text-align:center">
       <code>.</code>
@@ -826,7 +829,7 @@ The feature also directs the service to substitute punctuation symbols for the f
   </tr>
   <tr>
     <td>
-      question mark
+      Question mark
     </td>
     <td style="text-align:center">
       <code>?</code>
@@ -834,7 +837,7 @@ The feature also directs the service to substitute punctuation symbols for the f
   </tr>
   <tr>
     <td>
-      exclamation point
+      Exclamation point
     </td>
     <td style="text-align:center">
       <code>!</code>
@@ -992,7 +995,7 @@ The following table shows examples of final transcripts both with and without sm
       one hundred and nine point seven two yen
     </td>
     <td headers="CurrencyValues withFormatting">
-      the dollar rose to 109.79 yen from 109.72 yen
+      The dollar rose to 109.79 yen from 109.72 yen
     </td>
   </tr>
   <tr>
