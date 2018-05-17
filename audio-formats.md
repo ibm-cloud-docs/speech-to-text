@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-05-17"
 
 ---
 
@@ -35,12 +35,12 @@ The following terminology is used to describe the characteristics of audio data 
 -   *Broadband* models are used for audio that is sampled at no less than 16 kHz, which {{site.data.keyword.IBM}} recommends for responsive, real-time applications (for example, for live-speech applications).
 -   *Narrowband* models are used for audio that is sampled at no less than 8 kHz, which is the rate that is typically used for telephonic audio.
 
-The service supports both broadband and narrowband audio for most languages and formats. It automatically adjusts the sampling rate of your audio to match the model that you specify.
+The service supports both broadband and narrowband audio for most languages and formats. It automatically adjusts the sampling rate of your audio to match the model that you specify before it recognizes speech.
 
--   For broadband models, the service converts audio recorded at higher sampling rates to 16 kHz before it performs speech recognition.
+-   For broadband models, the service converts audio recorded at higher sampling rates to 16 kHz.
 -   For narrowband models, it converts the audio to 8 kHz.
 
-In theory, you can send 44 kHz audio with a broadband or narrowband model, but that needlessly increases the size of the audio. To maximize the amount of audio that you can send, match the sampling rate of your audio to the model you use. The service does not accept audio that is sampled at a rate that is lower than the intrinsic sampling rate of the model.
+In theory, you can send 44 kHz audio with a broadband or narrowband model, but that needlessly increases the size of the audio. To maximize the amount of audio that you can send, match the sampling rate of your audio to the model that you use. The service does not accept audio that is sampled at a rate that is less than the intrinsic sampling rate of the model.
 
 **Notes about audio formats**
 
@@ -49,7 +49,7 @@ In theory, you can send 44 kHz audio with a broadband or narrowband model, but t
 
 **More information**
 
--   For more information about sampling rates, see [en.wikipedia.org/wiki/Sampling ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/Sampling){: new_window}. On the *Sampling* page, select *Sampling (signal processing)*.
+-   For more information about sampling rates, see [en.wikipedia.org/wiki/Sampling ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/Sampling){: new_window}. Select *Sampling (signal processing)*.
 -   For more information about the models that the service offers for each supported language, see [Languages and models](/docs/services/speech-to-text/input.html#models).
 
 ### Bit rate
@@ -62,7 +62,7 @@ For example, audio that uses a broadband sampling rate of 16 kHz and 16 bits per
 **More information**
 
 -   For more information about bit rates, see [en.wikipedia.org/wiki/Bit_rate ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/Bit_rate){: new_window}.
--   For a general discussion of sampling rates and bit rates, see [What are Bit Rates? ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://www.richardfarrar.com/what-are-bit-rates/){: new_window} and [Choosing Bit Rates for Podcasts ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://www.richardfarrar.com/choosing-bit-rates-for-podcasts/){: new_window}.
+-   For a general discussion of sampling rates and bit rates, see [What are bit rates? ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://www.richardfarrar.com/what-are-bit-rates/){: new_window} and [Choosing bit rates for podcasts ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://www.richardfarrar.com/choosing-bit-rates-for-podcasts/){: new_window}.
 
 ### Compression
 {: #compression}
@@ -106,7 +106,7 @@ The {{site.data.keyword.speechtotextshort}} service accepts audio with a maximum
 ### Endianness
 {: #endianness}
 
-*Endianness* indicates how bytes of data are organized by the underlying machine architecture:
+*Endianness* indicates how bytes of data are organized by the underlying computer architecture:
 
 -   *Big-endian* orders data by most-significant bit.
 -   *Little-endian* orders data by least-significant bit.
@@ -217,7 +217,7 @@ For more information, see the Internet Engineering Task Force (IETF) [Request fo
 ### audio/l16 format
 {: #l16}
 
-*Linear 16-bit Pulse-Code Modulation (PCM)* (`audio/l16`) is an uncompressed audio format. Use this format to pass a raw PCM file. Linear PCM audio can also reside inside a container Waveform Audio File Format (WAV) file. When you use this format, the service accepts extra required and optional parameters on the format specification.
+*Linear 16-bit Pulse-Code Modulation (PCM)* (`audio/l16`) is an uncompressed audio format. Use this format to pass a raw PCM file. Linear PCM audio can also be carried inside of a container Waveform Audio File Format (WAV) file. When you use the `audio/l16` format, the service accepts extra required and optional parameters on the format specification.
 
 <table>
   <caption>Table 2. Parameters for `audio/l16` format</caption>
@@ -415,7 +415,7 @@ The [**opus-tools** ![External link icon](../../icons/launch-glyph.svg "External
 -   The [**opusdec** ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusdec.html){: new_window} utility decodes audio from the Opus codec to uncompressed PCM WAV files.
 -   The [**opusinfo** ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusinfo.html){: new_window} utility provides information about and validity checking for Opus files.
 
-Many {{site.data.keyword.speechtotextshort}} users send WAV files for speech recognition. Given the service's 100 MB data limit, WAV format reduces the amount of audio that can be recognized with a single request. Using the **opusenc** command to convert the audio to the preferred `audio/ogg:codecs=opus` format can greatly increase the amount of audio that you can send with a recognition request.
+Many users send WAV files for speech recognition. Given the service's 100 MB data limit, WAV format reduces the amount of audio that can be recognized with a single request. Using the **opusenc** command to convert the audio to the preferred `audio/ogg:codecs=opus` format can greatly increase the amount of audio that you can send with a recognition request.
 
 For example, consider an uncompressed broadband (16 kHz) WAV file (**input.wav**) that uses 16 bits per sample for a bit rate of 256 kbps. The following command converts the audio to a file (**output.opus**) that uses the Opus codec:
 
@@ -431,4 +431,4 @@ opusenc --bitrate 24 input.wav output.opus
 ```
 {: pre}
 
-Compression with the **opusenc** utility is fast. Compression happens at a rate that is approximately 100 times faster than real time. When it finishes, the command writes output to the terminal that provides complete details about its running time and the resulting audio data.
+Compression with the **opusenc** utility is fast. Compression happens at a rate that is approximately 100 times faster than real time. When it finishes, the command writes output to the console that provides complete details about its running time and the resulting audio data.
