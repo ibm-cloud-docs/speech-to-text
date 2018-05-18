@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-17"
+lastupdated: "2018-05-18"
 
 ---
 
@@ -794,16 +794,25 @@ curl -X POST -u {username}:{password}
 ## Smart formatting
 {: #smart_formatting}
 
-> **Note:** The smart formatting feature is beta functionality that is available for US English only.
+> **Note:** The smart formatting feature is beta functionality that is available for US English and Spanish only.
 
-The `smart_formatting` parameter directs the service to convert dates, times, series of digits and numbers, phone numbers, currency values, and internet addresses into more conventional representations. The service performs smart formatting only on the final transcript of a recognition request, just before the result is returned to the client, when text normalization is complete. The conversion makes the transcript more readable and enables better post-processing of the transcription results. You set the parameter to `true` to enable smart formatting; by default, no smart formatting is performed.
+The `smart_formatting` parameter directs the service to convert the following strings into more conventional representations:
+
+-   Dates
+-   Times
+-   Series of digits and numbers
+-   Phone numbers
+-   Currency values
+-   Internet addresses
+
+The service performs smart formatting only on the final transcript of a recognition request, just before the result is returned to the client, when text normalization is complete. The conversion makes the transcript more readable and enables better post-processing of the transcription results. You set the parameter to `true` to enable smart formatting; by default, no smart formatting is performed.
 
 Smart formatting is based on the presence of obvious keywords in the transcript. For example, times are identified by keywords such as *AM* or *EST*, and military times are converted if identified by the keyword *hours*. Phone numbers must be either *911* or a number with 10 digits or with 11 digits that start with the number *1*.
 
 ### Punctuation and capitalization
 {: #smartFormattingPunctuation}
 
-The feature also directs the service to substitute punctuation symbols for the following keyword strings in the audio.
+For US English, the feature also directs the service to substitute punctuation symbols for the following keyword strings in the audio.
 
 <table>
   <caption>Table 4. Smart formatting punctuation keywords</caption>
@@ -845,9 +854,9 @@ The feature also directs the service to substitute punctuation symbols for the f
   </tr>
 </table>
 
-The service converts these keyword strings to symbols only in appropriate places. For example, the service converts the spoken phrase "The warranty period is short period" to the following text in a transcript: "The warranty period is short." The service does not use capitalization in response transcripts; for example, you must capitalize the first words of the sentences in a transcript.
+The service converts these keyword strings to symbols only in appropriate places. For example, the service converts the spoken phrase "The warranty period is short period" to the following text in a transcript: "the warranty period is short." The service does not use capitalization in response transcripts. For example, you must capitalize the first word of each sentence in a transcript.
 
-> **Note:** For the US English language models, `en-US_BroadbandModel` and `en-US_NarrowbandModel`, the service does capitalize many proper nouns. For example, for US English, the service returns text that reads "Barack Obama graduated from Columbia University"; for other languages, it returns "barack obama graduated from columbia university." The service always performs this capitalization, regardless of whether you use smart formatting.
+> **Note:** For the US English language models, `en-US_BroadbandModel` and `en-US_NarrowbandModel`, the service capitalizes many proper nouns. For instance, the service returns text that reads "Barack Obama graduated from Columbia University" for US English. For other languages, it returns "barack obama graduated from columbia university." The service always performs this capitalization, regardless of whether you use smart formatting.
 
 ### Smart formatting example
 {: #smartFormattingExample}
@@ -1026,11 +1035,11 @@ The following table shows examples of final transcripts both with and without sm
   </tr>
   <tr>
     <td headers="Combinations withoutFormatting">
-      CPT code is zero two four eight one and the date of service is
-      May fifth two thousand and one
+      The CPT code is zero two four eight one and the date of service
+      is May fifth two thousand and one
     </td>
     <td headers="Combinations withFormatting">
-      CPT code is 02481 and the date of service is 5/5/2001
+      The CPT code is 02481 and the date of service is 5/5/2001
     </td>
   </tr>
   <tr>

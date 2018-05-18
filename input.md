@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-17"
+lastupdated: "2018-05-18"
 
 ---
 
@@ -23,8 +23,8 @@ lastupdated: "2018-05-17"
 The {{site.data.keyword.speechtotextshort}} service offers the following features to specify how the service is to perform the recognition request. All of the input parameters that are described in the following sections are optional. Only the input audio and its format are required.
 {: shortdesc}
 
--   For examples of simple requests and responses for each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text/basic-request.html).
 -   For more information about the supported audio formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
+-   For examples of simple requests and responses for each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text/basic-request.html).
 -   For an alphabetized list of all available parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
 
 ## Authentication tokens

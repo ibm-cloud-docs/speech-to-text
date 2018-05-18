@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-14"
+lastupdated: "2018-05-18"
 
 ---
 
@@ -566,7 +566,7 @@ An optional integer that specifies the maximum number of alternative hypotheses 
 
 ## model
 
-An optional model that specifies the language in which the audio is spoken and the rate at which it was sampled: broadband or narrowband. By default, `en-US_BroadbandModel` is used. See [Language and models](/docs/services/speech-to-text/input.html#models).
+An optional model that specifies the language in which the audio is spoken and the rate at which it was sampled: broadband or narrowband. By default, `en-US_BroadbandModel` is used. See [Languages and models](/docs/services/speech-to-text/input.html#models).
 
 <table>
   <caption>Table 11. The model parameter</caption>
@@ -724,7 +724,7 @@ For session-based requests to transcribe long audio files, an optional integer t
 
 ## smart_formatting
 
-An optional boolean that indicates whether the service converts dates, times, numbers, currency, and similar values, including keyword phrases for certain punctuation symbols, into more conventional representations in the final transcript. By default (`false`), smart formatting is not performed. See [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting).
+An optional boolean that indicates whether the service converts dates, times, numbers, currency, and similar values into more conventional representations in the final transcript. For US English, the feature also converts certain keyword phrases into punctuation symbols. By default (`false`), smart formatting is not performed. See [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting).
 
 <table>
   <caption>Table 14. The smart_formatting parameter</caption>
@@ -737,7 +737,7 @@ An optional boolean that indicates whether the service converts dates, times, nu
       **Availability**
     </td>
     <td style="text-align:left">
-      Beta for US English
+      Beta for US English and Spanish
     </td>
   </tr>
   <tr>

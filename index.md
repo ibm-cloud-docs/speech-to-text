@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-17"
+lastupdated: "2018-05-18"
 
 ---
 
@@ -47,7 +47,7 @@ For examples of basic requests for each of the service's interfaces, see [Making
 ## Input features
 {: #inputFeatures}
 
-The service's interfaces share many common input features for transcribing speech to text:
+The service's interfaces share common input features for transcribing speech to text:
 
 -   [*Audio formats*](/docs/services/speech-to-text/audio-formats.html) - You can transcribe Ogg or Web Media (WebM) audio with the Opus or Vorbis codec, MP3 (or MPEG), Waveform Audio File Format (WAV), Free Lossless Audio Codec (FLAC), Linear 16-bit Pulse-Code Modulation (PCM), mu-law (or u-law) audio, and basic audio.
 -   [*Languages and models*](/docs/services/speech-to-text/input.html#models) - For most languages, you can use transcribe audio by using broadband or narrowband models. Use broadband for audio that is sampled at a minimum rate of 16 kHz. Use narrowband for audio that is sampled at a minimum rate of 8 kHz.
@@ -56,25 +56,25 @@ The service's interfaces share many common input features for transcribing speec
 ## Output features
 {: #outputFeatures}
 
-The interfaces also support the following output features:
+The interfaces also support the following common output features:
 
 -   [*Speaker labels*](/docs/services/speech-to-text/output.html#speaker_labels) recognize different speakers from audio in US English, Spanish, or Japanese. The transcription labels each speaker's contributions to a multi-participant conversation. (Beta functionality.)
 -   [*Keyword spotting*](/docs/services/speech-to-text/output.html#keyword_spotting) identifies spoken phrases that match specified keyword strings with a user-defined level of confidence. Keyword spotting is especially useful when individual phrases from the audio are more important than the full transcription. For example, a customer support system might identify keywords to determine how to route user requests. (Beta functionality.)
 -   [*Maximum alternatives*](/docs/services/speech-to-text/output.html#max_alternatives) and [*interim results*](/docs/services/speech-to-text/output.html#interim) request alternative and interim transcription results. The former provide different possible transcriptions; the latter represent interim hypotheses as a transcription progresses. In both cases, the service indicates final results in which it has the greatest confidence.
--   [*Word alternatives*](/docs/services/speech-to-text/output.html#word_alternatives) request alternative words that are acoustically similar to the words of a transcript. (Word alternatives are beta functionality.)
--   [*Word confidence*](/docs/services/speech-to-text/output.html#word_confidence) returns confidence levels for each of the words of a transcript.
+-   [*Word alternatives*](/docs/services/speech-to-text/output.html#word_alternatives) request alternative words that are acoustically similar to the words of a transcript. (Beta functionality.)
+-   [*Word confidence*](/docs/services/speech-to-text/output.html#word_confidence) returns confidence levels for each word of a transcript.
 -   [*Word timestamps*](/docs/services/speech-to-text/output.html#word_timestamps) return timestamps for the start and end of each word of a transcript.
--   [*Profanity filtering*](/docs/services/speech-to-text/output.html#profanity_filter) censors profanity from US English transcriptions to sanitize a transcript.
--   [*Smart formatting*](/docs/services/speech-to-text/output.html#smart_formatting) converts dates, times, numbers, phone numbers, and currency values in final transcripts of US English audio into more readable, conventional forms. You can also provide keyword phrases to include certain punctuation symbols in final transcripts. (Beta functionality.)
+-   [*Profanity filtering*](/docs/services/speech-to-text/output.html#profanity_filter) censors profanity from US English transcripts.
+-   [*Smart formatting*](/docs/services/speech-to-text/output.html#smart_formatting) converts dates, times, numbers, currency values, phone numbers, and internet addresses into more readable, conventional forms in final transcripts. The feature is supported for US English and Spanish audio. For US English, you can also provide keyword phrases to include certain punctuation symbols in final transcripts. (Beta functionality.)
 
 ## Language support
 {: #languages}
 
-The service offers models for the following languages: Brazilian Portuguese, French, Japanese, Korean, Mandarin Chinese, Modern Standard Arabic, Spanish, UK English, and US English. The service does not support all features for all languages. In addition, it supports some features as generally available (GA) for production use and others as beta offerings for different languages.
+The service offers models for the following languages: Brazilian Portuguese, French, Japanese, Korean, Mandarin Chinese, Modern Standard Arabic, Spanish, UK English, and US English. The service does not support all features for all languages. Moreover, it supports some features as generally available (GA) for production use and others as beta offerings for different languages.
 
 -   The WebSocket, HTTP REST, and asynchronous HTTP interfaces are generally available for all supported languages.
 -   The service offers broadband models, narrowband models, or both for different languages. For more information, see [Languages and models](/docs/services/speech-to-text/input.html#models).
--   Some features are available for only some languages. For more information, see [Input features](/docs/services/speech-to-text/input.html), [Output features](/docs/services/speech-to-text/output.html), and the [Parameter summary](/docs/services/speech-to-text/summary.html).
+-   Some speech recognition features are available only for some languages. For more information, see [Input features](/docs/services/speech-to-text/input.html), [Output features](/docs/services/speech-to-text/output.html), and the [Parameter summary](/docs/services/speech-to-text/summary.html).
 -   The language and acoustic model customization interfaces are available for different languages at different levels of support. For more information, see [Language support for customization](/docs/services/speech-to-text/custom.html#languageSupport).
 
 ## Pricing
