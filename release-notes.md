@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-05-18"
 
 ---
 
@@ -50,7 +50,7 @@ These features are enabled for applications that are hosted in Sydney as of May 
     -   `POST /v1/recognitions` for asynchronous HTTP requests
 
     The `base_model_version` parameter specifies the version of a base model that is to be used for speech recognition. For more information, see [Making recognition requests with upgraded custom models](/docs/services/speech-to-text/custom-upgrade.html#upgradeRecognition) and [Base model version](/docs/services/speech-to-text/input.html#version).
--   Smart formatting now converts keyword strings into punctuation symbols for periods, commas, question marks, and exclamation points. For more information, see [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting).
+-   Smart formatting is now supported for Spanish as well as US English. For US English, the feature also now converts keyword strings into punctuation symbols for periods, commas, question marks, and exclamation points. For more information, see [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting).
 
 ## 1 March 2018
 {: #March2018a}
