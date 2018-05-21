@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-18"
+lastupdated: "2018-05-21"
 
 ---
 
@@ -33,7 +33,7 @@ The service returns all JSON response content in the UTF-8 character set.
 
 > **Note:** The speaker labels feature is beta functionality that is available for US English, Japanese, and Spanish.
 
-Speaker labels identify which individuals spoke which words in a multi-participant exchange. (Labeling who spoke and when is sometimes referred to as *speaker diarization*.) You can use the information to develop a person-by-person transcript of an audio stream, such as contact to a call center, or to animate an exchange with a conversational robot or avatar. For best performance, use audio that is at least a minute long.
+Speaker labels identify which individuals spoke which words in a multi-participant exchange. (Labeling who spoke and when is sometimes referred to as *speaker diarization*.) You can use the information to develop a person-by-person transcript of an audio stream, such as contact to a call center. Or you can use it to animate an exchange with a conversational robot or avatar. For best performance, use audio that is at least a minute long.
 
 Speaker labels are optimized for two-speaker scenarios. They work best for telephone conversations that involve two people in an extended exchange. They can handle up to six speakers, but more than two speakers can result in variable performance. Two-person exchanges are typically conducted over narrowband media, but you can use speaker labels with the following models:
 
@@ -226,19 +226,21 @@ The results clearly indicate how this two-person exchange began:
 -   **Speaker 1** - "Yeah?"
 -   **Speaker 2** - "Yeah, how's Billy?"
 
-In the example, the `confidence` fields indicate the service's confidence in its identification of the speakers. The `final` field has a value of `false` for each word. This value indicates that the service is still processing the audio and might change its identification of the speaker or its confidence for individual words before it is done.
+In the example, the `confidence` fields indicate the service's confidence in its identification of the speakers. The `final` field has a value of `false` for each word. This value indicates that the service is still processing the audio. The service might change its identification of the speaker or its confidence for individual words before it is done.
 
 ### Speaker IDs for speaker labels
 {: #speakerLabelsIDs}
 
 The example also illustrates an interesting aspect of speaker IDs. In the `speaker` fields, the first speaker has an ID of `2` and the second has an ID of `1`. The service develops a better understanding of the speaker patterns as it processes the audio. Therefore, it can change speaker IDs for individual words, and can also add and remove speakers, until it generates its final results.
 
-As a result, speaker IDs might not be sequential, contiguous, or ordered. For instance, IDs typically start at `0`, but in the previous example, the earliest ID is `1`. The service likely omitted an earlier word assignment for speaker `0` based on further analysis of the audio. Omissions can happen for later speakers, as well. Omissions can result in gaps in the numbering and produce results for two speakers who are labeled, for example, `0` and `2`. Another consideration is that speakers can leave a conversation, so a participant who contributes only to the early stages of a conversation might not appear in later results.
+As a result, speaker IDs might not be sequential, contiguous, or ordered. For instance, IDs typically start at `0`, but in the previous example, the earliest ID is `1`. The service likely omitted an earlier word assignment for speaker `0` based on further analysis of the audio. Omissions can happen for later speakers, as well. Omissions can result in gaps in the numbering and produce results for two speakers who are labeled, for example, `0` and `2`. Another consideration is that speakers can leave a conversation. So a participant who contributes only to the early stages of a conversation might not appear in later results.
 
 ### Requesting interim results for speaker labels
 {: #speakerLabelsInterim}
 
-You can request both speaker labels and interim results with a recognition request (see [Interim results](/docs/services/speech-to-text/output.html#interim)). On average, final results are generally better than interim results. But interim results can help identify the evolution of a transcription and the assignment of speaker labels. Interim results can indicate where transient speakers and IDs appeared or disappeared. However, the service can reuse the IDs of speakers that it initially identifies and later reconsiders and omits. Therefore, an ID might refer to two different speakers in interim and final results.
+You can request both speaker labels and interim results with a recognition request (see [Interim results](/docs/services/speech-to-text/output.html#interim)). On average, final results are generally better than interim results.
+
+But interim results can help identify the evolution of a transcription and the assignment of speaker labels. Interim results can indicate where transient speakers and IDs appeared or disappeared. However, the service can reuse the IDs of speakers that it initially identifies and later reconsiders and omits. Therefore, an ID might refer to two different speakers in interim and final results.
 
 When you request both interim results and speaker labels, final results for long audio streams might arrive well after initial interim results are returned. It is also possible for some interim results to include only a `speaker_labels` field without the `results` and `result_index` fields. If you do not request interim results, the service returns final results that include `results` and `result_index` fields and a single `speaker_labels` field.
 
@@ -254,7 +256,7 @@ As noted previously, the speaker labels feature is optimized for two-person conv
 -   Performance for short utterances can be less accurate than for long utterances. The service produces better results when participants speak for longer amounts of time.
 -   Performance can degrade for the first 30 seconds of speech. It usually improves to a reasonable level after 1 minute of audio.
 
-Bear in mind that, as with all transcription, performance can also be affected by audio noise, a person's manner of speech, overlapping speakers, and other aspects of the audio.
+As with all transcription, performance can also be affected by audio noise, a person's manner of speech, overlapping speakers, and other aspects of the audio.
 
 ## Keyword spotting
 {: #keyword_spotting}
@@ -265,15 +267,15 @@ The keyword spotting feature detects specified strings in a transcript. The serv
 
 To use keyword spotting, you must specify both of the following parameters to use the feature:
 
--   Use the `keywords` parameter to specify an array of strings to be spotted. The service spots no keywords if you omit the parameter or specify an empty array. A keyword string can include more than one token; for example, the keyword `Speech to Text` has three tokens. For US English, the service normalizes each keyword to match spoken versus written strings; for example, it normalizes numbers to match how they are spoken as opposed to written. For other languages, keywords must be specified as they are spoken. You can spot a maximum of 1000 keywords with a single request.
+-   Use the `keywords` parameter to specify an array of strings to be spotted. The service spots no keywords if you omit the parameter or specify an empty array. A keyword string can include more than one token; for example, the keyword `Speech to Text` has three tokens. For US English, the service normalizes each keyword to match spoken versus written strings. For example, it normalizes numbers to match how they are spoken as opposed to written. For other languages, keywords must be specified as they are spoken. You can spot a maximum of 1000 keywords with a single request.
 -   Use the `keywords_threshold` parameter to specify a probability between 0.0 and 1.0 for a keyword match. The threshold indicates the lower bound for the level of confidence the service must have for a word to match the keyword. A keyword is spotted in the transcript only if its confidence is greater than or equal to the specified threshold. Specifying a small threshold can potentially produce many matches. If you specify a threshold, you must also specify one or more keywords. Omit the parameter to return no matches.
 
-Keyword spotting is necessary to identify keywords in an audio stream. You cannot identify keywords by processing the transcript that the service returns to the client because the transcript represents the best decoding results for the input audio. It does not include tokens with lower confidence scores that might represent a word of interest. So applying text processing tools to a transcript on the client side might not catch keywords. A richer representation of decoding results is needed, and such a representation is available only at the server.
+Keyword spotting is necessary to identify keywords in an audio stream. You cannot identify keywords by processing a final transcript because the transcript represents the service's best decoding results for the input audio. It does not include tokens with lower confidence scores that might represent a word of interest. So applying text processing tools to a transcript on the client side might not identify keywords. A richer representation of decoding results is needed, and that representation is available only at the server.
 
 ### Keyword spotting results
 {: #keywordSpottingResults}
 
-The service returns the results in a `keywords_result` field that is an element of the `results` array. The `keywords_result` field is a dictionary, or associative array, of enumerable properties. Each property is identified by a specified keyword and includes an array of objects, with one element of the array returned for each match found for the keyword. The object for each match includes the following fields:
+The service returns the results in a `keywords_result` field that is an element of the `results` array. The `keywords_result` field is a dictionary, or associative array, of enumerable properties. Each property is identified by a specified keyword and includes an array of objects. The service returns one element of the array for each match that it finds for the keyword. The object for each match includes the following fields:
 
 -   `normalized_text` is the specified keyword that is normalized to the spoken phrase that matched in the input audio.
 -   `start_time` is the start time in seconds of the match.
@@ -289,7 +291,7 @@ A keyword for which the service finds no matches is omitted from the array. A ke
     The service matches a multi-token keyword only if
 
     -   The keyword's tokens are in the same block.
-    -   The tokens are either adjacent or separated by a gap of no more than 0.1 second.
+    -   The tokens are either adjacent or separated by a gap of no more than 0.1 seconds.
 
     The latter case can occur if a brief filler or non-lexical utterance, such as "uhm" or "well," lies between two tokens of the keyword.
 
@@ -486,7 +488,7 @@ curl -X GET -u {username}:{password}
 
 > **Note:** The word alternatives feature is beta functionality that is available for all languages.
 
-The word alternatives feature (also known as Confusion Networks) reports hypotheses for acoustically similar alternatives for words of the input audio. For instance, the word `Austin` might be the best hypothesis for a word from the audio, but the word `Boston` is another possible hypothesis in the same time interval. Hypotheses share a common start and end time but have different spellings and usually different confidence scores.
+The word alternatives feature (also known as Confusion Networks) reports hypotheses for acoustically similar alternatives for words of the input audio. For instance, the word `Austin` might be the best hypothesis for a word from the audio. But the word `Boston` is another possible hypothesis in the same time interval. Hypotheses share a common start and end time but have different spellings and usually different confidence scores.
 
 By default, the service does not report word alternatives. To indicate that you want to receive alternative hypotheses, you use the `word_alternatives_threshold` parameter to specify a probability between 0.0 and 1.0. The threshold indicates the lower bound for the level of confidence the service must have in a hypothesis to return it as a word alternative. A hypothesis is returned only if its confidence is greater than or equal to the specified threshold.
 
@@ -803,9 +805,9 @@ The `smart_formatting` parameter directs the service to convert the following st
 -   Series of digits and numbers
 -   Phone numbers
 -   Currency values
--   Internet addresses
+-   Internet email and web addresses
 
-The service performs smart formatting only on the final transcript of a recognition request, just before the result is returned to the client, when text normalization is complete. The conversion makes the transcript more readable and enables better post-processing of the transcription results. You set the parameter to `true` to enable smart formatting; by default, no smart formatting is performed.
+The service applies smart formatting only to the final transcript of a recognition request. It applies smart formatting just before it returns the result to the client, when text normalization is complete. The conversion makes the transcript more readable and enables better post-processing of the transcription results. You set the parameter to `true` to enable smart formatting; by default, no smart formatting is applied.
 
 Smart formatting is based on the presence of obvious keywords in the transcript. For example, times are identified by keywords such as *AM* or *EST*, and military times are converted if identified by the keyword *hours*. Phone numbers must be either *911* or a number with 10 digits or with 11 digits that start with the number *1*.
 
@@ -856,7 +858,7 @@ For US English, the feature also directs the service to substitute punctuation s
 
 The service converts these keyword strings to symbols only in appropriate places. For example, the service converts the spoken phrase "The warranty period is short period" to the following text in a transcript: "the warranty period is short." The service does not use capitalization in response transcripts. For example, you must capitalize the first word of each sentence in a transcript.
 
-> **Note:** For the US English language models, `en-US_BroadbandModel` and `en-US_NarrowbandModel`, the service capitalizes many proper nouns. For instance, the service returns text that reads "Barack Obama graduated from Columbia University" for US English. For other languages, it returns "barack obama graduated from columbia university." The service always performs this capitalization, regardless of whether you use smart formatting.
+> **Note:** For the US English language models, `en-US_BroadbandModel` and `en-US_NarrowbandModel`, the service capitalizes many proper nouns. For instance, the service returns text that reads "Barack Obama graduated from Columbia University" for US English. For other languages, it returns "barack obama graduated from columbia university." The service always applies this capitalization, regardless of whether you use smart formatting.
 
 ### Smart formatting example
 {: #smartFormattingExample}
@@ -1009,7 +1011,7 @@ The following table shows examples of final transcripts both with and without sm
   </tr>
   <tr>
     <th id="InternetAddresses" colspan="2">
-      <strong>Internet addresses</strong>
+      <strong>Internet email and web addresses</strong>
     </th>
   </tr>
   <tr>
