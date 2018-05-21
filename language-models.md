@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-05-21"
 
 ---
 
@@ -25,7 +25,11 @@ The customization interface offers the `POST /v1/customizations` method for crea
 
 The interface also offers the `POST /v1/customizations/train` method for training a custom model on the latest data from its words resource. For more information, see [Train the custom language model](/docs/services/speech-to-text/language-create.html#trainModel).
 
-In addition, the interface includes methods for listing information about custom models, for resetting a custom model to its initial state, and for deleting a custom model.
+In addition, the interface includes methods for
+
+-   Listing information about custom language models
+-   Resetting a custom language model to its initial state
+-   Deleting a custom language model
 
 ## Listing custom language models
 {: #listModels}
@@ -49,7 +53,7 @@ Both methods return the following information about a custom model:
 
 The method also returns a `status` field that indicates the state of the custom model:
 
--   `pending` indicates that the model was created but is waiting either for training data to be added or for the service to finish analyzing data that was added.
+-   `pending` indicates that the model was created. It is waiting either for training data to be added or for the service to finish analyzing data that was added.
 -   `ready` indicates that the model contains data and is ready to be trained.
 -   `training` indicates that the model is being trained on data.
 -   `available` indicates that the model is trained and ready to use with a recognition request.
@@ -141,7 +145,7 @@ curl -X GET -u {username}:{password}
 ## Resetting a custom language model
 {: #resetModel}
 
-Use the `POST /v1/customizations/{customization_id}/reset` method to reset a custom model. Resetting a model removes all of the corpora and words from the model, initializing the model to its state at creation. The method does not delete the model itself or metadata such as its name and language. However, once you reset a model, its words resource is empty and must be re-created by adding corpora and words.
+Use the `POST /v1/customizations/{customization_id}/reset` method to reset a custom model. Resetting a model removes all of the corpora and words from the model, initializing the model to its state at creation. The method does not delete the model itself or metadata such as its name and language. However, when you reset a model, its words resource is empty and must be re-created by adding corpora and words.
 
 ### Example request
 {: #resetExample}
@@ -157,7 +161,7 @@ curl -X POST -u {username}:{password}
 ## Deleting a custom language model
 {: #deleteModel}
 
-Use the `DELETE /v1/customizations/{customization_id}` method to delete a custom language model that you no longer need. The method deletes all corpora and words that are associated with the custom model as well as the model itself. Use this method with caution: a custom model and its data cannot be reclaimed once you delete the model.
+Use the `DELETE /v1/customizations/{customization_id}` method to delete a custom language model that you no longer need. The method deletes all corpora and words that are associated with the custom model and the model itself. Use this method with caution: a custom model and its data cannot be reclaimed after you delete the model.
 
 ### Example request
 {: #deleteExample}

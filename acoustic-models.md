@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-05-21"
 
 ---
 
@@ -25,7 +25,11 @@ The customization interface offers the `POST /v1/acoustic_customizations` method
 
 The interface also offers the `POST /v1/acoustic_customizations/train` method for training a custom model on its latest audio resources. For more information, see [Train the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#trainModel).
 
-In addition, the interface includes methods for listing information about custom acoustic models, for resetting a custom model to its initial state, and for deleting a custom model.
+In addition, the interface includes methods for
+
+-   Listing information about custom acoustic models
+-   Resetting a custom acoustic model to its initial state
+-   Deleting a custom acoustic model
 
 ## Listing custom acoustic models
 {: #listModels}
@@ -48,12 +52,12 @@ Both methods return the following information about a custom acoustic model:
 
 The methods also return a `status` field that indicates the state of the custom model:
 
--   `pending` indicates that the model was created but is waiting either for training data to be added or for the service to finish analyzing data that was added.
+-   `pending` indicates that the model was created. It is waiting either for training data to be added or for the service to finish analyzing data that was added.
 -   `ready` indicates that the model contains audio data and is ready to be trained.
 -   `training` indicates that the model is being trained on audio data.
 -   `available` indicates that the model is trained and ready to use with recognition requests.
 -   `upgrading` indicates that the model is being upgraded.
--   `failed` indicates that training of the model failed. Examine the model's audio resources to determine the errors that prevented the model from being trained (for example, not enough audio, too much audio, or an invalid audio resource).
+-   `failed` indicates that training of the model failed. Examine the model's audio resources to determine what prevented the model from being trained. Possible errors include not enough audio, too much audio, or an invalid audio resource.
 
 Additionally, the output includes a `progress` field that indicates the current progress of the custom model's training. If you used the `POST /v1/acoustic_customizations/{customization_id}/train` method to start training the model, this field indicates the current progress of that request as a percentage complete. At this time, the value of the field is `100` if the status is `available`; otherwise, it is `0`.
 
@@ -137,7 +141,7 @@ https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/
 ## Resetting a custom acoustic model
 {: #resetModel}
 
-Use the `POST /v1/acoustic_customizations/{customization_id}/reset` method to reset a custom acoustic model. Resetting a custom model removes all of the audio resources from the model, initializing the model to its state at creation. The method does not delete the model itself or metadata such as its name and language. However, once you reset a model, its audio resources are removed and must be re-created.
+Use the `POST /v1/acoustic_customizations/{customization_id}/reset` method to reset a custom acoustic model. Resetting a custom model removes all of the audio resources from the model, initializing the model to its state at creation. The method does not delete the model itself or metadata such as its name and language. However, when you reset a model, its audio resources are removed and must be re-created.
 
 ### Example request
 {: #resetExample}
@@ -153,7 +157,7 @@ curl -X POST -u {username}:{password}
 ## Deleting a custom acoustic model
 {: #deleteModel}
 
-Use the `DELETE /v1/acoustic_customizations/{customization_id}` method to delete a custom acoustic model that you no longer need. The method deletes all audio that is associated with the custom model as well as the model itself. Use this method with caution: A custom model and its data cannot be reclaimed once you delete the model.
+Use the `DELETE /v1/acoustic_customizations/{customization_id}` method to delete a custom acoustic model that you no longer need. The method deletes all audio that is associated with the custom model and the model itself. Use this method with caution: A custom model and its data cannot be reclaimed after you delete the model.
 
 ### Example request
 {: #deleteExample}

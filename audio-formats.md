@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-17"
+lastupdated: "2018-05-21"
 
 ---
 
@@ -424,7 +424,7 @@ opusenc input.wav output.opus
 ```
 {: pre}
 
-The conversion yields a 4x compression rate and produces an output file with a bit rate of 64 kbps. However, according to the [Opus Recommended Settings ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://wiki.xiph.org/Opus_Recommended_Settings){: new_window}, you can safely reduce the bit rate to 24 kbps (a 10x compression rate) and still retain a full band for speech audio. The following command uses the `--bitrate` option to produce an output file with a bit rate of 24 kbps:
+The conversion compresses the audio by a factor of four and produces an output file with a bit rate of 64 kbps. However, according to the [Opus Recommended Settings ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://wiki.xiph.org/Opus_Recommended_Settings){: new_window}, you can safely reduce the bit rate to 24 kbps and still retain a full band for speech audio. This reduction compresses the audio by a factor of 10. The following command uses the `--bitrate` option to produce an output file with a bit rate of 24 kbps:
 
 ```bash
 opusenc --bitrate 24 input.wav output.opus
