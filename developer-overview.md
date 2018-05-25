@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-12"
+lastupdated: "2018-05-25"
 
 ---
 
@@ -61,6 +61,11 @@ For more information about working with {{site.data.keyword.watson}} Developer C
 -   For information about the two programming models available for developing {{site.data.keyword.watson}} applications, see [Programming models for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-develop.html):
     -   With relaying via a proxy, the client relies on a proxy server that resides in {{site.data.keyword.Bluemix_notm}} to communicate with the service. The client passes all requests through the proxy application. Relaying requests via a proxy relies only on service credentials to authenticate with the service; see [Service credentials for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-credentials.html).
     -   With direct interaction, the client uses the proxy application in {{site.data.keyword.Bluemix_notm}} only to obtain an authentication token for the service. It then communicates directly with the service. Direct interaction uses service credentials only to obtain a token; see [Tokens for authentication](/docs/services/watson/getting-started-tokens.html).
+
+    > **Note:** In some regions, new service instances use {{site.data.keyword.Bluemix}} Identity and Access Management (IAM) tokens instead of service credentials for authentication.
+    -   For more information about where the service uses IAM access tokens and how to use them for authentication, see the May 15 service update in the [Release notes](/docs/services/speech-to-text/release-notes.html#May2018).
+    -   For more information about using access tokens with {{site.data.keyword.watson}} services, see [Authenticating with IAM tokens](/docs/services/watson/getting-started-iam.html).
+
 -   For information about controlling the default request logging that is performed for all {{site.data.keyword.watson}} services, see [Controlling request logging for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-logging.html).
 
 ## Considerations for application development
