@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-18"
+lastupdated: "2018-05-25"
 
 ---
 
@@ -26,9 +26,69 @@ The following sections document the new features and changes that were included 
 ## 15 May 2018
 {: #May2018}
 
-The service now supports the `X-Watson-Metadata` header and the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/services/speech-to-text/information-security.html).
+The following features are enabled for applications that are hosted in Sydney (**au-syd**) as of May 15, 2018. They will be enabled for applications that are hosted in other regions soon.
 
-These features are enabled for applications that are hosted in Sydney as of May 15, 2018. They will be enabled for applications that are hosted in other regions soon.
+-   The service now supports the `X-Watson-Metadata` header and the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/services/speech-to-text/information-security.html).
+-   The service now supports a new API authentication process for service instances. {{site.data.keyword.Bluemix}} is in the process of migrating to token-based Identity and Access Management (IAM) authentication. IAM uses access tokens rather than service credentials for authentication with a service.
+
+    In the Sydney region, you use IAM access tokens with the {{site.data.keyword.speechtotextshort}} service for
+
+    -   *New service instances* that you create after May 15. For more information, see [Authenticating with IAM tokens](/docs/services/watson/getting-started-iam.html).
+    -   *Existing service instances* that you migrate from Cloud Foundry to a resource group that is managed by the Resource Controller (RC). Service instances that were created before May 15 continue to use service credentials for authentication until you migrate them. For more information, see [Migrating Cloud Foundry service instances to a resource group](/docs/account/instance_migration.html).
+
+    All new and existing service instances in other regions continue to use service credentials (`{username}:{password}`) for authentication.
+
+**Important:** If you have an existing application that uses JavaScript to call the WebSocket interface from a browser, do not migrate your existing service instance from Cloud Foundry to an RC resource group at this time. A current limitation prevents JavaScript clients that use IAM access tokens from calling the WebSocket interface. For more information, see [WebSocket interface limitation](#May2018-IAMwss).
+
+### Using an IAM access token to authenticate
+{: #May2018-IAMaccess}
+
+When you use IAM access tokens, you authenticate before you send a request to the {{site.data.keyword.speechtotextshort}} service.
+
+1.  Get an API key from IBM Cloud. Use that key to generate an IAM access token. For more information, see [How to get an IAM token by using a {{site.data.keyword.watson}} service API key](/docs/services/watson/getting-started-iam.html#iamtoken).
+1.  Pass the IAM access token to the {{site.data.keyword.speechtotextshort}} service by using the `Authorization` header. In the header, indicate that the access token is a `Bearer` token by specifying `Authorization: Bearer {access_token}`.
+
+    The following simple cURL example for a sessionless speech recognition request specifies the access token:
+
+    ```bash
+    curl -X POST
+    --header "Authorization: Bearer eyJhbGciOiJIUz......sgrKIi8hdFs"
+    --header "Content-Type: audio/flac"
+    --data-binary @audio-file.flac
+    "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
+    ```
+    {: pre}
+
+    For more information, see [Using a token to authenticate](/docs/services/watson/getting-started-iam.html#use_token).
+
+### Refreshing an IAM access token
+{: #May2018-IAMrefresh}
+
+IAM access tokens that you generate have the following structure. You use the value of the `access_token` field to make an authenticated request to the service.
+
+```javascript
+{
+  "access_token": "eyJhbGciOiJIUz......sgrKIi8hdFs",
+  "refresh_token": "SPrXw5tBE3......KBQ+luWQVY=",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "expiration": 1473188353
+}
+```
+{: codeblock}
+
+Access tokens have a limited time to live. The `expires_in` field indicates how long the token lasts, in this case one hour. The `expiration` field shows when the token expires as a UNIX timestamp that specifies the number of seconds since January 1, 1970 (midnight UTC/GMT).
+
+In your application, check the access token's expiration time before you use it to make an authenticated request. If it is expired, you must refresh the access token before you can use it. You use the value of the `refresh_token` field to refresh the access token. For more information, see [Refreshing a token](/docs/services/watson/getting-started-iam.html#refresh_token).
+
+### WebSocket interface limitation
+{: #May2018-IAMwss}
+
+Service instances that use IAM access tokens cannot currently use JavaScript to call the {{site.data.keyword.speechtotextshort}} WebSocket interface. This limitation applies to any application (such as the service demo) that uses JavaScript to make WebSocket calls from a browser. WebSocket calls made with other languages, such as Node.js, Java, and Python, can pass IAM access and refresh tokens by using the headers documented in the previous sections.
+
+**Important:** If you have an existing application that uses JavaScript to call the WebSocket interface from a browser, do not migrate your existing service instance to use IAM access tokens at this time. This limitation does not apply to the service's HTTP REST interfaces.
+
+<!-- For persistent WebSocket connections with the {{site.data.keyword.speechtotextshort}} service, you must use the access token to establish the connection before the token expires. You then remain authenticated while you keep the connection alive. You do not need to refresh an access token for an active WebSocket connection that lasts beyond the token's expiration time. -->
 
 ## 26 March 2018
 {: #March2018b}

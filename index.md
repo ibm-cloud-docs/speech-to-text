@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-21"
+lastupdated: "2018-05-25"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2018-05-21"
 # About
 {: #about}
 
-> ** Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on May 15, 2018. It now supports the `X-Watson-Metadata` header and the `DELETE /v1/user_data` method. For more information about all recent changes to the service, see the [Release notes](/docs/services/speech-to-text/release-notes.html).*
+> ** Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on May 15, 2018. In some regions, the service now supports the `X-Watson-Metadata` header and the `DELETE /v1/user_data` method. In those regions, new service instances also use {{site.data.keyword.Bluemix}} Identity and Access Management (IAM) tokens for authentication. For more information about these changes, see the [Release notes](/docs/services/speech-to-text/release-notes.html).*
 
 The {{site.data.keyword.speechtotextfull}} service provides application programming interfaces (APIs) that you can use to add speech transcription capabilities to your applications. The service leverages machine intelligence to transcribe the human voice accurately. The service combines information about grammar and language structure with knowledge of the composition of the audio signal. It continuously returns and retroactively updates a transcription as more speech is heard.
 {: shortdesc}
@@ -89,4 +89,4 @@ For examples of the {{site.data.keyword.speechtotextshort}} service in action, s
 
 -   A [quick demo ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://speech-to-text-demo.ng.bluemix.net/){: new_window} that transcribes text from streaming audio input or from a file that you upload.
 -   Applications in the {{site.data.keyword.watson}} Developer Cloud [Starter Kits ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://www.ibm.com/watson/developercloud/starter-kits.html){: new_window} that demonstrate the service.
--   The {{site.data.keyword.IBM_notm}} Watson blog post [Getting robots to listen: Using {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} service ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/blogs/watson/2016/07/getting-robots-listen-using-watsons-speech-text-service/){: new_window} that shows how to use the service's WebSocket interface with Python to extract speech from audio. The post provides a thorough tutorial that demonstrates the code and steps involved.
+-   The {{site.data.keyword.IBM_notm}} {{site.data.keyword.watson}} blog post [Getting robots to listen: Using {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} service ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/blogs/watson/2016/07/getting-robots-listen-using-watsons-speech-text-service/){: new_window} that shows how to use the service's WebSocket interface with Python to extract speech from audio. The post provides a thorough tutorial that demonstrates the code and steps involved.

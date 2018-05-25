@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-14"
+lastupdated: "2018-05-25"
 
 ---
 
@@ -23,6 +23,10 @@ lastupdated: "2018-05-14"
 
 The {{site.data.keyword.speechtotextfull}} service transcribes audio to text to enable speech transcription capabilities for applications. This cURL-based tutorial can help you get started quickly with the service. The examples show you how to call the service's sessionless `POST /v1/recognize` method to request a transcription.
 {: shortdesc}
+
+> **Important:** The tutorial uses service instance credentials to authenticate to the {{site.data.keyword.speechtotextshort}} service. In some regions, new service instances instead use {{site.data.keyword.Bluemix}} Identity and Access Management (IAM) tokens for authentication. Authenticate by using the approach that is right for your region and service instance.
+
+For more information about where the service uses IAM access tokens and how to use them for authentication, see the May 15 service update in the [Release notes](/docs/services/speech-to-text/release-notes.html#May2018).
 
 ## Before you begin
 {: #before-you-begin}
