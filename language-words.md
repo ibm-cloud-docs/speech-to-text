@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-14"
+lastupdated: "2018-05-26"
 
 ---
 
@@ -58,7 +58,7 @@ curl -X GET -u {username}:{password}
 ```
 {: pre}
 
-The words resource for the model contains four words. The first word was added directly by the user, but its `sounds_like` field contains an error: the field cannot contain numbers. The next two words were added from the listed corpora; the final word was added directly by the user.
+The words resource for the model contains four words. The first word was added directly by the user, but its `sounds_like` field contains an error: The field cannot contain numbers. The other words were added by the user or by both the user and from corpora.
 
 ```javascript
 {
@@ -73,21 +73,34 @@ The words resource for the model contains four words. The first word was added d
     },
     {
       "word": "HHonors",
-      "sounds_like": ["hilton honors","h honors"],
+      "sounds_like": [
+        "hilton honors",
+        "H. honors"
+      ],
       "display_as": "HHonors",
       "count": 1,
-      "source": ["corpus1"]
+      "source": [
+        "corpus1",
+        "user"
+      ]
     },
     {
       "word": "IEEE",
-      "sounds_like": ["i triple e"],
+      "sounds_like": ["I. triple E."],
       "display_as": "IEEE",
       "count": 3,
-      "source": ["corpus1","corpus2"]
+      "source": [
+        "corpus1",
+        "corpus2",
+        "user"
+      ]
     },
     {
       "word": "tomato",
-      "sounds_like": ["tomatoh","tomayto"],
+      "sounds_like": [
+        "tomatoh",
+        "tomayto"
+      ],
       "display_as": "tomato",
       "count": 1,
       "source": ["user"]
@@ -105,15 +118,21 @@ curl -X GET -u {username}:{password}
 ```
 {: pre}
 
-The service added the word from `corpus3`, and the word was also modified by the user:
+The user added the word initially. The service then found the word twice in `corpus3`.
 
 ```javascript
 {
   "word": "NCAA",
-  "sounds_like": ["N. C. A. A.","N. C. double A."],
+  "sounds_like": [
+    "N. C. A. A.",
+    "N. C. double A."
+  ],
   "display_as": "NCAA",
-  "count": 1,
-  "source": ["corpus3","user"]
+  "count": 3,
+  "source": [
+    "corpus3",
+    "user"
+  ]
 }
 ```
 {: codeblock}
