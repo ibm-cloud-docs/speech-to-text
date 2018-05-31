@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-05-31"
 
 ---
 
@@ -58,20 +58,20 @@ In the following example, three audio resources are added to the custom acoustic
 
 ```javascript
 {
-  "total_minutes_of_audio": 5.9185787598292032,
+  "total_minutes_of_audio": 11.27,
   "audio": [
     {
-      "duration": 3.8428750038146973,
+      "duration": 131,
       "name": "audio1",
       "details": {
         "codec": "pcm_s16le",
         "type": "audio",
-        "frequency": 16000
+        "frequency": 22050
       }
       "status": "ok"
     },
     {
-      "duration": 351.2718505859375,
+      "duration": 586,
       "name": "audio2",
       "details": {
         "type": "archive",
@@ -80,8 +80,8 @@ In the following example, three audio resources are added to the custom acoustic
       "status": "ok"
     },
     {
-      "name": "audio3",
       "duration": 0,
+      "name": "audio3",
       "details": {},
       "status": "being_processed"
     }
@@ -90,7 +90,7 @@ In the following example, three audio resources are added to the custom acoustic
 ```
 {: codeblock}
 
-The following example returns information about the audio resource named `audio2` (which is a **.zip** archive file that contains multiple files) for the custom acoustic model with the specified customization ID. As shown, querying information about an archive-type resource also provides information about its constituent files.
+The following example returns information about the audio resource named `audio2` (which is a **.zip** archive file that contains multiple files) for the custom acoustic model with the specified customization ID. Querying information about an archive-type resource also provides information about its constituent files.
 
 ```bash
 curl -X GET -u {username}:{password}
@@ -101,7 +101,7 @@ https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/
 ```javascript
 {
   "container": {
-    "duration": 351.2718505859375,
+    "duration": 586,
     "name": "audio2",
     "details": {
       "type": "archive",
@@ -111,22 +111,22 @@ https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/
   },
   "audio": [
     {
-      "duration": 11.760937690734863,
-      "name": "arl001.wav",
+      "duration": 158,
+      "name": "audio-file1.wav",
       "details": {
         "codec": "pcm_s16le",
         "type": "audio",
-        "frequency": 16000
+        "frequency": 22050
       },
       "status": "ok"
     },
     {
-      "duration": 2.9024999141693115,
-      "name": "arl002.wav",
+      "duration": 135,
+      "name": "audio-file2.wav",
       "details": {
         "codec": "pcm_s16le",
         "type": "audio",
-        "frequency": 16000
+        "frequency": 22050
       },
       "status": "ok"
     },
