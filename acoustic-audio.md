@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-31"
+lastupdated: "2018-06-02"
 
 ---
 
@@ -33,11 +33,11 @@ The customization interface provides two methods for listing information about t
 Both methods return the `name` of the audio resource plus the following additional information:
 
 -   `duration` is the length in seconds of the audio. For an archive file, the figure represents the accumulated duration of all of the audio files that are contained in the archive.
--   `details` identifies the type of the resource: `audio` or `archive`. For an audio file, the details include the `codec` and `frequency` of the audio. For an archive file, they include its `compression` type.
+-   `details` identifies the type of the resource: `audio` or `archive`. (The type is `undetermined` if the service cannot validate the resource, possibly because the user mistakenly passed a file that does not contain audio.) For an audio file, the details include the `codec` and `frequency` of the audio. For an archive file, they include its `compression` type.
 
-Additionally, listing all audio resource for a model returns the `total_minutes_of_audio` summed over all of the valid audio resources for the model. You can use this value to determine whether the custom model has enough or too much audio to begin training.
+Additionally, listing all audio resources for a model returns the `total_minutes_of_audio` summed over all of the valid audio resources for the model. You can use this value to determine whether the custom model has enough or too much audio to begin training.
 
-The methods also list the status of the data. The status is important for checking the service's analysis of audio files in response to a request to add them to a custom model:
+The methods also list the status of the audio data. The status is important for checking the service's analysis of audio files in response to a request to add them to a custom model:
 
 -   `ok` indicates that the service has successfully analyzed the audio data. The data can be used to train the custom model.
 -   `being_processed` indicates that the service is still analyzing the audio data. The service cannot accept requests to add new audio or to train the custom model until its analysis is complete.
@@ -58,7 +58,7 @@ In the following example, three audio resources are added to the custom acoustic
 
 ```javascript
 {
-  "total_minutes_of_audio": 11.27,
+  "total_minutes_of_audio": 11.45,
   "audio": [
     {
       "duration": 131,
@@ -71,7 +71,7 @@ In the following example, three audio resources are added to the custom acoustic
       "status": "ok"
     },
     {
-      "duration": 586,
+      "duration": 556,
       "name": "audio2",
       "details": {
         "type": "archive",
@@ -101,7 +101,7 @@ https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/
 ```javascript
 {
   "container": {
-    "duration": 586,
+    "duration": 556,
     "name": "audio2",
     "details": {
       "type": "archive",
@@ -111,22 +111,22 @@ https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/
   },
   "audio": [
     {
-      "duration": 158,
+      "duration": 121,
       "name": "audio-file1.wav",
       "details": {
         "codec": "pcm_s16le",
         "type": "audio",
-        "frequency": 22050
+        "frequency": 16000
       },
       "status": "ok"
     },
     {
-      "duration": 135,
+      "duration": 133,
       "name": "audio-file2.wav",
       "details": {
         "codec": "pcm_s16le",
         "type": "audio",
-        "frequency": 22050
+        "frequency": 16000
       },
       "status": "ok"
     },
