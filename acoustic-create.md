@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-11"
 
 ---
 
@@ -145,34 +145,59 @@ You can add any number of audio resources to a custom model by calling the metho
 
 The service returns a 201 response code if the audio is valid. It then asynchronously analyzes the contents of the audio file or files and automatically extracts information about the audio such as length, sampling rate, and encoding. You cannot submit requests to add more audio to a custom acoustic model, or to train the model, until the service's analysis of all audio files for the current request completes.
 
-To determine the status of the audio content analysis, use the `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to poll the status
-of the audio. The method accepts the GUID of the custom model and the name of the audio resource. It returns the status of the resource, as in the following example:
+To determine the status of the request, use the `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to poll the status
+of the audio. The method accepts the GUID of the custom model and the name of the audio resource. Its response includes the `status` of the resource, which has one of the following values:
 
-```bash
-curl -X GET -u {username}:{password}
-https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio1
-```
-{: pre}
-
-```javascript
-{
-   "duration": 3.8428750038146973,
-   "name": "audio1",
-   "details": {
-      "codec": "pcm_s16le",
-      "type": "audio",
-      "frequency": 16000
-   },
-   "status": "ok"
-}
-```
-{: codeblock}
-
-The response includes a `status` field that has one of the following values:
-
--   `ok` indicates that the audio file is acceptable and loading is complete.
+-   `ok` indicates that the audio is acceptable and analysis is complete.
 -   `being_processed` indicates that the service is still analyzing the audio.
 -   `invalid` indicates that the audio file is not acceptable for processing. It might have the wrong format, the wrong sampling rate, or not be an audio file. For an archive file, if any of the audio files that it contains are invalid, the entire archive is invalid.
+
+The content of the response and location of the `status` field depend on the type of the resource, audio or archive.
+
+-   *For an audio-type resource,* the `status` field is located in the top-level (`AudioListing`) object.
+
+    ```bash
+    curl -X GET -u {username}:{password}
+    https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio1
+    ```
+    {: pre}
+
+    ```javascript
+    {
+      "duration": 131,
+      "name": "audio1",
+      "details": {
+        "codec": "pcm_s16le",
+        "type": "audio",
+        "frequency": 22050
+      }
+      "status": "ok"
+    }
+    ```
+    {: codeblock}
+
+-   *For an archive-type resource,* the `status` field is located in the second-level (`AudioResource`) object that is nested in the `container` field.
+
+    ```bash
+    curl -X GET -u {username}:{password}
+    https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio2
+    ```
+    {: pre}
+
+    ```javascript
+    {
+      "container": {
+        "duration": 556,
+        "name": "audio2",
+        "details": {
+          "type": "archive",
+          "compression": "zip"
+        },
+        "status": "ok"
+      },
+      . . .
+    ```
+    {: codeblock}
 
 Use a loop to check the status of the audio resource every few seconds until it becomes `ok`. For more information about other fields that are returned by the method, see [Listing audio resources for a custom acoustic model](/docs/services/speech-to-text/acoustic-audio.html#listAudio).
 
