@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-02"
+lastupdated: "2018-06-11"
 
 ---
 
@@ -43,18 +43,16 @@ The methods also list the status of the audio data. The status is important for 
 -   `being_processed` indicates that the service is still analyzing the audio data. The service cannot accept requests to add new audio or to train the custom model until its analysis is complete.
 -   `invalid` indicates that the audio data is not valid for training the model (possibly because it has the wrong format or sampling rate, or because it is corrupted).
 
-### Example requests and responses
+### Example request: List all audio resources
 {: #listExample}
 
-The following example lists all audio resources for the custom acoustic model with the specified customization ID:
+The following example lists all audio resources for the custom acoustic model with the specified customization ID. The acoustic model has three audio resources. The service has successfully analyzed `audio1` and `audio2`; it is still analyzing `audio3`.
 
 ```bash
 curl -X GET -u {username}:{password}
 "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio"
 ```
 {: pre}
-
-In the following example, three audio resources are added to the custom acoustic model. The service has successfully analyzed `audio1` and `audio2`; the service is still analyzing `audio3`.
 
 ```javascript
 {
@@ -90,7 +88,35 @@ In the following example, three audio resources are added to the custom acoustic
 ```
 {: codeblock}
 
-The following example returns information about the audio resource named `audio2` (which is a **.zip** archive file that contains multiple files) for the custom acoustic model with the specified customization ID. Querying information about an archive-type resource also provides information about its constituent files.
+### Example request: Get information for an audio-type resource
+{: #getExampleAudio}
+
+The following example returns information about the audio-type resource named `audio1`. The resource is 131 seconds long and is encoded with the `pcm_s16le` codec. It was successfully added to the model.
+
+```bash
+curl -X GET -u {username}:{password}
+https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio1
+```
+{: pre}
+
+```javascript
+{
+  "duration": 131,
+  "name": "audio1",
+  "details": {
+    "codec": "pcm_s16le",
+    "type": "audio",
+    "frequency": 22050
+  }
+  "status": "ok"
+}
+```
+{: codeblock}
+
+### Example request: Get information for an archive-type resource
+{: #getExampleArchive}
+
+The following example returns information about the archive-type resource named `audio2`. The resource is a **.zip** file that contains more than 9 minutes of audio. It too was successfully added to the model. As the example shows, querying information about an archive-type resource also provides information about the files that it contains.
 
 ```bash
 curl -X GET -u {username}:{password}
