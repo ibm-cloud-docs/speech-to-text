@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-25"
+lastupdated: "2018-06-12"
 
 ---
 
@@ -23,10 +23,15 @@ lastupdated: "2018-05-25"
 The following sections document the new features and changes that were included for each release and update of the {{site.data.keyword.speechtotextshort}} service. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
 {: shortdesc}
 
+## 12 June 2018
+{: #June2018}
+
+For applications that are hosted in Washington, DC (US East), the service now supports token-based Identity and Access Management (IAM) authentication. IAM uses access tokens rather than service credentials for authentication with a service. For more information about using IAM tokens with existing and new applications, see the [15 May 2018](#May2018) release update.
+
 ## 15 May 2018
 {: #May2018}
 
-The following features are enabled for applications that are hosted in Sydney (**au-syd**) as of May 15, 2018. They will be enabled for applications that are hosted in other regions soon.
+The following features are enabled for applications that are hosted in Sydney and AP North (**au-syd**) as of May 15, 2018. They will be enabled for applications that are hosted in other regions soon.
 
 -   The service now supports the `X-Watson-Metadata` header and the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/services/speech-to-text/information-security.html).
 -   The service now supports a new API authentication process for service instances. {{site.data.keyword.Bluemix}} is in the process of migrating to token-based Identity and Access Management (IAM) authentication. IAM uses access tokens rather than service credentials for authentication with a service.
@@ -112,19 +117,10 @@ Service instances that use IAM access tokens cannot currently use JavaScript to 
     The `base_model_version` parameter specifies the version of a base model that is to be used for speech recognition. For more information, see [Making recognition requests with upgraded custom models](/docs/services/speech-to-text/custom-upgrade.html#upgradeRecognition) and [Base model version](/docs/services/speech-to-text/input.html#version).
 -   Smart formatting is now supported for Spanish as well as US English. For US English, the feature also now converts keyword strings into punctuation symbols for periods, commas, question marks, and exclamation points. For more information, see [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting).
 
-## 1 March 2018
-{: #March2018a}
-
-The Spanish and French broadband models, `es-ES_BroadbandModel` and `fr-FR_BroadbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. If you have custom language or custom acoustic models based on either of these models, you must upgrade your custom models to take advantage of the updates by using the following methods:
-
--   `POST /v1/customizations/{customization_id}/upgrade_model`
--   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
-
-[Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html) provides complete details about the upgrade procedure. It presents rules for upgrading custom models, the effects of upgrading, and approaches for using upgraded models.
-
 ## Older releases
 {: #older}
 
+-   [1 March 2018](#March2018a)
 -   [1 February 2018](#February2018)
 -   [14 December 2017](#December2017)
 -   [2 October 2017](#October2017)
@@ -142,6 +138,16 @@ The Spanish and French broadband models, `es-ES_BroadbandModel` and `fr-FR_Broad
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 1 March 2018
+{: #March2018a}
+
+The Spanish and French broadband models, `es-ES_BroadbandModel` and `fr-FR_BroadbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. If you have custom language or custom acoustic models based on either of these models, you must upgrade your custom models to take advantage of the updates by using the following methods:
+
+-   `POST /v1/customizations/{customization_id}/upgrade_model`
+-   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+
+[Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html) provides complete details about the upgrade procedure. It presents rules for upgrading custom models, the effects of upgrading, and approaches for using upgraded models.
 
 ### 1 February 2018
 {: #February2018}
