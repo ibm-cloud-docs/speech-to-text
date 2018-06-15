@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-06-12"
+lastupdated: "2018-06-15"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2018-06-12"
 # About
 {: #about}
 
-> **Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on June 12, 2018. In addition to Sydney and AP North, the service now uses {{site.data.keyword.Bluemix}} Identity and Access Management (IAM) tokens for authentication for applications that are hosted in Washington, DC (US East). For more information, see the [Release notes](/docs/services/speech-to-text/release-notes.html).*
+> ** Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on June 12, 2018. In addition to Sydney and AP North, the service now uses {{site.data.keyword.Bluemix}} Identity and Access Management (IAM) authentication for applications that are hosted in Washington, DC (US East). For more information, see the [Release notes](/docs/services/speech-to-text/release-notes.html).*
 
 The {{site.data.keyword.speechtotextfull}} service provides application programming interfaces (APIs) that you can use to add speech transcription capabilities to your applications. The service leverages machine intelligence to transcribe the human voice accurately. The service combines information about grammar and language structure with knowledge of the composition of the audio signal. It continuously returns and retroactively updates a transcription as more speech is heard.
 {: shortdesc}
