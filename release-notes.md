@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-06-15"
+lastupdated: "2018-06-20"
 
 ---
 
@@ -247,13 +247,14 @@ The following deprecations first announced in March 2017 are now in effect:
 ### 10 April 2017
 {: #April2017}
 
--   The speaker labels feature is now supported for the following broadband models:
+-   The service now supports the speaker labels feature for the following broadband models:
     -   `en-US-BroadbandModel`
     -   `es-ES-BroadbandModel`
     -   `ja-JP_BroadbandModel`
 
     For more information, see [Speaker labels](/docs/services/speech-to-text/output.html#speaker_labels).
 -   The service now supports the Web Media (WebM) audio format with the Opus or Vorbis codec. The service now also supports the Ogg audio format with the Vorbis codec in addition to the Opus codec. For more information about supported audio formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
+-   The service now supports Cross-Origin Resource Sharing (CORS) to allow browser-based clients to call the service directly. For more information, see [CORS support](/docs/services/speech-to-text/developer-overview.html#cors).
 -   The asynchronous HTTP interface now offers a `POST /v1/unregister_callback` method that removes the registration for a white-listed callback URL. For more information, see [Unregistering a callback URL](/docs/services/speech-to-text/async.html#unregister).
 -   The WebSocket interface no longer times out for recognition requests for especially long audio files. You no longer need to request interim results with the JSON `start` message to avoid the timeout. (This issue was described in the release notes for March 10, 2016.)
 -   The `DELETE /v1/customizations/{customization_id}` method now returns HTTP response code 401 if you attempt to delete a nonexistent custom model.
