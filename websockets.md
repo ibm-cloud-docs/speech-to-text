@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-07-18"
 
 ---
 
@@ -54,9 +54,16 @@ The WebSocket interface has a number of advantages over the HTTP interface:
 The {{site.data.keyword.speechtotextshort}} service uses the WebSocket Secure (WSS) protocol to make the `/v1/recognize` method available at the following endpoint:
 
 ```
-wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize
+wss://{host_name}/speech-to-text/api/v1/recognize
 ```
 {: codeblock}
+
+where `{host_name}` identifies the regional host for your application:
+
+-   `stream.watsonplatform.net` for US South and UK (the following examples use this host name)
+-   `stream-fra.watsonplatform.net` for Frankfurt
+-   `gateway-syd.watsonplatform.net` for Sydney and AP North
+-   `gateway-wdc.watsonplatform.net` for US East
 
 A WebSocket client calls this method with the following query parameters to establish an authenticated connection with the service.
 

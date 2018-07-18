@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-06-20"
+lastupdated: "2018-07-18"
 
 ---
 
@@ -32,7 +32,10 @@ You can access the capabilities of the {{site.data.keyword.speechtotextshort}} s
 -   [The HTTP REST interface](/docs/services/speech-to-text/http.html) lets you transcribe audio with or without establishing a session with the service.
 -   [The asynchronous HTTP interface](/docs/services/speech-to-text/async.html) provides a non-blocking interface that lets you register a callback URL to receive notifications or poll the service for job status and results.
 
-The interfaces provide the same recognition capabilities, but you might specify the same parameter as a request header, a query parameter, or a parameter of a JSON object depending on the interface and method you use. For a complete list of all available parameters, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
+The interfaces provide the same recognition capabilities, but you might specify the same parameter as a request header, a query parameter, or a parameter of a JSON object depending on the interface and method you use.
+
+-   For descriptions of all available parameters, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
+-   For descriptions of all methods and their parameters, along with examples, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
 
 ## Customizing the service
 {: #custom}
@@ -54,7 +57,10 @@ For instance, a web page that is loaded from a server in {{site.data.keyword.Blu
 ## Using Software Development Kits
 {: #sdks}
 
-The {{site.data.keyword.speechtotextshort}} service supports a number of SDKs to simplify the development of speech applications. The SDKs are available for many popular programming languages and platforms, including Node.js, Java, and Python. For a complete list of SDKs and information about using them, see [{{site.data.keyword.watson}} SDKs](/docs/services/watson/getting-started-sdks.html). All SDKs are available from the [watson-developer-cloud namespace ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud){: new_window} on GitHub.
+The {{site.data.keyword.speechtotextshort}} service supports a number of SDKs to simplify the development of speech applications. The SDKs are available for many popular programming languages and platforms, including Node.js, Java, and Python. All SDKs are available from the [watson-developer-cloud namespace ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud){: new_window} on GitHub.
+
+-   For a complete list of SDKs and information about using them, see [{{site.data.keyword.watson}} SDKs](/docs/services/watson/getting-started-sdks.html).
+-   For detailed information about all methods of the Node, Java, and Python SDKs, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
 
 ## Learning more about application development
 {: #learn}
@@ -82,4 +88,4 @@ Converting speech to text is a difficult problem. Some general things to conside
 
 -   *Speech recognition can be very sensitive to input audio quality.* When you experiment with a demo application or build an application of your own that uses the service, try to ensure that the input audio quality is as good as possible. To obtain the best possible accuracy, use a close, speech-oriented microphone (such as a headset) whenever possible and adjust the microphone settings if necessary. Try to avoid using a laptop's built-in microphone.
 -   *Choosing the correct model is important.* For most supported languages, the service supports two models: broadband and narrowband. {{site.data.keyword.IBM}} recommends that you use the broadband model for responsive, real-time applications and the narrowband model for offline decoding of telephone speech.
--   *Conversion of speech to text may not be perfect.* Tremendous progress has been made over the last several years. Today, speech recognition technology is successfully used in many domains and applications. However, in addition to audio quality, speech recognition systems are sensitive to nuances of human speech, such as regional accents and differences in pronunciation, and may not always successfully transcribe audio input.
+-   *Conversion of speech to text might not be perfect.* Tremendous progress has been made over the last several years. Today, speech recognition technology is successfully used in many domains and applications. However, in addition to audio quality, speech recognition systems are sensitive to nuances of human speech, such as regional accents and differences in pronunciation, and might not always transcribe audio input correctly.
