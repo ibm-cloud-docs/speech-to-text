@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-21"
+lastupdated: "2018-07-18"
 
 ---
 
@@ -141,7 +141,7 @@ The service supports the following audio formats. You can send a maximum of 100 
       [audio/basic](#basic)
     </td>
     <td style="text-align:center">
-      Lossless
+      Lossy
     </td>
   </tr>
   <tr>
@@ -173,7 +173,7 @@ The service supports the following audio formats. You can send a maximum of 100 
       [audio/mulaw](#mulaw)
     </td>
     <td style="text-align:center">
-      Lossless
+      Lossy
     </td>
   </tr>
   <tr>
@@ -205,7 +205,7 @@ The service supports the following audio formats. You can send a maximum of 100 
 ### audio/basic format
 {: #basic}
 
-*Basic audio* (`audio/basic`) is a single-channel, lossless audio format that is encoded by using 8-bit u-law (or mu-law) data that is sampled at 8 kHz. This format provides a lowest-common denominator for indicating the media type of audio. The service supports the use of files in `audio/basic` format only with narrowband models.
+*Basic audio* (`audio/basic`) is a single-channel, lossy audio format that is encoded by using 8-bit u-law (or mu-law) data that is sampled at 8 kHz. This format provides a lowest-common denominator for indicating the media type of audio. The service supports the use of files in `audio/basic` format only with narrowband models.
 
 For more information, see the Internet Engineering Task Force (IETF) [Request for Comment (RFC) 2046 ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://tools.ietf.org/html/rfc2046){: new_window} and [iana.org/assignments/media-types/audio/basic ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://www.iana.org/assignments/media-types/audio/basic){: new_window}.
 
@@ -286,7 +286,7 @@ For more information, see the IETF [Request for Comment (RFC) 2586 ![External li
 ### audio/mulaw format
 {: #mulaw}
 
-*Mu-law* (`audio/mulaw`) is a single-channel, lossless audio format. The data is encoded by using the u-law (or mu-law) algorithm. When you use this format, the service requires an extra parameter on the format specification.
+*Mu-law* (`audio/mulaw`) is a single-channel, lossy audio format. The data is encoded by using the u-law (or mu-law) algorithm. When you use this format, the service requires an extra parameter on the format specification.
 
 <table>
   <caption>Table 3. Parameter for `audio/mulaw` format</caption>
