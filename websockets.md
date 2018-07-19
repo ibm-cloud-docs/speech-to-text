@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-07-18"
+lastupdated: "2018-07-19"
 
 ---
 
@@ -61,7 +61,7 @@ wss://{host_name}/speech-to-text/api/v1/recognize
 where `{host_name}` identifies the regional host for your application:
 
 -   `stream.watsonplatform.net` for US South and UK (the following examples use this host name)
--   `stream-fra.watsonplatform.net` for Frankfurt
+-   `stream-fra.watsonplatform.net` for Germany
 -   `gateway-syd.watsonplatform.net` for Sydney and AP North
 -   `gateway-wdc.watsonplatform.net` for US East
 
