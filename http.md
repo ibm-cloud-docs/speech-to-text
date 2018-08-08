@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-14"
+lastupdated: "2018-08-08"
 
 ---
 
@@ -22,6 +22,8 @@ lastupdated: "2018-05-14"
 
 You can use the HTTP REST interface of the {{site.data.keyword.speechtotextshort}} service to transcribe audio with or without sessions. Sessionless recognition requests are simpler to use, but sessions enable more robust communication patterns and more functionality.
 {: shortdesc}
+
+**Important:** The session-based HTTP REST interface is deprecated as of August 8, 2018. The sessions API will be removed from service as of September 7, 2018. For more information, see the August 8 service update in the [Release notes](/docs/services/speech-to-text/release-notes.html#August2018).
 
 The HTTP interface, unlike the WebSocket interface, requires you to authenticate each call by using either your service credentials or a token. By using the WebSocket interface, you can establish and use a single authenticated connection indefinitely. All audio and results travel over this single connection. The HTTP interface requires four distinct requests and connections to achieve the same results. And you must authenticate each HTTP request separately, which incurs added latency.
 
@@ -71,6 +73,8 @@ The method returns the following transcription results for the audio:
 
 ## Making session-based requests
 {: #HTTP-sessions}
+
+**Important:** The session-based HTTP REST interface is deprecated as of August 8, 2018. The sessions API will be removed from service as of September 7, 2018. For more information, see the August 8 service update in the [Release notes](/docs/services/speech-to-text/release-notes.html#August2018).
 
 The {{site.data.keyword.speechtotextshort}} service provides a number of session-based methods with its HTTP interface. Sessions provide a mechanism for a client to maintain a long, multi-turn exchange with the service or to establish multiple parallel conversations with an instance of the service. Sessions are available only for the service's HTTP interface. With the WebSocket interface, the concept of a session is implicit: the connection is the session.
 
