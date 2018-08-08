@@ -69,7 +69,7 @@ curl -X POST -u {username}:{password}
 
 ## Using the session-based HTTP interface
 
-**Important:** The session-based HTTP REST interface is deprecated as of August 8, 2018. The sessions API will be removed from service as of September 7, 2018. For more information, see the August 8 service update in the [Release notes](/docs/services/speech-to-text/release-notes.html#August2018).*
+**Important:** The session-based HTTP REST interface is deprecated as of August 8, 2018. The sessions API will be removed from service as of September 7, 2018. For more information, see the August 8 service update in the [Release notes](/docs/services/speech-to-text/release-notes.html#August2018).
 
 [Making session-based requests](/docs/services/speech-to-text/http.html#HTTP-sessions) with the HTTP REST interface requires that you establish a session with the service. By using sessions, you can maintain a multi-turn exchange with the service or establish multiple parallel conversations with an instance of the service.
 
