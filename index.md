@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-06-15"
+lastupdated: "2018-08-08"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2018-06-15"
 # About
 {: #about}
 
-> ** Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on June 12, 2018. In addition to Sydney and AP North, the service now uses {{site.data.keyword.Bluemix}} Identity and Access Management (IAM) authentication for applications that are hosted in Washington, DC (US East). For more information, see the [Release notes](/docs/services/speech-to-text/release-notes.html).*
+> ** Service update:** *The session-based HTTP REST interface of the {{site.data.keyword.speechtotextshort}} service is deprecated as of August 8, 2018. The sessions API will be removed from service as of September 7, 2018. **Important:** You must migrate any applications that use the sessions interface to instead use the WebSocket, sessionless, or asynchronous interface by September 7. For more information, see the August 8 service update in the [Release notes](/docs/services/speech-to-text/release-notes.html#August2018).*
 
 The {{site.data.keyword.speechtotextfull}} service provides application programming interfaces (APIs) that you can use to add speech transcription capabilities to your applications. The service leverages machine intelligence to transcribe the human voice accurately. The service combines information about grammar and language structure with knowledge of the composition of the audio signal. It continuously returns and retroactively updates a transcription as more speech is heard.
 {: shortdesc}

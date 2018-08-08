@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-06-20"
+lastupdated: "2018-08-08"
 
 ---
 
@@ -53,6 +53,27 @@ WebSocket calls that are made with other languages, such as Node.js, Java, and P
 
 <!-- For persistent WebSocket connections with the {{site.data.keyword.speechtotextshort}} service, you must use the access token to establish the connection before the token expires. You then remain authenticated while you keep the connection alive. You do not need to refresh an access token for an active WebSocket connection that lasts beyond the token's expiration time. -->
 
+## 8 August 2018
+{: #August2018}
+
+The session-based HTTP REST interface is deprecated as of **August 8, 2018**. All methods of the sessions API will be removed from service as of **September 7, 2018**, after which you will no longer be able to use the session-based interface. This notice of immediate deprecation and 30-day removal applies to the following methods:
+
+-   `POST /v1/sessions`
+-   `POST /v1/sessions/{session_id}/recognize`
+-   `GET /v1/sessions/{session_id}/recognize`
+-   `GET /v1/sessions/{session_id}/observe_result`
+-   `DELETE /v1/sessions/{session_id}`
+
+**Important:** If your application uses the sessions interface, you must migrate to one of the following interfaces by September 7:
+
+-   For stream-based speech recognition (including live use cases), use the [WebSocket interface](/docs/services/speech-to-text/websockets.html), which provides access to interim results and the lowest latency.
+-   For file-based speech recognition, use one of the following interfaces:
+
+    -   For shorter files of up to a few minutes of audio, use the [sessionless HTTP REST interface](/docs/services/speech-to-text/http.html#HTTP-sessionless) `(POST /v1/recognize`) or the [asynchronous HTTP interface](/docs/services/speech-to-text/async.html) (`POST /v1/recognitions`).
+    -   For longer files of more than a few minutes of audio, use the asynchronous HTTP interface.
+
+The WebSocket, sessionless, and asynchronous interfaces provide the same results as the sessions interface. You can also use one of the Watson SDKs, which simplify application development with any of the interfaces; for more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+
 ## 12 June 2018
 {: #June2018}
 
@@ -69,7 +90,30 @@ The following features are enabled for applications that are hosted in Sydney an
 -   The service now supports a new API authentication process. For more information, see [New API authentication process](#new-authentication).
 -   The service now supports the `X-Watson-Metadata` header and the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/services/speech-to-text/information-security.html).
 
-## 26 March 2018
+## Older releases
+{: #older}
+
+-   [26 March 2018](#March2018b)
+-   [1 March 2018](#March2018a)
+-   [1 February 2018](#February2018)
+-   [14 December 2017](#December2017)
+-   [2 October 2017](#October2017)
+-   [14 July 2017](#July2017b)
+-   [1 July 2017](#July2017a)
+-   [22 May 2017](#May2017)
+-   [10 April 2017](#April2017)
+-   [8 March 2017](#March2017)
+-   [1 December 2016](#December2016)
+-   [22 September 2016](#September2016)
+-   [30 June 2016](#June2016b)
+-   [23 June 2016](#June2016a)
+-   [10 March 2016](#March2016)
+-   [19 January 2016](#January2016)
+-   [17 December 2015](#December2015)
+-   [21 September 2015](#September2015)
+-   [1 July 2015](#July2015)
+
+### 26 March 2018
 {: #March2018b}
 
 -   The service now supports language model customization for the French language model, `fr-FR_BroadbandModel`. The French model is generally available for production use with language model customization.
@@ -90,28 +134,6 @@ The following features are enabled for applications that are hosted in Sydney an
 
     The `base_model_version` parameter specifies the version of a base model that is to be used for speech recognition. For more information, see [Making recognition requests with upgraded custom models](/docs/services/speech-to-text/custom-upgrade.html#upgradeRecognition) and [Base model version](/docs/services/speech-to-text/input.html#version).
 -   Smart formatting is now supported for Spanish as well as US English. For US English, the feature also now converts keyword strings into punctuation symbols for periods, commas, question marks, and exclamation points. For more information, see [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting).
-
-## Older releases
-{: #older}
-
--   [1 March 2018](#March2018a)
--   [1 February 2018](#February2018)
--   [14 December 2017](#December2017)
--   [2 October 2017](#October2017)
--   [14 July 2017](#July2017b)
--   [1 July 2017](#July2017a)
--   [22 May 2017](#May2017)
--   [10 April 2017](#April2017)
--   [8 March 2017](#March2017)
--   [1 December 2016](#December2016)
--   [22 September 2016](#September2016)
--   [30 June 2016](#June2016b)
--   [23 June 2016](#June2016a)
--   [10 March 2016](#March2016)
--   [19 January 2016](#January2016)
--   [17 December 2015](#December2015)
--   [21 September 2015](#September2015)
--   [1 July 2015](#July2015)
 
 ### 1 March 2018
 {: #March2018a}
