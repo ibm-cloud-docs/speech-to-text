@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-08-08"
+lastupdated: "2018-08-21"
 
 ---
 
@@ -74,6 +74,27 @@ The session-based HTTP REST interface is deprecated as of **August 8, 2018**. Al
 
 The WebSocket, sessionless, and asynchronous interfaces provide the same results as the sessions interface. You can also use one of the Watson SDKs, which simplify application development with any of the interfaces; for more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
 
+## 13 July 2018
+{: #July2018}
+
+The Spanish Narrowband model, `es-ES_NarrowbandModel`, was updated for improved speech recognition. By default, the service automatically uses the updated model for all recognition requests. If you have custom language or custom acoustic models based on this model, you must upgrade your custom models to take advantage of the updates by using the following methods:
+
+-   `POST /v1/customizations/{customization_id}/upgrade_model`
+-   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+
+[Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html) provides complete details about the upgrade procedure. It presents rules for upgrading custom models, the effects of upgrading, and approaches for using upgraded models.
+
+As of this update, the following two versions of the Spanish narrowband model are available:
+
+-   `es_ES.8kHz.general.lm20180522235959.am20180522235959` (current)
+-   `es_ES.8kHz.general.lm20180308235959.am20180308235959` (previous)
+
+The following version of the model is no longer available:
+
+-   `es_ES.8kHz.general.lm20171031235959.am20171031235959`
+
+A recognition request that attempts to use a custom model that is based on the now unavailable base model uses the latest base model without any customization. The service returns the following warning message: `Using non-customized default base model, because your custom {type} model has been built with a version of the base model that is no longer supported.` To resume using a custom model that is based on the unavailable model, you must first upgrade the model by using the appropriate `upgrade_model` method described previously.
+
 ## 12 June 2018
 {: #June2018}
 
@@ -82,17 +103,10 @@ The following features are enabled for applications that are hosted in Washingto
 -   The service now supports a new API authentication process. For more information, see [New API authentication process](#new-authentication).
 -   The service now supports the `X-Watson-Metadata` header and the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/services/speech-to-text/information-security.html).
 
-## 15 May 2018
-{: #May2018}
-
-The following features are enabled for applications that are hosted in Sydney and AP North (**au-syd**):
-
--   The service now supports a new API authentication process. For more information, see [New API authentication process](#new-authentication).
--   The service now supports the `X-Watson-Metadata` header and the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/services/speech-to-text/information-security.html).
-
 ## Older releases
 {: #older}
 
+-   [15 May 2018](#May2018)
 -   [26 March 2018](#March2018b)
 -   [1 March 2018](#March2018a)
 -   [1 February 2018](#February2018)
@@ -112,6 +126,14 @@ The following features are enabled for applications that are hosted in Sydney an
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 15 May 2018
+{: #May2018}
+
+The following features are enabled for applications that are hosted in Sydney and AP North (**au-syd**):
+
+-   The service now supports a new API authentication process. For more information, see [New API authentication process](#new-authentication).
+-   The service now supports the `X-Watson-Metadata` header and the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/services/speech-to-text/information-security.html).
 
 ### 26 March 2018
 {: #March2018b}
