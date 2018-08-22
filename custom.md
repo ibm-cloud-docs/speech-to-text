@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-14"
+lastupdated: "2018-08-22"
 
 ---
 
@@ -139,7 +139,7 @@ The following usage notes apply to both language model customization and acousti
 ### Ownership of custom models
 {: #customOwner}
 
-A custom model is owned by the instance of the {{site.data.keyword.speechtotextshort}} service whose credentials are used to create it. To work with the custom model in any way, you must use service credentials that are created for that instance of the service with methods of the customization interface. Credentials that are created for other instances of the service cannot view or access the custom model. The data that is associated with a custom model is encrypted both at rest (when it is stored) and in motion (when it is traveling over the network).
+A custom model is owned by the instance of the {{site.data.keyword.speechtotextshort}} service whose credentials are used to create it. To work with the custom model in any way, you must use service credentials that are created for that instance of the service with methods of the customization interface. Credentials that are created for other instances of the service cannot view or access the custom model.
 
 All service credentials that are obtained for the same instance of the {{site.data.keyword.speechtotextshort}} service share access to all custom models created for that service instance. To restrict access to a custom model, create a separate instance of the service and use only the credentials for that service instance to create and work with the model. Credentials for other service instances cannot affect the custom model.
 
