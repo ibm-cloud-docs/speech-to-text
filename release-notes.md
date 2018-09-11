@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-09-11"
 
 ---
 
@@ -53,6 +53,45 @@ WebSocket calls that are made with other languages, such as Node.js, Java, and P
 
 <!-- For persistent WebSocket connections with the {{site.data.keyword.speechtotextshort}} service, you must use the access token to establish the connection before the token expires. You then remain authenticated while you keep the connection alive. You do not need to refresh an access token for an active WebSocket connection that lasts beyond the token's expiration time. -->
 
+## 10 September 2018
+{: #September2018b}
+
+**Note:** The September 10 service update is currently available in the *US South* and *US East* regions. It will be available in the *Germany* and *Sydney* regions soon.
+
+-   The service now supports a German broadband model, `de-DE_BroadbandModel`. The new German model supports language model customization (generally available) and acoustic model customization (beta).
+    -   For information about how the service parses corpora for German, see [Parsing of English, French, German, Spanish, and Brazilian Portuguese](/docs/services/speech-to-text/language-resource.html#corpusLanguages).
+    -   For more information about creating sounds-like pronunciations for custom words in German, see [Guidelines for French, German, Spanish, and Brazilian Portuguese](/docs/services/speech-to-text/language-resource.html#wordLanguages-esES-frFR).
+-   The existing Brazilian Portuguese models, `pt-BR_BroadbandModel` and `pt-BR_NarrowbandModel`, now support language model customization (generally available). The models were not updated to enable this support, so no upgrade of existing custom acoustic models is required.
+    -   For information about how the service parses corpora for Brazilian Portuguese, see [Parsing of English, French, German, Spanish, and Brazilian Portuguese](/docs/services/speech-to-text/language-resource.html#corpusLanguages).
+    -   For more information about creating sounds-like pronunciations for custom words in Brazilian Portuguese, see [Guidelines for French, German, Spanish, and Brazilian Portuguese](/docs/services/speech-to-text/language-resource.html#wordLanguages-esES-frFR).
+-   New versions of the US English and Japanese broadband and narrowband models are available:
+    -   `en-US_BroadbandModel`
+    -   `en-US_NarrowbandModel`
+    -   `ja-JP_BroadbandModel`
+    -   `ja-JP_NarrowbandModel`
+
+    The new models offer improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. If you have custom language or custom acoustic models based on these models, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
+    -   `POST /v1/customizations/{customization_id}/upgrade_model`
+    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+
+    [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html) provides complete details about the upgrade procedure.
+-   The keyword spotting and word alternatives features are now generally available (GA) rather than beta functionality for all languages. For more information, see
+    -   [Keyword spotting](/docs/services/speech-to-text/output.html#keyword_spotting)
+    -   [Word alternatives](/docs/services/speech-to-text/output.html#word_alternatives)
+
+## 7 September 2018
+{: #September2018a}
+
+**Important:** The session-based HTTP REST interface is no longer supported. All information related to sessions is removed from the documentation. The following methods are no longer available:
+
+-   `POST /v1/sessions`
+-   `POST /v1/sessions/{session_id}/recognize`
+-   `GET /v1/sessions/{session_id}/recognize`
+-   `GET /v1/sessions/{session_id}/observe_result`
+-   `DELETE /v1/sessions/{session_id}`
+
+If your application uses the sessions interface, you must migrate to one of the remaining HTTP REST interfaces or to the WebSocket interface. For more information, see the service update for [8 August 2018](#August2018).
+
 ## 8 August 2018
 {: #August2018}
 
@@ -66,46 +105,19 @@ The session-based HTTP REST interface is deprecated as of **August 8, 2018**. Al
 
 **Important:** If your application uses the sessions interface, you must migrate to one of the following interfaces by September 7:
 
--   For stream-based speech recognition (including live use cases), use the [WebSocket interface](/docs/services/speech-to-text/websockets.html), which provides access to interim results and the lowest latency.
+-   For stream-based speech recognition (including live-use cases), use the [WebSocket interface](/docs/services/speech-to-text/websockets.html), which provides access to interim results and the lowest latency.
 -   For file-based speech recognition, use one of the following interfaces:
 
-    -   For shorter files of up to a few minutes of audio, use the [sessionless HTTP REST interface](/docs/services/speech-to-text/http.html#HTTP-sessionless) `(POST /v1/recognize`) or the [asynchronous HTTP interface](/docs/services/speech-to-text/async.html) (`POST /v1/recognitions`).
+    -   For shorter files of up to a few minutes of audio, use the [HTTP interface](/docs/services/speech-to-text/http.html) `(POST /v1/recognize`) or the [asynchronous HTTP interface](/docs/services/speech-to-text/async.html) (`POST /v1/recognitions`).
     -   For longer files of more than a few minutes of audio, use the asynchronous HTTP interface.
 
-The WebSocket, sessionless, and asynchronous interfaces provide the same results as the sessions interface. You can also use one of the Watson SDKs, which simplify application development with any of the interfaces; for more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
-
-## 13 July 2018
-{: #July2018}
-
-The Spanish Narrowband model, `es-ES_NarrowbandModel`, was updated for improved speech recognition. By default, the service automatically uses the updated model for all recognition requests. If you have custom language or custom acoustic models based on this model, you must upgrade your custom models to take advantage of the updates by using the following methods:
-
--   `POST /v1/customizations/{customization_id}/upgrade_model`
--   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
-
-[Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html) provides complete details about the upgrade procedure. It presents rules for upgrading custom models, the effects of upgrading, and approaches for using upgraded models.
-
-As of this update, the following two versions of the Spanish narrowband model are available:
-
--   `es_ES.8kHz.general.lm20180522235959.am20180522235959` (current)
--   `es_ES.8kHz.general.lm20180308235959.am20180308235959` (previous)
-
-The following version of the model is no longer available:
-
--   `es_ES.8kHz.general.lm20171031235959.am20171031235959`
-
-A recognition request that attempts to use a custom model that is based on the now unavailable base model uses the latest base model without any customization. The service returns the following warning message: `Using non-customized default base model, because your custom {type} model has been built with a version of the base model that is no longer supported.` To resume using a custom model that is based on the unavailable model, you must first upgrade the model by using the appropriate `upgrade_model` method described previously.
-
-## 12 June 2018
-{: #June2018}
-
-The following features are enabled for applications that are hosted in Washington, DC (US East):
-
--   The service now supports a new API authentication process. For more information, see [New API authentication process](#new-authentication).
--   The service now supports the `X-Watson-Metadata` header and the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/services/speech-to-text/information-security.html).
+The WebSocket, HTTP, and asynchronous HTTP interfaces provide the same results as the sessions interface (only the WebSocket interface provides interim results). You can also use one of the Watson SDKs, which simplify application development with any of the interfaces; for more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
 
 ## Older releases
 {: #older}
 
+-   [13 July 2018](#July2018)
+-   [12 June 2018](#June2018)
 -   [15 May 2018](#May2018)
 -   [26 March 2018](#March2018b)
 -   [1 March 2018](#March2018a)
@@ -127,6 +139,35 @@ The following features are enabled for applications that are hosted in Washingto
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
 
+### 13 July 2018
+{: #July2018}
+
+The Spanish Narrowband model, `es-ES_NarrowbandModel`, was updated for improved speech recognition. By default, the service automatically uses the updated model for all recognition requests. If you have custom language or custom acoustic models based on this model, you must upgrade your custom models to take advantage of the updates by using the following methods:
+
+-   `POST /v1/customizations/{customization_id}/upgrade_model`
+-   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+
+[Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html) provides complete details about the upgrade procedure. It presents rules for upgrading custom models, the effects of upgrading, and approaches for using upgraded models.
+
+As of this update, the following two versions of the Spanish narrowband model are available:
+
+-   `es_ES.8kHz.general.lm20180522235959.am20180522235959` (current)
+-   `es_ES.8kHz.general.lm20180308235959.am20180308235959` (previous)
+
+The following version of the model is no longer available:
+
+-   `es_ES.8kHz.general.lm20171031235959.am20171031235959`
+
+A recognition request that attempts to use a custom model that is based on the now unavailable base model uses the latest base model without any customization. The service returns the following warning message: `Using non-customized default base model, because your custom {type} model has been built with a version of the base model that is no longer supported.` To resume using a custom model that is based on the unavailable model, you must first upgrade the model by using the appropriate `upgrade_model` method described previously.
+
+### 12 June 2018
+{: #June2018}
+
+The following features are enabled for applications that are hosted in Washington, DC (US East):
+
+-   The service now supports a new API authentication process. For more information, see [New API authentication process](#new-authentication).
+-   The service now supports the `X-Watson-Metadata` header and the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/services/speech-to-text/information-security.html).
+
 ### 15 May 2018
 {: #May2018}
 
@@ -139,8 +180,8 @@ The following features are enabled for applications that are hosted in Sydney an
 {: #March2018b}
 
 -   The service now supports language model customization for the French language model, `fr-FR_BroadbandModel`. The French model is generally available for production use with language model customization.
-    -   For more information about how the service parses corpora for French, see [Parsing of English (US and UK), Spanish, and French](/docs/services/speech-to-text/language-resource.html#corpusLanguages).
-    -   For more information about creating sounds-like pronunciations for custom words in French, see [Guidelines for Spanish and French](/docs/services/speech-to-text/language-resource.html#wordLanguages-esES-frFR).
+    -   For more information about how the service parses corpora for French, see [Parsing of English, French, German, Spanish, and Brazilian Portuguese](/docs/services/speech-to-text/language-resource.html#corpusLanguages).
+    -   For more information about creating sounds-like pronunciations for custom words in French, see [Guidelines for French, German, Spanish, and Brazilian Portuguese](/docs/services/speech-to-text/language-resource.html#wordLanguages-esES-frFR).
 -   The Spanish and Korean narrowband models, `es-ES_NarrowbandModel` and `ko-KR_NarrowbandModel`, and the French broadband model, `fr-FR_BroadbandModel`, were updated for improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. If you have custom language or custom acoustic models based on either of these models, you must upgrade your custom models to take advantage of the updates by using the following methods:
 
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
@@ -190,7 +231,7 @@ For language model customization, the Korean models are generally available for 
 -   The various methods for making recognition requests now include a new `base_model_version` parameter that you can use to initiate requests that use either the older or upgraded versions of base and custom models. Although it is intended primarily for use with custom models that have been upgraded, the `base_model_version` parameter can also be used without custom models. For more information, see [Base model version](/docs/services/speech-to-text/input.html#version).
 -   The service now supports acoustic model customization as beta functionality for all available languages. You can create custom acoustic models for broadband or narrowband models for all languages. For an introduction to customization, including acoustic model customization, see [The customization interface](/docs/services/speech-to-text/custom.html).
 -   The service now supports language model customization for the UK English models, `en-GB_BroadbandModel` and `en-GB_NarrowbandModel`. Although the service handles UK and US English corpora and custom words in a generally similar fashion, some important differences exist:
-    -   For more information about how the service parses corpora for UK English, see [Parsing of English (US and UK), Spanish, and French](/docs/services/speech-to-text/language-resource.html#corpusLanguages).
+    -   For more information about how the service parses corpora for UK English, see [Parsing of English, French, German, Spanish, and Brazilian Portuguese](/docs/services/speech-to-text/language-resource.html#corpusLanguages).
     -   For more information about creating sounds-like pronunciations for custom words in UK English, see [Guidelines for English (US and UK)](/docs/services/speech-to-text/language-resource.html#wordLanguages-enUS-enGB). Specifically, for UK English, you cannot use periods or dashes in sounds-like pronunciations.
 -   Language model customization is now generally available (GA) for all supported languages: Japanese, Spanish, UK English, and US English.
 
@@ -399,7 +440,7 @@ The service was updated to include a new profanity filtering feature on January 
     > **Note:** Because the SDKs are beta, they are subject to change in the future.
 -   The service supports two new languages, Brazilian Portuguese and Mandarin Chinese. The models for these new languages are `pt-BR_BroadbandModel`, `pt-BR_NarrowbandModel`, `zh-CN_BroadbandModel`, and `zh-CN_NarrowbandModel`. For more information, see [Languages and models](/docs/services/speech-to-text/input.html#models).
 -   The HTTP `POST` requests `/v1/sessions/{session_id}/recognize` and `/v1/recognize`, as well as the WebSocket `/v1/recognize` request, support transcription of a new media type: `audio/ogg;codecs=opus` for Ogg format files that use the Opus codec. In addition, the `audio/wav` format for the methods now supports any encoding. The restriction about the use of linear PCM encoding is removed. For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
--   The service now supports overcoming timeouts when you transcribe long audio files with the HTTP interface. When you use sessions, you can employ a long polling pattern by specifying sequence IDs with the `GET /v1/sessions/{session_id}/observe_result` and `POST /v1/sessions/{session_id}/recognize` methods for long-running recognition tasks. By using the new `sequence_id` parameter of these methods, you can request results before, during, or after you submit a recognition request. For more information, see [Transcribing long audio files with sessions](/docs/services/speech-to-text/http.html#HTTP-long).
+-   The service now supports overcoming timeouts when you transcribe long audio files with the HTTP interface. When you use sessions, you can employ a long polling pattern by specifying sequence IDs with the `GET /v1/sessions/{session_id}/observe_result` and `POST /v1/sessions/{session_id}/recognize` methods for long-running recognition tasks. By using the new `sequence_id` parameter of these methods, you can request results before, during, or after you submit a recognition request.
 -   For the US English language models, `en_US_BroadbandModel` and `en_US_NarrowbandModel`, the service now correctly capitalizes many proper nouns. For example, the service would new return text that reads "Barack Obama graduated from Columbia University" instead of "barack obama graduated from columbia university." This change might be of interest to you if your application is sensitive in any way to the case of proper nouns.
 -   The HTTP `DELETE /v1/sessions/{session_id}` request does not return status code 415 "Unsupported Media Type." This return code is removed from the documentation for the method.
 

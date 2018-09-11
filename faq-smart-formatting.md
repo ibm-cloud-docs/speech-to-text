@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-121"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -37,4 +37,4 @@ lastupdated: "2018-05-121"
 
     The service demo parses the transcript to add punctuation. With smart formatting, the service substitutes punctuation symbols only for certain keyword strings in US English transcripts: comma, period, question mark, and exclamation point. You are responsible for capitalizing the first word of each sentence.
 
-For more information, see [Punctuation and capitalization](/docs/services/speech-to-text/output.html#smartFormattingPunctuation).
+    For more information, see [Punctuation and capitalization](/docs/services/speech-to-text/output.html#smartFormattingPunctuation).

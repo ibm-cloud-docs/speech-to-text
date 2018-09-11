@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-06-22"
+lastupdated: "2018-08-21"
 
 ---
 
@@ -70,8 +70,7 @@ A customer ID can include any characters except for the `;` (semicolon) and `=` 
 Use the `X-Watson-Metadata` header with the following methods:
 
 -   With HTTP requests:
-    -   `POST /v1/recognize` sessionless
-    -   `POST /v1/recognize` session-based
+    -   `POST /v1/recognize`
 
     The customer ID is associated only with data that is sent with the individual request.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-14"
+lastupdated: "2018-08-21"
 
 ---
 
@@ -30,7 +30,7 @@ lastupdated: "2018-05-14"
 
 1.  <span style="color:#003F69">I passed a one-hour long audio file to the service but did not see results until the full transcription completed. How can I see my results sooner?</span>
 
-    Use HTTP sessions or the WebSocket interface, and set the `interim_results` parameter to `true`. By default, the service returns results only when it detects long silences in the audio. See [Interim results](/docs/services/speech-to-text/output.html#interim).
+    Use the WebSocket interface, and set the `interim_results` parameter to `true`. By default, the service returns results only when it detects long silences in the audio. See [Interim results](/docs/services/speech-to-text/output.html#interim).
 
 1.  <span style="color:#003F69">My request times out with an HTTP status code of 400 and the message `No speech detected for 30s`. What can I do?</span>
 
@@ -38,7 +38,7 @@ lastupdated: "2018-05-14"
 
 1.  <span style="color:#003F69">My request is being made from a browser that does not enable JavaScript, or the size of my request exceeds the maximum request length because it includes many keywords. How can I submit my request?</span>
 
-    You can submit a multipart recognition request with the sessionless (`POST /v1/recognize`) or session-based (`POST /v1/sessions/{session_id}/recognize`) method. With multipart requests, you pass all audio data as multipart form data. You specify some parameters as request headers and query parameters, but you pass JSON metadata as form data to control most aspects of the transcription. See [Submitting multipart requests as form data](/docs/services/speech-to-text/http.html#HTTP-multi).
+    You can submit a multipart recognition request with the `POST /v1/recognize` method. With multipart requests, you pass all audio data as multipart form data. You specify some parameters as request headers and query parameters, but you pass JSON metadata as form data to control most aspects of the transcription. See [Making a multipart HTTP request](/docs/services/speech-to-text/http.html#HTTP-multi).
 
 1.  <span style="color:#003F69">My audio includes pauses of varying lengths. How does the service respond to them?</span>
 

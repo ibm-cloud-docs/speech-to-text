@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-08-22"
+lastupdated: "2018-08-30"
 
 ---
 
@@ -67,7 +67,7 @@ Language and acoustic model customization are available only for some languages.
 -   *Beta* indicates that the interface is available as a beta offering.
 -   *Not supported* means that the interface is not available for that language.
 
-You can use both broadband and narrowband models with any supported language.
+You can use both broadband and narrowband models with any supported language for which they are available.
 
 <table>
   <caption>Table 1. Language support for customization</caption>
@@ -84,11 +84,16 @@ You can use both broadband and narrowband models with any supported language.
   </tr>
   <tr>
     <td>Brazilian Portuguese</td>
-    <td style="text-align:center">Not supported</td>
+    <td style="text-align:center">GA</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
     <td>French</td>
+    <td style="text-align:center">GA</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
+    <td>German</td>
     <td style="text-align:center">GA</td>
     <td style="text-align:center">Beta</td>
   </tr>

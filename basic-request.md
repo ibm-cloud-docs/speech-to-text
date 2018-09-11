@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-08-08"
+lastupdated: "2018-08-23"
 
 ---
 
@@ -20,19 +20,24 @@ lastupdated: "2018-08-08"
 # Making a recognition request
 {: #basic-request}
 
-The {{site.data.keyword.speechtotextshort}} service offers three interfaces for making a speech recognition request: a WebSocket interface, an HTTP REST interface, and an asynchronous HTTP interface. In addition, the HTTP REST interface supports requests both with and without establishing a session. Each interface provides the same basic speech recognition capabilities. To make a recognition request, you must provide
+The {{site.data.keyword.speechtotextshort}} service offers three interfaces for making a speech recognition request: a WebSocket interface, an HTTP interface, and an asynchronous HTTP interface. Each interface provides the same basic speech recognition capabilities. To make a recognition request, you must provide
 {: shortdesc}
 
 -   *The audio that is to be transcribed.* You can pass a maximum of 100 MB of audio data with any request. The audio must be in one of the [Audio formats](/docs/services/speech-to-text/audio-formats.html) that are supported by the service.
 -   *The format of the audio.* You use the `Content-Type` parameter to specify the audio format.
 
-The following sections show basic transcription requests, with no optional parameters, for each of the service's interfaces. The examples submit a brief FLAC file named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac" download="audio-file.flac">audio-file.flac <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon" class="style-scope doc-content"></a> and use the default language model, `en-US_BroadbandModel`. The service makes available a number of [Input features](/docs/services/speech-to-text/input.html) to control the audio that you send and many [Output features](/docs/services/speech-to-text/output.html) to request additional information in the resulting transcription. For a brief overview of all available parameters, see [Parameter summary](/docs/services/speech-to-text/summary.html).
+The following sections show basic transcription requests, with no optional parameters, for each of the service's interfaces.
 
-Regardless of the interface that you use, the service responds with a transcript of your audio that reflects the input and output parameters that you specified. The final sections show the basic transcription response that is returned for the examples that follow. They describe the meaning and possible contents of the different fields of the response, including a description of the hesitation markers that can appear in a transcript.
+-   The examples submit a brief FLAC file named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac" download="audio-file.flac">audio-file.flac <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon" class="style-scope doc-content"></a>.
+-   The examples use the default language model, `en-US_BroadbandModel`.
+
+The service makes available a number of [Input features](/docs/services/speech-to-text/input.html) to control the audio that you send and many [Output features](/docs/services/speech-to-text/output.html) to request additional information in the resulting transcript. For a brief overview of all available parameters, see [Parameter summary](/docs/services/speech-to-text/summary.html).
+
+Regardless of the interface that you use, the service responds with a transcript of your audio that reflects the input and output parameters that you specify. The final sections show the basic transcription response that is returned for the examples. [Basic transcription response](#response) describes the meaning and possible contents of the fields of the response. [Hesitation markers](#hesitation) describes how the service identifies fillers or pauses that can appear in a transcript.
 
 ## Using the WebSocket interface
 
-[The WebSocket interface](/docs/services/speech-to-text/websockets.html) offers an efficient implementation that provides low latency and high throughput over a full-duplex connection. All requests and responses are sent over the same WebSocket connection. Because of their many advantages, WebSockets are the preferred mechanism for speech recognition.
+[The WebSocket interface](/docs/services/speech-to-text/websockets.html) offers an efficient implementation that provides low latency and high throughput over a full-duplex connection. All requests and responses are sent over the same WebSocket connection. Because of their many advantages, WebSockets are the preferred mechanism for speech recognition; see [Advantages of the WebSocket interface](/docs/services/speech-to-text/developer-overview.html#advantages).
 
 To use the WebSocket interface, you first use the `/v1/recognize` method to establish a connection with the service. You specify parameters such as the language model and any custom models that are to be used for requests that are sent over the connection. You then register event listeners to handle responses from the service. To make a request, you send a JSON text message that includes the audio format and any additional parameters. You pass the audio as a binary message (blob), and then send a text message to signal the end of the audio.
 
@@ -53,11 +58,11 @@ websocket.send(JSON.stringify({'action': 'stop'}));
 ```
 {: codeblock}
 
-## Using the sessionless HTTP interface
+## Using the HTTP interface
 
-[Making sessionless requests](/docs/services/speech-to-text/http.html#HTTP-sessionless) is the simplest way to make a recognition request. You use the `POST /v1/recognize` method to make a sessionless request to the service. You pass the audio and all parameters with the single request.
+[The HTTP interface](/docs/services/speech-to-text/http.html) provides the simplest way to make a recognition request. You use the `POST /v1/recognize` method to make a request to the service. You pass the audio and all parameters with the single request.
 
-The following cURL example shows a basic sessionless recognition request:
+The following cURL example shows a basic HTTP recognition request:
 
 ```bash
 curl -X POST -u {username}:{password}
@@ -67,30 +72,11 @@ curl -X POST -u {username}:{password}
 ```
 {: pre}
 
-## Using the session-based HTTP interface
-
-**Important:** The session-based HTTP REST interface is deprecated as of August 8, 2018. The sessions API will be removed from service as of September 7, 2018. For more information, see the August 8 service update in the [Release notes](/docs/services/speech-to-text/release-notes.html#August2018).
-
-[Making session-based requests](/docs/services/speech-to-text/http.html#HTTP-sessions) with the HTTP REST interface requires that you establish a session with the service. By using sessions, you can maintain a multi-turn exchange with the service or establish multiple parallel conversations with an instance of the service.
-
-To make a session-based request, you first use the `POST /v1/sessions` method to establish a session with the service. When you create the session, you specify parameters such as the language model and any custom models that are to be used with the session. You then use the `POST /v1/sessions/{session_id}/recognize` method to make the request, identifying the session with the `{session_id}` path parameter and using headers and query parameters to pass any additional parameters for the request.
-
-The following cURL example sends a basic recognition request over an existing session. Session-based requests require the use of cookies, which you pass with the `--cookie` option of the cURL command.
-
-```bash
-curl -X POST -u {username}:{password}
---cookie cookies.txt
---header "Content-Type: audio/flac"
---data-binary @audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/sessions/{session_id}/recognize"
-```
-{: pre}
-
 ## Using the asynchronous HTTP interface
 
 [The asynchronous HTTP interface](/docs/services/speech-to-text/async.html) provides a non-blocking interface for transcribing audio. You can use the interface with or without first registering a callback URL with the service. With a callback URL, the service sends callback notifications with job status and recognition results. The interface uses HMAC-SHA1 signatures based on a user-specified secret to provide authentication and data integrity for its notifications. Without a callback URL, you must poll the service for job status and results. With either approach, you use the `POST /v1/recognitions` method to make a recognition request.
 
-The following cURL example shows a simple asynchronous recognition request. The request does not include a callback URL, so you must poll the service to get the job status and the resulting transcript.
+The following cURL example shows a simple asynchronous HTTP recognition request. The request does not include a callback URL, so you must poll the service to get the job status and the resulting transcript.
 
 ```bash
 curl -X POST -u {username}:{password}
@@ -125,13 +111,13 @@ For each of the previous examples, the service returns the following basic trans
 
 The fields of the response provide the following information:
 
--   `results` provides an array with information about the transcription. For a simple request, with no additional parameters, the service sends a single `results` field. If you use the `interim_results` parameter to request interim results, the service sends evolving interim hypotheses in the form of multiple `results` fields as it transcribes the audio. For more information, see [Interim results](/docs/services/speech-to-text/output.html#interim).
+-   `results` provides an array with information about the transcription. For a simple request, with no additional parameters, the service sends a single `results` field. If you use the `interim_results` parameter to request interim results with the WebSocket interface, the service sends evolving interim hypotheses in the form of multiple `results` fields as it transcribes the audio. For more information, see [Interim results](/docs/services/speech-to-text/output.html#interim).
 
     The `results` field includes an array of elements that provide the following information:
 
     -   `alternatives` provides an array of transcription results. For a simple request, the array includes a single element. If you use the `max_alternatives` parameter to request multiple alternative transcripts, the array includes a separate element for each alternative. For more information, see [Maximum alternatives](/docs/services/speech-to-text/output.html#max_alternatives).
 
-        -   `transcript` provides the results of the transcription.
+        -   `transcript` provides the results of the transcription. The results can include multiple `transcript` elements to indicate phrases that are separated by pauses. Concatenate the elements to assemble the complete transcript.
         -   `confidence` is a score that indicates the service's confidence in the transcription results, which for this example approaches 90 percent. If you request multiple alternative transcripts, the service returns a confidence score only for the best alternative.
 
     -   `final` indicates whether the transcript shows final transcription results, results that are guaranteed not to change. The field is `true` for final results; it is `false` for interim results.

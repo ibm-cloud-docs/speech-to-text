@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-14"
+lastupdated: "2018-08-21"
 
 ---
 
@@ -38,7 +38,7 @@ You can create multiple custom language models for the same or different domains
     {: codeblock}
 
     For more information, see [The WebSocket interface](/docs/services/speech-to-text/websockets.html).
--   For a sessionless request with the HTTP REST interface, use the `POST /v1/recognize` method. The specified custom model is used for that request.
+-   For the HTTP interface, use the `POST /v1/recognize` method. The specified custom model is used for that request.
 
     ```bash
     curl -X POST -u {username}:{password}
@@ -48,17 +48,8 @@ You can create multiple custom language models for the same or different domains
     ```
     {: pre}
 
-    For more information, see [Making sessionless requests](/docs/services/speech-to-text/http.html#HTTP-sessionless).
--   For a session-based request with the HTTP REST interface, use the `POST /v1/sessions` method. The specified custom model is used for all requests that are sent over the session.
-
-    ```bash
-    curl -X POST -u {username}:{password}
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions?customization_id={customization_id}"
-    ```
-    {: pre}
-
-    For more information, see [Making session-based requests](/docs/services/speech-to-text/http.html#HTTP-sessions).
--   For the HTTP asynchronous interface, use the `POST /v1/recognitions` method. The specified custom model is used for that request.
+    For more information, see [The HTTP interface](/docs/services/speech-to-text/http.html).
+-   For the asynchronous HTTP interface, use the `POST /v1/recognitions` method. The specified custom model is used for that request.
 
     ```bash
     curl -X POST -u {username}:{password}
@@ -95,7 +86,7 @@ You specify a customization weight by using the `customization_weight` parameter
 
     Setting a customization weight during training saves the weight with the custom language model. You do not need to pass the weight with each recognition request that uses the custom model.
 
--   For a recognition request, the following example specifies a customization weight of `0.7` with the sessionless `POST /v1/recognize` method:
+-   For a recognition request, the following example specifies a customization weight of `0.7` with the `POST /v1/recognize` method:
 
     ```bash
     curl -X POST -u {username}:{password}
