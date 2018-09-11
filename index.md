@@ -22,7 +22,7 @@ lastupdated: "2018-09-11"
 
 **Service update:** *As of **September 10, 2018**, the {{site.data.keyword.speechtotextshort}} service is updated with the following changes: The keyword spotting and word alternatives features are now generally available; the service now offers a German broadband model that supports language model and acoustic model customization; the service now supports language model customization with the Brazilian Portuguese broadband and narrowband models; and new versions of the US English and Japanese broadband and narrowband models are available. For more information, see the [September 10 service update](/docs/services/speech-to-text/release-notes.html#September2018b) in the release notes.*
 
-**Important:** *The previous service update is available in the US South and US East regions as of September 10. It is available in Germany as of September 11. The update has a known issue with the customization interface; see the release notes for more information.*
+**Important:** *The previous service update is available in the US South and US East regions as of September 10. It is available in Germany as of September 11. The update has known issues with the customization interface; see the release notes for more information.*
 
 ** Service update:** *As of **September 7, 2018**, the session-based HTTP interface of the {{site.data.keyword.speechtotextshort}} service is no longer supported. The interface has been removed from the documentation. For more information, see the [September 7 service update](/docs/services/speech-to-text/release-notes.html#September2018a) in the release notes.*
 

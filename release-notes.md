@@ -56,7 +56,7 @@ WebSocket calls that are made with other languages, such as Node.js, Java, and P
 ## 10 September 2018
 {: #September2018b}
 
-**Important:** This update was made available in the *US South* and *US East* regions on September 10. It was made available in *Germany* on September 11. It will be available in *Sydney* soon. See [Known issues](#known_issues) for a current defect with the customization interface.
+**Important:** This update was made available in the *US South* and *US East* regions on September 10. It was made available in *Germany* on September 11. It will be available in *Sydney* soon. See [Known issues](#known_issues) for current defects associated with the customization interface.
 
 -   The service now supports a German broadband model, `de-DE_BroadbandModel`. The new German model supports language model customization (generally available) and acoustic model customization (beta).
     -   For information about how the service parses corpora for German, see [Parsing of English, French, German, Spanish, and Brazilian Portuguese](/docs/services/speech-to-text/language-resource.html#corpusLanguages).
@@ -82,23 +82,34 @@ WebSocket calls that are made with other languages, such as Node.js, Java, and P
 ### Known issues
 {: #known_issues}
 
-The customization interface has the following known issue:
+The customization interface has the following known issues:
 
-1.  The user creates a new custom model (language or acoustic) and trains the model.
-1.  The user adds additional resources (words, corpora, or audio) to the custom model but does not retrain the model.
-1.  The user cannot use the custom model for speech recognition. The service returns an error of the following form when used with a speech recognition request:
+-   If you add data to a custom language or custom acoustic model, you must retrain the model before using it for speech recognition. The problem shows up in the following scenario:
 
-    ```javascript
-    {
-      "code_description": "Bad Request",
-      "code": 400,
-      "error": "Requested custom language model is not available.
-                Please make sure the custom model is trained."
-    }
-    ```
-    {: codeblock}
+    1.  The user creates a new custom model (language or acoustic) and trains the model.
+    1.  The user adds additional resources (words, corpora, or audio) to the custom model but does not retrain the model.
+    1.  The user cannot use the custom model for speech recognition. The service returns an error of the following form when used with a speech recognition request:
 
-To work around this issue, the user must retrain the custom model on its latest data. The user can then use the custom model with speech recognition. This issue will be fixed as soon as possible.
+        ```javascript
+        {
+          "code_description": "Bad Request",
+          "code": 400,
+          "error": "Requested custom language model is not available.
+                    Please make sure the custom model is trained."
+        }
+        ```
+        {: codeblock}
+
+    To work around this issue, the user must retrain the custom model on its latest data. The user can then use the custom model with speech recognition.
+-   Before training an existing custom language or custom acoustic model, you must upgrade it to the latest version of its base model. The problem shows up in the following scenario:
+
+    1.  The user has an existing custom model (language or acoustic) that is based on a model that has been updated.
+    1.  The user trains the existing custom model against the old version of the base model without first upgrading to the latest version of the base model.
+    1.  The user cannot use the custom model for speech recognition.
+
+    To work around this issue, the user must use the `POST /v1/customizations/{customization_id}/upgrade_model` or `POST /v1/acoustic_customizations/{customization_id}/upgrade_model` method to upgrade the custom model to the latest version of its base model. The user can then use the custom model with speech recognition.
+
+Both of these issues will be fixed as soon as possible.
 
 ## 7 September 2018
 {: #September2018a}
