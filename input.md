@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-18"
+lastupdated: "2018-09-10"
 
 ---
 
@@ -52,11 +52,16 @@ In either case, your data is always encrypted both in motion and at rest. For mo
 You can use the `model` parameter to specify a language model for the request. The model indicates the language in which the audio is spoken and the rate at which it is sampled. For most languages, the service supports two models:
 
 -   A *broadband model* for audio that is sampled at greater than or equal to 16 kHz. {{site.data.keyword.IBM}} recommends that you use the broadband model for responsive, real-time applications (for example, for live-speech applications).
--   A *narrowband model* for audio that is sampled at 8 kHz. This rate is used typically for telephonic audio.
+-   A *narrowband model* for audio that is sampled at 8 kHz. This rate is typically used for telephonic audio.
 
 The service automatically adjusts the sampling rate of your audio to match the model that you specify. For more information, see [Sampling rate](/docs/services/speech-to-text/audio-formats.html#samplingRate).
 
-The following table lists the supported models for each language. If you omit the model from a request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
+### Available language models
+{: #modelsList}
+
+To list all available models for all languages, use the `GET /v1/models` method. To see detailed information about a specific model, use the `GET /v1/models/{model_id}` method.
+
+The following table lists the supported models for each language. If you omit the `model` parameter from a request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
 
 <table style="width:80%">
   <caption>Table 1. Supported language models</caption>
@@ -73,6 +78,11 @@ The following table lists the supported models for each language. If you omit th
   <tr>
     <td>French</td>
     <td style="text-align:center"><code>fr-FR_BroadbandModel</code></td>
+    <td style="text-align:center">Not supported</td>
+  </tr>
+  <tr>
+    <td>German</td>
+    <td style="text-align:center"><code>de-DE_BroadbandModel</code></td>
     <td style="text-align:center">Not supported</td>
   </tr>
   <tr>
@@ -111,8 +121,6 @@ The following table lists the supported models for each language. If you omit th
     <td style="text-align:center"><code>en-US_NarrowbandModel</code></td>
   </tr>
 </table>
-
-To see the complete list of supported models, use the `GET /v1/models` method. To retrieve detailed information about a specific model, use the `GET /v1/models/{model_id}` method.
 
 ### Language model example
 {: #modelsExample}
@@ -186,28 +194,36 @@ The parameter is intended for use with custom models. Therefore, you can learn a
 ## Audio transmission
 {: #transmission}
 
-*With the WebSocket interface,* audio data is always streamed to the service over the connection. You can pass data through the socket all at once, or you can pass data for the live-use case as it becomes available.
+*With the WebSocket interface,* audio data is always streamed to the service over the connection. You can pass data through the socket all at once, or you can pass data for the live-use case as it becomes available. The service returns results as they become available.
 
-*With the HTTP interface,* you can transmit audio to the service in either of the following ways:
+*With the HTTP interfaces,* you can transmit audio to the service in either of the following ways:
 
 -   *One-shot delivery* - You omit the `Transfer-Encoding` header and pass all of the audio data to the service at one time as a single delivery.
--   *Streaming* - You set the `Transfer-Encoding` request header to the value `chunked` and stream the data over a persistent connection. The data does not need to exist fully before you stream it to the service. You can stream the data as it becomes available. You also need to set the header to `chunked` for a request that passes more than one audio file. For more information about the header, see [en.wikipedia.org/wiki/Chunked_transfer_encoding ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/Chunked_transfer_encoding){: new_window}.
+-   *Streaming* - You set the `Transfer-Encoding` request header to the value `chunked` and stream the data over a persistent connection. The data does not need to exist fully before you stream it to the service. You can stream the data as it becomes available. The service sends results only when it receives the final chunk, which you indicate by sending an empty chunk.
 
-With either interface, the service always transcribes the entire audio stream until it terminates. Transcription results can include multiple `transcript` elements to indicate phrases that are separated by pauses. Concatenate the `transcript` elements to assemble the complete transcription of the audio stream.
+    For more information about streaming chunked audio with the `Transfer-Encoding` header, see
+    -   [en.wikipedia.org/wiki/Chunked_transfer_encoding ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/Chunked_transfer_encoding){: new_window}
+    -   [Transfer Codings ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://tools.ietf.org/html/rfc7230#section-4){: new_window} in *IETF RFC 7320 HTTP/1.1: Message Syntax and Routing*
 
-To preserve system resources when you stream audio data, the service enforces timeouts. The service terminates a request if the operation is started but the service receives no audio. The service can also end the request if the service detects an extended period of silence in the audio. For more information about the timeouts for audio transmission, see [Timeouts](#timeouts).
+With the HTTP interfaces, the service always transcribes the entire audio stream before sending any results. The results can include multiple `transcript` elements to indicate phrases that are separated by pauses. Concatenate the `transcript` elements to assemble the complete transcript.
+
+To preserve system resources when you stream audio data, the service enforces timeouts. The service can terminate a request if
+
+-   The request is initiated but the service receives no audio.
+-   The service detects an extended period of silence in the audio.
+
+For more information about timeouts and how to work around them, see [Timeouts](#timeouts).
 
 ### Audio transmission example
 {: #transmissionExample}
 
-The following example request specifies `chunked` for the `Transfer-Encoding` header to use streaming mode. The header is necessary because the request passes two audio files.
+The following example request specifies `chunked` for the `Transfer-Encoding` header to use streaming mode. The connection remains open to accept additional chunks of audio.
 
 ```bash
 curl -X POST -u {username}:{password}
 --header "Content-Type: audio/flac"
 --header "Transfer-Encoding: chunked"
 --data-binary @{path}audio-file1.flac
---data-binary @{path}audio-file2.flac
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
 ```
 {: pre}
@@ -215,30 +231,36 @@ curl -X POST -u {username}:{password}
 ## Timeouts
 {: #timeouts}
 
-To preserve resources when you stream audio data, the service enforces timeouts. If a timeouts lapses, the service closes the connection.
+To preserve resources when you stream audio data, the service enforces timeouts. If a timeout lapses during a streaming session, the service closes the connection. Your application must recover gracefully from possible closed connections.
 
--   A *session timeout* (HTTP status code 408) occurs when a client starts a session but the service receives no audio for 30 seconds. It also occurs when a session is active but no request is received from the client for 30 seconds. The latter condition occurs only if the service receives no data from the client for 30 seconds but has not yet received the last chunk of data. If the client has sent all data, the service can take more than 30 seconds to generate a response; in this case, the request does not time out.
+When you initiate a streaming session with the HTTP `/v1/recognize` or WebSocket `/v1/recognize` method, the service enforces the following timeouts:
 
-    For both WebSocket connections and HTTP sessions, you can keep a session active by sending any audio data, including just silence, before the 30-second session timeout occurs. (You must also set the `inactivity_timeout` parameter to `-1`, as described in the next bullet.) You are charged for the duration of any data that you send to the service, including the silence that you send to extend a session.
+-   A *session timeout* (HTTP status code 408) occurs when the client opens a streaming session but
 
-    Ideally, you would establish a session just before you obtain audio for transcription and maintain it by sending audio at a rate that is close to real time. Your application must also recover gracefully from closed connections.
--   An *inactivity timeout* (HTTP status code 400) occurs when the service is receiving audio from the client but it detects silence (no speech) for 30 seconds. The service uses the inactivity timeout to ensure that a session remains active. The timeout is useful, for example, for terminating a session when a user simply walks away from a live microphone.
+    -   Sends no audio to the service for 30 seconds
+    -   Stops sending audio for 30 seconds before it sends the last chunk to the service
+    -   Streams audio at a rate that is much slower than real-time
+
+    Ideally, you would initiate a request to establish a session just before you obtain audio for transcription and maintain it by sending audio at a rate that is close to real time. If the client has sent all data, the service can take more than 30 seconds to generate a response for long audio. In this case, the request does not time out.
+
+    You can keep a session active by sending any audio data, including just silence, before the 30-second session timeout occurs. (You must also set the `inactivity_timeout` parameter to `-1`, as described in the next bullet.) You are charged for the duration of any audio data that you send to the service, including the silence that you send to extend a session.
+
+-   An *inactivity timeout* (HTTP status code 400) occurs when the service is receiving audio from the client but it detects silence (no speech) for 30 seconds. The inactivity timeout is useful, for example, for terminating a session when a user simply walks away from a live microphone. The service uses the timeout to ensure that a session remains active.
 
     You can override this timeout by specifying a different value for the `inactivity_timeout` parameter. Specify a value of `-1` to set the inactivity timeout to infinity.
 
-To improve usability for long audio files, the service avoids HTTP REST inactivity timeouts by sending a space character every 20 seconds in the response JSON object. Sending the character keeps the connection alive while recognition is ongoing. The WebSocket interface is not subject to such platform timeouts.
+To improve usability for long audio, the service avoids HTTP REST inactivity timeouts by sending a space character every 20 seconds in the response JSON object until it completes the transcription. Sending the character keeps the connection alive while recognition is ongoing. (The WebSocket interface is not subject to this type of timeout.)
 
 ### Inactivity timeout example
 {: #timeoutsExample}
 
-The following example request sets the inactivity timeout to 60 seconds for recognition of the specified files:
+The following example request sets the inactivity timeout to 60 seconds. The client sends an initial file to begin the streaming session.
 
 ```bash
 curl -X POST -u {username}:{password}
---header "Content-Type: audio/flac"
 --header "Transfer-Encoding: chunked"
+--header "Content-Type: audio/flac"
 --data-binary @{path}audio-file1.flac
---data-binary @{path}audio-file2.flac
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?inactivity_timeout=60"
 ```
 {: pre}

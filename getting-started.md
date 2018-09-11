@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-06-15"
+lastupdated: "2018-08-20"
 
 ---
 
@@ -21,7 +21,7 @@ lastupdated: "2018-06-15"
 # Getting started tutorial
 {: #gettingStarted}
 
-The {{site.data.keyword.speechtotextfull}} service transcribes audio to text to enable speech transcription capabilities for applications. This cURL-based tutorial can help you get started quickly with the service. The examples show you how to call the service's sessionless `POST /v1/recognize` method to request a transcription.
+The {{site.data.keyword.speechtotextfull}} service transcribes audio to text to enable speech transcription capabilities for applications. This cURL-based tutorial can help you get started quickly with the service. The examples show you how to call the service's `POST /v1/recognize` method to request a transcript.
 {: shortdesc}
 
 > **Important:** The tutorial uses service instance credentials to authenticate to the {{site.data.keyword.speechtotextshort}} service. In some regions, new service instances instead use {{site.data.keyword.Bluemix}} Identity and Access Management (IAM) for authentication. Authenticate by using the approach that is right for your region and service instance.
@@ -46,7 +46,7 @@ For more information about where and how the service uses IAM authentication, se
 ## Step 1: Transcribe audio with no options
 {: #transcribe}
 
-Call the `POST /v1/recognize` method to request a basic transcription of a FLAC audio file with no additional request parameters.
+Call the `POST /v1/recognize` method to request a basic transcript of a FLAC audio file with no additional request parameters.
 
 1.  Download the sample audio file <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac" download="audio-file.flac">audio-file.flac <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon" class="style-scope doc-content"></a>.
 1.  Issue the following command to call the service's `/v1/recognize` method for basic transcription with no parameters. The example uses the `Content-Type` header to indicate the type of the audio, `audio/flac`. The example uses the default language model, `en-US_BroadbandModel`, for transcription.
@@ -70,8 +70,8 @@ Call the `POST /v1/recognize` method to request a basic transcription of a FLAC 
           "alternatives": [
             {
               "confidence": 0.8691191673278809,
-              "transcript": "several tornadoes touch down as a line of severe thunderstorms
-    swept through colorado on sunday "
+              "transcript": "several tornadoes touch down as a line of
+severe thunderstorms swept through colorado on sunday "
             }
           ],
           "final": true
@@ -82,7 +82,7 @@ Call the `POST /v1/recognize` method to request a basic transcription of a FLAC 
     ```
     {: codeblock}
 
-## Step 2: Transcribe audio with two options
+## Step 2: Transcribe audio with options
 {: #transcribeOptions}
 
 Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but specify two transcription parameters.
@@ -117,16 +117,16 @@ Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but
             },
             {
               "confidence": 0.8691191673278809,
-              "transcript": "several tornadoes touch down as a line of severe thunderstorms
-    swept through colorado on sunday "
+              "transcript": "several tornadoes touch down as a line
+of severe thunderstorms swept through colorado on sunday "
             },
             {
-              "transcript": "several tornadoes touched down as a line of severe thunderstorms
-    swept through colorado on sunday "
+              "transcript": "several tornadoes touched down as a line
+of severe thunderstorms swept through colorado on sunday "
             },
             {
-              "transcript": "several tornadoes touch down is a line of severe thunderstorms
-    swept through colorado on sunday "
+              "transcript": "several tornadoes touch down is a line
+of severe thunderstorms swept through colorado on sunday "
             }
           ],
           "final": true
@@ -142,4 +142,3 @@ Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but
 -   Learn more about the interfaces and SDKs that are available for making speech recognition requests in the [Overview for developers](/docs/services/speech-to-text/developer-overview.html).
 -   See basic recognition requests for each of the service's interfaces in [Making a recognition request](/docs/services/speech-to-text/basic-request.html).
 -   Find detailed information about all methods of the service's interfaces in the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
--   Interact with the API in the [API explorer ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://watson-api-explorer.ng.bluemix.net/apis/speech-to-text-v1){: new_window}.

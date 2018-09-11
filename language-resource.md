@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-14"
+lastupdated: "2018-09-06"
 
 ---
 
@@ -88,33 +88,40 @@ More sentences result in better accuracy. But the service does limit a model to 
 
 When you add a corpus file, the service analyzes the file's contents. It extracts any new (OOV) words that it finds and adds each OOV word to the custom model's words resource. To distill the most meaning from the content, the service tokenizes and parses the data that it reads from a corpus file. The following sections describe how the service parses a corpus file for each supported language.
 
-#### Parsing of English (US and UK), Spanish, and French
+#### Parsing of English, French, German, Spanish, and Brazilian Portuguese
 {: #corpusLanguages}
+
+The following descriptions apply to US and UK English, French, German, Spanish, and Brazilian Portuguese.
 
 -   Converts numbers to their equivalent words, for example:
     -   *For English,* `500` becomes `five hundred`, and `0.15` becomes `zero point fifteen`.
-    -   *For Spanish,* `500` becomes `quinientos`, and `0,15` becomes `cero coma quince`.
     -   *For French,* `500` becomes `cinq cents`, and `0,15` becomes <code>z&eacute;ro quinze</code>.
-- Removes the following punctuation and special characters:
-    -   *For English,* `! ? @ # $ % ^ & * - + = ~ _ . , ; : ( ) < > [ ] { }`
-    -   *For Spanish,* <code>! &iexcl; ? &iquest; ^ . , ; ( ) < > [ ] { }</code>
-    -   *For French,* `! ? ^ . , ; ( ) < > [ ] { }`
--   Ignores phrases that are enclosed in `( )` (parentheses), `< >` (angle brackets), `[ ]` (square brackets), or `{ }` (curly braces).
+    -   *For German,* `500` becomes <code>f&uuml;nfhundert</code>, and `0,15` becomes <code>null punkt f&uuml;nfzehn</code>.
+    -   *For Spanish,* `500` becomes `quinientos`, and `0,15` becomes `cero coma quince`.
+    -   *For Brazilian Portuguese,* `500` becomes `quinhentos`, and `0,15` becomes `zero ponto quinze`.
 -   Converts tokens that include certain symbols to meaningful string representations, for example:
     -   Converts a `$` (dollar sign) followed by a number:
         -   *For English,* `$100` becomes `one hundred dollars`.
-        -   *For Spanish,* `$100` becomes <code>cien d&oacute;lares</code> (or `cien pesos` if the dialect is `es-LA`).
         -   *For French,* `$100` becomes `cent dollar`.
+        -   *For German,* `$100` becomes `einhundert dollar`.
+        -   *For Spanish,* `$100` becomes <code>cien d&oacute;lares</code> (or `cien pesos` if the dialect is `es-LA`).
+        -   *For Brazilian Portuguese,* `$100` becomes <code>cem d&oacute;lares</code>.
     -   Converts a <code>&euro;</code> (euro sign) followed by a number:
         -   *For English,* <code>&euro;100</code> becomes `one hundred euros`.
-        -   *For Spanish,* <code>&euro;100</code> becomes `cien euros`.
         -   *For French,* <code>&euro;100</code> becomes `cent euros`.
+        -   *For German,* <code>&euro;100</code> becomes `einhundert euro`.
+        -   *For Spanish,* <code>&euro;100</code> becomes `cien euros`.
+        -   *For Brazilian Portuguese,* <code>&euro;100</code> becomes `cem euros`.
     -   Converts a `%` (percent sign) preceded by a number:
         -   *For English,* `100%` becomes `one hundred percent`.
-        -   *For Spanish,* `100%` becomes `cien por ciento`.
         -   *For French,* `100%` becomes `cent pourcent`.
+        -   *For German,* `100%` becomes `einhundert prozent`.
+        -   *For Spanish,* `100%` becomes `cien por ciento`.
+        -   *For Brazilian Portuguese,* `100%` becomes `cem por cento`.
 
     This list is not exhaustive. The service makes similar adjustments for other characters as needed.
+-   Processes non-alphanumeric, punctuation, and special characters depending on their context. For example, the service removes a `$` (dollar sign) or <code>&euro;</code> (euro symbol) unless it is followed by a number. Processing is context-dependent and consistent across the supported languages.
+-   Ignores phrases that are enclosed in `( )` (parentheses), `< >` (angle brackets), `[ ]` (square brackets), or `{ }` (curly braces).
 
 #### Parsing of Japanese
 {: #corpusLanguages-jaJP}
@@ -192,14 +199,18 @@ Speech recognition uses statistical algorithms to analyze audio, so adding a wor
 -   To pronounce a single letter, use the letter followed by a space. For example, use `N C A A`, *not* `N. C. A. A.`, `N.C.A.A.`, or `NCAA`.
 -   Use the spelling of numbers without dashes, for example, `seventy five` for `75`.
 
-#### Guidelines for Spanish and French
+#### Guidelines for French, German, Spanish, and Brazilian Portuguese
 {: #wordLanguages-esES-frFR}
 
--   You **cannot** use dashes in sounds-like pronunciations for Spanish or French.
--   Use Spanish or French alphabetic characters: `a-z` and `A-Z` including valid accented letters.
+-   You **cannot** use dashes in sounds-like pronunciations.
+-   Use alphabetic characters that are valid for the language: `a-z` and `A-Z` including valid accented letters.
 -   To pronounce a single letter, use the letter followed by a period. If the period is followed by another character, be sure to use a space between the period and the next character. For example, use `N. C. A. A.`, *not* `N.C.A.A.`
--   Use real or made-up words that are pronounceable in Spanish or French for words that are difficult to pronounce.
--   Use the spelling of numbers without dashes, for example, for `75` use `setenta y cinco` (for Spanish) or `soixante quinze` (for French).
+-   Use real or made-up words that are pronounceable in the language for words that are difficult to pronounce.
+-   Use the spelling of numbers without dashes, for example, for `75` use
+    -   *French:* `soixante quinze`
+    -   *German:* <code>f&uuml;nfundsiebzig</code>
+    -   *Spanish:* `setenta y cinco`
+    -   *Brazilian Portuguese:* `setenta e cinco`
 -   You can include multiple words that are separated by spaces, but the service enforces a maximum of 40 total characters not including spaces.
 
 #### Guidelines for Japanese

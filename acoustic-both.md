@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-14"
+lastupdated: "2018-08-21"
 
 ---
 
@@ -59,7 +59,7 @@ curl -X POST -u {username}:{password}
 
 You can specify both a custom language model and a custom acoustic model with any recognition request. If a custom language model contains OOV words from the domain of the audio that is being recognized, you can use it with a custom acoustic model during speech recognition to improve transcription accuracy. The improvements can occur regardless of whether you trained the custom acoustic model with the custom language model. Using both during training improves the quality of the custom acoustic model. Using both during speech recognition improves the quality of transcription.
 
-The following example passes both types of model to the sessionless `POST /v1/recognize` method. Pass the GUID of the custom acoustic model with the `acoustic_customization_id` parameter and the GUID of the custom language model with the `customization_id` parameter. Both models must be owned by the service credentials passed with the request.
+The following example passes both types of model to the HTTP `POST /v1/recognize` method. Pass the GUID of the custom acoustic model with the `acoustic_customization_id` parameter and the GUID of the custom language model with the `customization_id` parameter. Both models must be owned by the service credentials passed with the request.
 
 ```bash
 curl -X POST -u {username}:{password}
@@ -69,4 +69,4 @@ curl -X POST -u {username}:{password}
 ```
 {: pre}
 
-For session-based and asynchronous HTTP requests, you specify the parameters when you create the session or the asynchronous job. For WebSockets, you pass them when you establish the connection.
+For an asynchronous HTTP request, you specify the parameters when you create the asynchronous job. For WebSockets, you pass the parameters when you establish the connection.

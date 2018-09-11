@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-18"
+lastupdated: "2018-08-30"
 
 ---
 
@@ -64,18 +64,10 @@ An optional customization ID for a custom acoustic model that is adapted for the
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Query parameter of <code>POST /v1/recognize</code> method
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/sessions</code> method
     </td>
   </tr>
   <tr>
@@ -116,18 +108,10 @@ An optional version of a base model. The parameter is intended primarily for use
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Query parameter of <code>POST /v1/recognize</code> method
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/sessions</code> method
     </td>
   </tr>
   <tr>
@@ -169,19 +153,10 @@ A required audio format (MIME type) that specifies the format of the audio data 
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Request header of <code>POST /v1/recognize</code> method
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
-    </td>
-    <td style="text-align:left">
-      Request header of <code>POST /v1/sessions/{session_id}/recognize</code>
-      method
     </td>
   </tr>
   <tr>
@@ -209,7 +184,7 @@ An optional customization ID for a custom language model that includes terminolo
       **Availability**
     </td>
     <td style="text-align:left">
-      Generally available for US English, UK English, French, Japanese, Korean, and Spanish
+      Generally available for US English, UK English, Brazilian Portuguese, French, German, Japanese, Korean, and Spanish
     </td>
   </tr>
   <tr>
@@ -222,18 +197,10 @@ An optional customization ID for a custom language model that includes terminolo
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Query parameter of <code>POST /v1/recognize</code> method
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/sessions</code> method
     </td>
   </tr>
   <tr>
@@ -261,7 +228,7 @@ An optional double between 0.0 and 1.0 that indicates the relative weight that t
       **Availability**
     </td>
     <td style="text-align:left">
-      Generally available for US English, UK English, French, Japanese, Korean, and Spanish
+      Generally available for US English, UK English, Brazilian Portuguese, French, German, Japanese, Korean, and Spanish
     </td>
   </tr>
   <tr>
@@ -274,19 +241,10 @@ An optional double between 0.0 and 1.0 that indicates the relative weight that t
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Query parameter of <code>POST /v1/recognize</code> method
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/sessions/{session_id}/recognize</code>
-      method
     </td>
   </tr>
   <tr>
@@ -327,19 +285,10 @@ An optional integer that specifies the number of seconds for the service's inact
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Query parameter of <code>POST /v1/recognize</code> method
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/sessions/{session_id}/recognize</code>
-      method
     </td>
   </tr>
   <tr>
@@ -380,19 +329,10 @@ An optional boolean that directs the service to return intermediate hypotheses t
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Not supported
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
-    </td>
-    <td style="text-align:left">
-      Query parameter of
-      <code>GET /v1/sessions/{session_id}/observe_result</code> method
     </td>
   </tr>
   <tr>
@@ -420,7 +360,7 @@ An optional array of keyword strings that the service spots in the input audio. 
       **Availability**
     </td>
     <td style="text-align:left">
-      Beta for all languages
+      Generally available for all languages
     </td>
   </tr>
   <tr>
@@ -433,19 +373,10 @@ An optional array of keyword strings that the service spots in the input audio. 
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Query parameter of <code>POST /v1/recognize</code> method
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/sessions/{session_id}/recognize</code>
-      method
     </td>
   </tr>
   <tr>
@@ -473,7 +404,7 @@ An optional double between 0.0 and 1.0 that indicates the minimum threshold for 
       **Availability**
     </td>
     <td style="text-align:left">
-      Beta for all languages
+      Generally available for all languages
     </td>
   </tr>
   <tr>
@@ -486,19 +417,10 @@ An optional double between 0.0 and 1.0 that indicates the minimum threshold for 
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Query parameter of <code>POST /v1/recognize</code> method
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/sessions/{session_id}/recognize</code>
-      method
     </td>
   </tr>
   <tr>
@@ -539,19 +461,10 @@ An optional integer that specifies the maximum number of alternative hypotheses 
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Query parameter of <code>POST /v1/recognize</code> method
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/sessions/{session_id}/recognize</code>
-      method
     </td>
   </tr>
   <tr>
@@ -592,18 +505,10 @@ An optional model that specifies the language in which the audio is spoken and t
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Query parameter of <code>POST /v1/recognize</code> method
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/sessions</code> method
     </td>
   </tr>
   <tr>
@@ -644,19 +549,10 @@ An optional boolean that indicates whether the service censors profanity from a 
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Query parameter of <code>POST /v1/recognize</code> method
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/sessions/{session_id}/recognize</code>
-      method
     </td>
   </tr>
   <tr>
@@ -665,59 +561,6 @@ An optional boolean that indicates whether the service censors profanity from a 
     </td>
     <td style="text-align:left">
       Query parameter of <code>POST /v1/recognitions</code> method
-    </td>
-  </tr>
-</table>
-
-## sequence_id
-
-For session-based requests to transcribe long audio files, an optional integer that associates an identifier with a <code>POST /v1/sessions/{session_id}/recognize</code> request. You can use the identifier to overcome timeouts by polling the results of the recognition request with the <code>POST /v1/sessions/{session_id}/observe_result</code> method. By default, no sequence ID is associated with a request. See [Transcribing long audio files with sessions](/docs/services/speech-to-text/http.html#HTTP-long).
-
-<table>
-  <caption>Table 13. The sequence_id parameter</caption>
-  <tr>
-    <th>Language availability and interface usage</th>
-    <th style="vertical-align:bottom">Description</th>
-  </tr>
-  <tr>
-    <td style="text-align:left; width:30%">
-      **Availability**
-    </td>
-    <td style="text-align:left">
-      Generally available for all languages
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **WebSocket**
-    </td>
-    <td style="text-align:left">
-      Not supported
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessionless**
-    </td>
-    <td style="text-align:left">
-      Not supported
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/sessions/{session_id}/recognize</code>
-      and <code>POST /v1/sessions/{session_id}/observe_result</code> methods
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP asynchronous**
-    </td>
-    <td style="text-align:left">
-      Not supported
     </td>
   </tr>
 </table>
@@ -750,19 +593,10 @@ An optional boolean that indicates whether the service converts dates, times, nu
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Query parameter of <code>POST /v1/recognize</code> method
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/sessions/{session_id}/recognize</code>
-      method
     </td>
   </tr>
   <tr>
@@ -803,19 +637,10 @@ An optional boolean that indicates whether the service identifies which individu
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Query parameter of <code>POST /v1/recognize</code> method
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/sessions/{session_id}/recognize</code>
-      method
     </td>
   </tr>
   <tr>
@@ -856,19 +681,10 @@ An optional boolean that indicates whether the service produces timestamps for t
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Query parameter of <code>POST /v1/recognize</code> method
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/sessions/{session_id}/recognize</code>
-      method
     </td>
   </tr>
   <tr>
@@ -909,19 +725,10 @@ An optional value of `chunked` that causes the audio to be streamed to the servi
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Request header of <code>POST /v1/recognize</code> method
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
-    </td>
-    <td style="text-align:left">
-      Request header of <code>POST /v1/sessions/{session_id}/recognize</code>
-      method
     </td>
   </tr>
   <tr>
@@ -962,15 +769,7 @@ An optional authentication token that makes authenticated requests to the servic
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
-    </td>
-    <td style="text-align:left">
-      Query parameter of each request
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Query parameter of each request
@@ -1001,7 +800,7 @@ An optional double between 0.0 and 1.0 that specifies the threshold at which the
       **Availability**
     </td>
     <td style="text-align:left">
-      Beta for all languages
+      Generally available for all languages
     </td>
   </tr>
   <tr>
@@ -1014,19 +813,10 @@ An optional double between 0.0 and 1.0 that specifies the threshold at which the
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Query parameter of <code>POST /v1/recognize</code> method
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/sessions/{session_id}/recognize</code>
-      method
     </td>
   </tr>
   <tr>
@@ -1067,19 +857,10 @@ An optional boolean that indicates whether the service provides confidence measu
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Query parameter of <code>POST /v1/recognize</code> method
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/sessions/{session_id}/recognize</code>
-      method
     </td>
   </tr>
   <tr>
@@ -1120,15 +901,7 @@ An optional authentication token that makes authenticated requests to the servic
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
-    </td>
-    <td style="text-align:left">
-      Request header of each request
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Request header of each request
@@ -1173,15 +946,7 @@ An optional boolean that indicates whether you opt out of the request logging th
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
-    </td>
-    <td style="text-align:left">
-      Request header of each request
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Request header of each request
@@ -1227,15 +992,7 @@ An optional string that associates a customer ID with data that is passed for re
   </tr>
   <tr>
     <td style="text-align:left">
-      **HTTP sessionless**
-    </td>
-    <td style="text-align:left">
-      Request header of POST <code>/v1/recognize</code> request
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP sessions**
+      **HTTP**
     </td>
     <td style="text-align:left">
       Request header of POST <code>/v1/recognize</code> request

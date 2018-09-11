@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-21"
+lastupdated: "2018-08-21"
 
 ---
 
@@ -133,7 +133,7 @@ The `versions` field indicates that the custom model is available for two versio
 
 By default, the service uses the latest version of a custom model that is specified with a recognition request. However, even after a custom model is upgraded, you can continue to make recognition requests with the older version of the model. You use the `base_model_version` parameter of a recognition method to specify the version of a base model that is to be used for speech recognition.
 
-For example, the following sessionless HTTP request specifies that the older version of the base model is to be used. Thus, the older version of the specified custom language model is also used.
+For example, the following HTTP request specifies that the older version of the base model is to be used. Thus, the older version of the specified custom language model is also used.
 
 ```bash
 curl -X POST -u {username}:{password}

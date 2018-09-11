@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-21"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -238,13 +238,11 @@ As a result, speaker IDs might not be sequential, contiguous, or ordered. For in
 ### Requesting interim results for speaker labels
 {: #speakerLabelsInterim}
 
-You can request both speaker labels and interim results with a recognition request (see [Interim results](/docs/services/speech-to-text/output.html#interim)). On average, final results are generally better than interim results.
-
-But interim results can help identify the evolution of a transcription and the assignment of speaker labels. Interim results can indicate where transient speakers and IDs appeared or disappeared. However, the service can reuse the IDs of speakers that it initially identifies and later reconsiders and omits. Therefore, an ID might refer to two different speakers in interim and final results.
+With the WebSocket interface, you can request interim results as well as speaker labels (see [Interim results](/docs/services/speech-to-text/output.html#interim)). Final results are generally better than interim results. But interim results can help identify the evolution of a transcript and the assignment of speaker labels. Interim results can indicate where transient speakers and IDs appeared or disappeared. However, the service can reuse the IDs of speakers that it initially identifies and later reconsiders and omits. Therefore, an ID might refer to two different speakers in interim and final results.
 
 When you request both interim results and speaker labels, final results for long audio streams might arrive well after initial interim results are returned. It is also possible for some interim results to include only a `speaker_labels` field without the `results` and `result_index` fields. If you do not request interim results, the service returns final results that include `results` and `result_index` fields and a single `speaker_labels` field.
 
-The service sends final results when the audio stream is complete or in response to a timeout period, whichever occurs first. The service sets the `final` field to `true` only for the last word of the speaker labels that it returns in either case.
+The service sends final results when the audio stream is complete or in response to a timeout, whichever occurs first. The service sets the `final` field to `true` only for the last word of the speaker labels that it returns in either case.
 
 ### Performance considerations for speaker labels
 {: #speakerLabelsPerformance}
@@ -260,8 +258,6 @@ As with all transcription, performance can also be affected by audio noise, a pe
 
 ## Keyword spotting
 {: #keyword_spotting}
-
-> **Note:** The keyword spotting feature is beta functionality that is available for all languages.
 
 The keyword spotting feature detects specified strings in a transcript. The service can spot the same keyword multiple times and report each occurrence. The service spots keywords only in the final results, not in interim results. By default, the service does no keyword spotting.
 
@@ -391,29 +387,45 @@ curl -X POST -u {username}:{password}
 ## Interim results
 {: #interim}
 
-Interim results are intermediate hypotheses of a transcription that are likely to change before the service returns its final results. The service returns interim results as soon as it generates them. Interim results are useful for interactive applications and for real-time transcription. To receive interim results
+**Note:** Interim results are available only with the WebSocket interface.
 
--   *With the HTTP interface*, call the `GET /v1/sessions/{session_id}/observe_result` method with the `interim_results` query parameter set to `true`. You must request interim results before the call to the `POST /v1/sessions/{session_id}/recognize` method completes. You can obtain interim results only when you use sessions.
--   *With the WebSocket interface*, set the `interim_results` JSON parameter to `true` in the `start` message for a recognition request.
+Interim results are intermediate hypotheses of a transcription that are likely to change before the service returns its final results. The service returns interim results as soon as it generates them. Interim results are useful for interactive applications and for real-time transcription.
 
-If you omit the `interim_results` parameter or set it to `false`, the service returns only a single JSON transcript at the end of the audio. Follow these guidelines to use the parameter:
+To receive interim results, set the `interim_results` JSON parameter to `true` in the `start` message for a WebSocket recognition request. If you omit the `interim_results` parameter or set it to `false`, the service returns only a single JSON transcript at the end of the audio. Follow these guidelines to use the parameter:
 
--   Use `false` if you are doing offline or batch transcription, do not need minimum latency, and want a single JSON result for all audio.
--   Use `true` if you want results to arrive progressively as the service processes the audio or if you want the results with minimum latency. Keep in mind that the service can update interim results as it processes more audio.
+-   Omit the parameter or set it to `false` if you are doing offline or batch transcription, do not need minimum latency, and want a single JSON result for all audio.
+-   Set the parameter to `true` if you want results to arrive progressively as the service processes the audio or if you want the results with minimum latency. Keep in mind that the service can update interim results as it processes more audio.
 
-Interim results are indicated in the JSON response with the `final` field set to `false`. The service can update such results with more accurate transcriptions as it processes further audio. Final results are identified with the `final` field set to `true`; the service makes no further updates to such results.
+Interim results are indicated in the JSON response with the `final` field set to `false`. The service can update such results with more accurate transcriptions as it processes further audio. Final results are identified with the `final` field set to `true`; the service makes no further updates to final results.
 
 ### Interim results example
 {: #interimResultsExample}
 
-The following example requests interim results for a session-based request. The `final` attribute is set to `true` only for the final result.
+The following abbreviated example requests interim results for a WebSocket request. In its response, the service sets the `final` attribute to `true` only for the final result.
 
-```bash
-curl -X GET -u {username}:{password}
---cookie cookies.txt
-"https://stream.watsonplatform.net/speech-to-text/api/v1/sessions/{session_id}/observe_result?interim_results=true"
+```javascript
+var token = {authentication-token};
+var wsURI = 'wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
+  + '?watson-token=' + token;
+var websocket = new WebSocket(wsURI);
+
+websocket.onopen = function(evt) { onOpen(evt) };
+function onOpen(evt) {
+  var message = {
+    'action': 'start',
+    'content-type': 'audio/l16;rate=22050',
+    'interim_results': true
+  };
+  websocket.send(JSON.stringify(message));
+  websocket.send(blob);
+}
+
+websocket.onmessage = function(evt) { onMessage(evt) };
+function onMessage(evt) {
+  console.log(evt.data);
+}
 ```
-{: pre}
+{: codeblock}
 
 ```javascript
 {
@@ -441,25 +453,14 @@ curl -X GET -u {username}:{password}
   ],
   "result_index": 0
 }{
-   . . .
+  . . .
 }{
   "results": [
     {
       "alternatives": [
         {
-          "transcript": "several tornadoes touch down as a line of severe thunderstorms swept through "
-        }
-      ],
-      "final": false
-    }
-  ],
-  "result_index": 0
-}{
-  "results": [
-    {
-      "alternatives": [
-        {
-          "transcript": "several tornadoes touch down as a line of severe thunderstorms swept through Colorado on Sunday "
+          "transcript": "several tornadoes touch down as a line of
+severe thunderstorms swept through Colorado on Sunday "
         }
       ],
       "final": false
@@ -472,7 +473,8 @@ curl -X GET -u {username}:{password}
       "alternatives": [
         {
           "confidence": 0.891,
-          "transcript": "several tornadoes touch down as a line of severe thunderstorms swept through Colorado on Sunday "
+          "transcript": "several tornadoes touch down as a line of
+severe thunderstorms swept through Colorado on Sunday "
         }
       ],
       "final": true
@@ -485,8 +487,6 @@ curl -X GET -u {username}:{password}
 
 ## Word alternatives
 {: #word_alternatives}
-
-> **Note:** The word alternatives feature is beta functionality that is available for all languages.
 
 The word alternatives feature (also known as Confusion Networks) reports hypotheses for acoustically similar alternatives for words of the input audio. For instance, the word `Austin` might be the best hypothesis for a word from the audio. But the word `Boston` is another possible hypothesis in the same time interval. Hypotheses share a common start and end time but have different spellings and usually different confidence scores.
 

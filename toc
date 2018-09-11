@@ -41,11 +41,14 @@ Speech to Text
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
-    basic-request.md
-    audio-formats.md
-    input.md
-    output.md
-    summary.md
+    {: .topicgroup}
+    Speech recognition
+        basic-request.md
+        audio-formats.md
+        input.md
+        output.md
+        summary.md
+
     websockets.md
     http.md
     async.md
@@ -80,7 +83,6 @@ Speech to Text
     {: .topicgroup}
     FAQs
         faq-basic-usage.md
-        faq-http.md
         faq-websockets.md
         faq-recognition.md
         faq-speaker-labels.md

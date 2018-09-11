@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-07-19"
+lastupdated: "2018-08-22"
 
 ---
 
@@ -36,17 +36,6 @@ The recognition request and response cycle has the following steps:
 When the client sends data to the service, it *must* pass all JSON messages as text messages and all audio data as binary messages.
 
 > **Note:** The snippets of example code that follow are written in JavaScript and are based on the HTML5 WebSocket API. For more information about the WebSocket protocol, see the Internet Engineering Task Force (IETF) [Request for Comment (RFC) 6455 ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://tools.ietf.org/html/rfc6455){: new_window}.
-
-## Advantages of the WebSocket interface
-{: #advantages}
-
-The WebSocket interface has a number of advantages over the HTTP interface:
-
--   The WebSocket interface, unlike the REST interface, provides a single-socket, full-duplex communication channel. The interface lets the client send requests and audio to the service and receive results over a single connection in an asynchronous fashion.
--   It provides a much simpler and more powerful programming experience. The service sends event-driven responses to the client's messages, eliminating the need for the client to poll the server.
--   It reduces latency. Recognition results arrive faster because the service sends them directly to the client.
--   It reduces network utilization. The WebSocket protocol is lightweight. It requires only a single connection to perform live recognition. Conversely, when you use sessions with the REST interface, you need at least four connections to achieve the same results.
--   It enables audio to be streamed directly from browsers (HTML5 WebSocket clients) to the service.
 
 ## Open a connection
 {: #WSopen}

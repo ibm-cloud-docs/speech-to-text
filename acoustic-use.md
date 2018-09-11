@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-14"
+lastupdated: "2018-08-21"
 
 ---
 
@@ -40,7 +40,7 @@ You can create multiple custom acoustic models for the same or different domains
     {: codeblock}
 
    For more information, see [The WebSocket interface](/docs/services/speech-to-text/websockets.html).
--   For a sessionless request with the HTTP REST interface, use the `POST /v1/recognize` method. The specified custom model is used for that request.
+-   For the HTTP interface, use the `POST /v1/recognize` method. The specified custom model is used for that request.
 
     ```bash
     curl -X POST -u {username}:{password}
@@ -50,18 +50,8 @@ You can create multiple custom acoustic models for the same or different domains
     ```
     {: pre}
 
-    For more information, see [Making sessionless requests](/docs/services/speech-to-text/http.html#HTTP-sessionless).
-
--   For a session-based request with the HTTP REST interface, use the `POST /v1/sessions` method. The specified custom model is used for all requests that are sent over the session.
-
-    ```bash
-    curl -X POST -u {username}:{password}
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions?acoustic_customization_id={customization_id}"
-    ```
-    {: pre}
-
-    For more information, see [Making session-based requests](/docs/services/speech-to-text/http.html#HTTP-sessions).
--   For the HTTP asynchronous interface, use the `POST /v1/recognitions` method. The specified custom model is used for that request.
+    For more information, see [The HTTP interface](/docs/services/speech-to-text/http.html).
+-   For the asynchronous HTTP interface, use the `POST /v1/recognitions` method. The specified custom model is used for that request.
 
     ```bash
     curl -X POST -u {username}:{password}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-14"
+lastupdated: "2018-08-21"
 
 ---
 
@@ -20,11 +20,9 @@ lastupdated: "2018-05-14"
 # WebSocket API
 {: #websockets}
 
-1.  <span style="color:#003F69">If I use the WebSocket API, do I need to use sessions?</span>
+1.  <span style="color:#003F69">What are the advantages of using the WebSocket API?</span>
 
-    No. When you use the WebSocket interface, the WebSocket *is* the connection to the service, and the connection is the session. A WebSocket connection provides all of the advantages of sessions and more.
-
-    For example, the interface provides a single-socket, full-duplex communication channel. The client sends requests to the service and receives results over a single connection in an asynchronous fashion. In addition, the WebSocket protocol is lightweight, which further reduces network latency. For more information, see [The WebSocket interface](/docs/services/speech-to-text/websockets.html).
+    The WebSocket interface provides a single-socket, full-duplex communication channel. The client sends requests to the service and receives results over a single connection in an asynchronous fashion. In addition, the WebSocket protocol is lightweight, which further reduces network latency. For more information, see [The WebSocket interface](/docs/services/speech-to-text/websockets.html).
 
 1.  <span style="color:#003F69">My WebSocket connection times out before I receive the final hypothesis. What can I do?</span>
 

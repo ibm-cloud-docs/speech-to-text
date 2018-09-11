@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-07-18"
+lastupdated: "2018-08-22"
 
 ---
 
@@ -20,22 +20,34 @@ lastupdated: "2018-07-18"
 # Overview for developers
 {: #developerOverview}
 
-You can access the capabilities of the {{site.data.keyword.speechtotextshort}} service via a WebSocket interface, an HTTP Representational State Transfer (REST) interface, or an asynchronous HTTP interface. You can also customize the service's language models to suit your domain and environment. Several Software Development Kits (SDKs) are also available to simplify application development in various languages and environments. The service returns all JSON response content in the UTF-8 character set.
+You can access the capabilities of the {{site.data.keyword.speechtotextshort}} service by using a WebSocket interface and by using synchronous or asynchronous HTTP Representational State Transfer (REST) interfaces. You can also customize the service's language models to suit your domain and environment. Several Software Development Kits (SDKs) are available to simplify application development in various languages and environments. The service returns all JSON response content in the UTF-8 character set.
 {: shortdesc}
 
 ## Programming with the service
 {: #programming}
 
-[Making a recognition request](/docs/services/speech-to-text/basic-request.html) shows you how to request a basic transcription with each of the service's programming interfaces:
+[Making a recognition request](/docs/services/speech-to-text/basic-request.html) shows you how to request basic transcription with each of the service's programming interfaces:
 
--   [The WebSocket interface](/docs/services/speech-to-text/websockets.html) offers an efficient, low latency, and high throughput implementation over a full-duplex connection.
--   [The HTTP REST interface](/docs/services/speech-to-text/http.html) lets you transcribe audio with or without establishing a session with the service.
--   [The asynchronous HTTP interface](/docs/services/speech-to-text/async.html) provides a non-blocking interface that lets you register a callback URL to receive notifications or poll the service for job status and results.
+-   [The WebSocket interface](/docs/services/speech-to-text/websockets.html) offers an efficient, low-latency, and high-throughput implementation over a full-duplex connection.
+-   [The HTTP interface](/docs/services/speech-to-text/http.html) provides a basic interface to transcribe audio with synchronous requests.
+-   [The asynchronous HTTP interface](/docs/services/speech-to-text/async.html) provides a non-blocking interface that lets you register a callback URL to receive notifications or to poll the service for job status and results.
 
-The interfaces provide the same recognition capabilities, but you might specify the same parameter as a request header, a query parameter, or a parameter of a JSON object depending on the interface and method you use.
+The interfaces generally provide the same recognition capabilities, but you might specify the same parameter as a request header, a query parameter, or a parameter of a JSON object depending on the interface and method that you use.
 
 -   For descriptions of all available parameters, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
 -   For descriptions of all methods and their parameters, along with examples, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+
+## Advantages of the WebSocket interface
+{: #advantages}
+
+The WebSocket interface has a number of advantages over the HTTP interface:
+
+-   The WebSocket interface provides a single-socket, full-duplex communication channel. The interface lets the client send requests and audio to the service and receive results over a single connection in an asynchronous fashion.
+-   It provides a much simpler and more powerful programming experience. The service sends event-driven responses to the client's messages, eliminating the need for the client to poll the server.
+-   It allows you to establish and use a single authenticated connection indefinitely. The HTTP interfaces require you to authenticate each call to the service.
+-   It reduces latency. Recognition results arrive faster because the service sends them directly to the client. The HTTP interface requires four distinct requests and connections to achieve the same results.
+-   It reduces network utilization. The WebSocket protocol is lightweight. It requires only a single connection to perform live-speech recognition.
+-   It enables audio to be streamed directly from browsers (HTML5 WebSocket clients) to the service.
 
 ## Customizing the service
 {: #custom}
@@ -65,7 +77,7 @@ The {{site.data.keyword.speechtotextshort}} service supports a number of SDKs to
 ## Learning more about application development
 {: #learn}
 
-The {{site.data.keyword.speechtotextshort}} service supports two typical programming models. With *direct interaction*, the client streams audio to the service directly. With *relaying via a proxy*, the client and service exchange all data (requests, audio, and results) through a proxy application that resides in {{site.data.keyword.Bluemix_short}}. With the HTTP interface, you can use either programming model; with the WebSocket interface, you must use direct communication.
+The {{site.data.keyword.speechtotextshort}} service supports two typical programming models. With *direct interaction*, the client streams audio to the service directly. With *relaying via a proxy*, the client and service exchange all data (requests, audio, and results) through a proxy application that resides in {{site.data.keyword.Bluemix_short}}. With the HTTP interfaces, you can use either programming model; with the WebSocket interface, you must use direct communication.
 
 For more information about working with {{site.data.keyword.watson}} Developer Cloud services and {{site.data.keyword.Bluemix_notm}}, see the following:
 
