@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-14"
+lastupdated: "2018-09-13"
 
 ---
 
@@ -134,7 +134,11 @@ Once you create your custom language model, the next step is to add data (domain
 You use the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method to add a corpus to a custom model:
 
 -   Specify the customization ID of the custom model with the `customization_id` path parameter.
--   Specify a name for the corpus with the `corpus_name` path parameter. The corpus name cannot contain spaces and cannot be the string `user`. This string is reserved by the service to denote custom words that are added or modified by the user. Use a localized name that matches the language of the custom model.
+-   Specify a name for the corpus with the `corpus_name` path parameter. Use a localized name that matches the language of the custom model and reflects the contents of the corpus.
+    -   Include a maximum of 128 characters in the name.
+    -   Do not include spaces, `/` (slashes), or `\` (backslashes) in the name.
+    -   Do not use the name of a corpus that has already been added to the custom model.
+    -   Do not use the name `user`, which is reserved by the service to denote custom words that are added or modified by the user.
 -   Pass the corpus text file as the body of the request.
 
 The following example adds the corpus text file `healthcare.txt` to the custom model with the specified ID. The example names the corpus `healthcare`.

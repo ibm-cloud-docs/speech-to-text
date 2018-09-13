@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-14"
+lastupdated: "2018-09-13"
 
 ---
 
@@ -54,6 +54,12 @@ The preferred means of adding audio to a custom acoustic model is to add an arch
 -   A **.tar.gz** file by specifying `application/gzip`
 
 All audio files added with a single archive file must have the same audio format. By default, the method accepts an archive of WAV files. If your archive includes any other type of audio, you must include the `Contained-Content-Type` header with the request to specify the format of the audio. The header accepts all of the audio formats that are supported for use with recognition requests, including the `rate`, `channels`, and `endianness` parameters that are used with some formats. For more information about the supported formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
+
+For an audio file that is embedded within an archive-type resource, the name of the audio file must adhere to the following restrictions:
+
+-   Include a maximum of 128 characters in the file name.
+-   Do not include spaces, `/` (slashes), or `\` (backslashes) in the file name.
+-   Do not use the name of an audio file that has already been added to the custom model as part of an archive-type resource.
 
 The following example from [Add audio to the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#addAudio) adds an `application/zip` file that contains audio files in `audio/l16` format that are sampled at 16 kHz:
 
