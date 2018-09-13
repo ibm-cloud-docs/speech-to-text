@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-09-13"
 
 ---
 
@@ -109,11 +109,17 @@ The new custom model is owned by the service instance whose credentials are used
 Once you create your custom acoustic model, the next step is to add audio resources to it. You can add
 
 -   An individual audio file in any format that is supported for speech recognition (see [Audio formats](/docs/services/speech-to-text/audio-formats.html)). For more information about using audio-type resources, see [Working with audio files](/docs/services/speech-to-text/acoustic-resource.html#workingAudio).
--   An archive file (a **.zip** or **.tar.gz** file) that includes multiple audio files. All audio files added with the same archive file must have the same audio format. When you load many audio files, gathering the files into a single archive file and loading that file is significantly more efficient than adding the files individually. For more information about using archive-type resources, see [Working with archive files](/docs/services/speech-to-text/acoustic-resource.html#workingArchive.)
+-   An archive file (a **.zip** or **.tar.gz** file) that includes multiple audio files. All audio files added with the same archive file must have the same audio format. When you load many audio files, gathering the files into a single archive file and loading that file is significantly more efficient than adding the files individually. For more information about using archive-type resources, see [Working with archive files](/docs/services/speech-to-text/acoustic-resource.html#workingArchive).
 
-You use the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to add an audio resource of either type to a custom acoustic model:
+You use the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to add an audio resource of either type to a custom acoustic model. When you add an audio resource, you assign it an `audio_name`. Use a localized name that matches the language of the custom model and reflects the contents of the resource.
 
--   The following example adds an audio-type resource to the acoustic custom model with the specified `customization_id`. The `Content-Type` header identifies the type of the audio as `audio/wav`. The audio file itself, **audio1.wav**, is passed as the body of the request, and the resource is given the named `audio1`.
+-   Include a maximum of 128 characters in the name.
+-   Do not include spaces, `/` (slashes), or `\` (backslashes) in the name.
+-   Do not use the name of an audio resource that has already been added to the custom model.
+
+The following examples show the addition of both audio- and archive-type resources. In both cases, the audio resource is passed as the body of the request.
+
+-   The following example adds an audio-type resource to the acoustic custom model with the specified `customization_id`. The `Content-Type` header identifies the type of the audio as `audio/wav`. The audio file, **audio1.wav**, is passed as the body of the request, and the resource is given the named `audio1`.
 
     ```bash
     curl -X POST -u {username}:{password}
