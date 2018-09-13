@@ -57,7 +57,7 @@ All audio files added with a single archive file must have the same audio format
 
 For an audio file that is embedded within an archive-type resource, the name of the audio file must adhere to the following restrictions:
 
--   Include a maximum of 128 characters in the file name.
+-   Include a maximum of 128 characters in the file name, including the file extension.
 -   Do not include spaces, `/` (slashes), or `\` (backslashes) in the file name.
 -   Do not use the name of an audio file that has already been added to the custom model as part of an archive-type resource.
 
