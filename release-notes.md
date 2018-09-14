@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-09-11"
+lastupdated: "2018-09-14"
 
 ---
 
@@ -56,7 +56,7 @@ WebSocket calls that are made with other languages, such as Node.js, Java, and P
 ## 10 September 2018
 {: #September2018b}
 
-**Important:** This update was made available in the *US South* and *US East* regions on September 10. It was made available in *Germany* on September 11. It will be available in *Sydney* soon. See [Known issues](#known_issues) for current defects associated with the customization interface.
+**Important:** This update was made available in the *US South* and *US East* regions on September 10. It was made available in *Germany* on September 11. It will be available in *Sydney* soon. For a list of issues that have been fixed since the initial release, see [Resolved issues](#known_issues).
 
 -   The service now supports a German broadband model, `de-DE_BroadbandModel`. The new German model supports language model customization (generally available) and acoustic model customization (beta).
     -   For information about how the service parses corpora for German, see [Parsing of English, French, German, Spanish, and Brazilian Portuguese](/docs/services/speech-to-text/language-resource.html#corpusLanguages).
@@ -79,10 +79,10 @@ WebSocket calls that are made with other languages, such as Node.js, Java, and P
     -   [Keyword spotting](/docs/services/speech-to-text/output.html#keyword_spotting)
     -   [Word alternatives](/docs/services/speech-to-text/output.html#word_alternatives)
 
-### Known issues
+### Resolved issues
 {: #known_issues}
 
-The customization interface has the following known issues:
+The following known issues that were associated with the customization interface have been resolved. This list is maintained for users who may have encountered the problems in the past.
 
 -   If you add data to a custom language or custom acoustic model, you must retrain the model before using it for speech recognition. The problem shows up in the following scenario:
 
@@ -109,7 +109,7 @@ The customization interface has the following known issues:
 
     To work around this issue, the user must use the `POST /v1/customizations/{customization_id}/upgrade_model` or `POST /v1/acoustic_customizations/{customization_id}/upgrade_model` method to upgrade the custom model to the latest version of its base model. The user can then use the custom model with speech recognition.
 
-Both of these issues will be fixed as soon as possible.
+Both of these issues have been fixed in production.
 
 ## 7 September 2018
 {: #September2018a}
