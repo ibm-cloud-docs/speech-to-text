@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-13"
+lastupdated: "2018-09-15"
 
 ---
 
@@ -164,7 +164,7 @@ The content of the response and location of the `status` field depend on the typ
 
     ```bash
     curl -X GET -u {username}:{password}
-    https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio1
+    "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio1"
     ```
     {: pre}
 
@@ -186,7 +186,7 @@ The content of the response and location of the `status` field depend on the typ
 
     ```bash
     curl -X GET -u {username}:{password}
-    https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio2
+    "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio2"
     ```
     {: pre}
 
@@ -233,7 +233,7 @@ To determine the status of a training request, use the `GET /v1/acoustic_customi
 
 ```bash
 curl -X GET -u {username}:{password}
-https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}
+"https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}"
 ```
 {: pre}
 
