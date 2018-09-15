@@ -28,9 +28,10 @@ Speech to Text
     Watson SDKs
         [Android SDK](https://github.com/watson-developer-cloud/android-sdk)
         [Java SDK](https://github.com/watson-developer-cloud/java-sdk)
-        [Javascript library](https://github.com/watson-developer-cloud/speech-javascript-sdk)
         [Node.js SDK](https://github.com/watson-developer-cloud/node-sdk)
         [Python SDK](https://github.com/watson-developer-cloud/python-sdk)
+        [Ruby SDK](https://github.com/watson-developer-cloud/ruby-sdk)
+        [Javascript library](https://github.com/watson-developer-cloud/speech-javascript-sdk)
         [.NET SDK](https://github.com/watson-developer-cloud/dotnet-standard-sdk)
         [OpenWhisk SDK](https://github.com/watson-developer-cloud/openwhisk-sdk)
         [Salesforce SDK](https://github.com/watson-developer-cloud/salesforce-sdk)
