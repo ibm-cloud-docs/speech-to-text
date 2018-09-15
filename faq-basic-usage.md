@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-09-15"
 
 ---
 
@@ -56,4 +56,4 @@ lastupdated: "2018-08-21"
 
 1.  <span style="color:#003F69">What is {{site.data.keyword.IBM_notm}}'s data-storage policy for audio that I submit to the service?</span>
 
-    By default, {{site.data.keyword.IBM_notm}} logs each request to the service and its results. {{site.data.keyword.IBM_notm}} uses the data only to improve the service's base speech models for future users. You can prevent {{site.data.keyword.IBM_notm}} from using your data for this purpose by setting the `X-Watson-Learning-Opt-Out` request header to `true` for all requests. When you use the header to opt out of request logging, {{site.data.keyword.IBM_notm}} does not use your data to improve the service. The service accesses your data only to process your request. In either case, your data is always encrypted both in motion and at rest. For more information, see [Request logging](/docs/services/speech-to-text/input.html#logging).
+    By default, {{site.data.keyword.IBM_notm}} logs each request to the service and its results. {{site.data.keyword.IBM_notm}} uses the data only to improve the service's base speech models for future users. You can prevent {{site.data.keyword.IBM_notm}} from using your data for this purpose by setting the `X-Watson-Learning-Opt-Out` request header to `true` for all requests. When you use the header to opt out of request logging, {{site.data.keyword.IBM_notm}} does not use your data to improve the service. The service accesses your data only to process your request. For more information, see [Request logging](/docs/services/speech-to-text/input.html#logging).
