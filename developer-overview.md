@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-09-15"
+lastupdated: "2018-09-16"
 
 ---
 
@@ -96,7 +96,7 @@ For more information about working with {{site.data.keyword.watson}} Developer C
 ## Considerations for application development
 {: #consider}
 
-Converting speech to text is a difficult problem. Some general things to consider when using the {{site.data.keyword.speechtotextshort}} service in your applications follow:
+Converting speech to text is a difficult problem. Consider the following guidance when using the {{site.data.keyword.speechtotextshort}} service in your applications:
 
 -   *Speech recognition can be very sensitive to input audio quality.* When you experiment with a demo application or build an application of your own that uses the service, try to ensure that the input audio quality is as good as possible. To obtain the best possible accuracy, use a close, speech-oriented microphone (such as a headset) whenever possible and adjust the microphone settings if necessary. Try to avoid using a laptop's built-in microphone.
 -   *Choosing the correct model is important.* For most supported languages, the service supports two models: broadband and narrowband. {{site.data.keyword.IBM}} recommends that you use the broadband model for responsive, real-time applications and the narrowband model for offline decoding of telephone speech.
