@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-21"
+lastupdated: "2018-09-15"
 
 ---
 
@@ -115,7 +115,7 @@ The following example returns information about the custom model that has the sp
 
 ```bash
 curl -X GET -u {username}:{password}
-https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}
+"https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}"
 ```
 {: pre}
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-14"
+lastupdated: "2018-09-16"
 
 ---
 
@@ -26,7 +26,7 @@ lastupdated: "2018-05-14"
 
 1.  <span style="color:#003F69">How secure is the data that I add to a custom model?</span>
 
-    A custom model is owned by the instance of the {{site.data.keyword.speechtotextshort}} service whose credentials are used to create it. To work with the custom model in any way, you must use service credentials that are created for that instance of the service. Credentials that are created for other instances of the service cannot view or access the custom model. In addition, the data that is associated with a custom model is encrypted both at rest (when it is stored) and in motion (when it is used). For more information, see [Ownership of custom language models](/docs/services/speech-to-text/custom.html#customOwner).
+    A custom model is owned by the instance of the {{site.data.keyword.speechtotextshort}} service whose credentials are used to create it. To work with the custom model in any way, you must use service credentials that are created for that instance of the service. Credentials that are created for other instances of the service cannot view or access the custom model. For more information, see [Ownership of custom language models](/docs/services/speech-to-text/custom.html#customOwner).
 
 1.  <span style="color:#003F69">What is the price for using the service's customization interface? Am I charged for creating and storing a custom model?</span>
 

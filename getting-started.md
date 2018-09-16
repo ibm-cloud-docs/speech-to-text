@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-08-20"
+lastupdated: "2018-09-15"
 
 ---
 
@@ -140,5 +140,5 @@ of severe thunderstorms swept through colorado on sunday "
 ## Next steps
 
 -   Learn more about the interfaces and SDKs that are available for making speech recognition requests in the [Overview for developers](/docs/services/speech-to-text/developer-overview.html).
--   See basic recognition requests for each of the service's interfaces in [Making a recognition request](/docs/services/speech-to-text/basic-request.html).
+-   See basic speech recognition requests for each of the service's interfaces in [Making a recognition request](/docs/services/speech-to-text/basic-request.html).
 -   Find detailed information about all methods of the service's interfaces in the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
