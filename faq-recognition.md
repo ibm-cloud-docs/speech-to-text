@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-14"
+lastupdated: "2018-09-17"
 
 ---
 
@@ -29,7 +29,7 @@ lastupdated: "2018-05-14"
     -   The sampling rate is greater than 8 kHz.
     -   A spectrographic examination reveals no frequency content that is more than 4 kHz.
 
-    If this explanation is unclear, post a question to the {{site.data.keyword.watson}} forums on [StackOverflow ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://stackoverflow.com/questions/tagged/ibm-watson-cognitive){: new_window} or [dW Answers ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/answers/topics/speech-to-text/){: new_window}.
+    If this explanation is unclear, post a question to the {{site.data.keyword.watson}} forums on [StackOverflow ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://stackoverflow.com/questions/tagged/ibm-watson-cognitive){: new_window} or [IBM Developer Answers ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://developer.ibm.com/answers/topics/speech-to-text/){: new_window}.
 
 1.  <span style="color:#003F69">To improve recognition accuracy, I upsampled my audio file and sent it to the broadband model, but the results are not what I expected. Why?</span>
 
