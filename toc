@@ -96,6 +96,6 @@ Speech to Text
     {: .topicgroup}
     Developer community
         [StackOverflow](http://stackoverflow.com/questions/tagged/ibm-watson-cognitive+speech-to-text)
-        [developerWorks Answers](https://developer.ibm.com/answers/topics/speech-to-text/)
+        [IBM Developer Answers](https://developer.ibm.com/answers/topics/speech-to-text/)
         [WDC Slack channel](http://wdc-slack-inviter.mybluemix.net/)
     {: .navgroup-end}

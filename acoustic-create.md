@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-15"
+lastupdated: "2018-09-24"
 
 ---
 
@@ -256,9 +256,7 @@ The response includes `status` and `progress` fields that report the current sta
 
 -   `pending` indicates that the model was created but is waiting either for training data to be added or for the service to finish analyzing data that was added. The `progress` field is `0`.
 -   `ready` indicates that the model is ready to be trained. The `progress` field is `0`.
--   `training` indicates that the model is being trained. The `progress` field indicates the progress of the training as a percentage complete.
-
-    > **Note:** The `progress` field does not reflect the current progress of the training. The field changes from `0` to `100` when training is complete.
+-   `training` indicates that the model is being trained. The `progress` field changes from `0` to `100` when training is complete. <!-- The `progress` field indicates the progress of the training as a percentage complete. -->
 -   `available` indicates that the model is trained and ready to use. The `progress` field is `100`.
 -   `upgrading` indicates that the model is being upgraded. The `progress` field is `0`.
 -   `failed` indicates that training of the model failed. The `progress` field is `0`.
