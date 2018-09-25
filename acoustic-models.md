@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-09-15"
+lastupdated: "2018-09-25"
 
 ---
 
@@ -67,7 +67,7 @@ Additionally, the output includes a `progress` field that indicates the current 
 The following example includes the `language` query parameter to list all US English custom acoustic models that are owned by the service credentials:
 
 ```bash
-curl -X GET -u {username}:{password}
+curl -X GET -u "{username}:{password}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations?language=en-US"
 ```
 {: pre}
@@ -114,7 +114,7 @@ Two such models are owned by the service credentials. The first model is awaitin
 The following example returns information about the custom model that has the specified customization ID:
 
 ```bash
-curl -X GET -u {username}:{password}
+curl -X GET -u "{username}:{password}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}"
 ```
 {: pre}
@@ -149,7 +149,7 @@ Use the `POST /v1/acoustic_customizations/{customization_id}/reset` method to re
 The following example resets the custom acoustic model with the specified customization ID:
 
 ```bash
-curl -X POST -u {username}:{password}
+curl -X POST -u "{username}:{password}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/reset"
 ```
 {: pre}
@@ -165,7 +165,7 @@ Use the `DELETE /v1/acoustic_customizations/{customization_id}` method to delete
 The following example deletes the custom acoustic model with the specified customization ID:
 
 ```bash
-curl -X DELETE -u {username}:{password}
+curl -X DELETE -u "{username}:{password}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}"
 ```
 {: pre}

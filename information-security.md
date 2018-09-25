@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-09-25"
 
 ---
 
@@ -58,7 +58,7 @@ By default, no customer ID is associated with data.
 To associate a customer ID with data, include the `X-Watson-Metadata` header with the request that passes the information. You pass the string `customer_id={id}` as the argument of the header. The following example associates the customer ID `my_ID` with the data passed with a `POST /v1/recognize` request:
 
 ```bash
-curl -X POST -u {username]:{password}
+curl -X POST -u "{username]:{password}"
 --header "X-Watson-Metadata: customer_id=my_ID"
 --header "Content-Type: audio/wav"
 --data-binary @audio.wav
@@ -103,7 +103,7 @@ Use the `X-Watson-Metadata` header with the following methods:
 To delete all data that is associated with a customer ID, use the `DELETE /v1/user_data` method. You pass the string `customer_id={id}` as a query parameter with the request. The following example deletes all data for the customer ID `my_ID`:
 
 ```bash
-curl -X DELETE -u {username]:{password}
+curl -X DELETE -u "{username]:{password}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/user_data?customer_id=my_ID"
 ```
 

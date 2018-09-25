@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-08-23"
+lastupdated: "2018-09-25"
 
 ---
 
@@ -38,7 +38,7 @@ The HTTP `POST /v1/recognize` method provides a simple means of transcribing aud
 The following example sends a recognition request for a single FLAC file named `audio-file.flac`. The request omits the `model` query parameter to use the default language model, `en-US_BroadbandModel`.
 
 ```bash
-curl -X POST -u {username}:{password}
+curl -X POST -u "{username}:{password}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
@@ -218,7 +218,7 @@ All other parameters of the metadata are optional. For a summary of all availabl
 The following cURL example shows how to pass a multipart recognition request with the `POST /v1/recognize` method. The request passes two audio files, **audio-file1.flac** and **audio-file2.flac**. The `metadata` parameter provides most parameters of the request; the `upload` parameters provide the audio files.
 
 ```bash
-curl -X POST -u {username}:{password}
+curl -X POST -u "{username}:{password}"
 --form metadata="{\"part_content_type\":\"audio/flac\",
   \"data_parts_count\":2,
   \"timestamps\":true,

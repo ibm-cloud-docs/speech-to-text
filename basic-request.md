@@ -65,7 +65,7 @@ websocket.send(JSON.stringify({'action': 'stop'}));
 The following cURL example shows a basic HTTP recognition request:
 
 ```bash
-curl -X POST -u {username}:{password}
+curl -X POST -u "{username}:{password}"
 --header "Content-Type: audio/flac"
 --data-binary @audio-file.flac
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
@@ -79,7 +79,7 @@ curl -X POST -u {username}:{password}
 The following cURL example shows a simple asynchronous HTTP recognition request. The request does not include a callback URL, so you must poll the service to get the job status and the resulting transcript.
 
 ```bash
-curl -X POST -u {username}:{password}
+curl -X POST -u "{username}:{password}"
 --header "Content-Type: audio/flac"
 --data-binary @audio-file.flac
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions"

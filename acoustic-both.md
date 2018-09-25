@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-08-21"
+lastupdated: "2018-09-25"
 
 ---
 
@@ -47,7 +47,7 @@ If your audio data is less than an hour long, {{site.data.keyword.IBM_notm}} rec
 Use the optional `custom_language_model_id` query parameter of the `POST /v1/acoustic_customizations/{customization_id}/train` method to train your custom acoustic model with a custom language model, as in the following example. Pass the GUID of the acoustic model with the `customization_id` parameter and the GUID of the custom language model with the `custom_language_model_id` parameter. Both models must be owned by the service credentials that are passed with the request.
 
 ```bash
-curl -X POST -u {username}:{password}
+curl -X POST -u "{username}:{password}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/train?custom_language_model_id={customization_id}"
 ```
 {: pre}
@@ -62,7 +62,7 @@ You can specify both a custom language model and a custom acoustic model with an
 The following example passes both types of model to the HTTP `POST /v1/recognize` method. Pass the GUID of the custom acoustic model with the `acoustic_customization_id` parameter and the GUID of the custom language model with the `customization_id` parameter. Both models must be owned by the service credentials passed with the request.
 
 ```bash
-curl -X POST -u {username}:{password}
+curl -X POST -u "{username}:{password}"
 --header "Content-Type: audio/flac"
 --data-binary @audio-file1.flac
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?acoustic_customization_id={customization_id}&customization_id={customization_id}"
