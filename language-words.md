@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-26"
+lastupdated: "2018-09-25"
 
 ---
 
@@ -53,7 +53,7 @@ If the service discovered one or more problems with a custom word's definition, 
 The following example lists all of the words, regardless of type, from the custom model with the specified customization ID. The words are displayed in the default sort order, ascending alphabetical.
 
 ```bash
-curl -X GET -u {username}:{password}
+curl -X GET -u "{username}:{password}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words"
 ```
 {: pre}
@@ -113,7 +113,7 @@ The words resource for the model contains four words. The first word was added d
 The following example shows information about the word `NCAA` from the words resource of the specified model:
 
 ```bash
-curl -X GET -u {username}:{password}
+curl -X GET -u "{username}:{password}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words/NCAA"
 ```
 {: pre}
@@ -152,7 +152,7 @@ Removing a word from a custom model does not affect the model until you retrain 
 The following example deletes the word `IEEE` from the custom model with the specified customization ID:
 
 ```bash
-curl -X DELETE -u {username}:{password}
+curl -X DELETE -u "{username}:{password}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words/IEEE"
 ```
 {: pre}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-14"
+lastupdated: "2018-09-25"
 
 ---
 
@@ -51,7 +51,7 @@ You register a callback URL by calling the `POST /v1/register_callback` method. 
 1.  You call the `POST /v1/register_callback` method and pass a callback URL. Optionally, you can also specify a user-specified secret. The service uses the secret to compute keyed-hash message authentication code (HMAC) Secure Hash Algorithm 1 (SHA1) signatures for authentication and data integrity. The following example registers a user callback that responds at the URL `http://{user_callback_path}/results`. The call includes a user secret of `ThisIsMySecret`.
 
     ```bash
-    curl -X POST -u {username}:{password}
+    curl -X POST -u "{username}:{password}"
     "https://stream.watsonplatform.net/speech-to-text/api/v1/register_callback?callback_url=http://{user_callback_path}/results&user_secret=ThisIsMySecret"
     ```
     {: pre}
@@ -159,7 +159,7 @@ signature = hashed.digest().encode("base64").rstrip('\n')
 The following example creates a job that is associated with the previously white-listed callback URL `http://{user_callback_path}/results`. The example passes the user token `job25` to identify the job in callback notifications that are sent by the service. The call uses the default events, so the user must call the `GET /v1/recognitions/{id}` method to retrieve the results when the service sends a callback notification to indicate that the job is complete. The call sets the `timestamps` query parameter of the recognition request to `true`.
 
 ```bash
-curl -X POST -u {username}:{password}
+curl -X POST -u "{username}:{password}"
 --header "Content-Type: audio/flac"
 --data-binary @audio-file.flac
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions?callback_url=http://{user_callback_path}/results&user_token=job25&timestamps=true"
@@ -184,7 +184,7 @@ The service returns the status of the request, which is `waiting` to indicate th
 The following example creates a job that is not associated with a callback URL. The user must poll the service to learn when the job is complete and then retrieve the results with the `GET /v1/recognitions/{id}` method. Like the previous example, the call sets the `timestamps` parameter of the recognition request to `true`.
 
 ```bash
-curl -X POST -u {username}:{password}
+curl -X POST -u "{username}:{password}"
 --header "Content-Type: audio/wav"
 --data-binary @audio-file.wav
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions?timestamps=true"
@@ -222,7 +222,7 @@ However, you can still use the method to retrieve the results for a job that spe
 The following example checks the status of the job with the specified ID. The job is not yet complete, so the response does not include the results.
 
 ```bash
-curl -X GET -u {username}:{password}
+curl -X GET -u "{username}:{password}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions/{job_id}"
 ```
 {: pre}
@@ -243,7 +243,7 @@ curl -X GET -u {username}:{password}
 The following example requests the status of the job with the specified ID. The job is complete, so the response includes the results of the request.
 
 ```bash
-curl -X GET -u {username}:{password}
+curl -X GET -u "{username}:{password}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions/{job_id}"
 ```
 {: pre}
@@ -312,7 +312,7 @@ A job and its results remain available until you delete them with the `DELETE /v
 The following example requests the status of the latest current jobs that are associated with the caller's service credentials. The user has three outstanding jobs in various states. The first job was created with a callback URL and a user token.
 
 ```bash
-curl -X GET -u {username}:{password}
+curl -X GET -u "{username}:{password}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions"
 ```
 {: pre}
@@ -357,7 +357,7 @@ By default, the service maintains the results of each job until the job's time t
 The following example deletes the job with the specified ID:
 
 ```bash
-curl -X DELETE -u {username}:{password}
+curl -X DELETE -u "{username}:{password}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions/{job_id}"
 ```
 {: pre}

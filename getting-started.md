@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-09-15"
+lastupdated: "2018-09-25"
 
 ---
 
@@ -54,7 +54,7 @@ Call the `POST /v1/recognize` method to request a basic transcript of a FLAC aud
     -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
 
     ```bash
-    curl -X POST -u {username}:{password} \
+    curl -X POST -u "{username}:{password}" \
     --header "Content-Type: audio/flac" \
     --data-binary @{path_to_file}audio-file.flac \
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
@@ -93,7 +93,7 @@ Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but
     -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
 
     ```bash
-    curl -X POST -u {username}:{password} \
+    curl -X POST -u "{username}:{password}" \
     --header "Content-Type: audio/flac" \
     --data-binary @{path_to_file}audio-file.flac \
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?timestamps=true&max_alternatives=3"
