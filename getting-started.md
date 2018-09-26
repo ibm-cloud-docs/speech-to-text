@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-09-25"
+lastupdated: "2018-09-26"
 
 ---
 
@@ -40,8 +40,16 @@ For more information about where and how the service uses IAM authentication, se
     1.  On the service dashboard, click the **Service credentials** tab.
     1.  Click **View credentials** under **Actions**.
     1.  Copy the `username`, `password`, and `url` values.
-- Make sure that you have cURL:
-    - The examples use cURL to call methods of the HTTP interface. Install the version for your operating system from [curl.haxx.se ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://curl.haxx.se/){: new_window}. Install the version that supports the Secure Sockets Layer (SSL) protocol. Make sure to include the installed binary file on your `PATH` environment variable.
+- Make sure that you have cURL.
+    -   The examples use cURL to call methods of the HTTP interface. Install the version for your operating system from [curl.haxx.se ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://curl.haxx.se/){: new_window}. Install the version that supports the Secure Sockets Layer (SSL) protocol. Make sure to include the installed binary file on your `PATH` environment variable.
+
+**Note:** When you enter a command, replace `{username}` and `{password}` with your service credentials. Omit the braces, which indicate variable values, from the command. Actual values resemble those in the following example:
+
+```bash
+curl -X POST -u "2c9c3e3d-b3494-4fbd-98cf-e3951d826650:ydZd6HwPLPya"
+. . .
+```
+{:pre}
 
 ## Step 1: Transcribe audio with no options
 {: #transcribe}
