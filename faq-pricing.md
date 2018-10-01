@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-05-14"
+lastupdated: "2018-10-01"
 
 ---
 
@@ -38,10 +38,9 @@ lastupdated: "2018-05-14"
 
 1.  <span style="color:#003F69">For tiered pricing, what would my total charge be if I used the service to transcribe, for example, 275 thousand audio minutes in one month?</span>
 
-    -   Every month, you receive 1000 free minutes of audio usage. So you would be charged only for 274 thousand minutes of audio: 275,000 - 1000 = 274,000.
-    -   For the first 250-thousand minutes of audio, you would be charged at $0.02 (USD) / minute: 250,000 * $0.02 = $5000.00 (USD).
-    -   For the remaining 24 thousand minutes of audio, you would be charged at the reduced rate of $0.015 (USD) / minute: 24,000 * $0.015 = $360.00 (USD).
-    -   In this scenario, your total charge for the month would be $5360.00 (USD).
+    -   For the first 250 thousand minutes of audio, you would be charged at $0.02 (USD) / minute: 250,000 * $0.02 = $5000.00 (USD).
+    -   For the remaining 25 thousand minutes of audio, you would be charged at the reduced rate of $0.015 (USD) / minute: 25,000 * $0.015 = $375.00 (USD).
+    -   In this scenario, your total charge for the month would be $5375.00 (USD).
 
 1.  <span style="color:#003F69">What is the price for using the service's customization interface? Am I charged for creating and storing a custom model?</span>
 
