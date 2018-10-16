@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-07-18"
+lastupdated: "2018-10-16"
 
 ---
 
@@ -20,7 +20,12 @@ lastupdated: "2018-07-18"
 # Audio formats
 {: #audio-formats}
 
-When you make a speech recognition request, you must use the `Content-Type` parameter to specify the format, or MIME type, of the audio that you pass to the service. The following sections introduce basic audio terminology. They describe the audio formats that are supported by the {{site.data.keyword.speechtotextshort}} service. And they discuss the use of compression to maximize the amount of audio that you can pass to the service.
+The {{site.data.keyword.speechtotextfull}} service can extract speech from audio in many different formats.
+
+-   If you are unfamiliar with audio and how it is described and specified, start with [Audio characteristics and terminology](#terminology) to help you get started.
+-   If you already understand how to use audio, jump to [Supported audio formats](#formats) for detailed information about the formats that the service supports.
+
+The final sections, [Data limits and compression](#limits) and [Audio conversion](#conversion), can help you get the most from your use of the service.
 
 ## Audio characteristics and terminology
 {: #terminology}
@@ -124,37 +129,39 @@ The {{site.data.keyword.speechtotextshort}} service automatically detects the en
 ## Supported audio formats
 {: #formats}
 
-The service supports the following audio formats. You can send a maximum of 100 MB of audio to the service with a single request. By using a format that supports compression, you can reduce the size of your audio and send more data with a request.
+Table 1 provides a summary of the audio formats that the service supports.
 
-<table style="width:60%">
-  <caption>Table 1. Supported audio formats</caption>
+-   *Audio format and compression* identifies each format and indicates its supported compression. You can send a maximum of 100 MB of audio to the service with a single request. By using a format that supports compression, you can reduce the size of your audio to maximize the amount of data that you can pass to the service. For more information, see [Data limits and compression](#limits).
+-   *Content-type specification* indicates whether you must use the `Content-Type` header or equivalent parameter to specify the format (MIME type) of the audio that you send to the service. You can specify the audio format for any request, but that's not always necessary:
+    -   For most formats, the content type is optional. You can omit the content type or specify `application/octet-stream` to have the service automatically detect the format.
+    -   For others, the content type is required. These formats do not provide the information, such as the sampling rate, that the service needs to auto-detect their format.
+-   The final columns identify additional *Required parameters* and *Optional parameters* for each format. The following sections provide more information about these parameters.
+
+<table>
+  <caption>Table 1. Summary of supported audio formats</caption>
   <tr>
-    <th style="text-align:left; width 35%">
-      Audio format
+    <th style="text-align:left; vertical-align:bottom">
+      Audio format<br>and compression
     </th>
-    <th style="text-align:center">
-      Compression support
+    <th style="text-align:center; vertical-align:bottom">
+      Content-type<br/>specification
+    </th>
+    <th style="text-align:center; vertical-align:bottom">
+      Required<br/>parameters
+    </th>
+    <th style="text-align:center; vertical-align:bottom">
+      Optional<br/>parameters
     </th>
   </tr>
   <tr>
     <td style="text-align:left">
-      [audio/basic](#basic)
+      [audio/basic](#basic)<br/>Lossy
     </td>
     <td style="text-align:center">
-      Lossy
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      [audio/flac](#flac)
+      Required
     </td>
     <td style="text-align:center">
-      Lossless
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      [audio/l16](#l16)
+      None
     </td>
     <td style="text-align:center">
       None
@@ -162,45 +169,108 @@ The service supports the following audio formats. You can send a maximum of 100 
   </tr>
   <tr>
     <td style="text-align:left">
-      [audio/mp3](#mp3)
+      [audio/flac](#flac)<br/>Lossless
     </td>
     <td style="text-align:center">
-      Lossy
+      Optional
+    </td>
+    <td style="text-align:center">
+      None
+    </td>
+    <td style="text-align:center">
+      None
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      [audio/mulaw](#mulaw)
+      [audio/l16](#l16)<br/>None
     </td>
     <td style="text-align:center">
-      Lossy
+      Required
+    </td>
+    <td style="text-align:center">
+      <code>rate={integer}</code>
+    </td>
+    <td style="text-align:center">
+      <code>channels={integer}</code><br/>
+      <code>endianness=big-endian</code><br/>
+      <code>endianness=little-endian</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      [audio/ogg](#ogg)
+      [audio/mp3](#mp3)<br/>
+      [audio/mpeg](#mp3)<br/>Lossy
     </td>
     <td style="text-align:center">
-      Lossy
+      Optional
+    </td>
+    <td style="text-align:center">
+      None
+    </td>
+    <td style="text-align:center">
+      None
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      [audio/wav](#wav)
+      [audio/mulaw](#mulaw)<br/>Lossy
     </td>
     <td style="text-align:center">
-      None, lossless, or lossy
+      Required
+    </td>
+    <td style="text-align:center">
+      <code>rate={integer}</code>
+    </td>
+    <td style="text-align:center">
+      None
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      [audio/webm](#webm)
+      [audio/ogg](#ogg)<br/>Lossy
     </td>
     <td style="text-align:center">
-      Lossy
+      Optional
+    </td>
+    <td style="text-align:center">
+      None
+    </td>
+    <td style="text-align:center">
+      <code>codecs=opus</code><br/><code>codecs=vorbis</code>
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      [audio/wav](#wav)<br/>None, lossless,<br/>or lossy
+    </td>
+    <td style="text-align:center">
+      Optional
+    </td>
+    <td style="text-align:center">
+      None
+    </td>
+    <td style="text-align:center">
+      None
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      [audio/webm](#webm)<br/>Lossy
+    </td>
+    <td style="text-align:center">
+      Optional
+    </td>
+    <td style="text-align:center">
+      None
+    </td>
+    <td style="text-align:center">
+      <code>codecs=opus</code><br/><code>codecs=vorbis</code>
     </td>
   </tr>
 </table>
+
+**Important:** When you use cURL to make a speech recognition request with the HTTP interface, you must specify the audio format with the `Content-Type` header, specify `"Content-Type: application/octet-stream"`, or specify `"Content-Type:"`. If you omit the header entirely, cURL uses a default value of `application/x-www-form-urlencoded`.
 
 ### audio/basic format
 {: #basic}
@@ -225,7 +295,7 @@ For more information, see the Internet Engineering Task Force (IETF) [Request fo
     <th style="text-align:left; vertical-align:bottom; width 20%">
       Parameter
     </th>
-    <th style="text-align:center; vertical-align:bottom; width 80%">
+    <th style="text-align:left; vertical-align:bottom; width 80%">
       Description
     </th>
   </tr>
@@ -278,7 +348,7 @@ For more information, see the Internet Engineering Task Force (IETF) [Request fo
 
 For more information, see the IETF [Request for Comment (RFC) 2586 ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://tools.ietf.org/html/rfc2586){: new_window} and [en.wikipedia.org/wiki/Pulse-code_modulation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/Pulse-code_modulation){: new_window}.
 
-### audio/mp3 format
+### audio/mp3 and audio/mpeg formats
 {: #mp3}
 
 *MP3* (`audio/mp3`) or *Motion Picture Experts Group (MPEG)* (`audio/mpeg`) is a lossy audio format. (MP3 and MPEG refer to the same format.) For more information, see [en.wikipedia.org/wiki/MP3 ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/MP3){: new_window}.
@@ -294,7 +364,7 @@ For more information, see the IETF [Request for Comment (RFC) 2586 ![External li
     <th style="text-align:left; vertical-align:bottom; width 20%">
       Parameter
     </th>
-    <th style="text-align:center; vertical-align:bottom; width 80%">
+    <th style="text-align:left; vertical-align:bottom; width 80%">
       Description
     </th>
   </tr>

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-09-25"
+lastupdated: "2018-10-16"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2018-09-25"
 # Release notes
 {: #release-notes}
 
-The following sections document the new features and changes that were included for each release and update of the {{site.data.keyword.speechtotextshort}} service. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
+The following sections document the new features and changes that were included for each release and update of the {{site.data.keyword.speechtotextfull}} service. The information includes any known limitations. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
 {: shortdesc}
 
 ## New API authentication process
@@ -38,20 +38,53 @@ The {{site.data.keyword.speechtotextshort}} service has a new API authentication
     When you use any of the {{site.data.keyword.watson}} SDKs, you can pass the API key and let the SDK manage the lifecycle of the tokens. For more information and examples, see [Authentication ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/curl.html?curl#authentication){: new_window} in the API reference.
 -   *For existing service instances that you created before the indicated date*, you continue to authenticate by providing the username and password for the service instance. Eventually, you will need to migrate these service instances to IAM authentication. Updates will be provided about migration process and dates. For more information about migration, see [Migrating Cloud Foundry service instances to a resource group](https://console.{DomainName}/docs/resources/instance_migration.html).
 
+    **Important:** If you have an existing application that uses JavaScript to call the WebSocket interface from a browser, do not migrate your existing service instance to use IAM authentication at this time. This limitation does not apply to the service's HTTP REST interface. For more information, see [Known limitations](#limitations).
+
 To learn which authentication process to use with your service instance, view the service credentials by clicking the instance on the {{site.data.keyword.Bluemix_notm}} [Dashboard ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/dashboard/apps?watson){: new_window}.
 
 All new and existing service instances in other regions continue to use service credentials (`{username}:{password}`) for authentication. IAM tokens will be enabled for applications that are hosted in other regions soon.
 
-### WebSocket interface limitation
-{: #IAMwss}
+## Known limitations
+{: #limitations}
 
-Service instances that use IAM authentication cannot currently use JavaScript to call the {{site.data.keyword.speechtotextshort}} WebSocket interface. This limitation applies to any application (such as the service demo) that uses JavaScript to make WebSocket calls from a browser.
+The {{site.data.keyword.speechtotextshort}} service has the following known limitation.
 
-WebSocket calls that are made with other languages, such as Node.js, Java, and Python, can use IAM tokens by passing request headers. The {{site.data.keyword.watson}} SDKs described in the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/curl.html?curl){: new_window} accept an API key and manage the lifecycle of the tokens.
+-   Service instances that use IAM authentication cannot currently use JavaScript to call the {{site.data.keyword.speechtotextshort}} WebSocket interface. This limitation applies to any application (such as the service demo) that uses JavaScript to make WebSocket calls from a browser. WebSocket calls that are made with other languages can use IAM tokens by passing request headers. To work around this limitation, you can do the following:
+    -   Call the WebSocket interface from outside of a browser. You can call the interface from any language that supports WebSockets. Refer to information in [The WebSocket interface](/docs/services/speech-to-text/websockets.html) for guidance when working with another language.
 
-**Important:** If you have an existing application that uses JavaScript to call the WebSocket interface from a browser, do not migrate your existing service instance to use IAM authentication at this time. This limitation does not apply to the service's HTTP REST interface.
+        The Watson SDKs provide the simplest way to call the WebSocket interface from another language. The SDKs accept an accept an API key and manage the lifecycle of the tokens. For information about using the WebSocket interface with the Node.js, Java, Python, and Ruby SDKs, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.bluemix.net/apidocs/speech-to-text){: new_window}.
+    -   Use the synchronous or asynchronous HTTP interfaces to perform speech recognition.
 
 <!-- For persistent WebSocket connections with the {{site.data.keyword.speechtotextshort}} service, you must use the access token to establish the connection before the token expires. You then remain authenticated while you keep the connection alive. You do not need to refresh an access token for an active WebSocket connection that lasts beyond the token's expiration time. -->
+
+## 9 October 2018
+{: #October2018}
+
+-   The `Content-Type` header is now optional for speech recognition requests. The service now automatically detects the audio format (MIME type) of most audio. You must continue to specify the content type for the following formats:
+    -   `audio/basic`
+    -   `audio/l16`
+    -   `audio/mulaw`
+
+    Where indicated, the content type that you specify for these formats must include the sampling rate and can optionally include the number of channels and the endianness of the audio. For all other audio formats, you can omit the content type or specify a content type of `application/octet-stream` to have the service auto-detect the format.
+
+    **Important:** When you use cURL to make a speech recognition request with the HTTP interface, you must specify the audio format with the `Content-Type` header, specify `"Content-Type: application/octet-stream"`, or specify `"Content-Type:"`. If you omit the header entirely, cURL uses a default value of `application/x-www-form-urlencoded`. Most of the examples in this documentation continue to specify the format for speech recognition requests regardless of whether it's required.
+
+    This change applies to the following methods:
+    -   `/v1/recognize` for WebSocket requests. The `content-type` field of the text message that you send to initiate a request over an open WebSocket connection is now optional.
+    -   `POST /v1/recognize` for synchronous HTTP requests. The `Content-Type` header is now optional. (For multipart requests, the `part_content_type` field of the JSON metadata is also now optional.)
+    -   `POST /v1/recognitions` for asynchronous HTTP requests. The `Content-Type` header is now optional.
+
+    For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
+-   The Brazilian Portuguese broadband model, `pt-BR_BroadbandModel`, was updated for improved speech recognition. By default, the service automatically uses the updated model for all recognition requests. If you have custom language or custom acoustic models that are based on this model, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
+    -   `POST /v1/customizations/{customization_id}/upgrade_model`
+    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+
+    For more information, see [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html).
+-   The `customization_id` parameter of the speech recognition methods is deprecated and will be removed in a future release. To specify a custom language model for a speech recognition request, use the `language_customization_id` parameter instead. This change applies to the following methods:
+    -   `/v1/recognize` for WebSocket requests
+    -   `POST /v1/recognize` for synchronous HTTP requests (including multipart requests)
+    -   `POST /v1/recognitions` for asynchronous HTTP requests
+-   As of October 1, 2018, you are now charged for all audio that you pass to the service for speech recognition. The first one thousand minutes of audio that you send each month are no longer free. For more information about the pricing plans for the service, see the [{{site.data.keyword.speechtotextshort}} service in the {{site.data.keyword.Bluemix_short}} Catalog ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.ng.bluemix.net/catalog/services/speech-to-text){: new_window}.
 
 ## 10 September 2018
 {: #September2018b}
@@ -70,11 +103,11 @@ WebSocket calls that are made with other languages, such as Node.js, Java, and P
     -   `ja-JP_BroadbandModel`
     -   `ja-JP_NarrowbandModel`
 
-    The new models offer improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. If you have custom language or custom acoustic models based on these models, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
+    The new models offer improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. If you have custom language or custom acoustic models that are based on these models, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
     -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-    [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html) provides complete details about the upgrade procedure.
+    For more information, see [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html).
 -   The keyword spotting and word alternatives features are now generally available (GA) rather than beta functionality for all languages. For more information, see
     -   [Keyword spotting](/docs/services/speech-to-text/output.html#keyword_spotting)
     -   [Word alternatives](/docs/services/speech-to-text/output.html#word_alternatives)
@@ -124,30 +157,10 @@ Both of these issues have been fixed in production.
 
 If your application uses the sessions interface, you must migrate to one of the remaining HTTP REST interfaces or to the WebSocket interface. For more information, see the service update for [8 August 2018](#August2018).
 
-## 8 August 2018
-{: #August2018}
-
-The session-based HTTP REST interface is deprecated as of **August 8, 2018**. All methods of the sessions API will be removed from service as of **September 7, 2018**, after which you will no longer be able to use the session-based interface. This notice of immediate deprecation and 30-day removal applies to the following methods:
-
--   `POST /v1/sessions`
--   `POST /v1/sessions/{session_id}/recognize`
--   `GET /v1/sessions/{session_id}/recognize`
--   `GET /v1/sessions/{session_id}/observe_result`
--   `DELETE /v1/sessions/{session_id}`
-
-**Important:** If your application uses the sessions interface, you must migrate to one of the following interfaces by September 7:
-
--   For stream-based speech recognition (including live-use cases), use the [WebSocket interface](/docs/services/speech-to-text/websockets.html), which provides access to interim results and the lowest latency.
--   For file-based speech recognition, use one of the following interfaces:
-
-    -   For shorter files of up to a few minutes of audio, use the [HTTP interface](/docs/services/speech-to-text/http.html) `(POST /v1/recognize`) or the [asynchronous HTTP interface](/docs/services/speech-to-text/async.html) (`POST /v1/recognitions`).
-    -   For longer files of more than a few minutes of audio, use the asynchronous HTTP interface.
-
-The WebSocket, HTTP, and asynchronous HTTP interfaces provide the same results as the sessions interface (only the WebSocket interface provides interim results). You can also use one of the Watson SDKs, which simplify application development with any of the interfaces; for more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
-
 ## Older releases
 {: #older}
 
+-   [8 August 2018](#August2018)
 -   [13 July 2018](#July2018)
 -   [12 June 2018](#June2018)
 -   [15 May 2018](#May2018)
@@ -171,15 +184,36 @@ The WebSocket, HTTP, and asynchronous HTTP interfaces provide the same results a
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
 
+### 8 August 2018
+{: #August2018}
+
+The session-based HTTP REST interface is deprecated as of **August 8, 2018**. All methods of the sessions API will be removed from service as of **September 7, 2018**, after which you will no longer be able to use the session-based interface. This notice of immediate deprecation and 30-day removal applies to the following methods:
+
+-   `POST /v1/sessions`
+-   `POST /v1/sessions/{session_id}/recognize`
+-   `GET /v1/sessions/{session_id}/recognize`
+-   `GET /v1/sessions/{session_id}/observe_result`
+-   `DELETE /v1/sessions/{session_id}`
+
+**Important:** If your application uses the sessions interface, you must migrate to one of the following interfaces by September 7:
+
+-   For stream-based speech recognition (including live-use cases), use the [WebSocket interface](/docs/services/speech-to-text/websockets.html), which provides access to interim results and the lowest latency.
+-   For file-based speech recognition, use one of the following interfaces:
+
+    -   For shorter files of up to a few minutes of audio, use the [HTTP interface](/docs/services/speech-to-text/http.html) `(POST /v1/recognize`) or the [asynchronous HTTP interface](/docs/services/speech-to-text/async.html) (`POST /v1/recognitions`).
+    -   For longer files of more than a few minutes of audio, use the asynchronous HTTP interface.
+
+The WebSocket, HTTP, and asynchronous HTTP interfaces provide the same results as the sessions interface (only the WebSocket interface provides interim results). You can also use one of the Watson SDKs, which simplify application development with any of the interfaces; for more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+
 ### 13 July 2018
 {: #July2018}
 
-The Spanish Narrowband model, `es-ES_NarrowbandModel`, was updated for improved speech recognition. By default, the service automatically uses the updated model for all recognition requests. If you have custom language or custom acoustic models based on this model, you must upgrade your custom models to take advantage of the updates by using the following methods:
+The Spanish Narrowband model, `es-ES_NarrowbandModel`, was updated for improved speech recognition. By default, the service automatically uses the updated model for all recognition requests. If you have custom language or custom acoustic models that are based on this model, you must upgrade your custom models to take advantage of the updates by using the following methods:
 
 -   `POST /v1/customizations/{customization_id}/upgrade_model`
 -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-[Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html) provides complete details about the upgrade procedure. It presents rules for upgrading custom models, the effects of upgrading, and approaches for using upgraded models.
+For more information, see [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html).
 
 As of this update, the following two versions of the Spanish narrowband model are available:
 
@@ -214,12 +248,12 @@ The following features are enabled for applications that are hosted in Sydney an
 -   The service now supports language model customization for the French language model, `fr-FR_BroadbandModel`. The French model is generally available for production use with language model customization.
     -   For more information about how the service parses corpora for French, see [Parsing of English, French, German, Spanish, and Brazilian Portuguese](/docs/services/speech-to-text/language-resource.html#corpusLanguages).
     -   For more information about creating sounds-like pronunciations for custom words in French, see [Guidelines for French, German, Spanish, and Brazilian Portuguese](/docs/services/speech-to-text/language-resource.html#wordLanguages-esES-frFR).
--   The Spanish and Korean narrowband models, `es-ES_NarrowbandModel` and `ko-KR_NarrowbandModel`, and the French broadband model, `fr-FR_BroadbandModel`, were updated for improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. If you have custom language or custom acoustic models based on either of these models, you must upgrade your custom models to take advantage of the updates by using the following methods:
+-   The Spanish and Korean narrowband models, `es-ES_NarrowbandModel` and `ko-KR_NarrowbandModel`, and the French broadband model, `fr-FR_BroadbandModel`, were updated for improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. If you have custom language or custom acoustic models that are based on either of these models, you must upgrade your custom models to take advantage of the updates by using the following methods:
 
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
     -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-    [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html) provides complete details about the upgrade procedure. It presents rules for upgrading custom models, the effects of upgrading, and approaches for using upgraded models.
+    For more information, see [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html).
 -   The `version` parameter of the following methods is renamed `base_model_version`:
 
     -   `/v1/recognize` for WebSocket requests
@@ -233,12 +267,12 @@ The following features are enabled for applications that are hosted in Sydney an
 ### 1 March 2018
 {: #March2018a}
 
-The Spanish and French broadband models, `es-ES_BroadbandModel` and `fr-FR_BroadbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. If you have custom language or custom acoustic models based on either of these models, you must upgrade your custom models to take advantage of the updates by using the following methods:
+The Spanish and French broadband models, `es-ES_BroadbandModel` and `fr-FR_BroadbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. If you have custom language or custom acoustic models that are based on either of these models, you must upgrade your custom models to take advantage of the updates by using the following methods:
 
 -   `POST /v1/customizations/{customization_id}/upgrade_model`
 -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-[Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html) provides complete details about the upgrade procedure. It presents rules for upgrading custom models, the effects of upgrading, and approaches for using upgraded models.
+For more information, see [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html). The section presents rules for upgrading custom models, the effects of upgrading, and approaches for using upgraded models.
 
 ### 1 February 2018
 {: #February2018}
@@ -253,12 +287,12 @@ For language model customization, the Korean models are generally available for 
 ### 14 December 2017
 {: #December2017}
 
--   The US English models, `en-US_BroadbandModel` and `en-US_NarrowbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. If you have custom language or custom acoustic models based on the US English models, you must upgrade your custom models to take advantage of the updates by using the following methods:
+-   The US English models, `en-US_BroadbandModel` and `en-US_NarrowbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. If you have custom language or custom acoustic models that are based on the US English models, you must upgrade your custom models to take advantage of the updates by using the following methods:
 
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
     -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-    [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html) provides complete details about the upgrade procedure. It presents rules for upgrading custom models, the effects of upgrading, and approaches for using upgraded models. Currently, the methods apply only to the new US English base models. But the same information will apply to upgrades of other base models as they become available.
+    For more information about the procedure, see [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html). The section presents rules for upgrading custom models, the effects of upgrading, and approaches for using upgraded models. Currently, the methods apply only to the new US English base models. But the same information will apply to upgrades of other base models as they become available.
 
 -   The various methods for making recognition requests now include a new `base_model_version` parameter that you can use to initiate requests that use either the older or upgraded versions of base and custom models. Although it is intended primarily for use with custom models that have been upgraded, the `base_model_version` parameter can also be used without custom models. For more information, see [Base model version](/docs/services/speech-to-text/input.html#version).
 -   The service now supports acoustic model customization as beta functionality for all available languages. You can create custom acoustic models for broadband or narrowband models for all languages. For an introduction to customization, including acoustic model customization, see [The customization interface](/docs/services/speech-to-text/custom.html).
@@ -280,7 +314,7 @@ For language model customization, the Korean models are generally available for 
     -   For more information about using a custom acoustic model, see [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html).
     -   For more information about all methods of the customization interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
 -   For language model customization, the service now includes a beta feature that sets an optional customization weight for a custom language model. A customization weight specifies the relative weight to be given to words from a custom language model versus words from the service's base vocabulary. You can set a customization weight during both training and speech recognition. For more information, see [Using customization weight](/docs/services/speech-to-text/language-use.html#weight).
--   The `ja-JP_BroadbandModel` language model was upgraded to capture improvements in the base model. The upgrade does not affect existing custom models based on the model.
+-   The `ja-JP_BroadbandModel` language model was upgraded to capture improvements in the base model. The upgrade does not affect existing custom models that are based on the model.
 -   The service now includes a parameter to specify the endianness of audio that is submitted in `audio/l16` (Linear 16-bit Pulse-Code Modulation (PCM)) format. In addition to specifying `rate` and `channels` parameters with the format, you can now also specify `big-endian` or `little-endian` with the `endianness` parameter. For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 
 ### 14 July 2017

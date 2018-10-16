@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-09-14"
+lastupdated: "2018-10-14"
 
 ---
 
@@ -20,11 +20,7 @@ lastupdated: "2018-09-14"
 # About
 {: #about}
 
-**Service update:** *As of **September 10, 2018**, the {{site.data.keyword.speechtotextshort}} service is updated with the following changes: The keyword spotting and word alternatives features are now generally available; the service now offers a German broadband model that supports language model and acoustic model customization; the service now supports language model customization with the Brazilian Portuguese broadband and narrowband models; and new versions of the US English and Japanese broadband and narrowband models are available. For more information, see the [September 10 service update](/docs/services/speech-to-text/release-notes.html#September2018b) in the release notes.*
-
-**Important:** *The previous service update is available in the US South and US East regions as of September 10. It is available in Germany as of September 11.*
-
-** Service update:** *As of **September 7, 2018**, the session-based HTTP interface of the {{site.data.keyword.speechtotextshort}} service is no longer supported. The interface has been removed from the documentation. For more information, see the [September 7 service update](/docs/services/speech-to-text/release-notes.html#September2018a) in the release notes.*
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on October 9, 2018. You no longer need to specify the audio format for most speech recognition requests; the service now automatically detects the format of most audio. The Brazilian Portuguese broadband model was updated for improved speech recognition. And for speech recognition requests, the `customization_id` parameter is now deprecated; to specify a custom language model for speech recognition, use the `language_customization_id` parameter instead. For more information, see the [October 9 service update](/docs/services/speech-to-text/release-notes.html#October2018) in the release notes.*
 
 The {{site.data.keyword.speechtotextfull}} service provides application programming interfaces (APIs) that you can use to add speech transcription capabilities to your applications. The service leverages machine intelligence to transcribe the human voice accurately. The service combines information about grammar and language structure with knowledge of the composition of the audio signal. It can continuously return and retroactively update a transcription as more speech is heard.
 {: shortdesc}

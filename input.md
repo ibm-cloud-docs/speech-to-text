@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-09-25"
+lastupdated: "2018-10-12"
 
 ---
 
@@ -140,7 +140,7 @@ curl -X POST -u "{username}:{password}"
 
 All interfaces accept a custom model for use in a recognition request:
 
--   *Custom language models* expand the service's base vocabulary with terminology from specific domains. Use the `customization_id` parameter to include a custom language model with a request. You can also specify an optional `customization_weight` parameter. The parameter indicates the relative weight that is given to words from the custom model as opposed to words from the base vocabulary. For more information, see [Using a custom language model](/docs/services/speech-to-text/language-use.html).
+-   *Custom language models* expand the service's base vocabulary with terminology from specific domains. Use the `language_customization_id` parameter to include a custom language model with a request. You can also specify an optional `customization_weight` parameter. The parameter indicates the relative weight that is given to words from the custom model as opposed to words from the base vocabulary. For more information, see [Using a custom language model](/docs/services/speech-to-text/language-use.html).
 -   *Custom acoustic models* adapt the service's base acoustic model for the acoustic characteristics of your environment and speakers. Use the `acoustic_customization_id` parameter to include a custom acoustic model with a request. You can specify both a custom language model and a custom acoustic model with a request. For more information, see [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html).
 
 Custom models are based on one of the language models that are described in [Languages and models](#models). A custom model can be used only with the base model for which it is created. If your custom model is based on a model other than the `en-US_BroadbandModel`, the default, you must also specify the name of the model with the request. To use a custom model, you must issue the request with service credentials that are created for the instance of the service that owns the custom model. For an introduction to customization, see [The customization interface](/docs/services/speech-to-text/custom.html).
@@ -148,23 +148,23 @@ Custom models are based on one of the language models that are described in [Lan
 ### Custom model examples
 {: #customExample}
 
-The following example request includes the `customization_id` parameter to use the custom language model with the specified ID. It includes the `customization_weight` parameter to indicate that words from the custom model are to be given a relative weight of `0.5`.
+The following example request includes the `language_customization_id` parameter to use the custom language model with the specified ID. It includes the `customization_weight` parameter to indicate that words from the custom model are to be given a relative weight of `0.5`.
 
 ```bash
 curl -X POST -u "{username}:{password}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?customization_id={customization_id}&customization_weight=0.5"
+"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&customization_weight=0.5"
 ```
 {: pre}
 
-The following example request uses both a custom language model and a custom acoustic model. The former is identified with the `customization_id` parameter, the latter with the `acoustic_customization_id` parameter.
+The following example request uses both a custom language model and a custom acoustic model. The former is identified with the `language_customization_id` parameter, the latter with the `acoustic_customization_id` parameter.
 
 ```bash
 curl -X POST -u "{username}:{password}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file1.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?customization_id={customization_id}&acoustic_customization_id={customization_id}"
+"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&acoustic_customization_id={customization_id}"
 ```
 {: pre}
 

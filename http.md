@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-09-25"
+lastupdated: "2018-10-16"
 
 ---
 
@@ -93,16 +93,6 @@ You specify the following parameters of multipart speech recognition as request 
   </tr>
   <tr>
     <td>
-      <code>Content-Type</code>
-      <br/><em>Header</em>
-      <br/><em>String</em>
-    </td>
-    <td>
-      <em>Required.</em> Specify `multipart/form-data`.
-    </td>
-  </tr>
-  <tr>
-    <td>
       <code>metadata</code>
       <br/><em>Form data</em>
       <br/><em>Object</em>
@@ -152,7 +142,7 @@ You specify the following parameters of multipart speech recognition as request 
   </tr>
   <tr>
     <td>
-      <code>customization_id</code>
+      <code>language_customization_id</code>
       <br/><em>Query</em>
       <br/><em>String</em>
     </td>
@@ -208,8 +198,8 @@ The JSON metadata that you pass with a multipart request can include the followi
 
 Only the following two parameters are specific to multipart requests:
 
--   The `part_content_type` field is *required*. Specify the format (MIME type) of the audio in the following parts of the request. All audio files must be in the same format.
--   The `data_parts_count` field is *optional*. You can specify the number of audio files that are sent with the request. The service applies end-of-stream detection to the last (and possibly the only) data part. If you omit the parameter, the service determines the number of parts from the request.
+-   The `part_content_type` field is *optional* for most audio formats. It is required for the `audio/basic`, `audio/l16`, and `audio/mulaw` formats. It specifies the format of the audio in the following parts of the request. All audio files must be in the same format.
+-   The `data_parts_count` field is *optional* for all requests. It specifies the number of audio files that are sent with the request. The service applies end-of-stream detection to the last (and possibly the only) data part. If you omit the parameter, the service determines the number of parts from the request.
 
 All other parameters of the metadata are optional. For a summary of all available parameters, see [Parameter summary](/docs/services/speech-to-text/summary.html).
 
@@ -219,7 +209,7 @@ The following cURL example shows how to pass a multipart recognition request wit
 
 ```bash
 curl -X POST -u "{username}:{password}"
---form metadata="{\"part_content_type\":\"audio/flac\",
+--form metadata="{\"part_content_type\":\"application/octet-stream\",
   \"data_parts_count\":2,
   \"timestamps\":true,
   \"word_alternatives_threshold\":0.9,
