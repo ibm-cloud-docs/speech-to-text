@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-09-25"
+lastupdated: "2018-10-12"
 
 ---
 
@@ -20,10 +20,10 @@ lastupdated: "2018-09-25"
 # Using a custom language model
 {: #languageUse}
 
-Once you create and train your custom language model, you can use it in speech recognition requests. You use the `customization_id` query parameter to specify the custom language model for a request, as shown in the following examples. You can also tell the service how much weight to give to words from the custom model. For more information, see [Using customization weight](#weight). You must issue the request with service credentials for the instance of the service that owns the model.
+Once you create and train your custom language model, you can use it in speech recognition requests. You use the `language_customization_id` query parameter to specify the custom language model for a request, as shown in the following examples. You can also tell the service how much weight to give to words from the custom model. For more information, see [Using customization weight](#weight). You must issue the request with service credentials for the instance of the service that owns the model.
 {: shortdesc}
 
-You can create multiple custom language models for the same or different domains. However, you can specify only one custom language model at a time with the `customization_id` parameter.
+You can create multiple custom language models for the same or different domains. However, you can specify only one custom language model at a time with the `language_customization_id` parameter.
 
 -   For the WebSocket interface, use the `/v1/recognize` method. The specified custom model is used for all requests that are sent over the connection.
 
@@ -32,7 +32,7 @@ You can create multiple custom language models for the same or different domains
     var wsURI = 'wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
       + '?watson-token=' + token
       + '&model=es-ES_BroadbandModel'
-      + '&customization_id={customization_id}';
+      + '&language_customization_id={customization_id}';
     var websocket = new WebSocket(wsURI);
     ```
     {: codeblock}
@@ -44,7 +44,7 @@ You can create multiple custom language models for the same or different domains
     curl -X POST -u "{username}:{password}"
     --header "Content-Type: audio/flac"
     --data-binary @audio-file.flac
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?customization_id={customization_id}"
+    "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}"
     ```
     {: pre}
 
@@ -55,7 +55,7 @@ You can create multiple custom language models for the same or different domains
     curl -X POST -u "{username}:{password}"
     --header "Content-Type: audio/flac"
     --data-binary @audio-file.flac
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions?customization_id={customization_id}"
+    "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions?language_customization_id={customization_id}"
     ```
     {: pre}
 
@@ -92,7 +92,7 @@ You specify a customization weight by using the `customization_weight` parameter
     curl -X POST -u "{username}:{password}"
     --header "Content-Type: audio/flac"
     --data-binary @audio-file1.flac
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?customization_id={customization_id}&customization_weight=0.7"
+    "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&customization_weight=0.7"
     ```
     {: pre}
 

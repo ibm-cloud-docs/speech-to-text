@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-08-30"
+lastupdated: "2018-10-16"
 
 ---
 
@@ -33,7 +33,7 @@ Consider the following basic requirements when you make a speech recognition req
 
 Also consider the following service-specific requirements:
 
--   You need to specify only the input audio and its format (`Content-Type`). All other parameters are optional.
+-   You need to specify only the input audio. All other parameters are optional.
 -   If you specify an invalid query parameter or JSON field as part of the input, the response includes a `warnings` field that describes the invalid argument. The request succeeds despite any warnings.
 
 ## acoustic_customization_id
@@ -126,7 +126,7 @@ An optional version of a base model. The parameter is intended primarily for use
 
 ## Content-Type
 
-A required audio format (MIME type) that specifies the format of the audio data that you pass to the service. See [Audio formats](/docs/services/speech-to-text/audio-formats.html).
+An optional audio format (MIME type) that specifies the format of the audio data that you pass to the service. The service can automatically detect the format of most audio, so the parameter is optional for most formats. It is required for `audio/basic`, `audio/l16`, and `audio/mulaw`. See [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 
 <table>
   <caption>Table 3. The Content-Type parameter</caption>
@@ -169,56 +169,12 @@ A required audio format (MIME type) that specifies the format of the audio data 
   </tr>
 </table>
 
-## customization_id
-
-An optional customization ID for a custom language model that includes terminology from your domain. By default, no custom model is used. See [Custom models](/docs/services/speech-to-text/input.html#custom).
-
-<table>
-  <caption>Table 4. The customization_id parameter</caption>
-  <tr>
-    <th>Language availability and interface usage</th>
-    <th style="vertical-align:bottom">Description</th>
-  </tr>
-  <tr>
-    <td style="text-align:left; width:30%">
-      **Availability**
-    </td>
-    <td style="text-align:left">
-      Generally available for US English, UK English, Brazilian Portuguese, French, German, Japanese, Korean, and Spanish
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **WebSocket**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>/v1/recognize</code> connection request
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      **HTTP asynchronous**
-    </td>
-    <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
-    </td>
-  </tr>
-</table>
-
 ## customization_weight
 
 An optional double between 0.0 and 1.0 that indicates the relative weight that the service gives to words from a custom language model versus words from the base vocabulary. The default is 0.3 unless a different weight was specified when the custom language model was trained. See [Custom models](/docs/services/speech-to-text/input.html#custom).
 
 <table>
-  <caption>Table 5. The customization_weight parameter</caption>
+  <caption>Table 4. The customization_weight parameter</caption>
   <tr>
     <th>Language availability and interface usage</th>
     <th style="vertical-align:bottom">Description</th>
@@ -262,7 +218,7 @@ An optional double between 0.0 and 1.0 that indicates the relative weight that t
 An optional integer that specifies the number of seconds for the service's inactivity timeout; use `-1` to indicate infinity. The default is 30 seconds. See [Inactivity timeout](/docs/services/speech-to-text/input.html#timeouts).
 
 <table>
-  <caption>Table 6. The inactivity_timeout parameter</caption>
+  <caption>Table 5. The inactivity_timeout parameter</caption>
   <tr>
     <th>Language availability and interface usage</th>
     <th style="vertical-align:bottom">Description</th>
@@ -306,7 +262,7 @@ An optional integer that specifies the number of seconds for the service's inact
 An optional boolean that directs the service to return intermediate hypotheses that are likely to change before the final transcript. By default (`false`), interim results are not returned. See [Interim results](/docs/services/speech-to-text/output.html#interim).
 
 <table>
-  <caption>Table 7. The interim_results parameter</caption>
+  <caption>Table 6. The interim_results parameter</caption>
   <tr>
     <th>Language availability and interface usage</th>
     <th style="vertical-align:bottom">Description</th>
@@ -350,7 +306,7 @@ An optional boolean that directs the service to return intermediate hypotheses t
 An optional array of keyword strings that the service spots in the input audio. By default, keyword spotting is not performed. See [Keyword spotting](/docs/services/speech-to-text/output.html#keyword_spotting).
 
 <table>
-  <caption>Table 8. The keywords parameter</caption>
+  <caption>Table 7. The keywords parameter</caption>
   <tr>
     <th>Language availability and interface usage</th>
     <th style="vertical-align:bottom">Description</th>
@@ -394,7 +350,7 @@ An optional array of keyword strings that the service spots in the input audio. 
 An optional double between 0.0 and 1.0 that indicates the minimum threshold for a positive keyword match. By default, keyword spotting is not performed. See [Keyword spotting](/docs/services/speech-to-text/output.html#keyword_spotting).
 
 <table>
-  <caption>Table 9. The keywords_threshold parameter</caption>
+  <caption>Table 8. The keywords_threshold parameter</caption>
   <tr>
     <th>Language availability and interface usage</th>
     <th style="vertical-align:bottom">Description</th>
@@ -413,6 +369,50 @@ An optional double between 0.0 and 1.0 that indicates the minimum threshold for 
     </td>
     <td style="text-align:left">
       Parameter of JSON <code>start</code> message
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      **HTTP**
+    </td>
+    <td style="text-align:left">
+      Query parameter of <code>POST /v1/recognize</code> method
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      **HTTP asynchronous**
+    </td>
+    <td style="text-align:left">
+      Query parameter of <code>POST /v1/recognitions</code> method
+    </td>
+  </tr>
+</table>
+
+## language_customization_id
+
+An optional customization ID for a custom language model that includes terminology from your domain. By default, no custom model is used. See [Custom models](/docs/services/speech-to-text/input.html#custom).
+
+<table>
+  <caption>Table 9. The language_customization_id parameter</caption>
+  <tr>
+    <th>Language availability and interface usage</th>
+    <th style="vertical-align:bottom">Description</th>
+  </tr>
+  <tr>
+    <td style="text-align:left; width:30%">
+      **Availability**
+    </td>
+    <td style="text-align:left">
+      Generally available for US English, UK English, Brazilian Portuguese, French, German, Japanese, Korean, and Spanish
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      **WebSocket**
+    </td>
+    <td style="text-align:left">
+      Query parameter of <code>/v1/recognize</code> connection request
     </td>
   </tr>
   <tr>
@@ -570,7 +570,7 @@ An optional boolean that indicates whether the service censors profanity from a 
 An optional boolean that indicates whether the service converts dates, times, numbers, currency, and similar values into more conventional representations in the final transcript. For US English, the feature also converts certain keyword phrases into punctuation symbols. By default (`false`), smart formatting is not performed. See [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting).
 
 <table>
-  <caption>Table 14. The smart_formatting parameter</caption>
+  <caption>Table 13. The smart_formatting parameter</caption>
   <tr>
     <th>Language availability and interface usage</th>
     <th style="vertical-align:bottom">Description</th>
@@ -614,7 +614,7 @@ An optional boolean that indicates whether the service converts dates, times, nu
 An optional boolean that indicates whether the service identifies which individuals spoke which words in a multi-participant exchange. By default (`false`), speaker labels are not returned. See [Speaker labels](/docs/services/speech-to-text/output.html#speaker_labels).
 
 <table>
-  <caption>Table 15. The speaker_labels parameter</caption>
+  <caption>Table 14. The speaker_labels parameter</caption>
   <tr>
     <th>Language availability and interface usage</th>
     <th style="vertical-align:bottom">Description</th>
@@ -658,7 +658,7 @@ An optional boolean that indicates whether the service identifies which individu
 An optional boolean that indicates whether the service produces timestamps for the words of the transcript. By default (`false`), timestamps are not returned. See [Word timestamps](/docs/services/speech-to-text/output.html#word_timestamps).
 
 <table>
-  <caption>Table 16. The timestamps parameter</caption>
+  <caption>Table 15. The timestamps parameter</caption>
   <tr>
     <th>Language availability and interface usage</th>
     <th style="vertical-align:bottom">Description</th>
@@ -702,7 +702,7 @@ An optional boolean that indicates whether the service produces timestamps for t
 An optional value of `chunked` that causes the audio to be streamed to the service. By default, audio is sent all at once as a one-shot delivery. See [Audio transmission](/docs/services/speech-to-text/input.html#transmission).
 
 <table>
-  <caption>Table 17. The Transfer-Encoding parameter</caption>
+  <caption>Table 16. The Transfer-Encoding parameter</caption>
   <tr>
     <th>Language availability and interface usage</th>
     <th style="vertical-align:bottom">Description</th>
@@ -746,7 +746,7 @@ An optional value of `chunked` that causes the audio to be streamed to the servi
 An optional authentication token that makes authenticated requests to the service without embedding your service credentials in every call. By default, service credentials must be passed with each request. See [Authentication tokens](/docs/services/speech-to-text/input.html#tokens).
 
 <table>
-  <caption>Table 18. The watson-token parameter</caption>
+  <caption>Table 17. The watson-token parameter</caption>
   <tr>
     <th>Language availability and interface usage</th>
     <th style="vertical-align:bottom">Description</th>
@@ -790,7 +790,7 @@ An optional authentication token that makes authenticated requests to the servic
 An optional double between 0.0 and 1.0 that specifies the threshold at which the service reports acoustically similar alternatives for words of the input audio. By default, word alternatives are not returned. See [Word alternatives](/docs/services/speech-to-text/output.html#word_alternatives).
 
 <table>
-  <caption>Table 19. The word_alternatives_threshold parameter</caption>
+  <caption>Table 18. The word_alternatives_threshold parameter</caption>
   <tr>
     <th>Language availability and interface usage</th>
     <th style="vertical-align:bottom">Description</th>
@@ -834,7 +834,7 @@ An optional double between 0.0 and 1.0 that specifies the threshold at which the
 An optional boolean that indicates whether the service provides confidence measures for the words of the transcript. By default (`false`), word confidence measures are not returned. See [Word confidence](/docs/services/speech-to-text/output.html#word_confidence).
 
 <table>
-  <caption>Table 20. The word_confidence parameter</caption>
+  <caption>Table 19. The word_confidence parameter</caption>
   <tr>
     <th>Language availability and interface usage</th>
     <th style="vertical-align:bottom">Description</th>
@@ -878,7 +878,7 @@ An optional boolean that indicates whether the service provides confidence measu
 An optional authentication token that makes authenticated requests to the service without embedding your service credentials in every call. By default, service credentials must be passed with each request. See [Authentication tokens](/docs/services/speech-to-text/input.html#tokens).
 
 <table>
-  <caption>Table 21. The X-Watson-Authorization-Token parameter</caption>
+  <caption>Table 20. The X-Watson-Authorization-Token parameter</caption>
   <tr>
     <th>Language availability and interface usage</th>
     <th style="vertical-align:bottom">Description</th>
@@ -922,7 +922,7 @@ An optional authentication token that makes authenticated requests to the servic
 An optional boolean that indicates whether you opt out of the request logging that {{site.data.keyword.IBM_notm}} performs to improve the service for future users. By default (`false`), request logging is performed. See [Request logging](/docs/services/speech-to-text/input.html#logging).
 
 <table>
-  <caption>Table 22. The X-Watson-Learning-Opt-Out parameter</caption>
+  <caption>Table 21. The X-Watson-Learning-Opt-Out parameter</caption>
   <tr>
     <th>Language availability and interface usage</th>
     <th style="vertical-align:bottom">Description</th>
@@ -967,7 +967,7 @@ An optional boolean that indicates whether you opt out of the request logging th
 An optional string that associates a customer ID with data that is passed for recognition requests. The parameter accepts the argument `customer_id={id}`. By default, no customer ID is associated with the data. See [Information security](/docs/services/speech-to-text/information-security.html).
 
 <table>
-  <caption>Table 23. The X-Watson-Metadata parameter</caption>
+  <caption>Table 22. The X-Watson-Metadata parameter</caption>
   <tr>
     <th>Language availability and interface usage</th>
     <th style="vertical-align:bottom">Description</th>
