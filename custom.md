@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-08-30"
+lastupdated: "2018-10-17"
 
 ---
 
@@ -175,6 +175,6 @@ If necessary, you can then delete the data by using the `DELETE /v1/user_data` m
 ### Using the examples
 {: #customCurl}
 
-The documentation includes examples that use cURL to demonstrate the methods of the customization interface. To run the examples, create an instance of the {{site.data.keyword.speechtotextshort}} service in {{site.data.keyword.Bluemix_notm}}. Then replace `{username}:{password}` in each example with the values of your *username* and *password* from the credentials for the service instance. Concatenate the two values with an embedded colon to create a single string as shown.
+The documentation includes examples that use the `curl` command to demonstrate the methods of the customization interface. To run the examples, create an instance of the {{site.data.keyword.speechtotextshort}} service in {{site.data.keyword.Bluemix_notm}}. Then replace `{username}:{password}` in each example with the values of your *username* and *password* from the credentials for the service instance. Concatenate the two values with an embedded colon to create a single string as shown.
 
 Use your service credentials with the examples. Do *not* use your {{site.data.keyword.Bluemix_notm}} ID and password. For more information, see [Service credentials for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-credentials.html).

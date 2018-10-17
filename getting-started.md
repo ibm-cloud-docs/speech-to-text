@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-09-26"
+lastupdated: "2018-10-17"
 
 ---
 
@@ -21,7 +21,7 @@ lastupdated: "2018-09-26"
 # Getting started tutorial
 {: #gettingStarted}
 
-The {{site.data.keyword.speechtotextfull}} service transcribes audio to text to enable speech transcription capabilities for applications. This cURL-based tutorial can help you get started quickly with the service. The examples show you how to call the service's `POST /v1/recognize` method to request a transcript.
+The {{site.data.keyword.speechtotextfull}} service transcribes audio to text to enable speech transcription capabilities for applications. This curl-based tutorial can help you get started quickly with the service. The examples show you how to call the service's `POST /v1/recognize` method to request a transcript.
 {: shortdesc}
 
 > **Important:** The tutorial uses service instance credentials to authenticate to the {{site.data.keyword.speechtotextshort}} service. In some regions, new service instances instead use {{site.data.keyword.Bluemix}} Identity and Access Management (IAM) for authentication. Authenticate by using the approach that is right for your region and service instance.
@@ -40,8 +40,8 @@ For more information about where and how the service uses IAM authentication, se
     1.  On the service dashboard, click the **Service credentials** tab.
     1.  Click **View credentials** under **Actions**.
     1.  Copy the `username`, `password`, and `url` values.
-- Make sure that you have cURL.
-    -   The examples use cURL to call methods of the HTTP interface. Install the version for your operating system from [curl.haxx.se ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://curl.haxx.se/){: new_window}. Install the version that supports the Secure Sockets Layer (SSL) protocol. Make sure to include the installed binary file on your `PATH` environment variable.
+- Make sure that you have the `curl` command.
+    -   The examples use the `curl` command to call methods of the HTTP interface. Install the version for your operating system from [curl.haxx.se ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://curl.haxx.se/){: new_window}. Install the version that supports the Secure Sockets Layer (SSL) protocol. Make sure to include the installed binary file on your `PATH` environment variable.
 
 **Note:** When you enter a command, replace `{username}` and `{password}` with your service credentials. Omit the braces, which indicate variable values, from the command. Actual values resemble those in the following example:
 

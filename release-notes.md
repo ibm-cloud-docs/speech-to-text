@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-16"
+lastupdated: "2018-10-17"
 
 ---
 
@@ -67,7 +67,7 @@ The {{site.data.keyword.speechtotextshort}} service has the following known limi
 
     Where indicated, the content type that you specify for these formats must include the sampling rate and can optionally include the number of channels and the endianness of the audio. For all other audio formats, you can omit the content type or specify a content type of `application/octet-stream` to have the service auto-detect the format.
 
-    **Important:** When you use cURL to make a speech recognition request with the HTTP interface, you must specify the audio format with the `Content-Type` header, specify `"Content-Type: application/octet-stream"`, or specify `"Content-Type:"`. If you omit the header entirely, cURL uses a default value of `application/x-www-form-urlencoded`. Most of the examples in this documentation continue to specify the format for speech recognition requests regardless of whether it's required.
+    **Important:** When you use the `curl` command to make a speech recognition request with the HTTP interface, you must specify the audio format with the `Content-Type` header, specify `"Content-Type: application/octet-stream"`, or specify `"Content-Type:"`. If you omit the header entirely, `curl` uses a default value of `application/x-www-form-urlencoded`. Most of the examples in this documentation continue to specify the format for speech recognition requests regardless of whether it's required.
 
     This change applies to the following methods:
     -   `/v1/recognize` for WebSocket requests. The `content-type` field of the text message that you send to initiate a request over an open WebSocket connection is now optional.
@@ -352,7 +352,7 @@ For language model customization, the Korean models are generally available for 
     -   `POST /v1/customizations/{customization_id}/reset`
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
 
-    For example, you now call the `POST /v1/sessions` method with cURL as follows:
+    For example, you now call the `POST /v1/sessions` method with `curl` as follows:
 
     ```bash
     curl -X POST -u "{username}:{password}"
@@ -361,7 +361,7 @@ For language model customization, the Korean models are generally available for 
     ```
     {: pre}
 
-    You no longer need to pass the following cURL option with the request: `--data "{}"`.
+    You no longer need to pass the following `curl` option with the request: `--data "{}"`.
 
     > **Note:** If you experience any problems with one of these `POST` requests, try passing an empty data object with the body of the request. Passing an empty object does not change the nature or meaning of the request in any way.
 
@@ -385,8 +385,8 @@ The following deprecations first announced in March 2017 are now in effect:
 
     {{site.data.keyword.IBM_notm}} removed the parameter to respond to overwhelming feedback from the developer community that specifying `continuous=false` added little value and could reduce overall transcription accuracy.
 -   It is no longer possible to avoid a session timeout without sending audio:
-    -   When using the WebSocket interface, the client can no longer keep a connection alive by sending a JSON text message with the `action` parameter set to `no-op`. Sending a `no-op` message does not generate an error, but it has no effect.
-    -   When using sessions with the HTTP interface, the client can no longer extend the session by sending a `GET /v1/sessions/{session_id}/recognize` request. The method still returns the status of an active session, but it does not keep the session active.
+    -   When you use the WebSocket interface, the client can no longer keep a connection alive by sending a JSON text message with the `action` parameter set to `no-op`. Sending a `no-op` message does not generate an error, but it has no effect.
+    -   When you use sessions with the HTTP interface, the client can no longer extend the session by sending a `GET /v1/sessions/{session_id}/recognize` request. The method still returns the status of an active session, but it does not keep the session active.
     You can now do the following to keep a session alive:
     -   Set the `inactivity_timeout` parameter to `-1` to avoid the 30-second inactivity timeout.
     -   Send any audio data, including just silence, to the service to avoid the 30-second session timeout. You are charged for the duration of any data that you send to the service, including the silence that you send to extend a session.
@@ -460,7 +460,7 @@ The beta asynchronous HTTP interface now supports all languages that are support
 -   The list of supported models for speech recognition now includes `fr-FR_BroadbandModel` for audio in the French language that is sampled at a minimum of 16 kHz. For more information, see [Languages and models](/docs/services/speech-to-text/input.html#models).
 -   The list of supported audio formats now includes `audio/basic`. The format provides single-channel audio that is encoded by using 8-bit u-law (or mu-law) data that is sampled at 8 kHz. For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 -   The various recognition methods can return a `warnings` response that includes messages about invalid query parameters or JSON fields that are included with a request. The format of the warnings changed. For example, `"warnings": "Unknown arguments: [u'invalid_arg_1', u'invalid_arg_2']."` is now `"warnings": "Unknown arguments: invalid_arg_1, invalid_arg_2."`
--   For HTTP `POST` requests that do not otherwise pass data to the service, you must include an empty request body of the form `{}`. With cURL, you use the `--data` option to pass the empty data.
+-   For HTTP `POST` requests that do not otherwise pass data to the service, you must include an empty request body of the form `{}`. With the `curl` command, you use the `--data` option to pass the empty data.
 
 ### 10 March 2016
 {: #March2016}
@@ -492,7 +492,7 @@ The service was updated to include a new profanity filtering feature on January 
 -   The service no longer returns HTTP status code 490 for the session-based HTTP methods `GET /v1/sessions/{session_id}/observe_result` and `POST /v1/sessions/{session_id}/recognize`. The service now responds with HTTP status code 400 instead.
 
     In the JSON responses that it returns for errors with session-based methods, the service now also includes a new `session_closed` field. The field is set to `true` if the session is closed as a result of the error. For more information about possible return codes for any method, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
--   When using cURL commands to transcribe audio with the service, you no longer need to use the `--limit-rate` option to transfer data at a rate no faster than 40,000 bytes per second.
+-   When you use the `curl` command to transcribe audio with the service, you no longer need to use the `--limit-rate` option to transfer data at a rate no faster than 40,000 bytes per second.
 
 ### 21 September 2015
 {: #September2015}
