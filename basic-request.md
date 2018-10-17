@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-16"
+lastupdated: "2018-10-17"
 
 ---
 
@@ -63,7 +63,7 @@ websocket.send(JSON.stringify({'action': 'stop'}));
 
 [The HTTP interface](/docs/services/speech-to-text/http.html) provides the simplest way to make a recognition request. You use the `POST /v1/recognize` method to make a request to the service. You pass the audio and all parameters with the single request.
 
-The following cURL example shows a basic HTTP recognition request:
+The following `curl` example shows a basic HTTP recognition request:
 
 ```bash
 curl -X POST -u "{username}:{password}"
@@ -77,7 +77,7 @@ curl -X POST -u "{username}:{password}"
 
 [The asynchronous HTTP interface](/docs/services/speech-to-text/async.html) provides a non-blocking interface for transcribing audio. You can use the interface with or without first registering a callback URL with the service. With a callback URL, the service sends callback notifications with job status and recognition results. The interface uses HMAC-SHA1 signatures based on a user-specified secret to provide authentication and data integrity for its notifications. Without a callback URL, you must poll the service for job status and results. With either approach, you use the `POST /v1/recognitions` method to make a recognition request.
 
-The following cURL example shows a simple asynchronous HTTP recognition request. The request does not include a callback URL, so you must poll the service to get the job status and the resulting transcript.
+The following `curl` example shows a simple asynchronous HTTP recognition request. The request does not include a callback URL, so you must poll the service to get the job status and the resulting transcript.
 
 ```bash
 curl -X POST -u "{username}:{password}"

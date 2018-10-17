@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-16"
+lastupdated: "2018-10-17"
 
 ---
 
@@ -114,8 +114,8 @@ You specify the following parameters of multipart speech recognition as request 
     <td>
       <em>Required.</em> One or more audio files as the remainder of the
       form data for the request. All audio files must have the same format.
-      With cURL, include a separate <code>--form</code> option for each file
-      of the request.
+      With the `curl` command, include a separate <code>--form</code> option
+      for each file of the request.
     </td>
   </tr>
   <tr>
@@ -205,7 +205,7 @@ All other parameters of the metadata are optional. For a summary of all availabl
 
 ### Example multipart request
 
-The following cURL example shows how to pass a multipart recognition request with the `POST /v1/recognize` method. The request passes two audio files, **audio-file1.flac** and **audio-file2.flac**. The `metadata` parameter provides most parameters of the request; the `upload` parameters provide the audio files.
+The following `curl` example shows how to pass a multipart recognition request with the `POST /v1/recognize` method. The request passes two audio files, **audio-file1.flac** and **audio-file2.flac**. The `metadata` parameter provides most parameters of the request; the `upload` parameters provide the audio files.
 
 ```bash
 curl -X POST -u "{username}:{password}"
