@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-16"
+lastupdated: "2018-10-23"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2018-10-16"
 # The WebSocket interface
 {: #websockets}
 
-**Important:** You cannot use JavaScript to call the WebSocket interface from a browser. The `watson-token` parameter that is available with the `/v1/recognize` method does not accept API keys, and you cannot pass request headers from JavaScript. See the [Known limitations](/docs/services/speech-to-text/release-notes.html#limitations) in the release notes for information about working around this limitation.
+**Important:** You cannot use JavaScript to call the WebSocket interface from a browser. The `watson-token` parameter that is available with the `/v1/recognize` method does not accept API keys, and you cannot pass request headers from JavaScript. For more information about working around this limitation, see the [Known limitations](/docs/services/speech-to-text/release-notes.html#limitations) in the release notes.
 
 The WebSocket interface of the {{site.data.keyword.speechtotextshort}} service is the most natural way for a client to interact with the service. To use the WebSocket interface for speech recognition, you first use the `/v1/recognize` method to establish a persistent connection with the service. You then send text and binary messages over the connection to initiate and manage the recognition requests.
 {: shortdesc}
@@ -72,13 +72,11 @@ A WebSocket client calls this method with the following query parameters to esta
     <td style="text-align:center">String</td>
     <td style="text-align:left">
       Passes a valid authentication token instead of passing the service
-      credentials with the call. You can instead use the
-      <code>X-Watson-Authorization-Token</code> header to pass the token,
-      but you must pass a token in one of these two ways.<br/><br/>
-      You pass a token only to establish an authenticated connection with
-      the service. Once you establish a connection, you can keep it alive
-      indefinitely. While the connection remains open, you do not need to
-      pass the token with subsequent calls. See
+      credentials with the call. You pass a token only to establish an
+      authenticated connection with the service. Once you establish a
+      connection, you can keep it alive indefinitely. While the connection
+      remains open, you do not need to pass the token with subsequent calls.
+      For more information, see
       <a href="/docs/services/speech-to-text/input.html#tokens">Authentication
       tokens</a>.
     </td>
@@ -90,7 +88,8 @@ A WebSocket client calls this method with the following query parameters to esta
     <td style="text-align:left">
       Specifies the language model to be used for transcription.
       If you do not specify a model, the service uses the
-      <code>en-US_BroadbandModel</code> model by default. See
+      <code>en-US_BroadbandModel</code> model by default. For more
+      information, see
       <a href="/docs/services/speech-to-text/input.html#models">Languages
         and models</a>.
     </td>
@@ -104,8 +103,8 @@ A WebSocket client calls this method with the following query parameters to esta
       language model that is to be used for all requests that are sent
       over the connection. The base model of the custom language model
       must match the value of the <code>model</code> parameter. By
-      default, no custom language model is used. See
-      <a href="/docs/services/speech-to-text/custom.html">The
+      default, no custom language model is used. For more information,
+      see <a href="/docs/services/speech-to-text/custom.html">The
       customization interface</a>.
     </td>
   </tr>
@@ -118,8 +117,8 @@ A WebSocket client calls this method with the following query parameters to esta
       acoustic model that is to be used for all requests that are sent
       over the connection. The base model of the custom acoustic model
       must match the value of the <code>model</code> parameter. By
-      default, no custom acoustic model is used. See
-      <a href="/docs/services/speech-to-text/custom.html">The
+      default, no custom acoustic model is used. For more information,
+      see <a href="/docs/services/speech-to-text/custom.html">The
       customization interface</a>.
     </td>
   </tr>
@@ -132,7 +131,7 @@ A WebSocket client calls this method with the following query parameters to esta
       requests that are sent over the connection. The parameter is intended
       primarily for use with custom models that are upgraded for a new base
       model. The default value depends on whether the parameter is used
-      with or without a custom model. See
+      with or without a custom model. For more information, see
       <a href="/docs/services/speech-to-text/input.html#version">Base model
       version</a>.
     </td>
@@ -146,7 +145,7 @@ A WebSocket client calls this method with the following query parameters to esta
       over the connection. Logging is done only to improve the service for
       future users. The logged data is not shared or made public. To prevent
       IBM from accessing your data for general service improvements, specify
-      <code>true</code> for the parameter. See
+      <code>true</code> for the parameter. For more information, see
       <a href="/docs/services/speech-to-text/input.html#logging">Request
       logging</a>.
     </td>
@@ -162,7 +161,7 @@ A WebSocket client calls this method with the following query parameters to esta
       or generic string that is to be associated with the data. You must
       URL-encode the argument to the parameter, for example,
       `customer_id%3dmy_ID`. By default, no customer ID is associated
-      with the data. See
+      with the data. For more information, see
       <a href="/docs/services/speech-to-text/information-security.html">Information
       security</a>.
     </td>
