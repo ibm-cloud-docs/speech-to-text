@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-09-25"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -49,7 +49,7 @@ To use the feature, you set the `speaker_labels` parameter to `true` for a recog
 The following example request shows a response that includes speaker labels. The numeric values that are associated with each element of the `timestamps` array are the start and end times of the word in the audio.
 
 ```bash
-curl -X POST -u "{username}:{password}"
+curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-multi.flac
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?model=en-US_NarrowbandModel&speaker_labels=true"
@@ -297,7 +297,7 @@ A keyword for which the service finds no matches is omitted from the array. A ke
 The following example request sets the `keywords` parameter to a URL-encoded array of three strings (`colorado`, `tornado`, and `tornadoes`) and the `keywords_threshold` parameter to `0.5`. The service finds qualifying occurrences of `colorado` and `tornadoes`.
 
 ```bash
-curl -X POST -u "{username}:{password}"
+curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?keywords=%22colorado%22%2C%22tornado%22%2C%22tornadoes%22&keywords_threshold=0.5"
@@ -353,7 +353,7 @@ The service reports a confidence score only for the best alternative that it ret
 The following example request sets the `max_alternatives` parameter to `3`; the service reports a confidence for the most likely of the three alternatives.
 
 ```bash
-curl -X POST -u "{username}:{password}"
+curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?max_alternatives=3"
@@ -509,7 +509,7 @@ The service returns the results in a `word_alternatives` field that is an elemen
 The following example request specifies a `word_alternatives_threshold` of `0.9`. The output includes potential hypotheses and confidence scores for a number of words, along with their start and end times.
 
 ```bash
-curl -X POST -u "{username}:{password}"
+curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?word_alternatives_threshold=0.9"
@@ -602,7 +602,7 @@ A confidence measure indicates the service's estimation that the transcribed wor
 The following example requests word confidence scores for the words of the transcription.
 
 ```bash
-curl -X POST -u "{username}:{password}"
+curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?word_confidence=true"
@@ -665,7 +665,7 @@ The `timestamps` parameter tells the service whether to produce timestamps for t
 The following example requests timestamps for the words of the transcription.
 
 ```bash
-curl -X POST -u "{username}:{password}"
+curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?timestamps=true"
@@ -738,7 +738,7 @@ The service censors profanity from all final transcripts and from any alternativ
 The following example shows the results for a brief audio file that is transcribed with the default `true` value for the `profanity_filter` parameter. The request also sets the `word_alternatives_threshold` parameter to a relatively high value of `0.99` and the `word_confidence` and `timestamps` parameters to `true`.
 
 ```bash
-curl -X POST -u "{username}:{password}"
+curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?word_alternatives_threshold=0.99&word_confidence=true&timestamps=true"
@@ -866,7 +866,7 @@ The service converts these keyword strings to symbols only in appropriate places
 The following example requests smart formatting with a recognition request by setting the `smart_formatting` parameter to `true`. The following sections show the effects of smart formatting on the results of a request.
 
 ```bash
-curl -X POST -u "{username}:{password}"
+curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?smart_formatting=true"

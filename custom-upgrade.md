@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-10-12"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -46,7 +46,7 @@ Follow these steps to upgrade a custom language model:
 1.  Upgrade the custom language model by using the `POST /v1/customizations/{customization_id}/upgrade_model` method:
 
     ```bash
-    curl -X POST -u {username}:{password}
+    curl -X POST -u "apikey:{apikey}"
     "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/upgrade_model"
     ```
     {: pre}
@@ -71,7 +71,7 @@ Follow these steps to upgrade a custom acoustic model:
 1.  Upgrade the custom acoustic model by using the `POST /v1/acoustic_customizations/{customization_id}/upgrade_model` method:
 
     ```bash
-    curl -X POST -u {username}:{password}
+    curl -X POST -u "apikey:{apikey}"
     "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/upgrade_model"
     ```
     {: pre}
@@ -79,7 +79,7 @@ Follow these steps to upgrade a custom acoustic model:
     If the custom acoustic model was trained with a custom language model, use the `custom_language_model_id` query parameter to specify the customization ID of that custom language model:
 
     ```bash
-    curl -X POST -u {username}:{password}
+    curl -X POST -u "apikey:{apikey}"
     "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/upgrade_model?custom_language_model_id={custom_language_model_id}"
     ```
     {: pre}
@@ -136,7 +136,7 @@ By default, the service uses the latest version of a custom model that is specif
 For example, the following HTTP request specifies that the older version of the base model is to be used. Thus, the older version of the specified custom language model is also used.
 
 ```bash
-curl -X POST -u {username}:{password}
+curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?model=en-US_BroadbandModel&base_model_version=en-US_BroadbandModel.v07-06082016.06202016&language_customization_id={customization_id}"

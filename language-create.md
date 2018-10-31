@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-17"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -106,7 +106,7 @@ You use the `POST /v1/customizations` method to create a new custom language mod
 The following example creates a new custom language model named `Example model`. The model is created for the base model `en-US-BroadbandModel` and has the description `Example custom language model`. The `Content-Type` header specifies that JSON data is being passed to the method.
 
 ```bash
-curl -X POST -u "{username}:{password}"
+curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: application/json"
 --data "{\"name\": \"Example model\",
   \"base_model_name\": \"en-US_BroadbandModel\",
@@ -144,7 +144,7 @@ You use the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` m
 The following example adds the corpus text file `healthcare.txt` to the custom model with the specified ID. The example names the corpus `healthcare`.
 
 ```bash
-curl -X POST -u "{username}:{password}"
+curl -X POST -u "apikey:{apikey}"
 --data-binary @healthcare.txt
 "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/corpora/healthcare"
 ```
@@ -164,7 +164,7 @@ The service returns a 201 response code if the corpus is valid. It then asynchro
 To determine the status of the analysis, use the `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` method to poll the status of the corpus. The method accepts the ID of the model and the name of the corpus, as shown in the following example:
 
 ```bash
-curl -X GET -u "{username}:{password}"
+curl -X GET -u "apikey:{apikey}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/corpora/corpus1"
 ```
 {: pre}
@@ -201,7 +201,7 @@ You can use the following methods to add words to a custom model:
 -   The `POST /v1/customizations/{customization_id}/words` method adds multiple words at one time. You pass a JSON object that provides information about each word via the body of the request. The following example adds two custom words, `HHonors` and `IEEE`, to the custom model with the specified ID. The `Content-Type` header specifies that JSON data is being passed to the method.
 
     ```bash
-    curl -X POST -u "{username}:{password}"
+    curl -X POST -u "apikey:{apikey}"
     --header "Content-Type: application/json"
     --data "{\"words\": [
       {\"word\": \"HHonors\", \"sounds_like\": [\"hilton honors\", \"H. honors\"], \"display_as\": \"HHonors\"},
@@ -225,7 +225,7 @@ You can use the following methods to add words to a custom model:
     The following command adds the words from the file:
 
     ```bash
-    curl -X POST -u "{username}:{password}"
+    curl -X POST -u "apikey:{apikey}"
     --header "Content-Type: application/json"
     --data-binary @words.json
     "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words"
@@ -236,7 +236,7 @@ You can use the following methods to add words to a custom model:
 -   The `PUT /v1/customizations/{customization_id}/words/{word_name}` method adds individual words. You pass a JSON object that provides information about the word. The following example adds the word `NCAA` to the model with the specified ID. The `Content-Type` header again indicates that JSON data is being passed to the method.
 
     ```bash
-    curl -X PUT -u "{username}:{password}"
+    curl -X PUT -u "apikey:{apikey}"
     --header "Content-Type: application/json"
     --data "{\"sounds_like\": [\"N. C. A. A.\", \"N. C. double A.\"]}"
     "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words/NCAA"
@@ -255,7 +255,7 @@ When you use the `POST /v1/customizations/{customization_id}/words` method, the 
 To determine the status of the request, use the `GET /v1/customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the model and returns information that includes the model's status, as in the following example:
 
 ```bash
-curl -X GET -u "{username}:{password}"
+curl -X GET -u "apikey:{apikey}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}"
 ```
 {: pre}
@@ -293,7 +293,7 @@ Once you populate a custom language model with new words, either by adding corpo
 You use the `POST /v1/customizations/{customization_id}/train` method to train a custom model. You pass the method the customization ID of the model that you want to train, as in the following example:
 
 ```bash
-curl -X POST -u "{username}:{password}"
+curl -X POST -u "apikey:{apikey}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/train"
 ```
 {: pre}
@@ -315,7 +315,7 @@ The service returns a 200 response code if the training process is successfully 
 To determine the status of a training request, use the `GET /v1/customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the model and returns information about the model.
 
 ```bash
-curl -X GET -u "{username}:{password}"
+curl -X GET -u "apikey:{apikey}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}"
 ```
 {: pre}
@@ -394,21 +394,21 @@ Follow these steps to use the Python script:
     {: pre}
 
     For more information about the library, see [pypi.python.org/pypi/requests ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://pypi.python.org/pypi/requests){: new_window}.
-1.  Edit the script to replace the following two variables with the username and password from your {{site.data.keyword.speechtotextshort}} service credentials:
+1.  Edit the script to replace the `password` string `iam_apikey` with the API key from your {{site.data.keyword.speechtotextshort}} service credentials:
 
     ```
-    username = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    password = "zzzzzzzzzzzz"
+    password = "iam_apikey"
     ```
     {: codeblock}
 
-    For more information, see [Service credentials for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-credentials.html).
 1.  Run the script by entering the following command:
 
     ```bash
     python testSTTcustom.py
     ```
     {: pre}
+
+**Note:** The script uses the following default URL: `https://stream.watsonplatform.net`. If you created your service instance in a different region, modify the `uri` variables to use your region. For example, use `https://gateway-wdc.watsonplatform.net` if your service instance resides in the US East data center.
 
 ### Example shell script
 {: #shellScript}
@@ -418,15 +418,20 @@ Follow these steps to use the Bash shell script:
 1.  Download the shell script named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.sh" download="testSTTcustom.sh">testSTTcustom.sh <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon" class="style-scope doc-content"></a>.
 1.  Download the example corpus text files to use with the script. You are free to test with either of the corpus text files or with a file of your own choosing. By default, all corpus text files must reside in the same directory as the script.
 1.  The script uses the `curl` command for HTTP requests to the service. If you have not already downloaded `curl`, you can install the version for your operating system from [curl.haxx.se ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://curl.haxx.se){: new_window}. Install the version that supports the Secure Sockets Layer (SSL) protocol, and make sure to include the installed binary file on your `PATH` environment variable.
-1.  Edit the script to replace the following two variables with the username and password from your {{site.data.keyword.speechtotextshort}} service credentials:
+1.  Edit the script to replace the `PASSWORD` string `iam_apikey` with the API key from your {{site.data.keyword.speechtotextshort}} service credentials:
 
     ```
-    USERNAME="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-    PASSWORD="zzzzzzzzzzzz"
+    PASSWORD="iam_apikey"
     ```
     {: codeblock}
 
-    For more information, see [Service credentials for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-credentials.html).
+1.  Edit the script to replace the `URL` string with the URL for the region in which you created your service instance. The script uses the following default URL:
+
+    ```
+    URL="https://stream.watsonplatform.net/speech-to-text/api/v1"
+    ```
+    {: codeblock}
+
 1.  Make sure that the script has executable permissions, and then run the script by entering the following command:
 
     ```bash

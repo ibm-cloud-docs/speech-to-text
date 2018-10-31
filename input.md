@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-12"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -26,11 +26,6 @@ The {{site.data.keyword.speechtotextshort}} service offers the following feature
 -   For more information about the supported audio formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 -   For examples of simple requests and responses for each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text/basic-request.html).
 -   For an alphabetized list of all available parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
-
-## Authentication tokens
-{: #tokens}
-
-*Authentication tokens* are an alternative to service credentials. By using tokens, you can make authenticated requests to {{site.data.keyword.watson}} services without embedding your service credentials in every call. You use your service credentials to obtain a token for the service. You then call the service directly, without relying on an intermediate server-side application for handling communications to and from the service. You must use authentication tokens with the WebSocket interface. For more information, see [Tokens for authentication](/docs/services/watson/getting-started-tokens.html).
 
 ## Request logging
 {: #logging}
@@ -126,7 +121,7 @@ The following table lists the supported models for each language. If you omit th
 The following example request uses the model `en-US-NarrowbandModel`:
 
 ```bash
-curl -X POST -u "{username}:{password}"
+curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?model=en-US_NarrowbandModel"
@@ -151,7 +146,7 @@ Custom models are based on one of the language models that are described in [Lan
 The following example request includes the `language_customization_id` parameter to use the custom language model with the specified ID. It includes the `customization_weight` parameter to indicate that words from the custom model are to be given a relative weight of `0.5`.
 
 ```bash
-curl -X POST -u "{username}:{password}"
+curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&customization_weight=0.5"
@@ -161,7 +156,7 @@ curl -X POST -u "{username}:{password}"
 The following example request uses both a custom language model and a custom acoustic model. The former is identified with the `language_customization_id` parameter, the latter with the `acoustic_customization_id` parameter.
 
 ```bash
-curl -X POST -u "{username}:{password}"
+curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file1.flac
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&acoustic_customization_id={customization_id}"
@@ -218,7 +213,7 @@ For more information about timeouts and how to work around them, see [Timeouts](
 The following example request specifies `chunked` for the `Transfer-Encoding` header to use streaming mode. The connection remains open to accept additional chunks of audio.
 
 ```bash
-curl -X POST -u "{username}:{password}"
+curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --header "Transfer-Encoding: chunked"
 --data-binary @{path}audio-file1.flac
@@ -255,7 +250,7 @@ To improve usability for long audio, the service avoids HTTP REST inactivity tim
 The following example request sets the inactivity timeout to 60 seconds. The client sends an initial file to begin the streaming session.
 
 ```bash
-curl -X POST -u "{username}:{password}"
+curl -X POST -u "apikey:{apikey}"
 --header "Transfer-Encoding: chunked"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file1.flac

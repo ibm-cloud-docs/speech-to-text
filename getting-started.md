@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-17"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -24,29 +24,27 @@ lastupdated: "2018-10-17"
 The {{site.data.keyword.speechtotextfull}} service transcribes audio to text to enable speech transcription capabilities for applications. This curl-based tutorial can help you get started quickly with the service. The examples show you how to call the service's `POST /v1/recognize` method to request a transcript.
 {: shortdesc}
 
-> **Important:** The tutorial uses service instance credentials to authenticate to the {{site.data.keyword.speechtotextshort}} service. In some regions, new service instances instead use {{site.data.keyword.Bluemix}} Identity and Access Management (IAM) for authentication. Authenticate by using the approach that is right for your region and service instance.
-
-For more information about where and how the service uses IAM authentication, see the [Release notes](/docs/services/speech-to-text/release-notes.html).
+> **Important:** The tutorial uses {{site.data.keyword.Bluemix}} Identity and Access Management (IAM) API keys for authentication. Older service instances might continue to use the `{username}` and `{password}` from their existing service credentials for authentication. Authenticate by using the approach that is right for your service instance. For more information about the service's use of IAM authentication, see the [30 October 2018 service update](/docs/services/speech-to-text/release-notes.html#October2018b) in the release notes.
 
 ## Before you begin
 {: #before-you-begin}
 
-- {: download} If you're seeing this text, you created your service instance. Now get your credentials.
-- Create an instance of the service:
+-   {: download} If you're seeing this text, you created your service instance. Now get your credentials.
+-   Create an instance of the service:
     1.  Go to the [{{site.data.keyword.speechtotextshort}} ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.{DomainName}/catalog/services/speech-to-text){: new_window} page in the {{site.data.keyword.Bluemix_notm}} Catalog.
     1.  Sign up for a free {{site.data.keyword.Bluemix_notm}} account or log in.
     1.  Click **Create**.
-- Copy the credentials to authenticate to your service instance:
-    1.  On the service dashboard, click the **Service credentials** tab.
-    1.  Click **View credentials** under **Actions**.
-    1.  Copy the `username`, `password`, and `url` values.
-- Make sure that you have the `curl` command.
+-   Copy the credentials to authenticate to your service instance:
+    1.  From the [{{site.data.keyword.Bluemix_notm}} dashboard ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.{DomainName}/dashboard/apps){: new_window}, click on your {{site.data.keyword.speechtotextshort}} service instance to go to the {{site.data.keyword.speechtotextshort}} service dashboard page.
+    1.  On the **Manage** page, click **Show** to view your credentials.
+    1.  Copy the `apikey` and `url` values.
+-   Make sure that you have the `curl` command.
     -   The examples use the `curl` command to call methods of the HTTP interface. Install the version for your operating system from [curl.haxx.se ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://curl.haxx.se/){: new_window}. Install the version that supports the Secure Sockets Layer (SSL) protocol. Make sure to include the installed binary file on your `PATH` environment variable.
 
-**Note:** When you enter a command, replace `{username}` and `{password}` with your service credentials. Omit the braces, which indicate variable values, from the command. Actual values resemble those in the following example:
+**Note:** When you enter a command, replace `{apikey}` with your actual API key. Omit the braces, which indicate a variable value, from the command. An actual value resembles the following example:
 
 ```bash
-curl -X POST -u "2c9c3e3d-b3494-4fbd-98cf-e3951d826650:ydZd6HwPLPya"
+curl -X POST -u "apikey:L_HALhLVIksh1b73l97LSs6R_3gLo4xkujAaxm7i-b9x"
 . . .
 ```
 {:pre}
@@ -58,11 +56,11 @@ Call the `POST /v1/recognize` method to request a basic transcript of a FLAC aud
 
 1.  Download the sample audio file <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac" download="audio-file.flac">audio-file.flac <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon" class="style-scope doc-content"></a>.
 1.  Issue the following command to call the service's `/v1/recognize` method for basic transcription with no parameters. The example uses the `Content-Type` header to indicate the type of the audio, `audio/flac`. The example uses the default language model, `en-US_BroadbandModel`, for transcription.
-    -   Replace `{username}` and `{password}` with your service credentials from the previous step.
+    -   Replace `{apikey}` with your IAM API key.
     -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
 
     ```bash
-    curl -X POST -u "{username}:{password}" \
+    curl -X POST -u "apikey:{apikey}" \
     --header "Content-Type: audio/flac" \
     --data-binary @{path_to_file}audio-file.flac \
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
@@ -97,11 +95,11 @@ Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but
 
 1.  If necessary, download the sample audio file <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac" download="audio-file.flac">audio-file.flac <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon" class="style-scope doc-content"></a>.
 1.  Issue the following command to call the service's `/v1/recognize` method with two extra parameters. Set the `timestamps` parameter to `true` to indicate the beginning and end of each word in the audio stream. Set the `max_alternatives` parameter to `3` to receive the three most likely alternatives for the transcription. The example uses the `Content-Type` header to indicate the type of the audio, `audio/flac`, and the request uses the default model, `en-US_BroadbandModel`.
-    -   Replace `{username}` and `{password}` with your service credentials.
+    -   Replace `{apikey}` with your IAM API key.
     -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
 
     ```bash
-    curl -X POST -u "{username}:{password}" \
+    curl -X POST -u "apikey:{apikey}" \
     --header "Content-Type: audio/flac" \
     --data-binary @{path_to_file}audio-file.flac \
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?timestamps=true&max_alternatives=3"

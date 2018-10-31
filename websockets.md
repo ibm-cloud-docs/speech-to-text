@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-23"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2018-10-23"
 # The WebSocket interface
 {: #websockets}
 
-**Important:** You cannot use JavaScript to call the WebSocket interface from a browser. The `watson-token` parameter that is available with the `/v1/recognize` method does not accept API keys, and you cannot pass request headers from JavaScript. For more information about working around this limitation, see the [Known limitations](/docs/services/speech-to-text/release-notes.html#limitations) in the release notes.
+**Important:** You cannot use JavaScript to call the WebSocket interface from a browser. The `watson-token` parameter that is available with the `/v1/recognize` method does not accept IAM tokens or API keys, and you cannot pass request headers from JavaScript. For more information about working around this limitation, see the [Known limitations](/docs/services/speech-to-text/release-notes.html#limitations) in the release notes.
 
 The WebSocket interface of the {{site.data.keyword.speechtotextshort}} service is the most natural way for a client to interact with the service. To use the WebSocket interface for speech recognition, you first use the `/v1/recognize` method to establish a persistent connection with the service. You then send text and binary messages over the connection to initiate and manage the recognition requests.
 {: shortdesc}
@@ -76,9 +76,18 @@ A WebSocket client calls this method with the following query parameters to esta
       authenticated connection with the service. Once you establish a
       connection, you can keep it alive indefinitely. While the connection
       remains open, you do not need to pass the token with subsequent calls.
-      For more information, see
-      <a href="/docs/services/speech-to-text/input.html#tokens">Authentication
-      tokens</a>.
+      <br/><br/>
+      Watson authentication tokens are an alternative to service credentials.
+      They are based on pre-IAM service credentials that use a `{username}`
+      and `{password}` for authentication. For more information, see
+      [Tokens for authentication](/docs/services/watson/getting-started-tokens.html).
+      <br/><br/>
+      **Note:** You cannot use JavaScript to call the WebSocket interface from
+      a browser if your service credentials are based on IAM authentication.
+      The `watson-token` parameter does not accept IAM tokens or API keys.
+      For more information about working around this limitation, see the
+      [Known limitations](/docs/services/speech-to-text/release-notes.html#limitations)
+      in the release notes.
     </td>
   </tr>
   <tr>
@@ -203,13 +212,14 @@ To initiate a recognition request, the client sends a JSON text message to the s
       <ul style="margin-left:20px; padding:0px;">
         <li style="margin:10px 0px; line-height:120%;">
           <code>start</code> starts a recognition request or specifies
-          new parameters for subsequent requests. See
-          <a href="#WSmore">Send additional requests and modify request
-            parameters</a>.
+          new parameters for subsequent requests. For more information,
+          see <a href="#WSmore">Send additional requests and modify
+          request parameters</a>.
         </li>
         <li style="margin:10px 0px; line-height:120%;">
           <code>stop</code> signals that all audio for a request has
-          been sent. See <a href="#WSstop">End a recognition request</a>.
+          been sent. For more information, see
+          <a href="#WSstop">End a recognition request</a>.
         </li>
       </ul>
     </td>

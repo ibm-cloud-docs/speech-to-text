@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-25"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -83,7 +83,7 @@ You use the `POST /v1/acoustic_customizations` method to create a new custom aco
 The following example creates a new custom acoustic model named `Example acoustic model`. The model is created for the base model `en-US_BroadbandModel` and has the description `Example custom acoustic model`. The `Content-Type` header specifies that JSON data is being passed to the method.
 
 ```bash
-curl -X POST -u "{username}:{password}"
+curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: application/json"
 --data "{\"name\": \"Example acoustic model\",
   \"base_model_name\": \"en-US_BroadbandModel\",
@@ -122,7 +122,7 @@ The following examples show the addition of both audio- and archive-type resourc
 -   The following example adds an audio-type resource to the acoustic custom model with the specified `customization_id`. The `Content-Type` header identifies the type of the audio as `audio/wav`. The audio file, **audio1.wav**, is passed as the body of the request, and the resource is given the named `audio1`.
 
     ```bash
-    curl -X POST -u "{username}:{password}"
+    curl -X POST -u "apikey:{apikey}"
     --header "Content-Type: audio/wav"
     --data-binary @audio1.wav
     "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio1"
@@ -132,7 +132,7 @@ The following examples show the addition of both audio- and archive-type resourc
 -   The following example adds an archive-type resource to the specified custom acoustic model. The `Content-Type` header identifies the type of the archive as `application/zip`. The `Contained-Contented-Type` header indicates that all files that are contained in the archive have the format `audio/l16` and are sampled at a rate of 16 kHz. The archive file, **audio2.zip**, is passed as the body of the request, and the resource is given the name `audio2`.
 
     ```bash
-    curl -X POST -u "{username}:{password}"
+    curl -X POST -u "apikey:{apikey}"
     --header "Content-Type: application/zip"
     --header "Contained-Content-Type: audio/l16;rate=16000"
     --data-binary @audio2.zip
@@ -163,7 +163,7 @@ The content of the response and location of the `status` field depend on the typ
 -   *For an audio-type resource,* the `status` field is located in the top-level (`AudioListing`) object.
 
     ```bash
-    curl -X GET -u "{username}:{password}"
+    curl -X GET -u "apikey:{apikey}"
     "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio1"
     ```
     {: pre}
@@ -185,7 +185,7 @@ The content of the response and location of the `status` field depend on the typ
 -   *For an archive-type resource,* the `status` field is located in the second-level (`AudioResource`) object that is nested in the `container` field.
 
     ```bash
-    curl -X GET -u "{username}:{password}"
+    curl -X GET -u "apikey:{apikey}"
     "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio2"
     ```
     {: pre}
@@ -215,7 +215,7 @@ Once you populate a custom acoustic model with audio resources, you must train t
 You use the `POST /v1/acoustic_customizations/{customization_id}/train` method to train a custom model. You pass the method the customization ID of the model that you want to train, as in the following example.
 
 ```bash
-curl -X POST -u "{username}:{password}"
+curl -X POST -u "apikey:{apikey}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/train"
 ```
 {: pre}
@@ -232,7 +232,7 @@ The service returns a 200 response code if the training process is successfully 
 To determine the status of a training request, use the `GET /v1/acoustic_customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the acoustic model and returns its status, as in the following example:
 
 ```bash
-curl -X GET -u "{username}:{password}"
+curl -X GET -u "apikey:{apikey}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}"
 ```
 {: pre}

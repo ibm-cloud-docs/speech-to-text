@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-25"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -43,7 +43,7 @@ You can create multiple custom acoustic models for the same or different domains
 -   For the HTTP interface, use the `POST /v1/recognize` method. The specified custom model is used for that request.
 
     ```bash
-    curl -X POST -u "{username}:{password}"
+    curl -X POST -u "apikey:{apikey}"
     --header "Content-Type: audio/flac"
     --data-binary @audio-file1.flac
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?acoustic_customization_id={customization_id}"
@@ -54,7 +54,7 @@ You can create multiple custom acoustic models for the same or different domains
 -   For the asynchronous HTTP interface, use the `POST /v1/recognitions` method. The specified custom model is used for that request.
 
     ```bash
-    curl -X POST -u "{username}:{password}"
+    curl -X POST -u "apikey:{apikey}"
     --header "Content-Type: audio/flac"
     --data-binary @audio-file.flac
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions?acoustic_customization_id={customization_id}"

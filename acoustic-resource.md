@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-25"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -38,7 +38,7 @@ To add an individual audio file to a custom acoustic model, you specify the form
 The following example from [Add audio to the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#addAudio) adds an `audio/wav` file:
 
 ```bash
-curl -X POST -u "{username}:{password}"
+curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/wav"
 --data-binary @audio1.wav
 "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio1"
@@ -64,7 +64,7 @@ For an audio file that is embedded within an archive-type resource, the name of 
 The following example from [Add audio to the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#addAudio) adds an `application/zip` file that contains audio files in `audio/l16` format that are sampled at 16 kHz:
 
 ```bash
-curl -X POST -u "{username}:{password}"
+curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: application/zip"
 --header "Contained-Content-Type: audio/l16;rate=16000"
 --data-binary @audio2.zip
