@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-17"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -171,10 +171,3 @@ You can associate a customer ID with data that is added or updated for custom la
 -   `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`
 
 If necessary, you can then delete the data by using the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/services/speech-to-text/information-security.html).
-
-### Using the examples
-{: #customCurl}
-
-The documentation includes examples that use the `curl` command to demonstrate the methods of the customization interface. To run the examples, create an instance of the {{site.data.keyword.speechtotextshort}} service in {{site.data.keyword.Bluemix_notm}}. Then replace `{username}:{password}` in each example with the values of your *username* and *password* from the credentials for the service instance. Concatenate the two values with an embedded colon to create a single string as shown.
-
-Use your service credentials with the examples. Do *not* use your {{site.data.keyword.Bluemix_notm}} ID and password. For more information, see [Service credentials for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-credentials.html).

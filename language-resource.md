@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-09-25"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -166,7 +166,7 @@ The `sounds_like` field specifies how a word is pronounced by speakers. By defau
 -   Provide different pronunciations for acronyms. For example, the acronym `NCAA` can be pronounced as it is spelled or colloquially as *N. C. double A.* The following example adds both of these sounds-like pronunciations for the word `NCAA`:
 
     ```bash
-    curl -X PUT -u "{username}:{password}"
+    curl -X PUT -u "apikey:{apikey}"
     --header "Content-Type: application/json"
     --data "{\"sounds_like\": [\"N. C. A. A.\", \"N. C. double A.\"]}"
     "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words/NCAA"
@@ -251,7 +251,7 @@ Speech recognition uses statistical algorithms to analyze audio, so adding a wor
 The `display_as` field specifies how a word is displayed in a transcription. It is intended for cases where you want the service to display a string that is different from the word's spelling. For example, you can indicate that the word `hhonors` is to be displayed as `HHonors` regardless of whether it sounds like `hilton honors` or `h honors`.
 
 ```bash
-curl -X PUT -u "{username}:{password}"
+curl -X PUT -u "apikey:{apikey}"
 --header "Content-Type: application/json"
 --data "{\"sounds_like\": [\"hilton honors\", \"H. honors\"], \"display_as\": \"HHonors\"}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words/hhonors"
@@ -260,7 +260,7 @@ curl -X PUT -u "{username}:{password}"
 
 As another example, you can indicate that the word `IBM` is to be displayed as <code>IBM&trade;</code>.
 
-<pre><code class="language-bash">curl -X PUT -u "{username}:{password}"
+<pre><code class="language-bash">curl -X PUT -u "apikey:{apikey}"
 --header "Content-Type: application/json"
 --data "{\"sounds_like\": [\"I. B. M.\"], \"display_as\":\"IBM&#8482;\"}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words/IBM"</code></pre>

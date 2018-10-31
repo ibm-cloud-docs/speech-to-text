@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-09-25"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -49,7 +49,7 @@ The methods also list the status of the audio data. The status is important for 
 The following example lists all audio resources for the custom acoustic model with the specified customization ID. The acoustic model has three audio resources. The service has successfully analyzed `audio1` and `audio2`; it is still analyzing `audio3`.
 
 ```bash
-curl -X GET -u "{username}:{password}"
+curl -X GET -u "apikey:{apikey}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio"
 ```
 {: pre}
@@ -94,7 +94,7 @@ curl -X GET -u "{username}:{password}"
 The following example returns information about the audio-type resource named `audio1`. The resource is 131 seconds long and is encoded with the `pcm_s16le` codec. It was successfully added to the model.
 
 ```bash
-curl -X GET -u "{username}:{password}"
+curl -X GET -u "apikey:{apikey}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio1"
 ```
 {: pre}
@@ -119,7 +119,7 @@ curl -X GET -u "{username}:{password}"
 The following example returns information about the archive-type resource named `audio2`. The resource is a **.zip** file that contains more than 9 minutes of audio. It too was successfully added to the model. As the example shows, querying information about an archive-type resource also provides information about the files that it contains.
 
 ```bash
-curl -X GET -u "{username}:{password}"
+curl -X GET -u "apikey:{apikey}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio2"
 ```
 {: pre}
@@ -175,7 +175,7 @@ Removing an audio resource does not affect the custom model until you train the 
 The following method deletes the audio resource that is named `audio3` from the custom model with the specified customization ID:
 
 ```bash
-curl -X DELETE -u "{username}:{password}"
+curl -X DELETE -u "apikey:{apikey}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio3"
 ```
 {: pre}

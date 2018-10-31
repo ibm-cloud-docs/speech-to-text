@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-16"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -743,7 +743,9 @@ An optional value of `chunked` that causes the audio to be streamed to the servi
 
 ## watson-token
 
-An optional authentication token that makes authenticated requests to the service without embedding your service credentials in every call. By default, service credentials must be passed with each request. See [Authentication tokens](/docs/services/speech-to-text/input.html#tokens).
+An optional authentication token that makes authenticated requests to the service without embedding your service credentials in every call. By default, service credentials must be passed with each request. Watson authentication tokens are based on pre-IAM service credentials that use a `{username}` and `{password}` for authentication. See [Tokens for authentication](/docs/services/watson/getting-started-tokens.html).
+
+**Note:** You cannot use JavaScript to call the WebSocket interface from a browser if your service credentials are based on IAM authentication. The `watson-token` parameter does not accept IAM tokens or API keys. For more information about working around this limitation, see the [Known limitations](/docs/services/speech-to-text/release-notes.html#limitations) in the release notes.
 
 <table>
   <caption>Table 17. The watson-token parameter</caption>
@@ -772,7 +774,7 @@ An optional authentication token that makes authenticated requests to the servic
       **HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of each request
+      Not applicable
     </td>
   </tr>
   <tr>
@@ -780,7 +782,7 @@ An optional authentication token that makes authenticated requests to the servic
       **HTTP asynchronous**
     </td>
     <td style="text-align:left">
-      Query parameter of each request
+      Not applicable
     </td>
   </tr>
 </table>
@@ -875,7 +877,9 @@ An optional boolean that indicates whether the service provides confidence measu
 
 ## X-Watson-Authorization-Token
 
-An optional authentication token that makes authenticated requests to the service without embedding your service credentials in every call. By default, service credentials must be passed with each request. See [Authentication tokens](/docs/services/speech-to-text/input.html#tokens).
+An optional authentication token that makes authenticated requests to the service without embedding your service credentials in every call. By default, service credentials must be passed with each request. Watson authentication tokens are based on pre-IAM service credentials that use a `{username}` and `{password}` for authentication. See [Tokens for authentication](/docs/services/watson/getting-started-tokens.html).
+
+**Note:** The `X-Watson-Authorization-Token` header does not accept IAM tokens or API keys.
 
 <table>
   <caption>Table 20. The X-Watson-Authorization-Token parameter</caption>

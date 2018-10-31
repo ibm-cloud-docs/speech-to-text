@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2018-09-25"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -42,7 +42,7 @@ Both methods return the `name` of the corpus, the `total_words` read from the co
 The following example lists all corpora for the custom model with the specified customization ID:
 
 ```bash
-curl -X GET -u "{username}:{password}"
+curl -X GET -u "apikey:{apikey}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/corpora"
 ```
 {: pre}
@@ -79,7 +79,7 @@ Three corpora are added to the custom model. The service successfully analyzed `
 The following example returns information about the corpus that is named `corpus1` for the custom model with the specified customization ID.
 
 ```bash
-curl -X GET -u "{username}:{password}"
+curl -X GET -u "apikey:{apikey}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/corpora/corpus1"
 ```
 {: pre}
@@ -110,7 +110,7 @@ Removing a corpus does not affect the custom model until you train the model on 
 The following example deletes the corpus that is named `corpus3` from the custom model with the specified customization ID.
 
 ```bash
-curl -X DELETE -u "{username}:{password}"
+curl -X DELETE -u "apikey:{apikey}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/corpora/corpus3"
 ```
 {: pre}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-12"
+lastupdated: "2018-10-29"
 
 ---
 
@@ -41,7 +41,7 @@ You can create multiple custom language models for the same or different domains
 -   For the HTTP interface, use the `POST /v1/recognize` method. The specified custom model is used for that request.
 
     ```bash
-    curl -X POST -u "{username}:{password}"
+    curl -X POST -u "apikey:{apikey}"
     --header "Content-Type: audio/flac"
     --data-binary @audio-file.flac
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}"
@@ -52,7 +52,7 @@ You can create multiple custom language models for the same or different domains
 -   For the asynchronous HTTP interface, use the `POST /v1/recognitions` method. The specified custom model is used for that request.
 
     ```bash
-    curl -X POST -u "{username}:{password}"
+    curl -X POST -u "apikey:{apikey}"
     --header "Content-Type: audio/flac"
     --data-binary @audio-file.flac
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions?language_customization_id={customization_id}"
@@ -79,7 +79,7 @@ You specify a customization weight by using the `customization_weight` parameter
 -   For a training request, the following example specifies a customization weight of `0.5` with the `POST /v1/customizations/{customization_id}/train` method:
 
     ```bash
-    curl -X POST -u "{username}:{password}"
+    curl -X POST -u "apikey:{apikey}"
     "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/train?customization_weight=0.5"
     ```
     {: pre}
@@ -89,7 +89,7 @@ You specify a customization weight by using the `customization_weight` parameter
 -   For a recognition request, the following example specifies a customization weight of `0.7` with the `POST /v1/recognize` method:
 
     ```bash
-    curl -X POST -u "{username}:{password}"
+    curl -X POST -u "apikey:{apikey}"
     --header "Content-Type: audio/flac"
     --data-binary @audio-file1.flac
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&customization_weight=0.7"
