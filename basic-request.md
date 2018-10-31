@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-29"
+lastupdated: "2018-10-31"
 
 ---
 
@@ -49,11 +49,11 @@ var wsURI = 'wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
 var websocket = new WebSocket(wsURI);
 
 websocket.send(JSON.stringify({
-  'action': 'start',
-  'content-type': 'audio/flac'
+  action: 'start',
+  content-type: 'audio/flac'
 }));
 websocket.send(blob);
-websocket.send(JSON.stringify({'action': 'stop'}));
+websocket.send(JSON.stringify({action: 'stop'}));
 ```
 {: codeblock}
 

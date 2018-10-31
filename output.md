@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-29"
+lastupdated: "2018-10-31"
 
 ---
 
@@ -412,9 +412,9 @@ var websocket = new WebSocket(wsURI);
 websocket.onopen = function(evt) { onOpen(evt) };
 function onOpen(evt) {
   var message = {
-    'action': 'start',
-    'content-type': 'audio/l16;rate=22050',
-    'interim_results': true
+    action: 'start',
+    content-type: 'audio/l16;rate=22050',
+    interim_results: true
   };
   websocket.send(JSON.stringify(message));
   websocket.send(blob);
