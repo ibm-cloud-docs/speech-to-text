@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-29"
+lastupdated: "2018-10-31"
 
 ---
 
@@ -244,8 +244,8 @@ The following snippet of JavaScript code sends initialization parameters for the
 ```javascript
 function onOpen(evt) {
   var message = {
-    'action': 'start',
-    'content-type': 'audio/l16;rate=22050'
+    action: 'start',
+    content-type: 'audio/l16;rate=22050'
   };
   websocket.send(JSON.stringify(message));
 }
@@ -296,7 +296,7 @@ When it is done sending the audio data for a request to the service, the client 
 -   By sending a JSON text message with the `action` parameter set to the value `stop`:
 
     ```javascript
-    {'action': 'stop'}
+    {action: 'stop'}
     ```
     {: codeblock}
 
@@ -320,10 +320,10 @@ The following example sends a `start` message with new parameters for subsequent
 
 ```javascript
 var message = {
-  'action': 'start',
-  'content-type': 'audio/l16;rate=22050',
-  'word_confidence': true,
-  'timestamps': true
+  action: 'start',
+  content-type: 'audio/l16;rate=22050',
+  word_confidence: true,
+  timestamps: true
 };
 websocket.send(JSON.stringify(message));
 ```
