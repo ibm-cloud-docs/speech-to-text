@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-29"
+lastupdated: "2018-11-01"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2018-10-29"
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on October 30, 2018. The service now uses {{site.data.keyword.Bluemix}} Identity and Access Management (IAM) authentication in all regions. For more information, see the [October 30 2018 service update](/docs/services/speech-to-text/release-notes.html#October2018b) in the release notes*.
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on October 30, 2018. The service now uses {{site.data.keyword.Bluemix}} Identity and Access Management (IAM) authentication in all locations. For more information, see the [October 30 2018 service update](/docs/services/speech-to-text/release-notes.html#October2018b) in the release notes*.
 
 The {{site.data.keyword.speechtotextfull}} service provides application programming interfaces (APIs) that you can use to add speech transcription capabilities to your applications. The service leverages machine intelligence to transcribe the human voice accurately. The service combines information about grammar and language structure with knowledge of the composition of the audio signal. It can continuously return and retroactively update a transcription as more speech is heard.
 {: shortdesc}
