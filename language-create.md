@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-29"
+lastupdated: "2018-11-01"
 
 ---
 
@@ -408,7 +408,7 @@ Follow these steps to use the Python script:
     ```
     {: pre}
 
-**Note:** The script uses the following default URL: `https://stream.watsonplatform.net`. If you created your service instance in a different region, modify the `uri` variables to use your region. For example, use `https://gateway-wdc.watsonplatform.net` if your service instance resides in the US East data center.
+**Note:** The script uses the following default URL for the Dallas location: `https://stream.watsonplatform.net`. If you created your service instance in a different location, modify the `uri` variables to use your location. For example, use `https://gateway-wdc.watsonplatform.net` if your service instance resides in the Washington, DC, location.
 
 ### Example shell script
 {: #shellScript}
@@ -425,7 +425,7 @@ Follow these steps to use the Bash shell script:
     ```
     {: codeblock}
 
-1.  Edit the script to replace the `URL` string with the URL for the region in which you created your service instance. The script uses the following default URL:
+1.  Edit the script to replace the `URL` string with the URL for the location in which you created your service instance. The script uses the following default URL for the Dallas location:
 
     ```
     URL="https://stream.watsonplatform.net/speech-to-text/api/v1"

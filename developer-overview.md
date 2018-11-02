@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-29"
+lastupdated: "2018-11-01"
 
 ---
 
@@ -80,8 +80,7 @@ The {{site.data.keyword.speechtotextshort}} service supports a number of SDKs to
 For more information about working with {{site.data.keyword.watson}} Developer Cloud services and {{site.data.keyword.Bluemix_notm}}, see the following:
 
 -   For an introduction to working with {{site.data.keyword.watson}} services and {{site.data.keyword.Bluemix_notm}}, see [Getting started with {{site.data.keyword.watson}} and {{site.data.keyword.Bluemix_notm}}](/docs/services/watson/index.html).
--   For a language-independent introduction to developing {{site.data.keyword.watson}} services applications in {{site.data.keyword.Bluemix_notm}}, see [{{site.data.keyword.Bluemix_notm}} development approaches](/docs/services/watson/getting-started-bluemix.html).
--   All new service instances use {{site.data.keyword.Bluemix}} Identity and Access Management (IAM) for authentication. Older service instances might continue to use the `{username}` and `{password}` from their existing service credentials for authentication. For more information about authenticating to the service, see the [30 October 2018 service update](/docs/services/speech-to-text/release-notes.html#October2018b) in the release notes.
+-   All new service instances use {{site.data.keyword.Bluemix}} Identity and Access Management (IAM) for authentication. Older service instances might continue to use the `{username}` and `{password}` from their existing Cloud Foundry service credentials for authentication. For more information about authenticating to the service, see the [30 October 2018 service update](/docs/services/speech-to-text/release-notes.html#October2018b) in the release notes.
 -   For information about controlling the default request logging that is performed for all {{site.data.keyword.watson}} services, see [Controlling request logging for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-logging.html).
 
 ## Considerations for application development

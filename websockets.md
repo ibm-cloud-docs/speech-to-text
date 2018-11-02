@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-31"
+lastupdated: "2018-11-01"
 
 ---
 
@@ -49,12 +49,12 @@ wss://{host_name}/speech-to-text/api/v1/recognize
 ```
 {: codeblock}
 
-where `{host_name}` identifies the regional host for your application:
+where `{host_name}` is the location in which your application is hosted:
 
--   `stream.watsonplatform.net` for US South and UK (the following examples use this host name)
--   `stream-fra.watsonplatform.net` for Germany
--   `gateway-syd.watsonplatform.net` for Sydney and AP North
--   `gateway-wdc.watsonplatform.net` for US East
+-   `stream.watsonplatform.net` for Dallas (the following examples use this host name)
+-   `stream-fra.watsonplatform.net` for Frankfurt
+-   `gateway-syd.watsonplatform.net` for Sydney
+-   `gateway-wdc.watsonplatform.net` for Washington, DC
 
 A WebSocket client calls this method with the following query parameters to establish an authenticated connection with the service.
 
@@ -78,9 +78,8 @@ A WebSocket client calls this method with the following query parameters to esta
       remains open, you do not need to pass the token with subsequent calls.
       <br/><br/>
       Watson authentication tokens are an alternative to service credentials.
-      They are based on pre-IAM service credentials that use a `{username}`
-      and `{password}` for authentication. For more information, see
-      [Tokens for authentication](/docs/services/watson/getting-started-tokens.html).
+      They are based on Cloud Foundry service credentials that use a
+      `{username}` and `{password}` for authentication.
       <br/><br/>
       **Note:** You cannot use JavaScript to call the WebSocket interface from
       a browser if your service credentials are based on IAM authentication.
