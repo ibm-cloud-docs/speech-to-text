@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-01"
+lastupdated: "2018-11-08"
 
 ---
 
@@ -35,6 +35,11 @@ The {{site.data.keyword.speechtotextshort}} service has the following known limi
     -   Use the synchronous or asynchronous HTTP interfaces to perform speech recognition.
 
 <!-- For persistent WebSocket connections with the {{site.data.keyword.speechtotextshort}} service, you must use the access token to establish the connection before the token expires. You then remain authenticated while you keep the connection alive. You do not need to refresh an access token for an active WebSocket connection that lasts beyond the token's expiration time. -->
+
+## 7 November 2018
+{: #November2018a}
+
+The {{site.data.keyword.speechtotextshort}} service is now available in the IBM Cloud Tokyo location (**jp-tok**). Like all locations, Tokyo uses token-based Identity and Access Management (IAM) authentication. All new services instances that you create in this location use IAM authentication.
 
 ## 30 October 2018
 {: #October2018b}
@@ -89,7 +94,36 @@ For more information, see the following documentation:
     -   `POST /v1/recognitions` for asynchronous HTTP requests
 -   As of October 1, 2018, you are now charged for all audio that you pass to the service for speech recognition. The first one thousand minutes of audio that you send each month are no longer free. For more information about the pricing plans for the service, see the [{{site.data.keyword.speechtotextshort}} service in the {{site.data.keyword.Bluemix_short}} Catalog ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.ng.bluemix.net/catalog/services/speech-to-text){: new_window}.
 
-## 10 September 2018
+## Older releases
+{: #older}
+
+-   [10 September 2018](#September2018b)
+-   [7 September 2018](#September2018a)
+-   [8 August 2018](#August2018)
+-   [13 July 2018](#July2018)
+-   [12 June 2018](#June2018)
+-   [15 May 2018](#May2018)
+-   [26 March 2018](#March2018b)
+-   [1 March 2018](#March2018a)
+-   [1 February 2018](#February2018)
+-   [14 December 2017](#December2017)
+-   [2 October 2017](#October2017)
+-   [14 July 2017](#July2017b)
+-   [1 July 2017](#July2017a)
+-   [22 May 2017](#May2017)
+-   [10 April 2017](#April2017)
+-   [8 March 2017](#March2017)
+-   [1 December 2016](#December2016)
+-   [22 September 2016](#September2016)
+-   [30 June 2016](#June2016b)
+-   [23 June 2016](#June2016a)
+-   [10 March 2016](#March2016)
+-   [19 January 2016](#January2016)
+-   [17 December 2015](#December2015)
+-   [21 September 2015](#September2015)
+-   [1 July 2015](#July2015)
+
+### 10 September 2018
 {: #September2018b}
 
 **Important:** For a list of issues that have been fixed since the initial release, see [Resolved issues](#known_issues).
@@ -146,34 +180,6 @@ The following known issues that were associated with the customization interface
     To work around this issue, the user must use the `POST /v1/customizations/{customization_id}/upgrade_model` or `POST /v1/acoustic_customizations/{customization_id}/upgrade_model` method to upgrade the custom model to the latest version of its base model. The user can then use the custom model with speech recognition.
 
 Both of these issues have been fixed in production.
-
-## Older releases
-{: #older}
-
--   [7 September 2018](#September2018a)
--   [8 August 2018](#August2018)
--   [13 July 2018](#July2018)
--   [12 June 2018](#June2018)
--   [15 May 2018](#May2018)
--   [26 March 2018](#March2018b)
--   [1 March 2018](#March2018a)
--   [1 February 2018](#February2018)
--   [14 December 2017](#December2017)
--   [2 October 2017](#October2017)
--   [14 July 2017](#July2017b)
--   [1 July 2017](#July2017a)
--   [22 May 2017](#May2017)
--   [10 April 2017](#April2017)
--   [8 March 2017](#March2017)
--   [1 December 2016](#December2016)
--   [22 September 2016](#September2016)
--   [30 June 2016](#June2016b)
--   [23 June 2016](#June2016a)
--   [10 March 2016](#March2016)
--   [19 January 2016](#January2016)
--   [17 December 2015](#December2015)
--   [21 September 2015](#September2015)
--   [1 July 2015](#July2015)
 
 ### 7 September 2018
 {: #September2018a}
