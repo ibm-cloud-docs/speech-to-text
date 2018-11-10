@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-29"
+lastupdated: "2018-11-10"
 
 ---
 
@@ -21,6 +21,8 @@ lastupdated: "2018-10-29"
 {: #manageWords}
 
 The customization interface includes the `POST /v1/customizations/{customization_id}/words` and `PUT /v1/customizations/{customization_id}/words/{word_name}` methods, which are used to add or modify words for a custom model. For more information, see [Add words to the custom model](/docs/services/speech-to-text/language-create.html#addWords)). The interface also provides methods for listing the words of a custom language model and for deleting a word from a custom model.
+
+**Important:** You are likely to add most custom words from corpora. Make sure that you know the character encoding that is used in the text files for your corpora. The service preserves the encoding that it finds in the text files. You must use that encoding when working with the individual words in the custom language model. When you specify a word with the `GET`, `PUT`, or `DELETE /v1/customizations/{customization_id}/words/{word_name}` method, you must URL-encode the `{word_name}` that you pass in the URL if the word includes non-ASCII characters. For more information, see [Character encoding](/docs/services/speech-to-text/language-resource.html#charEncoding).
 
 ## Listing words from a custom language model
 {: #listWords}

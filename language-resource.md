@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-29"
+lastupdated: "2018-11-10"
 
 ---
 
@@ -77,6 +77,8 @@ In general, it is better for corpora to use words in different contexts. However
 Follow these guidelines to prepare a corpus text file:
 
 -   Provide a plain text file that is encoded in UTF-8 if it contains non-ASCII characters. The service assumes UTF-8 encoding if it encounters such characters.
+
+    **Important:** Make sure that you know the character encoding that is used in the text files of your corpora. The service preserves the encoding that it finds in the text files. You must use that encoding when working with the words in the custom language model. For more information, see [Character encoding](#charEncoding).
 -   Include each sentence of the corpus on its own line, terminating each line with a carriage return. Including multiple sentences on the same line can degrade accuracy.
 -   Use consistent capitalization for words in the corpus. The words resource is case-sensitive. Mix upper- and lowercase letters and use capitalization only when intended.
 -   Beware of typographical errors. The service assumes that typographical errors are new words. Unless you correct them before you train the model, the service adds them to the model's vocabulary. Remember the adage *Garbage in, garbage out!*
@@ -157,6 +159,46 @@ The following descriptions apply to US and UK English, French, German, Spanish, 
 You can use the `POST /v1/customizations/{customization_id}/words` and `PUT /v1/customizations/{customization_id}/words/{word_name}` methods to add new words to a custom model's words resource. You can also use the methods to modify or augment a word in a words resource.
 
 You might, for instance, need to use the methods to correct a typographical error or other mistake that is made when a word was added from a corpus. You might also need to add sounds-like definitions for an existing word. If you modify an existing word, the new data that you provide overwrites the word's existing definition in the words resource. The rules for adding a word also apply to modifying an existing word.
+
+### Character encoding
+{: #charEncoding}
+
+In general, you are likely to add most custom words from corpora. Make sure that you know the character encoding that is used in the text files for your corpora. The service preserves the encoding that it finds in the text files.
+
+You must use that encoding when working with the individual words in the custom language model. When you specify a word with the `GET`, `PUT`, or `DELETE /v1/customizations/{customization_id}/words/{word_name}` method, you must URL-encode the `{word_name}` that you pass in the URL if the word includes non-ASCII characters.
+
+For example, the following table shows what looks like the same letter in two different encodings, ASCII and UTF-8. You can pass the ASCII character on a URL as `z`. You must pass the UTF-8 character as `%EF%BD%9A`.
+
+<table>
+  <caption>Table 1. Character encoding examples</caption>
+  <tr>
+    <th style="text-align:left">Letter</th>
+    <th style="text-align:center">Encoding</th>
+    <th style="text-align:center">Value</th>
+  </tr>
+  <tr>
+    <td style="text-align:left; width:30%">
+      `z`
+    </td>
+    <td style="text-align:center">
+      ASCII
+    </td>
+    <td style="text-align:center">
+      `0x7a` (`7a`)
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left; width:30%">
+      <code>&#xff5a;</code>
+    </td>
+    <td style="text-align:center">
+      UTF-8 hexadecimal
+    </td>
+    <td style="text-align:center">
+      `0xEF 0xBD 0x9A` (`efbd9a`)
+    </td>
+  </tr>
+</table>
 
 ### Using the sounds_like field
 {: #soundsLike}
