@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-29"
+lastupdated: "2018-11-10"
 
 ---
 
@@ -30,9 +30,9 @@ The {{site.data.keyword.speechtotextshort}} service offers the following feature
 ## Request logging
 {: #logging}
 
-*Request logging* is used by all {{site.data.keyword.watson}} services to log each request to a service and its results. When you agree (opt in) to request logging, {{site.data.keyword.IBM_notm}} reserves the right to store and use the data to improve the service's base language models. {{site.data.keyword.IBM_notm}} accesses the data only to improve the service for future users. It never shares or makes public the logged data. Once you opt in, {{site.data.keyword.IBM_notm}} offers no mechanism to delete the stored audio or transcripts.
+*Request logging* is used by all {{site.data.keyword.watson}} services to log each request to a service and its results. By default, all {{site.data.keyword.watson}} services log requests and their results. Logging is done only to improve the services for future users. The logged data is not shared or made public.
 
-To prevent {{site.data.keyword.IBM_notm}} from accessing your data for general service improvements, set the `X-Watson-Learning-Opt-Out` request header to `true` for all requests. When you use the header to opt out of request logging, {{site.data.keyword.IBM_notm}} does not access your data for service improvements. For more information about opting out of request logging, see [Controlling request logging for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-logging.html).
+If you are concerned with protecting the privacy of users' personal information or otherwise do not want your requests to be used by IBM, you can choose not to have IBM log data (opt out). You can choose to opt out at either the account level or the API request level. For more information, see [Controlling request logging for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-logging.html).
 
 ## Information security
 {: #security}
