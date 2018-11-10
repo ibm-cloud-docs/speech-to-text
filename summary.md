@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-01"
+lastupdated: "2018-11-10"
 
 ---
 
@@ -923,7 +923,7 @@ An optional authentication token that makes authenticated requests to the servic
 
 ## X-Watson-Learning-Opt-Out
 
-An optional boolean that indicates whether you opt out of the request logging that {{site.data.keyword.IBM_notm}} performs to improve the service for future users. By default (`false`), request logging is performed. See [Request logging](/docs/services/speech-to-text/input.html#logging).
+An optional boolean that indicates whether you opt out of the default request logging that {{site.data.keyword.IBM_notm}} performs to improve the service for future users. To prevent IBM from accessing your data for general service improvements, specify <code>true</code> for the parameter. For more information, see [Request logging](/docs/services/speech-to-text/input.html#logging).
 
 <table>
   <caption>Table 21. The X-Watson-Learning-Opt-Out parameter</caption>
