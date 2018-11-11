@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-10"
+lastupdated: "2018-11-11"
 
 ---
 
@@ -20,24 +20,12 @@ lastupdated: "2018-11-10"
 # Input features
 {: #input}
 
-The {{site.data.keyword.speechtotextshort}} service offers the following features to specify how the service is to perform the recognition request. All of the input parameters that are described in the following sections are optional. Only the input audio and its format are required.
+The {{site.data.keyword.speechtotextshort}} service offers the following features to specify how the service is to perform the recognition request. All of the input parameters that are described in the following sections are optional. Only the input audio is required.
 {: shortdesc}
 
 -   For more information about the supported audio formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 -   For examples of simple requests and responses for each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text/basic-request.html).
 -   For an alphabetized list of all available parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
-
-## Request logging
-{: #logging}
-
-*Request logging* is used by all {{site.data.keyword.watson}} services to log each request to a service and its results. By default, all {{site.data.keyword.watson}} services log requests and their results. Logging is done only to improve the services for future users. The logged data is not shared or made public.
-
-If you are concerned with protecting the privacy of users' personal information or otherwise do not want your requests to be used by IBM, you can choose not to have IBM log data (opt out). You can choose to opt out at either the account level or the API request level. For more information, see [Controlling request logging for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-logging.html).
-
-## Information security
-{: #security}
-
-*Information security* includes features to associate a customer ID with data that is passed to the service with a request. You associate a customer ID with the data by passing the `X-Watson-Metadata` header with the request. If necessary, you can then delete the data by using the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/services/speech-to-text/information-security.html).
 
 ## Languages and models
 {: #models}
@@ -257,3 +245,15 @@ curl -X POST -u "apikey:{apikey}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?inactivity_timeout=60"
 ```
 {: pre}
+
+## Request logging
+{: #logging}
+
+*Request logging* is used by all {{site.data.keyword.watson}} services to log each request to a service and its results. By default, all {{site.data.keyword.watson}} services log requests and their results. Logging is done only to improve the services for future users. The logged data is not shared or made public.
+
+If you are concerned with protecting the privacy of users' personal information or otherwise do not want your requests to be used by IBM, you can choose not to have IBM log data (opt out). You can choose to opt out at either the account level or the API request level. For more information, see [Controlling request logging for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-logging.html).
+
+## Information security
+{: #security}
+
+*Information security* includes features to associate a customer ID with data that is passed to the service with a request. You associate a customer ID with the data by passing the `X-Watson-Metadata` header with the request. If necessary, you can then delete the data by using the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/services/speech-to-text/information-security.html).
