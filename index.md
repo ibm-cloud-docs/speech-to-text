@@ -42,7 +42,7 @@ The {{site.data.keyword.speechtotextshort}} service offers three interfaces for 
 
 The service also provides a [customization interface](/docs/services/speech-to-text/custom.html). You can use the interface to expand the vocabulary of a base model with domain-specific terminology or to adapt a base model for the acoustic characteristics of your audio. SDKs are also available to simplify your use of the service in various programming languages.
 
--   For examples of basic requests for each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text/basic-request.html).
+-   For examples of basic speech recognition requests with each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text/basic-request.html).
 -   For a high-level description of application development with the service, see [Overview for developers](/docs/services/speech-to-text/developer-overview.html).
 
 ## Input features
