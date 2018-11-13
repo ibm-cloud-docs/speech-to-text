@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-08"
+lastupdated: "2018-11-12"
 
 ---
 
@@ -20,12 +20,12 @@ lastupdated: "2018-11-08"
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on November 7, 2018. The service is now available in the IBM Cloud Tokyo location. For more information, see the [November 7 2018 service update](/docs/services/speech-to-text/release-notes.html#November2018a) in the release notes*.
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on November 12, 2018. The service now supports smart formatting as beta functionality for Japanese speech recognition. For more information, see the [12 November 2018 service update](/docs/services/speech-to-text/release-notes.html#November2018b) in the release notes*.
 
 The {{site.data.keyword.speechtotextfull}} service provides application programming interfaces (APIs) that you can use to add speech transcription capabilities to your applications. The service leverages machine intelligence to transcribe the human voice accurately. The service combines information about grammar and language structure with knowledge of the composition of the audio signal. It can continuously return and retroactively update a transcription as more speech is heard.
 {: shortdesc}
 
-The service provides various interfaces that make it suitable for any application where speech is the input and a textual transcription is the output. Example applications include
+The service provides various interfaces that make it suitable for any application where speech is the input and a textual transcript is the output. Example applications include
 
 -   Voice control of applications, embedded devices, and vehicle accessories
 -   Transcribing meetings and conference calls
@@ -42,7 +42,8 @@ The {{site.data.keyword.speechtotextshort}} service offers three interfaces for 
 
 The service also provides a [customization interface](/docs/services/speech-to-text/custom.html). You can use the interface to expand the vocabulary of a base model with domain-specific terminology or to adapt a base model for the acoustic characteristics of your audio. SDKs are also available to simplify your use of the service in various programming languages.
 
-For examples of basic requests for each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text/basic-request.html). For an overview of application development with the service, see [Overview for developers](/docs/services/speech-to-text/developer-overview.html).
+-   For examples of basic requests for each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text/basic-request.html).
+-   For a high-level description of application development with the service, see [Overview for developers](/docs/services/speech-to-text/developer-overview.html).
 
 ## Input features
 {: #inputFeatures}
@@ -66,7 +67,7 @@ The interfaces also support the following common output features:
 -   [Word confidence](/docs/services/speech-to-text/output.html#word_confidence) returns confidence levels for each word of a transcript.
 -   [Word timestamps](/docs/services/speech-to-text/output.html#word_timestamps) return timestamps for the start and end of each word of a transcript.
 -   [Profanity filtering](/docs/services/speech-to-text/output.html#profanity_filter) censors profanity from US English transcripts.
--   [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting) converts dates, times, numbers, currency values, phone numbers, and internet addresses into more readable, conventional forms in final transcripts. The feature is supported for US English and Spanish audio. For US English, you can also provide keyword phrases to include certain punctuation symbols in final transcripts. (Beta functionality.)
+-   [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting) converts dates, times, numbers, currency values, phone numbers, and internet addresses into more readable, conventional forms in final transcripts. The feature is supported for US English, Japanese, and Spanish audio. For US English, you can also provide keyword phrases to include certain punctuation symbols in final transcripts. (Beta functionality.)
 
 ## Language support
 {: #languages}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-10"
+lastupdated: "2018-11-12"
 
 ---
 
@@ -580,7 +580,7 @@ An optional boolean that indicates whether the service converts dates, times, nu
       **Availability**
     </td>
     <td style="text-align:left">
-      Beta for US English and Spanish
+      Beta for US English, Japanese, and Spanish
     </td>
   </tr>
   <tr>

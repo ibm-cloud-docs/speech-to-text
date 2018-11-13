@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-31"
+lastupdated: "2018-11-12"
 
 ---
 
@@ -23,7 +23,7 @@ lastupdated: "2018-10-31"
 The {{site.data.keyword.speechtotextshort}} service offers the following features to indicate the information that the service is to include in its transcription. All output parameters are optional.
 {: shortdesc}
 
--   For examples of simple requests and responses for each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text/basic-request.html).
+-   For examples of speech recognition responses, see [Understanding recognition results](/docs/services/speech-to-text/basic-response.html).
 -   For an alphabetized list of all available parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
 
 The service returns all JSON response content in the UTF-8 character set.
@@ -289,7 +289,7 @@ A keyword for which the service finds no matches is omitted from the array. A ke
     -   The keyword's tokens are in the same block.
     -   The tokens are either adjacent or separated by a gap of no more than 0.1 seconds.
 
-    The latter case can occur if a brief filler or non-lexical utterance, such as "uhm" or "well," lies between two tokens of the keyword.
+    The latter case can occur if a brief filler or non-lexical utterance, such as "uhm" or "well," lies between two tokens of the keyword. For more information, see [Hesitation markers](/docs/services/speech-to-text/basic-response.html#hesitation).
 
 ### Keyword spotting example
 {: #keywordSpottingExample}
@@ -329,7 +329,8 @@ curl -X POST -u "apikey:{apikey}"
       "alternatives": [
         {
           "confidence": 0.891,
-          "transcript": "several tornadoes touch down as a line of severe thunderstorms swept through Colorado on Sunday "
+          "transcript": "several tornadoes touch down as a line of
+severe thunderstorms swept through Colorado on Sunday "
         }
       ],
       "final": true
@@ -367,13 +368,16 @@ curl -X POST -u "apikey:{apikey}"
       "alternatives": [
         {
           "confidence": 0.891,
-          "transcript": "several tornadoes touch down as a line of severe thunderstorms swept through Colorado on Sunday "
+          "transcript": "several tornadoes touch down as a line of
+severe thunderstorms swept through Colorado on Sunday "
         },
         {
-          "transcript": "several tornadoes touched down as a line of severe thunderstorms swept through Colorado on Sunday "
+          "transcript": "several tornadoes touched down as a line of
+severe thunderstorms swept through Colorado on Sunday "
         },
         {
-          "transcript": "several tornadoes touch down is a line of severe thunderstorms swept through Colorado on Sunday "
+          "transcript": "several tornadoes touch down is a line of
+severe thunderstorms swept through Colorado on Sunday "
         }
       ],
       "final": true
@@ -387,7 +391,7 @@ curl -X POST -u "apikey:{apikey}"
 ## Interim results
 {: #interim}
 
-**Note:** Interim results are available only with the WebSocket interface.
+**Note:** The interim results feature is available only with the WebSocket interface.
 
 Interim results are intermediate hypotheses of a transcription that are likely to change before the service returns its final results. The service returns interim results as soon as it generates them. Interim results are useful for interactive applications and for real-time transcription.
 
@@ -575,7 +579,8 @@ curl -X POST -u "apikey:{apikey}"
       "alternatives": [
         {
           "confidence": 0.891,
-          "transcript": "several tornadoes touch down as a line of severe thunderstorms swept through Colorado on Sunday "
+          "transcript": "several tornadoes touch down as a line of
+severe thunderstorms swept through Colorado on Sunday "
         }
       ],
       "final": true
@@ -615,7 +620,8 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
-          "transcript": "several tornadoes touch down as a line of severe thunderstorms swept through Colorado on Sunday ",
+          "transcript": "several tornadoes touch down as a line of
+severe thunderstorms swept through Colorado on Sunday ",
           "confidence": 0.891,
           "word_confidence": [
             [
@@ -712,7 +718,8 @@ curl -X POST -u "apikey:{apikey}"
             ]
           ],
           "confidence": 0.891,
-          "transcript": "several tornadoes touch down as a line of severe thunderstorms swept through Colorado on Sunday "
+          "transcript": "several tornadoes touch down as a line of
+severe thunderstorms swept through Colorado on Sunday "
         }
       ],
       "final": true
@@ -796,7 +803,7 @@ curl -X POST -u "apikey:{apikey}"
 ## Smart formatting
 {: #smart_formatting}
 
-> **Note:** The smart formatting feature is beta functionality that is available for US English and Spanish only.
+> **Note:** The smart formatting feature is beta functionality that is available for US English, Japanese, and Spanish.
 
 The `smart_formatting` parameter directs the service to convert the following strings into more conventional representations:
 
@@ -807,17 +814,17 @@ The `smart_formatting` parameter directs the service to convert the following st
 -   Currency values
 -   Internet email and web addresses
 
-The service applies smart formatting only to the final transcript of a recognition request. It applies smart formatting just before it returns the result to the client, when text normalization is complete. The conversion makes the transcript more readable and enables better post-processing of the transcription results. You set the parameter to `true` to enable smart formatting; by default, no smart formatting is applied.
+You set the `smart_formatting` parameter to `true` to enable smart formatting. By default, the service does not perform smart formatting.
 
-Smart formatting is based on the presence of obvious keywords in the transcript. For example, times are identified by keywords such as *AM* or *EST*, and military times are converted if identified by the keyword *hours*. Phone numbers must be either *911* or a number with 10 digits or with 11 digits that start with the number *1*.
+The service applies smart formatting only to the final transcript of a recognition request. It applies smart formatting just before it returns the results to the client, when text normalization is complete. The conversion makes the transcript more readable and enables better post-processing of the transcription results.
 
-### Punctuation and capitalization
+### Punctuation (US English)
 {: #smartFormattingPunctuation}
 
 For US English, the feature also directs the service to substitute punctuation symbols for the following keyword strings in the audio.
 
 <table>
-  <caption>Table 4. Smart formatting punctuation keywords</caption>
+  <caption>Table 2. Smart formatting punctuation keywords</caption>
   <tr>
     <th style="width:45%; text-align:left">Keyword string</th>
     <th style="text-align:center">Resulting punctuation</th>
@@ -856,9 +863,40 @@ For US English, the feature also directs the service to substitute punctuation s
   </tr>
 </table>
 
-The service converts these keyword strings to symbols only in appropriate places. For example, the service converts the spoken phrase "The warranty period is short period" to the following text in a transcript: "the warranty period is short." The service does not use capitalization in response transcripts. For example, you must capitalize the first word of each sentence in a transcript.
+The service converts these keyword strings to symbols only in appropriate places. For example, the service converts the spoken phrase
 
-> **Note:** For the US English language models, `en-US_BroadbandModel` and `en-US_NarrowbandModel`, the service capitalizes many proper nouns. For instance, the service returns text that reads "Barack Obama graduated from Columbia University" for US English. For other languages, it returns "barack obama graduated from columbia university." The service always applies this capitalization, regardless of whether you use smart formatting.
+```
+the warranty period is short period
+```
+{: codeblock}
+
+to the following text in a transcript
+
+```
+the warranty period is short.
+```
+{: codeblock}
+
+### Language differences
+{: #smartFormattingDifferences}
+
+Smart formatting is based on the presence of obvious keywords in the transcript. The supported languages handle smart formatting slightly differently.
+
+#### US English and Spanish
+{: #smartFormattingEnglishSpanish}
+
+-   Times are identified by keywords such as `AM`, `PM`, or `EST`.
+-   Military times are converted if they are identified by the keyword `hours`.
+-   Phone numbers must be either `911` or a number with 10 or 11 digits that starts with the number `1`.
+
+#### Japanese
+{: #smartFormattingJapanese}
+
+-   Internet email and web addresses are not converted.
+-   Phone numbers must be 10 or 11 digits and begin with valid prefixes for telephone numbers in Japan. For example, valid prefixes include `03` and `090`.
+-   English words are converted to ASCII (hankaku) characters. For example, <code>&#65321;&#65314;&#65325;</code> is converted to `IBM`.
+-   Ambiguous terms might not be converted if sufficient context is unavailable. For example, it is unclear whether <code>&#19968;&#26178;</code> and <code>&#21313;&#20998;</code> refer to times.
+-   Punctuation is handled the same with or without smart formatting. For example, based on probability calculations, one of <code>&#12459;&#12531;&#12510;</code> or `,` is selected.
 
 ### Smart formatting example
 {: #smartFormattingExample}
@@ -873,13 +911,13 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-### Example transcripts with smart formatting
-{: #smartFormattingTranscripts}
+### Smart formatting results
+{: #smartFormattingResults}
 
-The following table shows examples of final transcripts both with and without smart formatting.
+The following table shows examples of final transcription results both with and without smart formatting. The transcripts are based on US English audio.
 
 <table summary="Each heading row is followed by multiple rows of examples that show the effect of smart formatting for the element that is identified in the heading.">
-  <caption>Table 2. Smart formatting example transcripts</caption>
+  <caption>Table 3. Smart formatting example transcripts</caption>
   <tr>
     <th id="withoutFormatting" style="width:45%; text-align:left">Without
       smart formatting</th>
@@ -1060,7 +1098,7 @@ The following table shows examples of final transcripts both with and without sm
 In cases where an utterance contains long enough silences, the service can split the transcript into two or more final chunks. This affects the results of the formatting, as shown in the following examples.
 
 <table>
-  <caption>Table 3. Smart formatting example transcripts for long pauses</caption>
+  <caption>Table 4. Smart formatting example transcripts for long pauses</caption>
   <tr>
     <th style="width:45%; text-align:left">Audio speech</th>
     <th style="text-align:left">Formatted transcription results</th>
