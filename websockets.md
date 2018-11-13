@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-10"
+lastupdated: "2018-11-13"
 
 ---
 
@@ -267,7 +267,7 @@ If the client specifies an invalid query parameter or JSON field for the recogni
 
 After it sends the initial `start` message, the client can begin sending audio data to the service. The client does not need to wait for the service to respond to the `start` message with the `listening` message. The service returns the results of the transcription asynchronously in the same format as it returns results for the HTTP API.
 
-The client must send the audio as binary data. The client can stream a maximum of 100 MB of audio data with a single utterance (per `send` request). The client can send multiple utterances over a single WebSocket connection.
+The client must send the audio as binary data. The client can stream a maximum of 100 MB of audio data with a single utterance (per `send` request). It must send at least 100 bytes of audio for any request. The client can send multiple utterances over a single WebSocket connection.
 
 The WebSocket interface imposes a maximum frame size of 4 MB. The client can set the maximum frame size to less than 4 MB. If it is not practical to set the frame size, the client can set the maximum message size to less than 4 MB and send the audio data as a sequence of messages.
 
