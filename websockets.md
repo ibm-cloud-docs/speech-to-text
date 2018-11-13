@@ -72,7 +72,7 @@ A WebSocket client calls this method with the following query parameters to esta
       <br/><em>Optional</em></td>
     <td style="text-align:center">String</td>
     <td style="text-align:left">
-      Passes a valid authentication token instead of passing the service
+      Passes a valid authentication token instead of passing service
       credentials with the call. You pass a token only to establish an
       authenticated connection with the service. Once you establish a
       connection, you can keep it alive indefinitely. While the connection

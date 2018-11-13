@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-12"
+lastupdated: "2018-11-13"
 
 ---
 
@@ -821,7 +821,7 @@ The service applies smart formatting only to the final transcript of a recogniti
 ### Punctuation (US English)
 {: #smartFormattingPunctuation}
 
-For US English, the feature also directs the service to substitute punctuation symbols for the following keyword strings in the audio.
+For US English, the feature also directs the service to substitute punctuation symbols for the following spoken keyword strings in the audio.
 
 <table>
   <caption>Table 2. Smart formatting punctuation keywords</caption>

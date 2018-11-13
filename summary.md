@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-12"
+lastupdated: "2018-11-13"
 
 ---
 
@@ -38,7 +38,7 @@ Also consider the following service-specific requirements:
 
 ## acoustic_customization_id
 
-An optional customization ID for a custom acoustic model that is adapted for the acoustic characteristics of your environment and speakers. By default, no custom model is used. See [Custom models](/docs/services/speech-to-text/input.html#custom).
+An optional customization ID for a custom acoustic model that is adapted for the acoustic characteristics of your environment and speakers. By default, no custom model is used. For more information, see [Custom models](/docs/services/speech-to-text/input.html#custom).
 
 <table>
   <caption>Table 1. The acoustic_customization_id parameter</caption>
@@ -82,7 +82,7 @@ An optional customization ID for a custom acoustic model that is adapted for the
 
 ## base_model_version
 
-An optional version of a base model. The parameter is intended primarily for use with custom models that are updated for a new base model, but it can be used without a custom model. The default value depends on whether the parameter is used with or without a custom model. See [Base model version](/docs/services/speech-to-text/input.html#version).
+An optional version of a base model. The parameter is intended primarily for use with custom models that are updated for a new base model, but it can be used without a custom model. The default value depends on whether the parameter is used with or without a custom model. For more information, see [Base model version](/docs/services/speech-to-text/input.html#version).
 
 <table>
   <caption>Table 2. The base_model_version parameter</caption>
@@ -126,7 +126,7 @@ An optional version of a base model. The parameter is intended primarily for use
 
 ## Content-Type
 
-An optional audio format (MIME type) that specifies the format of the audio data that you pass to the service. The service can automatically detect the format of most audio, so the parameter is optional for most formats. It is required for `audio/basic`, `audio/l16`, and `audio/mulaw`. See [Audio formats](/docs/services/speech-to-text/audio-formats.html).
+An optional audio format (MIME type) that specifies the format of the audio data that you pass to the service. The service can automatically detect the format of most audio, so the parameter is optional for most formats. It is required for `audio/basic`, `audio/l16`, and `audio/mulaw`. For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 
 <table>
   <caption>Table 3. The Content-Type parameter</caption>
@@ -171,7 +171,7 @@ An optional audio format (MIME type) that specifies the format of the audio data
 
 ## customization_weight
 
-An optional double between 0.0 and 1.0 that indicates the relative weight that the service gives to words from a custom language model versus words from the base vocabulary. The default is 0.3 unless a different weight was specified when the custom language model was trained. See [Custom models](/docs/services/speech-to-text/input.html#custom).
+An optional double between 0.0 and 1.0 that indicates the relative weight that the service gives to words from a custom language model versus words from the base vocabulary. The default is 0.3 unless a different weight was specified when the custom language model was trained. For more information, see [Custom models](/docs/services/speech-to-text/input.html#custom).
 
 <table>
   <caption>Table 4. The customization_weight parameter</caption>
@@ -215,7 +215,7 @@ An optional double between 0.0 and 1.0 that indicates the relative weight that t
 
 ## inactivity_timeout
 
-An optional integer that specifies the number of seconds for the service's inactivity timeout; use `-1` to indicate infinity. The default is 30 seconds. See [Inactivity timeout](/docs/services/speech-to-text/input.html#timeouts).
+An optional integer that specifies the number of seconds for the service's inactivity timeout; use `-1` to indicate infinity. The default is 30 seconds. For more information, see [Inactivity timeout](/docs/services/speech-to-text/input.html#timeouts).
 
 <table>
   <caption>Table 5. The inactivity_timeout parameter</caption>
@@ -259,7 +259,7 @@ An optional integer that specifies the number of seconds for the service's inact
 
 ## interim_results
 
-An optional boolean that directs the service to return intermediate hypotheses that are likely to change before the final transcript. By default (`false`), interim results are not returned. See [Interim results](/docs/services/speech-to-text/output.html#interim).
+An optional boolean that directs the service to return intermediate hypotheses that are likely to change before the final transcript. By default (`false`), interim results are not returned. For more information, see [Interim results](/docs/services/speech-to-text/output.html#interim).
 
 <table>
   <caption>Table 6. The interim_results parameter</caption>
@@ -303,7 +303,7 @@ An optional boolean that directs the service to return intermediate hypotheses t
 
 ## keywords
 
-An optional array of keyword strings that the service spots in the input audio. By default, keyword spotting is not performed. See [Keyword spotting](/docs/services/speech-to-text/output.html#keyword_spotting).
+An optional array of keyword strings that the service spots in the input audio. By default, keyword spotting is not performed. For more information, see [Keyword spotting](/docs/services/speech-to-text/output.html#keyword_spotting).
 
 <table>
   <caption>Table 7. The keywords parameter</caption>
@@ -347,7 +347,7 @@ An optional array of keyword strings that the service spots in the input audio. 
 
 ## keywords_threshold
 
-An optional double between 0.0 and 1.0 that indicates the minimum threshold for a positive keyword match. By default, keyword spotting is not performed. See [Keyword spotting](/docs/services/speech-to-text/output.html#keyword_spotting).
+An optional double between 0.0 and 1.0 that indicates the minimum threshold for a positive keyword match. By default, keyword spotting is not performed. For more information, see [Keyword spotting](/docs/services/speech-to-text/output.html#keyword_spotting).
 
 <table>
   <caption>Table 8. The keywords_threshold parameter</caption>
@@ -391,7 +391,7 @@ An optional double between 0.0 and 1.0 that indicates the minimum threshold for 
 
 ## language_customization_id
 
-An optional customization ID for a custom language model that includes terminology from your domain. By default, no custom model is used. See [Custom models](/docs/services/speech-to-text/input.html#custom).
+An optional customization ID for a custom language model that includes terminology from your domain. By default, no custom model is used. For more information, see [Custom models](/docs/services/speech-to-text/input.html#custom).
 
 <table>
   <caption>Table 9. The language_customization_id parameter</caption>
@@ -435,7 +435,7 @@ An optional customization ID for a custom language model that includes terminolo
 
 ## max_alternatives
 
-An optional integer that specifies the maximum number of alternative hypotheses that the service returns. By default, the service returns a single final hypothesis. See [Maximum alternatives](/docs/services/speech-to-text/output.html#max_alternatives).
+An optional integer that specifies the maximum number of alternative hypotheses that the service returns. By default, the service returns a single final hypothesis. For more information, see [Maximum alternatives](/docs/services/speech-to-text/output.html#max_alternatives).
 
 <table>
   <caption>Table 10. The max_alternatives parameter</caption>
@@ -479,7 +479,7 @@ An optional integer that specifies the maximum number of alternative hypotheses 
 
 ## model
 
-An optional model that specifies the language in which the audio is spoken and the rate at which it was sampled: broadband or narrowband. By default, `en-US_BroadbandModel` is used. See [Languages and models](/docs/services/speech-to-text/input.html#models).
+An optional model that specifies the language in which the audio is spoken and the rate at which it was sampled: broadband or narrowband. By default, `en-US_BroadbandModel` is used. For more information, see [Languages and models](/docs/services/speech-to-text/input.html#models).
 
 <table>
   <caption>Table 11. The model parameter</caption>
@@ -523,7 +523,7 @@ An optional model that specifies the language in which the audio is spoken and t
 
 ## profanity_filter
 
-An optional boolean that indicates whether the service censors profanity from a transcript. By default (`true`), profanity is filtered from the transcript. See [Profanity filtering](/docs/services/speech-to-text/output.html#profanity_filter).
+An optional boolean that indicates whether the service censors profanity from a transcript. By default (`true`), profanity is filtered from the transcript. For more information, see [Profanity filtering](/docs/services/speech-to-text/output.html#profanity_filter).
 
 <table>
   <caption>Table 12. The profanity_filter parameter</caption>
@@ -567,7 +567,7 @@ An optional boolean that indicates whether the service censors profanity from a 
 
 ## smart_formatting
 
-An optional boolean that indicates whether the service converts dates, times, numbers, currency, and similar values into more conventional representations in the final transcript. For US English, the feature also converts certain keyword phrases into punctuation symbols. By default (`false`), smart formatting is not performed. See [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting).
+An optional boolean that indicates whether the service converts dates, times, numbers, currency, and similar values into more conventional representations in the final transcript. For US English, the feature also converts certain keyword phrases into punctuation symbols. By default (`false`), smart formatting is not performed. For more information, see [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting).
 
 <table>
   <caption>Table 13. The smart_formatting parameter</caption>
@@ -611,7 +611,7 @@ An optional boolean that indicates whether the service converts dates, times, nu
 
 ## speaker_labels
 
-An optional boolean that indicates whether the service identifies which individuals spoke which words in a multi-participant exchange. By default (`false`), speaker labels are not returned. See [Speaker labels](/docs/services/speech-to-text/output.html#speaker_labels).
+An optional boolean that indicates whether the service identifies which individuals spoke which words in a multi-participant exchange. By default (`false`), speaker labels are not returned. For more information, see [Speaker labels](/docs/services/speech-to-text/output.html#speaker_labels).
 
 <table>
   <caption>Table 14. The speaker_labels parameter</caption>
@@ -655,7 +655,7 @@ An optional boolean that indicates whether the service identifies which individu
 
 ## timestamps
 
-An optional boolean that indicates whether the service produces timestamps for the words of the transcript. By default (`false`), timestamps are not returned. See [Word timestamps](/docs/services/speech-to-text/output.html#word_timestamps).
+An optional boolean that indicates whether the service produces timestamps for the words of the transcript. By default (`false`), timestamps are not returned. For more information, see [Word timestamps](/docs/services/speech-to-text/output.html#word_timestamps).
 
 <table>
   <caption>Table 15. The timestamps parameter</caption>
@@ -699,7 +699,7 @@ An optional boolean that indicates whether the service produces timestamps for t
 
 ## Transfer-Encoding
 
-An optional value of `chunked` that causes the audio to be streamed to the service. By default, audio is sent all at once as a one-shot delivery. See [Audio transmission](/docs/services/speech-to-text/input.html#transmission).
+An optional value of `chunked` that causes the audio to be streamed to the service. By default, audio is sent all at once as a one-shot delivery. For more information, see [Audio transmission](/docs/services/speech-to-text/input.html#transmission).
 
 <table>
   <caption>Table 16. The Transfer-Encoding parameter</caption>
@@ -789,7 +789,7 @@ An optional authentication token that makes authenticated requests to the servic
 
 ## word_alternatives_threshold
 
-An optional double between 0.0 and 1.0 that specifies the threshold at which the service reports acoustically similar alternatives for words of the input audio. By default, word alternatives are not returned. See [Word alternatives](/docs/services/speech-to-text/output.html#word_alternatives).
+An optional double between 0.0 and 1.0 that specifies the threshold at which the service reports acoustically similar alternatives for words of the input audio. By default, word alternatives are not returned. For more information, see [Word alternatives](/docs/services/speech-to-text/output.html#word_alternatives).
 
 <table>
   <caption>Table 18. The word_alternatives_threshold parameter</caption>
@@ -833,7 +833,7 @@ An optional double between 0.0 and 1.0 that specifies the threshold at which the
 
 ## word_confidence
 
-An optional boolean that indicates whether the service provides confidence measures for the words of the transcript. By default (`false`), word confidence measures are not returned. See [Word confidence](/docs/services/speech-to-text/output.html#word_confidence).
+An optional boolean that indicates whether the service provides confidence measures for the words of the transcript. By default (`false`), word confidence measures are not returned. For more information, see [Word confidence](/docs/services/speech-to-text/output.html#word_confidence).
 
 <table>
   <caption>Table 19. The word_confidence parameter</caption>
@@ -968,7 +968,7 @@ An optional boolean that indicates whether you opt out of the default request lo
 
 ## X-Watson-Metadata
 
-An optional string that associates a customer ID with data that is passed for recognition requests. The parameter accepts the argument `customer_id={id}`. By default, no customer ID is associated with the data. See [Information security](/docs/services/speech-to-text/information-security.html).
+An optional string that associates a customer ID with data that is passed for recognition requests. The parameter accepts the argument `customer_id={id}`. By default, no customer ID is associated with the data. For more information, see [Information security](/docs/services/speech-to-text/information-security.html).
 
 <table>
   <caption>Table 22. The X-Watson-Metadata parameter</caption>

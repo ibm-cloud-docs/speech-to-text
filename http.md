@@ -74,7 +74,6 @@ The `POST /v1/recognize` method returns results only after it processes all of t
 ## Making a multipart HTTP request
 {: #HTTP-multi}
 
-
 The `POST /v1/recognize` method also supports multipart requests. You pass all audio data as multipart form data. You specify some parameters as request headers and query parameters, but you pass JSON metadata as form data to control most aspects of the transcription.
 
 Multipart speech recognition is intended for two use cases:

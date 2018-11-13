@@ -315,7 +315,7 @@ For more information, see the Internet Engineering Task Force (IETF) [Request fo
       <code>channels</code><br/><em>Optional</em>
     </td>
     <td>
-      By default, the service assumes that the audio has a single channel.
+      By default, the service treats the audio as if it has a single channel.
       <em>If the audio has more than one channel,</em> you must specify
       an integer that identifies the number of channels. For example,
       specify the following parameter for two-channel audio data that is
