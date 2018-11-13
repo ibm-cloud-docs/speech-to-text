@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-12"
+lastupdated: "2018-11-13"
 
 ---
 
@@ -50,8 +50,8 @@ severe thunderstorms swept through Colorado on Sunday "
 For these simple requests, which include no additional parameters, the service sends a single `results` field.
 
 -   If you use the `interim_results` parameter with the WebSocket interface, the service sends evolving interim hypotheses in the form of multiple `results` fields as it transcribes the audio.
--   For other output parameters, the `results` field can include elements such as `keywords_result` and `word_alternatives`.
--   Similarly, for other parameters, the `alternatives` array can include fields such as `word_confidence` and `timestamps`.
+-   For other output parameters, the `results` array can include fields such as `keywords_result` and `word_alternatives`.
+-   For other parameters, similarly, the `alternatives` array can include fields such as `word_confidence` and `timestamps`.
 
 For more information about additional speech recognition parameters and response content, see the following sections:
 
