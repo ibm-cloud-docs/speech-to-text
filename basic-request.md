@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-12"
+lastupdated: "2018-11-13"
 
 ---
 
@@ -23,7 +23,7 @@ lastupdated: "2018-11-12"
 To request speech recognition with the {{site.data.keyword.speechtotextfull}} service, you need to provide only the audio that is to be transcribed. The service offers the same basic transcription capabilities with each of its interfaces: the WebSocket interface, the synchronous HTTP interface, and the asynchronous HTTP interface.
 {: shortdesc}
 
-You can pass a maximum of 100 MB of audio data with any request. The audio must be in one of the formats that the service supports. For most audio, the service can automatically detect the format; for others, you must specify the format with the `Content-Type` or equivalent parameter. For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
+Pass a maximum of 100 MB and a minimum of 100 bytes of audio data with any request. The audio must be in one of the formats that the service supports. For most audio, the service can automatically detect the format; for others, you must specify the format with the `Content-Type` or equivalent parameter. For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 
 The following sections show basic transcription requests, with no optional input or output parameters, for each of the service's interfaces:
 

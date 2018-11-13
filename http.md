@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-29"
+lastupdated: "2018-11-13"
 
 ---
 
@@ -20,15 +20,19 @@ lastupdated: "2018-10-29"
 # The HTTP interface
 {: #http}
 
-The HTTP interface of the {{site.data.keyword.speechtotextshort}} service provides a single `POST /v1/recognize` method for making synchronous calls to the service. This method is the simplest means of obtaining a transcript. It offers two ways of submitting a speech recognition request:
+The synchronous HTTP interface of the {{site.data.keyword.speechtotextfull}} service provides a single `POST /v1/recognize` method for requesting speech recognition with the service. This method is the simplest means of obtaining a transcript. It offers two ways of submitting a speech recognition request:
 {: shortdesc}
 
--   The first sends all of the audio in a single stream via the body of the request. You specify the parameters of the operation as request headers and query parameters. See [Making a basic HTTP request](#HTTP-basic).
--   The second sends the audio as a multipart request. You specify the parameters of the request as a combination of request headers, query parameters, and JSON metadata. See [Making a multipart HTTP request](#HTTP-multi).
+-   The first sends all of the audio in a single stream via the body of the request. You specify the parameters of the operation as request headers and query parameters. For more information, see [Making a basic HTTP request](#HTTP-basic).
+-   The second sends the audio as a multipart request. You specify the parameters of the request as a combination of request headers, query parameters, and JSON metadata. For more information, see [Making a multipart HTTP request](#HTTP-multi).
 
-For information about tailoring recognition requests to suit your application's needs, see [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html). The HTTP interface also provides the `GET /v1/models` and `GET /v1/models/{model_id}` methods to list the languages and models that are available for speech recognition; for more information, see [Languages and models](/docs/services/speech-to-text/input.html#models).
+Submit a maximum of 100 MB and a minimum of 100 bytes of audio with a request.
 
-For information about all methods of the HTTP interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+-   For information about audio formats and about using compression to increase the amount of audio that you can send with a request, see [Audio Formats](/docs/services/speech-to-text/audio-formats.html).
+-   For information about tailoring recognition requests to suit your application's needs, see [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html).
+-   For information about all methods of the HTTP interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+
+**Note:** The HTTP interface also provides the `GET /v1/models` and `GET /v1/models/{model_id}` methods to list the languages and models that are available for speech recognition. For more information, see [Languages and models](/docs/services/speech-to-text/input.html#models).
 
 ## Making a basic HTTP request
 {: #HTTP-basic}
