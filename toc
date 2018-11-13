@@ -45,6 +45,7 @@ Speech to Text
     {: .topicgroup}
     Speech recognition
         basic-request.md
+        basic-response.md
         audio-formats.md
         input.md
         output.md

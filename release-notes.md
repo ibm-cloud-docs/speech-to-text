@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-08"
+lastupdated: "2018-11-12"
 
 ---
 
@@ -36,15 +36,20 @@ The {{site.data.keyword.speechtotextshort}} service has the following known limi
 
 <!-- For persistent WebSocket connections with the {{site.data.keyword.speechtotextshort}} service, you must use the access token to establish the connection before the token expires. You then remain authenticated while you keep the connection alive. You do not need to refresh an access token for an active WebSocket connection that lasts beyond the token's expiration time. -->
 
+## 12 November 2018
+{: #November2018b}
+
+The service now supports smart formatting for Japanese speech recognition. Previously, the service supported smart formatting for US English and Spanish only. The feature is beta functionality for all supported languages. For more information, see [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting).
+
 ## 7 November 2018
 {: #November2018a}
 
-The {{site.data.keyword.speechtotextshort}} service is now available in the IBM Cloud Tokyo location (**jp-tok**). Like all locations, Tokyo uses token-based Identity and Access Management (IAM) authentication. All new services instances that you create in this location use IAM authentication.
+The service is now available in the IBM Cloud Tokyo location (**jp-tok**). Like all locations, Tokyo uses token-based Identity and Access Management (IAM) authentication. All new services instances that you create in this location use IAM authentication.
 
 ## 30 October 2018
 {: #October2018b}
 
-The {{site.data.keyword.speechtotextshort}} service has migrated to token-based Identity and Access Management (IAM) authentication for all locations. All {{site.data.keyword.Bluemix}} services now use IAM authentication. The {{site.data.keyword.speechtotextshort}} service migrated in each location on the following dates:
+The service has migrated to token-based Identity and Access Management (IAM) authentication for all locations. All {{site.data.keyword.Bluemix}} services now use IAM authentication. The {{site.data.keyword.speechtotextshort}} service migrated in each location on the following dates:
 
 -   Dallas (**us-south**): October 30, 2018
 -   Frankfurt (**eu-de**): October 30, 2018
@@ -65,7 +70,37 @@ For more information, see the following documentation:
 -   For more information about using IAM API keys with Watson services, see [IAM service API keys](/docs/services/watson/apikey-bp.html).
 -   For examples that use IAM authentication, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
 
-## 9 October 2018
+## Older releases
+{: #older}
+
+-   [9 October 2018](#October2018a)
+-   [10 September 2018](#September2018b)
+-   [7 September 2018](#September2018a)
+-   [8 August 2018](#August2018)
+-   [13 July 2018](#July2018)
+-   [12 June 2018](#June2018)
+-   [15 May 2018](#May2018)
+-   [26 March 2018](#March2018b)
+-   [1 March 2018](#March2018a)
+-   [1 February 2018](#February2018)
+-   [14 December 2017](#December2017)
+-   [2 October 2017](#October2017)
+-   [14 July 2017](#July2017b)
+-   [1 July 2017](#July2017a)
+-   [22 May 2017](#May2017)
+-   [10 April 2017](#April2017)
+-   [8 March 2017](#March2017)
+-   [1 December 2016](#December2016)
+-   [22 September 2016](#September2016)
+-   [30 June 2016](#June2016b)
+-   [23 June 2016](#June2016a)
+-   [10 March 2016](#March2016)
+-   [19 January 2016](#January2016)
+-   [17 December 2015](#December2015)
+-   [21 September 2015](#September2015)
+-   [1 July 2015](#July2015)
+
+### 9 October 2018
 {: #October2018a}
 
 -   The `Content-Type` header is now optional for speech recognition requests. The service now automatically detects the audio format (MIME type) of most audio. You must continue to specify the content type for the following formats:
@@ -93,35 +128,6 @@ For more information, see the following documentation:
     -   `POST /v1/recognize` for synchronous HTTP requests (including multipart requests)
     -   `POST /v1/recognitions` for asynchronous HTTP requests
 -   As of October 1, 2018, you are now charged for all audio that you pass to the service for speech recognition. The first one thousand minutes of audio that you send each month are no longer free. For more information about the pricing plans for the service, see the [{{site.data.keyword.speechtotextshort}} service in the {{site.data.keyword.Bluemix_short}} Catalog ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.ng.bluemix.net/catalog/services/speech-to-text){: new_window}.
-
-## Older releases
-{: #older}
-
--   [10 September 2018](#September2018b)
--   [7 September 2018](#September2018a)
--   [8 August 2018](#August2018)
--   [13 July 2018](#July2018)
--   [12 June 2018](#June2018)
--   [15 May 2018](#May2018)
--   [26 March 2018](#March2018b)
--   [1 March 2018](#March2018a)
--   [1 February 2018](#February2018)
--   [14 December 2017](#December2017)
--   [2 October 2017](#October2017)
--   [14 July 2017](#July2017b)
--   [1 July 2017](#July2017a)
--   [22 May 2017](#May2017)
--   [10 April 2017](#April2017)
--   [8 March 2017](#March2017)
--   [1 December 2016](#December2016)
--   [22 September 2016](#September2016)
--   [30 June 2016](#June2016b)
--   [23 June 2016](#June2016a)
--   [10 March 2016](#March2016)
--   [19 January 2016](#January2016)
--   [17 December 2015](#December2015)
--   [21 September 2015](#September2015)
--   [1 July 2015](#July2015)
 
 ### 10 September 2018
 {: #September2018b}
