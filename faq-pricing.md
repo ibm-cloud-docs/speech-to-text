@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-01"
+lastupdated: "2018-11-15"
 
 ---
 
@@ -37,7 +37,7 @@ lastupdated: "2018-10-01"
 
 1.  <span id="graduated" style="color:#003F69">How does volume-based Graduated Tiered Pricing work?</span>
 
-    The tiered pricing model is intended to give high-volume users further discounts as they continue to use the service. Per-minute pricing is reduced for extra minutes of audio once certain thresholds for total monthly audio are met. For more information, see the [pricing page ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://console.ng.bluemix.net/catalog/services/speech-to-text){: new_window} for the service.
+    The tiered pricing model is intended to give high-volume users further discounts as they continue to use the service. Per-minute pricing is reduced for extra minutes of audio once certain thresholds for total monthly audio are met. For more information, see the [pricing page ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/catalog/services/speech-to-text){: new_window} for the service.
 
 1.  <span style="color:#003F69">For tiered pricing, what would my total charge be if I used the service to transcribe, for example, 275 thousand audio minutes in one month?</span>
 
