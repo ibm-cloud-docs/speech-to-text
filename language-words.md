@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-10"
+lastupdated: "2018-11-15"
 
 ---
 
@@ -25,7 +25,8 @@ lastupdated: "2018-11-10"
 
 The customization interface includes the `POST /v1/customizations/{customization_id}/words` and `PUT /v1/customizations/{customization_id}/words/{word_name}` methods, which are used to add or modify words for a custom model. For more information, see [Add words to the custom model](/docs/services/speech-to-text/language-create.html#addWords)). The interface also provides methods for listing the words of a custom language model and for deleting a word from a custom model.
 
-**Important:** You are likely to add most custom words from corpora. Make sure that you know the character encoding that is used in the text files for your corpora. The service preserves the encoding that it finds in the text files. You must use that encoding when working with the individual words in the custom language model. When you specify a word with the `GET`, `PUT`, or `DELETE /v1/customizations/{customization_id}/words/{word_name}` method, you must URL-encode the `{word_name}` that you pass in the URL if the word includes non-ASCII characters. For more information, see [Character encoding](/docs/services/speech-to-text/language-resource.html#charEncoding).
+You are likely to add most custom words from corpora. Make sure that you know the character encoding that is used in the text files for your corpora. The service preserves the encoding that it finds in the text files. You must use that encoding when working with the individual words in the custom language model. When you specify a word with the `GET`, `PUT`, or `DELETE /v1/customizations/{customization_id}/words/{word_name}` method, you must URL-encode the `{word_name}` that you pass in the URL if the word includes non-ASCII characters. For more information, see [Character encoding](/docs/services/speech-to-text/language-resource.html#charEncoding).
+{: important}
 
 ## Listing words from a custom language model
 {: #listWords}
@@ -47,7 +48,8 @@ In addition to a `word` field that identifies the word, both methods return the 
 -   A `display_as` field that shows the spelling of the custom word that the service displays in transcriptions. The field contains an empty string if no display-as value is provided for the word, in which case the word is displayed as it is spelled. For more information, see [Using the display_as field](/docs/services/speech-to-text/language-resource.html#displayAs).
 -   A `count` field that indicates the number of times the word is found across all corpora. For example, if the word occurs five times in one corpus and seven times in another, its count is `12`. If you add a custom word to a model before it is added by any corpora, the count begins at `1`. If the word is added from a corpus first and later modified, the count reflects only the number of times it is found in corpora.
 
-    > **Note:** For custom models that are created before the introduction of the `count` field, the field always remains at `0`. To update the field for such models, add the model's corpora again and include the `allow_overwrite` parameter with the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method.
+    For custom models that are created before the introduction of the `count` field, the field always remains at `0`. To update the field for such models, add the model's corpora again and include the `allow_overwrite` parameter with the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method.
+    {: note}
 -   A `source` field that indicates how the word was added to the custom model's words resource. The field includes the name of each corpus from which the service extracted the word. If you modified or added the word directly, the field includes the string `user`.
 
 If the service discovered one or more problems with a custom word's definition, the output includes an `error` field. The field provides an array that lists each problem element from the definition and a message that describes the problem. An error can occur, for example, if you add a custom word with an invalid `sounds_like` field, one that violates one of the rules for adding a pronunciation. You cannot train a model whose words resource includes a word with an error. You must correct or delete the word before you can train the model.

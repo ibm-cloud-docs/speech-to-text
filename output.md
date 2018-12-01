@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-13"
+lastupdated: "2018-11-15"
 
 ---
 
@@ -34,7 +34,8 @@ The service returns all JSON response content in the UTF-8 character set.
 ## Speaker labels
 {: #speaker_labels}
 
-> **Note:** The speaker labels feature is beta functionality that is available for US English, Japanese, and Spanish.
+The speaker labels feature is beta functionality that is available for US English, Japanese, and Spanish.
+{: note}
 
 Speaker labels identify which individuals spoke which words in a multi-participant exchange. (Labeling who spoke and when is sometimes referred to as *speaker diarization*.) You can use the information to develop a person-by-person transcript of an audio stream, such as contact to a call center. Or you can use it to animate an exchange with a conversational robot or avatar. For best performance, use audio that is at least a minute long.
 
@@ -394,7 +395,8 @@ severe thunderstorms swept through Colorado on Sunday "
 ## Interim results
 {: #interim}
 
-**Note:** The interim results feature is available only with the WebSocket interface.
+The interim results feature is available only with the WebSocket interface.
+{: note}
 
 Interim results are intermediate hypotheses of a transcription that are likely to change before the service returns its final results. The service returns interim results as soon as it generates them. Interim results are useful for interactive applications and for real-time transcription.
 
@@ -736,7 +738,8 @@ severe thunderstorms swept through Colorado on Sunday "
 ## Profanity filtering
 {: #profanity_filter}
 
-> **Note:** The profanity filtering feature is generally available for US English only.
+The profanity filtering feature is generally available for US English only.
+{: note}
 
 The `profanity_filter` parameter indicates whether the service is to censor profanity from its results. By default, the service obscures all profanity by replacing it with a series of asterisks in the transcript. Setting the parameter to `false` displays words in the output exactly as transcribed.
 
@@ -806,7 +809,8 @@ curl -X POST -u "apikey:{apikey}"
 ## Smart formatting
 {: #smart_formatting}
 
-> **Note:** The smart formatting feature is beta functionality that is available for US English, Japanese, and Spanish.
+The smart formatting feature is beta functionality that is available for US English, Japanese, and Spanish.
+{: note}
 
 The `smart_formatting` parameter directs the service to convert the following strings into more conventional representations:
 

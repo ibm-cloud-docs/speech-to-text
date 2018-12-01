@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-10"
+lastupdated: "2018-11-15"
 
 ---
 
@@ -40,7 +40,8 @@ The words resource contains the following information about each OOV word. The s
 -   `display_as`: The spelling of the word that the service uses in transcriptions. The field indicates how the word is to be displayed. In most cases, the spelling matches the value of the `word` field, but you can use the `display_as` field to specify a different spelling for the word. For more information, see [Using the display_as field](#displayAs).
 -   `source`: How the word was added to the words resource. If the service extracted the word from a corpus, the field lists the name of the corpus. Because the service can encounter the same word in multiple corpora, the field can list multiple corpus names. The field includes the string `user` if you add or modify the word directly.
 
-> **Note:** When you update a model's words resource, you must train the model for the changes to take effect during transcription. For more information, see [Train the custom language model](/docs/services/speech-to-text/custom.md#trainModel).
+When you update a model's words resource, you must train the model for the changes to take effect during transcription. For more information, see [Train the custom language model](/docs/services/speech-to-text/custom.md#trainModel).
+{: note}
 
 ## Working with corpora
 {: #workingCorpora}
@@ -81,7 +82,8 @@ Follow these guidelines to prepare a corpus text file:
 
 -   Provide a plain text file that is encoded in UTF-8 if it contains non-ASCII characters. The service assumes UTF-8 encoding if it encounters such characters.
 
-    **Important:** Make sure that you know the character encoding that is used in the text files of your corpora. The service preserves the encoding that it finds in the text files. You must use that encoding when working with the words in the custom language model. For more information, see [Character encoding](#charEncoding).
+    Make sure that you know the character encoding that is used in the text files of your corpora. The service preserves the encoding that it finds in the text files. You must use that encoding when working with the words in the custom language model. For more information, see [Character encoding](#charEncoding).
+    {: important}
 -   Include each sentence of the corpus on its own line, terminating each line with a carriage return. Including multiple sentences on the same line can degrade accuracy.
 -   Use consistent capitalization for words in the corpus. The words resource is case-sensitive. Mix upper- and lowercase letters and use capitalization only when intended.
 -   Beware of typographical errors. The service assumes that typographical errors are new words. Unless you correct them before you train the model, the service adds them to the model's vocabulary. Remember the adage *Garbage in, garbage out!*

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-13"
+lastupdated: "2018-11-15"
 
 ---
 
@@ -273,7 +273,8 @@ Table 1 provides a summary of the audio formats that the service supports.
   </tr>
 </table>
 
-**Important:** When you use the `curl` command to make a speech recognition request with the HTTP interface, you must specify the audio format with the `Content-Type` header, specify `"Content-Type: application/octet-stream"`, or specify `"Content-Type:"`. If you omit the header entirely, `curl` uses a default value of `application/x-www-form-urlencoded`.
+When you use the `curl` command to make a speech recognition request with the HTTP interface, you must specify the audio format with the `Content-Type` header, specify `"Content-Type: application/octet-stream"`, or specify `"Content-Type:"`. If you omit the header entirely, `curl` uses a default value of `application/x-www-form-urlencoded`.
+{: important}
 
 ### audio/basic format
 {: #basic}
@@ -413,7 +414,8 @@ For more information about the WAV format, see [en.wikipedia.org/wiki/WAV ![Exte
 
 If you omit the codec, the service automatically detects it from the input audio.
 
-> **Note:** For JavaScript code that shows how to capture audio from a microphone in a Chrome browser and encode it into a WebM data stream, see [jsbin.com/hedujihuqo/edit?js,console ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://jsbin.com/hedujihuqo/edit?js,console){: new_window}. The code does not submit the captured audio to the service.
+For JavaScript code that shows how to capture audio from a microphone in a Chrome browser and encode it into a WebM data stream, see [jsbin.com/hedujihuqo/edit?js,console ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://jsbin.com/hedujihuqo/edit?js,console){: new_window}. The code does not submit the captured audio to the service.
+{: tip}
 
 ## Data limits and compression
 {: #limits}

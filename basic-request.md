@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-13"
+lastupdated: "2018-11-15"
 
 ---
 
@@ -59,7 +59,8 @@ websocket.send(JSON.stringify({action: 'stop'}));
 ```
 {: codeblock}
 
-**Important:** You cannot use JavaScript to call the WebSocket interface from a browser. The `watson-token` parameter that is available with the `/v1/recognize` method does not accept IAM tokens or API keys. For information about working around this limitation, see the [Known limitations](/docs/services/speech-to-text/release-notes.html#limitations) in the release notes.
+You cannot use JavaScript to call the WebSocket interface from a browser. The `watson-token` parameter that is available with the `/v1/recognize` method does not accept IAM tokens or API keys. For information about working around this limitation, see the [Known limitations](/docs/services/speech-to-text/release-notes.html#limitations) in the release notes.
+{: important}
 
 ## Using the HTTP interface
 

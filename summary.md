@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-13"
+lastupdated: "2018-12-01"
 
 ---
 
@@ -23,7 +23,7 @@ lastupdated: "2018-11-13"
 # Parameter summary
 {: #summary}
 
-A summary follows of all of the parameters available for speech recognition. Each parameter includes a link to its description in [Input features](/docs/services/speech-to-text/input.html) or [Output features](/docs/services/speech-to-text/output.html). For more information about all methods of the {{site.data.keyword.speechtotextshort}} service, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+A summary follows of all of the parameters available for speech recognition. Each parameter includes a link to its description in [Input features](/docs/services/speech-to-text/input.html) or [Output features](/docs/services/speech-to-text/output.html). For more information about all methods of the {{site.data.keyword.speechtotextshort}} service, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
 {: shortdesc}
 
 Consider the following basic requirements when you make a speech recognition request:
@@ -748,7 +748,8 @@ An optional value of `chunked` that causes the audio to be streamed to the servi
 
 An optional authentication token that makes authenticated requests to the service without embedding your service credentials in every call. By default, service credentials must be passed with each request. Watson authentication tokens are based on Cloud Foundry service credentials that use a `{username}` and `{password}` for authentication.
 
-**Note:** You cannot use JavaScript to call the WebSocket interface from a browser if your service credentials are based on IAM authentication. The `watson-token` parameter does not accept IAM tokens or API keys. For more information about working around this limitation, see the [Known limitations](/docs/services/speech-to-text/release-notes.html#limitations) in the release notes.
+You cannot use JavaScript to call the WebSocket interface from a browser if your service credentials are based on IAM authentication. The `watson-token` parameter does not accept IAM tokens or API keys. For more information about working around this limitation, see the [Known limitations](/docs/services/speech-to-text/release-notes.html#limitations) in the release notes.
+{: important}
 
 <table>
   <caption>Table 17. The watson-token parameter</caption>
@@ -882,7 +883,8 @@ An optional boolean that indicates whether the service provides confidence measu
 
 An optional authentication token that makes authenticated requests to the service without embedding your service credentials in every call. By default, service credentials must be passed with each request. Watson authentication tokens are based on Cloud Foundry service credentials that use a `{username}` and `{password}` for authentication.
 
-**Note:** The `X-Watson-Authorization-Token` header does not accept IAM tokens or API keys.
+The `X-Watson-Authorization-Token` header does not accept IAM tokens or API keys.
+{: note}
 
 <table>
   <caption>Table 20. The X-Watson-Authorization-Token parameter</caption>

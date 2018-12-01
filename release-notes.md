@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-15"
+lastupdated: "2018-12-01"
 
 ---
 
@@ -34,7 +34,7 @@ The {{site.data.keyword.speechtotextshort}} service has the following known limi
 -   Service instances that use IAM authentication cannot currently use JavaScript to call the {{site.data.keyword.speechtotextshort}} WebSocket interface. This limitation applies to any application (such as the service demo) that uses JavaScript to make WebSocket calls from a browser. WebSocket calls that are made with other languages can use IAM tokens or API keys. To work around this limitation, you can do the following:
     -   Call the WebSocket interface from outside of a browser. You can call the interface from any language that supports WebSockets. Refer to information in [The WebSocket interface](/docs/services/speech-to-text/websockets.html) for guidance when working with another language.
 
-        The Watson SDKs provide the simplest way to call the WebSocket interface from another language. The SDKs accept an API key and manage the lifecycle of the tokens. For information about using the WebSocket interface with the Node.js, Java, Python, and Ruby SDKs, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+        The Watson SDKs provide the simplest way to call the WebSocket interface from another language. The SDKs accept an API key and manage the lifecycle of the tokens. For information about using the WebSocket interface with the Node.js, Java, Python, and Ruby SDKs, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
     -   Use the synchronous or asynchronous HTTP interfaces to perform speech recognition.
 
 <!-- For persistent WebSocket connections with the {{site.data.keyword.speechtotextshort}} service, you must use the access token to establish the connection before the token expires. You then remain authenticated while you keep the connection alive. You do not need to refresh an access token for an active WebSocket connection that lasts beyond the token's expiration time. -->
@@ -64,14 +64,15 @@ The migration to IAM authentication affects new and existing service instances d
 -   *All new service instances that you create in any location* now use IAM authentication to access the service. You can pass either a bearer token or an API key: Tokens support authenticated requests without embedding service credentials in every call; API keys use HTTP basic authentication. When you use any of the {{site.data.keyword.watson}} SDKs, you can pass the API key and let the SDK manage the lifecycle of the tokens.
 -   *Existing service instances that you created in a location before the indicated migration date* continue to use the `{username}` and `{password}` from their previous Cloud Foundry service credentials for authentication until you migrate them to use IAM authentication. For more information about migrating to IAM authentication, see [Migrating Cloud Foundry service instances to a resource group](https://{DomainName}/docs/resources/instance_migration.html).
 
-    **Important:** If you have an existing application that uses JavaScript to call the WebSocket interface from a browser, do not migrate your service instance to use IAM authentication at this time. This limitation does not apply to the service's HTTP REST interface. For more information, see [Known limitations](#limitations).
+    If you have an existing application that uses JavaScript to call the WebSocket interface from a browser, do not migrate your service instance to use IAM authentication at this time. This limitation does not apply to the service's HTTP REST interface. For more information, see [Known limitations](#limitations).
+    {: important}
 
 For more information, see the following documentation:
 
 -   To learn which authentication mechanism your service instance uses, view your service credentials by clicking the instance on the [{{site.data.keyword.Bluemix_notm}} dashboard ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/dashboard/apps){: new_window}.
 -   For more information about using IAM tokens with Watson services, see [Authenticating with IAM tokens](/docs/services/watson/getting-started-iam.html).
 -   For more information about using IAM API keys with Watson services, see [IAM service API keys](/docs/services/watson/apikey-bp.html).
--   For examples that use IAM authentication, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+-   For examples that use IAM authentication, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
 
 ## Older releases
 {: #older}
@@ -113,7 +114,8 @@ For more information, see the following documentation:
 
     Where indicated, the content type that you specify for these formats must include the sampling rate and can optionally include the number of channels and the endianness of the audio. For all other audio formats, you can omit the content type or specify a content type of `application/octet-stream` to have the service auto-detect the format.
 
-    **Important:** When you use the `curl` command to make a speech recognition request with the HTTP interface, you must specify the audio format with the `Content-Type` header, specify `"Content-Type: application/octet-stream"`, or specify `"Content-Type:"`. If you omit the header entirely, `curl` uses a default value of `application/x-www-form-urlencoded`. Most of the examples in this documentation continue to specify the format for speech recognition requests regardless of whether it's required.
+    When you use the `curl` command to make a speech recognition request with the HTTP interface, you must specify the audio format with the `Content-Type` header, specify `"Content-Type: application/octet-stream"`, or specify `"Content-Type:"`. If you omit the header entirely, `curl` uses a default value of `application/x-www-form-urlencoded`. Most of the examples in this documentation continue to specify the format for speech recognition requests regardless of whether it's required.
+    {: important}
 
     This change applies to the following methods:
     -   `/v1/recognize` for WebSocket requests. The `content-type` field of the text message that you send to initiate a request over an open WebSocket connection is now optional.
@@ -135,7 +137,8 @@ For more information, see the following documentation:
 ### 10 September 2018
 {: #September2018b}
 
-**Important:** For a list of issues that have been fixed since the initial release, see [Resolved issues](#known_issues).
+For a list of issues that have been fixed since the initial release, see [Resolved issues](#known_issues).
+{: important}
 
 -   The service now supports a German broadband model, `de-DE_BroadbandModel`. The new German model supports language model customization (generally available) and acoustic model customization (beta).
     -   For information about how the service parses corpora for German, see [Parsing of English, French, German, Spanish, and Brazilian Portuguese](/docs/services/speech-to-text/language-resource.html#corpusLanguages).
@@ -193,7 +196,8 @@ Both of these issues have been fixed in production.
 ### 7 September 2018
 {: #September2018a}
 
-**Important:** The session-based HTTP REST interface is no longer supported. All information related to sessions is removed from the documentation. The following methods are no longer available:
+The session-based HTTP REST interface is no longer supported. All information related to sessions is removed from the documentation. The following methods are no longer available:
+{: important}
 
 -   `POST /v1/sessions`
 -   `POST /v1/sessions/{session_id}/recognize`
@@ -214,7 +218,8 @@ The session-based HTTP REST interface is deprecated as of **August 8, 2018**. Al
 -   `GET /v1/sessions/{session_id}/observe_result`
 -   `DELETE /v1/sessions/{session_id}`
 
-**Important:** If your application uses the sessions interface, you must migrate to one of the following interfaces by September 7:
+If your application uses the sessions interface, you must migrate to one of the following interfaces by September 7:
+{: important}
 
 -   For stream-based speech recognition (including live-use cases), use the [WebSocket interface](/docs/services/speech-to-text/websockets.html), which provides access to interim results and the lowest latency.
 -   For file-based speech recognition, use one of the following interfaces:
@@ -222,7 +227,7 @@ The session-based HTTP REST interface is deprecated as of **August 8, 2018**. Al
     -   For shorter files of up to a few minutes of audio, use the [HTTP interface](/docs/services/speech-to-text/http.html) `(POST /v1/recognize`) or the [asynchronous HTTP interface](/docs/services/speech-to-text/async.html) (`POST /v1/recognitions`).
     -   For longer files of more than a few minutes of audio, use the asynchronous HTTP interface.
 
-The WebSocket, HTTP, and asynchronous HTTP interfaces provide the same results as the sessions interface (only the WebSocket interface provides interim results). You can also use one of the Watson SDKs, which simplify application development with any of the interfaces; for more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+The WebSocket, HTTP, and asynchronous HTTP interfaces provide the same results as the sessions interface (only the WebSocket interface provides interim results). You can also use one of the Watson SDKs, which simplify application development with any of the interfaces; for more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
 
 ### 13 July 2018
 {: #July2018}
@@ -331,7 +336,7 @@ For language model customization, the Korean models are generally available for 
     -   For more information about the service's customization interface, see [The customization interface](/docs/services/speech-to-text/custom.html).
     -   For more information about creating a custom acoustic model, see [Creating a custom acoustic model](/docs/services/speech-to-text/acoustic-create.html).
     -   For more information about using a custom acoustic model, see [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html).
-    -   For more information about all methods of the customization interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+    -   For more information about all methods of the customization interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
 -   For language model customization, the service now includes a beta feature that sets an optional customization weight for a custom language model. A customization weight specifies the relative weight to be given to words from a custom language model versus words from the service's base vocabulary. You can set a customization weight during both training and speech recognition. For more information, see [Using customization weight](/docs/services/speech-to-text/language-use.html#weight).
 -   The `ja-JP_BroadbandModel` language model was upgraded to capture improvements in the base model. The upgrade does not affect existing custom models that are based on the model.
 -   The service now includes a parameter to specify the endianness of audio that is submitted in `audio/l16` (Linear 16-bit Pulse-Code Modulation (PCM)) format. In addition to specifying `rate` and `channels` parameters with the format, you can now also specify `big-endian` or `little-endian` with the `endianness` parameter. For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
@@ -382,7 +387,8 @@ For language model customization, the Korean models are generally available for 
 
     You no longer need to pass the following `curl` option with the request: `--data "{}"`.
 
-    > **Note:** If you experience any problems with one of these `POST` requests, try passing an empty data object with the body of the request. Passing an empty object does not change the nature or meaning of the request in any way.
+    If you experience any problems with one of these `POST` requests, try passing an empty data object with the body of the request. Passing an empty object does not change the nature or meaning of the request in any way.
+    {: note}
 
 ### 22 May 2017
 {: #May2017}
@@ -443,7 +449,7 @@ The asynchronous HTTP interface is now generally available. Prior to this date, 
     -   For more information, see [Creating a custom language model](/docs/services/speech-to-text/language-create.html) and [Using a custom language model](/docs/services/speech-to-text/language-use.html).
     -   For general and Japanese-specific considerations for adding a corpus text file, see [Preparing a corpus file](/docs/services/speech-to-text/language-resource.html#prepareCorpus) and [What happens when you add a corpus file](/docs/services/speech-to-text/language-resource.html#parseCorpus).
     -   For Japanese-specific considerations when specifying the `sounds_like` field for a custom word, see [Guidelines for Japanese](/docs/services/speech-to-text/language-resource.html#wordLanguages-jaJP).
-    -   For more information about all methods of the customization interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+    -   For more information about all methods of the customization interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
 -   The language model customization interface now includes a `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` method that lists information about a specified corpus. The method is useful for monitoring the status of a request to add a corpus to a custom model. For more information, see [Listing corpora for a custom language model](/docs/services/speech-to-text/language-corpora.html#listCorpora).
 -   The JSON output that is returned by the `GET /v1/customizations/{customization_id}/words` and `GET /v1/customizations/{customization_id}/words/{word_name}` methods now includes a `count` field for each word. The field indicates the number of times the word is found across all corpora. If you add a custom word to a model before it is added by any corpora, the count begins at `1`. If the word is added from a corpus first and later modified, the count reflects only the number of times it is found in corpora. For more information, see [Listing words from a custom language model](/docs/services/speech-to-text/language-words.html#listWords).
 
@@ -454,7 +460,7 @@ The asynchronous HTTP interface is now generally available. Prior to this date, 
 -   The `error` field that can be returned as part of the JSON response from the `GET /v1/customizations/{customization_id}/words` and `GET /v1/customizations/{customization_id}/words/{word_name}` methods is now an array. If the service discovered one or more problems with a custom word's definition, the field lists each problem element from the definition and provides a message that describes the problem. For more information, see [Listing words from a custom language model](/docs/services/speech-to-text/language-words.html#listWords).
 -   The `keywords_threshold` and `word_alternatives_threshold` parameters of the recognition methods no longer accept a null value. To omit keywords and word alternatives from the response, omit the parameters. A specified value must be a float.
 
-For more information about the service's interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+For more information about the service's interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
 
 ### 22 September 2016
 {: #September2016}
@@ -462,30 +468,30 @@ For more information about the service's interface, see the [API reference ![Ext
 -   The service now offers a new beta language model customization interface for US English. You can use the interface to tailor the service's base vocabulary and language models via the creation of custom language models that include domain-specific terminology. You can add custom words individually or have the service extract them from corpora. To use your custom models with the speech recognition methods that are offered by any of the service's interfaces, pass the `customization_id` query parameter. For more information, see
     -   [Creating a custom language model](/docs/services/speech-to-text/language-create.html)
     -   [Using a custom language model](/docs/services/speech-to-text/language-use.html)
-    -   [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}
+    -   [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}
 -   The list of supported audio formats now includes `audio/mulaw`, which provides single-channel audio encoded using the u-law (or mu-law) data algorithm. When you use this format, you must also specify the sampling rate at which the audio is captured. For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
--   The `GET /v1/models` and `GET /v1/models/{model_id}` methods now return a `supported_features` field as part of their output for each language model. The additional information describes whether the model supports customization. For more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+-   The `GET /v1/models` and `GET /v1/models/{model_id}` methods now return a `supported_features` field as part of their output for each language model. The additional information describes whether the model supports customization. For more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
 
 ### 30 June 2016
 {: #June2016b}
 
-The beta asynchronous HTTP interface now supports all languages that are supported by the service. The interface was previously available for US English only. For more information, see [The asynchronous HTTP interface](/docs/services/speech-to-text/async.html) and the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+The beta asynchronous HTTP interface now supports all languages that are supported by the service. The interface was previously available for US English only. For more information, see [The asynchronous HTTP interface](/docs/services/speech-to-text/async.html) and the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
 
 ### 23 June 2016
 {: #June2016a}
 
--   A beta asynchronous HTTP interface is now available. The interface provides full recognition capabilities for US English transcription via non-blocking HTTP calls. You can register callback URLs and provide user-specified secret strings to achieve authentication and data integrity with digital signatures. For more information, see [The asynchronous HTTP interface](/docs/services/speech-to-text/async.html) and the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+-   A beta asynchronous HTTP interface is now available. The interface provides full recognition capabilities for US English transcription via non-blocking HTTP calls. You can register callback URLs and provide user-specified secret strings to achieve authentication and data integrity with digital signatures. For more information, see [The asynchronous HTTP interface](/docs/services/speech-to-text/async.html) and the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
 -   A beta smart formatting feature that converts dates, times, series of digits and numbers, phone numbers, currency values, and Internet addresses into more conventional representations in final transcripts. The feature is enabled by setting the `smart_formatting` parameter to `true` on a recognition request. It is beta functionality that is available for US English only. For more information, see [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting).
 -   The list of supported models for speech recognition now includes `fr-FR_BroadbandModel` for audio in the French language that is sampled at a minimum of 16 kHz. For more information, see [Languages and models](/docs/services/speech-to-text/input.html#models).
 -   The list of supported audio formats now includes `audio/basic`. The format provides single-channel audio that is encoded by using 8-bit u-law (or mu-law) data that is sampled at 8 kHz. For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
--   The various recognition methods can return a `warnings` response that includes messages about invalid query parameters or JSON fields that are included with a request. The format of the warnings changed. For example, `"warnings": "Unknown arguments: [u'invalid_arg_1', u'invalid_arg_2']."` is now `"warnings": "Unknown arguments: invalid_arg_1, invalid_arg_2."`
+-   The various recognition methods can return a `warnings` response that includes messages about invalid query parameters or JSON fields that are included with a request. The format of the warnings changed. For example, `"warnings": "Unknown arguments: [u'{invalid_arg_1}', u'{invalid_arg_2}']."` is now `"warnings": "Unknown arguments: {invalid_arg_1}, {invalid_arg_2}."`
 -   For HTTP `POST` requests that do not otherwise pass data to the service, you must include an empty request body of the form `{}`. With the `curl` command, you use the `--data` option to pass the empty data.
 
 ### 10 March 2016
 {: #March2016}
 
 -   Both forms of data transmission (one-shot delivery and streaming) now impose a size limit of 100 MB on the audio data, as does the WebSocket interface. Formerly, the one-shot approach had a maximum limit of 4 MB of data. For more information, see [Audio transmission](/docs/services/speech-to-text/input.html#transmission) (for all interfaces) and [Send audio and receive recognition results](/docs/services/speech-to-text/websockets.html#WSaudio) (for the WebSocket interface). The WebSocket section also discusses the maximum frame or message size of 4 MB enforced by the WebSocket interface.
--   The JSON response for a recognition request can now include an array of warning messages for invalid query parameters or JSON fields that are included with a request. Each element of the array is a string that describes the nature of the warning followed by an array of invalid argument strings. For example, `"warnings": [ "Unknown arguments: [u'invalid_arg_1', u'invalid_arg_2']." ]`. For more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+-   The JSON response for a recognition request can now include an array of warning messages for invalid query parameters or JSON fields that are included with a request. Each element of the array is a string that describes the nature of the warning followed by an array of invalid argument strings. For example, `"warnings": [ "Unknown arguments: [u'{invalid_arg_1}', u'{invalid_arg_2}']." ]`. For more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
 -   The beta *{{site.data.keyword.watson}} Speech Software Development Kit (SDK) for the Apple&reg; iOS operating system* is deprecated. Use the *{{site.data.keyword.watson}} Developer Cloud SDK for the Apple&reg; iOS operating system* instead. The new SDK is available from the [ios-sdk repository ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/ios-sdk){: new_window} in the `watson-developer-cloud` namespace on GitHub.
 
 The WebSocket interface currently has the following known issue:
@@ -502,15 +508,17 @@ The service was updated to include a new profanity filtering feature on January 
 
 -   The service now offers a keyword spotting feature. You can specify an array of keyword strings that are to be matched in the input audio. You must also specify a user-defined confidence level that a word must meet to be considered a match for a keyword. For more information, see [Keyword spotting](/docs/services/speech-to-text/output.html#keyword_spotting).
 
-    > **Note:** The keyword spotting feature is beta functionality.
+    The keyword spotting feature is beta functionality.
+    {: note}
 -   The service now offers a word alternatives feature. The feature returns alternative hypotheses for words in the input audio that meet a user-defined confidence level. For more information, see [Word alternatives](/docs/services/speech-to-text/output.html#word_alternatives).
 
-    > **Note:** The word alternatives feature is beta functionality.
+    The word alternatives feature is beta functionality.
+    {: note}
 -   The service supports more languages with its transcription models: `en-UK_BroadbandModel` and `en-UK_NarrowbandModel` for UK English, and `ar-AR_BroadbandModel` for Modern Standard Arabic. For more information, see [Languages and models](/docs/services/speech-to-text/input.html#models).
 -   HTTP recognition requests are no longer subject to a 10-minute platform timeout. The service now keeps the connection alive by sending a space character in the response JSON object every 20 seconds as long as recognition is ongoing. For more information, see [Timeouts](/docs/services/speech-to-text/input.html#timeouts).
 -   The service no longer returns HTTP status code 490 for the session-based HTTP methods `GET /v1/sessions/{session_id}/observe_result` and `POST /v1/sessions/{session_id}/recognize`. The service now responds with HTTP status code 400 instead.
 
-    In the JSON responses that it returns for errors with session-based methods, the service now also includes a new `session_closed` field. The field is set to `true` if the session is closed as a result of the error. For more information about possible return codes for any method, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text/api/v1/){: new_window}.
+    In the JSON responses that it returns for errors with session-based methods, the service now also includes a new `session_closed` field. The field is set to `true` if the session is closed as a result of the error. For more information about possible return codes for any method, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
 -   When you use the `curl` command to transcribe audio with the service, you no longer need to use the `--limit-rate` option to transfer data at a rate no faster than 40,000 bytes per second.
 
 ### 21 September 2015
@@ -522,7 +530,8 @@ The service was updated to include a new profanity filtering feature on January 
 
     Both SDKs support authenticating with the speech services by using either your {{site.data.keyword.Bluemix_short}} service credentials or an authentication token.
 
-    > **Note:** Because the SDKs are beta, they are subject to change in the future.
+    Because the SDKs are beta, they are subject to change in the future.
+    {: note}
 -   The service supports two new languages, Brazilian Portuguese and Mandarin Chinese. The models for these new languages are `pt-BR_BroadbandModel`, `pt-BR_NarrowbandModel`, `zh-CN_BroadbandModel`, and `zh-CN_NarrowbandModel`. For more information, see [Languages and models](/docs/services/speech-to-text/input.html#models).
 -   The HTTP `POST` requests `/v1/sessions/{session_id}/recognize` and `/v1/recognize`, as well as the WebSocket `/v1/recognize` request, support transcription of a new media type: `audio/ogg;codecs=opus` for Ogg format files that use the Opus codec. In addition, the `audio/wav` format for the methods now supports any encoding. The restriction about the use of linear PCM encoding is removed. For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 -   The service now supports overcoming timeouts when you transcribe long audio files with the HTTP interface. When you use sessions, you can employ a long polling pattern by specifying sequence IDs with the `GET /v1/sessions/{session_id}/observe_result` and `POST /v1/sessions/{session_id}/recognize` methods for long-running recognition tasks. By using the new `sequence_id` parameter of these methods, you can request results before, during, or after you submit a recognition request.

@@ -21,7 +21,7 @@ Speech to Text
     {: .navgroup-end}
 
     {: .navgroup id="reference"}
-    [API reference](https://www.ibm.com/watson/developercloud/speech-to-text/api)
+    [API reference](https://bluemix.net/apidocs/speech-to-text)
     information-security.md
 
     {: .topicgroup}

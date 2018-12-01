@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-10-29"
+lastupdated: "2018-11-16"
 
 ---
 
@@ -27,6 +27,9 @@ You can improve speech recognition accuracy by using complementary custom langua
 {: shortdesc}
 
 Using a custom acoustic model alone or with a custom language model on which it was not trained can still be useful. If the custom acoustic model was trained on acoustic characteristics that match the audio that is being transcribed, it can still improve transcription quality.
+
+Using audio data alone is referred to as *unsupervised training*. Using a custom language model during training is referred to as *lightly supervised training*.
+{: note}
 
 ## Training a custom acoustic model with a custom language model
 {: #useBothTrain}
@@ -54,8 +57,6 @@ curl -X POST -u "apikey:{apikey}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/train?custom_language_model_id={customization_id}"
 ```
 {: pre}
-
-> **Note:** Using audio data alone is referred to as *unsupervised training*. Using a custom language model during training is referred to as *lightly supervised training*.
 
 ## Using custom language and custom acoustic models during speech recognition
 {: #useBothRecognize}
