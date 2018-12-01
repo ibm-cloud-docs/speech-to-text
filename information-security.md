@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-29"
+lastupdated: "2018-12-01"
 
 ---
 
@@ -26,8 +26,8 @@ lastupdated: "2018-10-29"
 IBM is committed to providing our clients and partners with innovative data privacy, security, and governance solutions.
 {: shortdesc}
 
-**Notice:**
 Clients are responsible for ensuring their own compliance with various laws and regulations, including the European Union General Data Protection Regulation. Clients are solely responsible for obtaining advice of competent legal counsel as to the identification and interpretation of any relevant laws and regulations that might affect the clients’ business and any actions the clients might need to take to comply with such laws and regulations.
+{: important}
 
 The products, services, and other capabilities described herein are not suitable for all client situations and might have restricted availability. IBM does not provide legal, accounting or auditing advice or represent or warrant that its services or products will ensure that clients are in compliance with any law or regulation.
 
@@ -53,7 +53,8 @@ The {{site.data.keyword.speechtotextfull}} service enables you to delete all dat
 
 By default, no customer ID is associated with data.
 
-**Note:** Experimental and beta features are not intended for use with a production environment and therefore are not guaranteed to function as expected when labeling and deleting data. Experimental and beta features should not be used when implementing a solution that requires the labeling and deletion of data.
+Experimental and beta features are not intended for use with a production environment and therefore are not guaranteed to function as expected when labeling and deleting data. Experimental and beta features should not be used when implementing a solution that requires the labeling and deletion of data.
+{: note}
 
 ### Specifying a customer ID
 {: #specify-customer-id}

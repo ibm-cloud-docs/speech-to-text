@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-10-29"
+lastupdated: "2018-11-15"
 
 ---
 
@@ -69,7 +69,8 @@ You can omit the language model from the request if the custom model is based on
 ## Using customization weight
 {: #weight}
 
-> **Note:** Customization weight is a beta feature that is available for all languages that are supported for language model customization.
+Customization weight is a beta feature that is available for all languages that are supported for language model customization.
+{: note}
 
 A custom language model is a combination of the custom model and the base model that it customizes. You can tell the service how much weight to give to words from the custom language model compared to words from the base model for speech recognition. The weight that is assigned to a custom model is referred to as its *customization weight*.
 
