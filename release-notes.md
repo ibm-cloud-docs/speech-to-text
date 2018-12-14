@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-12-01"
+lastupdated: "2018-12-14"
 
 ---
 
@@ -39,6 +39,11 @@ The {{site.data.keyword.speechtotextshort}} service has the following known limi
 
 <!-- For persistent WebSocket connections with the {{site.data.keyword.speechtotextshort}} service, you must use the access token to establish the connection before the token expires. You then remain authenticated while you keep the connection alive. You do not need to refresh an access token for an active WebSocket connection that lasts beyond the token's expiration time. -->
 
+## 13 December 2018
+{: #December2018a}
+
+The service is now available in the IBM Cloud London location (**eu-gb**). Like all locations, London uses token-based Identity and Access Management (IAM) authentication. All new services instances that you create in this location use IAM authentication.
+
 ## 12 November 2018
 {: #November2018b}
 
@@ -49,34 +54,10 @@ The service now supports smart formatting for Japanese speech recognition. Previ
 
 The service is now available in the IBM Cloud Tokyo location (**jp-tok**). Like all locations, Tokyo uses token-based Identity and Access Management (IAM) authentication. All new services instances that you create in this location use IAM authentication.
 
-## 30 October 2018
-{: #October2018b}
-
-The service has migrated to token-based Identity and Access Management (IAM) authentication for all locations. All {{site.data.keyword.Bluemix}} services now use IAM authentication. The {{site.data.keyword.speechtotextshort}} service migrated in each location on the following dates:
-
--   Dallas (**us-south**): October 30, 2018
--   Frankfurt (**eu-de**): October 30, 2018
--   Washington, DC (**us-east**): June 12, 2018
--   Sydney (**au-syd**): May 15, 2018
-
-The migration to IAM authentication affects new and existing service instances differently:
-
--   *All new service instances that you create in any location* now use IAM authentication to access the service. You can pass either a bearer token or an API key: Tokens support authenticated requests without embedding service credentials in every call; API keys use HTTP basic authentication. When you use any of the {{site.data.keyword.watson}} SDKs, you can pass the API key and let the SDK manage the lifecycle of the tokens.
--   *Existing service instances that you created in a location before the indicated migration date* continue to use the `{username}` and `{password}` from their previous Cloud Foundry service credentials for authentication until you migrate them to use IAM authentication. For more information about migrating to IAM authentication, see [Migrating Cloud Foundry service instances to a resource group](https://{DomainName}/docs/resources/instance_migration.html).
-
-    If you have an existing application that uses JavaScript to call the WebSocket interface from a browser, do not migrate your service instance to use IAM authentication at this time. This limitation does not apply to the service's HTTP REST interface. For more information, see [Known limitations](#limitations).
-    {: important}
-
-For more information, see the following documentation:
-
--   To learn which authentication mechanism your service instance uses, view your service credentials by clicking the instance on the [{{site.data.keyword.Bluemix_notm}} dashboard ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/dashboard/apps){: new_window}.
--   For more information about using IAM tokens with Watson services, see [Authenticating with IAM tokens](/docs/services/watson/getting-started-iam.html).
--   For more information about using IAM API keys with Watson services, see [IAM service API keys](/docs/services/watson/apikey-bp.html).
--   For examples that use IAM authentication, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
-
 ## Older releases
 {: #older}
 
+-   [30 October 2018](#October2018b)
 -   [9 October 2018](#October2018a)
 -   [10 September 2018](#September2018b)
 -   [7 September 2018](#September2018a)
@@ -103,6 +84,31 @@ For more information, see the following documentation:
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 30 October 2018
+{: #October2018b}
+
+The service has migrated to token-based Identity and Access Management (IAM) authentication for all locations. All {{site.data.keyword.Bluemix}} services now use IAM authentication. The {{site.data.keyword.speechtotextshort}} service migrated in each location on the following dates:
+
+-   Dallas (**us-south**): October 30, 2018
+-   Frankfurt (**eu-de**): October 30, 2018
+-   Washington, DC (**us-east**): June 12, 2018
+-   Sydney (**au-syd**): May 15, 2018
+
+The migration to IAM authentication affects new and existing service instances differently:
+
+-   *All new service instances that you create in any location* now use IAM authentication to access the service. You can pass either a bearer token or an API key: Tokens support authenticated requests without embedding service credentials in every call; API keys use HTTP basic authentication. When you use any of the {{site.data.keyword.watson}} SDKs, you can pass the API key and let the SDK manage the lifecycle of the tokens.
+-   *Existing service instances that you created in a location before the indicated migration date* continue to use the `{username}` and `{password}` from their previous Cloud Foundry service credentials for authentication until you migrate them to use IAM authentication. For more information about migrating to IAM authentication, see [Migrating Cloud Foundry service instances to a resource group](https://{DomainName}/docs/resources/instance_migration.html).
+
+    If you have an existing application that uses JavaScript to call the WebSocket interface from a browser, do not migrate your service instance to use IAM authentication at this time. This limitation does not apply to the service's HTTP REST interface. For more information, see [Known limitations](#limitations).
+    {: important}
+
+For more information, see the following documentation:
+
+-   To learn which authentication mechanism your service instance uses, view your service credentials by clicking the instance on the [{{site.data.keyword.Bluemix_notm}} dashboard ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/dashboard/apps){: new_window}.
+-   For more information about using IAM tokens with Watson services, see [Authenticating with IAM tokens](/docs/services/watson/getting-started-iam.html).
+-   For more information about using IAM API keys with Watson services, see [IAM service API keys](/docs/services/watson/apikey-bp.html).
+-   For examples that use IAM authentication, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
 
 ### 9 October 2018
 {: #October2018a}

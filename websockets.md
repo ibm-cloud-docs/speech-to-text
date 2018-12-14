@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-16"
+lastupdated: "2018-12-14"
 
 ---
 
@@ -61,6 +61,7 @@ where `{host_name}` is the location in which your application is hosted:
 -   `gateway-syd.watsonplatform.net` for Sydney
 -   `gateway-wdc.watsonplatform.net` for Washington, DC
 -   `gateway-tok.watsonplatform.net` for Tokyo
+-   `gateway-lon.watsonplatform.net` for London
 
 A WebSocket client calls this method with the following query parameters to establish an authenticated connection with the service.
 

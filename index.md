@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-15"
+lastupdated: "2018-12-14"
 
 ---
 
@@ -23,7 +23,7 @@ lastupdated: "2018-11-15"
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on November 12, 2018. The service now supports smart formatting as beta functionality for Japanese speech recognition. For more information, see the [12 November 2018 service update](/docs/services/speech-to-text/release-notes.html#November2018b) in the release notes*.
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on December 13, 2018. The service is now available in the {{site.data.keyword.cloud}} London location. For more information, see the [13 December 2018 service update](/docs/services/speech-to-text/release-notes.html#December2018a) in the release notes*.
 
 The {{site.data.keyword.speechtotextfull}} service provides application programming interfaces (APIs) that you can use to add speech transcription capabilities to your applications. The service leverages machine intelligence to transcribe the human voice accurately. The service combines information about grammar and language structure with knowledge of the composition of the audio signal. It can continuously return and retroactively update a transcription as more speech is heard.
 {: shortdesc}
