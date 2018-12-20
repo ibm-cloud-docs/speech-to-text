@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-09-16"
+lastupdated: "2018-12-06"
 
 ---
 
@@ -90,7 +90,7 @@ lastupdated: "2018-09-16"
 
 1.  <span style="color:#003F69">How much audio data is needed to build a custom acoustic model?</span>
 
-    You must add at least 10 minutes and no more than 50 hours of audio to a custom acoustic model. The quality of the audio makes a difference when you are determining how much to add. The better the model's audio reflects the characteristics of the audio that is to be recognized, the better the quality of the custom model. If the audio is of good quality, adding more audio can improve transcription accuracy. As a rough guideline, adding five to ten hours of audio can make a positive difference.
+    You must add at least 10 minutes and no more than 100 hours of audio to a custom acoustic model. The quality of the audio makes a difference when you are determining how much to add. The better the model's audio reflects the characteristics of the audio that is to be recognized, the better the quality of the custom model. If the audio is of good quality, adding more audio can improve transcription accuracy. As a rough guideline, adding five to ten hours of audio can make a positive difference.
 
 1.  <span style="color:#003F69">Do I need to transcribe the audio data that I add to a custom acoustic model?</span>
 

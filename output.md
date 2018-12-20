@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-15"
+lastupdated: "2018-12-13"
 
 ---
 
@@ -23,27 +23,22 @@ lastupdated: "2018-11-15"
 # Output features
 {: #output}
 
-The {{site.data.keyword.speechtotextshort}} service offers the following features to indicate the information that the service is to include in its transcription. All output parameters are optional.
+The {{site.data.keyword.speechtotextshort}} service offers the following features to indicate the information that the service is to include in its transcription results for a speech recognition request. All output parameters are optional.
 {: shortdesc}
 
--   For examples of speech recognition responses, see [Understanding recognition results](/docs/services/speech-to-text/basic-response.html).
--   For an alphabetized list of all available parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
-
-The service returns all JSON response content in the UTF-8 character set.
+-   For examples of simple speech recognition requests for each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text/basic-request.html).
+-   For examples and descriptions of speech recognition responses, see [Understanding recognition results](/docs/services/speech-to-text/basic-response.html). The service returns all JSON response content in the UTF-8 character set.
+-   For an alphabetized list of all available speech recognition parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
 
 ## Speaker labels
 {: #speaker_labels}
 
-The speaker labels feature is beta functionality that is available for US English, Japanese, and Spanish.
+The speaker labels feature is beta functionality that is available for US English, Japanese, and Spanish (both broadband and narrowband models) and UK English (narrowband model only).
 {: note}
 
 Speaker labels identify which individuals spoke which words in a multi-participant exchange. (Labeling who spoke and when is sometimes referred to as *speaker diarization*.) You can use the information to develop a person-by-person transcript of an audio stream, such as contact to a call center. Or you can use it to animate an exchange with a conversational robot or avatar. For best performance, use audio that is at least a minute long.
 
-Speaker labels are optimized for two-speaker scenarios. They work best for telephone conversations that involve two people in an extended exchange. They can handle up to six speakers, but more than two speakers can result in variable performance. Two-person exchanges are typically conducted over narrowband media, but you can use speaker labels with the following models:
-
--   `en-US_NarrowbandModel` and `en-US_BroadbandModel`
--   `es-ES_NarrowbandModel` and `es-ES_BroadbandModel`
--   `ja-JP_NarrowbandModel` and `ja-JP_BroadbandModel`
+Speaker labels are optimized for two-speaker scenarios. They work best for telephone conversations that involve two people in an extended exchange. They can handle up to six speakers, but more than two speakers can result in variable performance. Two-person exchanges are typically conducted over narrowband media, but you can use speaker labels with supported narrowband and broadband models.
 
 To use the feature, you set the `speaker_labels` parameter to `true` for a recognition request; the parameter is `false` by default. The service identifies speakers by individual words of the audio. It relies on a word's start and end time to identify its speaker. Therefore, enabling speaker labels also forces the `timestamps` parameter to be `true` (see [Word timestamps](/docs/services/speech-to-text/output.html#word_timestamps)).
 
@@ -251,7 +246,7 @@ The service sends final results when the audio stream is complete or in response
 ### Performance considerations for speaker labels
 {: #speakerLabelsPerformance}
 
-As noted previously, the speaker labels feature is optimized for two-person conversations, such as communications with a call center. Because of this optimization, you need to consider the following potential issues with the feature's performance:
+As noted previously, the speaker labels feature is optimized for two-person conversations, such as communications with a call center. Therefore, you need to consider the following potential performance issues:
 
 -   Performance for audio with a single speaker can be poor. Variations in audio quality or in the speaker's voice can cause the service to identify extra speakers who are not present. Such speakers are referred to as hallucinations.
 -   Similarly, performance for audio with a dominant speaker, such as a podcast, can be poor. The service tends to miss speakers who talk for shorter amounts of time, and it can also produce hallucinations.
@@ -735,77 +730,6 @@ severe thunderstorms swept through Colorado on Sunday "
 ```
 {: codeblock}
 
-## Profanity filtering
-{: #profanity_filter}
-
-The profanity filtering feature is generally available for US English only.
-{: note}
-
-The `profanity_filter` parameter indicates whether the service is to censor profanity from its results. By default, the service obscures all profanity by replacing it with a series of asterisks in the transcript. Setting the parameter to `false` displays words in the output exactly as transcribed.
-
-The service censors profanity from all final transcripts and from any alternative transcripts. It also censors profanity from results that are associated with word alternatives, word confidence, and word timestamps. The sole exception is keyword spotting, for which the service returns all words as specified by the user, regardless of whether `profanity_filter` is `true`.
-
-### Profanity filtering example
-{: #profanityFilteringExample}
-
-The following example shows the results for a brief audio file that is transcribed with the default `true` value for the `profanity_filter` parameter. The request also sets the `word_alternatives_threshold` parameter to a relatively high value of `0.99` and the `word_confidence` and `timestamps` parameters to `true`.
-
-```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/flac"
---data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?word_alternatives_threshold=0.99&word_confidence=true&timestamps=true"
-```
-{: pre}
-
-```javascript
-{
-  "results": [
-    {
-      "word_alternatives": [
-        {
-          "start_time": 0.03,
-          "alternatives": [
-            {
-              "confidence": 1.0,
-              "word": "****"
-            }
-          ],
-          "end_time": 0.25
-        },
-        {
-          "start_time": 0.25,
-          "alternatives": [
-            {
-              "confidence": 0.9976,
-              "word": "you"
-            }
-          ],
-          "end_time": 0.56
-        }
-      ],
-      "alternatives": [
-        {
-          "transcript": "**** you",
-          "confidence": 0.992,
-          "word_confidence": [
-            ["****", 0.9999999999999918],
-            ["you", 0.986436366840706]
-          ],
-          "timestamps": [
-            ["****", 0.03, 0.25],
-            ["you", 0.25, 0.56]
-          ]
-        }
-      ],
-      "final": true
-    }
-  ],
-  "result_index": 0
-}
-```
-{: codeblock}
-
 ## Smart formatting
 {: #smart_formatting}
 
@@ -830,7 +754,7 @@ The service applies smart formatting only to the final transcript of a recogniti
 
 For US English, the feature also directs the service to substitute punctuation symbols for the following spoken keyword strings in the audio.
 
-<table>
+<table style="width:50%">
   <caption>Table 2. Smart formatting punctuation keywords</caption>
   <tr>
     <th style="width:45%; text-align:left">Keyword string</th>
@@ -901,7 +825,7 @@ Smart formatting is based on the presence of obvious keywords in the transcript.
 
 -   Internet email and web addresses are not converted.
 -   Phone numbers must be 10 or 11 digits and begin with valid prefixes for telephone numbers in Japan. For example, valid prefixes include `03` and `090`.
--   English words are converted to ASCII (hankaku) characters. For example, <code>&#65321;&#65314;&#65325;</code> is converted to `IBM`.
+-   English words are converted to ASCII (*hankaku*) characters. For example, <code>&#65321;&#65314;&#65325;</code> is converted to `IBM`.
 -   Ambiguous terms might not be converted if sufficient context is unavailable. For example, it is unclear whether <code>&#19968;&#26178;</code> and <code>&#21313;&#20998;</code> refer to times.
 -   Punctuation is handled the same with or without smart formatting. For example, based on probability calculations, one of <code>&#12459;&#12531;&#12510;</code> or `,` is selected.
 
@@ -921,14 +845,14 @@ curl -X POST -u "apikey:{apikey}"
 ### Smart formatting results
 {: #smartFormattingResults}
 
-The following table shows examples of final transcription results both with and without smart formatting. The transcripts are based on US English audio.
+The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
 
 <table summary="Each heading row is followed by multiple rows of examples that show the effect of smart formatting for the element that is identified in the heading.">
   <caption>Table 3. Smart formatting example transcripts</caption>
   <tr>
-    <th id="withoutFormatting" style="width:45%; text-align:left">Without
+    <th id="without_formatting" style="width:45%; text-align:left">Without
       smart formatting</th>
-    <th id="withFormatting" style="text-align:left">With smart
+    <th id="with_formatting" style="text-align:left">With smart
       formatting</th>
   </tr>
   <tr>
@@ -937,26 +861,26 @@ The following table shows examples of final transcription results both with and 
     </th>
   </tr>
   <tr>
-    <td headers="Dates withoutFormatting">
+    <td headers="Dates without_formatting">
       I was born on ten oh six nineteen seventy
     </td>
-    <td headers="Dates withFormatting">
+    <td headers="Dates with_formatting">
       I was born on 10/6/1970
     </td>
   </tr>
   <tr>
-    <td headers="Dates withoutFormatting">
+    <td headers="Dates without_formatting">
       I was born on the ninth of December nineteen hundred
     </td>
-    <td headers="Dates withFormatting">
+    <td headers="Dates with_formatting">
       I was born on 12/9/1900
     </td>
   </tr>
   <tr>
-    <td headers="Dates withoutFormatting">
+    <td headers="Dates without_formatting">
       Today is June sixth
     </td>
-    <td headers="Dates withFormatting">
+    <td headers="Dates with_formatting">
       Today is June 6
     </td>
   </tr>
@@ -966,26 +890,26 @@ The following table shows examples of final transcription results both with and 
     </th>
   </tr>
   <tr>
-    <td headers="Times withoutFormatting">
+    <td headers="Times without_formatting">
       The meeting starts at nine thirty AM
     </td>
-    <td headers="Times withFormatting">
+    <td headers="Times with_formatting">
       The meeting starts at 9:30 AM
     </td>
   </tr>
   <tr>
-    <td headers="Times withoutFormatting">
+    <td headers="Times without_formatting">
       I am available at seven EST
     </td>
-    <td headers="Times withFormatting">
+    <td headers="Times with_formatting">
       I am available at 7:00 EST
     </td>
   </tr>
   <tr>
-    <td headers="Times withoutFormatting">
+    <td headers="Times without_formatting">
       We meet at oh seven hundred hours
     </td>
-    <td headers="Times withFormatting">
+    <td headers="Times with_formatting">
       We meet at 0700 hours
     </td>
   </tr>
@@ -995,83 +919,83 @@ The following table shows examples of final transcription results both with and 
     </th>
   </tr>
   <tr>
-    <td headers="Numbers withoutFormatting">
+    <td headers="Numbers without_formatting">
       The quantity is one million one hundred and one
     </td>
-    <td headers="Numbers withFormatting">
+    <td headers="Numbers with_formatting">
       The quantity is 1000101
     </td>
   </tr>
   <tr>
-    <td headers="Numbers withoutFormatting">
+    <td headers="Numbers without_formatting">
       One point five is between one and two
     </td>
-    <td headers="Numbers withFormatting">
+    <td headers="Numbers with_formatting">
       1.5 is between 1 and 2
     </td>
   </tr>
   <tr>
-    <th id="PhoneNumbers" colspan="2">
+    <th id="phone_numbers" colspan="2">
       <strong>Phone numbers</strong>
     </th>
   </tr>
   <tr>
-    <td headers="PhoneNumbers withoutFormatting">
+    <td headers="phone_numbers without_formatting">
       Call me at nine one four two three seven one thousand
     </td>
-    <td headers="PhoneNumbers withFormatting">
+    <td headers="phone_numbers with_formatting">
       Call me at 914-237-1000
     </td>
   </tr>
   <tr>
-    <td headers="PhoneNumbers withoutFormatting">
+    <td headers="phone_numbers without_formatting">
       Call me at one nine one four nine oh nine twenty six forty five
     </td>
-    <td headers="PhoneNumbers withFormatting">
+    <td headers="phone_numbers with_formatting">
       Call me at 1-914-909-2645
     </td>
   </tr>
   <tr>
-    <th id="CurrencyValues" colspan="2">
+    <th id="currency_values" colspan="2">
       <strong>Currency values</strong>
     </th>
   </tr>
   <tr>
-    <td headers="CurrencyValues withoutFormatting">
+    <td headers="currency_values without_formatting">
       You owe me three thousand two hundred two dollars and sixty six
       cents
     </td>
-    <td headers="CurrencyValues withFormatting">
+    <td headers="currency_values with_formatting">
       You owe me $3202.66
     </td>
   </tr>
   <tr>
-    <td headers="CurrencyValues withoutFormatting">
+    <td headers="currency_values without_formatting">
       The dollar rose to one hundred and nine point seven nine yen from
       one hundred and nine point seven two yen
     </td>
-    <td headers="CurrencyValues withFormatting">
+    <td headers="currency_values with_formatting">
       The dollar rose to 109.79 yen from 109.72 yen
     </td>
   </tr>
   <tr>
-    <th id="InternetAddresses" colspan="2">
+    <th id="internet_addresses" colspan="2">
       <strong>Internet email and web addresses</strong>
     </th>
   </tr>
   <tr>
-    <td headers="InternetAddresses withoutFormatting">
+    <td headers="internet_addresses without_formatting">
       My email address is john dot doe at foo dot com
     </td>
-    <td headers="InternetAddresses withFormatting">
+    <td headers="internet_addresses with_formatting">
       My email address is john.doe at foo.com
     </td>
   </tr>
   <tr>
-    <td headers="InternetAddresses withoutFormatting">
+    <td headers="internet_addresses without_formatting">
       I saw the story on yahoo dot com
     </td>
-    <td headers="InternetAddresses withFormatting">
+    <td headers="internet_addresses with_formatting">
       I saw the story on yahoo.com
     </td>
   </tr>
@@ -1081,19 +1005,19 @@ The following table shows examples of final transcription results both with and 
     </th>
   </tr>
   <tr>
-    <td headers="Combinations withoutFormatting">
-      The CPT code is zero two four eight one and the date of service
+    <td headers="Combinations without_formatting">
+      The code is zero two four eight one and the date of service
       is May fifth two thousand and one
     </td>
-    <td headers="Combinations withFormatting">
-      The CPT code is 02481 and the date of service is 5/5/2001
+    <td headers="Combinations with_formatting">
+      The code is 02481 and the date of service is 5/5/2001
     </td>
   </tr>
   <tr>
-    <td headers="Combinations withoutFormatting">
+    <td headers="Combinations without_formatting">
       There are forty seven links on Yahoo dot com now
     </td>
-    <td headers="Combinations withFormatting">
+    <td headers="Combinations with_formatting">
       There are 47 links on Yahoo.com now
     </td>
   </tr>
@@ -1130,3 +1054,199 @@ In cases where an utterance contains long enough silences, the service can split
     </td>
   </tr>
 </table>
+
+## Numeric redaction
+{: #redaction}
+
+The numeric redaction feature is beta functionality that is available for US English, Japanese, and Korean.
+{: note}
+
+The `redaction` parameter directs the service to redact, or mask, numeric data from final transcripts. The feature redacts any number that has three or more consecutive digits by replacing each digit with an `X` character. It is intended to redact sensitive numeric data, such as credit card numbers.
+
+By default, the service does not redact numeric data. Set the `redaction` parameter to `true` to enable numeric redaction. When you enable redaction, the service automatically enables smart formatting, regardless of whether you explicitly disable that feature. To ensure maximum security, the service also enforces the following parameter values when you enable redaction:
+
+-   The service disables keyword spotting, regardless of whether you specify values for the `keywords` and `keywords_threshold` parameters.
+-   The service disables interim results, regardless of whether you set the `interim_results` parameter of the WebSocket interface to `true`.
+-   The service returns only a single, final transcript, regardless of whether you specify a value for the `maximum_alternatives` parameter.
+
+The design of the feature parallels the existing smart formatting feature. The service applies redaction only to the final transcript of a recognition request, just before it returns the results to the client and after text normalization is complete.
+
+Future versions of the feature might expand redaction to mask all telephone numbers, street addresses, bank accounts, social security numbers, and other sensitive numeric data.
+{: note}
+
+### Language differences
+{: #redactionDifferences}
+
+The feature works exactly as described for US English models but has the following differences for Japanese and Korean models.
+
+#### Japanese
+{: #redactionJapanese}
+
+Japanese redaction has the following differences:
+
+-   In addition to masking strings of three or more consecutive digits, redaction also masks street addresses and numbers, regardless of whether they contain fewer than three digits.
+-   Similarly, redaction also masks date information in Japanese-style birth dates. In Japanese, date information is usually presented in Latin *Anno Domini* format but sometimes follows Japanese style, particularly for birth dates. In this case, the year and month are masked even though they contain just one or two digits. For example, numeric redaction changes the following string as shown.
+
+    <table style="width:50%">
+      <caption>Table 5. Example redaction of Japanese-style birth date</caption>
+      <tr>
+        <th id="without_redaction" style="text-align:left">Without redaction</th>
+        <th id="with_redaction" style="text-align:left">With redaction</th>
+      </tr>
+      <tr>
+        <td headers="Japanese without_redaction">
+          &#24179;&#25104; 30&#24180; 2&#26376;
+        </td>
+        <td headers="Japanese with_redaction">
+          &#24179;&#25104; XX&#24180; X&#26376;
+        </td>
+      </tr>
+    </table>
+
+#### Korean
+{: #redactionKorean}
+
+Korean redaction has the following differences:
+
+-   The smart formatting feature is not supported. The service still performs numeric redaction for Korean, but it performs no other smart formatting.
+-   Isolated digit characters are reduced, but possible digit characters that are included as part of Korean phrases are not. For example, the character <code>&#51060;</code> in the following phrase is not replaced by an `X` because it is adjacent to the following character:
+
+    <code>&#51060;&#51077;&#45768;&#45796;</code>
+
+    If the <code>&#51060;</code> character were separated from the following character by a space, it would be replaced by an `X`, as described in [Numeric redaction results](#redactionResults).
+
+### Numeric redaction example
+{: #redactionExample}
+
+The following example requests numeric redaction with a recognition request by setting the `redaction` parameter to `true`. Because the request enables redaction, the service implicitly enables smart formatting with the request. The service effectively disables the other parameters of the request so that they have no effect: The service returns a single final transcript and recognizes no keywords. The following section shows the effects of redaction.
+
+```bash
+curl -X POST -u "apikey:{apikey}"
+--header "Content-Type: audio/wav"
+--data-binary @{path}audio-file.wav
+"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?&redaction=true&max_alternatives=3&keywords=%22birth%22%2C%22birthday%22&keywords_threshold=0.5"
+```
+{: pre}
+
+### Numeric redaction results
+{: #redactionResults}
+
+The following table shows examples of final transcripts both with and without numeric redaction in each supported language.
+
+<table style="width:90%" summary="Each heading row identifies a language and is followed by a single row that shows the same transcript both without and with numeric redaction enabled.">
+  <caption>Table 6. Numeric redaction example transcripts</caption>
+  <tr>
+    <th id="without_redaction" style="text-align:left">Without redaction</th>
+    <th id="with_redaction" style="text-align:left">With redaction</th>
+  </tr>
+  <tr>
+    <th id="US_English" colspan="2">
+      <strong>US English</strong>
+    </th>
+  </tr>
+  <tr>
+    <td headers="US_English without_redaction">
+      my credit card number is four one four seven two
+    </td>
+    <td headers="US_English with_redaction">
+      my credit card number is XXXXX
+    </td>
+  </tr>
+  <tr>
+    <th id="Japanese" colspan="2">
+      <strong>Japanese</strong>
+    </th>
+  </tr>
+  <tr>
+    <td headers="Japanese without_redaction">
+      &#31169; &#12398;&#12463;&#12524;&#12472;&#12483;&#12488; &#12459;&#12540;&#12489; &#30058;&#21495; &#12399; &#22235; &#19968; &#22235; &#19971; &#20108;&#12391;&#12377;
+    </td>
+    <td headers="Japanese with_redaction">
+      &#31169; &#12398;&#12463;&#12524;&#12472;&#12483;&#12488; &#12459;&#12540;&#12489; &#30058;&#21495; &#12399; XXXXX &#12391;&#12377;
+    </td>
+  </tr>
+  <tr>
+    <th id="Korean" colspan="2">
+      <strong>Korean</strong>
+    </th>
+  </tr>
+  <tr>
+    <td headers="Korean without_redaction">
+      &#45236; &#49888;&#50857; &#52852;&#46300; &#48264;&#54840;&#45716; &#49324; &#51068; &#49324; &#52832; &#51060; &#48264;&#51077;&#45768;&#45796;
+    </td>
+    <td headers="Korean with_redaction">
+      &#45236; &#49888;&#50857; &#52852;&#46300; &#48264;&#54840;&#45716; XXXXX &#48264;&#51077;&#45768;&#45796;
+    </td>
+  </tr>
+</table>
+
+## Profanity filtering
+{: #profanity_filter}
+
+The profanity filtering feature is generally available for US English only.
+{: note}
+
+The `profanity_filter` parameter indicates whether the service is to censor profanity from its results. By default, the service obscures all profanity by replacing it with a series of asterisks in the transcript. Setting the parameter to `false` displays words in the output exactly as transcribed.
+
+The service censors profanity from all final transcripts and from any alternative transcripts. It also censors profanity from results that are associated with word alternatives, word confidence, and word timestamps. The sole exception is keyword spotting, for which the service returns all words as specified by the user, regardless of whether `profanity_filter` is `true`.
+
+### Profanity filtering example
+{: #profanityFilteringExample}
+
+The following example shows the results for a brief audio file that is transcribed with the default `true` value for the `profanity_filter` parameter. The request also sets the `word_alternatives_threshold` parameter to a relatively high value of `0.99` and the `word_confidence` and `timestamps` parameters to `true`.
+
+```bash
+curl -X POST -u "apikey:{apikey}"
+--header "Content-Type: audio/flac"
+--data-binary @{path}audio-file.flac
+"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?word_alternatives_threshold=0.99&word_confidence=true&timestamps=true"
+```
+{: pre}
+
+```javascript
+{
+  "results": [
+    {
+      "word_alternatives": [
+        {
+          "start_time": 0.03,
+          "alternatives": [
+            {
+              "confidence": 1.0,
+              "word": "****"
+            }
+          ],
+          "end_time": 0.25
+        },
+        {
+          "start_time": 0.25,
+          "alternatives": [
+            {
+              "confidence": 0.9976,
+              "word": "you"
+            }
+          ],
+          "end_time": 0.56
+        }
+      ],
+      "alternatives": [
+        {
+          "transcript": "**** you",
+          "confidence": 0.992,
+          "word_confidence": [
+            ["****", 0.9999999999999918],
+            ["you", 0.986436366840706]
+          ],
+          "timestamps": [
+            ["****", 0.03, 0.25],
+            ["you", 0.25, 0.56]
+          ]
+        }
+      ],
+      "final": true
+    }
+  ],
+  "result_index": 0
+}
+```
+{: codeblock}

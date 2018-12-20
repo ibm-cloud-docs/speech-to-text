@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-10-29"
+lastupdated: "2018-12-16"
 
 ---
 
@@ -23,16 +23,13 @@ lastupdated: "2018-10-29"
 # Managing custom acoustic models
 {: #manageAcousticModels}
 
-The customization interface offers the `POST /v1/acoustic_customizations` method for creating a custom acoustic model. For more information, see [Create a custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#createModel).
+The customization interface includes the `POST /v1/acoustic_customizations` method for creating a custom acoustic model. The interface also includes the `POST /v1/acoustic_customizations/train` method for training a custom model on its latest audio resources. For more information, see the following documentation:
 {: shortdesc}
 
-The interface also offers the `POST /v1/acoustic_customizations/train` method for training a custom model on its latest audio resources. For more information, see [Train the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#trainModel).
+-   [Create a custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#createModel)
+-   [Train the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#trainModel)
 
-In addition, the interface includes methods for
-
--   Listing information about custom acoustic models
--   Resetting a custom acoustic model to its initial state
--   Deleting a custom acoustic model
+In addition, the interface includes methods for listing information about custom acoustic models, resetting a custom model to its initial state, and deleting a custom model.
 
 ## Listing custom acoustic models
 {: #listModels}
@@ -51,7 +48,7 @@ Both methods return the following information about a custom acoustic model:
 -   `name` is the name of the custom model.
 -   `description` shows the description of the custom model, if one was provided at its creation.
 -   `base_model_name` indicates the name of the language model for which the custom model was created.
--   `versions` provides a list of the available versions of the custom model. Each element of the array indicates a version of the base model with which the custom model can be used. Multiple versions exist only if the custom model is upgraded. Otherwise, only a single version is shown.
+-   `versions` provides a list of the available versions of the custom model. Each element of the array indicates a version of the base model with which the custom model can be used. Multiple versions exist only if the custom model is upgraded. Otherwise, only a single version is shown. For more information, see [Listing version information for a custom model](/docs/services/speech-to-text/custom-upgrade.html#upgradeList).
 
 The methods also return a `status` field that indicates the state of the custom model:
 

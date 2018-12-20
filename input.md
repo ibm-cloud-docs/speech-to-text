@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-15"
+lastupdated: "2018-12-18"
 
 ---
 
@@ -23,101 +23,11 @@ lastupdated: "2018-11-15"
 # Input features
 {: #input}
 
-The {{site.data.keyword.speechtotextshort}} service offers the following features to specify how the service is to perform the recognition request. All of the input parameters that are described in the following sections are optional. Only the input audio is required.
+The {{site.data.keyword.speechtotextshort}} service offers the following features to specify how the service is to perform a speech recognition request. All of the input parameters that are described in the following sections are optional. Only the input audio is required.
 {: shortdesc}
 
--   For more information about the supported audio formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
--   For examples of simple requests for each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text/basic-request.html).
--   For an alphabetized list of all available parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
-
-## Languages and models
-{: #models}
-
-You can use the `model` parameter to specify a language model for the request. The model indicates the language in which the audio is spoken and the rate at which it is sampled. For most languages, the service supports two models:
-
--   A *broadband model* for audio that is sampled at greater than or equal to 16 kHz. {{site.data.keyword.IBM}} recommends that you use the broadband model for responsive, real-time applications (for example, for live-speech applications).
--   A *narrowband model* for audio that is sampled at 8 kHz. This rate is typically used for telephonic audio.
-
-The service automatically adjusts the sampling rate of your audio to match the model that you specify. For more information, see [Sampling rate](/docs/services/speech-to-text/audio-formats.html#samplingRate).
-
-### Available language models
-{: #modelsList}
-
-To list all available models for all languages, use the `GET /v1/models` method. To see detailed information about a specific model, use the `GET /v1/models/{model_id}` method.
-
-The following table lists the supported models for each language. If you omit the `model` parameter from a request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
-
-<table style="width:80%">
-  <caption>Table 1. Supported language models</caption>
-  <tr>
-    <th style="text-align:left">Language</th>
-    <th style="text-align:center">Broadband model</th>
-    <th style="text-align:center">Narrowband model</th>
-  </tr>
-  <tr>
-    <td>Brazilian Portuguese</td>
-    <td style="text-align:center"><code>pt-BR_BroadbandModel</code></td>
-    <td style="text-align:center"><code>pt-BR_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>French</td>
-    <td style="text-align:center"><code>fr-FR_BroadbandModel</code></td>
-    <td style="text-align:center">Not supported</td>
-  </tr>
-  <tr>
-    <td>German</td>
-    <td style="text-align:center"><code>de-DE_BroadbandModel</code></td>
-    <td style="text-align:center">Not supported</td>
-  </tr>
-  <tr>
-    <td>Japanese</td>
-    <td style="text-align:center"><code>ja-JP_BroadbandModel</code></td>
-    <td style="text-align:center"><code>ja-JP_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>Korean</td>
-    <td style="text-align:center"><code>ko-KR_BroadbandModel</code></td>
-    <td style="text-align:center"><code>ko-KR_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>Mandarin Chinese</td>
-    <td style="text-align:center"><code>zh-CN_BroadbandModel</code></td>
-    <td style="text-align:center"><code>zh-CN_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>Modern Standard Arabic</td>
-    <td style="text-align:center"><code>ar-AR_BroadbandModel</code></td>
-    <td style="text-align:center">Not supported</td>
-  </tr>
-  <tr>
-    <td>Spanish</td>
-    <td style="text-align:center"><code>es-ES_BroadbandModel</code></td>
-    <td style="text-align:center"><code>es-ES_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>UK English</td>
-    <td style="text-align:center"><code>en-GB_BroadbandModel</code></td>
-    <td style="text-align:center"><code>en-GB_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>US English</td>
-    <td style="text-align:center"><code>en-US_BroadbandModel</code></td>
-    <td style="text-align:center"><code>en-US_NarrowbandModel</code></td>
-  </tr>
-</table>
-
-### Language model example
-{: #modelsExample}
-
-The following example request uses the model `en-US-NarrowbandModel`:
-
-```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/flac"
---data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?model=en-US_NarrowbandModel"
-```
-{: pre}
+-   For examples of simple speech recognition requests for each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text/basic-request.html).
+-   For an alphabetized list of all available speech recognition parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
 
 ## Custom models
 {: #custom}
@@ -127,10 +37,16 @@ Language and acoustic model customization are available at different levels of s
 
 All interfaces accept a custom model for use in a recognition request:
 
--   *Custom language models* expand the service's base vocabulary with terminology from specific domains. Use the `language_customization_id` parameter to include a custom language model with a request. You can also specify an optional `customization_weight` parameter. The parameter indicates the relative weight that is given to words from the custom model as opposed to words from the base vocabulary. For more information, see [Using a custom language model](/docs/services/speech-to-text/language-use.html).
--   *Custom acoustic models* adapt the service's base acoustic model for the acoustic characteristics of your environment and speakers. Use the `acoustic_customization_id` parameter to include a custom acoustic model with a request. You can specify both a custom language model and a custom acoustic model with a request. For more information, see [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html).
+-   *Custom language models* expand the service's base vocabulary with terminology from specific domains. Use the `language_customization_id` parameter to include a custom language model with a request. You can also specify an optional `customization_weight` parameter. The parameter indicates the relative weight that is given to words from the custom model as opposed to words from the base vocabulary.
 
-Custom models are based on one of the language models that are described in [Languages and models](#models). A custom model can be used only with the base model for which it is created. If your custom model is based on a model other than the `en-US_BroadbandModel`, the default, you must also specify the name of the model with the request. To use a custom model, you must issue the request with service credentials that are created for the instance of the service that owns the custom model. For an introduction to customization, see [The customization interface](/docs/services/speech-to-text/custom.html).
+    For more information, see [Using a custom language model](/docs/services/speech-to-text/language-use.html).
+-   *Custom acoustic models* adapt the service's base acoustic model for the acoustic characteristics of your environment and speakers. Use the `acoustic_customization_id` parameter to include a custom acoustic model with a request. You can specify both a custom language model and a custom acoustic model with a request.
+
+    For more information, see [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html).
+
+Custom models are based on one of the language models that are described in [Languages and models](/docs/services/speech-to-text/models.html). A custom model can be used only with the base model for which it is created. If your custom model is based on a model other than `en-US_BroadbandModel`, the default, you must also specify the name of the model with the request. To use a custom model, you must issue the request with service credentials that are created for the instance of the service that owns the custom model.
+
+For an introduction to customization, see [The customization interface](/docs/services/speech-to-text/custom.html).
 
 ### Custom model examples
 {: #customExample}
@@ -155,12 +71,47 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-For examples that use custom models with each of the service's interfaces, see [Using a custom language model](/docs/services/speech-to-text/language-use.html) and [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html).
+For examples that use custom models with each of the service's interfaces, see
+
+-   [Using a custom language model](/docs/services/speech-to-text/language-use.html)
+-   [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html)
+
+## Grammars
+{: #grammars}
+
+The grammars feature is beta functionality. The service supports grammars for all languages for which it supports language model customization.
+{: note}
+
+You can add grammars to a custom language model and use them for speech recognition. Grammars use a formal language specification to define a set of production rules for transcribing strings. The rules specify how to form valid strings from the language's alphabet.
+
+When you use a grammar for speech recognition, the service recognizes only phrases that are recognized by the grammar. By limiting the search space for valid strings, the service can deliver results faster and more accurately.
+
+All interfaces accept the following parameters for a recognition request:
+
+-   The `language_customization_id` parameter identifies the custom language model for which the grammar is defined. You must issue the request with service credentials for the instance of the service that owns the model.
+-   The `grammar_name` parameter specifies the grammar that you want to use. You can specify only a single grammar with a request.
+
+For more information, see [Using grammars with custom language models](/docs/services/speech-to-text/grammar.html).
+
+### Grammars example
+{: #grammarsExample}
+
+The following example request includes the `language_customization_id` and `grammar_name` parameters to restrict the service's response to strings that are defined in the grammar named `list-abnf`.
+
+```bash
+curl -X POST -u "apikey:{apikey}"
+--header "Content-Type: audio/flac"
+--data-binary @{path}audio-file.flac
+"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&grammar_name=list-abnf"
+```
+{: pre}
+
+For examples that use grammars with each of the service's interfaces, see [Using a grammar for speech recognition](/docs/services/speech-to-text/grammar-use.html).
 
 ## Base model version
 {: #version}
 
-To improve the quality of speech recognition, the service occasionally updates the base language models described in [Languages and models](#models). The base models for languages are independent of each other, as are the broadband and narrowband models for a language. Therefore, updates to base models occur independently of each other and have no effect on other models.
+To improve the quality of speech recognition, the service occasionally updates the base language models described in [Languages and models](/docs/services/speech-to-text/models.html). The base models for languages are independent of each other, as are the broadband and narrowband models for a language. Therefore, updates to base models occur independently of each other and have no effect on other models.
 
 When multiple versions of a base model exist, the optional `base_model_version` parameter specifies the version of the model to be used with a recognition request. The parameter is intended primarily for use with custom models that are updated for a new base model, but it can be used without a custom model. The version of a base model that is used for a request depends on whether you pass the `base_model_version` parameter. It also depends on whether you specify a custom model (language, acoustic, or both) with the request.
 
@@ -174,7 +125,10 @@ When multiple versions of a base model exist, the optional `base_model_version` 
     -   Omit the `base_model_version` parameter to use the latest version of the base model to which the custom model is upgraded. For example, if the custom model is upgraded to the latest version of the base model, the service uses the latest versions of the base and custom models.
     -   Specify the `base_model_version` parameter to use the specified versions of both the base and custom models.
 
-The parameter is intended for use with custom models. Therefore, you can learn about the available versions of a base model only by listing information about a custom model that is based on it. For more information about upgrading custom models and about using different versions of base and custom models for speech recognition, see [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html). See especially [Making recognition requests with upgraded custom models](/docs/services/speech-to-text/custom-upgrade.html#upgradeRecognition).
+The parameter is intended for use with custom models. Therefore, you can learn about the available versions of a base model only by listing information about a custom model that is based on it.
+
+-   For more information about upgrading custom models, see [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html).
+-   For more information about using different versions of base and custom models for speech recognition, see [Making recognition requests with upgraded custom models](/docs/services/speech-to-text/custom-upgrade.html#upgradeRecognition).
 
 ## Audio transmission
 {: #transmission}
