@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-15"
+lastupdated: "2018-12-16"
 
 ---
 
@@ -23,10 +23,10 @@ lastupdated: "2018-11-15"
 # The customization interface
 {: #customization}
 
-The {{site.data.keyword.speechtotextshort}} service offers a customization interface that you can use to augment its speech recognition capabilities. You can use customization to improve the accuracy of speech recognition requests by customizing a base model for your domain and audio. Customization is available for only some languages and at different levels of support for different languages; see [Language support for customization](#languageSupport).
+The {{site.data.keyword.speechtotextfull}} service offers a customization interface that you can use to augment its speech recognition capabilities. You can use customization to improve the accuracy of speech recognition requests by customizing a base model for your domain and audio. Customization is available for only some languages and at different levels of support for different languages; see [Language support for customization](#languageSupport).
 {: shortdesc}
 
-Speech recognition works the same either with or without a custom model. When you use a custom model for speech recognition, you can use all of the input and output parameters that are normally available with a recognition request. For more information, see [Input features](/docs/services/speech-to-text/input.html), [Output features](/docs/services/speech-to-text/output.html), and the [Parameter summary](/docs/services/speech-to-text/summary.html).
+Speech recognition works the same with or without a custom model. When you use a custom model for speech recognition, you can use all of the input and output parameters that are normally available with a recognition request. For more information about all available parameters, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
 
 ## Language model customization
 {: #customLanguage}
@@ -34,6 +34,8 @@ Speech recognition works the same either with or without a custom model. When yo
 The service was developed with a broad, general audience in mind. The service's base vocabulary contains many words that are used in everyday conversation. The general model provides sufficiently accurate recognition for many applications. But it can lack knowledge of specific terms that are associated with particular domains.
 
 The *language model customization* interface can improve the accuracy of speech recognition for domains such as medicine, law, information technology, and others. By using language model customization, you can expand and tailor the vocabulary of a base model to include domain-specific terminology. You create a custom language model and provide corpora and words specific to your domain. Once you train the custom language model on your enhanced vocabulary, you can use it for customized speech recognition.
+
+For more information, see
 
 -   [Creating a custom language model](/docs/services/speech-to-text/language-create.html)
 -   [Using a custom language model](/docs/services/speech-to-text/language-use.html)
@@ -49,15 +51,34 @@ Similarly, the service was developed with a base acoustic model that works well 
 
 The *acoustic model customization* interface can adapt a base model to your environment and speakers. You create a custom acoustic model and provide example audio that closely matches the acoustic signature of the audio that you want to transcribe. Once you train the custom acoustic model with your audio resources, you can use it for customized speech recognition.
 
+For more information, see
+
 -   [Creating a custom acoustic model](/docs/services/speech-to-text/acoustic-create.html)
 -   [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html)
+
+## Grammars
+{: #grammars}
+
+Custom language models allow you to expand the service's base vocabulary. *Grammars* enable you to restrict the words that the service can recognize from that vocabulary. When you use a grammar with a custom language model for speech recognition, the service can recognize only words, phrases, and strings that are recognized by the grammar. Because the grammar defines a limited search space for valid matches, the service can deliver results faster and more accurately.
+
+You add a grammar to a custom language model and train the model just as you do for a corpus. Unlike a corpus, however, you must explicitly specify that a grammar is to be used with a custom model during speech recognition.
+
+For more information, see
+
+-   [Using grammars with custom language models](/docs/services/speech-to-text/grammar.html)
+-   [Adding a grammar to a custom language model](/docs/services/speech-to-text/grammar-add.html)
+-   [Using a grammar for speech recognition](/docs/services/speech-to-text/grammar-use.html)
 
 ## Using acoustic and language customization together
 {: #combined}
 
 Using a custom acoustic model alone can improve the service's recognition capabilities. But if transcriptions or related corpora are available for your example audio, you can use that data to further improve the quality of speech recognition based on the custom acoustic model.
 
-By creating a custom language model that complements your custom acoustic model, you can enhance speech recognition by using the two models together. When you train a custom acoustic model, you can specify a custom language model that includes transcriptions of the audio resources or a vocabulary of domain-specific words from the resources. Similarly, when you transcribe audio, the service accepts a custom language model, a custom acoustic model, or both. For more information, see [Using custom acoustic and custom language models together](/docs/services/speech-to-text/acoustic-both.html).
+By creating a custom language model that complements your custom acoustic model, you can enhance speech recognition by using the two models together. When you train a custom acoustic model, you can specify a custom language model that includes transcriptions of the audio resources or a vocabulary of domain-specific words from the resources. Similarly, when you transcribe audio, the service accepts a custom language model, a custom acoustic model, or both. And if your custom language model includes a grammar, you can use that model and grammar with a custom acoustic model for speech recognition.
+
+For more information, see
+
+-   [Using custom acoustic and custom language models together](/docs/services/speech-to-text/acoustic-both.html)
 
 Some languages do not support both language and acoustic customization. For more information, see [Language support for customization](#languageSupport).
 {: note}
@@ -71,7 +92,7 @@ Language and acoustic model customization are available only for some languages.
 -   *Beta* indicates that the interface is available as a beta offering.
 -   *Not supported* means that the interface is not available for that language.
 
-You can use both broadband and narrowband models with any supported language for which they are available.
+You can use both broadband and narrowband models with any supported language for which they are available. If a language supports language model customization, it also supports grammars. For a list of all available models, see [Supported language models](/docs/services/speech-to-text/models.html#modelsList).
 
 <table>
   <caption>Table 1. Language support for customization</caption>
@@ -138,7 +159,7 @@ You can use both broadband and narrowband models with any supported language for
   </tr>
 </table>
 
-You can also use the `GET /v1/models` and `GET /v1/models/{model_id}` methods to check whether a language model supports language model customization. If the base model supports language model customization, the `supported_features` field of the methods' output for the model sets the `custom_language_model` field to `true`.
+You can use the `GET /v1/models` and `GET /v1/models/{model_id}` methods to check whether a language model supports language model customization. If the base model supports language model customization, the `supported_features` field of the methods' output for the model sets the `custom_language_model` field to `true`.
 
 ## Usage notes for customization
 {: #customUsage}

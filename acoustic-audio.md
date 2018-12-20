@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-10-29"
+lastupdated: "2018-12-10"
 
 ---
 
@@ -23,7 +23,8 @@ lastupdated: "2018-10-29"
 # Managing audio resources
 {: #manageAudio}
 
-The customization interface includes the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method, which is used to add an audio resource to a custom acoustic model. For more information, see [Add audio to the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#addAudio)). The interface also includes methods for listing and deleting audio resources for a custom acoustic model.
+The customization interface includes the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method, which is used to add an audio resource to a custom acoustic model. For more information, see [Add audio to the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#addAudio)). The interface also includes the following methods for listing and deleting audio resources for a custom acoustic model.
+{: shortdesc}
 
 ## Listing audio resources for a custom acoustic model
 {: #listAudio}

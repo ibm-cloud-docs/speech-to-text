@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-10-29"
+lastupdated: "2018-12-16"
 
 ---
 
@@ -23,7 +23,7 @@ lastupdated: "2018-10-29"
 # Upgrading custom models
 {: #customUpgrade}
 
-To improve the quality of speech recognition, the {{site.data.keyword.speechtotextshort}} service occasionally updates base models. Because base models for different languages are independent of each other, as are the broadband and narrowband models for a language, updates to individual base models do not affect other models. The [Release notes](/docs/services/speech-to-text/release-notes.html) document all base model updates.
+To improve the quality of speech recognition, the {{site.data.keyword.speechtotextfull}} service occasionally updates base models. Because base models for different languages are independent of each other, as are the broadband and narrowband models for a language, updates to individual base models do not affect other models. The [Release notes](/docs/services/speech-to-text/release-notes.html) document all base model updates.
 {: shortdesc}
 
 When a new version of a base model is released, you must upgrade any custom language and custom acoustic models that are built on the base model to take advantage of the updates. Your custom models continue to use the older version of the base model until you complete the upgrade. As with all customization operations, you must use credentials for the instance of the service that owns a model to upgrade it.
@@ -36,6 +36,8 @@ When a new version of a base model is released, you must upgrade any custom lang
 When a new base model is first released, existing custom models are based on the older version of the base model. Until a custom model is upgraded, all operations on that custom model, such as adding data to or training the model, affect the existing version of the model. Similarly, all recognition requests that specify the custom model use the existing version of the model.
 
 Upgrading results in two versions of a custom model, one based on the older version of the base model and one based on the latest version of the base model. Once a custom model is upgraded, all operations on that custom model affect the newer, upgraded version of the model. It is no longer possible to add data to or to train the older version of the model. Moreover, you cannot undo an upgrade operation.
+
+When you upgrade either type of custom model, you do not need to upgrade its individual resources. For a custom language model, the service automatically upgrades any corpora, grammars, and words that are defined for the model. Likewise, when you upgrade a custom acoustic model, the service automatically upgrades its audio resources.
 
 By default, the service uses the latest version of the custom model for recognition requests. However, you can continue to use the older version of a custom model for speech recognition. For more information, see [Making recognition requests with upgraded custom models](#upgradeRecognition).
 
@@ -104,10 +106,15 @@ The upgrade of custom model fails to start if the service is handling another re
 -   The custom model contains no data (custom words or audio resources).
 -   For a custom acoustic model that was trained with a custom language model, the custom language model is not yet upgraded.
 
-## Listing information about a custom model
+## Listing version information for a custom model
 {: #upgradeList}
 
-You list information about a custom model by using the `GET /v1/customizations/{customization_id}` or `GET /v1/acoustic_customizations/{customization_id}` method. The output includes a `versions` field that shows information about the base models for which versions of the custom model are available. The following output shows information about an upgraded custom language model:
+To see the versions of the base model for which a custom model is available, use the following methods:
+
+-   To list information about a custom language model, use the `GET /v1/customizations/{customization_id}` method. For more information, see [Listing custom language models](/docs/services/speech-to-text/language-models.html#listModels).
+-   To list information about a custom acoustic model, use the `GET /v1/acoustic_customizations/{customization_id}` method. For more information, see [Listing custom acoustic models](/docs/services/speech-to-text/acoustic-models.html#listModels).
+
+In both cases, the output includes a `versions` field that shows information about the base models for the custom model. The following output shows information for an upgraded custom language model:
 
 ```javascript
 {

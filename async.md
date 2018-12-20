@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-12-01"
+lastupdated: "2018-12-10"
 
 ---
 
@@ -126,7 +126,7 @@ You create a recognition job by calling the `POST /v1/recognitions` method. How 
 
 In both cases, you can include the `results_ttl` query parameter to specify the number of minutes for which the results are to remain available after the job completes.
 
-In addition to the previous parameters, which are specific to the asynchronous interface, the `POST /v1/recognitions` method supports most of the same parameters as the WebSocket and HTTP REST interfaces. For more information, see [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html).
+In addition to the previous parameters, which are specific to the asynchronous interface, the `POST /v1/recognitions` method supports most of the same parameters as the WebSocket and HTTP REST interfaces. For more information, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
 
 Submit a maximum of 100 MB and a minimum of 100 bytes of audio with a request. For more information about audio formats and about using compression to increase the amount of audio that you can send with a request, see [Audio Formats](/docs/services/speech-to-text/audio-formats.html).
 
@@ -164,7 +164,7 @@ The following example creates a job that is associated with the previously white
 ```bash
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
---data-binary @audio-file.flac
+--data-binary @{path}audio-file.flac
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions?callback_url=http://{user_callback_path}/results&user_token=job25&timestamps=true"
 ```
 {: pre}
@@ -189,7 +189,7 @@ The following example creates a job that is not associated with a callback URL. 
 ```bash
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/wav"
---data-binary @audio-file.wav
+--data-binary @{path}audio-file.wav
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions?timestamps=true"
 ```
 {: pre}

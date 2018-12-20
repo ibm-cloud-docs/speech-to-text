@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-12-14"
+lastupdated: "2018-12-15"
 
 ---
 
@@ -106,7 +106,7 @@ A WebSocket client calls this method with the following query parameters to esta
       If you do not specify a model, the service uses the
       <code>en-US_BroadbandModel</code> model by default. For more
       information, see
-      <a href="/docs/services/speech-to-text/input.html#models">Languages
+      <a href="/docs/services/speech-to-text/models.html">Languages
         and models</a>.
     </td>
   </tr>
@@ -243,7 +243,7 @@ To initiate a recognition request, the client sends a JSON text message to the s
   </tr>
 </table>
 
-The message can also include optional parameters to specify other aspects of how the request is to be processed and the information that is to be returned. For more information, see [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html). You can specify a language model, custom language model, and custom acoustic model only as query parameters of the WebSocket URL.
+The message can also include optional parameters to specify other aspects of how the request is to be processed and the information that is to be returned. For information about all input and output features, see the [Parameter summary](/docs/services/speech-to-text/summary.html). You can specify a language model, custom language model, and custom acoustic model only as query parameters of the WebSocket URL.
 
 The following snippet of JavaScript code sends initialization parameters for the recognition request over the WebSocket connection. The calls are included in the client's `onOpen` function to ensure that they are sent only after the connection is established.
 

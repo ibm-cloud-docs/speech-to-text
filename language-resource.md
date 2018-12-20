@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-15"
+lastupdated: "2018-12-16"
 
 ---
 
@@ -26,21 +26,27 @@ lastupdated: "2018-11-15"
 The recommended means of populating a custom language model with words is to add one or more corpora to the model. When you add a corpus, the service analyzes the file and automatically adds any new words that it finds to the custom model. Adding a corpus to a custom model allows the service to extract domain-specific words in context, which helps ensure better transcription results. For more information, see [Working with Corpora](#workingCorpora).
 {: shortdesc}
 
-You can also add individual custom words to a model directly. The service adds words to the model just as it does words that it discovers from corpora. When you add a word directly, you can specify multiple pronunciations and indicate how the word is to be displayed. You can also update existing words to modify or augment the definitions that were extracted from a corpus. For more information, see [Working with custom words](#workingWords).
+You can also add individual custom words to a model directly. The service adds words to the model just as it does words that it discovers from corpora. When you add a word directly, you can specify multiple pronunciations and indicate how the word is to be displayed. You can also update existing words to modify or augment the definitions that were extracted from corpora and grammars. For more information, see [Working with custom words](#workingWords).
 
 ## The words resource
 {: #wordsResource}
 
-Each word that you add to a custom language model, either from a corpus or directly, is stored in the model's *words resource*. The purpose of the words resource is to define words that are not already present in the service's base vocabulary. The definitions tell the service how to transcribe the words. Such words are referred to as *out-of-vocabulary (OOV) words*. You can add a maximum of 30 thousand OOV words to the words resource, including words that the service extracts from corpora and words that you add directly.
+The service stores each word that you add to a custom language model in the model's *words resource*. The words resources includes all words that you add from corpora, from grammars, or directly.
 
-The words resource contains the following information about each OOV word. The service creates the definitions for words that are extracted from corpora. You specify the characteristics for words that you add directly.
+The purpose of the words resource is to define words that are not already present in the service's base vocabulary. The definitions tell the service how to transcribe the words. Such words are referred to as *out-of-vocabulary (OOV) words*. You can add a maximum of 30 thousand OOV words to the words resource from all sources.
 
--   `word`: The spelling of the word as found in a corpus or as added by you.
--   `sounds_like`: How the word is pronounced. For words extracted from corpora, the value represents how the service believes that the word is pronounced based on its language rules. In many cases, the pronunciation reflects the spelling of the `word` field, but you can modify the value of the field to change the word's pronunciation. You can use the field to specify multiple pronunciations for a word. For more information, see [Using the sounds_like field](#soundsLike).
--   `display_as`: The spelling of the word that the service uses in transcriptions. The field indicates how the word is to be displayed. In most cases, the spelling matches the value of the `word` field, but you can use the `display_as` field to specify a different spelling for the word. For more information, see [Using the display_as field](#displayAs).
--   `source`: How the word was added to the words resource. If the service extracted the word from a corpus, the field lists the name of the corpus. Because the service can encounter the same word in multiple corpora, the field can list multiple corpus names. The field includes the string `user` if you add or modify the word directly.
+The words resource contains the following information about each OOV word. The service creates the definitions for words that are extracted from corpora and grammars. You specify the characteristics for words that you add or modify directly.
 
-When you update a model's words resource, you must train the model for the changes to take effect during transcription. For more information, see [Train the custom language model](/docs/services/speech-to-text/custom.md#trainModel).
+-   `word`: The spelling of the word as found in a corpus or grammar or as added by you.
+-   `sounds_like`: The pronunciation of the word. For words extracted from corpora and grammars, the value represents how the service believes that the word is pronounced based on its language rules. In many cases, the pronunciation reflects the spelling of the `word` field.
+
+    You can use the `sounds_like` field to modify the word's pronunciation. You can also use the field to specify multiple pronunciations for a word. For more information, see [Using the sounds_like field](#soundsLike).
+-   `display_as`: The spelling of the word that the service uses in transcripts. The field indicates how the word is to be displayed. In most cases, the spelling matches the value of the `word` field.
+
+    You can use the `display_as` field to specify a different spelling for the word. For more information, see [Using the display_as field](#displayAs).
+-   `source`: How the word was added to the words resource. If the service extracted the word from a corpus or grammar, the field lists the name of that resource. Because the service can encounter the same word in multiple resources, the field can list multiple corpus or grammar names. The field includes the string `user` if you add or modify the word directly.
+
+When you update a model's words resource, you must train the model for the changes to take effect during transcription. For more information, see [Train the custom language model](/docs/services/speech-to-text/language-create.html#trainModel).
 {: note}
 
 ## Working with corpora
@@ -73,7 +79,7 @@ The service does not apply a simple word-matching algorithm. Its transcription d
 
 For example, accountants adhere to a common set of standards and procedures that are known as Generally Accepted Accounting Principles (GAAP). When you create a custom model for a financial domain, provide sentences that use the term GAAP in context. The sentences help the service distinguish between general phrases such as "the gap between them is small" and domain-centric phrases such as "GAAP provides guidelines for measuring and disclosing financial information."
 
-In general, it is better for corpora to use words in different contexts. However, if users speak the words in only a couple of contexts, then showing the words in other contexts does not improve the quality of the custom model. Speakers never use the words in those contexts. If speakers are likely to use the same phrase frequently, then repeating that phrase in the corpora can improve the quality of the model. (In some cases, even adding a few custom words directly to a custom model can make a positive difference.)
+In general, it is better for corpora to use words in different contexts. However, if users speak the words in only a couple of contexts, then showing the words in other contexts does not improve the quality of the custom model; speakers never use the words in those contexts. If speakers are likely to use the same phrase frequently, then repeating that phrase in the corpora can improve the quality of the model. (In some cases, even adding a few custom words directly to a custom model can make a positive difference.)
 
 ### Preparing a corpus text file
 {: #prepareCorpus}
@@ -84,11 +90,11 @@ Follow these guidelines to prepare a corpus text file:
 
     Make sure that you know the character encoding that is used in the text files of your corpora. The service preserves the encoding that it finds in the text files. You must use that encoding when working with the words in the custom language model. For more information, see [Character encoding](#charEncoding).
     {: important}
--   Include each sentence of the corpus on its own line, terminating each line with a carriage return. Including multiple sentences on the same line can degrade accuracy.
+-   Include each sentence of the corpus on its own line, and terminate each line with a carriage return. Including multiple sentences on the same line can degrade accuracy.
 -   Use consistent capitalization for words in the corpus. The words resource is case-sensitive. Mix upper- and lowercase letters and use capitalization only when intended.
 -   Beware of typographical errors. The service assumes that typographical errors are new words. Unless you correct them before you train the model, the service adds them to the model's vocabulary. Remember the adage *Garbage in, garbage out!*
 
-More sentences result in better accuracy. But the service does limit a model to a maximum of 10 million total words from all corpora combined. And it imposes a limit of 30 thousand new (OOV) words, including words that the service extracts from corpora and words that you add directly.
+More sentences result in better accuracy. But the service does limit a model to a maximum of 10 million total words from all sources combined. And it imposes a limit of 30 thousand new (OOV) words, including words that the service extracts from corpora and grammars and words that you add directly.
 
 ### What happens when you add a corpus file
 {: #parseCorpus}
@@ -163,14 +169,14 @@ The following descriptions apply to US and UK English, French, German, Spanish, 
 
 You can use the `POST /v1/customizations/{customization_id}/words` and `PUT /v1/customizations/{customization_id}/words/{word_name}` methods to add new words to a custom model's words resource. You can also use the methods to modify or augment a word in a words resource.
 
-You might, for instance, need to use the methods to correct a typographical error or other mistake that is made when a word was added from a corpus. You might also need to add sounds-like definitions for an existing word. If you modify an existing word, the new data that you provide overwrites the word's existing definition in the words resource. The rules for adding a word also apply to modifying an existing word.
+You might, for instance, need to use the methods to correct a typographical error or other mistake that is made when a word is added from a corpus. You might also need to add sounds-like definitions for an existing word. If you modify an existing word, the new data that you provide overwrites the word's existing definition in the words resource. The rules for adding a word also apply to modifying an existing word.
 
 ### Character encoding
 {: #charEncoding}
 
 In general, you are likely to add most custom words from corpora. Make sure that you know the character encoding that is used in the text files for your corpora. The service preserves the encoding that it finds in the text files.
 
-You must use that encoding when working with the individual words in the custom language model. When you specify a word with the `GET`, `PUT`, or `DELETE /v1/customizations/{customization_id}/words/{word_name}` method, you must URL-encode the `{word_name}` that you pass in the URL if the word includes non-ASCII characters.
+You must use that encoding when working with the individual words in the custom language model. When you specify a word with the `GET`, `PUT`, or `DELETE /v1/customizations/{customization_id}/words/{word_name}` method, you must URL-encode the `word_name` that you pass in the URL if the word includes non-ASCII characters.
 
 For example, the following table shows what looks like the same letter in two different encodings, ASCII and UTF-8. You can pass the ASCII character on a URL as `z`. You must pass the UTF-8 character as `%EF%BD%9A`.
 
@@ -208,9 +214,9 @@ For example, the following table shows what looks like the same letter in two di
 ### Using the sounds_like field
 {: #soundsLike}
 
-The `sounds_like` field specifies how a word is pronounced by speakers. By default, the service automatically completes the field with the word's spelling. You can provide as many as five alternative pronunciations for a word that is difficult to pronounce or that can be pronounced in different ways:
+The `sounds_like` field specifies how a word is pronounced by speakers. By default, the service automatically completes the field with the word's spelling. You can provide as many as five alternative pronunciations for a word that is difficult to pronounce or that can be pronounced in different ways. Consider using the field to
 
--   Provide different pronunciations for acronyms. For example, the acronym `NCAA` can be pronounced as it is spelled or colloquially as *N. C. double A.* The following example adds both of these sounds-like pronunciations for the word `NCAA`:
+-   *Provide different pronunciations for acronyms.* For example, the acronym `NCAA` can be pronounced as it is spelled or colloquially as *N. C. double A.* The following example adds both of these sounds-like pronunciations for the word `NCAA`:
 
     ```bash
     curl -X PUT -u "apikey:{apikey}"
@@ -220,7 +226,7 @@ The `sounds_like` field specifies how a word is pronounced by speakers. By defau
     ```
     {: pre}
 
--   Handle foreign words. For example, the French word <code>gar&ccedil;on</code> contains a character that is not found in the English language. You can specify a sounds-like of `gaarson`, replacing <code>&ccedil;</code> with `s`, to tell the service how English speakers would pronounce the word.
+-   *Handle foreign words.* For example, the French word <code>gar&ccedil;on</code> contains a character that is not found in the English language. You can specify a sounds-like of `gaarson`, replacing <code>&ccedil;</code> with `s`, to tell the service how English speakers would pronounce the word.
 
 Speech recognition uses statistical algorithms to analyze audio, so adding a word does not guarantee that the service transcodes it with complete accuracy. When you add a word, consider how it might be pronounced. Use the `sounds_like` field to provide various pronunciations that reflect how a word can be spoken. The following sections provide language-specific guidelines for specifying a sounds-like pronunciation.
 
@@ -295,7 +301,7 @@ Speech recognition uses statistical algorithms to analyze audio, so adding a wor
 ### Using the display_as field
 {: #displayAs}
 
-The `display_as` field specifies how a word is displayed in a transcription. It is intended for cases where you want the service to display a string that is different from the word's spelling. For example, you can indicate that the word `hhonors` is to be displayed as `HHonors` regardless of whether it sounds like `hilton honors` or `h honors`.
+The `display_as` field specifies how a word is displayed in a transcript. It is intended for cases where you want the service to display a string that is different from the word's spelling. For example, you can indicate that the word `hhonors` is to be displayed as `HHonors` regardless of whether it sounds like `hilton honors` or `h honors`.
 
 ```bash
 curl -X PUT -u "apikey:{apikey}"
@@ -312,12 +318,14 @@ As another example, you can indicate that the word `IBM` is to be displayed as <
 --data "{\"sounds_like\": [\"I. B. M.\"], \"display_as\":\"IBM&#8482;\"}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words/IBM"</code></pre>
 
-#### Interaction with smart formatting
+#### Interaction with smart formatting and numeric redaction
 {: #displaySmart}
 
-If you use the `smart_formatting` parameter with a recognition request, be aware that the service applies smart formatting to a word before it considers the `display_as` field for the word. You might need to experiment with results to ensure that smart formatting does not interfere with how your custom words are displayed. You might also need to add custom words to accommodate the effects. For more information, see [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting).
+If you use the `smart_formatting` or `redaction` parameters with a recognition request, be aware that the service applies smart formatting and redaction to a word before it considers the `display_as` field for the word. You might need to experiment with results to ensure that the features do not interfere with how your custom words are displayed. You might also need to add custom words to accommodate the effects.
 
-To illustrate, suppose that you add the custom word `one` with a `display_as` field of `one`. Smart formatting changes the word `one` to the number `1`, and the display-as value is not applied. To work around this issue, you could add a custom word for the number `1` and apply the same `display-as` field to that word.
+For instance, suppose that you add the custom word `one` with a `display_as` field of `one`. Smart formatting changes the word `one` to the number `1`, and the display-as value is not applied. To work around this issue, you could add a custom word for the number `1` and apply the same `display_as` field to that word.
+
+For more information about working with these features, see [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting) and [Numeric redaction](/docs/services/speech-to-text/output.html#redaction).
 
 ### What happens when you add or modify a custom word
 {: #parseWord}
@@ -384,8 +392,8 @@ How the service responds to a request to add or modify a custom word depends on 
             <li style="margin:10px 0px; line-height:120%">
               The <code>PUT
                 /v1/customizations/{customization_id}/words/{word_name}</code>
-              method fails with a 400 response code and an error message;
-              it does not add the word to the words resource.
+              method fails with a 400 response code and an error message. The
+              service does not add the word to the words resource.
             </li>
           </ul>
         </li>
@@ -443,15 +451,15 @@ How the service responds to a request to add or modify a custom word depends on 
 ## Validating a words resource
 {: #validateModel}
 
-Especially when you add a corpus to a custom language model or add multiple custom words at once, examine the OOV words in the model's words resource:
+Especially when you add a corpus to a custom language model or add multiple custom words at once, examine the OOV words in the model's words resource.
 
--   *Look for typographical and other errors.* Especially when you add corpora, which can be large, mistakes are easily made. Typographical errors in a corpus file have the unintended consequence of adding new words to a model's words resource, as do ill-formed HTML tags that are left in the corpus.
--   *Verify the sounds-like pronunciations.* The service generates sounds-like pronunciations for OOV words automatically. Most of these pronunciations are sufficient, but for words that have unusual spellings or are difficult to pronounce, and for acronyms and technical terms, reviewing the pronunciations for accuracy is recommended.
+-   *Look for typographical and other errors.* Especially when you add corpora, which can be large, mistakes are easily made. Typographical errors in a corpus (or grammar) file have the unintended consequence of adding new words to a model's words resource, as do ill-formed HTML tags that are left in a corpus file.
+-   *Verify the sounds-like pronunciations.* The service generates sounds-like pronunciations for OOV words automatically. In most cases, these pronunciations are sufficient. But for words that have unusual spellings or are difficult to pronounce, and for acronyms and technical terms, reviewing the pronunciations for accuracy is recommended.
 
 To validate and, if necessary, correct a word for a custom model, regardless of how it was added to the words resource, use the following methods:
 
--   List all of the words from a custom model by using the `GET /v1/customizations/{customization_id}/words` method or query an individual word with the `GET /v1/customizations/{customization_id}/words/{word_name}` method. For more information see [Listing words from a custom language model](/docs/services/speech-to-text/language-words.html#listWords).
--   Modify words in a custom model to correct errors or to add data for a word by using the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Working with custom words](#workingWords).
+-   List all of the words from a custom model by using the `GET /v1/customizations/{customization_id}/words` method or query an individual word with the `GET /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Listing words from a custom language model](/docs/services/speech-to-text/language-words.html#listWords).
+-   Modify words in a custom model to correct errors or to add sounds-like or display-as values by using the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Working with custom words](#workingWords).
 -   Delete extraneous words that are introduced in error (for example, by typographical or other mistakes in a corpus) by using the `DELETE /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Deleting a word from a custom language model](/docs/services/speech-to-text/language-words.html#deleteWord).
-
-    If the word was extracted from a corpus, you can also update the corpus text file to correct the error and then reload the corpus by using the `allow_overwrite` parameter of the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method. For more information, see [Add corpora to the custom language model](/docs/services/speech-to-text/language-create.html#addCorpora).
+    -   If the word was extracted from a corpus, you can instead update the corpus text file to correct the error and then reload the file by using the `allow_overwrite` parameter of the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method. For more information, see [Add a corpus to the custom language model](/docs/services/speech-to-text/language-create.html#addCorpus).
+    -   If the word was extracted from a grammar, you can update the grammar file to correct the error and then reload the file by using the `allow_overwrite` parameter of the `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` method. For more information, see [Add a grammar to the custom language model](/docs/services/speech-to-text/grammar-add.html#addGrammar).

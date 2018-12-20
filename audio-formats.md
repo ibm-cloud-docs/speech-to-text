@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-15"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -53,12 +53,12 @@ In theory, you can send 44 kHz audio with a broadband or narrowband model, but t
 **Notes about audio formats**
 
 -   For the `audio/l16` and `audio/mulaw` formats, you must specify the rate of your audio.
--   For the `audio/basic` format, the service supports only narrowband audio.
+-   For the `audio/basic` and `audio/g729` formats, the service supports only narrowband audio.
 
 **More information**
 
 -   For more information about sampling rates, see [en.wikipedia.org/wiki/Sampling ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/Sampling){: new_window}. Select *Sampling (signal processing)*.
--   For more information about the models that the service offers for each supported language, see [Languages and models](/docs/services/speech-to-text/input.html#models).
+-   For more information about the models that the service offers for each supported language, see [Languages and models](/docs/services/speech-to-text/models.html).
 
 ### Bit rate
 {: #bitRate}
@@ -186,6 +186,20 @@ Table 1 provides a summary of the audio formats that the service supports.
   </tr>
   <tr>
     <td style="text-align:left">
+      [audio/g729](#g729)<br/>Lossy
+    </td>
+    <td style="text-align:center">
+      Optional
+    </td>
+    <td style="text-align:center">
+      None
+    </td>
+    <td style="text-align:center">
+      None
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
       [audio/l16](#l16)<br/>None
     </td>
     <td style="text-align:center">
@@ -287,6 +301,11 @@ For more information, see the Internet Engineering Task Force (IETF) [Request fo
 {: #flac}
 
 *Free Lossless Audio Codec (FLAC)* (`audio/flac`) is a lossless audio format. For more information, see [en.wikipedia.org/wiki/FLAC ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/FLAC){: new_window}.
+
+### audio/g729 format
+{: #g729}
+
+*G.729* (`audio/g729`) is a lossy audio format that supports data that is encoded at 8 kHz. The service supports only G.729 Annex D, not Annex J. The service supports the use of files in `audio/g729` format only with narrowband models. For more information, see [en.wikipedia.org/wiki/G.729 ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/G.729){: new_window}.
 
 ### audio/l16 format
 {: #l16}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-09-17"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -25,7 +25,7 @@ lastupdated: "2018-09-17"
 
 1.  <span style="color:#003F69">Which model, broadband or narrowband, do I use with my audio to achieve the best recognition accuracy?</span>
 
-    You need to consider the frequency content of the audio. Use the model that matches the sampling rate (and language) of the audio. For descriptions of the models and their minimum sampling rates, see [Languages and models](/docs/services/speech-to-text/input.html#models).
+    You need to consider the frequency content of the audio. Use the model that matches the sampling rate (and language) of the audio. For descriptions of the models and their minimum sampling rates, see [Languages and models](/docs/services/speech-to-text/models.html).
 
     In general, if the sampling rate is 8 kHz or less, use a narrowband model. Otherwise, use a broadband model. Moreover, you might be better off downsampling the audio to 8 kHz if
 

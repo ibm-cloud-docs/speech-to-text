@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-12-01"
+lastupdated: "2018-12-15"
 
 ---
 
@@ -29,14 +29,7 @@ The synchronous HTTP interface of the {{site.data.keyword.speechtotextfull}} ser
 -   The first sends all of the audio in a single stream via the body of the request. You specify the parameters of the operation as request headers and query parameters. For more information, see [Making a basic HTTP request](#HTTP-basic).
 -   The second sends the audio as a multipart request. You specify the parameters of the request as a combination of request headers, query parameters, and JSON metadata. For more information, see [Making a multipart HTTP request](#HTTP-multi).
 
-Submit a maximum of 100 MB and a minimum of 100 bytes of audio with a request.
-
--   For information about audio formats and about using compression to increase the amount of audio that you can send with a request, see [Audio Formats](/docs/services/speech-to-text/audio-formats.html).
--   For information about tailoring recognition requests to suit your application's needs, see [Input features](/docs/services/speech-to-text/input.html) and [Output features](/docs/services/speech-to-text/output.html).
--   For information about all methods of the HTTP interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
-
-The HTTP interface also provides the `GET /v1/models` and `GET /v1/models/{model_id}` methods to list the languages and models that are available for speech recognition. For more information, see [Languages and models](/docs/services/speech-to-text/input.html#models).
-{: tip}
+Submit a maximum of 100 MB and a minimum of 100 bytes of audio with a request. For information about all methods of the HTTP interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
 
 ## Making a basic HTTP request
 {: #HTTP-basic}
@@ -182,7 +175,7 @@ You specify the following parameters of multipart speech recognition as request 
   </tr>
 </table>
 
-For more information about the query parameters, see [Input features](/docs/services/speech-to-text/input.html).
+For more information about the query parameters, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
 
 ### JSON metadata for multipart requests
 {: #multipartJSON}
@@ -202,13 +195,15 @@ The JSON metadata that you pass with a multipart request can include the followi
 -   `profanity_filter` (boolean)
 -   `smart_formatting` (boolean)
 -   `speaker_labels` (boolean)
+-   `grammar_name` (string)
+-   `redaction` (boolean)
 
 Only the following two parameters are specific to multipart requests:
 
 -   The `part_content_type` field is *optional* for most audio formats. It is required for the `audio/basic`, `audio/l16`, and `audio/mulaw` formats. It specifies the format of the audio in the following parts of the request. All audio files must be in the same format.
 -   The `data_parts_count` field is *optional* for all requests. It specifies the number of audio files that are sent with the request. The service applies end-of-stream detection to the last (and possibly the only) data part. If you omit the parameter, the service determines the number of parts from the request.
 
-All other parameters of the metadata are optional. For a summary of all available parameters, see [Parameter summary](/docs/services/speech-to-text/summary.html).
+All other parameters of the metadata are optional. For descriptions of all available parameters, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
 
 ### Example multipart request
 
@@ -222,8 +217,8 @@ curl -X POST -u "apikey:{apikey}"
   \"word_alternatives_threshold\":0.9,
   \"keywords\":[\"colorado\",\"tornado\",\"tornadoes\"],
   \"keywords_threshold\":0.5}"
---form upload="@audio-file1.flac"
---form upload="@audio-file2.flac"
+--form upload="@{path}audio-file1.flac"
+--form upload="@{path}audio-file2.flac"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
 ```
 

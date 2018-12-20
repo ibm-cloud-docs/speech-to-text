@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-11-15"
+lastupdated: "2018-12-10"
 
 ---
 
@@ -30,7 +30,7 @@ Pass a maximum of 100 MB and a minimum of 100 bytes of audio data with any reque
 
 The following sections show basic transcription requests, with no optional input or output parameters, for each of the service's interfaces:
 
--   The examples submit a brief FLAC file named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac" download="audio-file.flac">audio-file.flac <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon" class="style-scope doc-content"></a>.
+-   The examples submit a brief FLAC file named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac" download="audio-file.flac">audio-file.flac <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
 -   The examples use the default language model, `en-US_BroadbandModel`.
 -   For clarity, the examples specify the audio format with all requests.
 
