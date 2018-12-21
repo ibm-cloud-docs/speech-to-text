@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-12-20"
+lastupdated: "2018-12-21"
 
 ---
 
@@ -31,6 +31,7 @@ The following sections document the new features and changes that were included 
 
 The {{site.data.keyword.speechtotextshort}} service has the following known limitation.
 
+-   The grammar interface that was released on December 20, 2018, is not working at this time due to a known issue. The issue will be fixed and the interface will become functional very early in January 2019.
 -   Service instances that use IAM authentication cannot currently use JavaScript to call the {{site.data.keyword.speechtotextshort}} WebSocket interface. This limitation applies to any application (such as the service demo) that uses JavaScript to make WebSocket calls from a browser. WebSocket calls that are made with other languages can use IAM tokens or API keys. To work around this limitation, you can do the following:
     -   Call the WebSocket interface from outside of a browser. You can call the interface from any language that supports WebSockets. Refer to information in [The WebSocket interface](/docs/services/speech-to-text/websockets.html) for guidance when working with another language.
 
@@ -41,6 +42,9 @@ The {{site.data.keyword.speechtotextshort}} service has the following known limi
 
 ## 20 December 2018
 {: #December2018b}
+
+The new grammar interface is not working at this time due to a known issue. The issue will be fixed and the interface will become functional very early in January 2019.
+{: important}
 
 -   The service now supports grammars for speech recognition. Grammars are available as beta functionality for all languages that support language model customization. You can add grammars to a custom language model and use them to restrict the set of phrases that the service can recognize from audio. You can define a grammar in Augmented Backus-Naur Form (ABNF) or XML Form.
 
