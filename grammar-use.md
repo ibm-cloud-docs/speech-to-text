@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-12-10"
+lastupdated: "2018-12-29"
 
 ---
 
@@ -58,7 +58,7 @@ When you use a grammar, the service recognizes only words from the specified gra
     {: codeblock}
 
     For more information, see [The WebSocket interface](/docs/services/speech-to-text/websockets.html).
--   For the HTTP interface, pass both parameters with the `POST /v1/recognize` method.
+-   For the synchronous HTTP interface, pass both parameters with the `POST /v1/recognize` method.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -68,7 +68,7 @@ When you use a grammar, the service recognizes only words from the specified gra
     ```
     {: pre}
 
-    For more information, see [The HTTP interface](/docs/services/speech-to-text/http.html).
+    For more information, see [The synchronous HTTP interface](/docs/services/speech-to-text/http.html).
 -   For the HTTP asynchronous interface, pass both parameters with the `POST /v1/recognitions` method.
 
     ```bash
