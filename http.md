@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-12-15"
+lastupdated: "2018-12-29"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2018-12-15"
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# The HTTP interface
+# The synchronous HTTP interface
 {: #http}
 
 The synchronous HTTP interface of the {{site.data.keyword.speechtotextfull}} service provides a single `POST /v1/recognize` method for requesting speech recognition with the service. This method is the simplest means of obtaining a transcript. It offers two ways of submitting a speech recognition request:

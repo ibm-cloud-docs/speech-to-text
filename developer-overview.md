@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-12-15"
+lastupdated: "2018-12-29"
 
 ---
 
@@ -32,7 +32,7 @@ You can access the capabilities of the {{site.data.keyword.speechtotextfull}} se
 [Making a recognition request](/docs/services/speech-to-text/basic-request.html) shows you how to request basic transcription with each of the service's programming interfaces:
 
 -   [The WebSocket interface](/docs/services/speech-to-text/websockets.html) offers an efficient, low-latency, and high-throughput implementation over a full-duplex connection.
--   [The HTTP interface](/docs/services/speech-to-text/http.html) provides a basic interface to transcribe audio with synchronous requests.
+-   [The synchronous HTTP interface](/docs/services/speech-to-text/http.html) provides a basic interface to transcribe audio with blocking requests.
 -   [The asynchronous HTTP interface](/docs/services/speech-to-text/async.html) provides a non-blocking interface that lets you register a callback URL to receive notifications or to poll the service for job status and results.
 
 The interfaces generally provide the same speech recognition capabilities, but you might specify the same parameter as a request header, a query parameter, or a parameter of a JSON object depending on the interface and method that you use.

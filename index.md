@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-12-21"
+lastupdated: "2018-12-29"
 
 ---
 
@@ -43,7 +43,7 @@ The service provides various interfaces that make it suitable for any applicatio
 The {{site.data.keyword.speechtotextshort}} service offers three interfaces for speech recognition:
 
 -   A [WebSocket interface](/docs/services/speech-to-text/websockets.html) for establishing persistent, full-duplex, low-latency connections with the service.
--   An [HTTP interface](/docs/services/speech-to-text/http.html) for synchronous calls to the service.
+-   A [synchronous HTTP interface](/docs/services/speech-to-text/http.html) for basic HTTP calls to the service.
 -   An [asynchronous HTTP interface](/docs/services/speech-to-text/async.html) for non-blocking calls to the service.
 
 The service also provides a [customization interface](/docs/services/speech-to-text/custom.html) that you can use to tune speech recognition for your language and acoustic requirements. You can expand the vocabulary of a model with domain-specific terminology or adapt a model for the acoustic characteristics of your audio. You can also add [grammars](/docs/services/speech-to-text/grammar.html) to restrict the phrases that the service can recognize.

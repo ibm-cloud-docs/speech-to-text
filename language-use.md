@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-12-18"
+lastupdated: "2018-12-29"
 
 ---
 
@@ -41,7 +41,7 @@ You can create multiple custom language models for the same or different domains
     {: codeblock}
 
     For more information, see [The WebSocket interface](/docs/services/speech-to-text/websockets.html).
--   For the HTTP interface, use the `POST /v1/recognize` method. The specified custom model is used for that request.
+-   For the synchronous HTTP interface, use the `POST /v1/recognize` method. The specified custom model is used for that request.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -51,7 +51,7 @@ You can create multiple custom language models for the same or different domains
     ```
     {: pre}
 
-    For more information, see [The HTTP interface](/docs/services/speech-to-text/http.html).
+    For more information, see [The synchronous HTTP interface](/docs/services/speech-to-text/http.html).
 -   For the asynchronous HTTP interface, use the `POST /v1/recognitions` method. The specified custom model is used for that request.
 
     ```bash

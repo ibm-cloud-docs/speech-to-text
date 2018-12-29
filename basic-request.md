@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-12-10"
+lastupdated: "2018-12-29"
 
 ---
 
@@ -62,9 +62,9 @@ websocket.send(JSON.stringify({action: 'stop'}));
 You cannot use JavaScript to call the WebSocket interface from a browser. The `watson-token` parameter that is available with the `/v1/recognize` method does not accept IAM tokens or API keys. For information about working around this limitation, see the [Known limitations](/docs/services/speech-to-text/release-notes.html#limitations) in the release notes.
 {: important}
 
-## Using the HTTP interface
+## Using the synchronous HTTP interface
 
-[The HTTP interface](/docs/services/speech-to-text/http.html) provides the simplest way to make a recognition request. You use the `POST /v1/recognize` method to make a request to the service. You pass the audio and all parameters with the single request.
+[The synchronous HTTP interface](/docs/services/speech-to-text/http.html) provides the simplest way to make a recognition request. You use the `POST /v1/recognize` method to make a request to the service. You pass the audio and all parameters with the single request.
 
 The following `curl` example shows a basic HTTP recognition request:
 
