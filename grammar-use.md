@@ -65,7 +65,7 @@ When you use a grammar, the service recognizes only words from the specified gra
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&grammar_name={grammar_name}"
     ```
     {: pre}
--   For the [HTTP asynchronous interface](/docs/services/speech-to-text/async.html), pass both parameters with the `POST /v1/recognitions` method.
+-   For the [asynchronous HTTP interface](/docs/services/speech-to-text/async.html), pass both parameters with the `POST /v1/recognitions` method.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
