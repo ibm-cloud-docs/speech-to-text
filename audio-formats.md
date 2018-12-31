@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-12-08"
+lastupdated: "2018-12-31"
 
 ---
 
@@ -25,7 +25,7 @@ lastupdated: "2018-12-08"
 
 The {{site.data.keyword.speechtotextfull}} service can extract speech from audio in many different formats.
 
--   If you are unfamiliar with audio and how it is described and specified, start with [Audio characteristics and terminology](#terminology) to help you get started.
+-   If you are unfamiliar with audio and how it is described and specified, begin with [Audio characteristics and terminology](#terminology) to help you get started.
 -   If you already understand how to use audio, jump to [Supported audio formats](#formats) for detailed information about the formats that the service supports.
 
 The final sections, [Data limits and compression](#limits) and [Audio conversion](#conversion), can help you get the most from your use of the service.
