@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-12-29"
+lastupdated: "2018-12-31"
 
 ---
 
@@ -614,7 +614,7 @@ An optional boolean that indicates whether the service censors profanity from a 
 
 ## redaction
 
-An optional boolean that indicates whether the service redacts numeric data with three or more consecutive digits from a transcript. By default (`false`), numeric data is not redacted. For more information, see [Numeric redaction](/docs/services/speech-to-text/output.html#redaction).
+An optional boolean that indicates whether the service redacts numeric data with three or more consecutive digits from a transcript. If you set the `redaction` parameter to `true`, the service automatically forces the `smart_formatting` parameter to be `true`. By default (`false`), numeric data is not redacted. For more information, see [Numeric redaction](/docs/services/speech-to-text/output.html#redaction).
 
 <table>
   <caption>Table 14. The redaction parameter</caption>
@@ -702,7 +702,7 @@ An optional boolean that indicates whether the service converts dates, times, nu
 
 ## speaker_labels
 
-An optional boolean that indicates whether the service identifies which individuals spoke which words in a multi-participant exchange. By default (`false`), speaker labels are not returned. For more information, see [Speaker labels](/docs/services/speech-to-text/output.html#speaker_labels).
+An optional boolean that indicates whether the service identifies which individuals spoke which words in a multi-participant exchange. If you set the `speaker_labels` parameter to `true`, the service automatically forces the `timestamps` parameter to be `true`. By default (`false`), speaker labels are not returned. For more information, see [Speaker labels](/docs/services/speech-to-text/output.html#speaker_labels).
 
 <table>
   <caption>Table 16. The speaker_labels parameter</caption>
