@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-12-11"
+lastupdated: "2018-12-31"
 
 ---
 
@@ -39,7 +39,7 @@ You can customize most models for improved speech recognition. For more informat
 ## Supported language models
 {: #modelsList}
 
-The following table lists the supported models for each language. If you omit the `model` parameter from a request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
+Table 1 lists the supported models for each language. If you omit the `model` parameter from a request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
 
 <table>
   <caption>Table 1. Supported language models</caption>
@@ -106,7 +106,7 @@ The US English model `en-US_ShortForm_NarrowbandModel` is intended for use in In
 ### Language model example
 {: #modelsExample}
 
-The following example request uses the model `en-US-NarrowbandModel` for speech recognition:
+The following example HTTP request uses the model `en-US-NarrowbandModel` for speech recognition:
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
