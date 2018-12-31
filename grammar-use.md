@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-12-29"
+lastupdated: "2018-12-31"
 
 ---
 
@@ -31,7 +31,7 @@ Once you create and train your custom language model with your grammar, you can 
 
 When you use a grammar, the service recognizes only words from the specified grammar. The service does not use custom words that were added from corpora, that were added or modified individually, or that are recognized by other grammars.
 
--   For the WebSocket interface, you first specify the customization ID with the `language_customization_id` parameter of the `/v1/recognize` method. You use this method to establish a WebSocket connection with the service.
+-   For the [WebSocket interface](/docs/services/speech-to-text/websockets.html), you first specify the customization ID with the `language_customization_id` parameter of the `/v1/recognize` method. You use this method to establish a WebSocket connection with the service.
 
     ```javascript
     var token = {authentication-token};
@@ -56,9 +56,7 @@ When you use a grammar, the service recognizes only words from the specified gra
     }
     ```
     {: codeblock}
-
-    For more information, see [The WebSocket interface](/docs/services/speech-to-text/websockets.html).
--   For the synchronous HTTP interface, pass both parameters with the `POST /v1/recognize` method.
+-   For the [synchronous HTTP interface](/docs/services/speech-to-text/http.html)., pass both parameters with the `POST /v1/recognize` method.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -67,9 +65,7 @@ When you use a grammar, the service recognizes only words from the specified gra
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&grammar_name={grammar_name}"
     ```
     {: pre}
-
-    For more information, see [The synchronous HTTP interface](/docs/services/speech-to-text/http.html).
--   For the HTTP asynchronous interface, pass both parameters with the `POST /v1/recognitions` method.
+-   For the [HTTP asynchronous interface](/docs/services/speech-to-text/async.html), pass both parameters with the `POST /v1/recognitions` method.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -78,5 +74,3 @@ When you use a grammar, the service recognizes only words from the specified gra
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions?language_customization_id={customization_id}&grammar_name={grammar_name}"
     ```
     {: pre}
-
-    For more information, see [The asynchronous HTTP interface](/docs/services/speech-to-text/async.html).

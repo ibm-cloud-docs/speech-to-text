@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2018
-lastupdated: "2018-12-29"
+lastupdated: "2018-12-31"
 
 ---
 
@@ -28,7 +28,7 @@ Once you create and train your custom language model, you can use it in speech r
 
 You can create multiple custom language models for the same or different domains. However, you can specify only one custom language model at a time with the `language_customization_id` parameter. For examples that use a grammar with a custom language model, see [Using a grammar for speech recognition](/docs/services/speech-to-text/grammar-use.html).
 
--   For the WebSocket interface, use the `/v1/recognize` method. The specified custom model is used for all requests that are sent over the connection.
+-   For the [WebSocket interface](/docs/services/speech-to-text/websockets.html), use the `/v1/recognize` method. The specified custom model is used for all requests that are sent over the connection.
 
     ```javascript
     var token = {authentication-token};
@@ -39,9 +39,7 @@ You can create multiple custom language models for the same or different domains
     var websocket = new WebSocket(wsURI);
     ```
     {: codeblock}
-
-    For more information, see [The WebSocket interface](/docs/services/speech-to-text/websockets.html).
--   For the synchronous HTTP interface, use the `POST /v1/recognize` method. The specified custom model is used for that request.
+-   For the [synchronous HTTP interface](/docs/services/speech-to-text/http.html), use the `POST /v1/recognize` method. The specified custom model is used for that request.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -50,9 +48,7 @@ You can create multiple custom language models for the same or different domains
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}"
     ```
     {: pre}
-
-    For more information, see [The synchronous HTTP interface](/docs/services/speech-to-text/http.html).
--   For the asynchronous HTTP interface, use the `POST /v1/recognitions` method. The specified custom model is used for that request.
+-   For the [asynchronous HTTP interface](/docs/services/speech-to-text/async.html), use the `POST /v1/recognitions` method. The specified custom model is used for that request.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -61,8 +57,6 @@ You can create multiple custom language models for the same or different domains
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions?language_customization_id={customization_id}"
     ```
     {: pre}
-
-    For more information, see [The asynchronous HTTP interface](/docs/services/speech-to-text/async.html).
 
 You can omit the language model from the request if the custom model is based on the default language model, `en-US_BroadbandModel`. Otherwise, you must use the `model` parameter to specify the base model, as shown for the WebSocket example. A custom model can be used only with the base model for which it is created.
 
