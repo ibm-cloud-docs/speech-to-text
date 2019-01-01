@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-11"
+  years: 2015, 2019
+lastupdated: "2019-01-01"
 
 ---
 
@@ -68,33 +68,35 @@ curl -X POST -u "apikey:{apikey}"
 --data-binary @audio.wav
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
 ```
+{: pre}
 
 A customer ID can include any characters except for the `;` (semicolon) and `=` (equals sign). Specify a random or generic string for the customer ID; do not specify a personally identifiable string, such as an email address or Twitter ID. You can specify different customer IDs with different requests. A customer ID that you specify is associated with the instance of the service whose credentials are used with the request; only credentials for that instance of the service can delete data associated with the ID.
 
 Use the `X-Watson-Metadata` header with the following methods:
-
--   With HTTP requests:
-    -   `POST /v1/recognize`
-
-    The customer ID is associated only with data that is sent with the individual request.
 
 -   With WebSocket requests:
     -   `/v1/recognize`
 
     You specify the customer ID with the `x-watson-metadata` query parameter of the request to open the connection. You must URL-encode the argument to the query parameter, for example, `customer_id%3dmy_ID`. The customer ID is associated with all data that is passed with recognition requests sent over the connection.
 
+-   With synchronous HTTP requests:
+    -   `POST /v1/recognize`
+
+    The customer ID is associated with the data that is sent with the individual request.
+
 -   With asynchronous HTTP requests:
     -   `POST /v1/register_callback`
     -   `POST /v1/recognitions`
 
-    The customer ID is associated with the white-listed callback URL or with data that is sent with the individual recognition request.
+    The customer ID is associated with the white-listed callback URL or with the data that is sent with the individual recognition request.
 
--   With requests to add corpora or custom words to custom language models:
+-   With requests to add corpora, custom words, or grammars to custom language models:
     -   `POST /v1/customizations/{customization_id}/corpora/{corpus_name}`
     -   `POST /v1/customizations/{customization_id}/words`
     -   `PUT /v1/customizations/{customization_id}/words/{word_name}`
+    -   `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`
 
-    The customer ID is associated with the corpora or custom words that are added or updated by the request.
+    The customer ID is associated with the corpora, custom words, or grammars that are added or updated by the request.
 
 -   With requests to add audio resources to custom acoustic models:
     -   `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`
@@ -110,5 +112,6 @@ To delete all data that is associated with a customer ID, use the `DELETE /v1/us
 curl -X DELETE -u "apikey:{apikey}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/user_data?customer_id=my_ID"
 ```
+{: pre}
 
 The `/v1/user_data` method deletes all data that is associated with the specified customer ID, regardless of the method by which the information was added. The method has no effect if no data is associated with the customer ID. You must issue the request with credentials for the same instance of the service that was used to associate the customer ID with the data.
