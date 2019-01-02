@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-06"
+  years: 2015, 2019
+lastupdated: "2019-01-02"
 
 ---
 
@@ -39,7 +39,7 @@ lastupdated: "2018-12-06"
 
 1.  <span style="color:#003F69">How much effort is required to create and use a custom model?</span>
 
-    Creating a *custom language model* requires you to add corpora, words, or both to the custom model. The service can typically train any custom model in a matter of minutes. The level of effort that it takes to create a model depends on the corpora or words that you have available for the model.
+    Creating a *custom language model* requires you to add corpora, words, or grammars to the custom model. The service can typically train any custom model in a matter of minutes. The level of effort that it takes to create a model depends on the data that you have available for the model.
 
     Creating a *custom acoustic model* requires you to add audio resources (audio data) to the custom model. The length of time that it takes the service to train the custom model depends on how much audio data the model contains. In general, training takes twice the length of the cumulative audio. The level of effort that it takes to create a model depends on the audio data that you have available for the model. It also depends on whether you want to use transcriptions of the audio.
 
@@ -69,6 +69,7 @@ lastupdated: "2018-12-06"
     The following sections describe how to check the results of asynchronous operations for language model customization:
     -   To check the status of a request to add a corpus to a custom language model with the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method, see [Monitoring the add corpus request](/docs/services/speech-to-text/language-create.html#monitorCorpus).
     -   To check the status of a request to add words to a custom language model with the `POST /v1/customizations/{customization_ID}/words` method, see [Monitoring the add words request](/docs/services/speech-to-text/language-create.html#monitorWords).
+    -   To check the status of a request to add a grammar to a custom language model with the `POST /v1/customizations/{customization_ID}/grammars/{grammar_name}` method, see [Monitoring the add grammar request](/docs/services/speech-to-text/grammar-add.html#monitorGrammar).
     -   To check the status of a request to train a custom language model with the `POST /v1/customizations/{customization_id}/train` method, see [Monitoring the train model request](/docs/services/speech-to-text/language-create.html#monitorTraining).
 
 1.  <span style="color:#003F69">I created a custom language model, but the service does not appear to be using any of the new words that it contains during recognition?</span>
