@@ -33,7 +33,7 @@ For most languages, the service supports two models:
 
 The service automatically adjusts the sampling rate of your audio to match the model that you specify. For more information, see [Sampling rate](/docs/services/speech-to-text/audio-formats.html#samplingRate).
 
-You can customize most models for improved speech recognition. For more information, see [Custom models](/docs/services/speech-to-text/input.html#custom).
+You can customize most models for improved speech recognition. For more information, see [The customization interface](/docs/services/speech-to-text/custom.html).
 {: note}
 
 ## Supported language models
