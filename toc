@@ -95,7 +95,6 @@ Speech to Text
     {: .topicgroup}
     FAQs
         faq-basic-usage.md
-        faq-websockets.md
         faq-recognition.md
         faq-speaker-labels.md
         faq-smart-formatting.md
