@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-15"
+  years: 2015, 2019
+lastupdated: "2019-01-02"
 
 ---
 
@@ -297,7 +297,7 @@ function onMessage(evt) {
 ## End a recognition request
 {: #WSstop}
 
-When it is done sending the audio data for a request to the service, the client *must* signal the end of the binary transmission to the service:
+When it is done sending the audio data for a request to the service, the client *must* signal the end of the binary audio transmission to the service in one of the following ways:
 
 -   By sending a JSON text message with the `action` parameter set to the value `stop`:
 
@@ -313,7 +313,9 @@ When it is done sending the audio data for a request to the service, the client 
     ```
     {: codeblock}
 
-After it returns the final result for the transcription to the client, the service returns another `{"state":"listening"}` message to the client. This message indicates that the service is ready to receive another recognition request. Before it sends another request, the client must signal the end of transmission for the previous request. Otherwise, the service returns no new results.
+The service does not send final results until it receives confirmation that the audio transmission is complete. If you fail to signal that the transmission is complete, the connection can time out without the service sending final results.
+
+To receive final results between multiple recognition requests, the client must signal the end of transmission for the previous request before it sends a subsequent request. After it returns the final results for the first request, the service returns another `{"state":"listening"}` message to the client. This message indicates that the service is ready to receive another request.
 
 ## Send additional requests and modify request parameters
 {: #WSmore}

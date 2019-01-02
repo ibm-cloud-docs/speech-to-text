@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-11-13"
+  years: 2015, 2019
+lastupdated: "2019-01-02"
 
 ---
 
@@ -105,7 +105,14 @@ barack obama graduated from columbia university
 ```
 {: codeblock}
 
-The service always applies this capitalization to US English, regardless of whether you use [smart formatting](/docs/services/speech-to-text/output.html#smart_formatting).
+The service always applies this capitalization to US English, regardless of whether you use smart formatting.
+
+## Punctuation
+{: #punctuation}
+
+The service does not insert punctuation in response transcripts by default. You must add any punctuation that you need to the service's results.
+
+For US English, you can use smart formatting to direct the service to substitute punctuation symbols, such as commas, periods, question marks, and exclamation points, for certain keyword strings. For more information, see [smart formatting](/docs/services/speech-to-text/output.html#smart_formatting).
 
 ## Hesitation markers
 {: #hesitation}
