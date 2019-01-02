@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-01"
+lastupdated: "2019-01-02"
 
 ---
 
@@ -78,18 +78,15 @@ Use the `X-Watson-Metadata` header with the following methods:
     -   `/v1/recognize`
 
     You specify the customer ID with the `x-watson-metadata` query parameter of the request to open the connection. You must URL-encode the argument to the query parameter, for example, `customer_id%3dmy_ID`. The customer ID is associated with all data that is passed with recognition requests sent over the connection.
-
 -   With synchronous HTTP requests:
     -   `POST /v1/recognize`
 
     The customer ID is associated with the data that is sent with the individual request.
-
 -   With asynchronous HTTP requests:
     -   `POST /v1/register_callback`
     -   `POST /v1/recognitions`
 
     The customer ID is associated with the white-listed callback URL or with the data that is sent with the individual recognition request.
-
 -   With requests to add corpora, custom words, or grammars to custom language models:
     -   `POST /v1/customizations/{customization_id}/corpora/{corpus_name}`
     -   `POST /v1/customizations/{customization_id}/words`
@@ -97,7 +94,6 @@ Use the `X-Watson-Metadata` header with the following methods:
     -   `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`
 
     The customer ID is associated with the corpora, custom words, or grammars that are added or updated by the request.
-
 -   With requests to add audio resources to custom acoustic models:
     -   `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`
 
