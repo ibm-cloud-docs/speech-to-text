@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-29"
+  years: 2015, 2019
+lastupdated: "2019-01-02"
 
 ---
 
@@ -23,7 +23,7 @@ lastupdated: "2018-12-29"
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on December 20, 2018. The service now offers new grammar support for all languages that support language model customization. The service now supports new French and German narrowband models, a new short-form narrowband model for US English, and updated narrowband models for UK English and Spanish. It also offers a new parameter that redacts numbers with three or more digits from US English, Japanese, and Korean transcripts. For more information about these and other changes, see the [20 December 2018 service update](/docs/services/speech-to-text/release-notes.html#December2018b) in the release notes*.
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on December 20, 2018. The service now offers new beta grammar support for all languages that support language model customization. The service now supports new French and German narrowband models, a new short-form narrowband model for US English, and updated narrowband models for UK English and Spanish. It also offers a new parameter that redacts numbers with three or more digits from US English, Japanese, and Korean transcripts. For more information about these and other changes, see the [20 December 2018 service update](/docs/services/speech-to-text/release-notes.html#December2018b) in the release notes*.
 
 The service's new grammar interface is not working at this time due to a known issue. The issue will be addressed and the interface will become functional very early in January 2019.
 {: important}

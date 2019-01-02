@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-13"
+  years: 2015, 2019
+lastupdated: "2019-01-02"
 
 ---
 
@@ -139,7 +139,7 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-The `transcript` field shows the final transcript of the audio, which lists the words as they were spoken by all participants. By comparing the speaker labels with the timestamps, you can reassemble the conversation as it occurred.
+The `transcript` field shows the final transcript of the audio, which lists the words as they were spoken by all participants. By comparing and synchronizing the speaker labels with the timestamps, you can reassemble the conversation as it occurred.
 
 <table style="width:50%">
   <caption>Table 1. Speaker labels example</caption>
@@ -250,10 +250,11 @@ As noted previously, the speaker labels feature is optimized for two-person conv
 
 -   Performance for audio with a single speaker can be poor. Variations in audio quality or in the speaker's voice can cause the service to identify extra speakers who are not present. Such speakers are referred to as hallucinations.
 -   Similarly, performance for audio with a dominant speaker, such as a podcast, can be poor. The service tends to miss speakers who talk for shorter amounts of time, and it can also produce hallucinations.
--   Performance for short utterances can be less accurate than for long utterances. The service produces better results when participants speak for longer amounts of time.
+-   Performance for audio with more than six speakers is undefined. The feature can handle a maximum of six speakers.
+-   Performance for short utterances can be less accurate than for long utterances. The service produces better results when participants speak for longer amounts of time, at least 30 seconds per speaker. The relative amount of audio that is available for each speaker can also affect performance.
 -   Performance can degrade for the first 30 seconds of speech. It usually improves to a reasonable level after 1 minute of audio.
 
-As with all transcription, performance can also be affected by audio noise, a person's manner of speech, overlapping speakers, and other aspects of the audio.
+As with all transcription, performance can also be affected by poor audio quality, background noise, a person's manner of speech, overlapping speakers, and other aspects of the audio.
 
 ## Keyword spotting
 {: #keyword_spotting}

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-31"
+  years: 2015, 2019
+lastupdated: "2019-01-02"
 
 ---
 
@@ -33,7 +33,7 @@ For most languages, the service supports two models:
 
 The service automatically adjusts the sampling rate of your audio to match the model that you specify. For more information, see [Sampling rate](/docs/services/speech-to-text/audio-formats.html#samplingRate).
 
-You can customize most models for improved speech recognition. For more information, see [Custom models](/docs/services/speech-to-text/input.html#custom).
+You can customize most models for improved speech recognition. For more information, see [The customization interface](/docs/services/speech-to-text/custom.html).
 {: note}
 
 ## Supported language models
@@ -101,7 +101,7 @@ Table 1 lists the supported models for each language. If you omit the `model` pa
   </tr>
 </table>
 
-The US English model `en-US_ShortForm_NarrowbandModel` is intended for use in Interactive Voice Response and Automated Customer Support solutions. The model is tuned to recognize the short utterances, such as digits, spellings, months, and so on, that frequently occur in such solutions.
+The US English model `en-US_ShortForm_NarrowbandModel` is intended for use in Interactive Voice Response (IVR) and Automated Customer Support solutions. The model is tuned to recognize the short utterances, such as digits, spellings, months, and so on, that frequently occur in such solutions. It can improve speech recognition for related applications. Use the model that is most appropriate for your application.
 
 ### Language model example
 {: #modelsExample}

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-29"
+  years: 2015, 2019
+lastupdated: "2019-01-02"
 
 ---
 
@@ -120,6 +120,18 @@ You specify the following parameters of multipart speech recognition as request 
   </tr>
   <tr>
     <td>
+      <code>Content-Type</code>
+      <br/><em>Header</em>
+      <br/><em>String</em>
+    </td>
+    <td>
+      <em>Required.</em> Specify `multipart/form-data` to indicate how
+      data is passed to the method. You specify the content type of the
+      audio with the JSON `part_content_type` parameter.
+    </td>
+  </tr>
+  <tr>
+    <td>
       <code>Transfer-Encoding</code>
       <br/><em>Header</em>
       <br/><em>String</em>
@@ -211,6 +223,7 @@ The following `curl` example shows how to pass a multipart recognition request w
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
+--header "Content-Type: multipart/form-data"
 --form metadata="{\"part_content_type\":\"application/octet-stream\",
   \"data_parts_count\":2,
   \"timestamps\":true,
@@ -221,6 +234,7 @@ curl -X POST -u "apikey:{apikey}"
 --form upload="@{path}audio-file2.flac"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
 ```
+{: pre}
 
 The example returns the following transcript for the audio files. The service returns the results for the two files in the order in which they are sent. (The example output abbreviates the results for the second file.)
 
@@ -414,3 +428,4 @@ possible tornadoes is approaching Colorado on Sunday "
    "result_index": 0
 }
 ```
+{: codeblock}
