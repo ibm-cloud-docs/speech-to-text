@@ -68,8 +68,8 @@ lastupdated: "2019-01-02"
 
     The following sections describe how to check the results of asynchronous operations for language model customization:
     -   To check the status of a request to add a corpus to a custom language model with the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method, see [Monitoring the add corpus request](/docs/services/speech-to-text/language-create.html#monitorCorpus).
-    -   To check the status of a request to add words to a custom language model with the `POST /v1/customizations/{customization_ID}/words` method, see [Monitoring the add words request](/docs/services/speech-to-text/language-create.html#monitorWords).
-    -   To check the status of a request to add a grammar to a custom language model with the `POST /v1/customizations/{customization_ID}/grammars/{grammar_name}` method, see [Monitoring the add grammar request](/docs/services/speech-to-text/grammar-add.html#monitorGrammar).
+    -   To check the status of a request to add words to a custom language model with the `POST /v1/customizations/{customization_id}/words` method, see [Monitoring the add words request](/docs/services/speech-to-text/language-create.html#monitorWords).
+    -   To check the status of a request to add a grammar to a custom language model with the `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` method, see [Monitoring the add grammar request](/docs/services/speech-to-text/grammar-add.html#monitorGrammar).
     -   To check the status of a request to train a custom language model with the `POST /v1/customizations/{customization_id}/train` method, see [Monitoring the train model request](/docs/services/speech-to-text/language-create.html#monitorTraining).
 
 1.  <span style="color:#003F69">I created a custom language model, but the service does not appear to be using any of the new words that it contains during recognition?</span>
