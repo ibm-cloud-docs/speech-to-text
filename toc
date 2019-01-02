@@ -96,7 +96,6 @@ Speech to Text
     FAQs
         faq-basic-usage.md
         faq-recognition.md
-        faq-speaker-labels.md
         faq-customization.md
         faq-pricing.md
 
