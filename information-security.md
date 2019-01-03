@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-02"
+lastupdated: "2019-01-03"
 
 ---
 
@@ -59,11 +59,11 @@ Experimental and beta features are not intended for use with a production enviro
 ### Specifying a customer ID
 {: #specify-customer-id}
 
-To associate a customer ID with data, include the `X-Watson-Metadata` header with the request that passes the information. You pass the string `customer_id={id}` as the argument of the header. The following example associates the customer ID `my_ID` with the data passed with a `POST /v1/recognize` request:
+To associate a customer ID with data, include the `X-Watson-Metadata` header with the request that passes the information. You pass the string `customer_id={id}` as the argument of the header. The following example associates the customer ID `my_customer_ID` with the data passed with a `POST /v1/recognize` request:
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
---header "X-Watson-Metadata: customer_id=my_ID"
+--header "X-Watson-Metadata: customer_id=my_customer_ID"
 --header "Content-Type: audio/wav"
 --data-binary @audio.wav
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
@@ -77,7 +77,7 @@ Use the `X-Watson-Metadata` header with the following methods:
 -   With WebSocket requests:
     -   `/v1/recognize`
 
-    You specify the customer ID with the `x-watson-metadata` query parameter of the request to open the connection. You must URL-encode the argument to the query parameter, for example, `customer_id%3dmy_ID`. The customer ID is associated with all data that is passed with recognition requests sent over the connection.
+    You specify the customer ID with the `x-watson-metadata` query parameter of the request to open the connection. You must URL-encode the argument to the query parameter, for example, `customer_id%3dmy_customer_ID`. The customer ID is associated with all data that is passed with recognition requests sent over the connection.
 -   With synchronous HTTP requests:
     -   `POST /v1/recognize`
 
@@ -102,11 +102,11 @@ Use the `X-Watson-Metadata` header with the following methods:
 ### Deleting data
 {: #delete-pi}
 
-To delete all data that is associated with a customer ID, use the `DELETE /v1/user_data` method. You pass the string `customer_id={id}` as a query parameter with the request. The following example deletes all data for the customer ID `my_ID`:
+To delete all data that is associated with a customer ID, use the `DELETE /v1/user_data` method. You pass the string `customer_id={id}` as a query parameter with the request. The following example deletes all data for the customer ID `my_customer_ID`:
 
 ```bash
 curl -X DELETE -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/user_data?customer_id=my_ID"
+"https://stream.watsonplatform.net/speech-to-text/api/v1/user_data?customer_id=my_customer_ID"
 ```
 {: pre}
 

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-31"
+  years: 2015, 2019
+lastupdated: "2019-01-03"
 
 ---
 
@@ -1084,7 +1084,7 @@ An optional string that associates a customer ID with data that is passed for re
     <td style="text-align:left">
       <code>x-watson-metadata</code> query parameter of
       <code>/v1/recognize</code> connection request (You must URL-encode
-      the argument, for example, `customer_id%3dmy_ID`.)
+      the argument, for example, `customer_id%3dmy_customer_ID`.)
     </td>
   </tr>
   <tr>
