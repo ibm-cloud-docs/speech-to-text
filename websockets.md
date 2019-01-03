@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-02"
+lastupdated: "2019-01-03"
 
 ---
 
@@ -175,7 +175,7 @@ A WebSocket client calls this method with the following query parameters to esta
       <code>customer_id={id}</code>, where <code>id</code> is a random
       or generic string that is to be associated with the data. You must
       URL-encode the argument to the parameter, for example,
-      `customer_id%3dmy_ID`. By default, no customer ID is associated
+      `customer_id%3dmy_customer_ID`. By default, no customer ID is associated
       with the data. For more information, see
       <a href="/docs/services/speech-to-text/information-security.html">Information
       security</a>.
