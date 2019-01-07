@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-02"
+lastupdated: "2019-01-07"
 
 ---
 
@@ -29,6 +29,9 @@ The {{site.data.keyword.speechtotextfull}} service can extract speech from audio
 -   If you already understand how to use audio, jump to [Supported audio formats](#formats) for detailed information about the formats that the service supports.
 
 The final sections, [Data limits and compression](#limits) and [Audio conversion](#conversion), can help you get the most from your use of the service.
+
+How you record audio can make a big difference in the service's results. Speech recognition can be very sensitive to input audio quality. When you experiment with the service, try to ensure that the input audio quality is as good as possible. To obtain the best possible accuracy, use a close, speech-oriented microphone (such as a headset) whenever possible and adjust the microphone settings if necessary. Try to avoid using a system's built-in microphone.
+{: tip}
 
 ## Audio characteristics and terminology
 {: #terminology}

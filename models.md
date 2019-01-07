@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-02"
+lastupdated: "2019-01-07"
 
 ---
 
@@ -23,18 +23,18 @@ lastupdated: "2019-01-02"
 # Languages and models
 {: #models}
 
-The {{site.data.keyword.speechtotextfull}} service supports speech recognition in many languages. For all interfaces, you can use the `model` parameter to specify a language model for a speech recognition request. The model indicates the language in which the audio is spoken and the rate at which it is sampled.
+The {{site.data.keyword.speechtotextfull}} service supports speech recognition in many languages. For all interfaces, you can use the `model` parameter to specify a language model for a speech recognition request. The model indicates the language in which the audio is spoken and the rate at which it is sampled. Choosing the correct model for your application is important.
 {: shortdesc}
 
-For most languages, the service supports two models:
+For most languages, the service supports two models.
 
 -   A *broadband model* for audio that is sampled at greater than or equal to 16 kHz. Use the broadband model for responsive, real-time applications (for example, for live-speech applications).
--   A *narrowband model* for audio that is sampled at 8 kHz. This rate is typically used for telephonic audio.
+-   A *narrowband model* for audio that is sampled at 8 kHz. Use the narrowband model for offline decoding of telephone speech, which is where this sampling rate is typically used.
 
 The service automatically adjusts the sampling rate of your audio to match the model that you specify. For more information, see [Sampling rate](/docs/services/speech-to-text/audio-formats.html#samplingRate).
 
-You can customize most models for improved speech recognition. For more information, see [The customization interface](/docs/services/speech-to-text/custom.html).
-{: note}
+Conversion of speech to text might not be perfect. Speech recognition technology is used successfully in many domains and applications. However, in addition to audio quality, speech recognition is sensitive to nuances of human speech, such as regional accents and differences in pronunciation, and might not always transcribe audio input correctly. Consider using customization to improve speech recognition for your audio. For more information, see [The customization interface](/docs/services/speech-to-text/custom.html).
+{: tip}
 
 ## Supported language models
 {: #modelsList}
