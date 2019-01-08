@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-21"
+  years: 2015, 2019
+lastupdated: "2019-01-08"
 
 ---
 
@@ -22,9 +22,6 @@ lastupdated: "2018-12-21"
 
 # Using grammars with custom language models
 {: #grammars}
-
-The grammar interface is not working at this time due to a known issue. The issue will be fixed and the interface will become functional very early in January 2019.
-{: important}
 
 The {{site.data.keyword.speechtotextfull}} service supports the use of grammars with custom language models. You can add grammars to a custom language model and use them for speech recognition. Grammars restrict the set of phrases that the service can recognize from audio.
 {: shortdesc}
