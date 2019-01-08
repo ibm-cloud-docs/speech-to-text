@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-16"
+  years: 2017, 2019
+lastupdated: "2019-01-08"
 
 ---
 
@@ -67,11 +67,11 @@ The service cannot accept requests to modify the model in any way until the upgr
 ## Upgrading a custom acoustic model
 {: #upgradeAcoustic}
 
-Follow these steps to upgrade a custom acoustic model:
+Follow these steps to upgrade a custom acoustic model. If the custom acoustic model was trained with a custom language model, you must perform two extra upgrade steps where indicated.
+
+1.  *If the custom acoustic model was trained with a custom language model,* you must first upgrade the custom language model to the latest version of the base model. For more information, see [Upgrading a custom language model](#upgradeLanguage).
 
 1.  Ensure that the custom acoustic model is in either the `ready` or the `available` state. You can check a model's status by using the `GET /v1/acoustic_customizations/{customization_id}` method. If the model's state is `ready`, upgrade the model before training it on its latest data.
-
-1.  If the custom acoustic model was trained with a custom language model, you must first upgrade the custom language model to the latest version of the base model. For more information, see [Upgrading a custom language model](#upgradeLanguage). You then specify the customization IDs of both the custom acoustic and custom language models with the upgrade method in the following step.
 
 1.  Upgrade the custom acoustic model by using the `POST /v1/acoustic_customizations/{customization_id}/upgrade_model` method:
 
@@ -81,7 +81,9 @@ Follow these steps to upgrade a custom acoustic model:
     ```
     {: pre}
 
-    If the custom acoustic model was trained with a custom language model, use the `custom_language_model_id` query parameter to specify the customization ID of that custom language model:
+    The upgrade method is asynchronous. It can take on the order of minutes or hours to complete, depending on the amount of audio data that the model contains and the current load on the service. As with training, upgrading generally takes approximately twice the length of the model's audio data.
+
+1.  *If the custom acoustic model was trained with a custom language model,* upgrade the custom acoustic model again, this time with the previously upgraded custom language model. Use the `custom_language_model_id` query parameter to specify the customization ID of that custom language model.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -89,7 +91,7 @@ Follow these steps to upgrade a custom acoustic model:
     ```
     {: pre}
 
-    The upgrade method is asynchronous. It can take on the order of minutes or hours to complete, depending on the amount of audio data that the model contains and the current load on the service. As with training, upgrading generally takes approximately twice the length of the model's audio data.
+   Once again, the upgrade method is asynchronous, and upgrading generally takes approximately twice the length of the model's audio data.
 
 The service returns a 200 response code if the upgrade process is successfully initiated. You can monitor the status of the upgrade by using the `GET /v1/acoustic_customizations/{customization_id}` method to poll the model's status. Use a loop to check the status once a minute.
 
