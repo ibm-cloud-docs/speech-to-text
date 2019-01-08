@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-02"
+lastupdated: "2019-01-08"
 
 ---
 
@@ -1091,14 +1091,14 @@ Japanese redaction has the following differences:
     <table style="width:50%">
       <caption>Table 5. Example redaction of Japanese-style birth date</caption>
       <tr>
-        <th id="without_redaction" style="text-align:left">Without redaction</th>
-        <th id="with_redaction" style="text-align:left">With redaction</th>
+        <th style="text-align:left">Without redaction</th>
+        <th style="text-align:left">With redaction</th>
       </tr>
       <tr>
-        <td headers="Japanese without_redaction">
+        <td>
           &#24179;&#25104; 30&#24180; 2&#26376;
         </td>
-        <td headers="Japanese with_redaction">
+        <td>
           &#24179;&#25104; XX&#24180; X&#26376;
         </td>
       </tr>
