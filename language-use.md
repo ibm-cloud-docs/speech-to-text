@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-31"
+  years: 2015, 2019
+lastupdated: "2018-01-17"
 
 ---
 
@@ -92,3 +92,12 @@ You specify a customization weight by using the `customization_weight` parameter
     {: pre}
 
     Setting a customization weight during speech recognition overrides a weight that was saved with the model during training.
+
+## Troubleshooting the use of custom language models
+{: #languageTroubleshoot}
+
+If you apply a custom language model to speech recognition but find that the service does not appear to be using words that the model contains, check for the following possible problems:
+
+-   Make sure that you are correctly passing the customization ID to the recognition request as shown in [Using a custom language model](#languageUse).
+-   Make sure that the status of the custom model is `available`, meaning that it is fully trained and ready to use. For more information, see [Listing custom language models](/docs/services/speech-to-text/language-models.html#listModels).
+-   Check the pronunciations that were generated for the new words to make sure that they are correct. For more information, see [Validating a words resource](/docs/services/speech-to-text/language-resource.html#validateModel).
