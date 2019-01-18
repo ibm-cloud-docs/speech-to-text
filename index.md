@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-08"
+lastupdated: "2019-01-17"
 
 ---
 
@@ -71,7 +71,7 @@ The interfaces also support the following common output features:
 -   [Word alternatives](/docs/services/speech-to-text/output.html#word_alternatives) request alternative words that are acoustically similar to the words of a transcript.
 -   [Word confidence](/docs/services/speech-to-text/output.html#word_confidence) returns confidence levels for each word of a transcript.
 -   [Word timestamps](/docs/services/speech-to-text/output.html#word_timestamps) return timestamps for the start and end of each word of a transcript.
--   [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting) converts dates, times, numbers, currency values, phone numbers, and internet addresses into more readable, conventional forms in final transcripts. The feature is supported for US English, Japanese, and Spanish audio. For US English, you can also provide keyword phrases to include certain punctuation symbols in final transcripts. (Beta functionality.)
+-   [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting) converts dates, times, numbers, currency values, phone numbers, and internet addresses into more readable, conventional forms in final transcripts. For US English, you can also provide keyword phrases to include certain punctuation symbols in final transcripts. Smart formatting is supported for US English, Japanese, and Spanish audio. (Beta functionality.)
 -   [Numeric redaction](/docs/services/speech-to-text/output.html#redaction) redacts, or masks, numeric data from a final transcript. Redaction is intended to remove sensitive personal information, such as credit card numbers, from transcripts. The feature is supported for US English, Japanese, and Korean audio. (Beta functionality.)
 -   [Profanity filtering](/docs/services/speech-to-text/output.html#profanity_filter) censors profanity from US English transcripts.
 

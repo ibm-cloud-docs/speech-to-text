@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-02"
+lastupdated: "2019-01-17"
 
 ---
 
@@ -22,10 +22,6 @@ lastupdated: "2019-01-02"
 
 # Customization
 {: #customization}
-
-1.  <span style="color:#003F69">What languages does the customization interface support?</span>
-
-    Language model customization and acoustic model customization are available for different languages and at different levels of support (generally available or beta). For more information about the supported languages, see [Language support for customization](/docs/services/speech-to-text/custom.html#languageSupport).
 
 1.  <span style="color:#003F69">How secure is the data that I add to a custom model?</span>
 
@@ -64,22 +60,6 @@ lastupdated: "2019-01-02"
 
     In general, it is better for the corpora to use the OOV words in different contexts and phrases, which improves how the service learns the words. However, if users speak the words in only a couple of contexts, then showing the words in other contexts does not improve the quality of the custom model. Speakers never use the words in those contexts. If speakers are likely to use the same phrase frequently, then repeating that phrase in the corpora can improve the quality of the model.
 
-1.  <span style="color:#003F69">A number of methods for language model customization are asynchronous. How do I check their results to know when they are finished?</span>
-
-    The following sections describe how to check the results of asynchronous operations for language model customization:
-    -   To check the status of a request to add a corpus to a custom language model with the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method, see [Monitoring the add corpus request](/docs/services/speech-to-text/language-create.html#monitorCorpus).
-    -   To check the status of a request to add words to a custom language model with the `POST /v1/customizations/{customization_id}/words` method, see [Monitoring the add words request](/docs/services/speech-to-text/language-create.html#monitorWords).
-    -   To check the status of a request to add a grammar to a custom language model with the `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` method, see [Monitoring the add grammar request](/docs/services/speech-to-text/grammar-add.html#monitorGrammar).
-    -   To check the status of a request to train a custom language model with the `POST /v1/customizations/{customization_id}/train` method, see [Monitoring the train model request](/docs/services/speech-to-text/language-create.html#monitorTraining).
-
-1.  <span style="color:#003F69">I created a custom language model, but the service does not appear to be using any of the new words that it contains during recognition?</span>
-
-    Try the following steps:
-
-    -   Make sure that you are correctly passing the customization ID to the recognition request. For more information, see [Using a custom language model](/docs/services/speech-to-text/language-use.html).
-    -   Make sure that the status of the custom model is `available`, meaning that it is fully trained and ready to use. For more information, see [Listing custom language models](/docs/services/speech-to-text/language-models.html#listModels).
-    -   Check the pronunciations that were generated for the new words to make sure that they are correct. For more information, see [Validating a words resource](/docs/services/speech-to-text/language-resource.html#validateModel).
-
 ## Acoustic model customization
 {: #amCustomization}
 
@@ -114,9 +94,3 @@ lastupdated: "2019-01-02"
     -   The custom language model contains words from the same domain as the audio data.
 
     If the audio contains many OOV words, it is better to use a custom language model during training, even if the custom language model merely adds a list of custom words. In general, a good custom acoustic model can improve the accuracy of transcription by as much as 40 percent.
-
-1.  <span style="color:#003F69">A number of methods for acoustic model customization are asynchronous. How do I check their results to know when they are finished?</span>
-
-    The following sections describe how to check the results of asynchronous operations for acoustic model customization:
-    -   To check the status of a request to add audio resources to a custom acoustic model with the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method, see [Monitoring the add audio request](/docs/services/speech-to-text/acoustic-create.html#monitorAudio).
-    -   To check the status of a request to train a custom acoustic model with the `POST /v1/acoustic_customizations/{customization_id}/train` method, see [Monitoring the train model request](/docs/services/speech-to-text/acoustic-create.html#monitorTraining).
