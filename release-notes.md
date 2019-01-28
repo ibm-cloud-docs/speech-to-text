@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-08"
+lastupdated: "2019-01-28"
 
 ---
 
@@ -29,15 +29,7 @@ The following sections document the new features and changes that were included 
 ## Known limitations
 {: #limitations}
 
-The {{site.data.keyword.speechtotextshort}} service has the following known limitation.
-
--   Service instances that use IAM authentication cannot currently use JavaScript to call the {{site.data.keyword.speechtotextshort}} WebSocket interface. This limitation applies to any application (such as the service demo) that uses JavaScript to make WebSocket calls from a browser. WebSocket calls that are made with other languages can use IAM tokens or API keys. To work around this limitation, you can do the following:
-    -   Call the WebSocket interface from outside of a browser. You can call the interface from any language that supports WebSockets. Refer to information in [The WebSocket interface](/docs/services/speech-to-text/websockets.html) for guidance when working with another language.
-
-        The {{site.data.keyword.ibmwatson}} SDKs provide the simplest way to call the WebSocket interface from another language. The SDKs accept an API key and manage the lifecycle of the tokens. For information about using the WebSocket interface with the Node.js, Java, Python, and Ruby SDKs, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
-    -   Use the synchronous or asynchronous HTTP interfaces to perform speech recognition.
-
-<!-- For persistent WebSocket connections with the {{site.data.keyword.speechtotextshort}} service, you must use the access token to establish the connection before the token expires. You then remain authenticated while you keep the connection alive. You do not need to refresh an access token for an active WebSocket connection that lasts beyond the token's expiration time. -->
+No known limitations at this time.
 
 ## 20 December 2018
 {: #December2018b}
@@ -145,9 +137,6 @@ The migration to IAM authentication affects new and existing service instances d
 
 -   *All new service instances that you create in any location* now use IAM authentication to access the service. You can pass either a bearer token or an API key: Tokens support authenticated requests without embedding service credentials in every call; API keys use HTTP basic authentication. When you use any of the {{site.data.keyword.watson}} SDKs, you can pass the API key and let the SDK manage the lifecycle of the tokens.
 -   *Existing service instances that you created in a location before the indicated migration date* continue to use the `{username}` and `{password}` from their previous Cloud Foundry service credentials for authentication until you migrate them to use IAM authentication. For more information about migrating to IAM authentication, see [Migrating Cloud Foundry service instances to a resource group](https://{DomainName}/docs/resources/instance_migration.html).
-
-    If you have an existing application that uses JavaScript to call the WebSocket interface from a browser, do not migrate your service instance to use IAM authentication at this time. This limitation does not apply to the service's HTTP REST interface. For more information, see [Known limitations](#limitations).
-    {: important}
 
 For more information, see the following documentation:
 
@@ -279,7 +268,7 @@ If your application uses the sessions interface, you must migrate to one of the 
     -   For shorter files of up to a few minutes of audio, use either the [synchronous HTTP interface](/docs/services/speech-to-text/http.html) `(POST /v1/recognize`) or the [asynchronous HTTP interface](/docs/services/speech-to-text/async.html) (`POST /v1/recognitions`).
     -   For longer files of more than a few minutes of audio, use the asynchronous HTTP interface.
 
-The WebSocket and HTTP interfaces provide the same results as the sessions interface (only the WebSocket interface provides interim results). You can also use one of the Watson SDKs, which simplify application development with any of the interfaces; for more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+The WebSocket and HTTP interfaces provide the same results as the sessions interface (only the WebSocket interface provides interim results). You can also use one of the Watson SDKs, which simplify application development with any of the interfaces. For more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
 
 ### 13 July 2018
 {: #July2018}

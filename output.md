@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-08"
+lastupdated: "2019-01-28"
 
 ---
 
@@ -411,7 +411,7 @@ The following abbreviated example requests interim results for a WebSocket reque
 ```javascript
 var token = {authentication-token};
 var wsURI = 'wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
-  + '?watson-token=' + token;
+  + '?access_token=' + IAM_access_token;
 var websocket = new WebSocket(wsURI);
 
 websocket.onopen = function(evt) { onOpen(evt) };

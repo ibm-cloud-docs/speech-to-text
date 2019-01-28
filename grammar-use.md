@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-31"
+  years: 2015, 2019
+lastupdated: "2019-01-28"
 
 ---
 
@@ -36,7 +36,7 @@ When you use a grammar, the service recognizes only words from the specified gra
     ```javascript
     var token = {authentication-token};
     var wsURI = 'wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
-      + '?watson-token=' + token
+      + '?access_token=' + IAM_access_token
       + '&language_customization_id={customization_id}';
     var websocket = new WebSocket(wsURI);
     ```
