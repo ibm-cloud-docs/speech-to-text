@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-03"
+lastupdated: "2019-01-28"
 
 ---
 
@@ -22,9 +22,6 @@ lastupdated: "2019-01-03"
 
 # The WebSocket interface
 {: #websockets}
-
-You cannot use JavaScript to call the WebSocket interface from a browser. The `watson-token` parameter that is available with the `/v1/recognize` method does not accept IAM tokens or API keys. For more information about working around this limitation, see the [Known limitations](/docs/services/speech-to-text/release-notes.html#limitations) in the release notes.
-{: important}
 
 The WebSocket interface of the {{site.data.keyword.speechtotextshort}} service is the most natural way for a client to interact with the service. To use the WebSocket interface for speech recognition, you first use the `/v1/recognize` method to establish a persistent connection with the service. You then send text and binary messages over the connection to initiate and manage the recognition requests.
 {: shortdesc}
@@ -63,7 +60,7 @@ where `{host_name}` is the location in which your application is hosted:
 -   `gateway-tok.watsonplatform.net` for Tokyo
 -   `gateway-lon.watsonplatform.net` for London
 
-A WebSocket client calls this method with the following query parameters to establish an authenticated connection with the service.
+A WebSocket client calls this method with the following query parameters to establish an authenticated connection with the service. If you use Identity and Access Management (IAM) authentication, use the `access_token` query parameter. If you use Cloud Foundry service credentials, use the `watson-token` query parameter.
 
 <table>
   <caption>Table 1. Parameters of the <code>/v1/recognize</code>
@@ -74,27 +71,38 @@ A WebSocket client calls this method with the following query parameters to esta
     <th style="text-align:left">Description</th>
   </tr>
   <tr>
+    <td style="text-align:left"><code>access_token</code>
+      <br/><em>Optional</em></td>
+    <td style="text-align:center">String</td>
+    <td style="text-align:left">
+      <em>If you use IAM authentication,</em> pass a valid IAM access
+      token to establish an authenticated connection with the service.
+      You pass an IAM access token instead of passing an API key with
+      the call. You must establish the connection before the access token
+      expires.<br/><br/>
+      You pass an access token only to establish an authenticated connection.
+      Once you establish a connection, you can keep it alive indefinitely.
+      You remain authenticated for as long as you keep the connection open.
+      You do not need to refresh the access token for an active connection
+      that lasts beyond the token's expiration time.
+    </td>
+  </tr>
+  <tr>
     <td style="text-align:left"><code>watson-token</code>
       <br/><em>Optional</em></td>
     <td style="text-align:center">String</td>
     <td style="text-align:left">
-      Passes a valid authentication token instead of passing service
-      credentials with the call. You pass a token only to establish an
-      authenticated connection with the service. Once you establish a
-      connection, you can keep it alive indefinitely. While the connection
-      remains open, you do not need to pass the token with subsequent calls.
-      <br/><br/>
-      Watson authentication tokens are an alternative to service credentials.
-      They are based on Cloud Foundry service credentials that use a
-      `{username}` and `{password}` for authentication.
-      <br/><br/>
-      **Important:** You cannot use JavaScript to call the WebSocket
-      interface from a browser if your service credentials are based on
-      IAM authentication. The `watson-token` parameter does not accept
-      IAM tokens or API keys. For more information about working around
-      this limitation, see the
-      [Known limitations](/docs/services/speech-to-text/release-notes.html#limitations)
-      in the release notes.
+      <em>If you use Cloud Foundry service credentials,</em> pass a valid
+      {{site.data.keyword.watson}} authentication token to establish an
+      authenticated connection with the service. You pass a
+      {{site.data.keyword.watson}} token instead of passing service
+      credentials with the call. {{site.data.keyword.watson}} tokens are
+      based on Cloud Foundry service credentials, which use a `username`
+      and `password` for HTTP basic authentication.<br/><br/>
+      You pass a {{site.data.keyword.watson}} token only to establish an
+      authenticated connection. Once you establish a connection, you can
+      keep it alive indefinitely. You remain authenticated for as long as
+      you keep the connection open.
     </td>
   </tr>
   <tr>
@@ -183,12 +191,12 @@ A WebSocket client calls this method with the following query parameters to esta
   </tr>
 </table>
 
-The following snippet of JavaScript code opens a connection with the service. The call to the `/v1/recognize` method passes the `watson-token` and `model` query parameters, the latter to direct the service to use the Spanish broadband model. After it establishes the connection, the client defines the event listeners (`onOpen`, `onClose`, and so on) to respond to events from the service. The client can use the connection for multiple recognition requests.
+The following snippet of JavaScript code opens a connection with the service. The call to the `/v1/recognize` method passes the `access_token` and `model` query parameters, the latter to direct the service to use the Spanish broadband model. After it establishes the connection, the client defines the event listeners (`onOpen`, `onClose`, and so on) to respond to events from the service. The client can use the connection for multiple recognition requests.
 
 ```javascript
 var token = {authentication-token};
 var wsURI = 'wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
-  + '?watson-token=' + token
+  + '?access_token=' + IAM_access_token
   + '&model=es-ES_BroadbandModel';
 var websocket = new WebSocket(wsURI);
 websocket.onopen = function(evt) { onOpen(evt) };

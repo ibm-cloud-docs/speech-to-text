@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-29"
+  years: 2015, 2019
+lastupdated: "2019-01-28"
 
 ---
 
@@ -47,7 +47,7 @@ The following example provides JavaScript code that establishes a connection and
 ```javascript
 var token = {authentication-token};
 var wsURI = 'wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
-  + '?watson-token=' + token;
+  + '?access_token=' + IAM_access_token;
 var websocket = new WebSocket(wsURI);
 
 websocket.send(JSON.stringify({
@@ -58,9 +58,6 @@ websocket.send(blob);
 websocket.send(JSON.stringify({action: 'stop'}));
 ```
 {: codeblock}
-
-You cannot use JavaScript to call the WebSocket interface from a browser. The `watson-token` parameter that is available with the `/v1/recognize` method does not accept IAM tokens or API keys. For information about working around this limitation, see the [Known limitations](/docs/services/speech-to-text/release-notes.html#limitations) in the release notes.
-{: important}
 
 ## Using the synchronous HTTP interface
 

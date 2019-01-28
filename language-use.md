@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2018-01-17"
+lastupdated: "2018-01-28"
 
 ---
 
@@ -33,7 +33,7 @@ You can create multiple custom language models for the same or different domains
     ```javascript
     var token = {authentication-token};
     var wsURI = 'wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
-      + '?watson-token=' + token
+      + '?access_token=' + IAM_access_token
       + '&model=es-ES_BroadbandModel'
       + '&language_customization_id={customization_id}';
     var websocket = new WebSocket(wsURI);
