@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-28"
+lastupdated: "2019-01-29"
 
 ---
 
@@ -78,8 +78,10 @@ A WebSocket client calls this method with the following query parameters to esta
       <em>If you use IAM authentication,</em> pass a valid IAM access
       token to establish an authenticated connection with the service.
       You pass an IAM access token instead of passing an API key with
-      the call. You must establish the connection before the access token
-      expires.<br/><br/>
+      the call. You must establish the connection before the access
+      token expires. For information about obtaining an access token, see
+      <a href="/docs/services/watson/getting-started-iam.html">Authenticating
+      with IAM tokens</a>.<br/><br/>
       You pass an access token only to establish an authenticated connection.
       Once you establish a connection, you can keep it alive indefinitely.
       You remain authenticated for as long as you keep the connection open.
@@ -98,7 +100,10 @@ A WebSocket client calls this method with the following query parameters to esta
       {{site.data.keyword.watson}} token instead of passing service
       credentials with the call. {{site.data.keyword.watson}} tokens are
       based on Cloud Foundry service credentials, which use a `username`
-      and `password` for HTTP basic authentication.<br/><br/>
+      and `password` for HTTP basic authentication. For information about
+      obtaining a {{site.data.keyword.watson}} token, see
+      <a href="/docs/services/watson/getting-started-tokens.html">{{site.data.keyword.watson}}
+      tokens</a>.<br/><br/>
       You pass a {{site.data.keyword.watson}} token only to establish an
       authenticated connection. Once you establish a connection, you can
       keep it alive indefinitely. You remain authenticated for as long as

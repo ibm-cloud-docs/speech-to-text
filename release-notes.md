@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-28"
+lastupdated: "2019-01-29"
 
 ---
 
@@ -30,6 +30,16 @@ The following sections document the new features and changes that were included 
 {: #limitations}
 
 No known limitations at this time.
+
+## 28 January 2019
+{: #January2019}
+
+The WebSocket interface now supports token-based Identity and Access Management (IAM) authentication from browser-based JavaScript code. The limitation to the contrary has been removed. To establish an authenticated connection with the WebSocket `/v1/recognize` method:
+
+-   If you use IAM authentication, include the `access_token` query parameter.
+-   If you use Cloud Foundry service credentials, include the `watson-token` query parameter.
+
+For more information, see [Open a connection](/docs/services/speech-to-text/websockets.html#WSopen).
 
 ## 20 December 2018
 {: #December2018b}
@@ -81,14 +91,10 @@ The grammar interface is fully functional in all locations as of January 8, 2019
 
 The service is now available in the IBM Cloud London location (**eu-gb**). Like all locations, London uses token-based Identity and Access Management (IAM) authentication. All new services instances that you create in this location use IAM authentication.
 
-## 12 November 2018
-{: #November2018b}
-
-The service now supports smart formatting for Japanese speech recognition. Previously, the service supported smart formatting for US English and Spanish only. The feature is beta functionality for all supported languages. For more information, see [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting).
-
 ## Older releases
 {: #older}
 
+-   [12 November 2018](#November2018b)
 -   [7 November 2018](#November2018a)
 -   [30 October 2018](#October2018b)
 -   [9 October 2018](#October2018a)
@@ -117,6 +123,11 @@ The service now supports smart formatting for Japanese speech recognition. Previ
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 12 November 2018
+{: #November2018b}
+
+The service now supports smart formatting for Japanese speech recognition. Previously, the service supported smart formatting for US English and Spanish only. The feature is beta functionality for all supported languages. For more information, see [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting).
 
 ### 7 November 2018
 {: #November2018a}
