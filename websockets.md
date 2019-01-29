@@ -199,7 +199,7 @@ A WebSocket client calls this method with the following query parameters to esta
 The following snippet of JavaScript code opens a connection with the service. The call to the `/v1/recognize` method passes the `access_token` and `model` query parameters, the latter to direct the service to use the Spanish broadband model. After it establishes the connection, the client defines the event listeners (`onOpen`, `onClose`, and so on) to respond to events from the service. The client can use the connection for multiple recognition requests.
 
 ```javascript
-var token = {authentication-token};
+var IAM_access_token = '{access_token}';
 var wsURI = 'wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
   + '?access_token=' + IAM_access_token
   + '&model=es-ES_BroadbandModel';
