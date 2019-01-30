@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-01-08"
+lastupdated: "2019-01-30"
 
 ---
 
@@ -28,12 +28,12 @@ To improve the quality of speech recognition, the {{site.data.keyword.speechtote
 
 When a new version of a base model is released, you must upgrade any custom language and custom acoustic models that are built on the base model to take advantage of the updates. Your custom models continue to use the older version of the base model until you complete the upgrade. As with all customization operations, you must use credentials for the instance of the service that owns a model to upgrade it.
 
-{{site.data.keyword.IBM_notm}} recommends that you upgrade to the latest version of an updated base model as soon as possible. The sooner you upgrade a custom model, the sooner you can experience the improved performance of the new model. In addition, older versions of base models will be removed at a future time. To encourage upgrading, the service returns a warning message with the results for recognition requests that use custom models based on older base models.
+Upgrade to the latest version of an updated base model as soon as possible. The sooner you upgrade a custom model, the sooner you can experience the improved performance of the new model. In addition, older versions of base models can be removed at a future time. To encourage upgrading, the service returns a warning message with the results for recognition requests that use custom models that are based on older base models.
 
 ## How upgrading works
 {: #upgradeOverview}
 
-When a new base model is first released, existing custom models are based on the older version of the base model. Until a custom model is upgraded, all operations on that custom model, such as adding data to or training the model, affect the existing version of the model. Similarly, all recognition requests that specify the custom model use the existing version of the model.
+When a new base model is first released, existing custom models are still based on the older version of the base model. Until a custom model is upgraded, all operations on that custom model, such as adding data to or training the model, affect the existing version of the model. Similarly, all recognition requests that specify the custom model use the existing version of the model.
 
 Upgrading results in two versions of a custom model, one based on the older version of the base model and one based on the latest version of the base model. Once a custom model is upgraded, all operations on that custom model affect the newer, upgraded version of the model. It is no longer possible to add data to or to train the older version of the model. Moreover, you cannot undo an upgrade operation.
 
@@ -83,7 +83,7 @@ Follow these steps to upgrade a custom acoustic model. If the custom acoustic mo
 
     The upgrade method is asynchronous. It can take on the order of minutes or hours to complete, depending on the amount of audio data that the model contains and the current load on the service. As with training, upgrading generally takes approximately twice the length of the model's audio data.
 
-1.  *If the custom acoustic model was trained with a custom language model,* upgrade the custom acoustic model again, this time with the previously upgraded custom language model. Use the `custom_language_model_id` query parameter to specify the customization ID of that custom language model.
+1.  *If the custom acoustic model was trained with a custom language model,* upgrade the custom acoustic model again, this time with the previously upgraded custom language model. Use the `custom_language_model_id` query parameter to specify the customization ID of the custom language model.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -105,11 +105,11 @@ The service cannot accept requests to modify the model in any way until the upgr
 ## Upgrade failures
 {: #upgradeFailures}
 
-The upgrade of custom model fails to start if the service is handling another request for the custom model, such as a training request or a request to add data. The upgrade request also fails to start if
+The upgrade of a custom model fails to start if the service is handling another request for the model, such as a training request or a request to add data. The upgrade request also fails to start in the following cases:
 
 -   The custom model is in a state other than `ready` or `available`.
 -   The custom model contains no data (custom words or audio resources).
--   For a custom acoustic model that was trained with a custom language model, the custom language model is not yet upgraded.
+-   For a custom acoustic model that was trained with a custom language model, the custom models are based on different versions of the base model. You must upgrade the custom language model before upgrading the custom acoustic model.
 
 ## Listing version information for a custom model
 {: #upgradeList}
@@ -158,10 +158,11 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-By using this feature, you can test the performance and accuracy of a custom model against both the old and new versions of its base model. If you find that an upgraded model's performance is lacking in some way (for instance, certain words are no longer recognized), you can continue to use the older version with recognition requests.
+You can use this feature to test the performance and accuracy of a custom model against both the old and new versions of its base model. If you find that an upgraded model's performance is lacking in some way (for instance, certain words are no longer recognized), you can continue to use the older version with recognition requests.
 
-[Base model version](/docs/services/speech-to-text/input.html#version) describes the `base_model_version` parameter and how the service determines what versions of the base and custom models to use with a recognition request. In addition to that information, consider the following notes when you pass both custom language and custom acoustic models with a recognition request:
+[Base model version](/docs/services/speech-to-text/input.html#version) describes the `base_model_version` parameter and how the service determines what versions of the base and custom models to use with a recognition request. In addition to that information, consider the following issues when you pass both custom language and custom acoustic models with a recognition request:
 
+-   Both custom models must be based on the same base model (for example, `en-US_BroadbandModel`).
 -   If both custom models are based on the older base model, the service uses the old base model for recognition.
 -   If both custom models are based on the newer base model, the service uses the new base model for recognition.
 -   If only one of the two custom models is upgraded to the newer base model, the service uses the old base model for recognition. It selects the old base model because that is the version that the two custom models have in common.

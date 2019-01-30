@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-06"
+  years: 2017, 2019
+lastupdated: "2019-01-29"
 
 ---
 
@@ -224,7 +224,7 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-The method also accepts an optional `custom_language_model_id` query parameter to specify a separately created custom language model that is to be used during training. Create a custom language model that contains transcriptions of your audio files, corpora (text files), or a list of words that are relevant to the contents of the audio files. You can also use an existing custom language model that contains related OOV words. For more information, see [Training a custom acoustic model with a custom language model](/docs/services/speech-to-text/acoustic-both.html#useBothTrain).
+The method also accepts an optional `custom_language_model_id` query parameter to specify a separately created custom language model that is to be used during training. You can train with a custom language model that contains transcriptions of your audio files or that contains corpora or OOV words that are relevant to the contents of the audio files. Both of the custom models must be based on the same version of the same base model for training to succeed. For more information, see [Training a custom acoustic model with a custom language model](/docs/services/speech-to-text/acoustic-both.html#useBothTrain).
 
 The training method is asynchronous. Training can take on the order of minutes or hours to complete, depending on the amount of audio data that the custom acoustic model contains and the current load on the service. A general guideline is that training a custom acoustic model takes approximately two to four times the length of its audio data. The range of time depends on the model that is being trained and the nature of the audio, such as whether the audio is clean or noisy. For example, it can take between 4 and 8 hours to train a model that contains 2 hours of audio. For more information about checking the status of a training operation, see [Monitoring the train model request](#monitorTraining).
 
@@ -275,5 +275,6 @@ Training of a custom acoustic model fails to start if the service is handling an
 -   The custom model contains less than 10 minutes of audio data.
 -   The custom model contains more than 100 hours of audio data.
 -   One or more of the custom model's audio resources is invalid.
+-   You passed an incompatible custom language model with the `custom_language_model_id` query parameter. Both custom models must be based on the same version of the same base model.
 
 If the status of a custom model's training is `failed`, use the `GET /v1/acoustic_customizations/{customization_id}/audio` and `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` methods to examine the model's audio resources and address any problems that you find. For more information, see [Listing audio resources for a custom acoustic model](/docs/services/speech-to-text/acoustic-audio.html#listAudio).
