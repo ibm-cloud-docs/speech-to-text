@@ -93,7 +93,7 @@ Follow these steps to upgrade a custom acoustic model. If the custom acoustic mo
 
     Once again, the upgrade method is asynchronous, and upgrading generally takes approximately twice the length of the model's audio data.
 
-    The request to upgrade the acoustic model with the language model might fail with a 400 response code and the message `No input data modified since last training`. If this error occurs, add the boolean `force` query parameter to the request and set the parameter to `true`. The `force` parameter is undocumented. Use it only to force an upgrade of a custom acoustic model in this particular situation.
+    The request to upgrade the acoustic model with the language model might fail with a 400 response code and the message `No input data modified since last training`. If this error occurs, add the boolean `force` query parameter to the request and set the parameter to `true`. Use the parameter only to force an upgrade of a custom acoustic model in this particular situation.
     {: note}
 
 The service returns a 200 response code if the upgrade process is successfully initiated. You can monitor the status of the upgrade by using the `GET /v1/acoustic_customizations/{customization_id}` method to poll the model's status. Use a loop to check the status once a minute.
