@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-07"
+lastupdated: "2019-02-01"
 
 ---
 
@@ -101,7 +101,14 @@ Table 1 lists the supported models for each language. If you omit the `model` pa
   </tr>
 </table>
 
-The US English model `en-US_ShortForm_NarrowbandModel` is intended for use in Interactive Voice Response (IVR) and Automated Customer Support solutions. The model is tuned to recognize the short utterances, such as digits, spellings, months, and so on, that frequently occur in such solutions. It can improve speech recognition for related applications. Use the model that is most appropriate for your application.
+### The US English short-form model
+
+The US English short-form model, `en-US_ShortForm_NarrowbandModel`, can improve speech recognition for Interactive Voice Response (IVR) and Automated Customer Support solutions. The short-form model is trained to recognize the short utterances that are frequently expressed in customer support settings like automated and human support call centers. The model is tuned, for example, for precise utterances such as digits, single-character word and name spellings, and yes-no responses. Using a grammar in combination with the short-form model can further improve recognition results.
+
+As with all models, noisy environments can adversely impact the results. For example, background acoustic noise from airports, moving vehicles, conference rooms, and multiple speakers can reduce transcription accuracy.  Audio from speaker phones can also reduce accuracy due to the echo common to such devices. Using a custom acoustic model with the short-form model can counteract such effects.
+
+-   For more information about language model and acoustic model customization, see [The customization interface](/docs/services/speech-to-text/custom.html).
+-   For more information about grammars, see [Using grammars with custom language models](/docs/services/speech-to-text/grammar.html).
 
 ### Language model example
 {: #modelsExample}
