@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-10"
+  years: 2015, 2019
+lastupdated: "2019-02-04"
 
 ---
 
@@ -93,7 +93,7 @@ You register a callback URL by calling the `POST /v1/register_callback` method. 
 The service sends only a single `GET` request to a callback URL during the registration process. The service must receive a reply with response code 200 that includes the challenge string in its body within five seconds. Otherwise, it does not white-list the URL. Instead, it sends status code 400 in response to the `POST /v1/register_callback` request. If the callback URL was already successfully white-listed, the service sends status code 200 in response to the initial `POST` request.
 
 ### Security considerations
-{: #security}
+{: #security-async}
 
 When you successfully use the `POST /v1/register_callback` method to register a callback URL, the service white-lists the URL to indicate that it is verified for use with callback notifications. If you specify a user secret with the registration call, white-listing also means that the URL has been validated for added security. Specifying a user secret provides authentication and data integrity for requests that use the callback URL with the asynchronous HTTP interface.
 
@@ -348,14 +348,14 @@ curl -X GET -u "apikey:{apikey}"
 {: codeblock}
 
 ## Deleting a job
-{: #delete}
+{: #delete-async}
 
 You can use the `DELETE /v1/recognitions/{id}` method to delete the job that is specified with the `id` path parameter. You typically delete a job after you obtain its results from the service. Once you delete a job, its results are no longer available. You cannot delete a job that the service is actively processing.
 
 By default, the service maintains the results of each job until the job's time to live expires. The default time to live is one week, but you can use the `results_ttl` parameter of the `POST /v1/recognitions` method to specify the number of minutes that the service is to maintain the results.
 
 ### Example
-{: #deleteExample}
+{: #deleteExample-async}
 
 The following example deletes the job with the specified ID:
 

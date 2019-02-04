@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-16"
+  years: 2015, 2019
+lastupdated: "2019-02-04"
 
 ---
 
@@ -61,7 +61,7 @@ If the service discovers one or more problems with a custom word's definition, t
 An error can occur, for example, if you add a custom word with an invalid `sounds_like` field, one that violates one of the rules for adding a pronunciation. You cannot train a custom model whose words resource includes a word with an error. You must correct or delete the word before you can train the model.
 
 ### Example requests and responses
-{: #listExample}
+{: #listExample-words}
 
 The following example lists all of the words, regardless of type, from the custom model with the specified customization ID. The words are displayed in the default sort order, ascending alphabetical.
 
@@ -160,7 +160,7 @@ You can remove any word that you added to the custom model's words resource via 
 Removing a word from a custom model does not affect the model until you retrain it by using the `POST /v1/customizations/{customization_id}/train` method. If the model was previously trained on the word, the model continues to apply the word to speech recognition even after you delete the word from its words resource. You must retrain the model to reflect the deletion.
 
 ### Example request
-{: #deleteExample}
+{: #deleteExample-word}
 
 The following example deletes the word `IEEE` from the custom model with the specified customization ID:
 

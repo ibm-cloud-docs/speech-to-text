@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-16"
+  years: 2015, 2019
+lastupdated: "2019-02-04"
 
 ---
 
@@ -26,10 +26,10 @@ lastupdated: "2018-12-16"
 Follow these steps to create a custom language model for the {{site.data.keyword.speechtotextshort}} service:
 {: shortdesc}
 
-1.  [Create a custom language model](#createModel). You can create multiple custom models for the same or different domains. The process is the same for any model that you create. However, you can specify only a single custom model at a time with a recognition request.
+1.  [Create a custom language model](#createModel-language). You can create multiple custom models for the same or different domains. The process is the same for any model that you create. However, you can specify only a single custom model at a time with a recognition request.
 1.  [Add a corpus to the custom language model](#addCorpus). A corpus is a plain text document that uses terminology from the domain in context. The service builds a vocabulary for a custom model by extracting terms from corpora that do not exist in its base vocabulary. You can add multiple corpora to a custom model.
 1.  [Add words to the custom language model](#addWords). You can also add custom words to a model individually. In addition, you can use the same methods to modify custom words that are extracted from corpora. The methods let you specify the pronunciation of words and how the words are displayed in a speech transcript.
-1.  [Train the custom language model](#trainModel). Once you add words to the custom model, you must train the model on the words. Training prepares the custom model for use in speech recognition. The model does not use new or modified words until you train it.
+1.  [Train the custom language model](#trainModel-language). Once you add words to the custom model, you must train the model on the words. Training prepares the custom model for use in speech recognition. The model does not use new or modified words until you train it.
 1.  After you train your custom model, you can use it with recognition requests. If the audio that is passed for transcription contains domain-specific words that are defined in the custom model, the results of the request reflect the model's enhanced vocabulary. For more information, see [Using a custom language model](/docs/services/speech-to-text/language-use.html).
 
 The steps for creating a custom language model are iterative. You can add corpora, add words, and train or retrain a model as often as needed.
@@ -40,7 +40,7 @@ Language model customization is available for most languages. For more informati
 {: note}
 
 ## Create a custom language model
-{: #createModel}
+{: #createModel-language}
 
 You use the `POST /v1/customizations` method to create a new custom language model. You can create any number of custom language models, but you can use only one model at a time with a speech recognition request. The method accepts a JSON object that defines the attributes of the new custom model as the body of the request.
 
@@ -293,7 +293,7 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-The `status` field reports the current state of the model. While the service is processing new words, the status remains `pending`. Use a loop to check the status every 10 seconds until it becomes `ready` to indicate that the operation is complete. For more information about possible `status` values, see [Monitoring the train model request](#monitorTraining).
+The `status` field reports the current state of the model. While the service is processing new words, the status remains `pending`. Use a loop to check the status every 10 seconds until it becomes `ready` to indicate that the operation is complete. For more information about possible `status` values, see [Monitoring the train model request](#monitorTraining-language).
 
 ### Modifying words in a custom model
 {: #modifyWord}
@@ -303,7 +303,7 @@ You can also use the `POST /v1/customizations/{customization_id}/words` and `PUT
 You use the methods to modify the definition of an existing word exactly as you do to add a word. The new data that you provide for the word overwrites the word's existing definition.
 
 ## Train the custom language model
-{: #trainModel}
+{: #trainModel-language}
 
 Once you populate a custom language model with new words (by adding corpora, by adding grammars, or by adding the words directly), you must train the model on the new data. Training prepares the custom model to use the data in speech recognition. The model does not use words that you add via any means until you train it on the data.
 
@@ -324,10 +324,10 @@ You can use the optional `word_type_to_add` query parameter to specify the words
 
 In addition, you can use the optional `customization_weight` query parameter. The parameter specifies the relative weight that is given to words from the custom model as opposed to words from the base vocabulary when the custom model is used for speech recognition. You can also specify a customization weight with any recognition request that uses the custom model. For more information, see [Using customization weight](/docs/services/speech-to-text/language-use.html#weight).
 
-The method is asynchronous. Training can take on the order of minutes to complete depending on the number of new words on which the model is being trained and the current load on the service. For more information about checking the status of a training operation, see [Monitoring the train model request](#monitorTraining).
+The method is asynchronous. Training can take on the order of minutes to complete depending on the number of new words on which the model is being trained and the current load on the service. For more information about checking the status of a training operation, see [Monitoring the train model request](#monitorTraining-language).
 
 ### Monitoring the train model request
-{: #monitorTraining}
+{: #monitorTraining-language}
 
 The service returns a 200 response code if it initiates the training process successfully. The service cannot accept subsequent training requests, or requests to add new corpora, grammars, or words, until the existing request completes.
 
@@ -364,10 +364,10 @@ The response includes `status` and `progress` fields that report the state of th
 -   `upgrading` indicates that the model is being upgraded. The `progress` field is `0`.
 -   `failed` indicates that training of the model failed. The `progress` field is `0`.
 
-Use a loop to check the status every 10 seconds until it becomes `available`. For more information about checking the status of a custom model, see [Listing custom language models](/docs/services/speech-to-text/language-models.html#listModels).
+Use a loop to check the status every 10 seconds until it becomes `available`. For more information about checking the status of a custom model, see [Listing custom language models](/docs/services/speech-to-text/language-models.html#listModels-language).
 
 ### Training failures
-{: #failedTraining}
+{: #failedTraining-language}
 
 Training fails to start if the service is handling another request for the custom language model. For instance, a training request fails to start if the service is
 

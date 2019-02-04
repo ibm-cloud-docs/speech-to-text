@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-29"
+lastupdated: "2019-02-04"
 
 ---
 
@@ -402,7 +402,7 @@ For language model customization, the Korean models are generally available for 
     -   `es-LA` for Latin-American Spanish
     -   `es-US` for North-American (Mexican) Spanish
 
-    The `GET /v1/customizations` and `GET /v1/customizations/{customization_id}` methods of the customization interface include the dialect of a custom model in their output. For more information, see [Creating a custom language model](/docs/services/speech-to-text/language-create.html#createModel) and [Listing custom language models](/docs/services/speech-to-text/language-models.html#listModels).
+    The `GET /v1/customizations` and `GET /v1/customizations/{customization_id}` methods of the customization interface include the dialect of a custom model in their output. For more information, see [Creating a custom language model](/docs/services/speech-to-text/language-create.html#createModel-language) and [Listing custom language models](/docs/services/speech-to-text/language-models.html#listModels-language).
 -   The names of the language models `en-UK_BroadbandModel` and `en-UK_NarrowbandModel` have been deprecated. The models are now available with the names `en-GB_BroadbandModel` and `en-GB_NarrowbandModel`.
 
     The deprecated `en-UK_{model}` names continue to function, but the `GET /v1/models` method no longer returns the names in the list of available models. You can still query the names directly with the `GET /v1/models/{model_id}` method.

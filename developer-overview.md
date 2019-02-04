@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-07"
+lastupdated: "2019-02-04"
 
 ---
 
@@ -53,7 +53,7 @@ The WebSocket interface has a number of advantages over the HTTP interface:
 -   It enables audio to be streamed directly from browsers (HTML5 WebSocket clients) to the service.
 
 ## Customizing the service
-{: #custom}
+{: #customizing}
 
 [The customization interface](/docs/services/speech-to-text/custom.html) lets you create custom models to improve the service's speech recognition capabilities:
 

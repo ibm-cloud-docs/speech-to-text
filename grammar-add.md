@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-11"
+  years: 2015, 2019
+lastupdated: "2019-02-04"
 
 ---
 
@@ -26,7 +26,7 @@ lastupdated: "2018-12-11"
 Before you can use a grammar for speech recognition, you must first use the customization interface to add the grammar to a custom language model. The steps to add a grammar to a custom language model parallel those used to add corpora or custom words:
 {: shortdesc}
 
-1.  [Create a custom language model](#createModel). You can create a new custom model or use an existing model.
+1.  [Create a custom language model](#createModel-grammar). You can create a new custom model or use an existing model.
 1.  [Add a grammar to the custom language model](#addGrammar). The service validates the grammar to ensure its correctness.
 1.  [Validate the words from the grammar](#validateGrammar). You verify the correctness of the sounds-like pronunciations for any out-of-vocabulary (OOV) words that are recognized by the grammar.
 1.  [Train the custom language model](#trainGrammar). The service prepares the custom model and grammar for use in speech recognition.
@@ -38,9 +38,9 @@ You can use grammars with any language that supports language model customizatio
 {: note}
 
 ## Create a custom language model
-{: #createModel}
+{: #createModel-grammar}
 
-To use a grammar with speech recognition, you must add it to a custom language model. You can use an existing custom language model, or you can create a new custom model by using the `POST /v1/customizations` method. For information about creating a new custom model, see [Create a custom language model](/docs/services/speech-to-text/language-create.html#createModel).
+To use a grammar with speech recognition, you must add it to a custom language model. You can use an existing custom language model, or you can create a new custom model by using the `POST /v1/customizations` method. For information about creating a new custom model, see [Create a custom language model](/docs/services/speech-to-text/language-create.html#createModel-language).
 
 A custom language model can contain corpora and custom words as well as grammars. During speech recognition, you can use the custom model with or without its grammars. However, when you use a grammar, the service recognizes only words from the specified grammar.
 
@@ -156,10 +156,10 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-The training method is asynchronous. Training typically takes only seconds to complete. But it can take longer depending on the size and complexity of the grammar and the current load on the service. For information about checking the status of a training operation, see [Monitoring the training request](#monitorTraining).
+The training method is asynchronous. Training typically takes only seconds to complete. But it can take longer depending on the size and complexity of the grammar and the current load on the service. For information about checking the status of a training operation, see [Monitoring the training request](#monitorTraining-grammar).
 
 ### Monitoring the training request
-{: #monitorTraining}
+{: #monitorTraining-grammar}
 
 The service returns a 200 response code if the training process is successfully initiated. The service cannot accept subsequent training requests, or requests to add new grammars, corpora, or words to the custom model, until the current training request completes.
 
@@ -181,4 +181,4 @@ To determine the status of a training request, use the `GET /v1/customizations/{
 ```
 {: codeblock}
 
-The `status` field has the value `training` while the model is being trained. Use a loop to check the status of the model every 10 seconds until it becomes `available`. For more information about monitoring a training request and other possible status values, see [Monitoring the train model request](/docs/services/speech-to-text/language-create.html#monitorTraining).
+The `status` field has the value `training` while the model is being trained. Use a loop to check the status of the model every 10 seconds until it becomes `available`. For more information about monitoring a training request and other possible status values, see [Monitoring the train model request](/docs/services/speech-to-text/language-create.html#monitorTraining-language).

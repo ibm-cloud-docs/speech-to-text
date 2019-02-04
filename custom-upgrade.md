@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-01-30"
+lastupdated: "2019-02-04"
 
 ---
 
@@ -60,7 +60,7 @@ Follow these steps to upgrade a custom language model:
 
 The service returns a 200 response code if the upgrade process is successfully initiated. You can monitor the status of the upgrade by using the `GET /v1/customizations/{customization_id}` method to poll the model's status. Use a loop to check the status every 10 seconds.
 
-While it is being upgraded, the custom model has the status `upgrading`. When the upgrade is complete, the model resumes the status that it had before upgrade (`ready` or `available`). Checking the status of an upgrade operation is identical to checking the status of a training operation. For more information, see [Monitoring the train model request](/docs/services/speech-to-text/language-create.html#monitorTraining).
+While it is being upgraded, the custom model has the status `upgrading`. When the upgrade is complete, the model resumes the status that it had before upgrade (`ready` or `available`). Checking the status of an upgrade operation is identical to checking the status of a training operation. For more information, see [Monitoring the train model request](/docs/services/speech-to-text/language-create.html#monitorTraining-language).
 
 The service cannot accept requests to modify the model in any way until the upgrade request completes. However, you can continue to issue recognition requests with the existing version of the model during the upgrade.
 
@@ -98,7 +98,7 @@ Follow these steps to upgrade a custom acoustic model. If the custom acoustic mo
 
 The service returns a 200 response code if the upgrade process is successfully initiated. You can monitor the status of the upgrade by using the `GET /v1/acoustic_customizations/{customization_id}` method to poll the model's status. Use a loop to check the status once a minute.
 
-While it is being upgraded, the custom model has the status `upgrading`. When the upgrade is complete, the model resumes the status that it had before upgrade (`ready` or `available`). Checking the status of an upgrade operation is identical to checking the status of a training operation. For more information, see [Monitoring the train model request](/docs/services/speech-to-text/acoustic-create.html#monitorTraining).
+While it is being upgraded, the custom model has the status `upgrading`. When the upgrade is complete, the model resumes the status that it had before upgrade (`ready` or `available`). Checking the status of an upgrade operation is identical to checking the status of a training operation. For more information, see [Monitoring the train model request](/docs/services/speech-to-text/acoustic-create.html#monitorTraining-acoustic).
 
 The service cannot accept requests to modify the model in any way until the upgrade request completes. However, you can continue to issue recognition requests with the existing version of the model during the upgrade.
 
@@ -116,8 +116,8 @@ The upgrade of a custom model fails to start if the service is handling another 
 
 To see the versions of the base model for which a custom model is available, use the following methods:
 
--   To list information about a custom language model, use the `GET /v1/customizations/{customization_id}` method. For more information, see [Listing custom language models](/docs/services/speech-to-text/language-models.html#listModels).
--   To list information about a custom acoustic model, use the `GET /v1/acoustic_customizations/{customization_id}` method. For more information, see [Listing custom acoustic models](/docs/services/speech-to-text/acoustic-models.html#listModels).
+-   To list information about a custom language model, use the `GET /v1/customizations/{customization_id}` method. For more information, see [Listing custom language models](/docs/services/speech-to-text/language-models.html#listModels-language).
+-   To list information about a custom acoustic model, use the `GET /v1/acoustic_customizations/{customization_id}` method. For more information, see [Listing custom acoustic models](/docs/services/speech-to-text/acoustic-models.html#listModels-acoustic).
 
 In both cases, the output includes a `versions` field that shows information about the base models for the custom model. The following output shows information for an upgraded custom language model:
 

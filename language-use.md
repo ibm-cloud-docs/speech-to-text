@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2018-01-28"
+lastupdated: "2019-02-04"
 
 ---
 
@@ -99,5 +99,5 @@ You specify a customization weight by using the `customization_weight` parameter
 If you apply a custom language model to speech recognition but find that the service does not appear to be using words that the model contains, check for the following possible problems:
 
 -   Make sure that you are correctly passing the customization ID to the recognition request as shown in [Using a custom language model](#languageUse).
--   Make sure that the status of the custom model is `available`, meaning that it is fully trained and ready to use. For more information, see [Listing custom language models](/docs/services/speech-to-text/language-models.html#listModels).
+-   Make sure that the status of the custom model is `available`, meaning that it is fully trained and ready to use. For more information, see [Listing custom language models](/docs/services/speech-to-text/language-models.html#listModels-language).
 -   Check the pronunciations that were generated for the new words to make sure that they are correct. For more information, see [Validating a words resource](/docs/services/speech-to-text/language-resource.html#validateModel).

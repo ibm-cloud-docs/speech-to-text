@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-16"
+  years: 2015, 2019
+lastupdated: "2019-02-04"
 
 ---
 
@@ -43,7 +43,7 @@ Both methods return the `name` of the corpus, the `total_words` read from the co
     For example, the corpus might be invalid, or you might have tried to add a corpus with the same name as an existing corpus. You can try to add the corpus again and include the `allow_overwrite` parameter with the request. You can also delete the corpus and then try adding it again.
 
 ### Example requests and responses
-{: #listExample}
+{: #listExample-corpora}
 
 The following example lists all corpora for the custom model with the specified customization ID:
 
@@ -111,7 +111,7 @@ Use the `DELETE /v1/customizations/{customization_id}/corpora/{corpus_name}` met
 Removing a corpus does not affect the custom model until you train the model on its updated data by using the `POST /v1/customizations/{customization_id}/train` method. If you successfully trained the model on the corpus, words from the corpus remain in the model's vocabulary and apply to speech recognition until you retrain the model.
 
 ### Example request
-{: #deleteExample}
+{: #deleteExample-corpus}
 
 The following example deletes the corpus that is named `corpus3` from the custom model with the specified customization ID.
 

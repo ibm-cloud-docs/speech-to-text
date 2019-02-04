@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-08"
+  years: 2015, 2019
+lastupdated: "2019-02-04"
 
 ---
 
@@ -21,7 +21,7 @@ lastupdated: "2018-12-08"
 {:swift: .ph data-hd-programlang='swift'}
 
 # Recognition accuracy
-{: #accuracy}
+{: #faq-accuracy}
 
 1.  <span style="color:#003F69">Which model, broadband or narrowband, do I use with my audio to achieve the best recognition accuracy?</span>
 

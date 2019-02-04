@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-02"
+lastupdated: "2019-02-04"
 
 ---
 
@@ -30,7 +30,7 @@ The {{site.data.keyword.speechtotextshort}} service offers the following feature
 -   For an alphabetized list of all available speech recognition parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
 
 ## Custom models
-{: #custom}
+{: #custom-input}
 
 Language and acoustic model customization are available at different levels of support (generally available or beta) for different languages. For more information, see [Language support for customization](/docs/services/speech-to-text/custom.html#languageSupport).
 {: note}
@@ -77,7 +77,7 @@ For examples that use custom models with each of the service's interfaces, see
 -   [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html)
 
 ## Grammars
-{: #grammars}
+{: #grammars-input}
 
 The grammars feature is beta functionality. The service supports grammars for all languages for which it supports language model customization.
 {: note}
@@ -212,6 +212,6 @@ By default, {{site.data.keyword.IBM_notm}} logs all requests to {{site.data.keyw
 If you are concerned with protecting the privacy of users' personal information or otherwise do not want your requests to be logged by IBM, you can choose not to have IBM log data (opt out). You can choose to opt out of logging at either the account level or the API request level. For more information, see [Controlling request logging for {{site.data.keyword.watson}} services](/docs/services/watson/getting-started-logging.html).
 
 ## Information security
-{: #security}
+{: #security-input}
 
 Information security includes features to associate a customer ID with data that is passed to the service with a request. You associate a customer ID with the data by passing the `X-Watson-Metadata` header with the request. If necessary, you can then delete the data by using the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/services/speech-to-text/information-security.html).

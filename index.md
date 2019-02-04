@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-17"
+lastupdated: "2019-02-04"
 
 ---
 
@@ -86,7 +86,7 @@ The service offers models for the following languages: Brazilian Portuguese, Fre
 -   The language model customization interface is generally available for most languages. The acoustic model customization interface is available as beta functionality for all languages. For more information, see [Language support for customization](/docs/services/speech-to-text/custom.html#languageSupport).
 
 ## Pricing
-{: #pricing}
+{: #pricing-index}
 
 For more information about the pricing plans for the service, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.Bluemix_short}} Catalog ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/catalog/services/speech-to-text){: new_window}. For answers to questions related to pricing and examples of monthly usage costs, see the [Pricing FAQs](/docs/services/speech-to-text/faq-pricing.html).
 

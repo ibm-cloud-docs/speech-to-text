@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-06"
+  years: 2017, 2019
+lastupdated: "2019-02-04"
 
 ---
 
@@ -31,7 +31,7 @@ You use the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_na
 -   The `customization_id` path parameter to specify the customization ID of the model.
 -   The `audio_name` path parameter to specify a name for the audio resource. The name cannot contain spaces. Use a localized name that matches the language of the model.
 
-The following sections describe required request headers for audio- and archive-type resources and provide guidelines for adding audio resources.
+The following sections describe required request headers for audio- and archive-type resources and provide guidelines for adding audio resources. When you update a model's audio resources, you must train the model for the changes to take effect during transcription. For more information, see [Train the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#trainModel-acoustic).
 
 ## Working with audio files
 {: #workingAudio}
