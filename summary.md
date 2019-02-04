@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-28"
+lastupdated: "2019-02-04"
 
 ---
 
@@ -85,7 +85,7 @@ If you use Identity and Access Management (IAM) authentication, an optional IAM 
 
 ## acoustic_customization_id
 
-An optional customization ID for a custom acoustic model that is adapted for the acoustic characteristics of your environment and speakers. By default, no custom model is used. For more information, see [Custom models](/docs/services/speech-to-text/input.html#custom).
+An optional customization ID for a custom acoustic model that is adapted for the acoustic characteristics of your environment and speakers. By default, no custom model is used. For more information, see [Custom models](/docs/services/speech-to-text/input.html#custom-input).
 
 <table>
   <caption>Table 2. The acoustic_customization_id parameter</caption>
@@ -218,7 +218,7 @@ An optional audio format (MIME type) that specifies the format of the audio data
 
 ## customization_weight
 
-An optional double between 0.0 and 1.0 that indicates the relative weight that the service gives to words from a custom language model versus words from the base vocabulary. The default is 0.3 unless a different weight was specified when the custom language model was trained. For more information, see [Custom models](/docs/services/speech-to-text/input.html#custom).
+An optional double between 0.0 and 1.0 that indicates the relative weight that the service gives to words from a custom language model versus words from the base vocabulary. The default is 0.3 unless a different weight was specified when the custom language model was trained. For more information, see [Custom models](/docs/services/speech-to-text/input.html#custom-input).
 
 <table>
   <caption>Table 5. The customization_weight parameter</caption>
@@ -262,7 +262,7 @@ An optional double between 0.0 and 1.0 that indicates the relative weight that t
 
 ## grammar_name
 
-An optional string that identifies a grammar that is to be used for speech recognition. The service recognizes only strings that are defined by the grammar. You must specify both the name of the grammar and the customization ID of the custom language model for which the grammar is defined. For more information, see [Grammars](/docs/services/speech-to-text/input.html#grammars).
+An optional string that identifies a grammar that is to be used for speech recognition. The service recognizes only strings that are defined by the grammar. You must specify both the name of the grammar and the customization ID of the custom language model for which the grammar is defined. For more information, see [Grammars](/docs/services/speech-to-text/input.html#grammars-input).
 
 <table>
   <caption>Table 6. The grammar_name parameter</caption>
@@ -482,7 +482,7 @@ An optional double between 0.0 and 1.0 that indicates the minimum threshold for 
 
 ## language_customization_id
 
-An optional customization ID for a custom language model that includes terminology from your domain. By default, no custom model is used. For more information, see [Custom models](/docs/services/speech-to-text/input.html#custom).
+An optional customization ID for a custom language model that includes terminology from your domain. By default, no custom model is used. For more information, see [Custom models](/docs/services/speech-to-text/input.html#custom-input).
 
 <table>
   <caption>Table 11. The language_customization_id parameter</caption>

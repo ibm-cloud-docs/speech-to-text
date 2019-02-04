@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-01"
+lastupdated: "2019-02-04"
 
 ---
 
@@ -29,7 +29,7 @@ The {{site.data.keyword.speechtotextfull}} service offers a customization interf
 Speech recognition works the same with or without a custom model. When you use a custom model for speech recognition, you can use all of the input and output parameters that are normally available with a recognition request. For more information about all available parameters, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
 
 ## Language model customization
-{: #customLanguage}
+{: #customLanguage-intro}
 
 The service was developed with a broad, general audience in mind. The service's base vocabulary contains many words that are used in everyday conversation. The general model provides sufficiently accurate recognition for many applications. But it can lack knowledge of specific terms that are associated with particular domains.
 
@@ -41,7 +41,7 @@ For more information, see
 -   [Using a custom language model](/docs/services/speech-to-text/language-use.html)
 
 ## Acoustic model customization
-{: #customAcoustic}
+{: #customAcoustic-intro}
 
 Similarly, the service was developed with a base acoustic model that works well for various audio characteristics. But in cases like the following, adapting a base model to suit your audio can improve speech recognition:
 
@@ -57,7 +57,7 @@ For more information, see
 -   [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html)
 
 ## Grammars
-{: #grammars}
+{: #grammars-intro}
 
 Custom language models allow you to expand the service's base vocabulary. *Grammars* enable you to restrict the words that the service can recognize from that vocabulary. When you use a grammar with a custom language model for speech recognition, the service can recognize only words, phrases, and strings that are recognized by the grammar. Because the grammar defines a limited search space for valid matches, the service can deliver results faster and more accurately.
 

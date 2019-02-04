@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-12-16"
+  years: 2019
+lastupdated: "2019-02-04"
 
 ---
 
@@ -26,13 +26,13 @@ lastupdated: "2018-12-16"
 The customization interface includes the `POST /v1/acoustic_customizations` method for creating a custom acoustic model. The interface also includes the `POST /v1/acoustic_customizations/train` method for training a custom model on its latest audio resources. For more information, see the following documentation:
 {: shortdesc}
 
--   [Create a custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#createModel)
--   [Train the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#trainModel)
+-   [Create a custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#createModel-acoustic)
+-   [Train the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#trainModel-acoustic)
 
 In addition, the interface includes methods for listing information about custom acoustic models, resetting a custom model to its initial state, and deleting a custom model.
 
 ## Listing custom acoustic models
-{: #listModels}
+{: #listModels-acoustic}
 
 The customization interface provides two methods for listing information about the custom acoustic models that are owned by the specified service credentials:
 
@@ -62,7 +62,7 @@ The methods also return a `status` field that indicates the state of the custom 
 Additionally, the output includes a `progress` field that indicates the current progress of the custom model's training. If you used the `POST /v1/acoustic_customizations/{customization_id}/train` method to start training the model, this field indicates the current progress of that request as a percentage complete. At this time, the value of the field is `100` if the status is `available`; otherwise, it is `0`.
 
 ### Example requests and responses
-{: #listExample}
+{: #listExample-acoustic}
 
 The following example includes the `language` query parameter to list all US English custom acoustic models that are owned by the service credentials:
 
@@ -139,12 +139,12 @@ curl -X GET -u "apikey:{apikey}"
 {: codeblock}
 
 ## Resetting a custom acoustic model
-{: #resetModel}
+{: #resetModel-acoustic}
 
 Use the `POST /v1/acoustic_customizations/{customization_id}/reset` method to reset a custom acoustic model. Resetting a custom model removes all of the audio resources from the model, initializing the model to its state at creation. The method does not delete the model itself or metadata such as its name and language. However, when you reset a model, its audio resources are removed and must be re-created.
 
 ### Example request
-{: #resetExample}
+{: #resetExample-acoustic}
 
 The following example resets the custom acoustic model with the specified customization ID:
 
@@ -155,12 +155,12 @@ curl -X POST -u "apikey:{apikey}"
 {: pre}
 
 ## Deleting a custom acoustic model
-{: #deleteModel}
+{: #deleteModel-acoustic}
 
 Use the `DELETE /v1/acoustic_customizations/{customization_id}` method to delete a custom acoustic model that you no longer need. The method deletes all audio that is associated with the custom model and the model itself. Use this method with caution: A custom model and its data cannot be reclaimed after you delete the model.
 
 ### Example request
-{: #deleteExample}
+{: #deleteExample-acoustic}
 
 The following example deletes the custom acoustic model with the specified customization ID:
 

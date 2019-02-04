@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-11-15"
+  years: 2015, 2019
+lastupdated: "2019-02-04"
 
 ---
 
@@ -21,7 +21,7 @@ lastupdated: "2018-11-15"
 {:swift: .ph data-hd-programlang='swift'}
 
 # Pricing
-{: #pricing}
+{: #faq-pricing}
 
 1.  <span style="color:#003F69">What is the price for using the {{site.data.keyword.IBM_notm}} {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} standard service?</span>
 

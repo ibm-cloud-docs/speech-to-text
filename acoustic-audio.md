@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-12-10"
+  years: 2019
+lastupdated: "2019-02-04"
 
 ---
 
@@ -48,7 +48,7 @@ The methods also list the status of the audio data. The status is important for 
 -   `invalid` indicates that the audio data is not valid for training the model (possibly because it has the wrong format or sampling rate, or because it is corrupted).
 
 ### Example request: List all audio resources
-{: #listExample}
+{: #listExample-audio}
 
 The following example lists all audio resources for the custom acoustic model with the specified customization ID. The acoustic model has three audio resources. The service has successfully analyzed `audio1` and `audio2`; it is still analyzing `audio3`.
 
@@ -174,7 +174,7 @@ Use the `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name
 Removing an audio resource does not affect the custom model until you train the model on its updated data by using the `POST /v1/acoustic_customizations/{customization_id}/train` method. If you successfully trained the model on the resource, until you retrain the model, the existing audio data continues to be used for speech recognition.
 
 ### Example request
-{: #deleteExample}
+{: #deleteExample-audio}
 
 The following method deletes the audio resource that is named `audio3` from the custom model with the specified customization ID:
 

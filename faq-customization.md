@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-17"
+lastupdated: "2019-02-04"
 
 ---
 
@@ -21,7 +21,7 @@ lastupdated: "2019-01-17"
 {:swift: .ph data-hd-programlang='swift'}
 
 # Customization
-{: #customization}
+{: #faq-customization}
 
 1.  <span style="color:#003F69">How secure is the data that I add to a custom model?</span>
 

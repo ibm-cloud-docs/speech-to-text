@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-16"
+  years: 2015, 2019
+lastupdated: "2019-02-04"
 
 ---
 
@@ -46,8 +46,7 @@ The words resource contains the following information about each OOV word. The s
     You can use the `display_as` field to specify a different spelling for the word. For more information, see [Using the display_as field](#displayAs).
 -   `source`: How the word was added to the words resource. If the service extracted the word from a corpus or grammar, the field lists the name of that resource. Because the service can encounter the same word in multiple resources, the field can list multiple corpus or grammar names. The field includes the string `user` if you add or modify the word directly.
 
-When you update a model's words resource, you must train the model for the changes to take effect during transcription. For more information, see [Train the custom language model](/docs/services/speech-to-text/language-create.html#trainModel).
-{: note}
+When you update a model's words resource, you must train the model for the changes to take effect during transcription. For more information, see [Train the custom language model](/docs/services/speech-to-text/language-create.html#trainModel-language).
 
 ## Working with corpora
 {: #workingCorpora}

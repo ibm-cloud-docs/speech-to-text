@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-16"
+  years: 2015, 2019
+lastupdated: "2019-02-04"
 
 ---
 
@@ -26,13 +26,13 @@ lastupdated: "2018-12-16"
 The customization interface includes the `POST /v1/customizations` method for creating a custom language model. The interface also includes the `POST /v1/customizations/train` method for training a custom model on the latest data from its words resource. For more information, see the following documentation:
 {: shortdesc}
 
--   [Create a custom language model](/docs/services/speech-to-text/language-create.html#createModel)
--   [Train the custom language model](/docs/services/speech-to-text/language-create.html#trainModel)
+-   [Create a custom language model](/docs/services/speech-to-text/language-create.html#createModel-language)
+-   [Train the custom language model](/docs/services/speech-to-text/language-create.html#trainModel-language)
 
 In addition, the interface includes the following methods for listing information about custom language models, resetting a custom model to its initial state, and deleting a custom model.
 
 ## Listing custom language models
-{: #listModels}
+{: #listModels-language}
 
 The customization interface provides two methods for listing information about the custom language models that are owned by the specified service credentials:
 
@@ -63,7 +63,7 @@ The method also returns a `status` field that indicates the state of the custom 
 Additionally, the output includes a `progress` field that indicates the current progress of the custom model's training. If you used the `POST /v1/customizations/{customization_id}/train` method to start training the model, this field indicates the current progress of that request as a percentage complete. At this time, the value of the field is `100` if the status is `available`; otherwise, it is `0`.
 
 ### Example requests and responses
-{: #listExample}
+{: #listExample-language}
 
 The following example includes the `language` query parameter to list all US English custom language models that are owned by the service credentials:
 
@@ -143,12 +143,12 @@ curl -X GET -u "apikey:{apikey}"
 {: codeblock}
 
 ## Resetting a custom language model
-{: #resetModel}
+{: #resetModel-language}
 
 Use the `POST /v1/customizations/{customization_id}/reset` method to reset a custom model. Resetting a model removes all of the corpora and words from the model, initializing the model to its state at creation. The method does not delete the model itself or metadata such as its name and language. However, when you reset a model, its words resource is empty and must be re-created by adding corpora and words.
 
 ### Example request
-{: #resetExample}
+{: #resetExample-language}
 
 The following example resets the custom model with the specified customization ID:
 
@@ -159,12 +159,12 @@ curl -X POST -u "apikey:{apikey}"
 {: pre}
 
 ## Deleting a custom language model
-{: #deleteModel}
+{: #deleteModel-language}
 
 Use the `DELETE /v1/customizations/{customization_id}` method to delete a custom language model that you no longer need. The method deletes all corpora and words that are associated with the custom model and the model itself. Use this method with caution: a custom model and its data cannot be reclaimed after you delete the model.
 
 ### Example request
-{: #deleteExample}
+{: #deleteExample-language}
 
 The following example deletes the custom model with the specified customization ID:
 

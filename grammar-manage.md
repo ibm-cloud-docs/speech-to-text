@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2018
-lastupdated: "2018-12-11"
+  years: 2015, 2019
+lastupdated: "2019-02-04"
 
 ---
 
@@ -43,7 +43,7 @@ Both methods return the same information about a grammar. The information includ
     For example, the grammar might be invalid, or you might have tried to add a grammar with the same name as an existing grammar. You can try to add the grammar again and include the `allow_overwrite` parameter with the request. You can also delete the grammar and then try adding it again.
 
 ### Example requests and responses
-{: #listExample}
+{: #listExample-grammars}
 
 The following example lists information about all grammars that have been added to the custom model with the specified customization ID.
 
@@ -106,7 +106,7 @@ Use the `DELETE /v1/customizations/{customization_id}/grammars/{grammar_name}` m
 Removing a grammar does not affect the custom model until you train the model on its updated data by using the `POST /v1/customizations/{customization_id}/train` method. If you successfully trained the model on the grammar, the grammar continues to be available for speech recognition until you retrain the model.
 
 ### Example request
-{: #deleteExample}
+{: #deleteExample-grammar}
 
 The following example deletes the grammar named `list-abnf` from the custom model with the specified customization ID.
 
