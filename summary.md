@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-02-05"
+lastupdated: "2019-02-07"
 
 ---
 
@@ -313,7 +313,7 @@ An optional string that identifies a grammar that is to be used for speech recog
 ## inactivity_timeout
 {: #summary-inactivity-timeout}
 
-An optional integer that specifies the number of seconds for the service's inactivity timeout; use `-1` to indicate infinity. The default is 30 seconds. For more information, see [Inactivity timeout](/docs/services/speech-to-text/input.html#timeouts).
+An optional integer that specifies the number of seconds for the service's inactivity timeout. Inactivity means that the service detects no speech in streaming audio. The default is 30 seconds. Use `-1` to indicate infinity. For more information, see [Inactivity timeout](/docs/services/speech-to-text/input.html#timeouts-inactivity).
 
 <table>
   <caption>Table 7. The inactivity_timeout parameter</caption>
