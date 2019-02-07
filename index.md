@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-02-04"
+lastupdated: "2019-02-07"
 
 ---
 
@@ -57,7 +57,7 @@ The service's interfaces share common input features for transcribing speech to 
 
 -   [Audio formats](/docs/services/speech-to-text/audio-formats.html) - You can transcribe Ogg or Web Media (WebM) audio with the Opus or Vorbis codec, MP3 (or MPEG), Waveform Audio File Format (WAV), Free Lossless Audio Codec (FLAC), Linear 16-bit Pulse-Code Modulation (PCM), G.729, mu-law (or u-law), and basic audio.
 -   [Languages and models](/docs/services/speech-to-text/models.html) - For most languages, you can transcribe audio by using broadband or narrowband models. Use broadband for audio that is sampled at a minimum rate of 16 kHz. Use narrowband for audio that is sampled at a minimum rate of 8 kHz.
--   [Audio transmission](/docs/services/speech-to-text/input.html#transmission) - You can pass as much as 100 MB of audio to the service (you must send at least 100 bytes of audio). You can pass the audio as a continuous stream of data chunks or as a one-shot delivery that passes all of the data at one time. With streaming, the service enforces [timeouts](/docs/services/speech-to-text/input.html#timeouts) to preserve resources.
+-   [Audio transmission](/docs/services/speech-to-text/input.html#transmission) - You can pass as much as 100 MB of audio to the service (you must send at least 100 bytes of audio). You can pass the audio as a continuous stream of data chunks or as a one-shot delivery that passes all of the data at one time. With streaming, the service enforces inactivity and session [timeouts](/docs/services/speech-to-text/input.html#timeouts).
 
 ## Output features
 {: #outputFeatures}

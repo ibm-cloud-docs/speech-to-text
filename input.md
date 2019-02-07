@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-02-04"
+lastupdated: "2019-02-07"
 
 ---
 
@@ -146,12 +146,7 @@ The parameter is intended for use with custom models. Therefore, you can learn a
 
 With the HTTP interfaces, the service always transcribes the entire audio stream before sending any results. The results can include multiple `transcript` elements to indicate phrases that are separated by pauses. Concatenate the `transcript` elements to assemble the complete transcript.
 
-To preserve system resources when you stream audio data, the service enforces timeouts. The service can terminate a request if
-
--   The request is initiated but the service receives no audio.
--   The service detects an extended period of silence in the audio.
-
-For more information about timeouts and how to work around them, see [Timeouts](#timeouts).
+The service enforces timeouts on a streaming session. It can terminate a streaming session if it detects an extended period of silence or receives no audio during a 30-second period. For more information about timeouts and how to avoid them, see [Timeouts](#timeouts).
 
 ### Audio transmission example
 {: #transmissionExample}
@@ -170,30 +165,21 @@ curl -X POST -u "apikey:{apikey}"
 ## Timeouts
 {: #timeouts}
 
-To preserve resources when you stream audio data, the service enforces timeouts. If a timeout lapses during a streaming session, the service closes the connection. Your application must recover gracefully from possible closed connections.
+When you initiate a streaming session with the HTTP or WebSocket speech recognition methods, the service enforces inactivity and session timeouts. If a timeout lapses during a streaming session, the service closes the connection. Your application must recover gracefully from possible closed connections.
 
-When you initiate a streaming session with the HTTP `/v1/recognize` or WebSocket `/v1/recognize` method, the service enforces the following timeouts:
+When you stream audio over HTTP, the service sends a space character in its response every 20 seconds. The service does this to improve usability by avoiding the 30-second HTTP REST inactivity timeout. To keep the connection alive while recognition is ongoing, the service continues to send this space character until it completes its transcription. The space character has no effect on JSON-encoded response data.
 
--   A *session timeout* (HTTP status code 408) occurs when the client opens a streaming session but
+This HTTP inactivity timeout is different from the service's inactivity timeout. The WebSocket interface is not subject to this HTTP timeout.
+{: note}
 
-    -   Sends no audio to the service for 30 seconds
-    -   Stops sending audio for 30 seconds before it sends the last chunk to the service
-    -   Streams audio at a rate that is much slower than real-time
+### Inactivity timeout
+{: #timeouts-inactivity}
 
-    Ideally, you would initiate a request to establish a session just before you obtain audio for transcription and maintain it by sending audio at a rate that is close to real time. If the client has sent all data, the service can take more than 30 seconds to generate a response for long audio. In this case, the request does not time out.
+An *inactivity timeout* (HTTP status code 400) occurs when the service is receiving audio but detects only silence (the service receives audio that contains no speech) for 30 seconds. The inactivity timeout is useful, for example, for terminating a session when a user simply walks away from a live microphone.
 
-    You can keep a session active by sending any audio data, including just silence, before the 30-second session timeout occurs. (You must also set the `inactivity_timeout` parameter to `-1`, as described in the next bullet.) You are charged for the duration of any audio data that you send to the service, including the silence that you send to extend a session.
+The default inactivity timeout is 30 seconds. You can override this value by using the `inactivity_timeout` parameter. Specify a larger value to increase the inactivity timeout. Specify a value of `-1` to set the inactivity timeout to infinity. You are charged for all audio that you send to the service, including silence, so increasing the inactivity timeout can incur additional charges for a streaming session that sends only silence.
 
--   An *inactivity timeout* (HTTP status code 400) occurs when the service is receiving audio from the client but it detects silence (no speech) for 30 seconds. The inactivity timeout is useful, for example, for terminating a session when a user simply walks away from a live microphone. The service uses the timeout to ensure that a session remains active.
-
-    You can override this timeout by specifying a different value for the `inactivity_timeout` parameter. Specify a value of `-1` to set the inactivity timeout to infinity.
-
-To improve usability for long audio, the service avoids HTTP REST inactivity timeouts by sending a space character every 20 seconds in the response JSON object until it completes the transcription. Sending the character keeps the connection alive while recognition is ongoing. (The WebSocket interface is not subject to this type of timeout.)
-
-### Inactivity timeout example
-{: #timeoutsExample}
-
-The following example request sets the inactivity timeout to 60 seconds. The client sends an initial file to begin the streaming session.
+The following example request sets the inactivity timeout to 60 seconds. The request sends an initial file to begin the streaming session.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -203,6 +189,29 @@ curl -X POST -u "apikey:{apikey}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?inactivity_timeout=60"
 ```
 {: pre}
+
+### Session timeout
+{: #timeouts-session}
+
+A *session timeout* (HTTP status code 408) occurs when you fail to send sufficient audio to keep a streaming session active. The service can consider a session idle and trigger a session timeout for the following reasons:
+
+-   You fail to send at least 15 seconds of audio to the service in any 30-second window.
+
+    Until you send the last chunk to indicate the end of the stream, you must send at least 15 seconds of audio within any 30-second period. The audio can be silence if you set the `inactivity_timeout` parameter to a larger value or to `-1`. You are charged for the duration of any audio that you send to the service, including silence.
+-   You stream audio at a rate that is much slower than real-time.
+
+    Ideally, you would initiate a request to establish a session just before you obtain audio for transcription. You would then maintain the session by sending audio at a rate that is close to real-time.
+
+You do not need to worry about the session timeout after you send the last chunk to indicate the end of the stream. The service continues to process the audio until it returns the final transcription results.
+
+When you transcribe a long audio stream, the service can take more than 30 seconds to process the audio and generate a response. The service does not begin to calculate the session timeout until it finishes processing all audio that it has received. The service's processing time cannot cause the session to exceed the 30-second session timeout.
+
+For example, if you send one hour of audio in the first 10 seconds of a session, the service might take 300 seconds to process the audio.  To keep this session alive, you would need to send at least 15 more seconds of some audio, including silence, no later than 340 seconds into the session.
+
+In this example, if you were to send another 15 seconds of audio at the 100-second mark of the session, the service might spend an additional two seconds processing this audio. In this case, you would need to send 15 more seconds of audio no later 342 seconds into the session.
+
+Do not rely on processing time or on whether you have received results to determine whether a streaming session is idle. Assume that the service can process all audio instantly, and send data to the service accordingly. If you stream audio in real-time, do not fall behind in sending audio at one-half real-time (15 seconds of audio) in any 30-second window. This rate is typically sufficient to accommodate network latency and delays.
+{: important}
 
 ## Request logging
 {: #logging}
