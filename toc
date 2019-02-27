@@ -20,13 +20,6 @@ Speech to Text
         [Watson videos](https://www.youtube.com/user/IBMWatsonSolutions/)
     {: .navgroup-end}
 
-    {: .navgroup id="reference"}
-    [API reference](https://cloud.ibm.com/apidocs/speech-to-text)
-    information-security.md
-    /watson/watson-using-sdks
-    [Watson GitHub repos](https://github.com/watson-developer-cloud/)
-    {: .navgroup-end}
-
     {: .navgroup id="howto"}
     {: .topicgroup}
     Speech recognition
@@ -75,6 +68,13 @@ Speech to Text
     {: topicgroup}
     Service background
         science.md
+    {: .navgroup-end}
+
+    {: .navgroup id="reference"}
+    [API reference](https://cloud.ibm.com/apidocs/speech-to-text)
+    information-security.md
+    /watson/watson-using-sdks
+    [Watson GitHub repos](https://github.com/watson-developer-cloud/)
     {: .navgroup-end}
 
     {: .navgroup id="help"}
