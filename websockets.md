@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-29"
+lastupdated: "2019-02-28"
 
 ---
 
@@ -248,10 +248,9 @@ To initiate a recognition request, the client sends a JSON text message to the s
     <td style="text-align:center">String</td>
     <td style="text-align:left">
       Identifies the format (MIME type) of the audio data for the request.
-      For more information about the available audio formats and those for
-      which the parameter is required, see
-      <a href="/docs/services/speech-to-text/audio-formats.html">Audio
-        formats</a>.
+      The parameter is required only for the `audio/basic`, `audio/l16`,
+      and `audio/mulaw` formats. For more information, see
+      [Audio formats](/docs/services/speech-to-text/audio-formats.html).
     </td>
   </tr>
 </table>
@@ -285,9 +284,9 @@ If the client specifies an invalid query parameter or JSON field for the recogni
 ## Send audio and receive recognition results
 {: #WSaudio}
 
-After it sends the initial `start` message, the client can begin sending audio data to the service. The client does not need to wait for the service to respond to the `start` message with the `listening` message. The service returns the results of the transcription asynchronously in the same format as it returns results for the HTTP API.
+After it sends the initial `start` message, the client can begin sending audio data to the service. The client does not need to wait for the service to respond to the `start` message with the `listening` message. The service returns the results of the transcription asynchronously in the same format as it returns results for the HTTP interfaces.
 
-The client must send the audio as binary data. The client can stream a maximum of 100 MB of audio data with a single utterance (per `send` request). It must send at least 100 bytes of audio for any request. The client can send multiple utterances over a single WebSocket connection.
+The client must send the audio as binary data. The client can send a maximum of 100 MB of audio data with a single utterance (per `send` request). It must send at least 100 bytes of audio for any request. The client can send multiple utterances over a single WebSocket connection. For information about using compression to maximize the amount of audio that you can pass to the service with a request, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 
 The WebSocket interface imposes a maximum frame size of 4 MB. The client can set the maximum frame size to less than 4 MB. If it is not practical to set the frame size, the client can set the maximum message size to less than 4 MB and send the audio data as a sequence of messages.
 

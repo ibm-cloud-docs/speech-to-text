@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-07"
+lastupdated: "2019-02-28"
 
 ---
 
@@ -137,7 +137,7 @@ The {{site.data.keyword.speechtotextshort}} service automatically detects the en
 
 Table 1 provides a summary of the audio formats that the service supports.
 
--   *Audio format and compression* identifies each format and indicates its supported compression. You can send a maximum of 100 MB of audio to the service with a single request. By using a format that supports compression, you can reduce the size of your audio to maximize the amount of data that you can pass to the service. For more information, see [Data limits and compression](#limits).
+-   *Audio format and compression* identifies each format and indicates its supported compression. You can send a maximum of 100 MB of audio to the service with a single synchronous HTTP or WebSocket request. By using a format that supports compression, you can reduce the size of your audio to maximize the amount of data that you can pass to the service. For more information, see [Data limits and compression](#limits).
 -   *Content-type specification* indicates whether you must use the `Content-Type` header or equivalent parameter to specify the format (MIME type) of the audio that you send to the service. You can specify the audio format for any request, but that's not always necessary:
     -   For most formats, the content type is optional. You can omit the content type or specify `application/octet-stream` to have the service automatically detect the format.
     -   For others, the content type is required. These formats do not provide the information, such as the sampling rate, that the service needs to auto-detect their format.
@@ -442,10 +442,10 @@ For JavaScript code that shows how to capture audio from a microphone in a Chrom
 ## Data limits and compression
 {: #limits}
 
-The service accepts a maximum of 100 MB of audio data for transcription with a request. When you recognize long continuous audio streams or large files, take the following steps to ensure that your audio does not exceed the 100 MB limit:
+The service accepts a maximum of 100 MB of audio data for transcription with a synchronous HTTP or WebSocket request. When you recognize long continuous audio streams or large files, take the following steps to ensure that your audio does not exceed the 100 MB data limit:
 
 -   Use a sampling rate no greater than 16 kHz (for broadband models) or 8 kHz (for narrowband models), and use 16 bits per sample. The service converts audio recorded at a sampling rate that is higher than the target model (16 kHz or 8 kHz) to the rate of the model. So larger frequencies do not result in enhanced recognition accuracy, but they do increase the size of the audio stream.
--   Encode your audio in a format that offers data compression. By encoding your data more efficiently, you can send far more audio without exceeding the 100 MB data limit. Audio formats such as `audio/ogg` and `audio/mp3` significantly reduce the size of your audio stream. You can use these formats to send greater amounts of audio with a single request.
+-   Encode your audio in a format that offers data compression. By encoding your data more efficiently, you can send far more audio without exceeding the 100 MB limit. Audio formats such as `audio/ogg` and `audio/mp3` significantly reduce the size of your audio stream. You can use these formats to send greater amounts of audio with a single request.
 
 If you compress the audio too severely with the `audio/ogg` format, you can lose some recognition accuracy. To be safe, retain a bit rate of at least 24 kbps for your audio.
 
@@ -457,7 +457,7 @@ Consider the approximate size of the data stream that results from 2 hours of co
 -   If the data is encoded with the `audio/wav` format, the two-hour stream has a size of 230 MB, well beyond the service's 100 MB limit.
 -   If the data is encoded in the `audio/ogg` format, the two-hour stream has a size of only 23 MB, well beneath the service's limit.
 
-The following table approximates the maximum duration of audio that can be sent with a recognition request in different formats given the 100 MB service limit. Actual values can vary depending on the complexity of the audio and the achieved compression rate.
+The following table approximates the maximum duration of audio that can be sent for speech recognition with a synchronous HTTP or WebSocket request in different formats. The duration considers the 100 MB service limit. Actual values can vary depending on the complexity of the audio and the achieved compression rate.
 
 <table style="width:75%">
   <caption>Table 4. Maximum duration of audio in different formats</caption>
@@ -512,7 +512,7 @@ The [**opus-tools** ![External link icon](../../icons/launch-glyph.svg "External
 -   The [**opusdec** ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusdec.html){: new_window} utility decodes audio from the Opus codec to uncompressed PCM WAV files.
 -   The [**opusinfo** ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusinfo.html){: new_window} utility provides information about and validity checking for Opus files.
 
-Many users send WAV files for speech recognition. Given the service's 100 MB data limit, WAV format reduces the amount of audio that can be recognized with a single request. Using the **opusenc** command to convert the audio to the preferred `audio/ogg:codecs=opus` format can greatly increase the amount of audio that you can send with a recognition request.
+Many users send WAV files for speech recognition. With the service's 100 MB data limit for synchronous HTTP and WebSocket requests, the WAV format reduces the amount of audio that can be recognized with a single request. Using the **opusenc** command to convert the audio to the preferred `audio/ogg:codecs=opus` format can greatly increase the amount of audio that you can send with a recognition request.
 
 For example, consider an uncompressed broadband (16 kHz) WAV file (**input.wav**) that uses 16 bits per sample for a bit rate of 256 kbps. The following command converts the audio to a file (**output.opus**) that uses the Opus codec:
 

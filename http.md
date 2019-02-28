@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-02"
+lastupdated: "2019-02-27"
 
 ---
 
@@ -29,7 +29,7 @@ The synchronous HTTP interface of the {{site.data.keyword.speechtotextfull}} ser
 -   The first sends all of the audio in a single stream via the body of the request. You specify the parameters of the operation as request headers and query parameters. For more information, see [Making a basic HTTP request](#HTTP-basic).
 -   The second sends the audio as a multipart request. You specify the parameters of the request as a combination of request headers, query parameters, and JSON metadata. For more information, see [Making a multipart HTTP request](#HTTP-multi).
 
-Submit a maximum of 100 MB and a minimum of 100 bytes of audio with a request. For information about all methods of the HTTP interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+Submit a maximum of 100 MB and a minimum of 100 bytes of audio data with a single request. For information about audio formats and about using compression to maximize the amount of audio that you can send with a request, see [Audio formats](/docs/services/speech-to-text/audio-formats.html). For information about all methods of the HTTP interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
 
 ## Making a basic HTTP request
 {: #HTTP-basic}
@@ -75,8 +75,8 @@ The `POST /v1/recognize` method also supports multipart requests. You pass all a
 
 Multipart speech recognition is intended for two use cases:
 
--   For use with browsers for which JavaScript is disabled. Multipart requests based on form data do not require the use of JavaScript.
--   When the parameters that are used with the recognition request are greater than the 8 KB limit that is imposed by most HTTP servers and proxies. For example, spotting a a large number of keywords can increase the size of the request. Passing the parameters as form data avoids this limit.
+-   With browsers for which JavaScript is disabled. Multipart requests based on form data do not require the use of JavaScript.
+-   When the parameters of a recognition request are greater than 8 KB, which is the limit imposed by most HTTP servers and proxies. For example, spotting a very large number of keywords can increase the size of a request beyond this limit. Multipart requests use form data to avoid this constraint.
 
 The following sections describe the parameters that you use for multipart requests and show an example request.
 

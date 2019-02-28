@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-02-04"
+lastupdated: "2019-02-28"
 
 ---
 
@@ -35,7 +35,7 @@ You can access the capabilities of the {{site.data.keyword.speechtotextfull}} se
 -   [The synchronous HTTP interface](/docs/services/speech-to-text/http.html) provides a basic interface to transcribe audio with blocking requests.
 -   [The asynchronous HTTP interface](/docs/services/speech-to-text/async.html) provides a non-blocking interface that lets you register a callback URL to receive notifications or to poll the service for job status and results.
 
-The interfaces provide the same speech recognition capabilities, but you might specify the same parameter as a request header, a query parameter, or a parameter of a JSON object depending on the interface that you use.
+The interfaces provide the same speech recognition capabilities, but you might specify the same parameter as a request header, a query parameter, or a parameter of a JSON object depending on the interface that you use. Also, the WebSocket and synchronous HTTP interfaces accept a maximum of 100 MB of audio data with a single request. The asynchronous HTTP interface accepts a maximum of 1 GB of audio data.
 
 -   For descriptions of all available speech recognition parameters, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
 -   For descriptions of all methods and their parameters, along with examples, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
@@ -76,7 +76,7 @@ For instance, a web page that is loaded from a server in {{site.data.keyword.clo
 SDKs are available for the {{site.data.keyword.speechtotextshort}} service to simplify the development of speech applications. {{site.data.keyword.ibmwatson}} SDKs are available for many popular programming languages and platforms.
 
 -   For a complete list of SDKs and links to the SDKs on GitHub, see [Using SDKs](/docs/services/watson/getting-started-sdks.html).
--   For detailed information about all methods of the Node, Java&trade;, Python, Ruby, and Go SDKs for the {{site.data.keyword.speechtotextshort}} service, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+-   For detailed information about all methods of the Node, Java&trade;, Python, Ruby, Swift, and Go SDKs for the {{site.data.keyword.speechtotextshort}} service, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
 
 ## Learning more about application development
 {: #learn}

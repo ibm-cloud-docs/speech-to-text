@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-02-04"
+lastupdated: "2019-02-27"
 
 ---
 
@@ -29,7 +29,9 @@ The asynchronous HTTP interface of the {{site.data.keyword.speechtotextfull}} se
 -   Register a callback URL to be notified by the service of the job status and the results automatically.
 -   Poll the service to obtain the job status and the results manually.
 
-The two approaches are not mutually exclusive. You can elect to receive callback notifications but still poll the service for the latest status or contact the service to retrieve results manually. The following sections describe how to use the asynchronous HTTP interface with either approach. For more information about the individual methods of the interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+The two approaches are not mutually exclusive. You can elect to receive callback notifications but still poll the service for the latest status or contact the service to retrieve results manually. The following sections describe how to use the asynchronous HTTP interface with either approach.
+
+Submit a maximum of 1 GB and a minimum of 100 bytes of audio data with a single request. For information about audio formats and about using compression to maximize the amount of audio that you can send with a request, see [Audio formats](/docs/services/speech-to-text/audio-formats.html). For more information about the individual methods of the interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
 
 ## Usage models
 {: #usage}
@@ -126,9 +128,7 @@ You create a recognition job by calling the `POST /v1/recognitions` method. How 
 
 In both cases, you can include the `results_ttl` query parameter to specify the number of minutes for which the results are to remain available after the job completes.
 
-In addition to the previous parameters, which are specific to the asynchronous interface, the `POST /v1/recognitions` method supports most of the same parameters as the WebSocket and HTTP REST interfaces. For more information, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
-
-Submit a maximum of 100 MB and a minimum of 100 bytes of audio with a request. For more information about audio formats and about using compression to increase the amount of audio that you can send with a request, see [Audio Formats](/docs/services/speech-to-text/audio-formats.html).
+In addition to the previous parameters, which are specific to the asynchronous interface, the `POST /v1/recognitions` method supports most of the same parameters as the WebSocket and synchronous HTTP interfaces. For more information, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
 
 ### Callback notifications
 {: #notifications}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-02-07"
+lastupdated: "2019-02-28"
 
 ---
 
@@ -39,9 +39,9 @@ The service provides various interfaces that make it suitable for any applicatio
 
 The {{site.data.keyword.speechtotextshort}} service offers three interfaces for speech recognition:
 
--   A [WebSocket interface](/docs/services/speech-to-text/websockets.html) for establishing persistent, full-duplex, low-latency connections with the service.
--   A [synchronous HTTP interface](/docs/services/speech-to-text/http.html) for basic HTTP calls to the service.
--   An [asynchronous HTTP interface](/docs/services/speech-to-text/async.html) for non-blocking calls to the service.
+-   A [WebSocket interface](/docs/services/speech-to-text/websockets.html) for establishing persistent, full-duplex, low-latency connections with the service. You can pass a maximum of 100 MB of audio data to the service with a single request.
+-   A [synchronous HTTP interface](/docs/services/speech-to-text/http.html) for basic HTTP calls to the service. You can pass a maximum of 100 MB of audio data with a request.
+-   An [asynchronous HTTP interface](/docs/services/speech-to-text/async.html) for non-blocking calls to the service. You can pass as much as 1 GB of audio data with a request.
 
 The service also provides a [customization interface](/docs/services/speech-to-text/custom.html) that you can use to tune speech recognition for your language and acoustic requirements. You can expand the vocabulary of a model with domain-specific terminology or adapt a model for the acoustic characteristics of your audio. You can also add [grammars](/docs/services/speech-to-text/grammar.html) to restrict the phrases that the service can recognize.
 
@@ -55,9 +55,9 @@ SDKs are available in many programming languages to simplify your use of the ser
 
 The service's interfaces share common input features for transcribing speech to text:
 
--   [Audio formats](/docs/services/speech-to-text/audio-formats.html) - You can transcribe Ogg or Web Media (WebM) audio with the Opus or Vorbis codec, MP3 (or MPEG), Waveform Audio File Format (WAV), Free Lossless Audio Codec (FLAC), Linear 16-bit Pulse-Code Modulation (PCM), G.729, mu-law (or u-law), and basic audio.
+-   [Audio formats](/docs/services/speech-to-text/audio-formats.html) - You can transcribe Ogg or Web Media (WebM) audio with the Opus or Vorbis codec, MP3 (or MPEG), Waveform Audio File Format (WAV), Free Lossless Audio Codec (FLAC), Linear 16-bit Pulse-Code Modulation (PCM), G.729, mu-law (or u-law), and basic audio. By using a format that supports compression, you can maximize the amount of audio data that you can send with a request.
 -   [Languages and models](/docs/services/speech-to-text/models.html) - For most languages, you can transcribe audio by using broadband or narrowband models. Use broadband for audio that is sampled at a minimum rate of 16 kHz. Use narrowband for audio that is sampled at a minimum rate of 8 kHz.
--   [Audio transmission](/docs/services/speech-to-text/input.html#transmission) - You can pass as much as 100 MB of audio to the service (you must send at least 100 bytes of audio). You can pass the audio as a continuous stream of data chunks or as a one-shot delivery that passes all of the data at one time. With streaming, the service enforces inactivity and session [timeouts](/docs/services/speech-to-text/input.html#timeouts).
+-   [Audio transmission](/docs/services/speech-to-text/input.html#transmission) - You can pass audio as a continuous stream of data chunks or as a one-shot delivery that passes all of the data at one time. With streaming, the service enforces inactivity and session [timeouts](/docs/services/speech-to-text/input.html#timeouts).
 
 ## Output features
 {: #outputFeatures}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-28"
+lastupdated: "2019-02-28"
 
 ---
 
@@ -26,17 +26,27 @@ lastupdated: "2019-01-28"
 To request speech recognition with the {{site.data.keyword.speechtotextfull}} service, you need to provide only the audio that is to be transcribed. The service offers the same basic transcription capabilities with each of its interfaces: the WebSocket interface, the synchronous HTTP interface, and the asynchronous HTTP interface.
 {: shortdesc}
 
-Pass a maximum of 100 MB and a minimum of 100 bytes of audio data with any request. The audio must be in one of the formats that the service supports. For most audio, the service can automatically detect the format; for others, you must specify the format with the `Content-Type` or equivalent parameter. For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
-
 The following sections show basic transcription requests, with no optional input or output parameters, for each of the service's interfaces:
 
 -   The examples submit a brief FLAC file named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac" download="audio-file.flac">audio-file.flac <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
 -   The examples use the default language model, `en-US_BroadbandModel`.
--   For clarity, the examples specify the audio format with all requests.
 
 [Understanding recognition results](/docs/services/speech-to-text/basic-response.html) describes the service's response for these examples.
 
+## Sending audio with a request
+{: #basic-request-audio}
+
+The audio that you pass to the service must be in one of the service's supported formats. For most audio, the service can automatically detect the format. For some audio, you must specify the format with the `Content-Type` or equivalent parameter. For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html). (For clarity, the following examples specify the audio format with all requests.)
+
+With the WebSocket and synchronous HTTP interfaces, you can pass a maximum of 100 MB of audio data with a single request. With the asynchronous HTTP interface, you can pass a maximum of 1 GB of audio data. You must send at least 100 bytes of audio with any request.
+
+If you are recognizing large amounts of audio, you can manually divide the audio into smaller chunks. But it is usually more efficient and convenient to convert the audio to a compressed, lossy format. Compression can maximize the amount of data that you can send with a single request. Especially if the audio is in WAV or FLAC format, converting it to a lossy format can make an appreciable difference.
+
+-   For more information about audio formats that use compression, see [Supported audio formats](/docs/services/speech-to-text/audio-formats.html#formats).
+-   For more information about the effects of compression and about converting your audio to a format that uses it, see [Data limits and compression](/docs/services/speech-to-text/audio-formats.html#limits) and [Audio conversion](/docs/services/speech-to-text/audio-formats.html#conversion).
+
 ## Using the WebSocket interface
+{: #basic-request-websocket}
 
 [The WebSocket interface](/docs/services/speech-to-text/websockets.html) offers an efficient implementation that provides low latency and high throughput over a full-duplex connection. All requests and responses are sent over the same WebSocket connection. Because of their advantages, WebSockets are the preferred mechanism for speech recognition. For more information, see [Advantages of the WebSocket interface](/docs/services/speech-to-text/developer-overview.html#advantages).
 
@@ -60,6 +70,7 @@ websocket.send(JSON.stringify({action: 'stop'}));
 {: codeblock}
 
 ## Using the synchronous HTTP interface
+{: #basic-request-sync}
 
 [The synchronous HTTP interface](/docs/services/speech-to-text/http.html) provides the simplest way to make a recognition request. You use the `POST /v1/recognize` method to make a request to the service. You pass the audio and all parameters with the single request.
 
@@ -74,6 +85,7 @@ curl -X POST -u "apikey:{apikey}"
 {: pre}
 
 ## Using the asynchronous HTTP interface
+{: #basic-request-async}
 
 [The asynchronous HTTP interface](/docs/services/speech-to-text/async.html) provides a non-blocking interface for transcribing audio. You can use the interface with or without first registering a callback URL with the service. With a callback URL, the service sends callback notifications with job status and recognition results. The interface uses HMAC-SHA1 signatures based on a user-specified secret to provide authentication and data integrity for its notifications. Without a callback URL, you must poll the service for job status and results. With either approach, you use the `POST /v1/recognitions` method to make a recognition request.
 
