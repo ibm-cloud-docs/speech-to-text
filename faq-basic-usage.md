@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-02-04"
+lastupdated: "2019-02-28"
 
 ---
 
@@ -23,25 +23,9 @@ lastupdated: "2019-02-04"
 # Basic usage
 {: #faq-basic}
 
-1.  <span style="color:#003F69">My audio data is larger than 100 MB, which is too large for the service to accept. Is there a way that I can process the data?</span>
-
-    One solution is to manually divide the audio data into smaller chunks. Alternatively, because the service supports numerous [Audio formats](/docs/services/speech-to-text/audio-formats.html), you can convert the audio to a compressed, lossy format. Conversion can increase the amount of data that you can send with a single request. Especially if the audio is in WAV or FLAC format, converting it to a lossy format can make an enormous difference.
-
-    -   [Data limits and compression](/docs/services/speech-to-text/audio-formats.html#limits) compares the approximate duration of the audio that you can send with different formats.
-    -   [Audio conversion](/docs/services/speech-to-text/audio-formats.html#conversion) describes the tools that you can use to convert your audio to a more efficient format
-    -   [Converting to audio/ogg with the Opus codec](/docs/services/speech-to-text/audio-formats.html#conversionOgg) describes the **opusenc** tool. You can use the tool to convert a WAV or FLAC file to an Ogg file that uses the Opus codec. This conversion can greatly reduce the size of the audio so that you can send much more data with a request.
-
 1.  <span style="color:#003F69">I passed a one-hour long audio file to the service but did not see results until the full transcription completed. How can I see my results sooner?</span>
 
     Use the WebSocket interface, and set the `interim_results` parameter to `true`. By default, the service returns results only when it detects long silences in the audio. See [Interim results](/docs/services/speech-to-text/output.html#interim).
-
-1.  <span style="color:#003F69">My request times out with an HTTP status code of 400 and the message `No speech detected for 30s`. What can I do?</span>
-
-    By default, the service responds with an inactivity timeout if it detects 30 seconds of continuous silence or non-speech activity at any time. To prevent the timeout, set the `inactivity_timeout` parameter for your request to a value greater than 30 seconds; set the parameter to `-1` to specify an inactivity timeout of infinity. See [Timeouts](/docs/services/speech-to-text/input.html#timeouts).
-
-1.  <span style="color:#003F69">My request is being made from a browser that does not enable JavaScript, or the size of my request exceeds the maximum request length because it includes many keywords. How can I submit my request?</span>
-
-    You can submit a multipart recognition request with the `POST /v1/recognize` method. With multipart requests, you pass all audio data as multipart form data. You specify some parameters as request headers and query parameters, but you pass JSON metadata as form data to control most aspects of the transcription. See [Making a multipart HTTP request](/docs/services/speech-to-text/http.html#HTTP-multi).
 
 1.  <span style="color:#003F69">My audio includes pauses of varying lengths. How does the service respond to them?</span>
 
@@ -56,7 +40,3 @@ lastupdated: "2019-02-04"
 1.  <span style="color:#003F69">My output includes multiple transcriptions of my content. Which one should I use?</span>
 
     Use the transcription for which the JSON `final` attribute is `true`. Ignore the intermediate results for which the attribute is `false`.
-
-1.  <span style="color:#003F69">What is {{site.data.keyword.IBM_notm}}'s data-storage policy for audio that I submit to the service?</span>
-
-    By default, {{site.data.keyword.IBM_notm}} logs all requests to {{site.data.keyword.watson}} services and their results. Logging is done only to improve the services for future users. The logged data is not shared or made public. You can choose to opt out of logging at either the account level or the API request level.  For more information, see [Request logging](/docs/services/speech-to-text/input.html#logging).

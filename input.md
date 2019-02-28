@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-02-07"
+lastupdated: "2019-02-26"
 
 ---
 
@@ -175,7 +175,7 @@ This HTTP inactivity timeout is different from the service's inactivity timeout.
 ### Inactivity timeout
 {: #timeouts-inactivity}
 
-An *inactivity timeout* (HTTP status code 400) occurs when the service is receiving audio but detects only silence (the service receives audio that contains no speech) for 30 seconds. The inactivity timeout is useful, for example, for terminating a session when a user simply walks away from a live microphone.
+An *inactivity timeout* (HTTP status code 400) occurs when the service is receiving audio but detects only continuous silence or non-speech activity (no speech) for 30 seconds. The service sends the error message `No speech detected for 30s`. The inactivity timeout is useful, for example, for terminating a session when a user simply walks away from a live microphone.
 
 The default inactivity timeout is 30 seconds. You can override this value by using the `inactivity_timeout` parameter. Specify a larger value to increase the inactivity timeout. Specify a value of `-1` to set the inactivity timeout to infinity. You are charged for all audio that you send to the service, including silence, so increasing the inactivity timeout can incur additional charges for a streaming session that sends only silence.
 
