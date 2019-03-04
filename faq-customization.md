@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-02-04"
+lastupdated: "2019-03-01"
 
 ---
 
@@ -22,24 +22,6 @@ lastupdated: "2019-02-04"
 
 # Customization
 {: #faq-customization}
-
-1.  <span style="color:#003F69">How secure is the data that I add to a custom model?</span>
-
-    A custom model is owned by the instance of the {{site.data.keyword.speechtotextshort}} service whose credentials are used to create it. To work with the custom model in any way, you must use service credentials that are created for that instance of the service. Credentials that are created for other instances of the service cannot view or access the custom model. For more information, see [Ownership of custom language models](/docs/services/speech-to-text/custom.html#customOwner).
-
-1.  <span style="color:#003F69">What is the price for using the service's customization interface? Am I charged for creating and storing a custom model?</span>
-
-    For *language model customization*, {{site.data.keyword.IBM_notm}} does not charge for creating or hosting a custom language model, only for using the model with a recognition request. Using a custom language model for transcription incurs an add-on charge of $0.03 (USD) per minute. This charge is in addition to the standard usage charge of $0.02 (USD) per minute. It applies to all languages supported by the customization interface. So the total charge for using a custom language model for speech recognition is $0.05 (USD) per minute.
-
-    For *acoustic model customization*, which is a beta interface for all supported languages, {{site.data.keyword.IBM_notm}} does not charge for creating, hosting, or recognizing audio with a custom acoustic model. Free use of custom acoustic models for recognition requests is subject to change in the future.
-
-1.  <span style="color:#003F69">How much effort is required to create and use a custom model?</span>
-
-    Creating a *custom language model* requires you to add corpora, words, or grammars to the custom model. The service can typically train any custom model in a matter of minutes. The level of effort that it takes to create a model depends on the data that you have available for the model.
-
-    Creating a *custom acoustic model* requires you to add audio resources (audio data) to the custom model. The length of time that it takes the service to train the custom model depends on how much audio data the model contains. In general, training takes twice the length of the cumulative audio. The level of effort that it takes to create a model depends on the audio data that you have available for the model. It also depends on whether you want to use transcriptions of the audio.
-
-    The customization interfaces for both types of model are similar and straightforward to use. Using either type of custom model with a recognition request is also straightforward: You specify the customization ID of the model with the request.
 
 ## Language model customization
 {: #lmCustomization}
