@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-02-04"
+lastupdated: "2019-03-01"
 
 ---
 
@@ -26,6 +26,8 @@ lastupdated: "2019-02-04"
 The {{site.data.keyword.speechtotextfull}} service offers a customization interface that you can use to augment its speech recognition capabilities. You can use customization to improve the accuracy of speech recognition requests by customizing a base model for your domain and audio. Customization is available for only some languages and at different levels of support for different languages; see [Language support for customization](#languageSupport).
 {: shortdesc}
 
+The customization interface supports both custom language models and custom acoustic models. The interfaces for both types of custom model are similar and straightforward to use. Using either type of custom model with a recognition request is also straightforward: You specify the customization ID of the model with the request.
+
 Speech recognition works the same with or without a custom model. When you use a custom model for speech recognition, you can use all of the input and output parameters that are normally available with a recognition request. For more information about all available parameters, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
 
 ## Language model customization
@@ -33,7 +35,9 @@ Speech recognition works the same with or without a custom model. When you use a
 
 The service was developed with a broad, general audience in mind. The service's base vocabulary contains many words that are used in everyday conversation. The general model provides sufficiently accurate recognition for many applications. But it can lack knowledge of specific terms that are associated with particular domains.
 
-The *language model customization* interface can improve the accuracy of speech recognition for domains such as medicine, law, information technology, and others. By using language model customization, you can expand and tailor the vocabulary of a base model to include domain-specific terminology. You create a custom language model and provide corpora and words specific to your domain. Once you train the custom language model on your enhanced vocabulary, you can use it for customized speech recognition.
+The *language model customization* interface can improve the accuracy of speech recognition for domains such as medicine, law, information technology, and others. By using language model customization, you can expand and tailor the vocabulary of a base model to include domain-specific terminology.
+
+You create a custom language model and add corpora and words specific to your domain. Once you train the custom language model on your enhanced vocabulary, you can use it for customized speech recognition. The service can typically train any custom model in a matter of minutes. The level of effort that it takes to create a model depends on the data that you have available for the model.
 
 For more information, see
 
@@ -49,7 +53,9 @@ Similarly, the service was developed with a base acoustic model that works well 
 -   Your speakers' speech patterns are atypical. For example, a speaker talks abnormally fast or the audio includes casual conversations.
 -   Your speakers' accents are pronounced. For example, the audio includes speakers who are talking in a non-native or second language.
 
-The *acoustic model customization* interface can adapt a base model to your environment and speakers. You create a custom acoustic model and provide example audio that closely matches the acoustic signature of the audio that you want to transcribe. Once you train the custom acoustic model with your audio resources, you can use it for customized speech recognition.
+The *acoustic model customization* interface can adapt a base model to your environment and speakers. You create a custom acoustic model and add audio data (audio resources) that closely match the acoustic signature of the audio that you want to transcribe. Once you train the custom acoustic model with your audio resources, you can use it for customized speech recognition.
+
+The length of time that it takes the service to train the custom model depends on how much audio data the model contains. In general, training takes twice the length of the cumulative audio. The level of effort that it takes to create a model depends on the audio data that you have available for the model. It also depends on whether you use transcriptions of the audio.
 
 For more information, see
 

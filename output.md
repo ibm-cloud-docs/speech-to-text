@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-01-28"
+lastupdated: "2019-03-04"
 
 ---
 
@@ -261,10 +261,16 @@ As with all transcription, performance can also be affected by poor audio qualit
 
 The keyword spotting feature detects specified strings in a transcript. The service can spot the same keyword multiple times and report each occurrence. The service spots keywords only in the final results, not in interim results. By default, the service does no keyword spotting.
 
-To use keyword spotting, you must specify both of the following parameters to use the feature:
+To use keyword spotting, you must specify both of the following parameters:
 
--   Use the `keywords` parameter to specify an array of strings to be spotted. The service spots no keywords if you omit the parameter or specify an empty array. A keyword string can include more than one token; for example, the keyword `Speech to Text` has three tokens. For US English, the service normalizes each keyword to match spoken versus written strings. For example, it normalizes numbers to match how they are spoken as opposed to written. For other languages, keywords must be specified as they are spoken. You can spot a maximum of 1000 keywords with a single request.
--   Use the `keywords_threshold` parameter to specify a probability between 0.0 and 1.0 for a keyword match. The threshold indicates the lower bound for the level of confidence the service must have for a word to match the keyword. A keyword is spotted in the transcript only if its confidence is greater than or equal to the specified threshold. Specifying a small threshold can potentially produce many matches. If you specify a threshold, you must also specify one or more keywords. Omit the parameter to return no matches.
+-   Use the `keywords` parameter to specify an array of strings to be spotted. The service spots no keywords if you omit the parameter or specify an empty array. A keyword string can include more than one token. For example, the keyword `Speech to Text` has three tokens.
+
+    For US English, the service normalizes each keyword to match spoken versus written strings. For example, it normalizes numbers to match how they are spoken as opposed to written. For other languages, keywords must be specified as they are spoken.
+
+    You can spot a maximum of 1000 keywords with a single request. Keywords are case-insensitive.
+-   Use the `keywords_threshold` parameter to specify a probability between 0.0 and 1.0 for a keyword match. The threshold indicates the lower bound for the level of confidence the service must have for a word to match the keyword. A keyword is spotted in the transcript only if its confidence is greater than or equal to the specified threshold.
+
+    Specifying a small threshold can potentially produce many matches. If you specify a threshold, you must also specify one or more keywords. Omit the parameter to return no matches.
 
 Keyword spotting is necessary to identify keywords in an audio stream. You cannot identify keywords by processing a final transcript because the transcript represents the service's best decoding results for the input audio. It does not include tokens with lower confidence scores that might represent a word of interest. So applying text processing tools to a transcript on the client side might not identify keywords. A richer representation of decoding results is needed, and that representation is available only at the server.
 
@@ -394,14 +400,19 @@ severe thunderstorms swept through Colorado on Sunday "
 The interim results feature is available only with the WebSocket interface.
 {: note}
 
-Interim results are intermediate hypotheses of a transcription that are likely to change before the service returns its final results. The service returns interim results as soon as it generates them. Interim results are useful for interactive applications and for real-time transcription.
+Interim results are intermediate hypotheses of a transcription that are likely to change before the service returns its final results. The service returns interim results as soon as it generates them. Interim results are useful for
+
+-   Interactive applications and real-time transcription
+-   Long audio streams, which can take a while to transcribe
+
+Interim results arrive more often and more quickly than final results. You can use them to enable your application to respond more quickly or to gauge the progress of the transcription.
 
 To receive interim results, set the `interim_results` JSON parameter to `true` in the `start` message for a WebSocket recognition request. If you omit the `interim_results` parameter or set it to `false`, the service returns only a single JSON transcript at the end of the audio. Follow these guidelines to use the parameter:
 
 -   Omit the parameter or set it to `false` if you are doing offline or batch transcription, do not need minimum latency, and want a single JSON result for all audio.
 -   Set the parameter to `true` if you want results to arrive progressively as the service processes the audio or if you want the results with minimum latency. Keep in mind that the service can update interim results as it processes more audio.
 
-Interim results are indicated in the JSON response with the `final` field set to `false`. The service can update such results with more accurate transcriptions as it processes further audio. Final results are identified with the `final` field set to `true`; the service makes no further updates to final results.
+Interim results are indicated in the JSON response with the `final` field set to `false`. The service can update such results with more accurate transcriptions as it processes further audio. Final results are identified with the `final` field set to `true`. The service makes no further updates to final results.
 
 ### Interim results example
 {: #interimResultsExample}
