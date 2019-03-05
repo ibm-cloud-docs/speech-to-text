@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-04"
+lastupdated: "2019-03-05"
 
 ---
 
@@ -105,9 +105,11 @@ For more information about these and other parameters that can affect the servic
 ## Pauses and silence
 {: #pauses-silence}
 
-The service transcribes an entire audio stream until either the stream ends or a timeout occurs. However, if the audio includes pauses of approximately one second or more or otherwise includes extended silence between spoken words or phrases, recognition results can include multiple final results. How the service returns the results depends on the interface that you use.
+The service transcribes an entire audio stream until either the stream ends or a timeout occurs. However, if the audio includes pauses or extended silence between spoken words or phrases, recognition results can include multiple final results.
 
-The following examples show responses with two final results from the HTTP and WebSocket interfaces. The same input audio is used in both cases. The audio speaks the phrase "one two three four five six," with a one-second pause between the words "three" and "four."
+The default pause interval that the service uses to determine separate final results is approximately one second. For most languages, the pause interval is precisely 0.8 second; for Chinese the interval is 0.6 second. You cannot change the duration of the pause interval.
+
+How the service returns the results depends on the interface that you use. The following examples show responses with two final results from the HTTP and WebSocket interfaces. The same input audio is used in both cases. The audio speaks the phrase "one two three four five six," with a one-second pause between the words "three" and "four."
 
 -   *For the HTTP interfaces,* the service sends a single `SpeechRecognitionResults` object. The `alternatives` array has a separate element for each final result. The response has a single `result_index` field with a value of `0`.
 
@@ -174,7 +176,7 @@ The following examples show responses with two final results from the HTTP and W
 
 If your results include multiple final results, concatenate the `transcript` elements of the final results to assemble the complete transcription of the audio.
 
-You cannot change the duration of the default one-second pause interval that the service uses to determine a split in final results. Also, silence of 30 seconds in streamed audio can result in an [inactivity timeout](/docs/services/speech-to-text/input.html#timeouts-inactivity).
+Silence of 30 seconds in streamed audio can result in an [inactivity timeout](/docs/services/speech-to-text/input.html#timeouts-inactivity).
 {: note}
 
 ## Hesitation markers
