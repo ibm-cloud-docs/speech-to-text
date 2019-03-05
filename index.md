@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-02-28"
+lastupdated: "2019-03-04"
 
 ---
 
@@ -23,7 +23,7 @@ lastupdated: "2019-02-28"
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on December 20, 2018. The service now offers new beta grammar support for all languages that support language model customization. The service now supports new French and German narrowband models, a new short-form narrowband model for US English, and updated narrowband models for UK English and Spanish. It also offers a new parameter that redacts numbers with three or more digits from US English, Japanese, and Korean transcripts. For more information about these and other changes, see the [20 December 2018 service update](/docs/services/speech-to-text/release-notes.html#December2018b) in the release notes*.
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on March 4, 2019. The Brazilian Portuguese, French, and Spanish narrowband models have been updated. For more information, see the [4 March 2019 service update](/docs/services/speech-to-text/release-notes.html#March2019) in the release notes*.
 
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}

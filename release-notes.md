@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-02-27"
+lastupdated: "2019-03-04"
 
 ---
 
@@ -30,6 +30,22 @@ The following sections document the new features and changes that were included 
 {: #limitations}
 
 No known limitations at this time.
+
+## 4 March 2019
+{: #March2019}
+
+The following narrowband language models have been updated for improved speech recognition:
+
+-   `es-ES_NarrowbandModel`
+-   `fr-FR_NarrowbandModel`
+-   `pt-BR_NarrowbandModel`
+
+By default, the service automatically uses the updated models for all speech recognition requests. If you have custom language or custom acoustic models that are based on the models, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
+
+-   `POST /v1/customizations/{customization_id}/upgrade_model`
+-   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+
+For more information, see [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html).
 
 ## 28 January 2019
 {: #January2019}
@@ -86,14 +102,10 @@ The grammar interface is fully functional in all locations as of January 8, 2019
 -   The speaker labels feature is now available for the narrowband model for UK English (`en-GB_NarrowbandModel`). The feature is beta functionality for all supported languages. For more information, see [Speaker labels](/docs/services/speech-to-text/output.html#speaker_labels).
 -   The maximum amount of audio that you can add to a custom acoustic model has increased from 50 hours to 100 hours.
 
-## 13 December 2018
-{: #December2018a}
-
-The service is now available in the {{site.data.keyword.cloud_notm}} London location (**eu-gb**). Like all locations, London uses token-based IAM authentication. All new services instances that you create in this location use IAM authentication.
-
 ## Older releases
 {: #older}
 
+-   [13 December 2018](#December2018a)
 -   [12 November 2018](#November2018b)
 -   [7 November 2018](#November2018a)
 -   [30 October 2018](#October2018b)
@@ -123,6 +135,11 @@ The service is now available in the {{site.data.keyword.cloud_notm}} London loca
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 13 December 2018
+{: #December2018a}
+
+The service is now available in the {{site.data.keyword.cloud_notm}} London location (**eu-gb**). Like all locations, London uses token-based IAM authentication. All new services instances that you create in this location use IAM authentication.
 
 ### 12 November 2018
 {: #November2018b}
