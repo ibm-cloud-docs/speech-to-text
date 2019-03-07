@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-02-28"
+lastupdated: "2019-03-07"
 
 ---
 
@@ -80,8 +80,7 @@ A WebSocket client calls this method with the following query parameters to esta
       You pass an IAM access token instead of passing an API key with
       the call. You must establish the connection before the access
       token expires. For information about obtaining an access token, see
-      <a href="/docs/services/watson/getting-started-iam.html">Authenticating
-      with IAM tokens</a>.<br/><br/>
+      [Authenticating with IAM tokens](/docs/services/watson/getting-started-iam.html).<br/><br/>
       You pass an access token only to establish an authenticated connection.
       Once you establish a connection, you can keep it alive indefinitely.
       You remain authenticated for as long as you keep the connection open.
@@ -102,8 +101,7 @@ A WebSocket client calls this method with the following query parameters to esta
       based on Cloud Foundry service credentials, which use a `username`
       and `password` for HTTP basic authentication. For information about
       obtaining a {{site.data.keyword.watson}} token, see
-      <a href="/docs/services/watson/getting-started-tokens.html">{{site.data.keyword.watson}}
-      tokens</a>.<br/><br/>
+      [{{site.data.keyword.watson}} tokens](/docs/services/watson/getting-started-tokens.html).<br/><br/>
       You pass a {{site.data.keyword.watson}} token only to establish an
       authenticated connection. Once you establish a connection, you can
       keep it alive indefinitely. You remain authenticated for as long as
@@ -119,8 +117,7 @@ A WebSocket client calls this method with the following query parameters to esta
       If you do not specify a model, the service uses the
       <code>en-US_BroadbandModel</code> model by default. For more
       information, see
-      <a href="/docs/services/speech-to-text/models.html">Languages
-        and models</a>.
+      [Languages and models](/docs/services/speech-to-text/models.html).
     </td>
   </tr>
   <tr>
@@ -132,9 +129,8 @@ A WebSocket client calls this method with the following query parameters to esta
       language model that is to be used for all requests that are sent
       over the connection. The base model of the custom language model
       must match the value of the <code>model</code> parameter. By
-      default, no custom language model is used. For more information,
-      see <a href="/docs/services/speech-to-text/custom.html">The
-      customization interface</a>.
+      default, no custom language model is used. For more information, see
+      [The customization interface](/docs/services/speech-to-text/custom.html).
     </td>
   </tr>
   <tr>
@@ -146,9 +142,8 @@ A WebSocket client calls this method with the following query parameters to esta
       acoustic model that is to be used for all requests that are sent
       over the connection. The base model of the custom acoustic model
       must match the value of the <code>model</code> parameter. By
-      default, no custom acoustic model is used. For more information,
-      see <a href="/docs/services/speech-to-text/custom.html">The
-      customization interface</a>.
+      default, no custom acoustic model is used. For more information, see
+      [The customization interface](/docs/services/speech-to-text/custom.html).
     </td>
   </tr>
   <tr>
@@ -161,8 +156,7 @@ A WebSocket client calls this method with the following query parameters to esta
       primarily for use with custom models that are upgraded for a new base
       model. The default value depends on whether the parameter is used
       with or without a custom model. For more information, see
-      <a href="/docs/services/speech-to-text/input.html#version">Base model
-      version</a>.
+      [Base model version](/docs/services/speech-to-text/input.html#version).
     </td>
   </tr>
   <tr>
@@ -174,8 +168,7 @@ A WebSocket client calls this method with the following query parameters to esta
       over the connection. To prevent IBM from accessing your data for general
       service improvements, specify <code>true</code> for the parameter. For
       more information, see
-      <a href="/docs/services/speech-to-text/input.html#logging">Request
-      logging</a>.
+      [Request logging](/docs/services/speech-to-text/input.html#logging).
     </td>
   </tr>
   <tr>
@@ -190,8 +183,7 @@ A WebSocket client calls this method with the following query parameters to esta
       URL-encode the argument to the parameter, for example,
       `customer_id%3dmy_customer_ID`. By default, no customer ID is associated
       with the data. For more information, see
-      <a href="/docs/services/speech-to-text/information-security.html">Information
-      security</a>.
+      [Information security](/docs/services/speech-to-text/information-security.html).
     </td>
   </tr>
 </table>
@@ -231,14 +223,13 @@ To initiate a recognition request, the client sends a JSON text message to the s
       <ul style="margin-left:20px; padding:0px;">
         <li style="margin:10px 0px; line-height:120%;">
           <code>start</code> starts a recognition request or specifies
-          new parameters for subsequent requests. For more information,
-          see <a href="#WSmore">Send additional requests and modify
-          request parameters</a>.
+          new parameters for subsequent requests. For more information, see
+          [Send additional requests and modify request parameters](#WSmore).
         </li>
         <li style="margin:10px 0px; line-height:120%;">
           <code>stop</code> signals that all audio for a request has
           been sent. For more information, see
-          <a href="#WSstop">End a recognition request</a>.
+          [End a recognition request](#WSstop).
         </li>
       </ul>
     </td>
