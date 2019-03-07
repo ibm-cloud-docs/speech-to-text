@@ -80,7 +80,6 @@ Speech to Text
     {: .navgroup id="help"}
     {: .topicgroup}
     FAQs
-        faq-recognition.md
         faq-customization.md
         faq-pricing.md
 
