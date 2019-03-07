@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-02-01"
+lastupdated: "2019-03-07"
 
 ---
 
@@ -23,21 +23,21 @@ lastupdated: "2019-02-01"
 # Languages and models
 {: #models}
 
-The {{site.data.keyword.speechtotextfull}} service supports speech recognition in many languages. For all interfaces, you can use the `model` parameter to specify a language model for a speech recognition request. The model indicates the language in which the audio is spoken and the rate at which it is sampled. Choosing the correct model for your application is important.
+The {{site.data.keyword.speechtotextfull}} service supports speech recognition in many languages. For all interfaces, you can use the `model` parameter to specify the model for a speech recognition request. The model indicates the language in which the audio is spoken and the rate at which it is sampled.
 {: shortdesc}
-
-For most languages, the service supports two models.
-
--   A *broadband model* for audio that is sampled at greater than or equal to 16 kHz. Use the broadband model for responsive, real-time applications (for example, for live-speech applications).
--   A *narrowband model* for audio that is sampled at 8 kHz. Use the narrowband model for offline decoding of telephone speech, which is where this sampling rate is typically used.
-
-The service automatically adjusts the sampling rate of your audio to match the model that you specify. For more information, see [Sampling rate](/docs/services/speech-to-text/audio-formats.html#samplingRate).
-
-Conversion of speech to text might not be perfect. Speech recognition technology is used successfully in many domains and applications. However, in addition to audio quality, speech recognition is sensitive to nuances of human speech, such as regional accents and differences in pronunciation, and might not always transcribe audio input correctly. Consider using customization to improve speech recognition for your audio. For more information, see [The customization interface](/docs/services/speech-to-text/custom.html).
-{: tip}
 
 ## Supported language models
 {: #modelsList}
+
+For most languages, the service supports both broadband and narrowband models:
+
+-   *Broadband models* are for audio that is sampled at greater than or equal to 16 kHz. Use broadband models for responsive, real-time applications, for example, for live-speech applications.
+-   *Narrowband models* are for audio that is sampled at 8 kHz. Use narrowband models for offline decoding of telephone speech, which is the typical use for this sampling rate.
+
+Choosing the correct model for your application is important. Use the model that matches the sampling rate (and language) of your audio. The service automatically adjusts the sampling rate of your audio to match the model that you specify. For more information, see [Sampling rate](/docs/services/speech-to-text/audio-formats.html#samplingRate).
+
+To achieve the best recognition accuracy, you also need to consider the frequency content of your audio. For more information, see [Audio frequency](/docs/services/speech-to-text/audio-formats.html#frequency).
+{: tip}
 
 Table 1 lists the supported models for each language. If you omit the `model` parameter from a request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
 
@@ -102,6 +102,7 @@ Table 1 lists the supported models for each language. If you omit the `model` pa
 </table>
 
 ### The US English short-form model
+{: #modelsShortform}
 
 The US English short-form model, `en-US_ShortForm_NarrowbandModel`, can improve speech recognition for Interactive Voice Response (IVR) and Automated Customer Support solutions. The short-form model is trained to recognize the short utterances that are frequently expressed in customer support settings like automated and human support call centers. The model is tuned, for example, for precise utterances such as digits, single-character word and name spellings, and yes-no responses. Using a grammar in combination with the short-form model can further improve recognition results.
 
