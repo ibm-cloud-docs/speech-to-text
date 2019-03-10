@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-03-10"
 
 subcollection: speech-to-text
 
@@ -35,7 +35,7 @@ You can also add individual custom words to a model directly. The service adds w
 
 The service stores each word that you add to a custom language model in the model's *words resource*. The words resources includes all words that you add from corpora, from grammars, or directly.
 
-The purpose of the words resource is to define words that are not already present in the service's base vocabulary. The definitions tell the service how to transcribe the words. Such words are referred to as *out-of-vocabulary (OOV) words*. You can add a maximum of 30 thousand OOV words to the words resource from all sources.
+The purpose of the words resource is to define words that are not already present in the service's base vocabulary. The definitions tell the service how to transcribe these *out-of-vocabulary (OOV) words*. You can add a maximum of 30 thousand OOV words to the words resource from all sources.
 
 The words resource contains the following information about each OOV word. The service creates the definitions for words that are extracted from corpora and grammars. You specify the characteristics for words that you add or modify directly.
 
@@ -50,10 +50,17 @@ The words resource contains the following information about each OOV word. The s
 
 When you update a model's words resource, you must train the model for the changes to take effect during transcription. For more information, see [Train the custom language model](/docs/services/speech-to-text/language-create.html#trainModel-language).
 
+### How much data is needed to build a custom language model?
+{: #wordsResourceAmount}
+
+It is not possible to provide an exact figure on the amount of data that is needed for a custom model. Many factors contribute to the answer. Adding OOV words in context from a corpus and adding custom words directly can both improve the quality of a custom language model.
+
+Adding OOV words from a corpus that uses the words in the context in which they are used in audio can improve transcription accuracy. But depending on the use case, even adding a few custom words directly to a model can make a positive difference.
+
 ## Working with corpora
 {: #workingCorpora}
 
-You use the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method to add a corpus to a custom model. A corpus is a plain text file that contains sample sentences from your domain. The following example shows an abbreviated corpus for the healthcare domain; a corpus file is typically much longer.
+You use the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method to add a corpus to a custom model. A corpus is a plain text file that contains sample sentences from your domain. The following example shows an abbreviated corpus for the healthcare domain. A corpus file is typically much longer.
 
 ```
 Am I at risk for health problems during travel?
@@ -74,13 +81,13 @@ What is Osteogenesis imperfecta OI?
 
 Speech recognition relies on statistical algorithms to analyze audio. Words from a custom model are in competition with words from the service's base vocabulary as well as other words of the model. (Factors such as audio noise and speaker accents also affect the quality of transcription.)
 
-The accuracy of transcription can depend largely on how words are defined in a model and how speakers say them. To improve the service's accuracy, use corpora to provide as many examples as possible of how OOV words are used in the domain. The more sentences that you add that represent the context in which speakers use words from the domain, the better the service's recognition accuracy.
+The accuracy of transcription can depend largely on how words are defined in a model and how speakers say them. To improve the service's accuracy, use corpora to provide as many examples as possible of how OOV words are used in the domain. Repeating the OOV words in corpora can improve the quality of the custom language model. How you duplicate the words in corpora depends on how you expect users to say them in the audio that is to be recognized. The more sentences that you add that represent the context in which speakers use words from the domain, the better the service's recognition accuracy.
 
 The service does not apply a simple word-matching algorithm. Its transcription depends on the context in which words are used. When it parses a corpus, the service includes information about n-grams (bi-grams, tri-grams, and so on) from the sentences of the corpus in the custom model. This information helps the service transcribe audio with greater accuracy, and it explains why training a custom model on corpora is more valuable than training it on custom words alone.
 
 For example, accountants adhere to a common set of standards and procedures that are known as Generally Accepted Accounting Principles (GAAP). When you create a custom model for a financial domain, provide sentences that use the term GAAP in context. The sentences help the service distinguish between general phrases such as "the gap between them is small" and domain-centric phrases such as "GAAP provides guidelines for measuring and disclosing financial information."
 
-In general, it is better for corpora to use words in different contexts. However, if users speak the words in only a couple of contexts, then showing the words in other contexts does not improve the quality of the custom model; speakers never use the words in those contexts. If speakers are likely to use the same phrase frequently, then repeating that phrase in the corpora can improve the quality of the model. (In some cases, even adding a few custom words directly to a custom model can make a positive difference.)
+In general, it is better for corpora to use words in different contexts, which can improve how the service learns the words. However, if users speak the words in only a couple of contexts, then showing the words in other contexts does not improve the quality of the custom model. Speakers never use the words in those contexts. If speakers are likely to use the same phrase frequently, then repeating that phrase in the corpora can improve the quality of the model. (In some cases, even adding a few custom words directly to a custom model can make a positive difference.)
 
 ### Preparing a corpus text file
 {: #prepareCorpus}

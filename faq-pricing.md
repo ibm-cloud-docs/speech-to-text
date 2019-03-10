@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-03-10"
 
 subcollection: speech-to-text
 
@@ -22,7 +22,7 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Pricing
+# Pricing FAQs
 {: #faq-pricing}
 
 1.  <span style="color:#003F69">What is the price for using the {{site.data.keyword.IBM_notm}} {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} standard service?</span>

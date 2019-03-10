@@ -78,12 +78,8 @@ Speech to Text
     {: .navgroup-end}
 
     {: .navgroup id="help"}
-    {: .topicgroup}
-    FAQs
-        faq-customization.md
-        faq-pricing.md
-
     release-notes.md
+    faq-pricing.md
 
     {: .topicgroup}
     Developer community
