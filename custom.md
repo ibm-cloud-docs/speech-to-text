@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-03-10"
 
 subcollection: speech-to-text
 
@@ -35,7 +35,7 @@ Speech recognition works the same with or without a custom model. When you use a
 ## Language model customization
 {: #customLanguage-intro}
 
-The service was developed with a broad, general audience in mind. The service's base vocabulary contains many words that are used in everyday conversation. The general model provides sufficiently accurate recognition for many applications. But it can lack knowledge of specific terms that are associated with particular domains.
+The service was developed with a broad, general audience in mind. The service's base vocabulary contains many words that are used in everyday conversation. Its models provide sufficiently accurate recognition for many applications. But they can lack knowledge of specific terms that are associated with particular domains.
 
 The *language model customization* interface can improve the accuracy of speech recognition for domains such as medicine, law, information technology, and others. By using language model customization, you can expand and tailor the vocabulary of a base model to include domain-specific terminology.
 
@@ -49,7 +49,7 @@ For more information, see
 ## Acoustic model customization
 {: #customAcoustic-intro}
 
-Similarly, the service was developed with a base acoustic model that works well for various audio characteristics. But in cases like the following, adapting a base model to suit your audio can improve speech recognition:
+Similarly, the service was developed with base acoustic models that work well for various audio characteristics. But in cases like the following, adapting a base model to suit your audio can improve speech recognition:
 
 -   Your acoustic channel environment is unique. For example, the environment is noisy, microphone quality or positioning are suboptimal, or the audio suffers from far-field effects.
 -   Your speakers' speech patterns are atypical. For example, a speaker talks abnormally fast or the audio includes casual conversations.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-03-10"
 
 subcollection: speech-to-text
 
@@ -80,15 +80,22 @@ curl -X POST -u "apikey:{apikey}"
 ## Guidelines for adding audio resources
 {: #audioGuidelines}
 
+The improvement in recognition accuracy that you can expect from using a custom acoustic model depends on a number of factors. These factors include how much audio data the custom acoustic model contains and how similar that data is to the audio that is being transcribed. The improvement also depends on whether the custom acoustic model is trained with a corresponding custom language model.
+
 Follow these guidelines when you add audio resources to a custom acoustic model:
 
--   The custom model must contain at least 10 minutes and no more than 100 hours of audio that includes speech, not silence.
+-   Add at least 10 minutes and no more than 100 hours of audio to a custom acoustic model. The audio must include speech, not silence.
+
+    The quality of the audio makes a difference when you are determining how much to add. The better the model's audio reflects the characteristics of the audio that is to be recognized, the better the quality of the custom model for speech recognition. If the audio is of good quality, adding more can improve transcription accuracy. But adding even five to ten hours of good quality audio can make a positive difference.
 -   Add audio resources that are no larger than 100 MB. All audio- and archive-type resources are limited to a maximum size of 100 MB.
--   Add audio content that reflects the acoustic channel conditions of the audio that you plan to transcribe. For example, if your application deals with audio that has background noise from a car, use the same type of data to build the custom model.
--   The sampling rate of an audio file must match the sampling rate of the base model for the custom acoustic model:
+-   Add audio content that reflects the acoustic channel conditions of the audio that you plan to transcribe. For example, if your application deals with audio that has background noise from a moving vehicle, use the same type of data to build the custom model.
+-   Make sure that the sampling rate of an audio file matches the sampling rate of the base model for the custom acoustic model:
     -   For broadband models, the sampling rate must be at least 16 kHz (16,000 samples per second).
     -   For narrowband models, the sampling rate must be at least 8 kHz (8000 samples per second).
 
-    If the sampling rate of the audio is higher than the minimum required sampling rate, the service down-samples the audio to the appropriate rate. If the sampling rate of the audio is lower than the minimum required rate, the service labels the audio file as `invalid`. If any audio file that is contained in an archive file is invalid, the service considers the entire archive invalid.
--    If your audio data is less than an hour long, {{site.data.keyword.IBM_notm}} recommends that you create a custom language model based on transcriptions of the audio to achieve the best results. For more information, see [Using custom acoustic and custom language models together](/docs/services/speech-to-text/acoustic-both.html).
--    If your audio is domain-specific and contains unique words that are not found in the service's base vocabulary, acoustic model customization alone does not produce those words during transcription. You must use language model customization to expand the service's base vocabulary. For more information, see [Using custom acoustic and custom language models together](/docs/services/speech-to-text/acoustic-both.html).
+    If the sampling rate of the audio is higher than the minimum required sampling rate, the service downsamples the audio to the appropriate rate. If the sampling rate of the audio is lower than the minimum required rate, the service labels the audio file as `invalid`. If any audio file that is contained in an archive file is invalid, the service considers the entire archive invalid.
+-   Create a custom language model to use with your custom acoustic model in the following cases:
+    -   If your audio is less than an hour long, create a custom language model based on transcriptions of the audio to achieve the best results.
+    -   If your audio is domain-specific and contains unique words that are not found in the service's base vocabulary, use language model customization to expand the service's base vocabulary. Acoustic model customization alone cannot produce those words during transcription.
+
+    For more information, see [Using custom acoustic and custom language models together](/docs/services/speech-to-text/acoustic-both.html).
