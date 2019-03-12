@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-03-11"
 
 subcollection: speech-to-text
 
@@ -56,7 +56,7 @@ The example returns the following transcript for the audio:
     {
       "alternatives": [
         {
-          "confidence": 0.891,
+          "confidence": 0.89,
           "transcript": "several tornadoes touch down as a line of severe thunderstorms swept through Colorado on Sunday "
         }
       ],
@@ -249,7 +249,7 @@ The example returns the following transcript for the audio files. The service re
                "start_time": 0.03,
                "alternatives": [
                   {
-                     "confidence": 0.9586,
+                     "confidence": 0.96,
                      "word": "the"
                   }
                ],
@@ -259,7 +259,7 @@ The example returns the following transcript for the audio files. The service re
                "start_time": 0.09,
                "alternatives": [
                   {
-                     "confidence": 0.9587,
+                     "confidence": 0.96,
                      "word": "latest"
                   }
                ],
@@ -269,7 +269,7 @@ The example returns the following transcript for the audio files. The service re
                "start_time": 0.62,
                "alternatives": [
                   {
-                     "confidence": 0.9587,
+                     "confidence": 0.96,
                      "word": "weather"
                   }
                ],
@@ -279,7 +279,7 @@ The example returns the following transcript for the audio files. The service re
                "start_time": 0.87,
                "alternatives": [
                   {
-                     "confidence": 0.955,
+                     "confidence": 0.96,
                      "word": "report"
                   }
                ],
@@ -311,7 +311,7 @@ The example returns the following transcript for the audio files. The service re
                      1.5
                   ]
                ],
-               "confidence": 0.986,
+               "confidence": 0.99,
                "transcript": "the latest weather report "
             }
          ],
@@ -323,7 +323,7 @@ The example returns the following transcript for the audio files. The service re
                "start_time": 0.15,
                "alternatives": [
                   {
-                     "confidence": 0.9999,
+                     "confidence": 1.0,
                      "word": "a"
                   }
                ],
@@ -333,7 +333,7 @@ The example returns the following transcript for the audio files. The service re
                "start_time": 0.3,
                "alternatives": [
                   {
-                     "confidence": 0.9999,
+                     "confidence": 1.0,
                      "word": "line"
                   }
                ],
@@ -344,7 +344,7 @@ The example returns the following transcript for the audio files. The service re
                "start_time": 4.58,
                "alternatives": [
                   {
-                     "confidence": 0.9842,
+                     "confidence": 0.98,
                      "word": "Colorado"
                   }
                ],
@@ -354,7 +354,7 @@ The example returns the following transcript for the audio files. The service re
                "start_time": 5.16,
                "alternatives": [
                   {
-                     "confidence": 0.9842,
+                     "confidence": 0.98,
                      "word": "on"
                   }
                ],
@@ -364,7 +364,7 @@ The example returns the following transcript for the audio files. The service re
                "start_time": 5.32,
                "alternatives": [
                   {
-                     "confidence": 0.9813,
+                     "confidence": 0.98,
                      "word": "Sunday"
                   }
                ],
@@ -376,7 +376,7 @@ The example returns the following transcript for the audio files. The service re
                {
                   "normalized_text": "tornadoes",
                   "start_time": 3.03,
-                  "confidence": 0.977,
+                  "confidence": 0.98,
                   "end_time": 3.84
                }
             ],
@@ -384,7 +384,7 @@ The example returns the following transcript for the audio files. The service re
                {
                   "normalized_text": "Colorado",
                   "start_time": 4.58,
-                  "confidence": 0.984,
+                  "confidence": 0.98,
                   "end_time": 5.16
                }
             ]
@@ -419,7 +419,7 @@ The example returns the following transcript for the audio files. The service re
                      6.04
                   ]
                ],
-               "confidence": 0.985,
+               "confidence": 0.99,
                "transcript": "a line of severe thunderstorms with several
 possible tornadoes is approaching Colorado on Sunday "
             }

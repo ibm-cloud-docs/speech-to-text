@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-03-11"
 
 subcollection: speech-to-text
 
@@ -39,7 +39,7 @@ The service returns the following response for the examples in [Making a recogni
     {
       "alternatives": [
         {
-          "confidence": 0.891,
+          "confidence": 0.89,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -121,7 +121,7 @@ How the service returns the results depends on the interface that you use. The f
         {
           "alternatives": [
             {
-              "confidence": 0.998,
+              "confidence": 0.99,
               "transcript": "one two three "
             }
           ],
@@ -130,7 +130,7 @@ How the service returns the results depends on the interface that you use. The f
         {
           "alternatives": [
             {
-              "confidence": 0.983,
+              "confidence": 0.98,
               "transcript": "four five six "
             }
           ],
@@ -150,7 +150,7 @@ How the service returns the results depends on the interface that you use. The f
         {
           "alternatives": [
             {
-              "confidence": 0.998,
+              "confidence": 0.99,
               "transcript": "one two three "
             }
           ],
@@ -164,7 +164,7 @@ How the service returns the results depends on the interface that you use. The f
         {
           "alternatives": [
             {
-              "confidence": 0.983,
+              "confidence": 0.98,
               "transcript": "four five six "
             }
           ],

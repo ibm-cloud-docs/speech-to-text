@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-03-11"
 
 subcollection: speech-to-text
 
@@ -91,7 +91,7 @@ curl -X POST -u "apikey:{apikey}"
             ],
             . . .
           ]
-          "confidence": 0.821,
+          "confidence": 0.82,
           "transcript": "hello yeah yeah how's Billy "
         }
       ],
@@ -104,35 +104,35 @@ curl -X POST -u "apikey:{apikey}"
       "from": 0.68,
       "to": 1.19,
       "speaker": 2,
-      "confidence": 0.418,
+      "confidence": 0.42,
       "final": false
     },
     {
       "from": 1.47,
       "to": 1.93,
       "speaker": 1,
-      "confidence": 0.521,
+      "confidence": 0.52,
       "final": false
     },
     {
       "from": 1.96,
       "to": 2.12,
       "speaker": 2,
-      "confidence": 0.407,
+      "confidence": 0.41,
       "final": false
     },
     {
       "from": 2.12,
       "to": 2.59,
       "speaker": 2,
-      "confidence": 0.407,
+      "confidence": 0.41,
       "final": false
     },
     {
       "from": 2.59,
       "to": 3.17,
       "speaker": 2,
-      "confidence": 0.407,
+      "confidence": 0.41,
       "final": false
     },
     . . .
@@ -159,7 +159,7 @@ The `transcript` field shows the final transcript of the audio, which lists the 
       <code>"from": 0.68,<br/>
       "to": 1.19,<br/>
       "speaker": 2,<br/>
-      "confidence": 0.418,<br/>
+      "confidence": 0.42,<br/>
       "final": false</code>
     </td>
   </tr>
@@ -173,7 +173,7 @@ The `transcript` field shows the final transcript of the audio, which lists the 
       <code>"from": 1.47,<br/>
       "to": 1.93,<br/>
       "speaker": 1,<br/>
-      "confidence": 0.521,<br/>
+      "confidence": 0.52,<br/>
       "final": false</code>
     </td>
   </tr>
@@ -187,7 +187,7 @@ The `transcript` field shows the final transcript of the audio, which lists the 
       <code>"from": 1.96,<br/>
       "to": 2.12,<br/>
       "speaker": 2,<br/>
-      "confidence": 0.407,<br/>
+      "confidence": 0.41,<br/>
       "final": false</code>
     </td>
   </tr>
@@ -201,7 +201,7 @@ The `transcript` field shows the final transcript of the audio, which lists the 
       <code>"from": 2.12,<br/>
       "to": 2.59,<br/>
       "speaker": 2,<br/>
-      "confidence": 0.407,<br/>
+      "confidence": 0.41,<br/>
       "final": false</code>
     </td>
   </tr>
@@ -215,7 +215,7 @@ The `transcript` field shows the final transcript of the audio, which lists the 
       <code>"from": 2.59,<br/>
       "to": 3.17,<br/>
       "speaker": 2,<br/>
-      "confidence": 0.407,<br/>
+      "confidence": 0.41,<br/>
       "final": false</code>
     </td>
   </tr>
@@ -321,7 +321,7 @@ curl -X POST -u "apikey:{apikey}"
           {
             "normalized_text": "Colorado",
             "start_time": 4.94,
-            "confidence": 0.913,
+            "confidence": 0.91,
             "end_time": 5.62
           }
         ],
@@ -336,7 +336,7 @@ curl -X POST -u "apikey:{apikey}"
       },
       "alternatives": [
         {
-          "confidence": 0.891,
+          "confidence": 0.89,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -352,7 +352,7 @@ severe thunderstorms swept through Colorado on Sunday "
 ## Maximum alternatives
 {: #max_alternatives}
 
-The `max_alternatives` parameter accepts an integer value that tells the service to return the *n*-best alternative hypotheses for the results. By default, the service returns only a single transcription result, which is equivalent to setting the parameter to `1`. By setting `max_alternatives` to a number greater than 1, you ask the service to return that number of the best alternative transcriptions.
+The `max_alternatives` parameter accepts an integer value that tells the service to return the *n*-best alternative hypotheses for the results. By default, the service returns only a single transcription result, which is equivalent to setting the parameter to `1`. By setting `max_alternatives` to a number greater than 1, you ask the service to return that number of the best alternative transcriptions. (If you specify a value of `0`, the service uses the default value of `1`.)
 
 The service reports a confidence score only for the best alternative that it returns. In most cases, that is the alternative to choose.
 
@@ -375,7 +375,7 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
-          "confidence": 0.891,
+          "confidence": 0.89,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         },
@@ -490,7 +490,7 @@ severe thunderstorms swept through Colorado on Sunday "
     {
       "alternatives": [
         {
-          "confidence": 0.891,
+          "confidence": 0.89,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -563,7 +563,7 @@ curl -X POST -u "apikey:{apikey}"
           "start_time": 3.39,
           "alternatives": [
             {
-              "confidence": 0.9634,
+              "confidence": 0.96,
               "word": "severe"
             }
           ],
@@ -573,7 +573,7 @@ curl -X POST -u "apikey:{apikey}"
           "start_time": 3.77,
           "alternatives": [
             {
-              "confidence": 0.991,
+              "confidence": 0.99,
               "word": "thunderstorms"
             }
           ],
@@ -583,7 +583,7 @@ curl -X POST -u "apikey:{apikey}"
           "start_time": 4.51,
           "alternatives": [
             {
-              "confidence": 0.9729,
+              "confidence": 0.97,
               "word": "swept"
             }
           ],
@@ -592,7 +592,7 @@ curl -X POST -u "apikey:{apikey}"
       ],
       "alternatives": [
         {
-          "confidence": 0.891,
+          "confidence": 0.89,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -636,7 +636,7 @@ curl -X POST -u "apikey:{apikey}"
         {
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday ",
-          "confidence": 0.891,
+          "confidence": 0.89,
           "word_confidence": [
             [
               "several",
@@ -652,16 +652,16 @@ severe thunderstorms swept through Colorado on Sunday ",
             ],
             [
               "down",
-              0.904
+              0.90
             ],
             . . .
             [
               "on",
-              0.311
+              0.31
             ],
             [
               "Sunday",
-              0.986
+              0.99
             ]
           ]
         }
@@ -731,7 +731,7 @@ curl -X POST -u "apikey:{apikey}"
               6.34
             ]
           ],
-          "confidence": 0.891,
+          "confidence": 0.89,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -1236,7 +1236,7 @@ curl -X POST -u "apikey:{apikey}"
           "start_time": 0.25,
           "alternatives": [
             {
-              "confidence": 0.9976,
+              "confidence": 0.99,
               "word": "you"
             }
           ],
@@ -1246,10 +1246,10 @@ curl -X POST -u "apikey:{apikey}"
       "alternatives": [
         {
           "transcript": "**** you",
-          "confidence": 0.992,
+          "confidence": 0.99,
           "word_confidence": [
-            ["****", 0.9999999999999918],
-            ["you", 0.986436366840706]
+            ["****", 1.0],
+            ["you", 0.99]
           ],
           "timestamps": [
             ["****", 0.03, 0.25],

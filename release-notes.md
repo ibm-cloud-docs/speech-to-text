@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-03-12"
 
 subcollection: speech-to-text
 
@@ -33,6 +33,13 @@ The following sections document the new features and changes that were included 
 
 No known limitations at this time.
 
+## 11 March 2019
+{: #March2019b}
+
+-   For the `max_alternatives` parameter, the service again accepts a value of `0`. If you specify `0`. the service automatically uses the default value, `1`. A change made for the March 4 service update caused a value of `0` to return an error. (The service returns an error if you specify a negative value.)
+-   For the `word_alternatives_threshold` parameter, the service again accepts a value of `0` . A change made for the March 4 service update caused a value of `0` to return an error. (The service returns an error if you specify a negative value.)
+-   The service now returns all confidence scores with a maximum precision of two decimal places. This includes confidence scores for transcripts, word confidence, word alternatives, keyword results, and speaker labels.
+
 ## 4 March 2019
 {: #March2019}
 
@@ -59,7 +66,42 @@ The WebSocket interface now supports token-based Identity and Access Management 
 
 For more information, see [Open a connection](/docs/services/speech-to-text/websockets.html#WSopen).
 
-## 20 December 2018
+## Older releases
+{: #older}
+
+-   [20 December 2018](#December2018b)
+-   [13 December 2018](#December2018a)
+-   [12 November 2018](#November2018b)
+-   [7 November 2018](#November2018a)
+-   [30 October 2018](#October2018b)
+-   [9 October 2018](#October2018a)
+-   [10 September 2018](#September2018b)
+-   [7 September 2018](#September2018a)
+-   [8 August 2018](#August2018)
+-   [13 July 2018](#July2018)
+-   [12 June 2018](#June2018)
+-   [15 May 2018](#May2018)
+-   [26 March 2018](#March2018b)
+-   [1 March 2018](#March2018a)
+-   [1 February 2018](#February2018)
+-   [14 December 2017](#December2017)
+-   [2 October 2017](#October2017)
+-   [14 July 2017](#July2017b)
+-   [1 July 2017](#July2017a)
+-   [22 May 2017](#May2017)
+-   [10 April 2017](#April2017)
+-   [8 March 2017](#March2017)
+-   [1 December 2016](#December2016)
+-   [22 September 2016](#September2016)
+-   [30 June 2016](#June2016b)
+-   [23 June 2016](#June2016a)
+-   [10 March 2016](#March2016)
+-   [19 January 2016](#January2016)
+-   [17 December 2015](#December2015)
+-   [21 September 2015](#September2015)
+-   [1 July 2015](#July2015)
+
+### 20 December 2018
 {: #December2018b}
 
 The grammar interface is fully functional in all locations as of January 8, 2019.
@@ -103,40 +145,6 @@ The grammar interface is fully functional in all locations as of January 8, 2019
 -   The service now supports audio in the G.729 (`audio/g729`) format. The service supports only G.729 Annex D for narrowband audio. For more information about supported audio formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 -   The speaker labels feature is now available for the narrowband model for UK English (`en-GB_NarrowbandModel`). The feature is beta functionality for all supported languages. For more information, see [Speaker labels](/docs/services/speech-to-text/output.html#speaker_labels).
 -   The maximum amount of audio that you can add to a custom acoustic model has increased from 50 hours to 100 hours.
-
-## Older releases
-{: #older}
-
--   [13 December 2018](#December2018a)
--   [12 November 2018](#November2018b)
--   [7 November 2018](#November2018a)
--   [30 October 2018](#October2018b)
--   [9 October 2018](#October2018a)
--   [10 September 2018](#September2018b)
--   [7 September 2018](#September2018a)
--   [8 August 2018](#August2018)
--   [13 July 2018](#July2018)
--   [12 June 2018](#June2018)
--   [15 May 2018](#May2018)
--   [26 March 2018](#March2018b)
--   [1 March 2018](#March2018a)
--   [1 February 2018](#February2018)
--   [14 December 2017](#December2017)
--   [2 October 2017](#October2017)
--   [14 July 2017](#July2017b)
--   [1 July 2017](#July2017a)
--   [22 May 2017](#May2017)
--   [10 April 2017](#April2017)
--   [8 March 2017](#March2017)
--   [1 December 2016](#December2016)
--   [22 September 2016](#September2016)
--   [30 June 2016](#June2016b)
--   [23 June 2016](#June2016a)
--   [10 March 2016](#March2016)
--   [19 January 2016](#January2016)
--   [17 December 2015](#December2015)
--   [21 September 2015](#September2015)
--   [1 July 2015](#July2015)
 
 ### 13 December 2018
 {: #December2018a}
