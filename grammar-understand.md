@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-03-11"
 
 subcollection: speech-to-text
 
@@ -93,7 +93,7 @@ Suppose the user speaks one of the names from the grammar's rules, `Yon See`. Th
     {
       "alternatives": [
         {
-          "confidence": 0.915,
+          "confidence": 0.92,
           "transcript": "Yon See"
         }
       ],
@@ -113,7 +113,7 @@ Now suppose that the user speaks two names separated by enough silence, at least
     {
       "alternatives": [
         {
-          "confidence": 0.915,
+          "confidence": 0.92,
           "transcript": "Yon See"
         }
       ],
@@ -127,7 +127,7 @@ Now suppose that the user speaks two names separated by enough silence, at least
     {
       "alternatives": [
         {
-          "confidence": 0.833,
+          "confidence": 0.83,
           "transcript": "Yi Wen Tan"
         }
       ],

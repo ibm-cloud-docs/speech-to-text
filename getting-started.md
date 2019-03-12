@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-03-11"
 
 subcollection: speech-to-text
 
@@ -87,7 +87,7 @@ Call the `POST /v1/recognize` method to request a basic transcript of a FLAC aud
         {
           "alternatives": [
             {
-              "confidence": 0.8691191673278809,
+              "confidence": 0.87
               "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through colorado on sunday "
             }
@@ -134,7 +134,7 @@ Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but
               ]
             },
             {
-              "confidence": 0.8691191673278809,
+              "confidence": 0.87
               "transcript": "several tornadoes touch down as a line
 of severe thunderstorms swept through colorado on sunday "
             },
