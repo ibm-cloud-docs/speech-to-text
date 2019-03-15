@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-03-15"
 
 subcollection: speech-to-text
 
@@ -55,7 +55,7 @@ In theory, you can send 44 kHz audio with a broadband or narrowband model, but t
 #### Notes about audio formats
 {: #samplingRateNotes}
 
--   For the `audio/l16` and `audio/mulaw` formats, you must specify the rate of your audio.
+-   For the `audio/alaw`, `audio/l16`, and `audio/mulaw` formats, you must specify the rate of your audio.
 -   For the `audio/basic` and `audio/g729` formats, the service supports only narrowband audio.
 
 #### More information
@@ -206,6 +206,20 @@ Table 1 provides a summary of the audio formats that the service supports.
   </tr>
   <tr>
     <td style="text-align:left">
+      [audio/alaw](#alaw)<br/>Lossy
+    </td>
+    <td style="text-align:center">
+      Required
+    </td>
+    <td style="text-align:center">
+      <code>rate={integer}</code>
+    </td>
+    <td style="text-align:center">
+      None
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
       [audio/basic](#basic)<br/>Lossy
     </td>
     <td style="text-align:center">
@@ -338,6 +352,36 @@ Table 1 provides a summary of the audio formats that the service supports.
 When you use the `curl` command to make a speech recognition request with the HTTP interfaces, you must either specify the audio format with the `Content-Type` header, specify `"Content-Type: application/octet-stream"`, or specify `"Content-Type:"`. If you omit the header entirely, `curl` uses a default value of `application/x-www-form-urlencoded`.
 {: important}
 
+### audio/alaw format
+{: #alaw}
+
+*A-law* (`audio/alaw`) is a single-channel, lossy audio format. It uses an algorithm that is similar to the u-law algorithm applied by the `audio/basic` and `audio/mulaw` formats, though the A-law algorithm produces different signal characteristics. When you use this format, the service requires an extra parameter on the format specification.
+
+<table>
+  <caption>Table 2. Parameter for `audio/alaw` format</caption>
+  <tr>
+    <th style="text-align:left; vertical-align:bottom; width 20%">
+      Parameter
+    </th>
+    <th style="text-align:left; vertical-align:bottom; width 80%">
+      Description
+    </th>
+  </tr>
+  <tr>
+    <td>
+      <code>rate</code><br/><em>Required</em>
+    </td>
+    <td>
+      An integer that specifies the sampling rate at which the audio is
+      captured. For example, specify the following parameter for audio
+      data that is captured at 8 kHz:<br/><br/>
+      <code>audio/alaw;rate=8000</code>
+    </td>
+  </tr>
+</table>
+
+For more information, see [en.wikipedia.org/wiki/A-law_algorithm ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/A-law_algorithm){: new_window}.
+
 ### audio/basic format
 {: #basic}
 
@@ -361,7 +405,7 @@ For more information, see the Internet Engineering Task Force (IETF) [Request fo
 *Linear 16-bit Pulse-Code Modulation (PCM)* (`audio/l16`) is an uncompressed audio format. Use this format to pass a raw PCM file. Linear PCM audio can also be carried inside of a container Waveform Audio File Format (WAV) file. When you use the `audio/l16` format, the service accepts extra required and optional parameters on the format specification.
 
 <table>
-  <caption>Table 2. Parameters for `audio/l16` format</caption>
+  <caption>Table 3. Parameters for `audio/l16` format</caption>
   <tr>
     <th style="text-align:left; vertical-align:bottom; width 20%">
       Parameter
@@ -427,10 +471,10 @@ For more information, see the IETF [Request for Comment (RFC) 2586 ![External li
 ### audio/mulaw format
 {: #mulaw}
 
-*Mu-law* (`audio/mulaw`) is a single-channel, lossy audio format. The data is encoded by using the u-law (or mu-law) algorithm. When you use this format, the service requires an extra parameter on the format specification.
+*Mu-law* (`audio/mulaw`) is a single-channel, lossy audio format. The data is encoded by using the u-law (or mu-law) algorithm. The `audio/basic` format is an equivalent format that is always sampled at 8 kHz. When you use this format, the service requires an extra parameter on the format specification.
 
 <table>
-  <caption>Table 3. Parameter for `audio/mulaw` format</caption>
+  <caption>Table 4. Parameter for `audio/mulaw` format</caption>
   <tr>
     <th style="text-align:left; vertical-align:bottom; width 20%">
       Parameter
@@ -505,7 +549,7 @@ Consider the approximate size of the data stream that results from 2 hours of co
 The following table approximates the maximum duration of audio that can be sent for speech recognition with a synchronous HTTP or WebSocket request in different formats. The duration considers the 100 MB service limit. Actual values can vary depending on the complexity of the audio and the achieved compression rate.
 
 <table style="width:75%">
-  <caption>Table 4. Maximum duration of audio in different formats</caption>
+  <caption>Table 5. Maximum duration of audio in different formats</caption>
   <tr>
     <th style="text-align:left; vertical-align:bottom; width 50%">
       Audio format

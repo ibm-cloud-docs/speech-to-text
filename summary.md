@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-03-15"
 
 subcollection: speech-to-text
 
@@ -179,7 +179,7 @@ An optional version of a base model. The parameter is intended primarily for use
 ## Content-Type
 {: #summary-content-type}
 
-An optional audio format (MIME type) that specifies the format of the audio data that you pass to the service. The service can automatically detect the format of most audio, so the parameter is optional for most formats. It is required for `audio/basic`, `audio/l16`, and `audio/mulaw`. For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
+An optional audio format (MIME type) that specifies the format of the audio data that you pass to the service. The service can automatically detect the format of most audio, so the parameter is optional for most formats. It is required for the `audio/alaw`, `audio/basic`, `audio/l16`, and `audio/mulaw` formats. For more information, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
 
 <table>
   <caption>Table 4. The Content-Type parameter</caption>

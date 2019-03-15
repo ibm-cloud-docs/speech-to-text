@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-03-15"
 
 subcollection: speech-to-text
 
@@ -241,8 +241,8 @@ To initiate a recognition request, the client sends a JSON text message to the s
     <td style="text-align:center">String</td>
     <td style="text-align:left">
       Identifies the format (MIME type) of the audio data for the request.
-      The parameter is required only for the `audio/basic`, `audio/l16`,
-      and `audio/mulaw` formats. For more information, see
+      The parameter is required for the `audio/alaw`, `audio/basic`,
+      `audio/l16`, and `audio/mulaw` formats. For more information, see
       [Audio formats](/docs/services/speech-to-text/audio-formats.html).
     </td>
   </tr>

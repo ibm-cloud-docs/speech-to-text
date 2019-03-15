@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-12"
+lastupdated: "2019-03-15"
 
 subcollection: speech-to-text
 
@@ -33,6 +33,11 @@ The following sections document the new features and changes that were included 
 
 No known limitations at this time.
 
+## 15 March 2019
+{: #March2019c}
+
+The service now supports audio in the A-law (`audio/alaw`) format. For more information, see [audio/alaw format](/docs/services/speech-to-text/audio-formats.html#alaw).
+
 ## 11 March 2019
 {: #March2019b}
 
@@ -56,19 +61,10 @@ By default, the service automatically uses the updated models for all speech rec
 
 For more information, see [Upgrading custom models](/docs/services/speech-to-text/custom-upgrade.html).
 
-## 28 January 2019
-{: #January2019}
-
-The WebSocket interface now supports token-based Identity and Access Management (IAM) authentication from browser-based JavaScript code. The limitation to the contrary has been removed. To establish an authenticated connection with the WebSocket `/v1/recognize` method:
-
--   If you use IAM authentication, include the `access_token` query parameter.
--   If you use Cloud Foundry service credentials, include the `watson-token` query parameter.
-
-For more information, see [Open a connection](/docs/services/speech-to-text/websockets.html#WSopen).
-
 ## Older releases
 {: #older}
 
+-   [28 January 2019](#January2019)
 -   [20 December 2018](#December2018b)
 -   [13 December 2018](#December2018a)
 -   [12 November 2018](#November2018b)
@@ -100,6 +96,16 @@ For more information, see [Open a connection](/docs/services/speech-to-text/webs
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 28 January 2019
+{: #January2019}
+
+The WebSocket interface now supports token-based Identity and Access Management (IAM) authentication from browser-based JavaScript code. The limitation to the contrary has been removed. To establish an authenticated connection with the WebSocket `/v1/recognize` method:
+
+-   If you use IAM authentication, include the `access_token` query parameter.
+-   If you use Cloud Foundry service credentials, include the `watson-token` query parameter.
+
+For more information, see [Open a connection](/docs/services/speech-to-text/websockets.html#WSopen).
 
 ### 20 December 2018
 {: #December2018b}
