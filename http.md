@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-03-15"
 
 subcollection: speech-to-text
 
@@ -214,7 +214,7 @@ The JSON metadata that you pass with a multipart request can include the followi
 
 Only the following two parameters are specific to multipart requests:
 
--   The `part_content_type` field is *optional* for most audio formats. It is required for the `audio/basic`, `audio/l16`, and `audio/mulaw` formats. It specifies the format of the audio in the following parts of the request. All audio files must be in the same format.
+-   The `part_content_type` field is *optional* for most audio formats. It is required for the `audio/alaw`, `audio/basic`, `audio/l16`, and `audio/mulaw` formats. It specifies the format of the audio in the following parts of the request. All audio files must be in the same format.
 -   The `data_parts_count` field is *optional* for all requests. It specifies the number of audio files that are sent with the request. The service applies end-of-stream detection to the last (and possibly the only) data part. If you omit the parameter, the service determines the number of parts from the request.
 
 All other parameters of the metadata are optional. For descriptions of all available parameters, see the [Parameter summary](/docs/services/speech-to-text/summary.html).

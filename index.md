@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-12"
+lastupdated: "2019-03-15"
 
 subcollection: speech-to-text
 
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on March 11, 2019. The `max_alternatives` and `word_alternatives_threshold` parameters now accept a value of `0`. Also, all confidence scores now use a maximum precision of two decimal places. For more information, see the [11 March 2019 service update](/docs/services/speech-to-text/release-notes.html#March2019b) in the release notes*.
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on March 15, 2019. The service now supports audio in the A-law (`audio/alaw`) format. For more information, see the [15 March 2019 service update](/docs/services/speech-to-text/release-notes.html#March2019c) in the release notes*.
 
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}
@@ -57,7 +57,7 @@ SDKs are available in many programming languages to simplify your use of the ser
 
 The service's interfaces share common input features for transcribing speech to text:
 
--   [Audio formats](/docs/services/speech-to-text/audio-formats.html) - You can transcribe Ogg or Web Media (WebM) audio with the Opus or Vorbis codec, MP3 (or MPEG), Waveform Audio File Format (WAV), Free Lossless Audio Codec (FLAC), Linear 16-bit Pulse-Code Modulation (PCM), G.729, mu-law (or u-law), and basic audio. By using a format that supports compression, you can maximize the amount of audio data that you can send with a request.
+-   [Audio formats](/docs/services/speech-to-text/audio-formats.html) - You can transcribe Ogg or Web Media (WebM) audio with the Opus or Vorbis codec, MP3 (or MPEG), Waveform Audio File Format (WAV), Free Lossless Audio Codec (FLAC), Linear 16-bit Pulse-Code Modulation (PCM), G.729, A-Law, mu-law (or u-law), and basic audio. By using a format that supports compression, you can maximize the amount of audio data that you can send with a request.
 -   [Languages and models](/docs/services/speech-to-text/models.html) - For most languages, you can transcribe audio by using broadband or narrowband models. Use broadband for audio that is sampled at a minimum rate of 16 kHz. Use narrowband for audio that is sampled at a minimum rate of 8 kHz.
 -   [Audio transmission](/docs/services/speech-to-text/input.html#transmission) - You can pass audio as a continuous stream of data chunks or as a one-shot delivery that passes all of the data at one time. With streaming, the service enforces inactivity and session [timeouts](/docs/services/speech-to-text/input.html#timeouts).
 
