@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-03-20"
 
 subcollection: speech-to-text
 
@@ -29,7 +29,7 @@ Follow these steps to create a custom acoustic model for the {{site.data.keyword
 {: shortdesc}
 
 1.  [Create a custom acoustic model](#createModel-acoustic). You can create multiple custom models for the same or different domains or environments. The process is the same for any model that you create. However, you can specify only a single custom acoustic model at a time with a recognition request.
-1.  [Add audio to the custom acoustic model](#addAudio). The service accepts the same audio file formats for acoustic modeling that it accepts for recognition requests. It also accepts archive files that contain multiple audio files. Archive files are the preferred means of adding audio resources. You can repeat the method to add more audio or archive files to a custom model.
+1.  [Add audio to the custom acoustic model](#addAudio). The service accepts the same audio file formats for acoustic modeling that it accepts for speech recognition. It also accepts archive files that contain multiple audio files. Archive files are the preferred means of adding audio resources. You can repeat the method to add more audio or archive files to a custom model.
 1.  [Train the custom acoustic model](#trainModel-acoustic). Once you add audio resources to the custom model, you must train the model. Training prepares the custom acoustic model for use in speech recognition. Training can take a significant amount of time. The length of the training depends on the amount of audio data that the model contains.
 
     You can specify a helper custom language model during training of your custom acoustic model. A custom language model that includes transcriptions of your audio files or OOV words from the domain of your audio files can improve the quality of the custom acoustic model. For more information, see [Training a custom acoustic model with a custom language model](/docs/services/speech-to-text/acoustic-both.html#useBothTrain).
@@ -112,20 +112,16 @@ The new custom model is owned by the service instance whose credentials are used
 ## Add audio to the custom acoustic model
 {: #addAudio}
 
-Once you create your custom acoustic model, the next step is to add audio resources to it. You can add
+Once you create your custom acoustic model, the next step is to add audio resources to it. You use the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to add an audio resource to a custom model. You can add
 
--   An individual audio file in any format that is supported for speech recognition (see [Audio formats](/docs/services/speech-to-text/audio-formats.html)). For more information about using audio-type resources, see [Working with audio files](/docs/services/speech-to-text/acoustic-resource.html#workingAudio).
--   An archive file (a **.zip** or **.tar.gz** file) that includes multiple audio files. All audio files added with the same archive file must have the same audio format. When you load many audio files, gathering the files into a single archive file and loading that file is significantly more efficient than adding the files individually. For more information about using archive-type resources, see [Working with archive files](/docs/services/speech-to-text/acoustic-resource.html#workingArchive).
+-   An individual audio file in any format that is supported for speech recognition (see [Audio formats](/docs/services/speech-to-text/audio-formats.html)).
+-   An archive file (a **.zip** or **.tar.gz** file) that includes multiple audio files. Gathering multiple audio files into a single archive file and loading that single file is significantly more efficient than adding audio files individually.
 
-You use the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to add an audio resource of either type to a custom acoustic model. When you add an audio resource, you assign it an `audio_name`. Use a localized name that matches the language of the custom model and reflects the contents of the resource.
+You pass the audio resource as the body of the request and assign the resource an `audio_name`. For more information, see [Working with audio resources](/docs/services/speech-to-text/acoustic-resource.html).
 
--   Include a maximum of 128 characters in the name.
--   Do not include spaces, `/` (slashes), or `\` (backslashes) in the name.
--   Do not use the name of an audio resource that has already been added to the custom model.
+The following examples show the addition of both audio- and archive-type resources:
 
-The following examples show the addition of both audio- and archive-type resources. In both cases, the audio resource is passed as the body of the request.
-
--   The following example adds an audio-type resource to the acoustic custom model with the specified `customization_id`. The `Content-Type` header identifies the type of the audio as `audio/wav`. The audio file, **audio1.wav**, is passed as the body of the request, and the resource is given the named `audio1`.
+-   This example adds an audio-type resource to the custom acoustic model with the specified `customization_id`. The `Content-Type` header identifies the type of the audio as `audio/wav`. The audio file, **audio1.wav**, is passed as the body of the request, and the resource is given the named `audio1`.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -135,7 +131,7 @@ The following examples show the addition of both audio- and archive-type resourc
     ```
     {: pre}
 
--   The following example adds an archive-type resource to the specified custom acoustic model. The `Content-Type` header identifies the type of the archive as `application/zip`. The `Contained-Contented-Type` header indicates that all files that are contained in the archive have the format `audio/l16` and are sampled at a rate of 16 kHz. The archive file, **audio2.zip**, is passed as the body of the request, and the resource is given the name `audio2`.
+-   This example adds an archive-type resource to the specified custom acoustic model. The `Content-Type` header identifies the type of the archive as `application/zip`. The `Contained-Contented-Type` header indicates that all files that are contained in the archive have the format `audio/l16` and are sampled at a rate of 16 kHz. The archive file, **audio2.zip**, is passed as the body of the request, and the resource is given the name `audio2`.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -146,11 +142,11 @@ The following examples show the addition of both audio- and archive-type resourc
     ```
     {: pre}
 
-The method also accepts an optional `allow_overwrite` query parameter overwrites an existing audio resource for a custom model. Use the parameter if you need to update an audio resource after you add it to a model.
+The method also accepts an optional `allow_overwrite` query parameter to overwrite an existing audio resource for a custom model. Use the parameter if you need to update an audio resource after you add it to a model.
 
-The method is asynchronous. It can take several seconds to complete depending on the duration of the audio. For an archive file, the length of the operation depends on the duration of the audio files that are being processed. For more information about checking the status of a request to add an audio resource, see [Monitoring the add audio request](#monitorAudio).
+The method is asynchronous. It can take several seconds to complete depending on the duration of the audio. For an archive file, the length of the operation depends on the duration of the audio files. For more information about checking the status of a request to add an audio resource, see [Monitoring the add audio request](#monitorAudio).
 
-You can add any number of audio resources to a custom model by calling the method once for each audio or archive file. The addition of one audio resource must be fully complete before you can add another. You must add a minimum of 10 minutes and a maximum of 100 hours of audio that includes speech, not silence, to a custom model before you can train it. No audio- or archive-type resource can be larger than 100 MB. For more information about adding audio to a custom model, see [Guidelines for adding audio resources](/docs/services/speech-to-text/acoustic-resource.html#audioGuidelines).
+You can add any number of audio resources to a custom model by calling the method once for each audio or archive file. The addition of one audio resource must be fully complete before you can add another. You must add a minimum of 10 minutes and a maximum of 100 hours of audio that includes speech, not silence, to a custom model before you can train it. No audio- or archive-type resource can be larger than 100 MB. For more information, see [Guidelines for adding audio resources](/docs/services/speech-to-text/acoustic-resource.html#audioGuidelines).
 
 ### Monitoring the add audio request
 {: #monitorAudio}
