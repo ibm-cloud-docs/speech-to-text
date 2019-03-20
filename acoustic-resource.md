@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-10"
+lastupdated: "2019-03-20"
 
 subcollection: speech-to-text
 
@@ -25,20 +25,30 @@ subcollection: speech-to-text
 # Working with audio resources
 {: #audioResources}
 
-You can add individual audio files or archive files that contain multiple audio files to a custom acoustic model. The recommended means of adding audio resources is by adding archive files. Creating and adding a single archive file is considerably more efficient than adding files individually.
+You can add individual audio files or archive files that contain multiple audio files to a custom acoustic model. The recommended means of adding audio resources is by adding archive files. Creating and adding a single archive file is considerably more efficient than adding multiple audio files individually.
 {: shortdesc}
 
-You use the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to add either type of audio resource to a custom model; see [Add audio to the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#addAudio). You pass the audio resource as the body of the request and include the following parameters:
+## Adding an audio resource
+{: #addAudioResource}
+
+You use the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to add either type of audio resource to a custom acoustic model. You pass the audio resource as the body of the request and include the following parameters:
 
 -   The `customization_id` path parameter to specify the customization ID of the model.
--   The `audio_name` path parameter to specify a name for the audio resource. The name cannot contain spaces. Use a localized name that matches the language of the model.
+-   The `audio_name` path parameter to specify a name for the audio resource.
+    -   Use a localized name that matches the language of the custom model and reflects the contents of the resource.
+    -   Include a maximum of 128 characters in the name.
+    -   Do not include spaces, `/` (slashes), or `\` (backslashes) in the name.
+    -   Do not use the name of an audio resource that has already been added to the custom model.
 
-The following sections describe required request headers for audio- and archive-type resources and provide guidelines for adding audio resources. When you update a model's audio resources, you must train the model for the changes to take effect during transcription. For more information, see [Train the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#trainModel-acoustic).
+When you update a model's audio resources, you must train the model for the changes to take effect during transcription. For more information, see [Train the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#trainModel-acoustic).
 
-## Working with audio files
-{: #workingAudio}
+## Adding an audio file
+{: #addAudioType}
 
-To add an individual audio file to a custom acoustic model, you specify the format (MIME type) of the audio with the `Content-Type` header. You can add audio with any format that is supported for use with recognition requests. Include `rate`, `channels`, and `endianness` parameters with the specification of formats that require them. For a complete list of supported formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
+To add an individual audio file to a custom acoustic model, you specify the format (MIME type) of the audio with the `Content-Type` header. You can add audio with any format that is supported for use with recognition requests. Include the `rate`, `channels`, and `endianness` parameters with the specification of formats that require them. For more information about the supported audio formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
+
+The `application/octet-stream` specification for an audio format is not supported for audio resources.
+{: note}
 
 The following example from [Add audio to the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#addAudio) adds an `audio/wav` file:
 
@@ -50,21 +60,23 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-## Working with archive files
-{: #workingArchive}
+## Adding an archive file
+{: #addArchiveType}
 
 The preferred means of adding audio to a custom acoustic model is to add an archive file that includes multiple audio files. You can add the following types of archive files by specifying the type of the archive with the `Content-Type` request header:
 
 -   A **.zip** file by specifying `application/zip`
 -   A **.tar.gz** file by specifying `application/gzip`
 
-All audio files added with a single archive file must have the same audio format. By default, the method accepts an archive of WAV files. If your archive includes any other type of audio, you must include the `Contained-Content-Type` header with the request to specify the format of the audio. The header accepts all of the audio formats that are supported for use with recognition requests, including the `rate`, `channels`, and `endianness` parameters that are used with some formats. For more information about the supported formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
+You might also need to specify the `Contained-Content-Type` header depending on the format of the files that you are adding:
 
-For an audio file that is embedded within an archive-type resource, the name of the audio file must adhere to the following restrictions:
+-   For audio files of type `audio/alaw`, `audio/basic`, `audio/l16`, or `audio/mulaw`, you must use the `Contained-Content-Type` header to specify the format of the audio files. Include the `rate`, `channels`, and `endianness` parameters where necessary. In this case, all audio files contained in the archive file must have the same audio format.
+-   For audio files of all other types, you can omit the `Contained-Content-Type` header. In this case, the audio files contained in the archive file can have any of the formats not listed in the previous bullet. They do not need to have the same format.
 
--   Include a maximum of 128 characters in the file name, including the file extension.
--   Do not include spaces, `/` (slashes), or `\` (backslashes) in the file name.
--   Do not use the name of an audio file that has already been added to the custom model as part of an archive-type resource.
+Do not use the `Contained-Content-Type` header when adding an audio-type resource.
+{: note}
+
+The name of an audio file that is embedded within an archive-type resource must meet the same naming restrictions as the `audio_name` parameter. In addition, do not use the name of an audio file that has already been added to the custom model as part of an archive-type resource.
 
 The following example from [Add audio to the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#addAudio) adds an `application/zip` file that contains audio files in `audio/l16` format that are sampled at 16 kHz:
 
@@ -88,6 +100,8 @@ Follow these guidelines when you add audio resources to a custom acoustic model:
 
     The quality of the audio makes a difference when you are determining how much to add. The better the model's audio reflects the characteristics of the audio that is to be recognized, the better the quality of the custom model for speech recognition. If the audio is of good quality, adding more can improve transcription accuracy. But adding even five to ten hours of good quality audio can make a positive difference.
 -   Add audio resources that are no larger than 100 MB. All audio- and archive-type resources are limited to a maximum size of 100 MB.
+
+    To maximize the amount of audio that you can add with a single resource, consider using an audio format that offers compression. For more information, see [Data limits and compression](/docs/services/speech-to-text/audio-formats.html#limits).
 -   Add audio content that reflects the acoustic channel conditions of the audio that you plan to transcribe. For example, if your application deals with audio that has background noise from a moving vehicle, use the same type of data to build the custom model.
 -   Make sure that the sampling rate of an audio file matches the sampling rate of the base model for the custom acoustic model:
     -   For broadband models, the sampling rate must be at least 16 kHz (16,000 samples per second).
