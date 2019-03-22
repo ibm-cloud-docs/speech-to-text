@@ -64,6 +64,7 @@ Speech to Text
         grammar-examples.md
 
     custom-upgrade.md
+    ha-dr.md
 
     {: topicgroup}
     Service background
