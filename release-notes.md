@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-21"
+lastupdated: "2019-04-03"
 
 subcollection: speech-to-text
 
@@ -33,6 +33,11 @@ The following sections document the new features and changes that were included 
 
 No known limitations at this time.
 
+## 3 April 2019
+{: #April2019}
+
+Custom acoustic models now accept a maximum of 200 hours of audio. The previous maximum limit was 100 hours of audio.
+
 ## 21 March 2019
 {: #March2019d}
 
@@ -47,16 +52,10 @@ For more information about service keys and user roles, see [IAM service API key
 
 The service now supports audio in the A-law (`audio/alaw`) format. For more information, see [audio/alaw format](/docs/services/speech-to-text/audio-formats.html#alaw).
 
-## 11 March 2019
-{: #March2019b}
-
--   For the `max_alternatives` parameter, the service again accepts a value of `0`. If you specify `0`. the service automatically uses the default value, `1`. A change made for the March 4 service update caused a value of `0` to return an error. (The service returns an error if you specify a negative value.)
--   For the `word_alternatives_threshold` parameter, the service again accepts a value of `0` . A change made for the March 4 service update caused a value of `0` to return an error. (The service returns an error if you specify a negative value.)
--   The service now returns all confidence scores with a maximum precision of two decimal places. This includes confidence scores for transcripts, word confidence, word alternatives, keyword results, and speaker labels.
-
 ## Older releases
 {: #older}
 
+-   [11 March 2019](#March2019b)
 -   [4 March 2019](#March2019)
 -   [28 January 2019](#January2019)
 -   [20 December 2018](#December2018b)
@@ -90,6 +89,13 @@ The service now supports audio in the A-law (`audio/alaw`) format. For more info
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 11 March 2019
+{: #March2019b}
+
+-   For the `max_alternatives` parameter, the service again accepts a value of `0`. If you specify `0`. the service automatically uses the default value, `1`. A change made for the March 4 service update caused a value of `0` to return an error. (The service returns an error if you specify a negative value.)
+-   For the `word_alternatives_threshold` parameter, the service again accepts a value of `0` . A change made for the March 4 service update caused a value of `0` to return an error. (The service returns an error if you specify a negative value.)
+-   The service now returns all confidence scores with a maximum precision of two decimal places. This includes confidence scores for transcripts, word confidence, word alternatives, keyword results, and speaker labels.
 
 ### 4 March 2019
 {: #March2019}

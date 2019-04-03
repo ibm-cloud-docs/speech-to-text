@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-04-03"
 
 subcollection: speech-to-text
 
@@ -96,7 +96,7 @@ The improvement in recognition accuracy that you can expect from using a custom 
 
 Follow these guidelines when you add audio resources to a custom acoustic model:
 
--   Add at least 10 minutes and no more than 100 hours of audio to a custom acoustic model. The audio must include speech, not silence.
+-   Add at least 10 minutes and no more than 200 hours of audio to a custom acoustic model. The audio must include speech, not silence.
 
     The quality of the audio makes a difference when you are determining how much to add. The better the model's audio reflects the characteristics of the audio that is to be recognized, the better the quality of the custom model for speech recognition. If the audio is of good quality, adding more can improve transcription accuracy. But adding even five to ten hours of good quality audio can make a positive difference.
 -   Add audio resources that are no larger than 100 MB. All audio- and archive-type resources are limited to a maximum size of 100 MB.
