@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-27"
+lastupdated: "2019-04-03"
 
 subcollection: speech-to-text
 
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on March 15, 2019. The service now supports audio in the A-law (`audio/alaw`) format. For more information, see the [15 March 2019 service update](/docs/services/speech-to-text/release-notes.html#March2019c) in the release notes*.
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on April 3, 2019. The service now allows you to add a maximum of 200 hours of audio to a custom acoustic model. For more information, see the [3 April 2019 service update](/docs/services/speech-to-text/release-notes.html#April2019) in the release notes*.
 
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}

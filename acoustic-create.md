@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-04-03"
 
 subcollection: speech-to-text
 
@@ -146,7 +146,7 @@ The method also accepts an optional `allow_overwrite` query parameter to overwri
 
 The method is asynchronous. It can take several seconds to complete depending on the duration of the audio. For an archive file, the length of the operation depends on the duration of the audio files. For more information about checking the status of a request to add an audio resource, see [Monitoring the add audio request](#monitorAudio).
 
-You can add any number of audio resources to a custom model by calling the method once for each audio or archive file. The addition of one audio resource must be fully complete before you can add another. You must add a minimum of 10 minutes and a maximum of 100 hours of audio that includes speech, not silence, to a custom model before you can train it. No audio- or archive-type resource can be larger than 100 MB. For more information, see [Guidelines for adding audio resources](/docs/services/speech-to-text/acoustic-resource.html#audioGuidelines).
+You can add any number of audio resources to a custom model by calling the method once for each audio or archive file. The addition of one audio resource must be fully complete before you can add another. You must add a minimum of 10 minutes and a maximum of 200 hours of audio that includes speech, not silence, to a custom model before you can train it. No audio- or archive-type resource can be larger than 100 MB. For more information, see [Guidelines for adding audio resources](/docs/services/speech-to-text/acoustic-resource.html#audioGuidelines).
 
 ### Monitoring the add audio request
 {: #monitorAudio}
@@ -271,7 +271,7 @@ Use a loop to check the status of the training once a minute until the model bec
 Training of a custom acoustic model fails to start if the service is handling another request for the custom model. A conflicting request could be another training request or a request to add audio resources to the model. Training can also fail to start for the following reasons:
 
 -   The custom model contains less than 10 minutes of audio data.
--   The custom model contains more than 100 hours of audio data.
+-   The custom model contains more than 200 hours of audio data.
 -   One or more of the custom model's audio resources is invalid.
 -   You passed an incompatible custom language model with the `custom_language_model_id` query parameter. Both custom models must be based on the same version of the same base model.
 
