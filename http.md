@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-15"
+lastupdated: "2019-04-08"
 
 subcollection: speech-to-text
 
@@ -36,7 +36,7 @@ Submit a maximum of 100 MB and a minimum of 100 bytes of audio data with a singl
 ## Making a basic HTTP request
 {: #HTTP-basic}
 
-The HTTP `POST /v1/recognize` method provides a simple means of transcribing audio. You pass all audio via the body of the request and specify the parameters as request headers and query parameters. If your data consists of multiple audio files, the recommended means of submitting the audio is by sending multiple requests, one for each audio file. You can submit the requests in a loop, optionally with parallelism to improve performance.
+The HTTP `POST /v1/recognize` method provides a simple means of transcribing audio. You pass all audio via the body of the request and specify the parameters as request headers and query parameters.
 
 The following `curl` example sends a recognition request for a single FLAC file named `audio-file.flac`. The request omits the `model` query parameter to use the default language model, `en-US_BroadbandModel`.
 
@@ -70,13 +70,16 @@ The example returns the following transcript for the audio:
 
 The `POST /v1/recognize` method returns results only after it processes all of the audio for a request. The method is appropriate for batch processing but not for live speech recognition. Use the WebSocket interface to transcribe live audio.
 
+If your data consists of multiple audio files, the recommended means of submitting the audio is by sending multiple requests, one for each audio file. You can submit the requests in a loop, optionally with parallelism to improve performance. You can also use multipart speech recognition to pass multiple audio files with a single request.
+
 ## Making a multipart HTTP request
 {: #HTTP-multi}
 
 The `POST /v1/recognize` method also supports multipart requests. You pass all audio data as multipart form data. You specify some parameters as request headers and query parameters, but you pass JSON metadata as form data to control most aspects of the transcription.
 
-Multipart speech recognition is intended for two use cases:
+Multipart speech recognition is intended for the following use cases:
 
+-   To pass multiple audio files with a single speech recognition request.
 -   With browsers for which JavaScript is disabled. Multipart requests based on form data do not require the use of JavaScript.
 -   When the parameters of a recognition request are greater than 8 KB, which is the limit imposed by most HTTP servers and proxies. For example, spotting a very large number of keywords can increase the size of a request beyond this limit. Multipart requests use form data to avoid this constraint.
 
