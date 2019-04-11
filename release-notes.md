@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-04-11"
 
 subcollection: speech-to-text
 
@@ -547,7 +547,7 @@ The asynchronous HTTP interface is now generally available. Prior to this date, 
 -   The service now offers a beta speaker labels feature for narrowband audio in US English, Spanish, or Japanese. The feature identifies which words were spoken by which speakers in a multi-person exchange. The sessionless, session-based, asynchronous, and WebSocket recognition methods each include a `speaker_labels` parameter that accepts a boolean value to indicate whether speaker labels are to be included in the response. For more information about the feature, see [Speaker labels](/docs/services/speech-to-text/output.html#speaker_labels).
 -   The beta language model customization interface is now supported for Japanese in addition to US English. All methods of the interface support Japanese. For more information, see the following sections:
     -   For more information, see [Creating a custom language model](/docs/services/speech-to-text/language-create.html) and [Using a custom language model](/docs/services/speech-to-text/language-use.html).
-    -   For general and Japanese-specific considerations for adding a corpus text file, see [Preparing a corpus file](/docs/services/speech-to-text/language-resource.html#prepareCorpus) and [What happens when you add a corpus file](/docs/services/speech-to-text/language-resource.html#parseCorpus).
+    -   For general and Japanese-specific considerations for adding a corpus text file, see [Preparing a corpus file](/docs/services/speech-to-text/language-resource.html#prepareCorpus) and [What happens when you add a corpus file?](/docs/services/speech-to-text/language-resource.html#parseCorpus)
     -   For Japanese-specific considerations when specifying the `sounds_like` field for a custom word, see [Guidelines for Japanese](/docs/services/speech-to-text/language-resource.html#wordLanguages-jaJP).
     -   For more information about all methods of the customization interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
 -   The language model customization interface now includes a `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` method that lists information about a specified corpus. The method is useful for monitoring the status of a request to add a corpus to a custom model. For more information, see [Listing corpora for a custom language model](/docs/services/speech-to-text/language-corpora.html#listCorpora).

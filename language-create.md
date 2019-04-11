@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-04-11"
 
 subcollection: speech-to-text
 
@@ -142,7 +142,7 @@ Once you create your custom language model, the next step is to add data (domain
 A corpus is a plain text file that ideally contains sample sentences from your domain. The service parses a corpus file's contents and extracts any words that are not in its base vocabulary. Such words are referred to out-of-vocabulary (OOV) words.
 
 -   For more information about using corpora, see [Working with corpora](/docs/services/speech-to-text/language-resource.html#workingCorpora).
--   For more information about how the service adds corpora to a model, see [What happens when you add a corpus file](/docs/services/speech-to-text/language-resource.html#parseCorpus).
+-   For more information about how the service adds corpora to a model, see [What happens when I add a corpus file?](/docs/services/speech-to-text/language-resource.html#parseCorpus)
 
 By providing sentences that include new words, corpora allow the service to learn the words in context. You can then augment or modify the model's words individually. Training a model only on individual words as opposed to words added from corpora is more time-consuming and can produce less effective results.
 {: tip}
@@ -156,6 +156,9 @@ You use the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` m
     -   Do not use the name of a corpus that has already been added to the custom model.
     -   Do not use the name `user`, which is reserved by the service to denote custom words that are added or modified by the user.
 -   Pass the corpus text file as the body of the request.
+
+You can add a maximum of 90 thousand OOV words and 10 million total words from all sources combined. This includes words from corpora and grammars, and words that you add directly. For more information, see [How much data do I need?](/docs/services/speech-to-text/language-resource.html#wordsResourceAmount)
+{: note}
 
 The following example adds the corpus text file `healthcare.txt` to the custom model with the specified ID. The example names the corpus `healthcare`.
 
@@ -213,7 +216,7 @@ Although adding corpora is the recommended means of adding words to a custom lan
 If you have only one or a few words to add to a model, using corpora to add the words might not be practical or even viable. The simplest approach is to add a word with only its spelling. But you can also provide multiple pronunciations for the word and indicate how the word is to be displayed.
 
 -   For more information about adding words directly, see [Working with custom words](/docs/services/speech-to-text/language-resource.html#workingWords).
--   For more information about how the service adds custom words to a model, see [What happens when you add a custom word](/docs/services/speech-to-text/language-resource.html#parseWord).
+-   For more information about how the service adds custom words to a model, see [What happens when I add or modify a custom word?](/docs/services/speech-to-text/language-resource.html#parseWord)
 
 You can use the following methods to add words to a custom model:
 
