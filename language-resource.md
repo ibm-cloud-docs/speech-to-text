@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-11"
+lastupdated: "2019-04-12"
 
 subcollection: speech-to-text
 
@@ -140,18 +140,18 @@ The following descriptions apply to US and UK English, French, German, Spanish, 
     -   *For Spanish,* `500` becomes `quinientos`, and `0,15` becomes `cero coma quince`.
     -   *For Brazilian Portuguese,* `500` becomes `quinhentos`, and `0,15` becomes `zero ponto quinze`.
 -   Converts tokens that include certain symbols to meaningful string representations, for example:
-    -   Converts a `$` (dollar sign) followed by a number:
+    -   Converts a `$` (dollar sign) and a number:
         -   *For English,* `$100` becomes `one hundred dollars`.
         -   *For French,* `$100` becomes `cent dollar`.
-        -   *For German,* `$100` becomes `einhundert dollar`.
-        -   *For Spanish,* `$100` becomes <code>cien d&oacute;lares</code> (or `cien pesos` if the dialect is `es-LA`).
-        -   *For Brazilian Portuguese,* `$100` becomes <code>cem d&oacute;lares</code>.
-    -   Converts a <code>&euro;</code> (euro sign) followed by a number:
+        -   *For German,* `$100` and `100$` become `einhundert dollar`.
+        -   *For Spanish,* `$100`  and `100$` become <code>cien d&oacute;lares</code> (or `cien pesos` if the dialect is `es-LA`).
+        -   *For Brazilian Portuguese,* `$100` and `100$` become <code>cem d&oacute;lares</code>.
+    -   Converts a <code>&euro;</code> (euro sign) and a number:
         -   *For English,* <code>&euro;100</code> becomes `one hundred euros`.
         -   *For French,* <code>&euro;100</code> becomes `cent euros`.
-        -   *For German,* <code>&euro;100</code> becomes `einhundert euro`.
-        -   *For Spanish,* <code>&euro;100</code> becomes `cien euros`.
-        -   *For Brazilian Portuguese,* <code>&euro;100</code> becomes `cem euros`.
+        -   *For German,* <code>&euro;100</code> and <code>100&euro;</code> become `einhundert euro`.
+        -   *For Spanish,* <code>&euro;100</code> and <code>100&euro;</code> become `cien euros`.
+        -   *For Brazilian Portuguese,* <code>&euro;100</code> and <code>100&euro;</code> become `cem euros`.
     -   Converts a `%` (percent sign) preceded by a number:
         -   *For English,* `100%` becomes `one hundred percent`.
         -   *For French,* `100%` becomes `cent pourcent`.
