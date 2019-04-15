@@ -65,6 +65,7 @@ Speech to Text
 
     custom-upgrade.md
     ha-dr.md
+    /watson/watson-migrate
 
     {: topicgroup}
     Service background
