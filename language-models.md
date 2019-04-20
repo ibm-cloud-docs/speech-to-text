@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-04-20"
 
 subcollection: speech-to-text
 
@@ -55,8 +55,8 @@ Both methods return the following information about a custom model:
 
 The method also returns a `status` field that indicates the state of the custom model:
 
--   `pending` indicates that the model was created. It is waiting either for training data to be added or for the service to finish analyzing data that was added.
--   `ready` indicates that the model contains data and is ready to be trained.
+-   `pending` indicates that the model was created. It is waiting either for valid training data (corpora, grammars, or words) to be added or for the service to finish analyzing data that was added.
+-   `ready` indicates that the model contains valid data and is ready to be trained. If the model contains a mix of valid and invalid resources, training of the model fails unless you set the `strict` query parameter to `false`. For more information, see [Training failures](/docs/services/speech-to-text/language-create.html#failedTraining-language).
 -   `training` indicates that the model is being trained on data.
 -   `available` indicates that the model is trained and ready to use with a recognition request.
 -   `upgrading` indicates that the model is being upgraded.

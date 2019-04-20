@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-11"
+lastupdated: "2019-04-20"
 
 subcollection: speech-to-text
 
@@ -33,6 +33,14 @@ The following sections document the new features and changes that were included 
 
 No known limitations at this time.
 
+## 19 April 2019
+{: #April2019b}
+
+-   The training methods of the customization interface now include a `strict` query parameter that indicates whether training is to proceed if a custom model contains a mix of valid and invalid resources. By default, training fails if a custom model contains one or more invalid resources. Set the parameter to `false` to allow training to proceed as long as the model contains at least one valid resource. The service excludes invalid resources from the training.
+    -   For more information about using the `strict` parameter with the `POST /v1/customizations/{customization_id}/train` method, see [Train the custom language model](/docs/services/speech-to-text/language-create.html#trainModel-language) and [Training failures](/docs/services/speech-to-text/language-create.html#failedTraining-language).
+    -   For more information about using the `strict` parameter with the `POST /v1/acoustic_customizations/{customization_id}/train` method, see [Train the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#trainModel-acoustic) and [Training failures](/docs/services/speech-to-text/acoustic-create.html#failedTraining-acoustic).
+-   You can now add a maximum of 90 thousand out-of-vocabulary (OOV) words to the words resource of a custom language model. The previous maximum was 30 thousand OOV words. This figure includes OOV words from all sources (corpora, grammars, and individual custom words that you add directly). You can add a maximum of 10 million total words to a custom model from all sources. For more information, see [How much data do I need?](/docs/services/speech-to-text/language-resource.html#wordsResourceAmount).
+
 ## 3 April 2019
 {: #April2019}
 
@@ -47,14 +55,10 @@ This change does not affect API access for users or applications with existing s
 
 For more information about service keys and user roles, see [IAM service API keys](/docs/services/watson?topic=watson-api-key-bp#api-key-bp).
 
-## 15 March 2019
-{: #March2019c}
-
-The service now supports audio in the A-law (`audio/alaw`) format. For more information, see [audio/alaw format](/docs/services/speech-to-text/audio-formats.html#alaw).
-
 ## Older releases
 {: #older}
 
+-   [15 March 2019](#March2019c)
 -   [11 March 2019](#March2019b)
 -   [4 March 2019](#March2019)
 -   [28 January 2019](#January2019)
@@ -90,12 +94,17 @@ The service now supports audio in the A-law (`audio/alaw`) format. For more info
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
 
+### 15 March 2019
+{: #March2019c}
+
+The service now supports audio in the A-law (`audio/alaw`) format. For more information, see [audio/alaw format](/docs/services/speech-to-text/audio-formats.html#alaw).
+
 ### 11 March 2019
 {: #March2019b}
 
 -   For the `max_alternatives` parameter, the service again accepts a value of `0`. If you specify `0`. the service automatically uses the default value, `1`. A change made for the March 4 service update caused a value of `0` to return an error. (The service returns an error if you specify a negative value.)
 -   For the `word_alternatives_threshold` parameter, the service again accepts a value of `0` . A change made for the March 4 service update caused a value of `0` to return an error. (The service returns an error if you specify a negative value.)
--   The service now returns all confidence scores with a maximum precision of two decimal places. This includes confidence scores for transcripts, word confidence, word alternatives, keyword results, and speaker labels.
+-   The service now returns all confidence scores with a maximum precision of two decimal places. This change includes confidence scores for transcripts, word confidence, word alternatives, keyword results, and speaker labels.
 
 ### 4 March 2019
 {: #March2019}

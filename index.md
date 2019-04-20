@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-04-20"
 
 subcollection: speech-to-text
 
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on April 3, 2019. The service now allows you to add a maximum of 200 hours of audio to a custom acoustic model. For more information, see the [3 April 2019 service update](/docs/services/speech-to-text/release-notes.html#April2019) in the release notes*.
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on April 19, 2019. The training methods of the customization interface now include a `strict` query parameter that you can use to train a custom model that has a mix of valid and invalid resources. Also, you can now add a maximum of 90 thousand out-of-vocabulary (OOV) words to a custom language model. For more information, see the [19 April 2019 service update](/docs/services/speech-to-text/release-notes.html#April2019b) in the release notes*.
 
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}
@@ -90,7 +90,7 @@ The service offers models for the following languages: Brazilian Portuguese, Fre
 ## Pricing
 {: #pricing-index}
 
-For more information about the pricing plans for the service, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.Bluemix_short}} Catalog ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/catalog/services/speech-to-text){: new_window}. For answers to questions related to pricing and examples of monthly usage costs, see the [Pricing FAQs](/docs/services/speech-to-text/faq-pricing.html).
+For more information about the pricing plans for the service, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/catalog/services/speech-to-text){: new_window}. For answers to questions related to pricing and examples of monthly usage costs, see the [Pricing FAQs](/docs/services/speech-to-text/faq-pricing.html).
 
 ## Try out the service
 {: #tryOut}
