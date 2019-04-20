@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-04-20"
 
 subcollection: speech-to-text
 
@@ -54,8 +54,8 @@ Both methods return the following information about a custom acoustic model:
 
 The methods also return a `status` field that indicates the state of the custom model:
 
--   `pending` indicates that the model was created. It is waiting either for training data to be added or for the service to finish analyzing data that was added.
--   `ready` indicates that the model contains audio data and is ready to be trained.
+-   `pending` indicates that the model was created. It is waiting either for valid training data (audio resources) to be added or for the service to finish analyzing data that was added.
+-   `ready` indicates that the model contains valid audio data and is ready to be trained. If the model contains a mix of valid and invalid audio resources, training of the model fails unless you set the `strict` query parameter to `false`. For more information, see [Training failures](/docs/services/speech-to-text/acoustic-create.html#failedTraining-acoustic).
 -   `training` indicates that the model is being trained on audio data.
 -   `available` indicates that the model is trained and ready to use with recognition requests.
 -   `upgrading` indicates that the model is being upgraded.
