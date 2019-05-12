@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-05-12"
 
 subcollection: speech-to-text
 
@@ -28,9 +28,9 @@ subcollection: speech-to-text
 Once you create and train your custom language model, you can use it in speech recognition requests. You use the `language_customization_id` query parameter to specify the custom language model for a request, as shown in the following examples. You can also tell the service how much weight to give to words from the custom model. For more information, see [Using customization weight](#weight). You must issue the request with service credentials for the instance of the service that owns the model.
 {: shortdesc}
 
-You can create multiple custom language models for the same or different domains. However, you can specify only one custom language model at a time with the `language_customization_id` parameter. For examples that use a grammar with a custom language model, see [Using a grammar for speech recognition](/docs/services/speech-to-text/grammar-use.html).
+You can create multiple custom language models for the same or different domains. However, you can specify only one custom language model at a time with the `language_customization_id` parameter. For examples that use a grammar with a custom language model, see [Using a grammar for speech recognition](/docs/services/speech-to-text?topic=speech-to-text-grammarUse).
 
--   For the [WebSocket interface](/docs/services/speech-to-text/websockets.html), use the `/v1/recognize` method. The specified custom model is used for all requests that are sent over the connection.
+-   For the [WebSocket interface](/docs/services/speech-to-text?topic=speech-to-text-websockets), use the `/v1/recognize` method. The specified custom model is used for all requests that are sent over the connection.
 
     ```javascript
     var token = {authentication-token};
@@ -41,7 +41,7 @@ You can create multiple custom language models for the same or different domains
     var websocket = new WebSocket(wsURI);
     ```
     {: codeblock}
--   For the [synchronous HTTP interface](/docs/services/speech-to-text/http.html), use the `POST /v1/recognize` method. The specified custom model is used for that request.
+-   For the [synchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-http), use the `POST /v1/recognize` method. The specified custom model is used for that request.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -50,7 +50,7 @@ You can create multiple custom language models for the same or different domains
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}"
     ```
     {: pre}
--   For the [asynchronous HTTP interface](/docs/services/speech-to-text/async.html), use the `POST /v1/recognitions` method. The specified custom model is used for that request.
+-   For the [asynchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-async), use the `POST /v1/recognitions` method. The specified custom model is used for that request.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -100,6 +100,6 @@ You specify a customization weight by using the `customization_weight` parameter
 
 If you apply a custom language model to speech recognition but find that the service does not appear to be using words that the model contains, check for the following possible problems:
 
--   Make sure that you are correctly passing the customization ID to the recognition request as shown in [Using a custom language model](#languageUse).
--   Make sure that the status of the custom model is `available`, meaning that it is fully trained and ready to use. For more information, see [Listing custom language models](/docs/services/speech-to-text/language-models.html#listModels-language).
--   Check the pronunciations that were generated for the new words to make sure that they are correct. For more information, see [Validating a words resource](/docs/services/speech-to-text/language-resource.html#validateModel).
+-   Make sure that you are correctly passing the customization ID to the recognition request as shown in the previous examples.
+-   Make sure that the status of the custom model is `available`, meaning that it is fully trained and ready to use. For more information, see [Listing custom language models](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
+-   Check the pronunciations that were generated for the new words to make sure that they are correct. For more information, see [Validating a words resource](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).

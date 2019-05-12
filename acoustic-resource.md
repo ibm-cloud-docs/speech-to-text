@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-05-12"
 
 subcollection: speech-to-text
 
@@ -40,17 +40,17 @@ You use the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_na
     -   Do not include spaces, `/` (slashes), or `\` (backslashes) in the name.
     -   Do not use the name of an audio resource that has already been added to the custom model.
 
-When you update a model's audio resources, you must train the model for the changes to take effect during transcription. For more information, see [Train the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#trainModel-acoustic).
+When you update a model's audio resources, you must train the model for the changes to take effect during transcription. For more information, see [Train the custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic#trainModel-acoustic).
 
 ## Adding an audio file
 {: #addAudioType}
 
-To add an individual audio file to a custom acoustic model, you specify the format (MIME type) of the audio with the `Content-Type` header. You can add audio with any format that is supported for use with recognition requests. Include the `rate`, `channels`, and `endianness` parameters with the specification of formats that require them. For more information about the supported audio formats, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
+To add an individual audio file to a custom acoustic model, you specify the format (MIME type) of the audio with the `Content-Type` header. You can add audio with any format that is supported for use with recognition requests. Include the `rate`, `channels`, and `endianness` parameters with the specification of formats that require them. For more information about the supported audio formats, see [Audio formats](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
 
 The `application/octet-stream` specification for an audio format is not supported for audio resources.
 {: note}
 
-The following example from [Add audio to the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#addAudio) adds an `audio/wav` file:
+The following example from [Add audio to the custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio) adds an `audio/wav` file:
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -78,7 +78,7 @@ Do not use the `Contained-Content-Type` header when adding an audio-type resourc
 
 The name of an audio file that is embedded within an archive-type resource must meet the same naming restrictions as the `audio_name` parameter. In addition, do not use the name of an audio file that has already been added to the custom model as part of an archive-type resource.
 
-The following example from [Add audio to the custom acoustic model](/docs/services/speech-to-text/acoustic-create.html#addAudio) adds an `application/zip` file that contains audio files in `audio/l16` format that are sampled at 16 kHz:
+The following example from [Add audio to the custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio) adds an `application/zip` file that contains audio files in `audio/l16` format that are sampled at 16 kHz:
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -101,7 +101,7 @@ Follow these guidelines when you add audio resources to a custom acoustic model:
     The quality of the audio makes a difference when you are determining how much to add. The better the model's audio reflects the characteristics of the audio that is to be recognized, the better the quality of the custom model for speech recognition. If the audio is of good quality, adding more can improve transcription accuracy. But adding even five to ten hours of good quality audio can make a positive difference.
 -   Add audio resources that are no larger than 100 MB. All audio- and archive-type resources are limited to a maximum size of 100 MB.
 
-    To maximize the amount of audio that you can add with a single resource, consider using an audio format that offers compression. For more information, see [Data limits and compression](/docs/services/speech-to-text/audio-formats.html#limits).
+    To maximize the amount of audio that you can add with a single resource, consider using an audio format that offers compression. For more information, see [Data limits and compression](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#limits).
 -   Add audio content that reflects the acoustic channel conditions of the audio that you plan to transcribe. For example, if your application deals with audio that has background noise from a moving vehicle, use the same type of data to build the custom model.
 -   Make sure that the sampling rate of an audio file matches the sampling rate of the base model for the custom acoustic model:
     -   For broadband models, the sampling rate must be at least 16 kHz (16,000 samples per second).
@@ -112,4 +112,4 @@ Follow these guidelines when you add audio resources to a custom acoustic model:
     -   If your audio is less than an hour long, create a custom language model based on transcriptions of the audio to achieve the best results.
     -   If your audio is domain-specific and contains unique words that are not found in the service's base vocabulary, use language model customization to expand the service's base vocabulary. Acoustic model customization alone cannot produce those words during transcription.
 
-    For more information, see [Using custom acoustic and custom language models together](/docs/services/speech-to-text/acoustic-both.html).
+    For more information, see [Using custom acoustic and custom language models together](/docs/services/speech-to-text?topic=speech-to-text-useBoth).

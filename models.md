@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-05-12"
 
 subcollection: speech-to-text
 
@@ -36,9 +36,9 @@ For most languages, the service supports both broadband and narrowband models:
 -   *Broadband models* are for audio that is sampled at greater than or equal to 16 kHz. Use broadband models for responsive, real-time applications, for example, for live-speech applications.
 -   *Narrowband models* are for audio that is sampled at 8 kHz. Use narrowband models for offline decoding of telephone speech, which is the typical use for this sampling rate.
 
-Choosing the correct model for your application is important. Use the model that matches the sampling rate (and language) of your audio. The service automatically adjusts the sampling rate of your audio to match the model that you specify. For more information, see [Sampling rate](/docs/services/speech-to-text/audio-formats.html#samplingRate).
+Choosing the correct model for your application is important. Use the model that matches the sampling rate (and language) of your audio. The service automatically adjusts the sampling rate of your audio to match the model that you specify. For more information, see [Sampling rate](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#samplingRate).
 
-To achieve the best recognition accuracy, you also need to consider the frequency content of your audio. For more information, see [Audio frequency](/docs/services/speech-to-text/audio-formats.html#frequency).
+To achieve the best recognition accuracy, you also need to consider the frequency content of your audio. For more information, see [Audio frequency](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#frequency).
 {: tip}
 
 Table 1 lists the supported models for each language. If you omit the `model` parameter from a request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
@@ -110,8 +110,8 @@ The US English short-form model, `en-US_ShortForm_NarrowbandModel`, can improve 
 
 As with all models, noisy environments can adversely impact the results. For example, background acoustic noise from airports, moving vehicles, conference rooms, and multiple speakers can reduce transcription accuracy.  Audio from speaker phones can also reduce accuracy due to the echo common to such devices. Using a custom acoustic model with the short-form model can counteract such effects.
 
--   For more information about language model and acoustic model customization, see [The customization interface](/docs/services/speech-to-text/custom.html).
--   For more information about grammars, see [Using grammars with custom language models](/docs/services/speech-to-text/grammar.html).
+-   For more information about language model and acoustic model customization, see [The customization interface](/docs/services/speech-to-text?topic=speech-to-text-customization).
+-   For more information about grammars, see [Using grammars with custom language models](/docs/services/speech-to-text?topic=speech-to-text-grammars).
 
 ### Language model example
 {: #modelsExample}

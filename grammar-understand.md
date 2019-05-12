@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-05-12"
 
 subcollection: speech-to-text
 
@@ -28,7 +28,7 @@ subcollection: speech-to-text
 The following examples introduce the {{site.data.keyword.speechtotextfull}} service's support for grammars. The examples create two simple ABNF grammars and show possible results when they are used for speech recognition. The examples illustrate the importance of examining the confidence score that the service includes with a transcript.
 {: shortdesc}
 
-The examples provide only the results of speech recognition requests. For examples that show how to pass a grammar for speech recognition, see [Using a grammar for speech recognition](/docs/services/speech-to-text/grammar-use.html). The examples are also very basic. For examples of more complex grammars, see [Example grammars](/docs/services/speech-to-text/grammar-examples.html).
+The examples provide only the results of speech recognition requests. For examples that show how to pass a grammar for speech recognition, see [Using a grammar for speech recognition](/docs/services/speech-to-text?topic=speech-to-text-grammarUse). The examples are also very basic. For examples of more complex grammars, see [Example grammars](/docs/services/speech-to-text?topic=speech-to-text-grammarExamples).
 
 ## Single-phrase matches: The yesno grammar
 {: #yesnoGrammar}

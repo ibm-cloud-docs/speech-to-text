@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-15"
+lastupdated: "2019-05-12"
 
 subcollection: speech-to-text
 
@@ -82,7 +82,7 @@ A WebSocket client calls this method with the following query parameters to esta
       You pass an IAM access token instead of passing an API key with
       the call. You must establish the connection before the access
       token expires. For information about obtaining an access token, see
-      [Authenticating with IAM tokens](/docs/services/watson/getting-started-iam.html).<br/><br/>
+      [Authenticating with IAM tokens](/docs/services/watson?topic=watson-iam).<br/><br/>
       You pass an access token only to establish an authenticated connection.
       Once you establish a connection, you can keep it alive indefinitely.
       You remain authenticated for as long as you keep the connection open.
@@ -103,7 +103,7 @@ A WebSocket client calls this method with the following query parameters to esta
       based on Cloud Foundry service credentials, which use a `username`
       and `password` for HTTP basic authentication. For information about
       obtaining a {{site.data.keyword.watson}} token, see
-      [{{site.data.keyword.watson}} tokens](/docs/services/watson/getting-started-tokens.html).<br/><br/>
+      [{{site.data.keyword.watson}} tokens](/docs/services/watson?topic=watson-gs-tokens-watson-tokens).<br/><br/>
       You pass a {{site.data.keyword.watson}} token only to establish an
       authenticated connection. Once you establish a connection, you can
       keep it alive indefinitely. You remain authenticated for as long as
@@ -119,7 +119,7 @@ A WebSocket client calls this method with the following query parameters to esta
       If you do not specify a model, the service uses the
       <code>en-US_BroadbandModel</code> model by default. For more
       information, see
-      [Languages and models](/docs/services/speech-to-text/models.html).
+      [Languages and models](/docs/services/speech-to-text?topic=speech-to-text-models).
     </td>
   </tr>
   <tr>
@@ -132,7 +132,7 @@ A WebSocket client calls this method with the following query parameters to esta
       over the connection. The base model of the custom language model
       must match the value of the <code>model</code> parameter. By
       default, no custom language model is used. For more information, see
-      [The customization interface](/docs/services/speech-to-text/custom.html).
+      [The customization interface](/docs/services/speech-to-text?topic=speech-to-text-customization).
     </td>
   </tr>
   <tr>
@@ -145,7 +145,7 @@ A WebSocket client calls this method with the following query parameters to esta
       over the connection. The base model of the custom acoustic model
       must match the value of the <code>model</code> parameter. By
       default, no custom acoustic model is used. For more information, see
-      [The customization interface](/docs/services/speech-to-text/custom.html).
+      [The customization interface](/docs/services/speech-to-text?topic=speech-to-text-customization).
     </td>
   </tr>
   <tr>
@@ -158,7 +158,7 @@ A WebSocket client calls this method with the following query parameters to esta
       primarily for use with custom models that are upgraded for a new base
       model. The default value depends on whether the parameter is used
       with or without a custom model. For more information, see
-      [Base model version](/docs/services/speech-to-text/input.html#version).
+      [Base model version](/docs/services/speech-to-text?topic=speech-to-text-input#version).
     </td>
   </tr>
   <tr>
@@ -170,7 +170,7 @@ A WebSocket client calls this method with the following query parameters to esta
       over the connection. To prevent IBM from accessing your data for general
       service improvements, specify <code>true</code> for the parameter. For
       more information, see
-      [Request logging](/docs/services/speech-to-text/input.html#logging).
+      [Request logging](/docs/services/speech-to-text?topic=speech-to-text-input#logging).
     </td>
   </tr>
   <tr>
@@ -185,7 +185,7 @@ A WebSocket client calls this method with the following query parameters to esta
       URL-encode the argument to the parameter, for example,
       `customer_id%3dmy_customer_ID`. By default, no customer ID is associated
       with the data. For more information, see
-      [Information security](/docs/services/speech-to-text/information-security.html).
+      [Information security](/docs/services/speech-to-text?topic=speech-to-text-information-security).
     </td>
   </tr>
 </table>
@@ -243,12 +243,12 @@ To initiate a recognition request, the client sends a JSON text message to the s
       Identifies the format (MIME type) of the audio data for the request.
       The parameter is required for the `audio/alaw`, `audio/basic`,
       `audio/l16`, and `audio/mulaw` formats. For more information, see
-      [Audio formats](/docs/services/speech-to-text/audio-formats.html).
+      [Audio formats](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
     </td>
   </tr>
 </table>
 
-The message can also include optional parameters to specify other aspects of how the request is to be processed and the information that is to be returned. For information about all input and output features, see the [Parameter summary](/docs/services/speech-to-text/summary.html). You can specify a language model, custom language model, and custom acoustic model only as query parameters of the WebSocket URL.
+The message can also include optional parameters to specify other aspects of how the request is to be processed and the information that is to be returned. For information about all input and output features, see the [Parameter summary](/docs/services/speech-to-text?topic=speech-to-text-summary). You can specify a language model, custom language model, and custom acoustic model only as query parameters of the WebSocket URL.
 
 The following snippet of JavaScript code sends initialization parameters for the recognition request over the WebSocket connection. The calls are included in the client's `onOpen` function to ensure that they are sent only after the connection is established.
 
@@ -279,7 +279,7 @@ If the client specifies an invalid query parameter or JSON field for the recogni
 
 After it sends the initial `start` message, the client can begin sending audio data to the service. The client does not need to wait for the service to respond to the `start` message with the `listening` message. The service returns the results of the transcription asynchronously in the same format as it returns results for the HTTP interfaces.
 
-The client must send the audio as binary data. The client can send a maximum of 100 MB of audio data with a single utterance (per `send` request). It must send at least 100 bytes of audio for any request. The client can send multiple utterances over a single WebSocket connection. For information about using compression to maximize the amount of audio that you can pass to the service with a request, see [Audio formats](/docs/services/speech-to-text/audio-formats.html).
+The client must send the audio as binary data. The client can send a maximum of 100 MB of audio data with a single utterance (per `send` request). It must send at least 100 bytes of audio for any request. The client can send multiple utterances over a single WebSocket connection. For information about using compression to maximize the amount of audio that you can pass to the service with a request, see [Audio formats](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
 
 The WebSocket interface imposes a maximum frame size of 4 MB. The client can set the maximum frame size to less than 4 MB. If it is not practical to set the frame size, the client can set the maximum message size to less than 4 MB and send the audio data as a sequence of messages.
 
@@ -350,7 +350,7 @@ The service terminates the session and closes the connection if an inactivity or
 -   An *inactivity timeout* occurs if audio is being sent by the client but the service detects no speech. The inactivity timeout is 30 seconds by default. You can use the `inactivity_timeout` parameter to specify a different value, including `-1` to set the timeout to infinity.
 -   A *session timeout* occurs if the service receives no data from the client or sends no interim results for 30 seconds. You cannot change the length of this timeout, but you can extend the session by sending the service any audio data, including just silence, before the timeout occurs. You must also set the `inactivity_timeout` to `-1`. You are charged for the duration of any data that you send to the service, including the silence that you send to extend a session.
 
-For more information, see [Timeouts](/docs/services/speech-to-text/input.html#timeouts).
+For more information, see [Timeouts](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts).
 
 ## Close a connection
 {: #WSclose}

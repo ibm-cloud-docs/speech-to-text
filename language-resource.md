@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-20"
+lastupdated: "2019-05-12"
 
 subcollection: speech-to-text
 
@@ -29,7 +29,7 @@ You can populate a custom language model with words by adding corpora or grammar
 {: shortdesc}
 
 -   **Corpora:** The recommended means of populating a custom language model with words is to add one or more corpora to the model. When you add a corpus, the service analyzes the file and automatically adds any new words that it finds to the custom model. Adding a corpus to a custom model allows the service to extract domain-specific words in context, which helps ensure better transcription results. For more information, see [Working with Corpora](#workingCorpora).
--   **Grammars:** You can add grammars to a custom model to limit speech recognition to the words or phrases that are recognized by a grammar. When you add a grammar to a model, the service automatically adds any new words that it finds to the model, just as it does with corpora. For more information, see [Using grammars with custom language models](/docs/services/speech-to-text/grammar.html).
+-   **Grammars:** You can add grammars to a custom model to limit speech recognition to the words or phrases that are recognized by a grammar. When you add a grammar to a model, the service automatically adds any new words that it finds to the model, just as it does with corpora. For more information, see [Using grammars with custom language models](/docs/services/speech-to-text?topic=speech-to-text-grammars).
 -   **Individual words:** You can also add individual custom words to a model directly. The service adds the words to the model just as it does words that it discovers from corpora or grammars. When you add a word directly, you can specify multiple pronunciations and indicate how the word is to be displayed. You can also update existing words to modify or augment the definitions that were extracted from corpora or grammars. For more information, see [Working with custom words](#workingWords).
 
 Regardless of how you add them, the service stores all words that you add to a custom language model in the model's words resource.
@@ -50,7 +50,7 @@ The words resource contains the following information about each OOV word. The s
     You can use the `display_as` field to specify a different spelling for the word. For more information, see [Using the display_as field](#displayAs).
 -   `source`: How the word was added to the words resource. If the service extracted the word from a corpus or grammar, the field lists the name of that resource. Because the service can encounter the same word in multiple resources, the field can list multiple corpus or grammar names. The field includes the string `user` if you add or modify the word directly.
 
-When you update a model's words resource in any way, you must train the model for the changes to take effect during transcription. For more information, see [Train the custom language model](/docs/services/speech-to-text/language-create.html#trainModel-language).
+When you update a model's words resource in any way, you must train the model for the changes to take effect during transcription. For more information, see [Train the custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
 
 ## How much data do I need?
 {: #wordsResourceAmount}
@@ -352,7 +352,7 @@ If you use the `smart_formatting` or `redaction` parameters with a recognition r
 
 For instance, suppose that you add the custom word `one` with a `display_as` field of `one`. Smart formatting changes the word `one` to the number `1`, and the display-as value is not applied. To work around this issue, you could add a custom word for the number `1` and apply the same `display_as` field to that word.
 
-For more information about working with these features, see [Smart formatting](/docs/services/speech-to-text/output.html#smart_formatting) and [Numeric redaction](/docs/services/speech-to-text/output.html#redaction).
+For more information about working with these features, see [Smart formatting](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting) and [Numeric redaction](/docs/services/speech-to-text?topic=speech-to-text-output#redaction).
 
 ### What happens when I add or modify a custom word?
 {: #parseWord}
@@ -485,8 +485,8 @@ Especially when you add a corpus to a custom language model or add multiple cust
 
 To validate and, if necessary, correct a word for a custom model, regardless of how it was added to the words resource, use the following methods:
 
--   List all of the words from a custom model by using the `GET /v1/customizations/{customization_id}/words` method or query an individual word with the `GET /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Listing words from a custom language model](/docs/services/speech-to-text/language-words.html#listWords).
+-   List all of the words from a custom model by using the `GET /v1/customizations/{customization_id}/words` method or query an individual word with the `GET /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Listing words from a custom language model](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords).
 -   Modify words in a custom model to correct errors or to add sounds-like or display-as values by using the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Working with custom words](#workingWords).
--   Delete extraneous words that are introduced in error (for example, by typographical or other mistakes in a corpus) by using the `DELETE /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Deleting a word from a custom language model](/docs/services/speech-to-text/language-words.html#deleteWord).
-    -   If the word was extracted from a corpus, you can instead update the corpus text file to correct the error and then reload the file by using the `allow_overwrite` parameter of the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method. For more information, see [Add a corpus to the custom language model](/docs/services/speech-to-text/language-create.html#addCorpus).
-    -   If the word was extracted from a grammar, you can update the grammar file to correct the error and then reload the file by using the `allow_overwrite` parameter of the `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` method. For more information, see [Add a grammar to the custom language model](/docs/services/speech-to-text/grammar-add.html#addGrammar).
+-   Delete extraneous words that are introduced in error (for example, by typographical or other mistakes in a corpus) by using the `DELETE /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Deleting a word from a custom language model](/docs/services/speech-to-text?topic=speech-to-text-manageWords#deleteWord).
+    -   If the word was extracted from a corpus, you can instead update the corpus text file to correct the error and then reload the file by using the `allow_overwrite` parameter of the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method. For more information, see [Add a corpus to the custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus).
+    -   If the word was extracted from a grammar, you can update the grammar file to correct the error and then reload the file by using the `allow_overwrite` parameter of the `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` method. For more information, see [Add a grammar to the custom language model](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar).
