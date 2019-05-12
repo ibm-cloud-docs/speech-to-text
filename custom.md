@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-10"
+lastupdated: "2019-05-12"
 
 subcollection: speech-to-text
 
@@ -30,7 +30,7 @@ The {{site.data.keyword.speechtotextfull}} service offers a customization interf
 
 The customization interface supports both custom language models and custom acoustic models. The interfaces for both types of custom model are similar and straightforward to use. Using either type of custom model with a recognition request is also straightforward: You specify the customization ID of the model with the request.
 
-Speech recognition works the same with or without a custom model. When you use a custom model for speech recognition, you can use all of the input and output parameters that are normally available with a recognition request. For more information about all available parameters, see the [Parameter summary](/docs/services/speech-to-text/summary.html).
+Speech recognition works the same with or without a custom model. When you use a custom model for speech recognition, you can use all of the input and output parameters that are normally available with a recognition request. For more information about all available parameters, see the [Parameter summary](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ## Language model customization
 {: #customLanguage-intro}
@@ -43,8 +43,8 @@ You create a custom language model and add corpora and words specific to your do
 
 For more information, see
 
--   [Creating a custom language model](/docs/services/speech-to-text/language-create.html)
--   [Using a custom language model](/docs/services/speech-to-text/language-use.html)
+-   [Creating a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate)
+-   [Using a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageUse)
 
 ## Acoustic model customization
 {: #customAcoustic-intro}
@@ -61,8 +61,8 @@ The length of time that it takes the service to train the custom model depends o
 
 For more information, see
 
--   [Creating a custom acoustic model](/docs/services/speech-to-text/acoustic-create.html)
--   [Using a custom acoustic model](/docs/services/speech-to-text/acoustic-use.html)
+-   [Creating a custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic)
+-   [Using a custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acousticUse)
 
 ## Grammars
 {: #grammars-intro}
@@ -73,9 +73,9 @@ You add a grammar to a custom language model and train the model just as you do 
 
 For more information, see
 
--   [Using grammars with custom language models](/docs/services/speech-to-text/grammar.html)
--   [Adding a grammar to a custom language model](/docs/services/speech-to-text/grammar-add.html)
--   [Using a grammar for speech recognition](/docs/services/speech-to-text/grammar-use.html)
+-   [Using grammars with custom language models](/docs/services/speech-to-text?topic=speech-to-text-grammars)
+-   [Adding a grammar to a custom language model](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd)
+-   [Using a grammar for speech recognition](/docs/services/speech-to-text?topic=speech-to-text-grammarUse)
 
 ## Using acoustic and language customization together
 {: #combined}
@@ -84,9 +84,7 @@ Using a custom acoustic model alone can improve the service's recognition capabi
 
 By creating a custom language model that complements your custom acoustic model, you can enhance speech recognition by using the two models together. When you train a custom acoustic model, you can specify a custom language model that includes transcriptions of the audio resources or a vocabulary of domain-specific words from the resources. Similarly, when you transcribe audio, the service accepts a custom language model, a custom acoustic model, or both. And if your custom language model includes a grammar, you can use that model and grammar with a custom acoustic model for speech recognition.
 
-For more information, see
-
--   [Using custom acoustic and custom language models together](/docs/services/speech-to-text/acoustic-both.html)
+For more information, see [Using custom acoustic and custom language models together](/docs/services/speech-to-text?topic=speech-to-text-useBoth).
 
 Some languages do not support both language and acoustic customization. For more information, see [Language support for customization](#languageSupport).
 {: note}
@@ -100,7 +98,7 @@ Language and acoustic model customization are available only for some languages.
 -   *Beta* indicates that the interface is available as a beta offering.
 -   *Not supported* means that the interface is not available for that language.
 
-You can use both broadband and narrowband models with any supported language for which they are available. If a language supports language model customization, it also supports grammars. For a list of all available models, see [Supported language models](/docs/services/speech-to-text/models.html#modelsList).
+You can use both broadband and narrowband models with any supported language for which they are available. If a language supports language model customization, it also supports grammars. For a list of all available models, see [Supported language models](/docs/services/speech-to-text?topic=speech-to-text-models#modelsList).
 
 <table>
   <caption>Table 1. Language support for customization</caption>
@@ -191,7 +189,7 @@ How the service handles request logging for calls to the customization interface
 -   The service *does not* log data that is used to build custom models. For example, when working with corpora and words in a custom language model, you do not need to set the `X-Watson-Learning-Opt-Out` request header. Your training data is never used to improve the service's base models.
 -   The service *does* log data when a custom model is used with a recognition request. You must set the `X-Watson-Learning-Opt-Out` request header to `true` to prevent logging for recognition requests.
 
-For more information, see [Request logging](/docs/services/speech-to-text/input.html#logging).
+For more information, see [Request logging](/docs/services/speech-to-text?topic=speech-to-text-input#logging).
 
 ### Information security
 {: #customSecurity}
@@ -204,4 +202,4 @@ You can associate a customer ID with data that is added or updated for custom la
 -   `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`
 -   `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`
 
-If necessary, you can then delete the data by using the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/services/speech-to-text/information-security.html).
+If necessary, you can then delete the data by using the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/services/speech-to-text?topic=speech-to-text-information-security).
