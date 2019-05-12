@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-20"
+lastupdated: "2019-05-12"
 
 subcollection: speech-to-text
 
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on April 19, 2019. The training methods of the customization interface now include a `strict` query parameter that you can use to train a custom model that has a mix of valid and invalid resources. Also, you can now add a maximum of 90 thousand out-of-vocabulary (OOV) words to a custom language model. For more information, see the [19 April 2019 service update](/docs/services/speech-to-text/release-notes.html#April2019b) in the release notes*.
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on May 10, 2019. The Spanish broadband and narrowband models have been updated for improved speech recognition. For more information, see the [10 May 2019 service update](/docs/services/speech-to-text/release-notes.html#May2019) in the release notes*.
 
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}
