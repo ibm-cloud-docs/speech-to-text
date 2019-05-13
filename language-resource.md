@@ -207,15 +207,15 @@ You must use that encoding when working with the individual words in the custom 
 
 For example, the following table shows what looks like the same letter in two different encodings, ASCII and UTF-8. You can pass the ASCII character on a URL as `z`. You must pass the UTF-8 character as `%EF%BD%9A`.
 
-<table>
+<table style="width:75%">
   <caption>Table 1. Character encoding examples</caption>
   <tr>
-    <th style="text-align:left">Letter</th>
-    <th style="text-align:center">Encoding</th>
-    <th style="text-align:center">Value</th>
+    <th style="width:15%; text-align:center">Letter</th>
+    <th style="width:40%; text-align:center">Encoding</th>
+    <th style="width:45%; text-align:center">Value</th>
   </tr>
   <tr>
-    <td style="text-align:left; width:30%">
+    <td style="text-align:center">
       `z`
     </td>
     <td style="text-align:center">
@@ -226,7 +226,7 @@ For example, the following table shows what looks like the same letter in two di
     </td>
   </tr>
   <tr>
-    <td style="text-align:left; width:30%">
+    <td style="text-align:center">
       <code>&#xff5a;</code>
     </td>
     <td style="text-align:center">
