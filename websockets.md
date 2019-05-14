@@ -87,8 +87,8 @@ A WebSocket client calls this method with the following query parameters to esta
       Once you establish a connection, you can keep it alive indefinitely.
       You remain authenticated for as long as you keep the connection open.
       You do not need to refresh the access token for an active connection
-      that lasts beyond the token's expiration time. In fact, a connection
-      can remain active even after the token or its API key are deleted.
+      that lasts beyond the token's expiration time. A connection can remain
+      active even after the token or its API key are deleted.
     </td>
   </tr>
   <tr>
@@ -206,7 +206,7 @@ websocket.onerror = function(evt) { onError(evt) };
 ```
 {: codeblock}
 
-The client can open multiple concurrent WebSocket connections to the service. The number of concurrent connections is limited only by the capacity of the service, which should pose no problems for most users.
+The client can open multiple concurrent WebSocket connections to the service. The number of concurrent connections is limited only by the capacity of the service, which generally poses no problems for users.
 
 ## Initiate a recognition request
 {: #WSstart}
