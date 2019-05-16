@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-05-12"
+lastupdated: "2019-05-16"
 
 subcollection: speech-to-text
 
@@ -121,7 +121,7 @@ You pass the audio resource as the body of the request and assign the resource a
 
 The following examples show the addition of both audio- and archive-type resources:
 
--   This example adds an audio-type resource to the custom acoustic model with the specified `customization_id`. The `Content-Type` header identifies the type of the audio as `audio/wav`. The audio file, **audio1.wav**, is passed as the body of the request, and the resource is given the named `audio1`.
+-   This example adds an audio-type resource to the custom acoustic model with the specified `customization_id`. The `Content-Type` header identifies the type of the audio as `audio/wav`. The audio file, **audio1.wav**, is passed as the body of the request, and the resource is given the name `audio1`.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
