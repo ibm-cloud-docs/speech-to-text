@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-05-12"
+lastupdated: "2019-05-17"
 
 subcollection: speech-to-text
 
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on May 10, 2019. The Spanish broadband and narrowband models have been updated for improved speech recognition. For more information, see the [10 May 2019 service update](/docs/services/speech-to-text?topic=speech-to-text-release-notes#May2019) in the release notes*.
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on May 17, 2019. The service now offers optional processing and audio metrics that return information about its processing of a speech recognition request and the signal characteristics of the input audio. Also, the Japanese broadband model has been updated for improved speech recognition. For more information, see the [17 May 2019 service update](/docs/services/speech-to-text?topic=speech-to-text-release-notes#May2019b) in the release notes*.
 
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}
@@ -76,6 +76,8 @@ The interfaces also support the following common output features:
 -   [Smart formatting](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting) converts dates, times, numbers, currency values, phone numbers, and internet addresses into more readable, conventional forms in final transcripts. For US English, you can also provide keyword phrases to include certain punctuation symbols in final transcripts. Smart formatting is supported for US English, Japanese, and Spanish audio. (Beta functionality.)
 -   [Numeric redaction](/docs/services/speech-to-text?topic=speech-to-text-output#redaction) redacts, or masks, numeric data from a final transcript. Redaction is intended to remove sensitive personal information, such as credit card numbers, from transcripts. The feature is supported for US English, Japanese, and Korean audio. (Beta functionality.)
 -   [Profanity filtering](/docs/services/speech-to-text?topic=speech-to-text-output#profanity_filter) censors profanity from US English transcripts.
+-   [Processing metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#processing_metrics) provide detailed timing information about the service's analysis of the input audio.
+-   [Audio metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#audio_metrics) provide detailed information about the signal characteristics of the input audio.
 
 ## Language support
 {: #languages}

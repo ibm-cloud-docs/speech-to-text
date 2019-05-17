@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-05-12"
+lastupdated: "2019-05-17"
 
 subcollection: speech-to-text
 
@@ -33,6 +33,23 @@ The following sections document the new features and changes that were included 
 
 No known limitations at this time.
 
+## 17 May 2019
+{: #May2019b}
+
+These updates are not yet available in the Frankfurt (**eu-de**) location.
+{: note}
+
+-   The service now offers two types of optional metrics with speech recognition requests:
+    -   [Processing metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#processing_metrics) provide detailed timing information about the service's analysis of the input audio. The service returns the metrics at specified intervals and with transcription events, such as interim and final results. Use the metrics to gauge the service's progress in transcribing the audio.
+    -   [Audio metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#audio_metrics) provide detailed information about the signal characteristics of the input audio. The results provide aggregated metrics for the entire input audio at the conclusion of speech processing. Use the metrics to determine the characteristics and quality of the audio.
+
+    You can request both types of metrics with any speech recognition request. By default, the service returns no metrics for a request.
+-   The Japanese broadband model (`ja-JP_BroadbandModel`) has been updated for improved speech recognition. By default, the service automatically uses the updated model for all speech recognition requests. If you have custom language or custom acoustic models that are based on the model, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
+    -   `POST /v1/customizations/{customization_id}/upgrade_model`
+    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+
+    For more information, see [Upgrading custom models](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade).
+
 ## 10 May 2019
 {: #May2019}
 
@@ -56,14 +73,10 @@ For more information, see [Upgrading custom models](/docs/services/speech-to-tex
     -   For more information about using the `strict` parameter with the `POST /v1/acoustic_customizations/{customization_id}/train` method, see [Train the custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic#trainModel-acoustic) and [Training failures](/docs/services/speech-to-text?topic=speech-to-text-acoustic#failedTraining-acoustic).
 -   You can now add a maximum of 90 thousand out-of-vocabulary (OOV) words to the words resource of a custom language model. The previous maximum was 30 thousand OOV words. This figure includes OOV words from all sources (corpora, grammars, and individual custom words that you add directly). You can add a maximum of 10 million total words to a custom model from all sources. For more information, see [How much data do I need?](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#wordsResourceAmount).
 
-## 3 April 2019
-{: #April2019}
-
-Custom acoustic models now accept a maximum of 200 hours of audio. The previous maximum limit was 100 hours of audio.
-
 ## Older releases
 {: #older}
 
+-   [3 April 2019](#April2019)
 -   [21 March 2019](#March2019d)
 -   [15 March 2019](#March2019c)
 -   [11 March 2019](#March2019b)
@@ -100,6 +113,11 @@ Custom acoustic models now accept a maximum of 200 hours of audio. The previous 
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 3 April 2019
+{: #April2019}
+
+Custom acoustic models now accept a maximum of 200 hours of audio. The previous maximum limit was 100 hours of audio.
 
 ### 21 March 2019
 {: #March2019d}

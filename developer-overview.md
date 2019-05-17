@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-05-12"
+lastupdated: "2019-05-17"
 
 subcollection: speech-to-text
 
@@ -64,6 +64,16 @@ The WebSocket interface has a number of advantages over the HTTP interface:
 -   [Grammars](/docs/services/speech-to-text?topic=speech-to-text-grammars) let you restrict the phrases that the service can recognize to those defined in the grammar's rules. By limiting the search space for valid strings, the service can deliver results faster and more accurately. Grammars are supported with custom language models.
 
 You can use a custom language model, a custom acoustic model, or both for speech recognition with any of the service's interfaces.
+
+## Obtaining metrics
+{: #overview-metrics}
+
+The service offers two types of optional metrics for speech recognition requests:
+
+-   [Processing metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#processing_metrics) provide detailed timing information about the service's analysis of the input audio. The service returns the metrics at specified intervals and with transcription events, such as interim and final results. You can use the metrics to gauge the service's progress in transcribing the audio.
+-   [Audio metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#audio_metrics) provide detailed information about the signal characteristics of the input audio. The results provide aggregated metrics for the entire input audio at the conclusion of speech processing. You can use the metrics to determine the characteristics and quality of the audio.
+
+You can request both types of metrics with any speech recognition request.
 
 ## CORS support
 {: #cors}
