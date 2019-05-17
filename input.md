@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-05-12"
+lastupdated: "2019-05-16"
 
 subcollection: speech-to-text
 
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Input features
 {: #input}
 
-The {{site.data.keyword.speechtotextshort}} service offers the following features to specify how the service is to perform a speech recognition request. All of the input parameters that are described in the following sections are optional. Only the input audio is required.
+The {{site.data.keyword.speechtotextfull}} service offers the following features to specify how the service is to perform a speech recognition request. All of the input parameters that are described in the following sections are optional. Only the input audio is required.
 {: shortdesc}
 
 -   For examples of simple speech recognition requests for each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text?topic=speech-to-text-basic-request).

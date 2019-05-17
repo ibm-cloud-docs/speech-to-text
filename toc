@@ -29,6 +29,7 @@ Speech to Text
         models.md
         input.md
         output.md
+        metrics.md
         summary.md
 
     websockets.md
