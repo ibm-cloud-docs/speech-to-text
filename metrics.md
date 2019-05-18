@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-05-17"
+lastupdated: "2019-05-18"
 
 subcollection: speech-to-text
 
@@ -125,7 +125,7 @@ The following relationships can also be helpful in understanding the results:
 
 The following example shows the `start` message that is passed for a request to the WebSocket interface. The request enables processing metrics and sets the processing metrics interval to 0.25 seconds. It also sets the `interim_results` and `speaker_labels` parameters to `true`. The audio contains the simple message "hello world long pause stop."
 
-```bash
+```javascript
 function onOpen(evt) {
   var message = {
     action: 'start',
@@ -139,7 +139,7 @@ function onOpen(evt) {
   websocket.send(blob);
 }
 ```
-{: pre}
+{: codeblock}
 
 The following example output shows the first few processing metrics results that the service returns for the request.
 
