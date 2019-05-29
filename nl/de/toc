@@ -1,0 +1,91 @@
+{:navgroup: .navgroup}
+{:topicgroup: .topicgroup}
+
+{: .toc subcollection="speech-to-text" audience="service" arm="350" href="/docs/services/speech-to-text/getting-started.html" path="services/speech-to-text"}
+Speech to Text
+
+    {: .navgroup id="learn"}
+    getting-started.md
+    index.md
+    developer-overview.md
+
+    {: .topicgroup}
+    Demos
+        [Kurzdemo](https://speech-to-text-demo.ng.bluemix.net/)
+
+    {: .topicgroup}
+    Zusätzliche Ressourcen
+        [Blog](https://developer.ibm.com/watson/blog/)
+        [Webinare](https://www.ibm.com/watson/webinars/)
+        [Watson-Videos](https://www.youtube.com/user/IBMWatsonSolutions/)
+    {: .navgroup-end}
+
+    {: .navgroup id="howto"}
+    {: .topicgroup}
+    Spracherkennung
+        basic-request.md
+        basic-response.md
+        audio-formats.md
+        models.md
+        input.md
+        output.md
+        summary.md
+
+    websockets.md
+    http.md
+    async.md
+    custom.md
+
+    {: topicgroup}
+    Sprachmodellanpassung
+        language-create.md
+        language-use.md
+        language-resource.md
+        language-models.md
+        language-corpora.md
+        language-words.md
+
+    {: topicgroup}
+    Akustikmodellanpassung
+        acoustic-create.md
+        acoustic-use.md
+        acoustic-both.md
+        acoustic-resource.md
+        acoustic-models.md
+        acoustic-audio.md
+
+    {: topicgroup}
+    Grammatiken
+        grammar.md
+        grammar-understand.md
+        grammar-add.md
+        grammar-use.md
+        grammar-manage.md
+        grammar-examples.md
+
+    custom-upgrade.md
+    ha-dr.md
+    /watson/watson-migrate
+
+    {: topicgroup}
+    Hintergrund des Service
+        science.md
+    {: .navgroup-end}
+
+    {: .navgroup id="reference"}
+    [API-Referenz](https://cloud.ibm.com/apidocs/speech-to-text)
+    information-security.md
+    /watson/watson-using-sdks
+    [Watson-GitHub-Repositorys](https://github.com/watson-developer-cloud/)
+    {: .navgroup-end}
+
+    {: .navgroup id="help"}
+    release-notes.md
+    faq-pricing.md
+
+    {: .topicgroup}
+    Entwicklercommunity
+        [StackOverflow](http://stackoverflow.com/questions/tagged/ibm-watson-cognitive+speech-to-text)
+        [IBM Developer - Antworten](https://developer.ibm.com/answers/topics/speech-to-text/)
+        [Slack-Kanal für WDC](http://wdc-slack-inviter.mybluemix.net/)
+    {: .navgroup-end}
