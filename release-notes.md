@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-05-17"
+lastupdated: "2019-05-30"
 
 subcollection: speech-to-text
 
@@ -35,9 +35,6 @@ No known limitations at this time.
 
 ## 17 May 2019
 {: #May2019b}
-
-These updates are not yet available in the Frankfurt (**eu-de**) location.
-{: note}
 
 -   The service now offers two types of optional metrics with speech recognition requests:
     -   [Processing metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#processing_metrics) provide detailed timing information about the service's analysis of the input audio. The service returns the metrics at specified intervals and with transcription events, such as interim and final results. Use the metrics to gauge the service's progress in transcribing the audio.
