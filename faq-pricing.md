@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-05-29"
+lastupdated: "2019-06-03"
 
 subcollection: speech-to-text
 
@@ -26,11 +26,11 @@ subcollection: speech-to-text
 # Pricing FAQs
 {: #faq-pricing}
 
-## What is the price for using the {{site.data.keyword.speechtotextfull}} standard service?
+## What is the price for using the {{site.data.keyword.speechtotextshort}} standard service?
 {: #faq-pricing-one}
 {: faq}
 
-The {{site.data.keyword.speechtotextshort}} service is priced at $0.02 (USD) per minute of speech that you recognize. This price applies to use of both broadband and narrowband models. For more information, see the {{site.data.keyword.speechtotextshort}} [service landing page ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/watson/developercloud/speech-to-text.html#pricing-block){: new_window}.
+The {{site.data.keyword.speechtotextshort}} service is priced at $0.02 (USD) per minute of speech that you recognize. This price applies to use of both broadband and narrowband models. For more information, see the {{site.data.keyword.speechtotextshort}} service [pricing page ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: new_window}.
 
 ## What does "pricing per minute" mean?
 {: #faq-pricing-two}
@@ -48,7 +48,7 @@ The price is based on the amount (number of minutes) of audio that you send to t
 {: #faq-pricing-four}
 {: faq}
 
-The tiered pricing model is intended to give high-volume users further discounts as they continue to use the service. Per-minute pricing is reduced for extra minutes of audio once certain thresholds for total monthly audio are met. For more information, see the [pricing page ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/catalog/services/speech-to-text){: new_window} for the service.
+The tiered pricing model is intended to give high-volume users further discounts as they continue to use the service. Per-minute pricing is reduced for extra minutes of audio once certain thresholds for total monthly audio are met. For more information, see the [pricing page ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: new_window} for the service.
 
 ## For tiered pricing, what would my total charge be if I used the service to transcribe, for example, 275 thousand audio minutes in one month?
 {: #faq-pricing-five}
