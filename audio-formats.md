@@ -454,7 +454,7 @@ For more information, see the Internet Engineering Task Force (IETF) [Request fo
       is captured at 16 kHz in little-endian format:<br/><br/>
       <code>audio/l16;rate=16000;endianness=little-endian</code><br/><br/>
       Section 5.1 of
-      <a target="_blank" href="https://tools.ietf.org/html/rfc2045#section-5.1">Request for Comment (RFC) 2045 ![External link icon](../../icons/launch-glyph.svg "External link icon")</a>
+      [Request for Comment (RFC) 2045](https://tools.ietf.org/html/rfc2045#section-5.1){: external}
       specifies big-endian format for <code>audio/l16</code> data, but
       many people use little-endian format.
     </td>
