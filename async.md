@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-05-12"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -33,7 +33,7 @@ The asynchronous HTTP interface of the {{site.data.keyword.speechtotextfull}} se
 
 The two approaches are not mutually exclusive. You can elect to receive callback notifications but still poll the service for the latest status or contact the service to retrieve results manually. The following sections describe how to use the asynchronous HTTP interface with either approach.
 
-Submit a maximum of 1 GB and a minimum of 100 bytes of audio data with a single request. For information about audio formats and about using compression to maximize the amount of audio that you can send with a request, see [Audio formats](/docs/services/speech-to-text?topic=speech-to-text-audio-formats). For more information about the individual methods of the interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+Submit a maximum of 1 GB and a minimum of 100 bytes of audio data with a single request. For information about audio formats and about using compression to maximize the amount of audio that you can send with a request, see [Audio formats](/docs/services/speech-to-text?topic=speech-to-text-audio-formats). For more information about the individual methods of the interface, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ## Usage models
 {: #usage}

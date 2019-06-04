@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -49,23 +49,23 @@ Both grammar formats have the expressive power of a Context-Free Grammar (CFG). 
 
 For general information about grammars, see the following Wikipedia pages:
 
--   [Speech Recognition Grammar Specification ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/Speech_Recognition_Grammar_Specification){: new_window}
--   [Augmented Backus-Naur form ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/Augmented_Backus%E2%80%93Naur_form){: new_window}
--   [Chomsky hierarchy ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/Chomsky_hierarchy){: new_window}
+-   [Speech Recognition Grammar Specification](https://en.wikipedia.org/wiki/Speech_Recognition_Grammar_Specification){: external}
+-   [Augmented Backus-Naur form](https://en.wikipedia.org/wiki/Augmented_Backus%E2%80%93Naur_form){: external}
+-   [Chomsky hierarchy](https://en.wikipedia.org/wiki/Chomsky_hierarchy){: external}
 
 ## The Speech Recognition Grammar Specification
 {: #grammarSpecification}
 
-The {{site.data.keyword.speechtotextshort}} service supports grammars as defined by the W3C [Speech Recognition Grammar Specification Version 1.0 ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.w3.org/TR/speech-grammar/){: new_window}. The specification provides detailed information about the supported formats and about defining a grammar. For information about the supported media types, see [Appendix G. Media Types and File Suffix ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.w3.org/TR/speech-grammar/#AppG){: new_window} of the specification.
+The {{site.data.keyword.speechtotextshort}} service supports grammars as defined by the W3C [Speech Recognition Grammar Specification Version 1.0](https://www.w3.org/TR/speech-grammar/){: external}. The specification provides detailed information about the supported formats and about defining a grammar. For information about the supported media types, see [Appendix G. Media Types and File Suffix](https://www.w3.org/TR/speech-grammar/#AppG){: external} of the specification.
 
 The service does *not* currently support all features of the Speech Recognition Grammar Specification. Specifically, the service does not support the features described in the following sections of the specification:
 
--   [Section 1.4 Semantic Interpretation ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.w3.org/TR/speech-grammar/#S1.4){: new_window}. {{site.data.keyword.IBM_notm}} is working to support this feature in a future release of the service.
--   [Section 1.5 Embedded Grammars ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.w3.org/TR/speech-grammar/#S1.5){: new_window}. {{site.data.keyword.IBM_notm}} is working to support this feature in a future release of the service.
--   [Section 2.2.2 External Reference by URI ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.w3.org/TR/speech-grammar/#S2.2.2){: new_window}. The service supports only local references, as described in [Section 2.2.1 Local References ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.w3.org/TR/speech-grammar/#S2.2.1){: new_window}. In other words, a grammar must be self-contained.
--   [Section 2.2.3 Special Rules ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.w3.org/TR/speech-grammar/#S2.2.3){: new_window}.
--   [Section 2.2.4 Referencing N-gram Documents (Informative) ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.w3.org/TR/speech-grammar/#S2.2.4){: new_window}.
--   [Section 2.7 Language ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.w3.org/TR/speech-grammar/#S2.7){: new_window}. The service does not support language switching. The service supports only one global language per grammar.
+-   [Section 1.4 Semantic Interpretation](https://www.w3.org/TR/speech-grammar/#S1.4){: external}. {{site.data.keyword.IBM_notm}} is working to support this feature in a future release of the service.
+-   [Section 1.5 Embedded Grammars](https://www.w3.org/TR/speech-grammar/#S1.5){: external}. {{site.data.keyword.IBM_notm}} is working to support this feature in a future release of the service.
+-   [Section 2.2.2 External Reference by URI](https://www.w3.org/TR/speech-grammar/#S2.2.2){: external}. The service supports only local references, as described in [Section 2.2.1 Local References](https://www.w3.org/TR/speech-grammar/#S2.2.1){: external}. In other words, a grammar must be self-contained.
+-   [Section 2.2.3 Special Rules](https://www.w3.org/TR/speech-grammar/#S2.2.3){: external}.
+-   [Section 2.2.4 Referencing N-gram Documents (Informative)](https://www.w3.org/TR/speech-grammar/#S2.2.4){: external}.
+-   [Section 2.7 Language](https://www.w3.org/TR/speech-grammar/#S2.7){: external}. The service does not support language switching. The service supports only one global language per grammar.
 
 Words in the grammar must be in UTF-8 encoding (ASCII is a subset of UTF-8). Using any other encoding can lead to issues when compiling the grammar or unexpected results in decoding. The service ignores an encoding specified in the header of the grammar.
 {: note}

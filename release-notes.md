@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-05-30"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -187,7 +187,7 @@ The grammar interface is fully functional in all locations as of January 8, 2019
     -   [Managing grammars](/docs/services/speech-to-text?topic=speech-to-text-manageGrammars)
     -   [Example grammars](/docs/services/speech-to-text?topic=speech-to-text-grammarExamples)
 
-    For information about all methods of the interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+    For information about all methods of the interface, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 -   A new numeric redaction feature is now available to mask numbers that have three or more consecutive digits. Redaction is intended to remove sensitive personal information, such as credit card numbers, from transcripts. You enable the feature by setting the `redaction` parameter to `true` on a recognition request. The feature is beta functionality that is available for US English, Japanese, and Korean only. For more information, see [Numeric redaction](/docs/services/speech-to-text?topic=speech-to-text-output#redaction).
 -   The following new German and French language models are now available with the service:
     -   `de-DE_NarrowbandModel`
@@ -240,10 +240,10 @@ The migration to IAM authentication affects new and existing service instances d
 
 For more information, see the following documentation:
 
--   To learn which authentication mechanism your service instance uses, view your service credentials by clicking the instance on the [{{site.data.keyword.cloud_notm}} dashboard ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/dashboard/apps){: new_window}.
+-   To learn which authentication mechanism your service instance uses, view your service credentials by clicking the instance on the [{{site.data.keyword.cloud_notm}} dashboard](https://{DomainName}/dashboard/apps){: external}.
 -   For more information about using IAM tokens with Watson services, see [Authenticating with IAM tokens](/docs/services/watson?topic=watson-iam).
 -   For more information about using IAM API keys with Watson services, see [IAM service API keys](/docs/services/watson?topic=watson-api-key-bp).
--   For examples that use IAM authentication, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+-   For examples that use IAM authentication, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ### 9 October 2018
 {: #October2018a}
@@ -273,7 +273,7 @@ For more information, see the following documentation:
     -   `/v1/recognize` for WebSocket requests
     -   `POST /v1/recognize` for synchronous HTTP requests (including multipart requests)
     -   `POST /v1/recognitions` for asynchronous HTTP requests
--   As of October 1, 2018, you are now charged for all audio that you pass to the service for speech recognition. The first one thousand minutes of audio that you send each month are no longer free. For more information about the pricing plans for the service, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud_notm}} Catalog ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/catalog/services/speech-to-text){: new_window}.
+-   As of October 1, 2018, you are now charged for all audio that you pass to the service for speech recognition. The first one thousand minutes of audio that you send each month are no longer free. For more information about the pricing plans for the service, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud_notm}} Catalog](https://{DomainName}/catalog/services/speech-to-text){: external}.
 
 ### 10 September 2018
 {: #September2018b}
@@ -368,7 +368,7 @@ If your application uses the sessions interface, you must migrate to one of the 
     -   For shorter files of up to a few minutes of audio, use either the [synchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-http) `(POST /v1/recognize`) or the [asynchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-async) (`POST /v1/recognitions`).
     -   For longer files of more than a few minutes of audio, use the asynchronous HTTP interface. The asynchronous HTTP interface accepts as much as 1 GB of audio data with a single request.
 
-The WebSocket and HTTP interfaces provide the same results as the sessions interface (only the WebSocket interface provides interim results). You can also use one of the Watson SDKs, which simplify application development with any of the interfaces. For more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+The WebSocket and HTTP interfaces provide the same results as the sessions interface (only the WebSocket interface provides interim results). You can also use one of the Watson SDKs, which simplify application development with any of the interfaces. For more information, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ### 13 July 2018
 {: #July2018}
@@ -476,7 +476,7 @@ For language model customization, the Korean models are generally available for 
     -   For more information about the service's customization interface, see [The customization interface](/docs/services/speech-to-text?topic=speech-to-text-customization).
     -   For more information about creating a custom acoustic model, see [Creating a custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic).
     -   For more information about using a custom acoustic model, see [Using a custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acousticUse).
-    -   For more information about all methods of the customization interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+    -   For more information about all methods of the customization interface, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 -   For language model customization, the service now includes a beta feature that sets an optional customization weight for a custom language model. A customization weight specifies the relative weight to be given to words from a custom language model versus words from the service's base vocabulary. You can set a customization weight during both training and speech recognition. For more information, see [Using customization weight](/docs/services/speech-to-text?topic=speech-to-text-languageUse#weight).
 -   The `ja-JP_BroadbandModel` language model was upgraded to capture improvements in the base model. The upgrade does not affect existing custom models that are based on the model.
 -   The service now includes a parameter to specify the endianness of audio that is submitted in `audio/l16` (Linear 16-bit Pulse-Code Modulation (PCM)) format. In addition to specifying `rate` and `channels` parameters with the format, you can now also specify `big-endian` or `little-endian` with the `endianness` parameter. For more information, see [Audio formats](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
@@ -506,8 +506,8 @@ For language model customization, the Korean models are generally available for 
     -   Charging an additional $0.03 (USD) per minute of audio for recognition requests that use US English or Japanese custom language models
 
     For more information about the pricing updates, see
-    -   The blog post [{{site.data.keyword.IBM_notm}} {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} API - Pricing Updates ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.ibm.com/blogs/bluemix/2017/05/ibm-watson-speech-text-api-pricing-updates/){: new_window}
-    -   The {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud_notm}} Catalog ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/catalog/services/speech-to-text){: new_window}
+    -   The blog post [{{site.data.keyword.IBM_notm}} {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} API - Pricing Updates](https://www.ibm.com/blogs/bluemix/2017/05/ibm-watson-speech-text-api-pricing-updates/){: external}
+    -   The {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud_notm}} Catalog](https://{DomainName}/catalog/services/speech-to-text){: external}
     -   The [Pricing FAQs](/docs/services/speech-to-text?topic=speech-to-text-faq-pricing)
 -   You no longer need to pass an empty data object as the body for the following `POST` requests:
     -   `POST /v1/sessions`
@@ -589,7 +589,7 @@ The asynchronous HTTP interface is now generally available. Prior to this date, 
     -   For more information, see [Creating a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate) and [Using a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageUse).
     -   For general and Japanese-specific considerations for adding a corpus text file, see [Preparing a corpus text file](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#prepareCorpus) and [What happens when I add a corpus file?](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#parseCorpus)
     -   For Japanese-specific considerations when specifying the `sounds_like` field for a custom word, see [Guidelines for Japanese](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-jaJP).
-    -   For more information about all methods of the customization interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+    -   For more information about all methods of the customization interface, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 -   The language model customization interface now includes a `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` method that lists information about a specified corpus. The method is useful for monitoring the status of a request to add a corpus to a custom model. For more information, see [Listing corpora for a custom language model](/docs/services/speech-to-text?topic=speech-to-text-manageCorpora#listCorpora).
 -   The JSON output that is returned by the `GET /v1/customizations/{customization_id}/words` and `GET /v1/customizations/{customization_id}/words/{word_name}` methods now includes a `count` field for each word. The field indicates the number of times the word is found across all corpora. If you add a custom word to a model before it is added by any corpora, the count begins at `1`. If the word is added from a corpus first and later modified, the count reflects only the number of times it is found in corpora. For more information, see [Listing words from a custom language model](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords).
 
@@ -600,7 +600,7 @@ The asynchronous HTTP interface is now generally available. Prior to this date, 
 -   The `error` field that can be returned as part of the JSON response from the `GET /v1/customizations/{customization_id}/words` and `GET /v1/customizations/{customization_id}/words/{word_name}` methods is now an array. If the service discovered one or more problems with a custom word's definition, the field lists each problem element from the definition and provides a message that describes the problem. For more information, see [Listing words from a custom language model](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords).
 -   The `keywords_threshold` and `word_alternatives_threshold` parameters of the recognition methods no longer accept a null value. To omit keywords and word alternatives from the response, omit the parameters. A specified value must be a float.
 
-For more information about the service's interface, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+For more information about the service's interface, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ### 22 September 2016
 {: #September2016}
@@ -608,19 +608,19 @@ For more information about the service's interface, see the [API reference ![Ext
 -   The service now offers a new beta language model customization interface for US English. You can use the interface to tailor the service's base vocabulary and language models via the creation of custom language models that include domain-specific terminology. You can add custom words individually or have the service extract them from corpora. To use your custom models with the speech recognition methods that are offered by any of the service's interfaces, pass the `customization_id` query parameter. For more information, see
     -   [Creating a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate)
     -   [Using a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageUse)
-    -   [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}
+    -   [API reference](https://{DomainName}/apidocs/speech-to-text){: external}
 -   The list of supported audio formats now includes `audio/mulaw`, which provides single-channel audio encoded using the u-law (or mu-law) data algorithm. When you use this format, you must also specify the sampling rate at which the audio is captured. For more information, see [Audio formats](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
--   The `GET /v1/models` and `GET /v1/models/{model_id}` methods now return a `supported_features` field as part of their output for each language model. The additional information describes whether the model supports customization. For more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+-   The `GET /v1/models` and `GET /v1/models/{model_id}` methods now return a `supported_features` field as part of their output for each language model. The additional information describes whether the model supports customization. For more information, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ### 30 June 2016
 {: #June2016b}
 
-The beta asynchronous HTTP interface now supports all languages that are supported by the service. The interface was previously available for US English only. For more information, see [The asynchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-async) and the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+The beta asynchronous HTTP interface now supports all languages that are supported by the service. The interface was previously available for US English only. For more information, see [The asynchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-async) and the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ### 23 June 2016
 {: #June2016a}
 
--   A beta asynchronous HTTP interface is now available. The interface provides full recognition capabilities for US English transcription via non-blocking HTTP calls. You can register callback URLs and provide user-specified secret strings to achieve authentication and data integrity with digital signatures. For more information, see [The asynchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-async) and the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+-   A beta asynchronous HTTP interface is now available. The interface provides full recognition capabilities for US English transcription via non-blocking HTTP calls. You can register callback URLs and provide user-specified secret strings to achieve authentication and data integrity with digital signatures. For more information, see [The asynchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-async) and the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 -   A beta smart formatting feature that converts dates, times, series of digits and numbers, phone numbers, currency values, and Internet addresses into more conventional representations in final transcripts. You enable the feature by setting the `smart_formatting` parameter to `true` on a recognition request. The feature is beta functionality that is available for US English only. For more information, see [Smart formatting](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting).
 -   The list of supported models for speech recognition now includes `fr-FR_BroadbandModel` for audio in the French language that is sampled at a minimum of 16 kHz. For more information, see [Languages and models](/docs/services/speech-to-text?topic=speech-to-text-models).
 -   The list of supported audio formats now includes `audio/basic`. The format provides single-channel audio that is encoded by using 8-bit u-law (or mu-law) data that is sampled at 8 kHz. For more information, see [Audio formats](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
@@ -631,8 +631,8 @@ The beta asynchronous HTTP interface now supports all languages that are support
 {: #March2016}
 
 -   Both forms of data transmission (one-shot delivery and streaming) now impose a size limit of 100 MB on the audio data, as does the WebSocket interface. Formerly, the one-shot approach had a maximum limit of 4 MB of data. For more information, see [Audio transmission](/docs/services/speech-to-text?topic=speech-to-text-input#transmission) (for all interfaces) and [Send audio and receive recognition results](/docs/services/speech-to-text?topic=speech-to-text-websockets#WSaudio) (for the WebSocket interface). The WebSocket section also discusses the maximum frame or message size of 4 MB enforced by the WebSocket interface.
--   The JSON response for a recognition request can now include an array of warning messages for invalid query parameters or JSON fields that are included with a request. Each element of the array is a string that describes the nature of the warning followed by an array of invalid argument strings. For example, `"warnings": [ "Unknown arguments: [u'{invalid_arg_1}', u'{invalid_arg_2}']." ]`. For more information, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
--   The beta *{{site.data.keyword.watson}} Speech Software Development Kit (SDK) for the Apple&reg; iOS operating system* is deprecated. Use the *{{site.data.keyword.watson}} SDK for the Apple&reg; iOS operating system* instead. The new SDK is available from the [ios-sdk repository ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/ios-sdk){: new_window} in the `watson-developer-cloud` namespace on GitHub.
+-   The JSON response for a recognition request can now include an array of warning messages for invalid query parameters or JSON fields that are included with a request. Each element of the array is a string that describes the nature of the warning followed by an array of invalid argument strings. For example, `"warnings": [ "Unknown arguments: [u'{invalid_arg_1}', u'{invalid_arg_2}']." ]`. For more information, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+-   The beta *{{site.data.keyword.watson}} Speech Software Development Kit (SDK) for the Apple&reg; iOS operating system* is deprecated. Use the *{{site.data.keyword.watson}} SDK for the Apple&reg; iOS operating system* instead. The new SDK is available from the [ios-sdk repository](https://github.com/watson-developer-cloud/ios-sdk){: external} in the `watson-developer-cloud` namespace on GitHub.
 
 The WebSocket interface currently has the following known issue:
 
@@ -652,15 +652,15 @@ The service was updated to include a new profanity filtering feature on January 
 -   HTTP recognition requests are no longer subject to a 10-minute platform timeout. The service now keeps the connection alive by sending a space character in the response JSON object every 20 seconds as long as recognition is ongoing. For more information, see [Timeouts](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts).
 -   The service no longer returns HTTP status code 490 for the session-based HTTP methods `GET /v1/sessions/{session_id}/observe_result` and `POST /v1/sessions/{session_id}/recognize`. The service now responds with HTTP status code 400 instead.
 
-    In the JSON responses that it returns for errors with session-based methods, the service now also includes a new `session_closed` field. The field is set to `true` if the session is closed as a result of the error. For more information about possible return codes for any method, see the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+    In the JSON responses that it returns for errors with session-based methods, the service now also includes a new `session_closed` field. The field is set to `true` if the session is closed as a result of the error. For more information about possible return codes for any method, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 -   When you use the `curl` command to transcribe audio with the service, you no longer need to use the `--limit-rate` option to transfer data at a rate no faster than 40,000 bytes per second.
 
 ### 21 September 2015
 {: #September2015}
 
 -   Two new beta mobile SDKs are available for the speech services. The SDKs enable mobile applications to interact with both the {{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}} services.
-    -   The *{{site.data.keyword.watson}} Speech SDK for the Google Android&trade; platform* supports streaming audio to the {{site.data.keyword.speechtotextshort}} service in real time and receiving a transcript of the audio as you speak. The project includes an example application that showcases interaction with both of the speech services. The SDK is available from the [speech-android-sdk repository ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/speech-android-sdk){: new_window} in the `watson-developer-cloud` namespace on GitHub.
-    -   The *{{site.data.keyword.watson}} Speech SDK for the Apple&reg; iOS operating system* supports streaming audio to the {{site.data.keyword.speechtotextshort}} service and receiving a transcript of the audio in response. The SDK is available from the [speech-ios-sdk repository ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://github.com/watson-developer-cloud/speech-ios-sdk){: new_window} in the `watson-developer-cloud` namespace on GitHub.
+    -   The *{{site.data.keyword.watson}} Speech SDK for the Google Android&trade; platform* supports streaming audio to the {{site.data.keyword.speechtotextshort}} service in real time and receiving a transcript of the audio as you speak. The project includes an example application that showcases interaction with both of the speech services. The SDK is available from the [speech-android-sdk repository](https://github.com/watson-developer-cloud/speech-android-sdk){: external} in the `watson-developer-cloud` namespace on GitHub.
+    -   The *{{site.data.keyword.watson}} Speech SDK for the Apple&reg; iOS operating system* supports streaming audio to the {{site.data.keyword.speechtotextshort}} service and receiving a transcript of the audio in response. The SDK is available from the [speech-ios-sdk repository](https://github.com/watson-developer-cloud/speech-ios-sdk){: external} in the `watson-developer-cloud` namespace on GitHub.
 
     Both SDKs support authenticating with the speech services by using either your {{site.data.keyword.cloud_notm}} service credentials or an authentication token.
 
