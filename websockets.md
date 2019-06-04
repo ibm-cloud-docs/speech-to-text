@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-05-14"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -40,7 +40,7 @@ The recognition request and response cycle has the following steps:
 
 When the client sends data to the service, it *must* pass all JSON messages as text messages and all audio data as binary messages.
 
-The snippets of example code that follow are written in JavaScript and are based on the HTML5 WebSocket API. For more information about the WebSocket protocol, see the Internet Engineering Task Force (IETF) [Request for Comment (RFC) 6455 ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://tools.ietf.org/html/rfc6455){: new_window}.
+The snippets of example code that follow are written in JavaScript and are based on the HTML5 WebSocket API. For more information about the WebSocket protocol, see the Internet Engineering Task Force (IETF) [Request for Comment (RFC) 6455](http://tools.ietf.org/html/rfc6455){: external}.
 {: note}
 
 ## Open a connection
@@ -284,7 +284,7 @@ After it sends the initial `start` message, the client can begin sending audio d
 
 The client must send the audio as binary data. The client can send a maximum of 100 MB of audio data with a single utterance (per `send` request). It must send at least 100 bytes of audio for any request. The client can send multiple utterances over a single WebSocket connection. For information about using compression to maximize the amount of audio that you can pass to the service with a request, see [Audio formats](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
 
-The WebSocket interface imposes a maximum frame size of 4 MB. The client can set the maximum frame size to less than 4 MB. If it is not practical to set the frame size, the client can set the maximum message size to less than 4 MB and send the audio data as a sequence of messages. For more information about WebSocket frames, see [IETF RFC 6455 ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://tools.ietf.org/html/rfc6455){: new_window}.
+The WebSocket interface imposes a maximum frame size of 4 MB. The client can set the maximum frame size to less than 4 MB. If it is not practical to set the frame size, the client can set the maximum message size to less than 4 MB and send the audio data as a sequence of messages. For more information about WebSocket frames, see [IETF RFC 6455](http://tools.ietf.org/html/rfc6455){: external}.
 
 The following snippet of JavaScript code sends audio data to the service as a binary message (blob):
 
@@ -357,7 +357,7 @@ WebSocket clients and servers can also exchange *ping-pong frames* to avoid read
 
 If your WebSocket stack does not implement ping-pong frames and your are sending long audio files, your connection can experience a read timeout. To avoid such timeouts, continuously stream audio to the service or request interim results from the service. Either approach can ensure that the lack of ping-pong frames does not cause your connection to close.
 
-For more information about ping-pong frames, see [Section 5.5.2 Ping ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://tools.ietf.org/html/rfc6455#section-5.5.2){: new_window} and [Section 5.5.3 Pong ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://tools.ietf.org/html/rfc6455#section-5.5.3){: new_window} of IETF RFC 6455.
+For more information about ping-pong frames, see [Section 5.5.2 Ping](http://tools.ietf.org/html/rfc6455#section-5.5.2){: external} and [Section 5.5.3 Pong](http://tools.ietf.org/html/rfc6455#section-5.5.3){: external} of IETF RFC 6455.
 
 ## Close a connection
 {: #WSclose}
@@ -382,7 +382,7 @@ The service can send the following return codes to the client over the WebSocket
 -   `1009` indicates that the frame size exceeded the 4 MB limit.
 -   `1011` indicates that the service is terminating the connection because it encountered an unexpected condition that prevents it from fulfilling the request.
 
-If the socket closes with an error, the client receives an informative message of the form `{"error":"{message}"}` before the socket closes. For more information about WebSocket return codes, see [IETF RFC 6455 ![External link icon](../../icons/launch-glyph.svg "External link icon")](http://tools.ietf.org/html/rfc6455){: new_window}.
+If the socket closes with an error, the client receives an informative message of the form `{"error":"{message}"}` before the socket closes. For more information about WebSocket return codes, see [IETF RFC 6455](http://tools.ietf.org/html/rfc6455){: external}.
 
 ## Example WebSocket session
 {: #WSexample}

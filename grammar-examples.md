@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -118,7 +118,7 @@ The following grammars recognize Honda VIN codes. They are more complex than the
   </tr>
 </table>
 
-For more information about the VIN format, see [Vehicle identification number ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://en.wikipedia.org/wiki/Vehicle_identification_number){: new_window} in Wikipedia.
+For more information about the VIN format, see [Vehicle identification number](https://en.wikipedia.org/wiki/Vehicle_identification_number){: external} in Wikipedia.
 
 ## Grammars with optional elements
 {: #optionalElements}
@@ -141,7 +141,7 @@ By making certain elements of a response optional, you can make grammars more fl
   </tr>
 </table>
 
-For more information about optional expansions in grammars, see [Section 2.5 Repeats ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://www.w3.org/TR/speech-grammar/#S2.5){: new_window} of the Speech Recognition Grammar Specification.
+For more information about optional expansions in grammars, see [Section 2.5 Repeats](https://www.w3.org/TR/speech-grammar/#S2.5){: external} of the Speech Recognition Grammar Specification.
 
 ## Disambiguation grammars
 {: #disambiguation}
