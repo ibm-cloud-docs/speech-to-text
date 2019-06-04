@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-05-12"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -40,15 +40,15 @@ The tutorial uses {{site.data.keyword.cloud}} Identity and Access Management (IA
 {: #before-you-begin}
 
 - {: hide-dashboard}  Create an instance of the service:
-    1.  {: hide-dashboard} Go to the [{{site.data.keyword.speechtotextshort}} ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/catalog/services/speech-to-text){: new_window} page in the {{site.data.keyword.cloud_notm}} Catalog.
+    1.  {: hide-dashboard} Go to the [{{site.data.keyword.speechtotextshort}}](https://{DomainName}/catalog/services/speech-to-text){: external} page in the {{site.data.keyword.cloud_notm}} Catalog.
     1.  {: hide-dashboard} Sign up for a free {{site.data.keyword.cloud_notm}} account or log in.
     1.  {: hide-dashboard} Click **Create**.
 -   Copy the credentials to authenticate to your service instance:
-    1.  {: hide-dashboard} From the [{{site.data.keyword.cloud_notm}} dashboard ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/dashboard/apps){: new_window}, click on your {{site.data.keyword.speechtotextshort}} service instance to go to the {{site.data.keyword.speechtotextshort}} service dashboard page.
+    1.  {: hide-dashboard} From the [{{site.data.keyword.cloud_notm}} dashboard](https://{DomainName}/dashboard/apps){: external}, click on your {{site.data.keyword.speechtotextshort}} service instance to go to the {{site.data.keyword.speechtotextshort}} service dashboard page.
     1.  On the **Manage** page, click **Show** to view your credentials.
     1.  Copy the `API Key` and `URL` values.
 -   Make sure that you have the `curl` command.
-    -   The examples use the `curl` command to call methods of the HTTP interface. Install the version for your operating system from [curl.haxx.se ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://curl.haxx.se/){: new_window}. Install the version that supports the Secure Sockets Layer (SSL) protocol. Make sure to include the installed binary file on your `PATH` environment variable.
+    -   The examples use the `curl` command to call methods of the HTTP interface. Install the version for your operating system from [curl.haxx.se](https://curl.haxx.se/){: external}. Install the version that supports the Secure Sockets Layer (SSL) protocol. Make sure to include the installed binary file on your `PATH` environment variable.
 
 When you enter a command, replace `{apikey}` and `{url}` with your actual API key and URL. Omit the braces, which indicate a variable value, from the command. An actual value resembles the following example:
 {: hide-dashboard}
@@ -159,4 +159,4 @@ of severe thunderstorms swept through colorado on sunday "
 
 -   Learn more about the interfaces and SDKs that are available for making speech recognition requests in the [Overview for developers](/docs/services/speech-to-text?topic=speech-to-text-developerOverview).
 -   See basic speech recognition requests for each of the service's interfaces in [Making a recognition request](/docs/services/speech-to-text?topic=speech-to-text-basic-request).
--   Find detailed information about all methods of the service's interfaces in the [API reference ![External link icon](../../icons/launch-glyph.svg "External link icon")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+-   Find detailed information about all methods of the service's interfaces in the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
