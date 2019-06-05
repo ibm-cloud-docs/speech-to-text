@@ -118,7 +118,7 @@ The following grammars recognize Honda VIN codes. They are more complex than the
   </tr>
 </table>
 
-For more information about the VIN format, see [Vehicle identification number](https://en.wikipedia.org/wiki/Vehicle_identification_number){: external} in Wikipedia.
+For more information about the VIN format, see [Vehicle identification number](https://wikipedia.org/wiki/Vehicle_identification_number){: external} in Wikipedia.
 
 ## Grammars with optional elements
 {: #optionalElements}
