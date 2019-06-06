@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-06"
 
 subcollection: speech-to-text
 
@@ -61,7 +61,7 @@ In theory, you can send 44 kHz audio with a broadband or narrowband model, but t
 #### More information
 {: #samplingRateMore}
 
--   For more information about sampling rates, see [wikipedia.org/wiki/Sampling](https://wikipedia.org/wiki/Sampling){: external}. Select *Sampling (signal processing)*.
+-   For more information about sampling rates, see [Sampling (signal processing)](https://wikipedia.org/wiki/Sampling_%28signal_processing%29){: external}.
 -   For more information about the models that the service offers for each supported language, see [Languages and models](/docs/services/speech-to-text?topic=speech-to-text-models).
 
 ### Bit rate
@@ -74,7 +74,7 @@ For example, audio that uses a broadband sampling rate of 16 kHz and 16 bits per
 #### More information
 {: #bitRateMore}
 
--   For more information about bit rates, see [wikipedia.org/wiki/Bit_rate](https://wikipedia.org/wiki/Bit_rate){: external}.
+-   For more information about bit rates, see [Bit rate](https://wikipedia.org/wiki/Bit_rate){: external}.
 -   For a general discussion of sampling rates and bit rates, see [What are bit rates?](http://www.richardfarrar.com/what-are-bit-rates/){: external} and [Choosing bit rates for podcasts](http://www.richardfarrar.com/choosing-bit-rates-for-podcasts/){: external}.
 
 ### Compression
@@ -96,7 +96,7 @@ With the {{site.data.keyword.speechtotextshort}} service, you can safely use los
 #### More information
 {: #compressionMore}
 
--   For more information about audio compression, see [wikipedia.org/wiki/Data_compression#Audio](https://wikipedia.org/wiki/Data_compression#Audio){: external}.
+-   For more information about audio compression, see [Data compression (Audio)](https://wikipedia.org/wiki/Data_compression#Audio){: external}.
 -   For more information about using data compression to increase the amount of audio that you can send with a request, see [Data limits and compression](#limits).
 
 ### Channels
@@ -118,7 +118,7 @@ The {{site.data.keyword.speechtotextshort}} service accepts audio with a maximum
 #### More information
 {: #channelsMore}
 
--   For more information about audio channels, see [wikipedia.org/wiki/Audio_signal](https://wikipedia.org/wiki/Audio_signal){: external}.
+-   For more information about audio channels, see [Audio signal](https://wikipedia.org/wiki/Audio_signal){: external}.
 
 ### Endianness
 {: #endianness}
@@ -138,7 +138,7 @@ The {{site.data.keyword.speechtotextshort}} service automatically detects the en
 #### More information
 {: #endiannessMore}
 
--   For more information about endianness, see [wikipedia.org/wiki/Endianness](https://wikipedia.org/wiki/Endianness){: external}.
+-   For more information about endianness, see [Endianness](https://wikipedia.org/wiki/Endianness){: external}.
 
 ### Audio frequency
 {: #frequency}
@@ -173,9 +173,9 @@ Downsampling your audio can be effective in some cases. For example, if the samp
 #### More information
 {: #frequencyMore}
 
--   For more information about audio frequency, see [https://wikipedia.org/wiki/Audio_frequency](https://wikipedia.org/wiki/Audio_frequency){: external}.
--   For more information about upsampling, see [https://wikipedia.org/wiki/Upsampling](https://wikipedia.org/wiki/Upsampling){: external}.
--   For more information about downsampling, see [https://wikipedia.org/wiki/Downsampling](https://wikipedia.org/wiki/Downsampling_%28signal_processing%29){: external}.
+-   For more information about audio frequency, see [Audio frequency](https://wikipedia.org/wiki/Audio_frequency){: external}.
+-   For more information about upsampling, see [Upsampling](https://wikipedia.org/wiki/Upsampling){: external}.
+-   For more information about downsampling, see [Downsampling](https://wikipedia.org/wiki/Downsampling_%28signal_processing%29){: external}.
 
 ## Supported audio formats
 {: #formats}
@@ -380,7 +380,7 @@ When you use the `curl` command to make a speech recognition request with the HT
   </tr>
 </table>
 
-For more information, see [wikipedia.org/wiki/A-law_algorithm](https://wikipedia.org/wiki/A-law_algorithm){: external}.
+For more information, see [A-law algorithm](https://wikipedia.org/wiki/A-law_algorithm){: external}.
 
 ### audio/basic format
 {: #basic}
@@ -392,12 +392,12 @@ For more information, see the Internet Engineering Task Force (IETF) [Request fo
 ### audio/flac format
 {: #flac}
 
-*Free Lossless Audio Codec (FLAC)* (`audio/flac`) is a lossless audio format. For more information, see [wikipedia.org/wiki/FLAC](https://wikipedia.org/wiki/FLAC){: external}.
+*Free Lossless Audio Codec (FLAC)* (`audio/flac`) is a lossless audio format. For more information, see [FLAC](https://wikipedia.org/wiki/FLAC){: external}.
 
 ### audio/g729 format
 {: #g729}
 
-*G.729* (`audio/g729`) is a lossy audio format that supports data that is encoded at 8 kHz. The service supports only G.729 Annex D, not Annex J. The service supports the use of files in `audio/g729` format only with narrowband models. For more information, see [wikipedia.org/wiki/G.729](https://wikipedia.org/wiki/G.729){: external}.
+*G.729* (`audio/g729`) is a lossy audio format that supports data that is encoded at 8 kHz. The service supports only G.729 Annex D, not Annex J. The service supports the use of files in `audio/g729` format only with narrowband models. For more information, see [G.729](https://wikipedia.org/wiki/G.729){: external}.
 
 ### audio/l16 format
 {: #l16}
@@ -461,12 +461,12 @@ For more information, see the Internet Engineering Task Force (IETF) [Request fo
   </tr>
 </table>
 
-For more information, see the IETF [Request for Comment (RFC) 2586](https://tools.ietf.org/html/rfc2586){: external} and [wikipedia.org/wiki/Pulse-code_modulation](https://wikipedia.org/wiki/Pulse-code_modulation){: external}.
+For more information, see the IETF [Request for Comment (RFC) 2586](https://tools.ietf.org/html/rfc2586){: external} and [Pulse-code modulation](https://wikipedia.org/wiki/Pulse-code_modulation){: external}.
 
 ### audio/mp3 and audio/mpeg formats
 {: #mp3}
 
-*MP3* (`audio/mp3`) or *Motion Picture Experts Group (MPEG)* (`audio/mpeg`) is a lossy audio format. (MP3 and MPEG refer to the same format.) For more information, see [wikipedia.org/wiki/MP3](https://wikipedia.org/wiki/MP3){: external}.
+*MP3* (`audio/mp3`) or *Motion Picture Experts Group (MPEG)* (`audio/mpeg`) is a lossy audio format. (MP3 and MPEG refer to the same format.) For more information, see [MP3](https://wikipedia.org/wiki/MP3){: external}.
 
 ### audio/mulaw format
 {: #mulaw}
@@ -496,15 +496,15 @@ For more information, see the IETF [Request for Comment (RFC) 2586](https://tool
   </tr>
 </table>
 
-For more information, see [wikipedia.org/wiki/M-law_algorithm](https://wikipedia.org/wiki/M-law_algorithm){: external}.
+For more information, see [M-law algorithm](https://wikipedia.org/wiki/M-law_algorithm){: external}.
 
 ### audio/ogg format
 {: #ogg}
 
 *Ogg* (`audio/ogg`) is an open container format that is maintained by the Xiph.org Foundation ([xiph.org/ogg](https://www.xiph.org/ogg){: external}). You can use audio streams that are compressed with the following lossy codecs:
 
--   *Opus* (`audio/ogg;codecs=opus`). For more information, see [opus-codec.org](https://www.opus-codec.org/){: external} and [wikipedia.org/wiki/Opus (audio format)](https://wikipedia.org/wiki/Opus){: external}. On the *Opus (audio format)* page, look especially at the *Containers* section.
--   *Vorbis* (`audio/ogg;codecs=vorbis`). For more information, see [xiph.org/vorbis](https://xiph.org/vorbis/){: external} and [wikipedia.org/wiki/Vorbis](https://wikipedia.org/wiki/Vorbis){: external}.
+-   *Opus* (`audio/ogg;codecs=opus`). For more information, see [opus-codec.org](https://www.opus-codec.org/){: external} and [Opus (audio format)](https://wikipedia.org/wiki/Opus_%28audio_format%29){: external}. Look especially at the *Containers* section.
+-   *Vorbis* (`audio/ogg;codecs=vorbis`). For more information, see [xiph.org/vorbis](https://xiph.org/vorbis/){: external} and [Vorbis](https://wikipedia.org/wiki/Vorbis){: external}.
 
 If you omit the codec, the service automatically detects it from the input audio. Opus is the preferred codec; it is standardized by the Internet Engineering Task Force (IETF) as [Request for Comment (RFC) 6716](https://tools.ietf.org/html/rfc6716){: external}.
 
@@ -513,15 +513,15 @@ If you omit the codec, the service automatically detects it from the input audio
 
 *Waveform Audio File Format (WAV)* (`audio/wav`) is a container format that is often used for uncompressed audio streams, but it can contain compressed audio, as well. The service supports WAV audio that uses any encoding. It accepts WAV audio with a maximum of nine channels (due to an FFmpeg limitation).
 
-For more information about the WAV format, see [wikipedia.org/wiki/WAV](https://wikipedia.org/wiki/WAV){: external}. For more information about reducing the size of WAV audio by converting it to the Opus codec, see [Converting to audio/ogg with the Opus codec](#conversionOgg).
+For more information about the WAV format, see [WAV](https://wikipedia.org/wiki/WAV){: external}. For more information about reducing the size of WAV audio by converting it to the Opus codec, see [Converting to audio/ogg with the Opus codec](#conversionOgg).
 
 ### audio/webm format
 {: #webm}
 
 *Web Media (WebM)* (`audio/webm`) is an open container format that is maintained by the WebM project ([webmproject.org](https://www.webmproject.org/){: external}). You can use audio streams that are compressed with the following lossy codecs:
 
--   *Opus* (`audio/webm;codecs=opus`). For more information, see [opus-codec.org](https://www.opus-codec.org/){: external} and [wikipedia.org/wiki/Opus (audio format)](https://wikipedia.org/wiki/Opus){: external}. On the *Opus (audio format)* page, look especially at the *Containers* section.
--   *Vorbis* (`audio/webm;codecs=vorbis`). For more information, see [xiph.org/vorbis](https://xiph.org/vorbis/){: external} and [wikipedia.org/wiki/Vorbis](https://wikipedia.org/wiki/Vorbis){: external}.
+-   *Opus* (`audio/webm;codecs=opus`). For more information, see [opus-codec.org](https://www.opus-codec.org/){: external} and [Opus (audio format)](https://wikipedia.org/wiki/Opus_%28audio_format%29){: external}. Look especially at the *Containers* section.
+-   *Vorbis* (`audio/webm;codecs=vorbis`). For more information, see [xiph.org/vorbis](https://xiph.org/vorbis/){: external} and [Vorbis](https://wikipedia.org/wiki/Vorbis){: external}.
 
 If you omit the codec, the service automatically detects it from the input audio.
 

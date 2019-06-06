@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-06"
 
 subcollection: speech-to-text
 
@@ -143,7 +143,7 @@ The parameter is intended for use with custom models. Therefore, you can learn a
 -   *Streaming* - You set the `Transfer-Encoding` request header to the value `chunked` and stream the data over a persistent connection. The data does not need to exist fully before you stream it to the service. You can stream the data as it becomes available. The service sends results only when it receives the final chunk, which you indicate by sending an empty chunk.
 
     For more information about streaming chunked audio with the `Transfer-Encoding` header, see
-    -   [wikipedia.org/wiki/Chunked_transfer_encoding](https://wikipedia.org/wiki/Chunked_transfer_encoding){: external}
+    -   [Chunked transfer encoding](https://wikipedia.org/wiki/Chunked_transfer_encoding){: external}
     -   [Transfer Codings](https://tools.ietf.org/html/rfc7230#section-4){: external} in *IETF RFC 7320 HTTP/1.1: Message Syntax and Routing*
 
 With the HTTP interfaces, the service always transcribes the entire audio stream before sending any results. The results can include multiple `transcript` elements to indicate phrases that are separated by pauses. Concatenate the `transcript` elements to assemble the complete transcript.
