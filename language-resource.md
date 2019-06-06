@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-06"
 
 subcollection: speech-to-text
 
@@ -135,14 +135,14 @@ The following descriptions apply to US and UK English, French, German, Spanish, 
 
 -   Converts numbers to their equivalent words, for example:
     -   *For English,* `500` becomes `five hundred`, and `0.15` becomes `zero point fifteen`.
-    -   *For French,* `500` becomes `cinq cents`, and `0,15` becomes <code>z&eacute;ro quinze</code>.
+    -   *For French,* `500` becomes `cinq cents`, and `0,15` becomes <code>z&eacute;ro virgule quinze</code>.
     -   *For German,* `500` becomes <code>f&uuml;nfhundert</code>, and `0,15` becomes <code>null punkt f&uuml;nfzehn</code>.
     -   *For Spanish,* `500` becomes `quinientos`, and `0,15` becomes `cero coma quince`.
     -   *For Brazilian Portuguese,* `500` becomes `quinhentos`, and `0,15` becomes `zero ponto quinze`.
 -   Converts tokens that include certain symbols to meaningful string representations, for example:
     -   Converts a `$` (dollar sign) and a number:
         -   *For English,* `$100` becomes `one hundred dollars`.
-        -   *For French,* `$100` becomes `cent dollar`.
+        -   *For French,* `$100` becomes `cent dollars`.
         -   *For German,* `$100` and `100$` become `einhundert dollar`.
         -   *For Spanish,* `$100`  and `100$` become <code>cien d&oacute;lares</code> (or `cien pesos` if the dialect is `es-LA`).
         -   *For Brazilian Portuguese,* `$100` and `100$` become <code>cem d&oacute;lares</code>.
@@ -154,7 +154,7 @@ The following descriptions apply to US and UK English, French, German, Spanish, 
         -   *For Brazilian Portuguese,* <code>&euro;100</code> and <code>100&euro;</code> become `cem euros`.
     -   Converts a `%` (percent sign) preceded by a number:
         -   *For English,* `100%` becomes `one hundred percent`.
-        -   *For French,* `100%` becomes `cent pourcent`.
+        -   *For French,* `100%` becomes `cent pour cent`.
         -   *For German,* `100%` becomes `einhundert prozent`.
         -   *For Spanish,* `100%` becomes `cien por ciento`.
         -   *For Brazilian Portuguese,* `100%` becomes `cem por cento`.
