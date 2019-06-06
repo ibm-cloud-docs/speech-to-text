@@ -61,7 +61,7 @@ In theory, you can send 44 kHz audio with a broadband or narrowband model, but t
 #### More information
 {: #samplingRateMore}
 
--   For more information about sampling rates, see [Sampling (signal processing)](https://en.wikipedia.org/wiki/Sampling_%28signal_processing%29){: external}.
+-   For more information about sampling rates, see [Sampling (signal processing)](https://wikipedia.org/wiki/Sampling_%28signal_processing%29){: external}.
 -   For more information about the models that the service offers for each supported language, see [Languages and models](/docs/services/speech-to-text?topic=speech-to-text-models).
 
 ### Bit rate
