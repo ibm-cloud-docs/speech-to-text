@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-06"
 
 subcollection: speech-to-text
 
@@ -118,7 +118,7 @@ The following grammars recognize Honda VIN codes. They are more complex than the
   </tr>
 </table>
 
-For more information about the VIN format, see [Vehicle identification number](https://wikipedia.org/wiki/Vehicle_identification_number){: external} in Wikipedia.
+For more information about the VIN format, see [Vehicle identification number](https://wikipedia.org/wiki/Vehicle_identification_number){: external}.
 
 ## Grammars with optional elements
 {: #optionalElements}
