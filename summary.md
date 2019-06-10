@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-10"
 
 subcollection: speech-to-text
 
@@ -704,7 +704,7 @@ An optional boolean that indicates whether the service returns metrics about its
       **Synchronous HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Not supported
     </td>
   </tr>
   <tr>
@@ -749,7 +749,7 @@ An optional float of at least 0.1 that indicates the interval at which the servi
       **Synchronous HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Not supported
     </td>
   </tr>
   <tr>
