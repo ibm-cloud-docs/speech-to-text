@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-10"
 
 subcollection: speech-to-text
 
@@ -336,7 +336,7 @@ curl -X POST -u "apikey:{apikey}"
       },
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -375,7 +375,7 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         },
@@ -384,8 +384,8 @@ severe thunderstorms swept through Colorado on Sunday "
 severe thunderstorms swept through Colorado on Sunday "
         },
         {
-          "transcript": "several tornadoes touch down is a line of
-severe thunderstorms swept through Colorado on Sunday "
+          "transcript": "several tornadoes touch down as a line of
+severe thunderstorms swept through Colorado and Sunday "
         }
       ],
       "final": true
@@ -490,7 +490,7 @@ severe thunderstorms swept through Colorado on Sunday "
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -592,7 +592,7 @@ curl -X POST -u "apikey:{apikey}"
       ],
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -634,9 +634,9 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday ",
-          "confidence": 0.89,
           "word_confidence": [
             [
               "several",
@@ -731,7 +731,7 @@ curl -X POST -u "apikey:{apikey}"
               6.34
             ]
           ],
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }

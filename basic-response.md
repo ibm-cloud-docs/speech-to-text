@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-10"
 
 subcollection: speech-to-text
 
@@ -39,7 +39,7 @@ The service returns the following response for the examples in [Making a recogni
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }

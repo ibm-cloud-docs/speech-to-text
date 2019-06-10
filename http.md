@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-10"
 
 subcollection: speech-to-text
 
@@ -56,7 +56,7 @@ The example returns the following transcript for the audio:
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of severe thunderstorms swept through Colorado on Sunday "
         }
       ],
