@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-10"
 
 subcollection: speech-to-text
 
@@ -283,7 +283,7 @@ curl -X GET -u "apikey:{apikey}"
                   6.33
                 ]
               ],
-              "confidence": 0.89
+              "confidence": 0.96
             }
           ]
         }

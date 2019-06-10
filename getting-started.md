@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-05"
+lastupdated: "2019-06-10"
 
 subcollection: speech-to-text
 
@@ -87,9 +87,9 @@ Call the `POST /v1/recognize` method to request a basic transcript of a FLAC aud
         {
           "alternatives": [
             {
-              "confidence": 0.87
+              "confidence": 0.96
               "transcript": "several tornadoes touch down as a line of
-severe thunderstorms swept through colorado on sunday "
+severe thunderstorms swept through Colorado on Sunday "
             }
           ],
           "final": true
@@ -134,17 +134,17 @@ Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but
               ]
             },
             {
-              "confidence": 0.87
+              "confidence": 0.96
               "transcript": "several tornadoes touch down as a line
-of severe thunderstorms swept through colorado on sunday "
+of severe thunderstorms swept through Colorado on Sunday "
             },
             {
               "transcript": "several tornadoes touched down as a line
-of severe thunderstorms swept through colorado on sunday "
+of severe thunderstorms swept through Colorado on Sunday "
             },
             {
-              "transcript": "several tornadoes touch down is a line
-of severe thunderstorms swept through colorado on sunday "
+              "transcript": "several tornadoes touch down as a line
+of severe thunderstorms swept through Colorado and Sunday "
             }
           ],
           "final": true
