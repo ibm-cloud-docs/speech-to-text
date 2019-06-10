@@ -71,8 +71,8 @@ Call the `POST /v1/recognize` method to request a basic transcript of a FLAC aud
     -   {: hide-dashboard} Replace `{apikey}` and `{url}` with your API key and URL.
     -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
 
-Windows users: Replace the backslash (`\`) at the end of each line with a caret (`^`). Make sure there are no trailing spaces.
-{: tip}
+    *Windows users,* replace the backslash (`\`) at the end of each line with a caret (`^`). Make sure there are no trailing spaces.
+    {: tip}
 
     ```bash
     curl -X POST -u "apikey:{apikey}"{: apikey} \
