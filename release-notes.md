@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-10"
 
 subcollection: speech-to-text
 
@@ -33,6 +33,11 @@ The following sections document the new features and changes that were included 
 
 No known limitations at this time.
 
+## 10 June 2019
+{: #June2019a}
+
+[Processing metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#processing_metrics) are available only with the WebSocket and asynchronous HTTP interfaces. They are not supported with the synchronous HTTP interface.
+
 ## 17 May 2019
 {: #May2019b}
 
@@ -62,17 +67,10 @@ By default, the service automatically uses the updated models for all speech rec
 
 For more information, see [Upgrading custom models](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade).
 
-## 19 April 2019
-{: #April2019b}
-
--   The training methods of the customization interface now include a `strict` query parameter that indicates whether training is to proceed if a custom model contains a mix of valid and invalid resources. By default, training fails if a custom model contains one or more invalid resources. Set the parameter to `false` to allow training to proceed as long as the model contains at least one valid resource. The service excludes invalid resources from the training.
-    -   For more information about using the `strict` parameter with the `POST /v1/customizations/{customization_id}/train` method, see [Train the custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language) and [Training failures](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#failedTraining-language).
-    -   For more information about using the `strict` parameter with the `POST /v1/acoustic_customizations/{customization_id}/train` method, see [Train the custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic#trainModel-acoustic) and [Training failures](/docs/services/speech-to-text?topic=speech-to-text-acoustic#failedTraining-acoustic).
--   You can now add a maximum of 90 thousand out-of-vocabulary (OOV) words to the words resource of a custom language model. The previous maximum was 30 thousand OOV words. This figure includes OOV words from all sources (corpora, grammars, and individual custom words that you add directly). You can add a maximum of 10 million total words to a custom model from all sources. For more information, see [How much data do I need?](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#wordsResourceAmount).
-
 ## Older releases
 {: #older}
 
+-   [19 April 2019](#April2019b)
 -   [3 April 2019](#April2019)
 -   [21 March 2019](#March2019d)
 -   [15 March 2019](#March2019c)
@@ -110,6 +108,14 @@ For more information, see [Upgrading custom models](/docs/services/speech-to-tex
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 19 April 2019
+{: #April2019b}
+
+-   The training methods of the customization interface now include a `strict` query parameter that indicates whether training is to proceed if a custom model contains a mix of valid and invalid resources. By default, training fails if a custom model contains one or more invalid resources. Set the parameter to `false` to allow training to proceed as long as the model contains at least one valid resource. The service excludes invalid resources from the training.
+    -   For more information about using the `strict` parameter with the `POST /v1/customizations/{customization_id}/train` method, see [Train the custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language) and [Training failures](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#failedTraining-language).
+    -   For more information about using the `strict` parameter with the `POST /v1/acoustic_customizations/{customization_id}/train` method, see [Train the custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic#trainModel-acoustic) and [Training failures](/docs/services/speech-to-text?topic=speech-to-text-acoustic#failedTraining-acoustic).
+-   You can now add a maximum of 90 thousand out-of-vocabulary (OOV) words to the words resource of a custom language model. The previous maximum was 30 thousand OOV words. This figure includes OOV words from all sources (corpora, grammars, and individual custom words that you add directly). You can add a maximum of 10 million total words to a custom model from all sources. For more information, see [How much data do I need?](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#wordsResourceAmount).
 
 ### 3 April 2019
 {: #April2019}

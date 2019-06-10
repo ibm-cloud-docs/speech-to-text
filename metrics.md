@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-10"
 
 subcollection: speech-to-text
 
@@ -27,10 +27,10 @@ subcollection: speech-to-text
 
 The {{site.data.keyword.speechtotextfull}} service can return two types of optional metrics for a speech recognition request:
 
--   [Processing metrics](#processing_metrics) provide periodic information about the service's processing of the input audio. Use the metrics to gauge the service's progress in transcribing the audio.
--   [Audio metrics](#audio_metrics) provide information about the signal characteristics of the input audio. Use the metrics to determine the characteristics and quality of the audio.
+-   [Processing metrics](#processing_metrics) provide periodic information about the service's processing of the input audio. Use the metrics to gauge the service's progress in transcribing the audio. Processing metrics are available with the WebSocket and asynchronous HTTP interfaces.
+-   [Audio metrics](#audio_metrics) provide information about the signal characteristics of the input audio. Use the metrics to determine the characteristics and quality of the audio. Audio metrics are available with all speech recognition interfaces.
 
-You can request both types of metrics with any speech recognition request. By default, the service returns no metrics for a request.
+By default, the service returns no metrics for a request.
 
 ## Processing metrics
 {: #processing_metrics}
@@ -60,7 +60,7 @@ To request processing metrics, use the following optional parameters:
 How you provide the parameters and how the service returns processing metrics differ by interface:
 
 -   With the WebSocket interface, you specify the parameters with the JSON `start` message for a speech recognition request. The service calculates and returns metrics in real-time at the requested interval.
--   With the HTTP interfaces, you specify query parameters with a speech recognition request. The service calculates the metrics at the requested interval, but it returns all metrics for the audio with the final transcription results.
+-   With the asynchronous HTTP interface, you specify query parameters with a speech recognition request. The service calculates the metrics at the requested interval, but it returns all metrics for the audio with the final transcription results.
 
 The service also returns processing metrics for transcription events. If you request interim results with the WebSocket interface, you can receive metrics with greater frequency than the requested interval.
 
@@ -207,16 +207,16 @@ The following example output shows the first few processing metrics results that
 ```
 {: codeblock}
 
-### Processing metrics example: Synchronous HTTP interface
+### Processing metrics example: Asynchronous HTTP interface
 {: #processing_metrics_example_http}
 
-The following example shows a speech recognition request for the synchronous HTTP interface. The request enables processing metrics and specifies an interval of 0.25 seconds. The audio file again includes the message "hello world long pause stop".
+The following example shows a speech recognition request for the `/v1/recognitions` method of the asynchronous HTTP interface. The request enables processing metrics and specifies an interval of 0.25 seconds. The audio file again includes the message "hello world long pause stop".
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?processing_metrics=true&processing_metrics_interval=0.25"
+"https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions?processing_metrics=true&processing_metrics_interval=0.25"
 ```
 {: pre}
 
@@ -330,7 +330,7 @@ The following fields of the `AudioMetricsDetails` object provide histograms for 
 -   `direct_current_offset` defines a histogram of the cumulative direct current (DC) component of the audio signal.
 -   `clipping_rate` defines a histogram of the clipping rate for the audio segments. The clipping rate is defined as the fraction of samples in the segment that reach the maximum or minimum value that is offered by the audio quantization range.
 
-    The service auto-detects either a 16-bit Pulse-Code Modulation(PCM) audio range (-32768 to +32767) or a unit range (-1.0 to +1.0). The clipping rate is between 0.0 and 1.0. Higher values indicate possible degradation of speech recognition.
+    The service auto-detects either a 16-bit Pulse-Code Modulation (PCM) audio range (-32768 to +32767) or a unit range (-1.0 to +1.0). The clipping rate is between 0.0 and 1.0. Higher values indicate possible degradation of speech recognition.
 -   `speech_level` defines a histogram of the signal level in segments of the audio that contain speech. The signal level is computed as the Root-Mean-Square (RMS) value in a decibel (dB) scale normalized to the range 0.0 (minimum level) to 1.0 (maximum level).
 -   `non_speech_level` defines a histogram of the signal level in segments of the audio that do not contain speech. The signal level is computed as the RMS value in a decibel scale normalized to the range 0.0 (minimum level) to 1.0 (maximum level).
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-10"
 
 subcollection: speech-to-text
 
@@ -73,7 +73,7 @@ The service offers two types of optional metrics for speech recognition requests
 -   [Processing metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#processing_metrics) provide detailed timing information about the service's analysis of the input audio. The service returns the metrics at specified intervals and with transcription events, such as interim and final results. You can use the metrics to gauge the service's progress in transcribing the audio.
 -   [Audio metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#audio_metrics) provide detailed information about the signal characteristics of the input audio. The results provide aggregated metrics for the entire input audio at the conclusion of speech processing. You can use the metrics to determine the characteristics and quality of the audio.
 
-You can request both types of metrics with any speech recognition request.
+You can request processing metrics with the WebSocket and asynchronous HTTP interfaces. You can request audio metrics with any of the service's interfaces. By default, the service returns no metrics.
 
 ## CORS support
 {: #cors}
