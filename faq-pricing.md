@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-13"
 
 subcollection: speech-to-text
 
@@ -30,7 +30,7 @@ subcollection: speech-to-text
 {: #faq-pricing-one}
 {: faq}
 
-The {{site.data.keyword.speechtotextshort}} service is priced at $0.02 (USD) per minute of speech that you recognize. This price applies to use of both broadband and narrowband models. For more information, see the {{site.data.keyword.speechtotextshort}} service [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external}.
+The {{site.data.keyword.speechtotextshort}} service is priced at $0.02 (USD) per minute of speech that you recognize. This price applies to use of both broadband and narrowband models. For more information, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service.
 
 ## What does "pricing per minute" mean?
 {: #faq-pricing-two}
@@ -56,8 +56,14 @@ The tiered pricing model is intended to give high-volume users further discounts
 
 For the first 250 thousand minutes of audio, you would be charged at $0.02 (USD) / minute: 250,000 \* $0.02 = $5000.00 (USD). For the remaining 25 thousand minutes of audio, you would be charged at the reduced rate of $0.015 (USD) / minute: 25,000 \* $0.015 = $375.00 (USD). In this case, your total charge for the month would be $5375.00 (USD).
 
-## What is the price for using the service's customization interface?
+## What pricing plan do I need to use the service's customization interface?
 {: #faq-pricing-six}
+{: faq}
+
+You must have the Standard pricing plan to use language model or acoustic model customization. Users of the Lite plan cannot use the customization interface. For more information, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service.
+
+## What is the price for using the service's customization interface?
+{: #faq-pricing-seven}
 {: faq}
 
 For *language model customization*, {{site.data.keyword.IBM_notm}} does not charge for creating or hosting a custom language model, only for using the model with a recognition request. Using a custom language model for transcription incurs an add-on charge of $0.03 (USD) per minute. This charge is in addition to the standard usage charge of $0.02 (USD) per minute. It applies to all languages supported by the customization interface. So the total charge for using a custom language model for speech recognition is $0.05 (USD) per minute.
