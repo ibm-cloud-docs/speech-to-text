@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Audio formats
 {: #audio-formats}
 
-The {{site.data.keyword.speechtotextfull}} service can extract speech from audio in many different formats.
+The {{site.data.keyword.speechtotextfull}} service can extract speech from audio in many formats.
 
 -   If you are unfamiliar with audio and how it is described and specified, begin with [Audio characteristics and terminology](#terminology) to help you get started.
 -   If you already understand how to use audio, jump to [Supported audio formats](#formats) for detailed information about the formats that the service supports.
