@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
@@ -50,7 +50,7 @@ Use lightly supervised training to train a custom acoustic model with a custom l
 
 To use a transcription or list of words, you first create a custom language model that contains this textual data. To train a custom acoustic model with a custom language model, both custom models must be based on the same version of the same base model. If a new version of the base model is made available, you must upgrade both models to the same version of the base model for training to succeed.
 
-Use the optional `custom_language_model_id` query parameter of the `POST /v1/acoustic_customizations/{customization_id}/train` method to train your custom acoustic model with a custom language model. Pass the GUID of the acoustic model with the `customization_id` parameter and the GUID of the custom language model with the `custom_language_model_id` parameter. Both models must be owned by the service credentials that are passed with the request.
+Use the optional `custom_language_model_id` query parameter of the `POST /v1/acoustic_customizations/{customization_id}/train` method to train your custom acoustic model with a custom language model. Pass the GUID of the acoustic model with the `customization_id` parameter and the GUID of the custom language model with the `custom_language_model_id` parameter. Both models must be owned by the credentials that are passed with the request.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -70,7 +70,7 @@ Using a custom language model can improve transcription accuracy regardless of w
 
 If a custom language model includes grammars, you can also use the custom language model and one of its grammars with a custom acoustic model during speech recognition.
 
-The following example passes both types of model to the HTTP `POST /v1/recognize` method. Pass the GUID of the custom acoustic model with the `acoustic_customization_id` parameter and the GUID of the custom language model with the `language_customization_id` parameter. Both models must be owned by the service credentials passed with the request, and both must be based on the same base model (for example, `en-US_BroadbandModel`).
+The following example passes both types of model to the HTTP `POST /v1/recognize` method. Pass the GUID of the custom acoustic model with the `acoustic_customization_id` parameter and the GUID of the custom language model with the `language_customization_id` parameter. Both models must be owned by the credentials that are passed with the request, and both must be based on the same base model (for example, `en-US_BroadbandModel`).
 
 ```bash
 curl -X POST -u "apikey:{apikey}"

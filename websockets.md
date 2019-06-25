@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
@@ -131,7 +131,9 @@ A WebSocket client calls this method with the following query parameters to esta
       Specifies the Globally Unique Identifier (GUID) of a custom
       language model that is to be used for all requests that are sent
       over the connection. The base model of the custom language model
-      must match the value of the <code>model</code> parameter. By
+      must match the value of the <code>model</code> parameter. If you
+      include a customization ID, you must make the request with credentials
+      for the instance of the service that owns the custom model. By
       default, no custom language model is used. For more information, see
       [The customization interface](/docs/services/speech-to-text?topic=speech-to-text-customization).
     </td>
@@ -144,7 +146,9 @@ A WebSocket client calls this method with the following query parameters to esta
       Specifies the Globally Unique Identifier (GUID) of a custom
       acoustic model that is to be used for all requests that are sent
       over the connection. The base model of the custom acoustic model
-      must match the value of the <code>model</code> parameter. By
+      must match the value of the <code>model</code> parameter. If you
+      include a customization ID, you must make the request with credentials
+      for the instance of the service that owns the custom model. By
       default, no custom acoustic model is used. For more information, see
       [The customization interface](/docs/services/speech-to-text?topic=speech-to-text-customization).
     </td>
@@ -199,6 +203,7 @@ var wsURI = 'wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
   + '?access_token=' + IAM_access_token
   + '&model=es-ES_BroadbandModel';
 var websocket = new WebSocket(wsURI);
+
 websocket.onopen = function(evt) { onOpen(evt) };
 websocket.onclose = function(evt) { onClose(evt) };
 websocket.onmessage = function(evt) { onMessage(evt) };

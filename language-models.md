@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
@@ -31,12 +31,12 @@ The customization interface includes the `POST /v1/customizations` method for cr
 -   [Create a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language)
 -   [Train the custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language)
 
-In addition, the interface includes the following methods for listing information about custom language models, resetting a custom model to its initial state, and deleting a custom model.
+In addition, the interface includes methods for listing information about custom language models, resetting a custom model to its initial state, upgrading a custom model, and deleting a custom model. You cannot train, reset, upgrade, or delete a custom model while the service is handling another operation on that model, including adding resources to the model.
 
 ## Listing custom language models
 {: #listModels-language}
 
-The customization interface provides two methods for listing information about the custom language models that are owned by the specified service credentials:
+The customization interface provides two methods for listing information about the custom language models that are owned by the specified credentials:
 
 -   The `GET /v1/customizations` method lists information about all custom language models or about all custom language models for a specified language.
 -   The `GET /v1/customizations/{customization_id}` method lists information about a specified custom language model. Use this method to poll the service about the status of a training request or a request to add new words.
@@ -45,6 +45,7 @@ Both methods return the following information about a custom model:
 
 -   `customization_id` identifies the custom model's Globally Unique Identifier (GUID). The GUID is used to identify the model in methods of the interface.
 -   `created` is the date and time in Coordinated Universal Time (UTC) at which the custom model was created.
+-   `updated` is the date and time in Coordinated Universal Time (UTC) at which the custom model was last modified.
 -   `language` is the language of the custom model.
 -   `dialect` is the dialect of the language for the custom language model.
 -   `owner` identifies the credentials of the service instance that owns the custom model.
@@ -67,7 +68,7 @@ Additionally, the output includes a `progress` field that indicates the current 
 ### Example requests and responses
 {: #listExample-language}
 
-The following example includes the `language` query parameter to list all US English custom language models that are owned by the service credentials:
+The following example includes the `language` query parameter to list all US English custom language models that are owned by the specified credentials:
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -75,7 +76,7 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: pre}
 
-The service credentials own two such models. The first model is awaiting data or is being processed by the service. The second model is fully trained and ready for use.
+The credentials own two such models. The first model is awaiting data or is being processed by the service. The second model is fully trained and ready for use.
 
 ```javascript
 {
@@ -83,6 +84,7 @@ The service credentials own two such models. The first model is awaiting data or
     {
       "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
       "created": "2016-06-01T18:42:25.324Z",
+      "updated": "2016-06-01T18:42:25.324Z",
       "language": "en-US",
       "dialect": "en-US",
       "versions": [
@@ -99,6 +101,7 @@ The service credentials own two such models. The first model is awaiting data or
     {
       "customization_id": "8391f918-3b76-e109-763c-b7732fae4829",
       "created": "2016-06-01T18:51:37.291Z",
+      "updated": "2016-06-01T20:02:10.624Z",
       "language": "en-US",
       "dialect": "en-US",
       "versions": [
@@ -128,6 +131,7 @@ curl -X GET -u "apikey:{apikey}"
 {
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
   "created": "2016-06-01T18:42:25.324Z",
+  "updated": "2016-06-01T18:42:25.324Z",
   "language": "en-US",
   "dialect": "en-US",
   "versions": [

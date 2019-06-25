@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
@@ -107,7 +107,7 @@ The example returns the customization ID of the new model. Each custom model is 
 ```
 {: codeblock}
 
-The new custom model is owned by the service instance whose credentials are used to create it. For more information, see [Ownership of custom models](/docs/services/speech-to-text?topic=speech-to-text-customization#customOwner).
+The new custom model is owned by the instance of the service whose credentials are used to create it. For more information, see [Ownership of custom models](/docs/services/speech-to-text?topic=speech-to-text-customization#customOwner).
 
 ## Add audio to the custom acoustic model
 {: #addAudio}
@@ -146,12 +146,14 @@ The method also accepts an optional `allow_overwrite` query parameter to overwri
 
 The method is asynchronous. It can take several seconds to complete depending on the duration of the audio. For an archive file, the length of the operation depends on the duration of the audio files. For more information about checking the status of a request to add an audio resource, see [Monitoring the add audio request](#monitorAudio).
 
-You can add any number of audio resources to a custom model by calling the method once for each audio or archive file. The addition of one audio resource must be fully complete before you can add another. You must add a minimum of 10 minutes and a maximum of 200 hours of audio that includes speech, not silence, to a custom model before you can train it. No audio- or archive-type resource can be larger than 100 MB. For more information, see [Guidelines for adding audio resources](/docs/services/speech-to-text?topic=speech-to-text-audioResources#audioGuidelines).
+You can add any number of audio resources to a custom model by calling the method once for each audio or archive file. You can make multiple requests to add different audio resources simultaneously.
+
+You must add a minimum of 10 minutes and a maximum of 200 hours of audio that includes speech, not silence, to a custom model before you can train it. No audio- or archive-type resource can be larger than 100 MB. For more information, see [Guidelines for adding audio resources](/docs/services/speech-to-text?topic=speech-to-text-audioResources#audioGuidelines).
 
 ### Monitoring the add audio request
 {: #monitorAudio}
 
-The service returns a 201 response code if the audio is valid. It then asynchronously analyzes the contents of the audio file or files and automatically extracts information about the audio such as length, sampling rate, and encoding. You cannot submit requests to add more audio to a custom acoustic model, or to train the model, until the service's analysis of all audio files for the current request completes.
+The service returns a 201 response code if the audio is valid. It then asynchronously analyzes the contents of the audio file or files and automatically extracts information about the audio such as length, sampling rate, and encoding. You cannot train the custom model until the service's analysis of all audio resources for current requests completes.
 
 To determine the status of the request, use the `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to poll the status
 of the audio. The method accepts the GUID of the custom model and the name of the audio resource. Its response includes the `status` of the resource, which has one of the following values:
@@ -204,6 +206,7 @@ The content of the response and location of the `status` field depend on the typ
         "status": "ok"
       },
       . . .
+    }
     ```
     {: codeblock}
 
@@ -232,7 +235,7 @@ The method includes the following optional query parameters:
 ### Monitoring the train model request
 {: #monitorTraining-acoustic}
 
-The service returns a 200 response code if the training process is successfully initiated. The service cannot accept subsequent training requests, or requests to add more audio resources, until the existing request completes.
+The service returns a 200 response code if the training process is successfully initiated. The service cannot accept subsequent training requests, or requests to add more audio resources, until the existing training request completes.
 
 To determine the status of a training request, use the `GET /v1/acoustic_customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the acoustic model and returns its status, as in the following example:
 
@@ -246,6 +249,7 @@ curl -X GET -u "apikey:{apikey}"
 {
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
   "created": "2016-06-01T18:42:25.324Z",
+  "updated": "2016-06-01T22:11:13.298Z",
   "language": "en-US",
   "owner": "297cfd08-330a-22ba-93ce-1a73f454dd98",
   "name": "Example model",
