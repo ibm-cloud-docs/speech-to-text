@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-06"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
@@ -46,7 +46,7 @@ All interfaces accept a custom model for use in a recognition request:
 
     For more information, see [Using a custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acousticUse).
 
-Custom models are based on one of the language models that are described in [Languages and models](/docs/services/speech-to-text?topic=speech-to-text-models). A custom model can be used only with the base model for which it is created. If your custom model is based on a model other than `en-US_BroadbandModel`, the default, you must also specify the name of the model with the request. To use a custom model, you must issue the request with service credentials that are created for the instance of the service that owns the custom model.
+Custom models are based on one of the language models that are described in [Languages and models](/docs/services/speech-to-text?topic=speech-to-text-models). A custom model can be used only with the base model for which it is created. If your custom model is based on a model other than `en-US_BroadbandModel`, the default, you must also specify the name of the model with the request. To use a custom model, you must issue the request with credentials for the instance of the service that owns the custom model.
 
 For an introduction to customization, see [The customization interface](/docs/services/speech-to-text?topic=speech-to-text-customization).
 
@@ -90,7 +90,7 @@ When you use a grammar for speech recognition, the service recognizes only phras
 
 All interfaces accept the following parameters for a recognition request:
 
--   The `language_customization_id` parameter identifies the custom language model for which the grammar is defined. You must issue the request with service credentials for the instance of the service that owns the model.
+-   The `language_customization_id` parameter identifies the custom language model for which the grammar is defined. You must issue the request with credentials for the instance of the service that owns the model.
 -   The `grammar_name` parameter specifies the grammar that you want to use. You can specify only a single grammar with a request.
 
 For more information, see [Using grammars with custom language models](/docs/services/speech-to-text?topic=speech-to-text-grammars).

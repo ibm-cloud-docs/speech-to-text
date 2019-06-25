@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-25"
 
 subcollection: speech-to-text
 
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on May 17, 2019. The service now offers optional processing and audio metrics that return information about its processing of a speech recognition request and the signal characteristics of the input audio. Also, the Japanese broadband model has been updated for improved speech recognition. For more information, see the [17 May 2019 service update](/docs/services/speech-to-text?topic=speech-to-text-release-notes#May2019b) in the release notes*.
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on June 24, 2019. The US English and Brazilian Portuguese narrowband models have been updated for improved speech recognition. Multiple small enhancements were also made to the customization interface, including the ability to add multiple audio resources to a custom acoustic model at one time. For more information, see the [24 June 2019 service update](/docs/services/speech-to-text?topic=speech-to-text-release-notes#June2019b) in the release notes.*
 
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}
@@ -35,6 +35,8 @@ The service provides various interfaces that make it suitable for any applicatio
 -   Voice control of applications, embedded devices, and vehicle accessories
 -   Transcribing meetings and conference calls
 -   Dictating email messages and notes
+
+The service is ideal for clients who need to extract high-quality speech transcripts from call center audio. Clients in industries such as financial services, healthcare, insurance, and telecommunication can develop cloud-native applications for customer care, customer voice, agent assistance, and other solutions.
 
 ## Supported interfaces
 {: #interfaces}

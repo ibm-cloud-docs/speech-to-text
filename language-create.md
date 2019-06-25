@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
@@ -132,7 +132,7 @@ The example returns the customization ID of the new model. Each custom model is 
 ```
 {: codeblock}
 
-The new custom model is owned by the service instance whose credentials are used to create it. For more information, see [Ownership of custom models](/docs/services/speech-to-text?topic=speech-to-text-customization#customOwner).
+The new custom model is owned by the instance of the service whose credentials are used to create it. For more information, see [Ownership of custom models](/docs/services/speech-to-text?topic=speech-to-text-customization#customOwner).
 
 ## Add a corpus to the custom language model
 {: #addCorpus}
@@ -152,9 +152,10 @@ You use the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` m
 -   Specify the customization ID of the custom model with the `customization_id` path parameter.
 -   Specify a name for the corpus with the `corpus_name` path parameter. Use a localized name that matches the language of the custom model and reflects the contents of the corpus.
     -   Include a maximum of 128 characters in the name.
-    -   Do not include spaces, `/` (slashes), or `\` (backslashes) in the name.
-    -   Do not use the name of a corpus that has already been added to the custom model.
+    -   Do not use characters that need to be URL-encoded. For example, do not use spaces, slashes, backslashes, colons, ampersands, double quotes, plus signs, equals signs, questions marks, and so on in the name. (The service does not prevent the use of these characters. But because they must be URL-encoded wherever used, their use is strongly discouraged.)
+    -   Do not use the name of a corpus or grammar that has already been added to the custom model.
     -   Do not use the name `user`, which is reserved by the service to denote custom words that are added or modified by the user.
+    -   Do not use the name `base_lm` or `default_lm`. Both names are reserved for future use by the service.
 -   Pass the corpus text file as the body of the request.
 
 You can add a maximum of 90 thousand OOV words and 10 million total words from all sources combined. This includes words from corpora and grammars, and words that you add directly. For more information, see [How much data do I need?](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#wordsResourceAmount)
@@ -286,6 +287,7 @@ curl -X GET -u "apikey:{apikey}"
 {
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
   "created": "2016-06-01T18:42:25.324Z",
+  "updated": "2016-06-01T18:45:11.737Z",
   "language": "en-US",
   "dialect": "en-US",
   "owner": "297cfd08-330a-22ba-93ce-1a73f454dd98",
@@ -349,6 +351,7 @@ curl -X GET -u "apikey:{apikey}"
 {
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
   "created": "2016-06-01T18:42:25.324Z",
+  "updated": "2016-06-01T18:45:11.737Z",
   "language": "en-US",
   "dialect": "en-US",
   "owner": "297cfd08-330a-22ba-93ce-1a73f454dd98",
@@ -430,7 +433,7 @@ Follow these steps to use the Python script:
     {: pre}
 
     For more information about the library, see [pypi.python.org/pypi/requests](https://pypi.python.org/pypi/requests){: external}.
-1.  Edit the script to replace the `password` string `iam_apikey` with the API key from your {{site.data.keyword.speechtotextshort}} service credentials:
+1.  Edit the script to replace the `password` string `iam_apikey` with the API key from your {{site.data.keyword.speechtotextshort}} credentials:
 
     ```
     password = "iam_apikey"
@@ -455,7 +458,7 @@ Follow these steps to use the Bash shell script:
 1.  Download the shell script named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.sh" download="testSTTcustom.sh">testSTTcustom.sh <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
 1.  Download the example corpus text files to use with the script. You are free to test with either of the corpus text files or with a file of your own choosing. By default, all corpus text files must reside in the same directory as the script.
 1.  The script uses the `curl` command for HTTP requests to the service. If you have not already downloaded `curl`, you can install the version for your operating system from [curl.haxx.se](http://curl.haxx.se){: external}. Install the version that supports the Secure Sockets Layer (SSL) protocol, and make sure to include the installed binary file on your `PATH` environment variable.
-1.  Edit the script to replace the `PASSWORD` string `iam_apikey` with the API key from your {{site.data.keyword.speechtotextshort}} service credentials:
+1.  Edit the script to replace the `PASSWORD` string `iam_apikey` with the API key from your {{site.data.keyword.speechtotextshort}} credentials:
 
     ```
     PASSWORD="iam_apikey"

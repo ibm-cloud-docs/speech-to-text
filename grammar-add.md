@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-18"
 
 subcollection: speech-to-text
 
@@ -54,14 +54,13 @@ You use the `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`
 -   Specify the customization ID of the custom language model with the `customization_id` path parameter.
 -   Specify a name for the grammar with the `grammar_name` path parameter. Use a localized name that matches the language of the custom model and reflects the contents of the grammar.
     -   Include a maximum of 128 characters in the name.
-    -   Do not include spaces, slashes, or backslashes in the name.
+    -   Do not use characters that need to be URL-encoded. For example, do not use spaces, slashes, backslashes, colons, ampersands, double quotes, plus signs, equals signs, questions marks, and so on in the name. (The service does not prevent the use of these characters. But because they must be URL-encoded wherever used, their use is strongly discouraged.)
     -   Do not use the name of a grammar or corpus that has already been added to the custom model.
     -   Do not use the name `user`, which is reserved by the service to denote custom words that are added or modified by the user.
-
+    -   Do not use the name `base_lm` or `default_lm`. Both names are reserved for future use by the service.
 -   Use the `Content-Type` request header to specify the format of the grammar:
     -   `application/srgs` for an ABNF grammar
     -   `application/srgs+xml` for an XML grammar
-
 -   Pass the file that contains the grammar as the body of the request.
 
 The following example adds the grammar file named `confirm.abnf` to the custom model with the specified ID. The example names the grammar `confirm-abnf`.

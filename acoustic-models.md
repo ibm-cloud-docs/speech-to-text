@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
@@ -31,12 +31,12 @@ The customization interface includes the `POST /v1/acoustic_customizations` meth
 -   [Create a custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic#createModel-acoustic)
 -   [Train the custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic#trainModel-acoustic)
 
-In addition, the interface includes methods for listing information about custom acoustic models, resetting a custom model to its initial state, and deleting a custom model.
+In addition, the interface includes methods for listing information about custom acoustic models, resetting a custom model to its initial state, upgrading a custom model, and deleting a custom model. You cannot train, reset, upgrade, or delete a custom model while the service is handling another operation on that model, including adding audio resources to the model.
 
 ## Listing custom acoustic models
 {: #listModels-acoustic}
 
-The customization interface provides two methods for listing information about the custom acoustic models that are owned by the specified service credentials:
+The customization interface provides two methods for listing information about the custom acoustic models that are owned by the specified credentials:
 
 -   The `GET /v1/acoustic_customizations` method lists information about all custom acoustic models or about all custom acoustic models for a specified language.
 -   The `GET /v1/acoustic_customizations/{customization_id}` method lists information about a specified custom acoustic model. Use this method to poll the service about the status of a training request.
@@ -45,6 +45,7 @@ Both methods return the following information about a custom acoustic model:
 
 -   `customization_id` identifies the custom model's Globally Unique Identifier (GUID). The GUID is used to identify the model in methods of the interface.
 -   `created` is the date and time in Coordinated Universal Time (UTC) at which the custom model was created.
+-   `updated` is the date and time in Coordinated Universal Time (UTC) at which the custom model was last modified.
 -   `language` is the language of the custom model.
 -   `owner` identifies the credentials of the service instance that owns the custom model.
 -   `name` is the name of the custom model.
@@ -66,7 +67,7 @@ Additionally, the output includes a `progress` field that indicates the current 
 ### Example requests and responses
 {: #listExample-acoustic}
 
-The following example includes the `language` query parameter to list all US English custom acoustic models that are owned by the service credentials:
+The following example includes the `language` query parameter to list all US English custom acoustic models that are owned by the specified credentials:
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -74,7 +75,7 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: pre}
 
-Two such models are owned by the service credentials. The first model is awaiting data or is being processed by the service. The second model is fully trained and ready for use.
+The credentials own two such models. The first model is awaiting data or is being processed by the service. The second model is fully trained and ready for use.
 
 ```javascript
 {
@@ -82,6 +83,7 @@ Two such models are owned by the service credentials. The first model is awaitin
     {
       "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
       "created": "2016-06-01T18:42:25.324Z",
+      "updated": "2016-06-01T18:42:25.324Z",
       "language": "en-US",
       "versions": [
         "en-US_BroadbandModel.v07-06082016.06202016",
@@ -97,6 +99,7 @@ Two such models are owned by the service credentials. The first model is awaitin
     {
       "customization_id": "8391f918-3b76-e109-763c-b7732fae4829",
       "created": "2016-06-01T18:51:37.291Z",
+      "updated": "2016-06-01T19:21:06.825Z",
       "language": "en-US",
       "versions": [
         "en-US_BroadbandModel.v2017-11-15"
@@ -125,6 +128,7 @@ curl -X GET -u "apikey:{apikey}"
 {
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
   "created": "2016-06-01T18:42:25.324Z",
+  "updated": "2016-06-01T18:42:25.324Z",
   "language": "en-US",
   "versions": [
     "en-US_BroadbandModel.v07-06082016.06202016",

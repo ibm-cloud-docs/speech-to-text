@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-10"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
@@ -128,7 +128,7 @@ You create a recognition job by calling the `POST /v1/recognitions` method. How 
     -   `user_token` to specify a string that is to be included with each notification for the job. Because you can use the same callback URL with an indefinite number of jobs, you can leverage user tokens to differentiate notifications for different jobs.
 -   *To use polling*, omit the `callback_url`, `events`, and `user_token` query parameters. You must then use the `GET /v1/recognitions` or `GET /v1/recognitions/{id}` methods to check the status of the job, using the latter to retrieve the results when the job is complete.
 
-In both cases, you can include the `results_ttl` query parameter to specify the number of minutes for which the results are to remain available after the job completes.
+In both cases, you can include the `results_ttl` query parameter to specify the number of minutes for which the results are to remain available after the job completes. The new job is owned by the instance of the service whose credentials are used to create it.
 
 In addition to the previous parameters, which are specific to the asynchronous interface, the `POST /v1/recognitions` method supports most of the same parameters as the WebSocket and synchronous HTTP interfaces. For more information, see the [Parameter summary](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
@@ -300,7 +300,7 @@ curl -X GET -u "apikey:{apikey}"
 ## Checking the status of the latest jobs
 {: #jobs}
 
-You call the `GET /v1/recognitions` method to check the status of the latest jobs. The method returns the status of the most recent 100 outstanding jobs that are associated with the service credentials with which it is called. The method returns the ID and status of each job, along with its creation and update times. If a job was created with a callback URL and a user token, the method also returns the user token for the job.
+You call the `GET /v1/recognitions` method to check the status of the latest jobs. The method returns the status of the most recent 100 outstanding jobs that are associated with the credentials with which it is called. The method returns the ID and status of each job, along with its creation and update times. If a job was created with a callback URL and a user token, the method also returns the user token for the job.
 
 The response includes one of the following states:
 
@@ -314,7 +314,7 @@ A job and its results remain available until you delete them with the `DELETE /v
 ### Example
 {: #statusExample}
 
-The following example requests the status of the latest current jobs that are associated with the caller's service credentials. The user has three outstanding jobs in various states. The first job was created with a callback URL and a user token.
+The following example requests the status of the latest current jobs that are associated with the caller's credentials. The user has three outstanding jobs in various states. The first job was created with a callback URL and a user token.
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
