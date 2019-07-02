@@ -71,6 +71,7 @@ Speech to Text
     {: topicgroup}
     Service background
         science.md
+        references.md
     {: .navgroup-end}
 
     {: .navgroup id="reference"}
