@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-22"
+lastupdated: "2019-07-02"
 
 subcollection: speech-to-text
 
@@ -32,9 +32,6 @@ subcollection: speech-to-text
 
 The {{site.data.keyword.speechtotextfull}} service transcribes audio to text to enable speech transcription capabilities for applications. This curl-based tutorial can help you get started quickly with the service. The examples show you how to call the service's `POST /v1/recognize` method to request a transcript.
 {: shortdesc}
-
-The tutorial uses {{site.data.keyword.cloud}} Identity and Access Management (IAM) API keys for authentication. Older service instances might continue to use the `{username}` and `{password}` from their existing Cloud Foundry service credentials for authentication. Authenticate by using the approach that is right for your service instance. For more information about the service's use of IAM authentication, see the [30 October 2018 service update](/docs/services/speech-to-text?topic=speech-to-text-release-notes#October2018b) in the release notes.
-{: important}
 
 ## Before you begin
 {: #before-you-begin}
