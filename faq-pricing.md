@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-13"
+lastupdated: "2019-07-03"
 
 subcollection: speech-to-text
 
@@ -26,11 +26,17 @@ subcollection: speech-to-text
 # Pricing FAQs
 {: #faq-pricing}
 
-## What is the price for using the {{site.data.keyword.speechtotextshort}} standard service?
+## What is the price for using the {{site.data.keyword.speechtotextshort}} Lite plan?
+{: #faq-pricing-zero}
+{: faq}
+
+The Lite plan lets you get started with 500 minutes per month of speech recognition at no cost. The Lite plan does not provide access to the service's customization interfaces. For more information, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service.
+
+## What is the price for using the {{site.data.keyword.speechtotextshort}} Standard plan?
 {: #faq-pricing-one}
 {: faq}
 
-The {{site.data.keyword.speechtotextshort}} service is priced at $0.02 (USD) per minute of speech that you recognize. This price applies to use of both broadband and narrowband models. For more information, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service.
+The Standard pricing plan is priced at $0.02 (USD) per minute of speech that you recognize. This price applies to use of both broadband and narrowband models. The plan uses a tiered pricing model, and it allows you to use the customization interfaces at an additional charge. For more information, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service.
 
 ## What does "pricing per minute" mean?
 {: #faq-pricing-two}
