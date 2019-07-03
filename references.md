@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-07-01"
+lastupdated: "2019-07-03"
 
 subcollection: speech-to-text
 
@@ -36,7 +36,7 @@ For more information about the research behind the {{site.data.keyword.speechtot
 1.  <a id="jelinek1985" style="border-bottom:none">Jelinek, Frederick.</a> [*The Development of an Experimental Discrete Dictation Recognizer.*](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=1457611&url=http%3A%2F%2Fieeexplore.ieee.org%2Fiel5%2F5%2F31355%2F01457611.pdf%3Farnumber%3D1457611){: external} Proceedings of the IEEE, Vol. 73(11) (November 1985): pp. 1616-1624.
 1.  <a id="kurata2017a" style="border-bottom:none">Kurata, Gakuto, Abhinav Sethy, Bhuvana Ramabhadran, and George Saon.</a> [*Empirical Exploration of Novel Architectures and Objectives for Language Models.*](https://www.isca-speech.org/archive/Interspeech_2017/pdfs/0723.PDF){: external} Proceedings of Interspeech 2017 (August 2017): pp. 279-283.
 1.  <a id="kurata2017b" style="border-bottom:none">Kurata, Gakuto, Bhuvana Ramabhadran, George Saon, and Abhinav Sethy.</a> [*Language Modeling with Highway LSTM.*](https://arxiv.org/pdf/1709.06436.pdf){: external} Proceedings of IEEE Automatic Speech Recognition and Understanding Workshop (ASRU) (2017).
-1.  <a id="kurata2019" style="border-bottom:none">Kurata, Gakuto, and Kartik Audhkhasi.</a> [*Guiding CTC Posterior Spike Timings for Improved Posterior Fusion and Knowledge Distillation.*](https://arxiv.org/pdf/1904.08311.pdf){: external} Submitted to Interspeech 2019.
+1.  <a id="kurata2019" style="border-bottom:none">Kurata, Gakuto, and Kartik Audhkhasi.</a> [*Guiding CTC Posterior Spike Timings for Improved Posterior Fusion and Knowledge Distillation.*](https://arxiv.org/pdf/1904.08311.pdf){: external} Accepted by Interspeech 2019.
 1.  <a id="padmanabhan2002" style="border-bottom:none">Padmanabhan, Mukund, and Michael Picheny.</a> [*Large-Vocabulary Speech Recognition Algorithms.*](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=993770&url=http%3A%2F%2Fieeexplore.ieee.org%2Fiel5%2F2%2F21439%2F00993770.pdf%3Farnumber%3D993770){: external} Computer, Vol. 35(4) (2002): pp. 42-50.
 1.  <a id="picheny2011" style="border-bottom:none">Picheny, Michael, David Nahamoo, Vaibhava Goel, Brian Kingsbury, Bhuvana Ramabhadran, Steven J. Rennie, and George Saon.</a> [*Trends and Advances in Speech Recognition.*](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=6032775&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D6032775){: external} {{site.data.keyword.IBM_notm}} Journal of Research and Development, Vol. 55(5) (October 2011): pp. 2:1-2:18.
 1.  <a id="saon2015" style="border-bottom:none">Saon, George, Hong-Kwang J. Kuo, Steven Rennie, and Michael Picheny.</a> [*The {{site.data.keyword.IBM_notm}} 2015 English Conversational Telephone Speech Recognition System.*](https://arxiv.org/pdf/1505.05899.pdf){: external} Submitted to Interspeech 2015 (2015).
