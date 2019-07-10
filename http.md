@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-10"
+lastupdated: "2019-07-10"
 
 subcollection: speech-to-text
 
@@ -245,192 +245,192 @@ The example returns the following transcript for the audio files. The service re
 
 ```javascript
 {
-   "results": [
-      {
-         "word_alternatives": [
+  "results": [
+    {
+      "word_alternatives": [
+        {
+          "start_time": 0.03,
+          "alternatives": [
             {
-               "start_time": 0.03,
-               "alternatives": [
-                  {
-                     "confidence": 0.96,
-                     "word": "the"
-                  }
-               ],
-               "end_time": 0.09
-            },
-            {
-               "start_time": 0.09,
-               "alternatives": [
-                  {
-                     "confidence": 0.96,
-                     "word": "latest"
-                  }
-               ],
-               "end_time": 0.62
-            },
-            {
-               "start_time": 0.62,
-               "alternatives": [
-                  {
-                     "confidence": 0.96,
-                     "word": "weather"
-                  }
-               ],
-               "end_time": 0.87
-            },
-            {
-               "start_time": 0.87,
-               "alternatives": [
-                  {
-                     "confidence": 0.96,
-                     "word": "report"
-                  }
-               ],
-               "end_time": 1.5
+              "confidence": 0.96,
+              "word": "the"
             }
-         ],
-         "keywords_result": {},
-         "alternatives": [
+          ],
+          "end_time": 0.09
+        },
+        {
+          "start_time": 0.09,
+          "alternatives": [
             {
-               "timestamps": [
-                  [
-                     "the",
-                     0.03,
-                     0.09
-                  ],
-                  [
-                     "latest",
-                     0.09,
-                     0.62
-                  ],
-                  [
-                     "weather",
-                     0.62,
-                     0.87
-                  ],
-                  [
-                     "report",
-                     0.87,
-                     1.5
-                  ]
-               ],
-               "confidence": 0.99,
-               "transcript": "the latest weather report "
+              "confidence": 0.96,
+              "word": "latest"
             }
-         ],
-         "final": true
-      },
-      {
-         "word_alternatives": [
+          ],
+          "end_time": 0.62
+        },
+        {
+          "start_time": 0.62,
+          "alternatives": [
             {
-               "start_time": 0.15,
-               "alternatives": [
-                  {
-                     "confidence": 1.0,
-                     "word": "a"
-                  }
-               ],
-               "end_time": 0.3
-            },
-            {
-               "start_time": 0.3,
-               "alternatives": [
-                  {
-                     "confidence": 1.0,
-                     "word": "line"
-                  }
-               ],
-               "end_time": 0.64
-            },
-            . . .
-            {
-               "start_time": 4.58,
-               "alternatives": [
-                  {
-                     "confidence": 0.98,
-                     "word": "Colorado"
-                  }
-               ],
-               "end_time": 5.16
-            },
-            {
-               "start_time": 5.16,
-               "alternatives": [
-                  {
-                     "confidence": 0.98,
-                     "word": "on"
-                  }
-               ],
-               "end_time": 5.32
-            },
-            {
-               "start_time": 5.32,
-               "alternatives": [
-                  {
-                     "confidence": 0.98,
-                     "word": "Sunday"
-                  }
-               ],
-               "end_time": 6.04
+              "confidence": 0.96,
+              "word": "weather"
             }
-         ],
-         "keywords_result": {
-            "tornadoes": [
-               {
-                  "normalized_text": "tornadoes",
-                  "start_time": 3.03,
-                  "confidence": 0.98,
-                  "end_time": 3.84
-               }
+          ],
+          "end_time": 0.87
+        },
+        {
+          "start_time": 0.87,
+          "alternatives": [
+            {
+              "confidence": 0.96,
+              "word": "report"
+            }
+          ],
+          "end_time": 1.5
+        }
+      ],
+      "keywords_result": {},
+      "alternatives": [
+        {
+          "timestamps": [
+            [
+              "the",
+              0.03,
+              0.09
             ],
-            "colorado": [
-               {
-                  "normalized_text": "Colorado",
-                  "start_time": 4.58,
-                  "confidence": 0.98,
-                  "end_time": 5.16
-               }
+            [
+              "latest",
+              0.09,
+              0.62
+            ],
+            [
+              "weather",
+              0.62,
+              0.87
+            ],
+            [
+              "report",
+              0.87,
+              1.5
             ]
-         },
-         "alternatives": [
+          ],
+          "confidence": 0.99,
+          "transcript": "the latest weather report "
+        }
+      ],
+      "final": true
+    },
+    {
+      "word_alternatives": [
+        {
+          "start_time": 0.15,
+          "alternatives": [
             {
-               "timestamps": [
-                  [
-                     "a",
-                     0.15,
-                     0.3
-                  ],
-                  [
-                     "line",
-                     0.3,
-                     0.64
-                  ],
-                  . . .
-                  [
-                     "Colorado",
-                     4.58,
-                     5.16
-                  ],
-                  [
-                     "on",
-                     5.16,
-                     5.32
-                  ],
-                  [
-                     "Sunday",
-                     5.32,
-                     6.04
-                  ]
-               ],
-               "confidence": 0.99,
-               "transcript": "a line of severe thunderstorms with several
-possible tornadoes is approaching Colorado on Sunday "
+              "confidence": 1.0,
+              "word": "a"
             }
-         ],
-         "final": true
-      }
-   ],
-   "result_index": 0
+          ],
+          "end_time": 0.3
+        },
+        {
+          "start_time": 0.3,
+          "alternatives": [
+            {
+              "confidence": 1.0,
+              "word": "line"
+            }
+          ],
+          "end_time": 0.64
+        },
+        . . .
+        {
+          "start_time": 4.58,
+          "alternatives": [
+            {
+              "confidence": 0.98,
+              "word": "Colorado"
+            }
+          ],
+          "end_time": 5.16
+        },
+        {
+          "start_time": 5.16,
+          "alternatives": [
+            {
+              "confidence": 0.98,
+              "word": "on"
+            }
+          ],
+          "end_time": 5.32
+        },
+        {
+          "start_time": 5.32,
+          "alternatives": [
+            {
+              "confidence": 0.98,
+              "word": "Sunday"
+            }
+          ],
+          "end_time": 6.04
+        }
+      ],
+      "keywords_result": {
+        "tornadoes": [
+          {
+            "normalized_text": "tornadoes",
+            "start_time": 3.03,
+            "confidence": 0.98,
+            "end_time": 3.84
+          }
+        ],
+        "colorado": [
+          {
+            "normalized_text": "Colorado",
+            "start_time": 4.58,
+            "confidence": 0.98,
+            "end_time": 5.16
+          }
+        ]
+      },
+      "alternatives": [
+        {
+          "timestamps": [
+            [
+              "a",
+              0.15,
+              0.3
+            ],
+            [
+              "line",
+              0.3,
+              0.64
+            ],
+            . . .
+            [
+              "Colorado",
+              4.58,
+              5.16
+            ],
+            [
+              "on",
+              5.16,
+              5.32
+            ],
+            [
+              "Sunday",
+              5.32,
+              6.04
+            ]
+          ],
+          "confidence": 0.99,
+          "transcript": "a line of severe thunderstorms with several
+possible tornadoes is approaching Colorado on Sunday "
+        }
+      ],
+      "final": true
+    }
+  ],
+  "result_index": 0
 }
 ```
 {: codeblock}
