@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-10"
+lastupdated: "2019-07-24"
 
 subcollection: speech-to-text
 
@@ -276,4 +276,4 @@ The service always applies this capitalization to US English, regardless of whet
 
 The service does not insert punctuation in response transcripts by default. You must add any punctuation that you need to the service's results.
 
-For US English, you can use smart formatting to direct the service to substitute punctuation symbols, such as commas, periods, question marks, and exclamation points, for certain keyword strings. For more information, see [smart formatting](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting).
+For some languages, you can use smart formatting to direct the service to substitute punctuation symbols, such as commas, periods, question marks, and exclamation points, for certain keyword strings. For more information, see [smart formatting](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting).
