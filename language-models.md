@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-24"
+lastupdated: "2019-07-21"
 
 subcollection: speech-to-text
 
@@ -47,7 +47,7 @@ Both methods return the following information about a custom model:
 -   `created` is the date and time in Coordinated Universal Time (UTC) at which the custom model was created.
 -   `updated` is the date and time in Coordinated Universal Time (UTC) at which the custom model was last modified.
 -   `language` is the language of the custom model.
--   `dialect` is the dialect of the language for the custom language model.
+-   `dialect` is the dialect of the language for the custom model, which does not necessarily match the language of the custom model for Spanish models. For more information, see the description of the `dialect` parameter in [Create a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language).
 -   `owner` identifies the credentials of the service instance that owns the custom model.
 -   `name` is the name of the custom model.
 -   `description` shows the description of the custom model, if one was provided at its creation.

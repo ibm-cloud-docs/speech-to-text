@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-25"
+lastupdated: "2019-07-30"
 
 subcollection: speech-to-text
 
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on June 24, 2019. The US English and Brazilian Portuguese narrowband models have been updated for improved speech recognition. Multiple small enhancements were also made to the customization interface, including the ability to add multiple audio resources to a custom acoustic model at one time. For more information, see the [24 June 2019 service update](/docs/services/speech-to-text?topic=speech-to-text-release-notes#June2019b) in the release notes.*
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on July 30, 2019. The service now offers beta models for five additional Spanish dialects: Argentinian, Chilean, Colombian, Mexican, and Peruvian. For more information about the new Spanish dialects, see the [30 July 2019 service update](/docs/services/speech-to-text?topic=speech-to-text-release-notes#July2019) in the release notes.*
 
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}
@@ -84,8 +84,21 @@ The interfaces also support the following common output features:
 ## Language support
 {: #languages}
 
-The service offers models for the following languages: Brazilian Portuguese, French, German, Japanese, Korean, Mandarin Chinese, Modern Standard Arabic, Spanish, UK English, and US English. The service does not support all features for all languages. Moreover, it supports some features as generally available (GA) for production use and others as beta offerings for different languages.
+The service offers models for the following languages and dialects:
 
+-   Arabic (Modern Standard)
+-   Brazilian Portuguese
+-   Chinese (Mandarin)
+-   English (United Kingdom and United States)
+-   French
+-   German
+-   Japanese
+-   Korean
+-   Spanish (Argentinian, Castilian, Chilean, Colombian, Mexican, and Peruvian)
+
+The service does not support all features for all languages. Moreover, it supports some features as generally available (GA) for production use and others as beta offerings for different languages.
+
+-   The Spanish Castilian dialect is generally available. The other five Spanish dialects are beta.
 -   The WebSocket and HTTP interfaces are generally available for all languages.
 -   The service offers broadband models, narrowband models, or both for different languages. For more information, see [Languages and models](/docs/services/speech-to-text?topic=speech-to-text-models).
 -   Some speech recognition features are available only for some languages. For more information, see the [Parameter summary](/docs/services/speech-to-text?topic=speech-to-text-summary).

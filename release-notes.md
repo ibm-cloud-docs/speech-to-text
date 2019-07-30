@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-25"
+lastupdated: "2019-07-30"
 
 subcollection: speech-to-text
 
@@ -33,6 +33,27 @@ The following sections document the new features and changes that were included 
 
 No known limitations at this time.
 
+## 30 July 2019
+{: #July2019}
+
+The service now offers broadband and narrowband language models in six Spanish dialects:
+
+-   Argentinian Spanish (`es-AR_BroadbandModel` and `es-AR_NarrowbandModel`)
+-   Castilian Spanish (`es-ES_BroadbandModel` and `es-ES_NarrowbandModel`)
+-   Chilean Spanish (`es-CL_BroadbandModel` and `es-CL_NarrowbandModel`)
+-   Colombian Spanish (`es-CO_BroadbandModel` and `es-CO_NarrowbandModel`)
+-   Mexican Spanish (`es-MX_BroadbandModel` and `es-MX_NarrowbandModel`)
+-   Peruvian Spanish (`es-PE_BroadbandModel` and `es-PE_NarrowbandModel`)
+
+The Castilian Spanish models are not new. They are generally available for speech recognition and language model customization, and beta for acoustic model customization.
+
+The other five dialects are new and are beta for all uses. Because they are beta, these additional dialects might not be ready for production use and are subject to change. They are initial offerings that are expected to improve in quality with time and usage.
+
+For more information, see the following sections:
+
+-   [Supported language models](/docs/services/speech-to-text?topic=speech-to-text-models#modelsList)
+-   [Language support for customization](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport)
+
 ## 24 June 2019
 {: #June2019b}
 
@@ -54,23 +75,10 @@ No known limitations at this time.
 
 [Processing metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#processing_metrics) are available only with the WebSocket and asynchronous HTTP interfaces. They are not supported with the synchronous HTTP interface.
 
-## 17 May 2019
-{: #May2019b}
-
--   The service now offers two types of optional metrics with speech recognition requests:
-    -   [Processing metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#processing_metrics) provide detailed timing information about the service's analysis of the input audio. The service returns the metrics at specified intervals and with transcription events, such as interim and final results. Use the metrics to gauge the service's progress in transcribing the audio.
-    -   [Audio metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#audio_metrics) provide detailed information about the signal characteristics of the input audio. The results provide aggregated metrics for the entire input audio at the conclusion of speech processing. Use the metrics to determine the characteristics and quality of the audio.
-
-    You can request both types of metrics with any speech recognition request. By default, the service returns no metrics for a request.
--   The Japanese broadband model (`ja-JP_BroadbandModel`) has been updated for improved speech recognition. By default, the service automatically uses the updated model for all speech recognition requests. If you have custom language or custom acoustic models that are based on the model, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
-    -   `POST /v1/customizations/{customization_id}/upgrade_model`
-    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
-
-    For more information, see [Upgrading custom models](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade).
-
 ## Older releases
 {: #older}
 
+-   [17 May 2019](#May2019b)
 -   [10 May 2019](#May2019)
 -   [19 April 2019](#April2019b)
 -   [3 April 2019](#April2019)
@@ -110,6 +118,20 @@ No known limitations at this time.
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 17 May 2019
+{: #May2019b}
+
+-   The service now offers two types of optional metrics with speech recognition requests:
+    -   [Processing metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#processing_metrics) provide detailed timing information about the service's analysis of the input audio. The service returns the metrics at specified intervals and with transcription events, such as interim and final results. Use the metrics to gauge the service's progress in transcribing the audio.
+    -   [Audio metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#audio_metrics) provide detailed information about the signal characteristics of the input audio. The results provide aggregated metrics for the entire input audio at the conclusion of speech processing. Use the metrics to determine the characteristics and quality of the audio.
+
+    You can request both types of metrics with any speech recognition request. By default, the service returns no metrics for a request.
+-   The Japanese broadband model (`ja-JP_BroadbandModel`) has been updated for improved speech recognition. By default, the service automatically uses the updated model for all speech recognition requests. If you have custom language or custom acoustic models that are based on the model, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
+    -   `POST /v1/customizations/{customization_id}/upgrade_model`
+    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+
+    For more information, see [Upgrading custom models](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade).
 
 ### 10 May 2019
 {: #May2019}

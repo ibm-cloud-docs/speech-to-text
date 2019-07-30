@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-24"
+lastupdated: "2019-07-21"
 
 subcollection: speech-to-text
 
@@ -79,26 +79,38 @@ You use the `POST /v1/customizations` method to create a new custom language mod
     <td style="text-align:center">String</td>
     <td>
       The dialect of the specified language that is to be used with the
-      custom model. By default, the dialect matches the language of the
-      base model; for example, the dialect is <code>en-US</code>
-      for either of the US English language models,
-      <code>en-US_BroadbandModel</code> or
-      <code>en-US_NarrowbandModel</code>.<br/></br>
-      The parameter is meaningful only for Spanish models, for which
-      the service creates a custom model that is suited for speech in
-      the indicated dialect:
+      new custom model. For most languages, the dialect matches the
+      language of the base model by default. For example, `en-US` is used
+      for either of the US English language models.<br><br>
+      For a Spanish language, the service creates a custom model that is
+      suited for speech in one of the following dialects:
       <ul style="margin-left:20px; padding:0px;">
         <li style="margin:10px 0px; line-height:120%;">
-          <code>es-ES</code> for Castilian Spanish (the default)
+          `es-ES` for Castilian Spanish (`es-ES` models)
         </li>
         <li style="margin:10px 0px; line-height:120%;">
-          <code>es-LA</code> for Latin-American Spanish
+          `es-LA` for Latin American Spanish (`es-AR`, `es-CL`, `es-CO`,
+          and `es-PE` models)
         </li>
         <li style="margin:10px 0px; line-height:120%;">
-          <code>es-US</code> for North-American (Mexican) Spanish
+          `es-US` for Mexican (North American) Spanish (`es-MX` models)
         </li>
       </ul>
-      If you specify a dialect, it must be valid for the base model.
+      The parameter is meaningful only for Spanish models, for which
+      you can always safely omit the parameter to have the service create
+      the correct mapping.
+      <ul style="margin-left:20px; padding:0px;">
+        <li style="margin:10px 0px; line-height:120%;">
+          If you specify the `dialect` parameter for non-Spanish language
+          models, its value must match the language of the base model.
+        </li>
+        <li style="margin:10px 0px; line-height:120%;">
+          If you specify the `dialect` for Spanish language models, its
+          value must match one of the defined mappings as indicated
+          (`es-ES`, `es-LA`, or `es-MX`).
+        </li>
+      </ul>
+      All dialect values are case-insensitive.
     </td>
   </tr>
   <tr>
