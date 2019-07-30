@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-24"
+lastupdated: "2019-07-21"
 
 subcollection: speech-to-text
 
@@ -117,7 +117,27 @@ You can use both broadband and narrowband models with any supported language for
     </th>
   </tr>
   <tr>
+    <td>Arabic (Modern Standard)</td>
+    <td style="text-align:center">Not supported</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
     <td>Brazilian Portuguese</td>
+    <td style="text-align:center">GA</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
+    <td>Chinese (Mandarin)</td>
+    <td style="text-align:center">Not supported</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
+    <td>English (United Kingdom)</td>
+    <td style="text-align:center">GA</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
+    <td>English (United States)</td>
     <td style="text-align:center">GA</td>
     <td style="text-align:center">Beta</td>
   </tr>
@@ -142,28 +162,33 @@ You can use both broadband and narrowband models with any supported language for
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>Mandarin Chinese</td>
-    <td style="text-align:center">Not supported</td>
+    <td>Spanish (Argentinian)</td>
+    <td style="text-align:center">Beta</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>Modern Standard Arabic</td>
-    <td style="text-align:center">Not supported</td>
-    <td style="text-align:center">Beta</td>
-  </tr>
-  <tr>
-    <td>Spanish</td>
+    <td>Spanish (Castilian)</td>
     <td style="text-align:center">GA</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>UK English</td>
-    <td style="text-align:center">GA</td>
+    <td>Spanish (Chilean)</td>
+    <td style="text-align:center">Beta</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>US English</td>
-    <td style="text-align:center">GA</td>
+    <td>Spanish (Colombian)</td>
+    <td style="text-align:center">Beta</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
+    <td>Spanish (Mexican)</td>
+    <td style="text-align:center">Beta</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
+    <td>Spanish (Peruvian)</td>
+    <td style="text-align:center">Beta</td>
     <td style="text-align:center">Beta</td>
   </tr>
 </table>
