@@ -2,14 +2,15 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-10"
+lastupdated: "2019-07-03"
 
 subcollection: speech-to-text
 
 ---
 
+{:faq: .faq}
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,30 +26,52 @@ subcollection: speech-to-text
 # Perguntas frequentes sobre precificação
 {: #faq-pricing}
 
-1.  <span style="color:#003F69">Qual é o preço para usar o serviço {{site.data.keyword.speechtotextshort}} padrão do {{site.data.keyword.IBM_notm}} {{site.data.keyword.watson}}?</span>
+## Qual é o preço para usar o plano Lite do {{site.data.keyword.speechtotextshort}}?
+{: #faq-pricing-zero}
+{: faq}
 
-    O serviço {{site.data.keyword.speechtotextshort}} é precificado em US$ 0,02 por minuto. Esse preço se aplica ao uso dos modelos de banda larga e de banda estreita. Para obter mais informações, consulte a página de entrada do serviço {{site.data.keyword.speechtotextshort}} [ ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://www.ibm.com/watson/developercloud/speech-to-text.html#pricing-block){: new_window}.
+O plano Lite permite que você inicie com 500 minutos por mês de reconhecimento de voz sem custo. O plano Lite não fornece acesso às interfaces de customização do serviço. Para obter mais informações, consulte a [página de precificação](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} para o serviço {{site.data.keyword.speechtotextshort}}.
 
-1.  <span style="color:#003F69">O que significa "precificação por minuto"? Vocês cobram pelo número de minutos de áudio que eu envio para o serviço ou o número de minutos que o serviço leva para processar o áudio?</span>
+## Qual é o preço para usar o plano Standard do {{site.data.keyword.speechtotextshort}}?
+{: #faq-pricing-one}
+{: faq}
 
-    O preço é baseado na quantia de áudio que é enviada para o serviço, não no tempo que o serviço leva para processar o áudio.
+O plano de precificação Standard é precificado a US$ 0,02 por minuto de fala reconhecida. Esse preço se aplica ao uso dos modelos de banda larga e de banda estreita. O plano usa um modelo de precificação em camadas e permite que você use as interfaces de customização por um encargo adicional. Para obter mais informações, consulte a [página de precificação](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} para o serviço {{site.data.keyword.speechtotextshort}}.
 
-1.  <span style="color:#003F69">Vocês arredondam para o minuto mais próximo para cada chamada de API? Por exemplo, se eu enviar dois arquivos de áudio com 30 segundos de comprimento cada, serei cobrado por dois minutos ou por um minuto?</span>
+## O que significa "precificação por minuto"?
+{: #faq-pricing-two}
+{: faq}
 
-    O {{site.data.keyword.IBM_notm}} não arredonda o comprimento do áudio para cada chamada de API que o serviço recebe. Em vez disso, o {{site.data.keyword.IBM_notm}} agrega todos os usos para o mês e arredonda para o minuto mais próximo no final do mês. Nesse exemplo, se você enviar dois arquivos de áudio de 30 segundos de comprimento cada, o {{site.data.keyword.IBM_notm}} somará a duração total do áudio a um minuto e cobrará US$ 0,02.
+O preço é baseado na quantia (número de minutos) de áudio que você envia para o serviço. O preço não depende de quanto tempo o serviço leva para processar o áudio.
 
-1.  <span id="graduated" style="color:#003F69">Como funciona a precificação em camadas graduadas baseada em volume?</span>
+## Você arredonda para o minuto mais próximo para cada chamada para a API?
+{: #faq-pricing-three}
+{: faq}
 
-    O modelo de precificação em camadas é destinado a fornecer aos usuários de alto volume descontos adicionais à medida que eles continuam a usar o serviço. A precificação por minuto é reduzida para minutos extras de áudio quando determinados limites para o total de áudio mensal são atendidos. Para obter mais informações, consulte a página de precificação do [ ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://{DomainName}/catalog/services/speech-to-text){: new_window} para o serviço.
+O {{site.data.keyword.IBM_notm}} não arredonda o comprimento do áudio para cada chamada de API que o serviço recebe. Em vez disso, o {{site.data.keyword.IBM_notm}} agrega todos os usos para o mês e arredonda para o minuto mais próximo no final do mês. Por exemplo, se você enviar dois arquivos de áudio com 30 segundos de duração cada um, a {{site.data.keyword.IBM_notm}} somará a duração do áudio total para um minuto e cobrará US$0,02.
 
-1.  <span style="color:#003F69">Para a precificação em camadas, qual seria o total de encargos se eu utilizasse o serviço para transcrever, por exemplo, 275 mil minutos de áudio em um mês?</span>
+## Como funciona a precificação em camadas graduadas baseada em volume?
+{: #faq-pricing-four}
+{: faq}
 
-    -   Para os primeiros 250 mil minutos de áudio, você seria cobrado a US$ 0,02/minuto: 250.000 * US$ 0,02 = US$ 5.000,00.
-    -   Para os restantes 25 mil minutos de áudio, você seria cobrado pela taxa reduzida de US$ 0,015/minuto: 25.000 * US$ 0,015 = US$ 375,00.
-    -   Nesse cenário, seu total de encargos para o mês seria US$ 5.375,00.
+O modelo de precificação em camadas é destinado a fornecer aos usuários de alto volume descontos adicionais à medida que eles continuam a usar o serviço. A precificação por minuto é reduzida para minutos extras de áudio quando determinados limites para o total de áudio mensal são atendidos. Para obter mais informações, consulte a [página de precificação](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} para o serviço.
 
-1.  <span style="color:#003F69">Qual é o preço para usar a interface de customização do serviço? Sou cobrado pela criação e armazenamento de um modelo customizado?</span>
+## Para precificação em camadas, qual seria a minha carga total se eu usasse o serviço para transcrever, por exemplo, 275 mil minutos de áudio em um mês?
+{: #faq-pricing-five}
+{: faq}
 
-    Para a *customização de modelo de idioma*, a {{site.data.keyword.IBM_notm}} não cobra para criar ou hospedar um modelo de idioma customizado, apenas para usar o modelo com uma solicitação de reconhecimento. Usar um modelo de idioma customizado para transcrição incorre em um encargo de complemento de US$ 0,03 por minuto. Esse encargo é além do encargo de uso padrão de US$ 0,02 por minuto. Ele se aplica a todos os idiomas suportados pela interface de customização. Portanto, o total de encargos para usar um modelo de idioma customizado para reconhecimento de voz é US$ 0,05 por minuto.
+Para os primeiros 250 mil minutos de áudio, seria cobrado US$ 0,02 / minuto: 250.000 \* US$0,02 = US$ 5000,00. Para os restantes 25 mil minutos de áudio, seria cobrada a taxa reduzida de US$ 0,015 / minuto: 25.000 \* US$ 0,015 = US$ 375,00. Nesse caso, seu encargo total para o mês seria US$ 5375,00.
 
-    Para a *customização de modelo acústico*, que é uma interface beta para todos os idiomas suportados, a {{site.data.keyword.IBM_notm}} não cobra pela criação, pela hospedagem ou pelo reconhecimento de voz com um modelo acústico customizado. O uso grátis de modelos acústicos customizados para solicitações de reconhecimento está sujeito a mudar no futuro.
+## Qual plano de precificação eu preciso para usar a interface de customização do serviço?
+{: #faq-pricing-six}
+{: faq}
+
+Deve-se ter o plano de precificação Standard para usar a customização do modelo de idioma ou modelo acústico. Os usuários do plano Lite não podem usar a interface de customização. Para obter mais informações, consulte a [página de precificação](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} para o serviço {{site.data.keyword.speechtotextshort}}.
+
+## Qual é o preço para usar a interface de customização do serviço?
+{: #faq-pricing-seven}
+{: faq}
+
+Para a *customização de modelo de idioma*, a {{site.data.keyword.IBM_notm}} não cobra para criar ou hospedar um modelo de idioma customizado, apenas para usar o modelo com uma solicitação de reconhecimento. Usar um modelo de idioma customizado para transcrição incorre em um encargo de complemento de US$ 0,03 por minuto. Esse encargo é além do encargo de uso padrão de US$ 0,02 por minuto. Ele se aplica a todos os idiomas suportados pela interface de customização. Portanto, o total de encargos para usar um modelo de idioma customizado para reconhecimento de voz é US$ 0,05 por minuto.
+
+Para a *customização de modelo acústico*, que é uma interface beta para todos os idiomas suportados, a {{site.data.keyword.IBM_notm}} não cobra pela criação, pela hospedagem ou pelo reconhecimento de voz com um modelo acústico customizado. O uso grátis de modelos acústicos customizados para solicitações de reconhecimento está sujeito a mudar no futuro.

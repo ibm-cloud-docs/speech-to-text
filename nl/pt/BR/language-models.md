@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-07-21"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,18 +25,19 @@ subcollection: speech-to-text
 # Gerenciando modelos de idioma customizados
 {: #manageLanguageModels}
 
-A interface de customização inclui o método `POST /v1/customizations` para criar um modelo de idioma customizado. A interface também inclui o método `POST /v1/customizations/train` para treinar um modelo customizado nos dados mais recentes de seu recurso de palavras. Para obter mais informações, veja a documentação a seguir:
+A interface de customização inclui o método `POST /v1/customizations` para criar um modelo de idioma customizado. A interface também inclui o método `POST /v1/customizations/train` para treinar um modelo customizado nos dados mais recentes de seu recurso de palavras. Para
+obter mais informações, consulte
 {: shortdesc}
 
--   [Criar um modelo de idioma customizado](/docs/services/speech-to-text/language-create.html#createModel-language)
--   [Treinar o modelo de idioma customizado](/docs/services/speech-to-text/language-create.html#trainModel-language)
+-   [Criar um modelo de idioma customizado](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language)
+-   [Treinar o modelo de idioma customizado](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language)
 
-Além disso, a interface inclui os métodos a seguir para listar informações sobre modelos de idioma customizados, reconfigurar um modelo customizado para seu estado inicial e excluir um modelo customizado.
+Além disso, a interface inclui métodos para listar informações sobre os modelos de idioma customizados, reconfigurando um modelo customizado para seu estado inicial, fazendo upgrade de um modelo customizado e excluindo um modelo customizado. Não é possível treinar, reconfigurar, fazer upgrade ou excluir um modelo customizado enquanto o serviço está manipulando outra operação nesse modelo, inclusive a inclusão de recursos no modelo.
 
 ## Listando modelos de idioma customizados
 {: #listModels-language}
 
-A interface de customização fornece dois métodos para listar informações sobre os modelos de idioma customizados que são propriedade das credenciais de serviço especificadas:
+A interface de customização fornece dois métodos para listar informações sobre os modelos de idioma customizados pertencentes às credenciais especificadas:
 
 -   O método `GET /v1/customizations` lista informações sobre todos os modelos de idioma customizados ou sobre todos os modelos de idioma customizados para um idioma especificado.
 -   O método `GET /v1/customizations/{customization_id}` lista informações sobre um modelo de idioma customizado especificado. Use esse método para pesquisar o serviço sobre o status de uma solicitação de treinamento ou uma solicitação para incluir novas palavras.
@@ -45,18 +46,19 @@ Os dois métodos retornam as informações a seguir sobre um modelo customizado:
 
 -   `customization_id` identifica o Identificador Exclusivo Global (GUID) do modelo customizado. O GUID é usado para identificar o modelo em métodos da interface.
 -   `created` é a data e hora na Hora Universal Coordenada (UTC) na qual o modelo customizado foi criado.
+-   `updated` é a data e a hora na Hora Universal Coordenada (UTC) em que o modelo customizado foi modificado pela última vez.
 -   `language` é o idioma do modelo customizado.
--   `dialect` é o dialeto do idioma para o modelo de idioma customizado.
+-   `dialect` é o dialeto do idioma para o modelo customizado, que não corresponde necessariamente ao idioma do modelo customizado para modelos de espanhol. Para obter mais informações, consulte a descrição do parâmetro `dialect` em [Criar um modelo de idioma customizado](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language).
 -   `owner` identifica as credenciais da instância de serviço que tem o modelo customizado.
 -   `name` é o nome do modelo customizado.
 -   `description` mostrará a descrição do modelo customizado, se uma foi fornecida em sua criação.
 -   `base_model` indica o nome do modelo de idioma para o qual o modelo customizado foi criado.
--   `versions` fornece uma lista das versões disponíveis do modelo customizado. Cada elemento da matriz indica uma versão do modelo base com a qual o modelo customizado pode ser usado. Múltiplas versões existirão somente se o modelo customizado passar por upgrade. Caso contrário, somente uma única versão será mostrada. Para obter mais informações, consulte [Listando informações de versão para um modelo customizado](/docs/services/speech-to-text/custom-upgrade.html#upgradeList).
+-   `versions` fornece uma lista das versões disponíveis do modelo customizado. Cada elemento da matriz indica uma versão do modelo base com a qual o modelo customizado pode ser usado. Múltiplas versões existirão somente se o modelo customizado passar por upgrade. Caso contrário, somente uma única versão será mostrada. Para obter mais informações, consulte [Listando informações de versão para um modelo customizado](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade#upgradeList).
 
 O método também retorna um campo `status` que indica o estado do modelo customizado:
 
--   `pending` indica que o modelo foi criado. Ele está aguardando que os dados de treinamento sejam incluídos ou que o serviço conclua a análise dos dados que foram incluídos.
--   `ready` indica que o modelo contém dados e está pronto para ser treinado.
+-   `pending` indica que o modelo foi criado. Ele está aguardando que os dados de treinamento válidos (corpora, gramáticas ou palavras) sejam incluídos ou que o serviço conclua a análise dos dados que foram incluídos.
+-   `ready` indica que o modelo contém dados válidos e está pronto para ser treinado. Se o modelo contiver uma combinação de recursos válidos e inválidos, o treinamento do modelo falhará, a menos que você configure o parâmetro de consulta `strict` como `false`. Para obter mais informações, consulte [Falhas de treinamento](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#failedTraining-language).
 -   `training` indica que o modelo está sendo treinado nos dados.
 -   `available` indica que o modelo está treinado e pronto para uso com uma solicitação de reconhecimento.
 -   `upgrading` indica que o modelo está passando por upgrade.
@@ -67,7 +69,7 @@ Além disso, a saída inclui um campo `progress` que indica o progresso atual do
 ### Solicitações e respostas de exemplo
 {: #listExample-language}
 
-O exemplo a seguir inclui o parâmetro de consulta `language` para listar todos os modelos de idioma customizados em inglês dos EUA que são propriedade das credenciais de serviço:
+O exemplo a seguir inclui o parâmetro de consulta `language` para listar todos os modelos de idioma customizado em inglês dos EUA pertencentes às credenciais especificadas:
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -75,7 +77,7 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: pre}
 
-As credenciais de serviço têm dois desses modelos. O primeiro modelo está aguardando dados ou está sendo processado pelo serviço. O segundo modelo está totalmente treinado e pronto para uso.
+As credenciais têm dois desses modelos. O primeiro modelo está aguardando dados ou está sendo processado pelo serviço. O segundo modelo está totalmente treinado e pronto para uso.
 
 ```javascript
 {
@@ -83,6 +85,7 @@ As credenciais de serviço têm dois desses modelos. O primeiro modelo está agu
     {
       "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
       "created": "2016-06-01T18:42:25.324Z",
+      "updated": "2016-06-01T18:42:25.324Z",
       "language": "en-US",
       "dialect": "en-US",
       "versions": [
@@ -99,6 +102,7 @@ As credenciais de serviço têm dois desses modelos. O primeiro modelo está agu
     {
       "customization_id": "8391f918-3b76-e109-763c-b7732fae4829",
       "created": "2016-06-01T18:51:37.291Z",
+      "updated": "2016-06-01T20:02:10.624Z",
       "language": "en-US",
       "dialect": "en-US",
       "versions": [
@@ -128,6 +132,7 @@ curl -X GET -u "apikey:{apikey}"
 {
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
   "created": "2016-06-01T18:42:25.324Z",
+  "updated": "2016-06-01T18:42:25.324Z",
   "language": "en-US",
   "dialect": "en-US",
   "versions": [

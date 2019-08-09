@@ -2,14 +2,14 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Fazendo upgrade de modelos customizados
 {: #customUpgrade}
 
-Para melhorar a qualidade do reconhecimento de voz, o serviço {{site.data.keyword.speechtotextfull}} atualiza os modelos base ocasionalmente. Como os modelos base para diferentes idiomas são independentes uns dos outros, assim como os modelos de banda larga e de banda estreita para um idioma, as atualizações para modelos base individuais não afetam outros modelos. As [Notas sobre a liberação](/docs/services/speech-to-text/release-notes.html) documentam todas as atualizações do modelo base.
+Para melhorar a qualidade do reconhecimento de voz, o serviço {{site.data.keyword.speechtotextfull}} atualiza os modelos base ocasionalmente. Como os modelos base para diferentes idiomas são independentes uns dos outros, assim como os modelos de banda larga e de banda estreita para um idioma, as atualizações para modelos base individuais não afetam outros modelos. As [Notas sobre a liberação](/docs/services/speech-to-text?topic=speech-to-text-release-notes) documentam todas as atualizações do modelo base.
 {: shortdesc}
 
 Quando uma nova versão de um modelo base é liberada, deve-se fazer upgrade de qualquer modelo acústico e de idioma customizado construído no modelo base para aproveitar as atualizações. Seus modelos customizados continuam a usar a versão mais antiga do modelo base até que você conclua o upgrade. Como acontece com todas as operações de customização, deve-se usar credenciais para a instância do serviço que tem um modelo para passá-lo por upgrade.
@@ -62,7 +62,7 @@ Siga estas etapas para fazer upgrade de um modelo de idioma customizado:
 
 O serviço retornará um código de resposta 200 se o processo de upgrade for iniciado com êxito. É possível monitorar o status do upgrade usando o método `GET /v1/customizations/{customization_id}` para pesquisar o status do modelo. Use um loop para verificar o status a cada 10 segundos.
 
-Durante o upgrade, o modelo customizado tem o status `upgrading`. Quando o upgrade for concluído, o modelo retomará o status que tinha antes do upgrade (`ready` ou `available`). Verificar o status de uma operação de upgrade é idêntico a verificar o status de uma operação de treinamento. Para obter mais informações, consulte [Monitorando a solicitação de treinamento do modelo](/docs/services/speech-to-text/language-create.html#monitorTraining-language).
+Durante o upgrade, o modelo customizado tem o status `upgrading`. Quando o upgrade for concluído, o modelo retomará o status que tinha antes do upgrade (`ready` ou `available`). Verificar o status de uma operação de upgrade é idêntico a verificar o status de uma operação de treinamento. Para obter mais informações, consulte [Monitorando a solicitação de treinamento do modelo](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language).
 
 O serviço não pode aceitar solicitações para modificar o modelo de alguma forma até que a solicitação de upgrade seja concluída. No entanto, é possível continuar a emitir solicitações de reconhecimento com a versão existente do modelo durante o upgrade.
 
@@ -100,7 +100,7 @@ Siga estas etapas para fazer upgrade de um modelo acústico customizado. Se o mo
 
 O serviço retornará um código de resposta 200 se o processo de upgrade for iniciado com êxito. É possível monitorar o status do upgrade, usando o método `GET /v1/acoustic_customizations/{customization_id}` para pesquisar o status do modelo. Use um loop para verificar o status uma vez por minuto.
 
-Durante o upgrade, o modelo customizado tem o status `upgrading`. Quando o upgrade for concluído, o modelo retomará o status que tinha antes do upgrade (`ready` ou `available`). Verificar o status de uma operação de upgrade é idêntico a verificar o status de uma operação de treinamento. Para obter mais informações, consulte [Monitorando a solicitação de treinamento do modelo](/docs/services/speech-to-text/acoustic-create.html#monitorTraining-acoustic).
+Durante o upgrade, o modelo customizado tem o status `upgrading`. Quando o upgrade for concluído, o modelo retomará o status que tinha antes do upgrade (`ready` ou `available`). Verificar o status de uma operação de upgrade é idêntico a verificar o status de uma operação de treinamento. Para obter mais informações, consulte [Monitorando a solicitação de treinamento do modelo](/docs/services/speech-to-text?topic=speech-to-text-acoustic#monitorTraining-acoustic).
 
 O serviço não pode aceitar solicitações para modificar o modelo de alguma forma até que a solicitação de upgrade seja concluída. No entanto, é possível continuar a emitir solicitações de reconhecimento com a versão existente do modelo durante o upgrade.
 
@@ -118,8 +118,8 @@ O upgrade de um modelo customizado falhará ao iniciar se o serviço estiver man
 
 Para ver as versões do modelo base para as quais um modelo customizado está disponível, use os métodos a seguir:
 
--   Para listar informações sobre um modelo de idioma customizado, use o método `GET /v1/customizations/{customization_id}`. Para obter mais informações, consulte [Listando modelos de idioma customizados](/docs/services/speech-to-text/language-models.html#listModels-language).
--   Para listar informações sobre um modelo acústico customizado, use o método `GET /v1/acoustic_customizations/{customization_id}`. Para obter mais informações, consulte [Listando modelos acústicos customizados](/docs/services/speech-to-text/acoustic-models.html#listModels-acoustic).
+-   Para listar informações sobre um modelo de idioma customizado, use o método `GET /v1/customizations/{customization_id}`. Para obter mais informações, consulte [Listando modelos de idioma customizados](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
+-   Para listar informações sobre um modelo acústico customizado, use o método `GET /v1/acoustic_customizations/{customization_id}`. Para obter mais informações, consulte [Listando modelos acústicos customizados](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
 
 Em ambos os casos, a saída inclui um campo `versions` que mostra informações sobre os modelos base para o modelo customizado. A saída a seguir mostra informações para um modelo de idioma customizado que passou por upgrade:
 
@@ -162,7 +162,7 @@ curl -X POST -u "apikey:{apikey}"
 
 É possível usar esse recurso para testar o desempenho e a precisão de um modelo customizado com relação às versões antiga e nova de seu modelo base. Se você descobrir que o desempenho de um modelo que passou por upgrade está de alguma maneira insuficiente (por exemplo, determinadas palavras não são mais reconhecidas), será possível continuar a usar a versão mais antiga com solicitações de reconhecimento.
 
-[Versão do modelo base](/docs/services/speech-to-text/input.html#version) descreve o parâmetro `base_model_version` e como o serviço determina quais versões da base e modelos customizados usar com uma solicitação de reconhecimento. Além dessas informações, considere os problemas a seguir quando você passar os modelos acústico e de idioma customizados com uma solicitação de reconhecimento:
+[Versão do modelo base](/docs/services/speech-to-text?topic=speech-to-text-input#version) descreve o parâmetro `base_model_version` e como o serviço determina quais versões da base e modelos customizados usar com uma solicitação de reconhecimento. Além dessas informações, considere os problemas a seguir quando você passar os modelos acústico e de idioma customizados com uma solicitação de reconhecimento:
 
 -   Os dois modelos customizados devem ser baseados no mesmo modelo base (por exemplo, `en-US_BroadbandModel`).
 -   Se ambos os modelos customizados forem baseados no modelo base mais antigo, o serviço usará o modelo base antigo para reconhecimento.

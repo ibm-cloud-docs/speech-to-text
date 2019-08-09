@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-07-21"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -36,12 +36,12 @@ Para a maioria dos idiomas, o serviço suporta os modelos de banda larga e de ba
 -   *Modelos de banda larga* são para áudio que é amostrado em 16 kHz ou acima. Use modelos de banda larga para aplicativos responsivos, em tempo real. Por exemplo, para aplicativos de fala em tempo real.
 -   *Modelos de banda estreita* são para áudio que é amostrado em 8 kHz. Use modelos de banda estreita para decodificação off-line de fala telefônica, que é o uso típico para essa taxa de amostragem.
 
-Escolher o modelo correto para seu aplicativo é importante. Use o modelo que corresponde à taxa de amostragem (e idioma) de seu áudio. O serviço ajusta automaticamente a taxa de amostragem de seu áudio para corresponder ao modelo que você especifica. Para obter mais informações, consulte [Taxa de amostragem](/docs/services/speech-to-text/audio-formats.html#samplingRate).
+Escolher o modelo correto para seu aplicativo é importante. Use o modelo que corresponde à taxa de amostragem (e idioma) de seu áudio. O serviço ajusta automaticamente a taxa de amostragem de seu áudio para corresponder ao modelo que você especifica. Para obter mais informações, consulte [Taxa de amostragem](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#samplingRate).
 
-Para obter a melhor precisão de reconhecimento, você também precisa considerar o conteúdo de frequência de seu áudio. Para obter mais informações, consulte [Frequência de áudio](/docs/services/speech-to-text/audio-formats.html#frequency).
+Para obter a melhor precisão de reconhecimento, você também precisa considerar o conteúdo de frequência de seu áudio. Para obter mais informações, consulte [Frequência de áudio](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#frequency).
 {: tip}
 
-A Tabela 1 lista os modelos suportados para cada idioma. Se você omitir o parâmetro `model` de uma solicitação, o serviço usará o modelo de banda larga de inglês dos EUA, `en-US_BroadbandModel`, por padrão.
+A Tabela 1 lista os modelos suportados para cada idioma. Se você omitir o parâmetro `model` de uma solicitação, o serviço usará o modelo de banda larga de inglês dos EUA, `en-US_BroadbandModel`, por padrão. A menos que marcado como *Beta*, todos os idiomas estão geralmente disponíveis (*GA*) para uso de produção.
 
 <table>
   <caption>Tabela 1. Modelos de idiomas suportados</caption>
@@ -51,9 +51,30 @@ A Tabela 1 lista os modelos suportados para cada idioma. Se você omitir o parâ
     <th style="text-align:center">Modelo de banda estreita</th>
   </tr>
   <tr>
+    <td>Árabe (padrão moderno)</td>
+    <td style="text-align:center"><code>ar-AR_BroadbandModel</code></td>
+    <td style="text-align:center">Não suportado</td>
+  </tr>
+  <tr>
     <td>Português do Brasil</td>
     <td style="text-align:center"><code>pt-BR_BroadbandModel</code></td>
     <td style="text-align:center"><code>pt-BR_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>Chinês (mandarim)</td>
+    <td style="text-align:center"><code>zh-CN_BroadbandModel</code></td>
+    <td style="text-align:center"><code>zh-CN_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>Inglês (Reino Unido)</td>
+    <td style="text-align:center"><code>en-GB_BroadbandModel</code></td>
+    <td style="text-align:center"><code>en-GB_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>Inglês (Estados Unidos)</td>
+    <td style="text-align:center"><code>en-US_BroadbandModel</code></td>
+    <td style="text-align:center"><code>en-US_NarrowbandModel</code></br>
+      <code>en-US_ShortForm_NarrowbandModel</code></td>
   </tr>
   <tr>
     <td>Francês</td>
@@ -76,30 +97,34 @@ A Tabela 1 lista os modelos suportados para cada idioma. Se você omitir o parâ
     <td style="text-align:center"><code>ko-KR_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Chinês mandarim</td>
-    <td style="text-align:center"><code>zh-CN_BroadbandModel</code></td>
-    <td style="text-align:center"><code>zh-CN_NarrowbandModel</code></td>
+    <td>Espanhol (argentino, beta)</td>
+    <td style="text-align:center"><code>es-AR_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-AR_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Árabe padrão moderno</td>
-    <td style="text-align:center"><code>ar-AR_BroadbandModel</code></td>
-    <td style="text-align:center">Não suportado</td>
-  </tr>
-  <tr>
-    <td>Espanhol</td>
+    <td>Espanhol (castelhano)</td>
     <td style="text-align:center"><code>es-ES_BroadbandModel</code></td>
     <td style="text-align:center"><code>es-ES_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Inglês do Reino Unido</td>
-    <td style="text-align:center"><code>en-GB_BroadbandModel</code></td>
-    <td style="text-align:center"><code>en-GB_NarrowbandModel</code></td>
+    <td>Espanhol (chileno, beta)</td>
+    <td style="text-align:center"><code>es-CL_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-CL_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Inglês dos EUA</td>
-    <td style="text-align:center"><code>en-US_BroadbandModel</code></td>
-    <td style="text-align:center"><code>en-US_NarrowbandModel</code></br>
-      <code>en-US_ShortForm_NarrowbandModel</code></td>
+    <td>Espanhol (colombiano, beta)</td>
+    <td style="text-align:center"><code>es-CO_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-CO_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>Espanhol (mexicano, beta)</td>
+    <td style="text-align:center"><code>es-MX_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-MX_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>Espanhol (peruano, beta)</td>
+    <td style="text-align:center"><code>es-PE_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-PE_NarrowbandModel</code></td>
   </tr>
 </table>
 
@@ -110,8 +135,8 @@ O modelo de formato curto de inglês dos EUA, `en-US_ShortForm_NarrowbandModel`,
 
 Como acontece com todos os modelos, ambientes com ruído podem impactar negativamente os resultados. Por exemplo, o ruído acústico em segundo plano de aeroportos, veículos em movimento, salas de conferência e múltiplos falantes pode reduzir a precisão da transcrição.  O áudio dos telefones do falante também pode reduzir a precisão devido ao eco comum desses dispositivos. Usar um modelo acústico customizado com o modelo de formato curto pode neutralizar esses efeitos.
 
--   Para obter mais informações sobre o modelo de idioma e a customização do modelo acústico, consulte [A interface de customização](/docs/services/speech-to-text/custom.html).
--   Para obter mais informações sobre gramáticas, consulte [Usando gramáticas com modelos de idioma customizados](/docs/services/speech-to-text/grammar.html).
+-   Para obter mais informações sobre o modelo de idioma e a customização do modelo acústico, consulte [A interface de customização](/docs/services/speech-to-text?topic=speech-to-text-customization).
+-   Para obter mais informações sobre gramáticas, consulte [Usando gramáticas com modelos de idioma customizados](/docs/services/speech-to-text?topic=speech-to-text-grammars).
 
 ### Exemplo de modelo de idioma
 {: #modelsExample}

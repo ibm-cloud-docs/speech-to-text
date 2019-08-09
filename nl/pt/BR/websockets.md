@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-15"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -40,7 +40,7 @@ A solicitação de reconhecimento e o ciclo de resposta têm as etapas a seguir:
 
 Quando o cliente envia dados para o serviço, ele *deve* transmitir todas as mensagens JSON como mensagens de texto e todos os dados de áudio como mensagens binárias.
 
-Os fragmentos de código de exemplo a seguir são gravados em JavaScript e são baseados na API do HTML5 WebSocket. Para obter mais informações sobre o protocolo WebSocket, consulte o Internet Engineering Task Force (IETF) [Request for Comment (RFC) 6455 ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](http://tools.ietf.org/html/rfc6455){: new_window}.
+Os fragmentos de código de exemplo a seguir são gravados em JavaScript e são baseados na API do HTML5 WebSocket. Para obter mais informações sobre o protocolo WebSocket, consulte o Internet Engineering Task Force (IETF) [Solicitação de comentários (RFC) 6455](http://tools.ietf.org/html/rfc6455){: external}.
 {: note}
 
 ## Abrir uma conexão
@@ -74,56 +74,56 @@ Um cliente WebSocket chama esse método com os parâmetros de consulta a seguir 
   <tr>
     <td style="text-align:left"><code>access_token</code>
       <br/><em>Opcional</em></td>
-    <td style="text-align:center">String</td>
+    <td style="text-align:center">Sequência de caracteres</td>
     <td style="text-align:left">
       <em>Se você usar a autenticação do IAM,</em> passe um token de acesso do IAM válido para estabelecer uma conexão autenticada com o serviço.
-      Você passa um token de acesso do IAM em vez de passar uma chave de API com a chamada. Deve-se estabelecer a conexão antes que o token de acesso expire. Para obter informações sobre como obter um token de acesso, consulte [Autenticando com tokens do IAM](/docs/services/watson/getting-started-iam.html).<br/><br/>
+      Você passa um token de acesso do IAM em vez de passar uma chave de API com a chamada. Deve-se estabelecer a conexão antes que o token de acesso expire. Para obter informações sobre como obter um token de acesso, consulte [Autenticando com tokens do IAM](/docs/services/watson?topic=watson-iam).<br/><br/>
       Você passa um token de acesso apenas para estabelecer uma conexão autenticada.
       Depois de estabelecer uma conexão, é possível mantê-la ativa indefinidamente.
       Você permanece autenticado pelo tempo que mantém a conexão aberta.
-      Não é necessário atualizar o token de acesso para uma conexão ativa que dure além do prazo de expiração do token.
+      Não é necessário atualizar o token de acesso para uma conexão ativa que dure além do prazo de expiração do token. Uma conexão pode permanecer ativa mesmo após o token ou sua chave de API ser excluída.
     </td>
   </tr>
   <tr>
     <td style="text-align:left"><code>watson-token</code>
       <br/><em>Opcional</em></td>
-    <td style="text-align:center">String</td>
+    <td style="text-align:center">Sequência de caracteres</td>
     <td style="text-align:left">
-      <em>Se você usar as credenciais de serviço do Cloud Foundry,</em> passe um token de autenticação do {{site.data.keyword.watson}} válido para estabelecer uma conexão autenticada com o serviço. Você passa um token do {{site.data.keyword.watson}} em vez de passar credenciais de serviço com a chamada. Os tokens do{{site.data.keyword.watson}} são baseados nas credenciais de serviço do Cloud Foundry, que usam um `username` e `password` para autenticação básica de HTTP. Para obter informações sobre a obtenção de um token do {{site.data.keyword.watson}}, consulte [Tokens do {{site.data.keyword.watson}}](/docs/services/watson/getting-started-tokens.html).<br/><br/>
+      <em>Se você usar as credenciais de serviço do Cloud Foundry,</em> passe um token de autenticação do {{site.data.keyword.watson}} válido para estabelecer uma conexão autenticada com o serviço. Você passa um token do {{site.data.keyword.watson}} em vez de passar credenciais de serviço com a chamada. Os tokens do{{site.data.keyword.watson}} são baseados nas credenciais de serviço do Cloud Foundry, que usam um `username` e `password` para autenticação básica de HTTP. Para obter informações sobre como obter um token {{site.data.keyword.watson}}, consulte [Tokens do {{site.data.keyword.watson}}](/docs/services/watson?topic=watson-gs-tokens-watson-tokens).<br/><br/>
       Você passa um token do {{site.data.keyword.watson}} somente para estabelecer uma conexão autenticada. Depois de estabelecer uma conexão, é possível mantê-la ativa indefinidamente. Você permanece autenticado pelo tempo que mantém a conexão aberta.
     </td>
   </tr>
   <tr>
-    <td style="text-align:left"><code>model</code>
+    <td style="text-align:left"><code>modelo</code>
       <br/><em>Opcional</em></td>
-    <td style="text-align:center">String</td>
+    <td style="text-align:center">Sequência de caracteres</td>
     <td style="text-align:left">
       Especifica o modelo de idioma a ser usado para transcrição.
-      Se você não especificar um modelo, o serviço usará o modelo <code>en-US_BroadbandModel</code> por padrão. Para obter mais informações, consulte [Idiomas e modelos](/docs/services/speech-to-text/models.html).
+      Se você não especificar um modelo, o serviço usará o modelo <code>en-US_BroadbandModel</code> por padrão. Para obter mais informações, consulte [Idiomas e modelos](/docs/services/speech-to-text?topic=speech-to-text-models).
     </td>
   </tr>
   <tr>
     <td style="text-align:left"><code>language_customization_id</code>
       <br/><em>Opcional</em></td>
-    <td style="text-align:center">String</td>
+    <td style="text-align:center">Sequência de caracteres</td>
     <td style="text-align:left">
-      Especifica o Identificador Exclusivo Global (GUID) de um modelo de idioma customizado que deve ser usado para todas as solicitações que são enviadas por meio da conexão. O modelo base do modelo de idioma customizado deve corresponder ao valor do parâmetro <code>model</code>. Por padrão, nenhum modelo de idioma customizado é usado. Para obter mais informações, consulte [A interface de customização](/docs/services/speech-to-text/custom.html).
+      Especifica o Identificador Exclusivo Global (GUID) de um modelo de idioma customizado que deve ser usado para todas as solicitações que são enviadas por meio da conexão. O modelo base do modelo de idioma customizado deve corresponder ao valor do parâmetro <code>model</code>. Se você incluir um ID de customização, deverá fazer a solicitação com credenciais para a instância do serviço que tem o modelo customizado. Por padrão, nenhum modelo de idioma customizado é usado. Para obter mais informações, consulte [A interface de customização](/docs/services/speech-to-text?topic=speech-to-text-customization).
     </td>
   </tr>
   <tr>
     <td style="text-align:left"><code>acoustic_customization_id</code>
       <br/><em>Opcional</em></td>
-    <td style="text-align:center">String</td>
+    <td style="text-align:center">Sequência de caracteres</td>
     <td style="text-align:left">
-      Especifica o Identificador Exclusivo Global (GUID) de um modelo acústico customizado que deve ser usado para todas as solicitações que são enviadas por meio da conexão. O modelo base do modelo acústico customizado deve corresponder ao valor do parâmetro <code>model</code>. Por padrão, nenhum modelo acústico customizado é usado. Para obter mais informações, consulte [A interface de customização](/docs/services/speech-to-text/custom.html).
+      Especifica o Identificador Exclusivo Global (GUID) de um modelo acústico customizado que deve ser usado para todas as solicitações que são enviadas por meio da conexão. O modelo base do modelo acústico customizado deve corresponder ao valor do parâmetro <code>model</code>. Se você incluir um ID de customização, deverá fazer a solicitação com credenciais para a instância do serviço que tem o modelo customizado. Por padrão, nenhum modelo acústico customizado é usado. Para obter mais informações, consulte [A interface de customização](/docs/services/speech-to-text?topic=speech-to-text-customization).
     </td>
   </tr>
   <tr>
     <td style="text-align:left"><code>base_model_version</code>
       <br/><em>Opcional</em></td>
-    <td style="text-align:center">String</td>
+    <td style="text-align:center">Sequência de caracteres</td>
     <td style="text-align:left">
-      Especifica a versão do `model` base que deve ser usada para todas as solicitações que são enviadas por meio da conexão. O parâmetro é destinado principalmente para o uso com modelos customizados que passaram por upgrade para um novo modelo base. O valor padrão depende de o parâmetro ser usado com ou sem um modelo customizado. Para obter mais informações, consulte [Versão do modelo base](/docs/services/speech-to-text/input.html#version).
+      Especifica a versão do `model` base que deve ser usada para todas as solicitações que são enviadas por meio da conexão. O parâmetro é destinado principalmente para o uso com modelos customizados que passaram por upgrade para um novo modelo base. O valor padrão depende de o parâmetro ser usado com ou sem um modelo customizado. Para obter mais informações, consulte [Versão do modelo base](/docs/services/speech-to-text?topic=speech-to-text-input#version).
     </td>
   </tr>
   <tr>
@@ -131,15 +131,15 @@ Um cliente WebSocket chama esse método com os parâmetros de consulta a seguir 
       <br/><em>Opcional</em></td>
     <td style="text-align:center">Booleano</td>
     <td style="text-align:left">
-      Indica se o serviço registra solicitações e resultados que são enviados por meio da conexão. Para evitar que a IBM acesse seus dados para melhorias gerais de serviço, especifique <code>true</code> para o parâmetro. Para obter mais informações, consulte [Criação de log de solicitação](/docs/services/speech-to-text/input.html#logging).
+      Indica se o serviço registra solicitações e resultados que são enviados por meio da conexão. Para evitar que a IBM acesse seus dados para melhorias gerais de serviço, especifique <code>true</code> para o parâmetro. Para obter mais informações, consulte [Criação de log de solicitação](/docs/services/speech-to-text?topic=speech-to-text-input#logging).
     </td>
   </tr>
   <tr>
     <td style="text-align:left"><code>x-watson-metadata</code>
       <br/><em>Opcional</em></td>
-    <td style="text-align:center">String</td>
+    <td style="text-align:center">Sequência de caracteres</td>
     <td style="text-align:left">
-      Associa um ID do cliente a todos os dados que são passados por meio da conexão. O parâmetro aceita o argumento <code>customer_id={id}</code>, em que <code>id</code> é uma sequência aleatória ou genérica que deve ser associada aos dados. Deve-se codificar a URL do argumento para o parâmetro, por exemplo, `customer_id%3dmy_customer_ID`. Por padrão, nenhum ID do cliente está associado aos dados. Para obter mais informações, consulte [Segurança de informações](/docs/services/speech-to-text/information-security.html).
+      Associa um ID do cliente a todos os dados que são passados por meio da conexão. O parâmetro aceita o argumento <code>customer_id={id}</code>, em que <code>id</code> é uma sequência aleatória ou genérica que deve ser associada aos dados. Deve-se codificar a URL do argumento para o parâmetro, por exemplo, `customer_id%3dmy_customer_ID`. Por padrão, nenhum ID do cliente está associado aos dados. Para obter mais informações, consulte [Segurança de informações](/docs/services/speech-to-text?topic=speech-to-text-information-security).
     </td>
   </tr>
 </table>
@@ -159,6 +159,8 @@ websocket.onerror = function(evt) { onError(evt) };
 ```
 {: codeblock}
 
+O cliente pode abrir múltiplas conexões simultâneas do WebSocket para o serviço. O número de conexões simultâneas é limitado apenas pela capacidade do serviço, que geralmente não apresenta problemas para os usuários.
+
 ## Iniciar uma solicitação de reconhecimento
 {: #WSstart}
 
@@ -172,8 +174,8 @@ Para iniciar uma solicitação de reconhecimento, o cliente envia uma mensagem d
     <th style="text-align:left">Descrição</th>
   </tr>
   <tr>
-    <td style="text-align:left"><code>action</code><br/><em>Necessário</em></td>
-    <td style="text-align:center">String</td>
+    <td style="text-align:left"><code>ação</code><br/><em>Exigido</em></td>
+    <td style="text-align:center">Sequência de caracteres</td>
     <td style="text-align:left">
       Especifica a ação a ser executada:
       <ul style="margin-left:20px; padding:0px;">
@@ -188,15 +190,15 @@ Para iniciar uma solicitação de reconhecimento, o cliente envia uma mensagem d
   </tr>
   <tr>
     <td style="text-align:left"><code>content-type</code><br/><em>Opcional</em></td>
-    <td style="text-align:center">String</td>
+    <td style="text-align:center">Sequência de caracteres</td>
     <td style="text-align:left">
       Identifica o formato (tipo MIME) dos dados de áudio para a solicitação.
-      O parâmetro é necessário para os formatos `audio/alaw`, `audio/basic`, `audio/l16` e `audio/mulaw`. Para obter mais informações, consulte [Formatos de áudio](/docs/services/speech-to-text/audio-formats.html).
+      O parâmetro é necessário para os formatos `audio/alaw`, `audio/basic`, `audio/l16` e `audio/mulaw`. Para obter mais informações, consulte [Formatos de áudio](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
     </td>
   </tr>
 </table>
 
-A mensagem também pode incluir parâmetros opcionais para especificar outros aspectos de como a solicitação deve ser processada e as informações que devem ser retornadas. Para obter informações sobre todos os recursos de entrada e saída, consulte o [Resumo de parâmetro](/docs/services/speech-to-text/summary.html). É possível especificar um modelo de idioma, um modelo de idioma customizado e um modelo acústico customizado apenas como parâmetros de consulta da URL do WebSocket.
+A mensagem também pode incluir parâmetros opcionais para especificar outros aspectos de como a solicitação deve ser processada e as informações que devem ser retornadas. Para obter informações sobre todos os recursos de entrada e saída, consulte o [Resumo de parâmetro](/docs/services/speech-to-text?topic=speech-to-text-summary). É possível especificar um modelo de idioma, um modelo de idioma customizado e um modelo acústico customizado apenas como parâmetros de consulta da URL do WebSocket.
 
 O fragmento do código JavaScript a seguir envia parâmetros de inicialização para a solicitação de reconhecimento por meio da conexão WebSocket. As chamadas são incluídas na função `onOpen` do cliente para assegurar que elas sejam enviadas somente depois que a conexão for estabelecida.
 
@@ -227,9 +229,9 @@ Se o cliente especificar um parâmetro de consulta ou um campo JSON inválido pa
 
 Depois que a mensagem inicial `start` é enviada, o cliente pode começar a enviar dados de áudio para o serviço. O cliente não precisa esperar que o serviço responda à mensagem `start` com a mensagem `listening`. O serviço retorna os resultados da transcrição assincronamente no mesmo formato que ele retorna os resultados para as interfaces de HTTP.
 
-O cliente deve enviar o áudio como dados binários. O cliente pode enviar um máximo de 100 MB de dados de áudio com uma única elocução (por solicitação de `send`). Ele deve enviar pelo menos 100 bytes de áudio para qualquer solicitação. O cliente pode enviar múltiplas elocuções por meio de uma única conexão WebSocket. Para obter informações sobre como usar a compactação para maximizar a quantia de áudio que você pode passar para o serviço com uma solicitação, consulte [Formatos de áudio](/docs/services/speech-to-text/audio-formats.html).
+O cliente deve enviar o áudio como dados binários. O cliente pode enviar um máximo de 100 MB de dados de áudio com uma única elocução (por solicitação de `send`). Ele deve enviar pelo menos 100 bytes de áudio para qualquer solicitação. O cliente pode enviar múltiplas elocuções por meio de uma única conexão WebSocket. Para obter informações sobre como usar a compactação para maximizar a quantia de áudio que você pode passar para o serviço com uma solicitação, consulte [Formatos de áudio](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
 
-A interface do WebSocket impõe um tamanho máximo do quadro de 4 MB. O cliente pode configurar o tamanho máximo do quadro para menos de 4 MB. Se não for prático configurar o tamanho do quadro, o cliente poderá configurar o tamanho máximo da mensagem para menos de 4 MB e enviar os dados de áudio como uma sequência de mensagens.
+A interface do WebSocket impõe um tamanho máximo do quadro de 4 MB. O cliente pode configurar o tamanho máximo do quadro para menos de 4 MB. Se não for prático configurar o tamanho do quadro, o cliente poderá configurar o tamanho máximo da mensagem para menos de 4 MB e enviar os dados de áudio como uma sequência de mensagens. Para obter mais informações sobre os quadros do WebSocket, consulte [IETF RFC 6455](http://tools.ietf.org/html/rfc6455){: external}.
 
 O fragmento do código JavaScript a seguir envia dados de áudio para o serviço como uma mensagem binária (blob):
 
@@ -293,12 +295,16 @@ websocket.send(JSON.stringify(message));
 ## Manter uma conexão ativa
 {: #WSkeep}
 
-O serviço finalizará a sessão e fechará a conexão se um tempo limite de inatividade ou de sessão for atingido:
+O serviço finalizará a sessão e fechará a conexão se ocorrer um tempo limite de inatividade ou de sessão:
 
--   Um *tempo limite de inatividade* ocorre se o áudio está sendo enviado pelo cliente, mas o serviço não detecta nenhuma fala. O tempo limite de inatividade é 30 segundos por padrão. É possível usar o parâmetro `inactivity_timeout` para especificar um valor diferente, incluindo `-1` para configurar o tempo limite para infinito.
--   Um *tempo limite da sessão* ocorre se o serviço não recebe dados do cliente ou não envia resultados provisórios por 30 segundos. Não é possível mudar a duração desse tempo limite, mas é possível estender a sessão enviando ao serviço qualquer dado de áudio, incluindo apenas silêncio, antes que o tempo limite ocorra. Também deve-se configurar `inactivity_timeout` como `-1`. Você é cobrado pela duração de qualquer dado que envia para o serviço, incluindo o silêncio enviado para estender uma sessão.
+-   Um *tempo limite de inatividade* ocorre se o áudio está sendo enviado pelo cliente, mas o serviço não detecta nenhuma fala. O tempo limite de inatividade é 30 segundos por padrão. É possível usar o parâmetro `inactivity_timeout` para especificar um valor diferente, incluindo `-1` para configurar o tempo limite para infinito. Para obter mais informações, consulte [Tempo limite de inatividade](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts-inactivity).
+-   Um *tempo limite da sessão* ocorre se o serviço não recebe dados do cliente ou não envia resultados provisórios por 30 segundos. Não é possível mudar a duração desse tempo limite, mas é possível estender a sessão enviando ao serviço qualquer dado de áudio, incluindo apenas silêncio, antes que o tempo limite ocorra. Também deve-se configurar `inactivity_timeout` como `-1`. Você é cobrado pela duração de qualquer dado que envia para o serviço, incluindo o silêncio enviado para estender uma sessão. Para obter mais informações, consulte [Tempo limite de sessão](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts-session).
 
-Para obter mais informações, consulte [Tempos limites](/docs/services/speech-to-text/input.html#timeouts).
+Os clientes e os servidores do WebSocket também podem trocar *quadros de ping-pong* para evitar tempos limites de leitura trocando pequenas quantidades de dados periodicamente. Muitos quadros do WebSocket trocam quadros de ping-pong, mas alguns não. Para determinar se a sua implementação usa quadros de ping-pong, verifique sua lista de recursos. Não é possível determinar programaticamente ou gerenciar quadros de ping-pong.
+
+Se a sua pilha do WebSocket não implementar quadros de ping-pong e você estiver enviando arquivos de áudio longos, a sua conexão poderá atingir um tempo limite de leitura. Para evitar esses tempos limites, envie continuamente o áudio para o serviço ou solicite resultados temporários do serviço. Qualquer uma das abordagens pode assegurar que a falta de quadros de ping-pong não faça com que sua conexão seja fechada.
+
+Para obter mais informações sobre quadros de ping-pong, consulte a [Seção 5.5.2 Ping](http://tools.ietf.org/html/rfc6455#section-5.5.2){: external} e a [Seção 5.5.3 Pong](http://tools.ietf.org/html/rfc6455#section-5.5.3){: external} do IETF RFC 6455.
 
 ## Fechar uma conexão
 {: #WSclose}
@@ -323,7 +329,7 @@ O serviço pode enviar os códigos de retorno a seguir para o cliente por meio d
 -   `1009` indica que o tamanho do quadro excedeu o limite de 4 MB.
 -   `1011` indica que o serviço está finalizando a conexão porque encontrou uma condição inesperada que o impede de preencher a solicitação.
 
-Se o soquete fechar com um erro, o cliente receberá uma mensagem informativa do formulário `{"error":"{message}"}` antes que o soquete seja fechado. Para obter mais informações sobre os códigos de retorno do WebSocket, consulte [IETF RFC 6455 ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](http://tools.ietf.org/html/rfc6455){: new_window}.
+Se o soquete fechar com um erro, o cliente receberá uma mensagem informativa do formulário `{"error":"{message}"}` antes que o soquete seja fechado. Para obter mais informações sobre os códigos de retorno do WebSocket, consulte [IETF RFC 6455](http://tools.ietf.org/html/rfc6455){: external}.
 
 ## Exemplo de sessão do WebSocket
 {: #WSexample}

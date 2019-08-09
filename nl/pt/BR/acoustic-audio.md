@@ -2,14 +2,14 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-19"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Gerenciando recursos de áudio
 {: #manageAudio}
 
-A interface de customização inclui o método `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`, que é usado para incluir um recurso de áudio em um modelo acústico customizado. Para obter mais informações, consulte [Incluir áudio no modelo acústico customizado](/docs/services/speech-to-text/acoustic-create.html#addAudio)). A interface também inclui os métodos a seguir para listar e excluir recursos de áudio para um modelo acústico customizado.
+A interface de customização inclui o método `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`, que é usado para incluir um recurso de áudio em um modelo acústico customizado. Para obter mais informações, consulte [Incluir áudio no modelo acústico customizado](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio). A interface também inclui os métodos a seguir para listar e excluir recursos de áudio para um modelo acústico customizado.
 {: shortdesc}
 
 ## Listando recursos de áudio para um modelo acústico customizado
@@ -171,7 +171,7 @@ curl -X GET -u "apikey:{apikey}"
 ## Excluindo um recurso de áudio de um modelo acústico customizado
 {: #deleteAudio}
 
-Use o método `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` para remover um recurso de áudio existente de um modelo acústico customizado. Quando você exclui um recurso de áudio do tipo archive, o serviço remove o archive inteiro de arquivos. A interface atual não permite a exclusão de arquivos individuais por meio de um recurso de archive.
+Use o método `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` para remover um recurso de áudio existente de um modelo acústico customizado. Quando você exclui um recurso de áudio do tipo archive, o serviço remove o archive inteiro de arquivos. O serviço não permite a exclusão de arquivos individuais de um recurso de archive.
 
 A remoção de um recurso de áudio não afeta o modelo customizado até que você treine o modelo em seus dados atualizados usando o método `POST /v1/acoustic_customizations/{customization_id}/train`. Se você treinou com êxito o modelo no recurso, os dados de áudio existentes continuarão a ser usados para reconhecimento de voz até você retreinar o modelo.
 

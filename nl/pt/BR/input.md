@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,30 +25,30 @@ subcollection: speech-to-text
 # Recursos de entrada
 {: #input}
 
-O serviço {{site.data.keyword.speechtotextshort}} oferece os recursos a seguir para especificar como o serviço deve executar uma solicitação de reconhecimento de voz. Todos os parâmetros de entrada que são descritos nas seções a seguir são opcionais. Somente o áudio de entrada é necessário.
+O serviço {{site.data.keyword.speechtotextfull}} oferece os recursos a seguir para especificar como o serviço deve executar uma solicitação de reconhecimento de voz. Todos os parâmetros de entrada que são descritos nas seções a seguir são opcionais. Somente o áudio de entrada é necessário.
 {: shortdesc}
 
--   Para obter exemplos de solicitações de reconhecimento de voz simples para cada uma das interfaces do serviço, consulte [Fazendo uma solicitação de reconhecimento](/docs/services/speech-to-text/basic-request.html).
--   Para obter uma lista em ordem alfabética de todos os parâmetros de reconhecimento de voz disponíveis, incluindo seu status (geralmente disponível ou beta) e idiomas suportados, consulte o [Resumo de parâmetro](/docs/services/speech-to-text/summary.html).
+-   Para obter exemplos de solicitações de reconhecimento de voz simples para cada uma das interfaces do serviço, consulte [Fazendo uma solicitação de reconhecimento](/docs/services/speech-to-text?topic=speech-to-text-basic-request).
+-   Para obter uma lista em ordem alfabética de todos os parâmetros de reconhecimento de voz disponíveis, incluindo seu status (geralmente disponível ou beta) e idiomas suportados, consulte o [Resumo de parâmetro](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ## Modelos customizados
 {: #custom-input}
 
-A customização do idioma e do modelo acústico está disponível em diferentes níveis de suporte (geralmente disponíveis ou beta) para diferentes idiomas. Para obter mais informações, consulte [Suporte ao idioma para customização](/docs/services/speech-to-text/custom.html#languageSupport).
+A customização do idioma e do modelo acústico está disponível em diferentes níveis de suporte (geralmente disponíveis ou beta) para diferentes idiomas. Para obter mais informações, consulte [Suporte ao idioma para customização](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
 {: note}
 
 Todas as interfaces aceitam um modelo customizado para uso em uma solicitação de reconhecimento:
 
 -   *Modelos de idioma customizados* expandem o vocabulário base do serviço com a terminologia de domínios específicos. Use o parâmetro `language_customization_id` para incluir um modelo de idioma customizado com uma solicitação. Também é possível especificar um parâmetro `customization_weight` opcional. O parâmetro indica o peso relativo que é fornecido para palavras do modelo customizado em vez de palavras do vocabulário base.
 
-    Para obter mais informações, consulte [Usando um modelo de idioma customizado](/docs/services/speech-to-text/language-use.html).
+    Para obter mais informações, consulte [Usando um modelo de idioma customizado](/docs/services/speech-to-text?topic=speech-to-text-languageUse).
 -   Os *modelos acústicos customizados* adaptam o modelo acústico de base do serviço às características acústicas de seu ambiente e dos falantes. Use o parâmetro `acoustic_customization_id` para incluir um modelo acústico customizado com uma solicitação. É possível especificar um modelo de idioma customizado e um modelo acústico customizado com uma solicitação.
 
-    Para obter mais informações, consulte [Usando um modelo acústico customizado](/docs/services/speech-to-text/acoustic-use.html).
+    Para obter mais informações, consulte [Usando um modelo acústico customizado](/docs/services/speech-to-text?topic=speech-to-text-acousticUse).
 
-Os modelos customizados são baseados em um dos modelos de idioma que estão descritos em [Idiomas e modelos](/docs/services/speech-to-text/models.html). Um modelo customizado pode ser usado somente com o modelo base para o qual ele é criado. Se seu modelo customizado for baseado em um modelo diferente do `en-US_BroadbandModel` padrão, você também deverá especificar o nome do modelo com a solicitação. Para usar um modelo customizado, deve-se emitir a solicitação com as credenciais de serviço que são criadas para a instância do serviço que tem o modelo customizado.
+Os modelos customizados são baseados em um dos modelos de idioma que estão descritos em [Idiomas e modelos](/docs/services/speech-to-text?topic=speech-to-text-models). Um modelo customizado pode ser usado somente com o modelo base para o qual ele é criado. Se seu modelo customizado for baseado em um modelo diferente do `en-US_BroadbandModel` padrão, você também deverá especificar o nome do modelo com a solicitação. Para usar um modelo customizado, deve-se emitir a solicitação com credenciais para a instância do serviço que tem o modelo customizado.
 
-Para obter uma introdução à customização, consulte [A interface de customização](/docs/services/speech-to-text/custom.html).
+Para obter uma introdução à customização, consulte [A interface de customização](/docs/services/speech-to-text?topic=speech-to-text-customization).
 
 ### Exemplos de modelo customizado
 {: #customExample}
@@ -75,8 +75,8 @@ curl -X POST -u "apikey:{apikey}"
 
 Para exemplos que usam modelos customizados com cada uma das interfaces do serviço, consulte
 
--   [Usando um modelo de idioma customizado](/docs/services/speech-to-text/language-use.html)
--   [Usando um modelo acústico customizado](/docs/services/speech-to-text/acoustic-use.html)
+-   [Usando um modelo de idioma customizado](/docs/services/speech-to-text?topic=speech-to-text-languageUse)
+-   [Usando um modelo acústico customizado](/docs/services/speech-to-text?topic=speech-to-text-acousticUse)
 
 ## Gramáticas
 {: #grammars-input}
@@ -90,10 +90,10 @@ Quando você usa uma gramática para reconhecimento de voz, o serviço reconhece
 
 Todas as interfaces aceitam os parâmetros a seguir para uma solicitação de reconhecimento:
 
--   O parâmetro `language_customization_id` identifica o modelo de idioma customizado para o qual a gramática está definida. Deve-se emitir a solicitação com as credenciais de serviço para a instância do serviço que tem o modelo.
+-   O parâmetro `language_customization_id` identifica o modelo de idioma customizado para o qual a gramática está definida. Deve-se emitir a solicitação com credenciais para a instância do serviço que possui o modelo.
 -   O parâmetro `grammar_name` especifica a gramática que você deseja usar. É possível especificar somente uma única gramática com uma solicitação.
 
-Para obter mais informações, consulte [Usando gramáticas com modelos de idioma customizados](/docs/services/speech-to-text/grammar.html).
+Para obter mais informações, consulte [Usando gramáticas com modelos de idioma customizados](/docs/services/speech-to-text?topic=speech-to-text-grammars).
 
 ### Exemplo de gramáticas
 {: #grammarsExample}
@@ -108,12 +108,12 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-Para obter exemplos que usam gramáticas com cada uma das interfaces do serviço, consulte [Usando uma gramática para reconhecimento de voz](/docs/services/speech-to-text/grammar-use.html).
+Para obter exemplos que usam gramáticas com cada uma das interfaces do serviço, consulte [Usando uma gramática para reconhecimento de voz](/docs/services/speech-to-text?topic=speech-to-text-grammarUse).
 
 ## Versão do modelo base
 {: #version}
 
-Para melhorar a qualidade do reconhecimento de voz, o serviço atualiza ocasionalmente os modelos de idioma base descritos em [Idiomas e modelos](/docs/services/speech-to-text/models.html). Os modelos base para idiomas são independentes uns dos outros, assim como os modelos de banda larga e de banda estreita para um idioma. Portanto, as atualizações para os modelos base ocorrem independentemente umas das outras e não têm efeito em outros modelos.
+Para melhorar a qualidade do reconhecimento de voz, o serviço atualiza ocasionalmente os modelos de idioma base descritos em [Idiomas e modelos](/docs/services/speech-to-text?topic=speech-to-text-models). Os modelos base para idiomas são independentes uns dos outros, assim como os modelos de banda larga e de banda estreita para um idioma. Portanto, as atualizações para os modelos base ocorrem independentemente umas das outras e não têm efeito em outros modelos.
 
 Quando existirem múltiplas versões de um modelo base, o parâmetro opcional `base_model_version` especificará a versão do modelo a ser usada com uma solicitação de reconhecimento. O parâmetro é destinado principalmente para uso com modelos customizados que são atualizados para um novo modelo base, mas ele pode ser usado sem um modelo customizado. A versão de um modelo base usada para uma solicitação depende da transmissão do parâmetro `base_model_version`. Ela também depende da especificação de um modelo customizado (idioma, acústico ou ambos) com a solicitação.
 
@@ -129,8 +129,8 @@ Quando existirem múltiplas versões de um modelo base, o parâmetro opcional `b
 
 O parâmetro é destinado para uso com modelos customizados. Portanto, é possível aprender sobre as versões disponíveis de um modelo base apenas listando informações sobre um modelo customizado que é baseado nele.
 
--   Para obter mais informações sobre como fazer upgrade de modelos customizados, consulte [Fazendo upgrade de modelos customizados](/docs/services/speech-to-text/custom-upgrade.html).
--   Para obter mais informações sobre o uso de diferentes versões de modelos base e customizados para reconhecimento de voz, consulte [Fazendo solicitações de reconhecimento com modelos customizados que passaram por upgrade](/docs/services/speech-to-text/custom-upgrade.html#upgradeRecognition).
+-   Para obter mais informações sobre como fazer upgrade de modelos customizados, consulte [Fazendo upgrade de modelos customizados](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade).
+-   Para obter mais informações sobre o uso de diferentes versões de modelos base e customizados para reconhecimento de voz, consulte [Fazendo solicitações de reconhecimento com modelos customizados que passaram por upgrade](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade#upgradeRecognition).
 
 ## Transmissão de áudio
 {: #transmission}
@@ -143,8 +143,8 @@ O parâmetro é destinado para uso com modelos customizados. Portanto, é possí
 -   *Fluxo* - Você configura o cabeçalho da solicitação `Transfer-Encoding` para o valor `chunked` e flui os dados por meio de uma conexão persistente. Os dados não precisam existir completamente antes de passá-los ao serviço. É possível transmitir os dados à medida que eles se tornam disponíveis. O serviço envia os resultados somente quando recebe o chunk final, que você indica enviando um chunk vazio.
 
     Para obter mais informações sobre o fluxo de áudio em partes com o cabeçalho `Transfer-Encoding`, consulte
-    -   [en.wikipedia.org/wiki/Chunked_transfer_encoding ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://en.wikipedia.org/wiki/Chunked_transfer_encoding){: new_window}
-    -   [Codificações de transferência![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://tools.ietf.org/html/rfc7230#section-4){: new_window} no *IETF RFC 7320 HTTP/1.1: Sintaxe de mensagem e roteamento*
+    -   [Codificação de transferência em chunk](https://wikipedia.org/wiki/Chunked_transfer_encoding){: external}
+    -   [Codificações de transferência](https://tools.ietf.org/html/rfc7230#section-4){: external} no *IETF RFC 7320 HTTP/1.1: sintaxe de mensagem e roteamento*
 
 Com as interfaces de HTTP, o serviço sempre transcreve o fluxo de áudio inteiro antes de enviar qualquer resultado. Os resultados podem incluir múltiplos elementos `transcript` para indicar frases que são separadas por pausas. Concatene os elementos `transcript` para montar a transcrição completa.
 
@@ -221,9 +221,9 @@ Não confie no tempo de processamento ou em se você recebeu resultados para det
 Por padrão, a {{site.data.keyword.IBM_notm}} registra todas as solicitações para os serviços do {{site.data.keyword.watson}} e seus resultados. A criação de log é feita somente para melhorar os serviços para futuros usuários. Os dados registrados não são
 compartilhados ou tornados públicos.
 
-Se você estiver preocupado com a proteção das informações pessoais dos usuários ou não desejar que as suas solicitações sejam registradas pela IBM, será possível escolher não ter os dados do log da IBM (cancelar). É possível cancelar a criação de log no nível da conta ou no nível da solicitação de API. Para obter mais informações, consulte [Controlando a criação de log de solicitação para os serviços do {{site.data.keyword.watson}}](/docs/services/watson/getting-started-logging.html).
+Se você estiver preocupado com a proteção das informações pessoais dos usuários ou não desejar que as suas solicitações sejam registradas pela IBM, será possível escolher não ter os dados do log da IBM (cancelar). É possível cancelar a criação de log no nível da conta ou no nível da solicitação de API. Para obter mais informações, consulte [Controlando a criação de log de solicitação para os serviços do {{site.data.keyword.watson}}](/docs/services/watson?topic=watson-gs-logging-overview).
 
 ## Segurança de informações
 {: #security-input}
 
-A segurança de informações inclui recursos para associar um ID do cliente aos dados que são passados para o serviço com uma solicitação. Você associa um ID do cliente aos dados transmitindo o cabeçalho `X-Watson-Metadata` com a solicitação. Se necessário, será possível excluir os dados usando o método `DELETE /v1/user_data`. Para obter mais informações, consulte [Segurança de informações](/docs/services/speech-to-text/information-security.html).
+A segurança de informações inclui recursos para associar um ID do cliente aos dados que são passados para o serviço com uma solicitação. Você associa um ID do cliente aos dados transmitindo o cabeçalho `X-Watson-Metadata` com a solicitação. Se necessário, será possível excluir os dados usando o método `DELETE /v1/user_data`. Para obter mais informações, consulte [Segurança de informações](/docs/services/speech-to-text?topic=speech-to-text-information-security).

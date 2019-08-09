@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -33,7 +33,7 @@ A interface de HTTP assíncrona do serviço do {{site.data.keyword.speechtotextf
 
 As duas abordagens não são mutuamente exclusivas. É possível optar por receber notificações de retorno de chamada, mas ainda pesquisar o serviço para obter o status mais recente ou entrar em contato com o serviço para recuperar os resultados manualmente. As seções a seguir descrevem como usar a interface de HTTP assíncrona com qualquer abordagem.
 
-Submeta um máximo de 1 GB e um mínimo de 100 bytes de dados de áudio com uma única solicitação. Para obter informações sobre formatos de áudio e sobre como usar compactação para maximizar a quantia de áudio que você pode enviar com uma solicitação, consulte [Formatos de áudio](/docs/services/speech-to-text/audio-formats.html). Para obter mais informações sobre os métodos individuais da interface, consulte a [Referência de API ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+Submeta um máximo de 1 GB e um mínimo de 100 bytes de dados de áudio com uma única solicitação. Para obter informações sobre formatos de áudio e sobre como usar compactação para maximizar a quantia de áudio que você pode enviar com uma solicitação, consulte [Formatos de áudio](/docs/services/speech-to-text?topic=speech-to-text-audio-formats). Para obter mais informações sobre os métodos individuais da interface, consulte a [Referência de API](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ## Modelos de uso
 {: #usage}
@@ -128,9 +128,9 @@ Crie uma tarefa de reconhecimento chamando o método `POST /v1/recognitions`. Co
     -   `user_token` para especificar uma sequência que deve ser incluída com cada notificação para a tarefa. Como é possível usar a mesma URL de retorno de chamada com um número indefinido de tarefas, é possível aproveitar os tokens do usuário para diferenciar notificações para diferentes tarefas.
 -   *Para usar a pesquisa*, omita os parâmetros de consulta `callback_url`, `events` e `user_token`. Deve-se, então, usar os métodos `GET /v1/recognitions` ou `GET /v1/recognitions/{id}` para verificar o status da tarefa, usando este último para recuperar os resultados quando a tarefa for concluída.
 
-Em ambos os casos, é possível incluir o parâmetro de consulta `results_ttl` para especificar o número de minutos para os quais os resultados devem permanecer disponíveis após a conclusão da tarefa.
+Em ambos os casos, é possível incluir o parâmetro de consulta `results_ttl` para especificar o número de minutos para os quais os resultados devem permanecer disponíveis após a conclusão da tarefa. A nova tarefa é de propriedade da instância do serviço cujas credenciais são usadas para criá-la.
 
-Além dos parâmetros anteriores, que são específicos para a interface assíncrona, o método `POST /v1/recognitions` suporta a maioria dos mesmos parâmetros que as interfaces HTTP síncrona e do WebSocket. Para obter mais informações, consulte o [Resumo de parâmetro](/docs/services/speech-to-text/summary.html).
+Além dos parâmetros anteriores, que são específicos para a interface assíncrona, o método `POST /v1/recognitions` suporta a maioria dos mesmos parâmetros que as interfaces HTTP síncrona e do WebSocket. Para obter mais informações, consulte o [Resumo de parâmetro](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ### Notificações de retorno de chamada
 {: #notifications}
@@ -283,7 +283,7 @@ curl -X GET -u "apikey:{apikey}"
                   6.33
                 ]
               ],
-              "confidence": 0.89
+              "confidence": 0.96
             }
           ]
         }
@@ -300,7 +300,7 @@ curl -X GET -u "apikey:{apikey}"
 ## Verificando o status das tarefas mais recentes
 {: #jobs}
 
-Você chama o método `GET /v1/recognitions` para verificar o status das tarefas mais recentes. O método retorna o status das 100 tarefas mais recentes mais recentes que estão associadas às credenciais de serviço com as quais ela é chamada. O método retorna o ID e o status de cada tarefa, juntamente com suas horas de criação e atualização. Se uma tarefa foi criada com uma URL de retorno de chamada e um token do usuário, o método também retornará o token do usuário para a tarefa.
+Você chama o método `GET /v1/recognitions` para verificar o status das tarefas mais recentes. O método retorna o status das 100 tarefas pendentes mais recentes que estão associadas às credenciais com as quais é chamado. O método retorna o ID e o status de cada tarefa, juntamente com suas horas de criação e atualização. Se uma tarefa foi criada com uma URL de retorno de chamada e um token do usuário, o método também retornará o token do usuário para a tarefa.
 
 A resposta inclui um dos estados a seguir:
 
@@ -314,7 +314,7 @@ Uma tarefa e seus resultados permanecem disponíveis até você excluí-los com 
 ### Exemplo
 {: #statusExample}
 
-O exemplo a seguir solicita o status das tarefas atuais mais recentes que estão associadas às credenciais de serviço do responsável pela chamada. O usuário tem três tarefas pendentes em vários estados. A primeira tarefa foi criada com uma URL de retorno de chamada e um token do usuário.
+O exemplo a seguir solicita o status das tarefas atuais mais recentes que estão associadas às credenciais do responsável pela chamada. O usuário tem três tarefas pendentes em vários estados. A primeira tarefa foi criada com uma URL de retorno de chamada e um token do usuário.
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
