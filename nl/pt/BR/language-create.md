@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-11"
+lastupdated: "2019-07-21"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -32,13 +32,13 @@ Siga estas etapas para criar um modelo de idioma customizado para o serviço {{s
 1.  [Incluir um corpus no modelo de idioma customizado](#addCorpus). Um corpus é um documento de texto simples que usa a terminologia do domínio no contexto. O serviço constrói um vocabulário para um modelo customizado, extraindo termos dos corpora que não existem em seu vocabulário base. É possível incluir múltiplos corpora em um modelo customizado.
 1.  [Incluir palavras no modelo de idioma customizado](#addWords). Também é possível incluir palavras customizadas em um modelo individualmente. Além disso, é possível usar os mesmos métodos para modificar palavras customizadas que são extraídas dos corpora. Os métodos permitem especificar a pronúncia das palavras e como elas são exibidas em uma transcrição de fala.
 1.  [Treinar o modelo de idioma customizado](#trainModel-language). Depois de incluir palavras no modelo customizado, deve-se treinar o modelo com as palavras. O treinamento prepara o modelo customizado para uso no reconhecimento de voz. O modelo não usa palavras novas ou modificadas até você treiná-lo.
-1.  Depois de treinar seu modelo customizado, é possível usá-lo com solicitações de reconhecimento. Se o áudio passado para transcrição contiver palavras específicas do domínio que são definidas no modelo customizado, os resultados da solicitação refletirão o vocabulário aprimorado do modelo. Para obter mais informações, consulte [Usando um modelo de idioma customizado](/docs/services/speech-to-text/language-use.html).
+1.  Depois de treinar seu modelo customizado, é possível usá-lo com solicitações de reconhecimento. Se o áudio passado para transcrição contiver palavras específicas do domínio que são definidas no modelo customizado, os resultados da solicitação refletirão o vocabulário aprimorado do modelo. Para obter mais informações, consulte [Usando um modelo de idioma customizado](/docs/services/speech-to-text?topic=speech-to-text-languageUse).
 
 As etapas para criar um modelo de idioma customizado são iterativas. É possível incluir corpora e palavras e treinar ou retreinar um modelo com a frequência necessária.
 
-Também é possível incluir gramáticas em um modelo de idioma customizado. As gramáticas restringem a resposta do serviço a apenas aquelas palavras que são reconhecidas por uma gramática. Para obter mais informações, consulte [Usando gramáticas com modelos de idioma customizados](/docs/services/speech-to-text/grammar.html).
+Também é possível incluir gramáticas em um modelo de idioma customizado. As gramáticas restringem a resposta do serviço a apenas aquelas palavras que são reconhecidas por uma gramática. Para obter mais informações, consulte [Usando gramáticas com modelos de idioma customizados](/docs/services/speech-to-text?topic=speech-to-text-grammars).
 
-A customização do modelo de idioma está disponível para a maioria dos idiomas. Para obter mais informações, consulte [Suporte ao idioma para customização](/docs/services/speech-to-text/custom.html#languageSupport).
+A customização do modelo de idioma está disponível para a maioria dos idiomas. Para obter mais informações, consulte [Suporte ao idioma para customização](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
 {: note}
 
 ## Criar um modelo de idioma customizado
@@ -54,43 +54,52 @@ Use o método `POST /v1/customizations` para criar um novo modelo de idioma cust
     <th style="text-align:left">Descrição</th>
   </tr>
   <tr>
-    <td><code>name</code><br/><em>Necessário</em></td>
-    <td style="text-align:center">String</td>
+    <td><code>name</code><br/><em>Exigido</em></td>
+    <td style="text-align:center">Sequência de caracteres</td>
     <td>
       Um nome definido pelo usuário para o novo modelo customizado. Use um nome que descreve o domínio do modelo customizado, tal como <code>Medical custom model</code> ou <code>Legal custom model</code>. Use um nome que seja exclusivo entre todos os modelos de idioma customizados que você possui.
       Use um nome localizado que corresponda ao idioma do modelo customizado.
     </td>
   </tr>
   <tr>
-    <td><code>base_model_name</code><br/><em>Necessário</em></td>
-    <td style="text-align:center">String</td>
+    <td><code>base_model_name</code><br/><em>Exigido</em></td>
+    <td style="text-align:center">Sequência de caracteres</td>
     <td>
       O nome do modelo de idioma que deve ser customizado pelo novo modelo customizado. Especifique um dos modelos de idioma suportados que é retornado pelo método <code>GET /v1/models</code>. O novo modelo pode ser usado somente com o modelo base que ele customiza.
     </td>
   </tr>
   <tr>
     <td><code>dialect</code><br/><em>Opcional</em></td>
-    <td style="text-align:center">String</td>
+    <td style="text-align:center">Sequência de caracteres</td>
     <td>
-      O dialeto do idioma especificado que deve ser usado com o modelo customizado. Por padrão, o dialeto corresponde ao idioma do modelo base. Por exemplo, o dialeto é <code>en-US</code> para qualquer um dos modelos de idioma inglês dos EUA, <code>en-US_BroadbandModel</code> ou <code>en-US_NarrowbandModel</code>.<br/></br>
-      O parâmetro é significativo somente para modelos espanhóis, para os quais o serviço cria um modelo customizado que é adequado para fala no dialeto indicado:
+      O dialeto do idioma especificado que deve ser usado com o novo modelo customizado. Para a maioria dos idiomas, o dialeto corresponde ao idioma do modelo base por padrão. Por exemplo, `en-US` é usado para qualquer um dos modelos de idioma inglês dos EUA.<br><br>
+      Para um idioma espanhol, o serviço cria um modelo customizado que é adequado para a fala em um dos dialetos a seguir:
       <ul style="margin-left:20px; padding:0px;">
         <li style="margin:10px 0px; line-height:120%;">
-          <code>es-ES</code> para espanhol castelhano (o padrão)
+          `es-ES` para espanhol castelhano (modelos `es-ES`)
         </li>
         <li style="margin:10px 0px; line-height:120%;">
-          <code>es-LA</code> para espanhol da América Latina
+          `es-LA` para espanhol latino-americano (modelos `es-AR`, `es-CL`, `es-CO` e `es-PE`)
         </li>
         <li style="margin:10px 0px; line-height:120%;">
-          <code>es-US</code> para espanhol da América do Norte (mexicano)
+          `es-US` para espanhol mexicano (América do Norte) (modelos `es-MX`)
         </li>
       </ul>
-      Se você especificar um dialeto, ele deverá ser válido para o modelo base.
+      O parâmetro é significativo somente para modelos de espanhol, para os quais é sempre possível omitir com segurança o parâmetro para que o serviço crie o mapeamento correto.
+      <ul style="margin-left:20px; padding:0px;">
+        <li style="margin:10px 0px; line-height:120%;">
+          Se você especificar o parâmetro `dialect` para modelos de idioma não espanhol, seu valor deverá corresponder ao idioma do modelo base.
+        </li>
+        <li style="margin:10px 0px; line-height:120%;">
+          Se você especificar o `dialect` para modelos de idioma espanhol, seu valor deverá corresponder a um dos mapeamentos definidos conforme indicado (`es-ES`, `es-LA` ou `es-MX`).
+        </li>
+      </ul>
+      Todos os valores de dialeto não fazem distinção entre maiúsculas e minúsculas.
     </td>
   </tr>
   <tr>
-    <td><code>description</code><br/><em>Opcional</em></td>
-    <td style="text-align:center">String</td>
+    <td><code>Descrição</code><br/><em>Opcional</em></td>
+    <td style="text-align:center">Sequência de caracteres</td>
     <td>
       Uma descrição do novo modelo. Use uma descrição localizada que corresponda ao idioma do modelo customizado.
     </td>
@@ -118,7 +127,7 @@ O exemplo retorna o ID de customização do novo modelo. Cada modelo customizado
 ```
 {: codeblock}
 
-O novo modelo customizado é de propriedade da instância de serviço cujas credenciais são usadas para criá-lo. Para obter mais informações, consulte [Propriedade de modelos customizados](/docs/services/speech-to-text/custom.html#customOwner).
+O novo modelo customizado é de propriedade da instância do serviço cujas credenciais são usadas para criá-lo. Para obter mais informações, consulte [Propriedade de modelos customizados](/docs/services/speech-to-text?topic=speech-to-text-customization#customOwner).
 
 ## Incluir um corpus no modelo de idioma customizado
 {: #addCorpus}
@@ -127,8 +136,8 @@ Depois de criar o modelo de idioma customizado, a próxima etapa é incluir dado
 
 Um corpus é um arquivo de texto simples que idealmente contém sentenças de amostra do seu domínio. O serviço analisa o conteúdo de um arquivo de corpus e extrai quaisquer palavras que não estejam em seu vocabulário base. Essas palavras são referidas como palavras fora do vocabulário (OOV).
 
--   Para obter mais informações sobre como usar os corpora, consulte [Trabalhando com os corpora](/docs/services/speech-to-text/language-resource.html#workingCorpora).
--   Para obter mais informações sobre como o serviço inclui os corpora em um modelo, consulte [O que acontece ao incluir um arquivo de corpus?](/docs/services/speech-to-text/language-resource.html#parseCorpus)
+-   Para obter mais informações sobre como usar os corpora, consulte [Trabalhando com os corpora](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#workingCorpora).
+-   Para obter mais informações sobre como o serviço inclui os corpora em um modelo, consulte [O que acontece ao incluir um arquivo de corpus?](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#parseCorpus)
 
 Ao fornecer sentenças que incluem novas palavras, os corpora permitem que o serviço aprenda as palavras no contexto. Em seguida, é possível aumentar ou modificar as palavras do modelo individualmente. O treinamento de um modelo apenas com palavras individuais em vez de palavras incluídas dos corpora é mais demorado e pode produzir resultados menos eficazes.
 {: tip}
@@ -138,12 +147,13 @@ Use o método `POST /v1/customizations/{customization_id}/corpora/{corpus_name}`
 -   Especifique o ID de customização do modelo customizado com o parâmetro de caminho `customization_id`.
 -   Especifique um nome para o corpus com o parâmetro de caminho `corpus_name`. Use um nome localizado que corresponda ao idioma do modelo customizado e reflita os conteúdos do corpus.
     -   Inclua um máximo de 128 caracteres no nome.
-    -   Não inclua espaços, `/` (barras) ou `\` (barras invertidas) no nome.
-    -   Não use o nome de um corpus que já foi incluído no modelo customizado.
+    -   Não utilize caracteres que precisem ser codificados pela URL. Por exemplo, não use espaços, barras, barras invertidas, dois-pontos, e comercial, aspas duplas, sinais de mais, sinais de igual, pontos de interrogação e assim por diante no nome. (O serviço não impede o uso desses caracteres. Mas como eles devem ser codificados pela URL onde quer que sejam usados, seu uso não é recomendado.)
+    -   Não use o nome de um corpus ou gramática que já tenha sido incluído no modelo customizado.
     -   Não use o nome `user`, que é reservado pelo serviço para indicar palavras customizadas que são incluídas ou modificadas pelo usuário.
+    -   Não use o nome `base_lm` ou `default_lm`. Ambos os nomes são reservados para uso futuro pelo serviço.
 -   Passe o arquivo de texto do corpus como o corpo da solicitação.
 
-É possível incluir um máximo de 90 mil palavras OOV e 10 milhões de palavras totais de todas as fontes combinadas. Isso inclui palavras dos corpora e das gramáticas e palavras que você inclui diretamente. Para obter mais informações, consulte [Quanto de dados eu preciso?](/docs/services/speech-to-text/language-resource.html#wordsResourceAmount)
+É possível incluir um máximo de 90 mil palavras OOV e 10 milhões de palavras totais de todas as fontes combinadas. Isso inclui palavras dos corpora e das gramáticas e palavras que você inclui diretamente. Para obter mais informações, consulte [Quanto de dados eu preciso?](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#wordsResourceAmount)
 {: note}
 
 O exemplo a seguir inclui o arquivo de texto do corpus `healthcare.txt` no modelo customizado com o ID especificado O exemplo nomeia o corpus `assistência médica`.
@@ -159,7 +169,7 @@ O método também aceita um parâmetro de consulta `allow_overwrite` opcional qu
 
 O método é assíncrono. Ele pode levar um minuto ou dois para ser concluído. A duração da operação depende do número total de palavras no corpus, do número de novas palavras que o serviço localiza no corpus e da carga atual no serviço. Para obter mais informações sobre como verificar o status de um corpus, consulte [Monitorando a solicitação de inclusão de corpus](#monitorCorpus).
 
-É possível incluir qualquer número de corpora em um modelo customizado chamando o método uma vez para cada arquivo de texto do corpus. A inclusão de um corpus deve ser totalmente concluída antes de poder incluir outra. Depois de incluir um corpus em um modelo customizado, examine as novas palavras customizadas para verificar os erros tipográficos e outros. Para obter mais informações, consulte [Validando um recurso de palavras](/docs/services/speech-to-text/language-resource.html#validateModel).
+É possível incluir qualquer número de corpora em um modelo customizado chamando o método uma vez para cada arquivo de texto do corpus. A inclusão de um corpus deve ser totalmente concluída antes de poder incluir outra. Depois de incluir um corpus em um modelo customizado, examine as novas palavras customizadas para verificar os erros tipográficos e outros. Para obter mais informações, consulte [Validando um recurso de palavras](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
 
 ### Monitorando a solicitação de inclusão de corpus
 {: #monitorCorpus}
@@ -192,7 +202,7 @@ O campo `status` tem um dos valores a seguir:
 -   `being_processed` indica que o serviço ainda está analisando o corpus.
 -   `undetermined` indica que o serviço encontrou um erro ao processar o corpus.
 
-Use um loop para verificar o status do corpus a cada 10 segundos até que se torne `analyzed`. Para obter mais informações sobre como verificar o status dos corpora de um modelo, consulte [Listando os corpora para um modelo de idioma customizado](/docs/services/speech-to-text/language-corpora.html#listCorpora).
+Use um loop para verificar o status do corpus a cada 10 segundos até que se torne `analyzed`. Para obter mais informações sobre como verificar o status dos corpora de um modelo, consulte [Listando os corpora para um modelo de idioma customizado](/docs/services/speech-to-text?topic=speech-to-text-manageCorpora#listCorpora).
 
 ## Incluir palavras no modelo de idioma customizado
 {: #addWords}
@@ -201,8 +211,8 @@ Embora a inclusão dos corpora seja o meio recomendado de incluir palavras em um
 
 Se você tiver apenas uma ou algumas palavras para incluir em um modelo, usar corpora para incluir as palavras pode não ser prático ou mesmo viável. A abordagem mais simples é incluir uma palavra com apenas sua ortografia. Mas também é possível fornecer múltiplas pronúncias para a palavra e indicar como a palavra deve ser exibida.
 
--   Para obter mais informações sobre como incluir palavras diretamente, consulte [Trabalhando com palavras customizadas](/docs/services/speech-to-text/language-resource.html#workingWords).
--   Para obter mais informações sobre como o serviço inclui palavras customizadas em um modelo, consulte [O que acontece ao incluir ou modificar uma palavra customizada?](/docs/services/speech-to-text/language-resource.html#parseWord)
+-   Para obter mais informações sobre como incluir palavras diretamente, consulte [Trabalhando com palavras customizadas](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#workingWords).
+-   Para obter mais informações sobre como o serviço inclui palavras customizadas em um modelo, consulte [O que acontece ao incluir ou modificar uma palavra customizada?](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#parseWord)
 
 É possível usar os métodos a seguir para incluir palavras em um modelo customizado:
 
@@ -253,7 +263,7 @@ Se você tiver apenas uma ou algumas palavras para incluir em um modelo, usar co
 
     Esse método é síncrono. O serviço retorna um código de resposta que relata o sucesso ou a falha da solicitação imediatamente.
 
-Como ocorre com a inclusão de corpora, examine as novas palavras customizadas para verificar os erros tipográficos e outros. Essa verificação é especialmente importante quando você inclui múltiplas palavras de uma vez. Para obter mais informações, consulte [Validando um recurso de palavras](/docs/services/speech-to-text/language-resource.html#validateModel).
+Como ocorre com a inclusão de corpora, examine as novas palavras customizadas para verificar os erros tipográficos e outros. Essa verificação é especialmente importante quando você inclui múltiplas palavras de uma vez. Para obter mais informações, consulte [Validando um recurso de palavras](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
 
 ### Monitorando a solicitação de inclusão de palavras
 {: #monitorWords}
@@ -272,6 +282,7 @@ curl -X GET -u "apikey:{apikey}"
 {
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
   "created": "2016-06-01T18:42:25.324Z",
+  "updated": "2016-06-01T18:45:11.737Z",
   "language": "en-US",
   "dialect": "en-US",
   "owner": "297cfd08-330a-22ba-93ce-1a73f454dd98",
@@ -306,16 +317,17 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-É possível usar o parâmetro de consulta `word_type_to_add` opcional para especificar as palavras nas quais o modelo customizado deve ser treinado:
-
--   Especifique `all` ou omita o parâmetro para treinar o modelo em todas as suas palavras, independentemente de sua origem.
--   Especifique `user` para treinar o modelo apenas em palavras que foram incluídas ou modificadas pelo usuário, ignorando palavras que foram extraídas apenas dos corpora ou gramáticas.
-
-    Essa opção será útil se você incluir corpora com dados com ruído, como palavras que contêm erros tipográficos. Antes de treinar o modelo em tais dados, é possível usar o parâmetro de consulta `word_type` do método `GET /v1/customizations/{customization_id}/words` para revisar as palavras que são extraídas dos corpora e gramáticas. Para obter mais informações, consulte [Listando palavras de um modelo de idioma customizado](/docs/services/speech-to-text/language-words.html#listWords).
-
-Além disso, é possível usar o parâmetro de consulta `customization_weight` opcional. O parâmetro especifica o peso relativo que é fornecido para palavras do modelo customizado em vez de palavras do vocabulário base quando o modelo customizado é usado para reconhecimento de voz. Também é possível especificar um peso de customização com qualquer solicitação de reconhecimento que use o modelo customizado. Para obter mais informações, consulte [Usando o peso de customização](/docs/services/speech-to-text/language-use.html#weight).
-
 O método é assíncrono. O treinamento pode levar alguns minutos para ser concluído, dependendo do número de novas palavras nas quais o modelo está sendo treinado e da carga atual no serviço. Para obter mais informações sobre como verificar o status de uma operação de treinamento, consulte [Monitorando a solicitação de treinamento do modelo](#monitorTraining-language).
+
+O método inclui os seguintes parâmetros de consulta opcionais:
+
+-   O parâmetro `word_type_to_add` especifica as palavras nas quais o modelo customizado deve ser treinado:
+    -   Especifique `all` ou omita o parâmetro para treinar o modelo em todas as suas palavras, independentemente de sua origem.
+    -   Especifique `user` para treinar o modelo apenas em palavras que foram incluídas ou modificadas pelo usuário, ignorando palavras que foram extraídas apenas dos corpora ou gramáticas.
+
+    Essa opção será útil se você incluir corpora com dados com ruído, como palavras que contêm erros tipográficos. Antes de treinar o modelo em tais dados, é possível usar o parâmetro de consulta `word_type` do método `GET /v1/customizations/{customization_id}/words` para revisar as palavras que são extraídas dos corpora e gramáticas. Para obter mais informações, consulte [Listando palavras de um modelo de idioma customizado](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords).
+-   O parâmetro `customization_weight` especifica o peso relativo que é dado às palavras do modelo customizado, em vez de palavras do vocabulário base quando o modelo customizado é usado para reconhecimento de voz. Também é possível especificar um peso de customização com qualquer solicitação de reconhecimento que use o modelo customizado. Para obter mais informações, consulte [Usando o peso de customização](/docs/services/speech-to-text?topic=speech-to-text-languageUse#weight).
+-   O parâmetro `strict` indica se o treinamento deverá continuar se o modelo customizado contiver uma combinação de recursos válidos e inválidos (corpora, gramáticas e palavras). Por padrão, o treinamento falhará se o modelo contiver um ou mais recursos inválidos. Configure o parâmetro como `false` para permitir que o treinamento continue, desde que o modelo contenha pelo menos um recurso válido. O serviço exclui recursos inválidos do treinamento. Para obter mais informações, consulte [Falhas de treinamento](#failedTraining-language).
 
 ### Monitorando a solicitação de treinamento do modelo
 {: #monitorTraining-language}
@@ -334,6 +346,7 @@ curl -X GET -u "apikey:{apikey}"
 {
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
   "created": "2016-06-01T18:42:25.324Z",
+  "updated": "2016-06-01T18:45:11.737Z",
   "language": "en-US",
   "dialect": "en-US",
   "owner": "297cfd08-330a-22ba-93ce-1a73f454dd98",
@@ -348,30 +361,40 @@ curl -X GET -u "apikey:{apikey}"
 
 A resposta inclui os campos `status` e `progress` que relatam o estado do modelo customizado. O significado do campo `progress` depende do status do modelo. O campo `status` pode ter um dos valores a seguir:
 
--   `pending` indica que o modelo foi criado, mas está aguardando que os dados de treinamento sejam incluídos ou que o serviço conclua a análise dos dados que foram incluídos. O campo `progress` é `0`.
--   `ready` indica que o modelo está pronto para ser treinado. O campo `progress` é `0`.
+-   `pending` indica que o modelo foi criado, mas está aguardando que os dados de treinamento válidos sejam incluídos ou que o serviço conclua a análise dos dados que foram incluídos. O campo `progress` é `0`.
+-   `ready` indica que o modelo contém dados válidos e está pronto para ser treinado. O campo `progress` é `0`.
+
+    Se o modelo contiver uma combinação de recursos válidos e inválidos (por exemplo, palavras customizadas válidas e inválidas), o treinamento do modelo falhará, a menos que você configure o parâmetro de consulta `strict` como `false`. Para obter mais informações, consulte [Falhas de treinamento](#failedTraining-language).
 -   `training` indica que o modelo está sendo treinado. O campo `progress` muda de `0` para `100` quando o treinamento é concluído. <!-- The `progress` field indicates the progress of the training as a percentage complete. -->
 -   `available` indica que o modelo está treinado e pronto para uso. O campo `progress` é `100`.
 -   `upgrading` indica que o modelo está passando por upgrade. O campo `progress` é `0`.
--   `failed` indica que o treinamento do modelo falhou. O campo `progress` é `0`.
+-   `failed` indica que o treinamento do modelo falhou. O campo `progress` é `0`. Para obter mais informações, consulte [Falhas de treinamento](#failedTraining-language).
 
-Use um loop para verificar o status a cada 10 segundos até que se torne `available`. Para obter mais informações sobre como verificar o status de um modelo customizado, consulte [Listando modelos de idioma customizados](/docs/services/speech-to-text/language-models.html#listModels-language).
+Use um loop para verificar o status a cada 10 segundos até que se torne `available`. Para obter mais informações sobre como verificar o status de um modelo customizado, consulte [Listando modelos de idioma customizados](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
 
 ### Falhas de treinamento
 {: #failedTraining-language}
 
-O treinamento falha ao iniciar se o serviço estiver manipulando outra solicitação para o modelo de idioma customizado. Por exemplo, uma solicitação de treinamento falhará ao iniciar se o serviço for
+O treinamento falha ao iniciar se o serviço estiver manipulando outra solicitação para o modelo de idioma customizado. Por exemplo, uma solicitação de treinamento falhará ao iniciar com um código de status de 409 se o serviço estiver
 
 -   Processando um corpus ou gramática para gerar uma lista de palavras OOV
 -   Processando palavras customizadas para validar ou gerar automaticamente as pronúncias
 -   Manipulando outra solicitação de treinamento
 
-O treinamento também pode falhar ao iniciar pelos motivos a seguir:
+O treinamento também falhará ao iniciar com um código de status de 400 se o modelo customizado
 
--   Nenhum dado de treinamento (corpora, gramáticas ou palavras) foi incluído no modelo customizado desde que ele foi criado ou treinado pela última vez.
--   Uma ou mais palavras que foram incluídas no modelo customizado têm pronúncias inválidas que devem ser corrigidas.
+-   Não contiver novos dados de treinamento válidos (corpora, gramáticas ou palavras) desde que foi criado ou treinado pela última vez
+-   Contiver um ou mais corpora, gramáticas ou palavras inválidas (por exemplo, uma palavra customizada tem uma pronúncia inválida)
 
-Se o status de um treinamento do modelo customizado for `failed`, use métodos da interface de customização para examinar as palavras do modelo e corrigir quaisquer erros que você localizar. Para obter mais informações, consulte [Validando um recurso de palavras](/docs/services/speech-to-text/language-resource.html#validateModel).
+Se a solicitação de treinamento falhar com um código de status de 400, o serviço configurará o status do modelo customizado como `failed`. Execute uma das ações a seguir:
+
+-   Use os métodos da interface de customização para examinar os recursos do modelo e corrigir qualquer erro que você localizar:
+    -   Para um corpus inválido, é possível corrigir o arquivo de texto do corpus e usar o parâmetro `allow_overwrite` do método `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` para incluir o arquivo corrigido no modelo. Para obter mais informações, consulte [Incluir um corpus no modelo de idioma customizado](#addCorpus).
+    -   Para uma gramática inválida, é possível corrigir o arquivo de gramática e usar o parâmetro `allow_overwrite` do método `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` para incluir o arquivo corrigido no modelo. Para obter mais informações, consulte [Incluir uma gramática no modelo de idioma customizado](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar).
+    -   Para uma palavra customizada inválida, é possível usar o método `POST /v1/customizations/{customization_id}/words` ou `PUT /v1/customizations/{customization_id}/words/{word_name}` para modificar a palavra diretamente no recurso de palavras do modelo. Para obter mais informações, consulte [Modificando palavras em um modelo customizado](#modifyWord).
+
+    Para obter mais informações sobre como validar as palavras em um modelo de idioma customizado, consulte [Validando um recurso de palavras](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
+-   Configure o parâmetro `strict` do método `POST /v1/customizations/{customization_id}/train` como `false` para excluir recursos inválidos do treinamento. O modelo deve conter pelo menos um recurso válido (corpus, gramática ou palavra) para que o treinamento seja bem-sucedido. O parâmetro `strict` é útil para treinamento de um modelo customizado que contém uma combinação de recursos válidos e inválidos.
 
 ## Exemplo de scripts
 {: #exampleScripts}
@@ -404,8 +427,8 @@ Siga estas etapas para usar o script Python:
     ```
     {: pre}
 
-    Para obter mais informações sobre a biblioteca, consulte [pypi.python.org/pypi/requests ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://pypi.python.org/pypi/requests){: new_window}.
-1.  Edite o script para substituir a sequência `iam_apikey` de `password` pela chave de API de suas credenciais de serviço do {{site.data.keyword.speechtotextshort}}:
+    Para obter mais informações sobre a biblioteca, consulte [pypi.python.org/pypi/requests](https://pypi.python.org/pypi/requests){: external}.
+1.  Edite o script para substituir a sequência `password` `iam_apikey` pela chave de API de suas credenciais do {{site.data.keyword.speechtotextshort}}:
 
     ```
     password = "iam_apikey"
@@ -429,8 +452,8 @@ Siga estas etapas para usar o Bash shell script:
 
 1.  Faça download do shell script denominado <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.sh" download="testSTTcustom.sh">testSTTcustom.sh <img src="../../icons/launch-glyph.svg" alt="Ícone de link externo" title="Ícone de link externo"></a>.
 1.  Faça download dos arquivos de texto do corpus de exemplo para usar com o script. Você é livre para testar com um dos arquivos de texto do corpus ou com um arquivo de sua própria escolha. Por padrão, todos os arquivos de texto do corpus devem residir no mesmo diretório que o script.
-1.  O script usa o comando `curl` para solicitações de HTTP para o serviço. Se você ainda não tiver transferido por download o `curl`, será possível instalar a versão para seu sistema operacional por meio do [curl.haxx.se ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](http://curl.haxx.se){: new_window}. Instale a versão que suporte o protocolo Secure Sockets Layer (SSL) e certifique-se de incluir o arquivo binário instalado em sua variável de ambiente `PATH`.
-1.  Edite o script para substituir a sequência `iam_apikey` de `PASSWORD` pela chave de API de suas credenciais de serviço do {{site.data.keyword.speechtotextshort}}:
+1.  O script usa o comando `curl` para solicitações de HTTP para o serviço. Se você ainda não tiver transferido por download o `curl`, será possível instalar a versão para seu sistema operacional por meio de [curl.haxx.se](http://curl.haxx.se){: external}. Instale a versão que suporte o protocolo Secure Sockets Layer (SSL) e certifique-se de incluir o arquivo binário instalado em sua variável de ambiente `PATH`.
+1.  Edite o script para substituir a sequência `PASSWORD` `iam_apikey` pela chave de API de suas credenciais do {{site.data.keyword.speechtotextshort}}:
 
     ```
     PASSWORD="iam_apikey"

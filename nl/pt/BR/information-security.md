@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -38,15 +38,15 @@ Os produtos, serviços e outros recursos descritos aqui não são adequados para
 
 Se você precisar solicitar suporte do GDPR para os recursos do {{site.data.keyword.cloud}} {{site.data.keyword.watson}} que forem criados
 
--   Na União Europeia, (UE), veja [Solicitando suporte para recursos do {{site.data.keyword.cloud_notm}} Watson criados na União Europeia](/docs/services/watson/getting-started-gdpr-sar.html#request-EU).
--   Fora da UE, veja [Solicitando suporte para recursos fora da União Europeia](/docs/services/watson/getting-started-gdpr-sar.html#request-non-EU).
+-   Na União Europeia, (UE), veja [Solicitando suporte para recursos do {{site.data.keyword.cloud_notm}} Watson criados na União Europeia](/docs/services/watson?topic=watson-gdpr-sar#request-EU).
+-   Fora da UE, veja [Solicitando suporte para recursos fora da União Europeia](/docs/services/watson?topic=watson-gdpr-sar#request-non-EU).
 
 ## Regulamento Geral sobre a Proteção de Dados (GDPR) da União Europeia
 {: #gdpr}
 
 O{{site.data.keyword.IBM_notm}}está comprometido em fornecer aos nossos clientes e parceiros com soluções inovadoras de privacidade de dados, segurança e controle para auxiliá-los em sua jornada para a conformidade com GDPR.
 
-Saiba mais sobre a própria jornada de prontidão do GDPR da {{site.data.keyword.IBM_notm}} e os nossos recursos e ofertas do GDPR para suportar a sua jornada de conformidade [aqui ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](../../icons/launch-glyph.svg "Ícone de link externo")](http://www.ibm.com/gdpr){: new_window}.
+Saiba mais sobre a jornada de preparação para o GDPR do próprio {{site.data.keyword.IBM_notm}} e nossas habilidades e ofertas de GDPR para suportar a sua jornada de conformidade [aqui](http://www.ibm.com/gdpr){: external}.
 
 ## Rotulando e excluindo dados no serviço Speech to Text
 {: #gdpr-speech-to-text}

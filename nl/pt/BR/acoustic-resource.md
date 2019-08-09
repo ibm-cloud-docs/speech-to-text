@@ -2,14 +2,14 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-06-19"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Trabalhando com recursos de áudio
 {: #audioResources}
 
-É possível incluir arquivos de áudio individuais ou archives que contêm múltiplos arquivos de áudio em um modelo acústico customizado. O meio recomendado para incluir recursos de áudio é incluir archives. A criação e a inclusão de um único archive é consideravelmente mais eficiente do que a inclusão de múltiplos arquivos de áudio individualmente.
+É possível incluir arquivos de áudio individuais ou archives que contêm múltiplos arquivos de áudio em um modelo acústico customizado. O meio recomendado para incluir recursos de áudio é incluir archives. A criação e a inclusão de um único archive é consideravelmente mais eficiente do que a inclusão de múltiplos arquivos de áudio individualmente. Também é possível enviar solicitações para incluir diversos recursos de áudio diferentes ao mesmo tempo.
 {: shortdesc}
 
 ## Incluindo um recurso de áudio
@@ -37,20 +37,20 @@ Use o método `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_
 -   O parâmetro do caminho `audio_name` para especificar um nome para o recurso de áudio.
     -   Use um nome localizado que corresponda ao idioma do modelo customizado e reflita os conteúdos do recurso.
     -   Inclua um máximo de 128 caracteres no nome.
-    -   Não inclua espaços, `/` (barras) ou `\` (barras invertidas) no nome.
+    -   Não utilize caracteres que precisem ser codificados pela URL. Por exemplo, não use espaços, barras, barras invertidas, dois-pontos, e comercial, aspas duplas, sinais de mais, sinais de igual, pontos de interrogação e assim por diante no nome. (O serviço não impede o uso desses caracteres. Mas como eles devem ser codificados pela URL onde quer que sejam usados, seu uso não é recomendado.)
     -   Não use o nome de um recurso de áudio que já tenha sido incluído no modelo customizado.
 
-Ao atualizar os recursos de áudio de um modelo, deve-se treinar o modelo para que as mudanças entrem em vigor durante a transcrição. Para obter mais informações, consulte [Treinar o modelo acústico customizado](/docs/services/speech-to-text/acoustic-create.html#trainModel-acoustic).
+Ao atualizar os recursos de áudio de um modelo, deve-se treinar o modelo para que as mudanças entrem em vigor durante a transcrição. Para obter mais informações, consulte [Treinar o modelo acústico customizado](/docs/services/speech-to-text?topic=speech-to-text-acoustic#trainModel-acoustic).
 
 ## Incluindo um arquivo de áudio
 {: #addAudioType}
 
-Para incluir um arquivo de áudio individual em um modelo acústico customizado, especifique o formato (tipo MIME) do áudio com o cabeçalho `Content-Type`. É possível incluir áudio com qualquer formato que seja suportado para uso com solicitações de reconhecimento. Inclua os parâmetros `rate`, `channels` e `endianness` com a especificação de formatos que os requer. Para obter mais informações sobre os formatos de áudio suportados, consulte [Formatos de áudio](/docs/services/speech-to-text/audio-formats.html).
+Para incluir um arquivo de áudio individual em um modelo acústico customizado, especifique o formato (tipo MIME) do áudio com o cabeçalho `Content-Type`. É possível incluir áudio com qualquer formato que seja suportado para uso com solicitações de reconhecimento. Inclua os parâmetros `rate`, `channels` e `endianness` com a especificação de formatos que os requer. Para obter mais informações sobre os formatos de áudio suportados, consulte [Formatos de áudio](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
 
 A especificação `application/octet-stream` para um formato de áudio não é suportada para recursos de áudio.
 {: note}
 
-O exemplo a seguir de [Incluir áudio no modelo acústico customizado](/docs/services/speech-to-text/acoustic-create.html#addAudio) inclui um arquivo `audio/wav`:
+O exemplo a seguir de [Incluir áudio no modelo acústico customizado](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio) inclui um arquivo `audio/wav`:
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -76,9 +76,9 @@ Também pode ser necessário especificar o cabeçalho `Contained-Content-Type` d
 Não use o cabeçalho `Contained-Content-Type` ao incluir um recurso de tipo áudio.
 {: note}
 
-O nome de um arquivo de áudio que é integrado em um recurso de tipo archive deve atender às mesmas restrições de nomenclatura que o parâmetro `audio_name`. Além disso, não use o nome de um arquivo de áudio que já tenha sido incluído no modelo customizado como parte de um recurso de tipo archive.
+O nome de um arquivo de áudio que está contido em um recurso de tipo de archive pode incluir um máximo de 128 caracteres. Isso inclui a extensão do arquivo e todos os elementos do nome (por exemplo, barras).
 
-O exemplo a seguir de [Incluir áudio no modelo acústico customizado](/docs/services/speech-to-text/acoustic-create.html#addAudio) inclui um arquivo `application/zip` que contém arquivos de áudio no formato `audio/l16` que são amostrados a 16 kHz:
+O exemplo a seguir de [Incluir áudio no modelo acústico customizado](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio) inclui um arquivo `application/zip` que contém arquivos de áudio no formato `audio/l16` que são amostrados a 16 kHz:
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -101,7 +101,10 @@ Siga estas diretrizes ao incluir recursos de áudio em um modelo acústico custo
     A qualidade do áudio faz a diferença quando você está determinando o quanto incluir. Quanto melhor o áudio do modelo refletir as características do áudio que deve ser reconhecido, melhor a qualidade do modelo customizado para reconhecimento de voz. Se o áudio for de boa qualidade, a inclusão de mais poderá melhorar a precisão da transcrição. Mas incluir até cinco a dez horas de áudio de boa qualidade pode fazer uma diferença positiva.
 -   Inclua recursos de áudio que não sejam maiores que 100 MB. Todos os recursos de tipo áudio e archive são limitados a um tamanho máximo de 100 MB.
 
-    Para maximizar a quantidade de áudio que pode ser incluída com um único recurso, considere usar um formato de áudio que ofereça a compactação. Para obter mais informações, consulte [Limites de dados e compactação](/docs/services/speech-to-text/audio-formats.html#limits).
+    Para maximizar a quantidade de áudio que pode ser incluída com um único recurso, considere usar um formato de áudio que ofereça a compactação. Para obter mais informações, consulte [Limites de dados e compactação](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#limits).
+-   Divida arquivos de áudio grandes em vários arquivos menores. Certifique-se de dividir o áudio entre palavras, em pontos de silêncio.
+
+    Como é possível enviar múltiplas solicitações simultâneas para incluir diferentes recursos de áudio, é possível incluir arquivos menores simultaneamente. Essa abordagem paralela para incluir recursos de áudio pode acelerar a análise do serviço de seu áudio.
 -   Inclua conteúdo de áudio que reflita as condições acústicas do canal do áudio que você planeja transcrever. Por exemplo, se seu aplicativo lidar com áudio que tenha ruído de plano de fundo de um veículo em movimento, use o mesmo tipo de dados para construir o modelo customizado.
 -   Certifique-se de que a taxa de amostragem de um arquivo de áudio corresponda à taxa de amostragem do modelo base para o modelo acústico customizado:
     -   Para modelos de banda larga, a taxa de amostragem deve ser de pelo menos 16 kHz (16.000 amostras por segundo).
@@ -112,4 +115,4 @@ Siga estas diretrizes ao incluir recursos de áudio em um modelo acústico custo
     -   Se seu áudio for menor que uma hora de duração, crie um modelo de idioma customizado com base nas transcrições do áudio para obter os melhores resultados.
     -   Se seu áudio for específico do domínio e contiver palavras exclusivas que não estão localizadas no vocabulário base do serviço, use a customização do modelo de idioma para expandir o vocabulário base do serviço. A customização do modelo acústico sozinha não pode produzir essas palavras durante a transcrição.
 
-    Para obter mais informações, consulte [Usando modelos acústicos e de idioma customizados juntos](/docs/services/speech-to-text/acoustic-both.html).
+    Para obter mais informações, consulte [Usando modelos acústicos e de idioma customizados juntos](/docs/services/speech-to-text?topic=speech-to-text-useBoth).

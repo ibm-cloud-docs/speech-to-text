@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Gerenciando os corpora
 {: #manageCorpora}
 
-A interface de customização inclui o método `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` para incluir um corpus em um modelo de idioma customizado. Para obter mais informações, consulte [Incluir um corpus no modelo de idioma customizado](/docs/services/speech-to-text/language-create.html#addCorpus). A interface também inclui os métodos a seguir para listar e excluir corpora para um modelo de idioma customizado.
+A interface de customização inclui o método `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` para incluir um corpus em um modelo de idioma customizado. Para obter mais informações, consulte [Incluir um corpus no modelo de idioma customizado](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus). A interface também inclui os métodos a seguir para listar e excluir corpora para um modelo de idioma customizado.
 {: shortdesc}
 
 ## Listando os corpora para um modelo de idioma customizado

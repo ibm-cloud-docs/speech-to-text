@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,12 +25,12 @@ subcollection: speech-to-text
 # Usando um modelo de idioma customizado
 {: #languageUse}
 
-Depois de criar e treinar seu modelo de idioma customizado, é possível usá-lo em solicitações de reconhecimento de voz. Você usa o parâmetro de consulta `language_customization_id` para especificar o modelo de idioma customizado para uma solicitação, conforme mostrado nos exemplos a seguir. Também é possível informar ao serviço quanto peso dar às palavras do modelo customizado. Para obter mais informações, consulte [Usando o peso de customização](#weight). Deve-se emitir a solicitação com as credenciais de serviço para a instância do serviço que tem o modelo.
+Depois de criar e treinar seu modelo de idioma customizado, é possível usá-lo em solicitações de reconhecimento de voz. Você usa o parâmetro de consulta `language_customization_id` para especificar o modelo de idioma customizado para uma solicitação, conforme mostrado nos exemplos a seguir. Também é possível informar ao serviço quanto peso dar às palavras do modelo customizado. Para obter mais informações, consulte [Usando o peso de customização](#weight). Deve-se emitir a solicitação com credenciais para a instância do serviço que possui o modelo.
 {: shortdesc}
 
-É possível criar múltiplos modelos de idioma customizados para os mesmos domínios ou domínios diferentes. No entanto, é possível especificar apenas um modelo de idioma customizado de cada vez com o parâmetro `language_customization_id`. Para obter exemplos que usam uma gramática com um modelo de idioma customizado, consulte [Usando uma gramática para reconhecimento de voz](/docs/services/speech-to-text/grammar-use.html).
+É possível criar múltiplos modelos de idioma customizados para os mesmos domínios ou domínios diferentes. No entanto, é possível especificar apenas um modelo de idioma customizado de cada vez com o parâmetro `language_customization_id`. Para obter exemplos que usam uma gramática com um modelo de idioma customizado, consulte [Usando uma gramática para reconhecimento de voz](/docs/services/speech-to-text?topic=speech-to-text-grammarUse).
 
--   Para a [interface do WebSocket](/docs/services/speech-to-text/websockets.html), use o método `/v1/recognize`. O modelo customizado especificado é usado para todas as solicitações que são enviadas por meio da conexão.
+-   Para a [interface do WebSocket](/docs/services/speech-to-text?topic=speech-to-text-websockets), use o método `/v1/recognize`. O modelo customizado especificado é usado para todas as solicitações que são enviadas por meio da conexão.
 
     ```javascript
     var token = {authentication-token};
@@ -41,7 +41,7 @@ Depois de criar e treinar seu modelo de idioma customizado, é possível usá-lo
     var websocket = new WebSocket(wsURI);
     ```
     {: codeblock}
--   Para a [interface de HTTP síncrona](/docs/services/speech-to-text/http.html), use o método `POST /v1/recognize`. O modelo customizado especificado é usado para essa solicitação.
+-   Para a [interface de HTTP síncrona](/docs/services/speech-to-text?topic=speech-to-text-http), use o método `POST /v1/recognize`. O modelo customizado especificado é usado para essa solicitação.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -50,7 +50,7 @@ Depois de criar e treinar seu modelo de idioma customizado, é possível usá-lo
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}"
     ```
     {: pre}
--   Para a [interface de HTTP assíncrona](/docs/services/speech-to-text/async.html), use o método `POST /v1/recognitions`. O modelo customizado especificado é usado para essa solicitação.
+-   Para a [interface de HTTP assíncrona](/docs/services/speech-to-text?topic=speech-to-text-async), use o método `POST /v1/recognitions`. O modelo customizado especificado é usado para essa solicitação.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -100,6 +100,6 @@ Você especifica um peso de customização usando o parâmetro `customization_we
 
 Se você aplicar um modelo de idioma customizado ao reconhecimento de voz, mas descobrir que o serviço não parece estar usando palavras que o modelo contém, verifique os possíveis problemas a seguir:
 
--   Certifique-se de que você esteja passando corretamente o ID de customização para a solicitação de reconhecimento, conforme mostrado em [Usando um modelo de idioma customizado](#languageUse).
--   Certifique-se de que o status do modelo customizado esteja `available`, significando que ele esteja totalmente treinado e pronto para uso. Para obter mais informações, consulte [Listando modelos de idioma customizados](/docs/services/speech-to-text/language-models.html#listModels-language).
--   Verifique as pronúncias que foram geradas para as novas palavras para certificar-se de que elas estejam corretas. Para obter mais informações, consulte [Validando um recurso de palavras](/docs/services/speech-to-text/language-resource.html#validateModel).
+-   Certifique-se de que esteja passando corretamente o ID de customização para a solicitação de reconhecimento, conforme mostrado nos exemplos anteriores.
+-   Certifique-se de que o status do modelo customizado esteja `available`, significando que ele esteja totalmente treinado e pronto para uso. Para obter mais informações, consulte [Listando modelos de idioma customizados](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
+-   Verifique as pronúncias que foram geradas para as novas palavras para certificar-se de que elas estejam corretas. Para obter mais informações, consulte [Validando um recurso de palavras](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).

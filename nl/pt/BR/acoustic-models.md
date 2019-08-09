@@ -2,14 +2,14 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,18 +25,19 @@ subcollection: speech-to-text
 # Gerenciando modelos acústicos customizados
 {: #manageAcousticModels}
 
-A interface de customização inclui o método `POST /v1/acoustic_customizations` para criar um modelo acústico customizado. A interface também inclui o método `POST /v1/acoustic_customizations/train` para treinar um modelo customizado em seus recursos de áudio mais recentes. Para obter mais informações, veja a documentação a seguir:
+A interface de customização inclui o método `POST /v1/acoustic_customizations` para criar um modelo acústico customizado. A interface também inclui o método `POST /v1/acoustic_customizations/train` para treinar um modelo customizado em seus recursos de áudio mais recentes. Para
+obter mais informações, consulte
 {: shortdesc}
 
--   [Criar um modelo acústico customizado](/docs/services/speech-to-text/acoustic-create.html#createModel-acoustic)
--   [Treinar o modelo acústico customizado](/docs/services/speech-to-text/acoustic-create.html#trainModel-acoustic)
+-   [Criar um modelo acústico customizado](/docs/services/speech-to-text?topic=speech-to-text-acoustic#createModel-acoustic)
+-   [Treinar o modelo acústico customizado](/docs/services/speech-to-text?topic=speech-to-text-acoustic#trainModel-acoustic)
 
-Além disso, a interface inclui métodos para listar informações sobre os modelos acústicos customizados, a reconfiguração de um modelo customizado para seu estado inicial e a exclusão de um modelo customizado.
+Além disso, a interface inclui métodos para listar as informações sobre os modelos acústicos customizados, redefinir um modelo customizado para seu estado inicial, fazer upgrade de um modelo customizado e excluir um modelo customizado. Não é possível treinar, reconfigurar, fazer upgrade ou excluir um modelo customizado enquanto o serviço está manipulando outra operação nesse modelo, inclusive a inclusão de recursos de áudio no modelo.
 
 ## Listando modelos acústicos customizados
 {: #listModels-acoustic}
 
-A interface de customização fornece dois métodos para listar as informações sobre os modelos acústicos customizados que são propriedade das credenciais de serviço especificadas:
+A interface de customização fornece dois métodos para listar informações sobre os modelos acústicos customizados pertencentes às credenciais especificadas:
 
 -   O método `GET /v1/acoustic_customizations` lista as informações sobre todos os modelos acústicos customizados ou sobre todos os modelos acústicos customizados para um idioma especificado.
 -   O método `GET /v1/acoustic_customizations/{customization_id}` lista as informações sobre um modelo acústico customizado especificado. Use esse método para pesquisar o serviço sobre o status de uma solicitação de treinamento.
@@ -45,17 +46,18 @@ Os dois métodos retornam as informações a seguir sobre um modelo acústico cu
 
 -   `customization_id` identifica o Identificador Exclusivo Global (GUID) do modelo customizado. O GUID é usado para identificar o modelo em métodos da interface.
 -   `created` é a data e hora na Hora Universal Coordenada (UTC) na qual o modelo customizado foi criado.
+-   `updated` é a data e a hora na Hora Universal Coordenada (UTC) em que o modelo customizado foi modificado pela última vez.
 -   `language` é o idioma do modelo customizado.
 -   `owner` identifica as credenciais da instância de serviço que tem o modelo customizado.
 -   `name` é o nome do modelo customizado.
 -   `description` mostrará a descrição do modelo customizado, se uma foi fornecida em sua criação.
 -   `base_model_name` indica o nome do modelo de idioma para o qual o modelo customizado foi criado.
--   `versions` fornece uma lista das versões disponíveis do modelo customizado. Cada elemento da matriz indica uma versão do modelo base com a qual o modelo customizado pode ser usado. Múltiplas versões existirão somente se o modelo customizado passar por upgrade. Caso contrário, somente uma única versão será mostrada. Para obter mais informações, consulte [Listando informações de versão para um modelo customizado](/docs/services/speech-to-text/custom-upgrade.html#upgradeList).
+-   `versions` fornece uma lista das versões disponíveis do modelo customizado. Cada elemento da matriz indica uma versão do modelo base com a qual o modelo customizado pode ser usado. Múltiplas versões existirão somente se o modelo customizado passar por upgrade. Caso contrário, somente uma única versão será mostrada. Para obter mais informações, consulte [Listando informações de versão para um modelo customizado](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade#upgradeList).
 
 Os métodos também retornam um campo `status` que indica o estado do modelo customizado:
 
--   `pending` indica que o modelo foi criado. Ele está aguardando que os dados de treinamento sejam incluídos ou que o serviço conclua a análise dos dados que foram incluídos.
--   `ready` indica que o modelo contém dados de áudio e está pronto para ser treinado.
+-   `pending` indica que o modelo foi criado. Ele está aguardando que os dados de treinamento válidos (recursos de áudio) sejam incluídos ou que o serviço conclua a análise de dados que foram incluídos.
+-   `ready` indica que o modelo contém dados de áudio válidos e está pronto para ser treinado. Se o modelo contiver uma combinação de recursos de áudio válidos e inválidos, o treinamento do modelo falhará, a menos que você configure o parâmetro de consulta `strict` como `false`. Para obter mais informações, consulte [Falhas de treinamento](/docs/services/speech-to-text?topic=speech-to-text-acoustic#failedTraining-acoustic).
 -   `training` indica que o modelo está sendo treinado nos dados de áudio.
 -   `available` indica que o modelo está treinado e pronto para uso com as solicitações de reconhecimento.
 -   `upgrading` indica que o modelo está passando por upgrade.
@@ -66,7 +68,7 @@ Além disso, a saída inclui um campo `progress` que indica o progresso atual do
 ### Solicitações e respostas de exemplo
 {: #listExample-acoustic}
 
-O exemplo a seguir inclui o parâmetro de consulta `language` para listar todos os modelos acústicos customizados do inglês dos EUA que são propriedade das credenciais de serviço:
+O exemplo a seguir inclui o parâmetro de consulta `language` para listar todos os modelos acústicos customizados em inglês dos EUA que pertencem às credenciais especificadas:
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -74,7 +76,7 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: pre}
 
-Dois desses modelos são propriedade das credenciais de serviço. O primeiro modelo está aguardando dados ou está sendo processado pelo serviço. O segundo modelo está totalmente treinado e pronto para uso.
+As credenciais têm dois desses modelos. O primeiro modelo está aguardando dados ou está sendo processado pelo serviço. O segundo modelo está totalmente treinado e pronto para uso.
 
 ```javascript
 {
@@ -82,6 +84,7 @@ Dois desses modelos são propriedade das credenciais de serviço. O primeiro mod
     {
       "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
       "created": "2016-06-01T18:42:25.324Z",
+      "updated": "2016-06-01T18:42:25.324Z",
       "language": "en-US",
       "versions": [
         "en-US_BroadbandModel.v07-06082016.06202016",
@@ -97,6 +100,7 @@ Dois desses modelos são propriedade das credenciais de serviço. O primeiro mod
     {
       "customization_id": "8391f918-3b76-e109-763c-b7732fae4829",
       "created": "2016-06-01T18:51:37.291Z",
+      "updated": "2016-06-01T19:21:06.825Z",
       "language": "en-US",
       "versions": [
         "en-US_BroadbandModel.v2017-11-15"
@@ -125,6 +129,7 @@ curl -X GET -u "apikey:{apikey}"
 {
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
   "created": "2016-06-01T18:42:25.324Z",
+  "updated": "2016-06-01T18:42:25.324Z",
   "language": "en-US",
   "versions": [
     "en-US_BroadbandModel.v07-06082016.06202016",

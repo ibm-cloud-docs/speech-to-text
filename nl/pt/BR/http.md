@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-08"
+lastupdated: "2019-07-10"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -31,7 +31,7 @@ A interface de HTTP síncrona do serviço {{site.data.keyword.speechtotextfull}}
 -   A primeira envia todo o áudio em um único fluxo por meio do corpo da solicitação. Você especifica os parâmetros da operação como cabeçalhos da solicitação e parâmetros de consulta. Para obter mais informações, consulte [Fazendo uma solicitação de HTTP básica](#HTTP-basic).
 -   A segunda envia o áudio como uma solicitação com múltiplas partes. Você especifica os parâmetros da solicitação como uma combinação de cabeçalhos da solicitação, parâmetros de consulta e metadados JSON. Para obter mais informações, consulte [Fazendo uma solicitação de HTTP com múltiplas partes](#HTTP-multi).
 
-Envie um máximo de 100 MB e um mínimo de 100 bytes de dados de áudio com uma única solicitação. Para obter informações sobre formatos de áudio e sobre como usar compactação para maximizar a quantia de áudio que você pode enviar com uma solicitação, consulte [Formatos de áudio](/docs/services/speech-to-text/audio-formats.html). Para obter informações sobre todos os métodos da interface de HTTP, consulte a [Referência de API ![Ícone de link externo](../../icons/launch-glyph.svg "Ícone de link externo")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+Envie um máximo de 100 MB e um mínimo de 100 bytes de dados de áudio com uma única solicitação. Para obter informações sobre formatos de áudio e sobre como usar compactação para maximizar a quantia de áudio que você pode enviar com uma solicitação, consulte [Formatos de áudio](/docs/services/speech-to-text?topic=speech-to-text-audio-formats). Para obter informações sobre todos os métodos da interface HTTP, consulte a [Referência de API](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ## Fazendo uma solicitação de HTTP básica
 {: #HTTP-basic}
@@ -56,7 +56,7 @@ O exemplo retorna a transcrição a seguir para o áudio:
         {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of severe thunderstorms swept through Colorado on Sunday "
         }
       ],
@@ -98,9 +98,9 @@ Você especifica os seguintes parâmetros de reconhecimento de voz com múltipla
   </tr>
   <tr>
     <td>
-      <code>metadata</code>
+      <code>meta-dados</code>
+      <br/><em>Dados de formulário</em>
       <br/><em>Objeto</em>
-      <br/><em>de dados de formulário</em>
     </td>
     <td>
       <em>Necessário.</em> Um objeto JSON que fornece os parâmetros de transcrição para a solicitação. O objeto deve ser a primeira parte dos dados de formulário. As informações descrevem o áudio nas partes subsequentes dos dados de formulário. Consulte [Metadados JSON para solicitações com múltiplas partes](#multipartJSON).
@@ -108,9 +108,9 @@ Você especifica os seguintes parâmetros de reconhecimento de voz com múltipla
   </tr>
   <tr>
     <td>
-      <code>upload</code>
-      <br/><em>Arquivo dos</em>
-      <br/><em>dados de formulário</em>
+      <code>Fazer upload</code>
+      <br/><em>Dados de formulário</em>
+      <br/><em>Arquivo</em>
     </td>
     <td>
       <em>Necessário.</em> Um ou mais arquivos de áudio como o restante dos dados de formulário para a solicitação. Todos os arquivos de áudio devem ter o mesmo formato.
@@ -120,9 +120,9 @@ cada arquivo da solicitação.
   </tr>
   <tr>
     <td>
-      <code>Content-Type</code>
-      <br/><em>Sequência do</em>
-      <br/><em>cabeçalho</em>
+      <code>Conteúdo-tipo</code>
+      <br/><em>Cabeçalho</em>
+      <br/><em>Sequência</em>
     </td>
     <td>
       <em>Necessário.</em> Especifique `multipart/form-data` para indicar como os dados são passados para o método. Especifique o tipo de conteúdo do áudio com o parâmetro JSON `part_content_type`.
@@ -131,8 +131,8 @@ cada arquivo da solicitação.
   <tr>
     <td>
       <code>Transfer-Encoding</code>
-      <br/><em>Sequência do</em>
-      <br/><em>cabeçalho</em>
+      <br/><em>Cabeçalho</em>
+      <br/><em>Sequência</em>
     </td>
     <td>
       <em>Opcional.</em> Especifique `chunked` para transmitir os dados de áudio para o serviço. Omita o parâmetro se você enviar todo o áudio com uma única solicitação.
@@ -140,9 +140,9 @@ cada arquivo da solicitação.
   </tr>
   <tr>
     <td>
-      <code>model</code>
-      <br/><em>Sequência de</em>
-      <br/><em>consulta</em>
+      <code>modelo</code>
+      <br/><em>Query</em>
+      <br/><em>Sequência</em>
     </td>
     <td>
       <em>Opcional.</em> O identificador do modelo que deve ser usado com a solicitação. O padrão é `en-US_BroadbandModel`.
@@ -151,8 +151,8 @@ cada arquivo da solicitação.
   <tr>
     <td>
       <code>language_customization_id</code>
-      <br/><em>Sequência de</em>
-      <br/><em>consulta</em>
+      <br/><em>Query</em>
+      <br/><em>Sequência</em>
     </td>
     <td>
       <em>Opcional.</em> O GUID de um modelo de idioma customizado que deve ser usado com a solicitação.
@@ -161,8 +161,8 @@ cada arquivo da solicitação.
   <tr>
     <td>
       <code>acoustic_customization_id</code>
-      <br/><em>Sequência de</em>
-      <br/><em>consulta</em>
+      <br/><em>Query</em>
+      <br/><em>Sequência</em>
     </td>
     <td>
       <em>Opcional.</em> O GUID de um modelo acústico customizado que deve ser usado com a solicitação.
@@ -171,8 +171,8 @@ cada arquivo da solicitação.
   <tr>
     <td>
       <code>base_model_version</code>
-      <br/><em>Sequência de</em>
-      <br/><em>consulta</em>
+      <br/><em>Query</em>
+      <br/><em>Sequência</em>
     </td>
     <td>
       <em>Opcional.</em> A versão do modelo base especificado que deve ser usada com a solicitação.
@@ -180,7 +180,7 @@ cada arquivo da solicitação.
   </tr>
 </table>
 
-Para obter mais informações sobre os parâmetros de consulta, consulte o [Resumo de parâmetro](/docs/services/speech-to-text/summary.html).
+Para obter mais informações sobre os parâmetros de consulta, consulte o [Resumo de parâmetro](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ### Metadados JSON para solicitações com múltiplas partes
 {: #multipartJSON}
@@ -208,7 +208,7 @@ Somente os dois parâmetros a seguir são específicos para solicitações com m
 -   O campo `part_content_type` é *opcional* para a maioria dos formatos de áudio. Ele é necessário para os formatos `audio/alaw`, `audio/basic`, `audio/l16` e `audio/mulaw`. Ele especifica o formato do áudio nas partes a seguir da solicitação. Todos os arquivos de áudio devem estar no mesmo formato.
 -   O campo `data_parts_count` é *opcional* para todas as solicitações. Ele especifica o número de arquivos de áudio enviados com a solicitação. O serviço aplica a detecção de final de fluxo para a última (e possivelmente a única) parte dos dados. Se você omitir o parâmetro, o serviço determinará o número de partes por meio da solicitação.
 
-Todos os outros parâmetros dos metadados são opcionais. Para obter descrições de todos os parâmetros disponíveis, consulte o [Resumo de parâmetro](/docs/services/speech-to-text/summary.html).
+Todos os outros parâmetros dos metadados são opcionais. Para obter descrições de todos os parâmetros disponíveis, consulte o [Resumo de parâmetro](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ### Exemplo de solicitação com múltiplas partes
 
@@ -233,192 +233,192 @@ O exemplo retorna a transcrição a seguir para os arquivos de áudio. O serviç
 
 ```javascript
 {
-   "results": [
+  "results": [
         {
-         "word_alternatives": [
+      "word_alternatives": [
+        {
+          "start_time": 0.03,
+          "alternatives": [
             {
-               "start_time": 0.03,
-               "alternatives": [
-                  {
-                     "confidence": 0.96,
+              "confidence": 0.96,
                      "word": "the"
                   }
-               ],
+          ],
                "end_time": 0.09
-            },
-            {
-               "start_time": 0.09,
+        },
+        {
+          "start_time": 0.09,
                "alternatives": [
                   {
-                     "confidence": 0.96,
+              "confidence": 0.96,
                      "word": "latest"
                   }
-               ],
+          ],
                "end_time": 0.62
-            },
-            {
-               "start_time": 0.62,
+        },
+        {
+          "start_time": 0.62,
                "alternatives": [
                   {
-                     "confidence": 0.96,
+              "confidence": 0.96,
                      "word": "weather"
                   }
-               ],
+          ],
                "end_time": 0.87
-            },
-            {
-               "start_time": 0.87,
+        },
+        {
+          "start_time": 0.87,
                "alternatives": [
                   {
-                     "confidence": 0.96,
+              "confidence": 0.96,
                      "word": "report"
                   }
-               ],
+          ],
                "end_time": 1.5
             }
-         ],
+      ],
          "keywords_result": {},
          "alternatives": [
             {
-               "timestamps": [
-                  [
-                     "the",
+          "timestamps": [
+            [
+              "the",
                      0.03,
                      0.09
-                  ],
-                  [
-                     "latest",
+            ],
+            [
+              "latest",
                      0.09,
                      0.62
-                  ],
-                  [
-                     "weather",
+            ],
+            [
+              "weather",
                      0.62,
                      0.87
-                  ],
-                  [
-                     "report",
+            ],
+            [
+              "report",
                      0.87,
                      1.5
                   ]
-               ],
+          ],
                "confidence": 0.99,
                "transcript": "the latest weather report "
             }
-         ],
+      ],
          "final": true
       },
       {
-         "word_alternatives": [
-            {
-               "start_time": 0.15,
+      "word_alternatives": [
+        {
+          "start_time": 0.15,
                "alternatives": [
                   {
-                     "confidence": 1.0,
+              "confidence": 1.0,
                      "word": "a"
                   }
-               ],
+          ],
                "end_time": 0.3
-            },
-            {
-               "start_time": 0.3,
+        },
+        {
+          "start_time": 0.3,
                "alternatives": [
                   {
-                     "confidence": 1.0,
+              "confidence": 1.0,
                      "word": "line"
                   }
-               ],
+          ],
                "end_time": 0.64
-            },
-            . . .
-            {
-               "start_time": 4.58,
+        },
+        . . .
+        {
+          "start_time": 4.58,
                "alternatives": [
                   {
-                     "confidence": 0.98,
+              "confidence": 0.98,
                      "word": "Colorado"
                   }
-               ],
+          ],
                "end_time": 5.16
-            },
-            {
-               "start_time": 5.16,
+        },
+        {
+          "start_time": 5.16,
                "alternatives": [
                   {
-                     "confidence": 0.98,
+              "confidence": 0.98,
                      "word": "on"
                   }
-               ],
+          ],
                "end_time": 5.32
-            },
-            {
-               "start_time": 5.32,
+        },
+        {
+          "start_time": 5.32,
                "alternatives": [
                   {
-                     "confidence": 0.98,
+              "confidence": 0.98,
                      "word": "Sunday"
                   }
-               ],
+          ],
                "end_time": 6.04
             }
-         ],
+      ],
          "keywords_result": {
-            "tornadoes": [
+        "tornadoes": [
                {
-                  "normalized_text": "tornadoes",
+            "normalized_text": "tornadoes",
                   "start_time": 3.03,
                   "confidence": 0.98,
                   "end_time": 3.84
                }
-            ],
+        ],
             "colorado": [
                {
-                  "normalized_text": "Colorado",
+            "normalized_text": "Colorado",
                   "start_time": 4.58,
                   "confidence": 0.98,
                   "end_time": 5.16
                }
-            ]
-         },
-         "alternatives": [
-            {
-               "timestamps": [
-                  [
-                     "a",
+        ]
+      },
+      "alternatives": [
+        {
+          "timestamps": [
+            [
+              "a",
                      0.15,
                      0.3
-                  ],
-                  [
-                     "line",
+            ],
+            [
+              "line",
                      0.3,
                      0.64
-                  ],
-                  . . .
-                  [
-                     "Colorado",
+            ],
+            . . .
+            [
+              "Colorado",
                      4.58,
                      5.16
-                  ],
-                  [
-                     "on",
+            ],
+            [
+              "on",
                      5.16,
                      5.32
-                  ],
-                  [
-                     "Sunday",
+            ],
+            [
+              "Sunday",
                      5.32,
                      6.04
                   ]
-               ],
+          ],
                "confidence": 0.99,
                "transcript": "a line of severe thunderstorms with several
 possible tornadoes is approaching Colorado on Sunday "
             }
-         ],
-         "final": true
-      }
-   ],
-   "result_index": 0
+      ],
+      "final": true
+    }
+  ],
+  "result_index": 0
 }
 ```
 {: codeblock}

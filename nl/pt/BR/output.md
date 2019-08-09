@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-10"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,12 +25,12 @@ subcollection: speech-to-text
 # Recursos de saída
 {: #output}
 
-O serviço {{site.data.keyword.speechtotextshort}} oferece os recursos a seguir para indicar as informações que o serviço deve incluir em seus resultados de transcrição para uma solicitação de reconhecimento de voz. Todos os parâmetros de saída são opcionais.
+O serviço {{site.data.keyword.speechtotextfull}} oferece os recursos a seguir para indicar as informações que o serviço deve incluir em seus resultados de transcrição para uma solicitação de reconhecimento de voz. Todos os parâmetros de saída são opcionais.
 {: shortdesc}
 
--   Para obter exemplos de solicitações de reconhecimento de voz simples para cada uma das interfaces do serviço, consulte [Fazendo uma solicitação de reconhecimento](/docs/services/speech-to-text/basic-request.html).
--   Para obter exemplos e descrições de respostas de reconhecimento de voz, consulte [Entendendo os resultados de reconhecimento](/docs/services/speech-to-text/basic-response.html). O serviço retorna todo o conteúdo de resposta JSON no conjunto de caracteres UTF-8.
--   Para obter uma lista em ordem alfabética de todos os parâmetros de reconhecimento de voz disponíveis, incluindo seu status (geralmente disponível ou beta) e idiomas suportados, consulte o [Resumo de parâmetro](/docs/services/speech-to-text/summary.html).
+-   Para obter exemplos de solicitações de reconhecimento de voz simples para cada uma das interfaces do serviço, consulte [Fazendo uma solicitação de reconhecimento](/docs/services/speech-to-text?topic=speech-to-text-basic-request).
+-   Para obter exemplos e descrições de respostas de reconhecimento de voz, consulte [Entendendo os resultados de reconhecimento](/docs/services/speech-to-text?topic=speech-to-text-basic-response). O serviço retorna todo o conteúdo de resposta JSON no conjunto de caracteres UTF-8.
+-   Para obter uma lista em ordem alfabética de todos os parâmetros de reconhecimento de voz disponíveis, incluindo seu status (geralmente disponível ou beta) e idiomas suportados, consulte o [Resumo de parâmetro](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ## Rótulos do falante
 {: #speaker_labels}
@@ -42,7 +42,7 @@ Os rótulos do falante identificam quais palavras cada indivíduo falou em uma i
 
 Os rótulos do falante são otimizados para cenários de dois falantes. Eles funcionam melhor para conversas telefônicas que envolvem duas pessoas em uma interação prolongada. Eles podem lidar com até seis falantes, mas mais de dois falantes pode resultar em desempenho variável. Interações de duas pessoas são geralmente realizadas por meio de mídia de banda estreita, mas é possível usar rótulos de falante com modelos de banda larga e banda estreita suportados.
 
-Para usar o recurso, configure o parâmetro `speaker_labels` como `true` para uma solicitação de reconhecimento. O parâmetro é `false` por padrão. O serviço identifica os falantes por palavras individuais do áudio. Ele depende do horário de início e de encerramento da palavra para identificar seu falante. Portanto, a ativação dos rótulos do falante também força o parâmetro `timestamps` a ser `true` (consulte [Registros de data e hora](/docs/services/speech-to-text/output.html#word_timestamps)).
+Para usar o recurso, configure o parâmetro `speaker_labels` como `true` para uma solicitação de reconhecimento. O parâmetro é `false` por padrão. O serviço identifica os falantes por palavras individuais do áudio. Ele depende do horário de início e de encerramento da palavra para identificar seu falante. Portanto, a ativação dos rótulos do falante também força o parâmetro `timestamps` a ser `true` (consulte [Registros de data e hora](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps)).
 
 ### Exemplo de rótulos do falante
 {: #speakerLabelsExample}
@@ -239,7 +239,7 @@ Como resultado, os IDs do falante podem não ser sequenciais, contíguos ou orde
 ### Solicitando resultados provisórios para rótulos do falante
 {: #speakerLabelsInterim}
 
-Com a interface do WebSocket, é possível solicitar resultados provisórios, assim como os rótulos do falante (consulte [Resultados provisórios](/docs/services/speech-to-text/output.html#interim)). Os resultados finais são geralmente melhores do que os resultados provisórios. Mas os resultados provisórios podem ajudar a identificar a evolução de uma transcrição e a designação de rótulos do falante. Os resultados provisórios podem indicar onde os falantes e os IDs transitórios apareceram ou desapareceram. No entanto, o serviço pode reutilizar os IDs de falantes que ele identifica inicialmente e, posteriormente, reconsidera e omite. Portanto, um ID pode se referir a dois falantes diferentes nos resultados provisório e final.
+Com a interface do WebSocket, é possível solicitar resultados provisórios, assim como os rótulos do falante (consulte [Resultados provisórios](/docs/services/speech-to-text?topic=speech-to-text-output#interim)). Os resultados finais são geralmente melhores do que os resultados provisórios. Mas os resultados provisórios podem ajudar a identificar a evolução de uma transcrição e a designação de rótulos do falante. Os resultados provisórios podem indicar onde os falantes e os IDs transitórios apareceram ou desapareceram. No entanto, o serviço pode reutilizar os IDs de falantes que ele identifica inicialmente e, posteriormente, reconsidera e omite. Portanto, um ID pode se referir a dois falantes diferentes nos resultados provisório e final.
 
 Quando você solicita resultados provisórios e rótulos do falante, os resultados finais para fluxos de áudio longos podem chegar bem depois dos resultados provisórios iniciais serem retornados. Também é possível para alguns resultados provisórios incluir apenas um campo `speaker_labels` sem os campos `results` e `result_index`. Se você não solicitar resultados provisórios, o serviço retornará resultados finais que incluem os campos `results` e `result_index` e um único campo `speaker_labels`.
 
@@ -297,7 +297,7 @@ Uma palavra-chave para a qual o serviço não localiza nenhuma correspondência 
     -   Os tokens da palavra-chave estão no mesmo bloco.
     -   Os tokens são adjacentes ou separados por uma diferença de até 0,1 segundo.
 
-    O último caso poderá ocorrer se um breve preenchimento ou elocução não lexical, como "uhm" ou "well", estiver entre dois tokens da palavra-chave. Para obter mais informações, consulte [Marcadores de hesitação](/docs/services/speech-to-text/basic-response.html#hesitation).
+    O último caso poderá ocorrer se um breve preenchimento ou elocução não lexical, como "uhm" ou "well", estiver entre dois tokens da palavra-chave. Para obter mais informações, consulte [Marcadores de hesitação](/docs/services/speech-to-text?topic=speech-to-text-basic-response#hesitation).
 
 ### Exemplo de marcação de palavra-chave
 {: #keywordSpottingExample}
@@ -336,7 +336,7 @@ curl -X POST -u "apikey:{apikey}"
       },
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -375,7 +375,7 @@ curl -X POST -u "apikey:{apikey}"
         {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         },
@@ -384,8 +384,8 @@ severe thunderstorms swept through Colorado on Sunday "
 severe thunderstorms swept through Colorado on Sunday "
         },
         {
-          "transcript": "several tornadoes touch down is a line of
-severe thunderstorms swept through Colorado on Sunday "
+          "transcript": "several tornadoes touch down as a line of
+severe thunderstorms swept through Colorado and Sunday "
         }
       ],
       "final": true
@@ -490,7 +490,7 @@ severe thunderstorms swept through Colorado on Sunday "
         {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -592,7 +592,7 @@ curl -X POST -u "apikey:{apikey}"
       ],
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -634,9 +634,9 @@ curl -X POST -u "apikey:{apikey}"
         {
       "alternatives": [
         {
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday ",
-          "confidence": 0.89,
           "word_confidence": [
             [
               "several",
@@ -731,7 +731,7 @@ curl -X POST -u "apikey:{apikey}"
               6.34
             ]
           ],
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -841,7 +841,7 @@ A formatação inteligente é baseada na presença de palavras-chave óbvias na 
 -   Os números de telefone devem ter 10 ou 11 dígitos e começar com prefixos válidos para números de telefone no Japão. Por exemplo, prefixos válidos incluem `03` e `090`.
 -   Palavras inglesas são convertidas em caracteres ASCII (*hankaku*). Por exemplo, <code>& #65321; & #65314; & #65325;</code> é convertido em `IBM`.
 -   Os termos ambíguos podem não ser convertidos se não houver contexto suficiente disponível. Por exemplo, não está claro se <code>& #19968; & #26178;</code> e <code>& #21313; & #20998;</code> referem-se a horários.
--   A pontuação é manipulada da mesma forma com ou sem formatação inteligente. Por exemplo, com base em cálculos de probabilidade, um de <code>& #12459; & #12531; & #12510;</code> ou `,` é selecionado.
+-   A pontuação é manipulada da mesma maneira com ou sem formatação inteligente. Por exemplo, com base em cálculos de probabilidade, um de <code>& #12459; & #12531; & #12510;</code> ou `,` é selecionado.
 
 ### Exemplo de formatação inteligente
 {: #smartFormattingExample}
