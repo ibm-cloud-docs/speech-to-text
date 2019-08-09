@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,10 +25,10 @@ subcollection: speech-to-text
 # カスタム単語の管理
 {: #manageWords}
 
-カスタマイズ・インターフェースには、カスタム・モデルの単語を追加または変更する場合に使用する `POST /v1/customizations/{customization_id}/words` メソッドおよび `PUT /v1/customizations/{customization_id}/words/{word_name}` メソッドが含まれています。 詳しくは、[カスタム言語モデルへの単語の追加](/docs/services/speech-to-text/language-create.html#addWords)を参照してください。 このインターフェースには、カスタム言語モデルの単語をリストおよび削除する以下のメソッドも含まれています。
+カスタマイズ・インターフェースには、カスタム・モデルの単語を追加または変更する場合に使用する `POST /v1/customizations/{customization_id}/words` メソッドおよび `PUT /v1/customizations/{customization_id}/words/{word_name}` メソッドが含まれています。 詳しくは、[カスタム言語モデルへの単語の追加](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addWords)を参照してください。 このインターフェースには、カスタム言語モデルの単語をリストおよび削除する以下のメソッドも含まれています。
 {: shortdesc}
 
-通常、ほとんどのカスタム単語をコーパスから追加します。 コーパスのテキスト・ファイルの文字エンコードを確認してください。 サービスはテキスト・ファイルで検出したエンコードを保持します。 カスタム言語モデルで個別の単語を処理する場合は、このエンコードを使用する必要があります。 `GET` メソッド、`PUT` メソッド、または `DELETE /v1/customizations/{customization_id}/words/{word_name}` メソッドを使用して単語を指定する際は、単語に非 ASCII 文字が含まれている場合、URL で渡す `word_name` を URL エンコードする必要があります。 詳しくは、[文字エンコード](/docs/services/speech-to-text/language-resource.html#charEncoding)を参照してください。
+通常、ほとんどのカスタム単語をコーパスから追加します。 コーパスのテキスト・ファイルの文字エンコードを確認してください。 サービスはテキスト・ファイルで検出したエンコードを保持します。 カスタム言語モデルで個別の単語を処理する場合は、このエンコードを使用する必要があります。 `GET` メソッド、`PUT` メソッド、または `DELETE /v1/customizations/{customization_id}/words/{word_name}` メソッドを使用して単語を指定する際は、単語に非 ASCII 文字が含まれている場合、URL で渡す `word_name` を URL エンコードする必要があります。 詳しくは、[文字エンコード](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#charEncoding)を参照してください。
 {: important}
 
 ## カスタム言語モデルの単語のリスト
@@ -48,8 +48,8 @@ subcollection: speech-to-text
 
 単語を識別する `word` フィールド以外に、両方のメソッドは各単語に関する以下の情報を返します。
 
--   `sounds_like` フィールド: 単語の発音の配列を表示します。 単語に同音異字発音が指定されていない場合、この配列には、サービスによって生成された同音異字発音が自動的に取り込まれます。 詳しくは、[sounds_like フィールドの使用](/docs/services/speech-to-text/language-resource.html#soundsLike)を参照してください。
--   `display_as` フィールド: サービスが書き起こしで表示するカスタム単語のつづりを表示します。 単語に表示形式の値が指定されていなければ、このフィールドには空のストリングが含まれます。その場合、単語はつづり通りに表示されます。 詳しくは、[display_as フィールドの使用](/docs/services/speech-to-text/language-resource.html#displayAs)を参照してください。
+-   `sounds_like` フィールド: 単語の発音の配列を表示します。 単語に同音異字発音が指定されていない場合、この配列には、サービスによって生成された同音異字発音が自動的に取り込まれます。 詳しくは、[sounds_like フィールドの使用](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#soundsLike)を参照してください。
+-   `display_as` フィールド: サービスが書き起こしで表示するカスタム単語のつづりを表示します。 単語に表示形式の値が指定されていなければ、このフィールドには空のストリングが含まれます。その場合、単語はつづり通りに表示されます。 詳しくは、[display_as フィールドの使用](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#displayAs)を参照してください。
 -   `source` フィールド: 単語がカスタム・モデルの単語リソースに追加された方法を示します。 このフィールドには、サービスがその単語を抽出した各コーパスおよび文法の名前が格納されます。 単語がユーザーによって変更または追加された場合、このフィールドにはストリング `user` が格納されます。
 -   `count` フィールド: すべてのコーパスおよび文法でその単語が見つかった回数が示されます。 例えば、単語が 1 つのコーパスで 5 回、別のコーパスで 7 回見つかった場合そのカウントは `12` になります。
 
@@ -60,7 +60,7 @@ subcollection: speech-to-text
 
 サービスがカスタム単語の定義で 1 つ以上の問題を検出した場合、出力には `error` フィールドが含まれます。 このフィールドには、定義の各問題要素がリストされた配列と問題を説明するメッセージが表示されます。
 
-エラーが発生するのは、例えば、発音を追加する際のルールのいずれかに違反する間違った `sounds_like` フィールドを指定してカスタム単語を追加した場合です。単語リソースに誤りのある単語が含まれるカスタム・モデルをトレーニングすることはできません。モデルをトレーニングするには、その前に、そのような単語を修正または削除する必要があります。
+エラーが発生するのは、例えば、発音を追加する際のルールのいずれかに違反する間違った `sounds_like` フィールドを指定してカスタム単語を追加した場合です。 単語リソースに誤りのある単語が含まれるカスタム・モデルをトレーニングすることはできません。 モデルをトレーニングするには、その前に、そのような単語を修正または削除する必要があります。
 
 ### 要求と応答の例
 {: #listExample-words}
