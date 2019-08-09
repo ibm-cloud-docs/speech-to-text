@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # コーパスの管理
 {: #manageCorpora}
 
-カスタマイズ・インターフェースには、カスタム言語モデルにコーパスを追加するための `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` メソッドが含まれます。詳しくは、[カスタム言語モデルへのコーパスの追加](/docs/services/speech-to-text/language-create.html#addCorpus)を参照してください。インターフェースには、カスタム言語モデルのコーパスをリストおよび削除するために、以下のようなメソッドも含まれています。
+カスタマイズ・インターフェースには、カスタム言語モデルにコーパスを追加するための `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` メソッドが含まれます。 詳しくは、[カスタム言語モデルへのコーパスの追加](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus)を参照してください。 インターフェースには、カスタム言語モデルのコーパスをリストおよび削除するために、以下のようなメソッドも含まれています。
 {: shortdesc}
 
 ## カスタム言語モデルのコーパスのリスト
@@ -36,13 +36,13 @@ subcollection: speech-to-text
 -   `GET /v1/customizations/{customization_id}/corpora` メソッドは、カスタム・モデルのすべてのコーパスに関する情報をリストします。
 -   `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` メソッドは、カスタム・モデルの指定のコーパスに関する情報をリストします。
 
-両方のメソッドは、コーパスの `name`、コーパスから読み取られた `total_words`、コーパスから抽出された `out-of-vocabulary_words` の数を返します。また、これらのメソッドは、コーパスの `status` もリストします。ステータスは、カスタム・モデルへの追加要求の応答として、サービスでのコーパスの分析状況を確認するために重要です。
+両方のメソッドは、コーパスの `name`、コーパスから読み取られた `total_words`、コーパスから抽出された `out-of-vocabulary_words` の数を返します。 また、これらのメソッドは、コーパスの `status` もリストします。 ステータスは、カスタム・モデルへの追加要求の応答として、サービスでのコーパスの分析状況を確認するために重要です。
 
--   `analyzed` は、サービスによるコーパスの分析が正常に完了したことを意味します。コーパスのデータを使用してカスタム・モデルをトレーニングできます。
+-   `analyzed` は、サービスによるコーパスの分析が正常に完了したことを意味します。 コーパスのデータを使用してカスタム・モデルをトレーニングできます。
 -   `being_processed` は、サービスによるコーパスの分析がまだ進行中であることを意味します。 分析が完了するまで、サービスはコーパスまたは単語の追加要求や、カスタム・モデルのトレーニング要求を受け入れることができません。
 -   `undetermined` は、コーパスの処理中にサービスでエラーが発生したことを意味します。 コーパスに関して返される情報には、エラー修正のガイダンスを示すエラー・メッセージが含まれます。
 
-    例えば、コーパスが無効である、または既存のコーパスと同じ名前のコーパスを追加しようとしたなどです。コーパスの追加を再試行でき、その場合は、要求で `allow_overwrite` パラメーターを含めます。また、既存のコーパスを削除してから再度コーパスの追加を試みることもできます。
+    例えば、コーパスが無効である、または既存のコーパスと同じ名前のコーパスを追加しようとしたなどです。 コーパスの追加を再試行でき、その場合は、要求で `allow_overwrite` パラメーターを含めます。 また、既存のコーパスを削除してから再度コーパスの追加を試みることもできます。
 
 ### 要求と応答の例
 {: #listExample-corpora}
@@ -55,7 +55,7 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: pre}
 
-カスタム・モデルに 3 つのコーパスが追加されました。サービスで `corpus1` は正常に分析されました。`corpus2` は分析が進行中で、`corpus3` の分析は失敗しました。
+カスタム・モデルに 3 つのコーパスが追加されました。 サービスで `corpus1` は正常に分析されました。 `corpus2` は分析が進行中で、`corpus3` の分析は失敗しました。
 
 ```javascript
 {

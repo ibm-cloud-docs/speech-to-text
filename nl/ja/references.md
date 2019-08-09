@@ -22,10 +22,10 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Research references
+# 研究資料
 {: #references}
 
-For more information about the research behind the {{site.data.keyword.speechtotextfull}} service, see the following documents. IBM researchers wrote or contributed to all of these papers.
+{{site.data.keyword.speechtotextfull}} サービスの背後で行われた調査について詳しくは、以下の資料を参照してください。 これらの資料はすべて、IBM の研究員が執筆または貢献したものです。
 {: shortdesc}
 
 1.  <a id="audhkhasi2017" style="border-bottom:none">Audhkhasi, Kartik, Bhuvana Ramabhadran, George Saon, Michael Picheny, and David Nahamoo.</a> [*Direct Acoustics-to-Word Models for English Conversational Speech Recognition.*](https://www.isca-speech.org/archive/Interspeech_2017/pdfs/0546.PDF){: external} Proceedings of Interspeech 2017 (August 2017): pp. 959-963.

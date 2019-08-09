@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-08"
+lastupdated: "2019-07-10"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,20 +25,20 @@ subcollection: speech-to-text
 # 同期 HTTP インターフェース
 {: #http}
 
-{{site.data.keyword.speechtotextfull}} サービスの同期 HTTP インターフェースでは、サービスによる音声認識を要求するための単一の `POST /v1/recognize` メソッドが用意されています。このメソッドは、書き起こし結果を得るための最も簡単な方法です。このメソッドでは、次の 2 つの方法で音声認識要求を送信できます。
+{{site.data.keyword.speechtotextfull}} サービスの同期 HTTP インターフェースでは、サービスによる音声認識を要求するための単一の `POST /v1/recognize` メソッドが用意されています。 このメソッドは、書き起こし結果を得るための最も簡単な方法です。 このメソッドでは、次の 2 つの方法で音声認識要求を送信できます。
 {: shortdesc}
 
 -   最初の方法では、要求の本体を介して単一のストリームですべての音声を送信します。 操作のパラメーターは、要求ヘッダーおよびクエリー・パラメーターとして指定します。 詳しくは、[基本的な HTTP 要求の実行](#HTTP-basic)を参照してください。
--   2 番目の方法では、音声をマルチパート要求として送信します。 この要求のパラメーターは、要求ヘッダー、クエリー・パラメーター、および JSON メタデータの組み合わせとして指定します。詳しくは、[マルチパート HTTP 要求の実行](#HTTP-multi)を参照してください。
+-   2 番目の方法では、音声をマルチパート要求として送信します。 この要求のパラメーターは、要求ヘッダー、クエリー・パラメーター、および JSON メタデータの組み合わせとして指定します。 詳しくは、[マルチパート HTTP 要求の実行](#HTTP-multi)を参照してください。
 
-単一の要求で、100 バイトから 100 MB までの音声データを送信できます。音声フォーマットと、圧縮を使用して 1 つの要求で送信できる音声の量を最大化する方法について詳しくは、[音声フォーマット](/docs/services/speech-to-text/audio-formats.html)を参照してください。HTTP インターフェースのすべてのメソッドについては、[API リファレンス ![外部リンク・アイコン](../../icons/launch-glyph.svg "外部リンク・アイコン")](https://{DomainName}/apidocs/speech-to-text){: new_window} を参照してください。
+単一の要求で、100 バイトから 100 MB までの音声データを送信できます。 音声フォーマットと、圧縮を使用して 1 つの要求で送信できる音声の量を最大化する方法について詳しくは、[音声フォーマット](/docs/services/speech-to-text?topic=speech-to-text-audio-formats)を参照してください。 HTTP インターフェースのすべてのメソッドについて詳しくは、[API リファレンス](https://{DomainName}/apidocs/speech-to-text){: external}を参照してください。
 
 ## 基本的な HTTP 要求の実行
 {: #HTTP-basic}
 
-HTTP の `POST /v1/recognize` メソッドを使用すると、音声を簡単に書き起こすことができます。要求の本体を通じてすべての音声を渡して、要求ヘッダーおよびクエリー・パラメーターとしてパラメーターを指定します。
+HTTP の `POST /v1/recognize` メソッドを使用すると、音声を簡単に書き起こすことができます。 要求の本体を通じてすべての音声を渡して、要求ヘッダーおよびクエリー・パラメーターとしてパラメーターを指定します。
 
-次の `curl` の例では、`audio-file.flac` という名前の単一の FLAC ファイルを対象にした認識要求を送信します。この要求では `model` クエリー・パラメーターを省略して、デフォルト言語モデル `en-US_BroadbandModel` を使用しています。
+次の `curl` の例では、`audio-file.flac` という名前の単一の FLAC ファイルを対象にした認識要求を送信します。 この要求では `model` クエリー・パラメーターを省略して、デフォルト言語モデル `en-US_BroadbandModel` を使用しています。
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -56,8 +56,9 @@ curl -X POST -u "apikey:{apikey}"
       {
       "alternatives": [
             {
-          "confidence": 0.89,
-          "transcript": "several tornadoes touch down as a line of severe thunderstorms swept through Colorado on Sunday "
+          "confidence": 0.96,
+          "transcript": "several tornadoes touch down as a line of
+severe thunderstorms swept through Colorado on Sunday "
         }
       ],
          "final": true
@@ -68,20 +69,20 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-`POST /v1/recognize` メソッドは、要求対象の音声をすべて処理した後に初めて結果を返します。このメソッドはバッチ処理には適していますが、ライブ音声認識には適していません。ライブ音声を書き起こす場合は、WebSocket インターフェースを使用してください。
+`POST /v1/recognize` メソッドは、要求対象の音声をすべて処理した後に初めて結果を返します。 このメソッドはバッチ処理には適していますが、ライブ音声認識には適していません。 ライブ音声を書き起こす場合は、WebSocket インターフェースを使用してください。
 
-データが複数の音声ファイルからなる場合に推奨される音声の送信方法は、複数の要求 (音声ファイルごとに 1 つの要求) を送信することです。 複数の要求をループで送信して、オプションで並列処理を使用してパフォーマンスを向上させることができます。マルチパート音声認識を使用して、複数の音声ファイルを単一の要求を通じて渡すこともできます。
+データが複数の音声ファイルからなる場合に推奨される音声の送信方法は、複数の要求 (音声ファイルごとに 1 つの要求) を送信することです。 複数の要求をループで送信して、オプションで並列処理を使用してパフォーマンスを向上させることができます。 マルチパート音声認識を使用して、複数の音声ファイルを単一の要求を通じて渡すこともできます。
 
 ## マルチパート HTTP 要求の実行
 {: #HTTP-multi}
 
-`POST /v1/recognize` メソッドは、マルチパート要求もサポートしています。すべての音声データをマルチパート・フォーム・データとして渡します。一部のパラメーターは要求ヘッダーおよびクエリー・パラメーターとして指定しますが、JSON メタデータをフォーム・データとして渡すことで、書き起こしのほとんどの局面を制御します。
+`POST /v1/recognize` メソッドは、マルチパート要求もサポートしています。 すべての音声データをマルチパート・フォーム・データとして渡します。 一部のパラメーターは要求ヘッダーおよびクエリー・パラメーターとして指定しますが、JSON メタデータをフォーム・データとして渡すことで、書き起こしのほとんどの局面を制御します。
 
 マルチパート音声認識は、次のユース・ケースを想定しています。
 
 -   複数の音声ファイルを単一の音声認識要求を通じて渡す場合。
--   JavaScript が無効化されているブラウザーを使用する場合。フォーム・データに基づくマルチパート要求には、JavaScript を使用する必要がありません。
--   認識要求のパラメーターが、ほとんどの HTTP サーバーおよびプロキシーで上限として設定されている 8 KB を超えている場合。例えば、非常に多くのキーワードを検出する場合は、要求のサイズがこの上限を超えることがあります。マルチパート要求は、フォーム・データを使用してこの制約を回避します。
+-   JavaScript が無効化されているブラウザーを使用する場合。 フォーム・データに基づくマルチパート要求には、JavaScript を使用する必要がありません。
+-   認識要求のパラメーターが、ほとんどの HTTP サーバーおよびプロキシーで上限として設定されている 8 KB を超えている場合。 例えば、非常に多くのキーワードを検出する場合は、要求のサイズがこの上限を超えることがあります。 マルチパート要求は、フォーム・データを使用してこの制約を回避します。
 
 以降のセクションでは、マルチパート要求で使用するパラメーターを説明して、要求の例を紹介します。
 
@@ -104,11 +105,11 @@ curl -X POST -u "apikey:{apikey}"
     </td>
     <td>
       <em>必須。</em> 要求の書き起こしパラメーター
-を提供する JSON オブジェクト。このオブジェクトはフォーム・データの最初のパート
-でなければなりません。この情報は、フォーム・データの後続パート内の
-音声を説明しています。[マルチパート要求
+を提供する JSON オブジェクト。 このオブジェクトはフォーム・データの最初のパート
+でなければなりません。 この情報は、フォーム・データの後続パート内の
+音声を説明しています。 [マルチパート要求
 の JSON メタデータ](#multipartJSON)を参照してください。
-</td>
+    </td>
   </tr>
   <tr>
     <td>
@@ -118,10 +119,10 @@ curl -X POST -u "apikey:{apikey}"
     </td>
     <td>
       <em>必須。</em> 要求のフォーム・データの残り部分
-としての 1 つ以上の音声ファイル。すべての音声ファイルは同じフォーマットである必要があります。
-`curl` コマンドでは、要求のファイルごとに 1 つの
+としての 1 つ以上の音声ファイル。 すべての音声ファイルは同じフォーマットである必要があります。
+      `curl` コマンドでは、要求のファイルごとに 1 つの
 別個の <code>--form</code> オプションを指定してください。
-</td>
+    </td>
   </tr>
   <tr>
     <td>
@@ -131,9 +132,9 @@ curl -X POST -u "apikey:{apikey}"
     </td>
     <td>
       <em>必須。</em> `multipart/form-data` を指定して、このメソッドにデータが
-どのように渡されるのかを指定します。JSON の `part_content_type` パラメーターを使用して、
+どのように渡されるのかを指定します。 JSON の `part_content_type` パラメーターを使用して、
 音声のコンテンツ・タイプを指定します。
-</td>
+    </td>
   </tr>
   <tr>
     <td>
@@ -143,8 +144,8 @@ curl -X POST -u "apikey:{apikey}"
     </td>
     <td>
       <em>オプション。</em> `chunked` を指定して、音声データをサービスに
-      ストリーミングします。すべての音声を単一の要求で送信する場合は、このパラメーターを省略します。
-</td>
+      ストリーミングします。 すべての音声を単一の要求で送信する場合は、このパラメーターを省略します。
+    </td>
   </tr>
   <tr>
     <td>
@@ -154,7 +155,7 @@ curl -X POST -u "apikey:{apikey}"
     </td>
     <td>
       <em>オプション。</em> 要求で使用するモデル
-      の ID。デフォルトは `en-US_BroadbandModel` です。
+      の ID。 デフォルトは `en-US_BroadbandModel` です。
     </td>
   </tr>
   <tr>
@@ -188,11 +189,11 @@ curl -X POST -u "apikey:{apikey}"
     <td>
       <em>オプション。</em> 要求で使用する指定した
       基本モデルのバージョン。
-</td>
+    </td>
   </tr>
 </table>
 
-クエリー・パラメーターについて詳しくは、[パラメーターの要約](/docs/services/speech-to-text/summary.html)を参照してください。
+クエリー・パラメーターについて詳しくは、[パラメーターの要約](/docs/services/speech-to-text?topic=speech-to-text-summary)を参照してください。
 
 ### マルチパート要求の JSON メタデータ
 {: #multipartJSON}
@@ -217,14 +218,14 @@ curl -X POST -u "apikey:{apikey}"
 
 マルチパート要求専用のパラメーターは以下の 2 つのみです。
 
--   `part_content_type` フィールドは、ほとんどの音声フォーマットでは*オプション* です。このフィールドが必須となるフォーマットは、`audio/alaw`、 `audio/basic`、`audio/l16`、および `audio/mulaw` です。このフィールドでは、要求の後続パート内の音声のフォーマットを指定します。すべての音声ファイルは同じフォーマットである必要があります。
--   `data_parts_count` フィールドは、すべての要求で*オプション* です。このフィールドでは、その要求を通じて送信される音声ファイルの数を指定します。サービスは、ストリーム終了検知を最後の (おそらく唯一の) データ・パートで実施します。 このパラメーターを省略すると、サービスによって要求からパートの数が判別されます。
+-   `part_content_type` フィールドは、ほとんどの音声フォーマットでは*オプション* です。 このフィールドが必須となるフォーマットは、`audio/alaw`、 `audio/basic`、`audio/l16`、および `audio/mulaw` です。 このフィールドでは、要求の後続パート内の音声のフォーマットを指定します。 すべての音声ファイルは同じフォーマットである必要があります。
+-   `data_parts_count` フィールドは、すべての要求で*オプション* です。 このフィールドでは、その要求を通じて送信される音声ファイルの数を指定します。 サービスは、ストリーム終了検知を最後の (おそらく唯一の) データ・パートで実施します。 このパラメーターを省略すると、サービスによって要求からパートの数が判別されます。
 
-メタデータの他のすべてのパラメーターはオプションです。すべての使用可能なパラメーターについて詳しくは、[パラメーターの要約](/docs/services/speech-to-text/summary.html)を参照してください。
+メタデータの他のすべてのパラメーターはオプションです。 すべての使用可能なパラメーターについて詳しくは、[パラメーターの要約](/docs/services/speech-to-text?topic=speech-to-text-summary)を参照してください。
 
 ### マルチパート要求の例
 
-次の `curl` の例では、`POST /v1/recognize` メソッドを使用してマルチパート認識要求を渡す方法を示しています。この要求によって、2 つの音声ファイル **audio-file1.flac** および **audio-file2.flac** を渡します。`metadata` パラメーターでは、この要求のほとんどのパラメーターを指定し、`upload` パラメーターでは音声ファイルを指定します。
+次の `curl` の例では、`POST /v1/recognize` メソッドを使用してマルチパート認識要求を渡す方法を示しています。 この要求によって、2 つの音声ファイル **audio-file1.flac** および **audio-file2.flac** を渡します。 `metadata` パラメーターでは、この要求のほとんどのパラメーターを指定し、`upload` パラメーターでは音声ファイルを指定します。
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -241,195 +242,195 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-上記の例では、指定された音声ファイルに対して次の書き起こし結果が返されます。これら 2 つのファイルが送信された順序で、これらのファイルの結果が返されます (この例の出力では、2 つ目のファイルの結果を省略表記しています)。
+上記の例では、指定された音声ファイルに対して次の書き起こし結果が返されます。 これら 2 つのファイルが送信された順序で、これらのファイルの結果が返されます (この例の出力では、2 つ目のファイルの結果を省略表記しています)。
 
 ```javascript
 {
-   "results": [
+  "results": [
       {
-         "word_alternatives": [
+      "word_alternatives": [
          {
-               "start_time": 0.03,
+          "start_time": 0.03,
                "alternatives": [
                   {
-                     "confidence": 0.96,
+              "confidence": 0.96,
                      "word": "the"
                   }
-               ],
+          ],
           "end_time": 0.09
-            },
-            {
-               "start_time": 0.09,
+        },
+        {
+          "start_time": 0.09,
                "alternatives": [
                   {
-                     "confidence": 0.96,
+              "confidence": 0.96,
                      "word": "latest"
                   }
-               ],
+          ],
                "end_time": 0.62
-            },
-            {
-               "start_time": 0.62,
+        },
+        {
+          "start_time": 0.62,
                "alternatives": [
                   {
-                     "confidence": 0.96,
+              "confidence": 0.96,
                      "word": "weather"
                   }
-               ],
+          ],
                "end_time": 0.87
-            },
-            {
-               "start_time": 0.87,
+        },
+        {
+          "start_time": 0.87,
                "alternatives": [
                   {
-                     "confidence": 0.96,
+              "confidence": 0.96,
                      "word": "report"
                   }
-               ],
+          ],
                "end_time": 1.5
             }
-         ],
+      ],
          "keywords_result": {},
          "alternatives": [
             {
-               "timestamps": [
+          "timestamps": [
                   [
-                     "the",
+              "the",
                      0.03,
                      0.09
-                  ],
-                  [
-                     "latest",
+            ],
+            [
+              "latest",
                      0.09,
                      0.62
-                  ],
-                  [
-                     "weather",
+            ],
+            [
+              "weather",
                      0.62,
                      0.87
-                  ],
-                  [
-                     "report",
+            ],
+            [
+              "report",
                      0.87,
                      1.5
                   ]
-               ],
+          ],
                "confidence": 0.99,
                "transcript": "the latest weather report "
             }
-         ],
+      ],
          "final": true
       },
       {
-         "word_alternatives": [
+      "word_alternatives": [
          {
-               "start_time": 0.15,
+          "start_time": 0.15,
                "alternatives": [
                   {
-                     "confidence": 1.0,
+              "confidence": 1.0,
                      "word": "a"
                   }
-               ],
+          ],
                "end_time": 0.3
-            },
-            {
-               "start_time": 0.3,
+        },
+        {
+          "start_time": 0.3,
                "alternatives": [
                   {
-                     "confidence": 1.0,
+              "confidence": 1.0,
                      "word": "line"
                   }
-               ],
+          ],
           "end_time": 0.64
-            },
-            . . .
-            {
-               "start_time": 4.58,
+        },
+        . . .
+        {
+          "start_time": 4.58,
                "alternatives": [
                   {
-                     "confidence": 0.98,
+              "confidence": 0.98,
                      "word": "Colorado"
                   }
-               ],
+          ],
                "end_time": 5.16
-            },
-            {
-               "start_time": 5.16,
+        },
+        {
+          "start_time": 5.16,
                "alternatives": [
                   {
-                     "confidence": 0.98,
+              "confidence": 0.98,
                      "word": "on"
                   }
-               ],
+          ],
                "end_time": 5.32
-            },
-            {
-               "start_time": 5.32,
+        },
+        {
+          "start_time": 5.32,
                "alternatives": [
                   {
-                     "confidence": 0.98,
+              "confidence": 0.98,
                      "word": "Sunday"
                   }
-               ],
+          ],
           "end_time": 6.04
         }
-         ],
+      ],
          "keywords_result": {
-            "tornadoes": [
+        "tornadoes": [
                {
-                  "normalized_text": "tornadoes",
+            "normalized_text": "tornadoes",
                   "start_time": 3.03,
                   "confidence": 0.98,
                   "end_time": 3.84
                }
-            ],
+        ],
             "colorado": [
                {
-                  "normalized_text": "Colorado",
+            "normalized_text": "Colorado",
                   "start_time": 4.58,
                   "confidence": 0.98,
                   "end_time": 5.16
                }
-            ]
-         },
+        ]
+      },
          "alternatives": [
             {
-               "timestamps": [
+          "timestamps": [
                   [
-                     "a",
+              "a",
                      0.15,
                      0.3
-                  ],
-                  [
-                     "line",
+            ],
+            [
+              "line",
                      0.3,
                      0.64
-                  ],
-                  . . .
-                  [
-                     "Colorado",
+            ],
+            . . .
+            [
+              "Colorado",
                      4.58,
                      5.16
-                  ],
-                  [
-                     "on",
+            ],
+            [
+              "on",
                      5.16,
                      5.32
-                  ],
-                  [
-                     "Sunday",
+            ],
+            [
+              "Sunday",
                      5.32,
                      6.04
                   ]
-               ],
+          ],
                "confidence": 0.99,
                "transcript": "a line of severe thunderstorms with several
 possible tornadoes is approaching Colorado on Sunday "
             }
-         ],
+      ],
          "final": true
       }
-   ],
+  ],
    "result_index": 0
 }
 ```
