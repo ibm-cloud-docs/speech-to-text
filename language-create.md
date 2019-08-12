@@ -22,108 +22,108 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Creating a custom language model
+# Angepasstes Sprachmodell erstellen
 {: #languageCreate}
 
-Follow these steps to create a custom language model for the {{site.data.keyword.speechtotextshort}} service:
+Führen Sie die folgenden Schritte aus, um ein angepasstes Sprachmodell für den {{site.data.keyword.speechtotextshort}}-Service zu erstellen:
 {: shortdesc}
 
-1.  [Create a custom language model](#createModel-language). You can create multiple custom models for the same or different domains. The process is the same for any model that you create. However, you can specify only a single custom model at a time with a recognition request.
-1.  [Add a corpus to the custom language model](#addCorpus). A corpus is a plain text document that uses terminology from the domain in context. The service builds a vocabulary for a custom model by extracting terms from corpora that do not exist in its base vocabulary. You can add multiple corpora to a custom model.
-1.  [Add words to the custom language model](#addWords). You can also add custom words to a model individually. In addition, you can use the same methods to modify custom words that are extracted from corpora. The methods let you specify the pronunciation of words and how the words are displayed in a speech transcript.
-1.  [Train the custom language model](#trainModel-language). Once you add words to the custom model, you must train the model on the words. Training prepares the custom model for use in speech recognition. The model does not use new or modified words until you train it.
-1.  After you train your custom model, you can use it with recognition requests. If the audio that is passed for transcription contains domain-specific words that are defined in the custom model, the results of the request reflect the model's enhanced vocabulary. For more information, see [Using a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageUse).
+1.  [Angepasstes Sprachmodell erstellen](#createModel-language). Sie können mehrere angepasste Modelle für dasselbe oder verschiedene Fachgebiete erstellen. Der Erstellungsprozess ist für jedes Modell, das Sie erstellen, gleich. In einer Erkennungsanforderung können Sie immer nur ein einziges angepasstes Modell angeben.
+1.  [Korpus zum angepassten Sprachmodell hinzufügen](#addCorpus). Ein Korpus ist ein Klartextdokument, in dem Terminologie aus dem jeweiligen Fachgebiet verwendet wird. Der Service extrahiert aus den Korpora Begriffe, die nicht im Basisvokabular enthalten sind, und erstellt daraus ein Vokabular für das angepasste Modell. Sie können mehrere Korpora zu einem angepassten Modell hinzufügen.
+1.  [Wörter zum angepassten Sprachmodell hinzufügen](#addWords). Sie können auch angepasste Wörter einzeln zu einem Modell hinzufügen. Außerdem können Sie mit den gleichen Methoden angepasste Wörter ändern, die aus Korpora extrahiert wurden. Mithilfe der Methoden können Sie Aussprachevarianten für Wörter angeben und festlegen, wie die Wörter in einem Sprachtranskript angezeigt werden.
+1.  [Angepasstes Sprachmodell trainieren](#trainModel-language). Nach dem Hinzufügen von Wörter zu dem angepassten Modell müssen Sie das Modell anhand der Wörter trainieren. Durch das Trainieren wird das angepasste Modell auf die Verwendung in der Spracherkennung vorbereitet. Neue oder geänderte Wörter werden erst nach dem Trainieren von dem Modell verwendet.
+1.  Nachdem Sie das angepasste Modell trainiert haben, können Sie es in Erkennungsanforderungen verwenden. Wenn die zum Transkribieren übergebenen Audiodaten fachspezifische Wörter enthalten, die im angepassten Modell definiert sind, wird das erweiterte Vokabular des Modells in den Ergebnissen der Anforderungen berücksichtigt. Weitere Informationen finden Sie im Abschnitt [Angepasstes Sprachmodell verwenden](/docs/services/speech-to-text?topic=speech-to-text-languageUse).
 
-The steps for creating a custom language model are iterative. You can add corpora, add words, and train or retrain a model as often as needed.
+Die Schritte zum Erstellen eines benutzerdefinierten Sprachmodells sind iterativ. Sie können beliebig oft Korpora und/oder Wörter hinzufügen und das Modell nach Bedarf trainieren bzw. erneut trainieren.
 
-You can also add grammars to a custom language model. Grammars restrict the service's response to only those words that are recognized by a grammar. For more information, see [Using grammars with custom language models](/docs/services/speech-to-text?topic=speech-to-text-grammars).
+Außerdem können Sie Grammatiken zu einem angepassten Sprachmodell hinzufügen. Grammatiken begrenzen die Antwort des Service auf diejenigen Wörter, die von einer Grammatik erkannt werden. Weitere Informationen finden Sie im Abschnitt [Grammatiken mit angepassten Sprachmodellen verwenden](/docs/services/speech-to-text?topic=speech-to-text-grammars).
 
-Language model customization is available for most languages. For more information, see [Language support for customization](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
+Die Sprachmodellanpassung ist für die meisten Sprachen verfügbar. Weitere Informationen finden Sie unter [Sprachunterstützung bei der Anpassung](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
 {: note}
 
-## Create a custom language model
+## Angepasstes Sprachmodell erstellen
 {: #createModel-language}
 
-You use the `POST /v1/customizations` method to create a new custom language model. You can create any number of custom language models, but you can use only one model at a time with a speech recognition request. The method accepts a JSON object that defines the attributes of the new custom model as the body of the request.
+Mit der Methode `POST /v1/customizations` können Sie ein neues angepasstes Sprachmodell erstellen. Sie können beliebig viele angepasste Sprachmodelle erstellen, aber in einer Spracherkennungsanforderung kann jeweils nur ein Modell verwendet werden. Die Methode akzeptiert ein JSON-Objekt, das die Attribute des neuen angepassten Modells als Hauptteil der Anforderung definiert.
 
 <table>
-  <caption>Table 1. Attributes of a new custom language model</caption>
+  <caption>Tabelle 1. Attribute für ein neues angepasstes Sprachmodell</caption>
   <tr>
     <th style="width:20%; text-align:left">Parameter</th>
-    <th style="width:12%; text-align:center">Data type</th>
-    <th style="text-align:left">Description</th>
+    <th style="width:12%; text-align:center">Datentyp</th>
+    <th style="text-align:left">Beschreibung</th>
   </tr>
   <tr>
-    <td><code>name</code><br/><em>Required</em></td>
+    <td><code>name</code><br/><em>Erforderlich</em></td>
     <td style="text-align:center">String</td>
     <td>
-      A user-defined name for the new custom model. Use a name that
-      describes the domain of the custom model, such as <code>Medical
-        custom model</code> or <code>Legal custom model</code>. Use a
-      name that is unique among all custom language models that you own.
-      Use a localized name that matches the language of the custom model.
+      Ein benutzerdefinierter Name für das neue angepasste Modell. Verwenden Sie einen
+      Namen, der das Fachgebiet des angepassten Modells beschreibt (z. B. <code>Angepasstes
+      Modell für Gesundheit</code> oder <code>Angepasstes Modell für Recht</code>. Der verwendete
+      Name sollte innerhalb Ihrer angepassten Sprachmodelle eindeutig sein.
+      Verwenden Sie einen lokalisierten Namen in der Sprache des angepassten Modells.
     </td>
   </tr>
   <tr>
-    <td><code>base_model_name</code><br/><em>Required</em></td>
+    <td><code>base_model_name</code><br/><em>Erforderlich</em></td>
     <td style="text-align:center">String</td>
     <td>
-      The name of the language model that is to be customized by the
-      new custom model. Specify one of the supported language models
-      that is returned by the <code>GET /v1/models</code> method. The
-      new model can be used only with the base model that it customizes.
+      Der Name des Sprachmodells, das durch das neue angepasste Modell
+      modifiziert werden soll. Geben Sie eines der unterstützten Sprachmodelle
+      an, das von der Methode <code>GET /v1/models</code> zurückgegeben wird. Das
+      neue Modell kann nur zusammen mit dem von ihm modifizierten Basismodell verwendet werden.
     </td>
   </tr>
   <tr>
     <td><code>dialect</code><br/><em>Optional</em></td>
     <td style="text-align:center">String</td>
     <td>
-      The dialect of the specified language that is to be used with the
-      new custom model. For most languages, the dialect matches the
-      language of the base model by default. For example, `en-US` is used
-      for either of the US English language models.<br><br>
-      For a Spanish language, the service creates a custom model that is
-      suited for speech in one of the following dialects:
+      Der Dialekt aus der angegebenen Sprache, der in dem neuen
+      Modell verwendet werden soll. Für die meisten Sprachen stimmt der Dialekt
+      standardmäßig mit der Sprache des Basismodells überein. Beispielsweise wird `en-US`
+      für beide Modelle für amerikanisches Englisch verwendet.<br><br>
+      Für eine spanische Sprache erstellt der Service ein benutzerdefiniertes Modell, das für
+      Sprachdaten in einem der folgenden Dialekte geeignet ist:
       <ul style="margin-left:20px; padding:0px;">
         <li style="margin:10px 0px; line-height:120%;">
-          `es-ES` for Castilian Spanish (`es-ES` models)
+          `es-ES` für Spanisch (Kastilien) (`es-ES`-Modelle)
         </li>
         <li style="margin:10px 0px; line-height:120%;">
-          `es-LA` for Latin American Spanish (`es-AR`, `es-CL`, `es-CO`,
-          and `es-PE` models)
+          `es-LA` für Spanisch (Lateinamerika) (`es-AR`-, `es-CL`-, `es-CO`-,
+          und `es-PE`-Modelle)
         </li>
         <li style="margin:10px 0px; line-height:120%;">
-          `es-US` for Mexican (North American) Spanish (`es-MX` models)
+          `es-US` für Spanisch (Mexiko, Nordamerika) (`es-MX`-Modelle)
         </li>
       </ul>
-      The parameter is meaningful only for Spanish models, for which
-      you can always safely omit the parameter to have the service create
-      the correct mapping.
+      Der Parameter ist nur für Modelle in Spanisch von Bedeutung, für die
+      Sie immer problemlos die Parameter weglassen können, damit der Service die
+      richtige Zuordnung erstellt.
       <ul style="margin-left:20px; padding:0px;">
         <li style="margin:10px 0px; line-height:120%;">
-          If you specify the `dialect` parameter for non-Spanish language
-          models, its value must match the language of the base model.
+          Wenn Sie den Parameter `dialect` für andere Modelle
+          als spanische Sprachmodelle angeben, muss der zugehörige Wert mit der Sprache des Basismodells übereinstimmen.
         </li>
         <li style="margin:10px 0px; line-height:120%;">
-          If you specify the `dialect` for Spanish language models, its
-          value must match one of the defined mappings as indicated
-          (`es-ES`, `es-LA`, or `es-MX`).
+          Wenn Sie den Parameter `dialect` für spanische Sprachmodelle angeben, muss
+          der zugehörige Wert mit einer der definierten Zuordnungen
+          (`es-ES`, `es-LA` oder `es-MX`) übereinstimmen.
         </li>
       </ul>
-      All dialect values are case-insensitive.
+      Alle Dialektwerte sind von der Groß-/Kleinschreibung unabhängig.
     </td>
   </tr>
   <tr>
     <td><code>description</code><br/><em>Optional</em></td>
     <td style="text-align:center">String</td>
     <td>
-      A description of the new model. Use a localized description that
-      matches the language of the custom model.
+      Eine Beschreibung des neuen Modells. Verwenden Sie eine lokalisierte Beschreibung
+      in der Sprache des angepassten Modells.
     </td>
   </tr>
 </table>
 
-The following example creates a new custom language model named `Example model`. The model is created for the base model `en-US-BroadbandModel` and has the description `Example custom language model`. The `Content-Type` header specifies that JSON data is being passed to the method.
+Im folgenden Beispiel wird ein neues angepasstes Sprachmodell mit dem Namen `Example model` erstellt. Das Modell wird für das Basismodell `en-US-BroadbandModel` erstellt und die zugehörige Beschreibung lautet `Example custom language model`. Der Header `Content-Type` gibt an, dass JSON-Daten an die Methode übergeben werden.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -135,7 +135,7 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-The example returns the customization ID of the new model. Each custom model is identified by a unique customization ID, which is a Globally Unique Identifier (GUID). You specify a custom model's GUID with the `customization_id` parameter of calls that are associated with the model.
+Das Beispiel gibt die Anpassungs-ID des neuen Modells zurück. Jedes angepasste Modell wird durch eine eindeutige Anpassungs-ID identifiziert. Diese ID ist eine global eindeutige ID (Globally Unique Identifier, GUID). Geben Sie die GUID für ein angepasstes Modell mit dem Parameter `customization_id` der Aufrufe an, die dem Modell zugeordnet sind.
 
 ```javascript
 {
@@ -144,36 +144,36 @@ The example returns the customization ID of the new model. Each custom model is 
 ```
 {: codeblock}
 
-The new custom model is owned by the instance of the service whose credentials are used to create it. For more information, see [Ownership of custom models](/docs/services/speech-to-text?topic=speech-to-text-customization#customOwner).
+Eigner des neuen angepassten Modells ist die Serviceinstanz, deren Berechtigungsnachweise beim Erstellen des Jobs verwendet wurden. Weitere Informationen finden Sie im Abschnitt [Eigentumsrecht an angepassten Modellen](/docs/services/speech-to-text?topic=speech-to-text-customization#customOwner).
 
-## Add a corpus to the custom language model
+## Korpus zum angepassten Sprachmodell hinzufügen
 {: #addCorpus}
 
-Once you create your custom language model, the next step is to add data (domain-specific words) to the model. The recommended means of populating a custom model with new words is to add one or more corpora.
+Nachdem Sie das angepasste Sprachmodell erstellt haben, müssen im nächsten Schritt Daten (fachspezifische Wörter) zu dem Modell hinzugefügt werden. Die empfohlene Vorgehensweise zum Füllen eines angepassten Modells besteht darin, mindestens ein Korpus hinzuzufügen.
 
-A corpus is a plain text file that ideally contains sample sentences from your domain. The service parses a corpus file's contents and extracts any words that are not in its base vocabulary. Such words are referred to out-of-vocabulary (OOV) words.
+Ein Korpus ist eine einfache Textdatei, die im Idealfall Beispielsätze aus dem zugehörigen Fachgebiet enthält. Der Service analysiert den Inhalt der Korpusdatei und extrahiert daraus alle Wörter, die nicht im Basisvokabular des Service vorkommen. Diese Wörter werden als vokabularexterne Wörter (Out-Of-Vocabulary, OOV) bezeichnet.
 
--   For more information about using corpora, see [Working with corpora](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#workingCorpora).
--   For more information about how the service adds corpora to a model, see [What happens when I add a corpus file?](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#parseCorpus)
+-   Weitere Informationen zur Verwendung von Korpora finden Sie im Abschnitt [Mit Korpora arbeiten](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#workingCorpora).
+-   Weitere Informationen zur Vorgehensweise des Service beim Hinzufügen von Korpora zu einem Modell finden Sie im Abschnitt [Was passiert, wenn ich eine Korpusdatei hinzufüge?](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#parseCorpus)
 
-By providing sentences that include new words, corpora allow the service to learn the words in context. You can then augment or modify the model's words individually. Training a model only on individual words as opposed to words added from corpora is more time-consuming and can produce less effective results.
+Durch das Bereitstellen von Sätzen, die neue Wörter enthalten, ermöglichen Korpora dem Service das Erlernen der Wörter im Kontext. Anschließend können Sie die Wörter im Modell einzeln erweitern oder ändern. Das Trainieren eines Modells mit einzelnen Wörtern ist zeitaufwendiger als das Hinzufügen von Wörtern aus Korpora und kann zu weniger effizienten Ergebnissen führen.
 {: tip}
 
-You use the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method to add a corpus to a custom model:
+Mit der Methode `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` können Sie ein Korpus zu einem angepassten Modell hinzufügen:
 
--   Specify the customization ID of the custom model with the `customization_id` path parameter.
--   Specify a name for the corpus with the `corpus_name` path parameter. Use a localized name that matches the language of the custom model and reflects the contents of the corpus.
-    -   Include a maximum of 128 characters in the name.
-    -   Do not use characters that need to be URL-encoded. For example, do not use spaces, slashes, backslashes, colons, ampersands, double quotes, plus signs, equals signs, questions marks, and so on in the name. (The service does not prevent the use of these characters. But because they must be URL-encoded wherever used, their use is strongly discouraged.)
-    -   Do not use the name of a corpus or grammar that has already been added to the custom model.
-    -   Do not use the name `user`, which is reserved by the service to denote custom words that are added or modified by the user.
-    -   Do not use the name `base_lm` or `default_lm`. Both names are reserved for future use by the service.
--   Pass the corpus text file as the body of the request.
+-   Geben Sie die Anpassungs-ID des angepassten Modells im Parameter `customization_id` an.
+-   Geben Sie einen Namen für das Korpus im Pfadparameter `corpus_name` an. Verwenden Sie einen lokalisierten Namen in der Sprache des angepassten Modells, der den Inhalt des Korpus bezeichnet.
+    -   Der Name sollte nicht mehr als 128 Zeichen umfassen.
+    -   Verwenden Sie keine Zeichen, die URL-codiert sein müssen. Verwenden Sie beispielsweise keine Leerzeichen, Schrägstriche, umgekehrte Schrägstriche, Doppelpunkte, Et-Zeichen, doppelte Anführungszeichen, Pluszeichen, Gleichheitszeichen, Fragezeichen usw. im Namen. (Der Service verhindert die Verwendung dieser Zeichen nicht. Da sie jedoch immer URL-codiert sein müssen, wird von ihrer Verwendung unbedingt abgeraten.)
+    -   Verwenden Sie nicht den Namen eines Korpus oder einer Grammatik, der/die bereits zu dem angepassten Modell hinzugefügt wurde.
+    -   Verwenden Sie nicht den Namen `user`, der im Service für angepasste Wörter reserviert ist, die vom Benutzer hinzugefügt oder geändert werden.
+    -   Verwenden Sie nicht den Namen `base_lm` oder `default_lm`. Beide Namen sind für die zukünftige Verwendung durch den Service reserviert.
+-   Übergeben Sie die Korpustextdatei als Hauptteil der Anforderung.
 
-You can add a maximum of 90 thousand OOV words and 10 million total words from all sources combined. This includes words from corpora and grammars, and words that you add directly. For more information, see [How much data do I need?](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#wordsResourceAmount)
+Sie können maximal 90.000 vokabularexterne Wöter (OOV-Worter) und insgesamt bis zu 10.000.000 Wörter aus allen Quellen zusammen hinzufügen. Dazu gehören Wörter aus Korpora und Grammatiken sowie Wörter, die Sie direkt hinzufügen. Weitere Informationen finden Sie im Abschnitt [Wie viele Daten brauche ich?](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#wordsResourceAmount)
 {: note}
 
-The following example adds the corpus text file `healthcare.txt` to the custom model with the specified ID. The example names the corpus `healthcare`.
+Im folgenden Beispiel wird die Korpustextdatei `healthcare.txt` zu dem angepassten Modell mit der angegebenen ID hinzugefügt. Im Beispiel wird dem Korpus der Name `healthcare` zugeordnet.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -182,26 +182,26 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-The method also accepts an optional `allow_overwrite` query parameter that overwrites an existing corpus for a custom model. Use the parameter if you need to update a corpus file after you add it to a model.
+Die Methode akzeptiert außerdem den optionalen Parameter `allow_overwrite`, um ein vorhandenes Korpus für ein angepasstest Modell zu überschreiben. Verwenden Sie diesen Parameter, wenn Sie eine Korpusdatei aktualisieren möchten, die Sie zu einem Modell hinzugefügt haben.
 
-The method is asynchronous. It can take on the order of a minute or two to complete. The duration of the operation depends on the total number of words in the corpus, the number of new words that the service finds in the corpus, and the current load on the service. For more information about checking the status of a corpus, see [Monitoring the add corpus request](#monitorCorpus).
+Dies ist eine asynchrone Methode. Es kann ein bis zwei Minuten dauern, bis die Methode beendet ist. Die Ausführungsdauer ist von der Gesamtzahl der Wörter im Korpus, von der Anzahl der im Korpus gefundenen neuen Wörter und von der aktuellen Auslastung des Service abhängig. Weitere Informationen zum Überprüfen des Status eines Korpus finden Sie im Abschnitt [Anforderung zum Hinzufügen eines Korpus überwachen](#monitorCorpus).
 
-You can add any number of corpora to a custom model by calling the method once for each corpus text file. The addition of one corpus must be fully complete before you can add another. After you add a corpus to a custom model, examine the new custom words to check for typographical and other errors. For more information, see [Validating a words resource](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
+Sie können beliebig viele Korpora zu einem angepassten Modell hinzufügen, indem Sie die Methode für jede Korpustextdatei einmal aufrufen. Das Hinzufügen eines Korpus muss vollständig abgeschlossen sein, bevor ein weiteres Korpus hinzugefügt werden kann. Prüfen Sie nach dem Hinzufügen eines Korpus zu einem angepassten Modell die neuen angepassten Wörter auf Schreibfehler und andere Fehler. Weitere Informationen finden Sie im Abschnitt [Wörterressource prüfen](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
 
-### Monitoring the add corpus request
+### Anforderung zum Hinzufügen eines Korpus überwachen
 {: #monitorCorpus}
 
-The service returns a 201 response code if the corpus is valid. It then asynchronously processes the contents of the corpus and automatically extracts new words. You cannot submit requests to add data to the custom model or to train the model until the service's analysis of the corpus for the current request completes.
+Der Service gibt einen Antwortcode 201 zurück, wenn das Korpus gültig ist. Anschließend verarbeitet der Service den Korpusinhalt und extrahiert automatisch neue Wörter. Sie können keine weiteren Anforderungen zum Hinzufügen von Daten für das angepasste Modell oder zum Trainieren des Modells übergeben, bis die Analyse des Korpus für die aktuelle Anforderung abgeschlossen ist.
 
-To determine the status of the analysis, use the `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` method to poll the status of the corpus. The method accepts the ID of the model and the name of the corpus, as shown in the following example:
+Den Status der Korpusanalyse können Sie mit der Methode `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` ermitteln. Die Methode akzeptiert die ID des Modells und den Namen des Korpus, wie im folgenden Beispiel gezeigt:
 
 ```bash
-curl -X GET -u "apikey:{apikey}"
+curl -X GET -u "apikey:{api_schlüssel}"
 "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/corpora/corpus1"
 ```
 {: pre}
 
-The response includes the status of the corpus:
+In der Antwort wird der Status des Korpus angegeben:
 
 ```javascript
 {
@@ -213,27 +213,27 @@ The response includes the status of the corpus:
 ```
 {: codeblock}
 
-The `status` field has one of the following values:
+Im Feld `status` wird einer der folgenden Werte angegeben:
 
--   `analyzed` indicates that the service has successfully analyzed the corpus.
--   `being_processed` indicates that the service is still analyzing the corpus.
--   `undetermined` indicates that the service encountered an error while processing the corpus.
+-   `analyzed` gibt an, dass das Korpus vom Service erfolgreich analysiert wurde.
+-   `being_processed` gibt an, dass der Service die Analyse des Korpus noch nicht abgeschlossen hat.
+-   `undetermined` gibt an, dass der Service beim Verarbeiten des Korpus einen Fehler festgestellt hat.
 
-Use a loop to check the status of the corpus every 10 seconds until it becomes `analyzed`. For more information about checking the status of a model's corpora, see [Listing corpora for a custom language model](/docs/services/speech-to-text?topic=speech-to-text-manageCorpora#listCorpora).
+Überprüfen Sie mit einer Schleife den Status des Korpus alle 10 Sekunden, bis der Status `analyzed` angegeben wird. Weitere Informationen zur Statusüberprüfung für die Korpora eines Modells finden Sie im Abschnitt [Korpora für angepasstes Sprachmodell auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageCorpora#listCorpora).
 
-## Add words to the custom language model
+## Wörter zum angepassten Sprachmodell hinzufügen
 {: #addWords}
 
-Although adding corpora is the recommended means of adding words to a custom language model, you can also add individual custom words to the model directly. The service adds the custom words to the custom model just as it does OOV words that it discovers from corpora.
+Obwohl das Hinzufügen von Korpora die empfohlene Methode zum Erweitern des Vokabulars in einem angepassten Sprachmodell ist, können auch einzelne Wörter direkt im Modell hinzugefügt werden. Der Service fügt die angepassten Wörter auf die gleiche Weise zum angepassten Modell hinzu wie vokabularexterne Wörter, die aus Korpora extrahiert wurden.
 
-If you have only one or a few words to add to a model, using corpora to add the words might not be practical or even viable. The simplest approach is to add a word with only its spelling. But you can also provide multiple pronunciations for the word and indicate how the word is to be displayed.
+Wenn Sie nur wenige Wörter zu einem Modell hinzufügen möchten, ist die Verwendung von Korpora möglicherweise keine sinnvolle oder realistische Option. In diesem Fall ist die einfachste Methode das Hinzufügen eines einzelnen Wortes mit zugehöriger Schreibweise. Sie können auch mehrere Aussprachevarianten für das Wort bereitstellen und angeben, wie das Wort angezeigt werden soll.
 
--   For more information about adding words directly, see [Working with custom words](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#workingWords).
--   For more information about how the service adds custom words to a model, see [What happens when I add or modify a custom word?](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#parseWord)
+-   Weitere Informationen zum direkten Hinzufügen von Wörtern finden Sie im Abschnitt [Mit angepassten Wörtern arbeiten](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#workingWords).
+-   Weitere Informationen zur Vorgehensweise des Service beim Hinzufügen angepasster Wörter zu einem Modell finden Sie im Abschnitt [Was passiert, wenn ich ein angepasstes Wort hinzufüge oder ändere?](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#parseWord)
 
-You can use the following methods to add words to a custom model:
+Mit den folgenden Methoden können Sie Wörter zu einem angepassten Modell hinzufügen:
 
--   The `POST /v1/customizations/{customization_id}/words` method adds multiple words at one time. You pass a JSON object that provides information about each word via the body of the request. The following example adds two custom words, `HHonors` and `IEEE`, to the custom model with the specified ID. The `Content-Type` header specifies that JSON data is being passed to the method.
+-   Die Methode `POST /v1/customizations/{customization_id}/words` fügt mehrere Wörter gleichzeitig hinzu. Dabei wird ein JSON-Objekt mit Informationen zu jedem Wort im Hauptteil der Anforderung übergeben. Im folgenden Beispiel werden die beiden angepassten Wörter `HHonors` und `IEEE` zum angepassten Modell mit der angegebenen ID hinzugefügt. Der Header `Content-Type` gibt an, dass JSON-Daten an die Methode übergeben werden.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -245,7 +245,7 @@ You can use the following methods to add words to a custom model:
     ```
     {: pre}
 
-    You can also add the words from a file. For example, the file `words.json` defines the same two custom words.
+    Sie können die Wörter auch aus einer Datei hinzufügen. Beispielsweise sind in der Datei `words.json` dieselben beiden angepassten Wörter definiert.
 
     ```
     {"words":
@@ -257,7 +257,7 @@ You can use the following methods to add words to a custom model:
     ```
     {: codeblock}
 
-    The following command adds the words from the file:
+    Der folgende Befehl fügt die Wörter aus der Datei hinzu:
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -267,8 +267,8 @@ You can use the following methods to add words to a custom model:
     ```
     {: pre}
 
-    This method is asynchronous. The time that it takes to complete depends on the number of words that you add and the current load on the service. For more information about checking the status of the operation, see [Monitoring the add words request](#monitorWords).
--   The `PUT /v1/customizations/{customization_id}/words/{word_name}` method adds individual words. You pass a JSON object that provides information about the word. The following example adds the word `NCAA` to the model with the specified ID. The `Content-Type` header again indicates that JSON data is being passed to the method.
+    Dies ist eine asynchrone Methode. Die benötigte Ausführungsdauer ist von der Anzahl der hinzugefügten Wörter und von der aktuellen Auslastung des Service abhängig. Weitere Informationen zur Statusprüfung für die Operation finden Sie im Abschnitt [Anforderung zum Hinzufügen von Wörtern überwachen](#monitorWords).
+-   Die Methode `PUT /v1/customizations/{customization_id}/words/{word_name}` fügt einzelne Wörter hinzug. Dabei übergeben Sie ein JSON-Objekt mit Informationen zu dem Wort. Im folgenden Beispiel wird das Wort `NCAA` zu dem Modell mit der angegebenen ID hinzugefügt. Der Header `Content-Type` gibt auch in diesem Fall an, dass JSON-Daten an die Methode übergeben werden.
 
     ```bash
     curl -X PUT -u "apikey:{apikey}"
@@ -278,16 +278,16 @@ You can use the following methods to add words to a custom model:
     ```
     {: pre}
 
-    This method is synchronous. The service returns a response code that reports the success or failure of the request immediately.
+    Dies ist eine asynchrone Methode. Der vom Service zurückgegebene Antwortcode meldet sofort den Erfolg oder das Fehlschlagen der Anforderung.
 
-As with adding corpora, examine the new custom words to check for typographical and other errors. This check is especially important when you add multiple words at once. For more information, see [Validating a words resource](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
+Überprüfen Sie (wie beim Hinzufügen von Korpora) die neuen angepassten Wörter auf Schreibfehler und andere Fehler. Diese Überprüfung ist besonders wichtig, wenn Sie mehrere Wörter gleichzeitig hinzufügen. Weitere Informationen finden Sie im Abschnitt [Wörterressource prüfen](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
 
-### Monitoring the add words request
+### Anforderung zum Hinzufügen von Wörtern überwachen
 {: #monitorWords}
 
-When you use the `POST /v1/customizations/{customization_id}/words` method, the service returns a 201 response code if the input data is valid. It then asynchronously processes the words to add them to the model. The operation is generally faster than adding a corpus or training a model, but its duration depends on the number of new words that you add and the current load on the service. You cannot submit requests to add data to the custom model or to train the model until the service completes the request to add new words.
+Bei Verwendung der Methode `POST /v1/customizations/{customization_id}/words` gibt der Service einen Antwortcode 201 zurück, wenn die Eingabedaten gültig sind. Anschließend werden die Wörter asynchron verarbeitet, um sie zum Modell hinzuzufügen. Dieses Verfahren ist in der Regel schneller als das Hinzufügen eines Korpus oder das Trainieren eines Modells; die Dauer hängt jedoch von der Anzahl der neuen Wörter ab, die Sie hinzufügen, und von der aktuellen Auslastung des Service. Sie können keine weiteren Anforderungen zum Hinzufügen von Daten für das angepasste Modell oder zum Trainieren des Modells übergeben, bis der Service die Anforderung zum Hinzufügen neuer Wörter abgeschlossen hat.
 
-To determine the status of the request, use the `GET /v1/customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the model and returns information that includes the model's status, as in the following example:
+Den Status der Anforderung können Sie mit der Methode `GET /v1/customizations/{customization_id}` ermitteln. Die Methode akzeptiert die Anpassungs-ID des Modells und gibt Informationen zurück, die den Status des Modells enthalten, wie im folgenden Beispiel gezeigt:
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -312,21 +312,21 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-The `status` field reports the current state of the model. While the service is processing new words, the status remains `pending`. Use a loop to check the status every 10 seconds until it becomes `ready` to indicate that the operation is complete. For more information about possible `status` values, see [Monitoring the train model request](#monitorTraining-language).
+Im Feld `status` wird der aktuelle Status des Modells angegeben. Solange der Service neue Wörter verarbeitet, wird der Status `pending` angegeben. Überprüfen Sie mit einer Schleife den Status alle 10 Sekunden, bis der Status `ready` darauf hinweist, dass der Vorgang abgeschlossen ist. Weitere Informationen zu möglichen Werten für `status` finden Sie im Abschnitt [Anforderung zum Trainieren des Modells überwachen](#monitorTraining-language).
 
-### Modifying words in a custom model
+### Wörter in einem angepassten Modell ändern
 {: #modifyWord}
 
-You can also use the `POST /v1/customizations/{customization_id}/words` and `PUT /v1/customizations/{customization_id}/words/{word_name}` methods to modify or augment a word in a custom model. You might need to use the methods to correct a typographical error or other mistake that was made when a word was added to the model. You might also need to add sounds-like definitions for an existing word.
+Sie können auch die Methoden `POST /v1/customizations/{customization_id}/words` und `PUT /v1/customizations/{customization_id}/words/{word_name}` verwenden, um ein Wort in einem angepassten Modell zu ändern oder zu erweitern. Mit diesen Methoden können Sie bei Bedarf einen Schreibfehler oder einen anderen Fehler korrigieren, der beim Hinzufügen eines Wortes zu dem Modell aufgetreten ist. Außerdem können Sie gleich klingende Aussprachevarianten für ein vorhandenes Wort hinzufügen.
 
-You use the methods to modify the definition of an existing word exactly as you do to add a word. The new data that you provide for the word overwrites the word's existing definition.
+Mit diesen Methoden können Sie die Definition eines vorhandenen Wortes auf die gleiche Weise ändern wie beim Hinzufügen eines Wortes. Die neuen Angaben, die Sie für das Wort bereitstellen, überschreiben die vorhandene Definition des Wortes.
 
-## Train the custom language model
+## Angepasstes Sprachmodell trainieren
 {: #trainModel-language}
 
-Once you populate a custom language model with new words (by adding corpora, by adding grammars, or by adding the words directly), you must train the model on the new data. Training prepares the custom model to use the data in speech recognition. The model does not use words that you add via any means until you train it on the data.
+Wenn Sie ein angepasstes Sprachmodel mit neuen Wörtern bestücken (durch Hinzufügen von Korpora oder Grammatiken bzw. durch direktes Hinzufügen des Wortes) müssen Sie das Modell mit den neuen Daten trainieren. Durch Trainieren wird das angepasste Modell vorbereitet, damit die Daten bei der Spracherkennung genutzt werden können. Wörter, die Sie mit einem beliebigen Verfahren hinzugefügt haben, werden vom Modell erst verwendet, nachdem Sie das Modell mithilfe der neuen Daten trainiert haben.
 
-You use the `POST /v1/customizations/{customization_id}/train` method to train a custom model. You pass the method the customization ID of the model that you want to train, as in the following example:
+Mit der Methode `POST /v1/customizations/{customization_id}/train` können Sie ein angepasstes Modell trainieren. In der Methode übergeben Sie die Anpassungs-ID des Modells, das Sie trainieren möchten, wie im folgenden Beispiel gezeigt:
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -334,24 +334,24 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-The method is asynchronous. Training can take on the order of minutes to complete depending on the number of new words on which the model is being trained and the current load on the service. For more information about checking the status of a training operation, see [Monitoring the train model request](#monitorTraining-language).
+Dies ist eine asynchrone Methode. Die Dauer des Trainingsvorgangs kann mehrere Minuten betragen und ist von der Anzahl der neuen Wörter und von der aktuellen Auslastung des Service abhängig. Weitere Informationen zur Statusprüfung für den Trainingsvorgang finden Sie im Abschnitt [Anforderung zum Trainieren des Modells überwachen](#monitorTraining-language).
 
-The method includes the following optional query parameters:
+Die Methode enthält die folgenden optionalen Abfrageparameter:
 
--   The `word_type_to_add` parameter specifies the words on which the custom model is to be trained:
-    -   Specify `all` or omit the parameter to train the model on all of its words, regardless of their origin.
-    -   Specify `user` to train the model only on words that were added or modified by the user, ignoring words that were extracted only from corpora or grammars.
+-   Der Parameter `word_type_to_add` gibt die Wörter an, mit denen das angepasste Modell trainiert werden soll:
+    -   Geben Sie `all` an oder lassen Sie den Parameter weg, um das Modell mit allen zugehörigen Wörtern (unabhängig von ihrer Herkunft) zu trainieren.
+    -   Geben Sie `user` an, um das Modell nur mit Wörtern zu trainieren, die von dem angegebenen Benutzer hinzugefügt oder geändert wurden. Dabei werden Wörter ignoriert, die nur aus Korpora oder Grammatiken extrahiert wurden.
 
-    This option is useful if you add corpora with noisy data, such as words that contain typographical errors. Before training the model on such data, you can use the `word_type` query parameter of the `GET /v1/customizations/{customization_id}/words` method to review words that are extracted from corpora and grammars. For more information, see [Listing words from a custom language model](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords).
--   The `customization_weight` parameter specifies the relative weight that is given to words from the custom model as opposed to words from the base vocabulary when the custom model is used for speech recognition. You can also specify a customization weight with any recognition request that uses the custom model. For more information, see [Using customization weight](/docs/services/speech-to-text?topic=speech-to-text-languageUse#weight).
--   The `strict` parameter indicates whether training is to proceed if the custom model contains a mix of valid and invalid resources (corpora, grammars, and words). By default, training fails if the model contains one or more invalid resources. Set the parameter to `false` to allow training to proceed as long as the model contains at least one valid resource. The service excludes invalid resources from the training. For more information, see [Training failures](#failedTraining-language).
+    Diese Option ist hilfreich zum Hinzufügen von Daten mit Störanteilen (z. B. Wörter mit Schreibfehlern). Bevor Sie das Modell mit solchen Daten trainieren, können Sie mit dem Abfrageparameter `word_type` in der Methode `GET /v1/customizations/{customization_id}/words` Wörter überprüfen, die aus Korpora und Grammatiken extrahiert wurden. Weitere Informationen finden Sie im Abschnitt [Wörter aus angepasstem Sprachmodell auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords).
+-   Der Parameter `customization_weight` gibt die relative Gewichtung für Wörter aus dem angepassten Modell im Vergleich zu Wörtern aus dem Basisvokabular an, wenn das angepasste Modell für die Spracherkennung verwendet wird. Mit jeder Erkennungsanforderung, von der das angepasste Modell verwendet wird, können Sie auch eine Anpassungsgewichtung angeben. Weitere Informationen finden Sie im Abschnitt [Anpassungsgewichtung verwenden](/docs/services/speech-to-text?topic=speech-to-text-languageUse#weight).
+-   Der Parameter `strict` gibt an, ob das Training fortgesetzt werden soll, wenn das angepasste Modell eine Mischung aus gültigen und ungültigen Ressourcen (Korpora, Grammatiken und Wörter) enthält. Standardmäßig schlägt das Training fehl, wenn das Modell mindestens eine ungültige Ressource enthält. Setzen Sie den Parameter auf `false`, damit das Training fortgesetzt werden kann, wenn das Modell mindestens eine gültige Ressource enthält. Der Service schließt ungültige Ressourcen aus dem Training aus. Weitere Informationen finden Sie im Abschnitt [Fehler bei Training](#failedTraining-language).
 
-### Monitoring the train model request
+### Anforderung zum Trainieren des Modells überwachen
 {: #monitorTraining-language}
 
-The service returns a 200 response code if it initiates the training process successfully. The service cannot accept subsequent training requests, or requests to add new corpora, grammars, or words, until the existing request completes.
+Der Service gibt einen Antwortcode 200 zurück, wenn der Trainingsvorgang erfolgreich eingeleitet wurde. Der Service kann keine weiteren Anforderungen für Trainingsvorgänge bzw. Anforderungen zum Hinzufügen neuer Korpora, Grammatiken oder Wörter akzeptieren, bis die aktuelle Anforderung abgeschlossen ist.
 
-To determine the status of a training request, use the `GET /v1/customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the model and returns information about the model.
+Den Status der Trainingsanforderung können Sie mit der Methode `GET /v1/customizations/{customization_id}` ermitteln. Die Methode akzeptiert die Anpassungs-ID des Modells und gibt Informationen zu dem Modell zurück.
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -376,115 +376,114 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-The response includes `status` and `progress` fields that report the state of the custom model. The meaning of the `progress` field depends on the model's status. The `status` field can have one of the following values:
+Die Antwort enthält die Felder `status` und `progress`, die den Status des angepassten Modells angeben. Die Bedeutung des Felds `progress` hängt vom Status des Modells ab. Im Feld `status` kann einer der folgenden Werte angegeben werden:
 
--   `pending` indicates that the model was created but is waiting either for valid training data to be added or for the service to finish analyzing data that was added. The `progress` field is `0`.
--   `ready` indicates that the model contains valid data and is ready to be trained. The `progress` field is `0`.
+-   `pending`: Das Modell wurde erstellt, aber es wird entweder auf das Hinzufügen von gültigen Trainingsdaten oder auf den Abschluss der Analyse der hinzugefügten Daten durch den Service gewartet. Das Feld `progress` ist auf den Wert `0` gesetzt.
+-   `ready`: Das Modell enthält gültige Daten und ist für das Training bereit. Das Feld `progress` ist auf den Wert `0` gesetzt.
 
-    If the model contains a mix of valid and invalid resources (for example, both valid and invalid custom words), training of the model fails unless you set the `strict` query parameter to `false`. For more information, see [Training failures](#failedTraining-language).
--   `training` indicates that the model is being trained. The `progress` field changes from `0` to `100` when training is complete. <!-- The `progress` field indicates the progress of the training as a percentage complete. -->
--   `available` indicates that the model is trained and ready to use. The `progress` field is `100`.
--   `upgrading` indicates that the model is being upgraded. The `progress` field is `0`.
--   `failed` indicates that training of the model failed. The `progress` field is `0`. For more information, see [Training failures](#failedTraining-language).
+    Wenn das Modell eine Mischung aus gültigen und ungültigen Ressourcen (z. B. gültige und ungültige angepasste Wörter) enthält, schlägt das Training des Modells fehl, es sei denn, Sie setzen den Abfrageparameter `strict` auf `false`. Weitere Informationen finden Sie im Abschnitt [Fehler bei Training](#failedTraining-language).-   `training` gibt an, dass das Modell momentan trainiert wird. Der Wert im Feld `progress` wird von `0` schrittweise auf `100` erhöht, bis das Training abgeschlossen ist. <!-- The `progress` field indicates the progress of the training as a percentage complete. -->
+-   `available` gibt an, dass das Modell trainiert wurde und jetzt verwendet werden kann. Das Feld `progress` ist auf den Wert `100` gesetzt.
+-   `upgrading` gibt an, dass das Modell momentan aktualisiert wird. Das Feld `progress` ist auf den Wert `0` gesetzt.
+-   `failed` gibt an, dass das Trainieren des Modells fehlgeschlagen ist. Das Feld `progress` ist `0`. Weitere Informationen finden Sie im Abschnitt [Fehler bei Training](#failedTraining-language).
 
-Use a loop to check the status every 10 seconds until it becomes `available`. For more information about checking the status of a custom model, see [Listing custom language models](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
+Überprüfen Sie mit einer Schleife den Status alle 10 Sekunden, bis der Status `available` angegeben wird. Weitere Information zur Statusprüfung für ein angepasstes Modell finden Sie im Abschnitt [Angepasste Sprachmodelle auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
 
-### Training failures
+### Fehler beim Trainieren
 {: #failedTraining-language}
 
-Training fails to start if the service is handling another request for the custom language model. For instance, a training request fails to start with a status code of 409 if the service is
+Das Training kann nicht gestartet werden, wenn der Service momentan eine andere Anforderung für das angepasste Sprachmodell ausführt. In den folgenden Situationen schlägt eine Trainingsanforderung mit dem Statusode 409 fehl:
 
--   Processing a corpus or grammar to generate a list of OOV words
--   Processing custom words to validate or auto-generate sounds-like pronunciations
--   Handling another training request
+-   Der Service verarbeitet momentan ein Korpus oder eine Grammatik, um eine Liste mit vokabularexternen Wörtern zu generieren
+-   Der Service überprüft momentan angepasste Wörter oder generiert gleich klingende Aussprachevarianten
+-   Der Service verarbeitet momentan eine andere Trainingsanforderung
 
-Training also fails to start with a status code of 400 if the custom model
+Ein Training schlägt mit dem Statuscode 400 fehl, wenn das angepasste Modell:
 
--   Contains no new valid training data (corpora, grammars, or words) since it was created or last trained
--   Contains one or more invalid corpora, grammars, or words (for example, a custom word has an invalid sounds-like pronunciation)
+-   keine neuen gültigen Trainingsdaten (Korpora, Grammatiken oder Wörter) seit der Erstellung oder dem letzten Training enthält.
+-   ungültige Korpora, Grammatiken oder Wörter (beispielsweise ein angepasstes Wort mit einer ungültigen gleich klingenden Aussprache) enthält.
 
-If the training request fails with a status code of 400, the service sets the custom model's status to `failed`. Take one of the following actions:
+Schlägt die Trainingsanforderung mit dem Statuscode 400 fehl, legt der Service `failed` als Status des angepassten Modells fest. Führen Sie eine der folgenden Aktionen aus:
 
--   Use methods of the customization interface to examine the model's resources and fix any errors that you find:
-    -   For an invalid corpus, you can correct the corpus text file and use the `allow_overwrite` parameter of the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method to add the corrected file to the model. For more information, see [Add a corpus to the custom language model](#addCorpus).
-    -   For an invalid grammar, you can correct the grammar file and use the `allow_overwrite` parameter of the `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` method to add the corrected file to the model. For more information, see [Add a grammar to the custom language model](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar).
-    -   For an invalid custom word, you can use the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method to modify the word directly in the model's words resource. For more information, see [Modifying words in a custom model](#modifyWord).
+-   Untersuchen Sie mit den Methoden aus der Anpassungsschnittstelle die Ressourcen des Modells und beheben Sie alle gefundenen Fehler:
+    -   Bei einem ungültigen Korpus können Sie die Korpustextdatei korrigieren und mit dem Parameter `allow_overwrite` der Methode `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` die korrigierte Datei dem Modell hinzufügen. Weitere Informationen finden Sie im Abschnitt [Korpus zum angepassten Sprachmodell hinzufügen](#addCorpus).
+    -   Bei einer ungültigen Grammatik können Sie die Grammatikdatei korrigieren und mit dem Parameter  `allow_overwrite` der Methode `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` die korrigierte Datei dem Modell hinzufügen. Weitere Informationen hierzu enthält der Abschnitt [Grammatik zum angepassten Sprachmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar).
+    -   Bei einem ungültigen angepassten Wort können Sie mit der Methode `POST /v1/customizations/{customization_id}/words` oder `PUT /v1/customizations/{customization_id}/words/{word_name}` das Wort direkt in der Wörterressource des Modells ändern. Weitere Informationen finden Sie im Abschnitt [Wörter in einem angepassten Modell ändern](#modifyWord).
 
-    For more information about validating the words in a custom language model, see [Validating a words resource](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
--   Set the `strict` parameter of the `POST /v1/customizations/{customization_id}/train` method to `false` to exclude invalid resources from the training. The model must contain at least one valid resource (corpus, grammar, or word) for training to succeed. The `strict` parameter is useful for training a custom model that contains a mix of valid and invalid resources.
+    Weitere Informationen zum Validieren der Wörter in einem angepassten Sprachmodell finden Sie im Abschnitt [Wörterressource prüfen](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
+-   Setzen Sie den Parameter `strict` der Methode `POST /v1/customizations/{customization_id}/train` auf `false`, um ungültige Ressourcen aus dem Training auszuschließen. Das Modell muss mindestens eine gültige Ressource (Korpus, Grammatik oder Wort) enthalten, damit das Training erfolgreich ausgeführt werden kann. Der Parameter `strict` ist für das Training eines angepassten Modells hilfreich, das eine Mischung aus gültigen und ungültigen Ressourcen enthält.
 
-## Example scripts
+## Beispielscripts
 {: #exampleScripts}
 
-You can use the following scripts to experiment with the steps for creating a custom language model:
+Sie können die folgenden Scripts verwenden, um mit den Schritten zum Erstellen eines angepassten Modells zu experimentieren:
 
--   A Python script named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.py" download="testSTTcustom.py">testSTTcustom.py <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>. For more information, see [Example Python script](#pythonScript).
--   A Bash shell script named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.sh" download="testSTTcustom.sh">testSTTcustom.sh <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>. For more information, see [Example shell script](#shellScript).
+-   Ein Python-Script mit dem Namen <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.py" download="testSTTcustom.py">testSTTcustom.py <img src="../../icons/launch-glyph.svg" alt="Symbol für externen Link" title="Symbol für externen Link"></a>. Weitere Informationen finden Sie im Abschnitt [Beispiel für Python-Script](#pythonScript).
+-   Ein Bash-Shell-Script mit dem Namen <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.sh" download="testSTTcustom.sh">testSTTcustom.sh <img src="../../icons/launch-glyph.svg" alt="Symbol für externen Link" title="Symbol für externen Link"></a>. Weitere Informationen finden Sie im Abschnitt [Beispiel für Shell-Script](#shellScript).
 
-The two scripts provide identical functionality. Each script creates a custom model, adds words from a corpus text file, and adds both single and multiple words to the model directly. The script queries the model to list words added from a corpus and directly by the user. It also trains the model and demonstrates the polling that is recommended for monitoring the results of asynchronous operations.
+Die beiden Scripts stellen identische Funktionalität bereit. Jedes Script erstellt ein angepasstes Modell, fügt Wörter aus einer Korpustextdatei hinzu und fügt sowohl Einzelwörter als auch mehrere Wörter direkt zum Modell hinzu. Das Script führt eine Abfrage in dem Modell aus und listet die aus einem Korpus hinzugefügten Wörter sowie die vom Benutzer direkt hinzugefügten Wörter auf. Außerdem wird das Modell trainiert und das empfohlene Polling zum Überwachen der Ergebnisse asynchroner Operationen veranschaulicht.
 
-You can use either of two provided corpus text files with the scripts, or you can test with your own corpus files:
+Sie können jede der beiden bereitgestellten Korpustextdateien mit den Scripts verwenden (oder Sie können eigene Korpusdateien zum Testen verwenden):
 
--   <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/corpus.txt" download="corpus.txt">corpus.txt <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a> is an abbreviated 6 KB corpus that adds six healthcare-related terms to a model. This file produces a small amount of output when used with the scripts. The scripts use this file by default.
--   <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/healthcare.txt" download="healthcare.txt">healthcare.txt <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a> is a richer 164 KB corpus that adds many healthcare-related terms to a model. This file produces much more output when used with the scripts.
+-   <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/corpus.txt" download="corpus.txt">corpus.txt <img src="../../icons/launch-glyph.svg" alt="Symbol für externen Link" title="Symbol für externen Link"></a> enthält ein abgekürztes Korpus (6 KB), das sechs Begriffe aus dem Gesundheitswesen zu einem Modell hinzufügt. Diese Datei erzeugt bei Verwendung mit Scripts eine kleine Menge Ausgabedaten. Die Datei wird von den Scripts standardmäßig verwendet.
+-   <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/healthcare.txt" download="healthcare.txt">healthcare.txt <img src="../../icons/launch-glyph.svg" alt="Symbol für externen Link" title="Symbol für externen Link"></a> ist ein etwas größeres Korpus (164 KB), das viele Begriffe aus dem Gesundheitswesen zu einem Modell hinzufügt. Diese Datei erzeugt bei Verwendung mit den Scripts wesentlich umfangreichere Ausgabedaten.
 
-By default, the new custom model that you create with either script is available for use with recognition requests. The scripts include an optional step for deleting the new custom model, which can be helpful when you are experimenting with the process. Follow the comments in the scripts to enable the deletion step.
+Das neue angepasste Modell, das Sie mit einem dieser Scripts erstellt haben, ist standardmäßig zur Verwendung in Erkennungsanforderungen verfügbar. Die Scripts enthalten einen optionalen Schritt zum Löschen des neuen angepassten Modells. Dieser Schritt kann beim Experimentieren mit dem Prozess nützlich sein. Richten Sie sich nach den Kommentaren in den Scripts, um den Löschvorang zu aktivieren.
 
-### Example Python script
+### Beispiel für Python-Script
 {: #pythonScript}
 
-Follow these steps to use the Python script:
+Gehen Sie wie folgt vor, um das Python-Script zu verwenden:
 
-1.  Download the Python script named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.py" download="testSTTcustom.py">testSTTcustom.py <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
-1.  Download the example corpus text files to use with the script. You are free to test with either of the corpus text files or with a file of your own choosing. By default, all corpus text files must reside in the same directory as the script.
-1.  The script uses the Python `requests` library for HTTP requests to the service. Use `pip` or `easy_install` to install the library for use by the script, for example:
+1.  Laden Sie das Python-Script mit dem Namen <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.py" download="testSTTcustom.py">testSTTcustom.py <img src="../../icons/launch-glyph.svg" alt="Symbol für externen Link" title="Symbol für externen Link"></a> herunter.
+1.  Laden Sie die Beispieldateien mit Korpustext herunter, die mit dem Script verwendet werden sollen. Zum Testen können Sie wahlweise eine der bereitgestellten Korpustextdateien oder eine eigene Datei verwenden. Alle Korpustextdateien müssen standardmäßig im selben Verzeichnis enthalten sein wie das Script.
+1.  Das Script verwendet die Python-Bibliothek `requests` für HTTP-Anforderungen an den Service. Verwenden Sie `pip` oder `easy_install`, um die Bibliothek zur Verwendung mit dem Script zu installieren. Beispiel:
 
     ```bash
     pip install requests
     ```
     {: pre}
 
-    For more information about the library, see [pypi.python.org/pypi/requests](https://pypi.python.org/pypi/requests){: external}.
-1.  Edit the script to replace the `password` string `iam_apikey` with the API key from your {{site.data.keyword.speechtotextshort}} credentials:
+    Weitere Informationen zur Bibliothek finden Sie unter [pypi.python.org/pypi/requests](https://pypi.python.org/pypi/requests){: external}.
+1.  Bearbeiten Sie das Script und ersetzen Sie die für `password` angegebene Zeichenfolge `iam_apikey` durch den API-Schlüssel aus Ihren {{site.data.keyword.speechtotextshort}}-Berechtigungsnachweisen.
 
     ```
     password = "iam_apikey"
     ```
     {: codeblock}
 
-1.  Run the script by entering the following command:
+1.  Führen Sie das Script aus, indem Sie den folgenden Befehl eingeben:
 
     ```bash
     python testSTTcustom.py
     ```
     {: pre}
 
-The script uses the following default URL for the Dallas location: `https://stream.watsonplatform.net`. If you created your service instance in a different location, modify the `uri` variables to use your location. For example, use `https://gateway-wdc.watsonplatform.net` if your service instance resides in the Washington, DC, location.
+Das Script verwendet die folgende Standard-URL für den Standort Dallas: `https://stream.watsonplatform.net`. Wenn Ihre Serviceinstanz an einem anderen Standort erstellt wurde, ändern Sie die Variablen für `uri` so, dass Ihr Standort verwendet wird. Beispiel: Verwenden Sie `https://gateway-wdc.watsonplatform.net`, wenn sich Ihre Serviceinstanz am Standort Washington DC befindet.
 {: note}
 
-### Example shell script
+### Beispiel für Shell-Script
 {: #shellScript}
 
-Follow these steps to use the Bash shell script:
+Gehen Sie wie folgt vor, um das Bash-Shell-Script zu verwenden:
 
-1.  Download the shell script named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.sh" download="testSTTcustom.sh">testSTTcustom.sh <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
-1.  Download the example corpus text files to use with the script. You are free to test with either of the corpus text files or with a file of your own choosing. By default, all corpus text files must reside in the same directory as the script.
-1.  The script uses the `curl` command for HTTP requests to the service. If you have not already downloaded `curl`, you can install the version for your operating system from [curl.haxx.se](http://curl.haxx.se){: external}. Install the version that supports the Secure Sockets Layer (SSL) protocol, and make sure to include the installed binary file on your `PATH` environment variable.
-1.  Edit the script to replace the `PASSWORD` string `iam_apikey` with the API key from your {{site.data.keyword.speechtotextshort}} credentials:
+1.  Laden Sie das Shell-Script mit dem Namen <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.sh" download="testSTTcustom.sh">testSTTcustom.sh <img src="../../icons/launch-glyph.svg" alt="Symbol für externen Link" title="Symbol für externen Link"></a> herunter.
+1.  Laden Sie die Beispieldateien mit Korpustext herunter, die mit dem Script verwendet werden sollen. Zum Testen können Sie wahlweise eine der bereitgestellten Korpustextdateien oder eine eigene Datei verwenden. Alle Korpustextdateien müssen standardmäßig im selben Verzeichnis enthalten sein wie das Script.
+1.  Das Script verwendet den Befehl `curl` für HTTP-Anforderungen an den Service. Falls Sie `curl` noch nicht heruntergeladen haben, können Sie die Version für Ihr Betriebssystem von [curl.haxx.se](http://curl.haxx.se){: external} herunterladen. Installieren Sie die Version, die das Protokoll Secure Sockets Layer (SSL) unterstützt, und stellen Sie sicher, dass die installierte Binärdatei in Ihre Umgebungsvariable `PATH` eingefügt wird.
+1.  Bearbeiten Sie das Script und ersetzen Sie die für `PASSWORD` angegebene Zeichenfolge `iam_apikey` durch den API-Schlüssel aus Ihren {{site.data.keyword.speechtotextshort}}-Berechtigungsnachweisen:
 
     ```
     PASSWORD="iam_apikey"
     ```
     {: codeblock}
 
-1.  Edit the script to replace the `URL` string with the URL for the location in which you created your service instance. The script uses the following default URL for the Dallas location:
+1.  Bearbeiten Sie das Script, um die Zeichenfolge `URL` durch die URL für den Standort zu ersetzen, an dem Ihre Serviceinstanz erstellt wurde. Das Script verwendet die folgende Standard-URL für den Standort Dallas:
 
     ```
     URL="https://stream.watsonplatform.net/speech-to-text/api/v1"
     ```
     {: codeblock}
 
-1.  Make sure that the script has executable permissions, and then run the script by entering the following command:
+1.  Stellen Sie sicher, dass das Script über Ausführungsberechtigungen verfügt und führen Sie das Script aus, indem Sie den folgenden Befehl eingeben:
 
     ```bash
     ./testSTTcustom.sh

@@ -11,18 +11,18 @@ Speech to Text
 
     {: .topicgroup}
     Demos
-        [Quick demo](https://speech-to-text-demo.ng.bluemix.net/)
+        [Kurzdemo](https://speech-to-text-demo.ng.bluemix.net/)
 
     {: .topicgroup}
-    Additional resources
+    Zusätzliche Ressourcen
         [Blog](https://developer.ibm.com/watson/blog/)
-        [Webinars](https://www.ibm.com/watson/webinars/)
-        [Watson videos](https://www.youtube.com/user/IBMWatsonSolutions/)
+        [Webinare](https://www.ibm.com/watson/webinars/)
+        [Watson-Videos](https://www.youtube.com/user/IBMWatsonSolutions/)
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
     {: .topicgroup}
-    Speech recognition
+    Spracherkennung
         basic-request.md
         basic-response.md
         audio-formats.md
@@ -38,7 +38,7 @@ Speech to Text
     custom.md
 
     {: topicgroup}
-    Language model customization
+    Sprachmodellanpassung
         language-create.md
         language-use.md
         language-resource.md
@@ -47,7 +47,7 @@ Speech to Text
         language-words.md
 
     {: topicgroup}
-    Acoustic model customization
+    Akustikmodellanpassung
         acoustic-create.md
         acoustic-use.md
         acoustic-both.md
@@ -56,7 +56,7 @@ Speech to Text
         acoustic-audio.md
 
     {: topicgroup}
-    Grammars
+    Grammatiken
         grammar.md
         grammar-understand.md
         grammar-add.md
@@ -69,16 +69,16 @@ Speech to Text
     /watson/watson-migrate
 
     {: topicgroup}
-    Service background
+    Hintergrund des Service
         science.md
         references.md
     {: .navgroup-end}
 
     {: .navgroup id="reference"}
-    [API reference](https://cloud.ibm.com/apidocs/speech-to-text)
+    [API-Referenz](https://cloud.ibm.com/apidocs/speech-to-text)
     information-security.md
     /watson/watson-using-sdks
-    [Watson GitHub repos](https://github.com/watson-developer-cloud/)
+    [Watson-GitHub-Repositorys](https://github.com/watson-developer-cloud/)
     {: .navgroup-end}
 
     {: .navgroup id="help"}
@@ -86,8 +86,8 @@ Speech to Text
     faq-pricing.md
 
     {: .topicgroup}
-    Developer community
+    Entwicklercommunity
         [StackOverflow](http://stackoverflow.com/questions/tagged/ibm-watson-cognitive+speech-to-text)
-        [IBM Developer Answers](https://developer.ibm.com/answers/topics/speech-to-text/)
-        [WDC Slack channel](http://wdc-slack-inviter.mybluemix.net/)
+        [IBM Developer - Antworten](https://developer.ibm.com/answers/topics/speech-to-text/)
+        [Slack-Kanal für WDC](http://wdc-slack-inviter.mybluemix.net/)
     {: .navgroup-end}

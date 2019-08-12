@@ -22,52 +22,52 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Managing custom acoustic models
+# Angepasste Akustikmodelle verwalten
 {: #manageAcousticModels}
 
-The customization interface includes the `POST /v1/acoustic_customizations` method for creating a custom acoustic model. The interface also includes the `POST /v1/acoustic_customizations/train` method for training a custom model on its latest audio resources. For more information, see
+Die Anpassungsschnittstelle enthält die Methode `POST /v1/acoustic_customizations` für das Erstellen eines angepassten Akustikmodells. Sie bietet außerdem die Methode `POST /v1/acoustic_customizations/train`, um ein angepasstes Modell mit den neuesten Audioressourcen zu trainieren. Weitere Informationen finden Sie in den folgenden Abschnitten:
 {: shortdesc}
 
--   [Create a custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic#createModel-acoustic)
--   [Train the custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic#trainModel-acoustic)
+-   [Angepasstes Akustikmodell erstellen](/docs/services/speech-to-text?topic=speech-to-text-acoustic#createModel-acoustic)
+-   [Angepasstes Akustikmodell trainieren](/docs/services/speech-to-text?topic=speech-to-text-acoustic#trainModel-acoustic)
 
-In addition, the interface includes methods for listing information about custom acoustic models, resetting a custom model to its initial state, upgrading a custom model, and deleting a custom model. You cannot train, reset, upgrade, or delete a custom model while the service is handling another operation on that model, including adding audio resources to the model.
+Zusätzlich bietet die Schnittstelle Methoden, mit denen Sie Informationen zu angepassten Akustikmodellen auflisten, ein angepasstes Modell auf seinen Anfangsstatus zurücksetzen, ein Upgrade für ein angepasstes Modell durchführen und ein angepasstes Modell löschen können. Es ist nicht möglich, ein angepasstes Modell zu trainieren, zurückzusetzen, zu aktualisieren oder zu löschen, während der Service eine andere Operation für dieses Modell ausführt, einschließlich des Hinzufügens von Audioressourcen zum Modell.
 
-## Listing custom acoustic models
+## Angepasste Akustikmodelle auflisten
 {: #listModels-acoustic}
 
-The customization interface provides two methods for listing information about the custom acoustic models that are owned by the specified credentials:
+Die Anpassungsschnittstelle bietet zwei Methoden für das Auflisten von Informationen zu den angepassten Akustikmodellen, deren Eigner die angegebenen Berechtigungsnachweise sind:
 
--   The `GET /v1/acoustic_customizations` method lists information about all custom acoustic models or about all custom acoustic models for a specified language.
--   The `GET /v1/acoustic_customizations/{customization_id}` method lists information about a specified custom acoustic model. Use this method to poll the service about the status of a training request.
+-   Die Methode `GET /v1/acoustic_customizations` listet Informationen zu allen angepassten Akustikmodellen oder zu allen angepassten Akustikmodellen für eine bestimmte Sprache auf.
+-   Die Methode `GET /v1/acoustic_customizations/{customization_id}` listet Informationen zu einem angegebenen angepassten Akustikmodell auf. Mit dieser Methode können Sie den Status einer Trainingsanforderung vom Service abfragen.
 
-Both methods return the following information about a custom acoustic model:
+Beide Methoden geben die folgenden Informationen zu einem angepassten Akustikmodell zurück:
 
--   `customization_id` identifies the custom model's Globally Unique Identifier (GUID). The GUID is used to identify the model in methods of the interface.
--   `created` is the date and time in Coordinated Universal Time (UTC) at which the custom model was created.
--   `updated` is the date and time in Coordinated Universal Time (UTC) at which the custom model was last modified.
--   `language` is the language of the custom model.
--   `owner` identifies the credentials of the service instance that owns the custom model.
--   `name` is the name of the custom model.
--   `description` shows the description of the custom model, if one was provided at its creation.
--   `base_model_name` indicates the name of the language model for which the custom model was created.
--   `versions` provides a list of the available versions of the custom model. Each element of the array indicates a version of the base model with which the custom model can be used. Multiple versions exist only if the custom model is upgraded. Otherwise, only a single version is shown. For more information, see [Listing version information for a custom model](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade#upgradeList).
+-   `customization_id`: Gibt die GUID (Globally Unique Identifier, global eindeutige ID) des angepassten Modells zurück. Mit der GUID wird das Modell in den Methoden der Schnittstelle angegeben.
+-   `created`: Gibt das Datum und die Uhrzeit für die Erstellung des angepassten Modells in koordinierter Weltzeit (UTC) an.
+-   `updated`: Gibt das Datum und die Uhrzeit der letzten Änderung des angepassten Modells in koordinierter Weltzeit (UTC) an.
+-   `language`: Gibt die Sprache des angepassten Modells an.
+-   `owner`: Gibt die Berechtigungsnachweise der Serviceinstanz an, die Eigner des angepassten Modells ist.
+-   `name`: Gibt den Namen des angepassten Modells an.
+-   `description`: Zeigt die Beschreibung des angepassten Modells, falls bei seiner Erstellung eine Beschreibung angegeben wurde.
+-   `base_model_name`: Gibt den Namen des Sprachmodells an, für das das angepasste Modell erstellt wurde.
+-   `versions`: Stellt eine Liste der verfügbaren Versionen für das angepasste Modell bereit. Jedes Element des Arrays gibt eine Version des Basismodells an, mit der das angepasste Modell verwendet werden kann. Mehrere Versionen sind nur dann vorhanden, wenn für das angepasste Modell ein Upgrade durchgeführt wurde. Andernfalls wird nur eine einzige Version angezeigt. Weitere Informationen finden Sie im Abschnitt [Versionsinformationen für ein angepasstes Modell auflisten](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade#upgradeList).
 
-The methods also return a `status` field that indicates the state of the custom model:
+Die Methode gibt außerdem ein Feld `status` zurück, in dem der Status des angepassten Modells angegeben ist:
 
--   `pending` indicates that the model was created. It is waiting either for valid training data (audio resources) to be added or for the service to finish analyzing data that was added.
--   `ready` indicates that the model contains valid audio data and is ready to be trained. If the model contains a mix of valid and invalid audio resources, training of the model fails unless you set the `strict` query parameter to `false`. For more information, see [Training failures](/docs/services/speech-to-text?topic=speech-to-text-acoustic#failedTraining-acoustic).
--   `training` indicates that the model is being trained on audio data.
--   `available` indicates that the model is trained and ready to use with recognition requests.
--   `upgrading` indicates that the model is being upgraded.
--   `failed` indicates that training of the model failed. Examine the model's audio resources to determine what prevented the model from being trained. Possible errors include not enough audio, too much audio, or an invalid audio resource.
+-   `pending`: Das Modell wurde erstellt. Das Modell wartet darauf, dass entweder gültige Trainingsdaten (Audioressourcen) hinzugefügt werden, oder dass die Analyse der hinzugefügten Daten abgeschlossen wird.
+-   `ready`: Das Modell enthält gültige Audiodaten und ist für das Training bereit. Wenn das Modell eine Mischung aus gültigen und ungültigen Audioressourcen enthält, schlägt das Training für das Modells fehl, es sei denn, Sie setzen den Abfrageparameter `strict` auf `false`. Weitere Informationen finden Sie im Abschnitt [Fehler bei Training](/docs/services/speech-to-text?topic=speech-to-text-acoustic#failedTraining-acoustic).
+-   `training`: Das Modell wird gegenwärtig mit Audiodaten trainiert.
+-   `available`: Das Modell wurde trainiert und kann bei Erkennungsanforderungen verwendet werden.
+-   `upgrading`: Für das Modell wird gegenwärtig ein Upgrade durchgeführt.
+-   `failed`: Das Training des Modells ist fehlgeschlagen. Stellen Sie durch eine Untersuchung der Audioressourcen im Modell fest, wodurch das Training des Modells verhindert wurde. Mögliche Fehler sind nicht ausreichende Audiodaten, zu viele Audiodaten oder eine ungültige Audioressource.
 
-Additionally, the output includes a `progress` field that indicates the current progress of the custom model's training. If you used the `POST /v1/acoustic_customizations/{customization_id}/train` method to start training the model, this field indicates the current progress of that request as a percentage complete. At this time, the value of the field is `100` if the status is `available`; otherwise, it is `0`.
+Die Ausgabe enthält außerdem ein Feld `progress`, in dem der aktuelle Verarbeitungsfortschritt beim Training des angepassten Modells angegeben ist. Falls Sie das Training des Modells mit der Methode `POST /v1/acoustic_customizations/{customization_id}/train` gestartet haben, ist der aktuelle Verarbeitungsfortschritt dieser Anforderung in diesem Feld als Prozentsatz der Fertigstellung angegeben. Der Wert des Feldes ist `100`, falls der Status `available` (= verfügbar) lautet, andernfalls ist er `0`.
 
-### Example requests and responses
+### Beispielanforderungen und -antworten
 {: #listExample-acoustic}
 
-The following example includes the `language` query parameter to list all US English custom acoustic models that are owned by the specified credentials:
+Das folgende Beispiel enthält den Abfrageparameter `language`, damit alle angepassten Akustikmodelle für amerikanisches Englisch aufgelistet werden, deren Eigner die Berechtigungsnachweise sind:
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -75,7 +75,7 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: pre}
 
-The credentials own two such models. The first model is awaiting data or is being processed by the service. The second model is fully trained and ready for use.
+Die Berechtigungsnachweise sind Eigner von zwei solchen Modellen. Das erste Modell wartet auf Daten oder wird vom Service verarbeitet. Das zweite Modell ist vollständig trainiert und bereit für die Verwendung.
 
 ```javascript
 {
@@ -116,7 +116,7 @@ The credentials own two such models. The first model is awaiting data or is bein
 ```
 {: codeblock}
 
-The following example returns information about the custom model that has the specified customization ID:
+Das folgende Beispiel gibt Informationen zu dem angepassten Modell mit der angegebenen Anpassungs-ID zurück:
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -144,15 +144,15 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-## Resetting a custom acoustic model
+## Angepasstes Akustikmodell zurücksetzen
 {: #resetModel-acoustic}
 
-Use the `POST /v1/acoustic_customizations/{customization_id}/reset` method to reset a custom acoustic model. Resetting a custom model removes all of the audio resources from the model, initializing the model to its state at creation. The method does not delete the model itself or metadata such as its name and language. However, when you reset a model, its audio resources are removed and must be re-created.
+Zum Zurücksetzen eines angepassten Akustikmodells verwenden Sie die Methode `POST /v1/acoustic_customizations/{customization_id}/reset`. Beim Zurücksetzen eines angepassten Modells werden alle Audioressourcen aus dem Modell entfernt und das Modell hierdurch mit dem Zustand bei seiner Erstellung initialisiert. Das Modell selbst oder Metadaten wie Name und Sprache werden von der Methode nicht gelöscht. Wenn Sie ein Modell zurücksetzen, werden allerdings seine Audioressourcen entfernt und müssen erneut erstellt werden.
 
-### Example request
+### Beispielanforderung
 {: #resetExample-acoustic}
 
-The following example resets the custom acoustic model with the specified customization ID:
+Im folgenden Beispiel wird das angepasste Akustikmodell mit der angegebenen Anpassungs-ID zurückgesetzt:
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -160,15 +160,15 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-## Deleting a custom acoustic model
+## Angepasstes Akustikmodell löschen
 {: #deleteModel-acoustic}
 
-Use the `DELETE /v1/acoustic_customizations/{customization_id}` method to delete a custom acoustic model that you no longer need. The method deletes all audio that is associated with the custom model and the model itself. Use this method with caution: A custom model and its data cannot be reclaimed after you delete the model.
+Mit der Methode `DELETE /v1/acoustic_customizations/{customization_id}` können Sie ein angepasstes Akustikmodell löschen, das Sie nicht mehr benötigen. Die Methode löscht alle zum angepassten Modell gehörenden Audiodaten und das Modell selbst. Verwenden Sie diese Methode mit Vorsicht: Ein angepasstes Modell und die zugehörigen Daten können nicht wiederhergestellt werden, nachdem Sie das Modell gelöscht haben.
 
-### Example request
+### Beispielanforderung
 {: #deleteExample-acoustic}
 
-The following example deletes the custom acoustic model with the specified customization ID:
+Im folgenden Beispiel wird das angepasste Akustikmodell mit der angegebenen Anpassungs-ID gelöscht:
 
 ```bash
 curl -X DELETE -u "apikey:{apikey}"

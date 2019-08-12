@@ -22,48 +22,48 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Adding a grammar to a custom language model
+# Grammatik zu einem angepassten Sprachmodell hinzufügen
 {: #grammarAdd}
 
-Before you can use a grammar for speech recognition, you must first use the customization interface to add the grammar to a custom language model. The steps to add a grammar to a custom language model parallel those used to add corpora or custom words:
+Bevor Sie eine Grammatik für die Spracherkennung verwenden können, müssen Sie zunächst die Grammatik mithilfe der Anpassungsschnittstelle zu einem angepassten Sprachmodell hinzufügen. Eine Grammatik wird zu einem angepassten Sprachmodell mit denselben Schritten wie Korpora oder angepasste Wörter hinzugefügt.
 {: shortdesc}
 
-1.  [Create a custom language model](#createModel-grammar). You can create a new custom model or use an existing model.
-1.  [Add a grammar to the custom language model](#addGrammar). The service validates the grammar to ensure its correctness.
-1.  [Validate the words from the grammar](#validateGrammar). You verify the correctness of the sounds-like pronunciations for any out-of-vocabulary (OOV) words that are recognized by the grammar.
-1.  [Train the custom language model](#trainGrammar). The service prepares the custom model and grammar for use in speech recognition.
-1.  You can now use the custom model and grammar in speech recognition requests. For more information, see [Using a grammar for speech recognition](/docs/services/speech-to-text?topic=speech-to-text-grammarUse).
+1.  [Erstellen Sie ein angepasstes Sprachmodell](#createModel-grammar). Sie können ein neues angepasstes Modell erstellen oder ein vorhandenes Modell verwenden.
+1.  [Fügen Sie eine Grammatik zum angepassten Sprachmodell hinzu](#addGrammar). Der Service validiert die Grammatik, um ihre Richtigkeit sicherzustellen.
+1.  [Validieren Sie die Wörter aus der Grammatik](#validateGrammar). Sie prüfen die Fehlerfreiheit von gleich klingenden Aussprachevarianten für alle vokabularexternen Wörter, die durch die Grammatik erkannt werden.
+1.  [Trainieren Sie das angepasste Sprachmodell](#trainGrammar). Der Service bereitet das angepasste Modell und die Grammatik für die Verwendung bei der Spracherkennung vor.
+1.  Jetzt können Sie das angepasste Modell und die Grammatik bei Spracherkennungsanforderungen verwenden. Weitere Informationen enthält der Abschnitt [Grammatik bei der Spracherkennung verwenden](/docs/services/speech-to-text?topic=speech-to-text-grammarUse).
 
-These steps are iterative. You can add grammars, as well as corpora and custom words, to a custom language model as often as needed. You must train the custom model on any new data resources (grammars, corpora, or custom words) that you add. When you use it for speech recognition, a custom model reflects the data on which it was last trained.
+Diese Schritte sind iterativ. Sie können Grammatiken sowie Korpora und angepasste (also benutzerdefinierte) Wörter so häufig wie nötig zu einem angepassten Sprachmodell hinzufügen. Sie müssen das angepasste Modell mit allen neuen Datenressourcen  trainieren, die Sie hinzufügen (Grammatiken, Korpora oder angepasste Wörter). Wenn Sie ein angepasstes Modell für die Spracherkennung verwenden, bildet das Modell die Daten ab, mit denen es zuletzt trainiert wurde.
 
-The grammars feature is beta functionality. You can use grammars with any language that supports language model customization. Language model customization is available for most languages. For more information, see [Language support for customization](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
+Die Funktion für die Grammatiken liegt als Betaversion vor. Sie können Grammatiken bei jeder Sprache verwenden, die die Anpassung des Sprachmodells unterstützt. Die Sprachmodellanpassung ist für die meisten Sprachen verfügbar. Weitere Informationen finden Sie unter [Sprachunterstützung bei der Anpassung](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
 {: note}
 
-## Create a custom language model
+## Angepasstes Sprachmodell erstellen
 {: #createModel-grammar}
 
-To use a grammar with speech recognition, you must add it to a custom language model. You can use an existing custom language model, or you can create a new custom model by using the `POST /v1/customizations` method. For information about creating a new custom model, see [Create a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language).
+Damit Sie eine Grammatik für die Spracherkennung verwenden können, müssen Sie sie zu einem angepassten Sprachmodell hinzufügen. Sie können ein vorhandenes angepasstes Sprachmodell verwenden oder mit der Methode `POST /v1/customizations` ein neues angepasstes Modell erstellen. Informationen zum Erstellen eines neuen angepassten Modells enthält der Abschnitt [Angepasstes Sprachmodell erstellen](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language).
 
-A custom language model can contain corpora and custom words as well as grammars. During speech recognition, you can use the custom model with or without its grammars. However, when you use a grammar, the service recognizes only words from the specified grammar.
+Ein angepasstes Sprachmodell kann Korpora und angepasste Wörter sowie Grammatiken beinhalten. Bei der Spracherkennung können Sie das angepasste Modell mit oder ohne Grammatiken verwenden. Wenn Sie eine Grammatik verwenden, erkennt der Service jedoch nur Wörter aus der angegebenen Grammatik.
 
-## Add a grammar to the custom language model
+## Grammatik zu einem angepassten Sprachmodell hinzufügen
 {: #addGrammar}
 
-You use the `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` method to add a grammar file to a custom model.
+Mit der Methode `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` können Sie eine Grammatikdatei zu einem angepassten Modell hinzufügen.
 
--   Specify the customization ID of the custom language model with the `customization_id` path parameter.
--   Specify a name for the grammar with the `grammar_name` path parameter. Use a localized name that matches the language of the custom model and reflects the contents of the grammar.
-    -   Include a maximum of 128 characters in the name.
-    -   Do not use characters that need to be URL-encoded. For example, do not use spaces, slashes, backslashes, colons, ampersands, double quotes, plus signs, equals signs, questions marks, and so on in the name. (The service does not prevent the use of these characters. But because they must be URL-encoded wherever used, their use is strongly discouraged.)
-    -   Do not use the name of a grammar or corpus that has already been added to the custom model.
-    -   Do not use the name `user`, which is reserved by the service to denote custom words that are added or modified by the user.
-    -   Do not use the name `base_lm` or `default_lm`. Both names are reserved for future use by the service.
--   Use the `Content-Type` request header to specify the format of the grammar:
-    -   `application/srgs` for an ABNF grammar
-    -   `application/srgs+xml` for an XML grammar
--   Pass the file that contains the grammar as the body of the request.
+-   Geben Sie die Anpassungs-ID des angepassten Sprachmodells mit dem Pfadparameter `customization_id` an.
+-   Geben Sie einen Namen für die Grammatik mit dem Pfadparameter `grammar_name` an. Verwenden Sie einen übersetzten Namen in der Sprache des angepassten Modells, der den Inhalt der Grammatik wiedergibt.
+    -   Geben Sie einen Namen mit einer maximalen Länge von 128 Zeichen an.
+    -   Verwenden Sie keine Zeichen, die URL-codiert sein müssen. Verwenden Sie beispielsweise keine Leerzeichen, Schrägstriche, umgekehrte Schrägstriche, Doppelpunkte, Et-Zeichen, doppelte Anführungszeichen, Pluszeichen, Gleichheitszeichen, Fragezeichen usw. im Namen. (Der Service verhindert die Verwendung dieser Zeichen nicht. Da sie jedoch immer URL-codiert sein müssen, wird von ihrer Verwendung unbedingt abgeraten.)
+    -   Verwenden Sie nicht den Namen einer Grammatik oder eines Korpus, die/der bereits zum angepassten Modell hinzugefügt wurde.
+    -   Verwenden Sie nicht den Namen `user`; dieser Name ist vom Service für die Kennzeichnung von angepassten Wörtern reserviert, die durch den Benutzer hinzugefügt oder geändert wurden.
+    -   Verwenden Sie nicht den Namen `base_lm` oder `default_lm`. Beide Namen sind für die zukünftige Verwendung durch den Service reserviert.
+-   Geben Sie mit dem Anforderungsheader `Content-Type` das Format der Grammatik an:
+    -   `application/srgs` für eine ABNF-Grammatik
+    -   `application/srgs+xml` für eine XML-Grammatik
+-   Übergeben Sie die Datei, die die Grammatik enthält, als Hauptteil der Anforderung.
 
-The following example adds the grammar file named `confirm.abnf` to the custom model with the specified ID. The example names the grammar `confirm-abnf`.
+Im folgenden Beispiel wird die Grammatikdatei namens `confirm.abnf` zum angepassten Modell mit der angegebenen ID hinzugefügt.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -73,18 +73,18 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-The method also accepts an optional `allow_overwrite` query parameter that you can include to overwrite an existing grammar with the same name. Use the parameter if you need to update a grammar after you add it to a model.
+Die Methode akzeptiert außerdem den optionalen Abfrageparameter `allow_overwrite`, mit dem eine vorhandene Grammatik desselben Namens überschrieben werden kann. Verwenden Sie den Parameter, wenn Sie eine Grammatik aktualisieren müssen, nachdem Sie sie zu einem Modell hinzugefügt haben.
 
-The method is asynchronous. It can take a few seconds for the service to analyze the grammar, depending on the size of the grammar and the current load on the service. For information about checking the status of a grammar, see [Monitoring the add grammar request](#monitorGrammar).
+Die Methode wird asynchron ausgeführt. Je nach Größe der Grammatik und aktueller Auslastung des Service kann es einige Minuten dauern, bis der Service die Grammatik analysiert hat. Im Abschnitt [Anforderung zum Hinzufügen einer Grammatik überwachen](#monitorGrammar) erfahren Sie genauer, wie Sie den Status einer Grammatik überprüfen können.
 
-You can add any number of grammars to a custom model by calling the method once for each grammar file. The addition of one grammar must be fully complete before you can add another.
+Sie können beliebig viele Grammatiken zu einem angepassten Modell hinzufügen, indem Sie die Methode für jede Grammatikdatei separat aufrufen. Das Hinzufügen einer Grammatik muss vollständig abgeschlossen sein, bevor Sie eine weitere Grammatik hinzufügen können.
 
-### Monitoring the add grammar request
+### Anforderung zum Hinzufügen einer Grammatik überwachen
 {: #monitorGrammar}
 
-The service returns a 201 response code if the grammar is valid. It then asynchronously processes the contents of the grammar and automatically extracts new words that the grammar can recognize. You cannot submit requests to add more data resources to a custom model, or to train the model, until the service's analysis of the grammar for the current request completes.
+Der Service gibt den Antwortcode 201 zurück, wenn die Grammatik gültig ist. Anschließend verarbeitet er den Inhalt der Grammatik im asynchronen Modus und extrahiert automatisch neue Wörter, die von der Grammatik erkannt werden können. Anforderungen zum Hinzufügen weiterer Datenressourcen zu einem angepassten Modell oder zum Trainieren des Modells können Sie erst übergeben, wenn der Service die Analyse der Grammatik für die aktuelle Anforderung abgeschlossen hat.
 
-To determine the status of the analysis, use the `GET /v1/customizations/{customization_id}/grammars/{grammar_name}` method to poll the status of the grammar. The method accepts the ID of the custom model and the name of the grammar. The following example checks the status of the grammar named `confirm-abnf`.
+Mit der Methode `GET /v1/customizations/{customization_id}/grammars/{grammar_name}` können Sie den Status der Grammatik abfragen und so den Status der Analyse ermitteln. Die Methode akzeptiert die ID des angepassten Modells und den Namen der Grammatik. Im folgenden Beispiel wird der Status der Grammatik mit dem Namen `confirm-abnf` überprüft.
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -92,7 +92,7 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: pre}
 
-The response includes the status of the grammar:
+Die Antwort enthält den Status der Grammatik:
 
 ```javascript
 {
@@ -103,53 +103,53 @@ The response includes the status of the grammar:
 ```
 {: codeblock}
 
-The `status` field has one of the following values:
+Das Feld `status` weist einen der folgenden Werte auf:
 
--   `analyzed` indicates that the service has successfully analyzed the grammar.
--   `being_processed` indicates that the service is still analyzing the grammar.
--   `undetermined` indicates that the service encountered an error while processing the grammar.
+-   `analyzed`: Der Service hat die Grammatik erfolgreich analysiert.
+-   `being_processed`: Der Service ist gegenwärtig noch mit der Analyse der Grammatik beschäftigt.
+-   `undetermined`: Der Service hat bei der Verarbeitung der Grammatik einen Fehler festgestellt.
 
-Use a loop to check the status of the grammar every 10 seconds until it becomes `analyzed`. For more information about checking the status of a grammar, see [Listing grammars for a custom language model](/docs/services/speech-to-text?topic=speech-to-text-manageGrammars#listGrammars).
+Mithilfe einer Schleife können Sie den Status der Grammatik alle 10 Sekunden prüfen, bis er sich in `analyzed` ändert. Im Abschnitt [Grammatiken für ein angepasstes Sprachmodell auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageGrammars#listGrammars) erfahren Sie genauer, wie Sie den Status einer Grammatik überprüfen können.
 
-### Handling add grammar failures
+### Fehler in einer Grammatik behandeln
 {: #handleFailures}
 
-If its analysis of a grammar fails, the service sets the grammar's status to `undetermined` and includes an `error` field that describes the failure with the grammar's status. You can also use the `GET /v1/customizations/{customization_id}` method to check the status of the custom model. If addition of a grammar fails, the output includes an error message like the following:
+Falls die Analyse einer Grammatik fehlschlägt, setzt der Service die Grammatik auf den Status `undetermined` und bezieht in die Antwort ein Feld `error` ein, das den Fehler in Bezug auf den Status der Grammatik beschreibt. Außerdem können Sie den Status des angepassten Modells mit der Methode `GET /v1/customizations/{customization_id}` überprüfen. Wenn das Hinzufügen einer Grammatik fehlschlägt, enthält die Ausgabe eine Fehlernachricht wie die Folgende:
 
 ```javascript
 {
   . . .
-  "error": "{\"code\":500, \"code_description\":\"Internal Server Error\",
-\". . . Cannot compile grammar . . .\"},
+  "Fehler": "{\"Code\":500, \"Codebeschreibung\":\"Interner Serverfehler\",
+\". . . Grammatik kann nicht kompiliert werden . . .\"},
   . . .
 }
 ```
 {: codeblock}
 
-The status of the custom model is not affected by the error, but the grammar cannot be used with the model. You can address the problem by correcting the grammar file and repeating the request to add it to the custom model. Set the `allow_overwrite` parameter to `true` to overwrite the version of the grammar file that failed.
+Der Status des angepassten Modells wird vom Fehler nicht beeinflusst, die Grammatik kann jedoch nicht mit dem Modell verwendet werden. Sie können das Problem beheben, indem Sie die Grammatikdatei korrigieren und die Anforderung, sie zum angepassten Modell hinzuzufügen, wiederholen. Geben Sie für den Parameter `allow_overwrite` den Wert `true` an, damit die fehlgeschlagene Version der Grammatikdatei überschrieben wird.
 
-You can also delete the grammar from the custom model for the time being, and then correct and add the grammar file again in the future. For more information about deleting a grammar, see [Deleting a grammar from a custom language model](/docs/services/speech-to-text?topic=speech-to-text-manageGrammars#deleteGrammar).
+Sie können die Grammatik vorläufig auch aus dem angepassten Modell löschen, die Grammatik anschließend korrigieren und die Grammatikdatei später wieder hinzufügen. Weitere Informationen zum Löschen einer Grammatik enthält der Abschnitt [Grammatik aus einem angepassten Sprachmodell löschen](/docs/services/speech-to-text?topic=speech-to-text-manageGrammars#deleteGrammar).
 
-## Validate the words from the grammar
+## Wörter in der Grammatik validieren
 {: #validateGrammar}
 
-When you add a grammar file to a custom language model, the service parses the grammar to determine whether the grammar recognizes any words that are not already part of the service's base vocabulary. Such words are referred to as out-of-vocabulary (OOV) words. The service adds OOV words to the custom model's words resource. The purpose of the words resource is to define words that are not already present in the service's vocabulary.
+Wenn Sie eine Grammatikdatei zu einem angepassten Sprachmodell hinzufügen, analysiert der Service die Grammatik und ermittelt, ob die Grammatik Wörter erkennt, die noch nicht zum Grundvokabular des Service gehören. Solche Wörter werden als 'vokabularexterne Wörter' bezeichnet. Der Service fügt vokabularexterne Wörter zur Wörterressource des angepassten Modells hinzu. Zweck der Wörterressource ist das Definieren von Wörtern, die noch nicht im Vokabular des Services enthalten sind.
 
-Definitions in the words resource tell the service how to transcribe the OOV words. The information includes a `sounds_like` field that tells the service how the word is pronounced, a `display_as` field that tells the service how to display the word, and a `source` field that indicates how the word was added to the custom model. For more information about the words resource and OOV words, see [The words resource](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#wordsResource).
+Die Definitionen in der Wörterressource weisen den Service an, wie die vokabularexternen Wörter zu transkribieren sind. Die Informationen enthalten ein Feld `sounds_like`, das den Service darüber informiert, wie das Wort ausgesprochen wird, ein Feld `display_as`, das den Service anweist, wie das Wort angezeigt werden soll, und ein Feld `source`, das angibt, wie das Wort zum angepassten Modell hinzugefügt wurde. Weitere Informationen zur Wörterressource und zu vokabularexternen Wörtern finden Sie im Abschnitt [Wörterressource](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#wordsResource).
 
-After you add a grammar to a custom model, it is good practice to examine the OOV words in the model's words resource to verify their sounds-like pronunciations. Not all grammars have OOV words, but verifying the words resource is generally a good idea. To check the words of the custom model after you add a grammar, use the following methods:
+Nachdem Sie eine Grammatik zu einem angepassten Modell hinzugefügt haben, ist es zweckdienlich, die vokabularexternen Wörter in der Wörterressource des Modells zu untersuchen und ihre gleich klingenden Aussprachevarianten zu prüfen. Nicht jede Grammatik enthält vokabularexterne Wörter, aber eine Überprüfung der Wörterressource ist generell sinnvoll. Mit den folgenden Methoden können Sie die Wörter eines angepassten Modells überprüfen, nachdem Sie eine Grammatik hinzugefügt haben:
 
--   Use the `GET /v1/customizations/{customization_id}/words` method to list all of the words from a custom model. Pass the value `grammars` with the method's `word_type` parameter to list only words that were added from grammars.
--   Use the `GET /v1/customizations/{customization_id}/words/{word_name}` method to view an individual word from a model.
+-   Mit der Methode `GET /v1/customizations/{customization_id}/words` werden alle Wörter aus einem angepassten Modell aufgelistet. Übergeben Sie den Wert `grammars` im Parameter `word_type` der Methode, damit nur Wörter aufgelistet werden, die aus Grammatiken hinzugefügt wurden.
+-   Mit der Methode `GET /v1/customizations/{customization_id}/words/{word_name}` wird ein einzelnes Wort aus einem Modell angezeigt.
 
-Verify that the sounds-like pronunciations of the words are accurate and correct. Also look for typographical and other errors in the words themselves. For more information about validating and correcting the words in a custom model, see [Validating a words resource](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
+Vergewissern Sie sich, dass die gleich klingenden Aussprachevarianten der Wörter präzise und richtig sind. Suchen Sie auch in den Wörtern selbst nach Schreib- und anderen Fehlern. Weitere Informationen zum Validieren und Korrigieren der Wörter in einem angepassten Modell finden Sie im Abschnitt [Wörterressource prüfen](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
 
-## Train the custom language model
+## Angepasstes Sprachmodell trainieren
 {: #trainGrammar}
 
-The final step before you can use a grammar with a custom language model is to train the model. You use the same process that you use for training a custom model on new corpora or new custom words. Training the model compiles the grammar for use during speech recognition. The service processes the grammar from its original text-based format to a binary runtime format for speech recognition. You cannot use the grammar until you train the model.
+Bevor Sie eine Grammatik mit einem angepassten Sprachmodell verwenden können, müssen Sie im letzten Schritt das Modell trainieren. Der erforderliche Prozess ist derselbe wie beim Trainieren eines angepassten Modells mit neuen Korpora oder neuen angepassten Wörtern. Durch das Training wird die Grammatik zur Verwendung bei der Spracherkennung kompiliert. Der Service wandelt die Grammatik bei der Verarbeitung aus ihrem ursprünglichen textbasierten Format in ein binäres Laufzeitformat für die Spracherkennung um. Die Verwendung der Grammatik ist erst nach dem Training des Modells möglich.
 
-You use the `POST /v1/customizations/{customization_id}/train` method to train a custom model. You pass the method the customization ID of the model that you want to train, as in the following example.
+Zum Trainieren eines angepassten Modells verwenden Sie die Methode `POST /v1/customizations/{customization_id}/train`. An die Methode übergeben Sie wie im folgenden Beispiel die Anpassungs-ID des Modells, das Sie trainieren wollen.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -157,14 +157,14 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-The training method is asynchronous. Training typically takes only seconds to complete. But it can take longer depending on the size and complexity of the grammar and the current load on the service. For information about checking the status of a training operation, see [Monitoring the training request](#monitorTraining-grammar).
+Die Methode für das Training wird asynchron ausgeführt. Normalerweise dauert das Training einige Sekunden. Es kann jedoch je nach Größe und Komplexität der Grammatik sowie der aktuellen Auslastung des Service auch mehr Zeit in Anspruch nehmen. Im Abschnitt [Anforderung zum Trainieren eines Modells überwachen](#monitorTraining-grammar) erfahren Sie, wie Sie den Status einer Trainingsoperation überprüfen können.
 
-### Monitoring the training request
+### Anforderung zum Training überwachen
 {: #monitorTraining-grammar}
 
-The service returns a 200 response code if the training process is successfully initiated. The service cannot accept subsequent training requests, or requests to add new grammars, corpora, or words to the custom model, until the current training request completes.
+Der Service gibt den Antwortcode 200 zurück, wenn der Trainingsprozess erfolgreich gestartet wurde. Der Service kann nachfolgende Trainingsanforderungen oder Anforderungen zum Hinzufügen weiterer neuer Grammatiken, Korpora oder Wörter zum angepassten Modell erst akzeptieren, nachdem die aktuelle Trainingsanforderung abgeschlossen wurde.
 
-To determine the status of a training request, use the `GET /v1/customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the model and returns information like the following about the model:
+Mit der Methode `GET /v1/customizations/{customization_id}` können Sie den Status des Modells abrufen und so den Status einer Trainingsanforderung ermitteln. Die Methode akzeptiert die Anpassungs-ID des Modells und gibt die folgenden Informationen zum Modell zurück:
 
 ```
 {
@@ -182,4 +182,4 @@ To determine the status of a training request, use the `GET /v1/customizations/{
 ```
 {: codeblock}
 
-The `status` field has the value `training` while the model is being trained. Use a loop to check the status of the model every 10 seconds until it becomes `available`. For more information about monitoring a training request and other possible status values, see [Monitoring the train model request](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language).
+Das Feld `status` hat den Wert `training`, während das Modell trainiert wird. Mithilfe einer Schleife können Sie den Status des Modells alle 10 Sekunden prüfen, bis er sich in `available` ändert. Im Abschnitt [Anforderung zum Trainieren eines Modells überwachen](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language) erfahren Sie genauer, wie Sie eine Trainingsoperation und andere mögliche Statuswerte überwachen können.

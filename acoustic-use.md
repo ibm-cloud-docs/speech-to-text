@@ -22,20 +22,20 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Using a custom acoustic model
+# Angepasstes Akustikmodell verwenden
 {: #acousticUse}
 
-Once you create and train your custom acoustic model, you can use it in speech recognition requests. You use the `acoustic_customization_id` query parameter to specify the custom acoustic model for a request, as shown in the following examples. You must issue the request with credentials for the instance of the service that owns the model.
+Nachdem Sie Ihr angepasstes Akustikmodell erstellt und trainiert haben, können Sie es bei Spracherkennungsanforderungen verwenden. Zum Angeben des angepassten Akustikmodells für eine Anforderung verwenden Sie den Abfrageparameter `acoustic_customization_id` wie in den Beispielen dieses Abschnitts dargestellt. Sie müssen die Anforderung mit den Berechtigungsnachweisen für die Instanz des Service ausgeben, die Eigner des Modells ist.
 {: shortdesc}
 
-You can also specify a custom language model to be used with the request, which can increase transcription accuracy. For more information, see [Using custom language and custom acoustic models during speech recognition](/docs/services/speech-to-text?topic=speech-to-text-useBoth#useBothRecognize).
+Sie können außerdem ein angepasstes Sprachmodell angeben, das bei der Anforderung verwendet werden soll; dies kann die Genauigkeit der Transkription steigern. Zusätzliche Angaben enthält der Abschnitt [Angepasste Sprachmodelle und angepasste Akustikmodelle während der Spracherkennung verwenden](/docs/services/speech-to-text?topic=speech-to-text-useBoth#useBothRecognize).
 
-You can create multiple custom acoustic models for the same or different domains or environments. However, you can specify only one custom acoustic model at a time with the `acoustic_customization_id` parameter.
+Sie können mehrere angepasste Akustikmodelle für dieselben oder unterschiedlichen Fachgebiete bzw. Umgebungen erstellen. Mit dem Parameter `acoustic_customization_id` können Sie jedoch jeweils nur ein einziges angepasstes Akustikmodell angeben.
 
--   For the [WebSocket interface](/docs/services/speech-to-text?topic=speech-to-text-websockets), use the `/v1/recognize` method. The specified custom model is used for all requests that are sent over the connection.
+-   Verwenden Sie für die [WebSocket-Schnittstelle](/docs/services/speech-to-text?topic=speech-to-text-websockets) die Methode `/v1/recognize`. Das angegebene angepasste Modell wird für alle Anforderungen verwendet, die über die Verbindung gesendet werden.
 
     ```javascript
-    var token = {authentication-token};
+    var token = {authentifizierungstoken};
     var wsURI = 'wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
       + '?access_token=' + IAM_access_token
       + '&model=en-US_NarrowbandModel'
@@ -43,7 +43,7 @@ You can create multiple custom acoustic models for the same or different domains
     var websocket = new WebSocket(wsURI);
     ```
     {: codeblock}
--   For the [synchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-http), use the `POST /v1/recognize` method. The specified custom model is used for that request.
+-   Verwenden Sie für die [synchrone HTTP-Schnittstelle](/docs/services/speech-to-text?topic=speech-to-text-http) die Methode `POST /v1/recognize`. Das angegebene angepasste Modell wird für diese Anforderung verwendet.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -52,7 +52,7 @@ You can create multiple custom acoustic models for the same or different domains
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?acoustic_customization_id={customization_id}"
     ```
     {: pre}
--   For the [asynchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-async), use the `POST /v1/recognitions` method. The specified custom model is used for that request.
+-   Verwenden Sie für die [asynchrone HTTP-Schnittstelle](/docs/services/speech-to-text?topic=speech-to-text-async) die Methode `POST /v1/recognitions`. Das angegebene angepasste Modell wird für diese Anforderung verwendet.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -62,4 +62,4 @@ You can create multiple custom acoustic models for the same or different domains
     ```
     {: pre}
 
-You can omit the language model from the request if the custom model is based on the default model, `en-US_BroadbandModel`. Otherwise, you must use the `model` parameter to specify the base model, as shown for the WebSocket example. A custom model can be used only with the base model for which it is created.
+Falls das angepasste Modell auf dem Standardmodell `en-US_BroadbandModel` basiert, müssen Sie das Sprachmodell bei der Anforderung nicht angeben. Andernfalls müssen Sie das Basismodell, wie im Beispiel für WebSocket gezeigt, mit dem Parameter `model` angeben. Ein angepasstes Modell kann nur in Verbindung mit dem Basismodell verwendet werden, für das es erstellt wurde.

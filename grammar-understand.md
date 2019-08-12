@@ -22,18 +22,18 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Understanding grammars
+# Wissenswertes über Grammatiken
 {: #grammarUnderstand}
 
-The following examples introduce the {{site.data.keyword.speechtotextfull}} service's support for grammars. The examples create two simple ABNF grammars and show possible results when they are used for speech recognition. The examples illustrate the importance of examining the confidence score that the service includes with a transcript.
+In diesem Abschnitt wird die Unterstützung des {{site.data.keyword.speechtotextfull}}-Service für Grammatiken anhand von Beispielen vorgestellt. In den Beispielen werden zwei einfache ABNF-Grammatiken erstellt und die möglichen Ergebnisse für ihren Einsatz bei der Spracherkennung gezeigt. Die Beispiele veranschaulichen, wie wichtig die Untersuchung der Konfidenzbewertung ist, die der Service in eine Transkription einbezieht.
 {: shortdesc}
 
-The examples provide only the results of speech recognition requests. For examples that show how to pass a grammar for speech recognition, see [Using a grammar for speech recognition](/docs/services/speech-to-text?topic=speech-to-text-grammarUse). The examples are also very basic. For examples of more complex grammars, see [Example grammars](/docs/services/speech-to-text?topic=speech-to-text-grammarExamples).
+In den Beispielen werden nur die Ergebnisse von Spracherkennungsanforderungen bereitgestellt. Beispiele, die veranschaulichen, wie Sie eine Grammatik für die Spracherkennung übergeben, finden Sie unter [Grammatik für die Spracherkennung verwenden](/docs/services/speech-to-text?topic=speech-to-text-grammarUse). Außerdem sind die Beispiele sehr einfach gehalten. Beispiele für komplexere Grammatiken enthält der Abschnitt [Beispielgrammatiken](/docs/services/speech-to-text?topic=speech-to-text-grammarExamples).
 
-## Single-phrase matches: The yesno grammar
+## Übereinstimmung mit einzelnem Ausdruck: Grammatiktyp 'yesno'
 {: #yesnoGrammar}
 
-The first example defines a very simple `yesno` grammar that accepts two valid single-word responses, `yes` and `no`. The grammar is useful in cases where the user must respond with only one of the two phrases.
+Im ersten Beispiel wird eine sehr einfache Grammatik des Typs `yesno` definiert, die zwei gültige Ein-Wort-Antworten akzeptiert, nämlich `yes` und `no`. Die Grammatik ist zweckmäßig, wenn der Benutzer nur mit einem von beiden Ausdrücken antworten muss.
 
 ```
 #ABNF 1.0 ISO-8859-1;
@@ -45,9 +45,9 @@ $yesno = yes | no ;
 ```
 {: codeblock}
 
-When you apply this grammar to a speech recognition request, the service can return a transcript with a score that indicates its confidence in the match. It can also return no result if the input clearly does not match one of the two phrases.
+Wenn Sie diese Grammatik auf eine Spracherkennungsanforderung anwenden, kann der Service eine Transkription mit einer Bewertung zurückgeben, die die Konfidenz der Übereinstimmung angibt. Er hat außerdem die Möglichkeit, kein Ergebnis zurückzugeben, wenn die Eingabe eindeutig nicht mit einem der beiden Ausdrücke übereinstimmt.
 
-For instance, if the user replies `yes`, the service likely returns a response that is very much like the following result. The score in the `confidence` field indicates a perfectly reliable match.
+Falls der Benutzer beispielsweise mit `yes` antwortet, gibt der Service wahrscheinlich eine Antwort zurück, die große Ähnlichkeit mit dem folgenden Ergebnis hat. Die Bewertung im Feld `confidence` deutet auf eine absolut zuverlässige Übereinstimmung hin.
 
 ```
 {
@@ -67,14 +67,14 @@ For instance, if the user replies `yes`, the service likely returns a response t
 ```
 {: codeblock}
 
-But suppose, for example, the user replies `nope`. The service can return either a result with a very low confidence score or no result at all. An empty result is the clearest indication that the response does not match the grammar. An empty response is more likely to occur with complex grammars, where a valid response must match a specific multi-phrase sequence.
+Angenommen, der Benutzer antwortet jedoch beispielsweise mit `nope`. Der Service kann hier entweder ein Ergebnis mit einer sehr niedrigen Konfidenzbewertung oder gar kein Ergebnis zurückgeben. Ein leeres Ergebnis ist der deutlichste Hinweis darauf, dass die Antwort nicht mit der Grammatik übereinstimmt. Eine leere Antwort tritt eher bei komplexen Grammatiken auf, bei denen eine gültige Antwort mit einer Folge von mehreren Ausdrücken übereinstimmen muss.
 
-## Multi-phrase matches: The names grammar
+## Übereinstimmungen mit mehreren Ausdrücken: Grammatiktyp 'names'
 {: #namesGrammar}
 
-With a multi-phrase grammar, the user's response must be complete to be recognized. The user cannot omit a word or stop in the middle of the response. The absence of even a single word can cause the service to return an empty result.
+Bei einer Grammatik für mehrere Ausdrücke muss die Antwort des Benutzers vollständig sein, damit sie erkannt wird. Der Benutzer kann weder ein Wort weglassen, noch mitten in der Antwort enden. Schon das Fehlen eines einzigen Wortes kann dazu führen, dass der Service ein leeres Ergebnis zurückgibt.
 
-Moreover, the service can return multiple transcripts if the user speaks phrases that are separated by sufficient silence to indicate that they are independent utterances. For example, consider the simple `names` grammar, which can match one of three multi-word names.
+Darüber hinaus kann der Service mehrere Transkriptionen zurückgeben, wenn die vom Benutzer gesprochenen Ausdrücke durch ausreichende Sprechpausen voneinander abgegrenzt sind, die deutlich machen, dass es sich um separate verbale Äußerungen handelt. Beispiel: Die folgende einfache Grammatik des Typs `names` kann einen von drei aus mehreren Wörtern bestehenden Namen abgleichen.
 
 ```
 #ABNF 1.0 ISO-8859-1;
@@ -85,7 +85,7 @@ $names = Yi Wen Tan | Yon See | Youngjoon Lee ;
 ```
 {: codeblock}
 
-Suppose the user speaks one of the names from the grammar's rules, `Yon See`. The service returns a response that indicates a very high level of confidence in the match.
+Angenommen, der Benutzer spricht mit `Yon See` einen der Namen aus den Grammatikregeln. Der Service gibt dann eine Antwort zurück, die einen sehr hohen Konfidenzgrad für die Übereinstimmung angibt.
 
 ```
 {
@@ -105,7 +105,7 @@ Suppose the user speaks one of the names from the grammar's rules, `Yon See`. Th
 ```
 {: codeblock}
 
-Now suppose that the user speaks two names separated by enough silence, at least 0.8 seconds, to indicate that they are separate utterances: `Yon See` [1.0 seconds of silence] `Yi Wen Tan`. In this case, the service sends two separate responses with a different confidence score for each transcript.
+Nehmen wird nun an, dass der Benutzer zwei Namen durch eine ausreichende Sprechpause (mindestens 0,8 Sekunden) voneinander getrennt spricht, um deutlich zu machen, dass es sich um separate verbale Äußerungen handelt: `Yon See` [1 Sekunde Sprechpause] `Yi Wen Tan`. In diesem Fall sendet der Service zwei separate Antworten mit einer eigenen Konfidenzbewertung für jede Transkription.
 
 ```
 {
@@ -139,18 +139,18 @@ Now suppose that the user speaks two names separated by enough silence, at least
 ```
 {: codeblock}
 
-Finally, consider the case where the user instead says something like `Yon See` [1.0 seconds of silence] `Young Says He`. For the first phrase, `Yon See`, the service sends a positive match with a confidence score, similar to the previous examples. For the second phrase, `Young Says He`, the service can have one of two possible responses:
+Nehmen wir abschließend an, dass der Benutzer etwas wie `Yon See` [1 Sekunde Sprechpause] `Young Says He` spricht. Für den ersten Ausdruck (`Yon See`) sendet der Service eine positive Übereinstimmung mit einer ähnlichen Konfidenzbewertung wie in den vorherigen Beispielen. Für den zweiten Ausdruck (`Young Says He`) kann der Service eine von zwei möglichen Antworten bereitstellen:
 
--   It might send no response, indicating that the phrase does not match one of the grammar's rules.
--   It might instead send a response with a low confidence score, indicating that the phrase is acoustically similar to one of the rules but is not a likely match.
+-   Möglicherweise sendet er gar keine Antwort, um kenntlich zu machen, dass der Ausdruck keiner der Regeln in der Grammatik entspricht.
+-   Möglicherweise sendet er stattdessen eine Antwort mit einer niedrigen Konfidenzbewertung und macht somit deutlich, dass der Ausdruck einer der Regeln akustisch ähnelt, jedoch wahrscheinlich keine Übereinstimmung darstellt.
 
-## Confidence scores and empty results
+## Konfidenzbewertungen und leere Ergebnisse
 {: #confidenceScores}
 
-For relatively simple grammars like those in the previous examples, the service can return a result with a low confidence score even when the response does not appear to match the grammar at all. This might seem surprising, but a response with a low confidence score can indicate the best match that the service could find for the given audio, even though the response is unlikely to match the grammar. If the response does not match the grammar, the confidence value of the results is typically low enough to indicate the unlikelihood that the grammar can generate the response.
+Bei relativ einfachen Grammatiken wie in den obigen Beispielen kann der Service selbst dann ein Ergebnis mit einer geringen Konfidenzbewertung zurückgeben, wenn die Antwort überhaupt nicht in der Grammatik enthalten ist. Dies mag zwar überraschend erscheinen, aber eine Antwort mit einer niedrigen Konfidenzbewertung kann die beste Übereinstimmung angeben, die der Service für die bereitgestellten Audiodaten ermitteln konnte, selbst wenn die Antwort wahrscheinlich nicht mit der Grammatik übereinstimmt. Falls die Antwort nicht mit der Grammatik übereinstimmt, ist der Konfidenzwert der Ergebnisse normalerweise niedrig genug, damit erkennbar ist, dass eine Generierung der Antwort durch die Grammatik unwahrscheinlich ist.
 
-Always consider the confidence score when evaluating whether a response satisfies a grammar. If you don't know what threshold to set for rejection of a result based on its confidence, use an initial value of 0.5. If you experience unexpectedly large rejection rates of correct results, decrease the confidence threshold; for instance, 0.1 can be a good option for some applications. If you experience large numbers of incorrect recognitions, increase the confidence threshold for your application.
+Berücksichtigen Sie immer die Konfidenzbewertung, wenn Sie auswerten, ob eine Antwort eine Grammatik erfüllt. Wenn Sie nicht wissen, welchen Schwellenwert Sie für die Zurückweisung eines Ergebnisses aufgrund seiner Konfidenz festlegen sollen, verwenden Sie für den Anfang den Wert 0,5. Falls Sie anschließend unerwartet große Zurückweisungsraten für korrekte Ergebnisse feststellen, setzen Sie den Konfidenzschwellenwert herab; beispielsweise kann 0,1 für einige Anwendungen eine gute Option sein. Falls Sie jedoch viele falsche Erkennungen feststellen, setzen Sie den Konfidenzschwellenwert für Ihre Anwendung herauf.
 
-In many cases, an empty result or a result with a very low confidence score is a valid response. It can indicate that the user did not understand the question or the available options. You can always recognize the user's audio response without the grammar, but you then run the risk of getting a result that is not valid for the grammar. Grammars provide more reliable results than n-grams, which always return a result for anything other than complete silence.
+Ein leeres Ergebnis oder ein Ergebnis mit einer niedrigen Konfidenzbewertung ist in vielen Fällen eine gültige Antwort. Sie kann darauf hindeuten, dass der Benutzer die Frage oder die verfügbaren Antwortmöglichkeiten nicht verstanden hat. Sie können zwar in jedem Fall die Audioantwort des Benutzers ohne die Grammatik erkennen, laufen dann aber Gefahr, ein Ergebnis zu erhalten, das für die Grammatik nicht gültig ist. Grammatiken liefern zuverlässigere Ergebnisse als N-Gramme, die für alles andere als vollständiges Schweigen immer ein Ergebnis zurückgeben.
 
-Knowing that the result must be one of the valid phrases defined by a grammar is a powerful feature that can simplify an application's response handling. Generally speaking, the service can return results with high confidence only for utterances that are generated by a grammar. For the `yesno` grammar in the first example to reliably recognize the phrase `nope` as a valid response, you must add that phrase to the grammar.
+Das Wissen, dass das Ergebnis einer der von einer Grammatik definierten gültigen Ausdrücke sein muss, ist eine leistungsfähige Funktion, die die Antwortverarbeitung einer Anwendung vereinfachen kann. Allgemein kann der Service Ergebnisse mit einer hohen Konfidenz nur für Äußerungen zurückgeben, die durch eine Grammatik generiert werden. Damit die Grammatik des Typs `yesno` aus dem ersten Beispiel den Ausdruck `nope` zuverlässig als gültige Antwort erkennt, müssen Sie diesen Ausdruck zur Grammatik hinzufügen.

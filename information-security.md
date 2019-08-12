@@ -22,46 +22,46 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Information security
+# Informationssicherheit
 {: #information-security}
 
-{{site.data.keyword.IBM}} is committed to providing our clients and partners with innovative data privacy, security, and governance solutions.
+{{site.data.keyword.IBM}} hat sich dazu verpflichtet, seinen Kunden und Partnern innovative Lösungen für Datenschutz, Sicherheit und Governance zu bieten.
 {: shortdesc}
 
-Clients are responsible for ensuring their own compliance with various laws and regulations, including the European Union General Data Protection Regulation. Clients are solely responsible for obtaining advice of competent legal counsel as to the identification and interpretation of any relevant laws and regulations that might affect the clients’ business and any actions the clients might need to take to comply with such laws and regulations.
+Jeder Kunde ist für die Einhaltung der geltenden Gesetze und Vorschriften<!--geprüft-->, einschließlich der Datenschutz-Grundverordnung der Europäischen Union (DSGVO), selbst verantwortlich. <!--geprüft--> Es obliegt allein den Kunden, sich von kompetenter juristischer Stelle zu Inhalt und Auslegung aller relevanten Gesetze und Vorschriften<!--geprüft--> beraten zu lassen, die ihre Geschäftstätigkeit und die von ihnen eventuell einzuleitenden Maßnahmen zur Einhaltung dieser Gesetze und Vorschriften betreffen. <!--geprüft-->
 {: important}
 
-The products, services, and other capabilities described herein are not suitable for all client situations and might have restricted availability. {{site.data.keyword.IBM_notm}} does not provide legal, accounting or auditing advice or represent or warrant that its services or products will ensure that clients are in compliance with any law or regulation.
+Die hierin beschriebenen Produkte, Services und sonstigen Funktionen eignen sich nicht für alle Kundensituationen und sind möglicherweise nur eingeschränkt verfügbar.<!--geprüft--> {{site.data.keyword.IBM_notm}} erteilt keine Rechts- oder Steuerberatung und gibt keine Garantie bezüglich der Konformität von IBM Produkten oder Services mit den geltenden Gesetzen und Vorschriften. <!--geprüft-->
 
-If you need to request GDPR support for {{site.data.keyword.cloud}} {{site.data.keyword.watson}} resources that are created
+Falls Sie für die erstellten {{site.data.keyword.cloud}} {{site.data.keyword.watson}}-Ressourcen Unterstützung hinsichtlich der DSGVO benötigen, ziehen Sie Folgendes hinzu:
 
--   In the European Union (EU), see [Requesting support for {{site.data.keyword.cloud_notm}} Watson resources created in the European Union](/docs/services/watson?topic=watson-gdpr-sar#request-EU).
--   Outside of the EU, see [Requesting support for resources outside the European Union](/docs/services/watson?topic=watson-gdpr-sar#request-non-EU).
+-   Lesen Sie für Ressourcen, die in der Europäischen Union (EU) erstellt werden, den Abschnitt [Unterstützung für {{site.data.keyword.cloud_notm}}-Ressourcen anfordern, die in der Europäischen Union erstellt werden](/docs/services/watson?topic=watson-gdpr-sar#request-EU).
+-   Lesen Sie für Ressourcen, die außerhalb der EU erstellt werden, den Abschnitt [Unterstützung für Ressourcen anfordern, die außerhalb der Europäischen Union erstellt werden](/docs/services/watson?topic=watson-gdpr-sar#request-non-EU).
 
-## European Union General Data Protection Regulation (GDPR)
+## Datenschutz-Grundverordnung der Europäischen Union (DSGVO)
 {: #gdpr}
 
-{{site.data.keyword.IBM_notm}} is committed to providing our clients and partners with innovative data privacy, security and governance solutions to assist them on their journey to GDPR compliance.
+{{site.data.keyword.IBM_notm}} hat sich dazu verpflichtet, seinen Kunden und Partnern innovative Lösungen für Datenschutz, Sicherheit und Governance zu bieten und sie bei der Umsetzung der DSGVO zu unterstützen.
 
-Learn more about {{site.data.keyword.IBM_notm}}'s own GDPR readiness journey and our GDPR capabilities and offerings to support your compliance journey [here](http://www.ibm.com/gdpr){: external}.
+Weitere Informationen zu den eigenen Maßnahmen von {{site.data.keyword.IBM_notm}}für die Umsetzung der DSGVO sowie zu den Leistungsmerkmalen und Angeboten, die Ihnen dabei helfen, die Umsetzung der DSGVO vorzubereiten, finden Sie [hier](http://www.ibm.com/gdpr){: external}.
 
-## Labeling and deleting data in the Speech to Text service
+## Daten im Speech to Text-Service kennzeichnen und löschen
 {: #gdpr-speech-to-text}
 
-The {{site.data.keyword.speechtotextfull}} service enables you to delete all data that is associated with recognition requests, custom language models, and custom acoustic models. To delete data, you must do the following:
+Beim {{site.data.keyword.speechtotextfull}}-Service können Sie alle Daten löschen, die mit Erkennungsanforderungen, angepassten Sprachmodellen und angepassten Akustikmodellen verbunden sind. Zum Löschen der Daten müssen Sie Folgendes ausführen:
 
-1.  Use the `X-Watson-Metadata` header to associate a customer ID with data that is passed by a request to the service; see [Specifying a customer ID](#specify-customer-id).
-1.  Use the `DELETE /v1/user_data` method to delete all data that is associated with a specified customer ID; see [Deleting data](#delete-pi).
+1.  Ordnen Sie mit dem Header `X-Watson-Metadata` eine Kunden-ID zu Daten zu, die durch eine Anforderung an den Service übergeben werden; entsprechende Informationen finden Sie unter [Kunden-ID angeben](#specify-customer-id).
+1.  Verwenden Sie die Methode `DELETE /v1/user_data`, um alle Daten zu löschen, die einer bestimmten Kunden-ID zugeordnet sind; Näheres hierzu enthält der Abschnitt [Daten löschen](#delete-pi).
 
-By default, no customer ID is associated with data.
+Standardmäßig wird den Daten keine Kunden-ID zugeordnet.
 
-Experimental and beta features are not intended for use with a production environment and therefore are not guaranteed to function as expected when labeling and deleting data. Experimental and beta features should not be used when implementing a solution that requires the labeling and deletion of data.
+Experimentelle und Beta-Funktionen sind nicht für die Verwendung in einer Produktionsumgebung gedacht; beim Kennzeichnen und Löschen von Daten kann ihre erwartungsgemäße Funktionsweise daher nicht garantiert werden. Experimentelle und Beta-Funktionen sollten nicht bei der Implementierung einer Lösung verwendet werden, die das Kennzeichnen und Löschen von Daten erforderlich macht.
 {: note}
 
-### Specifying a customer ID
+### Kunden-ID angeben
 {: #specify-customer-id}
 
-To associate a customer ID with data, include the `X-Watson-Metadata` header with the request that passes the information. You pass the string `customer_id={id}` as the argument of the header. The following example associates the customer ID `my_customer_ID` with the data passed with a `POST /v1/recognize` request:
+Um Daten eine Kunden-ID zuzuordnen, nehmen Sie den Header `X-Watson-Metadata` in die Anforderung auf, mit der die Informationen übergeben werden. Als Argument des Headers übergeben Sie die Zeichenfolge `customer_id={id}`. Im folgenden Beispiel wird die Kunden-ID `my_customer_ID` den Daten zugeordnet, die mit einer Methode `POST /v1/recognize` übergeben werden:
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -72,39 +72,39 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-A customer ID can include any characters except for the `;` (semicolon) and `=` (equals sign). Specify a random or generic string for the customer ID; do not specify a personally identifiable string, such as an email address or Twitter ID. You can specify different customer IDs with different requests. A customer ID that you specify is associated with the instance of the service whose credentials are used with the request; only credentials for that instance of the service can delete data associated with the ID.
+Mit Ausnahme des Semikolons (`;`) und des Gleichheitszeichens (`=`) können Sie in einer Kunden-ID jedes beliebige Zeichen verwenden. Geben Sie für die Kunden-ID eine zufällige oder allgemeine Zeichenfolge an; verwenden Sie keine erkennbar persönlichen Angaben wie beispielsweise eine E-Mail-Adresse oder eine Twitter-ID. Sie können bei unterschiedlichen Anforderungen verschiedene Kunden-IDs angeben. Eine Kunden-ID, die Sie angeben, ist der Instanz des Service zugeordnet, dessen Berechtigungsnachweise mit der Anforderung verwendet werden. Nur Berechtigungsnachweise für diese Instanz des Service können Daten löschen, die der ID zugeordnet sind.
 
-Use the `X-Watson-Metadata` header with the following methods:
+Verwenden Sie den Header `X-Watson-Metadata` bei den folgenden Methoden:
 
--   With WebSocket requests:
+-   WebSocket-Anforderungen:
     -   `/v1/recognize`
 
-    You specify the customer ID with the `x-watson-metadata` query parameter of the request to open the connection. You must URL-encode the argument to the query parameter, for example, `customer_id%3dmy_customer_ID`. The customer ID is associated with all data that is passed with recognition requests sent over the connection.
--   With synchronous HTTP requests:
+    Sie geben die Kunden-ID mit dem Abfrageparameter `x-watson-metadata` der Anforderung an, um die Verbindung zu öffnen. Sie müssen das Argument für den Abfrageparameter als URL codieren, z. B. `customer_id%3dmy_customer_ID`. Die Kunden-ID wird allen Daten zugeordnet, die zusammen mit den über die Verbindung gesendeten Erkennungsanforderungen übergeben werden.
+-   Synchrone HTTP-Anforderungen:
     -   `POST /v1/recognize`
 
-    The customer ID is associated with the data that is sent with the individual request.
--   With asynchronous HTTP requests:
+    Die Kunden-ID wird allen Daten zugeordnet, die zusammen mit der einzelnen Anforderung gesendet werden.
+-   Asynchrone HTTP-Anforderungen:
     -   `POST /v1/register_callback`
     -   `POST /v1/recognitions`
 
-    The customer ID is associated with the white-listed callback URL or with the data that is sent with the individual recognition request.
--   With requests to add corpora, custom words, or grammars to custom language models:
+    Die Kunden-ID wird der in der Whitelist aufgeführten Callback-URL oder den Daten zugeordnet, die zusammen mit der einzelnen Erkennungsanforderung gesendet werden.
+-   Bei Anforderungen zum Hinzufügen von Korpora, angepassten Wörtern oder Grammatiken zu angepassten Sprachmodellen:
     -   `POST /v1/customizations/{customization_id}/corpora/{corpus_name}`
     -   `POST /v1/customizations/{customization_id}/words`
     -   `PUT /v1/customizations/{customization_id}/words/{word_name}`
     -   `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`
 
-    The customer ID is associated with the corpora, custom words, or grammars that are added or updated by the request.
--   With requests to add audio resources to custom acoustic models:
+    Die Kunden-ID wird den Korpora, angepassten Wörtern oder Grammatiken zugeordnet, die durch die Anforderung hinzugefügt oder aktualisiert werden.
+-   Bei Anforderungen zum Hinzufügen von Audioressourcen zu angepassten Akustikmodellen:
     -   `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`
 
-    The customer ID is associated with the audio resource that is added or updated by the request.
+    Die Kunden-ID wird der Audioressource zugeordnet, die durch die Anforderung hinzugefügt oder aktualisiert wird.
 
-### Deleting data
+### Daten löschen
 {: #delete-pi}
 
-To delete all data that is associated with a customer ID, use the `DELETE /v1/user_data` method. You pass the string `customer_id={id}` as a query parameter with the request. The following example deletes all data for the customer ID `my_customer_ID`:
+Mit der Methode `DELETE /v1/user_data` können Sie alle Daten löschen, die einer Kunden-ID zugeordnet sind. Hierzu übergeben Sie mit der Anforderung die Zeichenfolge `customer_id={id}` als Abfrageparameter. Im folgenden Beispiel werden alle Daten für die Kunden-ID `my_customer_ID`gelöscht:
 
 ```bash
 curl -X DELETE -u "apikey:{apikey}"
@@ -112,4 +112,4 @@ curl -X DELETE -u "apikey:{apikey}"
 ```
 {: pre}
 
-The `/v1/user_data` method deletes all data that is associated with the specified customer ID, regardless of the method by which the information was added. The method has no effect if no data is associated with the customer ID. You must issue the request with credentials for the same instance of the service that was used to associate the customer ID with the data.
+Die Methode `/v1/user_data` löscht alle Daten, die der angegebenen Kunden-ID zugeordnet sind. Hierbei ist es unerheblich, mit welcher Methode die Informationen hinzugefügt wurden. Falls der Kunden-ID keine Daten zugeordnet sind, ist die Methode wirkungslos. Sie müssen die Anforderung mit Berechtigungsnachweisen für dieselbe Instanz des Service ausgeben, die auch verwendet wurde, um den Daten die Kunden-ID zuzuordnen.

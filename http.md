@@ -22,23 +22,23 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# The synchronous HTTP interface
+# Synchrone HTTP-Schnittstelle
 {: #http}
 
-The synchronous HTTP interface of the {{site.data.keyword.speechtotextfull}} service provides a single `POST /v1/recognize` method for requesting speech recognition with the service. This method is the simplest means of obtaining a transcript. It offers two ways of submitting a speech recognition request:
+Die synchrone HTTP-Schnittstelle des {{site.data.keyword.speechtotextfull}}-Service bietet eine einzige Methode namens `POST /v1/recognize`, mit der die Spracherkennung beim Service angefordert wird. Diese Methode ist das einfachste Verfahren für die Anforderung einer Transkription. Zur Übergabe einer Spracherkennungsanforderung haben Sie zwei Möglichkeiten.
 {: shortdesc}
 
--   The first sends all of the audio in a single stream via the body of the request. You specify the parameters of the operation as request headers and query parameters. For more information, see [Making a basic HTTP request](#HTTP-basic).
--   The second sends the audio as a multipart request. You specify the parameters of the request as a combination of request headers, query parameters, and JSON metadata. For more information, see [Making a multipart HTTP request](#HTTP-multi).
+-   Beim ersten Verfahren senden Sie im Hauptteil der Anforderung alle Audiodaten in einem einzigen Datenstrom. Die Parameter der Operation geben Sie in Form von Anforderungsheadern und Abfrageparametern an. Weitere Informationen finden Sie unter [Einfache HTTP-Anforderung ausgeben](#HTTP-basic).
+-   Beim zweiten Verfahren werden die Audiodaten als mehrteilige Anforderung gesendet. Die Parameter der Anforderung geben Sie hier als Kombination aus Anforderungsheadern, Abfrageparametern und JSON-Metadaten an. Weitere Informationen finden Sie unter [Mehrteilige HTTP-Anforderung ausgeben](#HTTP-multi).
 
-Submit a maximum of 100 MB and a minimum of 100 bytes of audio data with a single request. For information about audio formats and about using compression to maximize the amount of audio that you can send with a request, see [Audio formats](/docs/services/speech-to-text?topic=speech-to-text-audio-formats). For information about all methods of the HTTP interface, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+Übergeben Sie mit einer einzelnen Anforderung mindestens 100 Byte und höchstens 100 MB Audiodaten. Angaben über Audioformate und die Verwendung der Komprimierung zur Maximierung der Audiodatenmenge, die mit einer Anforderung gesendet werden kann, enthält der Abschnitt [Audioformate](/docs/services/speech-to-text?topic=speech-to-text-audio-formats). Informationen zu allen Methoden der HTTP-Schnittstelle finden Sie in der [API-Referenz](https://{DomainName}/apidocs/speech-to-text){: external}.
 
-## Making a basic HTTP request
+## Einfache HTTP-Anforderung ausgeben
 {: #HTTP-basic}
 
-The HTTP `POST /v1/recognize` method provides a simple means of transcribing audio. You pass all audio via the body of the request and specify the parameters as request headers and query parameters.
+Die HTTP-Methode `POST /v1/recognize` ist ein einfaches Verfahren zur Transkription von Audiodaten. Sie übergeben alle Audiodaten im Hauptteil der Anforderung und geben die Parameter als Anforderungsheader und Abfrageparameter an.
 
-The following `curl` example sends a recognition request for a single FLAC file named `audio-file.flac`. The request omits the `model` query parameter to use the default language model, `en-US_BroadbandModel`.
+Das folgende `curl` -Beispiel sendet eine Erkennungsanforderung für eine einzelne FLAC-Datei namens `audio-file.flac`. In der Anforderung ist der Abfrageparameter `model` nicht angegeben, damit das Standardsprachmodell `en-US_BroadbandModel` verwendet wird.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -48,7 +48,7 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-The example returns the following transcript for the audio:
+Im Beispiel wird für die Audiodaten die folgende Transkription zurückgegeben:
 
 ```javascript
 {
@@ -68,163 +68,150 @@ The example returns the following transcript for the audio:
 ```
 {: codeblock}
 
-The `POST /v1/recognize` method returns results only after it processes all of the audio for a request. The method is appropriate for batch processing but not for live speech recognition. Use the WebSocket interface to transcribe live audio.
+Die Methode `POST /v1/recognize` gibt Ergebnisse erst dann zurück, nachdem alle Audiodaten für eine Anforderung verarbeitet wurden. Sie eignet sich für die Stapelverarbeitung, jedoch nicht für eine Live-Spracherkennung. Verwenden Sie zum Transkribieren von Live-Audiodaten die WebSocket-Schnittstelle.
 
-If your data consists of multiple audio files, the recommended means of submitting the audio is by sending multiple requests, one for each audio file. You can submit the requests in a loop, optionally with parallelism to improve performance. You can also use multipart speech recognition to pass multiple audio files with a single request.
+Falls Ihre Daten aus mehreren Audiodateien bestehen, empfiehlt es sich, die Audiodaten durch das Senden mehrerer Anforderungen (1 pro Audiodatei) zu übergeben. Sie können die Anforderungen in einer Schleife mit optionaler Parallelverarbeitung übergeben, um das Leistungsverhalten zu verbessern. Sie haben auch die Möglichkeit, die mehrteilige Spracherkennung zu verwenden, um mehrere Audiodateien in einer einzigen Anforderung zu übergeben.
 
-## Making a multipart HTTP request
+## Mehrteilige HTTP-Anforderung ausgeben
 {: #HTTP-multi}
 
-The `POST /v1/recognize` method also supports multipart requests. You pass all audio data as multipart form data. You specify some parameters as request headers and query parameters, but you pass JSON metadata as form data to control most aspects of the transcription.
+Die Methode `POST /v1/recognize` unterstützt ebenfalls mehrteilige Anforderungen. Hierbei übergeben Sie alle Audiodaten als mehrteilige Formulardaten. Einige Parameter geben Sie als Anforderungsheader und Abfrageparameter an; die meisten Aspekte der Transkription steuern Sie jedoch durch die Übergabe von JSON-Metadaten als Formulardaten.
 
-Multipart speech recognition is intended for the following use cases:
+Die mehrteilige Spracherkennung ist für die folgenden Anwendungsfälle vorgesehen:
 
--   To pass multiple audio files with a single speech recognition request.
--   With browsers for which JavaScript is disabled. Multipart requests based on form data do not require the use of JavaScript.
--   When the parameters of a recognition request are greater than 8 KB, which is the limit imposed by most HTTP servers and proxies. For example, spotting a very large number of keywords can increase the size of a request beyond this limit. Multipart requests use form data to avoid this constraint.
+-   Zur Übergabe von mehreren Audiodateien mit einer einzigen Spracherkennungsanforderung.
+-   Bei Verwendung von Browsern mit inaktiviertem JavaScript. Auf Formulardaten basierende mehrteilige Anforderungen machen die Verwendung von JavaScript nicht erforderlich.
+-   Bei einer Größe der Parameter einer Erkennungsanforderung von mehr als 8 KB, also dem durch die meisten HTTP-Server und -Proxys vorgegebenen Grenzwert. Beispielsweise kann die Erkennung einer großen Anzahl von Schlüsselwörtern die Größe einer Anforderung über diesen Grenzwert hinaus erhöhen. Mehrteilige Anforderungen verwenden Formulardaten, um diese Einschränkung zu vermeiden.
 
-The following sections describe the parameters that you use for multipart requests and show an example request.
+In den folgenden Abschnitten sind die Parameter beschrieben, die Sie für mehrteilige Anforderung verwenden. Außerdem ist eine Beispielanforderung dargestellt.
 
-### Parameters for multipart requests
+### Parameter für mehrteilige Anforderungen
 {: #multipartParameters}
 
-You specify the following parameters of multipart speech recognition as request headers, query parameters, and form data.
+Für die mehrteilige Spracherkennung geben Sie die folgenden Parameter als Anforderungsheader, Abfrageparameter und Formulardaten an.
 
-<table summary="Each row of the table describes the use of one possible parameter for a multipart recognition request.">
-  <caption>Table 1. Parameters for multipart requests</caption>
+<table summary="Jede Zeile der Tabelle beschreibt die Verwendung eines möglichen Parameters für eine mehrteilige Erkennungsanforderung.">
+  <caption>Tabelle 1. Parameter für mehrteilige Anforderungen</caption>
   <tr>
     <th id="parameter" style="text-align:left; width:20%">Parameter</th>
-    <th id="description" style="text-align:center; width:80%">Description</th>
+    <th id="description" style="text-align:center; width:80%">Beschreibung</th>
   </tr>
   <tr>
     <td>
       <code>metadata</code>
-      <br/><em>Form data</em>
-      <br/><em>Object</em>
+      <br/><em>Formulardaten,</em>
+      <br/><em>Objekt</em>
     </td>
     <td>
-      <em>Required.</em> A JSON object that provides the transcription
-      parameters for the request. The object must be the first part of
-      the form data. The information describes the audio in the subsequent
-      parts of the form data. See
-      [JSON metadata for multipart requests](#multipartJSON).
+      <em>Erforderlich.</em> Ein JSON-Objekt, das die Transkriptionsparameter für die Anforderung bereitstellt. Das Objekt muss der erste Teil der Formulardaten sein. Die Informationen beschreiben die Audiodaten in den nachfolgenden Teilen der Formulardaten. Weitere Informationen finden Sie unter [JSON-Metadaten für mehrteilige Anforderungen](#multipartJSON).
     </td>
   </tr>
   <tr>
     <td>
       <code>upload</code>
-      <br/><em>Form data</em>
-      <br/><em>File</em>
+      <br/><em>Formulardaten,</em>
+      <br/><em>Datei</em>
     </td>
     <td>
-      <em>Required.</em> One or more audio files as the remainder of the
-      form data for the request. All audio files must have the same format.
-      With the `curl` command, include a separate <code>--form</code> option
-      for each file of the request.
+      <em>Erforderlich.</em> Eine oder mehrere Audiodateien als weitere Formulardaten für die Anforderung. Alle Audiodateien müssen dasselbe Format besitzen.
+      Beziehen Sie in den Befehl `curl` für jede Datei der Anforderung eine separate Option <code>--form</code> ein.
     </td>
   </tr>
   <tr>
     <td>
       <code>Content-Type</code>
       <br/><em>Header</em>
-      <br/><em>String</em>
+      <br/><em>Zeichenfolge</em>
     </td>
     <td>
-      <em>Required.</em> Specify `multipart/form-data` to indicate how
-      data is passed to the method. You specify the content type of the
-      audio with the JSON `part_content_type` parameter.
+      <em>Erforderlich.</em> Geben Sie mit `multipart/form-data` an, wie Daten an die Methode übergeben werden. Den Inhaltstyp der Audiodaten geben Sie mit dem JSON-Parameter       `part_content_type` an.
     </td>
   </tr>
   <tr>
     <td>
       <code>Transfer-Encoding</code>
       <br/><em>Header</em>
-      <br/><em>String</em>
+      <br/><em>Zeichenfolge</em>
     </td>
     <td>
-      <em>Optional.</em> Specify `chunked` to stream the audio data to the
-      service. Omit the parameter if you send all audio with a single request.
+      <em>Optional.</em> Geben Sie `chunked` an, um die Audiodaten an den Service zu streamen. Lassen Sie den Parameter weg, wenn Sie alle Audiodaten mit einer einzigen Anforderung senden.
     </td>
   </tr>
   <tr>
     <td>
       <code>model</code>
-      <br/><em>Query</em>
-      <br/><em>String</em>
+      <br/><em>Abfrage</em>
+      <br/><em>Zeichenfolge</em>
     </td>
     <td>
-      <em>Optional.</em> The identifier of the model that is to be used with
-      the request. The default is `en-US_BroadbandModel`.
+      <em>Optional.</em> Die ID des Modells, das bei der Anforderung verwendet werden soll. Der Standardwert ist `en-US_BroadbandModel`.
     </td>
   </tr>
   <tr>
     <td>
       <code>language_customization_id</code>
-      <br/><em>Query</em>
-      <br/><em>String</em>
+      <br/><em>Abfrage</em>
+      <br/><em>Zeichenfolge</em>
     </td>
     <td>
-      <em>Optional.</em> The GUID of a custom language model that is to be
-      used with the request.
+      <em>Optional.</em> Die GUID eines angepassten Sprachmodells, das bei der Anforderung verwendet werden soll.
     </td>
   </tr>
   <tr>
     <td>
       <code>acoustic_customization_id</code>
-      <br/><em>Query</em>
-      <br/><em>String</em>
+      <br/><em>Abfrage</em>
+      <br/><em>Zeichenfolge</em>
     </td>
     <td>
-      <em>Optional.</em> The GUID of a custom acoustic model that is
-      to be used with the request.
+      <em>Optional.</em> Die GUID eines angepassten Akustikmodells, das bei der Anforderung verwendet werden soll.
     </td>
   </tr>
   <tr>
     <td>
       <code>base_model_version</code>
-      <br/><em>Query</em>
-      <br/><em>String</em>
+      <br/><em>Abfrage</em>
+      <br/><em>Zeichenfolge</em>
     </td>
     <td>
-      <em>Optional.</em> The version of the specified base model that
-      is to be used with the request.
+      <em>Optional.</em> Die Version eines Basismodells, das bei der Anforderung verwendet werden soll.
     </td>
   </tr>
 </table>
 
-For more information about the query parameters, see the [Parameter summary](/docs/services/speech-to-text?topic=speech-to-text-summary).
+Weitere Informationen zu den Abfrageparametern enthält der Abschnitt [Parameterübersicht](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
-### JSON metadata for multipart requests
+### JSON-Metadaten für mehrteilige Anforderungen
 {: #multipartJSON}
 
-The JSON metadata that you pass with a multipart request can include the following fields:
+Die JSON-Metadaten, die Sie mit einer mehrteiligen Anforderung übergeben, können die folgenden Felder enthalten:
 
--   `part_content_type` (string)
--   `data_parts_count` (integer)
--   `customization_weight` (number)
--   `inactivity_timeout` (integer)
--   `keywords` (string[])
--   `keywords_threshold` (number)
--   `max_alternatives` (integer)
--   `word_alternatives_threshold` (number)
--   `word_confidence` (boolean)
--   `timestamps` (boolean)
--   `profanity_filter` (boolean)
--   `smart_formatting` (boolean)
--   `speaker_labels` (boolean)
--   `grammar_name` (string)
--   `redaction` (boolean)
+-   `part_content_type` (Zeichenfolge)
+-   `data_parts_count` (Ganzzahl)
+-   `customization_weight` (Zahl)
+-   `inactivity_timeout` (Ganzzahl)
+-   `keywords` (Zeichenfolge[])
+-   `keywords_threshold` (Zahl)
+-   `max_alternatives` (Ganzzahl)
+-   `word_alternatives_threshold` (Zahl)
+-   `word_confidence` (Boolescher Wert)
+-   `timestamps` (Boolescher Wert)
+-   `profanity_filter` (Boolescher Wert)
+-   `smart_formatting` (Boolescher Wert)
+-   `speaker_labels` (Boolescher Wert)
+-   `grammar_name` (Zeichenfolge)
+-   `redaction` (Boolescher Wert)
 
-Only the following two parameters are specific to multipart requests:
+Nur die beiden folgenden Parameter sind speziell für mehrteilige Anforderungen vorgesehen:
 
--   The `part_content_type` field is *optional* for most audio formats. It is required for the `audio/alaw`, `audio/basic`, `audio/l16`, and `audio/mulaw` formats. It specifies the format of the audio in the following parts of the request. All audio files must be in the same format.
--   The `data_parts_count` field is *optional* for all requests. It specifies the number of audio files that are sent with the request. The service applies end-of-stream detection to the last (and possibly the only) data part. If you omit the parameter, the service determines the number of parts from the request.
+-   Das Feld `part_content_type` ist bei den meisten Audioformaten *optional*. Für die Formate `audio/alaw`, `audio/basic`, `audio/l16` und `audio/mulaw` ist es erforderlich. Es gibt das Format der Audiodaten in den anschließenden Teilen der Anforderung an. Alle Audiodateien müssen dasselbe Format besitzen.
+-   Das Feld `data_parts_count` ist bei allen Anforderungen *optional*. Es gibt die Anzahl der Audiodateien an, die mit der Anforderung gesendet werden. Der Service wendet die Datenstromendeerkennung auf den letzten (und möglicherweise einzigen) Datenteil an. Falls Sie den Parameter weglassen, ermittelt der Service die Anzahl der Teile aus der Anforderung.
 
-All other parameters of the metadata are optional. For descriptions of all available parameters, see the [Parameter summary](/docs/services/speech-to-text?topic=speech-to-text-summary).
+Alle anderen Parameter der Metadaten sind optional. Eine Beschreibung aller verfügbaren Parameter finden Sie in der [Parameterübersicht](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
-### Example multipart request
+### Beispiel für mehrteilige Anforderung
 
-The following `curl` example shows how to pass a multipart recognition request with the `POST /v1/recognize` method. The request passes two audio files, **audio-file1.flac** and **audio-file2.flac**. The `metadata` parameter provides most parameters of the request; the `upload` parameters provide the audio files.
+Das folgende `curl`-Beispiel zeigt, wie eine mehrteilige Erkennungsanforderung mit der Methode `POST /v1/recognition` übergeben wird. Die Anforderung übergibt zwei Audiodateien namens **audio-file1.flac** und **audio-file2.flac**. Der Parameter `metadata` stellt die meisten Parameter für die Anforderung zur Verfügung. Die Parameter `upload` stellen die Audiodateien zur Verfügung.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -241,7 +228,7 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-The example returns the following transcript for the audio files. The service returns the results for the two files in the order in which they are sent. (The example output abbreviates the results for the second file.)
+Im Beispiel wird für die Audiodaten die folgende Transkription zurückgegeben. Der Service gibt die Ergebnisse für die beiden Dateien in der Reihenfolge zurück, in der sie gesendet wurden. (In der Beispielausgabe sind die Ergebnisse für die zweite Datei abgekürzt.)
 
 ```javascript
 {
@@ -253,143 +240,143 @@ The example returns the following transcript for the audio files. The service re
           "alternatives": [
             {
               "confidence": 0.96,
-              "word": "the"
-            }
+                     "word": "the"
+                  }
           ],
-          "end_time": 0.09
+               "end_time": 0.09
         },
         {
           "start_time": 0.09,
-          "alternatives": [
-            {
+               "alternatives": [
+                  {
               "confidence": 0.96,
-              "word": "latest"
-            }
+                     "word": "latest"
+                  }
           ],
-          "end_time": 0.62
+               "end_time": 0.62
         },
         {
           "start_time": 0.62,
-          "alternatives": [
-            {
+               "alternatives": [
+                  {
               "confidence": 0.96,
-              "word": "weather"
-            }
+                     "word": "weather"
+                  }
           ],
-          "end_time": 0.87
+               "end_time": 0.87
         },
         {
           "start_time": 0.87,
-          "alternatives": [
-            {
+               "alternatives": [
+                  {
               "confidence": 0.96,
-              "word": "report"
-            }
+                     "word": "report"
+                  }
           ],
-          "end_time": 1.5
-        }
+               "end_time": 1.5
+            }
       ],
-      "keywords_result": {},
-      "alternatives": [
-        {
+         "keywords_result": {},
+         "alternatives": [
+            {
           "timestamps": [
             [
               "the",
-              0.03,
-              0.09
+                     0.03,
+                     0.09
             ],
             [
               "latest",
-              0.09,
-              0.62
+                     0.09,
+                     0.62
             ],
             [
               "weather",
-              0.62,
-              0.87
+                     0.62,
+                     0.87
             ],
             [
               "report",
-              0.87,
-              1.5
-            ]
+                     0.87,
+                     1.5
+                  ]
           ],
-          "confidence": 0.99,
-          "transcript": "the latest weather report "
-        }
+               "confidence": 0.99,
+               "transcript": "the latest weather report "
+            }
       ],
-      "final": true
-    },
-    {
+         "final": true
+      },
+      {
       "word_alternatives": [
         {
           "start_time": 0.15,
-          "alternatives": [
-            {
+               "alternatives": [
+                  {
               "confidence": 1.0,
-              "word": "a"
-            }
+                     "word": "a"
+                  }
           ],
-          "end_time": 0.3
+               "end_time": 0.3
         },
         {
           "start_time": 0.3,
-          "alternatives": [
-            {
+               "alternatives": [
+                  {
               "confidence": 1.0,
-              "word": "line"
-            }
+                     "word": "line"
+                  }
           ],
-          "end_time": 0.64
+               "end_time": 0.64
         },
         . . .
         {
           "start_time": 4.58,
-          "alternatives": [
-            {
+               "alternatives": [
+                  {
               "confidence": 0.98,
-              "word": "Colorado"
-            }
+                     "word": "Colorado"
+                  }
           ],
-          "end_time": 5.16
+               "end_time": 5.16
         },
         {
           "start_time": 5.16,
-          "alternatives": [
-            {
+               "alternatives": [
+                  {
               "confidence": 0.98,
-              "word": "on"
-            }
+                     "word": "on"
+                  }
           ],
-          "end_time": 5.32
+               "end_time": 5.32
         },
         {
           "start_time": 5.32,
-          "alternatives": [
-            {
+               "alternatives": [
+                  {
               "confidence": 0.98,
-              "word": "Sunday"
-            }
+                     "word": "Sunday"
+                  }
           ],
-          "end_time": 6.04
-        }
+               "end_time": 6.04
+            }
       ],
-      "keywords_result": {
+         "keywords_result": {
         "tornadoes": [
-          {
+               {
             "normalized_text": "tornadoes",
-            "start_time": 3.03,
-            "confidence": 0.98,
-            "end_time": 3.84
-          }
+                  "start_time": 3.03,
+                  "confidence": 0.98,
+                  "end_time": 3.84
+               }
         ],
-        "colorado": [
-          {
+            "colorado": [
+               {
             "normalized_text": "Colorado",
-            "start_time": 4.58,
-            "confidence": 0.98,
-            "end_time": 5.16
-          }
+                  "start_time": 4.58,
+                  "confidence": 0.98,
+                  "end_time": 5.16
+               }
         ]
       },
       "alternatives": [
@@ -397,35 +384,35 @@ The example returns the following transcript for the audio files. The service re
           "timestamps": [
             [
               "a",
-              0.15,
-              0.3
+                     0.15,
+                     0.3
             ],
             [
               "line",
-              0.3,
-              0.64
+                     0.3,
+                     0.64
             ],
             . . .
             [
               "Colorado",
-              4.58,
-              5.16
+                     4.58,
+                     5.16
             ],
             [
               "on",
-              5.16,
-              5.32
+                     5.16,
+                     5.32
             ],
             [
               "Sunday",
-              5.32,
-              6.04
-            ]
+                     5.32,
+                     6.04
+                  ]
           ],
-          "confidence": 0.99,
-          "transcript": "a line of severe thunderstorms with several
+               "confidence": 0.99,
+               "transcript": "a line of severe thunderstorms with several
 possible tornadoes is approaching Colorado on Sunday "
-        }
+            }
       ],
       "final": true
     }

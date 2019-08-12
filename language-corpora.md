@@ -22,32 +22,32 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Managing corpora
+# Korpora verwalten
 {: #manageCorpora}
 
-The customization interface includes the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method for adding a corpus to a custom language model. For more information, see [Add a corpus to the custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus). The interface also includes the following methods for listing and deleting corpora for a custom language model.
+Die Anpassungsschnittstelle enthält die Methode `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` zum Hinzufügen eines Korpus zu einem angepassten Sprachmodell. Weitere Informationen finden Sie im Abschnitt [Korpus zu angepasstem Sprachmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus). Die Schnittstelle enthält außerdem die folgenden Methoden zum Auflisten und Löschen von Korpora für ein angepasstes Sprachmodell.
 {: shortdesc}
 
-## Listing corpora for a custom language model
+## Korpora für angepasstes Sprachmodell auflisten
 {: #listCorpora}
 
-The customization interface provides two methods for listing information about the corpora for a custom language model:
+Die Anpassungsschnittstelle stellt die beiden folgenden Methoden zum Auflisten von Informationen zu den Korpora für ein angepasstes Sprachmodell zur Verfügung:
 
--   The `GET /v1/customizations/{customization_id}/corpora` method lists information about all corpora for a custom model.
--   The `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` method lists information about a specified corpus for a custom model.
+-   Die Methode `GET /v1/customizations/{customization_id}/corpora` listet Informationen zu allen Korpora für ein angepasstes Modell auf.
+-   Die Methode `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` listet Informationen zu einem angegebenen Korpus für ein angepasstes Modell auf.
 
-Both methods return the `name` of the corpus, the `total_words` read from the corpus, and the number of `out-of-vocabulary_words` extracted from the corpus. The methods also list the `status` of the corpus. The status is important for checking the service's analysis of a corpus in response to a request to add it to a custom model:
+Beide Methoden geben den Namen (`name`) des Korpus, die Summe der aus dem Korpus gelesenen Wörter (`total_words`) und die Anzahl der aus dem Korpus extrahierten vokabularexternen Wörter (`out-of-vocabulary_words`) zurück. Darüber hinaus listen die Methoden den Status (`status`) des Korpus auf. Der Status ist wichtig für das Überprüfen der vom Service durchgeführten Analyse eines Korpus als Reaktion auf eine Anforderung zum Hinzufügen des Korpus zu einem angepassten Modell:
 
--   `analyzed` indicates that the service successfully analyzed the corpus. The custom model can be trained with data from the corpus.
--   `being_processed` indicates that the service is still analyzing the corpus. The service cannot accept requests to add new corpora or words, or to train the custom model, until its analysis is complete.
--   `undetermined` indicates that the service encountered an error while processing the corpus. The information that is returned for the corpus includes an error message that offers guidance for correcting the error.
+-   `analyzed` gibt an, dass das Korpus vom Service erfolgreich analysiert wurde. Das angepasste Modell kann mit Daten aus dem Korpus trainiert werden.
+-   `being_processed` gibt an, dass der Service die Analyse des Korpus noch nicht abgeschlossen hat. Der Service kann Anforderungen zum Hinzufügen neuer Korpora oder Wörter bzw. zum Trainieren des angepassten Modells erst annehmen, nachdem die Analyse abgeschlossen ist.
+-   `undetermined` gibt an, dass der Service beim Verarbeiten des Korpus einen Fehler festgestellt hat. Die für das Korpus zurückgegebenen Informationen enthalten eine Fehlernachricht mit Hinweisen zur Fehlerbehebung.
 
-    For example, the corpus might be invalid, or you might have tried to add a corpus with the same name as an existing corpus. You can try to add the corpus again and include the `allow_overwrite` parameter with the request. You can also delete the corpus and then try adding it again.
+    Beispielsweise kann das Korpus ungültig sein oder Sie haben möglicherweise versucht, ein Korpus mit dem Namen eines bereits vorhandenen Korpus hinzuzufügen. Sie können versuchen, das Korpus erneut hinzuzufügen und dabei in der Anforderung den Parameter `allow_overwrite` angeben. Sie können auch das Korpus löschen und anschließend versuchen, es erneut hinzufügen.
 
-### Example requests and responses
+### Beispiele für Anforderungen und Antworten
 {: #listExample-corpora}
 
-The following example lists all corpora for the custom model with the specified customization ID:
+Im folgenden Beispiel werden alle Korpora für das angepasste Modell mit der angegebenen Anpassungs-ID aufgelistet:
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -55,7 +55,7 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: pre}
 
-Three corpora were added to the custom model. The service successfully analyzed `corpus1`. It is still analyzing `corpus2`, and its analysis of `corpus3` failed.
+Drei Korpora wurden zu dem angepassten Modell hinzugefügt. Der Service hat `corpus1` erfolgreich analysiert. Die Analyse von `corpus2` ist noch nicht abgeschlossen und die Analyse von `corpus3` ist fehlgeschlagen.
 
 ```javascript
 {
@@ -84,7 +84,7 @@ Three corpora were added to the custom model. The service successfully analyzed 
 ```
 {: codeblock}
 
-The following example returns information about the corpus that is named `corpus1` for the custom model with the specified customization ID:
+Das folgende Beispiel gibt Informationen zu dem Korpus mit dem Namen `corpus1` für das angepasste Modell mit der angegebenen Anpassungs-ID zurück:
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -102,20 +102,20 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-## Deleting a corpus from a custom language model
+## Korpus aus angepasstem Sprachmodell löschen
 {: #deleteCorpus}
 
-Use the `DELETE /v1/customizations/{customization_id}/corpora/{corpus_name}` method to remove an existing corpus from a custom language model. When it deletes the corpus, the service removes any OOV words that are associated with the corpus from the custom model's words resource unless
+Mit der Methode `DELETE /v1/customizations/{customization_id}/corpora/{corpus_name}` können Sie ein vorhandenes Korpus aus einem angepassten Sprachmodell entfernen. Beim Löschen des Korpus entfernt der Service alle OOV-Wörter (OOV = Out Of Vocabulary, vokabularextern), die dem Korpus zugeordnet sind, aus der Wörterressource des angepassten Modells, es sei denn, eine der folgenden Bedingungen trifft zu:
 
--   The word was also added by another corpus or by a grammar.
--   The word was modified in some way with the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method.
+-   Das Wort wurde auch von einem anderen Korpus oder einer anderen Grammatik hinzugefügt.
+-   Das Wort wurde mit der Methode `POST /v1/customizations/{customization_id}/words` oder `PUT /v1/customizations/{customization_id}/words/{word_name}` geändert.
 
-Removing a corpus does not affect the custom model until you train the model on its updated data by using the `POST /v1/customizations/{customization_id}/train` method. If you successfully trained the model on the corpus, words from the corpus remain in the model's vocabulary and apply to speech recognition until you retrain the model.
+Das Entfernen eines Korpus wirkt sich erst auf das angepasste Modell aus, wenn Sie das Modell mit den aktualisierten Korpusdaten trainieren (mithilfe der Methode `POST /v1/customizations/{customization_id}/train`). Wenn Sie das Modell erfolgreich mit dem Korpus trainiert haben, werden Wörter aus dem Korpus in das Vokabular des Modells übernommen und bei der Spracherkennung angewendet, bis Sie das Modell erneut trainieren.
 
-### Example request
+### Beispielanforderung
 {: #deleteExample-corpus}
 
-The following example deletes the corpus that is named `corpus3` from the custom model with the specified customization ID.
+Im folgenden Beispiel wird das Korpus mit dem Namen `corpus3` aus dem angepassten Modell mit der angegeben Anpassungs-ID gelöscht.
 
 ```bash
 curl -X DELETE -u "apikey:{apikey}"

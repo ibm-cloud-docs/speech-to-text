@@ -22,180 +22,184 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# The WebSocket interface
+# WebSocket-Schnittstelle
 {: #websockets}
 
-The WebSocket interface of the {{site.data.keyword.speechtotextshort}} service is the most natural way for a client to interact with the service. To use the WebSocket interface for speech recognition, you first use the `/v1/recognize` method to establish a persistent connection with the service. You then send text and binary messages over the connection to initiate and manage the recognition requests.
+Die WebSocket-Schnittstelle des {{site.data.keyword.speechtotextshort}}-Service ist das am besten geeignete Hilfsmittel für die Interaktion zwischen einem Client und dem Service. Wenn Sie die WebSocket-Schnittstelle für die Spracherkennung nutzen möchten, erstellen Sie zunächst mit der Methode `/v1/recognize` eine persistente Verbindung zu dem Service. Senden Sie anschließend Text- und Binärnachrichten über die Verbindung, um die Erkennungsanforderungen einzuleiten und zu verwalten.
 {: shortdesc}
 
-The recognition request and response cycle has the following steps:
+Der Prozess für Erkennungsanforderungen und Antworten umfasst die folgenden Schritte:
 
-1.  [Open a connection](#WSopen)
-1.  [Initiate a recognition request](#WSstart)
-1.  [Send audio and receive recognition results](#WSaudio)
-1.  [End a recognition request](#WSstop)
-1.  [Send additional requests and modify request parameters](#WSmore)
-1.  [Keep a connection alive](#WSkeep)
-1.  [Close a connection](#WSclose)
+1.  [Verbindung öffnen](#WSopen)
+1.  [Erkennungsanforderung einleiten](#WSstart)
+1.  [Audiodaten übertragen und Erkennungsergebnisse empfangen](#WSaudio)
+1.  [Erkennungsanforderung beenden](#WSstop)
+1.  [Weitere Anforderungen senden und Anforderungsparameter ändern](#WSmore)
+1.  [Verbindung offen halten](#WSkeep)
+1.  [Verbindung schließen](#WSclose)
 
-When the client sends data to the service, it *must* pass all JSON messages as text messages and all audio data as binary messages.
+Wenn der Client Daten an den Service sendet, *müssen* alle JSON-Nachrichten als Textnachrichten und alle Audiodaten als binäre Nachrichten übergeben werden.
 
-The snippets of example code that follow are written in JavaScript and are based on the HTML5 WebSocket API. For more information about the WebSocket protocol, see the Internet Engineering Task Force (IETF) [Request for Comment (RFC) 6455](http://tools.ietf.org/html/rfc6455){: external}.
+Die folgenden Snippets mit Beispielcode wurden in JavaScript geschrieben und basieren auf der HTML5-WebSocket-API. Weitere Informationen zum WebSocket-Protokoll finden Sie in der Veröffentlichung [Request for Comment (RFC) 6455](http://tools.ietf.org/html/rfc6455){: external} der Internet Engineering Task Force (IETF).
 {: note}
 
-## Open a connection
+## Verbindung öffnen
 {: #WSopen}
 
-The {{site.data.keyword.speechtotextshort}} service uses the WebSocket Secure (WSS) protocol to make the `/v1/recognize` method available at the following endpoint:
+Der {{site.data.keyword.speechtotextshort}}-Service verwendet das WSS-Protokoll (WSS = WebSocket Secure), um die Methode `/v1/recognize` am folgenden Endpunkt zur Verfügung zu stellen:
 
 ```
 wss://{host_name}/speech-to-text/api/v1/recognize
 ```
 {: codeblock}
 
-where `{host_name}` is the location in which your application is hosted:
+Dabei ist `{host_name}` der Standort, an dem Ihre Anwendung gehostet wird:
 
--   `stream.watsonplatform.net` for Dallas (the following examples use this host name)
--   `stream-fra.watsonplatform.net` for Frankfurt
--   `gateway-syd.watsonplatform.net` for Sydney
--   `gateway-wdc.watsonplatform.net` for Washington, DC
--   `gateway-tok.watsonplatform.net` for Tokyo
--   `gateway-lon.watsonplatform.net` for London
+-   `stream.watsonplatform.net` für Dallas (in den folgenden Beispielen wird dieser Hostname verwendet)
+-   `stream-fra.watsonplatform.net` für Frankfurt
+-   `gateway-syd.watsonplatform.net` für Sydney
+-   `gateway-wdc.watsonplatform.net` für Washington DC
+-   `gateway-tok.watsonplatform.net` für Tokio
+-   `gateway-lon.watsonplatform.net` für London
 
-A WebSocket client calls this method with the following query parameters to establish an authenticated connection with the service. If you use Identity and Access Management (IAM) authentication, use the `access_token` query parameter. If you use Cloud Foundry service credentials, use the `watson-token` query parameter.
+Ein WebSocket-Client ruft diese Methoden mit den folgenden Abfrageparametern auf, um eine authentifizierte Verbindung zum Service herzustellen. Bei Verwendung der Authentifizierung mit Identity and Access Management (IAM) verwenden Sie den Abfrageparameter `access_token`. Bei Verwendung von Cloud Foundry-Serviceberechtigungsnachweisen verwenden Sie den Abfrageparameter `watson-token`.
 
 <table>
-  <caption>Table 1. Parameters of the <code>/v1/recognize</code>
-    method</caption>
+  <caption>Tabelle 1. Parameter der Methode <code>/v1/recognize</code></caption>
   <tr>
     <th style="width:23%; text-align:left">Parameter</th>
-    <th style="width:12%; text-align:center">Data type</th>
-    <th style="text-align:left">Description</th>
+    <th style="width:12%; text-align:center">Datentyp</th>
+    <th style="text-align:left">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left"><code>access_token</code>
-      <br/><em>Optional</em></td>
+      <br/><em>      Optional
+    </em></td>
     <td style="text-align:center">String</td>
     <td style="text-align:left">
-      <em>If you use IAM authentication,</em> pass a valid IAM access
-      token to establish an authenticated connection with the service.
-      You pass an IAM access token instead of passing an API key with
-      the call. You must establish the connection before the access
-      token expires. For information about obtaining an access token, see
-      [Authenticating with IAM tokens](/docs/services/watson?topic=watson-iam).<br/><br/>
-      You pass an access token only to establish an authenticated connection.
-      Once you establish a connection, you can keep it alive indefinitely.
-      You remain authenticated for as long as you keep the connection open.
-      You do not need to refresh the access token for an active connection
-      that lasts beyond the token's expiration time. A connection can remain
-      active even after the token or its API key are deleted.
+      <em>Wenn Sie die IAM-Authentifizierung verwenden,</em> übergeben Sie ein gültiges
+      IAM-Zugriffstoken, um eine authentifizierte Verbindung zum Service herzustellen.
+      Das IAM-Zugriffstoken wird in dem Aufruf anstelle eines API-Schlüssels
+      übergeben. Sie müssen die Verbindung herstellen, bevor das Zugriffstoken
+      abläuft. Informationen zum Anfordern eines Zugriffstokens finden Sie im Abschnitt
+      [Authentifizierung mit IAM-Tokens durchführen](/docs/services/watson?topic=watson-iam).<br/><br/>
+      Ein Zugriffstoken muss nur übergeben werden, um eine authentifizierte Verbindung herzustellen.
+      Nach dem Einrichten kann die Verbindung unbegrenzt offen gehalten werden.
+      Sie bleiben authentifiziert, solange die Verbindung geöffnet ist.
+      Das Zugriffstoken für eine Verbindung, die über die Tokenablaufzeit
+      hinaus aktiv bleibt, muss nicht aktualisiert werden. Eine Verbindung bleibt
+      selbst dann aktiv, nachdem das Token oder der API-Schlüssel gelöscht wurde.
     </td>
   </tr>
   <tr>
     <td style="text-align:left"><code>watson-token</code>
-      <br/><em>Optional</em></td>
+      <br/><em>      Optional
+    </em></td>
     <td style="text-align:center">String</td>
     <td style="text-align:left">
-      <em>If you use Cloud Foundry service credentials,</em> pass a valid
-      {{site.data.keyword.watson}} authentication token to establish an
-      authenticated connection with the service. You pass a
-      {{site.data.keyword.watson}} token instead of passing service
-      credentials with the call. {{site.data.keyword.watson}} tokens are
-      based on Cloud Foundry service credentials, which use a `username`
-      and `password` for HTTP basic authentication. For information about
-      obtaining a {{site.data.keyword.watson}} token, see
-      [{{site.data.keyword.watson}} tokens](/docs/services/watson?topic=watson-gs-tokens-watson-tokens).<br/><br/>
-      You pass a {{site.data.keyword.watson}} token only to establish an
-      authenticated connection. Once you establish a connection, you can
-      keep it alive indefinitely. You remain authenticated for as long as
-      you keep the connection open.
+      <em>Wenn Sie Cloud Foundry-Serviceberechtigungsnachweise verwenden,</em> übergeben Sie
+      ein gültiges {{site.data.keyword.watson}}-Authentifizierungstoken, um eine
+      authentifizierte Verbindung zum Service herzustellen. Das {{site.data.keyword.watson}}-Token
+      wird in dem Aufruf anstelle von Serviceberechtigungsnachweisen übergeben. {{site.data.keyword.watson}}-Tokens
+      basieren auf Cloud Foundry-Serviceberechtigungsnachweisen, die eine Kombination aus `benutzername`
+      und `kennwort` für die HTTP-Basisauthentifizierung verwenden. Informationen zum Anfordern
+      eines {{site.data.keyword.watson}}-Tokens finden Sie im Abschnitt
+      [{{site.data.keyword.watson}}-Tokens](/docs/services/watson?topic=watson-gs-tokens-watson-tokens).<br/><br/>
+      Ein {{site.data.keyword.watson}}-Token muss nur übergeben werden, um eine
+      authentifizierte Verbindung herzustellen. Nach dem Einrichten kann die Verbindung unbegrenzt offen gehalten werden. Sie bleiben authentifiziert, solange die Verbindung geöffnet ist.
     </td>
   </tr>
   <tr>
     <td style="text-align:left"><code>model</code>
-      <br/><em>Optional</em></td>
+      <br/><em>      Optional
+    </em></td>
     <td style="text-align:center">String</td>
     <td style="text-align:left">
-      Specifies the language model to be used for transcription.
-      If you do not specify a model, the service uses the
-      <code>en-US_BroadbandModel</code> model by default. For more
-      information, see
-      [Languages and models](/docs/services/speech-to-text?topic=speech-to-text-models).
+      Gibt das Sprachmodell an, das für die Transkription verwendet werden soll.
+      Wenn Sie kein Modell angeben, verwendet der Service standardmäßig
+      das Modell <code>en-US_BroadbandModel</code>. Weitere Informationen
+      finden Sie im Abschnitt
+      [Sprachen und Modelle](/docs/services/speech-to-text?topic=speech-to-text-models).
     </td>
   </tr>
   <tr>
     <td style="text-align:left"><code>language_customization_id</code>
-      <br/><em>Optional</em></td>
+      <br/><em>      Optional
+    </em></td>
     <td style="text-align:center">String</td>
     <td style="text-align:left">
-      Specifies the Globally Unique Identifier (GUID) of a custom
-      language model that is to be used for all requests that are sent
-      over the connection. The base model of the custom language model
-      must match the value of the <code>model</code> parameter. If you
-      include a customization ID, you must make the request with credentials
-      for the instance of the service that owns the custom model. By
-      default, no custom language model is used. For more information, see
-      [The customization interface](/docs/services/speech-to-text?topic=speech-to-text-customization).
+      Gibt die GUID (Globally Unique Identifier) eines angepassten
+      Sprachmodells an, das für alle Anforderungen verwendet werden soll,
+      die über die Verbindung gesendet werden. Das Basismodell des angepassten
+      Sprachmodells muss mit dem Wert des Parameters <code>model</code> übereinstimmen. Wenn Sie
+      eine Anpassungs-ID angeben, müssen Sie die Anforderung mit den Berechtigungsnachweisen
+      für die Instanz des Service ausgeben, die Eigner des angepassten Modells ist. Standardmäßig
+      wird kein angepasstes Sprachmodell verwendet. Weitere Informationen finden Sie im Abschnitt
+      [Die Anpassungsschnittstelle](/docs/services/speech-to-text?topic=speech-to-text-customization).
     </td>
   </tr>
   <tr>
     <td style="text-align:left"><code>acoustic_customization_id</code>
-      <br/><em>Optional</em></td>
+      <br/><em>      Optional
+    </em></td>
     <td style="text-align:center">String</td>
     <td style="text-align:left">
-      Specifies the Globally Unique Identifier (GUID) of a custom
-      acoustic model that is to be used for all requests that are sent
-      over the connection. The base model of the custom acoustic model
-      must match the value of the <code>model</code> parameter. If you
-      include a customization ID, you must make the request with credentials
-      for the instance of the service that owns the custom model. By
-      default, no custom acoustic model is used. For more information, see
-      [The customization interface](/docs/services/speech-to-text?topic=speech-to-text-customization).
+      Gibt die GUID (Globally Unique Identifier) eines angepassten Akustikmodells
+      an, das für alle Anforderungen verwendet werden soll, die über die Verbindung
+      gesendet werden. Das Basismodell des angepassten Akustikmodells muss mit
+      dem Wert des Parameters <code>model</code> übereinstimmen. Wenn Sie
+      eine Anpassungs-ID angeben, müssen Sie die Anforderung mit den Berechtigungsnachweisen
+      für die Instanz des Service ausgeben, die Eigner des angepassten Modells ist. Standardmäßig
+      wird kein angepasstes Akustikmodell verwendet. Weitere Informationen finden Sie im Abschnitt
+      [Die Anpassungsschnittstelle](/docs/services/speech-to-text?topic=speech-to-text-customization).
     </td>
   </tr>
   <tr>
     <td style="text-align:left"><code>base_model_version</code>
-      <br/><em>Optional</em></td>
+      <br/><em>      Optional
+    </em></td>
     <td style="text-align:center">String</td>
     <td style="text-align:left">
-      Specifies the version of the base `model` that is to be used for all
-      requests that are sent over the connection. The parameter is intended
-      primarily for use with custom models that are upgraded for a new base
-      model. The default value depends on whether the parameter is used
-      with or without a custom model. For more information, see
-      [Base model version](/docs/services/speech-to-text?topic=speech-to-text-input#version).
+      Gibt die Version des Basismodells (`model`) an, die für alle
+      Anforderungen verwendet werden soll, die über die Verbindung gesendet werden. Dieser Parameter
+      ist in erster Linie für die Verwendung mit angepassten Modellen bestimmt, für die ein Upgrade
+      auf ein neues Basismodell durchgeführt wird. Der Standardwert ist davon abhängig, ob der
+      Parameter mit oder ohne ein angepasstes Modell verwendet wird. Weitere Informationen finden
+      Sie im Abschnitt [Version des Basismodells](/docs/services/speech-to-text?topic=speech-to-text-input#version).
     </td>
   </tr>
   <tr>
     <td style="text-align:left"><code>x-watson-learning-opt-out</code>
-      <br/><em>Optional</em></td>
-    <td style="text-align:center">Boolean</td>
+      <br/><em>      Optional
+    </em></td>
+    <td style="text-align:center">Boolesch</td>
     <td style="text-align:left">
-      Indicates whether the service logs requests and results that are sent
-      over the connection. To prevent IBM from accessing your data for general
-      service improvements, specify <code>true</code> for the parameter. For
-      more information, see
-      [Request logging](/docs/services/speech-to-text?topic=speech-to-text-input#logging).
+      Gibt an, ob der Service Anforderungen und Ergebnisse protokolliert, die über
+      die Verbindung gesendet werden. Wenn Sie nicht zulassen möchten, dass Ihre Daten
+      von IBM für die allgemeine Verbesserung des Service verwendet werden, geben
+      Sie für diesen Parameter <code>true</code> an. Weitere Informationen finden Sie im
+      Abschnitt [Anforderungsprotokollierung](/docs/services/speech-to-text?topic=speech-to-text-input#logging).
     </td>
   </tr>
   <tr>
     <td style="text-align:left"><code>x-watson-metadata</code>
-      <br/><em>Optional</em></td>
+      <br/><em>      Optional
+    </em></td>
     <td style="text-align:center">String</td>
     <td style="text-align:left">
-      Associates a customer ID with all data that is passed over the
-      connection. The parameter accepts the argument
-      <code>customer_id={id}</code>, where <code>id</code> is a random
-      or generic string that is to be associated with the data. You must
-      URL-encode the argument to the parameter, for example,
-      `customer_id%3dmy_customer_ID`. By default, no customer ID is associated
-      with the data. For more information, see
-      [Information security](/docs/services/speech-to-text?topic=speech-to-text-information-security).
+      Ordnet allen Daten die über die Verbindung gesendet werden,
+      eine Kunden-ID zu. Der Parameter akzeptiert das Argument
+      <code>customer_id={id}</code> (dabei ist <code>id</code> eine
+      zufällige oder generische Zeichenfolge, die den Daten zugeordnet werden soll). Das
+      Argument für den Parameter muss URL-codiert sein (z. B.
+      `customer_id%3dmy_customer_ID`). Standardmäßig
+      wird den Daten keine Kunden-ID zugeordnet. Weitere Informationen finden
+      Sie im Abschnitt [Informationssicherheit](/docs/services/speech-to-text?topic=speech-to-text-information-security).
     </td>
   </tr>
 </table>
 
-The following snippet of JavaScript code opens a connection with the service. The call to the `/v1/recognize` method passes the `access_token` and `model` query parameters, the latter to direct the service to use the Spanish broadband model. After it establishes the connection, the client defines the event listeners (`onOpen`, `onClose`, and so on) to respond to events from the service. The client can use the connection for multiple recognition requests.
+Das folgende Snippet mit JavaScript-Code öffnet eine Verbindung zu dem Service. Der Aufruf der Methode `/v1/recognize` übergibt die Abfrageparameter `access_token` und `model`, wobei der zweite Parameter den Service anweist, das Breitbandmodell für Spanisch zu verwenden. Nach dem Herstellen der Verbindung definiert der Client die Ereignislistener (`onOpen`, `onClose` usw.), um auf Ereignisse vom Service zu antworten. Der Client kann die Verbindung für mehrere Erkennungsanforderungen verwenden.
 
 ```javascript
 var IAM_access_token = '{access_token}';
@@ -203,7 +207,6 @@ var wsURI = 'wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
   + '?access_token=' + IAM_access_token
   + '&model=es-ES_BroadbandModel';
 var websocket = new WebSocket(wsURI);
-
 websocket.onopen = function(evt) { onOpen(evt) };
 websocket.onclose = function(evt) { onClose(evt) };
 websocket.onmessage = function(evt) { onMessage(evt) };
@@ -211,54 +214,56 @@ websocket.onerror = function(evt) { onError(evt) };
 ```
 {: codeblock}
 
-The client can open multiple concurrent WebSocket connections to the service. The number of concurrent connections is limited only by the capacity of the service, which generally poses no problems for users.
+Der Client kann mehrere gleichzeitige WebSocket-Verbindungen zum Service öffnen. Die Anzahl der gleichzeitigen Verbindungen ist nur durch die Kapazität des Service begrenzt, was für die Benutzer in der Regel keine Probleme darstellt.
 
-## Initiate a recognition request
+## Erkennungsanforderung einleiten
 {: #WSstart}
 
-To initiate a recognition request, the client sends a JSON text message to the service over the established connection. The client must send this message before it sends any audio for transcription. The message must include the `action` parameter but can usually omit the `content-type` parameter.
+Um eine Erkennungsanforderung einzuleiten, sendet der Client über die bestehende Verbindung eine JSON-Textnachricht an den Service. Der Client muss diese Nachricht senden, bevor Audiodaten zum Transkribieren gesendet werden. Die Nachricht muss den Parameter `action` enthalten. Der Parameter `content-type` kann in der Regel weggelassen werden.
 
 <table>
-  <caption>Table 2. Parameters of the JSON text message</caption>
+  <caption>Tabelle 2. Parameter der JSON-Textnachricht</caption>
   <tr>
     <th style="width:23%; text-align:left">Parameter</th>
-    <th style="width:12%; text-align:center">Data type</th>
-    <th style="text-align:left">Description</th>
+    <th style="width:12%; text-align:center">Datentyp</th>
+    <th style="text-align:left">Beschreibung</th>
   </tr>
   <tr>
-    <td style="text-align:left"><code>action</code><br/><em>Required</em></td>
+    <td style="text-align:left"><code>action</code><br/><em>      Erforderlich
+    </em></td>
     <td style="text-align:center">String</td>
     <td style="text-align:left">
-      Specifies the action to be performed:
+      Gibt die Aktion an, die ausgeführt werden soll:
       <ul style="margin-left:20px; padding:0px;">
         <li style="margin:10px 0px; line-height:120%;">
-          <code>start</code> starts a recognition request or specifies
-          new parameters for subsequent requests. For more information, see
-          [Send additional requests and modify request parameters](#WSmore).
+          <code>start</code> startet eine Erkennungsanforderung oder gibt
+          neue Parameter für nachfolgende Anforderungen an. Weitere Informationen
+          finden Sie im Abschnitt [Zusätzliche Anforderungen senden und Anforderungsparameter ändern](#WSmore).
         </li>
         <li style="margin:10px 0px; line-height:120%;">
-          <code>stop</code> signals that all audio for a request has
-          been sent. For more information, see
-          [End a recognition request](#WSstop).
+          <code>stop</code> gibt an, dass alle Audiodaten für eine Anforderung
+          gesendet wurden. Weitere Informationen finden Sie im Abschnitt
+          [Erkennungsanforderung beenden](#WSstop).
         </li>
       </ul>
     </td>
   </tr>
   <tr>
-    <td style="text-align:left"><code>content-type</code><br/><em>Optional</em></td>
+    <td style="text-align:left"><code>content-type</code><br/><em>      Optional
+    </em></td>
     <td style="text-align:center">String</td>
     <td style="text-align:left">
-      Identifies the format (MIME type) of the audio data for the request.
-      The parameter is required for the `audio/alaw`, `audio/basic`,
-      `audio/l16`, and `audio/mulaw` formats. For more information, see
-      [Audio formats](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
+      Gibt das Format (MIME-Typ) der Audiodaten für die Anforderung an.
+      Dieser Parameter ist für die Formate `audio/alaw`, `audio/basic`,
+      `audio/l16` und `audio/mulaw` erforderlich. Weitere
+      Informationen finden Sie im Abschnitt [Audioformate](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
     </td>
   </tr>
 </table>
 
-The message can also include optional parameters to specify other aspects of how the request is to be processed and the information that is to be returned. For information about all input and output features, see the [Parameter summary](/docs/services/speech-to-text?topic=speech-to-text-summary). You can specify a language model, custom language model, and custom acoustic model only as query parameters of the WebSocket URL.
+Die Nachricht kann außerdem optionale Parameter enthalten, die andere Aspekte für die Verarbeitung der Anforderung sowie die zurückzugebenden Informationen angeben. Informationen zu allen Ein- und Ausgabefunktionen finden Sie im Abschnitt [Parameterübersicht](/docs/services/speech-to-text?topic=speech-to-text-summary). Ein Sprachmodell, ein angepasstes Sprachmodell und ein Akustikmodell können Sie nur als Abfrageparameter der WebSocket-URL angeben.
 
-The following snippet of JavaScript code sends initialization parameters for the recognition request over the WebSocket connection. The calls are included in the client's `onOpen` function to ensure that they are sent only after the connection is established.
+Das folgende Snippet mit JavaScript-Code sendet Initialisierungsparameter für die Erkennungsanforderung über die WebSocket-Verbindung. Die Aufrufe sind in der Funktion `onOpen` des Clients enthalten, um sicherzustellen, dass sie erst gesendet werden, nachdem die Verbindung hergestellt wurde.
 
 ```javascript
 function onOpen(evt) {
@@ -271,34 +276,34 @@ function onOpen(evt) {
 ```
 {: codeblock}
 
-If it receives the request successfully, the service returns the following text message to indicate that it is `listening`:
+Wenn die Anforderung ordnungsgemäß empfangen wurde, signalisiert der Service durch die folgende Textnachricht, dass er empfangsbereit (`listening`) ist:
 
 ```javascript
 {'state': 'listening'}
 ```
 {: codeblock}
 
-The `listening` state indicates that the service instance is configured (your JSON `start` message was valid) and is ready to process a new utterance for a recognition request. Once it begins listening, the service processes any audio that was sent before the `listening` message.
+Der Status `listening` gibt an, dass die Serviceinstanz konfiguriert ist (d. h., Sie haben eine gültige JSON-Nachricht `start` übergeben) und bereit ist, eine neue Äußerung für eine Erkennungsanforderung zu verarbeiten. Sobald der ervice empfangsbereit ist, werden alle Audiodaten verarbeitet, die vor dem Ausgeben der Nachricht `listening` gesendet wurden.
 
-If the client specifies an invalid query parameter or JSON field for the recognition request, the service's JSON response includes a `warnings` field. The field describes each invalid argument. The request succeeds despite the warnings.
+Wenn der Client einen ungültigen Abfrageparameter oder ein ungültiges JSON-Feld für die Erkennungsanforderung angibt, enthält die JSON-Antwort ein Feld `warnings`. In dem Feld werden alle ungültigen Argumente beschrieben. Die Anforderung wird trotz der gemeldeten Warnungen erfolgreich ausgeführt.
 
-## Send audio and receive recognition results
+## Audiodaten senden und Erkennungsergebnisse empfangen
 {: #WSaudio}
 
-After it sends the initial `start` message, the client can begin sending audio data to the service. The client does not need to wait for the service to respond to the `start` message with the `listening` message. The service returns the results of the transcription asynchronously in the same format as it returns results for the HTTP interfaces.
+Nach dem Senden der einleitenden Nachricht `start` kann der Client mit dem Senden von Audiodaten an den Service beginnen. Der Client wartet nicht, bis der Service die Nachricht `start` mit der Nachricht `listening` beantwortet hat. Der Service gibt die Transkriptionsergebnisse asynchron im selben Format wie Ergebnisse für die HTTP-Schnittstellen zurück.
 
-The client must send the audio as binary data. The client can send a maximum of 100 MB of audio data with a single utterance (per `send` request). It must send at least 100 bytes of audio for any request. The client can send multiple utterances over a single WebSocket connection. For information about using compression to maximize the amount of audio that you can pass to the service with a request, see [Audio formats](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
+Der Client muss die Audiodaten als binäre Daten senden. Der Client kann maximal 100 MB an Audiodaten mit einer einzigen Äußerung senden (pro Anforderung `send`). Für jede Anforderung muss der Client mindestens 100 Byte an Audiodaten senden. Der Client kann mehrere Äußerungen über eine einzige WebSocket-Verbindung senden. Informationen zum Maximieren der Audiodatenmenge, die in einer Anforderung an den Service übergeben werden kann, finden Sie im Abschnitt [Audioformate](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
 
-The WebSocket interface imposes a maximum frame size of 4 MB. The client can set the maximum frame size to less than 4 MB. If it is not practical to set the frame size, the client can set the maximum message size to less than 4 MB and send the audio data as a sequence of messages. For more information about WebSocket frames, see [IETF RFC 6455](http://tools.ietf.org/html/rfc6455){: external}.
+Für die WebSocket-Schnittstelle gilt eine maximale Rahmengröße von 4 MB. Der Client kann als maximale Rahmengröße einen Wert kleiner als 4 MB festlegen. Wenn das Festlegen der Rahmengröße nicht sinnvoll ist, kann der Client die maximale Nachrichtengröße auf einen Wert kleiner als 4 MB festlegen und die Audiodaten als eine Folge von Nachrichten senden. Weitere Informationen zu WebSocket-Frames finden Sie in der Veröffentlichung [IETF RFC 6455](http://tools.ietf.org/html/rfc6455){: external}.
 
-The following snippet of JavaScript code sends audio data to the service as a binary message (blob):
+Das folgende Snippet mit JavaScript-Code sendet Audiodaten als binäre Nachricht (BLOB) an den Service:
 
 ```javascript
 websocket.send(blob);
 ```
 {: codeblock}
 
-The following snippet receives recognition hypotheses that the service returns asynchronously. The results are handled by the client's `onMessage` function.
+Das folgende Codesnippet empfängt vom Service zurückgegebene Erkennungshypothesen asynchron. Die Ergebnisse werden von der Funktion `onMessage` des Clients verarbeitet.
 
 ```javascript
 function onMessage(evt) {
@@ -307,37 +312,37 @@ function onMessage(evt) {
 ```
 {: codeblock}
 
-## End a recognition request
+## Erkennungsanforderung beenden
 {: #WSstop}
 
-When it is done sending the audio data for a request to the service, the client *must* signal the end of the binary audio transmission to the service in one of the following ways:
+Wenn das Senden der Audiodaten für eine Anforderung an den Service abgeschlossen ist, *muss* der Client das Ende der binären Audiodatenübertragung zum Service auf eine der folgenden Arten kenntlich machen:
 
--   By sending a JSON text message with the `action` parameter set to the value `stop`:
+-   Durch Senden einer JSON-Textnachricht, mit einem Parameter `action`, der auf den Wert `stop` gesetzt ist:
 
     ```javascript
     {action: 'stop'}
     ```
     {: codeblock}
 
--   By sending an empty binary message, one in which the specified blob is empty:
+-   Durch Senden einer leeren binären Nachricht, in der das angegebene BLOB leer ist:
 
     ```javascript
     websocket.send(blob)
     ```
     {: codeblock}
 
-The service does not send final results until it receives confirmation that the audio transmission is complete. If you fail to signal that the transmission is complete, the connection can time out without the service sending final results.
+Der Service sendet die endgültigen Ergebnisse erst, nachdem er die Bestätigung empfangen hat, dass die Audiodatenübertragung abgeschlossen ist. Wenn nicht signalisiert wird, dass die Übertragung abgeschlossen ist, wird möglicherweise das Verbindungszeitlimit überschritten und der Service sendet keine endgültigen Ergebnisse.
 
-To receive final results between multiple recognition requests, the client must signal the end of transmission for the previous request before it sends a subsequent request. After it returns the final results for the first request, the service returns another `{"state":"listening"}` message to the client. This message indicates that the service is ready to receive another request.
+Um zwischen mehreren Erkennungsanforderungen endgültige Ergebnisse zu empfangen, muss der Client das Ende der Übertragung für die vorherige Anforderung signalisieren, bevor die nächste Anforderung gesendet wird. Nachdem der Service die endgültigen Ergebnisse für die erste Anforderung zurückgegeben hat, gibt er eine weitere Nachricht `{"state":"listening"}` an den Client zurück. Diese Nachricht gibt an, dass der Service bereit ist, eine weitere Anforderung zu empfangen.
 
-## Send additional requests and modify request parameters
+## Weitere Anforderungen senden und Anforderungsparameter ändern
 {: #WSmore}
 
-While the WebSocket connection remains active, the client can continue to use the connection to send further recognition requests with new audio. By default, the service continues to use the parameters that were sent with the previous `start` message for all subsequent requests that are sent over the same connection.
+Solange die WebSocket-Verbindung aktiv ist, kann der Client die Verbindung nutzen, um weitere Erkennungsanforderungen mit neuen Audiodaten zu senden. Standardmäßig verwendet der Service die mit der vorherigen Nachricht `start` übergebenen Parameter für alle nachfolgenden Anforderungen, die über dieselbe Verbindung gesendet werden.
 
-To change the parameters for subsequent requests, the client can send another `start` message with the new parameters after it receives the final recognition results and `{"state":"listening"}` message from the service. The client can change any parameters except for those parameters that are specified when the connection is opened (`model`, `language_customization_id`, and so on).
+Um die Parameter für nachfolgende Anforderungen zu ändern, kann der Client eine weitere Nachricht `start` mit den neuen Parametern senden, nachdem er die endgültigen Erkennungsergebnisse und die Nachricht `{"state":"listening"}` vom Service empfangen hat. Der Client kann alle Parameter ändern, außer denen, die beim Öffnen der Verbindung angegeben wurden (`model`, `language_customization_id` usw.).
 
-The following example sends a `start` message with new parameters for subsequent recognition requests that are sent over the connection. The message specifies the same `content-type` as the previous example, but it directs the service to return confidence measures and timestamps for the words of the transcription.
+Im folgenden Beispiel wird eine Nachricht `start` mit neuen Parametern für nachfolgende Erkennungsanforderungen gesendet, die über die Verbindung übertragen werden. In der Nachricht wird derselbe Parameter `content-type` wie im vorherigen Beispiel angegeben, aber der Service wird angewiesen, Konfidenzwerte und Zeitmarken für die Wörter der Transkription zurückzugeben.
 
 ```javascript
 var message = {
@@ -350,56 +355,56 @@ websocket.send(JSON.stringify(message));
 ```
 {: codeblock}
 
-## Keep a connection alive
+## Verbindung offen halten
 {: #WSkeep}
 
-The service terminates the session and closes the connection if an inactivity or session timeout occurs:
+Der Service beendet die Sitzung und trennt die Verbindung, wenn eine Zeitlimitüberschreitung für Inaktivität oder Sitzungsdauer auftritt:
 
--   An *inactivity timeout* occurs if audio is being sent by the client but the service detects no speech. The inactivity timeout is 30 seconds by default. You can use the `inactivity_timeout` parameter to specify a different value, including `-1` to set the timeout to infinity. For more information, see [Inactivity timeout](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts-inactivity).
--   A *session timeout* occurs if the service receives no data from the client or sends no interim results for 30 seconds. You cannot change the length of this timeout, but you can extend the session by sending the service any audio data, including just silence, before the timeout occurs. You must also set the `inactivity_timeout` to `-1`. You are charged for the duration of any data that you send to the service, including the silence that you send to extend a session. For more information, see [Session timeout](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts-session).
+-   Eine *Inaktivitätszeitlimitüberschreitung* tritt auf, wenn der Service in den vom Client gesendeten Audiodaten keine gesprochenen Äußerungen erkennen kann. Der Standardwert für das Inaktivitätszeitlimit sind 30 Sekunden. Mit dem Parameter `inactivity_timeout` können Sie einen anderen Wert angeben (z. B. auch den Wert `-1` für ein unbegrenztes Zeitlimit). Weitere Informationen finden Sie im Abschnitt [Inaktivitätszeitlimit](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts-inactivity).
+-   Eine *Sitzungszeitlimitüberschreitung* tritt auf, wenn der Service keine Daten vom Client empfängt oder 30 Sekunden lang keine Zwischenergebnisse sendet. Die Länge dieses Zeitlimits kann nicht geändert werden, aber Sie können die Sitzung aktiv halten, indem Sie einfach beliebige Audiodaten (z. B. Sprechpausen) an den Service senden, bevor das Zeitlimit abläuft. Außerdem müssen Sie den Parameter `inactivity_timeout` auf den Wert `-1` setzen. Die Übertragungszeit der Daten, die Sie an den Service senden (einschließlich der Sprechpausen, um eine Sitzung aktiv zu halten) wird Ihnen in Rechnung gestellt. Weitere Informationen finden Sie im Abschnitt zum [Sitzungszeitlimit](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts-session).
 
-WebSocket clients and servers can also exchange *ping-pong frames* to avoid read timeouts by periodically exchanging small amounts of data. Many WebSocket stacks exchange ping-pong frames, but some do not. To determine whether your implementation uses ping-pong frames, check its list of features. You cannot programmatically determine or manage ping-pong frames.
+WebSocket-Clients und -Server können zur Vermeidung von Lesezeitlimits auch *Ping-/Pong-Frames* austauschen, indem sie regelmäßig kleine Datenmengen austauschen. Es tauschen zwar viele WebSocket-Stacks Ping-/Pong-Frames aus, einige jedoch nicht. Um festzustellen, ob Ihre Implementierung Ping-/Pong-Frames verwendet, überprüfen Sie die entsprechende Liste der Features. Sie können Ping-/Pong-Frames nicht programmgesteuert ermitteln oder verwalten.
 
-If your WebSocket stack does not implement ping-pong frames and your are sending long audio files, your connection can experience a read timeout. To avoid such timeouts, continuously stream audio to the service or request interim results from the service. Either approach can ensure that the lack of ping-pong frames does not cause your connection to close.
+Wenn Ihr WebSocket-Stack keine Ping-/Pong-Frames implementiert und Sie lange Audiodateien senden, kann bei Ihrer Verbindung ein Lesezeitlimit auftreten. Um solche Zeitlimits zu vermeiden, streamen Sie kontinuierlich Audio an den Service oder fordern Sie Zwischenergebnisse vom Service an. Mit jedem dieser Ansätze kann sichergestellt werden, dass das Fehlen von Ping-/Pong-Frames nicht dazu führt, dass Ihre Verbindung geschlossen wird.
 
-For more information about ping-pong frames, see [Section 5.5.2 Ping](http://tools.ietf.org/html/rfc6455#section-5.5.2){: external} and [Section 5.5.3 Pong](http://tools.ietf.org/html/rfc6455#section-5.5.3){: external} of IETF RFC 6455.
+Weitere Informationen zu Ping-/Pong-Frames finden Sie in den Abschnitten [Section 5.5.2 Ping](http://tools.ietf.org/html/rfc6455#section-5.5.2){: external} und [Section 5.5.3 Pong](http://tools.ietf.org/html/rfc6455#section-5.5.3){: external} des Request for Comments (RFC) 6455 der IETF.
 
-## Close a connection
+## Verbindung schließen
 {: #WSclose}
 
-When the client is done interacting with the service, it can close the WebSocket connection. Once the connection is closed, the client can no longer use it to send requests or to receive results. Close the connection only after you receive all results for a request. The connection eventually times out and closes if you do not explicitly close it.
+Wenn die Interaktion des Clients mit dem Service beendet ist, kann die WebSocket-Verbindung geschlossen werden. Nach dem Schließen der Verbindung kann der Client über die Verbindung keine Anforderungen mehr senden und keine Ergebnisse mehr empfangen. Schließen Sie die Verbindung erst, nachdem Sie alle Ergebnisse für eine Anforderung empfangen haben. Wenn Sie die Verbindung nicht explizit schließen, wird sie nach dem Ablaufen des Zeitlimits beendet.
 
-The following snippet of JavaScript code closes an open connection:
+Das folgende Snippet mit JavaScript-Code schließt eine bestehende Verbindung:
 
 ```javascript
 websocket.close();
 ```
 {: codeblock}
 
-## WebSocket return codes
+## WebSocket-Rückgabecodes
 {: #WSreturn}
 
-The service can send the following return codes to the client over the WebSocket connection:
+Der Service kann die folgenden Rückgabecodes über die WebSocket-Verbindung an den Client senden:
 
--   `1000` indicates normal closure of the connection, meaning that the purpose for which the connection was established has been fulfilled.
--   `1002` indicates that the service is closing the connection due to a protocol error.
--   `1006` indicates that the connection closed abnormally.
--   `1009` indicates that the frame size exceeded the 4 MB limit.
--   `1011` indicates that the service is terminating the connection because it encountered an unexpected condition that prevents it from fulfilling the request.
+-   `1000` gibt die normale Beendigung der Verbindung an; d. h. der Zweck, zu dem die Verbindung hergestellt wurde, ist erfüllt.
+-   `1002` gibt an, dass der Service die Verbindung wegen eines Protokollfehlers beendet.
+-   `1006` gibt an, dass die Verbindung abnormal beendet wurde.
+-   `1009` gibt an, dass die Obergrenze von 4 MB für die Rahmengröße überschritten wurde.
+-   `1011` gibt an, dass der Service die Verbindung beendet, weil die Anforderung aufgrund einer nicht erwarteten Bedingung nicht erfüllt werden kann.
 
-If the socket closes with an error, the client receives an informative message of the form `{"error":"{message}"}` before the socket closes. For more information about WebSocket return codes, see [IETF RFC 6455](http://tools.ietf.org/html/rfc6455){: external}.
+Wenn das Socket mit einem Fehler geschlossen wird, erhält der Client eine Informationsnachricht im Format `{"fehler":"{nachricht}"}`, bevor das Socket geschlossen wird. Weitere Informationen zu WebSocket-Rückgabecodes finden Sie in der Veröffentlichung [IETF RFC 6455](http://tools.ietf.org/html/rfc6455){: external}.
 
-## Example WebSocket session
+## Beispiel für WebSocket-Sitzung
 {: #WSexample}
 
-The following example shows a WebSocket session between a client and the {{site.data.keyword.speechtotextshort}} service. The session is shown as three separate exchanges to make it easier to follow. But all three exchanges are part of a single session with the service. The example focuses on the exchange of messages; it does not show opening and closing the connection.
+Das folgende Beispiel zeigt eine WebSocket-Sitzung zwischen einem Client und dem {{site.data.keyword.speechtotextshort}}-Service. Zur besseren Übersicht wird die Sitzung als drei separate Interaktionen dargestellt. Alle drei Interaktionen sind jedoch Teil einer einzigen Sitzung mit dem Service. Das Beispiel ist auf den Austausch von Nachrichten fokussiert, es zeigt nicht das Öffnen und Schließen der Verbindung.
 
-### First example exchange
+### Erster Beispielaustausch
 {: #firstExample}
 
-In the first exchange, the client sends audio that contains the string `Name the Mayflower`. The client sends a binary message with a single chunk of PCM (`audio/l16`) audio data, for which it indicates the required sampling rate. The client does not wait for the `{"state":"listening"}` response from the service to begin sending the audio data and to signal the end of the request. Sending the data immediately reduces latency because the audio is available to the service as soon as it is ready to handle a recognition request.
+Im ersten Austausch sendet der Client Audiodaten, in denen die Zeichenfolge `Name the Mayflower` enthalten ist. Der Client sendet eine binäre Nachricht mit einem einzigen Block von PCM-Audiodaten (`audio/l16`) und gibt die dafür erforderliche Abtastfrequenz an. Der Client wartet nicht auf die Antwort `{"state":"listening"}` vom Service, bevor mit dem Senden der Audiodaten begonnen und das Ende der Anforderung signalisiert wird. Durch das sofortige Senden der Daten wird die Latenzzeit verringert, da die Audiodaten für den Service verfügbar sind, sobald er bereit ist, die Erkennungsanforderung zu verarbeiten.
 
--   The *client* sends:
+-   Der *Client* sendet Folgendes:
 
     ```javascript
     {
@@ -413,7 +418,7 @@ In the first exchange, the client sends audio that contains the string `Name the
     ```
     {: codeblock}
 
--   The *service* responds:
+-   Der *Service* antwortet wie folgt:
 
     ```javascript
     {"state": "listening"}
@@ -423,12 +428,12 @@ In the first exchange, the client sends audio that contains the string `Name the
     ```
     {: codeblock}
 
-### Second example exchange
+### Zweiter Beispielaustausch
 {: #secondExample}
 
-In the second exchange, the client sends audio that contains the string `Second audio transcript`. The client sends the audio in a single binary message and uses the same parameters that it specified in the first request.
+Im zweiten Austausch sendet der Client Audiodaten, in denen die Zeichenfolge `Second audio transcript` enthalten ist. Der Client sendet die Audiodaten in einer einzigen binären Nachricht und verwendet die gleichen Parameter, die er in der ersten Anforderung angegeben hat.
 
--   The *client* sends:
+-   Der *Client* sendet Folgendes:
 
     ```javascript
     <binary audio data>
@@ -438,7 +443,7 @@ In the second exchange, the client sends audio that contains the string `Second 
     ```
     {: codeblock}
 
--   The *service* responds:
+-   Der *Service* antwortet wie folgt:
 
     ```javascript
     {"results": [{"alternatives": [{"transcript": "second audio transcript "}],
@@ -447,12 +452,12 @@ In the second exchange, the client sends audio that contains the string `Second 
     ```
     {: codeblock}
 
-### Third example exchange
+### Dritter Beispielaustausch
 {: #thirdExample}
 
-In the third exchange, the client again sends audio that contains the string `Name the Mayflower`. The client again sends a binary message with a single chunk of PCM audio data. But this time, the client requests interim results with the transcription.
+Im dritten Austausch sendet der Client wieder Audiodaten, in denen die Zeichenfolge `Name the Mayflower` enthalten ist. Der Client sendet ebenso eine binäre Nachricht mit einem einzigen Block von PCM-Audiodaten. Diesmal fordert der Client jedoch Zwischenergebnisse mit der Transkription an.
 
--   The *client* sends:
+-   Der *Client* sendet Folgendes:
 
     ```javascript
     {
@@ -467,7 +472,7 @@ In the third exchange, the client again sends audio that contains the string `Na
     ```
     {: codeblock}
 
--   The *service* responds:
+-   Der *Service* antwortet wie folgt:
 
     ```javascript
     {"state":"listening"}

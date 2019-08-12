@@ -22,21 +22,21 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Using a grammar for speech recognition
+# Grammatik bei der Spracherkennung verwenden
 {: #grammarUse}
 
-Once you create and train your custom language model with your grammar, you can use the grammar in speech recognition requests with the service's WebSocket and HTTP interfaces.
+Nachdem Sie Ihre Grammatik erstellt und Ihr angepasstes Sprachmodell mit der Grammatik trainiert haben, können Sie die Grammatik bei Spracherkennungsanforderungen über die WebSocket-Schnittstelle und die HTTP-Schnittstellen des Service verwenden.
 {: shortdesc}
 
--   Use the `language_customization_id` parameter to specify the customization ID (GUID) of the custom language model for which the grammar is defined. You must issue the request with credentials for the instance of the service that owns the model.
--   Use the `grammar_name` parameter to specify the name of the grammar. You can specify only a single grammar with a request.
+-   Geben Sie mit dem Parameter `language_customization_id` die Anpassungs-ID (GUID) des angepassten Sprachmodells an, für das die Grammatik definiert ist. Sie müssen die Anforderung mit den Berechtigungsnachweisen für die Instanz des Service ausgeben, die Eigner des Modells ist.
+-   Geben Sie mit dem Parameter `grammar_name` den Namen der Grammatik an. Bei einer Anforderung können Sie nur eine einzige Grammatik angeben.
 
-When you use a grammar, the service recognizes only words from the specified grammar. The service does not use custom words that were added from corpora, that were added or modified individually, or that are recognized by other grammars.
+Wenn Sie eine Grammatik für die Spracherkennung verwenden, erkennt der Service ausschließlich Wörter aus der angegebenen Grammatik. Angepasste Wörter, die aus Korpora hinzugefügt wurden, die separat hinzugefügt oder geändert wurden oder die durch andere Grammatiken erkannt werden, werden durch den Service nicht verwendet.
 
--   For the [WebSocket interface](/docs/services/speech-to-text?topic=speech-to-text-websockets), you first specify the customization ID with the `language_customization_id` parameter of the `/v1/recognize` method. You use this method to establish a WebSocket connection with the service.
+-   Bei Verwendung der [WebSocket-Schnittstelle](/docs/services/speech-to-text?topic=speech-to-text-websockets) geben Sie zuerst die Anpassungs-ID mit dem Parameter `language_customization_id` der Methode `/v1/recognize` an. Mithilfe dieser Methode stellen Sie eine WebSocket-Verbindung zum Service her.
 
     ```javascript
-    var token = {authentication-token};
+    var token = {authentifizierungstoken};
     var wsURI = 'wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
       + '?access_token=' + IAM_access_token
       + '&language_customization_id={customization_id}';
@@ -44,7 +44,7 @@ When you use a grammar, the service recognizes only words from the specified gra
     ```
     {: codeblock}
 
-    You then specify the name of the grammar with the `grammar_name` parameter in the JSON `start` message for the active connection. Passing this value with the `start` message allows you to change the grammar dynamically for each request that you send over the connection.
+    Anschließend geben Sie den Namen der Grammatik mit dem Parameter `grammar_name` in der JSON-Nachricht `start` für die aktive Verbindung an. Die Übergabe dieses Wertes mit der Nachricht `start` versetzt Sie in die Lage, die Grammatik für jede Anforderung, die Sie über die Verbindung senden, dynamisch zu ändern.
 
     ```javascript
     function onOpen(evt) {
@@ -58,7 +58,7 @@ When you use a grammar, the service recognizes only words from the specified gra
     }
     ```
     {: codeblock}
--   For the [synchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-http), pass both parameters with the `POST /v1/recognize` method.
+-   Bei der [synchronen HTTP-Schnittstelle](/docs/services/speech-to-text?topic=speech-to-text-http) übergeben Sie beide Parameter mit der Methode `POST /v1/recognize`.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -67,7 +67,7 @@ When you use a grammar, the service recognizes only words from the specified gra
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&grammar_name={grammar_name}"
     ```
     {: pre}
--   For the [asynchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-async), pass both parameters with the `POST /v1/recognitions` method.
+-   Bei der [asynchronen HTTP-Schnittstelle](/docs/services/speech-to-text?topic=speech-to-text-async) übergeben Sie beide Parameter mit der Methode `POST /v1/recognitions`.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"

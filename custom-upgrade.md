@@ -22,35 +22,35 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Upgrading custom models
+# Upgrade für angepasste Modelle durchführen
 {: #customUpgrade}
 
-To improve the quality of speech recognition, the {{site.data.keyword.speechtotextfull}} service occasionally updates base models. Because base models for different languages are independent of each other, as are the broadband and narrowband models for a language, updates to individual base models do not affect other models. The [Release notes](/docs/services/speech-to-text?topic=speech-to-text-release-notes) document all base model updates.
+Zur Verbesserung der Qualität bei der Spracherkennung werden die Basismodelle durch den {{site.data.keyword.speechtotextfull}}-Service von Zeit zu Zeit aktualisiert. Da die Basismodelle wie auch die Breitband- und Schmalbandmodelle für unterschiedliche Sprachen voneinander unabhängig sind, haben Aktualisierungen an einzelnen Basismodellen keinen Einfluss auf andere Modelle. Im Dokument [Releaseinformationen](/docs/services/speech-to-text?topic=speech-to-text-release-notes) sind alle Aktualisierungen der Basismodelle dokumentiert.
 {: shortdesc}
 
-When a new version of a base model is released, you must upgrade any custom language and custom acoustic models that are built on the base model to take advantage of the updates. Your custom models continue to use the older version of the base model until you complete the upgrade. As with all customization operations, you must use credentials for the instance of the service that owns a model to upgrade it.
+Sobald eine neue Version für ein Basismodell freigegeben wird, müssen Sie für alle angepassten Sprach- und Akustikmodelle, die auf dem Basismodell aufbauen, ein Upgrade durchführen, um die Aktualisierungen zu nutzen. Bis Sie das Upgrade durchgeführt haben, verwenden Ihre angepassten Modelle weiterhin die ältere Version des Basismodells. Wie bei allen Anpassungsoperationen müssen Sie für das Upgrade eines Modells die Berechtigungsnachweise der Serviceinstanz verwenden, die Eigner des Modells ist.
 
-Upgrade to the latest version of an updated base model as soon as possible. The sooner you upgrade a custom model, the sooner you can experience the improved performance of the new model. In addition, older versions of base models can be removed at a future time. To encourage upgrading, the service returns a warning message with the results for recognition requests that use custom models that are based on older base models.
+Führen Sie das Upgrade auf die neueste Version eines aktualisierten Basismodells baldmöglichst durch. Je schneller Sie für ein angepasstes Modell ein Upgrade durchführen, desto eher können Sie von der verbesserten Leistung des neuen Modells profitieren. Ältere Versionen von Basismodellen werden zudem möglicherweise zu einem künftigen Zeitpunkt entfernt. Um Sie auf die Möglichkeit eines Upgrades hinzuweisen, gibt der Service zusammen mit den Ergebnissen für Erkennungsanforderungen, die auf älteren Basismodellen basierende angepasste Modelle verwenden, eine Warnung aus.
 
-## How upgrading works
+## Funktionsweise des Upgrades
 {: #upgradeOverview}
 
-When a new base model is first released, existing custom models are still based on the older version of the base model. Until a custom model is upgraded, all operations on that custom model, such as adding data to or training the model, affect the existing version of the model. Similarly, all recognition requests that specify the custom model use the existing version of the model.
+Wenn ein neues Basismodell erstmalig freigegeben wird, basieren vorhandene angepasste Modelle weiterhin auf der älteren Version des Basismodells. Bis zum Upgrade eines angepassten Modells betreffen alle Operationen für dieses angepasste Modell (beispielsweise das Hinzufügen von Daten oder das Trainieren des Modells) die bestehende Version des Modells. Analog verwenden alle Erkennungsanforderungen, die das angepasste Modell angeben, die bestehende Version des Modells.
 
-Upgrading results in two versions of a custom model, one based on the older version of the base model and one based on the latest version of the base model. Once a custom model is upgraded, all operations on that custom model affect the newer, upgraded version of the model. It is no longer possible to add data to or to train the older version of the model. Moreover, you cannot undo an upgrade operation.
+Nach einem Upgrade gibt es zwei Versionen eines angepassten Modells. Eine Version basiert auf dem Basismodell und eine Version basiert auf der neuesten Version des Basismodells. Sobald für ein angepasstes Modell ein Upgrade durchgeführt wurde, betreffen alle Operationen für dieses angepasste Modell die neuere Version des Modells nach dem Upgrade. Anschließend ist es nicht mehr möglich, Daten hinzuzufügen oder die ältere Version des Modells zu trainieren. Eine Upgradeoperation kann überdies nicht rückgängig gemacht werden.
 
-When you upgrade either type of custom model, you do not need to upgrade its individual resources. For a custom language model, the service automatically upgrades any corpora, grammars, and words that are defined for the model. Likewise, when you upgrade a custom acoustic model, the service automatically upgrades its audio resources.
+Beim Upgrade eines angepassten Modells gleich welchen Typs müssen Sie für seine einzelnen Ressourcen kein Upgrade durchführen. Bei einem angepassten Sprachmodell führt der Service automatisch ein Upgrade für alle Korpora, Grammatiken und Wörter durch, die für das Modell definiert sind. Wenn Sie ein Upgrade für ein angepasstes Akustikmodell durchführen, führt der Service analog automatisch ein Upgrade für dessen Audioressourcen durch.
 
-By default, the service uses the latest version of the custom model for recognition requests. However, you can continue to use the older version of a custom model for speech recognition. For more information, see [Making recognition requests with upgraded custom models](#upgradeRecognition).
+Standardmäßig verwendet der Service die aktuellste Version des angepassten Modells für Erkennungsanforderungen. Sie können jedoch weiterhin die ältere Version eines angepassten Modells für die Spracherkennung verwenden. Weitere Informationen enthält der Abschnitt [Erkennungsanforderungen mit angepassten Modellen nach einem Upgrade durchführen](#upgradeRecognition).
 
-## Upgrading a custom language model
+## Upgrade für ein angepasstes Sprachmodell durchführen
 {: #upgradeLanguage}
 
-Follow these steps to upgrade a custom language model:
+Gehen Sie wie folgt vor, um ein Upgrade für ein angepasstes Sprachmodell durchzuführen:
 
-1.  Ensure that the custom language model is in either the `ready` or the `available` state. You can check a model's status by using the `GET /v1/customizations/{customization_id}` method. If the model's state is `ready`, upgrade the model before training it on its latest data.
+1.  Vergewissern Sie sich, dass das angepasste Sprachmodell den Status `ready` oder `available` aufweist. Den Status eines Modells können Sie mit der Methode `GET /v1/customizations/{customization_id}` überprüfen. Falls der Status des Modells `ready` lautet, führen Sie das Upgrade für das Modell aus, bevor Sie es mit den neuesten Daten trainieren.
 
-1.  Upgrade the custom language model by using the `POST /v1/customizations/{customization_id}/upgrade_model` method:
+1.  Verwenden Sie zum Upgrade des angepassten Sprachmodells die Methode `POST /v1/customizations/{customization_id}/upgrade_model`:
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -58,24 +58,24 @@ Follow these steps to upgrade a custom language model:
     ```
     {: pre}
 
-    The upgrade method is asynchronous. It can take on the order of minutes to complete depending on the number of words in the model's words resource and the current load on the service.
+    Die Methode für das Upgrade wird asynchron ausgeführt. Abhängig von der Anzahl der Wörter in der Wörterressource des Modells und der aktuellen Auslastung des Service kann das Upgrade einige Minuten dauern.
 
-The service returns a 200 response code if the upgrade process is successfully initiated. You can monitor the status of the upgrade by using the `GET /v1/customizations/{customization_id}` method to poll the model's status. Use a loop to check the status every 10 seconds.
+Der Service gibt den Antwortcode 200 zurück, wenn der Upgradeprozess erfolgreich gestartet wurde. Mit der Methode `GET /v1/customizations/{customization_id}` können Sie den Status des Modells abrufen und so den Status des Upgrades überwachen. Verwenden Sie eine Schleife, um den Status alle 10 Sekunden zu überprüfen.
 
-While it is being upgraded, the custom model has the status `upgrading`. When the upgrade is complete, the model resumes the status that it had before upgrade (`ready` or `available`). Checking the status of an upgrade operation is identical to checking the status of a training operation. For more information, see [Monitoring the train model request](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language).
+Während des Upgrades weist das angepasste Modell den Status `upgrading` auf. Nach Abschluss des Upgrades erhält das Modell wieder den Status, den es vor dem Upgrade besaß (`ready` oder `available`). Der Status einer Upgradeoperation wird auf dieselbe Weise überprüft wie der Status einer Trainingsoperation. Weitere Informationen finden Sie unter [Anforderung zum Trainieren des Modells überwachen](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language).
 
-The service cannot accept requests to modify the model in any way until the upgrade request completes. However, you can continue to issue recognition requests with the existing version of the model during the upgrade.
+Der Service kann keine Anforderungen zum Ändern des Modells akzeptieren, bis die Upgradeanforderung vollständig verarbeitet wurde. Während des Upgrades können Sie jedoch weiterhin Erkennungsanforderungen mit der vorhandenen Version des Modells ausgeben.
 
-## Upgrading a custom acoustic model
+## Upgrade für ein angepasstes Akustikmodell durchführen
 {: #upgradeAcoustic}
 
-Follow these steps to upgrade a custom acoustic model. If the custom acoustic model was trained with a custom language model, you must perform two extra upgrade steps where indicated.
+Gehen Sie wie folgt vor, um ein Upgrade für ein angepasstes Akustikmodell durchzuführen. Falls das angepasste Akustikmodell mit einem angepassten Sprachmodell trainiert wurde, müssen Sie zwei zusätzliche Upgradeschritte durchführen; diese sind entsprechend angegeben.
 
-1.  *If the custom acoustic model was trained with a custom language model,* you must first upgrade the custom language model to the latest version of the base model. For more information, see [Upgrading a custom language model](#upgradeLanguage).
+1.  *Falls das angepasste Akustikmodell mit einem angepassten Sprachmodell trainiert wurde,* müssen Sie zuerst für das angepasste Sprachmodell ein Upgrade auf die neueste Version des Basismodells durchführen. Weitere Informationen finden Sie unter [Upgrade für ein angepasstes Sprachmodell durchführen](#upgradeLanguage).
 
-1.  Ensure that the custom acoustic model is in either the `ready` or the `available` state. You can check a model's status by using the `GET /v1/acoustic_customizations/{customization_id}` method. If the model's state is `ready`, upgrade the model before training it on its latest data.
+1.  Vergewissern Sie sich, dass das angepasste Akustikmodell den Status `ready` oder `available` aufweist. Den Status eines Modells können Sie mit der Methode `GET /v1/acoustic_customizations/{customization_id}` überprüfen. Falls der Status des Modells `ready` lautet, führen Sie das Upgrade für das Modell aus, bevor Sie es mit den neuesten Daten trainieren.
 
-1.  Upgrade the custom acoustic model by using the `POST /v1/acoustic_customizations/{customization_id}/upgrade_model` method:
+1.  Verwenden Sie zum Upgrade des angepassten Akustikmodells die Methode `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`:
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -83,9 +83,9 @@ Follow these steps to upgrade a custom acoustic model. If the custom acoustic mo
     ```
     {: pre}
 
-    The upgrade method is asynchronous. It can take on the order of minutes or hours to complete, depending on the amount of audio data that the model contains and the current load on the service. As with training, upgrading generally takes approximately twice the length of the model's audio data.
+    Die Methode für das Upgrade wird asynchron ausgeführt. Abhängig von der Menge der Audiodaten, die das Modell enthält, und von der aktuellen  Auslastung des Service kann das Upgrade Minuten oder auch Stunden dauern. Wie beim Training ist die Dauer des Upgrades in der Regel etwa doppelt so lang wie die der Audiodaten des Modells.
 
-1.  *If the custom acoustic model was trained with a custom language model,* upgrade the custom acoustic model again, this time with the previously upgraded custom language model. Use the `custom_language_model_id` query parameter to specify the customization ID of the custom language model.
+1.  *Falls das angepasste Akustikmodell mit einem angepassten Sprachmodell trainiert wurde,* müssen Sie für das angepasste Akustikmodell erneut ein Upgrade durchführen, dieses Mal mit dem zuvor aktualisierten angepassten Sprachmodell. Geben Sie mit dem Abfrageparameter `custom_language_model_id` die Anpassungs-ID des angepassten Sprachmodells an.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -93,35 +93,35 @@ Follow these steps to upgrade a custom acoustic model. If the custom acoustic mo
     ```
     {: pre}
 
-    Once again, the upgrade method is asynchronous, and upgrading generally takes approximately twice the length of the model's audio data.
+    Auch diese Methode für das Upgrade wird asynchron ausgeführt; das Upgrade dauert normalerweise wieder doppelt so lang wie die Audiodaten des Modells.
 
-    The request to upgrade the acoustic model with the language model might fail with a 400 response code and the message `No input data modified since last training`. If this error occurs, add the boolean `force` query parameter to the request and set the parameter to `true`. Use the parameter only to force an upgrade of a custom acoustic model in this particular situation.
+    Die Anforderung für das Upgrade des Akustikmodells mit dem Sprachmodell schlägt möglicherweise mit dem Antwortcode 400 und der Nachricht `Keine geänderten Eingabedaten seit dem letzten Training` fehl. Wenn dieser Fehler auftritt, fügen Sie der Anforderung den booleschen Abfrageparameter `force` hinzu und setzen Sie den Parameter auf `true`. Verwenden Sie den Parameter ausschließlich in dieser speziellen Situation, um das Upgrade eines angepassten Akustikmodells zu erzwingen.
     {: note}
 
-The service returns a 200 response code if the upgrade process is successfully initiated. You can monitor the status of the upgrade by using the `GET /v1/acoustic_customizations/{customization_id}` method to poll the model's status. Use a loop to check the status once a minute.
+Der Service gibt den Antwortcode 200 zurück, wenn der Upgradeprozess erfolgreich gestartet wurde. Mit der Methode `GET /v1/acoustic_customizations/{customization_id}` können Sie den Status des Modells abrufen und so den Status des Upgrades überwachen. Verwenden Sie eine Schleife, um den Status einmal pro Minute zu überprüfen.
 
-While it is being upgraded, the custom model has the status `upgrading`. When the upgrade is complete, the model resumes the status that it had before upgrade (`ready` or `available`). Checking the status of an upgrade operation is identical to checking the status of a training operation. For more information, see [Monitoring the train model request](/docs/services/speech-to-text?topic=speech-to-text-acoustic#monitorTraining-acoustic).
+Während des Upgrades weist das angepasste Modell den Status `upgrading` auf. Nach Abschluss des Upgrades erhält das Modell wieder den Status, den es vor dem Upgrade besaß (`ready` oder `available`). Der Status einer Upgradeoperation wird auf dieselbe Weise überprüft wie der Status einer Trainingsoperation. Weitere Informationen finden Sie unter [Anforderung zum Trainieren des Modells überwachen](/docs/services/speech-to-text?topic=speech-to-text-acoustic#monitorTraining-acoustic).
 
-The service cannot accept requests to modify the model in any way until the upgrade request completes. However, you can continue to issue recognition requests with the existing version of the model during the upgrade.
+Der Service kann keine Anforderungen zum Ändern des Modells akzeptieren, bis die Upgradeanforderung vollständig verarbeitet wurde. Während des Upgrades können Sie jedoch weiterhin Erkennungsanforderungen mit der vorhandenen Version des Modells ausgeben.
 
-## Upgrade failures
+## Upgradefehler
 {: #upgradeFailures}
 
-The upgrade of a custom model fails to start if the service is handling another request for the model, such as a training request or a request to add data. The upgrade request also fails to start in the following cases:
+Das Upgrade eines angepassten Modells kann nicht gestartet werden, wenn der Service eine andere Anforderung für das Modell verarbeitet, wie z. B. eine Trainingsanforderung oder eine Anforderung zum Hinzufügen von Daten. Das Starten der Upgradeanforderung schlägt außerdem in den folgenden Fällen fehl:
 
--   The custom model is in a state other than `ready` or `available`.
--   The custom model contains no data (custom words or audio resources).
--   For a custom acoustic model that was trained with a custom language model, the custom models are based on different versions of the base model. You must upgrade the custom language model before upgrading the custom acoustic model.
+-   Das angepasste Modell weist einen anderen Status als `ready` oder `available` auf.
+-   Das angepasste Modell enthält keine Daten (angepasste Wörter oder Audioressourcen).
+-   Bei einem angepassten Akustikmodell, das mit einem angepassten Sprachmodell trainiert wurde, basieren die angepassten Modelle auf unterschiedlichen Versionen des Basismodells. Sie müssen ein Upgrade für das angepasste Sprachmodell durchführen, bevor Sie das Upgrade des angepassten Akustikmodells durchführen.
 
-## Listing version information for a custom model
+## Versionsinformationen für ein angepasstes Modell auflisten
 {: #upgradeList}
 
-To see the versions of the base model for which a custom model is available, use the following methods:
+Mit den folgenden Methoden können Sie die Versionen des Basismodells auflisten, für die ein angepasstes Modell verfügbar ist:
 
--   To list information about a custom language model, use the `GET /v1/customizations/{customization_id}` method. For more information, see [Listing custom language models](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
--   To list information about a custom acoustic model, use the `GET /v1/acoustic_customizations/{customization_id}` method. For more information, see [Listing custom acoustic models](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
+-   Verwenden Sie zum Auflisten von Informationen zu einem angepassten Sprachmodell die Methode `GET /v1/customizations/{customization_id}`. Weitere Informationen finden Sie im Abschnitt [Angepasste Sprachmodelle auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
+-   Verwenden Sie zum Auflisten von Informationen zu einem angepassten Akustikmodell die Methode `GET /v1/acoustic_customizations/{customization_id}`. Weitere Informationen finden Sie im Abschnitt [Angepasste Akustikmodelle auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
 
-In both cases, the output includes a `versions` field that shows information about the base models for the custom model. The following output shows information for an upgraded custom language model:
+In beiden Fällen umfasst die Ausgabe ein Feld `versions`, das Informationen zu den Basismodellen für das angepasste Modell enthält. Die folgende Ausgabe zeigt Informationen zu einem angepassten Sprachmodell:
 
 ```javascript
 {
@@ -143,28 +143,28 @@ In both cases, the output includes a `versions` field that shows information abo
 ```
 {: codeblock}
 
-The `versions` field indicates that the custom model is available for two versions of the base model: the older version, `en-US_BroadbandModel.v07-06082016.06202016`, and the newer version, `en-US_BroadbandModel.v2017-11-15`. If the custom model is not upgraded or only a single version of its base model exists, the `versions` field shows a single version.
+Das Feld `versions` gibt an, dass das angepasste Modell für zwei Versionen des Basismodells verfügbar ist. Die ältere Version ist `en-US_BroadbandModel.v07-06082016.06202016`, die neuere Version heißt `en-US_BroadbandModel.v2017-11-15`. Falls für das angepasste Modell kein Upgrade durchgeführt wurde oder es nur eine einzige Version seines Basismodells gibt, ist im Feld `versions` eine einzige Version angegeben.
 
-## Making recognition requests with upgraded custom models
+## Erkennungsanforderungen mit angepassten Modellen nach einem Upgrade durchführen
 {: #upgradeRecognition}
 
-By default, the service uses the latest version of a custom model that is specified with a recognition request. However, even after a custom model is upgraded, you can continue to make recognition requests with the older version of the model. You use the `base_model_version` parameter of a recognition method to specify the version of a base model that is to be used for speech recognition.
+Standardmäßig verwendet der Service die neueste Version eines angepassten Modells, das bei einer Erkennungsanforderung angegeben ist. Aber auch nach einem Upgrade für ein angepasstes Modell können Sie für Erkennungsanforderungen weiterhin die ältere Version des Modells verwenden. Um die Version eines Basismodells anzugeben, die für die Spracherkennung verwendet werden soll, verwenden Sie den Parameter `base_model_version` einer Erkennungsmethode.
 
-For example, the following HTTP request specifies that the older version of the base model is to be used. Thus, the older version of the specified custom language model is also used.
+Die folgende HTTP-Anforderung gibt beispielsweise an, dass die ältere Version des Basismodells verwendet werden soll. Daher wird auch die ältere Version des angegebenen angepassten Sprachmodells verwendet.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
---data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?model=en-US_BroadbandModel&base_model_version=en-US_BroadbandModel.v07-06082016.06202016&language_customization_id={customization_id}"
+--data-binary @{pfad}audio-file.flac
+"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?model=en-US_BroadbandModel&base_model_version=en-US_BroadbandModel.v07-06082016.06202016&language_customization_id={anpassungs-id}"
 ```
 {: pre}
 
-You can use this feature to test the performance and accuracy of a custom model against both the old and new versions of its base model. If you find that an upgraded model's performance is lacking in some way (for instance, certain words are no longer recognized), you can continue to use the older version with recognition requests.
+Mithilfe dieser Funktion können Sie das Leistungsverhalten und die Genauigkeit eines angepassten Modells sowohl mit der alten als auch mit der neuen Version seines Basismodells testen. Falls Sie die Leistung eines Modells nach dem Upgrade nicht zufriedenstellt (weil beispielsweise bestimmte Wörter nicht mehr erkannt werden), können Sie weiterhin das ältere Modell bei Erkennungsanforderungen verwenden.
 
-[Base model version](/docs/services/speech-to-text?topic=speech-to-text-input#version) describes the `base_model_version` parameter and how the service determines what versions of the base and custom models to use with a recognition request. In addition to that information, consider the following issues when you pass both custom language and custom acoustic models with a recognition request:
+Im Abschnitt [Version des Basismodells](/docs/services/speech-to-text?topic=speech-to-text-input#version) ist der Parameter `base_model_version` beschrieben; dort erfahren Sie auch, wie der Service ermittelt, welche Versionen des Basismodells und des angepassten Modells bei einer Erkennungsanforderung zu verwenden sind. Neben diesen Informationen sollten Sie auch die folgenden Aspekte berücksichtigen, wenn Sie bei einer Erkennungsanforderung sowohl ein angepasstes Sprachmodell als auch ein angepasstes Akustikmodell übergeben:
 
--   Both custom models must be based on the same base model (for example, `en-US_BroadbandModel`).
--   If both custom models are based on the older base model, the service uses the old base model for recognition.
--   If both custom models are based on the newer base model, the service uses the new base model for recognition.
--   If only one of the two custom models is upgraded to the newer base model, the service uses the old base model for recognition. It selects the old base model because that is the version that the two custom models have in common.
+-   Die beiden angepassten Modelle müssen auf demselben Basismodell basieren (z. B. `en-US_BroadbandModel`).
+-   Falls die beiden angepassten Modelle auf dem älteren Basismodell basieren, verwendet der Service das alte Basismodell für die Erkennung.
+-   Falls die beiden angepassten Modelle auf dem neueren Basismodell basieren, verwendet der Service das neue Basismodell für die Erkennung.
+-   Falls nur für eines der beiden angepassten Modelle ein Upgrade auf das neuere Basismodell durchgeführt wurde, verwendet der Service das alte  Basismodell für die Erkennung. Er wählt das alte Basismodell aus, weil dies die Version ist, die von beiden angepassten Modellen gemeinsam verwendet wird.

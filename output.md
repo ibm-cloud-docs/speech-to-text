@@ -22,32 +22,32 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Output features
+# Ausgabefunktionen
 {: #output}
 
-The {{site.data.keyword.speechtotextfull}} service offers the following features to indicate the information that the service is to include in its transcription results for a speech recognition request. All output parameters are optional.
+Der {{site.data.keyword.speechtotextfull}}-Service bietet die folgenden Funktionen zum Aufrufen von Informationen, die in die Transkriptionsergebnisse für eine Spracherkennungsanforderung eingefügt werden. Alle Ausgabeparameter sind optional.
 {: shortdesc}
 
--   For examples of simple speech recognition requests for each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text?topic=speech-to-text-basic-request).
--   For examples and descriptions of speech recognition responses, see [Understanding recognition results](/docs/services/speech-to-text?topic=speech-to-text-basic-response). The service returns all JSON response content in the UTF-8 character set.
--   For an alphabetized list of all available speech recognition parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/services/speech-to-text?topic=speech-to-text-summary).
+-   Beispiele für einfache Spracherkennungsanforderungen für die einzelnen Schnittstellen des Service finden Sie im Abschnitt [Erkennungsanforderung ausgeben](/docs/services/speech-to-text?topic=speech-to-text-basic-request).
+-   Beispiele und Beschreibung für Spracherkennunganforderungen finden Sie im Abschnitt [Wissenswertes über Erkennungsergebnisse](/docs/services/speech-to-text?topic=speech-to-text-basic-response). Der Service gibt alle Inhalte von JSON-Antworten mit dem Zeichensatz UTF-8 zurück.
+-   Eine alphabetisch sortierte Liste aller verfügbaren Parameter für die Spracherkennung, in der auch der jeweilige Status (allgemein verfügbar oder Betaversion) sowie die unterstützten Sprachen angegeben sind, finden Sie in der [Parameterübersicht](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
-## Speaker labels
+## Sprecherbezeichnungen
 {: #speaker_labels}
 
-The speaker labels feature is beta functionality that is available for US English, Japanese, and Spanish (both broadband and narrowband models) and UK English (narrowband model only).
+Die Funktion für Sprecherbezeichnungen wird als Betafunktionalität bereitgestellt und ist für amerikanisches Englisch, Japanisch, Spanisch (Breit- und Schmalbandmodelle) und britisches Englisch (nur Schmalbandmodell) verfügbar.
 {: note}
 
-Speaker labels identify which individuals spoke which words in a multi-participant exchange. (Labeling who spoke and when is sometimes referred to as *speaker diarization*.) You can use the information to develop a person-by-person transcript of an audio stream, such as contact to a call center. Or you can use it to animate an exchange with a conversational robot or avatar. For best performance, use audio that is at least a minute long.
+Sprecherbezeichnungen geben an, von welchen Personen in einer Konversation mit mehreren Beteiligten welche Worte gesprochen wurden. (Die Kennzeichnung der Sprecher und des Sprechzeitpunkts wird gelegentlich auch als *Sprecherprotokollierung* bezeichnet.) Mithilfe dieser Informationen können Sie ein nach Personen aufgeteiltes Transkript für einen Audiodatenstrom (z. B. ein Anruf bei einem Call-Center) erstellen. Oder Sie können die Informationen verwenden, um einen Dialog mit einem Roboter oder Avatar zu animieren. Um gute Leistungswerte zu erzielen, sollten die Audiodaten mindestens eine Minute umfassen.
 
-Speaker labels are optimized for two-speaker scenarios. They work best for telephone conversations that involve two people in an extended exchange. They can handle up to six speakers, but more than two speakers can result in variable performance. Two-person exchanges are typically conducted over narrowband media, but you can use speaker labels with supported narrowband and broadband models.
+Sprecherbezeichnungen sind auf Szenarios mit zwei Sprechern abgestimmt. Sie funktionieren am besten für Telefongespräche, bei denen zwei Personen einen längeren Dialog führen. Zwar können bis zu sechs Sprecher verarbeitet werden, aber bei mehr als zwei Sprechern ist das resultierende Leistungsverhalten wechselhaft. Gespräche zwischen zwei Personen werden in der Regel über Schmalbandmedien geführt, dabei können jedoch Sprecherbezeichnungen in unterstützten Schmal- und Breitbandmodellen zum Einsatz kommen.
 
-To use the feature, you set the `speaker_labels` parameter to `true` for a recognition request; the parameter is `false` by default. The service identifies speakers by individual words of the audio. It relies on a word's start and end time to identify its speaker. Therefore, enabling speaker labels also forces the `timestamps` parameter to be `true` (see [Word timestamps](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps)).
+Um diese Funktion zu nutzen, setzen Sie den Parameter `speaker_labels` für eine Erkennungsanforderung auf `true`. Der Parameter ist standardmäßig auf `false` gesetzt. Der Service erkennt Sprecher an einzelnen Wörtern in den Audiodaten. Der Sprecher eines Wortes wird anhand des Start- und Endzeitpunkts des betreffenden Wortes identifiziert. Für die Verwendung von Sprecherbezeichnungen muss daher auch der Parameter `timestamps` auf `true` gesetzt werden (siehe [Wortzeitmarken](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps)).
 
-### Speaker labels example
+### Beispiel für Sprecherbezeichnungen
 {: #speakerLabelsExample}
 
-The following example request shows a response that includes speaker labels. The numeric values that are associated with each element of the `timestamps` array are the start and end times of the word in the audio.
+Das folgende Beispiel zeigt eine Antwort mit Sprecherbezeichnungen. Die zugeordneten Zahlenwerte für die einzelnen Elemente des Arrays `timestamps` sind die Start- und Endzeitpunkte des Wortes in den Audiodaten.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -141,13 +141,13 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-The `transcript` field shows the final transcript of the audio, which lists the words as they were spoken by all participants. By comparing and synchronizing the speaker labels with the timestamps, you can reassemble the conversation as it occurred.
+Das Feld `transcript` enthält das endgültige Transkript der Audiodaten, in dem die von allen Beteiligten gesprochenen Wörter aufgelistet sind. Durch Vergleichen und Synchronisieren der Sprecherbezeichnungen mit den Zeitmarken können Sie den Ablauf des Dialogs rekonstruieren.
 
 <table style="width:50%">
-  <caption>Table 1. Speaker labels example</caption>
+  <caption>Tabelle 1. Beispiel für Sprecherbezeichnungen</caption>
   <tr>
-    <th style="text-align:left">Timestamp</th>
-    <th style="text-align:left">Speaker label</th>
+    <th style="text-align:left">Zeitmarke</th>
+    <th style="text-align:left">Sprecherbezeichnung</th>
   </tr>
   <tr>
     <td style="vertical-align:top">
@@ -221,88 +221,88 @@ The `transcript` field shows the final transcript of the audio, which lists the 
   </tr>
 </table>
 
-The results clearly indicate how this two-person exchange began:
+Das Ergebnis zeigt deutlich, wie dieser Dialog zwischen zwei Personen begann:
 
--   **Speaker 2** - "Hello?"
--   **Speaker 1** - "Yeah?"
--   **Speaker 2** - "Yeah, how's Billy?"
+-   **Sprecher 2** - "Hello?"
+-   **Sprecher 1** - "Yeah?"
+-   **Sprecher 2** - "Yeah, how's Billy?"
 
-In the example, the `confidence` fields indicate the service's confidence in its identification of the speakers. The `final` field has a value of `false` for each word. This value indicates that the service is still processing the audio. The service might change its identification of the speaker or its confidence for individual words before it is done.
+Die Konfidenzfelder (`confidence`) in diesem Beispiel geben die Konfidenz des Service bei der Identifizierung der Sprecher an. Im Feld `final` ist für jedes Wort der Wert `false` angegeben. Dieser Wert bedeutet, dass die Verarbeitung der Audiodaten durch den Service noch nicht abgeschlossen ist. Der Service kann die Identifizierung des Sprechers oder den Konfidenzwert für einzelne Wörter noch ändern, bis die Verarbeitung abgeschlossen ist.
 
-### Speaker IDs for speaker labels
+### Sprecher-IDs für Sprecherbezeichnungen
 {: #speakerLabelsIDs}
 
-The example also illustrates an interesting aspect of speaker IDs. In the `speaker` fields, the first speaker has an ID of `2` and the second has an ID of `1`. The service develops a better understanding of the speaker patterns as it processes the audio. Therefore, it can change speaker IDs for individual words, and can also add and remove speakers, until it generates its final results.
+Das Beispiel veranschaulicht einen interessanten Aspekt von Sprecher-IDs. In den Feldern für Sprecher (`speaker`) hat der erste Sprecher zunächst die ID `2` und der zweite Sprecher die ID `1`. Der Service verfeinert die Einteilung der Sprecherabfolge im Laufe der Verarbeitung der Audiodaten. Dabei können Sprecher-IDs für einzelne Wörter geändert sowie Sprecher hinzugefügt bzw. entfernt werden, bis das endgültige Ergebnis vorliegt.
 
-As a result, speaker IDs might not be sequential, contiguous, or ordered. For instance, IDs typically start at `0`, but in the previous example, the earliest ID is `1`. The service likely omitted an earlier word assignment for speaker `0` based on further analysis of the audio. Omissions can happen for later speakers, as well. Omissions can result in gaps in the numbering and produce results for two speakers who are labeled, for example, `0` and `2`. Another consideration is that speakers can leave a conversation. So a participant who contributes only to the early stages of a conversation might not appear in later results.
+Dies hat zur Folge, dass die Sprecher-IDs möglicherweise nicht folgerichtig, konsistent oder geordnet sind. Beispiel: Die IDs beginnen normalerweise mit der ID `0`. Im vorherigen Beispiel ist die kleinste ID jedoch `1`. Der Service hat vermutlich eine frühere Wortzuordnung für den Sprecher `0` im Verlauf der weiteren Analyse der Audiodaten verworfen. Solche Änderungen können auch für spätere Sprecher-IDs vorgenommen werden. Sie können zu Lücken in der Nummerierung führen, sodass den Sprechern im Analyseergebnis die IDs `0` und `2` zugeordnet sind. Es kann auch vorkommen, dass Sprecher den Dialog verlassen. In diesem Fall kommt ein Teilnehmer, der am Anfang des Dialogs Beiträge geliefert hat, in den späteren Ergebnissen möglicherweise nicht mehr vor.
 
-### Requesting interim results for speaker labels
+### Zwischenergebnisse für Sprecherbezeichnungen anfordern
 {: #speakerLabelsInterim}
 
-With the WebSocket interface, you can request interim results as well as speaker labels (see [Interim results](/docs/services/speech-to-text?topic=speech-to-text-output#interim)). Final results are generally better than interim results. But interim results can help identify the evolution of a transcript and the assignment of speaker labels. Interim results can indicate where transient speakers and IDs appeared or disappeared. However, the service can reuse the IDs of speakers that it initially identifies and later reconsiders and omits. Therefore, an ID might refer to two different speakers in interim and final results.
+In der WebSocket-Schnittstelle können Sie Zwischenergebnisse und Sprecherbezeichnungen anfordern (siehe [Zwischenergebnisse](/docs/services/speech-to-text?topic=speech-to-text-output#interim)). Die Endergebnisse sind in der Regel genauer als Zwischenergebnisse. Zwischenergebnisse können jedoch helfen, die Entwicklung eines Transkripts und die Zuordnung der Sprecherbezeichnungen nachzuvollziehen. Aus den Zwischenergebnisse wird möglicherweise ersichtlich, an welchen Stellen temporäre Sprecher und IDs in den Dialog eingestiegen bzw. daraus ausgestiegen sind. Es kann jedoch vorkommen, dass Sprecher-IDs, die ursprünglich identifiziert und später verworfen wurden, im weiteren Verlauf vom Service wiederverwendet werden. Dies kann dazu führen, dass dieselbe ID in den Zwischenergebnissen und in den Endergebnissen zwei verschiedene Sprecher bezeichnet.
 
-When you request both interim results and speaker labels, final results for long audio streams might arrive well after initial interim results are returned. It is also possible for some interim results to include only a `speaker_labels` field without the `results` and `result_index` fields. If you do not request interim results, the service returns final results that include `results` and `result_index` fields and a single `speaker_labels` field.
+Wenn Sie sowohl Zwischenergebnisse als auch Sprecherbezeichnungen anfordern, kann es vorkommen, dass die Endergebnisse für lange Audiodatenströme erst lange nach den anfänglichen Zwischenergebnissen zurückgegeben werden. Außerdem kann es vorkommen, dass manche Zwischenergebnisse nur ein Feld `speaker_labels` und nicht die Felder `results` und `result_index` enthalten. Wenn Sie keine Zwischenergebnisse anfordern, gibt der Service Endergebnisse mit den Feldern `results` und `result_index` und einem einzelnen Feld `speaker_labels` zurück.
 
-The service sends final results when the audio stream is complete or in response to a timeout, whichever occurs first. The service sets the `final` field to `true` only for the last word of the speaker labels that it returns in either case.
+Der Service sendet die Endergebnisse, wenn der Audiodatenstrom beendet ist oder als Antwort auf eine Zeitlimitüberschreitung (je nachdem, welches dieser Ereignisse zuerst eintritt). In beiden Fällen setzt der Service das Feld `final` nur für das zuletzt zurückgegebene Wort der Sprecherbezeichnungen auf `true`.
 
-### Performance considerations for speaker labels
+### Leistungsaspekte für Sprecherbezeichnungen
 {: #speakerLabelsPerformance}
 
-As noted previously, the speaker labels feature is optimized for two-person conversations, such as communications with a call center. Therefore, you need to consider the following potential performance issues:
+Wie bereits erwähnt, ist die Funktion für Sprecherbezeichnungen auf Dialoge zwischen zwei Personen (z. B. Anrufe bei einem Call-Center) abgestimmt. Daher sollten Sie die folgenden potenziellen Leistungsprobleme berücksichtigen:
 
--   Performance for audio with a single speaker can be poor. Variations in audio quality or in the speaker's voice can cause the service to identify extra speakers who are not present. Such speakers are referred to as hallucinations.
--   Similarly, performance for audio with a dominant speaker, such as a podcast, can be poor. The service tends to miss speakers who talk for shorter amounts of time, and it can also produce hallucinations.
--   Performance for audio with more than six speakers is undefined. The feature can handle a maximum of six speakers.
--   Performance for short utterances can be less accurate than for long utterances. The service produces better results when participants speak for longer amounts of time, at least 30 seconds per speaker. The relative amount of audio that is available for each speaker can also affect performance.
--   Performance can degrade for the first 30 seconds of speech. It usually improves to a reasonable level after 1 minute of audio.
+-   Für Audiodaten mit einem einzigen Sprecher werden möglicherweise keine guten Leistungswerte erzielt. Schwankungen in der Tonqualität oder der Stimme des Sprechers können dazu führen, dass der Service zusätzliche Sprecher erkennt, die gar nicht da sind. Solche Sprecher werden als Halluzinationen bezeichet.
+-   Ebenso können die Leistungswerte für Audiodaten mit einem dominanten Sprecher (z. B. Podcasts) schlecht ausfallen. Dabei erkennt der Service Sprecher möglicherweise nicht, die nur kurze Redebeiträge leisten. Dies kann ebenfalls zu Halluzinationen führen.
+-   Die Leistung bei Audiodaten mit mehr als sechs Sprechern ist nicht vorhersehbar. Die Funktion kann höchsten sechs Sprecher verarbeiten.
+-   Die Erkennungsleistung bei kurzen Äußerungen kann weniger präzise sein als bei langen Äußerungen. Der Service erzielt bessere Ergebnisse, wenn jeder Teilnehmer des Gesprächs längere Redebeiträge (mindestens 30 Sekunden) liefert. Der mengenmäßige Anteil jedes einzelnen Sprechers an den Audiodaten kann sich ebenfalls auf die Leistung auswirken.
+-   Die Leistung kann in den ersten 30 Sekunden des Sprechbeitrags abnehmen. Erst ab einer Dauer von 1 Minute liefern die Audiodaten in der Regel ein akzeptables Leistungsniveau.
 
-As with all transcription, performance can also be affected by poor audio quality, background noise, a person's manner of speech, overlapping speakers, and other aspects of the audio.
+Wie bei allen Transkriptionen kann die Leistung auch durch schlechte Tonqualität, Hintergrundgeräusche, die Sprechweise einer Person, gleichzeitig sprechende Teilnehmer und andere Aspekte der Audioerfassung beeinträchtigt werden.
 
-## Keyword spotting
+## Schlüsselworterkennung
 {: #keyword_spotting}
 
-The keyword spotting feature detects specified strings in a transcript. The service can spot the same keyword multiple times and report each occurrence. The service spots keywords only in the final results, not in interim results. By default, the service does no keyword spotting.
+Die Funktion für Schlüsselworterkennung identifiziert angegebene Zeichenfolgen in einem Transkript. Der Service kann mehrere Vorkommen desselben Schlüsselworts erkennen und erfassen. Dabei werden Schlüsselwörter nur in den Endergebnissen erkannt und nicht in den Zwischenergebnissen. Die Funktion für Schlüsselworterkennung ist im Service standardmäßig inaktiviert.
 
-To use keyword spotting, you must specify both of the following parameters:
+Wenn Sie die Schlüsselworterkennung verwenden möchten, müssen Sie die beiden folgenden Parameter angeben:
 
--   Use the `keywords` parameter to specify an array of strings to be spotted. The service spots no keywords if you omit the parameter or specify an empty array. A keyword string can include more than one token. For example, the keyword `Speech to Text` has three tokens.
+-   Geben Sie im Parameter `keywords` ein Array mit den zu erkennenden Zeichenfolgen an. Der Service erkennt keine Schlüsselwörter, wenn der Parameter nicht angegeben oder leer ist. Eine Schlüsselwortzeichenfolge kann mehr als ein Token enthalten. Beispiel: Das Schlüsselwort `Speech to Text` umfasst drei Tokens.
 
-    For US English, the service normalizes each keyword to match spoken versus written strings. For example, it normalizes numbers to match how they are spoken as opposed to written. For other languages, keywords must be specified as they are spoken.
+    Für amerikanisches Englisch normalisiert der Service jedes Schlüsselwort, um gesprochen und geschriebene Zeichenfolgen abzugleichen. Beispiel: Durch Normalisieren von Zahlen werden die Sprech- und Schreibweisen der Zahlen abgeglichen. Für andere Sprachen müssen Schlüsselwörter in der gesprochenen Form angegeben werden.
 
-    You can spot a maximum of 1000 keywords with a single request. Keywords are case-insensitive.
--   Use the `keywords_threshold` parameter to specify a probability between 0.0 and 1.0 for a keyword match. The threshold indicates the lower bound for the level of confidence the service must have for a word to match the keyword. A keyword is spotted in the transcript only if its confidence is greater than or equal to the specified threshold.
+    Mit einer einzigen Anforderung können bis zu  1.000 Schlüsselwörter erkannt werden. Schlüsselwörter sind von der Groß-/Kleinschreibung unabhängig.
+-   Im Parameter `keywords_threshold` können Sie als Erkennungswahrscheinlichkeit für ein Schlüsselwort einen Wert zwischen 0,0 und 1,0 angeben. Dieser Schwellenwert gibt die Untergrenze für das Konfidenzniveau an, das der Service für ein Wort ermittelt haben muss, damit eine Übereinstimmung mit dem Schlüsselwort erkannt wird. Ein Schlüsselwort wird im Transkript nur erkannt, wenn das zugehörige Konfidenzniveau größer-gleich dem angegebenen Schwellenwert ist.
 
-    Specifying a small threshold can potentially produce many matches. If you specify a threshold, you must also specify one or more keywords. Omit the parameter to return no matches.
+    Das Angeben eines niedrigen Schwellenwerts kann dazu führen, dass viele Übereinstimmungen festgestellt werden. Wenn Sie einen Schwellenwert angeben, müssen Sie auch mindestens ein Schlüsselwort angeben. Wenn Sie den Parameter nicht angeben, werden keine Übereinstimmungen zurückgegeben.
 
-Keyword spotting is necessary to identify keywords in an audio stream. You cannot identify keywords by processing a final transcript because the transcript represents the service's best decoding results for the input audio. It does not include tokens with lower confidence scores that might represent a word of interest. So applying text processing tools to a transcript on the client side might not identify keywords. A richer representation of decoding results is needed, and that representation is available only at the server.
+Die Schlüsselworterkennung ist erforderlich, um Schlüsselwörter in einem Audiodatenstrom zu identifizieren. Die Schlüsselworterkennung durch Verarbeiten eines endgültigen Transkripts ist nicht möglich, da das Transkript die bestmöglichen Decodierungsergebnisse des Service für die Audioeingabedaten darstellt. Es enthält keine Tokens mit niedrigen Konfidenzwerten, die möglicherweise ein infrage kommendes Wort darstellen. Mit anderen Worten: Das Anwenden von Textverarbeitungstools auf ein Transkript auf der Clientseite verhindert möglicherweise das Erkennen von Schlüsselwörtern. Daher wird eine detailliertere Darstellung der Decodierungsergebnisse benötigt, die nur auf dem Server verfügbar ist.
 
-### Keyword spotting results
+### Ergebnisse der Schlüsselworterkennung
 {: #keywordSpottingResults}
 
-The service returns the results in a `keywords_result` field that is an element of the `results` array. The `keywords_result` field is a dictionary, or associative array, of enumerable properties. Each property is identified by a specified keyword and includes an array of objects. The service returns one element of the array for each match that it finds for the keyword. The object for each match includes the following fields:
+Der Service gibt die Ergebnisse der Erkennung in einem Feld `keywords_result` im Array `results` zurück. Das Feld `keywords_result` enthält ein Wörterverzeichnis oder ein assoziatives Array der aufzulistenden Merkmale. Jedes Merkmal wird durch ein angegebenes Schlüsselwort identifiziert und enthält ein Array von Objekten. Der Service gibt für jede gefundene Übereinstimmung mit dem Schlüsselwort ein Element des Arrays zurück. Das Objekt für jede Übereinstimmung enthält die folgenden Felder:
 
--   `normalized_text` is the specified keyword that is normalized to the spoken phrase that matched in the input audio.
--   `start_time` is the start time in seconds of the match.
--   `end_time` is the end time in seconds of the match.
--   `confidence` is the service's confidence that the match represents the specified keyword. The confidence must be at least as great as the specified threshold to be included in the results.
+-   `normalized_text` ist das angegebene Schlüsselwort, normalisiert auf den gesprochenen Ausdruck, der in den Audioeingabedaten als Übereinstimmung erkannt wurde.
+-   `start_time` ist der Startzeitpunkt der Übereinstimmung, angegeben in Sekunden.
+-   `end_time` ist der Endzeitpunkt der Übereinstimmung, angegeben in Sekunden.
+-   `confidence` ist der vom Service ermittelte Konfidenzwert für die Übereinstimmung mit dem angegebenen Schlüsselwort. Der Konfidenzwert muss größer-gleich dem angegebenen Schwellenwert sein, damit die Übereinstimmung in die Ergebnisse aufgenommen wird.
 
-A keyword for which the service finds no matches is omitted from the array. A keyword might not be found if
+Ein Schlüsselwort, für das der Service keine Übereinstimmungen findet, wird nicht in das Array eingetragen. In den folgenden Fällen wird möglicherweise kein Schlüsselwort gefunden:
 
--   The audio simply does not include the keyword. Absence of the keyword is the most obvious explanation.
--   The threshold is set too high. The service might identify the keyword but with a lower level of confidence, in which case it omits the match from the results.
--   A keyword string that contains multiple tokens (for example, `Speech to Text`) is spoken with too much silence between its tokens. When the service transcribes audio, it chops the stream into a series of blocks. Each block represents a continuous chunk of audio that does not have an interval of silence that exceeds half of a second. It constructs an array of result objects that consists of these blocks.
+-   Das Schlüsselwort kommt in den Audiodaten nicht vor. Das Fehlen des Schlüsselworts ist der offensichtlichste Grund.
+-   Der festgelegte Schwellenwert ist zu hoch. Wenn der Service einen zu niedrigen Konfidenzwert für das Schlüsselwort ermittelt, wird die gefundene Übereinstimmung nicht in die Ergebnisse eingetragen.
+-   Eine gesprochene Schlüsselwortzeichenfolge mit mehreren Tokens (z. B. `Speech to Text`) enthält zu viele Sprechpausen zwischen den Tokens. Beim Transkribieren der Audiodaten zerteilt der Service den Datenstrom in eine Reihe von Blöcken. Jeder Block besteht aus einem zusammenhängenden Segment der Audiodaten, das keine Sprechpause enthält, die länger als eine halbe Sekunde ist. Als Ergebnis wird ein Array von Objekten erstellt, das aus diesen Blöcken besteht.
 
-    The service matches a multi-token keyword only if
+    Der Service erkennt ein Schlüsselwort mit mehreren Tokens nur in den folgenden Fällen als Übereinstimmung:
 
-    -   The keyword's tokens are in the same block.
-    -   The tokens are either adjacent or separated by a gap of no more than 0.1 seconds.
+    -   Die Tokens des Schlüsselworts sind im selben Block enthalten.
+    -   Die Tokens folgen lückenlos aufeinander oder die Lücken sind nicht länger als 0,1 Sekunde.
 
-    The latter case can occur if a brief filler or non-lexical utterance, such as "uhm" or "well," lies between two tokens of the keyword. For more information, see [Hesitation markers](/docs/services/speech-to-text?topic=speech-to-text-basic-response#hesitation).
+    Der letzte Fall kann eintreten, wenn ein kurzes Füllwort oder eine nicht lexikalische Äußerung wie "uhm" oder "well" zwischen den Tokens des Schlüsselworts liegt. Weitere Informationen finden Sie im Abschnitt [Stockungsmarkierungen](/docs/services/speech-to-text?topic=speech-to-text-basic-response#hesitation).
 
-### Keyword spotting example
+### Beispiel für Schlüsselworterkennung
 {: #keywordSpottingExample}
 
-The following example request sets the `keywords` parameter to a URL-encoded array of three strings (`colorado`, `tornado`, and `tornadoes`) and the `keywords_threshold` parameter to `0.5`. The service finds qualifying occurrences of `colorado` and `tornadoes`.
+In der folgenden Beispielanforderung wird für den Parameter `keywords` ein URL-codiertes Array mit drei Zeichenfolgen (`colorado`, `tornado` und `tornadoes`) angegeben und für den Parameter `keywords_threshold` der Wert `0.5`. Der Service findet infrage kommende Vorkommen von `colorado` und `tornadoes`.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -349,17 +349,17 @@ severe thunderstorms swept through Colorado on Sunday "
 ```
 {: codeblock}
 
-## Maximum alternatives
+## Maximale Anzahl Alternativen
 {: #max_alternatives}
 
-The `max_alternatives` parameter accepts an integer value that tells the service to return the *n*-best alternative hypotheses for the results. By default, the service returns only a single transcription result, which is equivalent to setting the parameter to `1`. By setting `max_alternatives` to a number greater than 1, you ask the service to return that number of the best alternative transcriptions. (If you specify a value of `0`, the service uses the default value of `1`.)
+Der Parameter `max_alternatives` akzeptiert einen ganzzahligen Wert, der den Service anweist, die *n* besten alternativen Kandidaten für die Ergebnisse zurückzugeben. Standardmäßig gibt der Service nur ein einzelnes Transkriptionsergebnis zurück (dies entspricht dem Parameterwert `1`). Wenn Sie für den Parameter `max_alternatives` einen Wert größer als 1 angeben, gibt der Service diese Anzahl der besten alternativen Transkriptionen zurück. (Wenn Sie `0` angeben, verwendet der Service den Standardwert `1`.)
 
-The service reports a confidence score only for the best alternative that it returns. In most cases, that is the alternative to choose.
+Der Service gibt nur für die beste zurückgegebene Alternative einen Konfidenzwert an. In den meisten Fällen wird diese Alternativ ausgewählt.
 
-### Maximum alternatives example
+### Beispiel für maximale Anzahl Alternativen
 {: #maximumAlternativesExample}
 
-The following example request sets the `max_alternatives` parameter to `3`; the service reports a confidence for the most likely of the three alternatives.
+In der folgenden Beispielanforderung wird für den Parameter `max_alternatives` der Wert `3` festgelegt. Der Service gibt einen Konfidenzwert für die wahrscheinlichste der drei Alternativen an.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -396,30 +396,30 @@ severe thunderstorms swept through Colorado and Sunday "
 ```
 {: codeblock}
 
-## Interim results
+## Zwischenergebnisse
 {: #interim}
 
-The interim results feature is available only with the WebSocket interface.
+Die Funktion für Zwischenergebnisse ist nur für die WebSocket-Schnittstelle verfügbar.
 {: note}
 
-Interim results are intermediate hypotheses of a transcription that are likely to change before the service returns its final results. The service returns interim results as soon as it generates them. Interim results are useful for
+Zwischenergebnisse sind vorläufige Hypothesen für eine Transkription, die noch geändert werden können, bevor der Service das Endergebnis zurückgibt. Zwischenergebnisse werden vom Service zurückgegeben, sobald sie erstellt wurden. Zwischenergebnisse sind in den folgenden Szenarios hilfreich:
 
--   Interactive applications and real-time transcription
--   Long audio streams, which can take a while to transcribe
+-   Interaktive Anwendungen und Transkription in Echtzeit
+-   Lange Audiodatenströme mit zeitaufwendigem Transkriptionsprozess
 
-Interim results arrive more often and more quickly than final results. You can use them to enable your application to respond more quickly or to gauge the progress of the transcription.
+Zwischenergebnisse werden häufiger und schneller bereitgestellt, als Endergebnisse. Sie können verwendet werden, um schnellere Antwortzeiten für Anwendungen zu ermöglichen oder den Fortschritt des Transkriptionsprozesses zu messen.
 
-To receive interim results, set the `interim_results` JSON parameter to `true` in the `start` message for a WebSocket recognition request. If you omit the `interim_results` parameter or set it to `false`, the service returns only a single JSON transcript at the end of the audio. Follow these guidelines to use the parameter:
+Wenn Sie Zwischenergebnisse empfangen möchten, setzen Sie in der Nachricht `start` für eine WebSocket-Erkennungsanforderung den JSON-Parameter `interim_results`auf `true`. Wenn Sie den Parameter `interim_results` nicht angeben oder auf `false` setzen, gibt der Service nur ein einziges JSON-Transkript am Ende des Audiodatenstroms zurück. Beachten Sie die folgenden Richtlinien für die Verwendung des Parameters:
 
--   Omit the parameter or set it to `false` if you are doing offline or batch transcription, do not need minimum latency, and want a single JSON result for all audio.
--   Set the parameter to `true` if you want results to arrive progressively as the service processes the audio or if you want the results with minimum latency. Keep in mind that the service can update interim results as it processes more audio.
+-   Geben Sie den Parameter nicht an oder setzen Sie ihn auf `false`, wenn die Transkription im Offline-Modus oder im Stapelbetrieb ausgeführt wird bzw. wenn keine Mindestlatenzzeit erforderlich ist und ein einziges JSON-Ergebnis für alle Audiodaten erstellt werden soll.
+-   Setzen Sie den Parameter auf `true`, wenn der Service während der Verarbeitung der Audiodaten fortlaufend Ergebnisse liefern soll oder Ergebnisse mit einer Mindestlatenzzeit bereitgestellt werden sollen. Dabei ist zu beachten, dass die Zwischenergebnisse vom Service im Laufe der Audiodatenverarbeitung gegebenenfalls aktualisiert werden.
 
-Interim results are indicated in the JSON response with the `final` field set to `false`. The service can update such results with more accurate transcriptions as it processes further audio. Final results are identified with the `final` field set to `true`. The service makes no further updates to final results.
+Zwischenergebnisse sind in der JSON-Antwort daran zu erkennen, dass das Feld `final` auf `false` gesetzt ist. Im Verlauf der weiteren Audiodatenverarbeitung werden die Zwischenergebnisse vom Service gegebenenfalls durch genauere Ergebnisse ersetzt. Die endgültigen Ergebnisse sind daran zu erkennen, dass das Feld `final` auf `true` gesetzt ist. Die Endergebnisse sind endgültig und werden vom Service nicht mehr aktualisiert.
 
-### Interim results example
+### Beispiel für Zwischenergebnisse
 {: #interimResultsExample}
 
-The following abbreviated example requests interim results for a WebSocket request. In its response, the service sets the `final` attribute to `true` only for the final result.
+Im folgenden gekürzten Beispiel werden Zwischenergebnisse für eine WebSocket-Anforderung angefordert. In der Antwort des Service wird das Attribut `final` nur für das Endergebnis auf `true` gesetzt.
 
 ```javascript
 var token = {authentication-token};
@@ -503,28 +503,28 @@ severe thunderstorms swept through Colorado on Sunday "
 ```
 {: codeblock}
 
-## Word alternatives
+## Wortalternativen
 {: #word_alternatives}
 
-The word alternatives feature (also known as Confusion Networks) reports hypotheses for acoustically similar alternatives for words of the input audio. For instance, the word `Austin` might be the best hypothesis for a word from the audio. But the word `Boston` is another possible hypothesis in the same time interval. Hypotheses share a common start and end time but have different spellings and usually different confidence scores.
+Die Funktion für Wortalternativen (auch als Confusion Networks bezeichnet) meldet Hypothesen (Kandidaten) für akustisch ähnliche Alternativen zu Wörtern in den Audioeingabedaten. Beispielsweise kann das Wort `Austin` die beste Hypothese für ein Wort aus den Audiodaten sein. Das Wort `Boston` kann jedoch eine weitere Hypothese im selben Zeitintervall sein. Hypothesen weisen einen gemeinsamen Start- und Endzeitpunkt auf, aber sie unterscheiden sich in Schreibweise und (in der Regel) Konfidenzwert.
 
-By default, the service does not report word alternatives. To indicate that you want to receive alternative hypotheses, you use the `word_alternatives_threshold` parameter to specify a probability between 0.0 and 1.0. The threshold indicates the lower bound for the level of confidence the service must have in a hypothesis to return it as a word alternative. A hypothesis is returned only if its confidence is greater than or equal to the specified threshold.
+Die Funktion für Wortalternativen ist im Service standardmäßig inaktiviert. Um anzugeben, dass Sie alternative Hypothesen empfangen möchten, können Sie im Parameter `word_alternatives_threshold` einen Wahrscheinlichkeitswert zwischen 0,0 und 1,0 angeben. Der Schwellenwert gibt die Untergrenze für das Konfidenzniveau an, das der Service für eine Hypothese ermittelt haben muss, damit Sie als Wortalternative zurückgegeben wird. Eine Hypothese wird nur vorgeschlagen, wenn der zugehörige Konfidenzwert größer-gleich dem angegebenen Schwellenwert ist.
 
-You can think of word alternatives as the timeline for a transcript that is chopped into smaller intervals, or bins. Each bin can have one or more hypotheses with different spellings and confidence. The `word_alternatives_threshold` parameter controls the density of the results that the service returns. Specifying a small threshold can potentially produce many hypotheses.
+Wortalternativen sind mit der Zeitachse für ein Transkript vergleichbar, die in kleinere Abschnitte (sogenannte Fächer) aufgeteilt ist. Jedes Fach kann eine oder mehrere Hypothese(n) mit unterschiedlichen Schreibweisen und Konfidenzwerten enthalten. Der Parameter `word_alternatives_threshold` steuert die Dichte (Menge) der vom Service zurückgegebenen Ergebnisse. Wenn ein niedriger Schwellenwert angegeben wird, kann dies zu einer großen Menge von Hypothesen führen.
 
-### Word alternatives results
+### Ergebnisse für Wortalternativen
 {: #wordAlternativesResults}
 
-The service returns the results in a `word_alternatives` field that is an element of the `results` array. The `word_alternatives` field is an array of objects, each of which provides the following fields for an alternative word:
+Der Service gibt die Ergebnisse in einem Feld `word_alternatives` als Element des Arrays `results` zurück. Das Feld `word_alternatives` ist ein Array mit Objekten, die jeweils die folgenden Felder für eine Wortalternative enthalten:
 
--   `start_time` indicates the time in seconds at which the word for which hypotheses are returned starts in the input audio.
--   `end_time` indicates the time in seconds at which the word for which hypotheses are returned ends in the input audio.
--   `alternatives` is an array of hypothesis objects. Each object includes a `confidence` that indicates the service's confidence score for the hypothesis and a `word` that identifies the hypothesis. The confidence must be at least as great as the specified threshold to be included in the results. The service orders the alternatives by confidence.
+-   `start_time` gibt den Zeitpunkt in Sekunden an, an dem das Wort, für das Hypothesen zurückgegeben werden, in den Audioeingabedaten beginnt.
+-   `end_time` gibt den Zeitpunkt in Sekunden an, an dem das Wort, für das Hypothesen zurückgegeben werden, in den Audioeingabedaten endet.
+-   `alternatives` ist ein Array mit Hypothesenobjekten. Jedes Objekt enthält ein Element `confidence`, das das vom Service ermittelte Konfidenzniveau für die Hypothese angibt, und ein Element `word`, das die Hypothese angibt. Der Konfidenzwert muss größer-gleich dem angegebenen Schwellenwert sein, damit die Hypothese in die Ergebnisse aufgenommen wird. Der Service sortiert die Alternativen nach Konfidenzwert.
 
-### Word alternatives example
+### Beispiel für Wortalternativen
 {: #wordAlternativesExample}
 
-The following example request specifies a `word_alternatives_threshold` of `0.9`. The output includes potential hypotheses and confidence scores for a number of words, along with their start and end times.
+In der folgenden Beispielanforderung wird ein Schwellenwert (`word_alternatives_threshold`) von `0.9` angegeben. Die Ausgabe enthält mögliche Hypothesen und Konfidenzwerte für eine Reihe von Wörtern mit den zugehörigen Start- und Endzeitpunkten.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -605,20 +605,20 @@ severe thunderstorms swept through Colorado on Sunday "
 ```
 {: codeblock}
 
-## Word confidence
+## Wortkonfidenz
 {: #word_confidence}
 
-The `word_confidence` parameter tells the service whether to provide confidence measures for the words of the transcript. By default, the service reports a confidence measure only for the final transcript as a whole. Setting `word_confidence` to `true` directs the service to report a confidence measure for each individual word of the transcript.
+Der Parameter `word_confidence` gibt an, ob der Service Konfidenzwerte für die Wörter des Transkripts bereitstellen soll. Standardmäßig liefert der Service nur zusammenfassende Konfidenzwerte für das endgültige Transkript. Wenn der Parameter `word_confidence` auf `true` gesetzt ist, liefert der Service für jedes Wort in dem Transkript einen Konfidenzwert.
 
-A confidence measure indicates the service's estimation that the transcribed word is correct based on the acoustic evidence. Confidence scores range from 0.0 to 1.0.
+Ein Konfidenzwert gibt an, wie hoch der Service anhand der akustischen Indikatoren die Korrektheit des transkribierten Wortes einschätzt. Konfidenzwerte liegen im Bereich von 0,0 bis 1,0.
 
--   A score of 1.0 indicates that the current transcription of the word reflects the most likely result.
--   A score of 0.5 means that the word has a 50-percent chance of being correct.
+-   Der Wert 1,0 gibt an, dass die aktuelle Transkription des Wortes mit sehr hoher Wahrscheinlichkeit das beste Ergebnis darstellt.
+-   Der Wert 0,5 bedeutet, dass das Wort mit einer Wahrscheinlichkeit von 50 Prozent korrekt ist.
 
-### Word confidence example
+### Beispiel für Wortkonfidenz
 {: #wordConfidenceExample}
 
-The following example requests word confidence scores for the words of the transcription.
+Im folgenden Beispiel werden Wortkonfidenzwerte für die Wörter in der Transkription angefordert.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -674,15 +674,15 @@ severe thunderstorms swept through Colorado on Sunday ",
 ```
 {: codeblock}
 
-## Word timestamps
+## Wortzeitmarken
 {: #word_timestamps}
 
-The `timestamps` parameter tells the service whether to produce timestamps for the words it transcribes. By default, the service reports no timestamps. Setting `timestamps` to `true` directs the service to report the beginning and ending time in seconds for each word relative to the start of the audio.
+Der Parameter `timestamps` gibt an, ob der Service Zeitmarken für die transkribierten Wörter erstellen soll. In der Standardeinstellung erzeugt der Service keine Zeitmarken. Wenn Sie `timestamps` auf `true` setzen, wird der Service angewiesen, die Start- und Endzeitpunkte in Sekunden (in Relation zum Start der Audiodaten) für jedes Wort zu erfassen.
 
-### Word timestamps example
+### Beispiel für Wortzeitmarken
 {: #wordTimestampsExample}
 
-The following example requests timestamps for the words of the transcription.
+Im folgenden Beispiel werden Zeitmarken für die Wörter der Transkription angefordert.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -744,39 +744,39 @@ severe thunderstorms swept through Colorado on Sunday "
 ```
 {: codeblock}
 
-## Smart formatting
+## Intelligente Formatierung
 {: #smart_formatting}
 
-The smart formatting feature is beta functionality that is available for US English, Japanese, and Spanish.
+Die Funktion für intelligente Formatierung ist als Betafunktionalität nur für amerikanisches Englisch, Japanisch und Spanisch verfügbar.
 {: note}
 
-The `smart_formatting` parameter directs the service to convert the following strings into more conventional representations:
+Der Parameter `smart_formatting` weist den Service an, die folgenden Zeichenfolgen in konventionellere Darstellungen umzuwandeln:
 
--   Dates
--   Times
--   Series of digits and numbers
--   Phone numbers
--   Currency values
--   Internet email and web addresses
+-   Datumsangaben
+-   Zeitangaben
+-   Ziffern- und Zahlenreihen
+-   Telefonnummern
+-   Währungswerte
+-   Internet-E-Mail- und Webadressen
 
-You set the `smart_formatting` parameter to `true` to enable smart formatting. By default, the service does not perform smart formatting.
+Setzen Sie den Parameter `smart_formatting` auf `true`, um die Funktion für intelligente Formatierung zu aktivieren. Die Funktion für intelligente Formatierung ist im Service standardmäßig inaktiviert.
 
-The service applies smart formatting only to the final transcript of a recognition request. It applies smart formatting just before it returns the results to the client, when text normalization is complete. The conversion makes the transcript more readable and enables better post-processing of the transcription results.
+Der Service wendet die intelligente Formatierung nur auf das endgültige Transkript einer Erkennungsanforderung an. Die intelligente Formatierung wird unmittelbar vor der Rückgabe der Ergebnisse an den Client angewendet, nachdem die Textnormalisierung abgeschlossen ist. Diese Formatierung bzw. Umwandlung macht das Transkript besser lesbar und vereinfacht die Nachbearbeitung der Transkriptionsergebnisse.
 
-### Punctuation (US English)
+### Interpunktion (amerikanisches Englisch)
 {: #smartFormattingPunctuation}
 
-For US English, the feature also directs the service to substitute punctuation symbols for the following spoken keyword strings in the audio.
+Für amerikanisches Englisch weist die Funktion den Service außerdem an, die folgenden gesprochenen Schlüsselwortzeichenfolgen in den Audiodaten durch die Interpunktionszeichen zu ersetzen.
 
 <table style="width:50%">
-  <caption>Table 2. Smart formatting punctuation keywords</caption>
+  <caption>Tabelle 2. Schlüsselwörter für die Interpunktion bei der intelligenten Formatierung</caption>
   <tr>
-    <th style="width:45%; text-align:left">Keyword string</th>
-    <th style="text-align:center">Resulting punctuation</th>
+    <th style="width:45%; text-align:left">Schlüsselwortzeichenfolge</th>
+    <th style="text-align:center">Resultierende Interpunktion</th>
   </tr>
   <tr>
     <td>
-      Comma
+      Komma
     </td>
     <td style="text-align:center">
       <code>,</code>
@@ -784,7 +784,7 @@ For US English, the feature also directs the service to substitute punctuation s
   </tr>
   <tr>
     <td>
-      Period
+      Punkt
     </td>
     <td style="text-align:center">
       <code>.</code>
@@ -792,7 +792,7 @@ For US English, the feature also directs the service to substitute punctuation s
   </tr>
   <tr>
     <td>
-      Question mark
+      Fragezeichen
     </td>
     <td style="text-align:center">
       <code>?</code>
@@ -800,7 +800,7 @@ For US English, the feature also directs the service to substitute punctuation s
   </tr>
   <tr>
     <td>
-      Exclamation point
+      Ausrufezeichen
     </td>
     <td style="text-align:center">
       <code>!</code>
@@ -808,45 +808,45 @@ For US English, the feature also directs the service to substitute punctuation s
   </tr>
 </table>
 
-The service converts these keyword strings to symbols only in appropriate places. For example, the service converts the spoken phrase
+Der Service wandelt diese Schlüsselwortzeichenfolgen nur an den entsprechenden Stellen in Interpunktionszeichen um. Beispielsweise wandelt der Service den gesprochenen Ausdruck
 
 ```
-the warranty period is short period
-```
-{: codeblock}
-
-to the following text in a transcript
-
-```
-the warranty period is short.
+der Garantiezeitraum ist kurz punkt
 ```
 {: codeblock}
 
-### Language differences
+in den folgenden Text im Transkript um
+
+```
+der Garantiezeitraum ist kurz.
+```
+{: codeblock}
+
+### Unterschiede in den unterstützten Sprachen
 {: #smartFormattingDifferences}
 
-Smart formatting is based on the presence of obvious keywords in the transcript. The supported languages handle smart formatting slightly differently.
+Die intelligente Formatierung basiert auf dem Vorhandensein erkennbarer Schlüsselwörter im Transkript. In den unterstützten Sprachen gibt es kleine Abweichungen bei der Verarbeitung der intelligenten Formatierung.
 
-#### US English and Spanish
+#### Amerikanisches Englisch und Spanisch
 {: #smartFormattingEnglishSpanish}
 
--   Times are identified by keywords such as `AM`, `PM`, or `EST`.
--   Military times are converted if they are identified by the keyword `hours`.
--   Phone numbers must be either `911` or a number with 10 or 11 digits that starts with the number `1`.
+-   Zeitangaben werden durch Schlüsselwörter wie `AM`, `PM` oder `EST` gekennzeichnet.
+-   Zeitangaben im militärischen Zeitformat werden umgewandelt, wenn Sie durch das Schlüsselwort `hours` identifiziert werden.
+-   Telefonnummern müssen entweder `911` oder eine Rufnummer mit 10 bzw. 11 Ziffern sein, die mit der Zahl `1` beginnt.
 
-#### Japanese
+#### Japanisch
 {: #smartFormattingJapanese}
 
--   Internet email and web addresses are not converted.
--   Phone numbers must be 10 or 11 digits and begin with valid prefixes for telephone numbers in Japan. For example, valid prefixes include `03` and `090`.
--   English words are converted to ASCII (*hankaku*) characters. For example, <code>&#65321;&#65314;&#65325;</code> is converted to `IBM`.
--   Ambiguous terms might not be converted if sufficient context is unavailable. For example, it is unclear whether <code>&#19968;&#26178;</code> and <code>&#21313;&#20998;</code> refer to times.
--   Punctuation is handled in the same way with or without smart formatting. For example, based on probability calculations, one of <code>&#12459;&#12531;&#12510;</code> or `,` is selected.
+-   Internet-E-Mail- und Webadressen werden nicht umgewandelt.
+-   Telefonnummern müssen aus 10 bzw. 11 Ziffern bestehen und mit den gültigen Präfixen für japanische Telefonnummern beginnen. Zu den gültigen Präfixen gehören zum Beispiel `03` und `090`.
+-   Englische Wörter werden in ASCII-Zeichen (*hankaku*) umgewandelt. Beispiel: <code>&#65321;&#65314;&#65325;</code> wird in `IBM` umgewandelt.
+-   Mehrdeutige Begriffe werden möglicherweise nicht umgewandelt, wenn nicht genügend Kontext verfügbar ist. Beispielsweise ist nicht klar erkennbar, ob es sich bei <code>&#19968;&#26178;</code> und <code>&#21313;&#20998;</code> um Zeitangaben handelt.
+-   Die Interpunktion wird mit und ohne intelligente Formatierung gleich behandelt. Beispielsweise wird auf der Grundlage von Wahrscheinlichkeitsberechnungen eine der beiden Möglichkeiten <code>&#12459;&#12531;&#12510;</code> oder `,` ausgewählt.
 
-### Smart formatting example
+### Beispiel für intelligente Formatierung
 {: #smartFormattingExample}
 
-The following example requests smart formatting with a recognition request by setting the `smart_formatting` parameter to `true`. The following sections show the effects of smart formatting on the results of a request.
+Im folgenden Beispiel wird die intelligente Formatierung mit einer Erkennungsanforderung angefordert, indem der Parameter `smart_formatting` auf `true` gesetzt wird. Die folgenden Abschnitte veranschaulichen die Auswirkungen der intelligenten Formatierung auf die Ergebnisse einer Anforderung.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -856,22 +856,22 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-### Smart formatting results
+### Ergebnisse der intelligenten Formatierung
 {: #smartFormattingResults}
 
-The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
+Die folgende Tabelle enthält Beispiele für endgültige Transkripte mit und ohne intelligente Formatierung. Transkripte basieren auf Audiodaten in der Sprache amerikanisches Englisch.
 
-<table summary="Each heading row is followed by multiple rows of examples that show the effect of smart formatting for the element that is identified in the heading.">
-  <caption>Table 3. Smart formatting example transcripts</caption>
+<table summary="Nach jeder Überschriftzeile folgen mehrere Zeilen mit Beispielen, die die Auswirkungen der intelligenten Formatierung auf das in der Überschrift angegebene Element darstellen.">
+  <caption>Tabelle 3. Beispieltranskripte für intelligente Formatierung</caption>
   <tr>
-    <th id="without_formatting" style="width:45%; text-align:left">Without
-      smart formatting</th>
-    <th id="with_formatting" style="text-align:left">With smart
-      formatting</th>
+    <th id="without_formatting" style="width:45%; text-align:left">Ohne
+      intelligente Formatierung</th>
+    <th id="with_formatting" style="text-align:left">Mit intelligenter
+      Formatierung</th>
   </tr>
   <tr>
     <th id="Dates" colspan="2">
-      <strong>Dates</strong>
+      <strong>Datumsangaben</strong>
     </th>
   </tr>
   <tr>
@@ -900,7 +900,7 @@ The following table shows examples of final transcripts both with and without sm
   </tr>
   <tr>
     <th id="Times" colspan="2">
-      <strong>Times</strong>
+      <strong>Zeitangaben</strong>
     </th>
   </tr>
   <tr>
@@ -929,7 +929,7 @@ The following table shows examples of final transcripts both with and without sm
   </tr>
   <tr>
     <th id="Numbers" colspan="2">
-      <strong>Numbers</strong>
+      <strong>Zahlen</strong>
     </th>
   </tr>
   <tr>
@@ -950,7 +950,7 @@ The following table shows examples of final transcripts both with and without sm
   </tr>
   <tr>
     <th id="phone_numbers" colspan="2">
-      <strong>Phone numbers</strong>
+      <strong>Telefonnummern</strong>
     </th>
   </tr>
   <tr>
@@ -971,7 +971,7 @@ The following table shows examples of final transcripts both with and without sm
   </tr>
   <tr>
     <th id="currency_values" colspan="2">
-      <strong>Currency values</strong>
+      <strong>Währungswerte</strong>
     </th>
   </tr>
   <tr>
@@ -994,7 +994,7 @@ The following table shows examples of final transcripts both with and without sm
   </tr>
   <tr>
     <th id="internet_addresses" colspan="2">
-      <strong>Internet email and web addresses</strong>
+      <strong>Internet-E-Mail- und Webadressen</strong>
     </th>
   </tr>
   <tr>
@@ -1015,7 +1015,7 @@ The following table shows examples of final transcripts both with and without sm
   </tr>
   <tr>
     <th id="Combinations" colspan="2">
-      <strong>Combinations</strong>
+      <strong>Kombinationen</strong>
     </th>
   </tr>
   <tr>
@@ -1037,75 +1037,75 @@ The following table shows examples of final transcripts both with and without sm
   </tr>
 </table>
 
-### Example transcripts with long pauses
+### Beispieltranskripte mit langen Pausen
 {: #smartFormattingLongPauses}
 
-In cases where an utterance contains long enough silences, the service can split the transcript into two or more final chunks. This affects the results of the formatting, as shown in the following examples.
+Wenn eine Äußerung Sprechpausen enthält, die lang genug sind, kann der Service das Transkript in zwei oder mehr Blöcke aufteilen. Dies wirkt sich auf die Ergebnisse der Formatierung aus, wie in den folgenden Beispielen dargestellt.
 
 <table>
-  <caption>Table 4. Smart formatting example transcripts for long pauses</caption>
+  <caption>Tabelle 4. Beispiele für intelligente Formatierung bei Transkripten mit langen Pausen</caption>
   <tr>
-    <th style="width:45%; text-align:left">Audio speech</th>
-    <th style="text-align:left">Formatted transcription results</th>
+    <th style="width:45%; text-align:left">Gesprochene Audiodaten</th>
+    <th style="text-align:left">Formatierte Ergebnisse der Transkription</th>
   </tr>
   <tr>
     <td>
-      My phone number is nine one four five five seven three
-      three nine two
+      Meine Telefonnummer ist neun eins vier fünf fünf sieben drei
+      drei neun zwei
     </td>
     <td>
-      "My phone number is 914-557-3392"
+      "Meine Telefonnummer ist 914-557-3392"
     </td>
   </tr>
   <tr>
     <td>
-      My phone number is nine one four <em>&lt;pause&gt;</em> five five
-      seven three three nine two
+      Meine Telefonnummer ist neun eins vier <em>&lt;pause&gt;</em> fünf fünf
+      sieben drei drei neun zwei
     </td>
     <td>
-      "My phone number is 914"<br/>
+      "Meine Telefonnummer ist 914"<br/>
       "5573392"
     </td>
   </tr>
 </table>
 
-## Numeric redaction
+## Zahlenschwärzung
 {: #redaction}
 
-The numeric redaction feature is beta functionality that is available for US English, Japanese, and Korean.
+Die Funktion für Zahlenschwärzung wird als Betafunktionalität bereitgestellt und ist für amerikanisches Englisch, Japanisch und Koreanisch verfügbar.
 {: note}
 
-The `redaction` parameter directs the service to redact, or mask, numeric data from final transcripts. The feature redacts any number that has three or more consecutive digits by replacing each digit with an `X` character. It is intended to redact sensitive numeric data, such as credit card numbers.
+Der Parameter `redaction` weist den Service an, Zahlenangaben in endgültigen Transkripten zu schwärzen bzw. zu maskieren. Die Funktion maskiert jede Zahl, die aus drei ober mehr aufeinanderfolgenden Ziffern besteht, indem jede Ziffer durch das Zeichen `X` ersetzt wird. Auf diese Weise sollen sensible Zahlenangaben (z. B. Kreditkartennummern) unkenntlich gemacht werden.
 
-By default, the service does not redact numeric data. Set the `redaction` parameter to `true` to enable numeric redaction. When you enable redaction, the service automatically enables smart formatting, regardless of whether you explicitly disable that feature. To ensure maximum security, the service also enforces the following parameter values when you enable redaction:
+Die Funktion für Zahlenschwärzung ist im Service standardmäßig inaktiviert. Setzen Sie den Parameter `redaction` auf `true`, um die Zahlenschwärzung zu aktivieren. Wenn Sie die Schwärzung aktivieren, aktiviert der Service automatisch die intelligente Formatierung, auch wenn sie zuvor von Ihnen explizit inaktiviert wurde. Zur Optimierung der Sicherheit erzwingt der Service außerdem die folgenden Parameter, wenn Sie die Zahlenschwärzung aktivieren:
 
--   The service disables keyword spotting, regardless of whether you specify values for the `keywords` and `keywords_threshold` parameters.
--   The service disables interim results, regardless of whether you set the `interim_results` parameter of the WebSocket interface to `true`.
--   The service returns only a single, final transcript, regardless of whether you specify a value for the `maximum_alternatives` parameter.
+-   Der Service inaktiviert die Schlüsselworterkennung unabhängig davon, ob Sie Werte für die Parameter `keywords` und `keywords_threshold` angeben.
+-   Der Service inaktiviert die Funktion für Zwischenergebnisse unabhängig davon, ob Sie den Parameter `interim_results` der WebSocket-Schnittstelle auf `true` setzen.
+-   Der Service gib nur ein einziges, endgültiges Transkript zurück, unabhängig davon, ob Sie einen Wert für den Parameter `maximum_alternatives` angeben.
 
-The design of the feature parallels the existing smart formatting feature. The service applies redaction only to the final transcript of a recognition request, just before it returns the results to the client and after text normalization is complete.
+Das Design der Funktion ist der Funktion für intelligente Formatierung nachempfunden. Der Service wendet die Schwärzung nur auf das endgültige Transkript einer Erkennungsanforderung an, unmittelbar vor der Rückgabe der Ergebnisse an den Client und nach Abschluss der Textnormalisierung.
 
-Future versions of the feature might expand redaction to mask all telephone numbers, street addresses, bank accounts, social security numbers, and other sensitive numeric data.
+In künftigen Versionen maskiert diese Funktion möglicherweise auch Telefonnummern, Straßenadressen, Bankkontodaten, Sozialversicherungsnummern und andere sensible numerische Daten.
 {: note}
 
-### Language differences
+### Unterschiede in den unterstützten Sprachen
 {: #redactionDifferences}
 
-The feature works exactly as described for US English models but has the following differences for Japanese and Korean models.
+Die Funktion arbeitet genau wie für Modelle für amerikanisches Englisch beschrieben, weist jedoch bei Modellen für Japanisch und Koreanisch die folgenden Unterschiede auf.
 
-#### Japanese
+#### Japanisch
 {: #redactionJapanese}
 
-Japanese redaction has the following differences:
+Bei der Zahlenschwärzung für Japanisch gelten die folgenden Unterschiede:
 
--   In addition to masking strings of three or more consecutive digits, redaction also masks street addresses and numbers, regardless of whether they contain fewer than three digits.
--   Similarly, redaction also masks date information in Japanese-style birth dates. In Japanese, date information is usually presented in Latin *Anno Domini* format but sometimes follows Japanese style, particularly for birth dates. In this case, the year and month are masked even though they contain just one or two digits. For example, numeric redaction changes the following string as shown.
+-   Neben dem Maskieren von Zeichenfolgen mit drei oder mehr aufeinanderfolgenden Ziffern werden auch Straßenadressen und Zahlen unkenntlich gemacht, selbst wenn sie weniger als drei Ziffern enthalten.
+-   Ebenso maskiert die Funktion für Schwärzung Datumsangaben aus Geburtsdaten im japanischen Format. Japanische Datumsangaben werden normalerweise im lateinischen *Anno Domini*-Format angegeben, in manchen Fällen (insbesondere beim Geburtsdatum) jedoch im japanischen Format. In diesem Fall werden Jahres- und Monatsangaben maskiert, obwohl sie nur eine oder zwei Ziffern enthalten. Die Zahlenschwärzung ändert beispielsweise die folgende Zeichenfolge wie dargestellt.
 
     <table style="width:50%">
-      <caption>Table 5. Example redaction of Japanese-style birth date</caption>
+      <caption>Tabelle 5. Beispiel für Zahlenschwärzung bei Geburtsdaten im japanischen Format</caption>
       <tr>
-        <th style="text-align:left">Without redaction</th>
-        <th style="text-align:left">With redaction</th>
+        <th style="text-align:left">Ohne Schwärzung</th>
+        <th style="text-align:left">Mit Schwärzung</th>
       </tr>
       <tr>
         <td>
@@ -1117,22 +1117,22 @@ Japanese redaction has the following differences:
       </tr>
     </table>
 
-#### Korean
+#### Koreanisch
 {: #redactionKorean}
 
-Korean redaction has the following differences:
+Bei der Zahlenschwärzung für Koreanisch gelten die folgenden Unterschiede:
 
--   The smart formatting feature is not supported. The service still performs numeric redaction for Korean, but it performs no other smart formatting.
--   Isolated digit characters are reduced, but possible digit characters that are included as part of Korean phrases are not. For example, the character <code>&#51060;</code> in the following phrase is not replaced by an `X` because it is adjacent to the following character:
+-   Die Funktion für intelligente Formatierung wird nicht unterstützt. Außer der Zahlenschwärzung führt der Service für Koreanisch keine weitere intelligente Formatierung durch.
+-   Isolierte Ziffernzeichen werden reduziert, aber Ziffernzeichen, die möglicherweise als Bestandteile in koreanischen Ausdrücken enthalten sind, werden nicht reduziert. Beispiel: Das Zeichen <code>&#51060;</code> im folgenden Ausdruck wird nicht durch ein `X` ersetzt, da es neben dem folgenden Zeichen steht:
 
     <code>&#51060;&#51077;&#45768;&#45796;</code>
 
-    If the <code>&#51060;</code> character were separated from the following character by a space, it would be replaced by an `X`, as described in [Numeric redaction results](#redactionResults).
+    Wenn das Zeichen <code>&#51060;</code> durch ein Leerzeichen vom folgenden Zeichen getrennt ist, wird es durch ein `X` ersetzt, wie in [Ergebnisse der Zahlenschwärzung](#redactionResults) beschrieben.
 
-### Numeric redaction example
+### Beispiel für Zahlenschwärzung
 {: #redactionExample}
 
-The following example requests numeric redaction with a recognition request by setting the `redaction` parameter to `true`. Because the request enables redaction, the service implicitly enables smart formatting with the request. The service effectively disables the other parameters of the request so that they have no effect: The service returns a single final transcript and recognizes no keywords. The following section shows the effects of redaction.
+Im folgenden Beispiel wird die Zahlenschwärzung mit einer Erkennungsanforderung angefordert, indem der Parameter `redaction` auf `true` gesetzt wird. Da die Anforderung die Schwärzung aktiviert, wird vom Service implizit auch die intelligente Formatierung aktiviert. Der Service inaktiviert damit die übrigen Parameter der Anforderung, d. h. sie bleiben wirkungslos. Der Service gibt ein einziges endgültiges Transkript zurück und erkennt keine Schlüsselwörter. Im folgenden Abschnitt werden die Auswirkungen der Schwärzung dargestellt.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -1142,20 +1142,20 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-### Numeric redaction results
+### Ergebnisse der Zahlenschwärzung
 {: #redactionResults}
 
-The following table shows examples of final transcripts both with and without numeric redaction in each supported language.
+Die folgende Tabelle enthält Beispiele für endgültige Transkripte mit und ohne Zahlenschwärzung für jede unterstützte Sprache.
 
-<table style="width:90%" summary="Each heading row identifies a language and is followed by a single row that shows the same transcript both without and with numeric redaction enabled.">
-  <caption>Table 6. Numeric redaction example transcripts</caption>
+<table style="width:90%" summary="In jeder Überschrift ist eine Sprache angegeben, gefolgt von einer einzelnen Zeile, in der dasselbe Transkript mit inaktivierter bzw. aktivierter Zahlenschwärzung angezeigt wird.">
+  <caption>Tabelle 6. Beispieltranskripte für Zahlenschwärzung</caption>
   <tr>
-    <th id="without_redaction" style="text-align:left">Without redaction</th>
-    <th id="with_redaction" style="text-align:left">With redaction</th>
+    <th id="without_redaction" style="text-align:left">Ohne Schwärzung</th>
+    <th id="with_redaction" style="text-align:left">Mit Schwärzung</th>
   </tr>
   <tr>
     <th id="US_English" colspan="2">
-      <strong>US English</strong>
+      <strong>Amerikanisches Englisch</strong>
     </th>
   </tr>
   <tr>
@@ -1168,7 +1168,7 @@ The following table shows examples of final transcripts both with and without nu
   </tr>
   <tr>
     <th id="Japanese" colspan="2">
-      <strong>Japanese</strong>
+      <strong>Japanisch</strong>
     </th>
   </tr>
   <tr>
@@ -1181,7 +1181,7 @@ The following table shows examples of final transcripts both with and without nu
   </tr>
   <tr>
     <th id="Korean" colspan="2">
-      <strong>Korean</strong>
+      <strong>Koreanisch</strong>
     </th>
   </tr>
   <tr>
@@ -1194,20 +1194,20 @@ The following table shows examples of final transcripts both with and without nu
   </tr>
 </table>
 
-## Profanity filtering
+## Vulgäre Ausdrücke filtern
 {: #profanity_filter}
 
-The profanity filtering feature is generally available for US English only.
+Die Filterfunktion für vulgäre Ausdrücke ist nur für amerikanisches Englisch allgemein verfügbar.
 {: note}
 
-The `profanity_filter` parameter indicates whether the service is to censor profanity from its results. By default, the service obscures all profanity by replacing it with a series of asterisks in the transcript. Setting the parameter to `false` displays words in the output exactly as transcribed.
+Der Parameter `profanity_filter` gibt an, ob der Service vulgäre Ausdrücke in den Ergebnissen zensieren soll. Standardmäßig maskiert der Service im Transkript alle vulgären Ausdrücke durch eine Reihe von Sternen. Wenn dieser Parameter auf `false` gesetzt ist, werden alle Wörter in der Ausgabe in ihrer transkribierten Form angezeigt.
 
-The service censors profanity from all final transcripts and from any alternative transcripts. It also censors profanity from results that are associated with word alternatives, word confidence, and word timestamps. The sole exception is keyword spotting, for which the service returns all words as specified by the user, regardless of whether `profanity_filter` is `true`.
+Der Service maskiert vulgäre Ausdrücke in allen endgültigen Transkripten und in allen alternativen Transkripten. Außerdem werden vulgäre Ausdrücke in Ergebnissen zensiert, die Wortalternativen, Wortkonfidenz und Wortzeitmarken zugeordnet sind. Ausgenommen ist allein die Schlüsselworterkennung. Für diese Funktion gibt der Service alle Wörter wie vom Benutzer angegeben zurück, unabhängig davon, ob `profanity_filter` auf `true` gesetzt ist.
 
-### Profanity filtering example
+### Beispiel für die Filterfunktion für vulgäre Ausdrücke
 {: #profanityFilteringExample}
 
-The following example shows the results for a brief audio file that is transcribed with the default `true` value for the `profanity_filter` parameter. The request also sets the `word_alternatives_threshold` parameter to a relatively high value of `0.99` and the `word_confidence` and `timestamps` parameters to `true`.
+Das folgende Beispiel zeigt die Ergebnisse für eine kurze Audiodatei, die unter Verwendung des Standardwerts `true` für den Parameter `profanity_filter` transkribiert wird. Außerdem legt die Anforderung für den Parameter `word_alternatives_threshold` den relativ hohen Wert `0.99` fest und setzt die Parameter `word_confidence` und `timestamps` auf `true`.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"

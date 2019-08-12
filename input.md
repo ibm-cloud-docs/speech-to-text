@@ -22,38 +22,37 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Input features
+# Eingabefunktionen
 {: #input}
 
-The {{site.data.keyword.speechtotextfull}} service offers the following features to specify how the service is to perform a speech recognition request. All of the input parameters that are described in the following sections are optional. Only the input audio is required.
+Mit den hier aufgeführten Funktionen des {{site.data.keyword.speechtotextfull}}-Service wird angegeben, wie der Service eine Spracherkennungsanforderung ausführen soll. Alle hier beschriebenen Eingabeparameter sind optional. Lediglich die Eingabeaudiodaten sind erforderlich.
 {: shortdesc}
 
--   For examples of simple speech recognition requests for each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text?topic=speech-to-text-basic-request).
--   For an alphabetized list of all available speech recognition parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/services/speech-to-text?topic=speech-to-text-summary).
+-   Beispiele für einfache Spracherkennungsanforderungen für die einzelnen Schnittstellen des Service finden Sie im Abschnitt [Erkennungsanforderung ausgeben](/docs/services/speech-to-text?topic=speech-to-text-basic-request).
+-   Eine alphabetisch sortierte Liste aller verfügbaren Parameter für die Spracherkennung, in der auch der jeweilige Status (allgemein verfügbar oder Betaversion) sowie die unterstützten Sprachen angegeben sind, finden Sie in der [Parameterübersicht](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
-## Custom models
+## Angepasste Modelle
 {: #custom-input}
 
-Language and acoustic model customization are available at different levels of support (generally available or beta) for different languages. For more information, see [Language support for customization](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
+Die Anpassung des Sprachmodells und des Akustikmodells ist für unterschiedliche Sprachen auf verschiedenen Unterstützungsstufen (allgemein verfügbar oder Betaversion) verfügbar. Weitere Informationen finden Sie unter [Sprachunterstützung bei der Anpassung](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
 {: note}
 
-All interfaces accept a custom model for use in a recognition request:
+Bei allen Schnittstellen kann in einer Erkennungsanforderung ein angepasstes Modell verwendet werden:
 
--   *Custom language models* expand the service's base vocabulary with terminology from specific domains. Use the `language_customization_id` parameter to include a custom language model with a request. You can also specify an optional `customization_weight` parameter. The parameter indicates the relative weight that is given to words from the custom model as opposed to words from the base vocabulary.
+-   *Angepasste Sprachmodelle* erweitern das Grundvokabular des Service durch Terminologie aus bestimmten Fachgebieten. Mit dem Parameter `language_customization_id` können Sie ein angepasstes Sprachmodell in eine Anforderung einbeziehen. Außerdem können Sie einen optionalen Parameter namens `customization_weight` angeben. Der Parameter legt die relative Gewichtung fest, die Wörter aus dem angepassten Modell im Vergleich zu Wörtern aus dem Grundvokabular erhalten.
 
-    For more information, see [Using a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageUse).
--   *Custom acoustic models* adapt the service's base acoustic model for the acoustic characteristics of your environment and speakers. Use the `acoustic_customization_id` parameter to include a custom acoustic model with a request. You can specify both a custom language model and a custom acoustic model with a request.
+Weitere Informationen finden Sie im Abschnitt [Angepasstes Sprachmodell verwenden](/docs/services/speech-to-text?topic=speech-to-text-languageUse).-   *Angepasste Akustikmodelle* passen das akustische Basismodell des Service an die akustischen Besonderheiten Ihrer Umgebung und Sprecher an. Mit dem Parameter `acoustic_customization_id` können Sie ein angepasstes Akustikmodell in eine Anforderung einbeziehen. Für eine Anforderung können Sie sowohl ein angepasstes Sprachmodell als auch ein angepasstes Akustikmodell angeben.
 
-    For more information, see [Using a custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acousticUse).
+    Weitere Informationen finden Sie unter [Angepasstes Akustikmodell verwenden](/docs/services/speech-to-text?topic=speech-to-text-acousticUse).
 
-Custom models are based on one of the language models that are described in [Languages and models](/docs/services/speech-to-text?topic=speech-to-text-models). A custom model can be used only with the base model for which it is created. If your custom model is based on a model other than `en-US_BroadbandModel`, the default, you must also specify the name of the model with the request. To use a custom model, you must issue the request with credentials for the instance of the service that owns the custom model.
+Angepasste Modelle basieren auf einem der Sprachmodelle, die im Abschnitt [Sprachen und Modelle](/docs/services/speech-to-text?topic=speech-to-text-models) beschrieben sind. Ein angepasstes Modell kann nur in Verbindung mit dem Basismodell verwendet werden, für das es erstellt wurde. Wenn Ihr angepasstes Modell auf einem anderen Modell als `en-US_BroadbandModel` basiert, müssen Sie mit der Anforderung auch den Namen des Modells angeben. Zur Verwendung eines angepassten Modells müssen Sie die Anforderung mit den Berechtigungen für die Instanz des Service ausgeben, bei der es sich um den Eigner des angepassten Modells handelt.
 
-For an introduction to customization, see [The customization interface](/docs/services/speech-to-text?topic=speech-to-text-customization).
+Eine Einführung in die Anpassung finden Sie im Abschnitt [Anpassungsschnittstelle](/docs/services/speech-to-text?topic=speech-to-text-customization).
 
-### Custom model examples
+### Beispiele für angepasste Modelle
 {: #customExample}
 
-The following example request includes the `language_customization_id` parameter to use the custom language model with the specified ID. It includes the `customization_weight` parameter to indicate that words from the custom model are to be given a relative weight of `0.5`.
+Die folgende Beispielanforderung enthält den Parameter `language_customization_id`, damit das angepasste Sprachmodell mit der angegebenen ID verwendet wird. Durch den ebenfalls enthaltenen Parameter `customization_weight` wird angegeben, dass Wörter aus dem angepassten Modell die relative Gewichtung `0.5` erhalten sollen.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -63,42 +62,42 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-The following example request uses both a custom language model and a custom acoustic model. The former is identified with the `language_customization_id` parameter, the latter with the `acoustic_customization_id` parameter.
+In der folgenden Beispielanforderung wird sowohl ein angepasstes Sprachmodell als auch ein angepasstes Akustikmodell verwendet. Das Sprachmodell wird mit dem Parameter `language_customization_id` angegeben, das Akustikmodell mit dem Parameter `acoustic_customization_id`.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file1.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&acoustic_customization_id={customization_id}"
+"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&acoustic_customization_id={anpassungs-id}"
 ```
 {: pre}
 
-For examples that use custom models with each of the service's interfaces, see
+Beispiele für die Verwendung von angepassten Modellen bei den einzelnen Schnittstellen des Service enthalten die folgenden Abschnitte:
 
--   [Using a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageUse)
--   [Using a custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acousticUse)
+-   [Angepasstes Sprachmodell verwenden](/docs/services/speech-to-text?topic=speech-to-text-languageUse)
+-   [Angepasstes Akustikmodell verwenden](/docs/services/speech-to-text?topic=speech-to-text-acousticUse)
 
-## Grammars
+## Grammatiken
 {: #grammars-input}
 
-The grammars feature is beta functionality. The service supports grammars for all languages for which it supports language model customization.
+Die Funktion für die Grammatiken liegt als Betaversion vor. Der Service unterstützt Grammatiken für alle Sprachen, bei denen er die Anpassung des Sprachmodells unterstützt.
 {: note}
 
-You can add grammars to a custom language model and use them for speech recognition. Grammars use a formal language specification to define a set of production rules for transcribing strings. The rules specify how to form valid strings from the language's alphabet.
+Sie können Grammatiken zu einem angepassten Sprachmodell hinzufügen und sie für die Spracherkennung nutzen. Grammatiken definieren mithilfe einer formalen Sprachspezifikation eine Reihe von Produktionsregeln für die Transkription von Zeichenfolgen. Die Regeln geben an, wie gültige Zeichenfolgen aus dem Alphabet der Sprache gebildet werden sollen.
 
-When you use a grammar for speech recognition, the service recognizes only phrases that are recognized by the grammar. By limiting the search space for valid strings, the service can deliver results faster and more accurately.
+Wenn Sie eine Grammatik für die Spracherkennung verwenden, erkennt der Service ausschließlich Ausdrücke, die von der Grammatik erkannt werden. Durch die Einschränkung des Suchbereichs auf gültige Zeichenfolgen kann der Service Ergebnisse schneller und präziser liefern.
 
-All interfaces accept the following parameters for a recognition request:
+Alle Schnittstellen akzeptieren die folgenden Parameter für eine Erkennungsanforderung:
 
--   The `language_customization_id` parameter identifies the custom language model for which the grammar is defined. You must issue the request with credentials for the instance of the service that owns the model.
--   The `grammar_name` parameter specifies the grammar that you want to use. You can specify only a single grammar with a request.
+-   Der Parameter `language_customization_id` gibt das angepasste Sprachmodell an, für das die Grammatik definiert ist. Sie müssen die Anforderung mit den Berechtigungsnachweisen für die Instanz des Service ausgeben, die Eigner des Modells ist.
+-   Der Parameter `grammar_name` gibt die Grammatik an, die verwendet werden soll. Bei einer Anforderung können Sie nur eine einzige Grammatik angeben.
 
-For more information, see [Using grammars with custom language models](/docs/services/speech-to-text?topic=speech-to-text-grammars).
+Weitere Informationen finden Sie im Abschnitt [Grammatiken mit angepassten Sprachmodellen verwenden](/docs/services/speech-to-text?topic=speech-to-text-grammars).
 
-### Grammars example
+### Beispiel für Grammatik
 {: #grammarsExample}
 
-The following example request includes the `language_customization_id` and `grammar_name` parameters to restrict the service's response to strings that are defined in the grammar named `list-abnf`.
+Die folgende Beispielanforderung enthält die Parameter `language_customization_id` und `grammar_name`, damit die Antwort des Service auf Zeichenfolgen begrenzt wird, die in der Grammatik namens `list-abnf` definiert sind.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -108,52 +107,52 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-For examples that use grammars with each of the service's interfaces, see [Using a grammar for speech recognition](/docs/services/speech-to-text?topic=speech-to-text-grammarUse).
+Beispiele für die Verwendung von Grammatiken bei den einzelnen Schnittstellen des Service enthält der Abschnitt [Grammatik für die Spracherkennung verwenden](/docs/services/speech-to-text?topic=speech-to-text-grammarUse).
 
-## Base model version
+## Version des Basismodells
 {: #version}
 
-To improve the quality of speech recognition, the service occasionally updates the base language models described in [Languages and models](/docs/services/speech-to-text?topic=speech-to-text-models). The base models for languages are independent of each other, as are the broadband and narrowband models for a language. Therefore, updates to base models occur independently of each other and have no effect on other models.
+Zur Verbesserung der Qualität bei der Spracherkennung aktualisiert der Service von Zeit zu Zeit die unter [Sprachen und Modelle](/docs/services/speech-to-text?topic=speech-to-text-models) beschriebenen Basissprachmodelle. Die Basismodelle für Sprachen sind, ebenso wie die Breitband- und Schmalbandmodelle für eine Sprache, voneinander unabhängig. Aktualisierungen der Basismodelle finden daher unabhängig voneinander statt und haben keinen Einfluss auf andere Modelle.
 
-When multiple versions of a base model exist, the optional `base_model_version` parameter specifies the version of the model to be used with a recognition request. The parameter is intended primarily for use with custom models that are updated for a new base model, but it can be used without a custom model. The version of a base model that is used for a request depends on whether you pass the `base_model_version` parameter. It also depends on whether you specify a custom model (language, acoustic, or both) with the request.
+Wenn mehrere Versionen eines Basismodells vorhanden sind, gibt der optionale Parameter `base_model_version` die Version des Modells an, das bei einer Erkennungsanforderung verwendet werden soll. Der Parameter ist in erster Linie zur Verwendung bei angepassten Modellen gedacht, die für ein neues Basismodell aktualisiert wurden. Er kann jedoch auch ohne ein angepasstes Modell eingesetzt werden. Die für eine Anforderung verwendete Version eines Basismodells richtet sich danach, ob Sie den Parameter `base_model_version` übergeben. Sie ist außerdem davon abhängig, ob Sie mit der Anforderung ein angepasstes Modell (Sprachmodell und/oder Akustikmodell) angeben.
 
--   *If you do not specify a custom model with the request*
+-   *Anforderung ohne Angabe eines angepassten Modells*
 
-    -   Omit the `base_model_version` parameter to use the latest version of the base model.
-    -   Specify the `base_model_version` parameter to use a specific version of the base model.
+    -   Lassen Sie den Parameter `base_model_version` weg, damit die neueste Version des Basismodells verwendet wird.
+    -   Geben Sie den Parameter `base_model_version` an, damit eine bestimmte Version des Basismodells verwendet wird.
 
--   *If you specify a custom model with the request*
+-   *Anforderung mit Angabe eines angepassten Modells*
 
-    -   Omit the `base_model_version` parameter to use the latest version of the base model to which the custom model is upgraded. For example, if the custom model is upgraded to the latest version of the base model, the service uses the latest versions of the base and custom models.
-    -   Specify the `base_model_version` parameter to use the specified versions of both the base and custom models.
+    -   Lassen Sie den Parameter `base_model_version` weg, damit die neueste Version des Basismodells verwendet wird, auf die für das angepasste Modell ein Upgrade durchgeführt wurde. Falls beispielsweise für das angepasste Modell ein Upgrade auf die neueste Version des Basismodells durchgeführt wurde, verwendet der Service die neuesten Versionen des Basismodells und des angepassten Modells.
+    -   Geben Sie den Parameter `base_model_version` an, damit die angegebenen Versionen des Basismodells und des angepassten Modells verwendet werden.
 
-The parameter is intended for use with custom models. Therefore, you can learn about the available versions of a base model only by listing information about a custom model that is based on it.
+Der Parameter ist zur Verwendung bei angepassten Modellen gedacht. Die verfügbaren Versionen eines Basismodells können Sie daher nur dadurch ermitteln, indem Sie Informationen zu einem angepassten Modell auflisten, das auf diesem Modell basiert.
 
--   For more information about upgrading custom models, see [Upgrading custom models](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade).
--   For more information about using different versions of base and custom models for speech recognition, see [Making recognition requests with upgraded custom models](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade#upgradeRecognition).
+-   Weitere Informationen zum Upgrade von angepassten Modellen finden Sie unter [Upgrade für angepasste Modelle durchführen](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade).
+-   Zusätzliche Angaben über die Verwendung unterschiedlicher Versionen von Basismodellen und angepassten Modellen für die Spracherkennung enthält der Abschnitt [Erkennungsanforderungen mit angepassten Modellen nach durchgeführtem Upgrade ausgeben](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade#upgradeRecognition).
 
-## Audio transmission
+## Übertragung von Audiodaten
 {: #transmission}
 
-*With the WebSocket interface,* audio data is always streamed to the service over the connection. You can pass data through the socket all at once, or you can pass data for the live-use case as it becomes available. The service returns results as they become available.
+Bei der *WebSocket-Schnittstelle* werden Audiodaten immer über die Verbindung an den Service gestreamt. Über den Socket können Sie alle Daten auf einmal übergeben oder aber Daten für den aktiven Anwendungsfall senden, sobald sie zur Verfügung stehen. Der Service gibt Ergebnisse zurück, sobald sie verfügbar sind.
 
-*With the HTTP interfaces,* you can transmit audio to the service in either of the following ways:
+Bei den *HTTP-Schnittstellen* können Sie eines der folgenden Verfahren für die Übertragung von Audiodaten an den Service verwenden:
 
--   *One-shot delivery* - You omit the `Transfer-Encoding` header and pass all of the audio data to the service at one time as a single delivery.
--   *Streaming* - You set the `Transfer-Encoding` request header to the value `chunked` and stream the data over a persistent connection. The data does not need to exist fully before you stream it to the service. You can stream the data as it becomes available. The service sends results only when it receives the final chunk, which you indicate by sending an empty chunk.
+-   *Einmalübermittlung* - Sie lassen den Header `Transfer-Encoding` weg und übergeben alle Audiodaten in Form einer einzigen Übermittlung auf einmal an den Service.
+-   *Streaming* - Sie legen für den Anforderungsheader `Transfer-Encoding` den Wert `chunked` fest und streamen die Daten über eine persistente Verbindung. Die Daten müssen nicht vollständig vorhanden sein, bevor Sie sie an den Service streamen. Sie können die Daten übertragen, sobald sie verfügbar sind. Der Service sendet erst dann Ergebnisse, wenn er den letzten Block empfängt, was Sie durch das Senden eines leeren Blocks kenntlich machen.
 
-    For more information about streaming chunked audio with the `Transfer-Encoding` header, see
+    Weitere Informationen zum Streamen von Audiodatenblöcken mit dem Header `Transfer-Encoding` enthalten die folgenden Quellen:
     -   [Chunked transfer encoding](https://wikipedia.org/wiki/Chunked_transfer_encoding){: external}
     -   [Transfer Codings](https://tools.ietf.org/html/rfc7230#section-4){: external} in *IETF RFC 7320 HTTP/1.1: Message Syntax and Routing*
 
-With the HTTP interfaces, the service always transcribes the entire audio stream before sending any results. The results can include multiple `transcript` elements to indicate phrases that are separated by pauses. Concatenate the `transcript` elements to assemble the complete transcript.
+Bei den HTTP-Schnittstellen transkribiert der Service immer den gesamten Audiodatenstrom, bevor er Ergebnisse sendet. Die Ergebnisse können mehrere Elemente `transcript` enthalten, um Ausdrücke zu kennzeichnen, die durch Sprechpausen voneinander getrennt sind. Verketten Sie die Elemente `transcript`, um die vollständige Transkription zusammenzusetzen.
 
-The service enforces timeouts on a streaming session. It can terminate a streaming session if it detects an extended period of silence or receives no audio during a 30-second period. For more information about timeouts and how to avoid them, see [Timeouts](#timeouts).
+Bei einer Streamingsitzung setzt der Service Zeitlimits durch. Er kann eine Streamingsitzung beenden, falls er für die Dauer von 30 Sekunden ein längeres Schweigen erkennt oder keine Audiodaten empfängt. Weitere Informationen zu Zeitlimits und ihrer Vermeidung finden Sie unter [Zeitlimits](#timeouts).
 
-### Audio transmission example
+### Beispiel für Übertragung von Audiodaten
 {: #transmissionExample}
 
-The following example request specifies `chunked` for the `Transfer-Encoding` header to use streaming mode. The connection remains open to accept additional chunks of audio.
+In der folgenden Beispielanforderung ist der Wert `chunked` für den Header `Transfer-Encoding` angegeben, damit der Streaming-Modus verwendet wird. Die Verbindung bleibt geöffnet, damit weitere Audiodatenblöcke akzeptiert werden können.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -164,24 +163,24 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-## Timeouts
+## Zeitlimits
 {: #timeouts}
 
-When you initiate a streaming session with the HTTP or WebSocket speech recognition methods, the service enforces inactivity and session timeouts. If a timeout lapses during a streaming session, the service closes the connection. Your application must recover gracefully from possible closed connections.
+Wenn Sie eine Streamingsitzung mit den Spracherkennungsmethoden der WebSocket- oder HTTP-Schnittstellen starten, setzt der Service Inaktivitäts- und Sitzungszeitlimits durch. Falls während einer Streamingsitzung ein Zeitlimit überschritten wird, schließt der Service die Verbindung. Ihre Anwendung muss mögliche geschlossene Verbindungen ordnungsgemäß wiederherstellen.
 
-When you stream audio over HTTP, the service sends a space character in its response every 20 seconds. The service does this to improve usability by avoiding the 30-second HTTP REST inactivity timeout. To keep the connection alive while recognition is ongoing, the service continues to send this space character until it completes its transcription. The space character has no effect on JSON-encoded response data.
+Wenn Sie Audiodaten über HTTP streamen, sendet der Service alle 20 Sekunden in seiner Antwort ein Leerzeichen. Hierdurch verbessert der Service den Bedienungskomfort, weil das HTTP-REST-Inaktivitätszeitlimit von 30 Sekunden vermieden wird. Damit die Verbindung aufrecht erhalten bleibt, während die Erkennung fortgesetzt wird, sendet der Service dieses Zeichen weiter, bis er die Transkription abgeschlossen hat. Auf die JSON-codierten Antwortdaten hat das Leerzeichen keinen Einfluss.
 
-This HTTP inactivity timeout is different from the service's inactivity timeout. The WebSocket interface is not subject to this HTTP timeout.
+Dieses HTTP-Inaktivitätszeitlimit unterscheidet sich vom Inaktivitätszeitlimit des Service. Bei der WebSocket-Schnittstelle wird dieses HTTP-Zeitlimit nicht angewendet.
 {: note}
 
-### Inactivity timeout
+### Inaktivitätszeitlimit
 {: #timeouts-inactivity}
 
-An *inactivity timeout* (HTTP status code 400) occurs when the service is receiving audio but detects only continuous silence or non-speech activity (no speech) for 30 seconds. The service sends the error message `No speech detected for 30s`. The inactivity timeout is useful, for example, for terminating a session when a user simply walks away from a live microphone.
+Das *Inaktivitätszeitlimit* (HTTP-Statuscode 400) tritt ein, wenn der Service Audiodaten empfängt, 30 Sekunden lang jedoch lediglich fortdauerndes Schweigen oder aber keine Sprachgeräusche empfängt. Der Service sendet in diesem Fall die Fehlernachricht `30 Sekunden lang keine Sprache erkannt`. Das Inaktivitätszeitlimit ist beispielsweise von Nutzen, um eine Sitzung zu beenden, wenn sich ein Benutzer einfach von einem eingeschalteten Mikrofon entfernt.
 
-The default inactivity timeout is 30 seconds. You can override this value by using the `inactivity_timeout` parameter. Specify a larger value to increase the inactivity timeout. Specify a value of `-1` to set the inactivity timeout to infinity. You are charged for all audio that you send to the service, including silence, so increasing the inactivity timeout can incur additional charges for a streaming session that sends only silence.
+Der Standardwert für das Inaktivitätszeitlimit beträgt 30 Sekunden. Diesen Wert können Sie mit dem Parameter `inactivity_timeout` außer Kraft setzen. Geben Sie einen größeren Wert an, um das Inaktivitätszeitlimit zu erhöhen. Geben Sie den Wert `-1` an, um ein unendliches Inaktivitätszeitlimit zu definieren. Alle Audiodaten, die Sie an den Service senden, werden Ihnen in Rechnung gestellt, was auch Schweigen umfasst. Ein Heraufsetzen des Inaktivitätszeitlimits kann daher zusätzliche Gebühren für eine Streamingsitzung verursachen, über die lediglich Schweigen übertragen wird.
 
-The following example request sets the inactivity timeout to 60 seconds. The request sends an initial file to begin the streaming session.
+Mit der folgenden Beispielanforderung wird das Inaktivitätszeitlimit auf 60 Sekunden gesetzt. Die Anforderung sendet eine Anfangsdatei, um die Streamingsitzung zu starten.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -192,37 +191,37 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-### Session timeout
+### Sitzungszeitlimit
 {: #timeouts-session}
 
-A *session timeout* (HTTP status code 408) occurs when you fail to send sufficient audio to keep a streaming session active. The service can consider a session idle and trigger a session timeout for the following reasons:
+Ein *Sitzungszeitlimit* (HTTP-Statuscode 408) tritt ein, wenn die von Ihnen gesendeten Audiodaten nicht ausreichen, um eine Streamingsitzung im aktiven Zustand zu halten. Der Service kann aus den folgenden Gründen eine Sitzung für inaktiv halten und ein Sitzungszeitlimit auslösen:
 
--   You fail to send at least 15 seconds of audio to the service in any 30-second window.
+-   In jedem Zeitfenster von 30 Sekunden werden nicht mindestens 15 Sekunden lange Audiodaten an den Service gesendet.
 
-    Until you send the last chunk to indicate the end of the stream, you must send at least 15 seconds of audio within any 30-second period. The audio can be silence if you set the `inactivity_timeout` parameter to a larger value or to `-1`. You are charged for the duration of any audio that you send to the service, including silence.
--   You stream audio at a rate that is much slower than real-time.
+    Bis Sie den letzten Block senden, um das Ende des Datenstroms kenntlich zu machen, müssen Sie in jedem 30 Sekunden langen Zeitraum mindestens 15 Sekunden lange Audiodaten senden. Bei den Audiodaten kann es sich um Schweigen handeln, falls Sie für den Parameter `inactivity_timeout` einen höheren Wert als `-1` festgelegt haben. Die gesamte Dauer der Audiodaten, die Sie an den Service senden, wird Ihnen in Rechnung gestellt, was auch Schweigen umfasst.
+-   Das Streaming der Audiodaten erfolgt in einer Geschwindigkeit, die unter der Echtzeit liegt.
 
-    Ideally, you would initiate a request to establish a session just before you obtain audio for transcription. You would then maintain the session by sending audio at a rate that is close to real-time.
+    Im Idealfall starten Sie eine Anforderung zum Aufbau einer Sitzung unmittelbar vor dem Erhalt von Audiodaten für die Transkription. Anschließend erhalten Sie die Sitzung aufrecht, indem Sie Audiodaten mit einer Geschwindigkeit senden, die nahezu Echtzeit entspricht.
 
-You do not need to worry about the session timeout after you send the last chunk to indicate the end of the stream. The service continues to process the audio until it returns the final transcription results.
+Nachdem Sie den letzten Block gesendet haben, um das Ende der Sitzung anzugeben, müssen Sie sich keine Gedanken um das Sitzungszeitlimit machen. Der Service setzt die Verarbeitung der Audiodaten fort, bis er die Endergebnisse für die Transkription zurückgibt.
 
-When you transcribe a long audio stream, the service can take more than 30 seconds to process the audio and generate a response. The service does not begin to calculate the session timeout until it finishes processing all audio that it has received. The service's processing time cannot cause the session to exceed the 30-second session timeout.
+Wenn Sie einen langen Audiodatenstrom transkribieren, kann der Service mehr als 30 Sekunden benötigen, um die Audiodaten zu verarbeiten und eine Antwort zu generieren. Der Service beginnt erst dann mit der Berechnung des Sitzungszeitlimits, wenn er die Verarbeitung aller empfangenen Audiodaten abgeschlossen hat. Die vom Service zur Verarbeitung benötigte Zeit kann in keinem Fall ein Überschreiten des Sitzungszeitlimits von 30 Sekunden verursachen.
 
-For example, if you send one hour of audio in the first 10 seconds of a session, the service might take 300 seconds to process the audio.  To keep this session alive, you would need to send at least 15 more seconds of some audio, including silence, no later than 340 seconds into the session.
+Beispiel: Falls Sie in den ersten 10 Sekunden einer Sitzung Audiodaten mit einer Dauer von einer Stunde senden, benötigt der Service möglicherweise 300 Sekunden, um die Audiodaten zu verarbeiten.  Damit diese Sitzung aufrecht erhalten bleibt, müssen Sie spätestens nach 340 Sekunden mindestens 15 Sekunden Audiodaten an die Sitzung senden.
 
-In this example, if you were to send another 15 seconds of audio at the 100-second mark of the session, the service might spend an additional two seconds processing this audio. In this case, you would need to send 15 more seconds of audio no later 342 seconds into the session.
+Wenn Sie bei diesem Beispiel nach 100 Sekunden Sitzungsdauer weitere 15 Sekunden Audiodaten an die Sitzung senden, benötigt der Service zur Verarbeitung dieser Audiodaten möglicherweise weitere zwei Sekunden. In diesem Fall müssten Sie spätestens nach 342 Sekunden weitere 15 Sekunden Audiodaten an die Sitzung senden.
 
-Do not rely on processing time or on whether you have received results to determine whether a streaming session is idle. Assume that the service can process all audio instantly, and send data to the service accordingly. If you stream audio in real-time, do not fall behind in sending audio at one-half real-time (15 seconds of audio) in any 30-second window. This rate is typically sufficient to accommodate network latency and delays.
+Verlassen Sie sich bei der Ermittlung, ob eine Streamingsitzung inaktiv ist, nicht auf die Verarbeitungszeit oder darauf, dass Sie Ergebnisse empfangen haben. Gehen Sie davon aus, dass der Service alle Audiodaten sofort verarbeiten kann, und senden Sie dementsprechend Daten an den Service. Bleiben Sie beim Streaming von Audiodaten in Echtzeit in jedem Zeitfenster von 30 Sekunden mit dem Senden von Audiodaten nicht hinter der Hälfte der Echtzeit (15 Sekunden Audiodaten) zurück. Diese Geschwindigkeit reicht normalerweise aus, um Netzlatenz und Verzögerungen zu kompensieren.
 {: important}
 
-## Request logging
+## Protokollierung von Anforderungen
 {: #logging}
 
-By default, {{site.data.keyword.IBM_notm}} logs all requests to {{site.data.keyword.watson}} services and their results. Logging is done only to improve the services for future users. The logged data is not shared or made public.
+{{site.data.keyword.IBM_notm}} protokolliert standardmäßig alle Anforderungen an {{site.data.keyword.watson}}-Services und deren Ergebnisse. Die Protokollierung hat einzig den Zweck, die Services für künftige Benutzer zu verbessern. Die protokollierten Daten werden nicht geteilt oder öffentlich gemacht.
 
-If you are concerned with protecting the privacy of users' personal information or otherwise do not want your requests to be logged by IBM, you can choose not to have IBM log data (opt out). You can choose to opt out of logging at either the account level or the API request level. For more information, see [Controlling request logging for {{site.data.keyword.watson}} services](/docs/services/watson?topic=watson-gs-logging-overview).
+Falls Sie die personenbezogenen Daten von Benutzern schützen müssen oder aus anderem Grund keine Protokollierung Ihrer Anforderungen durch IBM wünschen, können Sie auswählen, dass IBM Daten nicht protokolliert, indem Sie die Protokollierung explizit ausschließen. Die Ablehnung der Protokollierung kann entweder auf Kontoebene oder auf Ebene der API-Anforderung erfolgen. Weitere Informationen enthält der Abschnitt [Anforderungsprotokollierung für {{site.data.keyword.watson}}-Services steuern](/docs/services/watson?topic=watson-gs-logging-overview).
 
-## Information security
+## Informationssicherheit
 {: #security-input}
 
-Information security includes features to associate a customer ID with data that is passed to the service with a request. You associate a customer ID with the data by passing the `X-Watson-Metadata` header with the request. If necessary, you can then delete the data by using the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/services/speech-to-text?topic=speech-to-text-information-security).
+Die Informationssicherheit umfasst Funktionen, mit denen Sie Daten, die mit einer Anforderung an den Service übergeben werden, eine Kunden-ID zuordnen können. Zur Zuordnung einer Kunden-ID zu den Daten übergeben Sie mit der Anforderung einen Header `X-Watson-Metadata`. Bei Bedarf können Sie danach die Daten mit der Methode `DELETE /v1/user_data` löschen. Weitere Informationen finden Sie im Abschnitt [Informationssicherheit](/docs/services/speech-to-text?topic=speech-to-text-information-security).

@@ -27,52 +27,52 @@ subcollection: speech-to-text
 {:url: data-credential-placeholder='url'}
 {:hide-dashboard: .hide-dashboard}
 
-# Getting started tutorial
+# Lernprogramm 'Einführung'
 {: #gettingStarted}
 
-The {{site.data.keyword.speechtotextfull}} service transcribes audio to text to enable speech transcription capabilities for applications. This curl-based tutorial can help you get started quickly with the service. The examples show you how to call the service's `POST /v1/recognize` method to request a transcript.
+Der {{site.data.keyword.speechtotextfull}}-Service transkribiert Audiodaten in Text und aktiviert auf diese Weise Sprachtranskriptionsfunktionalität für Anwendungen. Dieses curl-basierte Lernprogramm unterstützt Sie beim schnellen Einstieg in die Verwendung des Service. In den Beispielen wird veranschaulicht, wie Sie die Methode `POST /v1/recognize` des Service aufrufen, um eine Transkription anzufordern.
 {: shortdesc}
 
-## Before you begin
+## Vorbereitende Schritte
 {: #before-you-begin}
 
-- {: hide-dashboard}  Create an instance of the service:
-    1.  {: hide-dashboard} Go to the [{{site.data.keyword.speechtotextshort}}](https://{DomainName}/catalog/services/speech-to-text){: external} page in the {{site.data.keyword.cloud_notm}} Catalog.
-    1.  {: hide-dashboard} Sign up for a free {{site.data.keyword.cloud_notm}} account or log in.
-    1.  {: hide-dashboard} Click **Create**.
--   Copy the credentials to authenticate to your service instance:
-    1.  {: hide-dashboard} From the [{{site.data.keyword.cloud_notm}} Resource list](https://{DomainName}/resources){: external}, click on your {{site.data.keyword.speechtotextshort}} service instance to go to the {{site.data.keyword.speechtotextshort}} service dashboard page.
-    1.  On the **Manage** page, click **Show** to view your credentials.
-    1.  Copy the `API Key` and `URL` values.
+- {: hide-dashboard}  Erstellen Sie eine Instanz des Service:
+    1.  {: hide-dashboard} Rufen Sie die [{{site.data.keyword.speechtotextshort}}](https://{DomainName}/catalog/services/speech-to-text){: external}-Seite im {{site.data.keyword.cloud_notm}}-Katalog auf.
+    1.  {: hide-dashboard} Registrieren Sie sich für ein kostenloses {{site.data.keyword.cloud_notm}}-Konto oder melden Sie sich an.
+    1.  {: hide-dashboard} Klicken Sie auf **Erstellen**.
+-   Kopieren Sie die Berechtigungsnachweise zur Authentifizierung bei Ihrer Serviceinstanz:
+    1.  {: hide-dashboard} Klicken Sie in der [{{site.data.keyword.cloud_notm}}-Ressourcenliste](https://{DomainName}/resources){: external} auf Ihre {{site.data.keyword.speechtotextshort}}-Serviceinstanz, um die Dashboardseite des {{site.data.keyword.speechtotextshort}}-Service aufzurufen.
+    1.  Klicken Sie auf der Seite **Verwalten** auf **Anzeigen**, um Ihre Berechtigungsnachweise anzuzeigen.
+    1.  Kopieren Sie die Werte für den `API-Schlüssel` und die `URL`.
 
-### Using the curl examples
+### curl-Beispiele verwenden
 {: #getting-started-curl}
 
-This tutorial uses the `curl` command to call methods of the service's HTTP interface. Make sure that you have the `curl` command installed on your system.
+In diesem Lernprogramm wird der Befehl `curl` verwendet, um Methoden der HTTP-Schnittstelle des Service aufzurufen. Stellen Sie sicher, dass der Befehl `curl` auf Ihrem System installiert ist.
 
-1.  To test whether `curl` is installed, run the following command on the command line. If the output lists the `curl` version that supports Secure Sockets Layer (SSL), you are set for the tutorial.
+1.  Um zu testen, ob `curl` installiert ist, führen Sie den folgenden Befehl in der Befehlszeile aus. Wenn in der Ausgabe die `curl`-Version aufgelistet wird, die Secure Sockets Layer (SSL) unterstützt, sind Sie für das Lernprogramm bereit.
 
     ```bash
     curl -V
     ```
     {: pre}
 
-1.  If necessary, install the version of `curl` with SSL enabled for your operating system from [curl.haxx.se](https://curl.haxx.se/){: external}.
+1.  Falls erforderlich, installieren Sie die Version von `curl` mit aktivierter SSL für Ihr Betriebssystem über [curl.haxx.se](https://curl.haxx.se/){: external}.
 
-Omit the braces from the examples. They indicate variable values.
+Lassen Sie die geschweiften Klammern aus den Beispielen weg. Sie geben Variablenwerte an.
 {: tip}
 
-## Step 1: Transcribe audio with no options
+## Schritt 1: Audiodaten ohne Optionen transkribieren
 {: #transcribe}
 
-Call the `POST /v1/recognize` method to request a basic transcript of a FLAC audio file with no additional request parameters.
+Rufen Sie die Methode `POST /v1/recognize` auf, um eine Basistranskription einer FLAC-Audiodatei ohne zusätzliche Parameter anzufordern.
 
-1.  Download the sample audio file <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac" download="audio-file.flac">audio-file.flac <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
-1.  Issue the following command to call the service's `/v1/recognize` method for basic transcription with no parameters. The example uses the `Content-Type` header to indicate the type of the audio, `audio/flac`. The example uses the default language model, `en-US_BroadbandModel`, for transcription.
-    -   {: hide-dashboard} Replace `{apikey}` and `{url}` with your API key and URL.
-    -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
+1.  Laden Sie die Audiobeispieldatei <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac" download="audio-file.flac">audio-file.flac <img src="../../icons/launch-glyph.svg" alt="Symbol für externen Link" title="Symbol für externen Link"></a> herunter.
+1.  Geben Sie den folgenden Befehl aus, um die Methode `/v1/recognize` des Service für eine Basistranskription ohne Parameter aufzurufen. Beim Beispiel wird der Typ der Audiodaten (`audio/flac`) mit dem Header `Content-Type` angegeben. Das Beispiel verwendet für die Transkription das Standardsprachmodell `en-US_BroadbandModel`.
+    -   {: hide-dashboard} Ersetzen Sie die Platzhalter `{apikey}` und `{url}` durch Ihre Werte für den API-Schlüssel und die URL.
+    -   Ändern Sie den Wert für `{path_to_file}`, um die Position der Datei `audio-file.flac` anzugeben.
 
-    *Windows users,* replace the backslash (`\`) at the end of each line with a caret (`^`). Make sure there are no trailing spaces.
+    *Windows-Benutzer* ersetzen den umgekehrten Schrägstrich (``\`) am Ende jeder Zeile mit einem Winkelzeichen (``^`). Stellen Sie sicher, dass keine nachgestellten Leerzeichen vorhanden sind.
     {: tip}
 
     ```bash
@@ -83,7 +83,7 @@ Call the `POST /v1/recognize` method to request a basic transcript of a FLAC aud
     ```
     {: pre}
 
-    The service returns the following transcription results:
+    Der Service gibt die folgenden Transkriptionsergebnisse zurück:
 
     ```javascript
     {
@@ -104,15 +104,15 @@ severe thunderstorms swept through Colorado on Sunday "
     ```
     {: codeblock}
 
-## Step 2: Transcribe audio with options
+## Schritt 2: Audiodaten mit Optionen transkribieren
 {: #transcribeOptions}
 
-Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but specify two transcription parameters.
+Rufen Sie die Methode `POST /v1/recognize` auf, um dieselbe FLAC-Audiodatei zu transkribieren. Geben Sie nun jedoch zwei Transkriptionsparameter an.
 
-1.  If necessary, download the sample audio file <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac" download="audio-file.flac">audio-file.flac <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
-1.  Issue the following command to call the service's `/v1/recognize` method with two extra parameters. Set the `timestamps` parameter to `true` to indicate the beginning and end of each word in the audio stream. Set the `max_alternatives` parameter to `3` to receive the three most likely alternatives for the transcription. The example uses the `Content-Type` header to indicate the type of the audio, `audio/flac`, and the request uses the default model, `en-US_BroadbandModel`.
-    -   {: hide-dashboard} Replace `{apikey}` and `{url}` with your API key and URL.
-    -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
+1.  Laden Sie bei Bedarf die Audiobeispieldatei <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac" download="audio-file.flac">audio-file.flac <img src="../../icons/launch-glyph.svg" alt="Symbol für externen Link" title="Symbol für externen Link"></a> herunter.
+1.  Geben Sie den folgenden Befehl aus, um die Methode `/v1/recognize` des Service mit zwei zusätzlichen Parametern aufzurufen. Legen Sie für den Parameter `timestamps` die Einstellung `true` fest, damit der Anfang und das Ende jedes Wortes im Audiodatenstrom angegeben werden. Geben Sie für den Parameter `max_alternatives` den Wert `3` an, um die drei wahrscheinlichsten Alternativen für die Transkription zu erhalten. Beim Beispiel wird der Header `Content-Type` verwendet, um den Typ der Audiodaten anzugeben (`audio/flac`); die Anforderung verwendet das Standardmodell `en-US_BroadbandModel`.
+    -   {: hide-dashboard} Ersetzen Sie die Platzhalter `{apikey}` und `{url}` durch Ihre Werte für den API-Schlüssel und die URL.
+    -   Ändern Sie den Wert für `{path_to_file}`, um die Position der Datei `audio-file.flac` anzugeben.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"{: apikey} \
@@ -122,7 +122,7 @@ Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but
     ```
     {: pre}
 
-    The service returns the following results, which include timestamps and three alternative transcriptions:
+    Der Service gibt die folgenden Ergebnisse zurück, die Zeitmarken und drei alternative Transkriptionen enthalten:
 
     ```javascript
     {
@@ -143,8 +143,8 @@ Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but
 of severe thunderstorms swept through Colorado on Sunday "
             },
             {
-              "transcript": "several tornadoes touched down as a line
-of severe thunderstorms swept through Colorado on Sunday "
+              "transcript": "several tornadoes touched down as a line of
+severe thunderstorms swept through Colorado on Sunday "
             },
             {
               "transcript": "several tornadoes touch down as a line
@@ -159,8 +159,8 @@ of severe thunderstorms swept through Colorado and Sunday "
     ```
     {: codeblock}
 
-## Next steps
+## Nächste Schritte
 
--   Learn more about the interfaces and SDKs that are available for making speech recognition requests in the [Overview for developers](/docs/services/speech-to-text?topic=speech-to-text-developerOverview).
--   See basic speech recognition requests for each of the service's interfaces in [Making a recognition request](/docs/services/speech-to-text?topic=speech-to-text-basic-request).
--   Find detailed information about all methods of the service's interfaces in the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+-   Informieren Sie sich im Abschnitt [Übersicht für Entwickler](/docs/services/speech-to-text?topic=speech-to-text-developerOverview) über die Schnittstellen und SDKs, die zur Ausgabe von Spracherkennungsanforderungen verfügbar sind.
+-   Beschäftigen Sie sich mit den Basisanforderungen für die Spracherkennung, die für jede Schnittstelle des Service unter [Erkennungsanforderung ausgeben](/docs/services/speech-to-text?topic=speech-to-text-basic-request) beschrieben sind.
+-   Ausführliche Informationen zu allen Methoden der Serviceschnittstellen sind in der [API-Referenz](https://{DomainName}/apidocs/speech-to-text){: external} enthalten.

@@ -22,123 +22,123 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# High availability and disaster recovery
+# Hochverfügbarkeit und Disaster-Recovery
 {: #ha-dr}
 
-The {{site.data.keyword.speechtotextfull}} service is highly available within any {{site.data.keyword.cloud_notm}} location (for example, Dallas or Washington, DC). However, recovering from potential disasters that affect an entire location requires planning and preparation.
+Der {{site.data.keyword.speechtotextfull}}-Service ist an jedem {{site.data.keyword.cloud_notm}}-Standort (z. B. Dallas oder Washington, DC) hoch verfügbar. Die mögliche Disaster-Recovery für einen gesamten Standort setzt jedoch Planung und  Vorbereitung voraus.
 {: shortdesc}
 
-You are responsible for understanding your configuration, customization, and usage of the service. You are also responsible for being ready to re-create an instance of the service in a new location and to restore your data in any location.
+Sie müssen selbst dafür sorgen, dass Sie Ihre Konfiguration, Ihre Anpassung und Ihre Nutzung des Service kennen. Sie sind ebenfalls dafür verantwortlich, alle Vorbereitungen für die erneute Erstellung einer Instanz des Service an einem neuen Standort und für die Wiederherstellung Ihrer Daten an einem beliebigen Standort zu treffen.
 
-## High availability
+## Hochverfügbarkeit
 {: #high-availability}
 
-The {{site.data.keyword.speechtotextshort}} service supports high availability with no single point of failure. The service achieves high availability automatically and transparently by means of the multi-zone region (MZR) feature provided by {{site.data.keyword.cloud_notm}}.
+Der {{site.data.keyword.speechtotextshort}}-Service unterstützt eine Hochverfügbarkeit ohne Single Point of Failure. Er erzielt die Hochverfügbarkeit automatisch und transparent durch die von {{site.data.keyword.cloud_notm}} bereitgestellte Funktion für Regionen mit mehreren Zonen (Multi-Zone Region, MZR).
 
-{{site.data.keyword.cloud_notm}} enables multiple zones that do not share a single point of failure within a single location. It also provides automatic load balancing across the zones within a region.
+{{site.data.keyword.cloud_notm}} ermöglicht an einem einzigen Standort mehrere Zonen ohne einen gemeinsamen Single Point of Failure. Darüber hinaus wird ein automatischer Lastausgleich unter den Zonen innerhalb einer Region zur Verfügung gestellt.
 
-## Disaster recovery
+## Disaster-Recovery
 {: #disaster-recovery}
 
-Disaster recovery can become an issue if an {{site.data.keyword.cloud_notm}} location experiences a significant failure that includes the potential loss of data. Because MZR is not available across locations, you must wait for {{site.data.keyword.IBM_notm}} to bring a location back online if it becomes unavailable. If underlying data services are compromised by the failure, you must also wait for {{site.data.keyword.IBM_notm}} to restore those data services.
+Die Disaster-Recovery kann problematisch sein, falls an einem {{site.data.keyword.cloud_notm}}-Standort ein erheblicher Fehler auftritt, der auch einen möglichen Datenverlust einschließt. Da Regionen mit mehreren Zonen nicht standortübergreifend verfügbar sind, müssen Sie warten, bis {{site.data.keyword.IBM_notm}} einen Standort wieder in den Onlinestatus versetzt, falls die Verfügbarkeit des Standortes unterbrochen wird. Wenn der Fehler die zugrunde liegenden Datenservices beeinträchtigt, müssen Sie außerdem warten, bis {{site.data.keyword.IBM_notm}} diese Datenservices wiederhergestellt hat.
 
-In the event of a catastrophic failure, {{site.data.keyword.IBM_notm}} might not be able to recover data from database backups. In this case, you need to restore your data to return your service instance to its most recent state. You can restore the data to the same or to a different location.
+Bei einem katastrophalen Fehler ist {{site.data.keyword.IBM_notm}} möglicherweise nicht in der Lage, Daten aus Datenbanksicherungen wiederherzustellen. In diesem Fall müssen Sie Ihre Daten wiederherstellen, um die Serviceinstanz wieder in den aktuellen Zustand zu versetzen. Die Daten können Sie an demselben oder oder an einem anderen Standort wiederherstellen.
 
-Your disaster recovery plan includes knowing, preserving, and being prepared to restore all data that is maintained on {{site.data.keyword.cloud_notm}}. This includes data from custom language models, custom acoustic models, and asynchronous speech recognition requests.
+Für Ihren Disaster-Recovery-Plan müssen Sie auch alle in {{site.data.keyword.cloud_notm}} verwalteten Daten kennen, aufbewahren und auf eine Wiederherstellung vorbereiten. Hierzu gehören auch Daten aus angepassten Sprachmodellen, angepassten Akustikmodellen und asynchronen Spracherkennungsanforderungen.
 
-Re-creating custom models, especially custom acoustic models, from saved data can take a significant amount of time. Maintaining parallel service configurations in multiple locations can eliminate the turnaround time associated with disaster recovery.
+Die erneute Erstellung von angepassten Modellen aus gesicherten Daten kann besonders bei angepassten Akustikmodellen erheblich Zeit in Anspruch nehmen. Die Aufbewahrung paralleler Servicekonfigurationen an mehreren Standorten eliminiert die mit der Disaster-Recovery verbundene Bearbeitungszeit.
 {: note}
 
-### Disaster recovery for custom language models
+### Disaster-Recovery bei angepassten Sprachmodellen
 {: #disaster-recovery-language}
 
-For custom language models, you need to maintain and be prepared to re-create and restore your custom language models and their corpora, grammars, and custom words. You also need to be prepared to retrain your custom language models on their data and words resources.
+Für angepasste Sprachmodelle müssen Sie die Modelle selbst sowie deren Korpora, Grammatiken und angepasste Wörter aufbewahren und auf eine erneute Erstellung und Wiederherstellung vorbereiten. Außerdem müssen Sie darauf vorbereitet sein, Ihre angepassten Sprachmodelle mit den zugehörigen Daten und Wörterressourcen erneut zu trainieren.
 
-#### Backing up custom language models
+#### Angepasste Sprachmodelle sichern
 {: #disaster-recovery-language-backup}
 
-Preserve the following information about your custom language models:
+Bewahren Sie die folgenden Informationen zu Ihren angepassten Sprachmodellen auf:
 
--   A list of all of your custom language models and their definitions. To list information about your custom models:
-    -   Use the `GET /v1/customizations` method to list information about all custom models.
-    -   Use the `GET /v1/customizations/{customization_id}` method to list information about a specified custom model.
+-   Liste aller angepassten Sprachmodelle und ihrer Definitionen. So können Sie Informationen zu Ihren angepassten Modellen auflisten:
+    -   Verwenden Sie die Methode `GET /v1/customizations`, um Informationen zu allen angepassten Modellen aufzulisten.
+    -   Verwenden Sie die Methode `GET /v1/customizations/{customization_id}`, um Informationen zu einem angegebenen angepassten Modell aufzulisten.
 
-    For more information, see [Listing custom language models](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
--   Copies of all corpus text files that you add to your custom language models. To list information about the corpora for your custom models:
-    -   Use the `GET /v1/customizations/{customization_id}/corpora` method to list all corpora for a custom model.
-    -   Use the `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` method to list information about a specified corpus for a custom model.
+    Weitere Informationen finden Sie im Abschnitt [Angepasste Sprachmodelle auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
+-   Kopien aller Korpustextdateien, die Sie zu Ihren angepassten Sprachmodellen hinzufügen. So können Sie Informationen zu den Korpora für Ihre angepassten Modelle auflisten:
+    -   Verwenden Sie die Methode `GET /v1/customizations/{customization_id}/corpora`, um alle Korpora für ein angepasstes Modell aufzulisten.
+    -   Verwenden Sie die Methode `GET /v1/customizations/{customization_id}/corpora/{corpus_name}`, um Informationen zu einem bestimmten Korpus für ein angepasstes Modell aufzulisten.
 
-    For more information, see [Listing corpora for a custom language model](/docs/services/speech-to-text?topic=speech-to-text-manageCorpora#listCorpora).
--   Copies of all grammar files that you add to your custom language models. To list information about the grammars for your custom models:
-    -   Use the `GET /v1/customizations/{customization_id}/grammars` method to list information about all grammars for a custom model.
-    -   Use the `GET /v1/customizations/{customization_id}/grammars/{grammar_name}` method to list information about a specified grammar for a custom model.
+    Weitere Informationen finden Sie im Abschnitt [Korpora für angepasstes Sprachmodell auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageCorpora#listCorpora).
+-   Kopien aller Grammatikdateien, die Sie zu Ihren angepassten Sprachmodellen hinzufügen. So können Sie Informationen zu den Grammatiken für Ihre angepassten Modelle auflisten:
+    -   Verwenden Sie die Methode `GET /v1/customizations/{customization_id}/grammars`, um Informationen zu allen Grammatiken für ein angepasstes Modell aufzulisten.
+    -   Verwenden Sie die Methode `GET /v1/customizations/{customization_id}/grammars/{grammar_name}`, um Informationen zu einer bestimmten Grammatik für ein angepasstes Modell aufzulisten.
 
-    For more information, see [Listing grammars for a custom language model](/docs/services/speech-to-text?topic=speech-to-text-manageGrammars#listGrammars).
--   Information about all custom words, including their sounds-like and display-as definitions, that you add directly to your custom language models. To list information about the out-of-vocabulary (OOV) words for your custom models:
-    -   Use the `GET /v1/customizations/{customization_id}/words` method to list information about the words from a custom model. You can use the `word_type` parameter to list `all` words from a model, words added directly by the `user`, words extracted from `corpora`, or words recognized by `grammars`.
-    -   Use the `GET /v1/customizations/{customization_id}/words/{word_name}` method to list information about a specified word from a custom model.
+    Weitere Informationen enthält der Abschnitt [Grammatiken für ein angepasstes Sprachmodell auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageGrammars#listGrammars).
+-   Informationen zu allen angepassten Wörtern, die Sie direkt zu Ihren angepassten Sprachmodellen hinzufügen; hierzu gehören auch die Definitionen für die Klangähnlichkeit (sounds-like) und die optische Ausgabe (display-as). So können Sie Informationen zu den vokabularexternen Wörtern für Ihre angepassten Modelle auflisten:
+    -   Verwenden Sie die Methode `GET /v1/customizations/{customization_id}/words`, um Informationen zu allen Wörtern aus einem angepassten Modell aufzulisten. Mit dem Parameter `word_type` können Sie alle Wörter aus einem Modell (Wert `all`), vom Benutzer direkt hinzugefügte Wörter (Wert `user`), aus Korpora extrahierte Wörter (Wert `corpora`) oder durch Grammatiken erkannte Wörter (Wert `grammars`) auflisten.
+    -   Verwenden Sie die Methode `GET /v1/customizations/{customization_id}/words/{word_name}`, um Informationen zu einem bestimmten Wort aus einem angepassten Modell aufzulisten.
 
-    For more information, see [Listing words from a custom language model](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords).
+    Weitere Informationen finden Sie im Abschnitt [Wörter aus angepasstem Sprachmodell auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords).
 
-It is a best practice to preserve this information in a format that you can use to re-create your custom language models in the event of a failure. Actively maintaining the information about your custom models and their data, and preparing the calls listed in the following section ahead of time, can enable you to recover as quickly as possible.
+Es hat sich bewährt, diese Informationen in einem Format aufzubewahren, das die erneute Erstellung Ihrer angepassten Sprachmodelle bei einem Fehler möglich macht. Wenn Sie die Informationen zu Ihren angepassten Modellen und ihren Daten aktiv verwalten und im Voraus die im folgenden Abschnitt aufgeführten Aufrufe vorbereiten, können Sie die Wiederherstellung so schnell wie möglich durchführen.
 
-#### Restoring custom language models
+#### Angepasste Sprachmodelle wiederherstellen
 {: #disaster-recovery-language-restore}
 
-If you need to recover from a disaster, you can use the backup information to re-create your custom language models and their data:
+Falls eine Disaster-Recovery erforderlich werden sollte, können Sie Ihre angepassten Sprachmodelle und die zugehörigen Daten mithilfe der Sicherungsinformationen erneut erstellen:
 
-1.  To re-create your custom language models, use the `POST /v1/customizations` method. For more information, see [Create a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language).
-1.  To add the corpus text files to your custom models, use the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method. For more information, see [Add a corpus to the custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus).
-1.  To add the grammar files to your custom models, use the `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` method. For more information, see [Add a grammar to the custom language model](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar).
-1.  To add multiple words to your custom models, use the `POST /v1/customizations/{customization_id}/words` method. To add single words to your custom models, use the `PUT /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Add words to the custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addWords).
-1.  To train your custom models once you restore your corpora, grammars, and custom words, use the `POST /v1/customizations/{customization_id}/train` method. For more information, see [Train the custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
+1.  Verwenden Sie für die erneute Erstellung Ihrer angepassten Sprachmodelle die Methode `POST /v1/customizations`. Weitere Informationen hierzu finden Sie im Abschnitt [Angepasstes Sprachmodell erstellen](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language).
+1.  Verwenden Sie zum Hinzufügen der Korpustextdateien zu Ihren angepassten Modellen die Methode `POST /v1/customizations/{customization_id}/corpora/{corpus_name}`. Weitere Informationen finden Sie im Abschnitt [Korpus zum angepassten Sprachmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus). 
+1.  Verwenden Sie zum Hinzufügen der Grammatikdateien zu Ihren angepassten Modellen die Methode `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`. Weitere Informationen hierzu enthält der Abschnitt [Grammatik zum angepassten Sprachmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar). 
+1.  Verwenden Sie zum Hinzufügen von mehreren Wörtern zu Ihren angepassten Modellen die Methode `POST /v1/customizations/{customization_id}/words`. Verwenden Sie zum Hinzufügen einzelner Wörter zu Ihren angepassten Modellen die Methode `PUT /v1/customizations/{customization_id}/words/{word_name}`. Weitere Informationen hierzu enthält der Abschnitt [Wörter zum angepassten Sprachmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addWords).
+1.  Verwenden Sie nach dem Wiederherstellen der Korpora, Grammatiken und angepassten Wörter zum Trainieren Ihrer angepassten Modelle die Methode `POST /v1/customizations/{customization_id}/train`. Weitere Informationen hierzu enthält der Abschnitt [Angepasstes Sprachmodell trainieren](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
 
-The methods that you use to add corpora, grammars, and words and to train a custom language model are asynchronous. You need to monitor the requests until they complete.
+Die Methoden, die Sie zum Hinzufügen von Korpora, Grammatiken und Wörtern sowie zum Trainieren eines angepassten Sprachmodells verwenden, werden asynchron ausgeführt. Sie müssen die Anforderungen überwachen, bis sie abgeschlossen sind.
 
-You can incrementally add data and train your custom language models rather than adding all data before training the models. For example, you can add your corpora and then train your models before you add grammars and individual words. You can also incrementally add and train your models on individual corpus text files, grammar files, and groups of custom words.
+Sie können nach und nach Daten hinzufügen und Ihre angepassten Sprachmodelle trainieren, statt alle Daten vor dem Trainieren der Modelle hinzuzufügen. Beispielsweise können Sie Ihre Korpora hinzufügen und anschließend Ihre Modelle trainieren, bevor Sie Grammatiken und einzelne Wörter hinzufügen. Sie können auch Schritt für Schritt einzelne Korpustextdateien, Grammatikdateien und Gruppen von angepassten Wörtern hinzufügen und Ihre Modelle damit trainieren.
 
-### Disaster recovery for custom acoustic models
+### Disaster-Recovery bei angepassten Akustikmodellen
 {: #disaster-recovery-acoustic}
 
-For custom acoustic models, you need to maintain and be prepared to re-create and restore your custom acoustic models and their audio resources. You also need to be prepared to retrain your custom acoustic models on their audio resources.
+Für angepasste Akustikmodelle müssen Sie die Modelle selbst sowie die zugehörigen Audioressourcen aufbewahren und auf eine erneute Erstellung und Wiederherstellung vorbereiten. Außerdem müssen Sie darauf vorbereitet sein, Ihre angepassten Akustikmodelle mit den zugehörigen Audioressourcen erneut zu trainieren.
 
-#### Backing up custom acoustic models
+#### Angepasste Akustikmodelle sichern
 {: #disaster-recovery-acoustic-backup}
 
-Preserve the following information about your custom acoustic models:
+Bewahren Sie die folgenden Informationen zu Ihren angepassten Akustikmodellen auf:
 
--   A list of all of your custom acoustic models and their definitions. To list information about your custom models:
-    -   Use the `GET /v1/acoustic_customizations` method to list information about all custom models.
-    -   Use the `GET /v1/acoustic_customizations/{customization_id}` method to list information about a specified custom model.
+-   Liste aller angepassten Akustikmodelle und ihrer Definitionen. So können Sie Informationen zu Ihren angepassten Modellen auflisten:
+    -   Verwenden Sie die Methode `GET /v1/acoustic_customizations`, um Informationen zu allen angepassten Modellen aufzulisten.
+    -   Verwenden Sie die Methode `GET /v1/acoustic_customizations/{customization_id}`, um Informationen zu einem angegebenen angepassten Modell aufzulisten.
 
-    For more information, see [Listing custom acoustic models](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
--   Copies of all audio resources, both individual audio files and archive files, that you add to your custom acoustic models. To list information about the audio resources for your custom models:
-    -   Use the `GET /v1/acoustic_customizations/{customization_id}/audio` method to list information about all audio resources for a custom model.
-    -   Use the `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to list information about a specified audio resource for a custom model.
+    Weitere Informationen finden Sie im Abschnitt [Angepasste Akustikmodelle auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
+-   Kopien aller Audioressourcen (sowohl einzelne Audiodateien als auch Archivdateien), die Sie zu Ihren angepassten Akustikmodellen hinzufügen. So können Sie Informationen zu den Autioressourcen für Ihre angepassten Modelle auflisten:
+    -   Verwenden Sie die Methode `GET /v1/acoustic_customizations/{customization_id}/audio`, um Informationen zu allen Audioressourcen für ein angepasstes Modell aufzulisten.
+    -   Verwenden Sie die Methode `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`, um Informationen zu einer bestimmten Audioressource für ein angepasstes Modell aufzulisten.
 
-    For more information, see [Listing audio resources for a custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#listAudio).
+    Weitere Informationen enthält der Abschnitt [Audioressourcen für ein angepasstes Akustikmodell auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#listAudio).
 
-It is a best practice to preserve this information in a format that you can use to re-create your custom acoustic models in the event of a failure. Actively maintaining the information about your custom models and their audio resources, and preparing the calls listed in the following section ahead of time, can enable you to recover as quickly as possible.
+Es hat sich bewährt, diese Informationen in einem Format aufzubewahren, das die erneute Erstellung Ihrer angepassten Akustikmodelle bei einem Fehler möglich macht. Wenn Sie die Informationen zu Ihren angepassten Modellen und ihren Audioressourcen aktiv verwalten und im Voraus die im folgenden Abschnitt aufgeführten Aufrufe vorbereiten, können Sie die Wiederherstellung so schnell wie möglich durchführen.
 
-#### Restoring custom acoustic models
+#### Angepasste Akustikmodelle wiederherstellen
 {: #disaster-recovery-acoustic-restore}
 
-If you need to recover from a disaster, you can use the backup information to re-create your custom acoustic models and their data:
+Falls eine Disaster-Recovery erforderlich werden sollte, können Sie Ihre angepassten Akustikmodelle und die zugehörigen Daten mithilfe der Sicherungsinformationen erneut erstellen:
 
-1.  To re-create your custom acoustic models, use the `POST /v1/acoustic_customizations` method. For more information, see [Create a custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic#createModel-acoustic).
-1.  To add the audio resources to your custom models, use the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method. For more information, see [Add audio to the custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio).
-1.  To train your custom models once you restore your audio resources, use the `POST /v1/acoustic_customizations/{customization_id}/train` method. For more information, see [Train the custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic#trainModel-acoustic).
+1.  Verwenden Sie für die erneute Erstellung Ihrer angepassten Akustikmodelle die Methode `POST /v1/acoustic_customizations`. Weitere Informationen hierzu finden Sie im Abschnitt [Angepasstes Akustikmodell erstellen](/docs/services/speech-to-text?topic=speech-to-text-acoustic#createModel-acoustic).
+1.  Verwenden Sie zum Hinzufügen der Audioressourcen zu Ihren angepassten Modellen die Methode `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`. Weitere Informationen hierzu enthält der Abschnitt [Audiodaten zum angepassten Akustikmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio).
+1.  Verwenden Sie nach dem Wiederherstellen der Audioressourcen die Methode `POST /v1/acoustic_customizations/{customization_id}/train`. Weitere Informationen finden Sie unter [Angepasstes Akustikmodell trainieren](/docs/services/speech-to-text?topic=speech-to-text-acoustic#trainModel-acoustic).
 
-The methods that you use to add audio resources and to train a custom acoustic model are asynchronous. You need to monitor the requests until they complete.
+Die Methoden, die Sie zum Hinzufügen von Audioressourcen und zum Trainieren eines angepassten Akustikmodells verwenden, werden asynchron ausgeführt. Sie müssen die Anforderungen überwachen, bis sie abgeschlossen sind.
 
-You can incrementally add audio resources and train your custom acoustic models rather than adding all data before training the models. For example, you can add your audio resources one at a time or in groups, training your models on subsets of the audio resources rather than on all of the audio at one time.
+Sie können nach und nach Audioressourcen hinzufügen und Ihre angepassten Akustikmodelle trainieren, statt alle Daten vor dem Trainieren der Modelle hinzuzufügen. Beispielsweise können Sie Ihre Audioressourcen einzeln nacheinander oder in Gruppen hinzufügen und Ihre Modelle mit Teilmengen der Audioressourcen statt gleichzeitig mit allen Audiodaten trainieren.
 
-### Disaster recovery for asynchronous speech recognition jobs
+### Disaster-Recovery bei asynchronen Spracherkennungsjobs
 {: #disaster-recovery-async}
 
-For speech recognition with the asynchronous HTTP interface, you need to maintain the following information:
+Für die Spracherkennung mit der asynchronen HTTP-Schnittstelle müssen Sie die folgenden Informationen aufbewahren:
 
--   All callback URLs that you whitelist for use with the asynchronous interface. If a failure occurs, you might need to use the `POST /v1/register_callback` method to re-register the URLs. The method returns an appropriate response if a URL is already whitelisted.
--   Copies of the audio files that you submit to the asynchronous interface for speech recognition. If a failure occurs before you receive or retrieve the results of a completed asynchronous job, you need to use the `POST /v1/recognitions` method to resubmit the audio files when the service is restored. Once you have the results of a completed asynchronous job, you no longer need to maintain the audio files.
+-   Alle Callback-URLs, die Sie zur Verwendung mit der asynchronen Schnittstelle in die Whitelist aufgenommen haben. Falls ein Fehler auftritt, müssen Sie möglicherweise die URLs mit der Methode `POST /v1/register_callback` erneut registrieren. Die Methode gibt eine entsprechende Antwort zurück, wenn eine URL bereits in eine Whitelist aufgenommen wurde.
+-   Kopien der Audiodateien, die Sie zur Spracherkennung an die asynchrone Schnittstelle übergeben. Falls ein Fehler auftritt, bevor Sie die Ergebnisse eines abgeschlossenen asynchronen Jobs empfangen oder abgerufen haben, müssen Sie die Audiodateien mit der Methode `POST /v1/recognitions` erneut übergeben, nachdem der Service wiederhergestellt worden ist. Sobald Sie die Ergebnisse eines abgeschlossenen asynchronen Jobs erhalten haben, müssen Sie die Audiodateien nicht mehr aufbewahren.
 
-For more information, see [The asynchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-async). As with the backup data for custom models, you can actively preserve this information and be prepared to reissue the necessary requests ahead of time.
+Weitere Informationen enthält der Abschnitt [Asynchrone HTTP-Schnittstelle](/docs/services/speech-to-text?topic=speech-to-text-async). Wie bei den Sicherungsdaten für angepasste Modelle können Sie diese Informationen aktiv verwalten und sich so im Voraus auf die erneute Ausgabe der erforderlichen Anforderungen vorbereiten.

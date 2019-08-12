@@ -22,126 +22,126 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Languages and models
+# Sprachen und Modelle
 {: #models}
 
-The {{site.data.keyword.speechtotextfull}} service supports speech recognition in many languages. For all interfaces, you can use the `model` parameter to specify the model for a speech recognition request. The model indicates the language in which the audio is spoken and the rate at which it is sampled.
+Der {{site.data.keyword.speechtotextfull}}-Service unterstützt die Spracherkennung in vielen Sprachen. Für alle Schnittstellen können Sie den Parameter `model` verwenden, um das Modell für eine Spracherkennungsanforderung anzugeben. Das Modell gibt an, in welcher Sprache das Audiomaterial gesprochen wird und mit welcher Abtastfrequenz es erfasst wird.
 {: shortdesc}
 
-## Supported language models
+## Unterstützte Sprachmodelle
 {: #modelsList}
 
-For most languages, the service supports both broadband and narrowband models:
+In den meisten Sprachen unterstützt der Service sowohl Breitband- als auch Schmalbandmodelle:
 
--   *Broadband models* are for audio that is sampled at greater than or equal to 16 kHz. Use broadband models for responsive, real-time applications, for example, for live-speech applications.
--   *Narrowband models* are for audio that is sampled at 8 kHz. Use narrowband models for offline decoding of telephone speech, which is the typical use for this sampling rate.
+-   *Breitbandmodelle* werden für Audiodaten mit einer Abtastfrequenz größer-gleich 16 kHz verwendet. Verwenden Sie Breitbandmodelle für reaktionsfähige echtzeitorientierte Anwendungen (z. B. Anwendungen für Live-Aufzeichnungen).
+-   *Schmalbandmodelle* werden für Audiodaten mit einer Abtastfrequenz von 8 kHz verwendet. Verwenden Sie Schmalbandmodelle bei der Offline-Decodierung von Telefongesprächen (der typische Anwendungszweck für diese Abtastfrequenz).
 
-Choosing the correct model for your application is important. Use the model that matches the sampling rate (and language) of your audio. The service automatically adjusts the sampling rate of your audio to match the model that you specify. For more information, see [Sampling rate](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#samplingRate).
+Das Auswählen des richtigen Modells für Ihre Anwendung ist von großer Bedeutung. Verwenden Sie das Modell mit derselben Abtastfrequenz (und Sprache) wie Ihre Audiodaten. Der Service passt die Abtastfrequenz Ihrer Audiodaten automatisch an das Modell an, das Sie angeben. Weitere Informationen finden Sie im Abschnitt [Abtastfrequenz](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#samplingRate).
 
-To achieve the best recognition accuracy, you also need to consider the frequency content of your audio. For more information, see [Audio frequency](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#frequency).
+Um die beste Erkennungsgenauigkeit zu erzielen, müssen Sie auch den Frequenzumfang Ihrer Audiodaten berücksichtigen. Weitere Informationen finden Sie im Abschnitt [Tonfrequenz](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#frequency).
 {: tip}
 
-Table 1 lists the supported models for each language. If you omit the `model` parameter from a request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default. Unless marked as *Beta*, all languages are generally available (*GA*) for production use.
+In Tabelle 1 sind die unterstützten Modelle für jede Sprache aufgelistet. Wenn Sie den Parameter `model` in einer Anforderung nicht angeben, verwendet der Service standardmäßig das Breitbandmodell für amerikanisches Englisch (`en-US_BroadbandModel`). Sofern nicht als *Beta* markiert, sind alle Sprachen allgemein für den Produktionseinsatz verfügbar (*GA*).
 
 <table>
-  <caption>Table 1. Supported language models</caption>
+  <caption>Tabelle 1. Unterstützte Sprachmodelle</caption>
   <tr>
-    <th style="text-align:left">Language</th>
-    <th style="text-align:center">Broadband model</th>
-    <th style="text-align:center">Narrowband model</th>
+    <th style="text-align:left">Sprache</th>
+    <th style="text-align:center">Breitbandmodell</th>
+    <th style="text-align:center">Schmalbandmodell</th>
   </tr>
   <tr>
-    <td>Arabic (Modern Standard)</td>
+    <td>Arabisch (Moderner Standard)</td>
     <td style="text-align:center"><code>ar-AR_BroadbandModel</code></td>
-    <td style="text-align:center">Not supported</td>
+    <td style="text-align:center">Nicht unterstützt</td>
   </tr>
   <tr>
-    <td>Brazilian Portuguese</td>
+    <td>Brasilianisches Portugiesisch</td>
     <td style="text-align:center"><code>pt-BR_BroadbandModel</code></td>
     <td style="text-align:center"><code>pt-BR_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Chinese (Mandarin)</td>
+    <td>Chinesisch (Mandarin)</td>
     <td style="text-align:center"><code>zh-CN_BroadbandModel</code></td>
     <td style="text-align:center"><code>zh-CN_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>English (United Kingdon)</td>
+    <td>Britisches Englisch</td>
     <td style="text-align:center"><code>en-GB_BroadbandModel</code></td>
     <td style="text-align:center"><code>en-GB_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>English (United States)</td>
+    <td>Amerikanisches Englisch</td>
     <td style="text-align:center"><code>en-US_BroadbandModel</code></td>
     <td style="text-align:center"><code>en-US_NarrowbandModel</code></br>
       <code>en-US_ShortForm_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>French</td>
+    <td>Französisch</td>
     <td style="text-align:center"><code>fr-FR_BroadbandModel</code></td>
     <td style="text-align:center"><code>fr-FR_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>German</td>
+    <td>Deutsch</td>
     <td style="text-align:center"><code>de-DE_BroadbandModel</code></td>
     <td style="text-align:center"><code>de-DE_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Japanese</td>
+    <td>Japanisch</td>
     <td style="text-align:center"><code>ja-JP_BroadbandModel</code></td>
     <td style="text-align:center"><code>ja-JP_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Korean</td>
+    <td>Koreanisch</td>
     <td style="text-align:center"><code>ko-KR_BroadbandModel</code></td>
     <td style="text-align:center"><code>ko-KR_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Spanish (Argentinian, Beta)</td>
+    <td>Spanisch (Argentinien, Beta)</td>
     <td style="text-align:center"><code>es-AR_BroadbandModel</code></td>
     <td style="text-align:center"><code>es-AR_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Spanish (Castilian)</td>
+    <td>Spanisch (Kastilien)</td>
     <td style="text-align:center"><code>es-ES_BroadbandModel</code></td>
     <td style="text-align:center"><code>es-ES_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Spanish (Chilean, Beta)</td>
+    <td>Spanisch (Chile, Beta)</td>
     <td style="text-align:center"><code>es-CL_BroadbandModel</code></td>
     <td style="text-align:center"><code>es-CL_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Spanish (Colombian, Beta)</td>
+    <td>Spanisch (Kolumbien, Beta)</td>
     <td style="text-align:center"><code>es-CO_BroadbandModel</code></td>
     <td style="text-align:center"><code>es-CO_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Spanish (Mexican, Beta)</td>
+    <td>Spanisch (Mexiko, Beta)</td>
     <td style="text-align:center"><code>es-MX_BroadbandModel</code></td>
     <td style="text-align:center"><code>es-MX_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Spanish (Peruvian, Beta)</td>
+    <td>Spanisch (Peru, Beta)</td>
     <td style="text-align:center"><code>es-PE_BroadbandModel</code></td>
     <td style="text-align:center"><code>es-PE_NarrowbandModel</code></td>
   </tr>
 </table>
 
-### The US English short-form model
+### Kurzformmodell für amerikanisches Englisch
 {: #modelsShortform}
 
-The US English short-form model, `en-US_ShortForm_NarrowbandModel`, can improve speech recognition for Interactive Voice Response (IVR) and Automated Customer Support solutions. The short-form model is trained to recognize the short utterances that are frequently expressed in customer support settings like automated and human support call centers. The model is tuned, for example, for precise utterances such as digits, single-character word and name spellings, and yes-no responses. Using a grammar in combination with the short-form model can further improve recognition results.
+Das Kurzformmodell für amerikanisches Englisch (`en-US_ShortForm_NarrowbandModel`) kann die Spracherkennung in Lösungen für Interactive-Voice-Response (IVR) und automatisierte Kundenunterstützung verbessern. Das Training für das Kurzformmodell ist darauf abgestimmt, kurze Äußerungen zu erkennen, die in Umgebungen für Kundenunterstützung (wie automatisierte oder bemannte Kundendienst-Call-Center) häufig vorkommen. Das Modell wurde beispielsweise für präzise Äußerungen wie Ziffern, Wörter und Namen aus einzelnen Buchstaben und Ja/Nein-Antworten optimiert. Die Verwendung einer Grammatik in Kombination mit dem Kurzformmodell kann die Ergebnisse der Erkennung noch weiter verbessern.
 
-As with all models, noisy environments can adversely impact the results. For example, background acoustic noise from airports, moving vehicles, conference rooms, and multiple speakers can reduce transcription accuracy.  Audio from speaker phones can also reduce accuracy due to the echo common to such devices. Using a custom acoustic model with the short-form model can counteract such effects.
+Wie bei allen Modellen können Umgebungen mit hohem Rauschanteil die Erkennungsergebnisse beeinträchtigen. Beispiel: Hintergrundgeräusche in Flughäfen, fahrenden Fahrzeugen und Konferenzräumen sowie mehrere beteiligte Sprecher können die Transkriptionsgenauigkeit verringern.  Die Audioausgabe von Lautsprechertelefonen kann durch Rückkopplungen (Echo) ebenfalls die Erkennungsgenauigkeit beeinträchtigen. Die Verwendung eines angepassten Akustikmodells in Kombination mit dem Kurzformmodell kann solche Effekte eindämmen.
 
--   For more information about language model and acoustic model customization, see [The customization interface](/docs/services/speech-to-text?topic=speech-to-text-customization).
--   For more information about grammars, see [Using grammars with custom language models](/docs/services/speech-to-text?topic=speech-to-text-grammars).
+-   Weitere Informationen zur Anpassung von Sprach- und Akustikmodellen finden Sie im Abschnitt [Die Anpassungsschnittstelle](/docs/services/speech-to-text?topic=speech-to-text-customization).
+-   Weitere Informationen zu Grammatiken finden Sie im Abschnitt [Grammatiken mit angepassten Sprachmodellen verwenden](/docs/services/speech-to-text?topic=speech-to-text-grammars).
 
-### Language model example
+### Beispiel für Sprachmodell
 {: #modelsExample}
 
-The following example HTTP request uses the model `en-US-NarrowbandModel` for speech recognition:
+Im folgenden Beispiel für eine HTTP-Anforderung wird das Modell `en-US-NarrowbandModel` für die Spracherkennung verwendet:
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -151,29 +151,29 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-## Listing models
+## Modelle auflisten
 {: #listModels}
 
-The HTTP interface provides two methods for listing information about the supported models:
+Die HTTP-Schnittstelle stellt zwei Methoden zum Auflisten von Informationen zu den unterstützten Modellen bereit:
 
--   The `GET /v1/models` method lists information about all available models.
--   The `GET /v1/models/{model_id}` method lists information about a specified model.
+-   Die Methode `GET /v1/models` listet Informationen zu allen verfügbaren Modellen auf.
+-   Die Methode `GET /v1/models/{model_id}` listet Informationen zu einem angegebenen Modell auf.
 
-Both methods return the following information about a model:
+Beide Methoden geben die folgenden Informationen zu einem Modell zurück:
 
--   `name` is the name of the model that you use in a request.
--   `language` is the language identifier of the model (for example, `en-US`).
--   `rate` identifies the sampling rate (minimum acceptable rate for audio) that is used by the model in Hertz.
--   `url` is the URI for the model.
--   `description` provides a brief description of the model.
--   `supported_features` describes the additional service features that are supported with the model:
-    -   `custom_language_model` is a boolean that indicates whether you can create custom language models that are based on the model.
-    -   `speaker_labels` indicates whether you can use the `speaker_labels` parameter with the model.
+-   `name` ist der Name des Modells, das Sie in einer Anforderung verwenden.
+-   `language` ist die Sprachenkennung für das Modell (z. B. `en-US`).
+-   `rate` gibt die Abtastfrequenz (minimale zulässige Abtastrate für Audiodaten) in Hertz an, die von dem Modell verwendet wird.
+-   `url` ist der URI für das Modell.
+-   `description` stellt eine kurze Beschreibung des Modells bereit.
+-   `supported_features` beschreibt die zusätzlichen Funktionen, die das Modell für den Service bereitstellt.
+    -   `custom_language_model` ist ein boolescher Wert, der angibt, ob Sie angepasste Sprachmodelle erstellen können, die auf dem Modell basieren.
+    -   `speaker_labels` gibt an, ob der Parameter `speaker_labels` mit dem Modell verwendet werden kann.
 
-### Example requests and responses
+### Beispiele für Anforderungen und Antworten
 {: #listExample}
 
-The following example lists all models that are supported by the service:
+Im folgenden Beispiel werden alle Modelle aufgelistet, die vom Service unterstützt werden:
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -193,7 +193,7 @@ curl -X GET -u "apikey:{apikey}"
         "custom_language_model": false,
         "speaker_labels": false
       },
-      "description": "Brazilian Portuguese narrowband model."
+      "description": "Breitbandmodell für brasilianisches Portugiesisch."
     },
     {
       "name": "ko-KR_BroadbandModel",
@@ -204,7 +204,7 @@ curl -X GET -u "apikey:{apikey}"
         "custom_language_model": true,
         "speaker_labels": false
       },
-      "description": "Korean broadband model."
+      "description": "Breitbandmodell für Koreanisch."
     },
     {
       "name": "fr-FR_BroadbandModel",
@@ -215,7 +215,7 @@ curl -X GET -u "apikey:{apikey}"
         "custom_language_model": true,
         "speaker_labels": true
       },
-      "description": "French broadband model."
+      "description": "Breitbandmodell für Französisch."
     },
     . . .
   ]
@@ -223,7 +223,7 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-The following example shows information about the US English broadband model. The model supports both language model customization and speakers labels.
+Das folgende Beispiel zeigt Informationen zum Breitbandmodell für amerikanisches Englisch an. Das Modell bietet Unterstützung für die Sprachmodellanpassung und für Sprecherbezeichnungen.
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -241,7 +241,7 @@ curl -X GET -u "apikey:{apikey}"
     "custom_language_model": true,
     "speaker_labels": true
   },
-  "description": "US English broadband model."
+  "description": "Breitbandmodell für amerikanisches Englisch."
 }
 ```
 {: codeblock}

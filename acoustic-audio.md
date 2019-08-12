@@ -22,37 +22,37 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Managing audio resources
+# Audioressourcen verwalten
 {: #manageAudio}
 
-The customization interface includes the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method, which is used to add an audio resource to a custom acoustic model. For more information, see [Add audio to the custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio). The interface also includes the following methods for listing and deleting audio resources for a custom acoustic model.
+Die Anpassungsschnittstelle bietet die Methode `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`, mit der Sie eine Audioressource zu einem angepassten Akustikmodell hinzufügen können. Weitere Informationen hierzu enthält der Abschnitt [Audiodaten zum angepassten Akustikmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio). Die Schnittstelle enthält außerdem die hier aufgeführten Methoden für das Auflisten und Löschen der Audioressourcen für ein angepasstes Akustikmodell.
 {: shortdesc}
 
-## Listing audio resources for a custom acoustic model
+## Audioressourcen für ein angepasstes Akustikmodell auflisten
 {: #listAudio}
 
-The customization interface provides two methods for listing information about the audio resources of a custom acoustic model:
+Die Anpassungsschnittstelle bietet zwei Methoden für das Auflisten von Informationen zu den Audioressourcen eines angepassten Akustikmodells:
 
--   The `GET /v1/acoustic_customizations/{customization_id}/audio` method lists information about all audio resources that have been added to a custom model.
--   The `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method lists information about a specified audio resource for a custom model.
+-   Die Methode `GET /v1/acoustic_customizations/{customization_id}/audio` listet Informationen zu allen Audioressourcen auf, die zu einem angepassten Modell hinzugefügt wurden.
+-   Die Methode `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` listet Informationen zu einer angegebenen Audioressource für ein angepasstes Modell auf.
 
-Both methods return the `name` of the audio resource plus the following additional information:
+Beide Methoden geben im Feld `name` den Namen der Audioressource sowie die folgenden zusätzlichen Informationen zurück:
 
--   `duration` is the length in seconds of the audio. For an archive file, the figure represents the accumulated duration of all of the audio files that are contained in the archive.
--   `details` identifies the type of the resource: `audio` or `archive`. (The type is `undetermined` if the service cannot validate the resource, possibly because the user mistakenly passed a file that does not contain audio.) For an audio file, the details include the `codec` and `frequency` of the audio. For an archive file, they include its `compression` type.
+-   `duration`: Die Länge der Audioressource in Sekunden. Bei einer Archivdatei stellt der Wert die summierte Dauer aller Audiodateien dar, die im Archiv enthalten sind.
+-   `details`: Gibt den Typ der Ressource an, also `audio` oder `archive`. (Der Typ lautet `undetermined` (= unbestimmt), falls der Service die Ressource nicht validieren kann, weil der Benutzer möglicherweise versehentlich eine Datei übergeben hat, die keine Audiodaten enthält.) Für eine Audiodatei enthalten die Details den Codec (Feld `codec`) und die Frequenz (Feld `frequency`) der Audiodaten. Für eine Archivdatei enthalten Sie den Komprimierungstyp (Feld `compression`).
 
-Additionally, listing all audio resources for a model returns the `total_minutes_of_audio` summed over all of the valid audio resources for the model. You can use this value to determine whether the custom model has enough or too much audio to begin training.
+Beim Auflisten aller Audioressourcen für ein Modell wird außerdem mit dem Wert für `total_minutes_of_audio` die Summe aller gültigen Audioressourcen für das Modell zurückgegeben. Anhand dieses Wertes können Sie ermitteln, ob das angepasste Modell ausreichend oder zu viele Audiodaten für den Beginn des Trainings enthält.
 
-The methods also list the status of the audio data. The status is important for checking the service's analysis of audio files in response to a request to add them to a custom model:
+Mit den Methoden wird auch der Status der Audiodaten aufgelistet. Der Status ist von Bedeutung, um die Analyse von Audiodaten durch den Service als Reaktion auf eine Anforderung zu überprüfen, die Dateien zu einem angepassten Modell hinzuzufügen:
 
--   `ok` indicates that the service has successfully analyzed the audio data. The data can be used to train the custom model.
--   `being_processed` indicates that the service is still analyzing the audio data. The service cannot accept requests to add new audio or to train the custom model until its analysis is complete.
--   `invalid` indicates that the audio data is not valid for training the model (possibly because it has the wrong format or sampling rate, or because it is corrupted).
+-   `ok`: Der Service hat die Audiodaten erfolgreich analysiert. Die Daten können für das Training des angepassten Modells verwendet werden.
+-   `being_processed`: Der Service ist gegenwärtig noch mit der Analyse der Audiodaten beschäftigt. Er kann Anforderungen für das Hinzufügen neuer Audiodaten oder das Trainieren des angepassten Modells erst nach Abschluss der Analyse akzeptieren.
+-   `invalid`: Die Audiodaten sind zum Trainieren des Modells nicht gültig (möglicherweise weisen sie ein falsches Format oder eine nicht korrekte Abtastfrequenz auf oder sind beschädigt).
 
-### Example request: List all audio resources
+### Beispielanforderung: Alle Audioressourcen auflisten
 {: #listExample-audio}
 
-The following example lists all audio resources for the custom acoustic model with the specified customization ID. The acoustic model has three audio resources. The service has successfully analyzed `audio1` and `audio2`; it is still analyzing `audio3`.
+Im folgenden Beispiel werden alle Audioressourcen für das angepasste Akustikmodell mit der angegebenen Anpassungs-ID aufgelistet. Für das Akustikmodell gibt es drei Audioressourcen. Der Service hat die Ressourcen `audio1` und `audio2` erfolgreich analysiert; die Ressource `audio3` wird gegenwärtig noch analysiert.
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -94,10 +94,10 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-### Example request: Get information for an audio-type resource
+### Beispielanforderung: Informationen für eine Audioressource abrufen
 {: #getExampleAudio}
 
-The following example returns information about the audio-type resource named `audio1`. The resource is 131 seconds long and is encoded with the `pcm_s16le` codec. It was successfully added to the model.
+Im folgenden Beispiel werden Informationen zur Audioressource namens `audio1`zurückgegeben. Die Ressource ist 131 Sekunden lang und mit dem Codec `pcm_s16le` codiert. Sie wurde erfolgreich zum Modell hinzugefügt.
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -119,10 +119,10 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-### Example request: Get information for an archive-type resource
+### Beispielanforderung: Informationen für eine Archivressource abrufen
 {: #getExampleArchive}
 
-The following example returns information about the archive-type resource named `audio2`. The resource is a **.zip** file that contains more than 9 minutes of audio. It too was successfully added to the model. As the example shows, querying information about an archive-type resource also provides information about the files that it contains.
+Im folgenden Beispiel werden Informationen zur Archivressource namens `audio2` zurückgegeben. Die Ressource ist eine Datei **.zip**, die Audiodaten mit einer Länge von mehr als 9 Minuten enthält. Auch sie wurde erfolgreich zum Modell hinzugefügt. Wie das Beispiel zeigt, stellt die Abfrage von Informationen zu einer Archivtypressource auch Informationen zu den darin enthaltenen Dateien bereit.
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -168,17 +168,17 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-## Deleting an audio resource from a custom acoustic model
+## Audioressourcen aus einem angepassten Akustikmodell löschen
 {: #deleteAudio}
 
-Use the `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to remove an existing audio resource from a custom acoustic model. When you delete an archive-type audio resource, the service removes the entire archive of files. The service does not allow deletion of individual files from an archive resource.
+Mit der Methode `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` können Sie eine vorhandene Audioressource aus einem angepassten Akustikmodell entfernen. Wenn Sie eine Archivressource löschen, entfernt der Service das gesamte Dateiarchiv. Der Service lässt die Löschung einzelner Dateien aus einer Archivierungsressource nicht zu.
 
-Removing an audio resource does not affect the custom model until you train the model on its updated data by using the `POST /v1/acoustic_customizations/{customization_id}/train` method. If you successfully trained the model on the resource, until you retrain the model, the existing audio data continues to be used for speech recognition.
+Das Entfernen einer Audioressource wirkt sich erst dann auf das angepasste Modell aus, wenn Sie es unter Verwendung der Methode `POST /v1/acoustic_customizations/{customization_id}/train` mit seinen aktualisierten Daten trainieren. Falls Sie das Modell mit der Ressource erfolgreich trainiert hatten, werden die vorhandenen Audiodaten weiterhin für die Spracherkennung verwendet, bis Sie das Modell erneut trainieren.
 
-### Example request
+### Beispielanforderung
 {: #deleteExample-audio}
 
-The following method deletes the audio resource that is named `audio3` from the custom model with the specified customization ID:
+Mit der folgenden Methode wird die Audioressource namens `audio3` aus dem angepassten Modell mit der angegebenen Anpassungs-ID gelöscht:
 
 ```bash
 curl -X DELETE -u "apikey:{apikey}"

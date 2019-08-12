@@ -22,54 +22,54 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Metrics features
+# Metrikfunktionen
 {: #metrics}
 
-The {{site.data.keyword.speechtotextfull}} service can return two types of optional metrics for a speech recognition request:
+Der {{site.data.keyword.speechtotextfull}}-Service kann zwei Typen optionaler Metriken für eine Spracherkennungsanforderung zurückgeben:
 
--   [Processing metrics](#processing_metrics) provide periodic information about the service's processing of the input audio. Use the metrics to gauge the service's progress in transcribing the audio. Processing metrics are available with the WebSocket and asynchronous HTTP interfaces.
--   [Audio metrics](#audio_metrics) provide information about the signal characteristics of the input audio. Use the metrics to determine the characteristics and quality of the audio. Audio metrics are available with all speech recognition interfaces.
+-   [Verarbeitungsmetriken](#processing_metrics) stellen regelmäßige Informationen über die Verarbeitung der Audioeingabedaten durch den Service bereit. Mithilfe der Metriken können Sie den Fortschritt des Service bei der Transkription der Audiodaten messen. Verarbeitungsmetriken stehen bei der WebSocket-Schnittstelle und bei der asynchronen HTTP-Schnittstellen zur Verfügung.
+-   [Audiometriken](#audio_metrics) stellen Informationen über die Signalmerkmale der Audioeingabedaten bereit. Mithilfe der Metriken können Sie die Merkmale und die Qualität der Audiodaten feststellen. Audiometriken sind mit allen Spracherkennungsschnittstellen verfügbar.
 
-By default, the service returns no metrics for a request.
+In der Standardeinstellung gibt der Service keine Metriken für eine Anforderung zurück.
 
-## Processing metrics
+## Verarbeitungsmetriken
 {: #processing_metrics}
 
-Processing metrics provide detailed timing information about the service's analysis of the input audio. The service returns the metrics at specified intervals and with transcription events, such as interim and final results.
+Verarbeitungsmetriken stellen detaillierte Zeitinformationen über die Analyse der Audioeingabedaten durch den Service bereit. Der Service gibt die Metriken in festgelegten Intervallen und mit Transkriptionsereignissen zurück, z. B. als Zwischen- und Endergebnisse.
 
-The metrics include statistics about how much audio the service has received, how much audio the service has transferred to the speech recognition engine, and how long the service has been processing the audio. If you request speaker labels, the information also shows how much audio the service has processed to determine speaker labels.
+Zu den Metriken gehören Statistikdaten über das Volumen der Audiodaten, die der Service empfangen und an die Spracherkennungsengine übertragen hat, und über die Verarbeitungsdauer der Audiodaten im Service. Wenn Sie Sprecherbezeichnungen anfordern, sind auch Informationen zum Umfang der Audiodaten enthalten, die der Service zur Bestimmung der Sprecherbezeichnungen verarbeitet hat.
 
-Processing metrics can help you gauge the progress of a recognition request. They can also help you distinguish the absence of results due to
+Verarbeitungsmetriken können Ihnen helfen, den Fortschritt einer Erkennungsanforderung zu messen. Sie können Sie auch dabei unterstützen, das Fehlen von Ergebnissen aufgrund der folgenden Ursachen zu unterscheiden:
 
--   Lack of audio.
--   Lack of speech in submitted audio.
--   Engine stalls at the server and network stalls between the client and the server. To differentiate between engine and network stalls, results are periodic rather than event-based.
+-   Fehlende Audiodaten.
+-   Fehlende Sprache in übergebenen Audiodaten.
+-   Blockierungen der Engine auf dem Server und Blockierungen des Netzes zwischen dem Client und dem Server. Zur Unterscheidung zwischen Blockierungen der Engine und Blockierungen des Netzes sind die Ergebnisse nicht ereignisgesteuert, sondern periodisch.
 
-The metrics can also help you estimate response jitter by examining the periodic arrival times. Metrics are generated at a constant interval, so any difference in arrival times is caused by jitter.
+Mit den Metriken können Sie auch durch die Untersuchung der regelmäßigen Antwortzeiten Antwortabweichungen besser einschätzen. Metriken werden in einem konstanten Intervall generiert, so dass jede Differenz in den Ankunftszeiten durch eine Abweichung (Jitter) verursacht wird.
 
-### Requesting processing metrics
+### Verarbeitungsmetriken anfordern
 {: #processing_metrics_request}
 
-To request processing metrics, use the following optional parameters:
+Verwenden Sie die folgenden optionalen Parameter, um Verarbeitungsmetriken anzufordern:
 
--   `processing_metrics` is a boolean that indicates whether the service is to return processing metrics. Specify `true` to request the metrics. By default, the service returns no metrics.
--   `processing_metrics_interval` is a float that specifies the interval in seconds of real wall-clock time at which the service is to return metrics. By default, the service returns metrics once per second. The service ignores this parameter unless the `processing_metrics` parameter is set to `true`.
+-   `processing_metrics` ist ein boolescher Wert, der angibt, ob der Service Verarbeitungsmetriken zurückgeben soll. Geben Sie `true` an, um die Metriken anzufordern. Standardmäßig gibt der Service keine Metriken zurück.
+-   `processing_metrics_interval` ist ein Gleitkommawert, der das Intervall in Sekunden (reale Prozesslaufzeit) angibt, in dem der Service die Metriken zurückgeben soll. In der Standardeinstellung gibt der Service Metriken einmal pro Sekunde zurück. Der Service ignoriert diesen Parameter, es sei denn, der Parameter `processing_metrics` ist auf `true` gesetzt.
 
-    The parameter accepts a minimum value of 0.1 seconds. The level of precision is not restricted, so you can specify values such as 0.25 and 0.125. The service does not impose a maximum value.
+    Der zulässige Mindestwert für den Parameter ist 0,1 Sekunden. Die Genauigkeitsstufe ist nicht eingeschränkt, so dass Sie Werte wie beispielsweise 0,25 und 0,125 angeben können. Im Service ist kein Maximalwert vorgegeben.
 
-How you provide the parameters and how the service returns processing metrics differ by interface:
+Wie Sie die Parameter angeben und wie der Service Verarbeitungsmetriken zurückgibt, ist von der Schnittstelle abhängig:
 
--   With the WebSocket interface, you specify the parameters with the JSON `start` message for a speech recognition request. The service calculates and returns metrics in real-time at the requested interval.
--   With the asynchronous HTTP interface, you specify query parameters with a speech recognition request. The service calculates the metrics at the requested interval, but it returns all metrics for the audio with the final transcription results.
+-   Bei der WebSocket-Schnittstelle geben Sie die Parameter mit der JSON-Nachricht `start` für eine Spracherkennungsanforderung an. Der Service berechnet und gibt Metriken in Echtzeit in dem angeforderten Intervall zurück.
+-   Bei der asynchronen HTTP-Schnittstelle geben Sie Abfrageparameter mit einer Spracherkennungsanforderung an. Der Service berechnet die Metriken in dem angeforderten Intervall, gibt aber alle Metriken für die Audiodaten mit den Endergebnissen für die Transkription zurück.
 
-The service also returns processing metrics for transcription events. If you request interim results with the WebSocket interface, you can receive metrics with greater frequency than the requested interval.
+Darüber hinaus gibt der Service Verarbeitungsmetriken für Transkriptionsereignisse zurück. Wenn Sie Zwischenergebnisse mit der WebSocket-Schnittstelle anfordern, können Sie Metriken häufiger als in dem angeforderten Intervall empfangen.
 
-To receive processing metrics only for transcription events instead of at periodic intervals, set the processing interval to a large number. If the interval is larger than the duration of the audio, the service returns processing metrics only for transcription events.
+Geben Sie für das Verarbeitungsintervall einen höheren Wert an, wenn Sie Verarbeitungsmetriken nur für Transkriptionsereignisse und nicht in regelmäßigen Intervallen empfangen möchten. Wenn das Intervall länger ist als die Dauer der Audiodaten, gibt der Service Verarbeitungsmetriken nur für Transkriptionsereignisse zurück.
 
-### Understanding processing metrics
+### Verarbeitungsmetriken verstehen
 {: #processing_metrics_understand}
 
-The service returns processing metrics in the `processing_metrics` field of the `SpeechRecognitionResults` object. For metrics generated at periodic intervals, the object contains only the `processing_metrics` field, as shown in the following example.
+Der Service gibt Verarbeitungsmetriken im Feld `processing_metrics` des Objekts `SpeechRecognitionResults` zurück. Für Metriken, die in regelmäßigen Intervallen generiert wurden, enthält das Objekt nur das Feld `processing_metrics`, wie im folgenden Beispiel gezeigt.
 
 ```javascript
 {
@@ -87,43 +87,43 @@ The service returns processing metrics in the `processing_metrics` field of the 
 ```
 {: codeblock}
 
-The `processing_metrics` field includes a `ProcessingMetrics` object that has the following fields:
+Das Feld `processing_metrics` enthält ein Objekt `ProcessingMetrics`, das die folgenden Felder enthält:
 
--   `wall_clock_since_first_byte_received` is the amount of real time in seconds that has passed since the service received the first byte of input audio. Values in this field are generally multiples of the specified metrics interval, with two differences:
-    -   Values might not reflect exact intervals such as 0.25, 0.5, and so on. Actual values might, for example, be 0.27, 0.52, and so on, depending on when the service receives and processes audio.
-    -   Values for transcription events are not related to the processing interval. The service returns event-driven results as they occur.
--   `periodic` indicates whether the metrics apply to a periodic interval or to a transcription event:
-    -   `true` means that the response was triggered by a processing interval. The information contains processing metrics only.
-    -   `false` means that the response was triggered by a transcription event. The information contains processing metrics plus transcription results.
+-   `wall_clock_since_first_byte_received` ist der Echtzeitraum in Sekunden, der vergangen ist, seit der Service das erste Byte der Eingabeaudiodaten empfangen hat. Die Werte in diesem Feld sind in der Regel ein Vielfaches des angegebenen Metrikintervalls. Dabei gibt es zwei Unterschiede:
+    -   Werte stellen möglicherweise keine exakten Intervalle wie 0,25, 0,5 usw. dar. Die tatsächlichen Werte können beispielsweise 0,27, 0,52 usw. sein, je nachdem, wann der Service Audiodaten empfängt und verarbeitet.
+    -   Werte für Transkriptionsereignisse sind vom Verarbeitungsintervall unabhängig. Sobald ereignisgesteuerte Ereignisse auftreten, gibt der Service diese zurück.
+-   `periodic` gibt an, ob die Metriken sich auf ein regelmäßiges Intervall oder ein Transkriptionsereignis beziehen:
+    -   `true` bedeutet, dass die Antwort durch ein Verarbeitungsintervall ausgelöst wurde. Die Informationen enthalten nur Verarbeitungsmetriken.
+    -   `false` bedeutet, dass die Antwort durch ein Transkriptionsereignis ausgelöst wurde. Die Informationen enthalten Verarbeitungsmetriken und Transkriptionsergebnisse.
 
-    Use this field to identify why the service generated the response and to filter different results if necessary.
--   `processed_audio` includes a `ProcessedAudio` object that provides detailed timing information about the service's processing of the input audio.
+    In diesem Feld können Sie angeben, warum der Service die Antwort generiert hat, und ggf. verschiedene Ergebnisse filtern.
+-   `processed_audio` enthält ein Objekt `ProcessedAudio`, das detaillierte Zeitinformationen über die Verarbeitung der Audioeingabedaten durch den Service bereitstellt.
 
-The `ProcessedAudio` object includes the following fields. All of the fields refer to seconds of audio as of this response. Only the `wall_clock_since_first_byte_received` field refers to elapsed real-time.
+Das Objekt `ProcessedAudio` enthält die folgenden Felder. Alle diese Felder beziehen sich auf Sekunden der Audiodaten zum Zeitpunkt dieser Antwort. Nur das Feld `wall_clock_since_first_byte_received` bezieht sich auf abgelaufene Echtzeit.
 
--   `received` is the seconds of audio that the service has received.
--   `seen_by_engine` is the seconds of audio that the service has passed to its speech processing engine.
--   `transcription` is the seconds of audio that the service has processed for speech recognition.
--   `speaker_labels` is the seconds of audio that the service has processed for speaker labels. The response includes this field only if you request speaker labels.
+-   `received` gibt die Sekunden der Audiodaten an, die der Service empfangen hat.
+-   `seen_by_engine` gibt die Sekunden der Audiodaten an, die der Service an seine Sprachverarbeitungsengine übergeben hat.
+-   `transcription` gibt die Sekunden der Audiodaten an, die der Service für die Spracherkennung verarbeitet hat.
+-   `speaker_labels` gibt die Sekunden der Audiodaten an, die der Service für Sprecherbezeichnungen verarbeitet hat. Dieses Feld ist nur dann in der Antwort enthalten, wenn Sie Sprecherbezeichnungen anfordern.
 
-The speech processing engine analyzes the input audio multiple times. The `processed_audio` object shows values for audio that the engine has processed and will not read again. Processed audio has no effect on future recognition hypotheses.
+Die Sprachverarbeitungsengine analysiert die Eingabeaudiodaten mehrmals. Das Objekt `processed_audio` zeigt Werte für Audiodaten an, die die Engine verarbeitet hat und nicht erneut lesen wird. Verarbeitete Audiodaten haben keine Auswirkungen auf zukünftige Erkenntnishypothesen.
 
-The metrics indicate the progress and complexity of the engine's processing:
+Die Metriken geben Aufschluss über den Fortschritt und die Komplexität der Verarbeitung der Engine:
 
--   `seen_by_engine` is audio that the service has read and passed to the engine at least once.
--   `received` - `seen_by_engine` is audio that has been buffered at the service but has not yet been seen or processed by the engine.
--   The relationship between the times is `received` >= `seen_by_engine` >= `transcription` >= `speaker_labels`.
+-   `seen_by_engine` sind Audiodaten, die der Service gelesen und mindestens einmal an die Engine übergeben hat.
+-   `received` - `seen_by_engine` sind Audiodaten, die im Service gepuffert, aber noch nicht an die Engine übergeben und noch nicht von ihr verabeitet wurden.
+-   Zwischen den Zeiten besteht die folgende Beziehung: `received` >= `seen_by_engine` >= `transcription` >= `speaker_labels`.
 
-The following relationships can also be helpful in understanding the results:
+Auch die folgenden Beziehungen können bei der Interpretation der Ergebnisse hilfreich sein:
 
--   The values of the `received` and `seen_by_engine` fields are greater than the values of the `transcription` and `speaker_labels` fields during speech recognition processing. The service must receive the audio before it can begin to process results.
--   The values of the `received` and `seen_by_engine` fields are identical when the service has finished processing the audio. The final values of the fields can be greater than the values of the `transcription` and `speaker_labels` fields by a fractional number of seconds.
--   The value of the `speaker_labels` field typically trails the value of the `transcription` field during speech recognition processing. The values of the `transcription` and `speaker_labels` fields are identical when the service has finished processing the audio.
+-   Die Werte der Felder `received` und `seen_by_engine` sind größer als die Werte der Felder `Transkription` und `speaker_labels` während der Spracherkennungsverarbeitung. Der Service muss die Audiodaten empfangen, bevor er mit der Verarbeitung der Ergebnisse beginnen kann.
+-   Die Werte der Felder `received` und `seen_by_engine` sind identisch, wenn der Service die Verarbeitung des Audiodaten beendet hat. Die Endwerte der Felder können um einen Bruchteil von Sekunden größer sein als die Werte der Felder `transcription` und `speaker_labels`.
+-   Der Wert des Felds `speaker_labels` folgt normalerweise dem Wert des Felds `transcription` während der Spracherkennungsverarbeitung. Die Werte der Felder `Transkription</MD
 
-### Processing metrics example: WebSocket interface
+### Beispiel für Verarbeitungsmetriken: WebSocket-Schnittstelle
 {: #processing_metrics_example_websocket}
 
-The following example shows the `start` message that is passed for a request to the WebSocket interface. The request enables processing metrics and sets the processing metrics interval to 0.25 seconds. It also sets the `interim_results` and `speaker_labels` parameters to `true`. The audio contains the simple message "hello world long pause stop."
+Das folgende Beispiel zeigt die Nachricht `start`, die für eine Anforderung an die WebSocket-Schnittstelle übergeben wird. Die Anforderung aktiviert Verarbeitungsmetriken und legt ein Intervall von 0,25 Sekunden für Verarbeitungsmetriken fest. Außerdem werden die Parameter `interim_results` und `speaker_labels` auf `true` gesetzt. Die Audiodaten enthalten die einfache Nachricht "hello world long pause stop".
 
 ```javascript
 function onOpen(evt) {
@@ -141,7 +141,7 @@ function onOpen(evt) {
 ```
 {: codeblock}
 
-The following example output shows the first few processing metrics results that the service returns for the request.
+Die folgende Beispielausgabe zeigt die ersten Ergebnisse der Verarbeitungsmetriken, die der Service für die Anforderung zurückgibt.
 
 ```javascript
 {
@@ -207,10 +207,10 @@ The following example output shows the first few processing metrics results that
 ```
 {: codeblock}
 
-### Processing metrics example: Asynchronous HTTP interface
+### Beispiel für Verarbeitungsmetriken: Asynchrone HTTP-Schnittstelle
 {: #processing_metrics_example_http}
 
-The following example shows a speech recognition request for the `/v1/recognitions` method of the asynchronous HTTP interface. The request enables processing metrics and specifies an interval of 0.25 seconds. The audio file again includes the message "hello world long pause stop".
+Das folgende Beispiel zeigt eine Spracherkennungsanforderung für die Methode `/v1/recognitions` der asynchronen HTTP-Schnittstelle. Die Anforderung aktiviert Verarbeitungsmetriken und gibt ein Intervall von 0,25 Sekunden an. Auch hier enthält die Audiodatei die Nachricht "hello world long pause stop".
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -220,7 +220,7 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-The following example output shows the first two processing metrics results that the service returns for the request.
+Die folgende Beispielausgabe zeigt die ersten beiden Ergebnisse der Verarbeitungsmetriken, die der Service für die Anforderung zurückgibt.
 
 ```javascript
 {
@@ -249,29 +249,29 @@ The following example output shows the first two processing metrics results that
 ```
 {: codeblock}
 
-## Audio metrics
+## Audiometriken
 {: #audio_metrics}
 
-Audio metrics provide detailed information about the signal characteristics of the input audio. The results provide aggregated metrics for the entire input audio at the conclusion of speech processing. For a technically sophisticated user, the metrics can provide meaningful insight into the detailed characteristics of the audio.
+Audiometriken stellen detaillierte Informationen über die Signalmerkmale der Audioeingabedaten bereit. In den Ergebnissen sind Metriken für die gesamten Audioeingabedaten zum Abschluss der Sprachverarbeitung zusammengefasst. Für einen technisch erfahrenen Benutzer können die Metriken aussagekräftige Informationen zu den detaillierten Merkmalen der Audiodaten liefern.
 
-You can use audio metrics to provide a real-time indication of a problem with the input audio and possibly even a potential solution. For example, you can provide a message such as "There is too much noise in the background" or "Please come closer to the microphone." You can also use an offline analytical tool to review the signal characteristics and suggest data that is suitable for future model updates.
+Mit Audiometriken können Sie einen Hinweis auf ein Problem der Eingabeaudiodaten in Echtzeit und eventuell sogar eine mögliche Lösung zur Verfügung stellen. Sie können z. B. die Nachricht "Die Hintergrundgeräusche sind zu stark" oder "Bitte näher an das Mikrofon kommen" bereitstellen. Außerdem können Sie mit einem Offline-Analysetool die Signalmerkmale überprüfen und Daten vorschlagen, die für zukünftige Modellaktualisierungen geeignet sind.
 
-### Requesting audio metrics
+### Audiometriken anfordern
 {: #audio_metrics_request}
 
-To request audio metrics, set the `audio_metrics` boolean parameter to `true`. By default, the service returns no metrics.
+Um Audiometriken anzufordern, setzen Sie den booleschen Parameter `audio_metrics` auf `true`. Standardmäßig gibt der Service keine Metriken zurück.
 
--   With the WebSocket interface, you specify the parameter with the JSON `start` message for a speech recognition request.
--   With the HTTP interfaces, you specify a query parameter with a speech recognition request.
+-   Bei der WebSocket-Schnittstelle geben Sie den Parameter mit der JSON-Nachricht `start` für eine Spracherkennungsanforderung an.
+-   Bei den HTTP-Schnittstellen geben Sie einen Abfrageparameter mit einer Spracherkennungsanforderung an.
 
-The service returns audio metrics with the final transcription results. It returns the metrics just once for the entire audio stream. Even if the service returns multiple transcription results (for different blocks of audio), it returns only a single instance of the metrics at the very end of the results.
+Der Service gibt die Audiometriken mit den Endergebnissen für die Transkription zurück. Die Metriken werden nur einmal für den gesamten Audiodatenstrom zurückgegeben. Auch wenn der Service mehrere Transkriptionsergebnisse (für verschiedene Audioblöcke) zurückgibt, gibt er nur eine einzige Instanz der Metriken am Ende der Ergebnisse zurück.
 
-The WebSocket interface accepts multiple audio streams (or files) with a single connection. You delimit different streams by sending `stop` messages or empty binary blobs to the service. In this case, the service returns separate metrics for each delimited audio stream.
+Die WebSocket-Schnittstelle akzeptiert mehrere Audiodatenströme (oder Audiodateien) mit einer einzigen Verbindung. Verschiedene Datenströme können Sie begrenzen, indem Sie `stop`-Nachrichten oder leere binäre BLOBs an den Service senden. In diesem Fall gibt der Service separate Metriken für jeden begrenzten Audiodatenstrom zurück.
 
-### Understanding audio metrics
+### Audiometriken verstehen
 {: #audio_metrics_understand}
 
-The service return the metrics in the `audio_metrics` field of the `SpeechRecognitionResults` object.
+Der Service gibt die Metriken im Feld `audio_metrics` des Objekts `SpeechRecognitionResults` zurück.
 
 ```javascript
 {
@@ -309,37 +309,37 @@ The service return the metrics in the `audio_metrics` field of the `SpeechRecogn
 ```
 {: codeblock}
 
-The `audio_metrics` field includes an `AudioMetrics` object that has two fields:
+Das Feld `audio_metrics` enthält ein Objekt `AudioMetrics`, das über zwei Felder verfügt:
 
--   `sampling_interval` indicates the interval in seconds (typically 0.1 seconds) at which the service calculated the audio metrics.
--   `accumulated` includes an `AudioMetricsDetails` object that provides detailed information about the signal characteristics of the input audio.
+-   `sampling_interval` gibt das Intervall in Sekunden (normalerweise 0,1 Sekunden) an, in dem der Service die Audiometriken berechnet hat.
+-   `accumulated` enthält ein Objekt `AudioMetricsDetails`, das detaillierte Informationen über die Signalmerkmale der Audioeingabedaten bereitstellt.
 
-The following fields of the `AudioMetricsDetails` object provide unary values:
+Die folgenden Felder des Objekts `AudioMetricsDetails` stellen unäre Werte bereit:
 
--   `final` indicates whether the metrics are for the end of the audio stream, meaning that transcription is complete. Currently, the field is always `true`. The service returns metrics just once per audio stream. The results provide aggregated metrics for the complete stream.
--   `end_time` specifies the end time in seconds of the audio to which the metrics apply. Because the metrics apply to the entire audio stream, the end time is always the length of the audio.
--   `signal_to_noise_ratio` provides the signal-to-noise ratio (SNR) for the audio signal. The value indicates the ratio of speech to noise in the audio. A valid value lies in the range of 0 to 100 decibels (dB). The service omits the field if it cannot compute the SNR for the audio.
--   `speech_ratio` is the ratio of speech to non-speech segments in the audio signal. The value lies in the range of 0.0 to 1.0.
--   `high_frequency_loss` indicates the probability that the audio signal is missing the upper half of its frequency content.
-    -   A value close to 1.0 typically indicates artificially up-sampled audio, which negatively impacts the accuracy of the transcription results.
-    -   A value at or near 0.0 indicates that the audio signal is good and has a full spectrum.
-    -   A value around 0.5 means that detection of the frequency content is unreliable or unavailable.
+-   `final` gibt an, ob die Metriken für das Ende des Audiodatenstroms gelten, d. h. die Transkription ist abgeschlossen. Derzeit ist das Feld immer auf `true` gesetzt. Der Service gibt Metriken nur einmal pro Audiodatenstrom zurück. In den Ergebnissen sind Metriken für den vollständigen Datenstrom zusammengefasst.
+-   `end_time` gibt die Endzeit der Audiodaten, auf die sich die Metriken beziehen, in Sekunden an. Da die Metriken für den gesamten Audiodatenstrom gelten, ist die Endzeit immer die Länge der Audiodaten.
+-   `signal_to_noise_ratio` gibt das Signal-Rausch-Verhältnis (Signal-to-Noise Ratio, SNR) für das Tonsignal an. Der Wert gibt das Verhältnis zwischen Sprache und Rauschen in den Audiodaten an. Gültige Werte liegen im Bereich von 0 bis 100 Dezibel (dB). Der Service übergeht das Feld, wenn er den SNR-Wert für die Audiodaten nicht berechnen kann.
+-   `speech_ratio` gibt das Verhältnis zwischen Sprachsegmenten und Segmenten ohne Sprachgeräusche im Tonsignal an. Gültige Werte liegen im Bereich von 0,0 bis 1,0.
+-   `high_frequency_loss` gibt die Wahrscheinlichkeit an, dass die obere Hälfte des Frequenzinhalts im Tonsignal fehlt.
+    -   Ein Wert nahe 1,0 gibt normalerweise Audiodaten mit künstlichem Upsampling an, was sich negativ auf die Genauigkeit der Transkriptionsergebnisse auswirkt.
+    -   Der Wert 0,0 oder ein Wert nahe 0,0 gibt an, dass das Tonsignal gut ist und ein vollständiges Spektrum aufweist.
+    -   Ein Wert um 0,5 gibt an, dass die Erkennung des Frequenzinhalts nicht zuverlässig oder nicht verfügbar ist.
 
-The following fields of the `AudioMetricsDetails` object provide histograms for signal characteristics. Each field provides an array of `AudioMetricsHistogramBin` objects. A single unit in each histogram is calculated based on a `sampling_interval` length of audio.
+Die folgenden Felder des Objekts `AudioMetricsDetails` stellen Histogramme für Signalmerkmale bereit. Jedes Feld stellt ein Array von `AudioMetricsHistogramBin`-Objekten bereit. Die Berechnung einer einzelnen Einheit in jedem Histogramm basiert auf der Länge der Audiodaten von `sampling_interval`.
 
--   `direct_current_offset` defines a histogram of the cumulative direct current (DC) component of the audio signal.
--   `clipping_rate` defines a histogram of the clipping rate for the audio segments. The clipping rate is defined as the fraction of samples in the segment that reach the maximum or minimum value that is offered by the audio quantization range.
+-   `direct_current_offset` definiert ein Histogramm der kumulativen Gleichstrom-Komponente (DC) des Tonsignals.
+-   `clipping_rate` definiert ein Histogramm der Clipping-Rate für die Tonsegmente. Die Clipping-Rate ist als der Bruchteil der Abtastungen in dem Segment definiert, die den Maximal- oder Minimalwert erreichen, der durch den Audioquantisierungsbereich festgelegt ist.
 
-    The service auto-detects either a 16-bit Pulse-Code Modulation (PCM) audio range (-32768 to +32767) or a unit range (-1.0 to +1.0). The clipping rate is between 0.0 and 1.0. Higher values indicate possible degradation of speech recognition.
--   `speech_level` defines a histogram of the signal level in segments of the audio that contain speech. The signal level is computed as the Root-Mean-Square (RMS) value in a decibel (dB) scale normalized to the range 0.0 (minimum level) to 1.0 (maximum level).
--   `non_speech_level` defines a histogram of the signal level in segments of the audio that do not contain speech. The signal level is computed as the RMS value in a decibel scale normalized to the range 0.0 (minimum level) to 1.0 (maximum level).
+    Von dem Service wird entweder ein 16-Bit-PCM-Audiobereich (-32768 bis +32767) oder ein Einheitenbereich (-1,0 bis +1,0) automatisch erkannt (PCM = Pulscodemodulation). Die Clipping-Rate liegt im Bereich von 0,0 bis 1,0. Höhere Werte weisen auf eine mögliche Verschlechterung der Spracherkennung hin.
+-   `speech_level` definiert ein Histogramm des Signalpegels in Segmenten der Audiodaten, die Sprache enthalten. Der Signalpegel wird als Effektivwert in einer Dezibel-Skala (dB) berechnet, die auf den Bereich 0,0 (Minimalpegel) bis 1,0 (Maximalpegel) normalisiert ist.
+-   `non_speech_level` definiert ein Histogramm des Signalpegels in Segmenten der Audiodaten, die keine Sprache enthalten. Der Signalpegel wird als Effektivwert in einer Dezibel-Skala berechnet, die auf den Bereich 0,0 (Minimalpegel) bis 1,0 (Maximalpegel) normalisiert ist.
 
-Each `AudioMetricsHistogramBin` object describes a bin with defined `begin` and `end` boundaries. Each bin indicates the `count` or number of values in the range of signal characteristics for that bin. The first and last bins of a histogram are the boundary bins. They cover the intervals between negative infinity and the first boundary, and between the last boundary and positive infinity, respectively.
+Jedes Objekt `AudioMetricsHistogramBin` beschreibt ein Fach mit definierten Anfangs- (`begin`) und Endbegrenzung (`end`). Jedes Fach gibt die Anzahl `count` der Werte in dem Bereich der Signalmerkmale für das jeweilige Fach an. Das erste und letzte Fach eines Histogramms sind die Grenzfächer. Sie decken die Intervalle zwischen negativ Unendlich und der ersten Begrenzung bzw. zwischen der letzten Begrenzung und positiv Unendlich ab.
 
-### Audio metrics example
+### Beispiel für Audiometriken
 {: #audio_metrics_example}
 
-The following example shows a speech recognition request with the synchronous HTTP interface that returns audio metrics. The audio file includes the simple message "hello world long pause stop".
+Das folgende Beispiel zeigt eine Spracherkennungsanforderung mit der synchronen HTTP-Schnittstelle, die Audiometriken zurückgibt. Die Audiodatei enthält die einfache Nachricht "hello world long pause stop".
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -349,9 +349,9 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-The response includes the audio metrics for the complete input audio, which has a duration of 7.0 seconds. The input audio has slightly more speech than non-speech segments: 37 to 33 segments, for a `speech_ratio` of 0.529. The clipping rate is very low, indicating high-quality input audio.
+Die Antwort enthält die Audiometriken für die kompletten Eingabeaudiodaten mit einer Länge von 7,0 Sekunden. Die Eingabeaudiodaten enthalten etwas mehr Sprache als Segmente ohne Sprache: 37 zu 33 Segmente, bei einem Wert von 0,529 für `speech_ratio`. Die Clipping-Rate ist sehr niedrig, was auf hochwertige Eingabeaudiodaten hinweist.
 
-The `high_frequency_loss` field has a value of 0.5, meaning that the service's detection of the frequency content is unreliable or unavailable. The results omit the `signal_to_noise_ratio` field because the service could not calculate the SNR for the audio.
+Das Feld `high_frequency_loss` weist den Wert 0,5 auf. Das bedeutet, dass die Erkennung des Frequenzinhalts des Service nicht zuverlässig oder nicht verfügbar ist. Das Feld `signal_to_noise_ratio` ist in den Ergebnissen nicht enthalten, weil der Service das Signal-Rausch-Verhältnis für die Audiodaten nicht berechnen konnte.
 
 ```javascript
 {
@@ -363,18 +363,18 @@ The `high_frequency_loss` field has a value of 0.5, meaning that the service's d
           "transcript": "hello world "
         }
       ],
-      "final": true
-    },
-    {
+          "final": true
+        },
+        {
       "alternatives": [
         {
           "confidence": 0.79,
           "transcript": "long pause "
         }
       ],
-      "final": true
-    },
-    {
+          "final": true
+        },
+        {
       "alternatives": [
         {
           "confidence": 0.97,

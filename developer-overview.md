@@ -22,82 +22,82 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Overview for developers
+# Übersicht für Entwickler
 {: #developerOverview}
 
-You can access the capabilities of the {{site.data.keyword.speechtotextfull}} service by using a WebSocket interface and by using synchronous or asynchronous HTTP Representational State Transfer (REST) interfaces. You can also customize the service's language models to suit your domain and environment. SDKs are available to simplify application development in many programming languages.
+Auf die Funktionalität des {{site.data.keyword.speechtotextfull}}-Service können Sie mithilfe einer WebSocket-Schnittstelle oder unter Verwendung von synchronen bzw. asynchronen HTTP-Schnittstellen für Representational State Transfer (REST) zugreifen. Außerdem können Sie die Sprachmodelle des Service an Ihr Fachgebiet und Ihre Umgebung anpassen. Zur Vereinfachung der Anwendungsentwicklung in vielen Programmiersprachen sind SKDs verfügbar.
 {: shortdesc}
 
-## Programming with the service
+## Programmierung beim Service
 {: #programming}
 
-[Making a recognition request](/docs/services/speech-to-text?topic=speech-to-text-basic-request) shows you how to request basic transcription with each of the service's programming interfaces:
+Im Abschnitt [Erkennungsanforderung ausgeben](/docs/services/speech-to-text?topic=speech-to-text-basic-request) erfahren Sie, wie Sie mit jeder Programmierschnittstelle des Service eine Basistranskription anfordern:
 
--   [The WebSocket interface](/docs/services/speech-to-text?topic=speech-to-text-websockets) offers an efficient, low-latency, and high-throughput implementation over a full-duplex connection.
--   [The synchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-http) provides a basic interface to transcribe audio with blocking requests.
--   [The asynchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-async) provides a non-blocking interface that lets you register a callback URL to receive notifications or to poll the service for job status and results.
+-   Die [WebSocket-Schnittstelle](/docs/services/speech-to-text?topic=speech-to-text-websockets) bietet eine effiziente Implementierung über eine Vollduplexverbindung mit niedriger Latenzzeit und hohem Durchsatz.
+-   Die [synchrone HTTP-Schnittstelle](/docs/services/speech-to-text?topic=speech-to-text-http) bietet eine Basisschnittstelle für die Transkription von Audiodaten mit blockierenden Anforderungen.
+-   Die [asynchrone HTTP-Schnittstelle](/docs/services/speech-to-text?topic=speech-to-text-async) bietet eine nicht blockierende Schnittstelle, mit der Sie eine Callback-URL für den Empfang von Benachrichtigungen registrieren oder den Service nach Jobstatus und Ergebnissen abfragen können.
 
-The interfaces provide the same speech recognition capabilities, but you might specify the same parameter as a request header, a query parameter, or a parameter of a JSON object depending on the interface that you use. Also, the WebSocket and synchronous HTTP interfaces accept a maximum of 100 MB of audio data with a single request. The asynchronous HTTP interface accepts a maximum of 1 GB of audio data.
+Die Schnittstellen stellen zwar dieselben Spracherkennungsfunktionen zur Verfügung, aber je nach der verwendeten Schnittstelle müssen Sie denselben Parameter möglicherweise als Anforderungsheader, als Abfrageparameter oder als Parameter eines JSON-Objekts angeben. Die WebSocket-Schnittstelle und die synchrone HTTP-Schnittstelle akzeptieren darüber hinaus bei einer einzelnen Anforderung Audiodaten mit einer Größe von maximal 100 MB. Die asynchrone HTTP-Schnittstelle akzeptiert Audiodaten mit einer maximalen Größe von 1 GB.
 
--   For descriptions of all available speech recognition parameters, see the [Parameter summary](/docs/services/speech-to-text?topic=speech-to-text-summary).
--   For descriptions of all methods and their parameters, along with examples, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+-   Eine Beschreibung aller verfügbaren Parameter für die Spracherkennung finden Sie in der [Parameterübersicht](/docs/services/speech-to-text?topic=speech-to-text-summary).
+-   Beschreibungen aller Methoden und ihrer Parameter sind zusammen mit Beispielen in der [API-Referenz](https://{DomainName}/apidocs/speech-to-text){: external} zu finden.
 
-## Advantages of the WebSocket interface
+## Vorteile der WebSocket-Schnittstelle
 {: #advantages}
 
-The WebSocket interface has a number of advantages over the HTTP interface:
+Die WebSocket-Schnittstelle bietet gegenüber den HTTP-Schnittstellen eine Reihe von Vorteilen:
 
--   The WebSocket interface provides a single-socket, full-duplex communication channel. The interface lets the client send requests and audio to the service and receive results over a single connection in an asynchronous fashion.
--   It provides a much simpler and more powerful programming experience. The service sends event-driven responses to the client's messages, eliminating the need for the client to poll the server.
--   It allows you to establish and use a single authenticated connection indefinitely. The HTTP interfaces require you to authenticate each call to the service.
--   It reduces latency. Recognition results arrive faster because the service sends them directly to the client. The HTTP interface requires four distinct requests and connections to achieve the same results.
--   It reduces network utilization. The WebSocket protocol is lightweight. It requires only a single connection to perform live-speech recognition.
--   It enables audio to be streamed directly from browsers (HTML5 WebSocket clients) to the service.
+-   Die WebSocket-Schnittstelle stellt einen Kanal für die Vollduplexübertragung mit einem einzigen Socket zur Verfügung. Mithilfe der Schnittstelle kann der Client über eine einzige Verbindung asynchron Anforderungen und  Audiodaten an den Service senden und Ergebnisse empfangen.
+-   Sie bietet eine viel einfachere und leistungsfähigere Programmiererfahrung. Der Service sendet ereignisgesteuerte Antworten auf die Nachrichten des Clients, was eine Abfrage des Servers durch den Client überflüssig macht.
+-   Sie ermöglicht Ihnen die Einrichtung und unbegrenzte Verwendung einer einzigen authentifizierten Verbindung. Bei den HTTP-Schnittstellen müssen Sie sich für jeden Aufruf des Service authentifizieren.
+-   Sie verringert die Latenzzeit. Erkennungsergebnisse treffen schneller ein, weil der Service sie direkt an den Client sendet. Bei den HTTP-Schnittstellen benötigen Sie vier verschiedene Anforderungen und Verbindungen, um dieselben Ergebnisse zu erzielen.
+-   Sie reduziert die Netzauslastung. Das WebSocket-Protokoll ist ein einfaches Protokoll. Bei diesem Protokoll ist für eine Spracherkennung im Live-Modus nur eine einzige Verbindung erforderlich.
+-   Sie ermöglicht das direkte Streaming von Audiodaten aus Browsern (HTML5-WebSocket-Clients) an den Service.
 
-## Customizing the service
+## Anpassung des Service
 {: #customizing}
 
-[The customization interface](/docs/services/speech-to-text?topic=speech-to-text-customization) lets you create custom models to improve the service's speech recognition capabilities:
+Mithilfe der [Anpassungsschnittstelle](/docs/services/speech-to-text?topic=speech-to-text-customization) können Sie angepasste Modelle erstellen, um die Spracherkennungsfunktionen des Service zu verbessern:
 
--   [Custom language models](/docs/services/speech-to-text?topic=speech-to-text-languageCreate) let you define domain-specific words for a base model. Custom language models expand the service's base vocabulary with terminology specific to domains such as medicine and law.
--   [Custom acoustic models](/docs/services/speech-to-text?topic=speech-to-text-acoustic) let you adapt a base model for the acoustic characteristics of your environment and speakers. Custom acoustic models improve the service's ability to recognize speech for specific acoustic characteristics.
--   [Grammars](/docs/services/speech-to-text?topic=speech-to-text-grammars) let you restrict the phrases that the service can recognize to those defined in the grammar's rules. By limiting the search space for valid strings, the service can deliver results faster and more accurately. Grammars are supported with custom language models.
+-   In [angepassten  Sprachmodellen](/docs/services/speech-to-text?topic=speech-to-text-languageCreate) können Sie fachspezifische Wörter für ein Basismodell definieren. Angepasste Sprachmodelle erweitern das Grundvokabular des Service durch spezifische Terminologie für Fachgebiete wie Medizin und Jura.
+-   In [angepassten Akustikmodellen](/docs/services/speech-to-text?topic=speech-to-text-acoustic) können Sie ein Basismodell an die akustischen Besonderheiten Ihrer Umgebung und Sprecher anpassen. Angepasste Akustikmodelle verbessern die Fähigkeit des Service, Sprache bei bestimmten akustischen Besonderheiten zu erkennen.
+-   In [Grammatiken](/docs/services/speech-to-text?topic=speech-to-text-grammars) können Sie die vom Service erkennbaren Ausdrücke auf die in den Regeln der Grammatik definierten Ausdrücke beschränken. Durch die Einschränkung des Suchbereichs auf gültige Zeichenfolgen kann der Service Ergebnisse schneller und präziser liefern. Grammatiken werden bei angepassten Sprachmodellen unterstützt.
 
-You can use a custom language model, a custom acoustic model, or both for speech recognition with any of the service's interfaces.
+Die Verwendung eines angepassten Sprachmodells und/oder angepassten Akustikmodells ist bei jeder Schnittstelle des Service möglich.
 
-You must have the Standard pricing plan to use language model or acoustic model customization. Users of the Lite plan cannot use the customization interface. For more information, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service.
+Um das Sprachmodell oder die akustische Modellanpassung verwenden zu können, müssen Sie über den Standard-Preistarif verfügen. Benutzer des Lite-Plans können die Anpassungsschnittstelle nicht verwenden. Weitere Informationen finden Sie auf der [Seite für die Preisstruktur](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} für den {{site.data.keyword.speechtotextshort}}-Service.
 {: note}
 
-## Obtaining metrics
+## Metriken abrufen
 {: #overview-metrics}
 
-The service offers two types of optional metrics for speech recognition requests:
+Der Service bietet zwei Typen von optionalen Metriken für Spracherkennungsanforderungen an:
 
--   [Processing metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#processing_metrics) provide detailed timing information about the service's analysis of the input audio. The service returns the metrics at specified intervals and with transcription events, such as interim and final results. You can use the metrics to gauge the service's progress in transcribing the audio.
--   [Audio metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#audio_metrics) provide detailed information about the signal characteristics of the input audio. The results provide aggregated metrics for the entire input audio at the conclusion of speech processing. You can use the metrics to determine the characteristics and quality of the audio.
+-   [Verarbeitungsmetriken](/docs/services/speech-to-text?topic=speech-to-text-metrics#processing_metrics) stellen detaillierte Zeitinformationen über die Analyse der Audioeingabedaten durch den Service bereit. Der Service gibt die Metriken in festgelegten Intervallen und mit Transkriptionsereignissen zurück, z. B. als Zwischen- und Endergebnisse. Mithilfe der Metriken können Sie den Fortschritt des Service bei der Transkription der Audiodaten messen.
+-   [Audiometriken](/docs/services/speech-to-text?topic=speech-to-text-metrics#audio_metrics) stellen detaillierte Informationen zu den Signalmerkmalen der Eingabeaudiodaten bereit. In den Ergebnissen sind Metriken für die gesamten Audioeingabedaten zum Abschluss der Sprachverarbeitung zusammengefasst. Mithilfe der Metriken können Sie die Merkmale und die Qualität der Audiodaten feststellen.
 
-You can request processing metrics with the WebSocket and asynchronous HTTP interfaces. You can request audio metrics with any of the service's interfaces. By default, the service returns no metrics.
+Sie können Verarbeitungsmetriken mit der WebSocket-Schnittstelle und mit der asynchronen HTTP-Schnittstelle anfordern. Audiometriken können Sie mit jeder Schnittstelle des Service anfordern. Standardmäßig gibt der Service keine Metriken zurück.
 
-## CORS support
+## CORS-Unterstützung
 {: #cors}
 
-The service supports Cross-Origin Resource Sharing (CORS). By using CORS, web pages can request resources directly from a foreign domain. CORS circumvents the same-origin security policy, which otherwise prevents such requests. Because the service supports CORS, a web page can communicate directly with the service without passing the request through the web server that hosts the page.
+Der Service unterstützt Cross-Origin Resource Sharing (CORS). Mithilfe von CORS können Webseiten Ressourcen direkt aus einer fremden Domäne anfordern. CORS umgeht die Sicherheitsrichtlinie für einen identischen Ursprung, die solche Anforderungen andernfalls verhindert. Da der Service CORS unterstützt, kann eine Webseite direkt mit dem Service kommunizieren, ohne die Anforderung über den Webserver zu übergeben, der die Seite hostet.
 
-For instance, a web page that is loaded from a server in {{site.data.keyword.cloud}} can call the customization API directly, bypassing the {{site.data.keyword.cloud_notm}} server. For more information, see [enable-cors.org](https://enable-cors.org/){: external}.
+Beispielsweise kann eine Webseite, die aus einem Server in {{site.data.keyword.cloud}} geladen wird, die Anpassungs-API unter Umgehung des {{site.data.keyword.cloud_notm}}-Servers direkt aufrufen. Weitere Informationen finden Sie auf der folgenden Website: [enable-cors.org](https://enable-cors.org/){: external}.
 
-## Using Software Development Kits
+## Software-Development-Kits verwenden
 {: #sdks}
 
-SDKs are available for the {{site.data.keyword.speechtotextshort}} service to simplify the development of speech applications. {{site.data.keyword.ibmwatson}} SDKs are available for many popular programming languages and platforms.
+Für den {{site.data.keyword.speechtotextshort}}-Service sind SDKs verfügbar, die die Entwicklung von Sprachanwendungen vereinfachen. {{site.data.keyword.ibmwatson}} SDKs stehen für viele gängige Programmiersprachen und Plattformen zur Verfügung.
 
--   For a complete list of SDKs and links to the SDKs on GitHub, see [Using SDKs](/docs/services/watson?topic=watson-using-sdks).
--   For detailed information about all methods of the Node, Java&trade;, Python, Ruby, Swift, and Go SDKs for the {{site.data.keyword.speechtotextshort}} service, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+-   Eine vollständige Liste der SDKs und Links zu den SDKs bei GitHub finden Sie im Abschnitt [SDKs verwenden](/docs/services/watson?topic=watson-using-sdks).
+-   Ausführliche Informationen zu allen Methoden der Node-, Java&trade;-, Python-, Ruby-, Swift- und Go-SDKs für den {{site.data.keyword.speechtotextshort}}-Service enthält die [API-Referenz](https://{DomainName}/apidocs/speech-to-text){: external}.
 
-## Learning more about application development
+## Weitere Informationen zur Anwendungsentwicklung
 {: #learn}
 
-For more information about working with {{site.data.keyword.watson}} services and {{site.data.keyword.cloud_notm}}, see the following:
+Weitere Informationen zur Arbeit mit {{site.data.keyword.watson}}-Services und {{site.data.keyword.cloud_notm}} enthalten die folgenden Quellen:
 
--   For an introduction to working with {{site.data.keyword.watson}} services and {{site.data.keyword.cloud_notm}}, see [Getting started with {{site.data.keyword.watson}} and {{site.data.keyword.cloud_notm}}](/docs/services/watson?topic=watson-about).
--   All new service instances use {{site.data.keyword.cloud_notm}} Identity and Access Management (IAM) for authentication. Older service instances might continue to use the `{username}` and `{password}` from their existing Cloud Foundry service credentials for authentication. For more information about authenticating to the service, see the [30 October 2018 service update](/docs/services/speech-to-text?topic=speech-to-text-release-notes#October2018b) in the release notes.
--   For information about controlling the default request logging that is performed for all {{site.data.keyword.watson}} services, see [Controlling request logging for {{site.data.keyword.watson}} services](/docs/services/watson?topic=watson-gs-logging-overview).
+-   Eine Einführung in die Arbeit mit {{site.data.keyword.watson}}-Services und {{site.data.keyword.cloud_notm}} bietet der Abschnitt [Einführung in {{site.data.keyword.watson}} und {{site.data.keyword.cloud_notm}}](/docs/services/watson?topic=watson-about).
+-   Alle neuen Serviceinstanzen verwenden {{site.data.keyword.cloud_notm}} Identity and Access Management (IAM) zur Authentifizierung. Ältere Serviceinstanzen verwenden für die Authentifizierung unter Umständen weiterhin die Werte für `{username}` (Benutzername) und `{password}` (Kennwort) aus ihren bestehenden Cloud Foundry-Serviceberechtigungsnachweisen. Weitere Angaben über die Authentifzierung beim Service finden Sie unter [Serviceaktualisierung vom 30. Oktober 2018](/docs/services/speech-to-text?topic=speech-to-text-release-notes#October2018b) in den Releaseinformationen.
+-   Informationen zum Steuern der Standardprotokollierung für Anforderungen, die für alle {{site.data.keyword.watson}}-Services durchgeführt wird, enthält der Abschnitt [Anforderungsprotokollierung für {{site.data.keyword.watson}}-Services](/docs/services/watson?topic=watson-gs-logging-overview).

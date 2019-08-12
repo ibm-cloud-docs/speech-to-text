@@ -22,98 +22,98 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# About
+# Produktinformation
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on July 30, 2019. The service now offers beta models for five additional Spanish dialects: Argentinian, Chilean, Colombian, Mexican, and Peruvian. For more information about the new Spanish dialects, see the [30 July 2019 service update](/docs/services/speech-to-text?topic=speech-to-text-release-notes#July2019) in the release notes.*
+**Serviceaktualisierung: ** *Der {{site.data.keyword.speechtotextshort}}-Service wurde am 30. Juli 2019 aktualisiert. Der Service bietet nun Betamodelle für fünf weitere spanische Dialekte an: Spanisch (Argentinien), Spanisch (Chile), Spanisch (Kolumbien), Spanisch (Mexiko) und Spanisch (Peru). Weitere Informationen zu den neuen spanischen Dialekten finden Sie im Abschnitt zur [Serviceaktualisierung vom 30. Juli 2019](/docs/services/speech-to-text?topic=speech-to-text-release-notes#July2019) in den Releaseinformationen.*
 
-The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
+Der {{site.data.keyword.speechtotextfull}}-Service stellt Sprachtranskriptionsfunktionen für Ihre Anwendungen bereit. Er nutzt maschinelles Lernen, um menschliche Stimme mithilfe von Kenntnissen über Grammatik, Sprachstruktur sowie die Bildung von Audio- und Sprachsignalen präzise zu transkribieren. Der Service aktualisiert und optimiert die Transkription kontinuierlich, sobald er weitere Spracheingabe empfängt.
 {: shortdesc}
 
-The service provides various interfaces that make it suitable for any application where speech is the input and a textual transcript is the output. Example applications include
+Der Service bietet verschiedene Schnittstellen, die ihn für jede Anwendung geeignet machen, bei der die Eingabe aus Sprache und die Ausgabe aus einer Transkription in Text besteht. Beispiele für solche Anwendungen:
 
--   Voice control of applications, embedded devices, and vehicle accessories
--   Transcribing meetings and conference calls
--   Dictating email messages and notes
+-   Sprachsteuerung von Anwendungen, integrierten Einheiten und Fahrzeugzubehör
+-   Transkriptionen von Besprechungen und Telefonkonferenzen
+-   Diktate von E-Mail-Nachrichten und Memos
 
-The service is ideal for clients who need to extract high-quality speech transcripts from call center audio. Clients in industries such as financial services, healthcare, insurance, and telecommunication can develop cloud-native applications for customer care, customer voice, agent assistance, and other solutions.
+Der Service ist ideal für Kunden, die qualitativ hochwertige Sprachtranskripte aus Call-Center-Audiodaten extrahieren müssen. Kunden in Branchen wie Finanzdienstleistungen, Gesundheitswesen, Versicherungen und Telekommunikation können Cloud-native Anwendungen für die Kundenbetreuung, Sprachunterstützung von Kunden, Agentenunterstützung und andere Lösungen entwickeln.
 
-## Supported interfaces
+## Unterstützte Schnittstellen
 {: #interfaces}
 
-The {{site.data.keyword.speechtotextshort}} service offers three interfaces for speech recognition:
+Für die Spracherkennung bietet der {{site.data.keyword.speechtotextshort}}-Service drei Schnittstellen:
 
--   A [WebSocket interface](/docs/services/speech-to-text?topic=speech-to-text-websockets) for establishing persistent, full-duplex, low-latency connections with the service. You can pass a maximum of 100 MB of audio data to the service with a single request.
--   A [synchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-http) for basic HTTP calls to the service. You can pass a maximum of 100 MB of audio data with a request.
--   An [asynchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-async) for non-blocking calls to the service. You can pass as much as 1 GB of audio data with a request.
+-   [WebSocket-Schnittstelle](/docs/services/speech-to-text?topic=speech-to-text-websockets) zum Aufbau von permanenten Vollduplexverbindungen zum Service mit niedriger Latenzzeit. Mit einer einzigen Anforderung können Sie maximal 100 MB Audiodaten an den Service übergeben.
+-   [Synchrone HTTP-Schnittstelle](/docs/services/speech-to-text?topic=speech-to-text-http) für HTTP-Basisaufrufe des Service. Mit einer Anforderung können Sie maximal 100 MB Audiodaten übergeben.
+-   [Asynchrone HTTP-Schnittstelle](/docs/services/speech-to-text?topic=speech-to-text-async) für nicht blockierende Aufrufe des Service. Mit einer Anforderung können Sie bis zu 1 GB Audiodaten übergeben.
 
-The service also provides a [customization interface](/docs/services/speech-to-text?topic=speech-to-text-customization) that you can use to tune speech recognition for your language and acoustic requirements. You can expand the vocabulary of a model with domain-specific terminology or adapt a model for the acoustic characteristics of your audio. You can also add [grammars](/docs/services/speech-to-text?topic=speech-to-text-grammars) to restrict the phrases that the service can recognize.
+Der Service bietet darüber hinaus eine [Anpassungsschnittstelle](/docs/services/speech-to-text?topic=speech-to-text-customization), mit der Sie die Spracherkennung für Ihre Sprache und Ihre akustischen Anforderungen optimieren können. Hierbei können Sie das Vokabular eines Modells durch fachspezifische Terminologie erweitern oder ein Modell für die akustischen Merkmale Ihrer Audiodaten anpassen. Außerdem können Sie [Grammatiken](/docs/services/speech-to-text?topic=speech-to-text-grammars) hinzufügen, um die durch den Service erkennbaren Ausdrücke einzuschränken.
 
--   For a high-level description of application development with the service, see [Overview for developers](/docs/services/speech-to-text?topic=speech-to-text-developerOverview).
--   For examples of basic speech recognition requests with each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text?topic=speech-to-text-basic-request).
+-   Eine allgemeine Beschreibung der Anwendungsentwicklung mit dem Service finden Sie unter [Übersicht für Entwickler](/docs/services/speech-to-text?topic=speech-to-text-developerOverview).
+-   Beispiele für Basisanforderungen zur Spracherkennung mit jeder Schnittstelle des Service enthält der Abschnitt [Erkennungsanforderung ausgeben](/docs/services/speech-to-text?topic=speech-to-text-basic-request).
 
-SDKs are available in many programming languages to simplify your use of the service. For more information, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+SDKs sind in vielen Programmiersprachen verfügbar, um die Verwendung des Service zu vereinfachen. Weitere Informationen finden Sie in der [API-Referenz](https://{DomainName}/apidocs/speech-to-text){: external}.
 
-## Input features
+## Eingabefunktionen
 {: #inputFeatures}
 
-The service's interfaces share common input features for transcribing speech to text:
+Die Schnittstellen des Service nutzen gemeinsam gängige Eingabefunktionen, um Sprache in Text zu transkribieren:
 
--   [Audio formats](/docs/services/speech-to-text?topic=speech-to-text-audio-formats) - You can transcribe Ogg or Web Media (WebM) audio with the Opus or Vorbis codec, MP3 (or MPEG), Waveform Audio File Format (WAV), Free Lossless Audio Codec (FLAC), Linear 16-bit Pulse-Code Modulation (PCM), G.729, A-Law, mu-law (or u-law), and basic audio. By using a format that supports compression, you can maximize the amount of audio data that you can send with a request.
--   [Languages and models](/docs/services/speech-to-text?topic=speech-to-text-models) - For most languages, you can transcribe audio by using broadband or narrowband models. Use broadband for audio that is sampled at a minimum rate of 16 kHz. Use narrowband for audio that is sampled at a minimum rate of 8 kHz.
--   [Audio transmission](/docs/services/speech-to-text?topic=speech-to-text-input#transmission) - You can pass audio as a continuous stream of data chunks or as a one-shot delivery that passes all of the data at one time. With streaming, the service enforces inactivity and session [timeouts](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts).
+-   [Audioformate](/docs/services/speech-to-text?topic=speech-to-text-audio-formats) - Sie können Audiodaten in den Formaten 'Ogg' oder 'Web Media' (WebM) mit Opus- oder Vorbis-Codec, MP3 (oder MPEG), WAF (Waveform Audio File Format, FLAC (Free Lossless Audio Codec), linearer 16-Bit-Pulscodemodulation (PCM), G.729 sowie A-Law-, Mu-Law- (bzw. U-Law) und Basisaudiodaten transkribieren. Wenn Sie ein Format verwenden, das Komprimierung unterstützt, können Sie die Menge der Audiodaten maximieren, die Sie mit einer Anforderung senden können.
+-   [Sprachen und Modelle](/docs/services/speech-to-text?topic=speech-to-text-models) - Bei den meisten Sprachen können Sie Audiodaten mithilfe von Breitband- oder Schmalbandmodellen transkribieren. Verwenden Sie Breitbandmodelle für Audiodaten, die mit einer Frequenz von mindestens 16 kHz abgetastet werden. Verwenden Sie Schmalbandmodelle für Audiodaten, die mit einer Frequenz von mindestens 8 kHz abgetastet werden.
+-   [Übertragung von Audiodaten](/docs/services/speech-to-text?topic=speech-to-text-input#transmission) - Sie können Audiodaten als zusammenhängenden Strom von Datenblöcken oder in Form einer Einmallieferung übergeben, bei der alle Daten gleichzeitig übertragen werden. Beim Streaming setzt der Service [Zeitlimits](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts) für Inaktivität und Sitzungen durch.
 
-## Output features
+## Ausgabefunktionen
 {: #outputFeatures}
 
-The interfaces also support the following common output features:
+Die Schnittstellen unterstützen außerdem die folgenden gängigen Ausgabefunktionen:
 
--   [Speaker labels](/docs/services/speech-to-text?topic=speech-to-text-output#speaker_labels) recognize different speakers from audio in US English, UK English, Spanish, or Japanese. The transcription labels each speaker's contributions to a multi-participant conversation. (Beta functionality.)
--   [Keyword spotting](/docs/services/speech-to-text?topic=speech-to-text-output#keyword_spotting) identifies spoken phrases that match specified keyword strings with a user-defined level of confidence. Keyword spotting is especially useful when individual phrases from the audio are more important than the full transcription. For example, a customer support system might identify keywords to determine how to route user requests.
--   [Interim results](/docs/services/speech-to-text?topic=speech-to-text-output#interim) return progressive hypotheses as transcription progresses. The service returns final results when transcription is complete. Interim results are available only with the WebSocket interface.
--   [Maximum alternatives](/docs/services/speech-to-text?topic=speech-to-text-output#max_alternatives) provide possible alternative transcripts. The service indicates final results in which it has the greatest confidence.
--   [Word alternatives](/docs/services/speech-to-text?topic=speech-to-text-output#word_alternatives) request alternative words that are acoustically similar to the words of a transcript.
--   [Word confidence](/docs/services/speech-to-text?topic=speech-to-text-output#word_confidence) returns confidence levels for each word of a transcript.
--   [Word timestamps](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps) return timestamps for the start and end of each word of a transcript.
--   [Smart formatting](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting) converts dates, times, numbers, currency values, phone numbers, and internet addresses into more readable, conventional forms in final transcripts. For US English, you can also provide keyword phrases to include certain punctuation symbols in final transcripts. Smart formatting is supported for US English, Japanese, and Spanish audio. (Beta functionality.)
--   [Numeric redaction](/docs/services/speech-to-text?topic=speech-to-text-output#redaction) redacts, or masks, numeric data from a final transcript. Redaction is intended to remove sensitive personal information, such as credit card numbers, from transcripts. The feature is supported for US English, Japanese, and Korean audio. (Beta functionality.)
--   [Profanity filtering](/docs/services/speech-to-text?topic=speech-to-text-output#profanity_filter) censors profanity from US English transcripts.
--   [Processing metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#processing_metrics) provide detailed timing information about the service's analysis of the input audio.
--   [Audio metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#audio_metrics) provide detailed information about the signal characteristics of the input audio.
+-   Die Funktion [Sprecherbezeichnungen](/docs/services/speech-to-text?topic=speech-to-text-output#speaker_labels) erkennt unterschiedliche Sprecher aus Audiodaten in amerikanischem Englisch, britischem Englisch, Spanisch oder Japanisch. In der Transkription sind die Beiträge jedes einzelnen Sprechers zu einem Gespräch mit mehreren Teilnehmern gekennzeichnet. (Hierbei handelt es sich um Beta-Funktionalität.)
+-   Die Funktion [Schlüsselworterkennung](/docs/services/speech-to-text?topic=speech-to-text-output#keyword_spotting) ermittelt gesprochene Wortfolgen, die mit angegebenen Schlüsselwortzeichenfolgen übereinstimmen, auf einem benutzerdefinierten Konfidenzniveau. Die auch als 'Keyword Spotting' bezeichnete Schlüsselworterkennung ist besonders von Nutzen, wenn einzelne Wortfolgen in den Audiodaten wichtiger als die vollständige Transkription sind. Beispielsweise könnte ein Kundendienstsystem durch die Erkennung von Schlüsselwörtern bestimmen, wie Benutzeranfragen weitergeleitet werden müssen.
+-   Die Funktion [Zwischenergebnisse](/docs/services/speech-to-text?topic=speech-to-text-output#interim) gibt während der laufenden Verarbeitung der Transkription progressive Hypothesen zurück. Nach Abschluss der Transkription gibt der Service die Endergebnisse zurück. Zwischenergebnisse sind nur bei Verwendung der WebSocket-Schnittstelle verfügbar.
+-   Die Funktion [Maximale Anzahl Alternativen](/docs/services/speech-to-text?topic=speech-to-text-output#max_alternatives) stellt mögliche alternative Transkriptionen bereit. Der Service gibt die Endergebnisse mit der größen Übereinstimmungswahrscheinlichkeit an.
+-   Die Funktion [Wortalternativen](/docs/services/speech-to-text?topic=speech-to-text-output#word_alternatives) fordert alternative Wörter an, die den Wörtern einer Transkription akustisch ähneln.
+-   Die Funktion [Wortkonfidenz](/docs/services/speech-to-text?topic=speech-to-text-output#word_confidence) gibt für jedes Wort einer Transkription das Konfidenzniveau zurück.
+-   Die Funktion [Wortzeitmarken](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps) gibt Zeitmarken für den Anfang und das Ende jedes Wortes in einer Transkription zurück.
+-   Die Funktion [Intelligente Formatierung](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting) konvertiert Datumsangaben, Uhrzeiten, Zahlen, Währungswerte, Telefonnummern und Internetadressen in der Endfassung der Transkriptionen in besser lesbare und herkömmliche Formate. Für amerikanisches Englisch können Sie außerdem Schlüsselwortphrasen angeben, damit die Endfassung von Transkriptionen bestimmte Interpunktionssymbole enthalten. Die intelligente Formatierung wird für Audiodaten in amerikanischem Englisch, Japanisch und Spanisch unterstützt. (Hierbei handelt es sich um Beta-Funktionalität.)
+-   Die Funktion [Zahlenschwärzung](/docs/services/speech-to-text?topic=speech-to-text-output#redaction) macht numerische Daten in der Endfassung einer Transkription unkenntlich. Zweck der Schwärzung ist es, sensible personenbezogene Daten wie beispielsweise Kreditkartennummern aus Transkriptionen zu entfernen. Die Funktion wird für Audiodaten in amerikanischem Englisch, Japanisch und Koreanisch unterstützt. (Hierbei handelt es sich um Beta-Funktionalität.)
+-   Die Funktion [Vulgäre Ausdrücke filtern](/docs/services/speech-to-text?topic=speech-to-text-output#profanity_filter) zensiert Vulgärsprache in Transkriptionen für amerikanisches Englisch.
+-   [Verarbeitungsmetriken](/docs/services/speech-to-text?topic=speech-to-text-metrics#processing_metrics) stellen detaillierte Zeitinformationen über die Analyse der Audioeingabedaten durch den Service bereit.
+-   [Audiometriken](/docs/services/speech-to-text?topic=speech-to-text-metrics#audio_metrics) stellen detaillierte Informationen zu den Signalmerkmalen der Eingabeaudiodaten bereit.
 
-## Language support
+## Sprachunterstützung
 {: #languages}
 
-The service offers models for the following languages and dialects:
+Der Service bietet Modelle für die folgenden Sprachen und Dialekte:
 
--   Arabic (Modern Standard)
--   Brazilian Portuguese
--   Chinese (Mandarin)
--   English (United Kingdom and United States)
--   French
--   German
--   Japanese
--   Korean
--   Spanish (Argentinian, Castilian, Chilean, Colombian, Mexican, and Peruvian)
+-   Arabisch (Moderner Standard)
+-   Brasilianisches Portugiesisch
+-   Chinesisch (Mandarin)
+-   Britisches Englisch und amerikanisches Englisch
+-   Französisch
+-   Deutsch
+-   Japanisch
+-   Koreanisch
+-   Spanisch (Argentinien, Kastilien, Chile, Kolumbien, Mexiko und Peru)
 
-The service does not support all features for all languages. Moreover, it supports some features as generally available (GA) for production use and others as beta offerings for different languages.
+Es werden durch den Service nicht alle Funktionen für alle Sprachen unterstützt. Zudem werden für unterschiedliche Sprachen einige Funktionen als allgemein verfügbare Funktionen für den Produktionseinsatz unterstützt, während andere Funktionen als Betaversion angeboten werden.
 
--   The Spanish Castilian dialect is generally available. The other five Spanish dialects are beta.
--   The WebSocket and HTTP interfaces are generally available for all languages.
--   The service offers broadband models, narrowband models, or both for different languages. For more information, see [Languages and models](/docs/services/speech-to-text?topic=speech-to-text-models).
--   Some speech recognition features are available only for some languages. For more information, see the [Parameter summary](/docs/services/speech-to-text?topic=speech-to-text-summary).
--   The language model customization interface is generally available for most languages. The acoustic model customization interface is available as beta functionality for all languages. For more information, see [Language support for customization](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
+-   Der spanische Dialekt Kastilisch ist allgemein verfügbar. Die anderen fünf spanischen Dialekte sind Betamodelle.
+-   Die WebSocket-Schnittstelle und die HTTP-Schnittstelle sind für alle Sprachen allgemein verfügbar.
+-   Der Service bietet für verschiedene Sprachen Breitband- und/oder Schmalbandmodelle. Weitere Informationen finden Sie unter [Sprachen und Modelle](/docs/services/speech-to-text?topic=speech-to-text-models).
+-   Einige Spracherkennungsfunktionen sind nur bei bestimmten Sprachen verfügbar. Weitere Informationen enthält der Abschnitt [Parameterübersicht](/docs/services/speech-to-text?topic=speech-to-text-summary).
+-   Die Anpassungsschnittstelle für Sprachmodelle ist für die meisten Sprachen allgemein verfügbar. Die Anpassungsschnittstelle für Akustikmodelle ist für alle Sprachen als Beta-Funktionalität verfügbar. Weitere Informationen finden Sie unter [Sprachunterstützung bei der Anpassung](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
 
-## Pricing
+## Preisstruktur
 {: #pricing-index}
 
-For more information about the pricing plans for the service, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/services/speech-to-text){: external}. For answers to questions related to pricing and examples of monthly usage costs, see the [Pricing FAQs](/docs/services/speech-to-text?topic=speech-to-text-faq-pricing).
+Weitere Informationen zu den Preistarifen für den Service finden Sie auf der Seite für den {{site.data.keyword.speechtotextshort}}-Service im [{{site.data.keyword.cloud}}-Katalog](https://{DomainName}/catalog/services/speech-to-text){: external}. Antworten auf Fragen zur Preisstruktur und Beispiele für Kosten der monatlichen Nutzung enthält der Abschnitt [Häufig gestellte Fragen zur Preisstruktur](/docs/services/speech-to-text?topic=speech-to-text-faq-pricing).
 
-## Try out the service
+## Service ausprobieren
 {: #tryOut}
 
-For examples of the {{site.data.keyword.speechtotextshort}} service in action, see
+Beispiele für die Ausführung des {{site.data.keyword.speechtotextshort}}-Service bieten die folgenden Quellen:
 
--   A [quick demo](https://speech-to-text-demo.ng.bluemix.net/){: external} that transcribes text from streaming audio input or from a file that you upload.
--   Applications in the {{site.data.keyword.ibmwatson}} [Starter Kits](http://www.ibm.com/watson/developercloud/starter-kits.html){: external} that demonstrate the service.
--   The {{site.data.keyword.watson}} blog post [Getting robots to listen: Using {{site.data.keyword.watson}}'s {{site.data.keyword.speechtotextshort}} service](https://www.ibm.com/blogs/watson/2016/07/getting-robots-listen-using-watsons-speech-text-service/){: external} that shows how to use the service's WebSocket interface with Python to extract speech from audio. The post provides a thorough tutorial that demonstrates the code and steps involved.
+-   Eine [Kurzdemo](https://speech-to-text-demo.ng.bluemix.net/){: external} zeigt die Transkription von Text aus einer Streamingaudioeingabe oder einer hochgeladenen Datei.
+-   Anwendungen in den {{site.data.keyword.ibmwatson}}-[Starter-Kits](http://www.ibm.com/watson/developercloud/starter-kits.html){: external} veranschaulichen den Service.
+-   Im {{site.data.keyword.watson}}-Blogbeitrag [Getting robots to listen: Using {{site.data.keyword.watson}}'s {{site.data.keyword.speechtotextshort}} service](https://www.ibm.com/blogs/watson/2016/07/getting-robots-listen-using-watsons-speech-text-service/){: external} erfahren Sie, wie die WebSocket-Schnittstelle mit Python eingesetzt wird, um Sprache aus Audiodaten zu extrahieren. Der Beitrag bietet ein umfassendes Lernprogramm, das den verwendeten Code und die betreffenden Schritte veranschaulicht.

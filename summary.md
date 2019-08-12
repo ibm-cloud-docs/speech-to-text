@@ -22,42 +22,42 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Parameter summary
+# Parameterübersicht
 {: #summary}
 
-A summary follows of all of the parameters available for speech recognition. For more information about all methods of the {{site.data.keyword.speechtotextshort}} service, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+Die folgende Übersicht enthält alle für die Spracherkennung verfügbaren Parameter. Weitere Informationen zu allen Methoden des {{site.data.keyword.speechtotextshort}}-Service finden Sie in der [API-Referenz](https://{DomainName}/apidocs/speech-to-text){: external}.
 {: shortdesc}
 
-Consider the following basic requirements when you make a speech recognition request:
+Beachten Sie beim Erstellen einer Spracherkennungsanforderung die folgenden Grundvoraussetzungen:
 
--   Method names are case-sensitive.
--   HTTP request headers are case-insensitive.
--   HTTP and WebSocket query parameters are case-sensitive.
--   JSON field names are case-sensitive.
--   All JSON response content is in the UTF-8 character set.
+-   Bei Methodennamen muss die Groß-/Kleinschreibung beachtet werden.
+-   HTTP-Anforderungsheader sind von Groß-/Kleinschreibung unabhängig.
+-   Bei HTTP- und WebSocket-Abfrageparametern muss die Groß-/Kleinschreibung beachtet werden.
+-   Bei JSON-Feldnamen muss die Groß-/Kleinschreibung beachtet werden.
+-   Für alle Inhalte von JSON-Antworten wird der UTF-8-Zeichensatz verwendet.
 
-Also consider the following service-specific requirements:
+Beachten Sie außerdem die folgenden servicespezifischen Anforderungen:
 
--   You need to specify only the input audio. All other parameters are optional.
--   If you specify an invalid query parameter or JSON field as part of the input, the response includes a `warnings` field that describes the invalid argument. The request succeeds despite any warnings.
+-   Sie müssen nur die Audioeingabedaten angeben. Alle anderen Parameter sind optional.
+-   Wenn Sie einen ungültigen Abfrageparameter oder ein ungültiges JSON-Feld in der Eingabe angeben, enthält die Antwort ein Feld `warnings`, in dem das ungültige Argument beschrieben wird. Die Anforderung wird trotz der angegebenen Warnungen erfolgreich ausgeführt.
 
 ## access_token
 {: #summary-access-token}
 
-If you use Identity and Access Management (IAM) authentication, an optional IAM access token that you use to establish an authenticated connection with the WebSocket interface. For more information, see [Open a connection](/docs/services/speech-to-text?topic=speech-to-text-websockets#WSopen).
+Bei Verwendung der Authentifizierung mit Identity and Access Management (IAM) ist dieser Parameter ein optionales IAM-Zugriffstoken zum Herstellen einer authentifizierten Verbindung zur WebSocket-Schnittstelle. Weitere Informationen finden Sie im Abschnitt [Verbindung öffnen](/docs/services/speech-to-text?topic=speech-to-text-websockets#WSopen).
 
 <table>
-  <caption>Table 1. The access_token parameter</caption>
+  <caption>Tabelle 1. Parameter 'access_token'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for all languages
+      Allgemein verfügbar für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -65,23 +65,23 @@ If you use Identity and Access Management (IAM) authentication, an optional IAM 
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>/v1/recognize</code> connection request
+      Abfrageparameter für Verbindungsanforderung mit der Methode <code>/v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Not supported
+      Nicht unterstützt
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Not supported
+      Nicht unterstützt
     </td>
   </tr>
 </table>
@@ -89,20 +89,20 @@ If you use Identity and Access Management (IAM) authentication, an optional IAM 
 ## acoustic_customization_id
 {: #summary-acoustic-customization-id}
 
-An optional customization ID for a custom acoustic model that is adapted for the acoustic characteristics of your environment and speakers. By default, no custom model is used. For more information, see [Custom models](/docs/services/speech-to-text?topic=speech-to-text-input#custom-input).
+Eine optionale Anpassungs-ID für ein angepasstes Akustikmodell, das auf die Akustikmerkmale Ihrer Umgebung und der zugehörigen Sprecher abgestimmt ist. Standardmäßig wird kein angepasstes Modell verwendet. Weitere Informationen finden Sie im Abschnitt [Angepasste Modelle](/docs/services/speech-to-text?topic=speech-to-text-input#custom-input).
 
 <table>
-  <caption>Table 2. The acoustic_customization_id parameter</caption>
+  <caption>Tabelle 2. Parameter 'acoustic_customization_id'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Beta for all languages
+      Betaversion für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -110,23 +110,23 @@ An optional customization ID for a custom acoustic model that is adapted for the
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>/v1/recognize</code> connection request
+      Abfrageparameter für Verbindungsanforderung mit der Methode <code>/v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -134,20 +134,20 @@ An optional customization ID for a custom acoustic model that is adapted for the
 ## audio_metrics
 {: #summary-audio-metrics}
 
-An optional boolean that indicates whether the service returns metrics about the signal characteristics of the input audio. By default (`false`), the service returns no audio metrics. For more information, see [Audio metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#audio_metrics).
+Ein optionaler boolescher Wert, der angibt, ob der Service Metriken zu den Signalmerkmalen der Eingabeaudiodaten zurückgibt. Standardmäßig (`false`) gibt der Service keine Audiometriken zurück. Weitere Informationen finden Sie unter [Audiometriken](/docs/services/speech-to-text?topic=speech-to-text-metrics#audio_metrics).
 
 <table>
-  <caption>Table 3. The audio_metrics parameter</caption>
+  <caption>Tabelle 3. Parameter 'audio_metrics'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for all languages
+      Allgemein verfügbar für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -155,23 +155,23 @@ An optional boolean that indicates whether the service returns metrics about the
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Parameter of JSON <code>start</code> message
+      Parameter der JSON-Nachricht <code>start</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -179,20 +179,20 @@ An optional boolean that indicates whether the service returns metrics about the
 ## base_model_version
 {: #summary-base-model-version}
 
-An optional version of a base model. The parameter is intended primarily for use with custom models that are updated for a new base model, but it can be used without a custom model. The default value depends on whether the parameter is used with or without a custom model. For more information, see [Base model version](/docs/services/speech-to-text?topic=speech-to-text-input#version).
+(Optional) Eine Version eines Basismodells. Der Parameter ist in erster Linie für die Verwendung mit angepassten Modellen bestimmt, die für ein neues Basismodell aktualisiert werden, kann aber auch ohne ein angepasstes Modell verwendet werden. Der Standardwert ist davon abhängig, ob der Parameter mit oder ohne ein angepasstes Modell verwendet wird. Weitere Informationen finden Sie im Abschnitt [Version des Basismodells](/docs/services/speech-to-text?topic=speech-to-text-input#version).
 
 <table>
-  <caption>Table 4. The base_model_version parameter</caption>
+  <caption>Tabelle 4. Parameter 'base_model_version'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for all languages
+      Allgemein verfügbar für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -200,23 +200,23 @@ An optional version of a base model. The parameter is intended primarily for use
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>/v1/recognize</code> connection request
+      Abfrageparameter für Verbindungsanforderung mit der Methode <code>/v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -224,20 +224,20 @@ An optional version of a base model. The parameter is intended primarily for use
 ## Content-Type
 {: #summary-content-type}
 
-An optional audio format (MIME type) that specifies the format of the audio data that you pass to the service. The service can automatically detect the format of most audio, so the parameter is optional for most formats. It is required for the `audio/alaw`, `audio/basic`, `audio/l16`, and `audio/mulaw` formats. For more information, see [Audio formats](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
+(Optional) Ein Audioformat (MIME-Typ) zum Angeben des Formats der Audiodaten, die Sie an den Service übergeben. Der Service kann das Format der meisten Audiodaten automatisch erkennen; d. h. der Parameter ist für die meisten Formate optional. Er ist jedoch erforderlich für die Formate `audio/alaw`, `audio/basic`, `audio/l16` und `audio/mulaw`. Weitere Informationen finden Sie im Abschnitt [Audioformate](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
 
 <table>
-  <caption>Table 5. The Content-Type parameter</caption>
+  <caption>Tabelle 4. Parameter 'Content-Type'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for all languages
+      Allgemein verfügbar für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -245,24 +245,24 @@ An optional audio format (MIME type) that specifies the format of the audio data
       **WebSocket**
     </td>
     <td style="text-align:left">
-      <code>content-type</code> parameter of JSON <code>start</code>
-      message
+      Parameter <code>content-type</code> der JSON-Nachricht
+      <code>start</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Request header of <code>POST /v1/recognize</code> method
+      Anforderungsheader der Methode <code>POST /v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Request header of <code>POST /v1/recognitions</code> method
+      Anforderungsheader der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -270,20 +270,20 @@ An optional audio format (MIME type) that specifies the format of the audio data
 ## customization_weight
 {: #summary-customization-weight}
 
-An optional double between 0.0 and 1.0 that indicates the relative weight that the service gives to words from a custom language model versus words from the base vocabulary. The default is 0.3 unless a different weight was specified when the custom language model was trained. For more information, see [Custom models](/docs/services/speech-to-text?topic=speech-to-text-input#custom-input).
+Ein optionales Doppelzeichen zwischen 0,0 und 1,0, das die relative Gewichtung angibt, die der Service den Wörtern aus einem angepassten Sprachmodell im Verhältnis zu Wörtern aus dem Basisvokabular zuordnet. Der Standardwert ist 0,3, sofern beim Trainieren des angepassten Sprachmodells keine andere Gewichtung angegeben wurde. Weitere Informationen finden Sie im Abschnitt [Angepasste Modelle](/docs/services/speech-to-text?topic=speech-to-text-input#custom-input).
 
 <table>
-  <caption>Table 6. The customization_weight parameter</caption>
+  <caption>Tabelle 6. Parameter 'customization_weight'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for US English, UK English, Brazilian Portuguese, French, German, Japanese, Korean, and Spanish
+      Allgemein verfügbar für amerikanisches Englisch, britisches Englisch, brasilianisches Portugiesisch, Französisch, Deutsch, Japanisch, Koreanisch und Spanisch
     </td>
   </tr>
   <tr>
@@ -291,23 +291,23 @@ An optional double between 0.0 and 1.0 that indicates the relative weight that t
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Parameter of JSON <code>start</code> message
+      Parameter der JSON-Nachricht <code>start</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -315,20 +315,20 @@ An optional double between 0.0 and 1.0 that indicates the relative weight that t
 ## grammar_name
 {: #summary-grammar-name}
 
-An optional string that identifies a grammar that is to be used for speech recognition. The service recognizes only strings that are defined by the grammar. You must specify both the name of the grammar and the customization ID of the custom language model for which the grammar is defined. For more information, see [Grammars](/docs/services/speech-to-text?topic=speech-to-text-input#grammars-input).
+Eine optionale Zeichenfolge, die eine Grammatik angibt, die für die Spracherkennung verwendet werden soll. Der Service erkennt nur Zeichenfolgen, die von der Grammatik definiert sind. Sie müssen sowohl den Namen der Grammatik angeben als auch die Anpassungs-ID des angepassten Sprachmodells, für das die Grammatik definiert ist. Weitere Informationen finden Sie im Abschnitt [Grammatiken](/docs/services/speech-to-text?topic=speech-to-text-input#grammars-input).
 
 <table>
-  <caption>Table 7. The grammar_name parameter</caption>
+  <caption>Tabelle 7. Parameter 'grammar_name'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Beta for US English, UK English, Brazilian Portuguese, French, German, Japanese, Korean, and Spanish
+      Betaversion für amerikanisches Englisch, britisches Englisch, brasilianisches Portugiesisch, Französisch, Deutsch, Japanisch, Koreanisch und Spanisch
     </td>
   </tr>
   <tr>
@@ -336,23 +336,23 @@ An optional string that identifies a grammar that is to be used for speech recog
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Parameter of JSON <code>start</code> message
+      Parameter der JSON-Nachricht <code>start</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -360,20 +360,20 @@ An optional string that identifies a grammar that is to be used for speech recog
 ## inactivity_timeout
 {: #summary-inactivity-timeout}
 
-An optional integer that specifies the number of seconds for the service's inactivity timeout. Inactivity means that the service detects no speech in streaming audio. The default is 30 seconds. Use `-1` to indicate infinity. For more information, see [Inactivity timeout](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts-inactivity).
+Ein optionaler ganzzahliger Wert, der die Anzahl der Sekunden für das Inaktivitätszeitlimit des Service angibt. Inaktivität bedeutet, dass der Service keine Spracherkennung für die Streaming-Audiodaten durchführt. Der Standardwert ist 30 Sekunden. Der Wert `-1` bedeutet 'Unendlich'. Weitere Informationen finden Sie im Abschnitt [Inaktivitätszeitlimit](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts-inactivity).
 
 <table>
-  <caption>Table 8. The inactivity_timeout parameter</caption>
+  <caption>Tabelle 8. Parameter inactivity_timeout</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for all languages
+      Allgemein verfügbar für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -381,23 +381,23 @@ An optional integer that specifies the number of seconds for the service's inact
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Parameter of JSON <code>start</code> message
+      Parameter der JSON-Nachricht <code>start</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -405,20 +405,20 @@ An optional integer that specifies the number of seconds for the service's inact
 ## interim_results
 {: #summary-interim-results}
 
-An optional boolean that directs the service to return intermediate hypotheses that are likely to change before the final transcript. By default (`false`), interim results are not returned. For more information, see [Interim results](/docs/services/speech-to-text?topic=speech-to-text-output#interim).
+Ein optionaler boolescher Wert, der den Service anweist, temporäre Hypothesen zurückzugeben, die bis zum endgültigen Transkript noch geändert werden können. Die Standardeinstellung `false` gibt an, dass keine Zwischenergebnisse zurückgegeben werden. Weitere Informationen finden Sie im Abschnitt [Zwischenergebnisse](/docs/services/speech-to-text?topic=speech-to-text-output#interim).
 
 <table>
-  <caption>Table 9. The interim_results parameter</caption>
+  <caption>Tabelle 9. Parameter 'interim_results'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for all languages
+      Allgemein verfügbar für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -426,23 +426,23 @@ An optional boolean that directs the service to return intermediate hypotheses t
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Parameter of JSON <code>start</code> message
+      Parameter der JSON-Nachricht <code>start</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Not supported
+      Nicht unterstützt
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Not supported
+      Nicht unterstützt
     </td>
   </tr>
 </table>
@@ -450,20 +450,20 @@ An optional boolean that directs the service to return intermediate hypotheses t
 ## keywords
 {: #summary-keywords}
 
-An optional array of keyword strings that the service spots in the input audio. By default, keyword spotting is not performed. For more information, see [Keyword spotting](/docs/services/speech-to-text?topic=speech-to-text-output#keyword_spotting).
+Ein optionales Array mit Schlüsselwortzeichenfolgen, die der Service in den Audioeingabedaten erkennt. Die Funktion für Schlüsselworterkennung ist standardmäßig inaktiviert. Weitere Informationen finden Sie im Abschnitt [Schlüsselworterkennung](/docs/services/speech-to-text?topic=speech-to-text-output#keyword_spotting).
 
 <table>
-  <caption>Table 10. The keywords parameter</caption>
+  <caption>Tabelle 10. Parameter 'keywords'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for all languages
+      Allgemein verfügbar für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -471,23 +471,23 @@ An optional array of keyword strings that the service spots in the input audio. 
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Parameter of JSON <code>start</code> message
+      Parameter der JSON-Nachricht <code>start</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -495,20 +495,20 @@ An optional array of keyword strings that the service spots in the input audio. 
 ## keywords_threshold
 {: #summary-keywords-threshold}
 
-An optional double between 0.0 and 1.0 that indicates the minimum threshold for a positive keyword match. By default, keyword spotting is not performed. For more information, see [Keyword spotting](/docs/services/speech-to-text?topic=speech-to-text-output#keyword_spotting).
+Ein optionales Doppelzeichen zwischen 0,0 und 1,0, das den Mindestschwellenwert für eine positive Schlüsselwortübereinstimmung angibt. Die Funktion für Schlüsselworterkennung ist standardmäßig inaktiviert. Weitere Informationen finden Sie im Abschnitt [Schlüsselworterkennung](/docs/services/speech-to-text?topic=speech-to-text-output#keyword_spotting).
 
 <table>
-  <caption>Table 11. The keywords_threshold parameter</caption>
+  <caption>Tabelle 11. Parameter 'keywords_threshold'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for all languages
+      Allgemein verfügbar für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -516,23 +516,23 @@ An optional double between 0.0 and 1.0 that indicates the minimum threshold for 
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Parameter of JSON <code>start</code> message
+      Parameter der JSON-Nachricht <code>start</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -540,20 +540,20 @@ An optional double between 0.0 and 1.0 that indicates the minimum threshold for 
 ## language_customization_id
 {: #summary-language-customization-id}
 
-An optional customization ID for a custom language model that includes terminology from your domain. By default, no custom model is used. For more information, see [Custom models](/docs/services/speech-to-text?topic=speech-to-text-input#custom-input).
+Eine optionale Anpassungs-ID für ein angepasstes Sprachenmodell, das Terminologie aus Ihrem Fachgebiet enthält. Standardmäßig wird kein angepasstes Modell verwendet. Weitere Informationen finden Sie im Abschnitt [Angepasste Modelle](/docs/services/speech-to-text?topic=speech-to-text-input#custom-input).
 
 <table>
-  <caption>Table 12. The language_customization_id parameter</caption>
+  <caption>Tabelle 12. Parameter 'language_customization_id'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for US English, UK English, Brazilian Portuguese, French, German, Japanese, Korean, and Spanish
+      Allgemein verfügbar für amerikanisches Englisch, britisches Englisch, brasilianisches Portugiesisch, Französisch, Deutsch, Japanisch, Koreanisch und Spanisch
     </td>
   </tr>
   <tr>
@@ -561,23 +561,23 @@ An optional customization ID for a custom language model that includes terminolo
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>/v1/recognize</code> connection request
+      Abfrageparameter für Verbindungsanforderung mit der Methode <code>/v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -585,20 +585,20 @@ An optional customization ID for a custom language model that includes terminolo
 ## max_alternatives
 {: #summary-max-alternatives}
 
-An optional integer that specifies the maximum number of alternative hypotheses that the service returns. By default, the service returns a single final hypothesis. For more information, see [Maximum alternatives](/docs/services/speech-to-text?topic=speech-to-text-output#max_alternatives).
+Ein optionaler ganzzahliger Wert, der die maximale Anzahl alternativer Hypothesen angibt, die vom Service zurückgegeben werden. Standardmäßig gibt der Service eine einzige endgültige Hypothese zurück. Weitere Informationen finden Sie im Abschnitt [Maximale Anzahl Alternativen](/docs/services/speech-to-text?topic=speech-to-text-output#max_alternatives).
 
 <table>
-  <caption>Table 13. The max_alternatives parameter</caption>
+  <caption>Tabelle 13. Parameter 'max_alternatives'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for all languages
+      Allgemein verfügbar für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -606,23 +606,23 @@ An optional integer that specifies the maximum number of alternative hypotheses 
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Parameter of JSON <code>start</code> message
+      Parameter der JSON-Nachricht <code>start</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -630,20 +630,20 @@ An optional integer that specifies the maximum number of alternative hypotheses 
 ## model
 {: #summary-model}
 
-An optional model that specifies the language in which the audio is spoken and the rate at which it was sampled: broadband or narrowband. By default, `en-US_BroadbandModel` is used. For more information, see [Languages and models](/docs/services/speech-to-text?topic=speech-to-text-models).
+Ein optionales Modell, das die Sprache angibt, in der die Audiodaten gesprochen werden, und die Abtastfrequenz, mit der sie erfasst wurden (Breitband oder Schmalband). Standardmäßig wird `en-US_BroadbandModel` verwendet. Weitere Informationen finden Sie unter [Sprachen und Modelle](/docs/services/speech-to-text?topic=speech-to-text-models).
 
 <table>
-  <caption>Table 14. The model parameter</caption>
+  <caption>Tabelle 14. Parameter 'model'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for all languages
+      Allgemein verfügbar für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -651,23 +651,23 @@ An optional model that specifies the language in which the audio is spoken and t
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>/v1/recognize</code> connection request
+      Abfrageparameter für Verbindungsanforderung mit der Methode <code>/v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -675,20 +675,20 @@ An optional model that specifies the language in which the audio is spoken and t
 ## processing_metrics
 {: #summary-processing-metrics}
 
-An optional boolean that indicates whether the service returns metrics about its processing of the input audio. By default (`false`), the service returns no processing metrics. For more information, see [Processing metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#processing_metrics).
+Ein optionaler boolescher Wert, der angibt, ob der Service Metriken zu der Verarbeitung der Eingabeaudiodaten zurückgibt. Standardmäßig (`false`) gibt der Service keine Verarbeitungsmetriken zurück. Weitere Informationen finden Sie unter [Verarbeitungsmetriken](/docs/services/speech-to-text?topic=speech-to-text-metrics#processing_metrics).
 
 <table>
-  <caption>Table 15. The processing_metrics parameter</caption>
+  <caption>Tabelle 15. Parameter 'processing_metrics'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for all languages
+      Allgemein verfügbar für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -696,23 +696,23 @@ An optional boolean that indicates whether the service returns metrics about its
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Parameter of JSON <code>start</code> message
+      Parameter der JSON-Nachricht <code>start</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Not supported
+      Nicht unterstützt
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -720,20 +720,20 @@ An optional boolean that indicates whether the service returns metrics about its
 ## processing_metrics_interval
 {: #summary-processing-metrics-interval}
 
-An optional float of at least 0.1 that indicates the interval at which the service is to return processing metrics. If the `processing_metrics` parameter is `true`, the service returns processing metrics every 1.0 seconds by default. For more information, see [Processing metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#processing_metrics).
+Eine optionale Variable von mindestens 0,1, die das Intervall angibt, in dem der Service die Verarbeitungsmetriken zurückgeben soll. Wenn der Parameter `processing_metrics` den Wert `true` aufweist, gibt der Service standardmäßig alle 1,0 Sekunden Verarbeitungsmetriken zurück. Weitere Informationen finden Sie unter [Verarbeitungsmetriken](/docs/services/speech-to-text?topic=speech-to-text-metrics#processing_metrics).
 
 <table>
-  <caption>Table 16. The processing_metrics_interval parameter</caption>
+  <caption>Tabelle 16. Parameter 'processing_metrics_interval'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for all languages
+      Allgemein verfügbar für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -741,23 +741,23 @@ An optional float of at least 0.1 that indicates the interval at which the servi
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Parameter of JSON <code>start</code> message
+      Parameter der JSON-Nachricht <code>start</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Not supported
+      Nicht unterstützt
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -765,20 +765,20 @@ An optional float of at least 0.1 that indicates the interval at which the servi
 ## profanity_filter
 {: #summary-profanity-filter}
 
-An optional boolean that indicates whether the service censors profanity from a transcript. By default (`true`), profanity is filtered from the transcript. For more information, see [Profanity filtering](/docs/services/speech-to-text?topic=speech-to-text-output#profanity_filter).
+Ein optionaler boolescher Wert, der angibt, ob der Service vulgäre Ausdrücke aus einem Transkript filtert (zensiert). Der Standardwert `true` bedeutet, dass vulgäre Ausdrücke aus dem Transkript gefiltert werden. Weitere Informationen finden Sie im Abschnitt [Vulgäre Ausdrücke filtern](/docs/services/speech-to-text?topic=speech-to-text-output#profanity_filter).
 
 <table>
-  <caption>Table 17. The profanity_filter parameter</caption>
+  <caption>Tabelle 17. Parameter 'profanity_filter'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for US English
+      Allgemein verfügbar für amerikanisches Englisch
     </td>
   </tr>
   <tr>
@@ -786,23 +786,23 @@ An optional boolean that indicates whether the service censors profanity from a 
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Parameter of JSON <code>start</code> message
+      Parameter der JSON-Nachricht <code>start</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -810,20 +810,20 @@ An optional boolean that indicates whether the service censors profanity from a 
 ## redaction
 {: #summary-redaction}
 
-An optional boolean that indicates whether the service redacts numeric data with three or more consecutive digits from a transcript. If you set the `redaction` parameter to `true`, the service automatically forces the `smart_formatting` parameter to be `true`. By default (`false`), numeric data is not redacted. For more information, see [Numeric redaction](/docs/services/speech-to-text?topic=speech-to-text-output#redaction).
+Ein optionaler boolescher Wert, der angibt, ob der Service numerische Daten mit mindestens drei aufeinanderfolgenden Ziffern aus einem Transkript schwärzt (maskiert). Wenn Sie den Parameter `redaction` auf `true` setzen, erzwingt der Service automatisch, dass der Parameter `smart_formatting` auf `true` gesetzt wird. Die Standardeinstellung `false` gibt an, dass numerische Daten nicht geschwärzt werden. Weitere Informationen finden Sie im Abschnitt [Zahlenschwärzung](/docs/services/speech-to-text?topic=speech-to-text-output#redaction).
 
 <table>
-  <caption>Table 18. The redaction parameter</caption>
+  <caption>Tabelle 18. Parameter 'redaction'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Beta for US English, Japanese, and Korean
+      Betaversion für amerikanisches Englisch, Japanisch und Koreanisch
     </td>
   </tr>
   <tr>
@@ -831,23 +831,23 @@ An optional boolean that indicates whether the service redacts numeric data with
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Parameter of JSON <code>start</code> message
+      Parameter der JSON-Nachricht <code>start</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -855,20 +855,20 @@ An optional boolean that indicates whether the service redacts numeric data with
 ## smart_formatting
 {: #summary-smart-formatting}
 
-An optional boolean that indicates whether the service converts dates, times, numbers, currency, and similar values into more conventional representations in the final transcript. For US English, the feature also converts certain keyword phrases into punctuation symbols. By default (`false`), smart formatting is not performed. For more information, see [Smart formatting](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting).
+Ein optionaler boolescher Wert, der angibt, ob der Service Datums- und Zeitangaben, Zahlen sowie Währungswerte und ähnliche Werte im endgültigen Transkript in eine konventionelle Darstellung umwandelt. Für amerikanisches Englisch wandelt die Funktion außerdem bestimmte Schlüsselwortausdrücke in Interpunktionszeichen um. Die Standardeinstellung `false` gibt an, dass keine intelligente Formatierung vorgenommen wird. Weitere Informationen finden Sie im Abschnitt [Intelligente Formatierung](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting).
 
 <table>
-  <caption>Table 19. The smart_formatting parameter</caption>
+  <caption>Tabelle 19. Parameter 'smart_formatting'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Beta for US English, Japanese, and Spanish
+      Betaversion für amerikanisches Englisch, Japanisch und Spanisch
     </td>
   </tr>
   <tr>
@@ -876,23 +876,23 @@ An optional boolean that indicates whether the service converts dates, times, nu
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Parameter of JSON <code>start</code> message
+      Parameter der JSON-Nachricht <code>start</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -900,20 +900,20 @@ An optional boolean that indicates whether the service converts dates, times, nu
 ## speaker_labels
 {: #summary-speaker-labels}
 
-An optional boolean that indicates whether the service identifies which individuals spoke which words in a multi-participant exchange. If you set the `speaker_labels` parameter to `true`, the service automatically forces the `timestamps` parameter to be `true`. By default (`false`), speaker labels are not returned. For more information, see [Speaker labels](/docs/services/speech-to-text?topic=speech-to-text-output#speaker_labels).
+Ein optionaler boolescher Wert, der angibt, ob der Service markiert, welche Personen in einer Konversation mit mehreren Beteiligten welche Worte gesprochen haben. Wenn Sie den Parameter `speaker_labels` auf `true` setzen, erzwingt der Service automatisch, dass der Parameter `timestamps` auf `true` gesetzt wird. Die Standardeinstellung `false` gibt an, dass keine Sprecherbezeichnungen zurückgegeben werden. Weitere Informationen finden Sie im Abschnitt [Sprecherbezeichnungen](/docs/services/speech-to-text?topic=speech-to-text-output#speaker_labels).
 
 <table>
-  <caption>Table 20. The speaker_labels parameter</caption>
+  <caption>Tabelle 20. Parameter 'speaker_labels'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Beta for US English, Japanese, and Spanish (broadband and narrowband models) and UK English (narrowband model only)
+      Betaversion für amerikanisches Englisch, Japanisch und Spanisch (Breitband- und Schmalbandmodelle) und britisches Englisch (nur Schmalbandmodell)
     </td>
   </tr>
   <tr>
@@ -921,23 +921,23 @@ An optional boolean that indicates whether the service identifies which individu
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Parameter of JSON <code>start</code> message
+      Parameter der JSON-Nachricht <code>start</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -945,20 +945,20 @@ An optional boolean that indicates whether the service identifies which individu
 ## timestamps
 {: #summary-timestamps}
 
-An optional boolean that indicates whether the service produces timestamps for the words of the transcript. By default (`false`), timestamps are not returned. For more information, see [Word timestamps](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps).
+Ein optionaler boolescher Wert, der angibt, ob der Service Zeitmarken für die Wörter des Transkripts erstellt. Die Standardeinstellung `false` gibt an, dass keine Zeitmarken zurückgegeben werden. Weitere Informationen finden Sie im Abschnitt [Wortzeitmarken](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps).
 
 <table>
-  <caption>Table 21. The timestamps parameter</caption>
+  <caption>Tabelle 21. Parameter 'timestamps'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for all languages
+      Allgemein verfügbar für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -966,23 +966,23 @@ An optional boolean that indicates whether the service produces timestamps for t
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Parameter of JSON <code>start</code> message
+      Parameter der JSON-Nachricht <code>start</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -990,20 +990,20 @@ An optional boolean that indicates whether the service produces timestamps for t
 ## Transfer-Encoding
 {: #summary-transfer-encoding}
 
-An optional value of `chunked` that causes the audio to be streamed to the service. By default, audio is sent all at once as a one-shot delivery. For more information, see [Audio transmission](/docs/services/speech-to-text?topic=speech-to-text-input#transmission).
+Ein optionaler Wert für `chunked`, der bewirkt, dass die Audiodaten per Streaming zum Service übertragen werden. Standardmäßig werden die Audiodaten alle auf einmal als Einzelübertragung gesendet. Weitere Informationen finden Sie im Abschnitt [Übertragung von Audiodaten](/docs/services/speech-to-text?topic=speech-to-text-input#transmission).
 
 <table>
-  <caption>Table 22. The Transfer-Encoding parameter</caption>
+  <caption>Tabelle 22. Parameter 'Transfer-Encoding'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for all languages
+      Allgemein verfügbar für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -1011,23 +1011,23 @@ An optional value of `chunked` that causes the audio to be streamed to the servi
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Not applicable; always streamed
+      Nicht zutreffend; immer per Streaming
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Request header of <code>POST /v1/recognize</code> method
+      Anforderungsheader der Methode <code>POST /v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Request header of <code>POST /v1/recognitions</code> method
+      Anforderungsheader der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -1035,20 +1035,20 @@ An optional value of `chunked` that causes the audio to be streamed to the servi
 ## watson-token
 {: #summary-watson-token}
 
-If you use Cloud Foundry service credentials, an optional {{site.data.keyword.watson}} authentication token that you use to establish an authenticated connection with the WebSocket interface. For more information, see [Open a connection](/docs/services/speech-to-text?topic=speech-to-text-websockets#WSopen).
+Bei Verwendung von Cloud Foundry-Serviceberechtigungsnachweisen ist dieser Parameter ein optionales {{site.data.keyword.watson}}-Authentifizierungstoken zum Herstellen einer authentifizierten Verbindung zur WebSocket-Schnittstelle. Weitere Informationen finden Sie im Abschnitt [Verbindung öffnen](/docs/services/speech-to-text?topic=speech-to-text-websockets#WSopen).
 
 <table>
-  <caption>Table 23. The watson-token parameter</caption>
+  <caption>Tabelle 23. Parameter 'watson-token'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for all languages
+      Allgemein verfügbar für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -1056,23 +1056,23 @@ If you use Cloud Foundry service credentials, an optional {{site.data.keyword.wa
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>/v1/recognize</code> connection request
+      Abfrageparameter für Verbindungsanforderung mit der Methode <code>/v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Not supported
+      Nicht unterstützt
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Not supported
+      Nicht unterstützt
     </td>
   </tr>
 </table>
@@ -1080,20 +1080,20 @@ If you use Cloud Foundry service credentials, an optional {{site.data.keyword.wa
 ## word_alternatives_threshold
 {: #summary-word-alternatives-threshold}
 
-An optional double between 0.0 and 1.0 that specifies the threshold at which the service reports acoustically similar alternatives for words of the input audio. By default, word alternatives are not returned. For more information, see [Word alternatives](/docs/services/speech-to-text?topic=speech-to-text-output#word_alternatives).
+Ein optionales Doppelzeichen zwischen 0,0 und 1,0, das den Schwellenwert angibt, ab dem der Service automatisch ähnliche Alternativen für Wörter aus den Audioeingabedaten liefert. Standardmäßig werden keine Wortalternativen zurückgegeben. Weitere Informationen finden Sie im Abschnitt [Wortalternativen](/docs/services/speech-to-text?topic=speech-to-text-output#word_alternatives).
 
 <table>
-  <caption>Table 24. The word_alternatives_threshold parameter</caption>
+  <caption>Tabelle 24. Parameter 'word_alternatives_threshold'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for all languages
+      Allgemein verfügbar für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -1101,23 +1101,23 @@ An optional double between 0.0 and 1.0 that specifies the threshold at which the
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Parameter of JSON <code>start</code> message
+      Parameter der JSON-Nachricht <code>start</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -1125,20 +1125,20 @@ An optional double between 0.0 and 1.0 that specifies the threshold at which the
 ## word_confidence
 {: #summary-word-confidence}
 
-An optional boolean that indicates whether the service provides confidence measures for the words of the transcript. By default (`false`), word confidence measures are not returned. For more information, see [Word confidence](/docs/services/speech-to-text?topic=speech-to-text-output#word_confidence).
+Ein optionaler boolescher Wert, der angibt, ob der Service Konfidenzwerte für die Wörter des Transkripts bereitstellt. Die Standardeinstellung `false` gibt an, dass keine Konfidenzwerte für Wörter zurückgegeben werden. Weitere Informationen finden Sie im Abschnitt [Wortkonfidenz](/docs/services/speech-to-text?topic=speech-to-text-output#word_confidence).
 
 <table>
-  <caption>Table 25. The word_confidence parameter</caption>
+  <caption>Tabelle 25. Parameter 'word_confidence'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for all languages
+      Allgemein verfügbar für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -1146,23 +1146,23 @@ An optional boolean that indicates whether the service provides confidence measu
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Parameter of JSON <code>start</code> message
+      Parameter der JSON-Nachricht <code>start</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognize</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Query parameter of <code>POST /v1/recognitions</code> method
+      Abfrageparameter der Methode <code>POST /v1/recognitions</code>
     </td>
   </tr>
 </table>
@@ -1170,23 +1170,23 @@ An optional boolean that indicates whether the service provides confidence measu
 ## X-Watson-Authorization-Token
 {: #summary-x-watson-authorization-token}
 
-An optional authentication token that makes authenticated requests to the service without embedding your service credentials in every call. By default, service credentials must be passed with each request. Watson authentication tokens are based on Cloud Foundry service credentials that use a `{username}` and `{password}` for authentication.
+Ein optionales Authentifizierungstoken, das authentifizierte Anforderungen an den Service absetzt, ohne Ihre Serviceberechtigungsnachweise in jeden Aufruf einzufügen. Standardmäßig müssen mit jeder Anforderung Serviceberechtigungsnachweise übergeben werden. Watson-Authentifizierungstokens basieren auf Cloud Foundry-Serviceberechtigungsnachweisen, die eine Kombination aus `{benutzername}` und `{kennwort}` zum Authentifizieren verwenden.
 
-The `X-Watson-Authorization-Token` header does not accept IAM tokens or API keys.
+Der Header `X-Watson-Authorization-Token` akzeptiert weder IAM-Tokens noch API-Schlüssel.
 {: note}
 
 <table>
-  <caption>Table 26. The X-Watson-Authorization-Token parameter</caption>
+  <caption>Tabelle 26. Parameter 'X-Watson-Authorization-Token'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for all languages
+      Allgemein verfügbar für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -1194,23 +1194,23 @@ The `X-Watson-Authorization-Token` header does not accept IAM tokens or API keys
       **WebSocket**
     </td>
     <td style="text-align:left">
-      Not supported; use the <code>watson-token</code> query parameter
+      Wird nicht unterstützt. Verwenden Sie den Abfrageparameter <code>watson-token</code>.
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Request header of each request
+      Anforderungsheader für jede Anforderung
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Request header of each request
+      Anforderungsheader für jede Anforderung
     </td>
   </tr>
 </table>
@@ -1218,20 +1218,20 @@ The `X-Watson-Authorization-Token` header does not accept IAM tokens or API keys
 ## X-Watson-Learning-Opt-Out
 {: #summary-x-watson-learning-opt-out}
 
-An optional boolean that indicates whether you opt out of the default request logging that {{site.data.keyword.IBM_notm}} performs to improve the service for future users. To prevent IBM from accessing your data for general service improvements, specify <code>true</code> for the parameter. For more information, see [Request logging](/docs/services/speech-to-text?topic=speech-to-text-input#logging).
+Ein optionaler boolescher Wert, der angibt, ob die Anforderungsprotokollierung inaktiviert werden soll, die von {{site.data.keyword.IBM_notm}} standardmäßig durchgeführt wird, um den Service für zukünftige Benutzer zu verbessern. Wenn Sie nicht zulassen möchten, dass Ihre Daten von IBM für die allgemeine Verbesserung des Service verwendet werden, geben Sie für diesen Parameter <code>true</code> an. Weitere Informationen finden Sie im Abschnitt [Anforderungsprotokollierung](/docs/services/speech-to-text?topic=speech-to-text-input#logging).
 
 <table>
-  <caption>Table 27. The X-Watson-Learning-Opt-Out parameter</caption>
+  <caption>Tabelle 27. Parameter 'X-Watson-Learning-Opt-Out'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for all languages
+      Allgemein verfügbar für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -1239,24 +1239,24 @@ An optional boolean that indicates whether you opt out of the default request lo
       **WebSocket**
     </td>
     <td style="text-align:left">
-      <code>x-watson-learning-opt-out</code> query parameter of
-      <code>/v1/recognize</code> connection request
+      Abfrageparameter <code>x-watson-learning-opt-out</code> der Verbindungsanforderung
+      <code>/v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Request header of each request
+      Anforderungsheader für jede Anforderung
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Request header of each request
+      Anforderungsheader für jede Anforderung
     </td>
   </tr>
 </table>
@@ -1264,20 +1264,20 @@ An optional boolean that indicates whether you opt out of the default request lo
 ## X-Watson-Metadata
 {: #summary-x-watson-metadata}
 
-An optional string that associates a customer ID with data that is passed for recognition requests. The parameter accepts the argument `customer_id={id}`. By default, no customer ID is associated with the data. For more information, see [Information security](/docs/services/speech-to-text?topic=speech-to-text-information-security).
+Eine optionale Zeichenfolge, die eine Kunden-ID den Daten zuordnet, die für Erkennungsanforderungen übergeben werden. Der Parameter akzeptiert das Argument `customer_id={id}`. Standardmäßig wird den Daten keine Kunden-ID zugeordnet. Weitere Informationen finden Sie im Abschnitt [Informationssicherheit](/docs/services/speech-to-text?topic=speech-to-text-information-security).
 
 <table>
-  <caption>Table 28. The X-Watson-Metadata parameter</caption>
+  <caption>Tabelle 27. Parameter 'X-Watson-Metadata'</caption>
   <tr>
-    <th>Availability and usage</th>
-    <th style="vertical-align:bottom">Description</th>
+    <th>Verfügbarkeit und Verwendung</th>
+    <th style="vertical-align:bottom">Beschreibung</th>
   </tr>
   <tr>
     <td style="text-align:left; width:30%">
-      **Availability**
+      **Verfügbarkeit**
     </td>
     <td style="text-align:left">
-      Generally available for all languages
+      Allgemein verfügbar für alle Sprachen
     </td>
   </tr>
   <tr>
@@ -1285,26 +1285,26 @@ An optional string that associates a customer ID with data that is passed for re
       **WebSocket**
     </td>
     <td style="text-align:left">
-      <code>x-watson-metadata</code> query parameter of
-      <code>/v1/recognize</code> connection request (You must URL-encode
-      the argument, for example, `customer_id%3dmy_customer_ID`.)
+      Abfrageparameter <code>x-watson-metadata</code> der Verbindungsanforderung
+      <code>/v1/recognize</code> (das Argument muss URL-codiert sein,
+      zum Beispiel `customer_id%3dmy_customer_ID`).
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Synchronous HTTP**
+      **Synchrones HTTP**
     </td>
     <td style="text-align:left">
-      Request header of POST <code>/v1/recognize</code> request
+      Anforderungsheader der POST-Anforderung <code>/v1/recognize</code>
     </td>
   </tr>
   <tr>
     <td style="text-align:left">
-      **Asynchronous HTTP**
+      **Asynchrones HTTP**
     </td>
     <td style="text-align:left">
-      Request header of <code>POST /v1/register_callback</code> and
-      <code>POST /v1/recognitions</code> requests
+      Anforderungsheader für <code>POST /v1/register_callback</code>-
+      und <code>POST /v1/recognitions</code>-Anforderungen
     </td>
   </tr>
 </table>

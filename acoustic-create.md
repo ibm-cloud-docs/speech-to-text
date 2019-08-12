@@ -22,71 +22,62 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Creating a custom acoustic model
+# Angepasstes Akustikmodell erstellen
 {: #acoustic}
 
-Follow these steps to create a custom acoustic model for the {{site.data.keyword.speechtotextshort}} service:
+Mit den hier beschriebenen Schritten können Sie ein angepasstes Akustikmodell für den {{site.data.keyword.speechtotextshort}}-Service erstellen.
 {: shortdesc}
 
-1.  [Create a custom acoustic model](#createModel-acoustic). You can create multiple custom models for the same or different domains or environments. The process is the same for any model that you create. However, you can specify only a single custom acoustic model at a time with a recognition request.
-1.  [Add audio to the custom acoustic model](#addAudio). The service accepts the same audio file formats for acoustic modeling that it accepts for speech recognition. It also accepts archive files that contain multiple audio files. Archive files are the preferred means of adding audio resources. You can repeat the method to add more audio or archive files to a custom model.
-1.  [Train the custom acoustic model](#trainModel-acoustic). Once you add audio resources to the custom model, you must train the model. Training prepares the custom acoustic model for use in speech recognition. Training can take a significant amount of time. The length of the training depends on the amount of audio data that the model contains.
+1.  [Erstellen Sie ein angepasstes Akustikmodell](#createModel-acoustic). Sie können mehrere angepasste Modelle für dieselben oder unterschiedlichen Fachgebiete bzw. Umgebungen erstellen; der Prozess ist für jedes Modell, das Sie erstellen, identisch. Bei einer Erkennungsanforderung können Sie jedoch jeweils nur ein einziges angepasstes Akustikmodell angeben.
+1.  [Fügen Sie Audiodaten zum angepassten Akustikmodell hinzu](#addAudio). Für die akustische Modellierung akzeptiert der Service dieselben Audiodateiformate wie für die Spracherkennung. Er akzeptiert ebenfalls Archivdateien, die mehrere Audiodateien enthalten. Archivdateien sind das bevorzugte Verfahren für das Hinzufügen von Audioressourcen. Sie können die Methode wiederholen, um weitere Audio- oder Archivdateien zu einem angepassten Modell hinzuzufügen.
+1.  [Trainieren Sie das angepasste Akustikmodell](#trainModel-acoustic). Nachdem Sie Audioressourcen zum angepassten Modell hinzugefügt haben, müssen Sie das Modell trainieren. Das Training bereitet das angepasste Akustikmodell für die Verwendung bei der Spracherkennung vor. Das Training kann beträchtliche Zeit in Anspruch nehmen; die Länge des Trainings ist vom Umfang der Audiodaten abhängig, die das Modell enthält.
 
-    You can specify a helper custom language model during training of your custom acoustic model. A custom language model that includes transcriptions of your audio files or OOV words from the domain of your audio files can improve the quality of the custom acoustic model. For more information, see [Training a custom acoustic model with a custom language model](/docs/services/speech-to-text?topic=speech-to-text-useBoth#useBothTrain).
-1.  After you train your custom model, you can use it with recognition requests. If the audio passed for transcription has acoustic qualities that are similar to the audio of the custom model, the results reflect the service's enhanced understanding. For more information, see [Using a custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acousticUse).
+    Während des Trainings Ihres angepassten Akustikmodells können Sie zur weiteren Unterstützung ein angepasstes Sprachmodell angeben. Ein angepasstes Sprachmodell, das Transkriptionen Ihrer Audiodateien oder vokabularexterne Wörter aus dem Fachgebiet Ihrer Audiodateien enthält, kann die Qualität des angepassten Akustikmodells verbessern. Weitere Informationen finden Sie unter [Angepasstes Akustikmodell mit einem angepassten Sprachmodell trainieren](/docs/services/speech-to-text?topic=speech-to-text-useBoth#useBothTrain).
+1.  Nachdem Sie Ihr angepasstes Modell trainiert haben, können Sie es bei Erkennungsanforderungen verwenden. Falls die zur Transkription übergebenen Audiodaten eine ähnliche akustische Qualität wie die Audiodaten des angepassten Modells aufweisen, bilden die Ergebnisse das erweiterte Erkenntnisvermögen des Service ab. Weitere Informationen finden Sie unter [Angepasstes Akustikmodell verwenden](/docs/services/speech-to-text?topic=speech-to-text-acousticUse).
 
-    You can pass both a custom acoustic model and a custom language model in the same recognition request to further improve recognition accuracy. For more information, see [Using custom language and custom acoustic models during speech recognition](/docs/services/speech-to-text?topic=speech-to-text-useBoth#useBothRecognize).
+    In einer Erkennungsanforderung können Sie sowohl ein angepasstes Akustikmodell als auch ein angepasstes Sprachmodell übergeben, um die Genauigkeit bei der Erkennung weiter zu verbessern. Zusätzliche Angaben enthält der Abschnitt [Angepasste Sprachmodelle und angepasste Akustikmodelle während der Spracherkennung verwenden](/docs/services/speech-to-text?topic=speech-to-text-useBoth#useBothRecognize).
 
-The steps for creating a custom acoustic model are iterative. You can add or delete audio and train or retrain a model as often as needed. You must retrain a model for any changes to its audio to take effect. When you retrain a model, all audio data is used in the training (not just the new data). So the training time is commensurate with the total amount of audio that is contained in the model.
+Die Schritte für die Erstellung eines angepassten Akustikmodells sind iterativ. Das Hinzufügen oder Löschen von Audiodaten und das Trainieren oder erneute Trainieren eines Modells können Sie so häufig wie benötigt ausführen. Sie müssen ein Modell erneut trainieren, damit Änderungen an seinen Audiodaten wirksam werden. Beim erneuten Training eines Modells werden alle Audiodaten (und nicht nur die neuen Daten) für das Training verwendet. Die Trainingsdauer entspricht also dem Gesamtumfang der Audiodaten, die im Modell enthalten sind.
 
-Acoustic model customization is available as beta functionality for all languages. For more information, see [Language support for customization](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
+Die Anpassung von Akustikmodellen ist als Betafunktionalität für alle Sprachen verfügbar. Weitere Informationen finden Sie unter [Sprachunterstützung bei der Anpassung](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
 {: note}
 
-## Create a custom acoustic model
+## Angepasstes Akustikmodell erstellen
 {: #createModel-acoustic}
 
-You use the `POST /v1/acoustic_customizations` method to create a new custom acoustic model. You can create any number of custom acoustic models, but you can use only one custom acoustic model at a time with a speech recognition request. The method accepts a JSON object that defines the attributes of the new custom model as the body of the request.
+Zum Erstellen eines neuen angepassten Akustikmodells verwenden Sie die Methode `POST /v1/acoustic_customizations`. Sie können beliebig viele angepasste Akustikmodelle erstellen, bei einer Spracherkennungsanforderung jedoch jeweils immer nur ein einziges angepasstes Akustikmodell verwenden. Die Methode akzeptiert ein JSON-Objekt, das die Attribute des neuen angepassten Modells als Hauptteil der Anforderung definiert.
 
 <table>
-  <caption>Table 1. Attributes of a new custom acoustic model</caption>
+  <caption>Tabelle 1. Attribute eines neuen angepassten Akustikmodells</caption>
   <tr>
     <th style="width:20%; text-align:left">Parameter</th>
-    <th style="width:12%; text-align:center">Data type</th>
-    <th style="text-align:left">Description</th>
+    <th style="width:12%; text-align:center">Datentyp</th>
+    <th style="text-align:left">Beschreibung</th>
   </tr>
   <tr>
-    <td><code>name</code><br/><em>Required</em></td>
-    <td style="text-align:center">String</td>
+    <td><code>name</code><br/><em>Erforderlich</em></td>
+    <td style="text-align:center">Zeichenfolge</td>
     <td>
-      A user-defined name for the new custom acoustic model. Use a name
-      that describes the acoustic environment of the custom model, such
-      as <code>Mobile custom model</code> or <code>Noisy car custom
-      model</code>. Use a name that is unique among all custom acoustic
-      models that you own. Use a localized name that matches the language
-      of the custom model.
+      Ein benutzerdefinierter Name für das neue angepasste Akustikmodell. Verwenden Sie einen Namen, der die akustische Umgebung des angepassten Modells beschreibt, z. B. <code>Angepasstes Modell für Mobilgerät</code> oder <code>Angepasstes Modell für lautes Fahrzeug</code>. Verwenden Sie einen Namen, der unter allen Akustikmodellen, deren Eigner Sie sind, eindeutig ist. Verwenden Sie einen Namen in der Sprache des angepassten Modells.
     </td>
   </tr>
   <tr>
-    <td><code>base_model_name</code><br/><em>Required</em></td>
-    <td style="text-align:center">String</td>
+    <td><code>base_model_name</code><br/><em>Erforderlich</em></td>
+    <td style="text-align:center">Zeichenfolge</td>
     <td>
-      The name of the base model that is to be customized by the new
-      model. You must use the name of a model that is returned by the
-      <code>GET /v1/models</code> method. The new custom model can be
-      used only with the base model that it customizes.
+      Der Name des Basismodells, das durch das neue Modell angepasst werden soll. Sie müssen den Namen eines Modells verwenden, der von der Methode <code>GET /v1/models</code> zurückgegeben wird. Das neue angepasste Modell kann nur in Verbindung mit dem Basismodell verwendet werden, dessen Anpassung es darstellt.
     </td>
   </tr>
   <tr>
     <td><code>description</code><br/><em>Optional</em></td>
-    <td style="text-align:center">String</td>
+    <td style="text-align:center">Zeichenfolge</td>
     <td>
-      A description of the new model. Use a localized description that
-      matches the language of the custom model.
+      Eine Beschreibung des neuen Modells. Verwenden Sie eine Beschreibung in der Sprache des angepassten Modells.
     </td>
   </tr>
 </table>
 
-The following example creates a new custom acoustic model named `Example acoustic model`. The model is created for the base model `en-US_BroadbandModel` and has the description `Example custom acoustic model`. The `Content-Type` header specifies that JSON data is being passed to the method.
+Im folgenden Beispiel wird ein neues Akustikmodell namens `Example acoustic model` erstellt. Das Modell wird für das Basismodell `en-US_BroadbandModel` erstellt und enthält die Beschreibung `Example custom acoustic model`. Der Header `Content-Type` gibt an, dass JSON-Daten an die Methode übergeben werden.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -98,7 +89,7 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-The example returns the customization ID of the new model. Each custom model is identified by a unique customization ID, which is a Globally Unique Identifier (GUID). You specify a custom model's GUID with the `customization_id` parameter of calls that are associated with the model.
+Das Beispiel gibt die Anpassungs-ID des neuen Modells zurück. Jedes angepasste Modell wird durch eine eindeutige Anpassungs-ID in Form einer global eindeutigen ID (GUID) gekennzeichnet. Die GUID eines angepassten Modells geben Sie im Parameter `customization_id` von Aufrufen an, die dem Modell zugeordnet sind.
 
 ```javascript
 {
@@ -107,21 +98,21 @@ The example returns the customization ID of the new model. Each custom model is 
 ```
 {: codeblock}
 
-The new custom model is owned by the instance of the service whose credentials are used to create it. For more information, see [Ownership of custom models](/docs/services/speech-to-text?topic=speech-to-text-customization#customOwner).
+Eigner des neuen angepassten Modells ist die Serviceinstanz, deren Berechtigungsnachweise beim Erstellen des Jobs verwendet wurden. Weitere Informationen finden Sie im Abschnitt [Eigentumsrecht an angepassten Modellen](/docs/services/speech-to-text?topic=speech-to-text-customization#customOwner).
 
-## Add audio to the custom acoustic model
+## Audiodaten zum angepassten Akustikmodell hinzufügen
 {: #addAudio}
 
-Once you create your custom acoustic model, the next step is to add audio resources to it. You use the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to add an audio resource to a custom model. You can add
+Nachdem Sie Ihr angepasstes Akustikmodell erstellt haben, müssen Sie im nächsten Schritt Audioressourcen zum Modell hinzufügen. Zum Hinzufügen einer Audioressource zu einem angepassten Modell verwenden Sie die Methode `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`. Sie können Folgendes hinzufügen:
 
--   An individual audio file in any format that is supported for speech recognition. For more information, see [Audio formats](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
--   An archive file (a **.zip** or **.tar.gz** file) that includes multiple audio files. Gathering multiple audio files into a single archive file and loading that single file is significantly more efficient than adding audio files individually.
+-   Eine einzelne Audiodatei in einem beliebigen Format, das für die Spracherkennung unterstützt wird. Weitere Informationen finden Sie im Abschnitt [Audioformate](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
+-   Archivdatei (Erweiterung **.zip** oder **.tar.gz**), die mehrere Audiodateien enthält. Das Zusammenstellen mehrerer Audiodateien in einer einzigen Archivdatei und Laden dieser einzigen Datei ist wesentlich effizienter als das Hinzufügen einzelner Audiodateien.
 
-You pass the audio resource as the body of the request and assign the resource an `audio_name`. For more information, see [Working with audio resources](/docs/services/speech-to-text?topic=speech-to-text-audioResources).
+Sie übergeben die Audioressource als Hauptteil der Anforderung und weisen der Ressource einen Namen (Wert für `audio_name`) zu. Weitere Informationen enthält der Abschnitt [Mit Audioressourcen arbeiten](/docs/services/speech-to-text?topic=speech-to-text-audioResources).
 
-The following examples show the addition of both audio- and archive-type resources:
+Die folgenden Beispiele zeigen das Hinzufügen sowohl von einzelnen Audioressourcen als auch von Archivdateien:
 
--   This example adds an audio-type resource to the custom acoustic model with the specified `customization_id`. The `Content-Type` header identifies the type of the audio as `audio/wav`. The audio file, **audio1.wav**, is passed as the body of the request, and the resource is given the name `audio1`.
+-   Das folgende Beispiel fügt eine einzelne Audioressource zum angepassten Akustikmodell mit der angegebenen `customization_id` hinzu. Der Header `Content-Type` gibt den Typ der Audiodaten mit `audio/wav` an. Die Audiodatei namens **audio1.wav** wird als Hauptteil der Anforderung übergeben; die Ressource erhält den Namen `audio1`.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -131,7 +122,7 @@ The following examples show the addition of both audio- and archive-type resourc
     ```
     {: pre}
 
--   This example adds an archive-type resource to the specified custom acoustic model. The `Content-Type` header identifies the type of the archive as `application/zip`. The `Contained-Contented-Type` header indicates that all files that are contained in the archive have the format `audio/l16` and are sampled at a rate of 16 kHz. The archive file, **audio2.zip**, is passed as the body of the request, and the resource is given the name `audio2`.
+-   Im folgenden Beispiel wird eine Archivdateiressource zum angegebenen angepassten Akustikmodell hinzugefügt. Der Header `Content-Type` gibt den Typ des Archivs mit `application/zip` an. Der Header `Contained-Contented-Type` gibt an, dass alle Dateien, die im Archiv enthalten sind, das Format `audio/l16` aufweisen und mit einer Frequenz von 16 kHz abgetastet werden. Die Archivdatei namens **audio2.zip** wird als Hauptteil der Anforderung übergeben; die Ressource erhält den Namen `audio2`.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -142,33 +133,32 @@ The following examples show the addition of both audio- and archive-type resourc
     ```
     {: pre}
 
-The method also accepts an optional `allow_overwrite` query parameter to overwrite an existing audio resource for a custom model. Use the parameter if you need to update an audio resource after you add it to a model.
+Die Methode akzeptiert auch den optionalen Abfrageparameter `allow_overwrite`, um eine vorhandene Audioressource für ein angepasstes Modell zu überschreiben. Verwenden Sie den Parameter, wenn Sie eine Audioressource aktualisieren müssen, nachdem Sie sie zu einem Modell hinzugefügt haben.
 
-The method is asynchronous. It can take several seconds to complete depending on the duration of the audio. For an archive file, the length of the operation depends on the duration of the audio files. For more information about checking the status of a request to add an audio resource, see [Monitoring the add audio request](#monitorAudio).
+Die Methode wird asynchron ausgeführt. Je nach zeitlicher Länge der Audiodaten kann ihr Abschluss mehrere Sekunden dauern. Bei einer Archivdatei ist die Länge der Operation von der Dauer der Audiodateien abhängig. Im Abschnitt [Anforderung zum Hinzufügen von Audiodaten überwachen](#monitorAudio) erfahren Sie genauer, wie Sie den Status einer Anforderung zum Hinzufügen einer Audioressource überprüfen können.
 
-You can add any number of audio resources to a custom model by calling the method once for each audio or archive file. You can make multiple requests to add different audio resources simultaneously.
+Sie können beliebig viele Audioressourcen zu einem angepassten Modell hinzufügen, indem Sie die Methode für jede Audio- oder Archivdatei separat aufrufen. Sie können mit mehreren Anforderungen verschiedene Audioressourcen gleichzeitig hinzufügen.
 
-You must add a minimum of 10 minutes and a maximum of 200 hours of audio that includes speech, not silence, to a custom model before you can train it. No audio- or archive-type resource can be larger than 100 MB. For more information, see [Guidelines for adding audio resources](/docs/services/speech-to-text?topic=speech-to-text-audioResources#audioGuidelines).
+Bevor Sie ein angepasstes Modell trainieren können, müssen Sie Audiodaten mit einer Länge von mindestens 10 Minuten und höchstens 200 Stunden zum Modell hinzufügen, wobei sich die Dauer ausschließlich auf Sprache bezieht und Schweigen nicht berücksichtigt. Keine Audio- oder Archivressource kann größer als 100 MB sein. Weitere Informationen finden Sie im Abschnitt [Richtlinien für das Hinzufügen von Audioressourcen](/docs/services/speech-to-text?topic=speech-to-text-audioResources#audioGuidelines).
 
-### Monitoring the add audio request
+### Anforderung zum Hinzufügen von Audiodaten überwachen
 {: #monitorAudio}
 
-The service returns a 201 response code if the audio is valid. It then asynchronously analyzes the contents of the audio file or files and automatically extracts information about the audio such as length, sampling rate, and encoding. You cannot train the custom model until the service's analysis of all audio resources for current requests completes.
+Der Service gibt den Antwortcode 201 zurück, wenn die Audiodaten gültig sind. Anschließend analysiert er den Inhalt der Audiodatei(en) im asynchronen Modus und extrahiert automatisch Informationen zu den Audiodaten wie Länge, Abtastfrequenz und Codierung. Sie können das angepasste Modell erst dann trainieren, wenn die Analyse aller Audioressourcen für die aktuellen Anforderungen durch den Service abgeschlossen ist.
 
-To determine the status of the request, use the `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to poll the status
-of the audio. The method accepts the GUID of the custom model and the name of the audio resource. Its response includes the `status` of the resource, which has one of the following values:
+Mit der Methode `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` können Sie den Status der Audiodaten abfragen und so den Status der Anforderung ermitteln. Die Methode akzeptiert die GUID des angepassten Modells und den Namen der Audioressource. Ihre Antwort enthält für die Ressource das Feld `status` mit einem der folgenden Werte:
 
--   `ok` indicates that the audio is acceptable and analysis is complete.
--   `being_processed` indicates that the service is still analyzing the audio.
--   `invalid` indicates that the audio file is not acceptable for processing. It might have the wrong format, the wrong sampling rate, or not be an audio file. For an archive file, if any of the audio files that it contains are invalid, the entire archive is invalid.
+-   `ok`: Die Audiodaten sind annehmbar und die Analyse ist abgeschlossen.
+-   `being_processed`: Der Service ist gegenwärtig noch mit der Analyse der Audiodaten beschäftigt.
+-   `invalid`: Die Audiodatei ist für die Verarbeitung nicht geeignet. Möglicherweise hat sie ein falsches Format, eine falsche Abtastfrequenz oder ist keine Audiodatei. Falls bei einer Archivdatei eine der enthaltenen Audiodateien ungültig ist, ist das gesamte Archiv ungültig.
 
-The content of the response and location of the `status` field depend on the type of the resource, audio or archive.
+Der Inhalt der Antwort und die Position des Feldes `status` sind vom Typ der Ressource (also Audiodatei oder Archiv) abhängig.
 
--   *For an audio-type resource,* the `status` field is located in the top-level (`AudioListing`) object.
+-   Bei einer *Audiodateiressource* befindet sich das Feld `status` im Objekt der höchsten Ebene (`AudioListing`).
 
     ```bash
     curl -X GET -u "apikey:{apikey}"
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio1"
+    "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{anpassungs_id}/audio/audio1"
     ```
     {: pre}
 
@@ -186,7 +176,7 @@ The content of the response and location of the `status` field depend on the typ
     ```
     {: codeblock}
 
--   *For an archive-type resource,* the `status` field is located in the second-level (`AudioResource`) object that is nested in the `container` field.
+-   Bei einer *Archivdateiressource* befindet sich das Feld `status` im Objekt der zweiten Ebene (`AudioResource`), das im Feld `container` verschachtelt ist.
 
     ```bash
     curl -X GET -u "apikey:{apikey}"
@@ -210,14 +200,14 @@ The content of the response and location of the `status` field depend on the typ
     ```
     {: codeblock}
 
-Use a loop to check the status of the audio resource every few seconds until it becomes `ok`. For more information about other fields that are returned by the method, see [Listing audio resources for a custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#listAudio).
+Mithilfe einer Schleife können Sie den Status der Audioressource alle paar Sekunden prüfen, bis er sich in `ok` ändert. Weitere Informationen zu anderen Feldern, die von der Methode zurückgegeben werden, finden Sie im Abschnitt [Audioressourcen für ein angepasstes Akustikmodell auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#listAudio).
 
-## Train the custom acoustic model
+## Angepasstes Akustikmodell trainieren
 {: #trainModel-acoustic}
 
-Once you populate a custom acoustic model with audio resources, you must train the model on the new data. Training prepares a custom model for use in speech recognition. A model cannot be used for recognition requests until you train it on the new data. Also, updates to a custom model in the form of new or changed audio resources are not reflected by the model until you train it with the changes.
+Nachdem Sie ein angepasstes Akustikmodell mit Audioressourcen gefüllt haben, müssen Sie das Modell mit den neuen Daten trainieren. Das Training bereitet ein angepasstes Modell für die Verwendung bei der Spracherkennung vor. Ein Modell kann erst dann für Erkennungsanforderungen verwendet werden, wenn Sie es mit den neuen Daten trainiert haben. Auch Aktualisierungen eines angepassten Modells, die in Form von neuen oder geänderten Audioressourcen erfolgen, werden erst dann abgebildet, wenn Sie das Modell mit den Änderungen trainiert haben.
 
-You use the `POST /v1/acoustic_customizations/{customization_id}/train` method to train a custom model. You pass the method the customization ID of the model that you want to train, as in the following example.
+Zum Trainieren eines angepassten Modells verwenden Sie die Methode `POST /v1/acoustic_customizations/{customization_id}/train`. An die Methode übergeben Sie wie im folgenden Beispiel die Anpassungs-ID des Modells, das Sie trainieren wollen.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -225,19 +215,19 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-The method is asynchronous. Training can take on the order of minutes or hours to complete, depending on the amount of audio data that the custom acoustic model contains and the current load on the service. A general guideline is that training a custom acoustic model takes approximately two to four times the length of its audio data. The range of time depends on the model that is being trained and the nature of the audio, such as whether the audio is clean or noisy. For example, it can take between 4 and 8 hours to train a model that contains 2 hours of audio. For more information about checking the status of a training operation, see [Monitoring the train model request](#monitorTraining-acoustic).
+Die Methode wird asynchron ausgeführt. Das Training kann abhängig von der aktuellen Auslastung des Service und vom Umfang der Audiodaten, die das angepasste Akustikmodell enthält, Minuten oder auch Stunden dauern. Als Faustregel kann davon ausgegangen werden, dass das Training eines Akustikmodells ungefähr zwei bis vier Mal so lang wie seine Audiodaten dauert. Die Dauer ist von dem trainierten Modell und der Spezifik der Audiodaten abhängig, also beispielsweise davon, ob die Audiodaten klar oder verrauscht sind. So kann das Training eines Modells, das Audiodaten mit einer Länge von 2 Stunden enthält, zum Beispiel zwischen 4 und 8 Stunden dauern. Im Abschnitt [Anforderung zum Trainieren eines Modells überwachen](#monitorTraining-acoustic) erfahren Sie genauer, wie Sie den Status einer Trainingsoperation überprüfen können.
 
-The method includes the following optional query parameters:
+Die Methode enthält die folgenden optionalen Abfrageparameter:
 
--   The `custom_language_model_id` parameter specifies a separately created custom language model that is to be used during training. You can train with a custom language model that contains transcriptions of your audio files or that contains corpora or OOV words that are relevant to the contents of the audio files. The custom acoustic and custom language models must be based on the same version of the same base model for training to succeed. For more information, see [Training a custom acoustic model with a custom language model](/docs/services/speech-to-text?topic=speech-to-text-useBoth#useBothTrain).
--   The `strict` parameter indicates whether training is to proceed if the custom model contains a mix of valid and invalid audio resources. By default, training fails if the model contains one or more invalid resources. Set the parameter to `false` to allow training to proceed as long as the model contains at least one valid resource. The service excludes invalid resources from the training. For more information, see [Training failures](#failedTraining-acoustic).
+-   Der Parameter `custom_language_model_id` gibt ein separat erstelltes angepasstes Sprachmodell für die Verwendung während des Trainings an. Sie können beim Training ein angepasstes Sprachmodell einbeziehen, das Transkriptionen Ihrer Audiodateien oder Korpora bzw. vokabularexterne Wörter enthält, die für den Inhalt der Audiodateien relevant sind. Die angepassten akustischen und angepassten Sprachmodelle müssen auf derselben Version desselben Basismodells basieren, damit das Training erfolgreich verläuft. Weitere Informationen finden Sie unter [Angepasstes Akustikmodell mit einem angepassten Sprachmodell trainieren](/docs/services/speech-to-text?topic=speech-to-text-useBoth#useBothTrain).
+-   Der Parameter `strict` gibt an, ob das Training fortgesetzt werden soll, wenn das angepasste Modell eine Mischung aus gültigen und ungültigen Audioressourcen enthält. Standardmäßig schlägt das Training fehl, wenn das Modell mindestens eine ungültige Ressource enthält. Setzen Sie den Parameter auf `false`, damit das Training fortgesetzt werden kann, wenn das Modell mindestens eine gültige Ressource enthält. Der Service schließt ungültige Ressourcen aus dem Training aus. Weitere Informationen finden Sie im Abschnitt [Fehler bei Training](#failedTraining-acoustic).
 
-### Monitoring the train model request
+### Anforderung zum Training eines Modells überwachen
 {: #monitorTraining-acoustic}
 
-The service returns a 200 response code if the training process is successfully initiated. The service cannot accept subsequent training requests, or requests to add more audio resources, until the existing training request completes.
+Der Service gibt den Antwortcode 200 zurück, wenn der Trainingsprozess erfolgreich gestartet wurde. Der Service kann nachfolgende Trainingsanforderungen oder Anforderungen zum Hinzufügen weiterer Audioressourcen erst akzeptieren, wenn die vorhandene Trainingsanforderung abgeschlossen ist.
 
-To determine the status of a training request, use the `GET /v1/acoustic_customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the acoustic model and returns its status, as in the following example:
+Mit der Methode `GET /v1/acoustic_customizations/{customization_id}` können Sie den Status des Modells abfragen und so den Status einer Trainingsanforderung ermitteln. Die Methode akzeptiert wie im folgenden Beispiel die Anpassungs-ID des Akustikmodells und gibt seinen Status zurück:
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -261,36 +251,35 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-The response includes `status` and `progress` fields that report the current state of the model. The meaning of the `progress` field depends on the model's status. The `status` field can have one of the following values:
+Die Antwort enthält die Felder `status` und `progress`, in denen der aktuelle Status des Modells gemeldet wird. Die Bedeutung des Feldes `progress` hängt vom Status des Modells ab. Das Feld `status` kann einen der folgenden Werte enthalten:
 
--   `pending` indicates that the model was created but is waiting either for valid training data to be added or for the service to finish analyzing data that was added. The `progress` field is `0`.
--   `ready` indicates that the model contains valid data and is ready to be trained. The `progress` field is `0`.
+-   `pending`: Das Modell wurde erstellt, es wird jedoch entweder auf das Hinzufügen von gültigen Trainingsdaten oder auf den Abschluss der Analyse der hinzugefügten Daten durch den Service gewartet. Das Feld `progress` hat den Wert `0`.
+-   `ready`: Das Modell enthält gültige Daten und ist für das Training bereit. Das Feld `progress` hat den Wert `0`.
 
-    If the model contains a mix of valid and invalid audio resources, training of the model fails unless you set the `strict` query parameter to `false`. For more information, see [Training failures](#failedTraining-acoustic).
--   `training` indicates that the model is being trained. The `progress` field changes from `0` to `100` when training is complete. <!-- The `progress` field indicates the progress of the training as a percentage complete. -->
--   `available` indicates that the model is trained and ready to use. The `progress` field is `100`.
--   `upgrading` indicates that the model is being upgraded. The `progress` field is `0`.
--   `failed` indicates that training of the model failed. The `progress` field is `0`. For more information, see [Training failures](#failedTraining-acoustic).
+Wenn das Modell eine Mischung aus gültigen und ungültigen Audioressourcen enthält, schlägt das Training für das Modells fehl, es sei denn, Sie setzen den Abfrageparameter `strict` auf `false`. Weitere Informationen finden Sie im Abschnitt [Fehler bei Training](#failedTraining-acoustic).-   `training`: Das Modell wird gegenwärtig trainiert. Der Wert im Feld `progress` ändert sich von `0` in `100`, wenn das Training abgeschlossen ist.<!-- The `progress` field indicates the progress of the training as a percentage complete. -->
+-   `available`: Das Modell wurde trainiert und kann verwendet werden. Das Feld `progress` hat den Wert `100`.
+-   `upgrading`: Für das Modell wird gegenwärtig ein Upgrade durchgeführt. Das Feld `progress` hat den Wert `0`.
+-   `failed`: Das Training des Modells ist fehlgeschlagen. Das Feld `progress` ist `0`. Weitere Informationen finden Sie im Abschnitt [Fehler bei Training](#failedTraining-acoustic).
 
-Use a loop to check the status of the training once a minute until the model becomes `available`. For more information about other fields that are returned by the method, see [Listing custom acoustic models](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
+Mithilfe einer Schleife können Sie den Status des Trainings einmal pro Minute prüfen, bis das Modell den Status `available` aufweist. Weitere Informationen zu anderen Feldern, die von der Methode zurückgegeben werden, finden Sie im Abschnitt [Angepasste Akustikmodelle auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
 
-### Training failures
+### Fehler beim Training
 {: #failedTraining-acoustic}
 
-Training fails to start if the service is handling another request for the custom acoustic model. A conflicting request could be another training request or a request to add audio resources to the model. The service returns a status code of 409.
+Das Training kann nicht gestartet werden, wenn der Service aktuell eine andere Anforderung für das angepasste Akustikmodell ausführt. Bei der kollidierenden Anforderung könnte es sich um eine andere Trainingsanforderung oder um eine Anforderung zum Hinzufügen von Audioressourcen zum Modell handeln. Der Service gibt den Statuscode 409 zurück.
 
-Training also fails to start for the following reasons:
+Auch die folgenden Ursachen können zum Fehlschlagen des Trainings führen:
 
--   The custom model contains less than 10 minutes of audio data.
--   The custom model contains more than 200 hours of audio data.
--   One or more of the custom model's audio resources is invalid.
--   You passed an incompatible custom language model with the `custom_language_model_id` query parameter. Both custom models must be based on the same version of the same base model.
+-   Das angepasste Modell enthält Audiodaten mit einer Länge von weniger als 10 Minuten.
+-   Das angepasste Modell enthält Audiodaten mit einer Länge von mehr als 200 Minuten.
+-   Eine oder mehrere Audioressourcen des angepassten Modells sind ungültig.
+-   Sie haben ein nicht kompatibles angepasstes Sprachmodell mit dem Abfrageparameter `custom_language_model_id` übergeben. Die beiden angepassten Modelle müssen auf derselben Version desselben Basismodells basieren.
 
-The service returns a status code of 400 and sets the custom model's status to `failed`. Take one of the following actions:
+Der Service gibt den Statuscode 400 zurück und legt den Status des angepassten Modells auf `failed` fest. Führen Sie eine der folgenden Aktionen aus:
 
--   Use the `GET /v1/acoustic_customizations/{customization_id}/audio` and `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` methods to examine the model's audio resources. For more information, see [Listing audio resources for a custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#listAudio).
+-   Untersuchen Sie mit den Methoden `GET /v1/acoustic_customizations/{customization_id}/audio` und `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` die Audioressourcen des Modells. Weitere Informationen enthält der Abschnitt [Audioressourcen für ein angepasstes Akustikmodell auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#listAudio).
 
-    For each invalid audio resource, do one of the following:
-    -   Correct the audio resource and use the `allow_overwrite` parameter of the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to add the corrected audio to the model. For more information, see [Add audio to the custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio).
-    -   Use the `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to delete the audio resource from the model. For more information, see [Deleting an audio resource from a custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#deleteAudio).
--   Set the `strict` parameter of the `POST /v1/acoustic_customizations/{customization_id}/train` method to `false` to exclude invalid audio resources from the training. The model must contain at least one valid audio resource for training to succeed. The `strict` parameter is useful for training a custom model that contains a mix of valid and invalid audio resources.
+    Führen Sie für jede ungültige Audioressource einen der folgenden Schritte aus:
+    -   Korrigieren Sie die Audioressource und verwenden Sie den Parameter `allow_overwrite` der Methode `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`, um dem Modell die korrigierten Audiodaten hinzuzufügen. Weitere Informationen hierzu enthält der Abschnitt [Audiodaten zum angepassten Akustikmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio).
+    -   Löschen Sie mit der Methode `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` die Audioressource aus dem Modell. Weitere Informationen finden Sie im Abschnitt zum [Löschen einer Audioressource aus einem angepassten akustischen Modell](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#deleteAudio).
+-   Setzen Sie den Parameter `strict` der Methode `POST /v1/acoustic_customizations/{customization_id}/train` auf `false`, um ungültige Audioressourcen aus dem Training auszuschließen. Das Modell muss mindestens eine gültige Audioressource enthalten, damit das Training erfolgreich abgeschlossen werden kann. Der Parameter `strict` ist für das Training eines angepassten Modells hilfreich, das eine Mischung aus gültigen und ungültigen Audioressourcen enthält.

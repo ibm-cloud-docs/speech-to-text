@@ -22,32 +22,32 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Managing grammars
+# Grammatiken verwalten
 {: #manageGrammars}
 
-The customization interface includes the `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` method for adding a grammar to a custom language model. For more information, see [Add a grammar to the custom language model](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar). The interface also includes the following methods for listing and deleting grammars for a custom language model.
+Mit der Methode `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` der Anpassungsschnittstelle können Sie eine Grammatik zu einem angepassten Sprachmodell hinzufügen. Weitere Informationen enthält der Abschnitt [Grammatik zum angepassten Sprachmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar). Die Schnittstelle enthält außerdem die hier aufgeführten Methoden für das Auflisten und Löschen von Grammatiken für ein angepasstes Sprachmodell.
 {: shortdesc}
 
-## Listing grammars for a custom language model
+## Grammatiken für ein angepasstes Sprachmodell auflisten
 {: #listGrammars}
 
-The customization interface provides two methods for listing information about the grammars for a custom language model:
+Die Anpassungsschnittstelle bietet zwei Methoden für das Auflisten von Informationen zu den Grammatiken eines angepassten Sprachmodells:
 
--   The `GET /v1/customizations/{customization_id}/grammars` method lists information about all grammars for a custom model.
--   The `GET /v1/customizations/{customization_id}/grammars/{grammar_name}` method lists information about a specified grammar for a custom model.
+-   Die Methode `GET /v1/customizations/{customization_id}/grammars` listet Informationen zu allen Grammatiken für ein angepasstes Modell auf.
+-   Die Methode `GET /v1/customizations/{customization_id}/grammars/{grammar_name}` listet Informationen zu einer angegebenen Grammatik für ein angepasstes Modell auf.
 
-Both methods return the same information about a grammar. The information includes the `name` of the grammar and the number of `out-of_vocabulary_words` that are recognized by the grammar. The response also includes the `status` of the grammar, which is important for checking the service's analysis of the grammar when you add it to a custom model:
+Beide Methoden geben dieselben Informationen zu einer Grammatik zurück. Die Angaben enthalten im Feld `name` den Namen der Grammatik und im Feld `out-of_vocabulary_words` die Anzahl der von der Grammatik erkannten vokabularexternen Wörter. Die Antwort enthält das Feld `status` für die Grammatik, das von Bedeutung ist, wenn Sie beim Hinzufügen einer Grammatik zu einem angepassten Modell die Analyse der Grammatik durch den Service überprüfen wollen.
 
--   `being_processed` indicates that the service is still processing the grammar in response to a `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` request.
--   `analyzed` indicates that the service has successfully processed the grammar and added it to the custom model.
--   `undetermined` means that the service encountered an error while processing the grammar. The information that is returned for the grammar includes an error message that offers guidance for correcting the error.
+-   `being_processed`: Der Service verarbeitet gegenwärtig noch die Grammatik als Reaktion auf eine Anforderung `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`.
+-   `analyzed`: Der Service hat die Grammatik erfolgreich verarbeitet und zum angepassten Modell hinzugefügt.
+-   `undetermined`: Der Service hat bei der Verarbeitung der Grammatik einen Fehler festgestellt. Die zurückgegebenen Informationen zur Grammatik beinhalten eine Fehlernachricht, die Anleitungen für die Behebung des Fehlers einschließt.
 
-    For example, the grammar might be invalid, or you might have tried to add a grammar with the same name as an existing grammar. You can try to add the grammar again and include the `allow_overwrite` parameter with the request. You can also delete the grammar and then try adding it again.
+    Möglicherweise ist die Grammatik ungültig oder Sie haben versucht, eine Grammatik mit demselben Namen wie eine vorhandene Grammatik hinzuzufügen. Sie können versuchen, die Grammatik erneut hinzuzufügen, und den Parameter `allow_overwrite` in die Anforderung einzubeziehen. Sie können auch die Grammatik löschen und versuchen, sie erneut hinzuzufügen.
 
-### Example requests and responses
+### Beispielanforderungen und -antworten
 {: #listExample-grammars}
 
-The following example lists information about all grammars that have been added to the custom model with the specified customization ID.
+Im folgenden Beispiel werden Informationen zu allen Grammatiken aufgelistet, die zum angepassten Modell mit der angegebenen Anpassungs-ID hinzugefügt wurden.
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -55,7 +55,7 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: pre}
 
-Three grammars were successfully added to the custom model: `confirm-xml`, `confirm-abnf`, and `list-abnf`.
+Die drei Grammatiken `confirm-xml`, `confirm-abnf` und `list-abnf` wurden erfolgreich zum angepassten Modell hinzugefügt.
 
 ```javascript
 {
@@ -80,7 +80,7 @@ Three grammars were successfully added to the custom model: `confirm-xml`, `conf
 ```
 {: codeblock}
 
-The following example shows information about the specified grammar, `list-abnf`.
+Mit dem folgenden Beispiel werden Informationen zur angegebenen Grammatik namens `list-abnf` angezeigt.
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -97,23 +97,23 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-## Deleting a grammar from a custom language model
+## Grammatik aus einem angepassten Sprachmodell löschen
 {: #deleteGrammar}
 
-Use the `DELETE /v1/customizations/{customization_id}/grammars/{grammar_name}` method to remove an existing grammar from a custom language model. When it deletes the grammar, the service removes any OOV words that are associated with the grammar from the custom model's words resource unless
+Mit der Methode `DELETE /v1/customizations/{customization_id}/grammars/{grammar_name}` können Sie eine vorhandene Grammatik aus einem angepassten Sprachmodell entfernen. Beim Löschen der Grammatik entfernt der Service alle vokabularexternen Wörter, die zur Grammatik gehören, aus der Wörterressource des angepassten Modells, allerdings mit Ausnahme der folgenden Fälle:
 
--   The word was also added by another grammar or by a corpus.
--   The word was modified in some way with the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method.
+-   Das Wort wurde auch durch eine andere Grammatik oder durch einen Korpus hinzugefügt.
+-   Das Wort wurde mit der Methode `POST /v1/customizations/{customization_id}/words` oder `PUT /v1/customizations/{customization_id}/words/{word_name}` geändert.
 
-Removing a grammar does not affect the custom model until you train the model on its updated data by using the `POST /v1/customizations/{customization_id}/train` method. If you successfully trained the model on the grammar, the grammar continues to be available for speech recognition until you retrain the model.
+Das Entfernen einer Grammatik wirkt sich erst dann auf das angepasste Modell aus, wenn Sie es unter Verwendung der Methode `POST /v1/customizations/{customization_id}/train` mit seinen aktualisierten Daten trainieren. Falls Sie das Modell mit der Grammatik erfolgreich trainiert hatten, bleibt die Grammatik für die Spracherkennung verfügbar, bis Sie das Modell erneut trainieren.
 
-### Example request
+### Beispielanforderung
 {: #deleteExample-grammar}
 
-The following example deletes the grammar named `list-abnf` from the custom model with the specified customization ID.
+Im folgenden Beispiel wird die Grammatik namens `list-abnf` aus dem angepassten Modell mit der angegebenen Anpassungs-ID gelöscht.
 
 ```bash
 curl -X DELETE -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/ {customization_id}/grammars/list-abnf"
+"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/grammars/list-abnf"
 ```
 {: pre}

@@ -22,15 +22,15 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Using a custom language model
+# Angepasstes Sprachmodell verwenden
 {: #languageUse}
 
-Once you create and train your custom language model, you can use it in speech recognition requests. You use the `language_customization_id` query parameter to specify the custom language model for a request, as shown in the following examples. You can also tell the service how much weight to give to words from the custom model. For more information, see [Using customization weight](#weight). You must issue the request with credentials for the instance of the service that owns the model.
+Nachdem Sie das angepasste Sprachmodell erstellt und trainiert haben, können Sie es in Spracherkennungsanforderungen verwenden. Im Parameter `language_customization_id` können Sie das angepasste Sprachmodell für eine Anforderung angeben, wie in den folgenden Beispielen gezeigt. Sie können angeben, welche Gewichtung der Service den Wörtern aus dem angepassten Modell zuteilen soll. Weitere Informationen finden Sie im Abschnitt [Anpassungsgewichtung verwenden](#weight). Sie müssen die Anforderung mit den Berechtigungsnachweisen für die Instanz des Service ausgeben, die Eigner des Modells ist.
 {: shortdesc}
 
-You can create multiple custom language models for the same or different domains. However, you can specify only one custom language model at a time with the `language_customization_id` parameter. For examples that use a grammar with a custom language model, see [Using a grammar for speech recognition](/docs/services/speech-to-text?topic=speech-to-text-grammarUse).
+Sie können mehrere angepasste Sprachmodelle für dasselbe Fachgebiet oder für verschiedene Fachgebiete erstellen. Mit dem Parameter `language_customization_id` kann jedoch nur ein angepasstes Sprachmodell auf einmal angegeben werden. Beispiele für die Verwendung einer Grammatik mit einem angepassten Sprachmodell finden Sie im Abschnitt [Grammatik für Spracherkennung verwenden](/docs/services/speech-to-text?topic=speech-to-text-grammarUse).
 
--   For the [WebSocket interface](/docs/services/speech-to-text?topic=speech-to-text-websockets), use the `/v1/recognize` method. The specified custom model is used for all requests that are sent over the connection.
+-   Verwenden Sie für die [WebSocket-Schnittstelle](/docs/services/speech-to-text?topic=speech-to-text-websockets) die Methode `/v1/recognize`. Das angegebene angepasste Modell wird für alle über die Verbindung gesendeten Anforderungen verwendet.
 
     ```javascript
     var token = {authentication-token};
@@ -41,7 +41,7 @@ You can create multiple custom language models for the same or different domains
     var websocket = new WebSocket(wsURI);
     ```
     {: codeblock}
--   For the [synchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-http), use the `POST /v1/recognize` method. The specified custom model is used for that request.
+-   Verwenden Sie für die [synchrone HTTP-Schnittstelle](/docs/services/speech-to-text?topic=speech-to-text-http) die Methode `POST /v1/recognize`. Das angegebene angepasste Modell wird für diese Anforderung verwendet.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -50,7 +50,7 @@ You can create multiple custom language models for the same or different domains
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}"
     ```
     {: pre}
--   For the [asynchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-async), use the `POST /v1/recognitions` method. The specified custom model is used for that request.
+-   Verwenden Sie für die [asynchrone HTTP-Schnittstelle](/docs/services/speech-to-text?topic=speech-to-text-async) die Methode `POST /v1/recognitions`. Das angegebene angepasste Modell wird für diese Anforderung verwendet.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -60,20 +60,20 @@ You can create multiple custom language models for the same or different domains
     ```
     {: pre}
 
-You can omit the language model from the request if the custom model is based on the default language model, `en-US_BroadbandModel`. Otherwise, you must use the `model` parameter to specify the base model, as shown for the WebSocket example. A custom model can be used only with the base model for which it is created.
+Sie müssen das Sprachmodell in der Anforderung nicht angeben, wenn das angepasste Modell auf dem Standardsprachmodell `en-US_BroadbandModel` basiert. Andernfalls müssen Sie im Parameter `model` das Basismodell angeben, wie im Beispiel für WebSocket gezeigt. Ein angepasstes Modell kann nur zusammen mit dem Basismodell verwendet werden, für das es erstellt wurde.
 
-## Using customization weight
+## Anpassungsgewichtung verwenden
 {: #weight}
 
-A custom language model is a combination of the custom model and the base model that it customizes. You can tell the service how much weight to give to words from the custom language model compared to words from the base model for speech recognition. The weight that is assigned to a custom model is referred to as its *customization weight*.
+Ein angepasstes Sprachmodell ist eine Kombination aus dem angepassten Modell und dem Basismodell, das von ihm angepasst wird. Sie können angeben, welche Gewichtung der Service den Wörtern aus dem angepassten Sprachmodell bei der Spracherkennung im Vergleich zu Wörtern aus dem Basismodell zuteilen soll. Die einem angepassten Modell zugeordnete Gewichtung wird als *Anpassungsgewichtung* bezeichnet.
 
-You specify the relative weight for a custom language model as a double between 0.0 to 1.0. By default, each custom language model has a weight of 0.3. The default weight yields the best performance in the general case. It allows both OOV words from the custom model and words from the base vocabulary to be recognized.
+Die relative Gewichtung für ein angepasstes Sprachmodell wird als Doppelzeichen im Bereich zwischen 0,0 und 1,0 angegeben. Standardmäßig wird jedem angepassten Sprachmodell die Gewichtung 0,3 zugeordnet. Mit dieser Standardgewichtung werden im Allgemeinen die besten Leistungswerte erzielt. Sie ermöglicht sowohl die Erkennung von OOV-Wörtern aus dem angepassten Modell als auch von Wörtern aus dem Basisvokabular.
 
-However, in cases where the audio to be transcribed makes frequent use of OOV words from the custom model, increasing the customization weight can improve the accuracy of transcription results. Exercise caution when you set the customization weight. While a higher weight can improve the accuracy of phrases from the domain of the custom model, it can also negatively impact performance on non-domain phrases. (Even if you set the weight to 0.0, a small probability exists that the transcription can include custom words due to the implementation of language model customization.)
+Wenn die zu transkribierenden Audiodaten jedoch häufig auf OOV-Wörter aus dem angepassten Modell zurückgreifen, kann die Genauigkeit der Transkriptionsergebnisse durch eine höhere Anpassungsgewichtung verbessert werden. Gehen Sie beim Festlegen der Anpassungsgewichtung mit besonderer Sorgfalt vor. Eine höhere Gewichtung kann die Genauigkeit bei Ausdrücken aus dem Fachgebiet des angepassten Modells erhöhen, aber sie kann auch die Leistung bei fachgebietsfremden Ausdrücken beeinträchtigen. (Selbst bei der Gewichtung 0,0 besteht aufgrund der Implementierung der Sprachmodellanpassung eine geringe Wahrscheinlichkeit, dass die Transkription angepasste Wörter enthalten kann.)
 
-You specify a customization weight by using the `customization_weight` parameter. You can specify the parameter when you train a custom language model or when you use it with a speech recognition request.
+Die Anpassungsgewichtung kann mit dem Parameter `customization_weight` angegeben werden. Dieser Parameter wird beim Trainieren eines angepassten Sprachmodells oder bei dessen Verwendung in einer Spracherkennungsanforderung angegeben.
 
--   For a training request, the following example specifies a customization weight of `0.5` with the `POST /v1/customizations/{customization_id}/train` method:
+-   Im folgenden Beispiel wird für eine Trainingsanforderung die Anpassungsgewichtung `0,5` in der Methode `POST /v1/customizations/{customization_id}/train` angegeben:
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -81,9 +81,9 @@ You specify a customization weight by using the `customization_weight` parameter
     ```
     {: pre}
 
-    Setting a customization weight during training saves the weight with the custom language model. You do not need to pass the weight with each recognition request that uses the custom model.
+    Eine in der Trainingsphase angegebene Anpassungsgewichtung wird zusammen mit dem angepassten Sprachmodell gespeichert. Sie müssen die Gewichtung nicht mit jeder Erkennungsanforderung übergeben, die das angepasste Modell verwendet.
 
--   For a recognition request, the following example specifies a customization weight of `0.7` with the `POST /v1/recognize` method:
+-   Im folgenden Beispiel wird für eine Erkennungsanforderung die Anpassungsgewichtung `0,7` in der Methode `POST /v1/recognize` angegeben:
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -93,13 +93,13 @@ You specify a customization weight by using the `customization_weight` parameter
     ```
     {: pre}
 
-    Setting a customization weight during speech recognition overrides a weight that was saved with the model during training.
+    Durch das Festlegen einer Anpassungsgewichtung während der Spracherkennung wird die beim Trainieren zusammen mit dem Modell gespeicherte Gewichtung überschrieben.
 
-## Troubleshooting the use of custom language models
+## Fehlerbehebung bei der Verwendung angepasster Sprachmodelle
 {: #languageTroubleshoot}
 
-If you apply a custom language model to speech recognition but find that the service does not appear to be using words that the model contains, check for the following possible problems:
+Wenn der Service trotz Anwendung eines angepassten Sprachmodells bei der Spracherkennung scheinbar nicht die Wörter aus dem Modell verwendet, überprüfen Sie, ob die folgenden potenziellen Probleme vorliegen:
 
--   Make sure that you are correctly passing the customization ID to the recognition request as shown in the previous examples.
--   Make sure that the status of the custom model is `available`, meaning that it is fully trained and ready to use. For more information, see [Listing custom language models](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
--   Check the pronunciations that were generated for the new words to make sure that they are correct. For more information, see [Validating a words resource](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
+-   Stellen Sie sicher, dass Sie die Anpassungs-ID ordnungsgemäß an die Erkennungsanforderung übergeben, wie in den vorherigen Beispielen gezeigt.
+-   Stellen Sie sicher, dass das angepasste Modell den Status `available` (verfügbar) aufweist, d. h. das Modell ist vollständig trainiert und betriebsbereit. Weitere Informationen finden Sie im Abschnitt [Angepasste Sprachmodelle auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
+-   Prüfen Sie die für die neuen Wörter generierten Aussprachevarianten und stellen Sie sicher, dass diese korrekt sind. Weitere Informationen finden Sie im Abschnitt [Wörterressource prüfen](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).

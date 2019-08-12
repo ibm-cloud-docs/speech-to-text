@@ -22,35 +22,35 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Using custom acoustic and custom language models together
+# Angepasste Akustikmodelle und angepasste Sprachmodelle kombiniert verwenden
 {: #useBoth}
 
-You can improve speech recognition accuracy by using complementary custom language and custom acoustic models. You can use both types of model during training of your acoustic model and during speech recognition. Both models must be owned by the same service instance, and both must be based on the same base language model.
+Sie können die Genauigkeit bei der Spracherkennung verbessern, indem Sie angepasste Sprachmodelle und angepasste Akustikmodelle kombiniert einsetzen. Beide Modelltypen können Sie  während des Trainings Ihres Akustikmodells und während der Spracherkennung verwenden. Beide Modelle müssen Eigentum derselben Serviceinstanz sein und auf demselben Basissprachmodell basieren.
 {: shortdesc}
 
-Using a custom acoustic model alone or with a custom language model on which it was not trained can still be useful. If the custom acoustic model was trained on acoustic characteristics that match the audio that is being transcribed, it can still improve transcription quality.
+Die Verwendung eines angepassten Akustikmodells ohne ein Sprachmodell oder mit einem angepassten Sprachmodell, für das es nicht trainiert wurde, kann dennoch von Nutzen sein. Falls das angepasste Akustikmodell mit akustischen Merkmalen trainiert wurde, die zu den transkribierten Audiodaten passen, kann es trotzdem die Qualität der Transkription verbessern.
 
-## Training a custom acoustic model with a custom language model
+## Angepasstes Akustikmodell mit einem angepassten Sprachmodell trainieren
 {: #useBothTrain}
 
-Training a custom acoustic model with audio data alone is referred to as *unsupervised training*. Using a custom language model during training is referred to as *lightly supervised training*. Lightly supervised training can improve the effectiveness of your custom acoustic model.
+Das Training eines angepassten Akustikmodells ausschließlich mit Audiodaten wird als *nicht überwachtes Training* bezeichnet. Die Verwendung eines angepassten Sprachmodells während des Trainings wird *mäßig überwachtes Training* genannt. Ein mäßig überwachtes Training kann die Effizienz Ihres angepassten Akustikmodells verbessern.
 
-Use lightly supervised training to train a custom acoustic model with a custom language model in the following cases:
+Verwenden Sie in den folgenden Fällen ein mäßig überwachtes Training, um ein angepasstes Akustikmodell mit einem angepassten Sprachmodell zu trainieren:
 
--   The custom language model is based on transcriptions (verbatim text) from the audio files that you added to the custom acoustic model.
+-   Das angepasste Sprachmodell basiert auf Transkriptionen (Verbatim-Text) aus den Audiodateien, die Sie zum angepassten Akustikmodell hinzugefügt haben.
 
-    Because transcriptions contain the exact contents of the audio, training with a custom language model that is based on transcriptions can produce the best results. The service can parse the contents of the transcriptions in context and extract OOV words and n-grams that can help it make the most effective use of your audio. This is especially true if your audio data is less than an hour long.
+    Da Transkriptionen den exakten Inhalt der Audiodaten enthalten, kann das Training mit einem angepassten Sprachmodell, das auf Transkriptionen basiert, die besten Ergebnisse erzielen. Der Service kann den Inhalt der Transkriptionen in ihrem Kontext analysieren und vokabularexterne Wörter sowie N-Gramme extrahieren, mit deren Hilfe er Ihre Audiodaten am effizientesten nutzen kann. Dies gilt insbesondere dann, wenn Ihre Audiodaten weniger als eine Stunde lang sind.
 
-    Transcribing the audio data is not strictly necessary. But if you have transcriptions of the audio, they can improve the quality of the custom acoustic model. Transcriptions are especially valuable if the audio contains many OOV words.
--   The custom language model is based on corpora (text files) or a list of words that are relevant to the contents of the audio files.
+    Das Transkribieren der Audiodaten ist nicht unbedingt erforderlich. Falls Sie jedoch über Transkriptionen der Audiodaten verfügen, können diese die Qualität des angepassten Akustikmodells verbessern. Transkriptionen sind besonders zweckdienlich, wenn die Audiodaten viele vokabularexterne Wörter enthalten.
+-   Das angepasste Sprachmodell basiert auf Korpora (Textdateien) oder einer Liste von Wörtern, die für den Inhalt der Audiodateien relevant sind.
 
-    If your audio contains domain-specific words that are not found in the service's base vocabulary, acoustic model customization alone does not produce those words during transcription. Language model customization is the only way to expand the service's base vocabulary. If you don't have transcriptions, train with a custom language model that includes OOV words from the same domain as your audio data. Even training with a custom language model that includes a list of the OOV words that are used in the audio can prove helpful.
+    Falls Ihre Audiodaten fachspezifische Wörter enthalten, die nicht im Grundvokabular des Service zu finden sind, werden diese Wörter während der Transkription nicht allein durch die Akustikmodellanpassung erzeugt. Das Grundvokabular des Service kann einzig durch eine Sprachmodellanpassung erweitert werden. Falls Sie keine Transkriptionen besitzen, führen Sie das Training mit einem angepassten Sprachmodell durch, das vokabularexterne Wörter aus demselben Fachgebiet wie Ihre Audiodaten enthält. Sogar ein Training mit einem angepassten Sprachmodell, das eine Liste der in den Audiodaten verwendeten vokabularexternen Wörter enthält, kann sich als hilfreich erweisen.
 
-    For example, suppose that you are creating a custom acoustic model that is based on call-center audio for a specific product. You can train the custom acoustic model with a custom language model that is based on transcriptions of related calls or that includes names of specific products that are handled by the call center.
+    Beispiel: Sie erstellen ein angepasstes Akustikmodell, das auf Audiodaten aus einem Call-Center für ein bestimmtes Produkt basiert. Sie können das angepasste Akustikmodell mit einem angepassten Sprachmodell trainieren, das auf Transkriptionen von zugehörigen Aufrufen basiert oder die Namen bestimmter Produkte enthält, die vom Call-Center betreut werden.
 
-To use a transcription or list of words, you first create a custom language model that contains this textual data. To train a custom acoustic model with a custom language model, both custom models must be based on the same version of the same base model. If a new version of the base model is made available, you must upgrade both models to the same version of the base model for training to succeed.
+Zur Verwendung einer Transkription oder einer Liste von Wörtern erstellen Sie zuerst ein angepasstes Sprachmodell, das diese Textdaten enthält. Damit ein angepasstes Akustikmodell mit einem angepassten Sprachmodell trainiert werden kann, müssen beide Modelle auf derselben Version desselben Basismodells basieren. Falls eine neue Version des Basismodells verfügbar gemacht wird, müssen Sie für beide Modelle ein Upgrade auf dieselbe Version des Basismodells durchführen, damit das Training erfolgreich verläuft.
 
-Use the optional `custom_language_model_id` query parameter of the `POST /v1/acoustic_customizations/{customization_id}/train` method to train your custom acoustic model with a custom language model. Pass the GUID of the acoustic model with the `customization_id` parameter and the GUID of the custom language model with the `custom_language_model_id` parameter. Both models must be owned by the credentials that are passed with the request.
+Verwenden Sie zum Trainieren Ihres angepassten Akustikmodells mit einem angepassten Sprachmodell den Abfrageparameter `custom_language_model_id` der Methode `POST /v1/acoustic_customizations/{customization_id}/train`. Übergeben Sie die GUID des Akustikmodells mit dem Parameter `customization_id` und die GUID des angepassten Sprachmodells mit dem Parameter `custom_language_model_id`. Beide Modelle müssen Eigentum der Berechtigungsnachweise sein, die mit der Anforderung übergeben werden.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -58,26 +58,26 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-## Using custom language and custom acoustic models during speech recognition
+## Angepasste Sprachmodelle und Akustikmodelle bei der Spracherkennung verwenden
 {: #useBothRecognize}
 
-You can specify both a custom language model and a custom acoustic model with any recognition request. If a custom language model contains OOV words from the domain of the audio that is being recognized, you can use it with a custom acoustic model during speech recognition to improve transcription accuracy.
+Bei jeder Erkennungsanforderung können Sie sowohl ein angepasstes Sprachmodell als auch ein angepasstes Akustikmodell angeben. Falls ein angepasstes Sprachmodell vokabularexterne Wörter aus dem Fachgebiet der zu erkennenden Audiodaten enthält, können Sie durch die Verwendung dieses Modells zusammen mit einem angepassten Akustikmodell während der Spracherkennung die Genauigkeit der Transkription verbessern.
 
-Using a custom language model can improve transcription accuracy regardless of whether you trained the custom acoustic model with the custom language model:
+Die Verwendung eines angepassten Sprachmodells kann die Transkriptionsgenauigkeit unabhängig davon verbessern, ob Sie das angepasste Akustikmodell mit dem angepassten Sprachmodell trainiert haben:
 
--   Using both custom language and custom acoustic models during training improves the quality of the custom acoustic model.
--   Using both types of model during speech recognition improves the quality of transcription.
+-   Die kombinierte Verwendung eines angepassten Sprachmodells und eines angepassten Akustikmodells während des Trainings verbessert die Qualität des angepassten Akustikmodells.
+-   Die Verwendung beider Modelltypen während der Spracherkennung verbessert die Qualität der Transkription.
 
-If a custom language model includes grammars, you can also use the custom language model and one of its grammars with a custom acoustic model during speech recognition.
+Falls ein angepasstes Sprachmodell Grammatiken einbezieht, können Sie auch das angepasste Sprachmodell und eine seiner Grammatiken während der Spracherkennung zusammen mit einem angepassten Akustikmodell verwenden.
 
-The following example passes both types of model to the HTTP `POST /v1/recognize` method. Pass the GUID of the custom acoustic model with the `acoustic_customization_id` parameter and the GUID of the custom language model with the `language_customization_id` parameter. Both models must be owned by the credentials that are passed with the request, and both must be based on the same base model (for example, `en-US_BroadbandModel`).
+Im folgenden Beispiel werden beide Modelltypen an die HTTP-Methode `POST /v1/recognize` übergeben. Übergeben Sie die GUID des angepassten Akustikmodells mit dem Parameter `acoustic_customization_id` und die GUID des angepassten Sprachmodells mit dem Parameter `language_customization_id`. Beide Modelle müssen Eigentum der mit der Anforderung übergebenen Berechtigungsnachweise sein und auf demselben Basismodell basieren (z. B. `en-US_BroadbandModel`).
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @audio-file1.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?acoustic_customization_id={customization_id}&language_customization_id={customization_id}"
+"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?acoustic_customization_id={customization_id}&language_customization_id={anpassungs-id}"
 ```
 {: pre}
 
-For an asynchronous HTTP request, you specify the parameters when you create the asynchronous job. For WebSockets, you pass the parameters when you establish the connection.
+Bei einer asynchronen HTTP-Anforderung geben Sie die Parameter an, wenn Sie den asynchronen Job erstellen. Bei WebSocket-Anforderungen übergeben Sie die Parameter, wenn Sie die Verbindung herstellen.

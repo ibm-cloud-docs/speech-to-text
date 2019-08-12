@@ -22,35 +22,35 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Working with audio resources
+# Mit Audioressourcen arbeiten
 {: #audioResources}
 
-You can add individual audio files or archive files that contain multiple audio files to a custom acoustic model. The recommended means of adding audio resources is by adding archive files. Creating and adding a single archive file is considerably more efficient than adding multiple audio files individually. You can also submit requests to add multiple different audio resources at the same time.
+Sie können einzelne Audiodateien oder Archivdateien, die mehrere Audiodateien enthalten, zu einem angepassten Akustikmodell hinzufügen. Das Hinzufügen von Archivdateien ist das empfohlene Verfahren zum Hinzufügen von Audioressourcen. Es ist wesentlich effizienter, eine einzige Archivdatei zu erstellen und hinzuzufügen, als mehrere Audiodateien nacheinander separat hinzuzufügen. Sie können auch Anforderungen übergeben, um mehrere verschiedene Audioressourcen gleichzeitig hinzuzufügen.
 {: shortdesc}
 
-## Adding an audio resource
+## Audioressource hinzufügen
 {: #addAudioResource}
 
-You use the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to add either type of audio resource to a custom acoustic model. You pass the audio resource as the body of the request and include the following parameters:
+Zum Hinzufügen einer Audioressource beliebigen Typs zu einem angepassten Akustikmodell verwenden Sie die Methode `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`. Hierbei übergeben Sie die Audioressource als Hauptteil der Anforderung und beziehen die folgenden Parameter ein:
 
--   The `customization_id` path parameter to specify the customization ID of the model.
--   The `audio_name` path parameter to specify a name for the audio resource.
-    -   Use a localized name that matches the language of the custom model and reflects the contents of the resource.
-    -   Include a maximum of 128 characters in the name.
-    -   Do not use characters that need to be URL-encoded. For example, do not use spaces, slashes, backslashes, colons, ampersands, double quotes, plus signs, equals signs, questions marks, and so on in the name. (The service does not prevent the use of these characters. But because they must be URL-encoded wherever used, their use is strongly discouraged.)
-    -   Do not use the name of an audio resource that has already been added to the custom model.
+-   `customization_id`: Dieser Pfadparameter gibt die Anpassungs-ID des Modells an.
+-   `audio_name`: Dieser Pfadparameter gibt einen Namen für die Audioressource an.
+    -   Verwenden Sie einen übersetzten Namen in der Sprache des angepassten Modells, der den Inhalt der Ressource wiedergibt.
+    -   Geben Sie einen Namen mit einer maximalen Länge von 128 Zeichen an.
+    -   Verwenden Sie keine Zeichen, die URL-codiert sein müssen. Verwenden Sie beispielsweise keine Leerzeichen, Schrägstriche, umgekehrte Schrägstriche, Doppelpunkte, Et-Zeichen, doppelte Anführungszeichen, Pluszeichen, Gleichheitszeichen, Fragezeichen usw. im Namen. (Der Service verhindert die Verwendung dieser Zeichen nicht. Da sie jedoch immer URL-codiert sein müssen, wird von ihrer Verwendung unbedingt abgeraten.)
+    -   Verwenden Sie nicht den Namen einer Audioressource, die bereits zum angepassten Modell hinzugefügt wurde.
 
-When you update a model's audio resources, you must train the model for the changes to take effect during transcription. For more information, see [Train the custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic#trainModel-acoustic).
+Nachdem Sie die Audioressourcen eines Modells aktualisiert haben, müssen Sie das Modell trainieren, damit die Änderungen bei der Transkription wirksam werden. Weitere Informationen finden Sie unter [Angepasstes Akustikmodell trainieren](/docs/services/speech-to-text?topic=speech-to-text-acoustic#trainModel-acoustic).
 
-## Adding an audio file
+## Audiodatei hinzufügen
 {: #addAudioType}
 
-To add an individual audio file to a custom acoustic model, you specify the format (MIME type) of the audio with the `Content-Type` header. You can add audio with any format that is supported for use with recognition requests. Include the `rate`, `channels`, and `endianness` parameters with the specification of formats that require them. For more information about the supported audio formats, see [Audio formats](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
+Zum Hinzufügen einer einzelnen Audiodatei zu einem angepassten Akustikmodell geben Sie das Format (MIME-Typ) der Audiodaten mit dem Header `Content-Type` an. Die hinzugefügten Audiodaten können jedes beliebige Format aufweisen, das bei der Verwendung von Erkennungsanforderungen unterstützt wird. Beziehen Sie die Parameter `rate`, `channels` und `endianness` für die Spezifikation von Formaten ein, bei denen diese Parameter erforderlich sind. Weitere Informationen zu den unterstützten Audioformaten finden Sie im Abschnitt [Audioformate](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
 
-The `application/octet-stream` specification for an audio format is not supported for audio resources.
+Die Spezifikation `application/octet-stream` für ein Audioformat wird bei Audioressourcen nicht unterstützt.
 {: note}
 
-The following example from [Add audio to the custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio) adds an `audio/wav` file:
+Das folgende Beispiel aus dem Abschnitt [Audiodaten zum angepassten Akustikmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio) fügt eine Datei mit dem Format `audio/wav` hinzu:
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -60,25 +60,25 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-## Adding an archive file
+## Archivdatei hinzufügen
 {: #addArchiveType}
 
-The preferred means of adding audio to a custom acoustic model is to add an archive file that includes multiple audio files. You can add the following types of archive files by specifying the type of the archive with the `Content-Type` request header:
+Das bevorzugte Verfahren zum Hinzufügen von Audiodaten zu einem angepassten Akustikmodell ist die Verwendung einer Archivdatei, die mehrere Audiodateien enthält. Sie können die folgenden Typen von Archivdateien hinzufügen, indem Sie den Typ des Archivs mit dem Header `Content-Type` angeben:
 
--   A **.zip** file by specifying `application/zip`
--   A **.tar.gz** file by specifying `application/gzip`
+-   Zum Hinzufügen einer Datei **.zip** geben Sie `application/zip` an.
+-   Zum Hinzufügen einer Datei **.tar.gz** geben Sie `application/gzip` an.
 
-You might also need to specify the `Contained-Content-Type` header depending on the format of the files that you are adding:
+Abhängig vom Format der Dateien, die Sie hinzufügen, müssen Sie unter Umständen auch den Header `Contained-Content-Type` angeben:
 
--   For audio files of type `audio/alaw`, `audio/basic`, `audio/l16`, or `audio/mulaw`, you must use the `Contained-Content-Type` header to specify the format of the audio files. Include the `rate`, `channels`, and `endianness` parameters where necessary. In this case, all audio files contained in the archive file must have the same audio format.
--   For audio files of all other types, you can omit the `Contained-Content-Type` header. In this case, the audio files contained in the archive file can have any of the formats not listed in the previous bullet. They do not need to have the same format.
+-   Bei Audiodateien des Typs `audio/alaw`, `audio/basic`, `audio/l16` oder `audio/mulaw` müssen Sie mit dem Header `Contained-Content-Type` das Format der Audiodateien angeben. Beziehen Sie bei Bedarf auch die Parameter `rate`, `channels` und `endianness` ein. In diesem Fall müssen alle Audiodateien, die in der Archivdatei enthalten sind, dasselbe Audioformat besitzen.
+-   Bei Audiodateien aller anderen Typen können Sie den Header `Contained-Content-Type` weglassen. In diesem Fall können die in der Archivdatei enthaltenen Audiodaten jedes Format aufweisen, das nicht unter dem vorherigen Listenpunkt angegeben ist. Sie müssen nicht zwangsläufig dasselbe Format besitzen.
 
-Do not use the `Contained-Content-Type` header when adding an audio-type resource.
+Verwenden Sie den Header `Contained-Content-Type` nicht, wenn Sie eine Audiodateiressource hinzufügen.
 {: note}
 
-The name of an audio file that is contained in an archive-type resource can include a maximum of 128 characters. This includes the file extension and all elements of the name (for example, slashes).
+Der Name einer Audiodatei, die in einer Archivressource enthalten ist, kann maximal 128 Zeichen umfasse. Dazu zählen die Dateierweiterung und alle Elemente des Namens (z. B. Schrägstriche).
 
-The following example from [Add audio to the custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio) adds an `application/zip` file that contains audio files in `audio/l16` format that are sampled at 16 kHz:
+Das folgende Beispiel aus dem Abschnitt [Audiodaten zum angepassten Akustikmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio) fügt eine Datei mit dem Format `application/zip` hinzu, die mit 16 kHz abgetastete Audiodateien im Format `audio/l16` enthält:
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -89,30 +89,30 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-## Guidelines for adding audio resources
+## Richtlinien für das Hinzufügen von Audioressourcen
 {: #audioGuidelines}
 
-The improvement in recognition accuracy that you can expect from using a custom acoustic model depends on a number of factors. These factors include how much audio data the custom acoustic model contains and how similar that data is to the audio that is being transcribed. The improvement also depends on whether the custom acoustic model is trained with a corresponding custom language model.
+Welche Verbesserung bei der Erkennungsgenauigkeit Sie von der Verwendung eines angepassten Akustikmodells erwarten können, hängt von einer Reihe von Faktoren ab. In diesem Zusammenhang ist beispielsweise von Bedeutung, wie viele Audiodaten im angepassten Akustikmodell enthalten sind und wie ähnlich diese Daten den zu transkribierenden Audiodaten sind. Die Verbesserung ist außerdem davon abhängig, ob das angepasste Akustikmodell mit einem entsprechenden angepassten Sprachmodell trainiert wurde.
 
-Follow these guidelines when you add audio resources to a custom acoustic model:
+Befolgen Sie beim Hinzufügen von Audioressourcen zu einem angepasten Akustikmodell die folgenden Richtlinien:
 
--   Add at least 10 minutes and no more than 200 hours of audio to a custom acoustic model. The audio must include speech, not silence.
+-   Fügen Sie zu einem angepassten Akustikmodell Audiodaten mit einer Länge von mindestens 10 Minuten und höchstens 200 Stunden hinzu. Die Audiodaten müssen Sprache enthalten, nicht Schweigen.
 
-    The quality of the audio makes a difference when you are determining how much to add. The better the model's audio reflects the characteristics of the audio that is to be recognized, the better the quality of the custom model for speech recognition. If the audio is of good quality, adding more can improve transcription accuracy. But adding even five to ten hours of good quality audio can make a positive difference.
--   Add audio resources that are no larger than 100 MB. All audio- and archive-type resources are limited to a maximum size of 100 MB.
+    Bei der Festlegung, wie viele Audiodaten Sie hinzufügen wollen, ist auch die Qualität der Audiodaten von Bedeutung. Je besser die Audiodaten des Modells die Merkmale der zu erkennenden Audiodaten widerspiegeln, desto besser ist die Qualität des angepassten Modells für die Spracherkennung. Falls die Audiodaten eine gute Qualität besitzen, kann die Transkriptionsgenauigkeit von weiteren Daten verbessert werden. Aber auch das Hinzufügen von fünf bis zehn Stunden Audiodaten mit guter Qualität kann einen positiven Unterschied ausmachen.
+-   Fügen Sie Audioressourcen hinzu, die nicht größer als 100 MB sind. Alle Audio- und Archivressourcen sind auf eine maximale Größe von 100 MB begrenzt.
 
-    To maximize the amount of audio that you can add with a single resource, consider using an audio format that offers compression. For more information, see [Data limits and compression](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#limits).
--   Divide large audio files into multiple smaller files. Make sure to split the audio between words, at points of silence.
+    Um möglichst umfangreiche Audiodaten zu einer einzigen Ressource hinzuzufügen, kann die Verwendung eines Audioformats sinnvoll sein, das eine Komprimierung bietet. Weitere Informationen enthält der Abschnitt [Datengrenzwerte und Komprimierung](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#limits).
+-   Unterteilen Sie große Audiodateien in mehrere kleinere Dateien. Stellen Sie sicher, dass Sie die Dateien zwischen Wörtern in Sprechpausen trennen.
 
-    Because you can submit multiple simultaneous requests to add different audio resources, you can add smaller files concurrently. This parallel approach to adding audio resources can accelerate the service's analysis of your audio.
--   Add audio content that reflects the acoustic channel conditions of the audio that you plan to transcribe. For example, if your application deals with audio that has background noise from a moving vehicle, use the same type of data to build the custom model.
--   Make sure that the sampling rate of an audio file matches the sampling rate of the base model for the custom acoustic model:
-    -   For broadband models, the sampling rate must be at least 16 kHz (16,000 samples per second).
-    -   For narrowband models, the sampling rate must be at least 8 kHz (8000 samples per second).
+    Da Sie mehrere simultane Anforderungen zum Hinzufügen verschiedener Audioressourcen übergeben können, können Sie kleinere Dateien gleichzeitig hinzufügen. Dieser parallele Ansatz zum Hinzufügen von Audioressourcen kann die Analyse Ihrer Audiodaten durch den Service beschleunigen.
+-   Fügen Sie Audioinhalt hinzu, der die akustischen Kanalbedingungen der Audiodaten widerspiegelt, die Sie transkribieren wollen. Falls Ihre Anwendung beispielsweise Audiodaten mit Hintergrundgeräuschen eines fahrenden Fahrzeugs verarbeitet, verwenden Sie denselben Typ von Daten, um das angepasste Modell zu erstellen.
+-   Stellen Sie sicher, dass die Abtastfrequenz einer Audiodatei mit der Abtastfrequenz des Basismodells für das angepasste Akustikmodell übereinstimmt:
+    -   Bei Breitbandmodellen muss die Abtastfrequenz mindestens 16 kHz (= 16.000 Abtastungen pro Sekunde) betragen.
+    -   Bei Schmalbandmodellen muss die Abtastfrequenz mindestens 8 kHz (= 8.000 Abtastungen pro Sekunde) betragen.
 
-    If the sampling rate of the audio is higher than the minimum required sampling rate, the service downsamples the audio to the appropriate rate. If the sampling rate of the audio is lower than the minimum required rate, the service labels the audio file as `invalid`. If any audio file that is contained in an archive file is invalid, the service considers the entire archive invalid.
--   Create a custom language model to use with your custom acoustic model in the following cases:
-    -   If your audio is less than an hour long, create a custom language model based on transcriptions of the audio to achieve the best results.
-    -   If your audio is domain-specific and contains unique words that are not found in the service's base vocabulary, use language model customization to expand the service's base vocabulary. Acoustic model customization alone cannot produce those words during transcription.
+    Falls die Abtastfrequenz der Audiodaten höher als die mindestens erforderliche Abtastfrequenz ist, setzt der Service die Audiodaten auf die entsprechende Frequenz herunter. Liegt die Abtastfrequenz der Audiodaten unter der erforderlichen Mindestfrequenz, kennzeichnet der Service die Audiodatei mit `invalid` als ungültig. Falls eine Archivdatei eine ungültige Audiodatei enthält, betrachtet der Service das gesamte Archiv als ungültig.
+-   Erstellen Sie in den folgenden Fällen ein angepasstes Sprachmodell zur Verwendung mit Ihrem angepassten Akustikmodell:
+    -   Falls Ihre Audiodaten kürzer als eine Stunde sind, erstellen Sie ein angepasstes Sprachmodell, das auf den Transkriptionen der Audiodaten basiert, um die bestmöglichen Ergebnisse zu erzielen.
+    -   Falls es sich um fachspezifische Audiodaten mit speziellen Wörtern handelt, die nicht im Grundvokabular des Service enthalten sind, verwenden Sie die Sprachmodellanpassung, um das Grundvokabular des Service zu erweitern. Durch eine bloße Akustikmodellanpassung können solche Wörter während der Transkription nicht erzeugt werden.
 
-    For more information, see [Using custom acoustic and custom language models together](/docs/services/speech-to-text?topic=speech-to-text-useBoth).
+    Weitere Informationen finden Sie unter [Angepasste Akustikmodelle und angepasste Sprachmodelle kombiniert verwenden](/docs/services/speech-to-text?topic=speech-to-text-useBoth).

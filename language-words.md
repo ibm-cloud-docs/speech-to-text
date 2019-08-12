@@ -22,50 +22,50 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Managing custom words
+# Angepasste Wörter verwalten
 {: #manageWords}
 
-The customization interface includes the `POST /v1/customizations/{customization_id}/words` and `PUT /v1/customizations/{customization_id}/words/{word_name}` methods, which are used to add or modify words for a custom model. For more information, see [Add words to the custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addWords). The interface also includes the following methods for listing and deleting words for a custom language model.
+Die Anpassungsschnittstelle enthält die Methoden `POST /v1/customizations/{customization_id}/words` und `PUT /v1/customizations/{customization_id}/words/{word_name}` zum Hinzufügen bzw. Ändern von Wörtern für ein angepasstes Modell. Weitere Informationen finden Sie im Abschnitt [Wörter zum angepassten Sprachmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addWords). Die Schnittstelle enthält außerdem die folgenden Methoden zum Auflisten bzw. Löschen von Wörtern für ein angepasstes Sprachmodell.
 {: shortdesc}
 
-You are likely to add most custom words from corpora. Make sure that you know the character encoding that is used in the text files for your corpora. The service preserves the encoding that it finds in the text files. You must use that encoding when working with the individual words in the custom language model. When you specify a word with the `GET`, `PUT`, or `DELETE /v1/customizations/{customization_id}/words/{word_name}` method, you must URL-encode the `word_name` that you pass in the URL if the word includes non-ASCII characters. For more information, see [Character encoding](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#charEncoding).
+Angepasste Wörter werden häufig aus Kopora hinzugefügt. Stellen Sie sicher, dass Sie die Zeichencodierung kennen, die in den Textdateien für Ihre Korpora verwendet wird. Der Service behält die in den Textdateien verwendete Codierung bei. Beim Arbeiten mit den einzelnen Wörtern im angepassten Sprachmodell müssen Sie diese Codierung verwenden. Wenn Sie in der Methode `GET`, `PUT` oder `DELETE /v1/customizations/{customization_id}/words/{word_name}` ein Wort angeben, muss das Element `word_name`, das Sie in der URL übergeben, URL-codiert sein, wenn das Wort Nicht-ASCII-Zeichen enthält. Weitere Informationen finden Sie im Abschnitt [Zeichencodierung](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#charEncoding).
 {: important}
 
-## Listing words from a custom language model
+## Wörter aus angepasstem Sprachmodell auflisten
 {: #listWords}
 
-The customization interface offers two methods for listing words from a custom language model:
+Die Anpassungsschnittstelle stellt die beiden folgenden Methoden zum Auflisten von Wörtern aus einem angepassten Sprachmodell zur Verfügung:
 
--   The `GET /v1/customizations/{customization_id}/words` method lists information about the words from the custom model's words resource. The method includes two optional query parameters:
-    -   The `word_type` parameter specifies which words are to be listed:
+-   Die Methode `GET /v1/customizations/{customization_id}/words` listet Informationen zu den Wörtern aus der Wörterressource des angepassten Modells auf. Die Methode enthält zwei optionale Abfrageparameter.
+    -   Der Parameter `word_type` gibt an, welche Wörter aufgelistet werden sollen:
 
-        -   `all` (the default) shows all words.
-        -   `user` shows only custom words that were added or modified by the user.
-        -   `corpora` shows only OOV words that were extracted from corpora.
-        -   `grammars` shows only OOV words that were extracted from grammars.
-    -   The `sort` parameter indicates how the words are to be ordered. The parameter accepts two arguments to indicate how the words are to be sorted: `alphabetical` and `count`. You can add an optional `+` or `-` to the front of an argument to indicate whether the results are to be sorted in ascending or descending order. By default, the method displays the words in ascending alphabetical order.
--   The `GET /v1/customizations/{customization_id}/words/{word_name}` method lists information about a single specified word from the model's words resource.
+        -   `all` (Standardwert) zeigt alle Wörter an.
+        -   `user` zeigt nur angepasste Wörter an, die vom Benutzer hinzugefügt oder geändert wurden.
+        -   `corpora` zeigt nur OOV-Wörter an, die aus Korpora extrahiert wurden.
+        -   `grammars` zeigt nur OOV-Wörter an, die aus Grammatiken extrahiert wurden.
+    -   Der Parameter `sort` gibt an, in welcher Reihenfolge die Wörter aufgelistet werden. Der Parameter akzeptiert zwei Argumente, die die Sortierung der Wörter angeben: `alphabetical` und `count`. Sie können einem Argument optional das Zeichen `+` oder `-` voranstellen, um anzugeben, ob die Ergebnisse in auf- oder absteigender Reihenfolge sortiert werden sollen. Standardmäßig werden die Wörter von der Methode in aufsteigender alphabetischer Reihenfolge angezeigt.
+-   Die Methode `GET /v1/customizations/{customization_id}/words/{word_name}` listet Informationen zu einem einzelnen angegebenen Wort aus der Wörterressource des Modells auf.
 
-In addition to a `word` field that identifies the word, both methods return the following information about each word:
+Außer dem Feld `word`, in dem das Wort angegeben wird, geben beide Methoden die folgenden Informationen zu jedem Wort zurück:
 
--   A `sounds_like` field that presents an array of pronunciations for the word. The array can include the sounds-like pronunciation that is automatically generated by the service if no sounds-like value is provided for the word. For more information, see [Using the sounds_like field](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#soundsLike).
--   A `display_as` field that shows the spelling of the custom word that the service displays in transcriptions. The field contains an empty string if no display-as value is provided for the word, in which case the word is displayed as it is spelled. For more information, see [Using the display_as field](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#displayAs).
--   A `source` field that indicates how the word was added to the custom model's words resource. The field includes the name of each corpus and grammar from which the service extracted the word. If you modified or added the word directly, the field includes the string `user`.
--   A `count` field that indicates the number of times the word is found across all corpora and grammars. For example, if the word occurs five times in one corpus and seven times in another, its count is `12`.
+-   Ein Feld `sounds_like` mit einem Array von Aussprachevarianten für das Wort. Das Array kann die gleich klingende Aussprachevariante enthalten, die vom Service automatisch generiert wird, wenn für das Wort kein Wert im Feld 'sounds_like' angegeben ist. Weitere Informationen finden Sie im Abschnitt [Das Feld 'sounds_like' verwenden](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#soundsLike).
+-   Ein Feld `display_as`, in dem die Schreibweise des angepassten Worts angegeben wird, die vom Service in Transkriptionen angezeigt wird. Das Feld enthält eine leere Zeichenfolge, wenn für das Wort kein Wert für 'display_as' angegeben ist. In diesem Fall wird das Wort in der dazugehörigen Schreibweise angezeigt. Weitere Informationen finden Sie im Abschnitt [Das Feld 'display_as' verwenden](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#displayAs).
+-   Ein Feld `source`, das angibt, wie das Wort zur Wörterressource des angepassten Modells hinzugefügt wurde. Das Feld enthält die Namen aller Korpora und Grammatiken, aus denen das Wort vom Service extrahiert wurde. Wenn das Wort von Ihnen direkt geändert oder hinzugefügt wurde, enthält das Feld die Zeichenfolge `user`.
+-   Ein Feld `count`, das angibt, wie oft das Wort in allen Korpora und Grammatiken gefunden wurde. Wenn das Wort beispielsweise fünf Mal in einem Korpus vorkommt und sieben Mal in einem anderen Korpus, wird der Zählerwert `12` angegeben.
 
-    If you add a custom word to a model before it is added by any corpora or grammars, the count begins at `1`. If the word is added from a corpus or grammar first and later modified, the count reflects only the number of times it is found in corpora and grammars.
+    Wenn Sie ein angepasstes Wort zu einem Modell hinzufügen, bevor es aus einem Korpus oder einer Grammatik hinzugefügt wird, beginnt der Zähler mit dem Wert `1`. Wird das Wort zuerst aus einem Korpus oder einer Grammatik hinzugefügt und später geändert, gibt der Zähler nur die Vorkommen des Wortes in Korpora und Grammatiken an.
 
-    For custom models that were created before the introduction of the `count` field, the field always remains at `0`. To update the field for such models, add the model's corpora and grammars again and include the `allow_overwrite` parameter with the request.
+    Bei angepassten Modellen, die vor der Einführung des Felds `count` erstellt wurden, behält das Feld immer den Wert `0` bei. Um den Zählerwert für solche Modelle zu aktualisieren, fügen Sie die Korpora und Grammatiken des Modells erneut hinzu und geben Sie dabei in der Anforderung den Parameter `allow_overwrite` an.
     {: note}
 
-If the service discovers one or more problems with a custom word's definition, the output includes an `error` field. The field provides an array that lists each problem element from the definition and a message that describes the problem.
+Wenn der Service mindestens ein Problem für die Definition eines angepassten Worts feststellt, enthält die Ausgabe ein Feld `error`. Dieses Feld enthält ein Array mit einer Auflistung der einzelnen Problemelemente aus der Definition und eine Nachricht mit einer Beschreibung des Problems.
 
-An error can occur, for example, if you add a custom word with an invalid `sounds_like` field, one that violates one of the rules for adding a pronunciation. You cannot train a custom model whose words resource includes a word with an error. You must correct or delete the word before you can train the model.
+Ein Fehler kann beispielsweise auftreten, wenn Sie ein angepasstes Wort mit einem ungültigen Feld `sounds_like` hinzufügen, das gegen die Regeln zum Hinzufügen von Aussprachevarianten verstößt. Ein angepasstes Modell, das ein fehlerhaftes Wort enthält, kann nicht trainiert werden. Sie müssen das Wort korrigieren oder löschen, bevor Sie das Modell trainieren können.
 
-### Example requests and responses
+### Beispiele für Anforderungen und Antworten
 {: #listExample-words}
 
-The following example lists all of the words, regardless of type, from the custom model with the specified customization ID. The words are displayed in the default sort order, ascending alphabetical.
+Im folgenden Beispiel werden alle Wörter (unabhängig vom Typ) aus dem angepassten Modell mit der angegebenen Anpassungs-ID aufgelistet. Die Wörter werden in der Standardsortierreihenfolge (alphabetisch und aufsteigend) angezeigt.
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -73,7 +73,7 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: pre}
 
-The words resource for the model contains four words. The first word was added directly by the user, but its `sounds_like` field contains an error: The field cannot contain numbers. The other words were added by the user or by both the user and from corpora.
+Die Wörterressource für das Modell enthält vier Wörter. Das erste Wort wurde vom Benutzer direkt hinzugefügt, aber das zugehörige Feld `sounds_like` enthält einen Fehler (das Feld darf keine Zahlen enthalten). Die übrigen Wörter wurden vom Benutzer und/oder aus Korpora hinzugefügt.
 
 ```javascript
 {
@@ -84,7 +84,7 @@ The words resource for the model contains four words. The first word was added d
       "display_as": "75.00",
       "count": 1,
       "source": ["user"],
-      "error": [{"75 dollars": "Numbers are not allowed in sounds_like. You can try for example 'seventy five dollars'."}]
+      "error": [{"75 dollars": "In 'sounds_like' sind keine Zahlen zulässig. Versuchen Sie es z. B. mit der Angabe 'seventy five dollars'."}]
     },
     {
       "word": "HHonors",
@@ -125,7 +125,7 @@ The words resource for the model contains four words. The first word was added d
 ```
 {: codeblock}
 
-The following example shows information about the word `NCAA` from the words resource of the specified model:
+Das folgende Beispiel zeigt Informationen zu dem Wort `NCAA` aus der Wörterressource des angegebenen Modells an:
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -133,7 +133,7 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: pre}
 
-The user added the word initially. The service then found the word twice in `corpus3`.
+Das Wort wurde ursprünglich vom Benutzer hinzugefügt. Später wurde das Wort vom Service zweimal aus `corpus3` extrahiert.
 
 ```javascript
 {
@@ -152,19 +152,19 @@ The user added the word initially. The service then found the word twice in `cor
 ```
 {: codeblock}
 
-## Deleting a word from a custom language model
+## Wort aus einem angepassten Sprachmodell löschen
 {: #deleteWord}
 
-Use the `DELETE /v1/customizations/{customization_id}/words/{word_name}` method to delete a word from a custom language model. Use the method to remove words that were added in error, for example, from a corpus with faulty data.
+Mit der Methode `DELETE /v1/customizations/{customization_id}/words/{word_name}` können Sie ein Wort aus einem angepassten Sprachmodell löschen. Verwenden Sie diese Methode zum Entfernen von Wörtern, die irrtümlich aus einem Korpus mit fehlerhaften Daten hinzugefügt wurden.
 
-You can remove any word that you added to the custom model's words resource via any means. However, you cannot delete a word from the service's base vocabulary. Deleting a word from a custom model deletes only the custom pronunciation for the word; the word remains in the base vocabulary.
+Sie können jedes Wort entfernen, das Sie mit einer beliebigen Methode zur Wörterressource des angepassten Modells hinzugefügt haben. Sie können jedoch keine Wörter aus dem Basisvokabular des Service löschen. Beim Löschen eines Wortes aus einem angepassten Modell wird nur die angepasste Aussprachevariante für das Wort gelöscht. Das Wort selbst bleibt im Basisvokabular erhalten.
 
-Removing a word from a custom model does not affect the model until you retrain it by using the `POST /v1/customizations/{customization_id}/train` method. If the model was previously trained on the word, the model continues to apply the word to speech recognition even after you delete the word from its words resource. You must retrain the model to reflect the deletion.
+Das Entfernen eines Wortes aus einem angepassten Modell wirkt sich erst auf das Modell aus, wenn Sie das Modell mit der Methode `POST /v1/customizations/{customization_id}/train` erneut trainieren. Wenn das Modell zuvor mit dem Wort trainiert wurde, wird das Wort weiterhin bei der Spracherkennung verwendet, auch nachdem Sie das Wort aus der Wörterressource des Modells gelöscht haben. Sie müssen das Modell erneut trainieren, damit das Löschen des Wortes berücksichtigt wird.
 
-### Example request
+### Beispielanforderung
 {: #deleteExample-word}
 
-The following example deletes the word `IEEE` from the custom model with the specified customization ID:
+Im folgenden Beispiel wird das Wort `IEEE` aus dem angepassten Modell mit der angegebenen Anpassungs-ID gelöscht:
 
 ```bash
 curl -X DELETE -u "apikey:{apikey}"

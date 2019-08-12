@@ -23,55 +23,58 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Pricing FAQs
+# Häufig gestellte Fragen zur Preisstruktur
 {: #faq-pricing}
 
-## What is the price for using the {{site.data.keyword.speechtotextshort}} Lite plan?
+## Was kostet die Verwendung des Lite-Plans für {{site.data.keyword.speechtotextshort}}?
 {: #faq-pricing-zero}
 {: faq}
 
-The Lite plan lets you get started with 500 minutes per month of speech recognition at no cost. The Lite plan does not provide access to the service's customization interfaces. For more information, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service.
+Mit dem Lite-Plan erhalten Sie als Einstieg 500 Minuten pro Monat kostenlos bei der Spracherkennung. Der Lite-Plan bietet keinen Zugriff auf die Anpassungsschnittstellen des Service. Weitere Informationen finden Sie auf der [Seite für die Preisstruktur](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} für den {{site.data.keyword.speechtotextshort}}-Service.
 
-## What is the price for using the {{site.data.keyword.speechtotextshort}} Standard plan?
+
+## Was kostet die Verwendung des Standard-Plans für {{site.data.keyword.speechtotextshort}}?
 {: #faq-pricing-one}
 {: faq}
 
-The Standard pricing plan is priced at $0.02 (USD) per minute of speech that you recognize. This price applies to use of both broadband and narrowband models. The plan uses a tiered pricing model, and it allows you to use the customization interfaces at an additional charge. For more information, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service.
+Für den Standard-Plan werden $0,02 (USD) pro Minute bei der Spracherkennung berechnet. Dieser Preis gilt für die Verwendung von Breitband- und Schmalbandmodellen. Der Plan verwendet ein gestaffeltes Preismodell und ermöglicht es Ihnen, die Anpassungsschnittstellen gegen eine zusätzliche Gebühr zu verwenden. Weitere Informationen finden Sie auf der [Seite für die Preisstruktur](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} für den {{site.data.keyword.speechtotextshort}}-Service.
 
-## What does "pricing per minute" mean?
+
+## Was bedeutet 'Preis pro Minute'?
 {: #faq-pricing-two}
 {: faq}
 
-The price is based on the amount (number of minutes) of audio that you send to the service. The price does not depend on how long the service takes to process the audio.
+Grundlage für den Preis ist der Umfang (Anzahl der Minuten) der Audiodaten, die an den Service gesendet werden, und nicht die Zeit, die der Service benötigt, um die Audiodaten zu verarbeiten.
 
-## Do you round up to the nearest minute for every call to the API?
+## Wird bei jedem Aufruf der API auf die nächste Minute aufgerundet? 
 {: #faq-pricing-three}
 {: faq}
 
-{{site.data.keyword.IBM_notm}} does not round up the length of the audio for every API call that the service receives. Instead, {{site.data.keyword.IBM_notm}} aggregates all usage for the month and rounds to the nearest minute at the end of the month. For example, if you send two audio files that are each 30 seconds long, {{site.data.keyword.IBM_notm}} sums the duration of the total audio to one minute and charges $0.02 (USD).
+{{site.data.keyword.IBM_notm}} rundet die Länge der Audiodaten für jeden vom Service empfangenen API-Aufruf nicht auf. {{site.data.keyword.IBM_notm}} summiert stattdessen die gesamte monatliche Nutzung und rundet am Monatsende auf die nächste Minute auf. Dies bedeutet beispielsweise, dass {{site.data.keyword.IBM_notm}} bei zwei gesendeten Audiodateien mit einer Länge von jeweils 30 Sekunden die Dauer der gesamten Audiodaten auf eine Minute summiert und $0,02 (USD) in Rechnung stellt.
 
-## How does volume-based Graduated Tiered Pricing work?
+## Wie funktioniert die nutzungsvolumenbasierte gestaffelte Preisgestaltung?
 {: #faq-pricing-four}
 {: faq}
 
-The tiered pricing model is intended to give high-volume users further discounts as they continue to use the service. Per-minute pricing is reduced for extra minutes of audio once certain thresholds for total monthly audio are met. For more information, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the service.
+Das Modell der gestaffelten Preisgestaltung dient dazu, Benutzern mit hohem Nutzungsvolumen bei fortlaufender Verwendung des Service Rabatte zu gewähren. Sobald bestimmte Schwellenwerte für die monatliche Summe der Audiodaten erreicht werden, wird der minutengenaue Preistarif für weitere Minuten von Audiodaten reduziert. Weitere Informationen finden Sie auf der [Seite für die Preisstruktur](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} für den Service.
 
-## For tiered pricing, what would my total charge be if I used the service to transcribe, for example, 275 thousand audio minutes in one month?
+## Wie hoch ist bei der gestaffelten Preisgestaltung meine Gesamtgebühr, wenn ich beispielsweise 275.000 Minuten Audiodaten in einem Monat durch den Service transkribieren lasse?
 {: #faq-pricing-five}
 {: faq}
 
-For the first 250 thousand minutes of audio, you would be charged at $0.02 (USD) / minute: 250,000 \* $0.02 = $5000.00 (USD). For the remaining 25 thousand minutes of audio, you would be charged at the reduced rate of $0.015 (USD) / minute: 25,000 \* $0.015 = $375.00 (USD). In this case, your total charge for the month would be $5375.00 (USD).
+Für die ersten 250.000 Minuten Audiodaten werden Ihnen in diesem Fall $0,02 (USD) pro Minute berechnet, also 250.000 \* $0,02 = $5000,00 (USD). Für die restlichen 25.000 Minuten Audiodaten wird Ihnen der reduzierte Tarif von $0,015 (USD) pro Minute in Rechnung gestellt, also 25.000 \* $0,015 = $375,00 (USD). Die Gesamtgebühr für den Monat läge in diesem Fall bei $5375,00 (USD).
 
-## What pricing plan do I need to use the service's customization interface?
+## Welchen Preisplan benötige ich, um die Anpassungsschnittstelle des Service zu verwenden?
 {: #faq-pricing-six}
 {: faq}
 
-You must have the Standard pricing plan to use language model or acoustic model customization. Users of the Lite plan cannot use the customization interface. For more information, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service.
+Um das Sprachmodell oder die akustische Modellanpassung verwenden zu können, müssen Sie über den Standard-Preistarif verfügen. Benutzer des Lite-Plans können die Anpassungsschnittstelle nicht verwenden. Weitere Informationen finden Sie auf der [Seite für die Preisstruktur](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} für den {{site.data.keyword.speechtotextshort}}-Service.
 
-## What is the price for using the service's customization interface?
+
+## Was kostet die Nutzung der Anpassungsschnittstelle des Service?
 {: #faq-pricing-seven}
 {: faq}
 
-For *language model customization*, {{site.data.keyword.IBM_notm}} does not charge for creating or hosting a custom language model, only for using the model with a recognition request. Using a custom language model for transcription incurs an add-on charge of $0.03 (USD) per minute. This charge is in addition to the standard usage charge of $0.02 (USD) per minute. It applies to all languages supported by the customization interface. So the total charge for using a custom language model for speech recognition is $0.05 (USD) per minute.
+Bei der *Sprachmodellanpassung* berechnet {{site.data.keyword.IBM_notm}} keine Gebühren für die Erstellung oder das Hosting eines angepassten Sprachmodells, sondern lediglich für die Verwendung des Modells bei einer Erkennungsanforderung. Für die Nutzung eines angepassten Sprachmodells für die Transkription fällt eine zusätzliche Gebühr in Höhe von $0,03 (USD) pro Minute an. Diese Gebühr wird zusätzlich zur Standardnutzungsgebühr von $0,02 (USD) pro Minute in Rechnung gestellt. Sie gilt für alle von der Anpassungsschnittstelle unterstützten Sprachen. Die Gesamtgebühr für die Verwendung eines angepassten Sprachmodells bei der Spracherkennung beträgt somit $0,05 (USD) pro Minute.
 
-For *acoustic model customization*, which is a beta interface for all supported languages, {{site.data.keyword.IBM_notm}} does not charge for creating, hosting, or recognizing speech with a custom acoustic model. Free use of custom acoustic models for recognition requests is subject to change in the future.
+Bei der *Akustikmodellanpassung*, die für alle unterstützten Sprachen als Betaschnittstelle verfügbar ist, berechnet {{site.data.keyword.IBM_notm}} keine Gebühren für die Erstellung, das Hosting oder die Spracherkennung mit einem angepassten Akustikmodell. Änderungen an der kostenlosen Nutzung von angepassten Akustikmodellen für Erkennungsanforderungen bleiben in der Zukunft vorbehalten.

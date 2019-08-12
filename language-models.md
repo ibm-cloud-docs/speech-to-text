@@ -22,53 +22,53 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Managing custom language models
+# Angepasste Sprachmodelle verwalten
 {: #manageLanguageModels}
 
-The customization interface includes the `POST /v1/customizations` method for creating a custom language model. The interface also includes the `POST /v1/customizations/train` method for training a custom model on the latest data from its words resource. For more information, see
+Die Anpassungsschnittstelle enthält die Methode `POST /v1/customizations` zum Erstellen eines angepassten Sprachmodells. Außerdem enthält die Schnittstelle die Methode `POST /v1/customizations/train` zum Trainieren eines angepassten Modells mit den aktuellen Daten der zugehörigen Wörterressource. Weitere Informationen finden Sie in den folgenden Abschnitten:
 {: shortdesc}
 
--   [Create a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language)
--   [Train the custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language)
+-   [Angepasstes Sprachmodell erstellen](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language)
+-   [Angepasstes Sprachmodell trainieren](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language)
 
-In addition, the interface includes methods for listing information about custom language models, resetting a custom model to its initial state, upgrading a custom model, and deleting a custom model. You cannot train, reset, upgrade, or delete a custom model while the service is handling another operation on that model, including adding resources to the model.
+Zusätzlich bietet die Schnittstelle Methoden, mit denen Sie Informationen zu angepassten Sprachmodellen auflisten, ein angepasstes Modell auf seinen Anfangsstatus zurücksetzen, ein Upgrade für ein angepasstes Modell durchführen und ein angepasstes Modell löschen können. Es ist nicht möglich, ein angepasstes Modell zu trainieren, zurückzusetzen, zu aktualisieren oder zu löschen, während der Service eine andere Operation für dieses Modell ausführt, einschließlich des Hinzufügens von Ressourcen zum Modell.
 
-## Listing custom language models
+## Angepasste Sprachmodelle auflisten
 {: #listModels-language}
 
-The customization interface provides two methods for listing information about the custom language models that are owned by the specified credentials:
+Die Anpassungsschnittstelle bietet zwei Methoden zum Auflisten von Informationen zu den angepassten Sprachmodellen, deren Eigner die angegebenen Berechtigungsnachweise sind:
 
--   The `GET /v1/customizations` method lists information about all custom language models or about all custom language models for a specified language.
--   The `GET /v1/customizations/{customization_id}` method lists information about a specified custom language model. Use this method to poll the service about the status of a training request or a request to add new words.
+-   Die Methode `GET /v1/customizations` listet Informationen zu allen angepassten Sprachmodellen oder zu allen angepassten Sprachmodellen für eine angegebene Sprache auf.
+-   Die Methode `GET /v1/customizations/{customization_id}` listet Informationen zu einem angegebenen angepassten Sprachmodell auf. Verwenden Sie diese Methode, um im Service den Status einer Trainingsanforderung oder einer Anforderung zum Hinzufügen neuer Wörter abzufragen.
 
-Both methods return the following information about a custom model:
+Beide Methoden geben die folgenden Informationen zu einem angepassten Modell zurück:
 
--   `customization_id` identifies the custom model's Globally Unique Identifier (GUID). The GUID is used to identify the model in methods of the interface.
--   `created` is the date and time in Coordinated Universal Time (UTC) at which the custom model was created.
--   `updated` is the date and time in Coordinated Universal Time (UTC) at which the custom model was last modified.
--   `language` is the language of the custom model.
--   `dialect` is the dialect of the language for the custom model, which does not necessarily match the language of the custom model for Spanish models. For more information, see the description of the `dialect` parameter in [Create a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language).
--   `owner` identifies the credentials of the service instance that owns the custom model.
--   `name` is the name of the custom model.
--   `description` shows the description of the custom model, if one was provided at its creation.
--   `base_model` indicates the name of the language model for which the custom model was created.
--   `versions` provides a list of the available versions of the custom model. Each element of the array indicates a version of the base model with which the custom model can be used. Multiple versions exist only if the custom model is upgraded. Otherwise, only a single version is shown. For more information, see [Listing version information for a custom model](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade#upgradeList).
+-   `customization_id` gibt die GUID (Globally Unique Identifier) des angepassten Modells zurück. Die GUID dient zum Identifizieren des Modells in den Methoden der Schnittstelle.
+-   `created` ist der Zeitpunkt (Datum und Uhrzeit) in koordinierter Weltzeit (Coordinated Universal Time, UTC), an dem das angepasste Modell erstellt wurde.
+-   `updated`: Gibt das Datum und die Uhrzeit der letzten Änderung des angepassten Modells in koordinierter Weltzeit (UTC) an.
+-   `language` ist die Sprache des angepassten Modells.
+-   `dialect` ist der Dialekt der Sprache für das angepasste Modell, der nicht unbedingt mit der Sprache des angepassten Modells für spanische Modelle übereinstimmen muss. Weitere Informationen finden Sie in der Beschreibung des Parameters `dialect` im Abschnitt [Angepasstes Sprachmodell erstellen](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language).
+-   `owner` gibt die Berechtigungsnachweise der Serviceinstanz an, die Eigner des angepassten Modells ist.
+-   `name` ist der Name des angepassten Modells.
+-   `description` ist eine Beschreibung des angepassten Modells, sofern beim Erstellen des Modells eine Beschreibung angegeben wurde.
+-   `base_model` gibt den Namen des Sprachmodells an, für das das angepasste Modell erstellt wurde.
+-   `versions` stellt eine Liste der verfügbaren Versionen des angepassten Modells zur Verfügung. Jedes Element in dem Array gibt eine Version des Basismodells an, mit der das angepasste Modell verwendet werden kann. Mehrere Versionen sind nur vorhanden, wenn das angepasste Modell aktualisiert wird. Andernfalls wird nur eine einzige Version angezeigt. Weitere Informationen finden Sie im Abschnitt [Versionsinformationen für ein angepasstes Modell auflisten](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade#upgradeList).
 
-The method also returns a `status` field that indicates the state of the custom model:
+Die Methode gibt außerdem ein Feld `status` zurück, das den Status des angepassten Modells angibt.
 
--   `pending` indicates that the model was created. It is waiting either for valid training data (corpora, grammars, or words) to be added or for the service to finish analyzing data that was added.
--   `ready` indicates that the model contains valid data and is ready to be trained. If the model contains a mix of valid and invalid resources, training of the model fails unless you set the `strict` query parameter to `false`. For more information, see [Training failures](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#failedTraining-language).
--   `training` indicates that the model is being trained on data.
--   `available` indicates that the model is trained and ready to use with a recognition request.
--   `upgrading` indicates that the model is being upgraded.
--   `failed` indicates that training of the model failed. Examine the words in the model's words resource to determine the errors that prevented the model from being trained.
+-   `pending` gibt an, dass das Modell erstellt wurde. Das Modell wartet darauf, dass entweder gültige Trainingsdaten (Korpora, Grammatiken oder Wörter) hinzugefügt werden, oder dass die Analyse der hinzugefügten Daten abgeschlossen wird.
+-   `ready` gibt an, dass das Modell gültige Daten enthält und für das Training bereit ist. Wenn das Modell eine Mischung aus gültigen und ungültigen Ressourcen enthält, schlägt das Training für das Modells fehl, es sei denn, Sie setzen den Abfrageparameter `strict` auf `false`. Weitere Informationen finden Sie im Abschnitt [Fehler bei Training](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#failedTraining-language).
+-   `training` gibt an, dass das Modell momentan mit Daten trainiert wird.
+-   `available` gibt an, dass das Modell trainiert wurde und nun in einer Erkennungsanforderung verwendet werden kann.
+-   `upgrading` gibt an, dass das Modell momentan aktualisiert wird.
+-   `failed` gibt an, dass das Trainieren des Modells fehlgeschlagen ist. Prüfen Sie die Wörter in der Wörterressource des Modells auf Fehler, die das Trainieren des Modells verhindern.
 
-Additionally, the output includes a `progress` field that indicates the current progress of the custom model's training. If you used the `POST /v1/customizations/{customization_id}/train` method to start training the model, this field indicates the current progress of that request as a percentage complete. At this time, the value of the field is `100` if the status is `available`; otherwise, it is `0`.
+Darüber hinaus enthält die Ausgabe ein Feld `progress`, in dem der aktuelle Fortschritt beim Trainieren des angepassten Modells angegeben wird. Wenn Sie das Training für das Modell mithilfe der Methode `POST /v1/customizations/{customization_id}/train` gestartet haben, wird in diesem Feld der aktuelle Fortschritt der zugehörigen Anforderung als Prozentwert angegeben. Bei Fertigstellung des Trainings wird im Feld der Wert `100` angegebenen, sofern der Status `available` lautet; andernfalls wird der Wert `0` angegeben.
 
-### Example requests and responses
+### Beispiele für Anforderungen und Antworten
 {: #listExample-language}
 
-The following example includes the `language` query parameter to list all US English custom language models that are owned by the specified credentials:
+Das folgende Beispiel enthält den Abfrageparameter `language`, um alle angepassten Sprachmodelle für amerikanisches Englisch aufzulisten, deren Eigner die Berechtigungsnachweise sind:
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -76,7 +76,7 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: pre}
 
-The credentials own two such models. The first model is awaiting data or is being processed by the service. The second model is fully trained and ready for use.
+Die Berechtigungsnachweise sind Eigner von zwei solchen Modellen. Das erste Modell ist für Daten empfangsbereit oder wird vom Service verarbeitet. Das zweite Modell ist vollständig trainiert und betriebsbereit.
 
 ```javascript
 {
@@ -119,7 +119,7 @@ The credentials own two such models. The first model is awaiting data or is bein
 ```
 {: codeblock}
 
-The following example returns information about the custom model that has the specified customization ID:
+Das folgende Beispiel gibt Informationen zu dem angepassten Modell zurück, das die angegebene Anpassungs-ID aufweist:
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -148,15 +148,15 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-## Resetting a custom language model
+## Angepasstes Sprachmodell zurücksetzen
 {: #resetModel-language}
 
-Use the `POST /v1/customizations/{customization_id}/reset` method to reset a custom model. Resetting a model removes all of the corpora and words from the model, initializing the model to its state at creation. The method does not delete the model itself or metadata such as its name and language. However, when you reset a model, its words resource is empty and must be re-created by adding corpora and words.
+Mit der Methode `POST /v1/customizations/{customization_id}/reset` können Sie ein angepasstes Modell zurücksetzen. Beim Zurücksetzen eines Modells werden alle Korpora und Wörter aus dem Modell entfernt, d. h. das Modell wird auf den ursprünglichen Erstellungsstatus zurückgesetzt. Die Methode löscht weder das Modell noch die zugehörigen Metadaten wie Name und Sprache. Nach dem Zurücksetzen des Modells ist die zugehörige Wörterressource leer und muss erneut erstellt werden (durch Hinzufügen von Korpora und Wörtern).
 
-### Example request
+### Beispielanforderung
 {: #resetExample-language}
 
-The following example resets the custom model with the specified customization ID:
+Im folgenden Beispiel wird das angepasste Modell mit der angegebenen Anpassungs-ID zurückgesetzt:
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -164,15 +164,15 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-## Deleting a custom language model
+## Angepasstes Sprachmodell löschen
 {: #deleteModel-language}
 
-Use the `DELETE /v1/customizations/{customization_id}` method to delete a custom language model that you no longer need. The method deletes all corpora and words that are associated with the custom model and the model itself. Use this method with caution: a custom model and its data cannot be reclaimed after you delete the model.
+Mit der Methode `DELETE /v1/customizations/{customization_id}` können Sie ein angepasstes Sprachmodell löschen, das nicht mehr benötigt wird. Diese Methode löscht alle Korpora und Wörter, die dem angepassten Modell zugeordnet sind, sowie das Modell selbst. Verwenden Sie diese Methode mit Vorsicht: Nach dem Löschen können Sie das angepasste Modell und die zugehörigen Daten nicht wiederherstellen.
 
-### Example request
+### Beispielanforderung
 {: #deleteExample-language}
 
-The following example deletes the custom model with the specified customization ID:
+Im folgenden Beispiel wird das angepasste Modell mit der angegebenen Anpassungs-ID gelöscht:
 
 ```bash
 curl -X DELETE -u "apikey:{apikey}"

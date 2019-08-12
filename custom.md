@@ -22,207 +22,207 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# The customization interface
+# Anpassungsschnittstelle
 {: #customization}
 
-The {{site.data.keyword.speechtotextfull}} service offers a customization interface that you can use to augment its speech recognition capabilities. You can use customization to improve the accuracy of speech recognition requests by customizing a base model for your domain and audio. Customization is available for only some languages and at different levels of support for different languages; see [Language support for customization](#languageSupport).
+Der {{site.data.keyword.speechtotextfull}}-Service bietet eine Anpassungsschnittstelle, mit deren Hilfe Sie die Spracherkennungsfunktionalität des Service erweitern können. Durch eine Anpassung können Sie die Genauigkeit von Spracherkennungsanforderungen verbessern, indem Sie ein Basismodell für Ihr Fachgebiet und Ihre Audiodaten anpassen. Die Anpassung ist nur bei einigen Sprachen und hier bei den verschiedenen Sprachen auf unterschiedlichen Unterstützungsstufen verfügbar; weitere Informationen finden Sie unter [Sprachunterstützung bei der Anpassung](#languageSupport).
 {: shortdesc}
 
-The customization interface supports both custom language models and custom acoustic models. The interfaces for both types of custom model are similar and straightforward to use. Using either type of custom model with a recognition request is also straightforward: You specify the customization ID of the model with the request.
+Die Anpassungsschnittstelle unterstützt sowohl angepasste Sprachmodelle als auch angepasste Akustikmodelle. Die Schnittstellen für die beiden Typen von angepassten Modellen sind ähnlich und unkompliziert zu verwenden. Auch die Verwendung der beiden Typen von angepassten Modellen bei einer Erkennungsanforderung ist einfach - Sie müssen lediglich die Anpassungs-ID des Modells zusammen mit der Anforderung angeben.
 
-Speech recognition works the same with or without a custom model. When you use a custom model for speech recognition, you can use all of the input and output parameters that are normally available with a recognition request. For more information about all available parameters, see the [Parameter summary](/docs/services/speech-to-text?topic=speech-to-text-summary).
+Die Spracherkennung funktioniert mit oder ohne angepasstes Modell identisch. Wenn Sie ein angepasstes Modell für die Spracherkennung verwenden, können Sie alle Eingabe- und Ausgabeparameter nutzen, die normalerweise bei einer Erkennungsanforderung verfügbar sind. Zusätzliche Angaben über alle verfügbaren Parameter enthält der Abschnitt [Parameterübersicht](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
-You must have the Standard pricing plan to use language model or acoustic model customization. Users of the Lite plan cannot use the customization interface. For more information, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service.
+Um das Sprachmodell oder die akustische Modellanpassung verwenden zu können, müssen Sie über den Standard-Preistarif verfügen. Benutzer des Lite-Plans können die Anpassungsschnittstelle nicht verwenden. Weitere Informationen finden Sie auf der [Seite für die Preisstruktur](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} für den {{site.data.keyword.speechtotextshort}}-Service.
 {: note}
 
-## Language model customization
+## Sprachmodellanpassung
 {: #customLanguage-intro}
 
-The service was developed with a broad, general audience in mind. The service's base vocabulary contains many words that are used in everyday conversation. Its models provide sufficiently accurate recognition for many applications. But they can lack knowledge of specific terms that are associated with particular domains.
+Der Service wurde für eine breite und allgemeine Zielgruppe entwickelt. Das Grundvokabular des Service enthält viele Wörter aus der Alltagssprache. Seine Modelle bieten für viele Anwendungen eine ausreichend genaue Erkennung. Möglicherweise kennen die Modelle jedoch spezielle Begriffe aus bestimmten Fachgebieten nicht.
 
-The *language model customization* interface can improve the accuracy of speech recognition for domains such as medicine, law, information technology, and others. By using language model customization, you can expand and tailor the vocabulary of a base model to include domain-specific terminology.
+Die Schnittstelle für die *Sprachmodellanpassung* kann die Genauigkeit der Spracherkennung bei Fachgebieten wie Medizin, Recht, Informationstechnologie usw. verbessern. Mithilfe der Sprachmodellanpassung können Sie das Vokabular eines Basismodells durch die Aufnahme von fachspezifischer Terminologie erweitern und anpassen.
 
-You create a custom language model and add corpora and words specific to your domain. Once you train the custom language model on your enhanced vocabulary, you can use it for customized speech recognition. The service can typically train any custom model in a matter of minutes. The level of effort that it takes to create a model depends on the data that you have available for the model.
+Sie erstellen ein angepasstes Sprachmodell und fügen dann spezielle Korpora und Wörter für Ihr Fachgebiet hinzu. Sobald das angepasste Sprachmodell mit Ihrem erweiterten Vokabular trainiert wurde, können Sie es für die angepasste Spracherkennung nutzen. Der Service kann normalerweise jedes angepasste Modell in nur wenigen Minuten trainieren. Wie hoch der mit der Erstellung eines Modells verbundene Aufwand ist, richtet sich nach den Daten, die für das Modell verfügbar sind.
 
-For more information, see
+Weitere Informationen finden Sie in den folgenden Abschnitten:
 
--   [Creating a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate)
--   [Using a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageUse)
+-   [Angepasstes Sprachmodell erstellen](/docs/services/speech-to-text?topic=speech-to-text-languageCreate)
+-   [Angepasstes Sprachmodell verwenden](/docs/services/speech-to-text?topic=speech-to-text-languageUse)
 
-## Acoustic model customization
+## Akustikmodellanpassung
 {: #customAcoustic-intro}
 
-Similarly, the service was developed with base acoustic models that work well for various audio characteristics. But in cases like the following, adapting a base model to suit your audio can improve speech recognition:
+Analog wurde der Service mit akustischen Basismodellen entwickelt, die bei unterschiedlichen Audiomerkmalen gut funktionieren. In Fällen wie den Folgenden können Sie jedoch die Spracherkennung verbessern, indem Sie ein Grundmodell an Ihre Audiodaten anpassen:
 
--   Your acoustic channel environment is unique. For example, the environment is noisy, microphone quality or positioning are suboptimal, or the audio suffers from far-field effects.
--   Your speakers' speech patterns are atypical. For example, a speaker talks abnormally fast or the audio includes casual conversations.
--   Your speakers' accents are pronounced. For example, the audio includes speakers who are talking in a non-native or second language.
+-   Die Umgebung Ihres akustischen Kanals ist sehr speziell. Beispiele hierfür sind eine laute Umgebung, eine suboptimale Qualität oder Positionierung des Mikrofons oder eine Beeinträchtigung des Tons durch Fernfeldeffekte.
+-   Die Sprechmuster der Redner sind atypisch. Beispiele hierfür sind ein ungewöhnlich schnell redender Sprecher oder Hintergrundgespräche in den Audiodaten.
+-   Die Redner sprechen mit Akzent. Beispiele hierfür sind Sprecher, die nicht in ihrer Muttersprache bzw. einer Fremdsprache reden.
 
-The *acoustic model customization* interface can adapt a base model to your environment and speakers. You create a custom acoustic model and add audio data (audio resources) that closely match the acoustic signature of the audio that you want to transcribe. Once you train the custom acoustic model with your audio resources, you can use it for customized speech recognition.
+Die Schnittstelle für die *Akustikmodellanpassung* kann ein Basismodell an die Umgebung und die Sprecher anpassen. Sie erstellen zunächst ein angepasstes Akustikmodell und fügen dann Audiodaten (Audioressourcen) hinzu, die den akustischen Gegebenheiten der Audiodaten, die Sie transkribieren wollen, möglichst nahe kommen. Sobald das angepasste Akustikmodell mit Ihren Audioressourcen trainiert wurde, können Sie es für die angepasste Spracherkennung nutzen.
 
-The length of time that it takes the service to train the custom model depends on how much audio data the model contains. In general, training takes twice the length of the cumulative audio. The level of effort that it takes to create a model depends on the audio data that you have available for the model. It also depends on whether you use transcriptions of the audio.
+Wie lange der Service zum Trainieren des angepassten Modells benötigt, ist vom Umfang der im Modell enthaltenen Audiodaten abhängig. Normalerweise dauert das Training doppelt so lang wie die kumulierten Audiodaten. Wie hoch der mit der Erstellung eines Modells verbundene Aufwand ist, richtet sich nach den Audiodaten, die für das Modell verfügbar sind. Er ist außerdem davon abhängig, ob Sie Transkriptionen der Audiodaten verwenden.
 
-For more information, see
+Weitere Informationen finden Sie in den folgenden Abschnitten:
 
--   [Creating a custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acoustic)
--   [Using a custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acousticUse)
+-   [Angepasstes Akustikmodell erstellen](/docs/services/speech-to-text?topic=speech-to-text-acoustic)
+-   [Angepasstes Akustikmodell verwenden](/docs/services/speech-to-text?topic=speech-to-text-acousticUse)
 
-## Grammars
+## Grammatiken
 {: #grammars-intro}
 
-Custom language models allow you to expand the service's base vocabulary. *Grammars* enable you to restrict the words that the service can recognize from that vocabulary. When you use a grammar with a custom language model for speech recognition, the service can recognize only words, phrases, and strings that are recognized by the grammar. Because the grammar defines a limited search space for valid matches, the service can deliver results faster and more accurately.
+Durch angepasste Sprachmodelle können Sie das Grundvokabular des Service erweitern. Mithilfe von *Grammatiken* können Sie die Wörter eingrenzen, die der Service aus diesem Vokabular erkennen kann. Wenn Sie zusammen mit einem angepassten Sprachmodell für die Spracherkennung eine Grammatik verwenden, kann der Service ausschließlich Wörter, Ausdrücke und Zeichenfolgen erkennen, die von der Grammatik erkannt werden. Da die Grammatik einen begrenzten Suchbereich für gültige Übereinstimmungen definiert, kann der Service Ergebnisse schneller und präziser liefern.
 
-You add a grammar to a custom language model and train the model just as you do for a corpus. Unlike a corpus, however, you must explicitly specify that a grammar is to be used with a custom model during speech recognition.
+Sie fügen eine Grammatik zu einem angepassten Sprachmodell hinzu und trainieren das Modell dann genauso wie für einen Korpus. Anders als bei einem Korpus müssen Sie jedoch explizit angeben, dass während der Spracherkennung eine Grammatik mit einem angepassten Modell verwendet werden soll.
 
-For more information, see
+Weitere Informationen finden Sie in den folgenden Abschnitten:
 
--   [Using grammars with custom language models](/docs/services/speech-to-text?topic=speech-to-text-grammars)
--   [Adding a grammar to a custom language model](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd)
--   [Using a grammar for speech recognition](/docs/services/speech-to-text?topic=speech-to-text-grammarUse)
+-   [Grammatiken mit angepassten Sprachmodellen verwenden](/docs/services/speech-to-text?topic=speech-to-text-grammars)
+-   [Grammatik zu einem angepassten Sprachmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd)
+-   [Grammatik für Spracherkennung verwenden](/docs/services/speech-to-text?topic=speech-to-text-grammarUse)
 
-## Using acoustic and language customization together
+## Akustik- und Sprachanpassung kombiniert verwenden
 {: #combined}
 
-Using a custom acoustic model alone can improve the service's recognition capabilities. But if transcriptions or related corpora are available for your example audio, you can use that data to further improve the quality of speech recognition based on the custom acoustic model.
+Schon die Verwendung eines angepassten Akustikmodells kann die Erkennungfunktionalität des Service verbessern. Falls jedoch für Ihre Beispielaudiodaten Transkriptionen oder zugehörige Korpora verfügbar sind, können Sie diese Daten nutzen, um die Qualität der Spracherkennung ausgehend vom angepassten Akustikmodell weiter zu verbessern.
 
-By creating a custom language model that complements your custom acoustic model, you can enhance speech recognition by using the two models together. When you train a custom acoustic model, you can specify a custom language model that includes transcriptions of the audio resources or a vocabulary of domain-specific words from the resources. Similarly, when you transcribe audio, the service accepts a custom language model, a custom acoustic model, or both. And if your custom language model includes a grammar, you can use that model and grammar with a custom acoustic model for speech recognition.
+Durch die Erstellung eines angepassten Sprachmodells, das Ihr angepasstes Akustikmodell ergänzt, können Sie die Spracherkennung verbessern, indem Sie beide Modelle zusammen einsetzen. Wenn Sie ein angepasstes Akustikmodell trainieren, können Sie ein angepasstes Sprachmodell angeben, das Transkriptionen der Audioressourcen oder ein Vokabular von fachspezifischen Wörtern in den Ressourcen enthält. Beim Transkribieren von Audiodaten akzeptiert der Service analog ein angepasstes Sprachmodell und/oder ein angepasstes Akustikmodell. Und falls Ihr angepasstes Sprachmodell eine Grammatik beinhaltet, können Sie dieses Modell und seine Grammatik zusammen mit einem angepassten Akustikmodell für die Spracherkennung verwenden.
 
-For more information, see [Using custom acoustic and custom language models together](/docs/services/speech-to-text?topic=speech-to-text-useBoth).
+Weitere Informationen finden Sie unter [Angepasste Akustikmodelle und angepasste Sprachmodelle kombiniert verwenden](/docs/services/speech-to-text?topic=speech-to-text-useBoth).
 
-Some languages do not support both language and acoustic customization. For more information, see [Language support for customization](#languageSupport).
+Einige Sprachen unterstützen nicht sowohl Sprachanpassung als auch akustische Anpassung. Weitere Informationen finden Sie unter [Sprachunterstützung bei der Anpassung](#languageSupport).
 {: note}
 
-## Language support for customization
+## Sprachunterstützung bei der Anpassung
 {: #languageSupport}
 
-Language and acoustic model customization are available only for some languages. The following table documents the level at which the service supports customization for each language.
+Die Anpassung von Sprachmodellen und Akustikmodellen ist nur bei einigen Sprachen verfügbar. In der folgenden Tabelle ist jeweils die Unterstützungsstufe des Service für jede Sprache angegeben.
 
--   *GA* indicates that the interface is generally available for production use.
--   *Beta* indicates that the interface is available as a beta offering.
--   *Not supported* means that the interface is not available for that language.
+-   *GA* gibt an, dass die Schnittstelle für den Produktionseinsatz allgemein verfügbar ist.
+-   *Beta* gibt an, dass die Schnittstelle in der Betaversion angeboten wird.
+-   *Nicht unterstützt* bedeutet, dass die Schnittstelle für diese Sprache nicht verfügbar ist.
 
-You can use both broadband and narrowband models with any supported language for which they are available. If a language supports language model customization, it also supports grammars. For a list of all available models, see [Supported language models](/docs/services/speech-to-text?topic=speech-to-text-models#modelsList).
+Sie können Breitband- und Schmalbandmodelle bei jeder unterstützten Sprache verwenden, für die sie verfügbar sind. Falls eine Sprache die Sprachmodellanpassung unterstützt, unterstützt sie auch Grammatiken. Eine Liste aller verfügbaren Modelle finden Sie im Abschnitt [Unterstützte Sprachmodelle](/docs/services/speech-to-text?topic=speech-to-text-models#modelsList).
 
 <table>
-  <caption>Table 1. Language support for customization</caption>
+  <caption>Tabelle 1. Sprachunterstützung bei der Anpassung</caption>
   <tr>
     <th style="text-align:left; vertical-align:bottom; width 24%">
-      Language
+      Sprache
     </th>
     <th style="text-align:center; vertical-align:bottom; width 37%">
-      Support for language model customization
+      Unterstützung für Anpassung von Sprachmodellen
     </th>
     <th style="text-align:center; vertical-align:bottom; width 37%">
-      Support for acoustic model customization
+      Unterstützung für Anpassung von Akustikmodellen
     </th>
   </tr>
   <tr>
-    <td>Arabic (Modern Standard)</td>
-    <td style="text-align:center">Not supported</td>
+    <td>Arabisch (Moderner Standard)</td>
+    <td style="text-align:center">Nicht unterstützt</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>Brazilian Portuguese</td>
+    <td>Brasilianisches Portugiesisch</td>
     <td style="text-align:center">GA</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>Chinese (Mandarin)</td>
-    <td style="text-align:center">Not supported</td>
+    <td>Chinesisch (Mandarin)</td>
+    <td style="text-align:center">Nicht unterstützt</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>English (United Kingdom)</td>
+    <td>Britisches Englisch</td>
     <td style="text-align:center">GA</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>English (United States)</td>
+    <td>Amerikanisches Englisch</td>
     <td style="text-align:center">GA</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>French</td>
+    <td>Französisch</td>
     <td style="text-align:center">GA</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>German</td>
+    <td>Deutsch</td>
     <td style="text-align:center">GA</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>Japanese</td>
+    <td>Japanisch</td>
     <td style="text-align:center">GA</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>Korean</td>
+    <td>Koreanisch</td>
     <td style="text-align:center">GA</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>Spanish (Argentinian)</td>
+    <td>Spanisch (Argentinien)</td>
     <td style="text-align:center">Beta</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>Spanish (Castilian)</td>
+    <td>Spanisch (Kastilien)</td>
     <td style="text-align:center">GA</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>Spanish (Chilean)</td>
+    <td>Spanisch (Chile)</td>
     <td style="text-align:center">Beta</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>Spanish (Colombian)</td>
+    <td>Spanisch (Kolumbien)</td>
     <td style="text-align:center">Beta</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>Spanish (Mexican)</td>
+    <td>Spanisch (Mexiko)</td>
     <td style="text-align:center">Beta</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>Spanish (Peruvian)</td>
+    <td>Spanisch (Peru)</td>
     <td style="text-align:center">Beta</td>
     <td style="text-align:center">Beta</td>
   </tr>
 </table>
 
-You can use the `GET /v1/models` and `GET /v1/models/{model_id}` methods to check whether a language model supports language model customization. If the base model supports language model customization, the `supported_features` field of the methods' output for the model sets the `custom_language_model` field to `true`.
+Mit den Methoden `GET /v1/models` und `GET /v1/models/{modell-id}` können Sie überprüfen, ob ein Sprachmodell die Sprachmodellanpassung unterstützt. Falls das Basismodell die Sprachmodellanpassung unterstützt, ist im Feld `supported_features` der Ausgabe der Methode für das Modell das Feld `custom_language_model` mit `true` festgelegt.
 
-## Usage notes for customization
+## Verwendungshinweise für die Anpassung
 {: #customUsage}
 
-The following usage notes apply to both language model customization and acoustic model customization.
+Die folgenden Verwendungshinweise gelten sowohl für die Sprachmodellanpassung als auch für Akustikmodellanpassung.
 
-### Ownership of custom models
+### Eigentumsrecht an angepassten Modellen
 {: #customOwner}
 
-A custom model is owned by the instance of the {{site.data.keyword.speechtotextshort}} service whose credentials are used to create it. To work with the custom model in any way, you must use credentials for that instance of the service with methods of the customization interface. Credentials that are created for other instances of the service cannot view or access the custom model.
+Eigner eines angepassten Modells ist die Instanz des {{site.data.keyword.speechtotextshort}}-Service, mit deren Berechtigungsnachweisen das Modell erstellt wird. Für jede Arbeit mit dem angepassten Modell müssen Sie die Berechtigungsnachweise für diese Instanz des Service mit den Methoden der Anpassungsschnittstelle verwenden. Mit Berechtigungsnachweisen, die für andere Instanzen des Service erstellt wurden, kann das angepasste Modell weder angezeigt werden, noch ist der Zugriff auf das Modell möglich.
 
-All credentials that are obtained for the same instance of the {{site.data.keyword.speechtotextshort}} service share access to all custom models created for that service instance. To restrict access to a custom model, create a separate instance of the service and use only the credentials for that service instance to create and work with the model. Credentials for other service instances cannot affect the custom model.
+Alle Berechtigungsnachweise, die für dieselbe Instanz des {{site.data.keyword.speechtotextshort}}-Service erhalten wurden, haben gemeinsam Zugriff auf alle angepassten Modelle, die für diese Serviceinstanz erstellt wurden. Um den Zugriff auf ein angepasstes Modell einzuschränken, erstellen Sie eine separate Instanz des Service und verwenden Sie ausschließlich die Berechtigungsnachweise für diese Serviceinstanz, um das Modell zu erstellen und damit zu arbeiten. Berechtigungsnachweise für andere Serviceinstanzen haben dann keinen Einfluss auf das Modell.
 
-An advantage of sharing ownership across credentials for a service instance is that you can cancel a set of credentials, for example, if they become compromised. You can then create new credentials for the same service instance and still maintain ownership of and access to custom models created with the original credentials.
+Ein Vorteil der gemeinsamen Nutzung von Eigentumsrechten durch mehrere Berechtigungsnachweise für eine Serviceinstanz besteht darin, dass Sie eine Gruppe von Berechtigungsnachweisen stornieren können, wenn sie beispielsweise beeinträchtigt wurden. Anschließend können Sie neue Berechtigungsnachweise für dieselbe Serviceinstanz erstellen und trotzdem das Eigentumsrecht an den angepassten Modellen, die mit den ursprünglichen Berechtigungsnachweisen erstellt wurden, sowie den Zugriff auf diese Modelle verwalten.
 
-### Request logging and data privacy
+### Protokollierung von Anforderungen und Datenschutz
 {: #customLogging}
 
-How the service handles request logging for calls to the customization interface depends on the request:
+Wie der Service die Anforderungsprotokollierung für Aufrufe der Anpassungsschnittstelle abwickelt, ist von der Anforderung abhängig:
 
--   The service *does not* log data that is used to build custom models. For example, when working with corpora and words in a custom language model, you do not need to set the `X-Watson-Learning-Opt-Out` request header. Your training data is never used to improve the service's base models.
--   The service *does* log data when a custom model is used with a recognition request. You must set the `X-Watson-Learning-Opt-Out` request header to `true` to prevent logging for recognition requests.
+-   Der Service *protokolliert keine Daten*, die zum Erstellen von angepassten Modellen verwendet werden. Wenn Sie beispielsweise in einem angepassten Sprachmodell mit Korpora und Wörtern arbeiten, müssen Sie den Anforderungsheader `X-Watson-Learning-Opt-Out` nicht festlegen. Ihre Trainingsdaten werden in keinem Fall verwendet, um die Basismodelle des Service zu verbessern.
+-   Der Service *protokolliert Daten*, wenn ein angepasstes Modell bei einer Erkennungsanforderung verwendet wird. Wenn Sie die Protokollierung für Erkennungsanforderungen verhindern wollen, müssen Sie den Anforderungsheader `X-Watson-Learning-Opt-Out` auf `true` setzen.
 
-For more information, see [Request logging](/docs/services/speech-to-text?topic=speech-to-text-input#logging).
+Weitere Informationen finden Sie im Abschnitt [Anforderungsprotokollierung](/docs/services/speech-to-text?topic=speech-to-text-input#logging).
 
-### Information security
+### Informationssicherheit
 {: #customSecurity}
 
-You can associate a customer ID with data that is added or updated for custom language and custom acoustic models. You associate a customer ID with corpora, custom words, grammars, and audio resources by passing the `X-Watson-Metadata` header with the following methods:
+Sie können Daten, die für angepasste Sprachmodelle und angepasste Akustikmodelle hinzugefügt oder aktualisiert werden, eine Kunden-ID zuordnen. Zum Zuordnen einer Kunden-ID zu Korpora, angepassten Wörtern, Grammatiken und Audioressourcen übergeben Sie den Header `X-Watson-Metadata` mit den folgenden Methoden:
 
 -   `POST /v1/customizations/{customization_id}/corpora/{corpus_name}`
 -   `POST /v1/customizations/{customization_id}/words`
@@ -230,4 +230,4 @@ You can associate a customer ID with data that is added or updated for custom la
 -   `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`
 -   `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`
 
-If necessary, you can then delete the data by using the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/services/speech-to-text?topic=speech-to-text-information-security).
+Bei Bedarf können Sie danach die Daten mit der Methode `DELETE /v1/user_data` löschen. Weitere Informationen finden Sie im Abschnitt [Informationssicherheit](/docs/services/speech-to-text?topic=speech-to-text-information-security).
