@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -33,7 +33,7 @@ Die asynchrone HTTP-Schnittstelle des {{site.data.keyword.speechtotextfull}}-Ser
 
 Die beiden Methoden schließen sich nicht gegenseitig aus. Sie können sich für den Empfang von Callback-Benachrichtigungen entscheiden und trotzdem den neuesten Status vom Service abfragen oder Ergebnisse manuell vom Service abrufen. In den folgenden Abschnitten ist beschrieben, wie Sie die asynchrone HTTP-Schnittstelle bei beiden Methoden verwenden.
 
-Übergeben Sie mit einer einzelnen Anforderung mindestens 100 Byte und höchstens 1 GB Audiodaten. Angaben über Audioformate und die Verwendung der Komprimierung zur Maximierung der Audiodatenmenge, die mit einer Anforderung gesendet werden kann, enthält der Abschnitt [Audioformate](/docs/services/speech-to-text/audio-formats.html). Weitere Informationen zu den einzelnen Methoden der Schnittstelle finden Sie in der [API-Referenz. ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://{DomainName}/apidocs/speech-to-text){: new_window}
+Übergeben Sie mit einer einzelnen Anforderung mindestens 100 Byte und höchstens 1 GB Audiodaten. Angaben über Audioformate und die Verwendung der Komprimierung zur Maximierung der Audiodatenmenge, die mit einer Anforderung gesendet werden kann, enthält der Abschnitt [Audioformate](/docs/services/speech-to-text?topic=speech-to-text-audio-formats). Weitere Informationen zu den einzelnen Methoden der Schnittstelle finden Sie in der [API-Referenz](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ## Verwendungsmodelle
 {: #usage}
@@ -128,9 +128,9 @@ Zum Erstellen eines Erkennungsjobs rufen Sie die Methode `POST /v1/recognitions`
     -   Geben Sie mit dem Parameter `user_token` eine Zeichenfolge an, die in jeder Benachrichtigung über den Job enthalten sein soll. Da Sie dieselbe Callback-URL bei einer unbegrenzten Anzahl von Jobs verwenden können, ermöglicht die Verwendung von Benutzertokens eine Unterscheidung zwischen den Benachrichtigungen für verschiedene Jobs.
 -   Zur *Verwendung von Abfragen* lassen Sie die Abfrageparameter `callback_url`, `events` und `user_token` weg. Anschließend müssen Sie die Methoden `GET /v1/recognitions` oder `GET /v1/recognitions/{id}` verwenden, um den Status des Jobs zu überprüfen; mit der zweiten Methode werden die Ergebnisse nach dem Abschluss eines Jobs abgerufen.
 
-In beiden Fällen können Sie durch das Hinzufügen des Abfrageparameters `results_ttl` angeben, wie viele Minuten die Ergebnisse nach dem Abschluss des Jobs verfügbar bleiben sollen.
+In beiden Fällen können Sie durch das Hinzufügen des Abfrageparameters `results_ttl` angeben, wie viele Minuten die Ergebnisse nach dem Abschluss des Jobs verfügbar bleiben sollen. Eigner des neuen Jobs ist die Serviceinstanz, deren Berechtigungsnachweise beim Erstellen des Jobs verwendet wurden.
 
-Neben den obigen Parametern, die speziell für die asynchrone Schnittstelle gelten, unterstützt die Methode `POST /v1/recognitions` einen Großteil derselben Parameter wie die WebSocket-Schnittstelle oder die synchrone HTTP-Schnittstelle. Weitere Informationen enthält der Abschnitt [Parameterübersicht](/docs/services/speech-to-text/summary.html).
+Neben den obigen Parametern, die speziell für die asynchrone Schnittstelle gelten, unterstützt die Methode `POST /v1/recognitions` einen Großteil derselben Parameter wie die WebSocket-Schnittstelle oder die synchrone HTTP-Schnittstelle. Weitere Informationen enthält der Abschnitt [Parameterübersicht](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ### Callback-Benachrichtigungen
 {: #notifications}
@@ -283,7 +283,7 @@ curl -X GET -u "apikey:{apikey}"
                   6.33
                 ]
               ],
-              "confidence": 0.89
+              "confidence": 0.96
             }
           ]
         }
@@ -300,7 +300,7 @@ curl -X GET -u "apikey:{apikey}"
 ## Status der letzten Jobs überprüfen
 {: #jobs}
 
-Durch einen Aufruf der Methode `GET /v1/recognitions` können Sie den Status der letzten Jobs überprüfen. Die Methode gibt den Status der letzten 100 ausstehenden Jobs zurück, die den Serviceberechtigungsnachweisen zugeordnet sind, mit denen die Methode aufgerufen wird. Die Methode gibt die ID und den Status jedes Jobs zusammen mit seiner Erstellungs- und Aktualisierungszeit zurück. Wenn ein Job mit einer Callback-URL und einem Benutzertoken erstellt wurde, gibt die Methode auch das Benutzertoken für den Job zurück.
+Durch einen Aufruf der Methode `GET /v1/recognitions` können Sie den Status der letzten Jobs überprüfen. Die Methode gibt den Status der letzten 100 ausstehenden Jobs zurück, die den Berechtigungsnachweisen zugeordnet sind, mit denen die Methode aufgerufen wird. Die Methode gibt die ID und den Status jedes Jobs zusammen mit seiner Erstellungs- und Aktualisierungszeit zurück. Wenn ein Job mit einer Callback-URL und einem Benutzertoken erstellt wurde, gibt die Methode auch das Benutzertoken für den Job zurück.
 
 Die Antwort enthält einen der folgenden Status:
 
@@ -314,7 +314,7 @@ Ein Job und seine Ergebnisse bleiben verfügbar, bis Sie sie mit der Methode `DE
 ### Beispiel
 {: #statusExample}
 
-Im folgenden Beispiel wird der Status der letzten aktuellen Jobs angefordert, die den Serviceberechtigungsnachweisen des aufrufenden Benutzers zugeordnet sind. Für den Benutzer gibt es drei ausstehende Jobs mit verschiedenen Statuswerten. Der erste Job wurde mit einer Callback-URL und einem Benutzertoken erstellt.
+Im folgenden Beispiel wird der Status der letzten aktuellen Jobs angefordert, die den Berechtigungsnachweisen des aufrufenden Benutzers zugeordnet sind. Für den Benutzer gibt es drei ausstehende Jobs mit verschiedenen Statuswerten. Der erste Job wurde mit einer Callback-URL und einem Benutzertoken erstellt.
 
 ```bash
 curl -X GET -u "apikey:{apikey}"

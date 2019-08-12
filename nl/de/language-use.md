@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,12 +25,12 @@ subcollection: speech-to-text
 # Angepasstes Sprachmodell verwenden
 {: #languageUse}
 
-Nachdem Sie das angepasste Sprachmodell erstellt und trainiert haben, können Sie es in Spracherkennungsanforderungen verwenden. Im Parameter `language_customization_id` können Sie das angepasste Sprachmodell für eine Anforderung angeben, wie in den folgenden Beispielen gezeigt. Sie können angeben, welche Gewichtung der Service den Wörtern aus dem angepassten Modell zuteilen soll. Weitere Informationen finden Sie im Abschnitt [Anpassungsgewichtung verwenden](#weight). Sie müssen die Anforderung mit Serviceberechtigungsnachweisen für die Instanz des Service absetzen, die Eigner des Modells ist.
+Nachdem Sie das angepasste Sprachmodell erstellt und trainiert haben, können Sie es in Spracherkennungsanforderungen verwenden. Im Parameter `language_customization_id` können Sie das angepasste Sprachmodell für eine Anforderung angeben, wie in den folgenden Beispielen gezeigt. Sie können angeben, welche Gewichtung der Service den Wörtern aus dem angepassten Modell zuteilen soll. Weitere Informationen finden Sie im Abschnitt [Anpassungsgewichtung verwenden](#weight). Sie müssen die Anforderung mit den Berechtigungsnachweisen für die Instanz des Service ausgeben, die Eigner des Modells ist.
 {: shortdesc}
 
-Sie können mehrere angepasste Sprachmodelle für dasselbe Fachgebiet oder für verschiedene Fachgebiete erstellen. Mit dem Parameter `language_customization_id` kann jedoch nur ein angepasstes Sprachmodell auf einmal angegeben werden. Beispiele für die Verwendung einer Grammatik mit einem angepassten Sprachmodell finden Sie im Abschnitt [Grammatik für Spracherkennung verwenden](/docs/services/speech-to-text/grammar-use.html).
+Sie können mehrere angepasste Sprachmodelle für dasselbe Fachgebiet oder für verschiedene Fachgebiete erstellen. Mit dem Parameter `language_customization_id` kann jedoch nur ein angepasstes Sprachmodell auf einmal angegeben werden. Beispiele für die Verwendung einer Grammatik mit einem angepassten Sprachmodell finden Sie im Abschnitt [Grammatik für Spracherkennung verwenden](/docs/services/speech-to-text?topic=speech-to-text-grammarUse).
 
--   Verwenden Sie für die [WebSocket-Schnittstelle](/docs/services/speech-to-text/websockets.html) die Methode `/v1/recognize`. Das angegebene angepasste Modell wird für alle über die Verbindung gesendeten Anforderungen verwendet.
+-   Verwenden Sie für die [WebSocket-Schnittstelle](/docs/services/speech-to-text?topic=speech-to-text-websockets) die Methode `/v1/recognize`. Das angegebene angepasste Modell wird für alle über die Verbindung gesendeten Anforderungen verwendet.
 
     ```javascript
     var token = {authentication-token};
@@ -41,7 +41,7 @@ Sie können mehrere angepasste Sprachmodelle für dasselbe Fachgebiet oder für 
     var websocket = new WebSocket(wsURI);
     ```
     {: codeblock}
--   Verwenden Sie für die [synchrone HTTP-Schnittstelle](/docs/services/speech-to-text/http.html) die Methode `POST /v1/recognize`. Das angegebene angepasste Modell wird für diese Anforderung verwendet.
+-   Verwenden Sie für die [synchrone HTTP-Schnittstelle](/docs/services/speech-to-text?topic=speech-to-text-http) die Methode `POST /v1/recognize`. Das angegebene angepasste Modell wird für diese Anforderung verwendet.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -50,7 +50,7 @@ Sie können mehrere angepasste Sprachmodelle für dasselbe Fachgebiet oder für 
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}"
     ```
     {: pre}
--   Verwenden Sie für die [asynchrone HTTP-Schnittstelle](/docs/services/speech-to-text/async.html) die Methode `POST /v1/recognitions`. Das angegebene angepasste Modell wird für diese Anforderung verwendet.
+-   Verwenden Sie für die [asynchrone HTTP-Schnittstelle](/docs/services/speech-to-text?topic=speech-to-text-async) die Methode `POST /v1/recognitions`. Das angegebene angepasste Modell wird für diese Anforderung verwendet.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -100,6 +100,6 @@ Die Anpassungsgewichtung kann mit dem Parameter `customization_weight` angegeben
 
 Wenn der Service trotz Anwendung eines angepassten Sprachmodells bei der Spracherkennung scheinbar nicht die Wörter aus dem Modell verwendet, überprüfen Sie, ob die folgenden potenziellen Probleme vorliegen:
 
--   Stellen Sie sicher, dass die Anpassungs-ID ordnungsgemäß an die Erkennungsanforderung übergeben wird, wie im Abschnitt [Angepasstes Sprachmodell verwenden](#languageUse) dargestellt.
--   Stellen Sie sicher, dass das angepasste Modell den Status `available` (verfügbar) aufweist, d. h. das Modell ist vollständig trainiert und betriebsbereit. Weitere Informationen finden Sie im Abschnitt [Angepasste Sprachmodelle auflisten](/docs/services/speech-to-text/language-models.html#listModels-language).
--   Prüfen Sie die für die neuen Wörter generierten Aussprachevarianten und stellen Sie sicher, dass diese korrekt sind. Weitere Informationen finden Sie im Abschnitt [Wörterressource prüfen](/docs/services/speech-to-text/language-resource.html#validateModel).
+-   Stellen Sie sicher, dass Sie die Anpassungs-ID ordnungsgemäß an die Erkennungsanforderung übergeben, wie in den vorherigen Beispielen gezeigt.
+-   Stellen Sie sicher, dass das angepasste Modell den Status `available` (verfügbar) aufweist, d. h. das Modell ist vollständig trainiert und betriebsbereit. Weitere Informationen finden Sie im Abschnitt [Angepasste Sprachmodelle auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
+-   Prüfen Sie die für die neuen Wörter generierten Aussprachevarianten und stellen Sie sicher, dass diese korrekt sind. Weitere Informationen finden Sie im Abschnitt [Wörterressource prüfen](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Grammatiken verwalten
 {: #manageGrammars}
 
-Mit der Methode `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` der Anpassungsschnittstelle können Sie eine Grammatik zu einem angepassten Sprachmodell hinzufügen. Weitere Informationen enthält der Abschnitt [Grammatik zum angepassten Sprachmodell hinzufügen](/docs/services/speech-to-text/grammar-add.html#addGrammar). Die Schnittstelle enthält außerdem die hier aufgeführten Methoden für das Auflisten und Löschen von Grammatiken für ein angepasstes Sprachmodell.
+Mit der Methode `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` der Anpassungsschnittstelle können Sie eine Grammatik zu einem angepassten Sprachmodell hinzufügen. Weitere Informationen enthält der Abschnitt [Grammatik zum angepassten Sprachmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar). Die Schnittstelle enthält außerdem die hier aufgeführten Methoden für das Auflisten und Löschen von Grammatiken für ein angepasstes Sprachmodell.
 {: shortdesc}
 
 ## Grammatiken für ein angepasstes Sprachmodell auflisten

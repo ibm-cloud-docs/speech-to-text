@@ -2,14 +2,14 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -32,14 +32,14 @@ Mit den hier beschriebenen Schritten können Sie ein angepasstes Akustikmodell f
 1.  [Fügen Sie Audiodaten zum angepassten Akustikmodell hinzu](#addAudio). Für die akustische Modellierung akzeptiert der Service dieselben Audiodateiformate wie für die Spracherkennung. Er akzeptiert ebenfalls Archivdateien, die mehrere Audiodateien enthalten. Archivdateien sind das bevorzugte Verfahren für das Hinzufügen von Audioressourcen. Sie können die Methode wiederholen, um weitere Audio- oder Archivdateien zu einem angepassten Modell hinzuzufügen.
 1.  [Trainieren Sie das angepasste Akustikmodell](#trainModel-acoustic). Nachdem Sie Audioressourcen zum angepassten Modell hinzugefügt haben, müssen Sie das Modell trainieren. Das Training bereitet das angepasste Akustikmodell für die Verwendung bei der Spracherkennung vor. Das Training kann beträchtliche Zeit in Anspruch nehmen; die Länge des Trainings ist vom Umfang der Audiodaten abhängig, die das Modell enthält.
 
-    Während des Trainings Ihres angepassten Akustikmodells können Sie zur weiteren Unterstützung ein angepasstes Sprachmodell angeben. Ein angepasstes Sprachmodell, das Transkriptionen Ihrer Audiodateien oder vokabularexterne Wörter aus dem Fachgebiet Ihrer Audiodateien enthält, kann die Qualität des angepassten Akustikmodells verbessern. Weitere Informationen finden Sie unter [Angepasstes Akustikmodell mit einem angepassten Sprachmodell trainieren](/docs/services/speech-to-text/acoustic-both.html#useBothTrain).
-1.  Nachdem Sie Ihr angepasstes Modell trainiert haben, können Sie es bei Erkennungsanforderungen verwenden. Falls die zur Transkription übergebenen Audiodaten eine ähnliche akustische Qualität wie die Audiodaten des angepassten Modells aufweisen, bilden die Ergebnisse das erweiterte Erkenntnisvermögen des Service ab. Weitere Informationen finden Sie unter [Angepasstes Akustikmodell verwenden](/docs/services/speech-to-text/acoustic-use.html).
+    Während des Trainings Ihres angepassten Akustikmodells können Sie zur weiteren Unterstützung ein angepasstes Sprachmodell angeben. Ein angepasstes Sprachmodell, das Transkriptionen Ihrer Audiodateien oder vokabularexterne Wörter aus dem Fachgebiet Ihrer Audiodateien enthält, kann die Qualität des angepassten Akustikmodells verbessern. Weitere Informationen finden Sie unter [Angepasstes Akustikmodell mit einem angepassten Sprachmodell trainieren](/docs/services/speech-to-text?topic=speech-to-text-useBoth#useBothTrain).
+1.  Nachdem Sie Ihr angepasstes Modell trainiert haben, können Sie es bei Erkennungsanforderungen verwenden. Falls die zur Transkription übergebenen Audiodaten eine ähnliche akustische Qualität wie die Audiodaten des angepassten Modells aufweisen, bilden die Ergebnisse das erweiterte Erkenntnisvermögen des Service ab. Weitere Informationen finden Sie unter [Angepasstes Akustikmodell verwenden](/docs/services/speech-to-text?topic=speech-to-text-acousticUse).
 
-    In einer Erkennungsanforderung können Sie sowohl ein angepasstes Akustikmodell als auch ein angepasstes Sprachmodell übergeben, um die Genauigkeit bei der Erkennung weiter zu verbessern. Zusätzliche Angaben enthält der Abschnitt [Angepasste Sprachmodelle und angepasste Akustikmodelle während der Spracherkennung verwenden](/docs/services/speech-to-text/acoustic-both.html#useBothRecognize).
+    In einer Erkennungsanforderung können Sie sowohl ein angepasstes Akustikmodell als auch ein angepasstes Sprachmodell übergeben, um die Genauigkeit bei der Erkennung weiter zu verbessern. Zusätzliche Angaben enthält der Abschnitt [Angepasste Sprachmodelle und angepasste Akustikmodelle während der Spracherkennung verwenden](/docs/services/speech-to-text?topic=speech-to-text-useBoth#useBothRecognize).
 
 Die Schritte für die Erstellung eines angepassten Akustikmodells sind iterativ. Das Hinzufügen oder Löschen von Audiodaten und das Trainieren oder erneute Trainieren eines Modells können Sie so häufig wie benötigt ausführen. Sie müssen ein Modell erneut trainieren, damit Änderungen an seinen Audiodaten wirksam werden. Beim erneuten Training eines Modells werden alle Audiodaten (und nicht nur die neuen Daten) für das Training verwendet. Die Trainingsdauer entspricht also dem Gesamtumfang der Audiodaten, die im Modell enthalten sind.
 
-Die Anpassung von Akustikmodellen ist als Betafunktionalität für alle Sprachen verfügbar. Weitere Informationen finden Sie unter [Sprachunterstützung bei der Anpassung](/docs/services/speech-to-text/custom.html#languageSupport).
+Die Anpassung von Akustikmodellen ist als Betafunktionalität für alle Sprachen verfügbar. Weitere Informationen finden Sie unter [Sprachunterstützung bei der Anpassung](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
 {: note}
 
 ## Angepasstes Akustikmodell erstellen
@@ -66,7 +66,7 @@ Zum Erstellen eines neuen angepassten Akustikmodells verwenden Sie die Methode `
     <td style="text-align:center">Zeichenfolge</td>
     <td>
       Der Name des Basismodells, das durch das neue Modell angepasst werden soll. Sie müssen den Namen eines Modells verwenden, der von der Methode <code>GET /v1/models</code> zurückgegeben wird. Das neue angepasste Modell kann nur in Verbindung mit dem Basismodell verwendet werden, dessen Anpassung es darstellt.
-</td>
+    </td>
   </tr>
   <tr>
     <td><code>description</code><br/><em>Optional</em></td>
@@ -98,17 +98,17 @@ Das Beispiel gibt die Anpassungs-ID des neuen Modells zurück. Jedes angepasste 
 ```
 {: codeblock}
 
-Eigner des neuen angepassten Modells ist die Serviceinstanz, deren Berechtigungsnachweise für die Erstellung verwendet werden. Weitere Informationen hierzu finden Sie im Abschnitt [Eigentumsrecht an angepassten Modellen](/docs/services/speech-to-text/custom.html#customOwner).
+Eigner des neuen angepassten Modells ist die Serviceinstanz, deren Berechtigungsnachweise beim Erstellen des Jobs verwendet wurden. Weitere Informationen finden Sie im Abschnitt [Eigentumsrecht an angepassten Modellen](/docs/services/speech-to-text?topic=speech-to-text-customization#customOwner).
 
 ## Audiodaten zum angepassten Akustikmodell hinzufügen
 {: #addAudio}
 
 Nachdem Sie Ihr angepasstes Akustikmodell erstellt haben, müssen Sie im nächsten Schritt Audioressourcen zum Modell hinzufügen. Zum Hinzufügen einer Audioressource zu einem angepassten Modell verwenden Sie die Methode `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`. Sie können Folgendes hinzufügen:
 
--   Einzelne Audiodatei in einem beliebigen Format, das für die Spracherkennung unterstützt wird (siehe [Audioformate](/docs/services/speech-to-text/audio-formats.html)).
+-   Eine einzelne Audiodatei in einem beliebigen Format, das für die Spracherkennung unterstützt wird. Weitere Informationen finden Sie im Abschnitt [Audioformate](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
 -   Archivdatei (Erweiterung **.zip** oder **.tar.gz**), die mehrere Audiodateien enthält. Das Zusammenstellen mehrerer Audiodateien in einer einzigen Archivdatei und Laden dieser einzigen Datei ist wesentlich effizienter als das Hinzufügen einzelner Audiodateien.
 
-Sie übergeben die Audioressource als Hauptteil der Anforderung und weisen der Ressource einen Namen (Wert für `audio_name`) zu. Weitere Informationen enthält der Abschnitt [Mit Audioressourcen arbeiten](/docs/services/speech-to-text/acoustic-resource.html).
+Sie übergeben die Audioressource als Hauptteil der Anforderung und weisen der Ressource einen Namen (Wert für `audio_name`) zu. Weitere Informationen enthält der Abschnitt [Mit Audioressourcen arbeiten](/docs/services/speech-to-text?topic=speech-to-text-audioResources).
 
 Die folgenden Beispiele zeigen das Hinzufügen sowohl von einzelnen Audioressourcen als auch von Archivdateien:
 
@@ -137,12 +137,14 @@ Die Methode akzeptiert auch den optionalen Abfrageparameter `allow_overwrite`, u
 
 Die Methode wird asynchron ausgeführt. Je nach zeitlicher Länge der Audiodaten kann ihr Abschluss mehrere Sekunden dauern. Bei einer Archivdatei ist die Länge der Operation von der Dauer der Audiodateien abhängig. Im Abschnitt [Anforderung zum Hinzufügen von Audiodaten überwachen](#monitorAudio) erfahren Sie genauer, wie Sie den Status einer Anforderung zum Hinzufügen einer Audioressource überprüfen können.
 
-Sie können beliebig viele Audioressourcen zu einem angepassten Modell hinzufügen, indem Sie die Methode für jede Audio- oder Archivdatei separat aufrufen. Eine Audioressource muss vollständig hinzugefügt worden sein, bevor Sie eine weitere Ressource hinzufügen können. Bevor Sie ein angepasstes Modell trainieren können, müssen Sie Audiodaten mit einer Länge von mindestens 10 Minuten und höchstens 200 Stunden zum Modell hinzufügen, wobei sich die Dauer ausschließlich auf Sprache bezieht und Schweigen nicht berücksichtigt. Keine Audio- oder Archivressource kann größer als 100 MB sein. Weitere Informationen finden Sie im Abschnitt [Richtlinien für das Hinzufügen von Audioressourcen](/docs/services/speech-to-text/acoustic-resource.html#audioGuidelines).
+Sie können beliebig viele Audioressourcen zu einem angepassten Modell hinzufügen, indem Sie die Methode für jede Audio- oder Archivdatei separat aufrufen. Sie können mit mehreren Anforderungen verschiedene Audioressourcen gleichzeitig hinzufügen.
+
+Bevor Sie ein angepasstes Modell trainieren können, müssen Sie Audiodaten mit einer Länge von mindestens 10 Minuten und höchstens 200 Stunden zum Modell hinzufügen, wobei sich die Dauer ausschließlich auf Sprache bezieht und Schweigen nicht berücksichtigt. Keine Audio- oder Archivressource kann größer als 100 MB sein. Weitere Informationen finden Sie im Abschnitt [Richtlinien für das Hinzufügen von Audioressourcen](/docs/services/speech-to-text?topic=speech-to-text-audioResources#audioGuidelines).
 
 ### Anforderung zum Hinzufügen von Audiodaten überwachen
 {: #monitorAudio}
 
-Der Service gibt den Antwortcode 201 zurück, wenn die Audiodaten gültig sind. Anschließend analysiert er den Inhalt der Audiodatei(en) im asynchronen Modus und extrahiert automatisch Informationen zu den Audiodaten wie Länge, Abtastfrequenz und Codierung. Anforderungen zum Hinzufügen weiterer Audiodaten zu einem angepassten Akustikmodell oder zum Trainieren des Modells können Sie erst übergeben, wenn der Service die Analyse aller Audiodateien für die aktuelle Anforderung abgeschlossen hat.
+Der Service gibt den Antwortcode 201 zurück, wenn die Audiodaten gültig sind. Anschließend analysiert er den Inhalt der Audiodatei(en) im asynchronen Modus und extrahiert automatisch Informationen zu den Audiodaten wie Länge, Abtastfrequenz und Codierung. Sie können das angepasste Modell erst dann trainieren, wenn die Analyse aller Audioressourcen für die aktuellen Anforderungen durch den Service abgeschlossen ist.
 
 Mit der Methode `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` können Sie den Status der Audiodaten abfragen und so den Status der Anforderung ermitteln. Die Methode akzeptiert die GUID des angepassten Modells und den Namen der Audioressource. Ihre Antwort enthält für die Ressource das Feld `status` mit einem der folgenden Werte:
 
@@ -194,10 +196,11 @@ Der Inhalt der Antwort und die Position des Feldes `status` sind vom Typ der Res
         "status": "ok"
       },
       . . .
+    }
     ```
     {: codeblock}
 
-Mithilfe einer Schleife können Sie den Status der Audioressource alle paar Sekunden prüfen, bis er sich in `ok` ändert. Weitere Informationen zu anderen Feldern, die von der Methode zurückgegeben werden, finden Sie im Abschnitt [Audioressourcen für ein angepasstes Akustikmodell auflisten](/docs/services/speech-to-text/acoustic-audio.html#listAudio).
+Mithilfe einer Schleife können Sie den Status der Audioressource alle paar Sekunden prüfen, bis er sich in `ok` ändert. Weitere Informationen zu anderen Feldern, die von der Methode zurückgegeben werden, finden Sie im Abschnitt [Audioressourcen für ein angepasstes Akustikmodell auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#listAudio).
 
 ## Angepasstes Akustikmodell trainieren
 {: #trainModel-acoustic}
@@ -212,15 +215,17 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-Die Methode akzeptiert auch den optionalen Abfrageparameter `custom_language_model_id`, mit dem Sie ein separat erstelltes angepasstes Sprachmodell für die Verwendung während des Trainings angeben können. Sie können beim Training ein angepasstes Sprachmodell einbeziehen, das Transkriptionen Ihrer Audiodateien oder Korpora bzw. vokabularexterne Wörter enthält, die für den Inhalt der Audiodateien relevant sind. Die beiden angepassten Modelle müssen auf derselben Version desselben Basismodells basieren, damit das Training erfolgreich verläuft. Weitere Informationen finden Sie unter [Angepasstes Akustikmodell mit einem angepassten Sprachmodell trainieren](/docs/services/speech-to-text/acoustic-both.html#useBothTrain).
+Die Methode wird asynchron ausgeführt. Das Training kann abhängig von der aktuellen Auslastung des Service und vom Umfang der Audiodaten, die das angepasste Akustikmodell enthält, Minuten oder auch Stunden dauern. Als Faustregel kann davon ausgegangen werden, dass das Training eines Akustikmodells ungefähr zwei bis vier Mal so lang wie seine Audiodaten dauert. Die Dauer ist von dem trainierten Modell und der Spezifik der Audiodaten abhängig, also beispielsweise davon, ob die Audiodaten klar oder verrauscht sind. So kann das Training eines Modells, das Audiodaten mit einer Länge von 2 Stunden enthält, zum Beispiel zwischen 4 und 8 Stunden dauern. Im Abschnitt [Anforderung zum Trainieren eines Modells überwachen](#monitorTraining-acoustic) erfahren Sie genauer, wie Sie den Status einer Trainingsoperation überprüfen können.
 
+Die Methode enthält die folgenden optionalen Abfrageparameter:
 
-Die Methode für das Training wird asynchron ausgeführt. Das Training kann abhängig von der aktuellen Auslastung des Service und vom Umfang der Audiodaten, die das angepasste Akustikmodell enthält, Minuten oder auch Stunden dauern. Als Faustregel kann davon ausgegangen werden, dass das Training eines Akustikmodells ungefähr zwei bis vier Mal so lang wie seine Audiodaten dauert. Die Dauer ist von dem trainierten Modell und der Spezifik der Audiodaten abhängig, also beispielsweise davon, ob die Audiodaten klar oder verrauscht sind. So kann das Training eines Modells, das Audiodaten mit einer Länge von 2 Stunden enthält, zum Beispiel zwischen 4 und 8 Stunden dauern. Im Abschnitt [Anforderung zum Trainieren eines Modells überwachen](#monitorTraining-acoustic) erfahren Sie genauer, wie Sie den Status einer Trainingsoperation überprüfen können.
+-   Der Parameter `custom_language_model_id` gibt ein separat erstelltes angepasstes Sprachmodell für die Verwendung während des Trainings an. Sie können beim Training ein angepasstes Sprachmodell einbeziehen, das Transkriptionen Ihrer Audiodateien oder Korpora bzw. vokabularexterne Wörter enthält, die für den Inhalt der Audiodateien relevant sind. Die angepassten akustischen und angepassten Sprachmodelle müssen auf derselben Version desselben Basismodells basieren, damit das Training erfolgreich verläuft. Weitere Informationen finden Sie unter [Angepasstes Akustikmodell mit einem angepassten Sprachmodell trainieren](/docs/services/speech-to-text?topic=speech-to-text-useBoth#useBothTrain).
+-   Der Parameter `strict` gibt an, ob das Training fortgesetzt werden soll, wenn das angepasste Modell eine Mischung aus gültigen und ungültigen Audioressourcen enthält. Standardmäßig schlägt das Training fehl, wenn das Modell mindestens eine ungültige Ressource enthält. Setzen Sie den Parameter auf `false`, damit das Training fortgesetzt werden kann, wenn das Modell mindestens eine gültige Ressource enthält. Der Service schließt ungültige Ressourcen aus dem Training aus. Weitere Informationen finden Sie im Abschnitt [Fehler bei Training](#failedTraining-acoustic).
 
 ### Anforderung zum Training eines Modells überwachen
 {: #monitorTraining-acoustic}
 
-Der Service gibt den Antwortcode 200 zurück, wenn der Trainingsprozess erfolgreich gestartet wurde. Der Service kann nachfolgende Trainingsanforderungen oder Anforderungen zum Hinzufügen weiterer Audioressourcen erst akzeptieren, wenn die vorhandene Anforderung abgeschlossen ist.
+Der Service gibt den Antwortcode 200 zurück, wenn der Trainingsprozess erfolgreich gestartet wurde. Der Service kann nachfolgende Trainingsanforderungen oder Anforderungen zum Hinzufügen weiterer Audioressourcen erst akzeptieren, wenn die vorhandene Trainingsanforderung abgeschlossen ist.
 
 Mit der Methode `GET /v1/acoustic_customizations/{customization_id}` können Sie den Status des Modells abfragen und so den Status einer Trainingsanforderung ermitteln. Die Methode akzeptiert wie im folgenden Beispiel die Anpassungs-ID des Akustikmodells und gibt seinen Status zurück:
 
@@ -234,6 +239,7 @@ curl -X GET -u "apikey:{apikey}"
 {
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
   "created": "2016-06-01T18:42:25.324Z",
+  "updated": "2016-06-01T22:11:13.298Z",
   "language": "en-US",
   "owner": "297cfd08-330a-22ba-93ce-1a73f454dd98",
   "name": "Example model",
@@ -247,23 +253,33 @@ curl -X GET -u "apikey:{apikey}"
 
 Die Antwort enthält die Felder `status` und `progress`, in denen der aktuelle Status des Modells gemeldet wird. Die Bedeutung des Feldes `progress` hängt vom Status des Modells ab. Das Feld `status` kann einen der folgenden Werte enthalten:
 
--   `pending`: Das Modell wurde erstellt, aber es wird entweder auf das Hinzufügen von Trainingsdaten oder auf den Abschluss der Analyse der hinzugefügten Daten durch den Service gewartet. Das Feld `progress` hat den Wert `0`.
--   `ready`: Das Modell ist für das Training bereit. Das Feld `progress` hat den Wert `0`.
--   `training`: Das Modell wird gegenwärtig trainiert. Der Wert im Feld `progress` ändert sich von `0` in `100`, wenn das Training abgeschlossen ist.<!-- The `progress` field indicates the progress of the training as a percentage complete. -->
+-   `pending`: Das Modell wurde erstellt, es wird jedoch entweder auf das Hinzufügen von gültigen Trainingsdaten oder auf den Abschluss der Analyse der hinzugefügten Daten durch den Service gewartet. Das Feld `progress` hat den Wert `0`.
+-   `ready`: Das Modell enthält gültige Daten und ist für das Training bereit. Das Feld `progress` hat den Wert `0`.
+
+Wenn das Modell eine Mischung aus gültigen und ungültigen Audioressourcen enthält, schlägt das Training für das Modells fehl, es sei denn, Sie setzen den Abfrageparameter `strict` auf `false`. Weitere Informationen finden Sie im Abschnitt [Fehler bei Training](#failedTraining-acoustic).-   `training`: Das Modell wird gegenwärtig trainiert. Der Wert im Feld `progress` ändert sich von `0` in `100`, wenn das Training abgeschlossen ist.<!-- The `progress` field indicates the progress of the training as a percentage complete. -->
 -   `available`: Das Modell wurde trainiert und kann verwendet werden. Das Feld `progress` hat den Wert `100`.
 -   `upgrading`: Für das Modell wird gegenwärtig ein Upgrade durchgeführt. Das Feld `progress` hat den Wert `0`.
--   `failed`: Das Training des Modells ist fehlgeschlagen. Das Feld `progress` hat den Wert `0`.
+-   `failed`: Das Training des Modells ist fehlgeschlagen. Das Feld `progress` ist `0`. Weitere Informationen finden Sie im Abschnitt [Fehler bei Training](#failedTraining-acoustic).
 
-Mithilfe einer Schleife können Sie den Status des Trainings einmal pro Minute prüfen, bis das Modell den Status `available` aufweist. Weitere Informationen zu anderen Feldern, die von der Methode zurückgegeben werden, finden Sie im Abschnitt [Angepasste Akustikmodelle auflisten](/docs/services/speech-to-text/acoustic-models.html#listModels-acoustic).
+Mithilfe einer Schleife können Sie den Status des Trainings einmal pro Minute prüfen, bis das Modell den Status `available` aufweist. Weitere Informationen zu anderen Feldern, die von der Methode zurückgegeben werden, finden Sie im Abschnitt [Angepasste Akustikmodelle auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
 
 ### Fehler beim Training
 {: #failedTraining-acoustic}
 
-Das Training eines angepassten Akustikmodells kann nicht gestartet werden, wenn der Service eine andere Anforderung für das angepasste Modell verarbeitet. Bei der kollidierenden Anforderung könnte es sich um eine andere Trainingsanforderung oder um eine Anforderung zum Hinzufügen von Audioressourcen zum Modell handeln. Der Start des Trainings kann außerdem aus den folgenden Gründen fehlschlagen:
+Das Training kann nicht gestartet werden, wenn der Service aktuell eine andere Anforderung für das angepasste Akustikmodell ausführt. Bei der kollidierenden Anforderung könnte es sich um eine andere Trainingsanforderung oder um eine Anforderung zum Hinzufügen von Audioressourcen zum Modell handeln. Der Service gibt den Statuscode 409 zurück.
+
+Auch die folgenden Ursachen können zum Fehlschlagen des Trainings führen:
 
 -   Das angepasste Modell enthält Audiodaten mit einer Länge von weniger als 10 Minuten.
 -   Das angepasste Modell enthält Audiodaten mit einer Länge von mehr als 200 Minuten.
 -   Eine oder mehrere Audioressourcen des angepassten Modells sind ungültig.
 -   Sie haben ein nicht kompatibles angepasstes Sprachmodell mit dem Abfrageparameter `custom_language_model_id` übergeben. Die beiden angepassten Modelle müssen auf derselben Version desselben Basismodells basieren.
 
-Falls der Status für das Training eines angepassten Modells `failed` lautet, können Sie mit den Methoden `GET /v1/acoustic_customizations/{customization_id}/audio` und `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` die Audioressourcen des Modells untersuchen und gegebenenfalls festgestellte Probleme beheben. Weitere Informationen enthält der Abschnitt [Audioressourcen für ein angepasstes Akustikmodell auflisten](/docs/services/speech-to-text/acoustic-audio.html#listAudio).
+Der Service gibt den Statuscode 400 zurück und legt den Status des angepassten Modells auf `failed` fest. Führen Sie eine der folgenden Aktionen aus:
+
+-   Untersuchen Sie mit den Methoden `GET /v1/acoustic_customizations/{customization_id}/audio` und `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` die Audioressourcen des Modells. Weitere Informationen enthält der Abschnitt [Audioressourcen für ein angepasstes Akustikmodell auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#listAudio).
+
+    Führen Sie für jede ungültige Audioressource einen der folgenden Schritte aus:
+    -   Korrigieren Sie die Audioressource und verwenden Sie den Parameter `allow_overwrite` der Methode `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`, um dem Modell die korrigierten Audiodaten hinzuzufügen. Weitere Informationen hierzu enthält der Abschnitt [Audiodaten zum angepassten Akustikmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio).
+    -   Löschen Sie mit der Methode `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` die Audioressource aus dem Modell. Weitere Informationen finden Sie im Abschnitt zum [Löschen einer Audioressource aus einem angepassten akustischen Modell](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#deleteAudio).
+-   Setzen Sie den Parameter `strict` der Methode `POST /v1/acoustic_customizations/{customization_id}/train` auf `false`, um ungültige Audioressourcen aus dem Training auszuschließen. Das Modell muss mindestens eine gültige Audioressource enthalten, damit das Training erfolgreich abgeschlossen werden kann. Der Parameter `strict` ist für das Training eines angepassten Modells hilfreich, das eine Mischung aus gültigen und ungültigen Audioressourcen enthält.

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -28,22 +28,22 @@ subcollection: speech-to-text
 {{site.data.keyword.IBM}} hat sich dazu verpflichtet, seinen Kunden und Partnern innovative Lösungen für Datenschutz, Sicherheit und Governance zu bieten.
 {: shortdesc}
 
-Jeder Kunde ist für die Einhaltung der geltenden Gesetze und Vorschriften<!--geprüft-->, einschließlich der Datenschutz-Grundverordnung der Europäischen Union (DSGVO), selbst verantwortlich. <!--geprüft-->Es obliegt allein den Kunden, sich von kompetenter juristischer Stelle zu Inhalt und Auslegung aller relevanten Gesetze und Vorschriften<!--geprüft--> beraten zu lassen, die ihre Geschäftstätigkeit und die von ihnen eventuell einzuleitenden Maßnahmen zur Einhaltung dieser Gesetze und Vorschriften betreffen. <!--geprüft-->
+Jeder Kunde ist für die Einhaltung der geltenden Gesetze und Vorschriften<!--geprüft-->, einschließlich der Datenschutz-Grundverordnung der Europäischen Union (DSGVO), selbst verantwortlich. <!--geprüft--> Es obliegt allein den Kunden, sich von kompetenter juristischer Stelle zu Inhalt und Auslegung aller relevanten Gesetze und Vorschriften<!--geprüft--> beraten zu lassen, die ihre Geschäftstätigkeit und die von ihnen eventuell einzuleitenden Maßnahmen zur Einhaltung dieser Gesetze und Vorschriften betreffen. <!--geprüft-->
 {: important}
 
-Die hierin beschriebenen Produkte, Services und sonstigen Funktionen eignen sich nicht für alle Kundensituationen und sind möglicherweise nur eingeschränkt verfügbar.<!--geprüft-->{{site.data.keyword.IBM_notm}} erteilt keine Rechts- oder Steuerberatung und gibt keine Garantie bezüglich der Konformität von IBM Produkten oder Services mit den geltenden Gesetzen und Vorschriften. <!--geprüft-->
+Die hierin beschriebenen Produkte, Services und sonstigen Funktionen eignen sich nicht für alle Kundensituationen und sind möglicherweise nur eingeschränkt verfügbar.<!--geprüft--> {{site.data.keyword.IBM_notm}} erteilt keine Rechts- oder Steuerberatung und gibt keine Garantie bezüglich der Konformität von IBM Produkten oder Services mit den geltenden Gesetzen und Vorschriften. <!--geprüft-->
 
 Falls Sie für die erstellten {{site.data.keyword.cloud}} {{site.data.keyword.watson}}-Ressourcen Unterstützung hinsichtlich der DSGVO benötigen, ziehen Sie Folgendes hinzu:
 
--   Lesen Sie für Ressourcen, die in der Europäischen Union (EU) erstellt werden, den Abschnitt [Unterstützung für {{site.data.keyword.cloud_notm}}-Ressourcen anfordern, die in der Europäischen Union erstellt werden](/docs/services/watson/getting-started-gdpr-sar.html#request-EU).
--   Lesen Sie für Ressourcen, die außerhalb der EU erstellt werden, den Abschnitt [Unterstützung für Ressourcen anfordern, die außerhalb der Europäischen Union erstellt werden](/docs/services/watson/getting-started-gdpr-sar.html#request-non-EU).
+-   Lesen Sie für Ressourcen, die in der Europäischen Union (EU) erstellt werden, den Abschnitt [Unterstützung für {{site.data.keyword.cloud_notm}}-Ressourcen anfordern, die in der Europäischen Union erstellt werden](/docs/services/watson?topic=watson-gdpr-sar#request-EU).
+-   Lesen Sie für Ressourcen, die außerhalb der EU erstellt werden, den Abschnitt [Unterstützung für Ressourcen anfordern, die außerhalb der Europäischen Union erstellt werden](/docs/services/watson?topic=watson-gdpr-sar#request-non-EU).
 
-## Datenschutzgrundverordnung der Europäischen Union (DSGVO)
+## Datenschutz-Grundverordnung der Europäischen Union (DSGVO)
 {: #gdpr}
 
-{{site.data.keyword.IBM_notm}} hat sich dazu verpflichtet, seinen Kunden und Partnern innovative Lösungen für Datenschutz, Sicherheit und Governance zu bieten und sie bei der Einhaltung der DSGVO zu unterstützen.
+{{site.data.keyword.IBM_notm}} hat sich dazu verpflichtet, seinen Kunden und Partnern innovative Lösungen für Datenschutz, Sicherheit und Governance zu bieten und sie bei der Umsetzung der DSGVO zu unterstützen.
 
-Weitere Informationen zu den eigenen Maßnahmen von {{site.data.keyword.IBM_notm}} für die Einhaltung der DSGVO sowie zu den Leistungsmerkmalen und Angeboten, die Ihnen dabei helfen, die Einhaltung der DSGVO vorzubereiten, finden Sie [hier ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](../../icons/launch-glyph.svg "Symbol für externen Link")](http://www.ibm.com/gdpr){: new_window}.
+Weitere Informationen zu den eigenen Maßnahmen von {{site.data.keyword.IBM_notm}}für die Umsetzung der DSGVO sowie zu den Leistungsmerkmalen und Angeboten, die Ihnen dabei helfen, die Umsetzung der DSGVO vorzubereiten, finden Sie [hier](http://www.ibm.com/gdpr){: external}.
 
 ## Daten im Speech to Text-Service kennzeichnen und löschen
 {: #gdpr-speech-to-text}
@@ -83,7 +83,7 @@ Verwenden Sie den Header `X-Watson-Metadata` bei den folgenden Methoden:
 -   Synchrone HTTP-Anforderungen:
     -   `POST /v1/recognize`
 
-Die Kunden-ID wird allen Daten zugeordnet, die zusammen mit der einzelnen Anforderung gesendet werden.
+    Die Kunden-ID wird allen Daten zugeordnet, die zusammen mit der einzelnen Anforderung gesendet werden.
 -   Asynchrone HTTP-Anforderungen:
     -   `POST /v1/register_callback`
     -   `POST /v1/recognitions`

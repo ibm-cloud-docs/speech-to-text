@@ -2,14 +2,14 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-10"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -50,7 +50,7 @@ Verwenden Sie in den folgenden Fällen ein mäßig überwachtes Training, um ein
 
 Zur Verwendung einer Transkription oder einer Liste von Wörtern erstellen Sie zuerst ein angepasstes Sprachmodell, das diese Textdaten enthält. Damit ein angepasstes Akustikmodell mit einem angepassten Sprachmodell trainiert werden kann, müssen beide Modelle auf derselben Version desselben Basismodells basieren. Falls eine neue Version des Basismodells verfügbar gemacht wird, müssen Sie für beide Modelle ein Upgrade auf dieselbe Version des Basismodells durchführen, damit das Training erfolgreich verläuft.
 
-Verwenden Sie zum Trainieren Ihres angepassten Akustikmodells mit einem angepassten Sprachmodell den Abfrageparameter `custom_language_model_id` der Methode `POST /v1/acoustic_customizations/{customization_id}/train`. Übergeben Sie die GUID des Akustikmodells mit dem Parameter `customization_id` und die GUID des angepassten Sprachmodells mit dem Parameter `custom_language_model_id`. Beide Modelle müssen Eigentum der Serviceberechtigungsnachweise sein, die mit der Anforderung übergeben werden.
+Verwenden Sie zum Trainieren Ihres angepassten Akustikmodells mit einem angepassten Sprachmodell den Abfrageparameter `custom_language_model_id` der Methode `POST /v1/acoustic_customizations/{customization_id}/train`. Übergeben Sie die GUID des Akustikmodells mit dem Parameter `customization_id` und die GUID des angepassten Sprachmodells mit dem Parameter `custom_language_model_id`. Beide Modelle müssen Eigentum der Berechtigungsnachweise sein, die mit der Anforderung übergeben werden.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -70,7 +70,7 @@ Die Verwendung eines angepassten Sprachmodells kann die Transkriptionsgenauigkei
 
 Falls ein angepasstes Sprachmodell Grammatiken einbezieht, können Sie auch das angepasste Sprachmodell und eine seiner Grammatiken während der Spracherkennung zusammen mit einem angepassten Akustikmodell verwenden.
 
-Im folgenden Beispiel werden beide Modelltypen an die HTTP-Methode `POST /v1/recognize` übergeben. Übergeben Sie die GUID des angepassten Akustikmodells mit dem Parameter `acoustic_customization_id` und die GUID des angepassten Sprachmodells mit dem Parameter `language_customization_id`. Beide Modelle müssen Eigentum der mit der Anforderung übergebenen Serviceberechtigungsnachweise sein und auf demselben Basismodell basieren (z. B. `en-US_BroadbandModel`).
+Im folgenden Beispiel werden beide Modelltypen an die HTTP-Methode `POST /v1/recognize` übergeben. Übergeben Sie die GUID des angepassten Akustikmodells mit dem Parameter `acoustic_customization_id` und die GUID des angepassten Sprachmodells mit dem Parameter `language_customization_id`. Beide Modelle müssen Eigentum der mit der Anforderung übergebenen Berechtigungsnachweise sein und auf demselben Basismodell basieren (z. B. `en-US_BroadbandModel`).
 
 ```bash
 curl -X POST -u "apikey:{apikey}"

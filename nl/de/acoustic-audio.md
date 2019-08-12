@@ -2,14 +2,14 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-19"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Audioressourcen verwalten
 {: #manageAudio}
 
-Die Anpassungsschnittstelle bietet die Methode `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`, mit der Sie eine Audioressource zu einem angepassten Akustikmodell hinzufügen können. (Weitere Informationen enthält der Abschnitt [Audiodaten zum angepassten Akustikmodell hinzufügen](/docs/services/speech-to-text/acoustic-create.html#addAudio)). Die Schnittstelle enthält außerdem die hier aufgeführten Methoden für das Auflisten und Löschen der Audioressourcen für ein angepasstes Akustikmodell.
+Die Anpassungsschnittstelle bietet die Methode `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`, mit der Sie eine Audioressource zu einem angepassten Akustikmodell hinzufügen können. Weitere Informationen hierzu enthält der Abschnitt [Audiodaten zum angepassten Akustikmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio). Die Schnittstelle enthält außerdem die hier aufgeführten Methoden für das Auflisten und Löschen der Audioressourcen für ein angepasstes Akustikmodell.
 {: shortdesc}
 
 ## Audioressourcen für ein angepasstes Akustikmodell auflisten
@@ -171,7 +171,7 @@ curl -X GET -u "apikey:{apikey}"
 ## Audioressourcen aus einem angepassten Akustikmodell löschen
 {: #deleteAudio}
 
-Mit der Methode `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` können Sie eine vorhandene Audioressource aus einem angepassten Akustikmodell entfernen. Wenn Sie eine Archivressource löschen, entfernt der Service das gesamte Dateiarchiv. Das Löschen einzelner Dateien aus einer Archivressource ist in der aktuellen Schnittstelle nicht zulässig.
+Mit der Methode `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` können Sie eine vorhandene Audioressource aus einem angepassten Akustikmodell entfernen. Wenn Sie eine Archivressource löschen, entfernt der Service das gesamte Dateiarchiv. Der Service lässt die Löschung einzelner Dateien aus einer Archivierungsressource nicht zu.
 
 Das Entfernen einer Audioressource wirkt sich erst dann auf das angepasste Modell aus, wenn Sie es unter Verwendung der Methode `POST /v1/acoustic_customizations/{customization_id}/train` mit seinen aktualisierten Daten trainieren. Falls Sie das Modell mit der Ressource erfolgreich trainiert hatten, werden die vorhandenen Audiodaten weiterhin für die Spracherkennung verwendet, bis Sie das Modell erneut trainieren.
 

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Upgrade für angepasste Modelle durchführen
 {: #customUpgrade}
 
-Zur Verbesserung der Qualität bei der Spracherkennung werden die Basismodelle durch den {{site.data.keyword.speechtotextfull}}-Service von Zeit zu Zeit aktualisiert. Da die Basismodelle wie auch die Breitband- und Schmalbandmodelle für unterschiedliche Sprachen voneinander unabhängig sind, haben Aktualisierungen an einzelnen Basismodellen keinen Einfluss auf andere Modelle. Im Dokument [Releaseinformationen](/docs/services/speech-to-text/release-notes.html) sind alle Aktualisierungen der Basismodelle dokumentiert.
+Zur Verbesserung der Qualität bei der Spracherkennung werden die Basismodelle durch den {{site.data.keyword.speechtotextfull}}-Service von Zeit zu Zeit aktualisiert. Da die Basismodelle wie auch die Breitband- und Schmalbandmodelle für unterschiedliche Sprachen voneinander unabhängig sind, haben Aktualisierungen an einzelnen Basismodellen keinen Einfluss auf andere Modelle. Im Dokument [Releaseinformationen](/docs/services/speech-to-text?topic=speech-to-text-release-notes) sind alle Aktualisierungen der Basismodelle dokumentiert.
 {: shortdesc}
 
 Sobald eine neue Version für ein Basismodell freigegeben wird, müssen Sie für alle angepassten Sprach- und Akustikmodelle, die auf dem Basismodell aufbauen, ein Upgrade durchführen, um die Aktualisierungen zu nutzen. Bis Sie das Upgrade durchgeführt haben, verwenden Ihre angepassten Modelle weiterhin die ältere Version des Basismodells. Wie bei allen Anpassungsoperationen müssen Sie für das Upgrade eines Modells die Berechtigungsnachweise der Serviceinstanz verwenden, die Eigner des Modells ist.
@@ -62,7 +62,7 @@ Gehen Sie wie folgt vor, um ein Upgrade für ein angepasstes Sprachmodell durchz
 
 Der Service gibt den Antwortcode 200 zurück, wenn der Upgradeprozess erfolgreich gestartet wurde. Mit der Methode `GET /v1/customizations/{customization_id}` können Sie den Status des Modells abrufen und so den Status des Upgrades überwachen. Verwenden Sie eine Schleife, um den Status alle 10 Sekunden zu überprüfen.
 
-Während des Upgrades weist das angepasste Modell den Status `upgrading` auf. Nach Abschluss des Upgrades erhält das Modell wieder den Status, den es vor dem Upgrade besaß (`ready` oder `available`). Der Status einer Upgradeoperation wird auf dieselbe Weise überprüft wie der Status einer Trainingsoperation. Weitere Informationen finden Sie unter [Anforderung zum Trainieren des Modells überwachen](/docs/services/speech-to-text/language-create.html#monitorTraining-language).
+Während des Upgrades weist das angepasste Modell den Status `upgrading` auf. Nach Abschluss des Upgrades erhält das Modell wieder den Status, den es vor dem Upgrade besaß (`ready` oder `available`). Der Status einer Upgradeoperation wird auf dieselbe Weise überprüft wie der Status einer Trainingsoperation. Weitere Informationen finden Sie unter [Anforderung zum Trainieren des Modells überwachen](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language).
 
 Der Service kann keine Anforderungen zum Ändern des Modells akzeptieren, bis die Upgradeanforderung vollständig verarbeitet wurde. Während des Upgrades können Sie jedoch weiterhin Erkennungsanforderungen mit der vorhandenen Version des Modells ausgeben.
 
@@ -100,7 +100,7 @@ Gehen Sie wie folgt vor, um ein Upgrade für ein angepasstes Akustikmodell durch
 
 Der Service gibt den Antwortcode 200 zurück, wenn der Upgradeprozess erfolgreich gestartet wurde. Mit der Methode `GET /v1/acoustic_customizations/{customization_id}` können Sie den Status des Modells abrufen und so den Status des Upgrades überwachen. Verwenden Sie eine Schleife, um den Status einmal pro Minute zu überprüfen.
 
-Während des Upgrades weist das angepasste Modell den Status `upgrading` auf. Nach Abschluss des Upgrades erhält das Modell wieder den Status, den es vor dem Upgrade besaß (`ready` oder `available`). Der Status einer Upgradeoperation wird auf dieselbe Weise überprüft wie der Status einer Trainingsoperation. Weitere Informationen finden Sie unter [Anforderung zum Trainieren des Modells überwachen](/docs/services/speech-to-text/acoustic-create.html#monitorTraining-acoustic).
+Während des Upgrades weist das angepasste Modell den Status `upgrading` auf. Nach Abschluss des Upgrades erhält das Modell wieder den Status, den es vor dem Upgrade besaß (`ready` oder `available`). Der Status einer Upgradeoperation wird auf dieselbe Weise überprüft wie der Status einer Trainingsoperation. Weitere Informationen finden Sie unter [Anforderung zum Trainieren des Modells überwachen](/docs/services/speech-to-text?topic=speech-to-text-acoustic#monitorTraining-acoustic).
 
 Der Service kann keine Anforderungen zum Ändern des Modells akzeptieren, bis die Upgradeanforderung vollständig verarbeitet wurde. Während des Upgrades können Sie jedoch weiterhin Erkennungsanforderungen mit der vorhandenen Version des Modells ausgeben.
 
@@ -118,8 +118,8 @@ Das Upgrade eines angepassten Modells kann nicht gestartet werden, wenn der Serv
 
 Mit den folgenden Methoden können Sie die Versionen des Basismodells auflisten, für die ein angepasstes Modell verfügbar ist:
 
--   Verwenden Sie zum Auflisten von Informationen zu einem angepassten Sprachmodell die Methode `GET /v1/customizations/{customization_id}`. Weitere Informationen finden Sie im Abschnitt [Angepasste Sprachmodelle auflisten](/docs/services/speech-to-text/language-models.html#listModels-language).
--   Verwenden Sie zum Auflisten von Informationen zu einem angepassten Akustikmodell die Methode `GET /v1/acoustic_customizations/{customization_id}`. Weitere Informationen finden Sie im Abschnitt [Angepasste Akustikmodelle auflisten](/docs/services/speech-to-text/acoustic-models.html#listModels-acoustic).
+-   Verwenden Sie zum Auflisten von Informationen zu einem angepassten Sprachmodell die Methode `GET /v1/customizations/{customization_id}`. Weitere Informationen finden Sie im Abschnitt [Angepasste Sprachmodelle auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
+-   Verwenden Sie zum Auflisten von Informationen zu einem angepassten Akustikmodell die Methode `GET /v1/acoustic_customizations/{customization_id}`. Weitere Informationen finden Sie im Abschnitt [Angepasste Akustikmodelle auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
 
 In beiden Fällen umfasst die Ausgabe ein Feld `versions`, das Informationen zu den Basismodellen für das angepasste Modell enthält. Die folgende Ausgabe zeigt Informationen zu einem angepassten Sprachmodell:
 
@@ -162,7 +162,7 @@ curl -X POST -u "apikey:{apikey}"
 
 Mithilfe dieser Funktion können Sie das Leistungsverhalten und die Genauigkeit eines angepassten Modells sowohl mit der alten als auch mit der neuen Version seines Basismodells testen. Falls Sie die Leistung eines Modells nach dem Upgrade nicht zufriedenstellt (weil beispielsweise bestimmte Wörter nicht mehr erkannt werden), können Sie weiterhin das ältere Modell bei Erkennungsanforderungen verwenden.
 
-Im Abschnitt [Version des Basismodells](/docs/services/speech-to-text/input.html#version) ist der Parameter `base_model_version` beschrieben; dort erfahren Sie auch, wie der Service ermittelt, welche Versionen des Basismodells und des angepassten Modells bei einer Erkennungsanforderung zu verwenden sind. Neben diesen Informationen sollten Sie auch die folgenden Aspekte berücksichtigen, wenn Sie bei einer Erkennungsanforderung sowohl ein angepasstes Sprachmodell als auch ein angepasstes Akustikmodell übergeben:
+Im Abschnitt [Version des Basismodells](/docs/services/speech-to-text?topic=speech-to-text-input#version) ist der Parameter `base_model_version` beschrieben; dort erfahren Sie auch, wie der Service ermittelt, welche Versionen des Basismodells und des angepassten Modells bei einer Erkennungsanforderung zu verwenden sind. Neben diesen Informationen sollten Sie auch die folgenden Aspekte berücksichtigen, wenn Sie bei einer Erkennungsanforderung sowohl ein angepasstes Sprachmodell als auch ein angepasstes Akustikmodell übergeben:
 
 -   Die beiden angepassten Modelle müssen auf demselben Basismodell basieren (z. B. `en-US_BroadbandModel`).
 -   Falls die beiden angepassten Modelle auf dem älteren Basismodell basieren, verwendet der Service das alte Basismodell für die Erkennung.

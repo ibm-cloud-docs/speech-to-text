@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,31 +25,29 @@ subcollection: speech-to-text
 # Eingabefunktionen
 {: #input}
 
-Mit den hier aufgeführten Funktionen des {{site.data.keyword.speechtotextshort}}-Service wird angegeben, wie der Service eine Spracherkennungsanforderung ausführen soll. Alle hier beschriebenen Eingabeparameter sind optional. Lediglich die Eingabeaudiodaten sind erforderlich.
+Mit den hier aufgeführten Funktionen des {{site.data.keyword.speechtotextfull}}-Service wird angegeben, wie der Service eine Spracherkennungsanforderung ausführen soll. Alle hier beschriebenen Eingabeparameter sind optional. Lediglich die Eingabeaudiodaten sind erforderlich.
 {: shortdesc}
 
--   Beispiele für einfache Anforderungen zur Spracherkennung bei jeder Schnittstelle des Service enthält der Abschnitt [Erkennungsanforderung ausgeben](/docs/services/speech-to-text/basic-request.html).
--   Eine alphabetisch sortierte Liste aller verfügbaren Parameter für die Spracherkennung, in der auch der jeweilige Status (allgemein verfügbar oder Betaversion) sowie die unterstützten Sprachen angegeben sind, finden Sie in der [Parameterübersicht](/docs/services/speech-to-text/summary.html).
+-   Beispiele für einfache Spracherkennungsanforderungen für die einzelnen Schnittstellen des Service finden Sie im Abschnitt [Erkennungsanforderung ausgeben](/docs/services/speech-to-text?topic=speech-to-text-basic-request).
+-   Eine alphabetisch sortierte Liste aller verfügbaren Parameter für die Spracherkennung, in der auch der jeweilige Status (allgemein verfügbar oder Betaversion) sowie die unterstützten Sprachen angegeben sind, finden Sie in der [Parameterübersicht](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ## Angepasste Modelle
 {: #custom-input}
 
-Die Anpassung des Sprachmodells und des Akustikmodells ist für unterschiedliche Sprachen auf verschiedenen Unterstützungsstufen (allgemein verfügbar oder Betaversion) verfügbar. Weitere Informationen finden Sie unter [Sprachunterstützung bei der Anpassung](/docs/services/speech-to-text/custom.html#languageSupport).
+Die Anpassung des Sprachmodells und des Akustikmodells ist für unterschiedliche Sprachen auf verschiedenen Unterstützungsstufen (allgemein verfügbar oder Betaversion) verfügbar. Weitere Informationen finden Sie unter [Sprachunterstützung bei der Anpassung](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
 {: note}
 
 Bei allen Schnittstellen kann in einer Erkennungsanforderung ein angepasstes Modell verwendet werden:
 
 -   *Angepasste Sprachmodelle* erweitern das Grundvokabular des Service durch Terminologie aus bestimmten Fachgebieten. Mit dem Parameter `language_customization_id` können Sie ein angepasstes Sprachmodell in eine Anforderung einbeziehen. Außerdem können Sie einen optionalen Parameter namens `customization_weight` angeben. Der Parameter legt die relative Gewichtung fest, die Wörter aus dem angepassten Modell im Vergleich zu Wörtern aus dem Grundvokabular erhalten.
 
-    Weitere Informationen finden Sie unter [Angepasstes Sprachmodell verwenden](/docs/services/speech-to-text/language-use.html).
--   *Angepasste Akustikmodelle* passen das akustische Basismodell des Service an die akustischen Besonderheiten Ihrer Umgebung und Sprecher an. Mit dem Parameter `acoustic_customization_id` können Sie ein angepasstes Akustikmodell in eine Anforderung einbeziehen. Für eine Anforderung können Sie sowohl ein angepasstes Sprachmodell als auch ein angepasstes Akustikmodell angeben.
+Weitere Informationen finden Sie im Abschnitt [Angepasstes Sprachmodell verwenden](/docs/services/speech-to-text?topic=speech-to-text-languageUse).-   *Angepasste Akustikmodelle* passen das akustische Basismodell des Service an die akustischen Besonderheiten Ihrer Umgebung und Sprecher an. Mit dem Parameter `acoustic_customization_id` können Sie ein angepasstes Akustikmodell in eine Anforderung einbeziehen. Für eine Anforderung können Sie sowohl ein angepasstes Sprachmodell als auch ein angepasstes Akustikmodell angeben.
 
-    Weitere Informationen finden Sie unter [Angepasstes Akustikmodell verwenden](/docs/services/speech-to-text/acoustic-use.html).
+    Weitere Informationen finden Sie unter [Angepasstes Akustikmodell verwenden](/docs/services/speech-to-text?topic=speech-to-text-acousticUse).
 
+Angepasste Modelle basieren auf einem der Sprachmodelle, die im Abschnitt [Sprachen und Modelle](/docs/services/speech-to-text?topic=speech-to-text-models) beschrieben sind. Ein angepasstes Modell kann nur in Verbindung mit dem Basismodell verwendet werden, für das es erstellt wurde. Wenn Ihr angepasstes Modell auf einem anderen Modell als `en-US_BroadbandModel` basiert, müssen Sie mit der Anforderung auch den Namen des Modells angeben. Zur Verwendung eines angepassten Modells müssen Sie die Anforderung mit den Berechtigungen für die Instanz des Service ausgeben, bei der es sich um den Eigner des angepassten Modells handelt.
 
-Angepasste Modelle basieren auf einem der Sprachmodelle, die im Abschnitt [Sprachen und Modelle](/docs/services/speech-to-text/models.html) beschrieben sind. Ein angepasstes Modell kann nur in Verbindung mit dem Basismodell verwendet werden, für das es erstellt wurde. Wenn Ihr angepasstes Modell auf einem anderen Modell als `en-US_BroadbandModel` basiert, müssen Sie mit der Anforderung auch den Namen des Modells angeben. Zur Verwendung eines angepassten Modells müssen Sie die Anforderung mit den Serviceberechtigungsnachweisen ausgeben, die für die Instanz des Service erstellt wurden, bei der es sich um den Eigner des angepassten Modells handelt.
-
-Eine Einführung in die Anpassung finden Sie im Abschnitt [Anpassungsschnittstelle](/docs/services/speech-to-text/custom.html).
+Eine Einführung in die Anpassung finden Sie im Abschnitt [Anpassungsschnittstelle](/docs/services/speech-to-text?topic=speech-to-text-customization).
 
 ### Beispiele für angepasste Modelle
 {: #customExample}
@@ -76,8 +74,8 @@ curl -X POST -u "apikey:{apikey}"
 
 Beispiele für die Verwendung von angepassten Modellen bei den einzelnen Schnittstellen des Service enthalten die folgenden Abschnitte:
 
--   [Angepasstes Sprachmodell verwenden](/docs/services/speech-to-text/language-use.html)
--   [Angepasstes Akustikmodell verwenden](/docs/services/speech-to-text/acoustic-use.html)
+-   [Angepasstes Sprachmodell verwenden](/docs/services/speech-to-text?topic=speech-to-text-languageUse)
+-   [Angepasstes Akustikmodell verwenden](/docs/services/speech-to-text?topic=speech-to-text-acousticUse)
 
 ## Grammatiken
 {: #grammars-input}
@@ -87,14 +85,14 @@ Die Funktion für die Grammatiken liegt als Betaversion vor. Der Service unterst
 
 Sie können Grammatiken zu einem angepassten Sprachmodell hinzufügen und sie für die Spracherkennung nutzen. Grammatiken definieren mithilfe einer formalen Sprachspezifikation eine Reihe von Produktionsregeln für die Transkription von Zeichenfolgen. Die Regeln geben an, wie gültige Zeichenfolgen aus dem Alphabet der Sprache gebildet werden sollen.
 
-Wenn Sie eine Grammatik für die Spracherkennung verwenden, erkennt der Service ausschließlich Ausdrücke, die von der Grammatik erkannt werden. Durch die Einschränkung des Suchbereichs auf gültige Zeichenfolgen kann der Service Ergebnisse schneller und präziser liefern. 
+Wenn Sie eine Grammatik für die Spracherkennung verwenden, erkennt der Service ausschließlich Ausdrücke, die von der Grammatik erkannt werden. Durch die Einschränkung des Suchbereichs auf gültige Zeichenfolgen kann der Service Ergebnisse schneller und präziser liefern.
 
 Alle Schnittstellen akzeptieren die folgenden Parameter für eine Erkennungsanforderung:
 
--   Der Parameter `language_customization_id` gibt das angepasste Sprachmodell an, für das die Grammatik definiert ist. Sie müssen die Anforderung mit den Serviceberechtigungsnachweisen für diejenige Instanz des Service ausgeben, die Eigner des Modells ist.
+-   Der Parameter `language_customization_id` gibt das angepasste Sprachmodell an, für das die Grammatik definiert ist. Sie müssen die Anforderung mit den Berechtigungsnachweisen für die Instanz des Service ausgeben, die Eigner des Modells ist.
 -   Der Parameter `grammar_name` gibt die Grammatik an, die verwendet werden soll. Bei einer Anforderung können Sie nur eine einzige Grammatik angeben.
 
-Weitere Informationen finden Sie unter [Grammatiken bei angepassten Sprachmodellen verwenden](/docs/services/speech-to-text/grammar.html).
+Weitere Informationen finden Sie im Abschnitt [Grammatiken mit angepassten Sprachmodellen verwenden](/docs/services/speech-to-text?topic=speech-to-text-grammars).
 
 ### Beispiel für Grammatik
 {: #grammarsExample}
@@ -109,12 +107,12 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-Beispiele für die Verwendung von Grammatiken bei den einzelnen Schnittstellen des Service enthält der Abschnitt [Grammatik für die Spracherkennung verwenden](/docs/services/speech-to-text/grammar-use.html).
+Beispiele für die Verwendung von Grammatiken bei den einzelnen Schnittstellen des Service enthält der Abschnitt [Grammatik für die Spracherkennung verwenden](/docs/services/speech-to-text?topic=speech-to-text-grammarUse).
 
 ## Version des Basismodells
 {: #version}
 
-Zur Verbesserung der Qualität bei der Spracherkennung aktualisiert der Service von Zeit zu Zeit die unter [Sprachen und Modelle](/docs/services/speech-to-text/models.html) beschriebenen Basissprachmodelle. Die Basismodelle für Sprachen sind, ebenso wie die Breitband- und Schmalbandmodelle für eine Sprache, voneinander unabhängig. Aktualisierungen der Basismodelle finden daher unabhängig voneinander statt und haben keinen Einfluss auf andere Modelle.
+Zur Verbesserung der Qualität bei der Spracherkennung aktualisiert der Service von Zeit zu Zeit die unter [Sprachen und Modelle](/docs/services/speech-to-text?topic=speech-to-text-models) beschriebenen Basissprachmodelle. Die Basismodelle für Sprachen sind, ebenso wie die Breitband- und Schmalbandmodelle für eine Sprache, voneinander unabhängig. Aktualisierungen der Basismodelle finden daher unabhängig voneinander statt und haben keinen Einfluss auf andere Modelle.
 
 Wenn mehrere Versionen eines Basismodells vorhanden sind, gibt der optionale Parameter `base_model_version` die Version des Modells an, das bei einer Erkennungsanforderung verwendet werden soll. Der Parameter ist in erster Linie zur Verwendung bei angepassten Modellen gedacht, die für ein neues Basismodell aktualisiert wurden. Er kann jedoch auch ohne ein angepasstes Modell eingesetzt werden. Die für eine Anforderung verwendete Version eines Basismodells richtet sich danach, ob Sie den Parameter `base_model_version` übergeben. Sie ist außerdem davon abhängig, ob Sie mit der Anforderung ein angepasstes Modell (Sprachmodell und/oder Akustikmodell) angeben.
 
@@ -130,8 +128,8 @@ Wenn mehrere Versionen eines Basismodells vorhanden sind, gibt der optionale Par
 
 Der Parameter ist zur Verwendung bei angepassten Modellen gedacht. Die verfügbaren Versionen eines Basismodells können Sie daher nur dadurch ermitteln, indem Sie Informationen zu einem angepassten Modell auflisten, das auf diesem Modell basiert.
 
--   Weitere Informationen zum Upgrade von angepassten Modellen finden Sie unter [Upgrade für angepasste Modelle durchführen](/docs/services/speech-to-text/custom-upgrade.html).
--   Zusätzliche Angaben über die Verwendung unterschiedlicher Versionen von Basismodellen und angepassten Modellen für die Spracherkennung enthält der Abschnitt [Erkennungsanforderungen mit angepassten Modellen nach durchgeführtem Upgrade ausgeben](/docs/services/speech-to-text/custom-upgrade.html#upgradeRecognition).
+-   Weitere Informationen zum Upgrade von angepassten Modellen finden Sie unter [Upgrade für angepasste Modelle durchführen](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade).
+-   Zusätzliche Angaben über die Verwendung unterschiedlicher Versionen von Basismodellen und angepassten Modellen für die Spracherkennung enthält der Abschnitt [Erkennungsanforderungen mit angepassten Modellen nach durchgeführtem Upgrade ausgeben](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade#upgradeRecognition).
 
 ## Übertragung von Audiodaten
 {: #transmission}
@@ -144,8 +142,8 @@ Bei den *HTTP-Schnittstellen* können Sie eines der folgenden Verfahren für die
 -   *Streaming* - Sie legen für den Anforderungsheader `Transfer-Encoding` den Wert `chunked` fest und streamen die Daten über eine persistente Verbindung. Die Daten müssen nicht vollständig vorhanden sein, bevor Sie sie an den Service streamen. Sie können die Daten übertragen, sobald sie verfügbar sind. Der Service sendet erst dann Ergebnisse, wenn er den letzten Block empfängt, was Sie durch das Senden eines leeren Blocks kenntlich machen.
 
     Weitere Informationen zum Streamen von Audiodatenblöcken mit dem Header `Transfer-Encoding` enthalten die folgenden Quellen:
-    -   [en.wikipedia.org/wiki/Chunked_transfer_encoding ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://en.wikipedia.org/wiki/Chunked_transfer_encoding){: new_window}
-    -   [Transfer Codings ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://tools.ietf.org/html/rfc7230#section-4){: new_window} in: *IETF RFC 7320 HTTP/1.1: Message Syntax and Routing*
+    -   [Chunked transfer encoding](https://wikipedia.org/wiki/Chunked_transfer_encoding){: external}
+    -   [Transfer Codings](https://tools.ietf.org/html/rfc7230#section-4){: external} in *IETF RFC 7320 HTTP/1.1: Message Syntax and Routing*
 
 Bei den HTTP-Schnittstellen transkribiert der Service immer den gesamten Audiodatenstrom, bevor er Ergebnisse sendet. Die Ergebnisse können mehrere Elemente `transcript` enthalten, um Ausdrücke zu kennzeichnen, die durch Sprechpausen voneinander getrennt sind. Verketten Sie die Elemente `transcript`, um die vollständige Transkription zusammenzusetzen.
 
@@ -155,7 +153,6 @@ Bei einer Streamingsitzung setzt der Service Zeitlimits durch. Er kann eine Stre
 {: #transmissionExample}
 
 In der folgenden Beispielanforderung ist der Wert `chunked` für den Header `Transfer-Encoding` angegeben, damit der Streaming-Modus verwendet wird. Die Verbindung bleibt geöffnet, damit weitere Audiodatenblöcke akzeptiert werden können.
-
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -202,7 +199,6 @@ Ein *Sitzungszeitlimit* (HTTP-Statuscode 408) tritt ein, wenn die von Ihnen gese
 -   In jedem Zeitfenster von 30 Sekunden werden nicht mindestens 15 Sekunden lange Audiodaten an den Service gesendet.
 
     Bis Sie den letzten Block senden, um das Ende des Datenstroms kenntlich zu machen, müssen Sie in jedem 30 Sekunden langen Zeitraum mindestens 15 Sekunden lange Audiodaten senden. Bei den Audiodaten kann es sich um Schweigen handeln, falls Sie für den Parameter `inactivity_timeout` einen höheren Wert als `-1` festgelegt haben. Die gesamte Dauer der Audiodaten, die Sie an den Service senden, wird Ihnen in Rechnung gestellt, was auch Schweigen umfasst.
-
 -   Das Streaming der Audiodaten erfolgt in einer Geschwindigkeit, die unter der Echtzeit liegt.
 
     Im Idealfall starten Sie eine Anforderung zum Aufbau einer Sitzung unmittelbar vor dem Erhalt von Audiodaten für die Transkription. Anschließend erhalten Sie die Sitzung aufrecht, indem Sie Audiodaten mit einer Geschwindigkeit senden, die nahezu Echtzeit entspricht.
@@ -211,7 +207,7 @@ Nachdem Sie den letzten Block gesendet haben, um das Ende der Sitzung anzugeben,
 
 Wenn Sie einen langen Audiodatenstrom transkribieren, kann der Service mehr als 30 Sekunden benötigen, um die Audiodaten zu verarbeiten und eine Antwort zu generieren. Der Service beginnt erst dann mit der Berechnung des Sitzungszeitlimits, wenn er die Verarbeitung aller empfangenen Audiodaten abgeschlossen hat. Die vom Service zur Verarbeitung benötigte Zeit kann in keinem Fall ein Überschreiten des Sitzungszeitlimits von 30 Sekunden verursachen.
 
-Beispiel: Falls Sie in den ersten 10 Sekunden einer Sitzung Audiodaten mit einer Dauer von einer Stunde senden, benötigt der Service möglicherweise 300 Sekunden, um die Audiodaten zu verarbeiten. Damit diese Sitzung aufrecht erhalten bleibt, müssen Sie spätestens nach 340 Sekunden mindestens 15 Sekunden Audiodaten an die Sitzung senden.
+Beispiel: Falls Sie in den ersten 10 Sekunden einer Sitzung Audiodaten mit einer Dauer von einer Stunde senden, benötigt der Service möglicherweise 300 Sekunden, um die Audiodaten zu verarbeiten.  Damit diese Sitzung aufrecht erhalten bleibt, müssen Sie spätestens nach 340 Sekunden mindestens 15 Sekunden Audiodaten an die Sitzung senden.
 
 Wenn Sie bei diesem Beispiel nach 100 Sekunden Sitzungsdauer weitere 15 Sekunden Audiodaten an die Sitzung senden, benötigt der Service zur Verarbeitung dieser Audiodaten möglicherweise weitere zwei Sekunden. In diesem Fall müssten Sie spätestens nach 342 Sekunden weitere 15 Sekunden Audiodaten an die Sitzung senden.
 
@@ -223,9 +219,9 @@ Verlassen Sie sich bei der Ermittlung, ob eine Streamingsitzung inaktiv ist, nic
 
 {{site.data.keyword.IBM_notm}} protokolliert standardmäßig alle Anforderungen an {{site.data.keyword.watson}}-Services und deren Ergebnisse. Die Protokollierung hat einzig den Zweck, die Services für künftige Benutzer zu verbessern. Die protokollierten Daten werden nicht geteilt oder öffentlich gemacht.
 
-Falls Sie die persönlichen Daten von Benutzern schützen müssen oder aus anderem Grund keine Protokollierung Ihrer Anforderungen durch IBM wünschen, können Sie auswählen, dass IBM Daten nicht protokolliert, indem Sie die Protokollierung explizit ausschließen. Die Ablehnung der Protokollierung kann entweder auf Kontoebene oder auf Ebene der API-Anforderung erfolgen. Weitere Informationen enthält der Abschnitt [Anforderungsprotokollierung für {{site.data.keyword.watson}}-Services steuern](/docs/services/watson/getting-started-logging.html).
+Falls Sie die personenbezogenen Daten von Benutzern schützen müssen oder aus anderem Grund keine Protokollierung Ihrer Anforderungen durch IBM wünschen, können Sie auswählen, dass IBM Daten nicht protokolliert, indem Sie die Protokollierung explizit ausschließen. Die Ablehnung der Protokollierung kann entweder auf Kontoebene oder auf Ebene der API-Anforderung erfolgen. Weitere Informationen enthält der Abschnitt [Anforderungsprotokollierung für {{site.data.keyword.watson}}-Services steuern](/docs/services/watson?topic=watson-gs-logging-overview).
 
 ## Informationssicherheit
 {: #security-input}
 
-Die Informationssicherheit umfasst Funktionen, mit denen Sie Daten, die mit einer Anforderung an den Service übergeben werden, eine Kunden-ID zuordnen können. Zur Zuordnung einer Kunden-ID zu den Daten übergeben Sie mit der Anforderung einen Header `X-Watson-Metadata`. Bei Bedarf können Sie danach die Daten mit der Methode `DELETE /v1/user_data` löschen. Weitere Informationen finden Sie im Abschnitt [Informationssicherheit](/docs/services/speech-to-text/information-security.html).
+Die Informationssicherheit umfasst Funktionen, mit denen Sie Daten, die mit einer Anforderung an den Service übergeben werden, eine Kunden-ID zuordnen können. Zur Zuordnung einer Kunden-ID zu den Daten übergeben Sie mit der Anforderung einen Header `X-Watson-Metadata`. Bei Bedarf können Sie danach die Daten mit der Methode `DELETE /v1/user_data` löschen. Weitere Informationen finden Sie im Abschnitt [Informationssicherheit](/docs/services/speech-to-text?topic=speech-to-text-information-security).

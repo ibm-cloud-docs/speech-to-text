@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -28,7 +28,7 @@ subcollection: speech-to-text
 In diesem Abschnitt wird die Unterstützung des {{site.data.keyword.speechtotextfull}}-Service für Grammatiken anhand von Beispielen vorgestellt. In den Beispielen werden zwei einfache ABNF-Grammatiken erstellt und die möglichen Ergebnisse für ihren Einsatz bei der Spracherkennung gezeigt. Die Beispiele veranschaulichen, wie wichtig die Untersuchung der Konfidenzbewertung ist, die der Service in eine Transkription einbezieht.
 {: shortdesc}
 
-In den Beispielen werden nur die Ergebnisse von Spracherkennungsanforderungen bereitgestellt. Beispiele, die veranschaulichen, wie Sie eine Grammatik für die Spracherkennung übergeben, finden Sie unter [Grammatik für die Spracherkennung verwenden](/docs/services/speech-to-text/grammar-use.html). Außerdem sind die Beispiele sehr einfach gehalten. Beispiele für komplexere Grammatiken enthält der Abschnitt [Beispielgrammatiken](/docs/services/speech-to-text/grammar-examples.html).
+In den Beispielen werden nur die Ergebnisse von Spracherkennungsanforderungen bereitgestellt. Beispiele, die veranschaulichen, wie Sie eine Grammatik für die Spracherkennung übergeben, finden Sie unter [Grammatik für die Spracherkennung verwenden](/docs/services/speech-to-text?topic=speech-to-text-grammarUse). Außerdem sind die Beispiele sehr einfach gehalten. Beispiele für komplexere Grammatiken enthält der Abschnitt [Beispielgrammatiken](/docs/services/speech-to-text?topic=speech-to-text-grammarExamples).
 
 ## Übereinstimmung mit einzelnem Ausdruck: Grammatiktyp 'yesno'
 {: #yesnoGrammar}
