@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-07-21"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -36,12 +36,12 @@ In den meisten Sprachen unterstützt der Service sowohl Breitband- als auch Schm
 -   *Breitbandmodelle* werden für Audiodaten mit einer Abtastfrequenz größer-gleich 16 kHz verwendet. Verwenden Sie Breitbandmodelle für reaktionsfähige echtzeitorientierte Anwendungen (z. B. Anwendungen für Live-Aufzeichnungen).
 -   *Schmalbandmodelle* werden für Audiodaten mit einer Abtastfrequenz von 8 kHz verwendet. Verwenden Sie Schmalbandmodelle bei der Offline-Decodierung von Telefongesprächen (der typische Anwendungszweck für diese Abtastfrequenz).
 
-Das Auswählen des richtigen Modells für Ihre Anwendung ist von großer Bedeutung. Verwenden Sie das Modell mit derselben Abtastfrequenz (und Sprache) wie Ihre Audiodaten. Der Service passt die Abtastfrequenz Ihrer Audiodaten automatisch an das Modell an, das Sie angeben. Weitere Informationen finden Sie im Abschnitt [Abtastfrequenz](/docs/services/speech-to-text/audio-formats.html#samplingRate).
+Das Auswählen des richtigen Modells für Ihre Anwendung ist von großer Bedeutung. Verwenden Sie das Modell mit derselben Abtastfrequenz (und Sprache) wie Ihre Audiodaten. Der Service passt die Abtastfrequenz Ihrer Audiodaten automatisch an das Modell an, das Sie angeben. Weitere Informationen finden Sie im Abschnitt [Abtastfrequenz](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#samplingRate).
 
-Um die beste Erkennungsgenauigkeit zu erzielen, müssen Sie auch den Frequenzumfang Ihrer Audiodaten berücksichtigen. Weitere Informationen finden Sie im Abschnitt [Tonfrequenz](/docs/services/speech-to-text/audio-formats.html#frequency).
+Um die beste Erkennungsgenauigkeit zu erzielen, müssen Sie auch den Frequenzumfang Ihrer Audiodaten berücksichtigen. Weitere Informationen finden Sie im Abschnitt [Tonfrequenz](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#frequency).
 {: tip}
 
-In Tabelle 1 sind die unterstützten Modelle für jede Sprache aufgelistet. Wenn Sie den Parameter `model` in einer Anforderung nicht angeben, verwendet der Service standardmäßig das Breitbandmodell für amerikanisches Englisch (`en-US_BroadbandModel`).
+In Tabelle 1 sind die unterstützten Modelle für jede Sprache aufgelistet. Wenn Sie den Parameter `model` in einer Anforderung nicht angeben, verwendet der Service standardmäßig das Breitbandmodell für amerikanisches Englisch (`en-US_BroadbandModel`). Sofern nicht als *Beta* markiert, sind alle Sprachen allgemein für den Produktionseinsatz verfügbar (*GA*).
 
 <table>
   <caption>Tabelle 1. Unterstützte Sprachmodelle</caption>
@@ -51,9 +51,30 @@ In Tabelle 1 sind die unterstützten Modelle für jede Sprache aufgelistet. Wenn
     <th style="text-align:center">Schmalbandmodell</th>
   </tr>
   <tr>
+    <td>Arabisch (Moderner Standard)</td>
+    <td style="text-align:center"><code>ar-AR_BroadbandModel</code></td>
+    <td style="text-align:center">Nicht unterstützt</td>
+  </tr>
+  <tr>
     <td>Brasilianisches Portugiesisch</td>
     <td style="text-align:center"><code>pt-BR_BroadbandModel</code></td>
     <td style="text-align:center"><code>pt-BR_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>Chinesisch (Mandarin)</td>
+    <td style="text-align:center"><code>zh-CN_BroadbandModel</code></td>
+    <td style="text-align:center"><code>zh-CN_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>Britisches Englisch</td>
+    <td style="text-align:center"><code>en-GB_BroadbandModel</code></td>
+    <td style="text-align:center"><code>en-GB_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>Amerikanisches Englisch</td>
+    <td style="text-align:center"><code>en-US_BroadbandModel</code></td>
+    <td style="text-align:center"><code>en-US_NarrowbandModel</code></br>
+      <code>en-US_ShortForm_NarrowbandModel</code></td>
   </tr>
   <tr>
     <td>Französisch</td>
@@ -76,30 +97,34 @@ In Tabelle 1 sind die unterstützten Modelle für jede Sprache aufgelistet. Wenn
     <td style="text-align:center"><code>ko-KR_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Chinesisch (Mandarin)</td>
-    <td style="text-align:center"><code>zh-CN_BroadbandModel</code></td>
-    <td style="text-align:center"><code>zh-CN_NarrowbandModel</code></td>
+    <td>Spanisch (Argentinien, Beta)</td>
+    <td style="text-align:center"><code>es-AR_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-AR_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Modernes Hocharabisch</td>
-    <td style="text-align:center"><code>ar-AR_BroadbandModel</code></td>
-    <td style="text-align:center">Nicht unterstützt</td>
-  </tr>
-  <tr>
-    <td>Spanisch</td>
+    <td>Spanisch (Kastilien)</td>
     <td style="text-align:center"><code>es-ES_BroadbandModel</code></td>
     <td style="text-align:center"><code>es-ES_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Britisches Englisch</td>
-    <td style="text-align:center"><code>en-GB_BroadbandModel</code></td>
-    <td style="text-align:center"><code>en-GB_NarrowbandModel</code></td>
+    <td>Spanisch (Chile, Beta)</td>
+    <td style="text-align:center"><code>es-CL_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-CL_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Amerikanisches Englisch</td>
-    <td style="text-align:center"><code>en-US_BroadbandModel</code></td>
-    <td style="text-align:center"><code>en-US_NarrowbandModel</code></br>
-      <code>en-US_ShortForm_NarrowbandModel</code></td>
+    <td>Spanisch (Kolumbien, Beta)</td>
+    <td style="text-align:center"><code>es-CO_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-CO_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>Spanisch (Mexiko, Beta)</td>
+    <td style="text-align:center"><code>es-MX_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-MX_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>Spanisch (Peru, Beta)</td>
+    <td style="text-align:center"><code>es-PE_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-PE_NarrowbandModel</code></td>
   </tr>
 </table>
 
@@ -108,10 +133,10 @@ In Tabelle 1 sind die unterstützten Modelle für jede Sprache aufgelistet. Wenn
 
 Das Kurzformmodell für amerikanisches Englisch (`en-US_ShortForm_NarrowbandModel`) kann die Spracherkennung in Lösungen für Interactive-Voice-Response (IVR) und automatisierte Kundenunterstützung verbessern. Das Training für das Kurzformmodell ist darauf abgestimmt, kurze Äußerungen zu erkennen, die in Umgebungen für Kundenunterstützung (wie automatisierte oder bemannte Kundendienst-Call-Center) häufig vorkommen. Das Modell wurde beispielsweise für präzise Äußerungen wie Ziffern, Wörter und Namen aus einzelnen Buchstaben und Ja/Nein-Antworten optimiert. Die Verwendung einer Grammatik in Kombination mit dem Kurzformmodell kann die Ergebnisse der Erkennung noch weiter verbessern.
 
-Wie bei allen Modellen können Umgebungen mit hohem Rauschanteil die Erkennungsergebnisse beeinträchtigen. Beispiel: Hintergrundgeräusche in Flughäfen, fahrenden Fahrzeugen und Konferenzräumen sowie mehrere beteiligte Sprecher können die Transkriptionsgenauigkeit verringern. Die Audioausgabe von Lautsprechertelefonen kann durch Rückkopplungen (Echo) ebenfalls die Erkennungsgenauigkeit beeinträchtigen. Die Verwendung eines angepassten Akustikmodells in Kombination mit dem Kurzformmodell kann solche Effekte eindämmen.
+Wie bei allen Modellen können Umgebungen mit hohem Rauschanteil die Erkennungsergebnisse beeinträchtigen. Beispiel: Hintergrundgeräusche in Flughäfen, fahrenden Fahrzeugen und Konferenzräumen sowie mehrere beteiligte Sprecher können die Transkriptionsgenauigkeit verringern.  Die Audioausgabe von Lautsprechertelefonen kann durch Rückkopplungen (Echo) ebenfalls die Erkennungsgenauigkeit beeinträchtigen. Die Verwendung eines angepassten Akustikmodells in Kombination mit dem Kurzformmodell kann solche Effekte eindämmen.
 
--   Weitere Informationen zur Anpassung von Sprach- und Akustikmodellen finden Sie im Abschnitt [Die Anpassungsschnittstelle](/docs/services/speech-to-text/custom.html).
--   Weitere Informationen zu Grammatiken finden Sie im Abschnitt [Grammatiken mit angepassten Sprachmodellen verwenden](/docs/services/speech-to-text/grammar.html).
+-   Weitere Informationen zur Anpassung von Sprach- und Akustikmodellen finden Sie im Abschnitt [Die Anpassungsschnittstelle](/docs/services/speech-to-text?topic=speech-to-text-customization).
+-   Weitere Informationen zu Grammatiken finden Sie im Abschnitt [Grammatiken mit angepassten Sprachmodellen verwenden](/docs/services/speech-to-text?topic=speech-to-text-grammars).
 
 ### Beispiel für Sprachmodell
 {: #modelsExample}

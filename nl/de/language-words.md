@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,10 +25,10 @@ subcollection: speech-to-text
 # Angepasste Wörter verwalten
 {: #manageWords}
 
-Die Anpassungsschnittstelle enthält die Methoden `POST /v1/customizations/{customization_id}/words` und `PUT /v1/customizations/{customization_id}/words/{word_name}` zum Hinzufügen bzw. Ändern von Wörtern für ein angepasstes Modell. Weitere Informationen finden Sie im Abschnitt [Wörter zum angepassten Sprachmodell hinzufügen](/docs/services/speech-to-text/language-create.html#addWords). Die Schnittstelle enthält außerdem die folgenden Methoden zum Auflisten bzw. Löschen von Wörtern für ein angepasstes Sprachmodell.
+Die Anpassungsschnittstelle enthält die Methoden `POST /v1/customizations/{customization_id}/words` und `PUT /v1/customizations/{customization_id}/words/{word_name}` zum Hinzufügen bzw. Ändern von Wörtern für ein angepasstes Modell. Weitere Informationen finden Sie im Abschnitt [Wörter zum angepassten Sprachmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addWords). Die Schnittstelle enthält außerdem die folgenden Methoden zum Auflisten bzw. Löschen von Wörtern für ein angepasstes Sprachmodell.
 {: shortdesc}
 
-Angepasste Wörter werden häufig aus Kopora hinzugefügt. Stellen Sie sicher, dass Sie die Zeichencodierung kennen, die in den Textdateien für Ihre Korpora verwendet wird. Der Service behält die in den Textdateien verwendete Codierung bei. Beim Arbeiten mit den einzelnen Wörtern im angepassten Sprachmodell müssen Sie diese Codierung verwenden. Wenn Sie in der Methode `GET`, `PUT` oder `DELETE /v1/customizations/{customization_id}/words/{word_name}` ein Wort angeben, muss das Element `word_name`, das Sie in der URL übergeben, URL-codiert sein, wenn das Wort Nicht-ASCII-Zeichen enthält. Weitere Informationen finden Sie im Abschnitt [Zeichencodierung](/docs/services/speech-to-text/language-resource.html#charEncoding).
+Angepasste Wörter werden häufig aus Kopora hinzugefügt. Stellen Sie sicher, dass Sie die Zeichencodierung kennen, die in den Textdateien für Ihre Korpora verwendet wird. Der Service behält die in den Textdateien verwendete Codierung bei. Beim Arbeiten mit den einzelnen Wörtern im angepassten Sprachmodell müssen Sie diese Codierung verwenden. Wenn Sie in der Methode `GET`, `PUT` oder `DELETE /v1/customizations/{customization_id}/words/{word_name}` ein Wort angeben, muss das Element `word_name`, das Sie in der URL übergeben, URL-codiert sein, wenn das Wort Nicht-ASCII-Zeichen enthält. Weitere Informationen finden Sie im Abschnitt [Zeichencodierung](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#charEncoding).
 {: important}
 
 ## Wörter aus angepasstem Sprachmodell auflisten
@@ -48,9 +48,8 @@ Die Anpassungsschnittstelle stellt die beiden folgenden Methoden zum Auflisten v
 
 Außer dem Feld `word`, in dem das Wort angegeben wird, geben beide Methoden die folgenden Informationen zu jedem Wort zurück:
 
--   Ein Feld `sounds_like` mit einem Array von Aussprachevarianten für das Wort. Das Array kann die gleich klingende Aussprachevariante enthalten, die vom Service automatisch generiert wird, wenn für das Wort kein Wert im Feld 'sounds_like' angegeben ist. Weitere Informationen finden Sie im Abschnitt [Das Feld 'sounds_like' verwenden](/docs/services/speech-to-text/language-resource.html#soundsLike).
--   Ein Feld `display_as`, in dem die Schreibweise des angepassten Worts angegeben wird, die vom Service in Transkriptionen angezeigt wird. Das Feld enthält eine leere Zeichenfolge, wenn für das Wort kein Wert für 'display_as' angegeben ist. In diesem Fall wird das Wort in der dazugehörigen Schreibweise angezeigt. Weitere Informationen finden Sie im Abschnitt [Das Feld 'display_as' verwenden](/docs/services/speech-to-text/language-resource.html#displayAs).
-
+-   Ein Feld `sounds_like` mit einem Array von Aussprachevarianten für das Wort. Das Array kann die gleich klingende Aussprachevariante enthalten, die vom Service automatisch generiert wird, wenn für das Wort kein Wert im Feld 'sounds_like' angegeben ist. Weitere Informationen finden Sie im Abschnitt [Das Feld 'sounds_like' verwenden](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#soundsLike).
+-   Ein Feld `display_as`, in dem die Schreibweise des angepassten Worts angegeben wird, die vom Service in Transkriptionen angezeigt wird. Das Feld enthält eine leere Zeichenfolge, wenn für das Wort kein Wert für 'display_as' angegeben ist. In diesem Fall wird das Wort in der dazugehörigen Schreibweise angezeigt. Weitere Informationen finden Sie im Abschnitt [Das Feld 'display_as' verwenden](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#displayAs).
 -   Ein Feld `source`, das angibt, wie das Wort zur Wörterressource des angepassten Modells hinzugefügt wurde. Das Feld enthält die Namen aller Korpora und Grammatiken, aus denen das Wort vom Service extrahiert wurde. Wenn das Wort von Ihnen direkt geändert oder hinzugefügt wurde, enthält das Feld die Zeichenfolge `user`.
 -   Ein Feld `count`, das angibt, wie oft das Wort in allen Korpora und Grammatiken gefunden wurde. Wenn das Wort beispielsweise fünf Mal in einem Korpus vorkommt und sieben Mal in einem anderen Korpus, wird der Zählerwert `12` angegeben.
 

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,18 +25,18 @@ subcollection: speech-to-text
 # Angepasste Akustikmodelle verwalten
 {: #manageAcousticModels}
 
-Die Anpassungsschnittstelle enthält die Methode `POST /v1/acoustic_customizations` für das Erstellen eines angepassten Akustikmodells. Sie bietet außerdem die Methode `POST /v1/acoustic_customizations/train`, um ein angepasstes Modell mit den neuesten Audioressourcen zu trainieren. Weitere Informationen enthält die hier aufgeführte Dokumentation.
+Die Anpassungsschnittstelle enthält die Methode `POST /v1/acoustic_customizations` für das Erstellen eines angepassten Akustikmodells. Sie bietet außerdem die Methode `POST /v1/acoustic_customizations/train`, um ein angepasstes Modell mit den neuesten Audioressourcen zu trainieren. Weitere Informationen finden Sie in den folgenden Abschnitten:
 {: shortdesc}
 
--   [Angepasstes Akustikmodell erstellen](/docs/services/speech-to-text/acoustic-create.html#createModel-acoustic)
--   [Angepasstes Akustikmodell trainieren](/docs/services/speech-to-text/acoustic-create.html#trainModel-acoustic)
+-   [Angepasstes Akustikmodell erstellen](/docs/services/speech-to-text?topic=speech-to-text-acoustic#createModel-acoustic)
+-   [Angepasstes Akustikmodell trainieren](/docs/services/speech-to-text?topic=speech-to-text-acoustic#trainModel-acoustic)
 
-Zusätzlich bietet die Schnittstelle Methoden, mit denen Sie Informationen zu angepassten Akustikmodellen auflisten, ein angepasstes Modell auf seinen Anfangsstatus zurücksetzen und ein angepasstes Modell löschen können.
+Zusätzlich bietet die Schnittstelle Methoden, mit denen Sie Informationen zu angepassten Akustikmodellen auflisten, ein angepasstes Modell auf seinen Anfangsstatus zurücksetzen, ein Upgrade für ein angepasstes Modell durchführen und ein angepasstes Modell löschen können. Es ist nicht möglich, ein angepasstes Modell zu trainieren, zurückzusetzen, zu aktualisieren oder zu löschen, während der Service eine andere Operation für dieses Modell ausführt, einschließlich des Hinzufügens von Audioressourcen zum Modell.
 
 ## Angepasste Akustikmodelle auflisten
 {: #listModels-acoustic}
 
-Die Anpassungsschnittstelle bietet zwei Methoden für das Auflisten von Informationen zu den angepassten Akustikmodellen, deren Eigner die angegebenen Serviceberechtigungsnachweise sind:
+Die Anpassungsschnittstelle bietet zwei Methoden für das Auflisten von Informationen zu den angepassten Akustikmodellen, deren Eigner die angegebenen Berechtigungsnachweise sind:
 
 -   Die Methode `GET /v1/acoustic_customizations` listet Informationen zu allen angepassten Akustikmodellen oder zu allen angepassten Akustikmodellen für eine bestimmte Sprache auf.
 -   Die Methode `GET /v1/acoustic_customizations/{customization_id}` listet Informationen zu einem angegebenen angepassten Akustikmodell auf. Mit dieser Methode können Sie den Status einer Trainingsanforderung vom Service abfragen.
@@ -45,17 +45,18 @@ Beide Methoden geben die folgenden Informationen zu einem angepassten Akustikmod
 
 -   `customization_id`: Gibt die GUID (Globally Unique Identifier, global eindeutige ID) des angepassten Modells zurück. Mit der GUID wird das Modell in den Methoden der Schnittstelle angegeben.
 -   `created`: Gibt das Datum und die Uhrzeit für die Erstellung des angepassten Modells in koordinierter Weltzeit (UTC) an.
+-   `updated`: Gibt das Datum und die Uhrzeit der letzten Änderung des angepassten Modells in koordinierter Weltzeit (UTC) an.
 -   `language`: Gibt die Sprache des angepassten Modells an.
 -   `owner`: Gibt die Berechtigungsnachweise der Serviceinstanz an, die Eigner des angepassten Modells ist.
 -   `name`: Gibt den Namen des angepassten Modells an.
 -   `description`: Zeigt die Beschreibung des angepassten Modells, falls bei seiner Erstellung eine Beschreibung angegeben wurde.
 -   `base_model_name`: Gibt den Namen des Sprachmodells an, für das das angepasste Modell erstellt wurde.
--   `versions`: Stellt eine Liste der verfügbaren Versionen für das angepasste Modell bereit. Jedes Element des Arrays gibt eine Version des Basismodells an, mit der das angepasste Modell verwendet werden kann. Mehrere Versionen sind nur dann vorhanden, wenn für das angepasste Modell ein Upgrade durchgeführt wurde. Andernfalls wird nur eine einzige Version angezeigt. Weitere Informationen enthält der Abschnitt [Versionsinformationen für ein angepasstes Modell auflisten](/docs/services/speech-to-text/custom-upgrade.html#upgradeList).
+-   `versions`: Stellt eine Liste der verfügbaren Versionen für das angepasste Modell bereit. Jedes Element des Arrays gibt eine Version des Basismodells an, mit der das angepasste Modell verwendet werden kann. Mehrere Versionen sind nur dann vorhanden, wenn für das angepasste Modell ein Upgrade durchgeführt wurde. Andernfalls wird nur eine einzige Version angezeigt. Weitere Informationen finden Sie im Abschnitt [Versionsinformationen für ein angepasstes Modell auflisten](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade#upgradeList).
 
 Die Methode gibt außerdem ein Feld `status` zurück, in dem der Status des angepassten Modells angegeben ist:
 
--   `pending`: Das Modell wurde erstellt. Es wird entweder auf das Hinzufügen von Trainingsdaten oder auf den Abschluss der Analyse der hinzugefügten Daten durch den Service gewartet.
--   `ready`: Das Modell enthält Audiodaten und ist für das Training bereit.
+-   `pending`: Das Modell wurde erstellt. Das Modell wartet darauf, dass entweder gültige Trainingsdaten (Audioressourcen) hinzugefügt werden, oder dass die Analyse der hinzugefügten Daten abgeschlossen wird.
+-   `ready`: Das Modell enthält gültige Audiodaten und ist für das Training bereit. Wenn das Modell eine Mischung aus gültigen und ungültigen Audioressourcen enthält, schlägt das Training für das Modells fehl, es sei denn, Sie setzen den Abfrageparameter `strict` auf `false`. Weitere Informationen finden Sie im Abschnitt [Fehler bei Training](/docs/services/speech-to-text?topic=speech-to-text-acoustic#failedTraining-acoustic).
 -   `training`: Das Modell wird gegenwärtig mit Audiodaten trainiert.
 -   `available`: Das Modell wurde trainiert und kann bei Erkennungsanforderungen verwendet werden.
 -   `upgrading`: Für das Modell wird gegenwärtig ein Upgrade durchgeführt.
@@ -66,7 +67,7 @@ Die Ausgabe enthält außerdem ein Feld `progress`, in dem der aktuelle Verarbei
 ### Beispielanforderungen und -antworten
 {: #listExample-acoustic}
 
-Das folgende Beispiel enthält den Abfrageparameter `language`, damit alle angepassten Akustikmodelle für amerikanisches Englisch aufgelistet werden, deren Eigner die Serviceberechtigungsnachweise sind:
+Das folgende Beispiel enthält den Abfrageparameter `language`, damit alle angepassten Akustikmodelle für amerikanisches Englisch aufgelistet werden, deren Eigner die Berechtigungsnachweise sind:
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -74,7 +75,7 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: pre}
 
-Die Serviceberechtigungsnachweise sind Eigner von zwei solchen Modellen. Das erste Modell wartet auf Daten oder wird vom Service verarbeitet. Das zweite Modell ist vollständig trainiert und bereit für die Verwendung.
+Die Berechtigungsnachweise sind Eigner von zwei solchen Modellen. Das erste Modell wartet auf Daten oder wird vom Service verarbeitet. Das zweite Modell ist vollständig trainiert und bereit für die Verwendung.
 
 ```javascript
 {
@@ -82,6 +83,7 @@ Die Serviceberechtigungsnachweise sind Eigner von zwei solchen Modellen. Das ers
     {
       "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
       "created": "2016-06-01T18:42:25.324Z",
+      "updated": "2016-06-01T18:42:25.324Z",
       "language": "en-US",
       "versions": [
         "en-US_BroadbandModel.v07-06082016.06202016",
@@ -97,6 +99,7 @@ Die Serviceberechtigungsnachweise sind Eigner von zwei solchen Modellen. Das ers
     {
       "customization_id": "8391f918-3b76-e109-763c-b7732fae4829",
       "created": "2016-06-01T18:51:37.291Z",
+      "updated": "2016-06-01T19:21:06.825Z",
       "language": "en-US",
       "versions": [
         "en-US_BroadbandModel.v2017-11-15"
@@ -125,6 +128,7 @@ curl -X GET -u "apikey:{apikey}"
 {
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
   "created": "2016-06-01T18:42:25.324Z",
+  "updated": "2016-06-01T18:42:25.324Z",
   "language": "en-US",
   "versions": [
     "en-US_BroadbandModel.v07-06082016.06202016",

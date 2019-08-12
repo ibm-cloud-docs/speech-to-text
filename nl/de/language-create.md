@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-11"
+lastupdated: "2019-07-21"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -32,13 +32,13 @@ Führen Sie die folgenden Schritte aus, um ein angepasstes Sprachmodell für den
 1.  [Korpus zum angepassten Sprachmodell hinzufügen](#addCorpus). Ein Korpus ist ein Klartextdokument, in dem Terminologie aus dem jeweiligen Fachgebiet verwendet wird. Der Service extrahiert aus den Korpora Begriffe, die nicht im Basisvokabular enthalten sind, und erstellt daraus ein Vokabular für das angepasste Modell. Sie können mehrere Korpora zu einem angepassten Modell hinzufügen.
 1.  [Wörter zum angepassten Sprachmodell hinzufügen](#addWords). Sie können auch angepasste Wörter einzeln zu einem Modell hinzufügen. Außerdem können Sie mit den gleichen Methoden angepasste Wörter ändern, die aus Korpora extrahiert wurden. Mithilfe der Methoden können Sie Aussprachevarianten für Wörter angeben und festlegen, wie die Wörter in einem Sprachtranskript angezeigt werden.
 1.  [Angepasstes Sprachmodell trainieren](#trainModel-language). Nach dem Hinzufügen von Wörter zu dem angepassten Modell müssen Sie das Modell anhand der Wörter trainieren. Durch das Trainieren wird das angepasste Modell auf die Verwendung in der Spracherkennung vorbereitet. Neue oder geänderte Wörter werden erst nach dem Trainieren von dem Modell verwendet.
-1.  Nachdem Sie das angepasste Modell trainiert haben, können Sie es in Erkennungsanforderungen verwenden. Wenn die zum Transkribieren übergebenen Audiodaten fachspezifische Wörter enthalten, die im angepassten Modell definiert sind, wird das erweiterte Vokabular des Modells in den Ergebnissen der Anforderungen berücksichtigt. Weitere Informationen finden Sie im Abschnitt [Angepasstes Sprachmodell verwenden](/docs/services/speech-to-text/language-use.html).
+1.  Nachdem Sie das angepasste Modell trainiert haben, können Sie es in Erkennungsanforderungen verwenden. Wenn die zum Transkribieren übergebenen Audiodaten fachspezifische Wörter enthalten, die im angepassten Modell definiert sind, wird das erweiterte Vokabular des Modells in den Ergebnissen der Anforderungen berücksichtigt. Weitere Informationen finden Sie im Abschnitt [Angepasstes Sprachmodell verwenden](/docs/services/speech-to-text?topic=speech-to-text-languageUse).
 
 Die Schritte zum Erstellen eines benutzerdefinierten Sprachmodells sind iterativ. Sie können beliebig oft Korpora und/oder Wörter hinzufügen und das Modell nach Bedarf trainieren bzw. erneut trainieren.
 
-Außerdem können Sie Grammatiken zu einem angepassten Sprachmodell hinzufügen. Grammatiken begrenzen die Antwort des Service auf diejenigen Wörter, die von einer Grammatik erkannt werden. Weitere Informationen finden Sie im Abschnitt [Grammatiken mit angepassten Sprachmodellen verwenden](/docs/services/speech-to-text/grammar.html).
+Außerdem können Sie Grammatiken zu einem angepassten Sprachmodell hinzufügen. Grammatiken begrenzen die Antwort des Service auf diejenigen Wörter, die von einer Grammatik erkannt werden. Weitere Informationen finden Sie im Abschnitt [Grammatiken mit angepassten Sprachmodellen verwenden](/docs/services/speech-to-text?topic=speech-to-text-grammars).
 
-Die Sprachmodellanpassung ist für die meisten Sprachen verfügbar. Weitere Informationen finden Sie im Abschnitt [Sprachunterstützung für Anpassung](/docs/services/speech-to-text/custom.html#languageSupport).
+Die Sprachmodellanpassung ist für die meisten Sprachen verfügbar. Weitere Informationen finden Sie unter [Sprachunterstützung bei der Anpassung](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
 {: note}
 
 ## Angepasstes Sprachmodell erstellen
@@ -78,27 +78,39 @@ Mit der Methode `POST /v1/customizations` können Sie ein neues angepasstes Spra
     <td><code>dialect</code><br/><em>Optional</em></td>
     <td style="text-align:center">String</td>
     <td>
-      Der Dialekt aus der angegebenen Sprache, der in dem angepassten
-      Modell verwendet werden soll. Der Dialekt stimmt standardmäßig mit
-      der Sprache des Basismodells überein (z. B. der Dialekt <code>en-US</code>
-      für eines der Sprachmodelle für amerikanisches Englisch,
-      <code>en-US_BroadbandModel</code> oder
-      <code>en-US_NarrowbandModel</code>).<br/></br>
-      Der Parameter ist nur für Modelle in Spanisch von Bedeutung, für die
-      der Service ein angepasstes Modell erstellt, das für Sprachdaten mit dem
-      angegebenen Dialekt geeignet ist:
+      Der Dialekt aus der angegebenen Sprache, der in dem neuen
+      Modell verwendet werden soll. Für die meisten Sprachen stimmt der Dialekt
+      standardmäßig mit der Sprache des Basismodells überein. Beispielsweise wird `en-US`
+      für beide Modelle für amerikanisches Englisch verwendet.<br><br>
+      Für eine spanische Sprache erstellt der Service ein benutzerdefiniertes Modell, das für
+      Sprachdaten in einem der folgenden Dialekte geeignet ist:
       <ul style="margin-left:20px; padding:0px;">
         <li style="margin:10px 0px; line-height:120%;">
-          <code>es-ES</code> für Spanisch (Kastilien), die Standardeinstellung
+          `es-ES` für Spanisch (Kastilien) (`es-ES`-Modelle)
         </li>
         <li style="margin:10px 0px; line-height:120%;">
-          <code>es-LA</code> für Spanisch (Lateinamerika)
+          `es-LA` für Spanisch (Lateinamerika) (`es-AR`-, `es-CL`-, `es-CO`-,
+          und `es-PE`-Modelle)
         </li>
         <li style="margin:10px 0px; line-height:120%;">
-          <code>es-US</code> für Spanisch (Mexiko, Nordamerika)
+          `es-US` für Spanisch (Mexiko, Nordamerika) (`es-MX`-Modelle)
         </li>
       </ul>
-      Sie müssen einen Dialekt angeben, der für das Basismodell zulässig ist.
+      Der Parameter ist nur für Modelle in Spanisch von Bedeutung, für die
+      Sie immer problemlos die Parameter weglassen können, damit der Service die
+      richtige Zuordnung erstellt.
+      <ul style="margin-left:20px; padding:0px;">
+        <li style="margin:10px 0px; line-height:120%;">
+          Wenn Sie den Parameter `dialect` für andere Modelle
+          als spanische Sprachmodelle angeben, muss der zugehörige Wert mit der Sprache des Basismodells übereinstimmen.
+        </li>
+        <li style="margin:10px 0px; line-height:120%;">
+          Wenn Sie den Parameter `dialect` für spanische Sprachmodelle angeben, muss
+          der zugehörige Wert mit einer der definierten Zuordnungen
+          (`es-ES`, `es-LA` oder `es-MX`) übereinstimmen.
+        </li>
+      </ul>
+      Alle Dialektwerte sind von der Groß-/Kleinschreibung unabhängig.
     </td>
   </tr>
   <tr>
@@ -132,7 +144,7 @@ Das Beispiel gibt die Anpassungs-ID des neuen Modells zurück. Jedes angepasste 
 ```
 {: codeblock}
 
-Eigner des neuen angepassten Modells ist die Serviceinstanz, deren Berechtigungsnachweise beim Erstellen des Modells verwendet wurden. Weitere Informationen finden Sie im Abschnitt [Eigentumsrecht an angepassten Modellen](/docs/services/speech-to-text/custom.html#customOwner).
+Eigner des neuen angepassten Modells ist die Serviceinstanz, deren Berechtigungsnachweise beim Erstellen des Jobs verwendet wurden. Weitere Informationen finden Sie im Abschnitt [Eigentumsrecht an angepassten Modellen](/docs/services/speech-to-text?topic=speech-to-text-customization#customOwner).
 
 ## Korpus zum angepassten Sprachmodell hinzufügen
 {: #addCorpus}
@@ -141,8 +153,8 @@ Nachdem Sie das angepasste Sprachmodell erstellt haben, müssen im nächsten Sch
 
 Ein Korpus ist eine einfache Textdatei, die im Idealfall Beispielsätze aus dem zugehörigen Fachgebiet enthält. Der Service analysiert den Inhalt der Korpusdatei und extrahiert daraus alle Wörter, die nicht im Basisvokabular des Service vorkommen. Diese Wörter werden als vokabularexterne Wörter (Out-Of-Vocabulary, OOV) bezeichnet.
 
--   Weitere Informationen zur Verwendung von Korpora finden Sie im Abschnitt [Mit Korpora arbeiten](/docs/services/speech-to-text/language-resource.html#workingCorpora).
--   Weitere Informationen zur Vorgehensweise des Service beim Hinzufügen von Korpora zu einem Modell finden Sie im Abschnitt [Was passiert, wenn ich eine Korpusdatei hinzufüge?](/docs/services/speech-to-text/language-resource.html#parseCorpus)
+-   Weitere Informationen zur Verwendung von Korpora finden Sie im Abschnitt [Mit Korpora arbeiten](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#workingCorpora).
+-   Weitere Informationen zur Vorgehensweise des Service beim Hinzufügen von Korpora zu einem Modell finden Sie im Abschnitt [Was passiert, wenn ich eine Korpusdatei hinzufüge?](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#parseCorpus)
 
 Durch das Bereitstellen von Sätzen, die neue Wörter enthalten, ermöglichen Korpora dem Service das Erlernen der Wörter im Kontext. Anschließend können Sie die Wörter im Modell einzeln erweitern oder ändern. Das Trainieren eines Modells mit einzelnen Wörtern ist zeitaufwendiger als das Hinzufügen von Wörtern aus Korpora und kann zu weniger effizienten Ergebnissen führen.
 {: tip}
@@ -152,12 +164,13 @@ Mit der Methode `POST /v1/customizations/{customization_id}/corpora/{corpus_name
 -   Geben Sie die Anpassungs-ID des angepassten Modells im Parameter `customization_id` an.
 -   Geben Sie einen Namen für das Korpus im Pfadparameter `corpus_name` an. Verwenden Sie einen lokalisierten Namen in der Sprache des angepassten Modells, der den Inhalt des Korpus bezeichnet.
     -   Der Name sollte nicht mehr als 128 Zeichen umfassen.
-    -   Verwenden Sie im Namen keine Leerzeichen, Schrägstriche (`/`) oder umgekehrten Schrägstriche (\).
-    -   Verwenden Sie nicht den Namen eines Korpus, das bereits zu dem angepassten Modell hinzugefügt wurde.
+    -   Verwenden Sie keine Zeichen, die URL-codiert sein müssen. Verwenden Sie beispielsweise keine Leerzeichen, Schrägstriche, umgekehrte Schrägstriche, Doppelpunkte, Et-Zeichen, doppelte Anführungszeichen, Pluszeichen, Gleichheitszeichen, Fragezeichen usw. im Namen. (Der Service verhindert die Verwendung dieser Zeichen nicht. Da sie jedoch immer URL-codiert sein müssen, wird von ihrer Verwendung unbedingt abgeraten.)
+    -   Verwenden Sie nicht den Namen eines Korpus oder einer Grammatik, der/die bereits zu dem angepassten Modell hinzugefügt wurde.
     -   Verwenden Sie nicht den Namen `user`, der im Service für angepasste Wörter reserviert ist, die vom Benutzer hinzugefügt oder geändert werden.
+    -   Verwenden Sie nicht den Namen `base_lm` oder `default_lm`. Beide Namen sind für die zukünftige Verwendung durch den Service reserviert.
 -   Übergeben Sie die Korpustextdatei als Hauptteil der Anforderung.
 
-Sie können maximal 90.000 vokabularexterne Wöter (OOV-Worter) und insgesamt bis zu 10.000.000 Wörter aus allen Quellen zusammen hinzufügen. Dazu gehören Wörter aus Korpora und Grammatiken sowie Wörter, die Sie direkt hinzufügen. Weitere Informationen finden Sie im Abschnitt [Wie viele Daten brauche ich?](/docs/services/speech-to-text/language-resource.html#wordsResourceAmount)
+Sie können maximal 90.000 vokabularexterne Wöter (OOV-Worter) und insgesamt bis zu 10.000.000 Wörter aus allen Quellen zusammen hinzufügen. Dazu gehören Wörter aus Korpora und Grammatiken sowie Wörter, die Sie direkt hinzufügen. Weitere Informationen finden Sie im Abschnitt [Wie viele Daten brauche ich?](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#wordsResourceAmount)
 {: note}
 
 Im folgenden Beispiel wird die Korpustextdatei `healthcare.txt` zu dem angepassten Modell mit der angegebenen ID hinzugefügt. Im Beispiel wird dem Korpus der Name `healthcare` zugeordnet.
@@ -171,9 +184,9 @@ curl -X POST -u "apikey:{apikey}"
 
 Die Methode akzeptiert außerdem den optionalen Parameter `allow_overwrite`, um ein vorhandenes Korpus für ein angepasstest Modell zu überschreiben. Verwenden Sie diesen Parameter, wenn Sie eine Korpusdatei aktualisieren möchten, die Sie zu einem Modell hinzugefügt haben.
 
-Die Methode wird asynchron ausgeführt. Es kann ein bis zwei Minuten dauern, bis die Methode beendet ist. Die Ausführungsdauer ist von der Gesamtzahl der Wörter im Korpus, von der Anzahl der im Korpus gefundenen neuen Wörter und von der aktuellen Auslastung des Service abhängig. Weitere Informationen zum Überprüfen des Status eines Korpus finden Sie im Abschnitt [Anforderung zum Hinzufügen eines Korpus überwachen](#monitorCorpus).
+Dies ist eine asynchrone Methode. Es kann ein bis zwei Minuten dauern, bis die Methode beendet ist. Die Ausführungsdauer ist von der Gesamtzahl der Wörter im Korpus, von der Anzahl der im Korpus gefundenen neuen Wörter und von der aktuellen Auslastung des Service abhängig. Weitere Informationen zum Überprüfen des Status eines Korpus finden Sie im Abschnitt [Anforderung zum Hinzufügen eines Korpus überwachen](#monitorCorpus).
 
-Sie können beliebig viele Korpora zu einem angepassten Modell hinzufügen, indem Sie die Methode für jede Korpustextdatei einmal aufrufen. Das Hinzufügen eines Korpus muss vollständig abgeschlossen sein, bevor ein weiteres Korpus hinzugefügt werden kann. Prüfen Sie nach dem Hinzufügen eines Korpus zu einem angepassten Modell die neuen angepassten Wörter auf Schreibfehler und andere Fehler. Weitere Informationen finden Sie im Abschnitt [Wörterressource prüfen](/docs/services/speech-to-text/language-resource.html#validateModel).
+Sie können beliebig viele Korpora zu einem angepassten Modell hinzufügen, indem Sie die Methode für jede Korpustextdatei einmal aufrufen. Das Hinzufügen eines Korpus muss vollständig abgeschlossen sein, bevor ein weiteres Korpus hinzugefügt werden kann. Prüfen Sie nach dem Hinzufügen eines Korpus zu einem angepassten Modell die neuen angepassten Wörter auf Schreibfehler und andere Fehler. Weitere Informationen finden Sie im Abschnitt [Wörterressource prüfen](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
 
 ### Anforderung zum Hinzufügen eines Korpus überwachen
 {: #monitorCorpus}
@@ -206,7 +219,7 @@ Im Feld `status` wird einer der folgenden Werte angegeben:
 -   `being_processed` gibt an, dass der Service die Analyse des Korpus noch nicht abgeschlossen hat.
 -   `undetermined` gibt an, dass der Service beim Verarbeiten des Korpus einen Fehler festgestellt hat.
 
-Überprüfen Sie mit einer Schleife den Status des Korpus alle 10 Sekunden, bis der Status `analyzed` angegeben wird. Weitere Informationen zur Statusüberprüfung für die Korpora eines Modells finden Sie im Abschnitt [Korpora für angepasstes Sprachmodell auflisten](/docs/services/speech-to-text/language-corpora.html#listCorpora).
+Überprüfen Sie mit einer Schleife den Status des Korpus alle 10 Sekunden, bis der Status `analyzed` angegeben wird. Weitere Informationen zur Statusüberprüfung für die Korpora eines Modells finden Sie im Abschnitt [Korpora für angepasstes Sprachmodell auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageCorpora#listCorpora).
 
 ## Wörter zum angepassten Sprachmodell hinzufügen
 {: #addWords}
@@ -215,8 +228,8 @@ Obwohl das Hinzufügen von Korpora die empfohlene Methode zum Erweitern des Voka
 
 Wenn Sie nur wenige Wörter zu einem Modell hinzufügen möchten, ist die Verwendung von Korpora möglicherweise keine sinnvolle oder realistische Option. In diesem Fall ist die einfachste Methode das Hinzufügen eines einzelnen Wortes mit zugehöriger Schreibweise. Sie können auch mehrere Aussprachevarianten für das Wort bereitstellen und angeben, wie das Wort angezeigt werden soll.
 
--   Weitere Informationen zum direkten Hinzufügen von Wörtern finden Sie im Abschnitt [Mit angepassten Wörtern arbeiten](/docs/services/speech-to-text/language-resource.html#workingWords).
--   Weitere Informationen zur Vorgehensweise des Service beim Hinzufügen angepasster Wörter zu einem Modell finden Sie im Abschnitt [Was passiert, wenn ich ein angepasstes Wort hinzufüge oder ändere?](/docs/services/speech-to-text/language-resource.html#parseWord)
+-   Weitere Informationen zum direkten Hinzufügen von Wörtern finden Sie im Abschnitt [Mit angepassten Wörtern arbeiten](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#workingWords).
+-   Weitere Informationen zur Vorgehensweise des Service beim Hinzufügen angepasster Wörter zu einem Modell finden Sie im Abschnitt [Was passiert, wenn ich ein angepasstes Wort hinzufüge oder ändere?](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#parseWord)
 
 Mit den folgenden Methoden können Sie Wörter zu einem angepassten Modell hinzufügen:
 
@@ -267,7 +280,7 @@ Mit den folgenden Methoden können Sie Wörter zu einem angepassten Modell hinzu
 
     Dies ist eine asynchrone Methode. Der vom Service zurückgegebene Antwortcode meldet sofort den Erfolg oder das Fehlschlagen der Anforderung.
 
-Überprüfen Sie (wie beim Hinzufügen von Korpora) die neuen angepassten Wörter auf Schreibfehler und andere Fehler. Diese Überprüfung ist besonders wichtig, wenn Sie mehrere Wörter gleichzeitig hinzufügen. Weitere Informationen finden Sie im Abschnitt [Wörterressource prüfen](/docs/services/speech-to-text/language-resource.html#validateModel).
+Überprüfen Sie (wie beim Hinzufügen von Korpora) die neuen angepassten Wörter auf Schreibfehler und andere Fehler. Diese Überprüfung ist besonders wichtig, wenn Sie mehrere Wörter gleichzeitig hinzufügen. Weitere Informationen finden Sie im Abschnitt [Wörterressource prüfen](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
 
 ### Anforderung zum Hinzufügen von Wörtern überwachen
 {: #monitorWords}
@@ -286,6 +299,7 @@ curl -X GET -u "apikey:{apikey}"
 {
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
   "created": "2016-06-01T18:42:25.324Z",
+  "updated": "2016-06-01T18:45:11.737Z",
   "language": "en-US",
   "dialect": "en-US",
   "owner": "297cfd08-330a-22ba-93ce-1a73f454dd98",
@@ -320,16 +334,17 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-Sie können den optionalen Abfrageparameter `word_type_to_add` verwenden, um die Wörter anzugeben, mit denen das angepasste Modell trainiert werden soll.
-
--   Geben Sie `all` an oder lassen Sie den Parameter weg, um das Modell mit allen zugehörigen Wörtern (unabhängig von ihrer Herkunft) zu trainieren.
--   Geben Sie `user` an, um das Modell nur mit Wörtern zu trainieren, die von dem angegebenen Benutzer hinzugefügt oder geändert wurden. Dabei werden Wörter ignoriert, die nur aus Korpora oder Grammatiken extrahiert wurden.
-
-    Diese Option ist hilfreich zum Hinzufügen von Daten mit Störanteilen (z. B. Wörter mit Schreibfehlern). Bevor Sie das Modell mit solchen Daten trainieren, können Sie mit dem Abfrageparameter `word_type` in der Methode `GET /v1/customizations/{customization_id}/words` Wörter überprüfen, die aus Korpora und Grammatiken extrahiert wurden. Weitere Informationen finden Sie im Abschnitt [Wörter aus angepasstem Sprachmodell auflisten](/docs/services/speech-to-text/language-words.html#listWords).
-
-Zusätzlich können Sie den optionalen Abfrageparameter `customization_weight` verwenden. Dieser Parameter gibt die relative Gewichtung für Wörter aus dem angepassten Modell im Vergleich zu Wörtern aus dem Basisvokabular an, wenn das angepasste Modell für die Spracherkennung verwendet wird. Mit jeder Erkennungsanforderung, von der das angepasste Modell verwendet wird, können Sie auch eine Anpassungsgewichtung angeben. Weitere Informationen finden Sie im Abschnitt [Anpassungsgewichtung verwenden](/docs/services/speech-to-text/language-use.html#weight).
-
 Dies ist eine asynchrone Methode. Die Dauer des Trainingsvorgangs kann mehrere Minuten betragen und ist von der Anzahl der neuen Wörter und von der aktuellen Auslastung des Service abhängig. Weitere Informationen zur Statusprüfung für den Trainingsvorgang finden Sie im Abschnitt [Anforderung zum Trainieren des Modells überwachen](#monitorTraining-language).
+
+Die Methode enthält die folgenden optionalen Abfrageparameter:
+
+-   Der Parameter `word_type_to_add` gibt die Wörter an, mit denen das angepasste Modell trainiert werden soll:
+    -   Geben Sie `all` an oder lassen Sie den Parameter weg, um das Modell mit allen zugehörigen Wörtern (unabhängig von ihrer Herkunft) zu trainieren.
+    -   Geben Sie `user` an, um das Modell nur mit Wörtern zu trainieren, die von dem angegebenen Benutzer hinzugefügt oder geändert wurden. Dabei werden Wörter ignoriert, die nur aus Korpora oder Grammatiken extrahiert wurden.
+
+    Diese Option ist hilfreich zum Hinzufügen von Daten mit Störanteilen (z. B. Wörter mit Schreibfehlern). Bevor Sie das Modell mit solchen Daten trainieren, können Sie mit dem Abfrageparameter `word_type` in der Methode `GET /v1/customizations/{customization_id}/words` Wörter überprüfen, die aus Korpora und Grammatiken extrahiert wurden. Weitere Informationen finden Sie im Abschnitt [Wörter aus angepasstem Sprachmodell auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords).
+-   Der Parameter `customization_weight` gibt die relative Gewichtung für Wörter aus dem angepassten Modell im Vergleich zu Wörtern aus dem Basisvokabular an, wenn das angepasste Modell für die Spracherkennung verwendet wird. Mit jeder Erkennungsanforderung, von der das angepasste Modell verwendet wird, können Sie auch eine Anpassungsgewichtung angeben. Weitere Informationen finden Sie im Abschnitt [Anpassungsgewichtung verwenden](/docs/services/speech-to-text?topic=speech-to-text-languageUse#weight).
+-   Der Parameter `strict` gibt an, ob das Training fortgesetzt werden soll, wenn das angepasste Modell eine Mischung aus gültigen und ungültigen Ressourcen (Korpora, Grammatiken und Wörter) enthält. Standardmäßig schlägt das Training fehl, wenn das Modell mindestens eine ungültige Ressource enthält. Setzen Sie den Parameter auf `false`, damit das Training fortgesetzt werden kann, wenn das Modell mindestens eine gültige Ressource enthält. Der Service schließt ungültige Ressourcen aus dem Training aus. Weitere Informationen finden Sie im Abschnitt [Fehler bei Training](#failedTraining-language).
 
 ### Anforderung zum Trainieren des Modells überwachen
 {: #monitorTraining-language}
@@ -348,6 +363,7 @@ curl -X GET -u "apikey:{apikey}"
 {
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
   "created": "2016-06-01T18:42:25.324Z",
+  "updated": "2016-06-01T18:45:11.737Z",
   "language": "en-US",
   "dialect": "en-US",
   "owner": "297cfd08-330a-22ba-93ce-1a73f454dd98",
@@ -362,30 +378,39 @@ curl -X GET -u "apikey:{apikey}"
 
 Die Antwort enthält die Felder `status` und `progress`, die den Status des angepassten Modells angeben. Die Bedeutung des Felds `progress` hängt vom Status des Modells ab. Im Feld `status` kann einer der folgenden Werte angegeben werden:
 
--   `pending` gibt an, dass das Modell erstellt wurde und sich im Wartestatus befindet, da entweder noch keine Trainingsdaten hinzugefügt wurden oder die Analyse der hinzugefügten Daten noch nicht abgeschlossen ist. Das Feld `progress` ist auf den Wert `0` gesetzt.
--   `ready` gibt an, dass das Modell zum Trainieren bereit ist. Das Feld `progress` ist auf den Wert `0` gesetzt.
--   `training` gibt an, dass das Modell momentan trainiert wird. Der Wert im Feld `progress` wird von `0` schrittweise auf `100` erhöht, bis das Training abgeschlossen ist. <!-- The `progress` field indicates the progress of the training as a percentage complete. -->
+-   `pending`: Das Modell wurde erstellt, aber es wird entweder auf das Hinzufügen von gültigen Trainingsdaten oder auf den Abschluss der Analyse der hinzugefügten Daten durch den Service gewartet. Das Feld `progress` ist auf den Wert `0` gesetzt.
+-   `ready`: Das Modell enthält gültige Daten und ist für das Training bereit. Das Feld `progress` ist auf den Wert `0` gesetzt.
+
+    Wenn das Modell eine Mischung aus gültigen und ungültigen Ressourcen (z. B. gültige und ungültige angepasste Wörter) enthält, schlägt das Training des Modells fehl, es sei denn, Sie setzen den Abfrageparameter `strict` auf `false`. Weitere Informationen finden Sie im Abschnitt [Fehler bei Training](#failedTraining-language).-   `training` gibt an, dass das Modell momentan trainiert wird. Der Wert im Feld `progress` wird von `0` schrittweise auf `100` erhöht, bis das Training abgeschlossen ist. <!-- The `progress` field indicates the progress of the training as a percentage complete. -->
 -   `available` gibt an, dass das Modell trainiert wurde und jetzt verwendet werden kann. Das Feld `progress` ist auf den Wert `100` gesetzt.
 -   `upgrading` gibt an, dass das Modell momentan aktualisiert wird. Das Feld `progress` ist auf den Wert `0` gesetzt.
--   `failed` gibt an, dass das Trainieren des Modells fehlgeschlagen ist. Das Feld `progress` ist auf den Wert `0` gesetzt.
+-   `failed` gibt an, dass das Trainieren des Modells fehlgeschlagen ist. Das Feld `progress` ist `0`. Weitere Informationen finden Sie im Abschnitt [Fehler bei Training](#failedTraining-language).
 
-Überprüfen Sie mit einer Schleife den Status alle 10 Sekunden, bis der Status `available` angegeben wird. Weitere Information zur Statusprüfung für ein angepasstes Modell finden Sie im Abschnitt [Angepasste Sprachmodelle auflisten](/docs/services/speech-to-text/language-models.html#listModels-language).
+Überprüfen Sie mit einer Schleife den Status alle 10 Sekunden, bis der Status `available` angegeben wird. Weitere Information zur Statusprüfung für ein angepasstes Modell finden Sie im Abschnitt [Angepasste Sprachmodelle auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
 
 ### Fehler beim Trainieren
 {: #failedTraining-language}
 
-Das Training kann nicht gestartet werden, wenn der Service momentan eine andere Anforderung für das angepasste Sprachmodell ausführt. In den folgenden Situationen schlägt eine Trainingsanforderung fehl:
+Das Training kann nicht gestartet werden, wenn der Service momentan eine andere Anforderung für das angepasste Sprachmodell ausführt. In den folgenden Situationen schlägt eine Trainingsanforderung mit dem Statusode 409 fehl:
 
 -   Der Service verarbeitet momentan ein Korpus oder eine Grammatik, um eine Liste mit vokabularexternen Wörtern zu generieren
 -   Der Service überprüft momentan angepasste Wörter oder generiert gleich klingende Aussprachevarianten
 -   Der Service verarbeitet momentan eine andere Trainingsanforderung
 
-Auch die folgenden Ursachen können zum Fehlschlagen des Trainings führen:
+Ein Training schlägt mit dem Statuscode 400 fehl, wenn das angepasste Modell:
 
--   Seit dem Erstellen oder dem letzten Trainieren des angepassten Modells wurden keine Trainingsdaten (Korpora, Grammatiken oder Wörter) hinzugefügt.
--   Für mindestens ein Wort, das zu dem angepassten Modell hinzugefügt wurde, sind ungültige Aussprachevarianten vorhanden, die korrigiert werden müssen.
+-   keine neuen gültigen Trainingsdaten (Korpora, Grammatiken oder Wörter) seit der Erstellung oder dem letzten Training enthält.
+-   ungültige Korpora, Grammatiken oder Wörter (beispielsweise ein angepasstes Wort mit einer ungültigen gleich klingenden Aussprache) enthält.
 
-Wenn der Trainingsvorgang für ein angepasstes Modell den Status `failed` aufweist, können Sie mit den Methoden aus der Anpassungsschnittstelle die Wörter in dem Modell untersuchen und gefundene Fehler beheben. Weitere Informationen finden Sie im Abschnitt [Wörterressource prüfen](/docs/services/speech-to-text/language-resource.html#validateModel).
+Schlägt die Trainingsanforderung mit dem Statuscode 400 fehl, legt der Service `failed` als Status des angepassten Modells fest. Führen Sie eine der folgenden Aktionen aus:
+
+-   Untersuchen Sie mit den Methoden aus der Anpassungsschnittstelle die Ressourcen des Modells und beheben Sie alle gefundenen Fehler:
+    -   Bei einem ungültigen Korpus können Sie die Korpustextdatei korrigieren und mit dem Parameter `allow_overwrite` der Methode `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` die korrigierte Datei dem Modell hinzufügen. Weitere Informationen finden Sie im Abschnitt [Korpus zum angepassten Sprachmodell hinzufügen](#addCorpus).
+    -   Bei einer ungültigen Grammatik können Sie die Grammatikdatei korrigieren und mit dem Parameter  `allow_overwrite` der Methode `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` die korrigierte Datei dem Modell hinzufügen. Weitere Informationen hierzu enthält der Abschnitt [Grammatik zum angepassten Sprachmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar).
+    -   Bei einem ungültigen angepassten Wort können Sie mit der Methode `POST /v1/customizations/{customization_id}/words` oder `PUT /v1/customizations/{customization_id}/words/{word_name}` das Wort direkt in der Wörterressource des Modells ändern. Weitere Informationen finden Sie im Abschnitt [Wörter in einem angepassten Modell ändern](#modifyWord).
+
+    Weitere Informationen zum Validieren der Wörter in einem angepassten Sprachmodell finden Sie im Abschnitt [Wörterressource prüfen](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
+-   Setzen Sie den Parameter `strict` der Methode `POST /v1/customizations/{customization_id}/train` auf `false`, um ungültige Ressourcen aus dem Training auszuschließen. Das Modell muss mindestens eine gültige Ressource (Korpus, Grammatik oder Wort) enthalten, damit das Training erfolgreich ausgeführt werden kann. Der Parameter `strict` ist für das Training eines angepassten Modells hilfreich, das eine Mischung aus gültigen und ungültigen Ressourcen enthält.
 
 ## Beispielscripts
 {: #exampleScripts}
@@ -400,7 +425,7 @@ Die beiden Scripts stellen identische Funktionalität bereit. Jedes Script erste
 Sie können jede der beiden bereitgestellten Korpustextdateien mit den Scripts verwenden (oder Sie können eigene Korpusdateien zum Testen verwenden):
 
 -   <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/corpus.txt" download="corpus.txt">corpus.txt <img src="../../icons/launch-glyph.svg" alt="Symbol für externen Link" title="Symbol für externen Link"></a> enthält ein abgekürztes Korpus (6 KB), das sechs Begriffe aus dem Gesundheitswesen zu einem Modell hinzufügt. Diese Datei erzeugt bei Verwendung mit Scripts eine kleine Menge Ausgabedaten. Die Datei wird von den Scripts standardmäßig verwendet.
--   <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/healthcare.txt" download="healthcare.txt">healthcare.txt <img src="../../icons/launch-glyph.svg" alt="Symbol für externen Link" title="Symbol für externen Link"></a> ist ein etwas größeres Korpus (164 KB), das viele Begriffe aus dem Gesundheitswesen zu einem Modell hinzufügt. Diese Datei erzeugt bei Verwendung mit den Scripts wesentlich umfangreichere Ausgabedaten. 
+-   <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/healthcare.txt" download="healthcare.txt">healthcare.txt <img src="../../icons/launch-glyph.svg" alt="Symbol für externen Link" title="Symbol für externen Link"></a> ist ein etwas größeres Korpus (164 KB), das viele Begriffe aus dem Gesundheitswesen zu einem Modell hinzufügt. Diese Datei erzeugt bei Verwendung mit den Scripts wesentlich umfangreichere Ausgabedaten.
 
 Das neue angepasste Modell, das Sie mit einem dieser Scripts erstellt haben, ist standardmäßig zur Verwendung in Erkennungsanforderungen verfügbar. Die Scripts enthalten einen optionalen Schritt zum Löschen des neuen angepassten Modells. Dieser Schritt kann beim Experimentieren mit dem Prozess nützlich sein. Richten Sie sich nach den Kommentaren in den Scripts, um den Löschvorang zu aktivieren.
 
@@ -411,15 +436,15 @@ Gehen Sie wie folgt vor, um das Python-Script zu verwenden:
 
 1.  Laden Sie das Python-Script mit dem Namen <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.py" download="testSTTcustom.py">testSTTcustom.py <img src="../../icons/launch-glyph.svg" alt="Symbol für externen Link" title="Symbol für externen Link"></a> herunter.
 1.  Laden Sie die Beispieldateien mit Korpustext herunter, die mit dem Script verwendet werden sollen. Zum Testen können Sie wahlweise eine der bereitgestellten Korpustextdateien oder eine eigene Datei verwenden. Alle Korpustextdateien müssen standardmäßig im selben Verzeichnis enthalten sein wie das Script.
-1.  Das Script verwendet die Python-Bibliothek `requests` für HTTP-Anforderungen an den Service. Verwenden Sie `pip` oder `easy_install`, um die Bibliothek zur Verwendung mit dem Script zu installieren. Beispiel: 
+1.  Das Script verwendet die Python-Bibliothek `requests` für HTTP-Anforderungen an den Service. Verwenden Sie `pip` oder `easy_install`, um die Bibliothek zur Verwendung mit dem Script zu installieren. Beispiel:
 
     ```bash
     pip install requests
     ```
     {: pre}
 
-    Weitere Informationen zu der Bibliothek finden Sie unter [pypi.python.org/pypi/requests ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://pypi.python.org/pypi/requests){: new_window}.
-1.  Bearbeiten Sie das Script und ersetzen Sie die für `password` angegebene Zeichenfolge `iam_apikey` durch den API-Schlüssel aus Ihren {{site.data.keyword.speechtotextshort}}-Serviceberechtigungsnachweisen.
+    Weitere Informationen zur Bibliothek finden Sie unter [pypi.python.org/pypi/requests](https://pypi.python.org/pypi/requests){: external}.
+1.  Bearbeiten Sie das Script und ersetzen Sie die für `password` angegebene Zeichenfolge `iam_apikey` durch den API-Schlüssel aus Ihren {{site.data.keyword.speechtotextshort}}-Berechtigungsnachweisen.
 
     ```
     password = "iam_apikey"
@@ -443,8 +468,8 @@ Gehen Sie wie folgt vor, um das Bash-Shell-Script zu verwenden:
 
 1.  Laden Sie das Shell-Script mit dem Namen <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.sh" download="testSTTcustom.sh">testSTTcustom.sh <img src="../../icons/launch-glyph.svg" alt="Symbol für externen Link" title="Symbol für externen Link"></a> herunter.
 1.  Laden Sie die Beispieldateien mit Korpustext herunter, die mit dem Script verwendet werden sollen. Zum Testen können Sie wahlweise eine der bereitgestellten Korpustextdateien oder eine eigene Datei verwenden. Alle Korpustextdateien müssen standardmäßig im selben Verzeichnis enthalten sein wie das Script.
-1.  Das Script verwendet den Befehl `curl` für HTTP-Anforderungen an den Service. Falls Sie `curl` noch nicht heruntergeladen haben, können Sie die Version für Ihr Betriebssystem von [curl.haxx.se ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](http://curl.haxx.se){: new_window} herunterladen. Installieren Sie die Version, die das Protokoll Secure Sockets Layer (SSL) unterstützt, und stellen Sie sicher, dass die installierte Binärdatei in Ihre Umgebungsvariable `PATH` eingefügt wird.
-1.  Bearbeiten Sie das Script und ersetzen Sie die für `PASSWORD` angegebene Zeichenfolge `iam_apikey` durch den API-Schlüssel aus Ihren {{site.data.keyword.speechtotextshort}}-Serviceberechtigungsnachweisen:
+1.  Das Script verwendet den Befehl `curl` für HTTP-Anforderungen an den Service. Falls Sie `curl` noch nicht heruntergeladen haben, können Sie die Version für Ihr Betriebssystem von [curl.haxx.se](http://curl.haxx.se){: external} herunterladen. Installieren Sie die Version, die das Protokoll Secure Sockets Layer (SSL) unterstützt, und stellen Sie sicher, dass die installierte Binärdatei in Ihre Umgebungsvariable `PATH` eingefügt wird.
+1.  Bearbeiten Sie das Script und ersetzen Sie die für `PASSWORD` angegebene Zeichenfolge `iam_apikey` durch den API-Schlüssel aus Ihren {{site.data.keyword.speechtotextshort}}-Berechtigungsnachweisen:
 
     ```
     PASSWORD="iam_apikey"

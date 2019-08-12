@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-10"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,12 +25,12 @@ subcollection: speech-to-text
 # Ausgabefunktionen
 {: #output}
 
-Der {{site.data.keyword.speechtotextshort}}-Service bietet die folgenden Funktionen zum Aufrufen von Informationen, die in die Transkriptionsergebnisse für eine Spracherkennungsanforderung eingefügt werden. Alle Ausgabeparameter sind optional.
+Der {{site.data.keyword.speechtotextfull}}-Service bietet die folgenden Funktionen zum Aufrufen von Informationen, die in die Transkriptionsergebnisse für eine Spracherkennungsanforderung eingefügt werden. Alle Ausgabeparameter sind optional.
 {: shortdesc}
 
--   Beispiele für einfache Spracherkennungsanforderungen für die einzelnen Schnittstellen des Service finden Sie im Abschnitt [Erkennungsanforderung ausgeben](/docs/services/speech-to-text/basic-request.html).
--   Beispiele und Beschreibung für Spracherkennunganforderungen finden Sie im Abschnitt [Wissenswertes über Erkennungsergebnisse](/docs/services/speech-to-text/basic-response.html). Der Service gibt alle Inhalte von JSON-Antworten mit dem Zeichensatz UTF-8 zurück.
--   Eine alphabetische Liste aller verfügbaren Spracherkennungsparameter einschließlich der zugehörigen Statuswerte (allgemein verfügbar oder als Betafunktionalität) sowie der unterstützten Sprachen finden Sie im Abschnitt [Parameterübersicht](/docs/services/speech-to-text/summary.html).
+-   Beispiele für einfache Spracherkennungsanforderungen für die einzelnen Schnittstellen des Service finden Sie im Abschnitt [Erkennungsanforderung ausgeben](/docs/services/speech-to-text?topic=speech-to-text-basic-request).
+-   Beispiele und Beschreibung für Spracherkennunganforderungen finden Sie im Abschnitt [Wissenswertes über Erkennungsergebnisse](/docs/services/speech-to-text?topic=speech-to-text-basic-response). Der Service gibt alle Inhalte von JSON-Antworten mit dem Zeichensatz UTF-8 zurück.
+-   Eine alphabetisch sortierte Liste aller verfügbaren Parameter für die Spracherkennung, in der auch der jeweilige Status (allgemein verfügbar oder Betaversion) sowie die unterstützten Sprachen angegeben sind, finden Sie in der [Parameterübersicht](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ## Sprecherbezeichnungen
 {: #speaker_labels}
@@ -42,7 +42,7 @@ Sprecherbezeichnungen geben an, von welchen Personen in einer Konversation mit m
 
 Sprecherbezeichnungen sind auf Szenarios mit zwei Sprechern abgestimmt. Sie funktionieren am besten für Telefongespräche, bei denen zwei Personen einen längeren Dialog führen. Zwar können bis zu sechs Sprecher verarbeitet werden, aber bei mehr als zwei Sprechern ist das resultierende Leistungsverhalten wechselhaft. Gespräche zwischen zwei Personen werden in der Regel über Schmalbandmedien geführt, dabei können jedoch Sprecherbezeichnungen in unterstützten Schmal- und Breitbandmodellen zum Einsatz kommen.
 
-Um diese Funktion zu nutzen, setzen Sie den Parameter `speaker_labels` für eine Erkennungsanforderung auf `true`. Der Parameter ist standardmäßig auf `false` gesetzt. Der Service erkennt Sprecher an einzelnen Wörtern in den Audiodaten. Der Sprecher eines Wortes wird anhand des Start- und Endzeitpunkts des betreffenden Wortes identifiziert. Für die Verwendung von Sprecherbezeichnungen muss daher auch der Parameter `timestamps` auf `true` gesetzt werden (siehe [Wortzeitmarken](/docs/services/speech-to-text/output.html#word_timestamps)).
+Um diese Funktion zu nutzen, setzen Sie den Parameter `speaker_labels` für eine Erkennungsanforderung auf `true`. Der Parameter ist standardmäßig auf `false` gesetzt. Der Service erkennt Sprecher an einzelnen Wörtern in den Audiodaten. Der Sprecher eines Wortes wird anhand des Start- und Endzeitpunkts des betreffenden Wortes identifiziert. Für die Verwendung von Sprecherbezeichnungen muss daher auch der Parameter `timestamps` auf `true` gesetzt werden (siehe [Wortzeitmarken](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps)).
 
 ### Beispiel für Sprecherbezeichnungen
 {: #speakerLabelsExample}
@@ -239,7 +239,7 @@ Dies hat zur Folge, dass die Sprecher-IDs möglicherweise nicht folgerichtig, ko
 ### Zwischenergebnisse für Sprecherbezeichnungen anfordern
 {: #speakerLabelsInterim}
 
-In der WebSocket-Schnittstelle können Sie Zwischenergebnisse und Sprecherbezeichnungen anfordern (siehe [Zwischenergebnisse](/docs/services/speech-to-text/output.html#interim)). Die Endergebnisse sind in der Regel genauer als Zwischenergebnisse. Zwischenergebnisse können jedoch helfen, die Entwicklung eines Transkripts und die Zuordnung der Sprecherbezeichnungen nachzuvollziehen. Aus den Zwischenergebnisse wird möglicherweise ersichtlich, an welchen Stellen temporäre Sprecher und IDs in den Dialog eingestiegen bzw. daraus ausgestiegen sind. Es kann jedoch vorkommen, dass Sprecher-IDs, die ursprünglich identifiziert und später verworfen wurden, im weiteren Verlauf vom Service wiederverwendet werden. Dies kann dazu führen, dass dieselbe ID in den Zwischenergebnissen und in den Endergebnissen zwei verschiedene Sprecher bezeichnet.
+In der WebSocket-Schnittstelle können Sie Zwischenergebnisse und Sprecherbezeichnungen anfordern (siehe [Zwischenergebnisse](/docs/services/speech-to-text?topic=speech-to-text-output#interim)). Die Endergebnisse sind in der Regel genauer als Zwischenergebnisse. Zwischenergebnisse können jedoch helfen, die Entwicklung eines Transkripts und die Zuordnung der Sprecherbezeichnungen nachzuvollziehen. Aus den Zwischenergebnisse wird möglicherweise ersichtlich, an welchen Stellen temporäre Sprecher und IDs in den Dialog eingestiegen bzw. daraus ausgestiegen sind. Es kann jedoch vorkommen, dass Sprecher-IDs, die ursprünglich identifiziert und später verworfen wurden, im weiteren Verlauf vom Service wiederverwendet werden. Dies kann dazu führen, dass dieselbe ID in den Zwischenergebnissen und in den Endergebnissen zwei verschiedene Sprecher bezeichnet.
 
 Wenn Sie sowohl Zwischenergebnisse als auch Sprecherbezeichnungen anfordern, kann es vorkommen, dass die Endergebnisse für lange Audiodatenströme erst lange nach den anfänglichen Zwischenergebnissen zurückgegeben werden. Außerdem kann es vorkommen, dass manche Zwischenergebnisse nur ein Feld `speaker_labels` und nicht die Felder `results` und `result_index` enthalten. Wenn Sie keine Zwischenergebnisse anfordern, gibt der Service Endergebnisse mit den Feldern `results` und `result_index` und einem einzelnen Feld `speaker_labels` zurück.
 
@@ -248,7 +248,7 @@ Der Service sendet die Endergebnisse, wenn der Audiodatenstrom beendet ist oder 
 ### Leistungsaspekte für Sprecherbezeichnungen
 {: #speakerLabelsPerformance}
 
-Wie bereits erwähnt, ist die Funktion für Sprecherbezeichnungen auf Dialoge zwischen zwei Personen (z. B. Anrufe bei einem Call-Center) abgestimmt. Daher sollten Sie die folgenden potenziellen Leistungsprobleme berücksichtigen: 
+Wie bereits erwähnt, ist die Funktion für Sprecherbezeichnungen auf Dialoge zwischen zwei Personen (z. B. Anrufe bei einem Call-Center) abgestimmt. Daher sollten Sie die folgenden potenziellen Leistungsprobleme berücksichtigen:
 
 -   Für Audiodaten mit einem einzigen Sprecher werden möglicherweise keine guten Leistungswerte erzielt. Schwankungen in der Tonqualität oder der Stimme des Sprechers können dazu führen, dass der Service zusätzliche Sprecher erkennt, die gar nicht da sind. Solche Sprecher werden als Halluzinationen bezeichet.
 -   Ebenso können die Leistungswerte für Audiodaten mit einem dominanten Sprecher (z. B. Podcasts) schlecht ausfallen. Dabei erkennt der Service Sprecher möglicherweise nicht, die nur kurze Redebeiträge leisten. Dies kann ebenfalls zu Halluzinationen führen.
@@ -279,14 +279,14 @@ Die Schlüsselworterkennung ist erforderlich, um Schlüsselwörter in einem Audi
 ### Ergebnisse der Schlüsselworterkennung
 {: #keywordSpottingResults}
 
-Der Service gibt die Ergebnisse der Erkennung in einem Feld `keywords_result` im Array `results` zurück. Das Feld `keywords_result` enthält ein Wörterverzeichnis oder ein assoziatives Array der aufzulistenden Merkmale. Jedes Merkmal wird durch ein angegebenes Schlüsselwort identifiziert und enthält ein Array von Objekten. Der Service gibt für jede gefundene Übereinstimmung mit dem Schlüsselwort ein Element des Arrays zurück. Das Objekt für jede Übereinstimmung enthält die folgenden Felder: 
+Der Service gibt die Ergebnisse der Erkennung in einem Feld `keywords_result` im Array `results` zurück. Das Feld `keywords_result` enthält ein Wörterverzeichnis oder ein assoziatives Array der aufzulistenden Merkmale. Jedes Merkmal wird durch ein angegebenes Schlüsselwort identifiziert und enthält ein Array von Objekten. Der Service gibt für jede gefundene Übereinstimmung mit dem Schlüsselwort ein Element des Arrays zurück. Das Objekt für jede Übereinstimmung enthält die folgenden Felder:
 
 -   `normalized_text` ist das angegebene Schlüsselwort, normalisiert auf den gesprochenen Ausdruck, der in den Audioeingabedaten als Übereinstimmung erkannt wurde.
 -   `start_time` ist der Startzeitpunkt der Übereinstimmung, angegeben in Sekunden.
 -   `end_time` ist der Endzeitpunkt der Übereinstimmung, angegeben in Sekunden.
 -   `confidence` ist der vom Service ermittelte Konfidenzwert für die Übereinstimmung mit dem angegebenen Schlüsselwort. Der Konfidenzwert muss größer-gleich dem angegebenen Schwellenwert sein, damit die Übereinstimmung in die Ergebnisse aufgenommen wird.
 
-Ein Schlüsselwort, für das der Service keine Übereinstimmungen findet, wird nicht in das Array eingetragen. In den folgenden Fällen wird möglicherweise kein Schlüsselwort gefunden: 
+Ein Schlüsselwort, für das der Service keine Übereinstimmungen findet, wird nicht in das Array eingetragen. In den folgenden Fällen wird möglicherweise kein Schlüsselwort gefunden:
 
 -   Das Schlüsselwort kommt in den Audiodaten nicht vor. Das Fehlen des Schlüsselworts ist der offensichtlichste Grund.
 -   Der festgelegte Schwellenwert ist zu hoch. Wenn der Service einen zu niedrigen Konfidenzwert für das Schlüsselwort ermittelt, wird die gefundene Übereinstimmung nicht in die Ergebnisse eingetragen.
@@ -297,7 +297,7 @@ Ein Schlüsselwort, für das der Service keine Übereinstimmungen findet, wird n
     -   Die Tokens des Schlüsselworts sind im selben Block enthalten.
     -   Die Tokens folgen lückenlos aufeinander oder die Lücken sind nicht länger als 0,1 Sekunde.
 
-    Der letzte Fall kann eintreten, wenn ein kurzes Füllwort oder eine nicht lexikalische Äußerung wie "uhm" oder "well" zwischen den Tokens des Schlüsselworts liegt. Weitere Informationen finden Sie im Abschnitt [Stockungsmarkierungen](/docs/services/speech-to-text/basic-response.html#hesitation).
+    Der letzte Fall kann eintreten, wenn ein kurzes Füllwort oder eine nicht lexikalische Äußerung wie "uhm" oder "well" zwischen den Tokens des Schlüsselworts liegt. Weitere Informationen finden Sie im Abschnitt [Stockungsmarkierungen](/docs/services/speech-to-text?topic=speech-to-text-basic-response#hesitation).
 
 ### Beispiel für Schlüsselworterkennung
 {: #keywordSpottingExample}
@@ -336,7 +336,7 @@ curl -X POST -u "apikey:{apikey}"
       },
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -375,7 +375,7 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         },
@@ -384,8 +384,8 @@ severe thunderstorms swept through Colorado on Sunday "
 severe thunderstorms swept through Colorado on Sunday "
         },
         {
-          "transcript": "several tornadoes touch down is a line of
-severe thunderstorms swept through Colorado on Sunday "
+          "transcript": "several tornadoes touch down as a line of
+severe thunderstorms swept through Colorado and Sunday "
         }
       ],
       "final": true
@@ -490,7 +490,7 @@ severe thunderstorms swept through Colorado on Sunday "
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -506,7 +506,7 @@ severe thunderstorms swept through Colorado on Sunday "
 ## Wortalternativen
 {: #word_alternatives}
 
-Die Funktion für Wortalternativen (auch als Confusion Networks bezeichnet) meldet Hypothesen (Kandidaten) für akustisch ähnliche Alternativen zu Wörtern in den Audioeingabedaten. Beispielsweise kann das Wort `Austin` die beste Hypothese für ein Wort aus den Audiodaten sein. Das Wort `Boston` kann jedoch eine weitere Hypothese im selben Zeitintervall sein. Hypothesen weisen einen gemeinsamen Start- und Endzeitpunkt auf, aber sie unterscheiden sich in Schreibweise und (in der Regel) Konfidenzwert. 
+Die Funktion für Wortalternativen (auch als Confusion Networks bezeichnet) meldet Hypothesen (Kandidaten) für akustisch ähnliche Alternativen zu Wörtern in den Audioeingabedaten. Beispielsweise kann das Wort `Austin` die beste Hypothese für ein Wort aus den Audiodaten sein. Das Wort `Boston` kann jedoch eine weitere Hypothese im selben Zeitintervall sein. Hypothesen weisen einen gemeinsamen Start- und Endzeitpunkt auf, aber sie unterscheiden sich in Schreibweise und (in der Regel) Konfidenzwert.
 
 Die Funktion für Wortalternativen ist im Service standardmäßig inaktiviert. Um anzugeben, dass Sie alternative Hypothesen empfangen möchten, können Sie im Parameter `word_alternatives_threshold` einen Wahrscheinlichkeitswert zwischen 0,0 und 1,0 angeben. Der Schwellenwert gibt die Untergrenze für das Konfidenzniveau an, das der Service für eine Hypothese ermittelt haben muss, damit Sie als Wortalternative zurückgegeben wird. Eine Hypothese wird nur vorgeschlagen, wenn der zugehörige Konfidenzwert größer-gleich dem angegebenen Schwellenwert ist.
 
@@ -592,7 +592,7 @@ curl -X POST -u "apikey:{apikey}"
       ],
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -618,7 +618,7 @@ Ein Konfidenzwert gibt an, wie hoch der Service anhand der akustischen Indikator
 ### Beispiel für Wortkonfidenz
 {: #wordConfidenceExample}
 
-Im folgenden Beispiel werden Wortkonfidenzwerte für die Wörter in der Transkription angefordert. 
+Im folgenden Beispiel werden Wortkonfidenzwerte für die Wörter in der Transkription angefordert.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -634,9 +634,9 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday ",
-          "confidence": 0.89,
           "word_confidence": [
             [
               "several",
@@ -731,7 +731,7 @@ curl -X POST -u "apikey:{apikey}"
               6.34
             ]
           ],
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -834,7 +834,7 @@ Die intelligente Formatierung basiert auf dem Vorhandensein erkennbarer Schlüss
 -   Zeitangaben im militärischen Zeitformat werden umgewandelt, wenn Sie durch das Schlüsselwort `hours` identifiziert werden.
 -   Telefonnummern müssen entweder `911` oder eine Rufnummer mit 10 bzw. 11 Ziffern sein, die mit der Zahl `1` beginnt.
 
-#### Japnisch
+#### Japanisch
 {: #smartFormattingJapanese}
 
 -   Internet-E-Mail- und Webadressen werden nicht umgewandelt.

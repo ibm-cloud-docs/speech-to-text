@@ -2,14 +2,14 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-06-19"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Mit Audioressourcen arbeiten
 {: #audioResources}
 
-Sie können einzelne Audiodateien oder Archivdateien, die mehrere Audiodateien enthalten, zu einem angepassten Akustikmodell hinzufügen. Das Hinzufügen von Archivdateien ist das empfohlene Verfahren zum Hinzufügen von Audioressourcen. Es ist wesentlich effizienter, eine einzige Archivdatei zu erstellen und hinzuzufügen, als mehrere Audiodateien nacheinander separat hinzuzufügen.
+Sie können einzelne Audiodateien oder Archivdateien, die mehrere Audiodateien enthalten, zu einem angepassten Akustikmodell hinzufügen. Das Hinzufügen von Archivdateien ist das empfohlene Verfahren zum Hinzufügen von Audioressourcen. Es ist wesentlich effizienter, eine einzige Archivdatei zu erstellen und hinzuzufügen, als mehrere Audiodateien nacheinander separat hinzuzufügen. Sie können auch Anforderungen übergeben, um mehrere verschiedene Audioressourcen gleichzeitig hinzuzufügen.
 {: shortdesc}
 
 ## Audioressource hinzufügen
@@ -37,20 +37,20 @@ Zum Hinzufügen einer Audioressource beliebigen Typs zu einem angepassten Akusti
 -   `audio_name`: Dieser Pfadparameter gibt einen Namen für die Audioressource an.
     -   Verwenden Sie einen übersetzten Namen in der Sprache des angepassten Modells, der den Inhalt der Ressource wiedergibt.
     -   Geben Sie einen Namen mit einer maximalen Länge von 128 Zeichen an.
-    -   Beziehen Sie keine Schrägstriche (`/`) oder umgekehrte Schrägstriche (\) in den Namen ein.
+    -   Verwenden Sie keine Zeichen, die URL-codiert sein müssen. Verwenden Sie beispielsweise keine Leerzeichen, Schrägstriche, umgekehrte Schrägstriche, Doppelpunkte, Et-Zeichen, doppelte Anführungszeichen, Pluszeichen, Gleichheitszeichen, Fragezeichen usw. im Namen. (Der Service verhindert die Verwendung dieser Zeichen nicht. Da sie jedoch immer URL-codiert sein müssen, wird von ihrer Verwendung unbedingt abgeraten.)
     -   Verwenden Sie nicht den Namen einer Audioressource, die bereits zum angepassten Modell hinzugefügt wurde.
 
-Nachdem Sie die Audioressourcen eines Modells aktualisiert haben, müssen Sie das Modell trainieren, damit die Änderungen bei der Transkription wirksam werden. Weitere Informationen finden Sie unter [Angepasstes Akustikmodell trainieren](/docs/services/speech-to-text/acoustic-create.html#trainModel-acoustic).
+Nachdem Sie die Audioressourcen eines Modells aktualisiert haben, müssen Sie das Modell trainieren, damit die Änderungen bei der Transkription wirksam werden. Weitere Informationen finden Sie unter [Angepasstes Akustikmodell trainieren](/docs/services/speech-to-text?topic=speech-to-text-acoustic#trainModel-acoustic).
 
 ## Audiodatei hinzufügen
 {: #addAudioType}
 
-Zum Hinzufügen einer einzelnen Audiodatei zu einem angepassten Akustikmodell geben Sie das Format (MIME-Typ) der Audiodaten mit dem Header `Content-Type` an. Die hinzugefügten Audiodaten können jedes beliebige Format aufweisen, das bei der Verwendung von Erkennungsanforderungen unterstützt wird. Beziehen Sie die Parameter `rate`, `channels` und `endianness` für die Spezifikation von Formaten ein, bei denen diese Parameter erforderlich sind. Weitere Informationen zu den unterstützten Audioformaten finden Sie unter [Audioformate](/docs/services/speech-to-text/audio-formats.html).
+Zum Hinzufügen einer einzelnen Audiodatei zu einem angepassten Akustikmodell geben Sie das Format (MIME-Typ) der Audiodaten mit dem Header `Content-Type` an. Die hinzugefügten Audiodaten können jedes beliebige Format aufweisen, das bei der Verwendung von Erkennungsanforderungen unterstützt wird. Beziehen Sie die Parameter `rate`, `channels` und `endianness` für die Spezifikation von Formaten ein, bei denen diese Parameter erforderlich sind. Weitere Informationen zu den unterstützten Audioformaten finden Sie im Abschnitt [Audioformate](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
 
 Die Spezifikation `application/octet-stream` für ein Audioformat wird bei Audioressourcen nicht unterstützt.
 {: note}
 
-Das folgende Beispiel aus dem Abschnitt [Audiodaten zum angepassten Akustikmodell hinzufügen](/docs/services/speech-to-text/acoustic-create.html#addAudio) fügt eine Datei mit dem Format `audio/wav` hinzu:
+Das folgende Beispiel aus dem Abschnitt [Audiodaten zum angepassten Akustikmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio) fügt eine Datei mit dem Format `audio/wav` hinzu:
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -76,9 +76,9 @@ Abhängig vom Format der Dateien, die Sie hinzufügen, müssen Sie unter Umstän
 Verwenden Sie den Header `Contained-Content-Type` nicht, wenn Sie eine Audiodateiressource hinzufügen.
 {: note}
 
-Der Name einer Audiodatei, die in eine Archivressource integriert ist, muss dieselben Einschränkungen bei der Benennung wie der Parameter `audio_name` erfüllen. Verwenden Sie außerdem nicht den Namen einer Audiodatei, die bereits als Teil einer Archivressource zum angepassten Modell hinzugefügt wurde.
+Der Name einer Audiodatei, die in einer Archivressource enthalten ist, kann maximal 128 Zeichen umfasse. Dazu zählen die Dateierweiterung und alle Elemente des Namens (z. B. Schrägstriche).
 
-Das folgende Beispiel aus dem Abschnitt [Audiodaten zum angepassten Akustikmodell hinzufügen](/docs/services/speech-to-text/acoustic-create.html#addAudio) fügt eine Datei mit dem Format `application/zip` hinzu, die mit 16 kHz abgetastete Audiodateien im Format `audio/l16` enthält:
+Das folgende Beispiel aus dem Abschnitt [Audiodaten zum angepassten Akustikmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio) fügt eine Datei mit dem Format `application/zip` hinzu, die mit 16 kHz abgetastete Audiodateien im Format `audio/l16` enthält:
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -101,7 +101,10 @@ Befolgen Sie beim Hinzufügen von Audioressourcen zu einem angepasten Akustikmod
     Bei der Festlegung, wie viele Audiodaten Sie hinzufügen wollen, ist auch die Qualität der Audiodaten von Bedeutung. Je besser die Audiodaten des Modells die Merkmale der zu erkennenden Audiodaten widerspiegeln, desto besser ist die Qualität des angepassten Modells für die Spracherkennung. Falls die Audiodaten eine gute Qualität besitzen, kann die Transkriptionsgenauigkeit von weiteren Daten verbessert werden. Aber auch das Hinzufügen von fünf bis zehn Stunden Audiodaten mit guter Qualität kann einen positiven Unterschied ausmachen.
 -   Fügen Sie Audioressourcen hinzu, die nicht größer als 100 MB sind. Alle Audio- und Archivressourcen sind auf eine maximale Größe von 100 MB begrenzt.
 
-    Um möglichst umfangreiche Audiodaten zu einer einzigen Ressource hinzuzufügen, kann die Verwendung eines Audioformats sinnvoll sein, das eine Komprimierung bietet. Weitere Informationen enthält der Abschnitt [Datengrenzwerte und Komprimierung](/docs/services/speech-to-text/audio-formats.html#limits).
+    Um möglichst umfangreiche Audiodaten zu einer einzigen Ressource hinzuzufügen, kann die Verwendung eines Audioformats sinnvoll sein, das eine Komprimierung bietet. Weitere Informationen enthält der Abschnitt [Datengrenzwerte und Komprimierung](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#limits).
+-   Unterteilen Sie große Audiodateien in mehrere kleinere Dateien. Stellen Sie sicher, dass Sie die Dateien zwischen Wörtern in Sprechpausen trennen.
+
+    Da Sie mehrere simultane Anforderungen zum Hinzufügen verschiedener Audioressourcen übergeben können, können Sie kleinere Dateien gleichzeitig hinzufügen. Dieser parallele Ansatz zum Hinzufügen von Audioressourcen kann die Analyse Ihrer Audiodaten durch den Service beschleunigen.
 -   Fügen Sie Audioinhalt hinzu, der die akustischen Kanalbedingungen der Audiodaten widerspiegelt, die Sie transkribieren wollen. Falls Ihre Anwendung beispielsweise Audiodaten mit Hintergrundgeräuschen eines fahrenden Fahrzeugs verarbeitet, verwenden Sie denselben Typ von Daten, um das angepasste Modell zu erstellen.
 -   Stellen Sie sicher, dass die Abtastfrequenz einer Audiodatei mit der Abtastfrequenz des Basismodells für das angepasste Akustikmodell übereinstimmt:
     -   Bei Breitbandmodellen muss die Abtastfrequenz mindestens 16 kHz (= 16.000 Abtastungen pro Sekunde) betragen.
@@ -112,4 +115,4 @@ Befolgen Sie beim Hinzufügen von Audioressourcen zu einem angepasten Akustikmod
     -   Falls Ihre Audiodaten kürzer als eine Stunde sind, erstellen Sie ein angepasstes Sprachmodell, das auf den Transkriptionen der Audiodaten basiert, um die bestmöglichen Ergebnisse zu erzielen.
     -   Falls es sich um fachspezifische Audiodaten mit speziellen Wörtern handelt, die nicht im Grundvokabular des Service enthalten sind, verwenden Sie die Sprachmodellanpassung, um das Grundvokabular des Service zu erweitern. Durch eine bloße Akustikmodellanpassung können solche Wörter während der Transkription nicht erzeugt werden.
 
-    Weitere Informationen finden Sie unter [Angepasste Akustikmodelle und angepasste Sprachmodelle kombiniert verwenden](/docs/services/speech-to-text/acoustic-both.html).
+    Weitere Informationen finden Sie unter [Angepasste Akustikmodelle und angepasste Sprachmodelle kombiniert verwenden](/docs/services/speech-to-text?topic=speech-to-text-useBoth).

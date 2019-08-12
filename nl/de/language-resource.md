@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-12"
+lastupdated: "2019-06-06"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -29,7 +29,7 @@ Sie können ein angepasstes Sprachmodell mit Wörtern bestücken, indem Sie Korp
 {: shortdesc}
 
 -   **Korpora:** Die empfohlene Vorgehensweise zum Füllen eines angepassten Sprachmodells mit Wörtern ist das Hinzufügen mindestens eines Korpus zu dem Modell. Beim Hinzufügen eines Korpus analysiert der Service die Datei und fügt alle gefundenen neuen Wörter automatisch zu dem angepassten Modell hinzu. Beim Hinzufügen eines Korpus zu einem angepassten Modell kann der Service fachspezifische Wörter aus dem Kontext extrahieren und dadurch bessere Transkriptionsergebnisse liefern. Weitere Informationen finden Sie im Abschnitt [Mit Korpora arbeiten](#workingCorpora).
--   **Grammatiken:** Sie können Grammatiken zu einem angepassten Modell hinzufügen, um die Spracherkennung auf die Wörter oder Ausdrücke zu begrenzen, die von einer Grammatik erkannt werden. Beim Hinzufügen einer Grammatik zu einem Modell fügt der Service alle gefundenen neuen Wörter automatisch zu dem Modell hinzu (wie beim Hinzufügen von Korpora). Weitere Informationen finden Sie im Abschnitt [Grammatiken mit angepassten Sprachmodellen verwenden](/docs/services/speech-to-text/grammar.html).
+-   **Grammatiken:** Sie können Grammatiken zu einem angepassten Modell hinzufügen, um die Spracherkennung auf die Wörter oder Ausdrücke zu begrenzen, die von einer Grammatik erkannt werden. Beim Hinzufügen einer Grammatik zu einem Modell fügt der Service alle gefundenen neuen Wörter automatisch zu dem Modell hinzu (wie beim Hinzufügen von Korpora). Weitere Informationen finden Sie im Abschnitt [Grammatiken mit angepassten Sprachmodellen verwenden](/docs/services/speech-to-text?topic=speech-to-text-grammars).
 -   **Einzelne Wörter:** Sie können auch einzelne angepasste Wörter direkt zu einem Modell hinzufügen. Der Service fügt die Wörter auf die gleiche Weise zu dem Modell hinzu wie neue Wörter aus Korpora oder Grammatiken. Wenn Sie ein Wort direkt hinzufügen, können Sie mehrere Aussprachevarianten angeben und festlegen, wie das Wort angezeigt werden soll. Außerdem können Sie vorhandene Wörter aktualisieren, um die aus Korpora oder Grammatiken extrahierten Definitionen zu ändern oder zu erweitern. Weitere Informationen finden Sie im Abschnitt [Mit angepassten Wörtern arbeiten](#workingWords).
 
 Unabhängig von der verwendeten Vorgehensweise speichert der Service alle Wörter, die Sie zu einem angepassten Sprachmodell hinzufügen, in der Wörterressource des Modells.
@@ -41,7 +41,7 @@ Die *Wörterressource* enthält alle Wörter, die Sie aus Korpora bzw. Grammatik
 
 Die Wörterressource enthält die folgenden Informationen zu jedem OOV-Wort. Der Service erstellt die Definitionen für die aus Korpora und Grammatiken extrahierten Wörter. Sie geben die Merkmale der angepassten Wörter an, die Sie direkt hinzufügen oder ändern.
 
--   `word`: Die Schreibweise für das Wort, das aus einem Korpus oder einer Grammatik stammt oder von Ihnen direkt hinzugefügt wurde. 
+-   `word`: Die Schreibweise für das Wort, das aus einem Korpus oder einer Grammatik stammt oder von Ihnen direkt hinzugefügt wurde.
 -   `sounds_like`: Die Aussprache des Wortes. Bei Wörtern, die aus Korpora und Grammatiken extrahiert wurden, geht der Service aufgrund der jeweiligen Sprachregeln davon aus, dass die angegebene Aussprache zutrifft. In vielen Fällen entspricht die Aussprache der Schreibweise im Feld `word`.
 
     Sie können das Feld `sounds_like` verwenden, um die Aussprache des Wortes zu ändern. Das Feld kann auch verwendet werden, um mehrere Aussprachevarianten für ein Wort anzugeben. Weitere Informationen finden Sie im Abschnitt [Das Feld 'sounds_like' verwenden](#soundsLike).
@@ -50,7 +50,7 @@ Die Wörterressource enthält die folgenden Informationen zu jedem OOV-Wort. Der
     Sie können das Feld `display_as` verwenden, um eine andere Schreibweise für das Wort anzugeben. Weitere Informationen finden Sie im Abschnitt [Das Feld 'display_as' verwenden](#displayAs).
 -   `source`: Gibt an, wie das Wort zur Wörterressource hinzugefügt wurde. Wenn das Wort von dem Service aus einem Korpus oder einer Grammatik extrahiert wurde, wird in diesem Feld der Name der betreffenden Ressource angegeben. Da das gleiche Wort vom Service in mehreren Ressourcen gefunden werden kann, werden in diesem Feld gegebenenfalls mehrere Korpus- oder Grammatiknamen aufgelistet. Das Feld enthält die Zeichenfolge `user`, wenn das betreffende Wort von Ihnen direkt hinzugefügt oder geändert wurde.
 
-Wenn Sie Änderungen an der Wörterressource eines Modells vornehmen, müssen Sie das Modell trainieren, damit die Änderungen beim Transkribieren verwendet werden. Weitere Informationen finden Sie im Abschnitt [Angepasstes Sprachmodell trainieren](/docs/services/speech-to-text/language-create.html#trainModel-language).
+Wenn Sie Änderungen an der Wörterressource eines Modells vornehmen, müssen Sie das Modell trainieren, damit die Änderungen beim Transkribieren verwendet werden. Weitere Informationen hierzu enthält der Abschnitt [Angepasstes Sprachmodell trainieren](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
 
 ## Wie viele Daten brauche ich?
 {: #wordsResourceAmount}
@@ -59,10 +59,10 @@ Die für ein effizientes angepasstes Sprachmodell erforderliche Datenmenge häng
 
 Je nach Anwendungsfall kann die Qualität des Modells schon durch das direkte Hinzufügen weniger Wörter verbessert werden. Das Hinzufügen von vokabularexternen Wörtern aus einem Korpus, das die Wörter in dem Kontext darstellt, in dem Sie in Audiodaten vorkommen, kann die Transkriptionsgenauigkeit ganz erheblich verbessern. Weitere Informationen finden Sie im Abschnitt [Mit Korpora arbeiten](#workingCorpora).
 
-Der Service gibt folgende Grenzwerte für die Anzahl der Wörter vor, die Sie zu einem angepassten Sprachmodell hinzufügen können: 
+Der Service gibt folgende Grenzwerte für die Anzahl der Wörter vor, die Sie zu einem angepassten Sprachmodell hinzufügen können:
 
 -   Sie können maximal 90.000 vokabularexterne Wörter (OOV-Wörter) zur Wörterressource eines angepassten Modells hinzufügen. Dazu zählen OOV-Wörter aus allen Quellen (Korpora, Grammatiken und von Ihnen direkt hinzugefügte Wörter).
--   Sie können maximal 10.000.000 Wörter aus allen Quellen zu einem angepassten Modell hinzufügen. Dazu zählen alle Wörter, sowohl OOV-Wörter als auch Wörter aus dem Basisvokabular des Service und Wörter, die aus Korpora und Grammatiken stammen. Im Falle von Korpora kann der Service an diesen zusätzlichen Wörtern zugleich erkennen, in welchem Kontext die OOV-Wörter vorkommen. Dies macht Korpora zu einem besonders effektiven Werkzeug, um die Erkennungsgenauigkeit zu verbessern.
+-   Sie können maximal insgesamt 10.000.000 Wörter aus allen Quellen zu einem angepassten Modell hinzufügen. Dazu zählen alle Wörter, sowohl OOV-Wörter als auch Wörter aus dem Basisvokabular des Service und Wörter, die aus Korpora und Grammatiken stammen. Im Falle von Korpora kann der Service an diesen zusätzlichen Wörtern zugleich erkennen, in welchem Kontext die OOV-Wörter vorkommen. Dies macht Korpora zu einem besonders effektiven Werkzeug, um die Erkennungsgenauigkeit zu verbessern.
 
 Eine umfangreiche Wörterressource kann die Latenzzeiten bei der Spracherkennung verlängern. Wie ausgeprägt dieser Effekt ist, lässt sich jedoch nur schwer quantifizieren oder vorhersagen. Wie die erforderliche Datenmenge für ein effizientes angepasstes Modell hängt auch die Beeinträchtigung der Leistung durch eine umfangreiche Wörterressource von vielen verschiedenen Faktoren ab. Testen Sie Ihr angepasstes Modell mit unterschiedlichen Datenvolumen, um die Leistungswerte für Ihr Modell und die zugehörigen Daten zu ermitteln.
 
@@ -109,7 +109,7 @@ Gehen Sie wie folgt vor, um eine Korpustextdatei vorzubereiten:
     {: important}
 -   Verwenden Sie für die Wörter im Korpus eine konsistente Großschreibung. In der Wörterressource muss die Groß-/Kleinschreibung beachtet werden. Verwenden Sie die gemischte Groß-/Kleinschreibung und die durchgängige Großschreibung nur, wenn dies ausdrücklich gewünscht ist.
 -   Fügen Sie jeden Satz aus dem Korpus in eine eigene Zeile ein und beenden Sie jede Zeile mit einem Wagenrücklauf. Mehrere Sätze in einer Zeile können die Genauigkeit beeinträchtigen.
--   Fügen Sie Personennamen als getrennte Einheiten in separaten Zeilen hinzu. Fügen Sie die einzelnen Wörter eines Namens nicht in separaten Zeilen oder als einzelne angepasste Wörter hinzu und geben Sie nicht mehrere Namen in derselben Zeile des Korpus an. Das folgende Beispiel veranschaulicht die richtige Vorgehensweise, um die Erkennungsgenauigkeit für drei Namen zu verbessern: 
+-   Fügen Sie Personennamen als getrennte Einheiten in separaten Zeilen hinzu. Fügen Sie die einzelnen Wörter eines Namens nicht in separaten Zeilen oder als einzelne angepasste Wörter hinzu und geben Sie nicht mehrere Namen in derselben Zeile des Korpus an. Das folgende Beispiel veranschaulicht die richtige Vorgehensweise, um die Erkennungsgenauigkeit für drei Namen zu verbessern:
 
     ```
     Gakuto Kutara
@@ -135,14 +135,14 @@ Die folgenden Beschreibungen gelten für amerikanisches und britisches Englisch,
 
 -   Zahlen werden in entsprechende Wörter umgewandelt:
     -   *Englisch:* `500` wird zu `five hundred` und `0.15` wird zu `zero point fifteen`.
-    -   *Französisch:* `500` wird zu `cinq cents` und `0,15` wird zu <code>z&eacute;ro quinze</code>.
+    -   *Französisch:* `500` wird zu `cinq cents` und `0,15` wird zu <code>z&eacute;ro virgule quinze</code>.
     -   *Deutsch:* `500` wird zu <code>f&uuml;nfhundert</code> und `0,15` wird zu <code>null komma f&uuml;nfzehn</code>.
     -   *Spanisch:* `500` wird zu `quinientos` und `0,15` wird zu `cero coma quince`.
     -   *Brasilianisches Portugiesisch:* `500` wird zu `quinhentos` und `0,15` wird zu `zero ponto quinze`.
 -   Tokens, die bestimmte Symbole enthalten, werden in aussagefähige Zeichenfolgedarstellungen umgewandelt, wie in den folgenden Beispielen gezeigt:
     -   Ein Dollarzeichen (`$`) mit einer Zahl wird wie folgt umgewandelt:
         -   *Englisch:* `$100` wird zu `one hundred dollars`.
-        -   *Französisch:* `$100` wird zu `cent dollar`.
+        -   *Französisch:* `$100` wird zu `cent dollars`.
         -   *Deutsch:* `$100` und `100$` werden zu `einhundert dollar`.
         -   *Spanisch:* `$100`  und `100$` werden zu <code>cien d&oacute;lares</code> (oder `cien pesos`, wenn der Dialekt `es-LA` angegeben ist).
         -   *Brasilianisches Portugiesisch:* `$100` und `100$` werden zu <code>cem d&oacute;lares</code>.
@@ -154,7 +154,7 @@ Die folgenden Beschreibungen gelten für amerikanisches und britisches Englisch,
         -   *Brasilianisches Portugiesisch:* <code>&euro;100</code> und <code>100&euro;</code> werden zu `cem euros`.
     -   Ein Prozentzeichen (`%` ) mit einer Zahl davor wird wie folgt umgewandelt:
         -   *Englisch:* `100%` wird zu `one hundred percent`.
-        -   *Französisch:* `100%` wird zu `cent pourcent`.
+        -   *Französisch:* `100%`  wird zu `cent pour cent`.
         -   *Deutsch:* `100 %` wird zu `einhundert prozent`.
         -   *Spanisch:* `100%` wird zu `cien por ciento`.
         -   *Brasilianisches Portugiesisch:* `100%` wird zu `cem por cento`.
@@ -175,7 +175,7 @@ Die folgenden Beschreibungen gelten für amerikanisches und britisches Englisch,
 {: #corpusLanguages-koKR}
 
 -   Zahlen werden in die entsprechenden Wörter umgewandelt. Beispiel: <code>10</code> wird zu <code>&#49901;</code>.
--   Die Interpunktions- und Sonderzeichen `- ( ) * : . , ' "` werden entfernt. Für Koreanisch werden jedoch nicht alle Interpunktions- und Sonderzeichen entfernt, die für andere Sprachen entfernt werden. Beispiele:
+-   Die Interpunktions- und Sonderzeichen `- ( ) * : . , ' "`. Für Koreanisch werden jedoch nicht alle Interpunktions- und Sonderzeichen entfernt, die für andere Sprachen entfernt werden. Beispiele:
     -   Ein Punkt (`.`) wird nur entfernt, wenn er am Ende einer Eingabezeile steht.
     -   Die Tilde (`~`) wird nicht entfernt.
     -   Unicode-Breitzeichen werden weder entfernt noch anderweitig verarbeitet (z. B. die Auslassungspunkte <code>&#8230;</code>).
@@ -201,21 +201,21 @@ Sie können die Methoden beispielsweise verwenden, um einen Schreibfehler oder e
 ### Zeichencodierung
 {: #charEncoding}
 
-In der Regel werden die meisten angepassten Wörter aus Korpora hinzugefügt. Stellen Sie sicher, dass Sie die Zeichencodierung kennen, die in den Textdateien für Ihre Korpora verwendet wird. Der Service behält die in den Textdateien verwendete Codierung bei. 
+In der Regel werden die meisten angepassten Wörter aus Korpora hinzugefügt. Stellen Sie sicher, dass Sie die Zeichencodierung kennen, die in den Textdateien für Ihre Korpora verwendet wird. Der Service behält die in den Textdateien verwendete Codierung bei.
 
 Beim Arbeiten mit den einzelnen Wörtern im angepassten Sprachmodell müssen Sie diese Codierung verwenden. Wenn Sie in der Methode `GET`, `PUT` oder `DELETE /v1/customizations/{customization_id}/words/{word_name}` ein Wort angeben, muss das Element `word_name`, das Sie in der URL übergeben, URL-codiert sein, wenn das Wort Nicht-ASCII-Zeichen enthält.
 
 In der folgenden Tabelle wird der scheinbar gleiche Buchstabe in der ASCII-Codierung und in der UTF-8-Codierung dargestellt. Das ASCII-Zeichen kann in einer URL als `z` übergeben werden. Das UTF-8-Zeichen muss als `%EF%BD%9A` übergeben werden.
 
-<table>
+<table style="width:75%">
   <caption>Tabelle 1. Beispiele für Zeichencodierung</caption>
   <tr>
-    <th style="text-align:left">Buchstabe</th>
-    <th style="text-align:center">Codierung</th>
-    <th style="text-align:center">Wert</th>
+    <th style="width:15%; text-align:center">Buchstabe</th>
+    <th style="width:40%; text-align:center">Codierung</th>
+    <th style="width:45%; text-align:center">Wert</th>
   </tr>
   <tr>
-    <td style="text-align:left; width:30%">
+    <td style="text-align:center">
       `z`
     </td>
     <td style="text-align:center">
@@ -226,7 +226,7 @@ In der folgenden Tabelle wird der scheinbar gleiche Buchstabe in der ASCII-Codie
     </td>
   </tr>
   <tr>
-    <td style="text-align:left; width:30%">
+    <td style="text-align:center">
       <code>&#xff5a;</code>
     </td>
     <td style="text-align:center">
@@ -352,7 +352,7 @@ Wenn Sie die Parameter `smart_formatting` oder `redaction` mit einer Erkennungsa
 
 Angenommen, Sie fügen ein angepasstes Wort `one` ein und geben im Feld `display_as` den Wert `one` ein. Die Funktion für intelligente Formatierung ändert das Wort `one` in die Zahl `1` und der Wert aus dem Feld 'display-as' wird nicht angewendet. Um dieses Problem zu umgehen, können Sie ein angepasstes Wort für die Zahl `1` hinzufügen und denselben Wert aus dem Feld `display_as` auf dieses Wort anwenden.
 
-Weitere Informationen zum Arbeiten mit diesen Funktionen finden Sie in den Abschnitten [Intelligente Formatierung](/docs/services/speech-to-text/output.html#smart_formatting) und [Zahlenschwärzung](/docs/services/speech-to-text/output.html#redaction).
+Weitere Informationen zum Arbeiten mit diesen Funktionen finden Sie in den Abschnitten [Intelligente Formatierung](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting) und [Zahlenschwärzung](/docs/services/speech-to-text?topic=speech-to-text-output#redaction).
 
 ### Was passiert, wenn ich ein angepasstes Wort hinzufüge oder ändere?
 {: #parseWord}
@@ -371,7 +371,8 @@ Wie der Service auf eine Anforderung zum Hinzufügen oder Ändern eines angepass
       Nicht angegeben
     </td>
     <td style="text-align:center; vertical-align:top">
-      Nicht angegeben</td>
+      Nicht angegeben
+    </td>
     <td style="text-align:left; vertical-align:top">
       <ul style="margin-left:20px; padding:0px">
         <li style="margin:10px 0px; line-height:120%">
@@ -484,8 +485,8 @@ Untersuchen Sie insbesondere beim Hinzufügen eins Korpus zu einem angepassten S
 
 Um ein Wort für ein angepasstes Modell zu prüfen und gegebenenfalls zu korrigieren (unabhängig davon, wie es zur Wörterressource hinzugefügt wurde), können Sie die folgenden Methoden verwenden:
 
--   Listen Sie alle Wörter aus einem angepassten Modell mithilfe der Methode `GET /v1/customizations/{customization_id}/words` auf oder fragen Sie ein einzelnes Wort mit der Methode `GET /v1/customizations/{customization_id}/words/{word_name}` ab. Weitere Informationen finden Sie im Abschnitt [Wörter aus angepasstem Sprachmodell auflisten](/docs/services/speech-to-text/language-words.html#listWords).
+-   Listen Sie alle Wörter aus einem angepassten Modell mithilfe der Methode `GET /v1/customizations/{customization_id}/words` auf oder fragen Sie ein einzelnes Wort mit der Methode `GET /v1/customizations/{customization_id}/words/{word_name}` ab. Weitere Informationen finden Sie im Abschnitt [Wörter aus angepasstem Sprachmodell auflisten](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords).
 -   Ändern Sie Wörter in einem angepassten Modell, um Fehler zu beheben oder um Werte für die Felder 'sounds-like' oder 'display-as' hinzuzufügen, mit der Methode `POST /v1/customizations/{customization_id}/words` bzw. mit der Methode `PUT /v1/customizations/{customization_id}/words/{word_name}`. Weitere Informationen finden Sie im Abschnitt [Mit angepassten Wörtern arbeiten](#workingWords).
--   Löschen Sie nicht dazugehörige Wörter, die irrtümlich eingefügt wurden (z. B. durch Schreibfehler oder andere Fehler in einerm Korpus) mithilfe der Methode  `DELETE /v1/customizations/{customization_id}/words/{word_name}`. Weitere Informationen finden Sie im Abschnitt [Wort aus einem angepassten Sprachmodell löschen](/docs/services/speech-to-text/language-words.html#deleteWord).
-    -   Wenn das Wort aus einem Korpus extrahiert wurde, können Sie stattdessen die Korpustextdatei aktualisieren, um den Fehler zu korrigieren, und anschließend die Datei unter Verwendung des Parameters `allow_overwrite` in der Methode `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` erneut laden. Weitere Informationen finden Sie im Abschnitt [Korpus zum angepassten Sprachmodell hinzufügen](/docs/services/speech-to-text/language-create.html#addCorpus). 
-    -   Wenn das Wort aus einer Grammatik extrahiert wurde, können Sie die Grammatikdatei aktualisieren, um den Fehler zu korrigieren, und anschließend die Datei unter Verwendung des Parameters `allow_overwrite` in der Methode `POST /v1/customizations/{customization_id}/grammars/{grammar_kname}` erneut laden. Weitere Informationen finden Sie im Abschnitt [Grammatik zu einem angepassten Sprachmodell hinzufügen](/docs/services/speech-to-text/grammar-add.html#addGrammar).
+-   Löschen Sie nicht dazugehörige Wörter, die irrtümlich eingefügt wurden (z. B. durch Schreibfehler oder andere Fehler in einerm Korpus) mithilfe der Methode  `DELETE /v1/customizations/{customization_id}/words/{word_name}`. Weitere Informationen finden Sie im Abschnitt [Wort aus einem angepassten Sprachmodell löschen](/docs/services/speech-to-text?topic=speech-to-text-manageWords#deleteWord).
+    -   Wenn das Wort aus einem Korpus extrahiert wurde, können Sie stattdessen die Korpustextdatei aktualisieren, um den Fehler zu korrigieren, und anschließend die Datei unter Verwendung des Parameters `allow_overwrite` in der Methode `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` erneut laden. Weitere Informationen finden Sie im Abschnitt [Korpus zum angepassten Sprachmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus). 
+    -   Wenn das Wort aus einer Grammatik extrahiert wurde, können Sie die Grammatikdatei aktualisieren, um den Fehler zu korrigieren, und anschließend die Datei unter Verwendung des Parameters `allow_overwrite` in der Methode `POST /v1/customizations/{customization_id}/grammars/{grammar_kname}` erneut laden. Weitere Informationen hierzu enthält der Abschnitt [Grammatik zum angepassten Sprachmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar). 

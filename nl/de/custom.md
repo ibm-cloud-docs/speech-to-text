@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-10"
+lastupdated: "2019-07-21"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -30,7 +30,10 @@ Der {{site.data.keyword.speechtotextfull}}-Service bietet eine Anpassungsschnitt
 
 Die Anpassungsschnittstelle unterstützt sowohl angepasste Sprachmodelle als auch angepasste Akustikmodelle. Die Schnittstellen für die beiden Typen von angepassten Modellen sind ähnlich und unkompliziert zu verwenden. Auch die Verwendung der beiden Typen von angepassten Modellen bei einer Erkennungsanforderung ist einfach - Sie müssen lediglich die Anpassungs-ID des Modells zusammen mit der Anforderung angeben.
 
-Die Spracherkennung funktioniert mit oder ohne angepasstes Modell identisch. Wenn Sie ein angepasstes Modell für die Spracherkennung verwenden, können Sie alle Eingabe- und Ausgabeparameter nutzen, die normalerweise bei einer Erkennungsanforderung verfügbar sind. Zusätzliche Angaben über alle verfügbaren Parameter enthält der Abschnitt [Parameterübersicht](/docs/services/speech-to-text/summary.html).
+Die Spracherkennung funktioniert mit oder ohne angepasstes Modell identisch. Wenn Sie ein angepasstes Modell für die Spracherkennung verwenden, können Sie alle Eingabe- und Ausgabeparameter nutzen, die normalerweise bei einer Erkennungsanforderung verfügbar sind. Zusätzliche Angaben über alle verfügbaren Parameter enthält der Abschnitt [Parameterübersicht](/docs/services/speech-to-text?topic=speech-to-text-summary).
+
+Um das Sprachmodell oder die akustische Modellanpassung verwenden zu können, müssen Sie über den Standard-Preistarif verfügen. Benutzer des Lite-Plans können die Anpassungsschnittstelle nicht verwenden. Weitere Informationen finden Sie auf der [Seite für die Preisstruktur](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} für den {{site.data.keyword.speechtotextshort}}-Service.
+{: note}
 
 ## Sprachmodellanpassung
 {: #customLanguage-intro}
@@ -43,8 +46,8 @@ Sie erstellen ein angepasstes Sprachmodell und fügen dann spezielle Korpora und
 
 Weitere Informationen finden Sie in den folgenden Abschnitten:
 
--   [Angepasstes Sprachmodell erstellen](/docs/services/speech-to-text/language-create.html)
--   [Angepasstes Sprachmodell verwenden](/docs/services/speech-to-text/language-use.html)
+-   [Angepasstes Sprachmodell erstellen](/docs/services/speech-to-text?topic=speech-to-text-languageCreate)
+-   [Angepasstes Sprachmodell verwenden](/docs/services/speech-to-text?topic=speech-to-text-languageUse)
 
 ## Akustikmodellanpassung
 {: #customAcoustic-intro}
@@ -61,8 +64,8 @@ Wie lange der Service zum Trainieren des angepassten Modells benötigt, ist vom 
 
 Weitere Informationen finden Sie in den folgenden Abschnitten:
 
--   [Angepasstes Akustikmodell erstellen](/docs/services/speech-to-text/acoustic-create.html)
--   [Angepasstes Akustikmodell verwenden](/docs/services/speech-to-text/acoustic-use.html)
+-   [Angepasstes Akustikmodell erstellen](/docs/services/speech-to-text?topic=speech-to-text-acoustic)
+-   [Angepasstes Akustikmodell verwenden](/docs/services/speech-to-text?topic=speech-to-text-acousticUse)
 
 ## Grammatiken
 {: #grammars-intro}
@@ -73,9 +76,9 @@ Sie fügen eine Grammatik zu einem angepassten Sprachmodell hinzu und trainieren
 
 Weitere Informationen finden Sie in den folgenden Abschnitten:
 
--   [Grammatiken bei angepassten Sprachmodellen verwenden](/docs/services/speech-to-text/grammar.html)
--   [Grammatik zu einem angepassten Sprachmodell hinzufügen](/docs/services/speech-to-text/grammar-add.html)
--   [Grammatik bei der Spracherkennung verwenden](/docs/services/speech-to-text/grammar-use.html)
+-   [Grammatiken mit angepassten Sprachmodellen verwenden](/docs/services/speech-to-text?topic=speech-to-text-grammars)
+-   [Grammatik zu einem angepassten Sprachmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd)
+-   [Grammatik für Spracherkennung verwenden](/docs/services/speech-to-text?topic=speech-to-text-grammarUse)
 
 ## Akustik- und Sprachanpassung kombiniert verwenden
 {: #combined}
@@ -84,9 +87,7 @@ Schon die Verwendung eines angepassten Akustikmodells kann die Erkennungfunktion
 
 Durch die Erstellung eines angepassten Sprachmodells, das Ihr angepasstes Akustikmodell ergänzt, können Sie die Spracherkennung verbessern, indem Sie beide Modelle zusammen einsetzen. Wenn Sie ein angepasstes Akustikmodell trainieren, können Sie ein angepasstes Sprachmodell angeben, das Transkriptionen der Audioressourcen oder ein Vokabular von fachspezifischen Wörtern in den Ressourcen enthält. Beim Transkribieren von Audiodaten akzeptiert der Service analog ein angepasstes Sprachmodell und/oder ein angepasstes Akustikmodell. Und falls Ihr angepasstes Sprachmodell eine Grammatik beinhaltet, können Sie dieses Modell und seine Grammatik zusammen mit einem angepassten Akustikmodell für die Spracherkennung verwenden.
 
-Weitere Informationen finden Sie im folgenden Abschnitt:
-
--   [Angepasste Akustikmodelle und angepasste Sprachmodelle kombiniert verwenden](/docs/services/speech-to-text/acoustic-both.html)
+Weitere Informationen finden Sie unter [Angepasste Akustikmodelle und angepasste Sprachmodelle kombiniert verwenden](/docs/services/speech-to-text?topic=speech-to-text-useBoth).
 
 Einige Sprachen unterstützen nicht sowohl Sprachanpassung als auch akustische Anpassung. Weitere Informationen finden Sie unter [Sprachunterstützung bei der Anpassung](#languageSupport).
 {: note}
@@ -100,7 +101,7 @@ Die Anpassung von Sprachmodellen und Akustikmodellen ist nur bei einigen Sprache
 -   *Beta* gibt an, dass die Schnittstelle in der Betaversion angeboten wird.
 -   *Nicht unterstützt* bedeutet, dass die Schnittstelle für diese Sprache nicht verfügbar ist.
 
-Sie können Breitband- und Schmalbandmodelle bei jeder unterstützten Sprache verwenden, für die sie verfügbar sind. Falls eine Sprache die Sprachmodellanpassung unterstützt, unterstützt sie auch Grammatiken. Eine Liste aller verfügbaren Modelle finden Sie im Abschnitt [Unterstützte Sprachmodelle](/docs/services/speech-to-text/models.html#modelsList).
+Sie können Breitband- und Schmalbandmodelle bei jeder unterstützten Sprache verwenden, für die sie verfügbar sind. Falls eine Sprache die Sprachmodellanpassung unterstützt, unterstützt sie auch Grammatiken. Eine Liste aller verfügbaren Modelle finden Sie im Abschnitt [Unterstützte Sprachmodelle](/docs/services/speech-to-text?topic=speech-to-text-models#modelsList).
 
 <table>
   <caption>Tabelle 1. Sprachunterstützung bei der Anpassung</caption>
@@ -116,7 +117,27 @@ Sie können Breitband- und Schmalbandmodelle bei jeder unterstützten Sprache ve
     </th>
   </tr>
   <tr>
+    <td>Arabisch (Moderner Standard)</td>
+    <td style="text-align:center">Nicht unterstützt</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
     <td>Brasilianisches Portugiesisch</td>
+    <td style="text-align:center">GA</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
+    <td>Chinesisch (Mandarin)</td>
+    <td style="text-align:center">Nicht unterstützt</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
+    <td>Britisches Englisch</td>
+    <td style="text-align:center">GA</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
+    <td>Amerikanisches Englisch</td>
     <td style="text-align:center">GA</td>
     <td style="text-align:center">Beta</td>
   </tr>
@@ -141,28 +162,33 @@ Sie können Breitband- und Schmalbandmodelle bei jeder unterstützten Sprache ve
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>Mandarin</td>
-    <td style="text-align:center">Nicht unterstützt</td>
+    <td>Spanisch (Argentinien)</td>
+    <td style="text-align:center">Beta</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>Modernes Hocharabisch</td>
-    <td style="text-align:center">Nicht unterstützt</td>
-    <td style="text-align:center">Beta</td>
-  </tr>
-  <tr>
-    <td>Spanisch</td>
+    <td>Spanisch (Kastilien)</td>
     <td style="text-align:center">GA</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>Britisches Englisch</td>
-    <td style="text-align:center">GA</td>
+    <td>Spanisch (Chile)</td>
+    <td style="text-align:center">Beta</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>Amerikanisches Englisch</td>
-    <td style="text-align:center">GA</td>
+    <td>Spanisch (Kolumbien)</td>
+    <td style="text-align:center">Beta</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
+    <td>Spanisch (Mexiko)</td>
+    <td style="text-align:center">Beta</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
+    <td>Spanisch (Peru)</td>
+    <td style="text-align:center">Beta</td>
     <td style="text-align:center">Beta</td>
   </tr>
 </table>
@@ -177,9 +203,9 @@ Die folgenden Verwendungshinweise gelten sowohl für die Sprachmodellanpassung a
 ### Eigentumsrecht an angepassten Modellen
 {: #customOwner}
 
-Eigner eines angepassten Modells ist die Instanz des {{site.data.keyword.speechtotextshort}}-Service, mit deren Berechtigungsnachweisen das Modell erstellt wird. Für jede Arbeit mit dem angepassten Modell müssen Sie die Serviceberechtigungsnachweise, die für diese Instanz des Service erstellt wurden, bei den Methoden der Anpassungsschnittstelle verwenden. Mit Berechtigungsnachweisen, die für andere Instanzen des Service erstellt wurden, kann das angepasste Modell weder angezeigt werden, noch ist der Zugriff auf das Modell möglich.
+Eigner eines angepassten Modells ist die Instanz des {{site.data.keyword.speechtotextshort}}-Service, mit deren Berechtigungsnachweisen das Modell erstellt wird. Für jede Arbeit mit dem angepassten Modell müssen Sie die Berechtigungsnachweise für diese Instanz des Service mit den Methoden der Anpassungsschnittstelle verwenden. Mit Berechtigungsnachweisen, die für andere Instanzen des Service erstellt wurden, kann das angepasste Modell weder angezeigt werden, noch ist der Zugriff auf das Modell möglich.
 
-Alle Serviceberechtigungsnachweise, die für dieselbe Instanz des {{site.data.keyword.speechtotextshort}}-Service erhalten wurden, haben gemeinsam Zugriff auf alle angepassten Modelle, die für diese Serviceinstanz erstellt wurden. Um den Zugriff auf ein angepasstes Modell einzuschränken, erstellen Sie eine separate Instanz des Service und verwenden Sie ausschließlich die Berechtigungsnachweise für diese Serviceinstanz, um das Modell zu erstellen und damit zu arbeiten. Berechtigungsnachweise für andere Serviceinstanzen haben dann keinen Einfluss auf das Modell.
+Alle Berechtigungsnachweise, die für dieselbe Instanz des {{site.data.keyword.speechtotextshort}}-Service erhalten wurden, haben gemeinsam Zugriff auf alle angepassten Modelle, die für diese Serviceinstanz erstellt wurden. Um den Zugriff auf ein angepasstes Modell einzuschränken, erstellen Sie eine separate Instanz des Service und verwenden Sie ausschließlich die Berechtigungsnachweise für diese Serviceinstanz, um das Modell zu erstellen und damit zu arbeiten. Berechtigungsnachweise für andere Serviceinstanzen haben dann keinen Einfluss auf das Modell.
 
 Ein Vorteil der gemeinsamen Nutzung von Eigentumsrechten durch mehrere Berechtigungsnachweise für eine Serviceinstanz besteht darin, dass Sie eine Gruppe von Berechtigungsnachweisen stornieren können, wenn sie beispielsweise beeinträchtigt wurden. Anschließend können Sie neue Berechtigungsnachweise für dieselbe Serviceinstanz erstellen und trotzdem das Eigentumsrecht an den angepassten Modellen, die mit den ursprünglichen Berechtigungsnachweisen erstellt wurden, sowie den Zugriff auf diese Modelle verwalten.
 
@@ -191,7 +217,7 @@ Wie der Service die Anforderungsprotokollierung für Aufrufe der Anpassungsschni
 -   Der Service *protokolliert keine Daten*, die zum Erstellen von angepassten Modellen verwendet werden. Wenn Sie beispielsweise in einem angepassten Sprachmodell mit Korpora und Wörtern arbeiten, müssen Sie den Anforderungsheader `X-Watson-Learning-Opt-Out` nicht festlegen. Ihre Trainingsdaten werden in keinem Fall verwendet, um die Basismodelle des Service zu verbessern.
 -   Der Service *protokolliert Daten*, wenn ein angepasstes Modell bei einer Erkennungsanforderung verwendet wird. Wenn Sie die Protokollierung für Erkennungsanforderungen verhindern wollen, müssen Sie den Anforderungsheader `X-Watson-Learning-Opt-Out` auf `true` setzen.
 
-Weitere Informationen finden Sie unter [Protokollierung von Anforderungen](/docs/services/speech-to-text/input.html#logging).
+Weitere Informationen finden Sie im Abschnitt [Anforderungsprotokollierung](/docs/services/speech-to-text?topic=speech-to-text-input#logging).
 
 ### Informationssicherheit
 {: #customSecurity}
@@ -204,4 +230,4 @@ Sie können Daten, die für angepasste Sprachmodelle und angepasste Akustikmodel
 -   `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`
 -   `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`
 
-Bei Bedarf können Sie danach die Daten mit der Methode `DELETE /v1/user_data` löschen. Weitere Informationen finden Sie im Abschnitt [Informationssicherheit](/docs/services/speech-to-text/information-security.html).
+Bei Bedarf können Sie danach die Daten mit der Methode `DELETE /v1/user_data` löschen. Weitere Informationen finden Sie im Abschnitt [Informationssicherheit](/docs/services/speech-to-text?topic=speech-to-text-information-security).

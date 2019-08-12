@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Korpora verwalten
 {: #manageCorpora}
 
-Die Anpassungsschnittstelle enthält die Methode `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` zum Hinzufügen eines Korpus zu einem angepassten Sprachmodell. Weitere Informationen finden Sie im Abschnitt [Korpus zu angepasstem Sprachmodell hinzufügen](/docs/services/speech-to-text/language-create.html#addCorpus). Die Schnittstelle enthält außerdem die folgenden Methoden zum Auflisten und Löschen von Korpora für ein angepasstes Sprachmodell.
+Die Anpassungsschnittstelle enthält die Methode `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` zum Hinzufügen eines Korpus zu einem angepassten Sprachmodell. Weitere Informationen finden Sie im Abschnitt [Korpus zu angepasstem Sprachmodell hinzufügen](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus). Die Schnittstelle enthält außerdem die folgenden Methoden zum Auflisten und Löschen von Korpora für ein angepasstes Sprachmodell.
 {: shortdesc}
 
 ## Korpora für angepasstes Sprachmodell auflisten

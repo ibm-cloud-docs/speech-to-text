@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-06"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -44,9 +44,11 @@ Bestätigungsgrammatiken sind bei Anwendungen zweckmäßig, die eine aus einem W
   </tr>
   <tr>
     <td style="text-align:center">
-      <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/confirm.abnf" download="confirm.abnf">confirm.abnf <img src="../../icons/launch-glyph.svg" alt="Symbol für externen Link" title="Symbol für externen Link"></a>     </td>
+      <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/confirm.abnf" download="confirm.abnf">confirm.abnf <img src="../../icons/launch-glyph.svg" alt="Symbol für externen Link" title="Symbol für externen Link"></a>
+    </td>
     <td style="text-align:center">
-      <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/confirm.xml" download="confirm.xml">confirm.xml <img src="../../icons/launch-glyph.svg" alt="Symbol für externen Link" title="Symbol für externen Link"></a>     </td>
+      <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/confirm.xml" download="confirm.xml">confirm.xml <img src="../../icons/launch-glyph.svg" alt="Symbol für externen Link" title="Symbol für externen Link"></a>
+    </td>
   </tr>
 </table>
 
@@ -116,7 +118,7 @@ Die folgenden Grammatiken erkennen VIN-Codes des Herstellers 'Honda'. Sie sind z
   </tr>
 </table>
 
-Weitere Informationen zum VIN-Format finden Sie im Wikipedia-Artikel [Vehicle identification number. ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://en.wikipedia.org/wiki/Vehicle_identification_number){: new_window}
+Weitere Informationen zum VIN-Format finden Sie im Wikipedia-Artikel [Vehicle identification number](https://wikipedia.org/wiki/Vehicle_identification_number){: external}.
 
 ## Grammatiken mit optionalen Elementen
 {: #optionalElements}
@@ -139,7 +141,7 @@ Indem Sie bestimmte Elemente einer Antwort als optional definieren, können Sie 
   </tr>
 </table>
 
-Weitere Informationen zu optionalen Erweiterungen in Grammatiken finden Sie unter [Section 2.5 Repeats ![Symbol für externen Link](../../icons/launch-glyph.svg "Symbol für externen Link")](https://www.w3.org/TR/speech-grammar/#S2.5){: new_window} in der Speech Recognition Grammar Specification.
+Weitere Informationen zu optionalen Erweiterungen in Grammatiken finden Sie unter [Section 2.5 Repeats](https://www.w3.org/TR/speech-grammar/#S2.5){: external} in der Speech Recognition Grammar Specification.
 
 ## Grammatiken für Begriffsklärung
 {: #disambiguation}

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-07-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -31,7 +31,7 @@ Ungeachtet der verwendeten Schnittstelle gibt der {{site.data.keyword.speechtote
 ## Antwort für Basistranskription
 {: #response}
 
-Für die Beispiele im Abschnitt [Erkennungsanforderung ausgeben](/docs/services/speech-to-text/basic-request.html) gibt der Service die folgende Antwort zurück. In den Beispielen wird lediglich eine Audiodatei und ihr Inhaltstyp übergeben. In der Audiodatei wird ein einziger Satz ohne nennenswerte Sprechpausen zwischen den Wörtern gesprochen.
+Für die Beispiele im Abschnitt [Erkennungsanforderung ausgeben](/docs/services/speech-to-text?topic=speech-to-text-basic-request) gibt der Service die folgende Antwort zurück. In den Beispielen wird lediglich eine Audiodatei und ihr Inhaltstyp übergeben. In der Audiodatei wird ein einziger Satz ohne nennenswerte Sprechpausen zwischen den Wörtern gesprochen.
 
 ```javascript
 {
@@ -39,7 +39,7 @@ Für die Beispiele im Abschnitt [Erkennungsanforderung ausgeben](/docs/services/
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -77,7 +77,7 @@ Das Feld `final` gibt an, ob das Feld 'transcript' die Endergebnisse für die Tr
 -   Für Endergebnisse, die sich garantiert nicht ändern, enthält das Feld den Wert `true`. Für Transkriptionen, die der Service als Endergebnisse zurückgibt, sendet er keine weiteren Aktualisierungen.
 -   Für Zwischenergebnisse, bei denen Änderungen vorbehalten sind, enthält das Feld den Wert `false`. Falls Sie bei der WebSocket-Schnittstelle den Parameter `interim_results` verwenden, gibt der Service sich ergebende Zwischenhypothesen in Form von mehreren Feldern `results` zurück, während er die Audiodaten transkribiert. Für Zwischenergebnisse hat das Feld `final` immer den Wert `false`. Für die Endergebnisse der Audiodaten setzt der Service das Feld auf den Wert `true`. Für die Transkription solcher Audiodaten sendet der Service keine weiteren Aktualisierungen.
 
-Um Zwischenergebnisse zu erhalten, verwenden Sie die WebSocket-Schnittstelle und geben Sie für den Parameter `interim_results` die Einstellung `true` an. Weitere Informationen finden Sie unter [Zwischenergebnisse](/docs/services/speech-to-text/output.html#interim).
+Um Zwischenergebnisse zu erhalten, verwenden Sie die WebSocket-Schnittstelle und geben Sie für den Parameter `interim_results` die Einstellung `true` an. Weitere Informationen finden Sie im Abschnitt [Zwischenergebnisse](/docs/services/speech-to-text?topic=speech-to-text-output#interim).
 
 ### Feld 'result_index'
 {: #responseResultIndex}
@@ -102,7 +102,7 @@ Viele Ausgabeparameter, die für die Spracherkennung verfügbar sind, wirken sic
 -   Der Parameter `interim_results` der WebSocket-Schnittstelle fordert vorläufige Hypothesen für die Transkription an. Wie bereits erläutert sendet der Service mehrere Antworten, während der die Audiodaten transkribiert.
 -   Der Parameter `speaker_labels` identifiziert die einzelnen Sprecher eines Gesprächs mit mehreren Teilnehmern. Die Antwort enthält ein Feld `speaker_labels`, das sich auf derselben Ebene wie die Felder `results` und `results_index` befindet.
 
-Weitere Informationen zu diesen und anderen Parametern, die sich auf die Antwort des Service auswirken können, finden Sie unter [Ausgabefunktionen](/docs/services/speech-to-text/output.html). Zusätzliche Angaben über alle verfügbaren Parameter enthält der Abschnitt [Parameterübersicht](/docs/services/speech-to-text/summary.html).
+Weitere Informationen zu diesen und anderen Parametern, die sich auf die Antwort des Service auswirken können, finden Sie unter [Ausgabefunktionen](/docs/services/speech-to-text?topic=speech-to-text-output). Zusätzliche Angaben über alle verfügbaren Parameter enthält der Abschnitt [Parameterübersicht](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ## Sprechpausen und Schweigen
 {: #pauses-silence}
@@ -178,7 +178,7 @@ Wie der Service die Ergebnisse zurückgibt, hängt von der verwendeten Schnittst
 
 Falls Ihre Ergebnisse mehrere Endergebnisse enthalten, verketten Sie die Elemente `transcript` der Endergebnisse, um die vollständige Transkription der Audiodaten zusammenzusetzen.
 
-Ein 30 Sekunden langes Schweigen in gestreamten Audiodaten kann zu einem [Inaktivitätszeitlimit](/docs/services/speech-to-text/input.html#timeouts-inactivity) führen.
+Ein 30 Sekunden langes Schweigen in gestreamten Audiodaten kann zu einem [Inaktivitätszeitlimit](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts-inactivity) führen.
 {: note}
 
 ## Stockungsmarkierungen
@@ -206,7 +206,7 @@ In Englisch verwendet der Service das Stockungstoken `%HESITATION`, das im folge
 ```
 {: codeblock}
 
-Stockungsmarkierungen können auch in anderen Feldern einer Transkription auftreten. Falls Sie beispielsweise [Wortzeitmarken](/docs/services/speech-to-text/output.html#word_timestamps) für die einzelnen Wörter einer Transkription anfordern, meldet der Service die Anfangs- und Endzeit jeder Stockungsmarkierung.
+Stockungsmarkierungen können auch in anderen Feldern einer Transkription auftreten. Falls Sie beispielsweise [Wortzeitmarken](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps) für die einzelnen Wörter einer Transkription anfordern, meldet der Service die Anfangs- und Endzeit jeder Stockungsmarkierung.
 
 ```javascript
 {
@@ -276,4 +276,4 @@ Der Service wendet diese Großschreibung auf amerikanisches Englisch immer an, u
 
 Standardmäßig fügt der Service keine Interpunktion in Antworttranskriptionen ein. Gegebenenfalls benötigte Interpunktion müssen Sie selbst zu den Ergebnissen des Service hinzufügen.
 
-Bei amerikanischem Englisch können Sie den Service durch die Verwendung der intelligenten Formatierung anweisen, bestimmte Schlüsselwortzeichenfolgen durch Interpunktionssymbole wie Kommas, Punkte, Fragezeichen und Ausrufezeichen zu ersetzen. Weitere Informationen finden Sie unter [Intelligente Formatierung](/docs/services/speech-to-text/output.html#smart_formatting).
+Bei einigen Sprachen können Sie den Service durch die Verwendung der intelligenten Formatierung anweisen, bestimmte Schlüsselwortzeichenfolgen durch Interpunktionssymbole wie Kommas, Punkte, Fragezeichen und Ausrufezeichen zu ersetzen. Weitere Informationen finden Sie unter [Intelligente Formatierung](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting).
