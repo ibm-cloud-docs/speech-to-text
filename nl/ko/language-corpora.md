@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # 말뭉치 관리
 {: #manageCorpora}
 
-사용자 정의 인터페이스에는 사용자 정의 언어 모델에 말뭉치를 추가하기 위한 `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` 메소드가 포함되어 있습니다. 자세한 정보는 [사용자 정의 언어 모델에 말뭉치 추가](/docs/services/speech-to-text/language-create.html#addCorpus)를 참조하십시오. 이 인터페이스에는 사용자 정의 언어 모델의 말뭉치를 나열하고 삭제하기 위한 다음 메소드도 포함되어 있습니다.
+사용자 정의 인터페이스에는 사용자 정의 언어 모델에 말뭉치를 추가하기 위한 `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` 메소드가 포함되어 있습니다. 자세한 정보는 [사용자 정의 언어 모델에 말뭉치 추가](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus)를 참조하십시오. 이 인터페이스에는 사용자 정의 언어 모델의 말뭉치를 나열하고 삭제하기 위한 다음 메소드도 포함되어 있습니다.
 {: shortdesc}
 
 ## 사용자 정의 언어 모델의 말뭉치 나열

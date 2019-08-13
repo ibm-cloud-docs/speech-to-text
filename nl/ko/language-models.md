@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-07-21"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,18 +25,18 @@ subcollection: speech-to-text
 # 사용자 정의 언어 모델 관리
 {: #manageLanguageModels}
 
-사용자 정의 인터페이스에는 사용자 정의 언어 모델을 작성하기 위한 `POST /v1/customizations` 메소드가 포함되어 있습니다. 이 인터페이스에는 해당 단어 리소스의 최신 데이터에 대해 사용자 정의 모델을 훈련하기 위한 `POST /v1/customizations/train` 메소드도 있습니다. 자세한 정보는 다음 문서를 참조하십시오.
+사용자 정의 인터페이스에는 사용자 정의 언어 모델을 작성하기 위한 `POST /v1/customizations` 메소드가 포함되어 있습니다. 이 인터페이스에는 해당 단어 리소스의 최신 데이터에 대해 사용자 정의 모델을 훈련하기 위한 `POST /v1/customizations/train` 메소드도 있습니다. 자세한 정보는 다음을 참조하십시오.
 {: shortdesc}
 
--   [사용자 정의 언어 모델 작성](/docs/services/speech-to-text/language-create.html#createModel-language)
--   [사용자 정의 언어 모델 훈련](/docs/services/speech-to-text/language-create.html#trainModel-language)
+-   [사용자 정의 언어 모델 작성](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language)
+-   [사용자 정의 언어 모델 훈련](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language)
 
-또한 이 인터페이스에는 사용자 정의 언어 모델에 대한 정보 나열, 사용자 정의 모델을 초기 상태로 재설정 및 사용자 정의 모델 삭제를 수행하기 위한 다음 메소드도 포함되어 있습니다.
+또한 이 인터페이스에는 사용자 정의 언어 모델에 대한 정보 나열, 사용자 정의 모델을 초기 상태로 재설정, 사용자 정의 모델 업그레이드 및 사용자 정의 모델 삭제를 수행하기 위한 메소드도 포함되어 있습니다. 모델에 리소스를 추가하는 것을 비롯하여 서비스가 해당 모델에서 다른 오퍼레이션을 처리하는 중에는 사용자 정의 모델을 훈련, 재설정 또는 삭제할 수 없습니다. 
 
 ## 사용자 정의 언어 모델 나열
 {: #listModels-language}
 
-사용자 정의 인터페이스는 지정된 서비스 인증 정보가 소유하는 사용자 정의 언어 모델에 대한 정보를 나열하기 위한 두 가지 메소드를 제공합니다.
+사용자 정의 인터페이스는 지정된 인증 정보가 소유하는 사용자 정의 언어 모델에 대한 정보를 나열하기 위한 두 가지 메소드를 제공합니다.
 
 -   `GET /v1/customizations` 메소드는 모든 사용자 정의 언어 모델 또는 지정된 언어의 모든 사용자 정의 언어 모델에 대한 정보를 나열합니다.
 -   `GET /v1/customizations/{customization_id}` 메소드는 지정된 사용자 정의 언어 모델에 대한 정보를 나열합니다. 이 메소드를 사용하여 훈련 요청 또는 새 단어 추가 요청의 상태에 대한 서비스를 폴링할 수 있습니다.
@@ -45,18 +45,19 @@ subcollection: speech-to-text
 
 -   `customization_id`는 사용자 정의 모델의 GUID(Globally Unique Identifier)를 식별합니다. GUID는 인터페이스의 메소드에서 모델을 식별하는 데 사용됩니다.
 -   `created`는 사용자 정의 모델이 작성된 협정 세계시(UTC) 기준 날짜 및 시간입니다.
+-   `updated`는 사용자 정의 모델이 마지막으로 수정된 협정 세계시(UTC) 기준 날짜 및 시간입니다.
 -   `language`는 사용자 정의 모델의 언어입니다.
--   `dialect`는 사용자 정의 언어 모델에 대한 언어의 통용어입니다.
+-   `dialect`는 사용자 정의 언어 모델에 대한 언어의 통용어이며, 스페인어 모델에 대한 사용자 정의 모델의 언어와 반드시 일치하지는 않습니다. 자세한 정보는 [사용자 정의 언어 모델 작성](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language)에 있는 `dialect` 매개변수의 설명을 참조하십시오. 
 -   `owner`는 사용자 정의 모델을 소유하는 서비스 인스턴스의 인증 정보를 식별합니다.
 -   `name`은 사용자 정의 모델의 이름입니다.
 -   `description`은 사용자 정의 모델에 대한 설명을 표시합니다(작성 시 제공된 경우).
 -   `base_model`은 사용자 정의 모델이 작성된 언어 모델의 이름을 표시합니다.
--   `versions`는 사용자 정의 모델의 사용 가능한 버전 목록을 제공합니다. 배열의 각 요소는 사용자 정의 모델이 사용될 수 있는 기본 모델의 버전을 표시합니다. 사용자 정의 모델이 업그레이드된 경우에만 여러 버전이 존재합니다. 그렇지 않으면 하나의 버전만 표시됩니다. 자세한 정보는 [사용자 정의 모델에 대한 버전 정보 나열](/docs/services/speech-to-text/custom-upgrade.html#upgradeList)을 참조하십시오.
+-   `versions`는 사용자 정의 모델의 사용 가능한 버전 목록을 제공합니다. 배열의 각 요소는 사용자 정의 모델이 사용될 수 있는 기본 모델의 버전을 표시합니다. 사용자 정의 모델이 업그레이드된 경우에만 여러 버전이 존재합니다. 그렇지 않으면 하나의 버전만 표시됩니다. 자세한 정보는 [사용자 정의 모델에 대한 버전 정보 나열](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade#upgradeList)을 참조하십시오.
 
 이 메소드는 사용자 정의 모델의 상태를 표시하는 `status` 필드도 리턴합니다.
 
--   `pending`은 모델이 작성되었음을 표시합니다. 훈련 데이터가 추가되거나 서비스가 추가된 데이터 분석을 완료할 때까지 대기 중입니다.
--   `ready`는 모델이 데이터를 포함하고 있으며 훈련될 준비가 되었음을 표시합니다.
+-   `pending`은 모델이 작성되었음을 표시합니다. 올바른 훈련 데이터(말뭉치, 문법 또는 단어)가 추가되거나 서비스가 추가된 데이터 분석을 완료할 때까지 대기 중입니다.
+-   `ready`는 모델이 올바른 데이터를 포함하고 있으며 훈련될 준비가 되었음을 표시합니다. 모델이 올바른 리소스와 올바르지 않은 리소스를 함께 포함하는 경우 `strict` 조회 매개변수를 `false`로 설정하지 않으면 모델 훈련에 실패합니다. 자세한 정보는 [훈련 실패](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#failedTraining-language)를 참조하십시오.
 -   `training`은 데이터에 대해 모델을 훈련 중임을 표시합니다.
 -   `available`은 모델이 훈련되었으며 인식 요청에 사용할 준비가 되었음을 표시합니다.
 -   `upgrading`은 모델을 업그레이드 중임을 표시합니다.
@@ -67,7 +68,7 @@ subcollection: speech-to-text
 ### 예제 요청 및 응답
 {: #listExample-language}
 
-다음 예제에는 서비스 인증 정보가 소유하는 모든 미국 영어 사용자 정의 언어 모델을 나열하는 `language` 조회 매개변수가 포함되어 있습니다.
+다음 예제에는 지정된 인증 정보가 소유하는 모든 미국 영어 사용자 정의 언어 모델을 나열하는 `language` 조회 매개변수가 포함되어 있습니다.
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -75,7 +76,7 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: pre}
 
-서비스가 다음과 같은 두 개의 모델의 소유합니다. 첫 번째 모델은 데이터를 대기 중이거나 서비스에서 처리 중입니다. 두 번째 모델은 훈련이 완료되었으며 사용할 준비가 되었습니다.
+인증 정보에는 두 개의 모델이 있습니다. 첫 번째 모델은 데이터를 대기 중이거나 서비스에서 처리 중입니다. 두 번째 모델은 훈련이 완료되었으며 사용할 준비가 되었습니다.
 
 ```javascript
 {
@@ -83,6 +84,7 @@ curl -X GET -u "apikey:{apikey}"
     {
       "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
       "created": "2016-06-01T18:42:25.324Z",
+      "updated": "2016-06-01T18:42:25.324Z",
       "language": "en-US",
       "dialect": "en-US",
       "versions": [
@@ -99,6 +101,7 @@ curl -X GET -u "apikey:{apikey}"
     {
       "customization_id": "8391f918-3b76-e109-763c-b7732fae4829",
       "created": "2016-06-01T18:51:37.291Z",
+      "updated": "2016-06-01T20:02:10.624Z",
       "language": "en-US",
       "dialect": "en-US",
       "versions": [
@@ -128,6 +131,7 @@ curl -X GET -u "apikey:{apikey}"
 {
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
   "created": "2016-06-01T18:42:25.324Z",
+  "updated": "2016-06-01T18:42:25.324Z",
   "language": "en-US",
   "dialect": "en-US",
   "versions": [

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,30 +25,30 @@ subcollection: speech-to-text
 # 입력 기능
 {: #input}
 
-{{site.data.keyword.speechtotextshort}} 서비스는 이 서비스가 음성 인식 요청을 수행하는 방법을 지정하기 위해 다음과 같은 기능을 제공합니다. 다음 섹션에서 설명된 모든 입력 매개변수는 선택사항입니다. 입력 오디오만 필수입니다.
+{{site.data.keyword.speechtotextfull}} 서비스는 이 서비스가 음성 인식 요청을 수행하는 방법을 지정하기 위해 다음과 같은 기능을 제공합니다. 다음 섹션에서 설명된 모든 입력 매개변수는 선택사항입니다. 입력 오디오만 필수입니다.
 {: shortdesc}
 
--   각 서비스 인스턴스에 대한 단순 음성 인식 요청의 예제는 [인식 요청 작성](/docs/services/speech-to-text/basic-request.html)을 참조하십시오.
--   상태(GA 또는 베타) 및 지원되는 언어를 포함한 사용 가능한 모든 음성 인식 매개변수의 알파벳순 목록은 [매개변수 요약](/docs/services/speech-to-text/summary.html)을 참조하십시오.
+-   각 서비스 인스턴스에 대한 단순 음성 인식 요청의 예제는 [인식 요청 작성](/docs/services/speech-to-text?topic=speech-to-text-basic-request)을 참조하십시오.
+-   상태(GA 또는 베타) 및 지원되는 언어를 포함한 사용 가능한 모든 음성 인식 매개변수의 알파벳순 목록은 [매개변수 요약](/docs/services/speech-to-text?topic=speech-to-text-summary)을 참조하십시오.
 
 ## 사용자 정의 모델
 {: #custom-input}
 
-언어 및 음향 모델 사용자 정의는 여러 언어에 대한 다양한 레벨의 지원(GA(Generally Aavailable) 또는 베타)으로 사용 가능합니다. 자세한 정보는 [사용자 정의에 대한 언어 지원](/docs/services/speech-to-text/custom.html#languageSupport)을 참조하십시오.
+언어 및 음향 모델 사용자 정의는 여러 언어에 대한 다양한 레벨의 지원(GA(Generally Aavailable) 또는 베타)으로 사용 가능합니다. 자세한 정보는 [사용자 정의에 대한 언어 지원](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport)을 참조하십시오.
 {: note}
 
 모든 인터페이스는 인식 요청에 사용할 사용자 정의 모델을 허용합니다.
 
 -   *사용자 정의 언어 모델*은 특정 도메인의 용어로 서비스의 기본 어휘를 확장합니다. 사용자 정의 언어 모델을 요청에 포함하려면 `language_customization_id` 매개변수를 사용하십시오. 선택적 `customization_weight` 매개변수를 지정할 수도 있습니다. 이 매개변수는 기본 어휘의 단어와 비교하여 사용자 정의 모델의 단어에 지정된 상대적인 가중치를 표시합니다.
 
-        자세한 정보는 [사용자 정의 언어 모델 사용](/docs/services/speech-to-text/language-use.html)을 참조하십시오.
+자세한 정보는 [사용자 정의 언어 모델 사용](/docs/services/speech-to-text?topic=speech-to-text-languageUse)을 참조하십시오.
 -   *사용자 정의 음향 모델*은 사용자 환경 및 화자의 음향 특성에 맞게 서비스의 기본 음향 모델을 조정합니다. 사용자 정의 음향 모델을 요청에 포함하려면 `acoustic_customization_id` 매개변수를 사용하십시오. 사용자 정의 언어 모델 및 사용자 정의 음향 모델을 모두 요청과 함께 지정할 수 있습니다.
 
-    자세한 정보는 [사용자 정의 음향 모델 사용](/docs/services/speech-to-text/acoustic-use.html)을 참조하십시오.
+    자세한 정보는 [사용자 정의 음향 모델 사용](/docs/services/speech-to-text?topic=speech-to-text-acousticUse)을 참조하십시오.
 
-사용자 정의 모델은 [언어 및 모델](/docs/services/speech-to-text/models.html)에 설명된 언어 모델 중 하나를 기반으로 합니다. 사용자 정의 모델은 작성 시 기반이 된 기본 모델에만 사용될 수 있습니다. 사용자 정의 모델이 기본값인 `en-US_BroadbandModel` 이외의 모델을 기반으로 하는 경우 해당 모델의 이름도 요청과 함께 지정해야 합니다. 사용자 정의 모델을 사용하려면 사용자 정의 모델을 소유하는 서비스 인스턴스에 대해 작성된 서비스 인증 정보로 요청을 발행해야 합니다.
+사용자 정의 모델은 [언어 및 모델](/docs/services/speech-to-text?topic=speech-to-text-models)에 설명된 언어 모델 중 하나를 기반으로 합니다. 사용자 정의 모델은 작성 시 기반이 된 기본 모델에만 사용될 수 있습니다. 사용자 정의 모델이 기본값인 `en-US_BroadbandModel` 이외의 모델을 기반으로 하는 경우 해당 모델의 이름도 요청과 함께 지정해야 합니다. 사용자 정의 모델을 사용하려면 사용자 정의 모델을 소유하는 서비스 인스턴스에 대한 인증 정보로 요청을 발행해야 합니다.
 
-사용자 정의에 대한 소개는 [사용자 정의 인터페이스](/docs/services/speech-to-text/custom.html)를 참조하십시오.
+사용자 정의에 대한 소개는 [사용자 정의 인터페이스](/docs/services/speech-to-text?topic=speech-to-text-customization)를 참조하십시오.
 
 ### 사용자 정의 모델 예제
 {: #customExample}
@@ -75,8 +75,8 @@ curl -X POST -u "apikey:{apikey}"
 
 각 서비스 인터페이스를 통해 사용자 정의 모델을 사용하는 예제는 다음을 참조하십시오.
 
--   [사용자 정의 언어 모델 사용](/docs/services/speech-to-text/language-use.html)
--   [사용자 정의 음향 모델 사용](/docs/services/speech-to-text/acoustic-use.html)
+-   [사용자 정의 언어 모델 사용](/docs/services/speech-to-text?topic=speech-to-text-languageUse)
+-   [사용자 정의 음향 모델 사용](/docs/services/speech-to-text?topic=speech-to-text-acousticUse)
 
 ## 문법
 {: #grammars-input}
@@ -86,14 +86,14 @@ curl -X POST -u "apikey:{apikey}"
 
 문법을 사용자 정의 언어 모델에 추가하고 음성 인식에 사용할 수 있습니다. 문법은 정규 언어 스펙을 사용하여 문자열을 변환하기 위한 프로덕션 규칙 세트를 정의합니다. 이 규칙은 언어의 알파벳에서 올바른 문자열을 형성하는 방법을 지정합니다.
 
-문법을 음성 인식에 사용하는 경우 서비스가 문법에서 인식되는 구문만 인식합니다. 서비스가 올바른 문자열에 대한 검색 공간을 제한하여 결과를 더 빠르고 정확하게 전달할 수 있습니다. 
+문법을 음성 인식에 사용하는 경우 서비스가 문법에서 인식되는 구문만 인식합니다. 서비스가 올바른 문자열에 대한 검색 공간을 제한하여 결과를 더 빠르고 정확하게 전달할 수 있습니다.
 
 모든 인터페이스는 인식 요청에 대해 다음 매개변수를 허용합니다.
 
--   `language_customization_id` 매개변수는 문법이 정의된 사용자 정의 언어 모델을 식별합니다. 모델을 소유하는 서비스 인스턴스에 대한 서비스 인증 정보로 요청을 발행해야 합니다.
+-   `language_customization_id` 매개변수는 문법이 정의된 사용자 정의 언어 모델을 식별합니다. 모델을 소유하는 서비스 인스턴스에 대한 인증 정보로 요청을 발행해야 합니다.
 -   `grammar_name` 매개변수는 사용할 문법을 지정합니다. 요청에 하나의 문법만을 지정할 수 있습니다.
 
-자세한 정보는 [사용자 정의 언어 모델에 문법 사용](/docs/services/speech-to-text/grammar.html)을 참조하십시오.
+자세한 정보는 [사용자 정의 언어 모델에 문법 사용](/docs/services/speech-to-text?topic=speech-to-text-grammars)을 참조하십시오.
 
 ### 문법 예제
 {: #grammarsExample}
@@ -108,12 +108,12 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-각 서비스 인터페이스에서 문법을 사용하는 예제는 [음성 인식에 문법 사용](/docs/services/speech-to-text/grammar-use.html)을 참조하십시오.
+각 서비스 인터페이스에서 문법을 사용하는 예제는 [음성 인식에 문법 사용](/docs/services/speech-to-text?topic=speech-to-text-grammarUse)을 참조하십시오.
 
 ## 기본 모델 버전
 {: #version}
 
-음성 인식의 품질을 개선하기 위해 이 서비스는 경우에 따라 [언어 및 모델](/docs/services/speech-to-text/models.html)에 설명된 기본 언어 모델을 업데이트합니다. 언어의 광대역 및 협대역 모델과 마찬가지로 언어의 기본 모델은 서로 독립적입니다. 따라서 기본 모델에 대한 업데이트는 서로 독립적으로 발생하며 다른 모델에 영향을 주지 않습니다.
+음성 인식의 품질을 개선하기 위해 이 서비스는 경우에 따라 [언어 및 모델](/docs/services/speech-to-text?topic=speech-to-text-models)에 설명된 기본 언어 모델을 업데이트합니다. 언어의 광대역 및 협대역 모델과 마찬가지로 언어의 기본 모델은 서로 독립적입니다. 따라서 기본 모델에 대한 업데이트는 서로 독립적으로 발생하며 다른 모델에 영향을 주지 않습니다.
 
 기본 모델의 여러 버전이 존재하는 경우 선택적 `base_model_version` 매개변수가 인식 요청에 사용될 모델의 버전을 지정합니다. 이 매개변수는 주로 새 기본 모델용으로 업데이트된 사용자 정의 모델에 사용하기 위한 것이지만 사용자 정의 모델 없이 사용할 수 있습니다. 요청에 사용되는 기본 모델의 버전은 `base_model_version` 매개변수를 전달하는지 여부에 따라 다릅니다. 또한 요청에 사용자 정의 모델(언어, 음향 또는 둘 다)을 지정하는지 여부에 따라 달라집니다.
 
@@ -129,8 +129,8 @@ curl -X POST -u "apikey:{apikey}"
 
 이 매개변수는 사용자 정의 모델에 사용하기 위한 것입니다. 따라서 기본 모델을 기반으로 하는 사용자 정의 모델에 대한 정보를 나열하여 기본 모델의 사용 가능한 버전에 대해 알아볼 수 있습니다.
 
--   사용자 정의 모델 업그레이드에 대한 자세한 정보는 [사용자 정의 모델 업그레이드](/docs/services/speech-to-text/custom-upgrade.html)를 참조하십시오.
--   여러 버전의 기본 및 사용자 정의 모델을 음성 인식에 사용하는 데 대한 자세한 정보는 [업그레이드된 사용자 정의 모델로 인식 요청 작성](/docs/services/speech-to-text/custom-upgrade.html#upgradeRecognition)을 참조하십시오.
+-   사용자 정의 모델 업그레이드에 대한 자세한 정보는 [사용자 정의 모델 업그레이드](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade)를 참조하십시오.
+-   여러 버전의 기본 및 사용자 정의 모델을 음성 인식에 사용하는 데 대한 자세한 정보는 [업그레이드된 사용자 정의 모델로 인식 요청 작성](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade#upgradeRecognition)을 참조하십시오.
 
 ## 오디오 전송
 {: #transmission}
@@ -143,8 +143,8 @@ curl -X POST -u "apikey:{apikey}"
 -   *스트리밍* - `Transfer-Encoding` 요청 헤더를 `chunked` 값으로 설정하고 지속적 연결을 통해 데이터를 스트리밍합니다. 데이터를 서비스에 스트리밍하기 전에 데이터가 완전히 존재하지 않아도 됩니다. 사용 가능하게 될 때 데이터를 스트리밍할 수 있습니다. 이 서비스는 비어 있는 청크를 전송하여 표시하는 최종 청크를 수신하는 경우에만 결과를 전송합니다.
 
     `Transfer-Encoding` 헤더를 통한 청크 분할 오디오 스트리밍에 대한 자세한 정보는 다음을 참조하십시오.
-    -   [en.wikipedia.org/wiki/Chunked_transfer_encoding ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/Chunked_transfer_encoding){: new_window}
-    -   *IETF RFC 7320 HTTP/1.1: Message Syntax and Routing*의 [Transfer Codings ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://tools.ietf.org/html/rfc7230#section-4){: new_window}
+    -   [Chunked transfer encoding](https://wikipedia.org/wiki/Chunked_transfer_encoding){: external}
+    -   *IETF RFC 7320 HTTP/1.1: Message Syntax and Routing*의 [Transfer Codings](https://tools.ietf.org/html/rfc7230#section-4){: external}
 
 HTTP 인터페이스를 사용하는 경우 이 서비스는 결과를 전송하기 전에 항상 전체 오디오 스트림을 변환합니다. 결과에는 일시정지로 구분된 구문을 표시하기 위한 여러 `transcript` 요소가 포함될 수 있습니다. `transcript` 요소를 연결하여 전체 음성 내용을 어셈블하십시오.
 
@@ -195,9 +195,9 @@ curl -X POST -u "apikey:{apikey}"
 ### 세션 제한시간
 {: #timeouts-session}
 
-*세션 제한시간 초과*(HTTP 상태 코드 408)는 스트리밍 세션을 활성 상태로 유지하기에 충분한 오디오를 전송하는 데 실패하는 경우에 발생합니다. 다음과 같은 이유로 이 서비스가 세션을 유휴 상태로 간주하고 세션 제한시간 초과를 트리거할 수 있습니다. 
+*세션 제한시간 초과*(HTTP 상태 코드 408)는 스트리밍 세션을 활성 상태로 유지하기에 충분한 오디오를 전송하는 데 실패하는 경우에 발생합니다. 다음과 같은 이유로 이 서비스가 세션을 유휴 상태로 간주하고 세션 제한시간 초과를 트리거할 수 있습니다.
 
--   30초 창에서 15초 이상의 오디오를 서비스에 전송하는 데 실패합니다. 
+-   30초 창에서 15초 이상의 오디오를 서비스에 전송하는 데 실패합니다.
 
     스트림의 끝을 표시하기 위해 마지막 청크를 전송할 때까지 30초 기간 내에 15초 이상의 오디오를 전송해야 합니다. `inactivity_timeout` 매개변수를 더 큰 값이나 `-1`로 설정한 경우 오디오가 무음일 수 있습니다. 무음을 포함하여 서비스에 전송하는 모든 오디오의 지속 시간 동안 비용이 청구됩니다.
 -   실시간보다 훨씬 느린 속도로 오디오를 스트리밍합니다.
@@ -208,7 +208,7 @@ curl -X POST -u "apikey:{apikey}"
 
 긴 오디오 스트림을 변환하는 경우 이 서비스가 오디오를 처리하고 응답을 생성하는 데 30초 이상이 걸릴 수 있습니다. 이 서비스는 수신한 모든 오디오의 처리를 완료할 때까지 세션 제한시간 계산을 시작하지 않습니다. 서비스의 처리 시간으로 인해 세션이 30초 세션 제한시간을 초과할 수 없습니다.
 
-예를 들어, 세션의 처음 10초 동안 1시간 길이의 오디오를 전송하는 경우 이 서비스가 오디오를 처리하는 데 300초가 걸릴 수 있습니다. 이 세션을 활성 상태로 유지하려면 늦어도 340초까지는 무음을 포함하여 15초 이상의 오디오를 세션에 추가로 전송해야 합니다.
+예를 들어, 세션의 처음 10초 동안 1시간 길이의 오디오를 전송하는 경우 이 서비스가 오디오를 처리하는 데 300초가 걸릴 수 있습니다.  이 세션을 활성 상태로 유지하려면 늦어도 340초까지는 무음을 포함하여 15초 이상의 오디오를 세션에 추가로 전송해야 합니다.
 
 이 예제에서는 세션의 100초 표시에 다른 15초 길이의 오디오를 전송할 경우 이 서비스가 이 오디오를 처리하는 데 2초가 더 걸릴 수 있습니다. 이 경우 늦어도 342초에 15초 길이의 오디오를 세션에 추가로 전송해야 합니다.
 
@@ -220,9 +220,9 @@ curl -X POST -u "apikey:{apikey}"
 
 기본적으로 {{site.data.keyword.IBM_notm}}에서는 {{site.data.keyword.watson}} 서비스에 대한 모든 요청과 해당 결과를 로그합니다. 로깅은 향후 사용자를 위해 서비스를 개선할 목적으로만 수행됩니다. 로그된 데이터는 공유되거나 공개되지 않습니다.
 
-사용자의 개인정보를 보호하는 데 관심이 있거나 IBM에서 요청을 로그하지 않도록 하려면 IBM 로그 데이터를 보유하지 않도록(사용하지 않음) 선택할 수 있습니다. 계정 레벨 또는 API 요청 레벨에서 로깅을 사용하지 않도록 선택할 수 있습니다. 자세한 정보는 [{{site.data.keyword.watson}} 서비스에 대한 요청 로깅 제어](/docs/services/watson/getting-started-logging.html)를 참조하십시오.
+사용자의 개인정보를 보호하는 데 관심이 있거나 IBM에서 요청을 로그하지 않도록 하려면 IBM 로그 데이터를 보유하지 않도록(사용하지 않음) 선택할 수 있습니다. 계정 레벨 또는 API 요청 레벨에서 로깅을 사용하지 않도록 선택할 수 있습니다. 자세한 정보는 [{{site.data.keyword.watson}} 서비스에 대한 요청 로깅 제어](/docs/services/watson?topic=watson-gs-logging-overview)를 참조하십시오.
 
 ## 정보 보안
 {: #security-input}
 
-정보 보안에는 요청과 함께 서비스에 전달된 데이터와 고객 ID를 연관시키는 기능이 포함되어 있습니다. 요청과 함께 `X-Watson-Metadata` 헤더를 전달하여 고객 ID를 데이터와 연관시킵니다. 그런 다음, 필요한 경우 `DELETE /v1/user_data` 메소드를 사용하여 데이터를 삭제할 수 있습니다. 자세한 정보는 [정보 보안](/docs/services/speech-to-text/information-security.html)을 참조하십시오.
+정보 보안에는 요청과 함께 서비스에 전달된 데이터와 고객 ID를 연관시키는 기능이 포함되어 있습니다. 요청과 함께 `X-Watson-Metadata` 헤더를 전달하여 고객 ID를 데이터와 연관시킵니다. 그런 다음, 필요한 경우 `DELETE /v1/user_data` 메소드를 사용하여 데이터를 삭제할 수 있습니다. 자세한 정보는 [정보 보안](/docs/services/speech-to-text?topic=speech-to-text-information-security)을 참조하십시오.

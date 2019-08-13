@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -28,12 +28,12 @@ subcollection: speech-to-text
 사용자 정의 언어 모델을 작성하고 문법으로 훈련한 후 서비스의 WebSocket 및 HTTP 인터페이스를 통해 음성 인식 요청에서 문법을 사용할 수 있습니다.
 {: shortdesc}
 
--   문법이 정의된 사용자 정의 언어 모델의 사용자 정의 ID(GUID)를 지정하려면 `language_customization_id` 매개변수를 사용하십시오. 모델을 소유하는 서비스 인스턴스에 대한 서비스 인증 정보로 요청을 발행해야 합니다.
+-   문법이 정의된 사용자 정의 언어 모델의 사용자 정의 ID(GUID)를 지정하려면 `language_customization_id` 매개변수를 사용하십시오. 모델을 소유하는 서비스 인스턴스에 대한 인증 정보로 요청을 발행해야 합니다.
 -   문법의 이름을 지정하려면 `grammar_name` 매개변수를 사용하십시오. 요청에 하나의 문법만을 지정할 수 있습니다.
 
 문법을 사용하는 경우 서비스가 지정된 문법의 단어만 인식합니다. 이 서비스는 말뭉치에서 추가되거나, 개별적으로 추가 또는 수정되거나, 다른 문법에서 인식된 사용자 정의 단어를 사용하지 않습니다.
 
--   [WebSocket 인터페이스](/docs/services/speech-to-text/websockets.html)의 경우 먼저 `/v1/recognize` 메소드의 `language_customization_id` 매개변수를 사용하여 사용자 정의 ID를 지정합니다. 이 메소드를 사용하여 서비스에 대한 WebSocket 연결을 설정합니다.
+-   [WebSocket 인터페이스](/docs/services/speech-to-text?topic=speech-to-text-websockets)의 경우 먼저 `/v1/recognize` 메소드의 `language_customization_id` 매개변수를 사용하여 사용자 정의 ID를 지정합니다. 이 메소드를 사용하여 서비스에 대한 WebSocket 연결을 설정합니다.
 
     ```javascript
     var token = {authentication-token};
@@ -58,7 +58,7 @@ subcollection: speech-to-text
     }
     ```
     {: codeblock}
--   [동기 HTTP 인터페이스](/docs/services/speech-to-text/http.html)의 경우 `POST /v1/recognize` 메소드와 함께 두 매개변수를 모두 전달하십시오.
+-   [동기 HTTP 인터페이스](/docs/services/speech-to-text?topic=speech-to-text-http)의 경우 `POST /v1/recognize` 메소드와 함께 두 매개변수를 모두 전달하십시오.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -67,7 +67,7 @@ subcollection: speech-to-text
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&grammar_name={grammar_name}"
     ```
     {: pre}
--   [비동기 HTTP 인터페이스](/docs/services/speech-to-text/async.html)의 경우 `POST /v1/recognitions` 메소드와 함께 두 매개변수를 모두 전달하십시오.
+-   [비동기 HTTP 인터페이스](/docs/services/speech-to-text?topic=speech-to-text-async)의 경우 `POST /v1/recognitions` 메소드와 함께 두 매개변수를 모두 전달하십시오.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"

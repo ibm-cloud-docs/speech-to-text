@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-15"
+lastupdated: "2019-06-06"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -30,7 +30,7 @@ subcollection: speech-to-text
 -   오디오 및 오디오가 설명되고 지정되는 방법에 익숙하지 않은 경우 [오디오 특성 및 용어](#terminology)부터 시작하여 시작하는 데 도움을 받으십시오.
 -   오디오 사용 방법을 이미 이해하고 있는 경우 이 서비스가 지원하는 형식에 대해 알아보려면 [지원되는 오디오 형식](#formats)으로 이동하십시오.
 
-마지막 섹션 [데이터 한계 및 압축](#limits), [오디오 변환](#conversion) 및 [음성 인식을 개선하기 위한 팁](#audioTips)은 이 서비스를 최대한 활용하는 데 도움이 될 수 있습니다. 
+마지막 섹션 [데이터 한계 및 압축](#limits), [오디오 변환](#conversion) 및 [음성 인식을 개선하기 위한 팁](#audioTips)은 이 서비스를 최대한 활용하는 데 도움이 될 수 있습니다.
 
 ## 오디오 특성 및 용어
 {: #terminology}
@@ -45,7 +45,7 @@ subcollection: speech-to-text
 -   *광대역* 모델은 16KHz 이상으로 샘플링된 오디오에 사용되며, {{site.data.keyword.IBM}}에서는 응답성이 뛰어난 실시간 애플리케이션(예: 실시간 음성 애플리케이션)에 사용하도록 권장합니다.
 -   *협대역* 모델은 일반적으로 전화통신 오디오에 사용되는 속도인 8KHz로 샘플링된 오디오에 사용됩니다.
 
-이 서비스는 대부분의 언어 및 형식에 대해 광대역 및 협대역 오디오를 모두 지원합니다. 음성을 인식하기 전에 사용자가 지정하는 모델과 일치하도록 오디오의 샘플링 속도를 자동으로 조정합니다. 
+이 서비스는 대부분의 언어 및 형식에 대해 광대역 및 협대역 오디오를 모두 지원합니다. 음성을 인식하기 전에 사용자가 지정하는 모델과 일치하도록 오디오의 샘플링 속도를 자동으로 조정합니다.
 
 -   광대역 모델의 경우 서비스가 더 높은 샘플링 속도로 녹음된 오디오를 16kHz로 변환합니다.
 -   협대역 모델의 경우 오디오를 8kHz로 변환합니다.
@@ -61,8 +61,8 @@ subcollection: speech-to-text
 #### 자세한 정보
 {: #samplingRateMore}
 
--   샘플링 속도에 대한 자세한 정보는 [en.wikipedia.org/wiki/Sampling ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/Sampling){: new_window}을 참조하십시오. *Sampling (signal processing)*을 선택하십시오.
--   이 서비스가 각각의 지원되는 언어에 대해 제공하는 모델에 대한 자세한 정보는 [언어 및 모델](/docs/services/speech-to-text/models.html)을 참조하십시오.
+-   샘플링 속도에 대한 자세한 정보는 [Sampling (signal processing)](https://wikipedia.org/wiki/Sampling_%28signal_processing%29){: external}을 참조하십시오.
+-   이 서비스가 각각의 지원되는 언어에 대해 제공하는 모델에 대한 자세한 정보는 [언어 및 모델](/docs/services/speech-to-text?topic=speech-to-text-models)을 참조하십시오.
 
 ### 비트 전송률
 {: #bitRate}
@@ -74,8 +74,8 @@ subcollection: speech-to-text
 #### 자세한 정보
 {: #bitRateMore}
 
--   비트 전송률에 대한 자세한 정보는 [en.wikipedia.org/wiki/Bit_rate ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/Bit_rate){: new_window}를 참조하십시오.
--   샘플링 속도 및 비트 전송률에 대한 일반 논의는 [What are bit rates? ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](http://www.richardfarrar.com/what-are-bit-rates/){: new_window} 및 [Choosing bit rates for podcasts ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](http://www.richardfarrar.com/choosing-bit-rates-for-podcasts/){: new_window}를 참조하십시오.
+-   비트 속도에 대한 자세한 정보는 [Bit rate](https://wikipedia.org/wiki/Bit_rate){: external}를 참조하십시오.
+-   샘플링 속도 및 비트 전송률에 대한 일반 논의는 [What are bit rates?](http://www.richardfarrar.com/what-are-bit-rates/){: external} 및 [Choosing bit rates for podcasts](http://www.richardfarrar.com/choosing-bit-rates-for-podcasts/){: external}를 참조하십시오.
 
 ### 압축
 {: #compression}
@@ -96,7 +96,7 @@ subcollection: speech-to-text
 #### 자세한 정보
 {: #compressionMore}
 
--   오디오 압축에 대한 자세한 정보는 [en.wikipedia.org/wiki/Data_compression#Audio ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/Data_compression#Audio){: new_window}를 참조하십시오.
+-   오디오 압축에 대한 자세한 정보는 [Data compression (Audio)](https://wikipedia.org/wiki/Data_compression#Audio){: external}을 참조하십시오.
 -   데이터 압축을 사용하여 요청과 함께 전송할 수 있는 오디오의 양을 늘리는 방법에 대한 자세한 정보는 [데이터 한계 및 압축](#limits)을 사용하십시오.
 
 ### 채널
@@ -118,7 +118,7 @@ subcollection: speech-to-text
 #### 자세한 정보
 {: #channelsMore}
 
--   오디오 채널에 대한 자세한 정보는 [en.wikipedia.org/wiki/Audio_signal ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/Audio_signal){: new_window}을 참조하십시오.
+-   오디오 채널에 대한 자세한 정보는 [Audio signal](https://wikipedia.org/wiki/Audio_signal){: external}을 참조하십시오.
 
 ### 엔디안
 {: #endianness}
@@ -138,7 +138,7 @@ subcollection: speech-to-text
 #### 자세한 정보
 {: #endiannessMore}
 
--   엔디안에 대한 자세한 정보는 [en.wikipedia.org/wiki/Endianness ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/Endianness){: new_window}를 참조하십시오.
+-   엔디안에 대한 자세한 정보는 [Endianness](https://wikipedia.org/wiki/Endianness){: external}를 참조하십시오.
 
 ### 오디오 주파수
 {: #frequency}
@@ -159,7 +159,7 @@ subcollection: speech-to-text
 
 원래 협대역 주파수에서 샘플링된 오디오의 정보는 0 - 4kHz 범위로 제한됩니다. 협대역 오디오를 더 높은 샘플링 속도로 업샘플링해도 음성 인식 정확도가 향상되지 않을 수 있습니다. 협대역 오디오를 업샘플링하는 경우 광대역 모델이 예상하는 범위의 정보가 부족합니다. 또한 협대역 샘플의 예상 범위에서 발견되는 정보가 광대역 샘플의 동일한 범위에서 발견되는 정보와 질적으로 다릅니다. 따라서 업샘플링은 실제로 인식 정확도를 저하시킵니다.
 
-16kHz의 광대역 샘플링 속도의 경우 샘플링된 오디오 신호에 존재하는 최대 주파수는 8kHz일 것으로 예상됩니다. 따라서 16kHz의 속도로 샘플링하기 전에 8kHz에서 원래 신호를 필터링해야 합니다. 그렇지 않으면 *앨리어싱*으로 알려진 현상으로 인해 성능 저하가 발생합니다. 그 이유를 이해하려면 [Nyquist frequency ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/Nyquist_frequency){: new_window}를 참조하십시오.
+16kHz의 광대역 샘플링 속도의 경우 샘플링된 오디오 신호에 존재하는 최대 주파수는 8kHz일 것으로 예상됩니다. 따라서 16kHz의 속도로 샘플링하기 전에 8kHz에서 원래 신호를 필터링해야 합니다. 그렇지 않으면 *앨리어싱*으로 알려진 현상으로 인해 성능 저하가 발생합니다. 그 이유를 이해하려면 [Nyquist frequency](https://wikipedia.org/wiki/Nyquist_frequency){: external}를 참조하십시오.
 
 유용한 비교 방법은 대형 평면 HDTV에서 VHS 테이프를 본다고 상상하는 것입니다. 고화질 디바이스에서 테이프를 재생하면 실제로 새 정보가 스트림에 추가될 수 없으므로 이미지가 흐릿해집니다. 단순히 형식이 더 나은 장치와 호환되도록 하기 때문입니다. 업샘플링 오디오의 경우도 마찬가지입니다.
 
@@ -173,9 +173,9 @@ subcollection: speech-to-text
 #### 자세한 정보
 {: #frequencyMore}
 
--   오디오 주파수에 대한 자세한 정보는 [https://en.wikipedia.org/wiki/Audio_frequency ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/Audio_frequency){: new_window}를 참조하십시오.
--   업샘플링에 대한 자세한 정보는 [https://en.wikipedia.org/wiki/Upsampling ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/Upsampling){: new_window}을 참조하십시오.
--   다운샘플링에 대한 자세한 정보는 [https://en.wikipedia.org/wiki/Downsampling ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/Downsampling_%28signal_processing%29){: new_window}을 참조하십시오.
+-   오디오 주파수에 대한 자세한 정보는 [Audio frequency](https://wikipedia.org/wiki/Audio_frequency){: external}를 참조하십시오.
+-   업샘플링에 대한 자세한 정보는 [>Upsampling](https://wikipedia.org/wiki/Upsampling){: external}을 참조하십시오.
+-   다운샘플링에 대한 자세한 정보는 [Downsampling](https://wikipedia.org/wiki/Downsampling_%28signal_processing%29){: external}을 참조하십시오.
 
 ## 지원되는 오디오 형식
 {: #formats}
@@ -201,7 +201,7 @@ subcollection: speech-to-text
       필수<br/>매개변수
     </th>
     <th style="text-align:center; vertical-align:bottom">
-      선택적<br/>매개변수
+      선택사항<br/>매개변수
     </th>
   </tr>
   <tr>
@@ -378,24 +378,24 @@ subcollection: speech-to-text
   </tr>
 </table>
 
-자세한 정보는 [en.wikipedia.org/wiki/A-law_algorithm ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/A-law_algorithm){: new_window}을 참조하십시오.
+자세한 정보는 [A-law algorithm](https://wikipedia.org/wiki/A-law_algorithm){: external}을 참조하십시오.
 
 ### audio/basic 형식
 {: #basic}
 
 *기본 오디오*(`audio/basic`)는 8KHz로 샘플링된 8비트 u-law(또는 mu-law) 데이터를 사용하여 인코딩된 단일 채널의 손실 오디오 형식입니다. 이 형식은 오디오의 매체 유형을 표시하기 위한 가장 낮은 공통분모를 제공합니다. 이 서비스는 협대역 모델에만 `audio/basic` 형식의 파일을 사용하도록 지원합니다.
 
-자세한 정보는 IETF(Internet Engineering Task Force) [RFC(Request for Comment) 2046 ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://tools.ietf.org/html/rfc2046){: new_window} 및 [iana.org/assignments/media-types/audio/basic ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](http://www.iana.org/assignments/media-types/audio/basic){: new_window}을 참조하십시오.
+자세한 정보는 IETF(Internet Engineering Task Force) [RFC(Request for Comment) 2046](https://tools.ietf.org/html/rfc2046){: external} 및 [iana.org/assignments/media-types/audio/basic](http://www.iana.org/assignments/media-types/audio/basic){: external}을 참조하십시오.
 
 ### audio/flac 형식
 {: #flac}
 
-*FLAC(Free Lossless Audio Codec)*(`audio/flac`)는 무손실 오디오 형식입니다. 자세한 정보는 [en.wikipedia.org/wiki/FLAC ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/FLAC){: new_window}를 참조하십시오.
+*FLAC(Free Lossless Audio Codec)*(`audio/flac`)는 무손실 오디오 형식입니다. 자세한 정보는 [FLAC](https://wikipedia.org/wiki/FLAC){: external}를 참조하십시오.
 
 ### audio/g729 형식
 {: #g729}
 
-*G.729*(`audio/g729`)는 8kHz로 인코딩된 데이터를 지원하는 손실 오디오 형식입니다. 이 서비스는 Annex J가 아니라 G.729 Annex D만 지원하며 협대역 모델에만 `audio/g729` 형식의 파일을 사용하도록 지원합니다. 자세한 정보는 [en.wikipedia.org/wiki/G.729 ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/G.729){: new_window}를 참조하십시오.
+*G.729*(`audio/g729`)는 8kHz로 인코딩된 데이터를 지원하는 손실 오디오 형식입니다. 이 서비스는 Annex J가 아니라 G.729 Annex D만 지원하며 협대역 모델에만 `audio/g729` 형식의 파일을 사용하도록 지원합니다. 자세한 정보는 [G.729](https://wikipedia.org/wiki/G.729){: external}를 참조하십시오.
 
 ### audio/l16 형식
 {: #l16}
@@ -429,27 +429,32 @@ subcollection: speech-to-text
       기본적으로 이 서비스는 오디오에 단일 채널이 있는 것으로 처리합니다.
       <em>오디오에 둘 이상의 채널이 있는 경우</em> 채널 수를 식별하는 정수를 지정해야 합니다. 예를 들어, 16kHz로 캡처된 2채널 오디오 데이터의 경우 다음 매개변수를 지정하십시오.<br/><br/>
       <code>audio/l16;rate=16000;channels=2</code><br/><br/>
-      이 서비스는 최대 16개의 채널을 허용합니다. 트랜스코딩 중에 오디오를 하나의 채널로 다운믹스합니다. </td>
+      이 서비스는 최대 16개의 채널을 허용합니다. 트랜스코딩 중에 오디오를 하나의 채널로 다운믹스합니다.
+    </td>
   </tr>
   <tr>
     <td>
       <code>endianness</code><br/><em>선택사항</em>
     </td>
     <td>
-      기본적으로 이 서비스는 수신 오디오의 엔디안을 자동으로 검색합니다. 그러나 때때로 자동 검색이 실패하고 `audio/l16` 형식의 짧은 오디오에 대한 연결을 삭제할 수 있습니다. 엔디안을 지정하면 자동 검색이 사용 안함으로 설정됩니다. <code>big-endian</code> 또는 <code>little-endian</code>을 지정하십시오. 
-예를 들어, 리틀 엔디안(little-endian) 형식의 16kHz로 캡처된 오디오 데이터의 경우 다음 매개변수를 지정하십시오.<br/><br/>
+      기본적으로 이 서비스는 수신 오디오의 엔디안을 자동으로 검색합니다. 그러나 때때로 자동 검색이 실패하고 `audio/l16` 형식의 짧은 오디오에 대한 연결을 삭제할 수 있습니다. 엔디안을 지정하면 자동 검색이 사용 안함으로 설정됩니다. <code>big-endian</code> 또는 <code>little-endian</code>을 지정하십시오. 예를
+      들어, 리틀 엔디안(little-endian) 형식의 16kHz로 캡처된 오디오 데이터의 경우
+      다음 매개변수를 지정하십시오.<br/><br/>
       <code>audio/l16;rate=16000;endianness=little-endian</code><br/><br/>
-      <a target="_blank" href="https://tools.ietf.org/html/rfc2045#section-5.1">RFC(Request for Comment) 2045 ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")</a>의 섹션 5.1에 <code>audio/l16</code> 데이터의 빅 엔디안(big-endian) 형식이 지정되어 있지만 대부분의 사용자가 리틀 엔디안(little-endian) 형식을 사용합니다.
+      [RFC(Request for Comment) 2045](https://tools.ietf.org/html/rfc2045#section-5.1)의
+      5.1 섹션에서는 <code>audio/l16</code> 데이터에 빅 엔디안(big-endian)
+      형식을 지정하지만 많은 사용자는 리틀 엔디안(little-endian) 형식을
+      사용합니다.
     </td>
   </tr>
 </table>
 
-자세한 정보는 IETF [RFC(Request for Comment) 2586 ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://tools.ietf.org/html/rfc2586){: new_window} 및 [en.wikipedia.org/wiki/Pulse-code_modulation ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/Pulse-code_modulation){: new_window}을 참조하십시오.
+자세한 정보는 IETF [RFC(Request for Comment) 2586](https://tools.ietf.org/html/rfc2586){: external} 및 [Pulse-code modulation](https://wikipedia.org/wiki/Pulse-code_modulation){: external}을 참조하십시오.
 
 ### audio/mp3 및 audio/mpeg 형식
 {: #mp3}
 
-*MP3*(`audio/mp3`) 또는 *MPEG(Motion Picture Experts Group)*(`audio/mpeg`)은 손실 오디오 형식입니다. (MP3 및 MPEG은 동일한 형식을 나타냅니다.) 자세한 정보는 [en.wikipedia.org/wiki/MP3 ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/MP3){: new_window}를 참조하십시오.
+*MP3*(`audio/mp3`) 또는 *MPEG(Motion Picture Experts Group)*(`audio/mpeg`)은 손실 오디오 형식입니다. (MP3 및 MPEG은 동일한 형식을 나타냅니다.) 자세한 정보는 [MP3](https://wikipedia.org/wiki/MP3){: external}를 참조하십시오.
 
 ### audio/mulaw 형식
 {: #mulaw}
@@ -477,36 +482,36 @@ subcollection: speech-to-text
   </tr>
 </table>
 
-자세한 정보는 [en.wikipedia.org/wiki/M-law_algorithm ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/M-law_algorithm){: new_window}을 참조하십시오.
+자세한 정보는 [M-law algorithm](https://wikipedia.org/wiki/M-law_algorithm){: external}을 참조하십시오.
 
 ### audio/ogg 형식
 {: #ogg}
 
-*Ogg*(`audio/ogg`)는 Xiph.org Foundation([xiph.org/ogg ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.xiph.org/ogg){: new_window})에서 유지보수되는 개방형 컨테이너 형식입니다. 다음과 같은 손실 코덱으로 압축된 오디오 스트림을 사용할 수 있습니다.
+*Ogg*(`audio/ogg`)는 Xiph.org Foundation([xiph.org/ogg](https://www.xiph.org/ogg){: external})으로 유지보수되는 개방형 컨테이너 형식입니다. 다음과 같은 손실 코덱으로 압축된 오디오 스트림을 사용할 수 있습니다.
 
--   *Opus*(`audio/ogg;codecs=opus`). 자세한 정보는 [opus-codec.org ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.opus-codec.org/){: new_window} 및 [en.wikipedia.org/wiki/Opus (audio format)![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/Opus){: new_window}을 참조하십시오. *Opus (audio format)* 페이지에서 특히 *Containers* 섹션을 살펴보십시오.
--   *Vorbis*(`audio/ogg;codecs=vorbis`). 자세한 정보는 [xiph.org/vorbis ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://xiph.org/vorbis/){: new_window} 및 [en.wikipedia.org/wiki/Vorbis ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/Vorbis){: new_window}를 참조하십시오.
+-   *Opus*(`audio/ogg;codecs=opus`). 자세한 정보는 [opus-codec.org](https://www.opus-codec.org/){: external} 및 [Opus(오디오 형식)](https://wikipedia.org/wiki/Opus_%28audio_format%29){: external}를 참조하십시오. 특히 *Containers* 섹션을 살펴보십시오.
+-   *Vorbis*(`audio/ogg;codecs=vorbis`). 자세한 정보는 [xiph.org/vorbis](https://xiph.org/vorbis/){: external} 및 [Vorbis](https://wikipedia.org/wiki/Vorbis){: external}를 참조하십시오.
 
-코덱을 생략하면 이 서비스가 자동으로 입력 오디오에서 코덱을 검색합니다. Opus가 선호되는 코덱이며 IETF(Internet Engineering Task Force)에서 [RFC(Request for Comment) 6716 ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://tools.ietf.org/html/rfc6716){: new_window}으로 표준화됩니다.
+코덱을 생략하면 이 서비스가 자동으로 입력 오디오에서 코덱을 검색합니다. Opus는 선호되는 코덱이며 [RFC(Request for Comment) 6716](https://tools.ietf.org/html/rfc6716){: external}으로 IETF(Internet Engineering Task Force)가 표준화됩니다. 
 
 ### audio/wav 형식
 {: #wav}
 
 *WAV(Waveform Audio File Format)*(`audio/wav`)는 비압축 오디오 스트림에 자주 사용되는 컨테이너 형식이지만 압축 오디오도 포함할 수 있습니다. 이 서비스는 임의의 인코딩을 사용하는 WAV 오디오를 지원합니다. FFmpeg 제한사항으로 인해 최대 9개의 채널로 WAV 오디오를 수신합니다.
 
-WAV 형식에 대한 자세한 정보는 [en.wikipedia.org/wiki/WAV ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/WAV){: new_window}를 참조하십시오. Opus 코덱으로 변환하여 WAV 오디오의 크기를 줄이는 방법에 대한 자세한 정보는 [Opus 코덱을 사용하는 audio/ogg로 변환](#conversionOgg)을 참조하십시오.
+WAV 형식에 대한 자세한 정보는 [WAV](https://wikipedia.org/wiki/WAV){: external}를 참조하십시오. Opus 코덱으로 변환하여 WAV 오디오의 크기를 줄이는 방법에 대한 자세한 정보는 [Opus 코덱을 사용하는 audio/ogg로 변환](#conversionOgg)을 참조하십시오.
 
 ### audio/webm 형식
 {: #webm}
 
-*WebM(Web Media)*(`audio/webm`)은 WebM 프로젝트([webmproject.org ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.webmproject.org/){: new_window})에서 유지보수되는 개방형 컨테이너 형식입니다. 다음과 같은 손실 코덱으로 압축된 오디오 스트림을 사용할 수 있습니다.
+*WebM(Web Media)*(`audio/webm`)은 WebM 프로젝트([webmproject.org](https://www.webmproject.org/){: external})에서 유지보수되는 개방형 컨테이너 형식입니다. 다음과 같은 손실 코덱으로 압축된 오디오 스트림을 사용할 수 있습니다.
 
--   *Opus*(`audio/webm;codecs=opus`). 자세한 정보는 [opus-codec.org ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.opus-codec.org/){: new_window} 및 [en.wikipedia.org/wiki/Opus (audio format)![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/Opus){: new_window}을 참조하십시오. *Opus (audio format)* 페이지에서 특히 *Containers* 섹션을 살펴보십시오.
--   *Vorbis*(`audio/webm;codecs=vorbis`). 자세한 정보는 [xiph.org/vorbis ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://xiph.org/vorbis/){: new_window} 및 [en.wikipedia.org/wiki/Vorbis ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/Vorbis){: new_window}를 참조하십시오.
+-   *Opus*(`audio/webm;codecs=opus`). 자세한 정보는 [opus-codec.org](https://www.opus-codec.org/){: external} 및 [Opus(오디오 형식)](https://wikipedia.org/wiki/Opus_%28audio_format%29){: external}를 참조하십시오. 특히 *Containers* 섹션을 살펴보십시오.
+-   *Vorbis*(`audio/webm;codecs=vorbis`). 자세한 정보는 [xiph.org/vorbis](https://xiph.org/vorbis/){: external} 및 [Vorbis](https://wikipedia.org/wiki/Vorbis){: external}를 참조하십시오.
 
-코덱을 생략하면 이 서비스가 자동으로 입력 오디오에서 코덱을 검색합니다. 
+코덱을 생략하면 이 서비스가 자동으로 입력 오디오에서 코덱을 검색합니다.
 
-Chrome 브라우저에서 마이크의 오디오를 캡처하여 WebM 데이터 스트림으로 인코딩하는 방법을 보여주는 JavaScript 코드는 [jsbin.com/hedujihuqo/edit?js,console ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://jsbin.com/hedujihuqo/edit?js,console){: new_window}을 참조하십시오. 이 코드는 캡처된 오디오를 서비스에 제출하지 않습니다.
+Chrome 브라우저에서 마이크의 오디오를 캡처하여 WebM 데이터 스트림으로 인코딩하는 방법을 보여주는 JavaScript 코드는 [jsbin.com/hedujihuqo/edit?js,console](https://jsbin.com/hedujihuqo/edit?js,console){: external}을 참조하십시오. 이 코드는 캡처된 오디오를 서비스에 제출하지 않습니다.
 {: tip}
 
 ## 데이터 한계 및 압축
@@ -566,23 +571,23 @@ Chrome 브라우저에서 마이크의 오디오를 캡처하여 WebM 데이터 
 
 다음 프리웨어 도구 중 하나를 사용하여 오디오를 한 형식에서 다른 형식으로 변환할 수 있습니다.
 
--   SoX(Sound eXchange)([sox.sourceforge.net ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](http://sox.sourceforge.net){: new_window})
--   FFmpeg([ffmpeg.org ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.ffmpeg.org){: new_window})
--   Audacity&reg;([audacityteam.org ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](http://www.audacityteam.org/){: new_window})
--   Opus 코덱을 사용하는 Ogg 형식의 경우 **opus-tools**([opus-codec.org/downloads/ ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](http://opus-codec.org/downloads/){: new_window})
+-   SoX(Sound eXchange)([sox.sourceforge.net](http://sox.sourceforge.net){: external})
+-   FFmpeg([ffmpeg.org](https://www.ffmpeg.org){: external})
+-   Audacity&reg;([audacityteam.org](http://www.audacityteam.org/){: external})
+-   Opus 코덱을 사용하는 Ogg 형식의 경우 **opus-tools**([opus-codec.org/downloads/](http://opus-codec.org/downloads/){: external})
 
 이러한 도구는 여러 오디오 형식에 대한 크로스 플랫폼 지원을 제공합니다. 또한 많은 도구를 사용하여 오디오를 재생할 수 있습니다. 이러한 도구를 사용하여 해당 저작권법을 위반하지 마십시오.
 
 ### Opus 코덱을 사용하는 audio/ogg로 변환
 {: #conversionOgg}
 
-[**opus-tools** ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](http://opus-codec.org/downloads/){: new_window}에는 Opus 코덱의 Ogg 오디오에 대해 작업하기 위한 세 개의 명령행 유틸리티가 포함되어 있습니다.
+[**opus-tools**](http://opus-codec.org/downloads/){: external}에는 Opus 코덱의 Ogg 오디오에 대해 작업하기 위한 세 개의 명령행 유틸리티가 포함되어 있습니다.
 
--   [**opusenc** ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusenc.html){: new_window} 유틸리티는 Opus 코덱을 사용하여 WAV, FLAC 및 기타 형식의 오디오를 Ogg로 인코딩합니다. 이 페이지에는 오디오 스트림을 압축하는 방법이 표시됩니다. 압축은 실시간 오디오를 서비스에 전달하는 데 유용합니다.
--   [**opusdec** ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusdec.html){: new_window} 유틸리티는 Opus 코덱의 오디오를 압축되지 않은 PCM WAV 파일로 디코딩합니다.
--   [**opusinfo** ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusinfo.html){: new_window} 유틸리티는 Opus 파일에 대한 정보와 유효성 검사를 제공합니다.
+-   [**opusenc**](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusenc.html){: external} 유틸리티는 Opus 코덱을 사용하여 WAV, FLAC 및 기타 형식의 오디오를 Ogg로 인코딩합니다. 이 페이지에는 오디오 스트림을 압축하는 방법이 표시됩니다. 압축은 실시간 오디오를 서비스에 전달하는 데 유용합니다.
+-   [**opusdec**](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusdec.html){: external} 유틸리티는 Opus 코덱의 오디오를 압축되지 않은 PCM WAV 파일로 디코딩합니다.
+-   [**opusinfo**](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusinfo.html){: external} 유틸리티는 Opus 파일에 대한 정보와 유효성 검사를 제공합니다.
 
-많은 사용자가 음성 인식을 위해 WAV 파일을 전송합니다. 이 서비스에는 동기 HTTP 및 WebSocket 요청에 대한 100MB 데이터 한계가 있으므로 WAV 형식은 단일 요청으로 인식될 수 있는 오디오의 양을 줄입니다. **opusenc** 명령을 사용하여 오디오를 선호하는 `audio/ogg:codecs=opus` 형식으로 변환하면 인식 요청과 함께 전송할 수 있는 오디오의 양이 크게 증가할 수 있습니다. 
+많은 사용자가 음성 인식을 위해 WAV 파일을 전송합니다. 이 서비스에는 동기 HTTP 및 WebSocket 요청에 대한 100MB 데이터 한계가 있으므로 WAV 형식은 단일 요청으로 인식될 수 있는 오디오의 양을 줄입니다. **opusenc** 명령을 사용하여 오디오를 선호하는 `audio/ogg:codecs=opus` 형식으로 변환하면 인식 요청과 함께 전송할 수 있는 오디오의 양이 크게 증가할 수 있습니다.
 
 예를 들어, 256kps의 비트 전송률로 샘플당 16비트를 사용하는 비압축 광대역(16kHz) WAV 파일(**input.wav**)을 고려하십시오. 다음 명령은 Opus 코덱을 사용하는 파일(**output.opus**)로 오디오를 변환합니다.
 
@@ -591,7 +596,7 @@ opusenc input.wav output.opus
 ```
 {: pre}
 
-변환 시 오디오가 4배만큼 압축되고 64kbps의 비트 전송률로 출력 파일이 생성됩니다. 그러나 [Opus 권장 설정 ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://wiki.xiph.org/Opus_Recommended_Settings){: new_window}에 따라 안전하게 비트 전송률을 24kbps로 줄이고 음성 오디오에 대해 전체 대역을 유지할 수 있습니다. 이와 같이 줄이면 오디오가 10배만큼 압축됩니다. 다음 명령은 `--bitrate` 옵션을 사용하여 24kbps의 비트 전송률로 출력 파일을 생성합니다.
+변환 시 오디오가 4배만큼 압축되고 64kbps의 비트 전송률로 출력 파일이 생성됩니다. 그러나 [Opus 권장 설정](https://wiki.xiph.org/Opus_Recommended_Settings){: external}에 따라 안전하게 비트 전송률을 24kbps로 줄이고 음성 오디오에 대해 전체 대역을 유지할 수 있습니다. 이와 같이 줄이면 오디오가 10배만큼 압축됩니다. 다음 명령은 `--bitrate` 옵션을 사용하여 24kbps의 비트 전송률로 출력 파일을 생성합니다.
 
 ```bash
 opusenc --bitrate 24 input.wav output.opus
@@ -613,5 +618,4 @@ opusenc --bitrate 24 input.wav output.opus
     -   엔진 소음, 작동 중인 디바이스, 거리의 소음, 주변 대화는 인식 정확도를 크게 떨어뜨릴 수 있습니다.
     -   지역별 사투리나 발음의 차이도 정확도를 낮출 수 있습니다.
 
-    오디오에 이러한 특성이 있는 경우 음성 인식의 정확도를 높이려면 음향 모델 사용자 정의 사용을 고려하십시오. 자세한 정보는 [사용자 정의 인터페이스](/docs/services/speech-to-text/custom.html)를 참조하십시오.
-    
+    오디오에 이러한 특성이 있는 경우 음성 인식의 정확도를 높이려면 음향 모델 사용자 정의 사용을 고려하십시오. 자세한 정보는 [사용자 정의 인터페이스](/docs/services/speech-to-text?topic=speech-to-text-customization)를 참조하십시오.

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-10"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,12 +25,12 @@ subcollection: speech-to-text
 # 출력 기능
 {: #output}
 
-{{site.data.keyword.speechtotextshort}} 서비스는 이 서비스가 음성 인식 요청에 대한 변환 결과에 포함할 정보를 표시하기 위해 다음과 같은 기능을 제공합니다. 모든 출력 매개변수는 선택사항입니다.
+{{site.data.keyword.speechtotextfull}} 서비스는 이 서비스가 음성 인식 요청에 대한 변환 결과에 포함할 정보를 표시하기 위해 다음과 같은 기능을 제공합니다. 모든 출력 매개변수는 선택사항입니다.
 {: shortdesc}
 
--   각 서비스 인스턴스에 대한 단순 음성 인식 요청의 예제는 [인식 요청 작성](/docs/services/speech-to-text/basic-request.html)을 참조하십시오.
--   음성 인식 응답의 예제 및 설명은 [인식 결과 이해](/docs/services/speech-to-text/basic-response.html)를 참조하십시오. 이 서비스는 모든 JSON 응답 컨텐츠를 UTF-8 문자 세트로 리턴합니다.
--   상태(GA 또는 베타) 및 지원되는 언어를 포함한 사용 가능한 모든 음성 인식 매개변수의 알파벳순 목록은 [매개변수 요약](/docs/services/speech-to-text/summary.html)을 참조하십시오.
+-   각 서비스 인스턴스에 대한 단순 음성 인식 요청의 예제는 [인식 요청 작성](/docs/services/speech-to-text?topic=speech-to-text-basic-request)을 참조하십시오.
+-   음성 인식 응답의 예제 및 설명은 [인식 결과 이해](/docs/services/speech-to-text?topic=speech-to-text-basic-response)를 참조하십시오. 이 서비스는 모든 JSON 응답 컨텐츠를 UTF-8 문자 세트로 리턴합니다.
+-   상태(GA 또는 베타) 및 지원되는 언어를 포함한 사용 가능한 모든 음성 인식 매개변수의 알파벳순 목록은 [매개변수 요약](/docs/services/speech-to-text?topic=speech-to-text-summary)을 참조하십시오.
 
 ## 화자 레이블
 {: #speaker_labels}
@@ -38,11 +38,11 @@ subcollection: speech-to-text
 화자 레이블 기능은 미국 영어, 일본어, 스페인어(광대역 및 협대역 모델 모두) 및 영국 영어(협대역 모델 전용)에 사용할 수 있는 베타 기능입니다.
 {: note}
 
-화자 레이블은 다중 참여자 대화에서 어떤 개인이 어떤 단어를 말했는지를 식별합니다. (누가 언제 말했는지에 대한 레이블 지정을 *화자 분할(speaker diarization)*이라고도 합니다.) 이 정보를 사용하여 콜센터 문의와 같은 오디오 스트림의 개인별 대화 내용을 개발할 수 있습니다. 또는 이를 사용하여 대화형 로봇 또는 아바타와의 대화를 애니메이션으로 만들 수 있습니다. 최상의 성능을 위해서는 1분 이상 길이의 오디오를 사용하십시오. 
+화자 레이블은 다중 참여자 대화에서 어떤 개인이 어떤 단어를 말했는지를 식별합니다. (누가 언제 말했는지에 대한 레이블 지정을 *화자 분할(speaker diarization)*이라고도 합니다.) 이 정보를 사용하여 콜센터 문의와 같은 오디오 스트림의 개인별 대화 내용을 개발할 수 있습니다. 또는 이를 사용하여 대화형 로봇 또는 아바타와의 대화를 애니메이션으로 만들 수 있습니다. 최상의 성능을 위해서는 1분 이상 길이의 오디오를 사용하십시오.
 
 화자 레이블은 2명의 화자 시나리오에 최적화되어 있습니다. 확장된 대화에 두 사람이 참여하는 전화 통화에 가장 적합합니다. 최대 6명의 화자를 처리할 수 있지만 화자가 3명 이상이면 성능이 가변적일 수 있습니다. 2명 간의 대화는 일반적으로 협대역 매체를 통해 수행되지만 지원되는 협대역 및 광대역 모델에 화자 레이블을 사용할 수 있습니다.
 
-이 기능을 사용하려면 인식 요청에 대해 `speaker_labels` 매개변수를 `true`로 설정합니다. 기본적으로 이 매개변수는 `false`입니다. 서비스는 오디오의 개별 단어로 화자를 식별합니다. 단어의 시작 및 종료 시간에 의존하여 해당 화자를 식별합니다. 따라서 화자 레이블을 사용으로 설정하면 `timestamps` 매개변수도 강제로 `true`가 됩니다([단어 시간소인](/docs/services/speech-to-text/output.html#word_timestamps) 참조).
+이 기능을 사용하려면 인식 요청에 대해 `speaker_labels` 매개변수를 `true`로 설정합니다. 기본적으로 이 매개변수는 `false`입니다. 서비스는 오디오의 개별 단어로 화자를 식별합니다. 단어의 시작 및 종료 시간에 의존하여 해당 화자를 식별합니다. 따라서 화자 레이블을 사용으로 설정하면 `timestamps` 매개변수도 강제로 `true`가 됩니다([단어 시간소인](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps) 참조).
 
 ### 화자 레이블 예제
 {: #speakerLabelsExample}
@@ -239,7 +239,7 @@ curl -X POST -u "apikey:{apikey}"
 ### 화자 레이블에 대한 중간 결과 요청
 {: #speakerLabelsInterim}
 
-WebSocket 인터페이스를 사용하는 경우 화자 레이블 및 중간 결과를 요청할 수 있습니다([중간 결과](/docs/services/speech-to-text/output.html#interim) 참조). 일반적으로 최종 결과는 중간 결과보다 더 양호합니다. 그러나 중간 결과는 음성 내용의 전개 및 화자 레이블의 지정을 식별하는 데 도움이 될 수 있습니다. 중간 결과는 임시 화자 및 ID가 표시되거나 사라진 위치를 표시할 수 있습니다. 그러나 이 서비스는 처음에 식별하고 나중에 다시 고려하며 생략하는 화자의 ID를 재사용할 수 있습니다. 따라서 ID가 중간 및 최종 결과에서 서로 다른 두 명의 화자를 나타낼 수 있습니다.
+WebSocket 인터페이스를 사용하는 경우 화자 레이블 및 중간 결과를 요청할 수 있습니다([중간 결과](/docs/services/speech-to-text?topic=speech-to-text-output#interim) 참조). 일반적으로 최종 결과는 중간 결과보다 더 양호합니다. 그러나 중간 결과는 음성 내용의 전개 및 화자 레이블의 지정을 식별하는 데 도움이 될 수 있습니다. 중간 결과는 임시 화자 및 ID가 표시되거나 사라진 위치를 표시할 수 있습니다. 그러나 이 서비스는 처음에 식별하고 나중에 다시 고려하며 생략하는 화자의 ID를 재사용할 수 있습니다. 따라서 ID가 중간 및 최종 결과에서 서로 다른 두 명의 화자를 나타낼 수 있습니다.
 
 중간 결과 및 화자 레이블을 모두 요청하는 경우 초기 중간 결과가 리턴된지 한참 후에 긴 오디오 스트림에 대한 최종 결과가 도착할 수 있습니다. 또한 일부 중간 결과에는 `results` 및 `result_index` 필드 없이 `speaker_labels` 필드만 포함될 수 있습니다. 중간 결과를 요청하지 않으면 서비스가 `results` 및 `result_index` 필드와 단일 `speaker_labels` 필드를 포함하는 최종 결과를 리턴합니다.
 
@@ -284,7 +284,7 @@ WebSocket 인터페이스를 사용하는 경우 화자 레이블 및 중간 결
 -   `normalized_text`는 입력 오디오에서 일치하는 음성 구문으로 정규화되는 지정된 키워드입니다.
 -   `start_time`은 일치 항목의 시작 시간(초)입니다.
 -   `end_time`은 일치 항목의 종료 시간(초)입니다.
--   `confidence`는 일치 항목이 지정된 키워드를 표시하는 서비스의 신뢰도입니다. 신뢰도는 최소한 결과에 포함될 지정된 임계값만큼 커야 합니다. 
+-   `confidence`는 일치 항목이 지정된 키워드를 표시하는 서비스의 신뢰도입니다. 신뢰도는 최소한 결과에 포함될 지정된 임계값만큼 커야 합니다.
 
 서비스에서 일치하는 항목을 찾을 수 없는 키워드는 배열에서 생략됩니다. 다음과 같은 경우 키워드를 찾을 수 없습니다.
 
@@ -297,7 +297,7 @@ WebSocket 인터페이스를 사용하는 경우 화자 레이블 및 중간 결
     -   키워드의 토큰이 동일한 블록에 있습니다.
     -   토큰이 서로 인접하거나 0.1초 이하의 간격으로 구분되어 있습니다.
 
-    간단한 채움말 또는 어휘가 아닌 발화(예: "uhm" 또는 "well")가 키워드의 두 토큰 사이에 있으면 후자의 경우가 발생할 수 있습니다. 자세한 정보는 [망설임 표지(hesitation marker)](/docs/services/speech-to-text/basic-response.html#hesitation)를 참조하십시오.
+    간단한 채움말 또는 어휘가 아닌 발화(예: "uhm" 또는 "well")가 키워드의 두 토큰 사이에 있으면 후자의 경우가 발생할 수 있습니다. 자세한 정보는 [망설임 표지(hesitation marker)](/docs/services/speech-to-text?topic=speech-to-text-basic-response#hesitation)를 참조하십시오.
 
 ### 키워드 발견 예제
 {: #keywordSpottingExample}
@@ -336,7 +336,7 @@ curl -X POST -u "apikey:{apikey}"
       },
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -375,7 +375,7 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         },
@@ -384,8 +384,8 @@ severe thunderstorms swept through Colorado on Sunday "
 severe thunderstorms swept through Colorado on Sunday "
         },
         {
-          "transcript": "several tornadoes touch down is a line of
-severe thunderstorms swept through Colorado on Sunday "
+          "transcript": "several tornadoes touch down as a line of
+severe thunderstorms swept through Colorado and Sunday "
         }
       ],
       "final": true
@@ -407,7 +407,7 @@ severe thunderstorms swept through Colorado on Sunday "
 -   대화식 애플리케이션 및 실시간 변환
 -   변환하는 데 다소 시간이 걸릴 수 있는 긴 오디오 스트림
 
-중간 결과는 최종 결과보다 더 자주, 더 빠르게 도착합니다. 중간 결과를 사용하여 애플리케이션이 더 빠르게 응답하거나 변환 진행상태를 알아보도록 할 수 있습니다. 
+중간 결과는 최종 결과보다 더 자주, 더 빠르게 도착합니다. 중간 결과를 사용하여 애플리케이션이 더 빠르게 응답하거나 변환 진행상태를 알아보도록 할 수 있습니다.
 
 중간 결과를 수신하려면 WebSocket 인식 요청에 대한 `start` 메시지에서 `interim_results` JSON 매개변수를 `true`를 설정하십시오. `interim_results` 매개변수를 생략하거나 `false`로 설정하면 서비스가 오디오 종료 시 단일 JSON 음성 내용만 리턴합니다. 이 매개변수를 사용하려면 다음 가이드라인을 따르십시오.
 
@@ -490,7 +490,7 @@ severe thunderstorms swept through Colorado on Sunday "
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -515,7 +515,7 @@ severe thunderstorms swept through Colorado on Sunday "
 ### 단어 대체 결과
 {: #wordAlternativesResults}
 
-이 서비스는 `results` 배열의 요소인 `word_alternatives` 필드에 결과를 리턴합니다. `word_alternatives` 필드는 각각 대체 단어에 대한 다음 필드를 제공하는 오브젝트의 배열입니다. 
+이 서비스는 `results` 배열의 요소인 `word_alternatives` 필드에 결과를 리턴합니다. `word_alternatives` 필드는 각각 대체 단어에 대한 다음 필드를 제공하는 오브젝트의 배열입니다.
 
 -   `start_time`은 가설이 리턴된 단어가 입력 오디오에서 시작되는 시간(초)을 표시합니다.
 -   `end_time`은 가설이 리턴된 단어가 입력 오디오에서 종료되는 시간(초)을 표시합니다.
@@ -592,7 +592,7 @@ curl -X POST -u "apikey:{apikey}"
       ],
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -634,9 +634,9 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday ",
-          "confidence": 0.89,
           "word_confidence": [
             [
               "several",
@@ -731,7 +731,7 @@ curl -X POST -u "apikey:{apikey}"
               6.34
             ]
           ],
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -808,7 +808,7 @@ severe thunderstorms swept through Colorado on Sunday "
   </tr>
 </table>
 
-이 서비스는 적절한 위치에 있는 경우에만 이러한 키워드 문자열을 기호로 변환합니다. 예를 들어, 이 서비스는 아래와 같은 음성 구문을 
+이 서비스는 적절한 위치에 있는 경우에만 이러한 키워드 문자열을 기호로 변환합니다. 예를 들어, 이 서비스는 아래와 같은 음성 구문을
 
 ```
 the warranty period is short period
@@ -1102,8 +1102,8 @@ curl -X POST -u "apikey:{apikey}"
     <table style="width:50%">
       <caption>표 5. 일본식 생년월일의 교정 예제</caption>
       <tr>
-        <th style="text-align:left">교정 미적용 시</th>
-        <th style="text-align:left">교정 적용 시</th>
+        <th style="text-align:left">교정 적용 안함</th>
+        <th style="text-align:left">교정 적용</th>
       </tr>
       <tr>
         <td>

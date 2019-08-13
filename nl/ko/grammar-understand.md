@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -28,7 +28,7 @@ subcollection: speech-to-text
 다음 예제는 문법에 대한 {{site.data.keyword.speechtotextfull}} 서비스의 지원을 소개합니다. 이 예제에서는 두 개의 단순 ABNF 문법을 작성하고 이러한 문법이 음성 인식에 사용되는 경우 가능한 결과를 표시합니다. 이 예제는 서비스가 음성 내용에 포함하는 신뢰도 점수 검사의 중요성을 보여줍니다.
 {: shortdesc}
 
-이 예제는 음성 인식 요청의 결과만 제공합니다. 음성 인식을 위해 문법을 전달하는 방법을 보여주는 예제는 [음성 인식에 문법 사용](/docs/services/speech-to-text/grammar-use.html)을 참조하십시오. 또한 이 예제는 매우 기본적인 것입니다. 보다 복잡한 문법의 예제는 [예제 문법](/docs/services/speech-to-text/grammar-examples.html)을 참조하십시오.
+이 예제는 음성 인식 요청의 결과만 제공합니다. 음성 인식을 위해 문법을 전달하는 방법을 보여주는 예제는 [음성 인식에 문법 사용](/docs/services/speech-to-text?topic=speech-to-text-grammarUse)을 참조하십시오. 또한 이 예제는 매우 기본적인 것입니다. 보다 복잡한 문법의 예제는 [예제 문법](/docs/services/speech-to-text?topic=speech-to-text-grammarExamples)을 참조하십시오.
 
 ## 단일 구문 일치: yesno 문법
 {: #yesnoGrammar}

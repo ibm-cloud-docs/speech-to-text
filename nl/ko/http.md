@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-08"
+lastupdated: "2019-07-10"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -31,7 +31,8 @@ subcollection: speech-to-text
 -   첫 번째는 요청 본문을 통해 모든 오디오를 단일 스트림에 전송합니다. 오퍼레이션의 매개변수를 요청 헤더 및 조회 매개변수로 지정합니다. 자세한 정보는 [기본 HTTP 요청 작성](#HTTP-basic)을 참조하십시오.
 -   두 번째는 오디오를 다중 파트 요청으로 전송합니다. 요청 매개변수를 요청 헤더, 조회 매개변수 및 JSON 메타데이터의 조합으로 지정합니다. 자세한 정보는 [다중 파트 HTTP 요청 작성](#HTTP-multi)을 참조하십시오.
 
-최대 100MB 및 최소 100바이트의 오디오 데이터를 단일 요청으로 제출하십시오. 오디오 형식에 대한 정보와 압축을 사용하여 요청과 함께 전송할 수 있는 오디오의 양을 최대화하는 방법에 대한 정보는 [오디오 형식](/docs/services/speech-to-text/audio-formats.html)을 참조하십시오. HTTP 인터페이스의 모든 메소드에 대한 정보는 [API 참조 ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://{DomainName}/apidocs/speech-to-text){: new_window}를 참조하십시오.
+최대 100MB 및 최소 100바이트의 오디오 데이터를 단일 요청으로 제출하십시오. 오디오 형식에 대한 정보와 압축을 사용하여 요청과 함께 전송할 수 있는 오디오의 양을 최대화하는 방법에 대한 정보는 [오디오 형식](/docs/services/speech-to-text?topic=speech-to-text-audio-formats)을 참조하십시오. HTTP 인터페이스의 모든 메소드에 대한 자세한 정보는 [API 참조](https://{DomainName}/apidocs/speech-to-text){: external}를 참조하십시오.
+
 
 ## 기본 HTTP 요청 작성
 {: #HTTP-basic}
@@ -56,7 +57,7 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of severe thunderstorms swept through Colorado on Sunday "
         }
       ],
@@ -113,7 +114,8 @@ curl -X POST -u "apikey:{apikey}"
       <br/><em>파일</em>
     </td>
     <td>
-      <em>필수입니다.</em> 요청에 대한 양식 데이터의 나머지인 하나 이상의 오디오 파일입니다. 모든 오디오 파일의 형식이 동일해야 합니다. `curl` 명령을 사용하는 경우 요청의 각 파일마다 별도의 <code>--form</code> 옵션을 포함시키십시오.
+      <em>필수입니다.</em> 요청에 대한 양식 데이터의 나머지인 하나 이상의 오디오 파일입니다. 모든 오디오 파일의 형식이 동일해야 합니다.
+      `curl` 명령을 사용하는 경우 요청의 각 파일마다 별도의 <code>--form</code> 옵션을 포함시키십시오.
     </td>
   </tr>
   <tr>
@@ -178,7 +180,7 @@ curl -X POST -u "apikey:{apikey}"
   </tr>
 </table>
 
-조회 매개변수에 대한 자세한 정보는 [매개변수 요약](/docs/services/speech-to-text/summary.html)을 참조하십시오.
+조회 매개변수에 대한 자세한 정보는 [매개변수 요약](/docs/services/speech-to-text?topic=speech-to-text-summary)을 참조하십시오.
 
 ### 다중 파트 요청에 대한 JSON 메타데이터
 {: #multipartJSON}
@@ -206,7 +208,7 @@ curl -X POST -u "apikey:{apikey}"
 -   `part_content_type` 필드는 대부분의 오디오 형식에 대해 *선택적*입니다. 이 필드는 `audio/alaw`, `audio/basic`, `audio/l16` 및 `audio/mulaw` 형식에 필요합니다. 이는 요청의 다음 파트에 있는 오디오의 형식을 지정합니다. 모든 오디오 파일의 형식이 동일해야 합니다.
 -   `data_parts_count` 필드는 모든 요청에 대해 *선택적*입니다. 이 필드는 요청과 함께 전송된 오디오 파일의 수를 지정합니다. 서비스는 마지막(유일할 수 있음) 데이터 파트에 스트림 끝 발견을 적용합니다. 이 매개변수를 생략하면 서비스가 요청에서 파트 수를 판별합니다.
 
-메타데이터의 기타 모든 매개변수는 선택적입니다. 사용 가능한 모든 매개변수에 대한 설명은 [매개변수 요약](/docs/services/speech-to-text/summary.html)을 참조하십시오.
+메타데이터의 기타 모든 매개변수는 선택적입니다. 사용 가능한 모든 매개변수에 대한 설명은 [매개변수 요약](/docs/services/speech-to-text?topic=speech-to-text-summary)을 참조하십시오.
 
 ### 예제 다중 파트 요청
 
@@ -231,192 +233,192 @@ curl -X POST -u "apikey:{apikey}"
 
 ```javascript
 {
-   "results": [
-      {
-         "word_alternatives": [
+  "results": [
+    {
+      "word_alternatives": [
+        {
+          "start_time": 0.03,
+          "alternatives": [
             {
-               "start_time": 0.03,
-               "alternatives": [
-                  {
-                     "confidence": 0.96,
+              "confidence": 0.96,
                      "word": "the"
                   }
-               ],
+          ],
                "end_time": 0.09
-            },
-            {
-               "start_time": 0.09,
+        },
+        {
+          "start_time": 0.09,
                "alternatives": [
                   {
-                     "confidence": 0.96,
+              "confidence": 0.96,
                      "word": "latest"
                   }
-               ],
+          ],
                "end_time": 0.62
-            },
-            {
-               "start_time": 0.62,
+        },
+        {
+          "start_time": 0.62,
                "alternatives": [
                   {
-                     "confidence": 0.96,
+              "confidence": 0.96,
                      "word": "weather"
                   }
-               ],
+          ],
                "end_time": 0.87
-            },
-            {
-               "start_time": 0.87,
+        },
+        {
+          "start_time": 0.87,
                "alternatives": [
                   {
-                     "confidence": 0.96,
+              "confidence": 0.96,
                      "word": "report"
                   }
-               ],
+          ],
                "end_time": 1.5
             }
-         ],
+      ],
          "keywords_result": {},
          "alternatives": [
             {
-               "timestamps": [
-                  [
-                     "the",
+          "timestamps": [
+            [
+              "the",
                      0.03,
                      0.09
-                  ],
-                  [
-                     "latest",
+            ],
+            [
+              "latest",
                      0.09,
                      0.62
-                  ],
-                  [
-                     "weather",
+            ],
+            [
+              "weather",
                      0.62,
                      0.87
-                  ],
-                  [
-                     "report",
+            ],
+            [
+              "report",
                      0.87,
                      1.5
                   ]
-               ],
+          ],
                "confidence": 0.99,
                "transcript": "the latest weather report "
             }
-         ],
-         "final": true
-      },
-      {
-         "word_alternatives": [
+      ],
+      "final": true
+    },
+    {
+      "word_alternatives": [
+        {
+          "start_time": 0.15,
+          "alternatives": [
             {
-               "start_time": 0.15,
-               "alternatives": [
-                  {
-                     "confidence": 1.0,
-                     "word": "a"
-                  }
-               ],
-               "end_time": 0.3
-            },
-            {
-               "start_time": 0.3,
-               "alternatives": [
-                  {
-                     "confidence": 1.0,
-                     "word": "line"
-                  }
-               ],
-               "end_time": 0.64
-            },
-            . . .
-            {
-               "start_time": 4.58,
-               "alternatives": [
-                  {
-                     "confidence": 0.98,
-                     "word": "Colorado"
-                  }
-               ],
-               "end_time": 5.16
-            },
-            {
-               "start_time": 5.16,
-               "alternatives": [
-                  {
-                     "confidence": 0.98,
-                     "word": "on"
-                  }
-               ],
-               "end_time": 5.32
-            },
-            {
-               "start_time": 5.32,
-               "alternatives": [
-                  {
-                     "confidence": 0.98,
-                     "word": "Sunday"
-                  }
-               ],
-               "end_time": 6.04
+              "confidence": 1.0,
+              "word": "a"
             }
-         ],
-         "keywords_result": {
-            "tornadoes": [
-               {
-                  "normalized_text": "tornadoes",
-                  "start_time": 3.03,
-                  "confidence": 0.98,
-                  "end_time": 3.84
-               }
-            ],
-            "colorado": [
-               {
-                  "normalized_text": "Colorado",
-                  "start_time": 4.58,
-                  "confidence": 0.98,
-                  "end_time": 5.16
-               }
-            ]
-         },
-         "alternatives": [
+          ],
+          "end_time": 0.3
+        },
+        {
+          "start_time": 0.3,
+          "alternatives": [
             {
-               "timestamps": [
-                  [
-                     "a",
-                     0.15,
-                     0.3
-                  ],
-                  [
-                     "line",
-                     0.3,
-                     0.64
-                  ],
-                  . . .
-                  [
-                     "Colorado",
-                     4.58,
-                     5.16
-                  ],
-                  [
-                     "on",
-                     5.16,
-                     5.32
-                  ],
-                  [
-                     "Sunday",
+              "confidence": 1.0,
+              "word": "line"
+            }
+          ],
+          "end_time": 0.64
+        },
+        . . .
+        {
+          "start_time": 4.58,
+          "alternatives": [
+            {
+              "confidence": 0.98,
+              "word": "Colorado"
+            }
+          ],
+          "end_time": 5.16
+        },
+        {
+          "start_time": 5.16,
+          "alternatives": [
+            {
+              "confidence": 0.98,
+              "word": "on"
+            }
+          ],
+          "end_time": 5.32
+        },
+        {
+          "start_time": 5.32,
+          "alternatives": [
+            {
+              "confidence": 0.98,
+              "word": "Sunday"
+            }
+          ],
+          "end_time": 6.04
+        }
+      ],
+      "keywords_result": {
+        "tornadoes": [
+          {
+            "normalized_text": "tornadoes",
+            "start_time": 3.03,
+            "confidence": 0.98,
+            "end_time": 3.84
+          }
+        ],
+        "colorado": [
+          {
+            "normalized_text": "Colorado",
+            "start_time": 4.58,
+            "confidence": 0.98,
+            "end_time": 5.16
+          }
+        ]
+      },
+      "alternatives": [
+        {
+          "timestamps": [
+            [
+              "a",
+              0.15,
+              0.3
+            ],
+            [
+              "line",
+              0.3,
+              0.64
+            ],
+            . . .
+            [
+              "Colorado",
+              4.58,
+              5.16
+            ],
+            [
+              "on",
+              5.16,
+              5.32
+            ],
+            [
+              "Sunday",
                      5.32,
                      6.04
                   ]
-               ],
-               "confidence": 0.99,
-               "transcript": "a line of severe thunderstorms with several
+          ],
+          "confidence": 0.99,
+          "transcript": "a line of severe thunderstorms with several
 possible tornadoes is approaching Colorado on Sunday "
-            }
-         ],
-         "final": true
-      }
-   ],
-   "result_index": 0
+        }
+      ],
+      "final": true
+    }
+  ],
+  "result_index": 0
 }
 ```
 {: codeblock}

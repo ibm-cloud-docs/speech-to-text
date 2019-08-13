@@ -2,14 +2,14 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # 사용자 정의 모델 업그레이드
 {: #customUpgrade}
 
-음성 인식의 품질을 개선하기 위해 {{site.data.keyword.speechtotextfull}} 서비스는 경우에 따라 기본 모델을 업데이트합니다. 언어의 광대역 및 협대역 모델과 마찬가지로 다른 언어에 대한 기본 모델은 서로 독립적이므로 개별 기본 모델을 업데이트해도 다른 모델에 영향을 미치지 않습니다. [릴리스 정보](/docs/services/speech-to-text/release-notes.html)에 모든 기본 모델 업데이트가 문서화되어 있습니다.
+음성 인식의 품질을 개선하기 위해 {{site.data.keyword.speechtotextfull}} 서비스는 경우에 따라 기본 모델을 업데이트합니다. 언어의 광대역 및 협대역 모델과 마찬가지로 다른 언어에 대한 기본 모델은 서로 독립적이므로 개별 기본 모델을 업데이트해도 다른 모델에 영향을 미치지 않습니다. [릴리스 정보](/docs/services/speech-to-text?topic=speech-to-text-release-notes)에 모든 기본 모델 업데이트가 문서화되어 있습니다.
 {: shortdesc}
 
 기본 모델의 새 버전이 릴리스되면 업데이트를 활용할 수 있도록 기본 모델을 기반으로 빌드된 사용자 정의 언어 및 사용자 정의 음향 모델을 업그레이드해야 합니다. 업그레이드를 완료할 때까지 사용자 정의 모델이 이전 버전의 기본 모델을 계속 사용합니다. 모든 사용자 정의 오퍼레이션과 마찬가지로, 업그레이드하려면 모델을 소유하는 서비스의 인스턴스에 대한 인증 정보를 사용해야 합니다.
@@ -62,7 +62,7 @@ subcollection: speech-to-text
 
 업그레이드 프로세스가 성공적으로 시작되면 서비스에서 200 응답 코드를 리턴합니다. `GET /v1/customizations/{customization_id}` 메소드를 사용하여 모델의 상태를 폴링하여 업그레이드의 상태를 모니터할 수 있습니다. 루프를 사용하여 10초마다 상태를 확인하십시오.
 
-업그레이드되는 동안 사용자 정의 모델의 상태는 `upgrading`입니다. 업그레이드가 완료되면 모델이 업그레이드 이전의 상태를 재개합니다(`ready` 또는 `available`). 업그레이드 오퍼레이션의 상태를 확인하는 것은 훈련 오퍼레이션의 상태를 확인하는 것과 동일합니다. 자세한 정보는 [모델 훈련 요청 모니터링](/docs/services/speech-to-text/language-create.html#monitorTraining-language)을 참조하십시오.
+업그레이드되는 동안 사용자 정의 모델의 상태는 `upgrading`입니다. 업그레이드가 완료되면 모델이 업그레이드 이전의 상태를 재개합니다(`ready` 또는 `available`). 업그레이드 오퍼레이션의 상태를 확인하는 것은 훈련 오퍼레이션의 상태를 확인하는 것과 동일합니다. 자세한 정보는 [모델 훈련 요청 모니터링](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language)을 참조하십시오.
 
 업그레이드 요청이 완료될 때까지 서비스가 어떤 방식으로는 모델을 수정하는 요청을 승인할 수 없습니다. 그러나 업그레이드 중에 기존 버전의 모델로 인식 요청을 계속 발행할 수 있습니다.
 
@@ -100,7 +100,7 @@ subcollection: speech-to-text
 
 업그레이드 프로세스가 성공적으로 시작되면 서비스에서 200 응답 코드를 리턴합니다. `GET /v1/acoustic_customizations/{customization_id}` 메소드를 사용하여 모델의 상태를 폴링하여 업그레이드의 상태를 모니터할 수 있습니다. 루프를 사용하여 1분에 한 번씩 상태를 확인하십시오.
 
-업그레이드되는 동안 사용자 정의 모델의 상태는 `upgrading`입니다. 업그레이드가 완료되면 모델이 업그레이드 이전의 상태를 재개합니다(`ready` 또는 `available`). 업그레이드 오퍼레이션의 상태를 확인하는 것은 훈련 오퍼레이션의 상태를 확인하는 것과 동일합니다. 자세한 정보는 [모델 훈련 요청 모니터링](/docs/services/speech-to-text/acoustic-create.html#monitorTraining-acoustic)을 참조하십시오.
+업그레이드되는 동안 사용자 정의 모델의 상태는 `upgrading`입니다. 업그레이드가 완료되면 모델이 업그레이드 이전의 상태를 재개합니다(`ready` 또는 `available`). 업그레이드 오퍼레이션의 상태를 확인하는 것은 훈련 오퍼레이션의 상태를 확인하는 것과 동일합니다. 자세한 정보는 [모델 훈련 요청 모니터링](/docs/services/speech-to-text?topic=speech-to-text-acoustic#monitorTraining-acoustic)을 참조하십시오.
 
 업그레이드 요청이 완료될 때까지 서비스가 어떤 방식으로는 모델을 수정하는 요청을 승인할 수 없습니다. 그러나 업그레이드 중에 기존 버전의 모델로 인식 요청을 계속 발행할 수 있습니다.
 
@@ -118,8 +118,8 @@ subcollection: speech-to-text
 
 사용자 정의 모델이 사용 가능한 기본 모델의 버전을 보려면 다음 메소드를 사용하십시오.
 
--   사용자 정의 언어 모델에 대한 정보를 나열하려면 `GET /v1/customizations/{customization_id}` 메소드를 사용하십시오. 자세한 정보는 [사용자 정의 언어 모델 나열](/docs/services/speech-to-text/language-models.html#listModels-language)을 참조하십시오.
--   사용자 정의 음향 모델에 대한 정보를 나열하려면 `GET /v1/acoustic_customizations/{customization_id}` 메소드를 사용하십시오. 자세한 정보는 [사용자 정의 음향 모델 나열](/docs/services/speech-to-text/acoustic-models.html#listModels-acoustic)을 참조하십시오.
+-   사용자 정의 언어 모델에 대한 정보를 나열하려면 `GET /v1/customizations/{customization_id}` 메소드를 사용하십시오. 자세한 정보는 [사용자 정의 언어 모델 나열](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language)을 참조하십시오.
+-   사용자 정의 음향 모델에 대한 정보를 나열하려면 `GET /v1/acoustic_customizations/{customization_id}` 메소드를 사용하십시오. 자세한 정보는 [사용자 정의 음향 모델 나열](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic)을 참조하십시오.
 
 두 경우 모두 사용자 정의 모델의 기본 모델에 대한 정보를 표시하는 `versions` 필드가 출력에 포함됩니다. 다음 출력은 업그레이드된 사용자 정의 언어 모델에 대한 정보를 표시합니다.
 
@@ -162,7 +162,7 @@ curl -X POST -u "apikey:{apikey}"
 
 이 기능을 사용하여 기본 모델의 이전 버전과 새 버전 모두에 대해 사용자 정의 모델의 성능 및 정확도를 테스트할 수 있습니다. 어떤 방식으로든 업그레이드된 모델의 성능이 부족하다는 것을 알게 되면(예를 들어, 특정 단어가 더 이상 인식되지 않음) 이전 버전을 인식 요청에 계속 사용할 수 있습니다.
 
-[기본 모델 버전](/docs/services/speech-to-text/input.html#version)은 `base_model_version` 매개변수와 서비스가 인식 요청에 사용할 기본 및 사용자 정의 모델의 버전을 판별하는 방법을 설명합니다. 이 정보 이외에 사용자 정의 언어 및 사용자 정의 음향 모델을 모두 인식 요청과 함께 전달할 때 다음 문제를 고려하십시오.
+[기본 모델 버전](/docs/services/speech-to-text?topic=speech-to-text-input#version)은 `base_model_version` 매개변수와 서비스가 인식 요청에 사용할 기본 및 사용자 정의 모델의 버전을 판별하는 방법을 설명합니다. 이 정보 이외에 사용자 정의 언어 및 사용자 정의 음향 모델을 모두 인식 요청과 함께 전달할 때 다음 문제를 고려하십시오.
 
 -   두 사용자 정의 모델 모두 동일한 기본 모델(예: `en-US_BroadbandModel`)을 기반으로 해야 합니다.
 -   두 사용자 정의 모델 모두 이전 기본 모델을 기반으로 하는 경우 서비스에서 이전 기본 모델을 인식에 사용합니다.

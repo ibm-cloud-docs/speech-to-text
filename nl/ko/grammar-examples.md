@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-06"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -89,14 +89,14 @@ subcollection: speech-to-text
         </td>
         <td style="text-align:center">
        사용할 수 없음
-    </td>
+        </td>
       </tr>
     </table>
 
 ## 차대 번호(VIN) 문법
 {: #vin}
 
-차대 번호(VIN)는 신용카드 번호, 전화번호 및 미국 사회 보장 번호와 마찬가지로 고정된 영숫자 형식을 사용합니다. 기존의 n-그램에 비해 문법의 큰 장점은 문법이 이러한 형식을 지정하는 데 매우 효과적이라는 점입니다. 
+차대 번호(VIN)는 신용카드 번호, 전화번호 및 미국 사회 보장 번호와 마찬가지로 고정된 영숫자 형식을 사용합니다. 기존의 n-그램에 비해 문법의 큰 장점은 문법이 이러한 형식을 지정하는 데 매우 효과적이라는 점입니다.
 
 VIN 형식은 잘 표준화되어 있으며 고정된 수의 문자를 포함합니다. 기존의 n-그램은 이러한 유형의 태스크에 제대로 작동하지 않습니다. 문법과 달리 n-그램은 필수 문자 수가 제공되었는지 확인할 수 없습니다.
 
@@ -118,7 +118,7 @@ VIN 형식은 잘 표준화되어 있으며 고정된 수의 문자를 포함합
   </tr>
 </table>
 
-VIN 형식에 대한 자세한 정보는 Wikipedia의 [Vehicle identification number ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://en.wikipedia.org/wiki/Vehicle_identification_number){: new_window}를 참조하십시오.
+VIN 형식에 대한 자세한 정보는 [Vehicle identification number](https://wikipedia.org/wiki/Vehicle_identification_number){: external}를 참조하십시오. 
 
 ## 선택적 요소가 있는 문법
 {: #optionalElements}
@@ -141,7 +141,7 @@ VIN 형식에 대한 자세한 정보는 Wikipedia의 [Vehicle identification nu
   </tr>
 </table>
 
-문법의 선택적 확장에 대한 자세한 정보는 Speech Recognition Grammar Specification의 [섹션 2.5 Repeats ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://www.w3.org/TR/speech-grammar/#S2.5){: new_window}를 참조하십시오.
+문법의 선택적 확장에 대한 자세한 정보는 Speech Recognition Grammar Specification의 [섹션 2.5 Repeats](https://www.w3.org/TR/speech-grammar/#S2.5){: external}를 참조하십시오.
 
 ## 명확화 문법
 {: #disambiguation}

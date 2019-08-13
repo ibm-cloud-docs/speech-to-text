@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # 문법 관리
 {: #manageGrammars}
 
-사용자 정의 인터페이스에는 사용자 정의 언어 모델에 문법을 추가하기 위한 `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` 메소드가 포함되어 있습니다. 자세한 정보는 [사용자 정의 언어 모델에 문법 추가](/docs/services/speech-to-text/grammar-add.html#addGrammar)를 참조하십시오. 이 인터페이스에는 사용자 정의 언어 모델의 문법을 나열하고 삭제하기 위한 다음 메소드도 포함되어 있습니다.
+사용자 정의 인터페이스에는 사용자 정의 언어 모델에 문법을 추가하기 위한 `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` 메소드가 포함되어 있습니다. 자세한 정보는 [사용자 정의 언어 모델에 문법 추가](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar)를 참조하십시오. 이 인터페이스에는 사용자 정의 언어 모델의 문법을 나열하고 삭제하기 위한 다음 메소드도 포함되어 있습니다.
 {: shortdesc}
 
 ## 사용자 정의 언어 모델의 문법 나열
@@ -38,7 +38,7 @@ subcollection: speech-to-text
 
 두 메소드는 문법에 대한 동일한 정보를 리턴합니다. 정보에는 문법의 `name` 및 문법에서 인식되는 `out-of_vocabulary_words` 수가 포함됩니다. 또한 응답에는 문법을 사용자 정의 모델에 추가할 때 문법에 대한 서비스의 분석을 확인하는 데 있어서 중요한 문법의 `status`가 포함됩니다.
 
--   `being_processed`는 서비스가 `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` 요청에 대한 응답으로 문법을 여전히 처리 중임을 표시합니다. 
+-   `being_processed`는 서비스가 `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` 요청에 대한 응답으로 문법을 여전히 처리 중임을 표시합니다.
 -   `analyzed`는 서비스가 문법을 성공적으로 처리하고 사용자 정의 모델에 추가했음을 표시합니다.
 -   `undetermined`는 서비스가 문법을 처리하는 동안 오류가 발생했음을 의미합니다. 문법에 대해 리턴되는 정보에는 오류를 정정하기 위한 안내를 제공하는 오류 메시지가 포함되어 있습니다.
 

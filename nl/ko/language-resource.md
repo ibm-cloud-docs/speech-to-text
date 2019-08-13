@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-12"
+lastupdated: "2019-06-06"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -29,7 +29,7 @@ subcollection: speech-to-text
 {: shortdesc}
 
 -   **말뭉치:** 사용자 정의 언어 모델을 단어로 채울 때 권장되는 방법은 모델에 하나 이상의 말뭉치를 추가하는 것입니다. 말뭉치를 추가하면 서비스가 파일을 분석하고 발견한 새 단어를 자동으로 사용자 정의 모델에 추가합니다. 사용자 정의 모델에 말뭉치를 추가하면 서비스가 컨텍스트에서 도메인 특정 단어를 추출하여 더 나은 변환 결과를 얻을 수 있습니다. 자세한 정보는 [말뭉치에 대한 작업](#workingCorpora)을 참조하십시오.
--   **문법:** 문법을 사용자 정의 모델에 추가하여 음성 인식을 문법에서 인식되는 단어 또는 구문으로 제한할 수 있습니다. 문법을 모델에 추가하면 이 서비스가 말뭉치에 대해 수행하는 것과 마찬가지로 발견한 새 단어를 자동으로 모델에 추가합니다. 자세한 정보는 [사용자 정의 언어 모델에 문법 사용](/docs/services/speech-to-text/grammar.html)을 참조하십시오.
+-   **문법:** 문법을 사용자 정의 모델에 추가하여 음성 인식을 문법에서 인식되는 단어 또는 구문으로 제한할 수 있습니다. 문법을 모델에 추가하면 이 서비스가 말뭉치에 대해 수행하는 것과 마찬가지로 발견한 새 단어를 자동으로 모델에 추가합니다. 자세한 정보는 [사용자 정의 언어 모델에 문법 사용](/docs/services/speech-to-text?topic=speech-to-text-grammars)을 참조하십시오.
 -   **개별 단어:** 개별 사용자 정의 단어를 모델에 직접 추가할 수도 있습니다. 이 서비스가 말뭉치 또는 문법에서 검색한 단어를 추가하는 것과 마찬가지로 단어를 모델에 추가합니다. 단어를 직접 추가하는 경우 여러 발음을 지정하고 단어가 표시되는 방법을 표시할 수 있습니다. 기존 단어를 업데이트하여 말뭉치 또는 문법에서 추출된 정의를 수정하거나 기능 보강할 수도 있습니다. 자세한 정보는 [사용자 정의 단어에 대한 작업](#workingWords)을 참조하십시오.
 
 추가하는 방법과 관계없이 이 서비스는 사용자 정의 언어 모델에 추가하는 모든 단어를 모델의 단어 리소스에 저장합니다.
@@ -50,7 +50,7 @@ subcollection: speech-to-text
     `display_as` 필드를 사용하여 단어에 대한 다른 맞춤법을 지정할 수 있습니다. 자세한 정보는 [display_as 필드 사용](#displayAs)을 참조하십시오.
 -   `source`: 단어가 단어 리소스에 추가된 방법을 표시합니다. 서비스가 말뭉치 또는 문법에서 단어를 추출한 경우 이 필드에는 해당 리소스의 이름이 나열됩니다. 서비스가 여러 리소스에서 동일한 단어를 발견할 수 있으므로 이 필드에 여러 말뭉치 또는 문법 이름이 나열될 수 있습니다. 단어를 직접 추가하거나 수정하는 경우 이 필드에 `user`라는 문자열이 포함됩니다.
 
-어떤 방식으로든 모델의 단어 리소스를 업데이트하는 경우 변환 중에 변경사항을 적용하려면 모델을 훈련해야 합니다. 자세한 정보는 [사용자 정의 언어 모델 훈련](/docs/services/speech-to-text/language-create.html#trainModel-language)을 참조하십시오.
+어떤 방식으로든 모델의 단어 리소스를 업데이트하는 경우 변환 중에 변경사항을 적용하려면 모델을 훈련해야 합니다. 자세한 정보는 [사용자 정의 언어 모델 훈련](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language)을 참조하십시오.
 
 ## 필요한 데이터의 양
 {: #wordsResourceAmount}
@@ -61,8 +61,8 @@ subcollection: speech-to-text
 
 이 서비스는 사용자 정의 언어 모델에 추가할 수 있는 단어의 수를 제한합니다.
 
--   사용자 정의 모델의 단어 리소스에 최대 9만 개의 OOV 단어를 추가할 수 있습니다. 여기에는 모든 소스(말뭉치, 문법 및 사용자가 직접 추가한 개별 사용자 정의 단어)의 OOV 단어가 포함됩니다.
--   모든 소스의 사용자 정의 모델에 최대 천만 개의 단어를 추가할 수 있습니다. 이 수치에는 말뭉치 또는 문법에 포함된 모든 단어(OOV 단어 및 이미 서비스 기본 어휘의 일부인 단어 모두)가 포함됩니다. 말뭉치의 경우 서비스가 이러한 추가 단어를 사용하여 OOV 단어가 표시될 수 있는 컨텍스트를 학습하며, 이것이 말뭉치가 인식 정확도를 향상시키는 보다 효과적인 방법인 이유입니다.
+-   사용자 정의 모델의 단어 리소스에 최대 9만 개의 OOV 단어를 추가할 수 있습니다. 이 기능에는 모든 소스(말뭉치, 문법 및 사용자가 직접 추가한 개별 사용자 정의 단어)의 OOV 단어가 포함됩니다.
+-   모든 소스의 사용자 정의 모델에 최대 총 천만 개의 단어를 추가할 수 있습니다. 이 수치에는 말뭉치 또는 문법에 포함된 모든 단어(OOV 단어 및 이미 서비스 기본 어휘의 일부인 단어 모두)가 포함됩니다. 말뭉치의 경우 서비스가 이러한 추가 단어를 사용하여 OOV 단어가 표시될 수 있는 컨텍스트를 학습하며, 이것이 말뭉치가 인식 정확도를 향상시키는 보다 효과적인 방법인 이유입니다.
 
 단어 리소스가 크면 음성 인식의 대기 시간이 증가할 수 있지만 정확한 영향을 수량화하거나 예측하기 어렵습니다. 효과적인 사용자 정의 모델을 생성하는 데 필요한 데이터의 양과 마찬가지로 대형 단어 리소스의 성능 영향은 여러 요인에 따라 달라집니다. 다양한 양의 데이터로 사용자 정의 모델을 테스트하여 모델 및 데이터의 성능을 판별하십시오.
 
@@ -135,14 +135,14 @@ What is Osteogenesis imperfecta OI?
 
 -   숫자를 동등한 단어로 변환합니다. 예를 들어, 다음과 같습니다.
     -   *영어의 경우 * `500`은 `five hundred`가 되고 `0.15`는 `zero point fifteen`이 됩니다.
-    -   *프랑스어의 경우 * `500`은 `cinq cents`이 되고 `0,15`는 <code>z&eacute;ro quinze</code>가 됩니다.
+    -   *프랑스어의 경우 * `500`은 `cinq cents`이 되고 `0,15`는 <code>z&eacute;ro virgule quinze</code>가 됩니다.
     -   *독일어의 경우 * `500`은 <code>f&uuml;nfhundert</code>가 되고 `0,15`는 <code>null punkt f&uuml;nfzehn</code>이 됩니다.
     -   *스페인어의 경우 * `500`은 `quinientos`가 되고 `0,15`는 `cero coma quince`가 됩니다.
     -   *브라질 포르투갈어의 경우 * `500`은 `quinhentos`가 되고 `0,15`는 `zero ponto quinze`가 됩니다.
 -   특정 기호를 포함하는 토큰을 의미 있는 문자열 표시로 변환합니다. 예를 들어, 다음과 같습니다.
     -   `$`(달러 기호) 및 숫자를 변환합니다.
         -   *영어의 경우 * `$100`는 `one hundred dollars`가 됩니다.
-        -   *프랑스어의 경우 * `$100`는 `cent dollar`가 됩니다.
+        -   *프랑스어의 경우 * `$100`는 `cent dollars`가 됩니다.
         -   *독일어의 경우 * `$100` 및 `100$`는 `einhundert dollar`가 됩니다.
         -   *스페인어의 경우 * `$100` 및 `100$`는 <code>cien d&oacute;lares</code>(또는 통용어가 `es-LA`인 경우 `cien pesos`)가 됩니다.
         -   *브라질 포르투갈어의 경우* `$100` 및 `100$`는 <code>cem d&oacute;lares</code>가 됩니다.
@@ -154,7 +154,7 @@ What is Osteogenesis imperfecta OI?
         -   *브라질 포르투갈어의 경우* <code>&euro;100</code> 및 <code>100&euro;</code>는 `cem euros`가 됩니다.
     -   숫자가 앞에 오는 `%`(퍼센트 기호)를 변환합니다.
         -   *영어의 경우* `100%`는 `one hundred percent`가 됩니다.
-        -   *프랑스어의 경우* `100%`는 `cent pourcent`이 됩니다.
+        -   *프랑스어의 경우* `100%` 는 `cent pour cent`가 됩니다.
         -   *독일어의 경우* `100%`는 `einhundert prozent`가 됩니다.
         -   *스페인어의 경우* `100%`는 `cien por ciento`가 됩니다.
         -   *브라질 포르투갈어의 경우* `100%`는 `cem por cento`가 됩니다.
@@ -196,26 +196,26 @@ What is Osteogenesis imperfecta OI?
 
 `POST /v1/customizations/{customization_id}/words` 및 `PUT /v1/customizations/{customization_id}/words/{word_name}` 메소드를 사용하여 사용자 정의 모델의 단어 리소스에 새 단어를 추가할 수 있습니다. 이러한 메소드를 사용하여 단어 리소스의 단어를 수정하거나 기능 보강할 수도 있습니다.
 
-예를 들어, 이러한 메소드를 사용하여 말뭉치에서 단어가 추가될 때 발생한 철자 오류 또는 기타 실수를 정정해야 할 수 있습니다. 기존 단어에 대한 sounds-like 정의를 추가해야 할 수도 있습니다. 기존 단어를 수정하는 경우 사용자가 제공하는 새 데이터가 단어 리소스에 있는 단어의 기존 정의를 겹쳐씁니다. 단어 추가 규칙은 기존 단어를 수정할 때도 적용됩니다.
+예를 들어, 이러한 메소드를 사용하여 말뭉치에서 단어가 추가될 때 발생한 철자 오류 또는 기타 실수를 정정해야 할 수 있습니다. 기존 단어에 대해 동음어 정의를 추가해야 할 수도 있습니다. 기존 단어를 수정하는 경우 사용자가 제공하는 새 데이터가 단어 리소스에 있는 단어의 기존 정의를 겹쳐씁니다. 단어 추가 규칙은 기존 단어를 수정할 때도 적용됩니다.
 
 ### 문자 인코딩
 {: #charEncoding}
 
-일반적으로 대부분의 사용자 정의 단어를 말뭉치에서 추가합니다. 말뭉치의 텍스트 파일에서 사용되는 문자 인코딩을 알고 있는지 확인하십시오. 이 서비스는 텍스트 파일에서 찾은 인코딩을 유지합니다. 
+일반적으로 대부분의 사용자 정의 단어를 말뭉치에서 추가합니다. 말뭉치의 텍스트 파일에서 사용되는 문자 인코딩을 알고 있는지 확인하십시오. 이 서비스는 텍스트 파일에서 찾은 인코딩을 유지합니다.
 
-사용자 정의 언어 모델의 개별 단어에 대해 작업할 때 해당 인코딩을 사용해야 합니다. `GET`, `PUT` 또는 `DELETE /v1/customizations/{customization_id}/words/{word_name}` 메소드를 사용하여 단어를 지정할 때 단어에 ACII가 아닌 문자가 포함된 경우 URL에 전달하는 `word_name`을 URL로 인코딩해야 합니다. 
+사용자 정의 언어 모델의 개별 단어에 대해 작업할 때 해당 인코딩을 사용해야 합니다. `GET`, `PUT` 또는 `DELETE /v1/customizations/{customization_id}/words/{word_name}` 메소드를 사용하여 단어를 지정할 때 단어에 ACII가 아닌 문자가 포함된 경우 URL에 전달하는 `word_name`을 URL로 인코딩해야 합니다.
 
 예를 들어, 다음 표는 동일한 문자가 두 개의 다른 인코딩, ASCII 및 UTF-8에서 어떻게 표시되는지를 보여줍니다. URL의 ASCII 문자를 `z`로 전달할 수 있습니다. UTF-8 문자를 `%EF%BD%9A`로 전달해야 합니다.
 
-<table>
+<table style="width:75%">
   <caption>표 1. 문자 인코딩 예제</caption>
   <tr>
-    <th style="text-align:left">문자</th>
-    <th style="text-align:center">인코딩</th>
-    <th style="text-align:center">값</th>
+    <th style="width:15%; text-align:center">문자</th>
+    <th style="width:40%; text-align:center">인코딩</th>
+    <th style="width:45%; text-align:center">값</th>
   </tr>
   <tr>
-    <td style="text-align:left; width:30%">
+    <td style="text-align:center">
       `z`
     </td>
     <td style="text-align:center">
@@ -226,7 +226,7 @@ What is Osteogenesis imperfecta OI?
     </td>
   </tr>
   <tr>
-    <td style="text-align:left; width:30%">
+    <td style="text-align:center">
       <code>&#xff5a;</code>
     </td>
     <td style="text-align:center">
@@ -352,7 +352,7 @@ curl -X PUT -u "apikey:{apikey}"
 
 예를 들어, `display_as` 필드가 `one`인 사용자 정의 단어 `one`을 추가한다고 가정하십시오. 스마트 형식화는 `one`이라는 단어를 숫자 `1`로 변경하며 display-as 값은 적용되지 않습니다. 이 문제를 해결하려면 숫자 `1`에 대한 사용자 정의 단어를 추가하고 동일한 `display_as` 필드를 해당 단어에 적용할 수 있습니다.
 
-이러한 기능을 사용한 작업에 대한 자세한 정보는 [스마트 형식화](/docs/services/speech-to-text/output.html#smart_formatting) 및 [숫자 교정](/docs/services/speech-to-text/output.html#redaction)을 참조하십시오.
+이러한 기능을 사용한 작업에 대한 자세한 정보는 [스마트 형식화](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting) 및 [숫자 교정](/docs/services/speech-to-text?topic=speech-to-text-output#redaction)을 참조하십시오.
 
 ### 사용자 정의 단어를 추가하거나 수정하면 어떻게 됩니까?
 {: #parseWord}
@@ -420,7 +420,8 @@ curl -X PUT -u "apikey:{apikey}"
     <td style="text-align:left; vertical-align:top">
       <ul style="margin-left:20px; padding:0px">
         <li style="margin:10px 0px; line-height:120%">
-          <em>단어가 서비스의 기본 어휘에 없는 경우</em> 서비스가 <code>sounds_like</code> 필드를 단어의 발음으로 설정하고 <code>display_as</code> 필드를 지정된 대로 남겨 둡니다. </li>
+          <em>단어가 서비스의 기본 어휘에 없는 경우</em> 서비스가 <code>sounds_like</code> 필드를 단어의 발음으로 설정하고 <code>display_as</code> 필드를 지정된 대로 남겨 둡니다.
+        </li>
         <li style="margin:10px 0px; line-height:120%">
           <em>단어가 서비스의 기본 어휘에 있는 경우</em> 서비스가 <code>sounds_like</code>를 비워 두고 <code>display_as</code> 필드를 지정된 대로 남겨 둡니다.
         </li>
@@ -453,12 +454,12 @@ curl -X PUT -u "apikey:{apikey}"
 특히 말뭉치를 사용자 정의 언어 모델에 추가하거나 여러 사용자 정의 단어를 한 번에 추가하는 경우 모델의 오디오 리소스에 있는 OOV 단어를 검사하십시오.
 
 -   *철자 오류 및 기타 오류를 찾으십시오.* 특히 크기가 클 수 있는 말뭉치를 추가할 때 쉽게 실수할 수 있습니다. 말뭉치(또는 문법) 파일의 철자 오류는 말뭉치 파일에 남아 있는 잘못된 형식의 HTML 태그와 같이 모델의 단어 리소스에 새 단어를 추가하는 의도하지 않은 결과를 초래합니다.
--   *유사 발음을 확인하십시오. *이 서비스는 OOV 단어에 대한 유사 발음을 자동으로 생성합니다. 대부분의 경우 이러한 발음으로 충분합니다. 그러나 맞춤법이 비정상적이거나 발음하기 어려운 단어와 약어 및 기술 용어의 경우 정확성을 위해 발음을 검토하는 것이 좋습니다.
+-   *유사 발음을 확인하십시오. * 이 서비스는 OOV 단어에 대한 유사 발음을 자동으로 생성합니다. 대부분의 경우 이러한 발음으로 충분합니다. 그러나 맞춤법이 비정상적이거나 발음하기 어려운 단어와 약어 및 기술 용어의 경우 정확성을 위해 발음을 검토하는 것이 좋습니다.
 
 사용자 정의 모델에 대한 단어의 유효성을 검증하고 필요한 경우 정정하려면 단어가 단어 리소스에 추가된 방법과 관계없이 다음 메소드를 사용하십시오.
 
--   `GET /v1/customizations/{customization_id}/words` 메소드를 사용하여 사용자 정의 모델의 모든 단어를 나열하거나 `GET /v1/customizations/{customization_id}/words/{word_name}` 메소드를 사용하여 개별 단어를 조회하십시오. 자세한 정보는 [사용자 정의 언어 모델의 단어 나열](/docs/services/speech-to-text/language-words.html#listWords)을 참조하십시오.
+-   `GET /v1/customizations/{customization_id}/words` 메소드를 사용하여 사용자 정의 모델의 모든 단어를 나열하거나 `GET /v1/customizations/{customization_id}/words/{word_name}` 메소드를 사용하여 개별 단어를 조회하십시오. 자세한 정보는 [사용자 정의 언어 모델의 단어 나열](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords)을 참조하십시오.
 -   `POST /v1/customizations/{customization_id}/words` 또는 `PUT /v1/customizations/{customization_id}/words/{word_name}` 메소드를 통해 사용자 정의 모델의 단어를 수정하여 오류를 정정하거나 sounds-like 또는 display-as 값을 추가하십시오. 자세한 정보는 [사용자 정의 단어에 대한 작업](#workingWords)을 참조하십시오.
--   `DELETE /v1/customizations/{customization_id}/words/{word_name}` 메소드를 사용하여 오류로 인해(예를 들어, 말뭉치의 철자 또는 기타 실수로) 도입된 불필요한 단어를 삭제합니다. 자세한 정보는 [사용자 정의 언어 모델에서 단어 삭제](/docs/services/speech-to-text/language-words.html#deleteWord)를 참조하십시오.
-    -   단어가 말뭉치에서 추출된 경우 대신 말뭉치 텍스트 파일을 업데이트하여 오류를 정정한 후 `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` 메소드의 `allow_overwrite` 매개변수를 사용하여 파일을 다시 로드할 수 있습니다. 자세한 정보는 [사용자 정의 언어 모델에 말뭉치 추가](/docs/services/speech-to-text/language-create.html#addCorpus)를 참조하십시오. 
-    -   단어가 문법에서 추출된 경우 문법 파일을 업데이트하여 오류를 정정한 후 `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` 메소드의 `allow_overwrite` 매개변수를 사용하여 파일을 다시 로드할 수 있습니다. 자세한 정보는 [사용자 정의 언어 모델에 문법 추가](/docs/services/speech-to-text/grammar-add.html#addGrammar)를 참조하십시오. 
+-   `DELETE /v1/customizations/{customization_id}/words/{word_name}` 메소드를 사용하여 오류로 인해(예를 들어, 말뭉치의 철자 또는 기타 실수로) 도입된 불필요한 단어를 삭제합니다. 자세한 정보는 [사용자 정의 언어 모델에서 단어 삭제](/docs/services/speech-to-text?topic=speech-to-text-manageWords#deleteWord)를 참조하십시오.
+    -   단어가 말뭉치에서 추출된 경우 대신 말뭉치 텍스트 파일을 업데이트하여 오류를 정정한 후 `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` 메소드의 `allow_overwrite` 매개변수를 사용하여 파일을 다시 로드할 수 있습니다. 자세한 정보는 [사용자 정의 언어 모델에 말뭉치 추가](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus)를 참조하십시오.
+    -   단어가 문법에서 추출된 경우 문법 파일을 업데이트하여 오류를 정정한 후 `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` 메소드의 `allow_overwrite` 매개변수를 사용하여 파일을 다시 로드할 수 있습니다. 자세한 정보는 [사용자 정의 언어 모델에 문법 추가](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar)를 참조하십시오.

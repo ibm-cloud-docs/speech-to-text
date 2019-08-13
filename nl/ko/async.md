@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -33,7 +33,7 @@ subcollection: speech-to-text
 
 두 가지 접근 방식은 상호 배타적이지 않습니다. 콜백 알림을 수신하도록 선택하지만 여전히 서비스를 폴링하여 최신 상태를 얻거나 서비스에 접속하여 수동으로 결과를 검색할 수 있습니다. 다음 섹션에서는 각 접근 방식으로 비동기 HTTP 인터페이스를 사용하는 방법에 대해 설명합니다.
 
-최대 1GB 및 최소 100바이트의 오디오 데이터를 단일 요청으로 제출하십시오. 오디오 형식에 대한 정보와 압축을 사용하여 요청과 함께 전송할 수 있는 오디오의 양을 최대화하는 방법에 대한 정보는 [오디오 형식](/docs/services/speech-to-text/audio-formats.html)을 참조하십시오. 인터페이스의 개별 메소드에 대한 자세한 정보는 [API 참조 ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://{DomainName}/apidocs/speech-to-text){: new_window}를 참조하십시오.
+최대 1GB 및 최소 100바이트의 오디오 데이터를 단일 요청으로 제출하십시오. 오디오 형식에 대한 정보와 압축을 사용하여 요청과 함께 전송할 수 있는 오디오의 양을 최대화하는 방법에 대한 정보는 [오디오 형식](/docs/services/speech-to-text?topic=speech-to-text-audio-formats)을 참조하십시오. 인터페이스의 개별 메소드에 대한 자세한 정보는 [API 참조](https://{DomainName}/apidocs/speech-to-text){: external}를 참조하십시오.
 
 ## 사용 모델
 {: #usage}
@@ -128,9 +128,9 @@ HTTPS, however, is not ideal in terms of additional development overhead. Moreov
     -   작업에 대한 각 알림에 포함될 문자열을 지정하기 위한 `user_token`. 무제한 수의 작업에 동일한 콜백 URL을 사용할 수 있으므로 사용자 토큰을 사용하여 여러 작업에 대한 알림을 구별할 수 있습니다.
 -   *폴링을 사용하려면* `callback_url`, `events` 및 `user_token` 조회 매개변수를 생략하십시오. 그런 다음 `GET /v1/recognitions` 또는 `GET /v1/recognitions/{id}` 메소드를 사용하여 작업의 상태를 확인해야 합니다. 작업이 완료되면 후자를 사용하여 결과를 검색합니다.
 
-두 경우 모두에 `results_ttl` 조회 매개변수를 포함하여 작업이 완료된 후 결과가 사용 가능한 상태로 유지되는 시간(분)을 지정할 수 있습니다.
+두 경우 모두에 `results_ttl` 조회 매개변수를 포함하여 작업이 완료된 후 결과가 사용 가능한 상태로 유지되는 시간(분)을 지정할 수 있습니다. 새 작업은 해당 인증 정보를 사용하여 이를 작성한 서비스의 인스턴스가 소유합니다. 
 
-비동기 인터페이스에 특정한 이전 매개변수 이외에 `POST /v1/recognitions` 메소드는 WebSocket 및 동기 HTTP 인터페이스와 동일한 매개변수 중 대부분을 지원됩니다. 자세한 정보는 [매개변수 요약](/docs/services/speech-to-text/summary.html)을 참조하십시오.
+비동기 인터페이스에 특정한 이전 매개변수 이외에 `POST /v1/recognitions` 메소드는 WebSocket 및 동기 HTTP 인터페이스와 동일한 매개변수 중 대부분을 지원됩니다. 자세한 정보는 [매개변수 요약](/docs/services/speech-to-text?topic=speech-to-text-summary)을 참조하십시오.
 
 ### 콜백 알림
 {: #notifications}
@@ -219,7 +219,7 @@ curl -X POST -u "apikey:{apikey}"
 -   작업이 콜백 URL과 함께 제출되었지만 `recognitions.completed_with_results` 이벤트를 지정하지 않았습니다.
 -   작업이 100개의 최신 미해결 작업 중 하나가 아닙니다. `id` 경로 매개변수를 생략하면 100개의 최신 작업만 리턴됩니다.
 
-그러나 여전히 이 메소드를 사용하여 콜백 URL 및 `recognitions.completed_with_results` 이벤트를 지정한 작업의 결과를 검색할 수 있습니다. 사용 가능한 상태로 유지되는 동안 원하는 횟수만큼 작업의 결과를 검색할 수 있습니다. `DELETE /v1/recognitions/{id}` 메소드를 사용하여 삭제하거나 작업의 TTL(Time To Live)이 만료될 때까지 작업 및 해당 결과가 사용 가능한 상태로 유지됩니다. 기본적으로 `POST /v1/recognitions` 메소드의 `results_ttl` 매개변수를 사용하여 다른 TTL(Time To Live)을 지정하지 않는 한 1주일 후에 결과가 만료됩니다. 
+그러나 여전히 이 메소드를 사용하여 콜백 URL 및 `recognitions.completed_with_results` 이벤트를 지정한 작업의 결과를 검색할 수 있습니다. 사용 가능한 상태로 유지되는 동안 원하는 횟수만큼 작업의 결과를 검색할 수 있습니다. `DELETE /v1/recognitions/{id}` 메소드를 사용하여 삭제하거나 작업의 TTL(Time To Live)이 만료될 때까지 작업 및 해당 결과가 사용 가능한 상태로 유지됩니다. 기본적으로 `POST /v1/recognitions` 메소드의 `results_ttl` 매개변수를 사용하여 다른 TTL(Time To Live)을 지정하지 않는 한 1주일 후에 결과가 만료됩니다.
 
 ### 결과가 없는 상태의 예제
 {: #withoutResults}
@@ -283,7 +283,7 @@ curl -X GET -u "apikey:{apikey}"
                   6.33
                 ]
               ],
-              "confidence": 0.89
+              "confidence": 0.96
             }
           ]
         }
@@ -300,7 +300,7 @@ curl -X GET -u "apikey:{apikey}"
 ## 최신 작업의 상태 확인
 {: #jobs}
 
-`GET /v1/recognitions` 메소드를 호출하여 최신 작업의 상태를 확인할 수 있습니다. 이 메소드는 호출 시 사용된 서비스 인증 정보와 연관된 100개의 최신 미해결 작업의 상태를 리턴합니다. 이 메소드는 각 작업의 ID 및 상태를 작성 및 업데이트 시간과 함께 리턴합니다. 작업이 콜백 URL 및 사용자 토큰으로 작성된 경우 이 메소드가 작업에 대한 사용자 토큰도 리턴합니다.
+`GET /v1/recognitions` 메소드를 호출하여 최신 작업의 상태를 확인할 수 있습니다. 이 메소드는 호출 시 사용된 인증 정보와 연관된 100개의 최신 미해결 작업의 상태를 리턴합니다. 이 메소드는 각 작업의 ID 및 상태를 작성 및 업데이트 시간과 함께 리턴합니다. 작업이 콜백 URL 및 사용자 토큰으로 작성된 경우 이 메소드가 작업에 대한 사용자 토큰도 리턴합니다.
 
 응답에는 다음 상태 중 하나가 포함됩니다.
 
@@ -309,12 +309,12 @@ curl -X GET -u "apikey:{apikey}"
 -   `completed`: 서비스가 작업 처리를 완료했습니다. 작업이 콜백 URL 및 `recognitions.completed_with_results` 이벤트를 지정한 경우 서비스가 결과를 콜백 알림과 함께 전송했습니다. 그렇지 않으면 `GET /v1/recognitions/{id}` 메소드를 사용하여 결과를 얻으십시오.
 -   `failed`: 어떤 이유로든 작업이 실패했습니다.
 
-`DELETE /v1/recognitions/{id}` 메소드를 사용하여 삭제하거나 작업의 TTL(Time To Live)이 만료될 때까지 작업 및 해당 결과가 사용 가능한 상태로 유지됩니다. 
+`DELETE /v1/recognitions/{id}` 메소드를 사용하여 삭제하거나 작업의 TTL(Time To Live)이 만료될 때까지 작업 및 해당 결과가 사용 가능한 상태로 유지됩니다.
 
 ### 예제
 {: #statusExample}
 
-다음 예제에서는 호출자의 서비스 인증 정보와 연관된 최신 현재 작업의 상태를 요청합니다. 사용자에게 다양한 상태에 있는 세 개의 미해결 작업이 있습니다. 첫 번째 작업은 콜백 URL 및 사용자 토큰으로 작성되었습니다.
+다음 예제에서는 호출자의 인증 정보와 연관된 최신 현재 작업의 상태를 요청합니다. 사용자에게 다양한 상태에 있는 세 개의 미해결 작업이 있습니다. 첫 번째 작업은 콜백 URL 및 사용자 토큰으로 작성되었습니다.
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
