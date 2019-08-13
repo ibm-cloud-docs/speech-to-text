@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -36,15 +36,15 @@ subcollection: speech-to-text
 
 {{site.data.keyword.cloud}} {{site.data.keyword.watson}} 리소스에 대한 GDPR 지원을 요청해야 하는 경우
 
--   유럽 연합(EU)의 경우 [유럽 연합에서 작성된 {{site.data.keyword.cloud_notm}} Watson 리소스에 대한 지원 요청](/docs/services/watson/getting-started-gdpr-sar.html#request-EU)을 참조하십시오.
--   EU 이외의 지역의 경우 [유럽 연합 외부의 리소스에 대한 지원 요청](/docs/services/watson/getting-started-gdpr-sar.html#request-non-EU)을 참조하십시오.
+-   유럽 연합(EU)의 경우 [유럽 연합에서 작성된 {{site.data.keyword.cloud_notm}} Watson 리소스에 대한 지원 요청](/docs/services/watson?topic=watson-gdpr-sar#request-EU)을 참조하십시오.
+-   EU 이외의 지역의 경우 [유럽 연합 외부의 리소스에 대한 지원 요청](/docs/services/watson?topic=watson-gdpr-sar#request-non-EU)을 참조하십시오.
 
 ## 유럽 연합 일반 개인정보 보호법률(General Data Protection Regulation, GDPR)
 {: #gdpr}
 
 {{site.data.keyword.IBM_notm}}은 고객과 파트너가 GDPR 규제를 준수하는 데 도움을 줄 수 있도록 혁신적인 데이터 개인정보 보호, 보안 및 통제 솔루션을 제공하기 위해 노력하고 있습니다.
 
-[여기 ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](../../icons/launch-glyph.svg "외부 링크 아이콘")](http://www.ibm.com/gdpr)에서 규제 준수 과정을 지원하기 위한 {{site.data.keyword.IBM_notm}}의 자체 GDPR 준비 과정과 GDPR 기능 및 오퍼링에 대해 자세히 알아보십시오.{: new_window}.
+[여기](http://www.ibm.com/gdpr){: external}에서 규제 준수 과정을 지원하기 위한 {{site.data.keyword.IBM_notm}}의 자체 GDPR 준비 과정 및 GDPR 기능과 오퍼링에 대해 자세히 알아보십시오. 
 
 ## Speech to Text 서비스에서 데이터 레이블 지정 및 삭제
 {: #gdpr-speech-to-text}

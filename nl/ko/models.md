@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-07-21"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -36,12 +36,12 @@ subcollection: speech-to-text
 -   *광대역 모델*은 16KHz 이상으로 샘플링된 오디오에 사용합니다. 응답성이 뛰어난 실시간 애플리케이션(라이브 음성 애플리케이션)의 경우 광대역 모델을 사용하십시오.
 -   *협대역 모델*은 8KHz로 샘플링된 오디오에 사용합니다. 이 샘플링 속도의 일반적인 용도인 전화 음성의 오프라인 디코딩에는 협대역 모델을 사용하십시오.
 
-애플리케이션에 적합한 모델을 선택하는 것이 중요합니다. 오디오의 샘플링 속도(및 언어)와 일치하는 모델을 사용하십시오. 이 서비스는 사용자가 지정하는 모델과 일치하도록 오디오의 샘플링 속도를 자동으로 조정합니다. 자세한 정보는 [샘플링 속도](/docs/services/speech-to-text/audio-formats.html#samplingRate)를 참조하십시오.
+애플리케이션에 적합한 모델을 선택하는 것이 중요합니다. 오디오의 샘플링 속도(및 언어)와 일치하는 모델을 사용하십시오. 이 서비스는 사용자가 지정하는 모델과 일치하도록 오디오의 샘플링 속도를 자동으로 조정합니다. 자세한 정보는 [샘플링 속도](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#samplingRate)를 참조하십시오.
 
-최상의 인식 정확도를 얻으려면 오디오의 주파수 컨텐츠도 고려해야 합니다. 자세한 정보는 [오디오 주파수](/docs/services/speech-to-text/audio-formats.html#frequency)를 참조하십시오.
+최상의 인식 정확도를 얻으려면 오디오의 주파수 컨텐츠도 고려해야 합니다. 자세한 정보는 [오디오 주파수](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#frequency)를 참조하십시오.
 {: tip}
 
-표 1에는 각 언어에 대해 지원되는 모델이 나열되어 있습니다. 요청에서 `model` 매개변수를 생략하면 기본적으로 서비스가 미국 영어 광대역 모델인 `en-US_BroadbandModel`을 사용합니다.
+표 1에는 각 언어에 대해 지원되는 모델이 나열되어 있습니다. 요청에서 `model` 매개변수를 생략하면 기본적으로 서비스가 미국 영어 광대역 모델인 `en-US_BroadbandModel`을 사용합니다. *베타*로 표시되지 않으면 일반적으로 모든 언어가 프로덕션용으로 GA(Generally Available)됩니다. 
 
 <table>
   <caption>표 1. 지원되는 언어 모델</caption>
@@ -51,9 +51,30 @@ subcollection: speech-to-text
     <th style="text-align:center">협대역 모델</th>
   </tr>
   <tr>
+    <td>아랍어(현대 표준)</td>
+    <td style="text-align:center"><code>ar-AR_BroadbandModel</code></td>
+    <td style="text-align:center">지원되지 않음</td>
+  </tr>
+  <tr>
     <td>브라질 포르투갈어</td>
     <td style="text-align:center"><code>pt-BR_BroadbandModel</code></td>
     <td style="text-align:center"><code>pt-BR_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>중국어(간체)</td>
+    <td style="text-align:center"><code>zh-CN_BroadbandModel</code></td>
+    <td style="text-align:center"><code>zh-CN_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>영어(영국)</td>
+    <td style="text-align:center"><code>en-GB_BroadbandModel</code></td>
+    <td style="text-align:center"><code>en-GB_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>영어(미국)</td>
+    <td style="text-align:center"><code>en-US_BroadbandModel</code></td>
+    <td style="text-align:center"><code>en-US_NarrowbandModel</code></br>
+      <code>en-US_ShortForm_NarrowbandModel</code></td>
   </tr>
   <tr>
     <td>프랑스어</td>
@@ -76,30 +97,34 @@ subcollection: speech-to-text
     <td style="text-align:center"><code>ko-KR_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>중국어(간체)</td>
-    <td style="text-align:center"><code>zh-CN_BroadbandModel</code></td>
-    <td style="text-align:center"><code>zh-CN_NarrowbandModel</code></td>
+    <td>스페인어(아르헨티나어, 베타)</td>
+    <td style="text-align:center"><code>es-AR_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-AR_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>현대 표준 아랍어</td>
-    <td style="text-align:center"><code>ar-AR_BroadbandModel</code></td>
-    <td style="text-align:center">지원되지 않음</td>
-  </tr>
-  <tr>
-    <td>스페인어</td>
+    <td>스페인어(카스티야어)</td>
     <td style="text-align:center"><code>es-ES_BroadbandModel</code></td>
     <td style="text-align:center"><code>es-ES_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>영국 영어</td>
-    <td style="text-align:center"><code>en-GB_BroadbandModel</code></td>
-    <td style="text-align:center"><code>en-GB_NarrowbandModel</code></td>
+    <td>스페인어(칠레어, 베타)</td>
+    <td style="text-align:center"><code>es-CL_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-CL_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>미국 영어</td>
-    <td style="text-align:center"><code>en-US_BroadbandModel</code></td>
-    <td style="text-align:center"><code>en-US_NarrowbandModel</code></br>
-      <code>en-US_ShortForm_NarrowbandModel</code></td>
+    <td>스페인어(콜롬비아어, 베타)</td>
+    <td style="text-align:center"><code>es-CO_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-CO_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>스페인어(멕시코어, 베타)</td>
+    <td style="text-align:center"><code>es-MX_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-MX_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>스페인어(페루어, 베타)</td>
+    <td style="text-align:center"><code>es-PE_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-PE_NarrowbandModel</code></td>
   </tr>
 </table>
 
@@ -108,10 +133,10 @@ subcollection: speech-to-text
 
 미국 영어 약식 모델인 `en-US_ShortForm_NarrowbandModel`이 대화식 음성 응답(IVR) 및 자동화된 고객 지원 솔루션에 대한 음성 인식을 개선할 수 있습니다. 약식 모델은 자동화된 콜센터 및 인간 지원 콜센터와 같은 고객 지원 설정에서 자주 표현되는 짧은 발화를 인식하도록 훈련됩니다. 예를 들어, 이 모델은 숫자, 단일 문자로 된 단어 및 이름 맞춤법과 같은 정밀한 발화와 예-아니오 응답을 위해 조정됩니다. 문법을 약식 모델과 함께 사용하면 인식 결과가 더 개선될 수 있습니다.
 
-모든 모델과 마찬가지로, 잡음 환경은 결과에 부정적인 영향을 미칠 수 있습니다. 예를 들어, 공항, 이동 중인 차량, 회의실 및 여러 화자의 배경 음향 잡음은 변환 정확도를 감소시킬 수 있습니다. 스피커폰의 오디오도 이러한 디바이스에 공통적인 반향으로 인해 정확도를 감소시킬 수 있습니다. 사용자 정의 음향 모델을 약식 모델과 함께 사용하면 이러한 영향이 상쇄될 수 있습니다.
+모든 모델과 마찬가지로, 잡음 환경은 결과에 부정적인 영향을 미칠 수 있습니다. 예를 들어, 공항, 이동 중인 차량, 회의실 및 여러 화자의 배경 음향 잡음은 변환 정확도를 감소시킬 수 있습니다.  스피커폰의 오디오도 이러한 디바이스에 공통적인 반향으로 인해 정확도를 감소시킬 수 있습니다. 사용자 정의 음향 모델을 약식 모델과 함께 사용하면 이러한 영향이 상쇄될 수 있습니다.
 
--   언어 모델 및 음향 모델 사용자 정의에 대한 자세한 정보는 [사용자 정의 인터페이스](/docs/services/speech-to-text/custom.html)를 참조하십시오.
--   문법에 대한 자세한 정보는 [사용자 정의 언어 모델에 문법 사용](/docs/services/speech-to-text/grammar.html)을 참조하십시오.
+-   언어 모델 및 음향 모델 사용자 정의에 대한 자세한 정보는 [사용자 정의 인터페이스](/docs/services/speech-to-text?topic=speech-to-text-customization)를 참조하십시오.
+-   문법에 대한 자세한 정보는 [사용자 정의 언어 모델에 문법 사용](/docs/services/speech-to-text?topic=speech-to-text-grammars)을 참조하십시오.
 
 ### 언어 모델 예제
 {: #modelsExample}

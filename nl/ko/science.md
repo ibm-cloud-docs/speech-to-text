@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-07-03"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,14 +25,22 @@ subcollection: speech-to-text
 # 서비스를 뒷받침하는 과학
 {: #science}
 
-{{site.data.keyword.IBM}}은 1960년대 초부터 음성 인식과 오디오 생성 연구 및 시스템 분야를 개척해 왔습니다. {{site.data.keyword.speechtotextfull}} 서비스를 통해 이 전통을 이어가고 있습니다. 다음 연구 및 학술 논문은 특히 이 서비스의 기술 기반과 관련이 있습니다.
+[Pioneering Speech Recognition](https://www.ibm.com/ibm/history/ibm100/us/en/icons/speechreco/){: external}에 설명된 대로 {{site.data.keyword.IBM}}은 1960년대 초부터 음성 인식 연구를 개척해 왔습니다. 예를 들어, [Bahl, Jelinek 및 Mercer(1983)](/docs/services/speech-to-text?topic=speech-to-text-references#bahl1983)는 기본적으로 모든 현대 음성 인식 시스템에서 사용되는 음성 인식에 대한 기본 수학적 접근법에 대해 설명합니다. 또한 [Jelinek(1985)](/docs/services/speech-to-text?topic=speech-to-text-references#jelinek1985)은 받아쓰기를 위한 최초의 실시간 대형 어휘 음성 인식 시스템의 작성에 대해 설명합니다. 이 논문은 오늘날 여전히 해결되지 않은 주제로 남아 있는 문제점에 대해서도 설명합니다.
 {: shortdesc}
 
-1.  Bahl, Lalit R., Frederick Jelinek 및 Robert L. Mercer. [*A Maximum Likelihood Approach to Continuous Speech Recognition.* ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=4767370&url=http%3A%2F%2Fieeexplore.ieee.org%2Fiel5%2F34%2F4767360%2F04767370.pdf%3Farnumber%3D4767370){: new_window} IEEE Transactions on Pattern Analysis and Machine Intelligence, Vol. 5(2)(1983년 3월): 179 - 190페이지. 이 논문은 기본적으로 모든 현대 음성 인식 시스템에서 사용되는 음성 인식에 대한 기본 수학적 접근법에 대해 설명합니다.
-1.  Hinton, Geoffrey, Li Deng, Dong Yu, George E. Dahl, Abdel-rahman Mohamed, Navdeep Jaitly, Andrew Senior, Vincent Vanhoucke, Patrick Nguyen, Tara N. Sainath 및 Brian Kingsbury. [*Deep Neural Networks for Acoustic Modeling in Speech Recognition: The shared views of four research groups.* ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6296526){: new_window} Signal Processing Magazine, IEEE, Vol. 29(6)(2012년 11월): 82 - 97페이지.
-1.  Jelinek, Frederick. [*The Development of an Experimental Discrete Dictation Recognizer.* ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=1457611&url=http%3A%2F%2Fieeexplore.ieee.org%2Fiel5%2F5%2F31355%2F01457611.pdf%3Farnumber%3D1457611){: new_window} Proceedings of the IEEE, Vol. 73(11)(1995년 11월): 1616 - 1624페이지. 이 논문은 받아쓰기를 위한 최초의 실시간 대형 어휘 음성 인식 시스템의 작성에 대해 설명합니다. 이 논문은 오늘날 여전히 해결되지 않은 주제로 남아 있는 문제점에 대해 설명합니다.
-1.  Padmanabhan, Mukund 및 Michael Picheny. [*Large-Vocabulary Speech Recognition Algorithms.* ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=993770&url=http%3A%2F%2Fieeexplore.ieee.org%2Fiel5%2F2%2F21439%2F00993770.pdf%3Farnumber%3D993770){: new_window} Computer, Vol. 35(4)(2002): 42 - 50페이지.
-1.  Picheny, Michael, David Nahamoo, Vaibhava Goel, Brian Kingsbury, Bhuvana Ramabhadran, Steven J. Rennie 및 George Saon. [*Trends and Advances in Speech Recognition.* ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=6032775&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D6032775){: new_window} {{site.data.keyword.IBM_notm}} Journal of Research and Development, Vol. 55(5)(2011년 10월): 2:1 - 2:18페이지.
-1.  Saon, George, Hong-Kwang J. Kuo, Steven Rennie 및 Michael Picheny. [*The {{site.data.keyword.IBM_notm}} 2015 English Conversational Telephone Speech Recognition System.* ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://arxiv.org/pdf/1505.05899.pdf){: new_window} arXiv preprint, arXiv:1505.05899(2015).
-1.  Saon, George, Tom Sercu, Steven Rennie 및 Hong-Kwang J. Kuo. [*The {{site.data.keyword.IBM_notm}} 2016 English Conversational Telephone Speech Recognition System.* ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](https://arxiv.org/pdf/1604.08242v1.pdf){: new_window} arXiv preprint, arXiv:1604.08242(2016).
-1.  Soltau, Hagen, George Saon 및 Tara N. Sainath. [*Joint Training of Convolutional and Non-Convolutional Neural Networks.* ![외부 링크 아이콘](../../icons/launch-glyph.svg "외부 링크 아이콘")](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=6854669&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D6854669){: new_window} Proceedings of the 2014 IEEE International Conference on Acoustic, Speech and Signal Processing (ICASSP), Florence, Italy(2014년 5월): 5572 - 5576페이지.
+{{site.data.keyword.IBM_notm}}은 {{site.data.keyword.speechtotextfull}} 서비스를 사용하여 이 유서 깊은 연구와 개발을 계속하고 있습니다. {{site.data.keyword.IBM_notm}}은 CTS(Conversational Telephone Speech)([Saon 외, 2017](/docs/services/speech-to-text?topic=speech-to-text-references#saon2017)) 및 BN(Broadcast News) 트랜잭션([Thomas 외, 2019](/docs/services/speech-to-text?topic=speech-to-text-references#thomas2019))을 위해 공용 벤치마크 데이터 세트에 대한 업계 최고의 음성 인식 정확성을 입증했습니다. {{site.data.keyword.IBM_notm}}은 음향 모델링의 효과를 입증하는 것 외에도 언어 모델링([Kurata 외, 2017a](/docs/services/speech-to-text?topic=speech-to-text-references#kurata2017a) 및 [Kurata 외, 2017b](/docs/services/speech-to-text?topic=speech-to-text-references#kurata2017a))에 대한 신경망을 활용했습니다. 
+
+다음에서는 {{site.data.keyword.IBM_notm}}의 최신 음성 인식 성과를 요약하여 발표합니다. 
+
+-   [Reaching new records in speech recognition](https://www.ibm.com/blogs/watson/2017/03/reaching-new-records-in-speech-recognition/){: external}
+-   [{{site.data.keyword.IBM_notm}} Breaks Industry Record for Conversational Speech Recognition by Extending Deep Learning Technologies](https://www-03.ibm.com/press/us/en/pressrelease/51790.wss){: external}
+-   [{{site.data.keyword.IBM_notm}} Sets New Transcription Performance Milestone on Automatic Broadcast News Captioning](https://www.ibm.com/blogs/research/2019/05/automatic-broadcast-news-captioning/){: external}
+
+이러한 성과는 {{site.data.keyword.IBM_notm}}의 음성 서비스를 발전시키는 데 기여합니다. 클라우드 기반 {{site.data.keyword.speechtotextshort}} 서비스에 최적인 최신 아이디어에는 다음이 포함됩니다. 
+
+-   *언어 모델링의 경우 * {{site.data.keyword.IBM_notm}}은 신경망 기반 언어 모델을 활용하여 훈련 텍스트([Suzuki 외, 2019](/docs/services/speech-to-text?topic=speech-to-text-references#suzuki2019))를 생성합니다.
+-   *음향 모델링의 경우 * {{site.data.keyword.IBM_notm}}은 소형 모델을 사용하여 클라우드의 리소스 제한사항을 수용합니다. 이 소형 모델을 훈련시키기 위해 {{site.data.keyword.IBM_notm}}은 "교사-학생 훈련/지식 증류"를 사용합니다. LSTM(Long Short-Term Memory), VGG 및 ResNet(Residual Network)와 같은 강력한 대형 신경망이 먼저 훈련됩니다. 그런 다음 실제 배치([Fukuda 외, 2017](/docs/services/speech-to-text?topic=speech-to-text-references#fukuda2017))를 위해 소형 모델을 훈련시키기 위해 이러한 네트워크의 출력이 교사 신호로 사용됩니다.
+
+새로운 도전을 위해 {{site.data.keyword.IBM_notm}}은 엔드 투 엔드 모델링에도 집중하고 있습니다. 예를 들어, 현재 더욱 개선되고 있는([Saon 외, 2019](/docs/services/speech-to-text?topic=speech-to-text-references#saon2019)) 직접적인 음향 대 단어 모델([Audhkhasi 외, 2017](/docs/services/speech-to-text?topic=speech-to-text-references#audhkhasi2017) 및 [Audhkhasi 외, 2018](/docs/services/speech-to-text?topic=speech-to-text-references#audhkhasi2018))에 대한 강력한 모델링 파이프라인이 설정되었습니다. 또한 클라우드의 추가 배치를 위해 소형 엔드 투 엔드 모델을 작성하도록 최선을 다하고 있습니다([Kurata 및 Audhkhasi, 2019](/docs/services/speech-to-text?topic=speech-to-text-references#kurata2019)).
+
+서비스를 뒷받침하는 과학 연구에 대한 자세한 정보는 [참고 문헌](/docs/services/speech-to-text?topic=speech-to-text-references)에 나열된 문서를 참조하십시오.

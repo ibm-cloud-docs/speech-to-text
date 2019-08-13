@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,12 +25,12 @@ subcollection: speech-to-text
 # 사용자 정의 언어 모델 사용
 {: #languageUse}
 
-사용자 정의 언어 모델을 작성하고 훈련한 후 음성 인식 요청에서 사용할 수 있습니다. 다음 예제에 표시된 대로 `language_customization_id` 조회 매개변수를 사용하여 요청에 대한 사용자 정의 언어 모델을 지정합니다. 사용자 정의 모델의 단어에 지정할 가중치를 서비스에 알릴 수도 있습니다. 자세한 정보는 [사용자 정의 가중치 사용](#weight)을 참조하십시오. 모델을 소유하는 서비스 인스턴스에 대한 서비스 인증 정보로 요청을 발행해야 합니다.
+사용자 정의 언어 모델을 작성하고 훈련한 후 음성 인식 요청에서 사용할 수 있습니다. 다음 예제에 표시된 대로 `language_customization_id` 조회 매개변수를 사용하여 요청에 대한 사용자 정의 언어 모델을 지정합니다. 사용자 정의 모델의 단어에 지정할 가중치를 서비스에 알릴 수도 있습니다. 자세한 정보는 [사용자 정의 가중치 사용](#weight)을 참조하십시오. 모델을 소유하는 서비스 인스턴스에 대한 인증 정보로 요청을 발행해야 합니다.
 {: shortdesc}
 
-동일하거나 다른 도메인에 대한 여러 사용자 정의 언어 모델을 작성할 수 있습니다. 그러나 `language_customization_id` 매개변수와 함께 사용하는 경우 하나의 사용자 정의 언어 모델만 지정할 수 있습니다. 사용자 정의 모델에 문법을 사용하는 예제는 [음성 인식에 문법 사용](/docs/services/speech-to-text/grammar-use.html)을 참조하십시오.
+동일하거나 다른 도메인에 대한 여러 사용자 정의 언어 모델을 작성할 수 있습니다. 그러나 `language_customization_id` 매개변수와 함께 사용하는 경우 하나의 사용자 정의 언어 모델만 지정할 수 있습니다. 사용자 정의 모델에 문법을 사용하는 예제는 [음성 인식에 문법 사용](/docs/services/speech-to-text?topic=speech-to-text-grammarUse)을 참조하십시오.
 
--   [WebSocket 인터페이스](/docs/services/speech-to-text/websockets.html)의 경우 `/v1/recognize` 메소드를 사용하십시오. 지정된 사용자 정의 모델이 연결을 통해 전송된 모든 요청에 대해 사용됩니다.
+-   [WebSocket 인터페이스](/docs/services/speech-to-text?topic=speech-to-text-websockets)의 경우 `/v1/recognize` 메소드를 사용하십시오. 지정된 사용자 정의 모델이 연결을 통해 전송된 모든 요청에 대해 사용됩니다.
 
     ```javascript
     var token = {authentication-token};
@@ -41,7 +41,7 @@ subcollection: speech-to-text
     var websocket = new WebSocket(wsURI);
     ```
     {: codeblock}
--   [동기 HTTP 인터페이스](/docs/services/speech-to-text/http.html)의 경우 `POST /v1/recognize` 메소드를 사용하십시오. 지정된 사용자 정의 모델이 해당 요청에 대해 사용됩니다.
+-   [동기 HTTP 인터페이스](/docs/services/speech-to-text?topic=speech-to-text-http)의 경우 `POST /v1/recognize` 메소드를 사용하십시오. 지정된 사용자 정의 모델이 해당 요청에 대해 사용됩니다.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -50,7 +50,7 @@ subcollection: speech-to-text
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}"
     ```
     {: pre}
--   [비동기 HTTP 인터페이스](/docs/services/speech-to-text/async.html)의 경우 `POST /v1/recognitions` 메소드를 사용하십시오. 지정된 사용자 정의 모델이 해당 요청에 대해 사용됩니다.
+-   [비동기 HTTP 인터페이스](/docs/services/speech-to-text?topic=speech-to-text-async)의 경우 `POST /v1/recognitions` 메소드를 사용하십시오. 지정된 사용자 정의 모델이 해당 요청에 대해 사용됩니다.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -61,7 +61,6 @@ subcollection: speech-to-text
     {: pre}
 
 사용자 정의 모델이 기본 언어 모델인 `en-US_BroadbandModel`을 기반으로 하는 경우 요청에서 언어 모델을 생략할 수 있습니다. 그렇지 않으면 WebSocket 예제에 표시된 대로 `model` 매개변수를 사용하여 기본 모델을 지정해야 합니다. 사용자 정의 모델은 작성 시 기반이 된 기본 모델에만 사용될 수 있습니다.
-
 
 ## 사용자 정의 가중치 사용
 {: #weight}
@@ -101,6 +100,6 @@ subcollection: speech-to-text
 
 사용자 정의 언어 모델을 음성 인식에 적용했지만 서비스가 모델에 포함된 단어를 사용 중이지 않은 것으로 나타나면 다음과 같은 가능한 문제점을 확인하십시오.
 
--   [사용자 정의 언어 모델 사용](#languageUse)에 표시된 대로 사용자 정의 ID를 인식 요청에 올바르게 전달하는지 확인하십시오.
--   사용자 정의 모델의 상태가 `available`인지 확인하십시오. 이는 완전히 훈련되었고 사용할 준비가 되었음을 의미합니다. 자세한 정보는 [사용자 정의 언어 모델 나열](/docs/services/speech-to-text/language-models.html#listModels-language)을 참조하십시오.
--   새 단어에 대해 생성된 발음이 올바른지 확인하십시오. 자세한 정보는 [단어 리소스 유효성 검증](/docs/services/speech-to-text/language-resource.html#validateModel)을 참조하십시오.
+-   이전 예제에서 표시된 대로 사용자 정의 ID를 인식 요청에 올바르게 전달하는지 확인하십시오.
+-   사용자 정의 모델의 상태가 `available`인지 확인하십시오. 이는 완전히 훈련되었고 사용할 준비가 되었음을 의미합니다. 자세한 정보는 [사용자 정의 언어 모델 나열](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language)을 참조하십시오.
+-   새 단어에 대해 생성된 발음이 올바른지 확인하십시오. 자세한 정보는 [단어 리소스 유효성 검증](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel)을 참조하십시오.

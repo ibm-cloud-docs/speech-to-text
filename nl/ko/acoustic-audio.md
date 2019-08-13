@@ -2,14 +2,14 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-19"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # 오디오 리소스 관리
 {: #manageAudio}
 
-사용자 정의 인터페이스에는 오디오 리소스를 사용자 정의 음향 모델에 추가하는 데 사용되는 `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` 메소드가 포함되어 있습니다. 자세한 정보는 [사용자 정의 음향 모델에 오디오 추가](/docs/services/speech-to-text/acoustic-create.html#addAudio)를 참조하십시오. 이 인터페이스에는 사용자 정의 음향 모델의 오디오 리소스를 나열하고 삭제하기 위한 다음 메소드도 포함되어 있습니다.
+사용자 정의 인터페이스에는 오디오 리소스를 사용자 정의 음향 모델에 추가하는 데 사용되는 `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` 메소드가 포함되어 있습니다. 자세한 정보는 [사용자 정의 음향 모델에 오디오 추가](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio)를 참조하십시오. 이 인터페이스에는 사용자 정의 음향 모델의 오디오 리소스를 나열하고 삭제하기 위한 다음 메소드도 포함되어 있습니다.
 {: shortdesc}
 
 ## 사용자 정의 음향 모델에 대한 오디오 리소스 나열
@@ -171,7 +171,7 @@ curl -X GET -u "apikey:{apikey}"
 ## 사용자 정의 음향 모델에서 오디오 리소스 삭제
 {: #deleteAudio}
 
-사용자 정의 음향 모델에서 기존 오디오 리소스를 제거하려면 `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` 메소드를 사용하십시오. 아카이브 유형 오디오 리소스를 삭제하면 서비스가 전체 파일 아카이브를 제거합니다. 현재 인터페이스에서는 아카이브 리소스에서 개별 파일을 삭제할 수 없습니다.
+사용자 정의 음향 모델에서 기존 오디오 리소스를 제거하려면 `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` 메소드를 사용하십시오. 아카이브 유형 오디오 리소스를 삭제하면 서비스가 전체 파일 아카이브를 제거합니다. 서비스에서는 아카이브 리소스에서 개별 파일을 삭제할 수 없습니다.
 
 오디오 리소스를 제거해도 `POST /v1/acoustic_customizations/{customization_id}/train` 메소드를 사용하여 업데이트된 데이터에 대해 모델을 훈련할 때까지 사용자 정의 모델에 영향이 미치지 않습니다. 리소스에 대해 모델을 훈련한 경우 모델을 재훈련할 때까지 기존 오디오 데이터가 계속 음성 인식에 사용됩니다.
 

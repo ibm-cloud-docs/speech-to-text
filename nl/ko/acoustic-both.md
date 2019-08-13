@@ -2,14 +2,14 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-10"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -50,7 +50,7 @@ subcollection: speech-to-text
 
 단어의 변환 또는 목록을 사용하려면 먼저 이 텍스트 데이터가 포함된 사용자 정의 언어 모델을 작성합니다. 사용자 정의 언어 모델로 사용자 정의 음향 모델을 훈련하려면 두 사용자 정의 모델이 모두 동일한 기반 모델의 동일한 버전을 기반으로 해야 합니다. 기본 모델의 새 버전이 사용 가능한 경우 훈련에 성공하려면 두 모델을 모두 기본 모델의 동일한 버전으로 업그레이드해야 합니다.
 
-사용자 정의 언어 모델로 사용자 정의 음향 모델을 훈련하려면 `POST /v1/acoustic_customizations/{customization_id}/train` 메소드의 선택적 `custom_language_model_id` 조회 매개변수를 사용하십시오. `customization_id` 매개변수를 사용하여 음향 모델의 GUID를 전달하고 `custom_language_model_id` 매개변수를 사용하여 사용자 정의 언어 모델의 GUID를 전달하십시오. 두 모델 모두 요청과 함께 전달된 서비스 인증 정보에서 소유해야 합니다.
+사용자 정의 언어 모델로 사용자 정의 음향 모델을 훈련하려면 `POST /v1/acoustic_customizations/{customization_id}/train` 메소드의 선택적 `custom_language_model_id` 조회 매개변수를 사용하십시오. `customization_id` 매개변수를 사용하여 음향 모델의 GUID를 전달하고 `custom_language_model_id` 매개변수를 사용하여 사용자 정의 언어 모델의 GUID를 전달하십시오. 두 모델 모두 요청과 함께 전달된 인증 정보에서 소유해야 합니다.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -65,12 +65,12 @@ curl -X POST -u "apikey:{apikey}"
 
 사용자 정의 언어 모델로 사용자 정의 음향 모델을 훈련했는지 여부와 관계없이 사용자 정의 언어 모델을 사용하면 변환 정확도가 향상될 수 있습니다.
 
--   훈련 중에 사용자 정의 언어 및 사용자 정의 음향 모델을 모두 사용하면 사용자 정의 음향 모델의 품질이 향상됩니다. 
+-   훈련 중에 사용자 정의 언어 및 사용자 정의 음향 모델을 모두 사용하면 사용자 정의 음향 모델의 품질이 향상됩니다.
 -   음성 인식 중에 두 가지 유형의 모델을 모두 사용하면 변환의 품질이 향상됩니다.
 
 사용자 정의 언어 모델에 문법이 포함되어 있는 경우 음성 인식 중에 사용자 정의 언어 모델 및 해당 문법 중 하나를 사용자 정의 음향 모델과 함께 사용할 수도 있습니다.
 
-다음 예제에서는 두 가지 유형의 모델을 모두 HTTP `POST /v1/recognize` 메소드에 전달합니다. `acoustic_customization_id` 매개변수를 사용하여 사용자 정의 음향 모델의 GUID를 전달하고 `language_customization_id` 매개변수를 사용하여 사용자 정의 언어 모델의 GUID를 전달하십시오. 두 모델 모두 요청과 함께 전달된 서비스 인증 정보에서 소유해야 하며 동일한 기본 모델(예: `en-US_BroadbandModel`)을 기반으로 해야 합니다.
+다음 예제에서는 두 가지 유형의 모델을 모두 HTTP `POST /v1/recognize` 메소드에 전달합니다. `acoustic_customization_id` 매개변수를 사용하여 사용자 정의 음향 모델의 GUID를 전달하고 `language_customization_id` 매개변수를 사용하여 사용자 정의 언어 모델의 GUID를 전달하십시오. 두 모델 모두 요청과 함께 전달된 인증 정보에서 소유해야 하며 동일한 기본 모델(예: `en-US_BroadbandModel`)을 기반으로 해야 합니다.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,10 +25,10 @@ subcollection: speech-to-text
 # 사용자 정의 단어 관리
 {: #manageWords}
 
-사용자 정의 인터페이스에는 사용자 정의 모델의 단어를 추가하거나 수정하는 데 사용되는 `POST /v1/customizations/{customization_id}/words` 및 `PUT /v1/customizations/{customization_id}/words/{word_name}` 메소드가 포함되어 있습니다. 자세한 정보는 [사용자 정의 언어 모델에 단어 추가](/docs/services/speech-to-text/language-create.html#addWords)를 참조하십시오. 이 인터페이스에는 사용자 정의 언어 모델의 단어를 나열하고 삭제하기 위한 다음 메소드도 포함되어 있습니다.
+사용자 정의 인터페이스에는 사용자 정의 모델의 단어를 추가하거나 수정하는 데 사용되는 `POST /v1/customizations/{customization_id}/words` 및 `PUT /v1/customizations/{customization_id}/words/{word_name}` 메소드가 포함되어 있습니다. 자세한 정보는 [사용자 정의 언어 모델에 단어 추가](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addWords)를 참조하십시오. 이 인터페이스에는 사용자 정의 언어 모델의 단어를 나열하고 삭제하기 위한 다음 메소드도 포함되어 있습니다.
 {: shortdesc}
 
-말뭉치에서 대부분의 사용자 정의 단어를 추가할 가능성이 있습니다. 말뭉치의 텍스트 파일에서 사용되는 문자 인코딩을 알고 있는지 확인하십시오. 서비스는 텍스트 파일에서 찾은 인코딩을 유지합니다. 사용자 정의 언어 모델의 개별 단어에 대해 작업할 때 해당 인코딩을 사용해야 합니다. `GET`, `PUT` 또는 `DELETE /v1/customizations/{customization_id}/words/{word_name}` 메소드를 사용하여 단어를 지정할 때 단어에 ACII가 아닌 문자가 포함된 경우 URL에 전달하는 `word_name`을 URL로 인코딩해야 합니다. 자세한 정보는 [문자 인코딩](/docs/services/speech-to-text/language-resource.html#charEncoding)을 참조하십시오.
+말뭉치에서 대부분의 사용자 정의 단어를 추가할 가능성이 있습니다. 말뭉치의 텍스트 파일에서 사용되는 문자 인코딩을 알고 있는지 확인하십시오. 서비스는 텍스트 파일에서 찾은 인코딩을 유지합니다. 사용자 정의 언어 모델의 개별 단어에 대해 작업할 때 해당 인코딩을 사용해야 합니다. `GET`, `PUT` 또는 `DELETE /v1/customizations/{customization_id}/words/{word_name}` 메소드를 사용하여 단어를 지정할 때 단어에 ACII가 아닌 문자가 포함된 경우 URL에 전달하는 `word_name`을 URL로 인코딩해야 합니다. 자세한 정보는 [문자 인코딩](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#charEncoding)을 참조하십시오.
 {: important}
 
 ## 사용자 정의 언어 모델의 단어 나열
@@ -46,15 +46,14 @@ subcollection: speech-to-text
     -   `sort` 매개변수는 단어가 정렬되는 방식을 표시합니다. 이 매개변수는 단어가 정렬되는 방식을 표시하는 두 개의 매개변수 `alphabetical` 및 `count`를 받아들입니다. 선택적 `+` 또는 `-`를 인수 앞에 추가하여 결과가 오름차순 또는 내림차순으로 정렬되는지를 표시할 수 있습니다. 기본적으로 이 메소드는 단어를 알파벳 오름차순으로 표시합니다.
 -   `GET /v1/customizations/{customization_id}/words/{word_name}` 메소드는 모델의 단어 리소스에 있는 지정된 하나의 단어에 대한 정보를 나열합니다.
 
-
 단어를 식별하는 `word` 필드 이외에 두 메소드 모두 각 단어에 대한 다음 정보를 리턴합니다.
 
--   단어에 대한 발음의 배열을 표시하는 `sounds_like` 필드. 단어에 대한 sounds-like 값이 제공되지 않으면 이 배열에는 서비스에서 자동으로 생성하는 유사 발음이 포함될 수 있습니다. 자세한 정보는 [sounds_like 필드 사용](/docs/services/speech-to-text/language-resource.html#soundsLike)을 참조하십시오.
--   서비스가 변환에 표시하는 사용자 정의 단어의 맞춤법을 표시하는 `display_as` 필드. 단어에 대한 display-as 값이 제공되지 않으면 이 필드에 빈 문자열이 포함되며, 이 경우 단어는 맞춤법대로 표시됩니다. 자세한 정보는 [display_as 필드 사용](/docs/services/speech-to-text/language-resource.html#displayAs)을 참조하십시오.
+-   단어에 대한 발음의 배열을 표시하는 `sounds_like` 필드. 단어에 대한 sounds-like 값이 제공되지 않으면 이 배열에는 서비스에서 자동으로 생성하는 유사 발음이 포함될 수 있습니다. 자세한 정보는 [sounds_like 필드 사용](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#soundsLike)을 참조하십시오.
+-   서비스가 변환에 표시하는 사용자 정의 단어의 맞춤법을 표시하는 `display_as` 필드. 단어에 대한 display-as 값이 제공되지 않으면 이 필드에 빈 문자열이 포함되며, 이 경우 단어는 맞춤법대로 표시됩니다. 자세한 정보는 [display_as 필드 사용](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#displayAs)을 참조하십시오.
 -   단어가 사용자 정의 모델의 단어 리소스에 추가된 방법을 표시하는 `source` 필드. 이 필드에는 서비스가 단어를 추출한 각 말뭉치 및 문법의 이름이 포함됩니다. 사용자가 직접 단어를 수정하거나 추가한 경우 이 필드에는 `user`라는 문자열이 포함됩니다.
 -   모든 말뭉치 및 문법에서 단어가 발견된 횟수를 표시하는 `count` 필드. 예를 들어, 단어가 하나의 말뭉치에서 5회 발생하고 다른 말뭉치에서 7회 발생하는 경우 count는 `12`입니다.
 
-    단어가 말뭉치 또는 문법에서 추가되기 전에 모델에 사용자 정의 단어를 추가하는 경우 count는 `1`에서 시작합니다. 단어가 먼저 말뭉치 또는 문법에서 추가되고 나중에 수정된 경우 count에는 단어가 말뭉치 및 문법에서 발견된 횟수만 반영됩니다. 
+    단어가 말뭉치 또는 문법에서 추가되기 전에 모델에 사용자 정의 단어를 추가하는 경우 count는 `1`에서 시작합니다. 단어가 먼저 말뭉치 또는 문법에서 추가되고 나중에 수정된 경우 count에는 단어가 말뭉치 및 문법에서 발견된 횟수만 반영됩니다.
 
     `count` 필드가 도입되기 전에 작성된 사용자 정의 모델의 경우 이 필드는 항상 `0`으로 유지됩니다. 이러한 모델에 대한 필드를 업데이트하려면 모델의 말뭉치 및 문법을 다시 추가하고 `allow_overwrite` 매개변수를 요청에 포함하십시오.
     {: note}
