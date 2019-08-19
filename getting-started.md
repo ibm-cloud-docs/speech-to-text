@@ -27,7 +27,7 @@ subcollection: speech-to-text
 {:url: data-credential-placeholder='url'}
 {:hide-dashboard: .hide-dashboard}
 
-# Getting started with Speech to Text
+# Getting started with {{site.data.keyword.speechtotextshort}}
 {: #gettingStarted}
 
 The {{site.data.keyword.speechtotextfull}} service transcribes audio to text to enable speech transcription capabilities for applications. This curl-based tutorial can help you get started quickly with the service. The examples show you how to call the service's `POST /v1/recognize` method to request a transcript.
