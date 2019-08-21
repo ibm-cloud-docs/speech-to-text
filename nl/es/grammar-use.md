@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -28,12 +28,12 @@ subcollection: speech-to-text
 Una vez que haya creado y personalizado el modelo de con su gramática, se puede utilizar la gramática en las solicitudes de reconocimiento de voz con las interfaces WebSocket y HTTP del servicio.
 {: shortdesc}
 
--   Utilice el parámetro `language_customization_id` para especificar el ID de personalización (GUID) del modelo de lenguaje personalizado para el que se ha definido la gramática. Debe enviar la solicitud con las credenciales de servicio correspondientes a la instancia del servicio propietaria del modelo.
+-   Utilice el parámetro `language_customization_id` para especificar el ID de personalización (GUID) del modelo de lenguaje personalizado para el que se ha definido la gramática. Debe enviar la solicitud con las credenciales para la instancia del servicio propietaria del modelo.
 -   Utilice el parámetro `grammar_name` para especificar el nombre de la gramática. Solo puede especificar una gramática con una solicitud.
 
 Cuando se utiliza una gramática, el servicio solo reconoce las palabras de la gramática especificada. El servicio no utiliza palabras personalizadas añadidas desde el corpus, añadidas o modificadas individualmente o reconocidas por otras gramáticas.
 
--   Para la [interfaz WebSocket](/docs/services/speech-to-text/websockets.html), especifique primero el ID de personalización con el parámetro `language_customization_id` del método `/v1/recognize`. Este método se utiliza para establecer una conexión WebSocket con el servicio.
+-   Para la [interfaz WebSocket](/docs/services/speech-to-text?topic=speech-to-text-websockets), especifique primero el ID de personalización con el parámetro `language_customization_id` del método `/v1/recognize`. Este método se utiliza para establecer una conexión WebSocket con el servicio.
 
     ```javascript
     var token = {authentication-token};
@@ -58,7 +58,7 @@ Cuando se utiliza una gramática, el servicio solo reconoce las palabras de la g
     }
     ```
     {: codeblock}
--   Para la [interfaz HTTP síncrona](/docs/services/speech-to-text/http.html), pase ambos parámetros con el método `POST /v1/recognize`.
+-   Para la [interfaz HTTP síncrona](/docs/services/speech-to-text?topic=speech-to-text-http), pase ambos parámetros con el método `POST /v1/recognize`.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -67,7 +67,7 @@ Cuando se utiliza una gramática, el servicio solo reconoce las palabras de la g
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&grammar_name={grammar_name}"
     ```
     {: pre}
--   Para la [interfaz HTTP asíncrona](/docs/services/speech-to-text/async.html), pase ambos parámetros con el método `POST /v1/recognitions`.
+-   Para la [interfaz HTTP asíncrona](/docs/services/speech-to-text?topic=speech-to-text-async), pase ambos parámetros con el método `POST /v1/recognitions`.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"

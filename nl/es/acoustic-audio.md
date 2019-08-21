@@ -2,14 +2,14 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-19"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Gestión de recursos de audio
 {: #manageAudio}
 
-La interfaz de personalización incluye el método `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`, que sirve para añadir un recurso de audio a un modelo acústico personalizado. Para obtener más información, consulte [Adición de audio al modelo acústico personalizado](/docs/services/speech-to-text/acoustic-create.html#addAudio)). La interfaz también incluye los métodos siguientes para obtener una lista y suprimir recursos de audio de un modelo acústico personalizado.
+La interfaz de personalización incluye el método `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`, que sirve para añadir un recurso de audio a un modelo acústico personalizado. Para obtener más información, consulte [Adición de audio al modelo acústico personalizado](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio). La interfaz también incluye los métodos siguientes para obtener una lista y suprimir recursos de audio de un modelo acústico personalizado.
 {: shortdesc}
 
 ## Listado de recursos de audio para un modelo acústico personalizado
@@ -119,7 +119,7 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-### Solicitud de ejemplo: obtener información sobre un recurso de tipo archivo
+### Solicitud de ejemplo: obtener información sobre un recurso de tipo archivador
 {: #getExampleArchive}
 
 En el ejemplo siguiente se devuelve información sobre el recurso de tipo archivador denominado `audio2`. El recurso es un archivo **.zip** que contiene más de 9 minutos de audio. También se ha añadido correctamente al modelo. Como muestra el ejemplo, cuando se consulta de información sobre un recurso de tipo archivador también se proporciona información acerca de los archivos que contiene.
@@ -171,7 +171,7 @@ curl -X GET -u "apikey:{apikey}"
 ## Supresión de un recurso de audio de un modelo acústico personalizado
 {: #deleteAudio}
 
-Utilice el método `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` para eliminar un recurso de audio existente de un modelo acústico personalizado. Cuando se suprime un recurso de audio de tipo archivador, el servicio elimina todo el archivador de archivos. La interfaz actual no permite la supresión de archivos individuales de un recurso de archivado.
+Utilice el método `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` para eliminar un recurso de audio existente de un modelo acústico personalizado. Cuando se suprime un recurso de audio de tipo archivador, el servicio elimina todo el archivador de archivos. El servicio no permite la supresión de archivos individuales de un recurso de archivado.
 
 La eliminación de un recurso de audio no afecta al modelo personalizado hasta que se entrena el modelo con los datos actualizados mediante el método `POST /v1/acoustic_customizations/{customization_id}/train`. Si ha entrenado correctamente el modelo con el recurso, los datos de audio existentes se siguen utilizando para el reconocimiento de voz hasta que se vuelve a entrenar el modelo.
 

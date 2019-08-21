@@ -2,14 +2,14 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Actualización de modelos personalizados
 {: #customUpgrade}
 
-Para mejorar la calidad del reconocimiento de voz, el servicio {{site.data.keyword.speechtotextfull}} actualiza de vez en cuando los modelos base. Puesto que los modelos base correspondiente a los diferentes idiomas son independientes entre sí, al igual que los modelos de banda ancha y de banda estrecha correspondientes a un idioma, las actualizaciones de modelos base individuales no afectan a otros modelos. En las [Notas del release](/docs/services/speech-to-text/release-notes.html) se documentan todas las actualizaciones del modelo base.
+Para mejorar la calidad del reconocimiento de voz, el servicio {{site.data.keyword.speechtotextfull}} actualiza de vez en cuando los modelos base. Puesto que los modelos base correspondiente a los diferentes idiomas son independientes entre sí, al igual que los modelos de banda ancha y de banda estrecha correspondientes a un idioma, las actualizaciones de modelos base individuales no afectan a otros modelos. En las [Notas del release](/docs/services/speech-to-text?topic=speech-to-text-release-notes) se documentan todas las actualizaciones del modelo base.
 {: shortdesc}
 
 Cuando se publica una nueva versión de un modelo base, debe actualizar los modelos de lenguaje personalizado y acústico personalizado que se hayan creado en el modelo base para aprovechar las actualizaciones. Los modelos personalizados siguen utilizando la versión anterior del modelo base hasta que se completa la actualización. Al igual que sucede con todas las operaciones de personalización, debe utilizar las credenciales correspondientes a la instancia del servicio que es propietario de un modelo para poderlo actualizar.
@@ -62,7 +62,7 @@ Siga estos pasos para actualizar un modelo de lenguaje personalizado:
 
 El servicio devuelve el código de respuesta 200 si el proceso de actualización se inicia correctamente. Puede supervisar el estado de la actualización con el método `GET /v1/customizations/{customization_id}` para sondear el estado del modelo. Utilice un bucle para comprobar el estado cada 10 segundos.
 
-Mientras se está actualizando, el modelo personalizado tiene el estado `upgrading`. Cuando finaliza la actualización, el modelo reanuda el estado que tenía antes de la actualización (`ready` o `available`). El estado de una operación de actualización se consulta del mismo modo que el estado de una operación de entrenamiento. Para obtener más información, consulte [Supervisión de la solicitud de entrenamiento del modelo](/docs/services/speech-to-text/language-create.html#monitorTraining-language).
+Mientras se está actualizando, el modelo personalizado tiene el estado `upgrading`. Cuando finaliza la actualización, el modelo reanuda el estado que tenía antes de la actualización (`ready` o `available`). El estado de una operación de actualización se consulta del mismo modo que el estado de una operación de entrenamiento. Para obtener más información, consulte [Supervisión de la solicitud de entrenamiento del modelo](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language).
 
 El servicio no acepta solicitudes para modificar el modelo de ninguna manera hasta que finaliza la solicitud de actualización. Sin embargo, puede seguir enviando solicitudes de reconocimiento con la versión existente del modelo durante la actualización.
 
@@ -100,7 +100,7 @@ Siga estos pasos para actualizar un modelo acústico personalizado. Si el modelo
 
 El servicio devuelve el código de respuesta 200 si el proceso de actualización se inicia correctamente. Puede supervisar el estado de la actualización con el método `GET /v1/acoustic_customizations/{customization_id}` para sondear el estado del modelo. Utilice un bucle para comprobar el estado una vez por minuto.
 
-Mientras se está actualizando, el modelo personalizado tiene el estado `upgrading`. Cuando finaliza la actualización, el modelo reanuda el estado que tenía antes de la actualización (`ready` o `available`). El estado de una operación de actualización se consulta del mismo modo que el estado de una operación de entrenamiento. Para obtener más información, consulte [Supervisión de la solicitud de entrenamiento del modelo](/docs/services/speech-to-text/acoustic-create.html#monitorTraining-acoustic).
+Mientras se está actualizando, el modelo personalizado tiene el estado `upgrading`. Cuando finaliza la actualización, el modelo reanuda el estado que tenía antes de la actualización (`ready` o `available`). El estado de una operación de actualización se consulta del mismo modo que el estado de una operación de entrenamiento. Para obtener más información, consulte [Supervisión de la solicitud de entrenamiento del modelo](/docs/services/speech-to-text?topic=speech-to-text-acoustic#monitorTraining-acoustic).
 
 El servicio no acepta solicitudes para modificar el modelo de ninguna manera hasta que finaliza la solicitud de actualización. Sin embargo, puede seguir enviando solicitudes de reconocimiento con la versión existente del modelo durante la actualización.
 
@@ -118,8 +118,8 @@ La actualización de un modelo personalizado no se puede iniciar si el servicio 
 
 Para ver las versiones del modelo base para las que está disponible un modelo personalizado, utilice los siguientes métodos:
 
--   Para ver información sobre un modelo de lenguaje personalizado, utilice el modelo `GET /v1/customizations/{customization_id}`. Para obtener más información, consulte [Listado de modelos de lenguaje personalizado](/docs/services/speech-to-text/language-models.html#listModels-language).
--   Para ver información sobre un modelo acústico personalizado, utilice el modelo `GET /v1/acoustic_customizations/{customization_id}`. Para obtener más información, consulte [Listado de modelos acústicos personalizados](/docs/services/speech-to-text/acoustic-models.html#listModels-acoustic).
+-   Para ver información sobre un modelo de lenguaje personalizado, utilice el modelo `GET /v1/customizations/{customization_id}`. Para obtener más información, consulte [Listado de modelos de lenguaje personalizado](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
+-   Para ver información sobre un modelo acústico personalizado, utilice el modelo `GET /v1/acoustic_customizations/{customization_id}`. Para obtener más información, consulte [Listado de modelos acústicos personalizados](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
 
 En ambos casos, la salida incluye un campo `versions` que muestra información acerca de los modelos base para el modelo personalizado. La salida siguiente muestra información correspondiente a un modelo de lenguaje personalizado actualizado:
 
@@ -162,7 +162,7 @@ curl -X POST -u "apikey:{apikey}"
 
 Puede utilizar esta característica para probar el rendimiento y la precisión de un modelo personalizando comparando las versiones antigua y nueva de su modelo base. Si detecta que el rendimiento de un modelo actualizado falla en algún sentido (por ejemplo, ya no se reconocen algunas palabras), puede seguir utilizando la versión antigua con las solicitudes de reconocimiento.
 
-En la sección sobre [Versión del modelo base](/docs/services/speech-to-text/input.html#version) se describe el parámetro `base_model_version` y la forma en que el servicio determina qué versiones de los modelos base y personalizado debe utilizar con una solicitud de reconocimiento. Además de esta información, tenga en cuenta los problemas siguientes cuando pase los dos modelos, el de lenguaje personalizado y el acústico personalizado, con una solicitud de reconocimiento:
+En la sección sobre [Versión del modelo base](/docs/services/speech-to-text?topic=speech-to-text-input#version) se describe el parámetro `base_model_version` y la forma en que el servicio determina qué versiones de los modelos base y personalizado debe utilizar con una solicitud de reconocimiento. Además de esta información, tenga en cuenta los problemas siguientes cuando pase los dos modelos, el de lenguaje personalizado y el acústico personalizado, con una solicitud de reconocimiento:
 
 -   Ambos modelos personalizados se deben basar en el mismo modelo base (por ejemplo, `en-US_BroadbandModel`).
 -   Si ambos modelos personalizados se basan en el modelo base antiguo, el servicio utiliza el modelo base antiguo para el reconocimiento.

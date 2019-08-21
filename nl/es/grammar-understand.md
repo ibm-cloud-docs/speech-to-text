@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -28,7 +28,7 @@ subcollection: speech-to-text
 En los ejemplos siguientes se presenta el soporte que da el servicio {{site.data.keyword.speechtotextfull}} a las gramáticas. En los ejemplos se crean dos gramáticas ABNF sencillas y se muestran los resultados posibles cuando se utilizan para el reconocimiento de voz. Los ejemplos ilustran la importancia de examinar la puntuación de confianza que incluye el servicio con una transcripción.
 {: shortdesc}
 
-Los ejemplos solo proporcionan los resultados de las solicitudes de reconocimiento de voz. Para ver ejemplos que muestran cómo se pasa una gramática para el reconocimiento de voz, consulte [Utilización de una gramática para el reconocimiento de voz](/docs/services/speech-to-text/grammar-use.html). Los ejemplos también son muy básicos. Para ver ejemplos de gramáticas más complejas, consulte [Gramáticas de ejemplo](/docs/services/speech-to-text/grammar-examples.html).
+Los ejemplos solo proporcionan los resultados de las solicitudes de reconocimiento de voz. Para ver ejemplos que muestran cómo se pasa una gramática para el reconocimiento de voz, consulte [Utilización de una gramática para el reconocimiento de voz](/docs/services/speech-to-text?topic=speech-to-text-grammarUse). Los ejemplos también son muy básicos. Para ver ejemplos de gramáticas más complejas, consulte [Gramáticas de ejemplo](/docs/services/speech-to-text?topic=speech-to-text-grammarExamples).
 
 ## Coincidencias de una sola frase: la gramática yesno
 {: #yesnoGrammar}

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-06"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -118,7 +118,7 @@ En las siguientes gramáticas se reconocen los códigos VIN de Honda. Son más c
   </tr>
 </table>
 
-Para obtener más información sobre el formato VIN, consulte [Número de chasis ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://en.wikipedia.org/wiki/Vehicle_identification_number){: new_window} en Wikipedia.
+Para obtener más información sobre el formato VIN, consulte [Número de identificación de vehículo](https://wikipedia.org/wiki/Vehicle_identification_number){: external}.
 
 ## Gramáticas con elementos opcionales
 {: #optionalElements}
@@ -141,7 +141,7 @@ Si hace que determinados elementos de una respuesta sean opcionales, puede conse
   </tr>
 </table>
 
-Para obtener más información sobre expresiones opcionales en gramáticas, consulte [Section 2.5 Repeats ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://www.w3.org/TR/speech-grammar/#S2.5){: new_window} de Speech Recognition Grammar Specification.
+Para obtener más información sobre las expansiones gramaticales opcionales, consulte [Sección 2.5 Repeticiones](https://www.w3.org/TR/speech-grammar/#S2.5){: external} de Speech Recognition Grammar Specification.
 
 ## Gramáticas desambiguación
 {: #disambiguation}

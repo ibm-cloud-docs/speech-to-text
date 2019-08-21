@@ -2,14 +2,14 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-19"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -63,22 +63,22 @@ Conserve la siguiente información acerca de los modelos de lenguaje personaliza
     -   Utilice el método `GET /v1/customizations` para ver información sobre todos los modelos personalizados.
     -   Utilice el método `GET /v1/customizations/{customization_id}` para ver información sobre un modelo personalizado específico.
 
-    Para obtener más información, consulte [Listado de modelos de lenguaje personalizado](/docs/services/speech-to-text/language-models.html#listModels-language).
+    Para obtener más información, consulte [Listado de modelos de lenguaje personalizado](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
 -   Copias de todos los archivos de texto del corpus que haya añadido a los modelos de lenguaje personalizado. Para ver información acerca de los corpus de los modelos personalizados:
     -   Utilice el método `GET /v1/customizations/{customization_id}/corpora` para ver una lista de los corpus de un modelo personalizado.
     -   Utilice el método `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` para ver información sobre los corpus especificados para un modelo personalizado.
 
-    Para obtener más información, consulte [Listado de los corpus de un modelo de lenguaje personalizado](/docs/services/speech-to-text/language-corpora.html#listCorpora).
+    Para obtener más información, consulte [Listado de los corpus de un modelo de lenguaje personalizado](/docs/services/speech-to-text?topic=speech-to-text-manageCorpora#listCorpora).
 -   Copias de todos los archivos de gramática que haya añadido a los modelos de lenguaje personalizado. Para ver información acerca de las gramáticas de los modelos personalizados:
     -   Utilice el método `GET /v1/customizations/{customization_id}/grammars` para ver información sobre todas las gramáticas de un modelo personalizado.
     -   Utilice el método `GET /v1/customizations/{customization_id}/grammars/{grammar_name}` para ver información sobre una gramática especificada de un modelo personalizado.
 
-    Para obtener más información, consulte [Listado de las gramáticas de un modelo de lenguaje personalizado](/docs/services/speech-to-text/grammar-manage.html#listGrammars).
+    Para obtener más información, consulte [Listado de las gramáticas de un modelo de lenguaje personalizado](/docs/services/speech-to-text?topic=speech-to-text-manageGrammars#listGrammars).
 -   Información sobre todas las palabras personalizadas, incluidas sus definiciones de pronunciación y de visualización, que se añaden directamente a los modelos de lenguaje personalizados. Para ver información acerca de las palabras no definidas en el vocabulario (OOV) de los modelos personalizados:
     -   Utilice el método `GET /v1/customizations/{customization_id}/words` para ver información sobre las palabras de un modelo personalizado. Puede utilizar el parámetro `word_type` para ver una lista de `todas` las palabras de un modelo, las palabras añadidas directamente por el `usuario`, palabras extraídas del `corpus` o palabras reconocidas por `gramáticas`.
     -   Utilice el método `GET /v1/customizations/{customization_id}/words/{word_name}` para ver información sobre una palabra especificada de un modelo personalizado.
 
-    Para obtener más información, consulte [Listado de las palabras de un modelo de lenguaje personalizado](/docs/services/speech-to-text/language-words.html#listWords).
+    Para obtener más información, consulte [Listado de las palabras de un modelo de lenguaje personalizado](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords).
 
 Se recomienda conservar esta información en un formato que pueda utilizar para recrear los modelos de lenguaje personalizado en el caso de que se produzca un error. El mantenimiento activo de la información sobre los modelos personalizados y sus datos y la preparación de las llamadas que se muestran en la siguiente sección le pueden permitirle recuperarse lo más rápido posible.
 
@@ -87,11 +87,11 @@ Se recomienda conservar esta información en un formato que pueda utilizar para 
 
 Si tiene que recuperarse de un desastre, puede utilizar la información de copia de seguridad para volver a crear los modelos de lenguaje personalizado y sus datos:
 
-1.  Para volver a crear los modelos de lenguaje personalizado, utilice el método `POST /v1/customizations`. Para obtener más información, consulte el apartado sobre [Creación de un modelo de lenguaje personalizado](/docs/services/speech-to-text/language-create.html#createModel-language).
-1.  Para añadir los archivos de texto del corpus a los modelos personalizados, utilice el método `POST /v1/customizations/{customization_id}/corpora/{corpus_name}`. Para obtener más información, consulte [Adición de un corpus al modelo de lenguaje personalizado](/docs/services/speech-to-text/language-create.html#addCorpus).
-1.  Para añadir los archivos de gramática a los modelos personalizados, utilice el método `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`. Para obtener más información, consulte [Adición de una gramática al modelo de lenguaje personalizado](/docs/services/speech-to-text/grammar-add.html#addGrammar).
-1.  Para añadir varias palabras a los modelos personalizados, utilice el método `POST /v1/customizations/{customization_id}/words`. Para añadir palabras individuales a los modelos personalizados, utilice el método `PUT /v1/customizations/{customization_id}/words/{word_name}`. Para obtener más información, consulte [Adición de palabras al modelo de lenguaje personalizado](/docs/services/speech-to-text/language-create.html#addWords).
-1.  Para entrenar los modelos personalizados después de restaurar los corpus, las gramáticas y las palabras personalizadas, utilice el método `POST /v1/customizations/{customization_id}/train`. Para obtener más información, consulte [Entrenamiento del modelo de lenguaje personalizado](/docs/services/speech-to-text/language-create.html#trainModel-language).
+1.  Para volver a crear los modelos de lenguaje personalizado, utilice el método `POST /v1/customizations`. Para obtener más información, consulte el apartado sobre [Creación de un modelo de lenguaje personalizado](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language).
+1.  Para añadir los archivos de texto del corpus a los modelos personalizados, utilice el método `POST /v1/customizations/{customization_id}/corpora/{corpus_name}`. Para obtener más información, consulte [Adición de un corpus al modelo de lenguaje personalizado](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus).
+1.  Para añadir los archivos de gramática a los modelos personalizados, utilice el método `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`. Para obtener más información, consulte [Adición de una gramática al modelo de lenguaje personalizado](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar).
+1.  Para añadir varias palabras a los modelos personalizados, utilice el método `POST /v1/customizations/{customization_id}/words`. Para añadir palabras individuales a los modelos personalizados, utilice el método `PUT /v1/customizations/{customization_id}/words/{word_name}`. Para obtener más información, consulte [Adición de palabras al modelo de lenguaje personalizado](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addWords).
+1.  Para entrenar los modelos personalizados después de restaurar los corpus, las gramáticas y las palabras personalizadas, utilice el método `POST /v1/customizations/{customization_id}/train`. Para obtener más información, consulte [Entrenamiento del modelo de lenguaje personalizado](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
 
 Los métodos que se utilizan para añadir corpus, gramáticas y palabras y para entrenar un modelo de lenguaje personalizado son asíncronos. Es necesario que supervise las solicitudes hasta que finalicen.
 
@@ -111,12 +111,12 @@ Conserve la siguiente información acerca de los modelos acústicos personalizad
     -   Utilice el método `GET /v1/acoustic_customizations` para ver información sobre todos los modelos personalizados.
     -   Utilice el método `GET /v1/acoustic_customizations/{customization_id}` para ver información sobre un modelo personalizado específico.
 
-    Para obtener más información, consulte [Listado de modelos acústicos personalizados](/docs/services/speech-to-text/acoustic-models.html#listModels-acoustic).
+    Para obtener más información, consulte [Listado de modelos acústicos personalizados](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
 -   Copias de todos los recursos de audio, tanto archivos de audio individuales como archivos archivadores, que han añadido a los modelos acústicos personalizados. Para ver información acerca de los recursos de audio de los modelos personalizados:
     -   Utilice el método `GET /v1/acoustic_customizations/{customization_id}/audio` para ver información sobre todos los recursos de audio correspondientes a un modelo personalizado.
     -   Utilice el método `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` para ver información sobre un recurso de audio especificado de un modelo personalizado.
 
-    Para obtener más información, consulte [Listado de recursos de audio para un modelo acústico personalizado](/docs/services/speech-to-text/acoustic-audio.html#listAudio).
+    Para obtener más información, consulte [Listado de recursos de audio para un modelo acústico personalizado](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#listAudio).
 
 Se recomienda conservar esta información en un formato que pueda utilizar para recrear los modelos acústicos personalizados en el caso de que se produzca un error. El mantenimiento activo de la información sobre los modelos personalizados y sus recursos de audio y la preparación de las llamadas que se muestran en la siguiente sección le pueden permitirle recuperarse lo más rápido posible.
 
@@ -125,9 +125,9 @@ Se recomienda conservar esta información en un formato que pueda utilizar para 
 
 Si tiene que recuperarse de un desastre, puede utilizar la información de copia de seguridad para volver a crear los modelos acústicos personalizados y sus datos:
 
-1.  Para volver a crear los modelos acústicos personalizados, utilice el método `POST /v1/acoustic_customizations`. Para obtener más información, consulte el apartado sobre [Creación de un modelo acústico personalizado](/docs/services/speech-to-text/acoustic-create.html#createModel-acoustic).
-1.  Para añadir recursos de audio a los modelos personalizados, utilice el método `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`. Para obtener más información, consulte [Adición de audio al modelo acústico personalizado](/docs/services/speech-to-text/acoustic-create.html#addAudio).
-1.  Para entrenar los modelos personalizados después de restaurar los recursos de audio, utilice el método `POST /v1/acoustic_customizations/{customization_id}/train`. Para obtener más información, consulte [Entrenamiento del modelo acústico personalizado](/docs/services/speech-to-text/acoustic-create.html#trainModel-acoustic).
+1.  Para volver a crear los modelos acústicos personalizados, utilice el método `POST /v1/acoustic_customizations`. Para obtener más información, consulte el apartado sobre [Creación de un modelo acústico personalizado](/docs/services/speech-to-text?topic=speech-to-text-acoustic#createModel-acoustic).
+1.  Para añadir recursos de audio a los modelos personalizados, utilice el método `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`. Para obtener más información, consulte [Adición de audio al modelo acústico personalizado](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio).
+1.  Para entrenar los modelos personalizados después de restaurar los recursos de audio, utilice el método `POST /v1/acoustic_customizations/{customization_id}/train`. Para obtener más información, consulte [Entrenamiento del modelo acústico personalizado](/docs/services/speech-to-text?topic=speech-to-text-acoustic#trainModel-acoustic).
 
 Los métodos que se utilizan para añadir recursos de audio y para entrenar un modelo acústico personalizado son asíncronos. Es necesario que supervise las solicitudes hasta que finalicen.
 
@@ -141,4 +141,4 @@ Para el reconocimiento de voz con la interfaz HTTP asíncrona, debe mantener la 
 -   Todos los URL de devolución de llamada que ha colocado en la lista blanca para utilizarlos con la interfaz asíncrona. Si se produce una anomalía, es posible que tenga que utilizar el método `POST /v1/register_callback` para volver a registrar los URL. El método devuelve una respuesta adecuada si un URL ya está en la lista blanca.
 -   Copias de los archivos de audio que envíe a la interfaz asíncrona para el reconocimiento de voz. Si se produce una anomalía antes de recibir o de recuperar los resultados de un trabajo asíncrono completado, tiene que utilizar el método `POST /v1/recognitions` para volver a enviar los archivos de audio cuando se restaure el servicio. Una vez que tenga los resultados de un trabajo asíncrono completado, ya no tendrá que mantener los archivos de audio.
 
-Para obtener más información, consulte [La interfaz HTTP asíncrona](/docs/services/speech-to-text/async.html). Al igual que sucede con los datos de copia de seguridad de los modelos personalizados, puede conservar de forma activa esta información y estar preparado para volver a emitir las solicitudes necesarias por anticipado.
+Para obtener más información, consulte [La interfaz HTTP asíncrona](/docs/services/speech-to-text?topic=speech-to-text-async). Al igual que sucede con los datos de copia de seguridad de los modelos personalizados, puede conservar de forma activa esta información y estar preparado para volver a emitir las solicitudes necesarias por anticipado.

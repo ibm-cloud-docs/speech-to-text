@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-07-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -31,7 +31,7 @@ Independientemente de la interfaz que utilice, el servicio {{site.data.keyword.s
 ## Respuesta de transcripción básica
 {: #response}
 
-El servicio devuelve la respuesta siguiente para los ejemplos del apartado [Cómo realizar una solicitud de reconocimiento](/docs/services/speech-to-text/basic-request.html). En los ejemplos solo se pasa un archivo de audio y su tipo de contenido. En el audio se dice una sola frase sin pausas perceptibles entre las palabras.
+El servicio devuelve la respuesta siguiente para los ejemplos del apartado [Cómo realizar una solicitud de reconocimiento](/docs/services/speech-to-text?topic=speech-to-text-basic-request). En los ejemplos solo se pasa un archivo de audio y su tipo de contenido. En el audio se dice una sola frase sin pausas perceptibles entre las palabras.
 
 ```javascript
 {
@@ -39,7 +39,7 @@ El servicio devuelve la respuesta siguiente para los ejemplos del apartado [Cóm
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -77,7 +77,7 @@ El campo `final` indica si la transcripción muestra los resultados finales de l
 -   El campo tiene el valor `true` si se trata de resultados finales; se garantiza que no cambiarán. El servicio no envía más actualizaciones de las transcripciones que devuelve como resultados finales.
 -   El campo tiene el valor `false` para los resultados provisionales, que están sujetos a cambios. Si utiliza el parámetro `interim_results` con la interfaz WebSocket, el servicio devuelve hipótesis provisionales en evolución en forma de varios campos `results` a medida que transcribe el audio. El campo `final` siempre tiene el valor `falso` para los resultados provisionales. El servicio establece el campo en `true` en el caso de los resultados finales del audio. El servicio no envía más actualizaciones para la transcripción de ese audio.
 
-Para obtener resultados provisionales, utilice la interfaz WebSocket y establezca el parámetro `interim_results` en `true`. Para obtener más información, consulte [Resultados provisionales](/docs/services/speech-to-text/output.html#interim).
+Para obtener resultados provisionales, utilice la interfaz WebSocket y establezca el parámetro `interim_results` en `true`. Para obtener más información, consulte [Resultados provisionales](/docs/services/speech-to-text?topic=speech-to-text-output#interim).
 
 ### El campo result_index
 {: #responseResultIndex}
@@ -102,7 +102,7 @@ Muchos de los parámetros de salida que están disponibles para el reconocimient
 -   El parámetro `interim_results` de la interfaz WebSocket solicita una hipótesis de transcripción provisional. Como se ha mencionado anteriormente, el servicio envía varias respuestas a medida que transcribe el audio.
 -   El parámetro `speaker_labels` identifica a los oradores individuales de un intercambio con varios participantes. La respuesta incluye un campo `speaker_labels` en el mismo nivel que los campos `results` y `results_index`.
 
-Para obtener más información acerca de estos y otros parámetros que pueden afectar a la respuesta del servicio, consulte [Características de salida](/docs/services/speech-to-text/output.html). Para obtener más información acerca de todos los parámetros disponibles, consulte el [Resumen de parámetros](/docs/services/speech-to-text/summary.html).
+Para obtener más información acerca de estos y otros parámetros que pueden afectar a la respuesta del servicio, consulte [Características de salida](/docs/services/speech-to-text?topic=speech-to-text-output). Para obtener más información acerca de todos los parámetros disponibles, consulte el [Resumen de parámetros](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ## Pausas y silencio
 {: #pauses-silence}
@@ -178,7 +178,7 @@ La forma en que el servicio devuelve los resultados depende de la interfaz que s
 
 Si los resultados incluyen varios resultados finales, concatene los elementos `transcript` de los resultados finales para ensamblar la transcripción completa del audio.
 
-Un silencio de 30 segundos en la secuencia de audio puede dar lugar a un [tiempo de espera excedido de inactividad](/docs/services/speech-to-text/input.html#timeouts-inactivity).
+Un silencio de 30 segundos en la secuencia de audio puede dar lugar a un [tiempo de espera excedido de inactividad](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts-inactivity).
 {: note}
 
 ## Marcadores de duda
@@ -206,7 +206,7 @@ En inglés, el servicio utiliza la señal de duda `%HESITATION`, tal como se mue
 ```
 {: codeblock}
 
-Los marcadores de duda también pueden aparecer en otros campos de una transcripción. Por ejemplo, si solicita [indicaciones de fecha y hora de palabras](/docs/services/speech-to-text/output.html#word_timestamps) para las palabras individuales de una transcripción, el servicio muestra la hora de inicio y de finalización de cada marcador de duda.
+Los marcadores de duda también pueden aparecer en otros campos de una transcripción. Por ejemplo, si solicita [indicaciones de fecha y hora de palabras](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps) para las palabras individuales de una transcripción, el servicio muestra la hora de inicio y de finalización de cada marcador de duda.
 
 ```javascript
 {
@@ -276,4 +276,4 @@ El servicio siempre aplica este uso de mayúsculas a inglés de EE. UU., indepen
 
 El servicio no inserta signos de puntuación en las transcripciones de respuesta de forma predeterminada. Debe añadir los signos de puntuación que necesite a los resultados del servicio.
 
-En el caso del inglés de EE. UU., puede utilizar el formateo inteligente para indicar al servicio que sustituya los signos de puntuación, por ejemplo comas, puntos, signos de interrogación y signos de exclamación, por determinadas series de palabras clave. Para obtener más información, consulte [Formateo inteligente](/docs/services/speech-to-text/output.html#smart_formatting).
+Para algunos idiomas, puede utilizar el formateo inteligente para indicar al servicio que sustituya los signos de puntuación, por ejemplo comas, puntos, signos de interrogación y signos de exclamación, por determinadas series de palabras clave. Para obtener más información, consulte [Formateo inteligente](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting).

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-10"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,12 +25,12 @@ subcollection: speech-to-text
 # Características de salida
 {: #output}
 
-El servicio {{site.data.keyword.speechtotextshort}} ofrece las siguientes características para indicar la información que el servicio debe incluir en sus resultados de transcripción para una solicitud de reconocimiento de voz. Todos los parámetros de salida son opcionales.
+El servicio {{site.data.keyword.speechtotextfull}} ofrece las siguientes características para indicar la información que el servicio debe incluir en sus resultados de transcripción para una solicitud de reconocimiento de voz. Todos los parámetros de salida son opcionales.
 {: shortdesc}
 
--   Para ver ejemplos de solicitudes sencillas de reconocimiento de voz para cada una de las interfaces del servicio, consulte [Cómo realizar una solicitud de reconocimiento](/docs/services/speech-to-text/basic-request.html).
--   Para ver ejemplos y descripciones de respuestas de reconocimiento de voz, consulte [Visión general de los resultados del reconocimiento](/docs/services/speech-to-text/basic-response.html). El servicio devuelve todo el contenido de la respuesta JSON en el juego de caracteres UTF-8.
--   Para ver una lista ordenada alfabéticamente de todos los parámetros de reconocimiento de voz disponibles, incluido su estado (disponible a nivel general o beta) y los idiomas admitidos, consulte el [Resumen de parámetros](/docs/services/speech-to-text/summary.html).
+-   Para ver ejemplos de solicitudes sencillas de reconocimiento de voz para cada una de las interfaces del servicio, consulte [Cómo realizar una solicitud de reconocimiento](/docs/services/speech-to-text?topic=speech-to-text-basic-request).
+-   Para ver ejemplos y descripciones de respuestas de reconocimiento de voz, consulte [Visión general de los resultados del reconocimiento](/docs/services/speech-to-text?topic=speech-to-text-basic-response). El servicio devuelve todo el contenido de la respuesta JSON en el juego de caracteres UTF-8.
+-   Para ver una lista ordenada alfabéticamente de todos los parámetros de reconocimiento de voz disponibles, incluido su estado (disponible a nivel general o beta) y los idiomas admitidos, consulte el [Resumen de parámetros](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ## Etiquetas de orador
 {: #speaker_labels}
@@ -42,7 +42,7 @@ Las etiquetas de orador identifican qué persona ha pronunciado cada palabra en 
 
 Las etiquetas de orador están optimizadas para los escenarios con dos oradores. Funcionan mejor para conversaciones telefónicas que en las que participan dos personas en un intercambio ampliado. Pueden manejar hasta seis oradores, pero si hay más de dos oradores el rendimiento puede ser variable. Los intercambios entre dos personas suelen realizarse a través de medios de banda estrecha, pero se pueden utilizar etiquetas de orador con los modelos de banda ancha y banda estrecha admitidos.
 
-Para utilizar la característica, establezca el parámetro `speaker_labels` en `true` para una solicitud de reconocimiento; el parámetro tiene el valor `false` de forma predeterminada. El servicio identifica los oradores por medio de palabras individuales del audio. Se basa en el momento de inicio y de fin de la palabra para identificar su orador. Por lo tanto, la habilitación de las etiquetas de orador también impone que el parámetro `timestamps` tenga el valor `true` (consulte [Indicaciones de fecha y hora de palabras](/docs/services/speech-to-text/output.html#word_timestamps)).
+Para utilizar la característica, establezca el parámetro `speaker_labels` en `true` para una solicitud de reconocimiento; el parámetro tiene el valor `false` de forma predeterminada. El servicio identifica los oradores por medio de palabras individuales del audio. Se basa en el momento de inicio y de fin de la palabra para identificar su orador. Por lo tanto, la habilitación de las etiquetas de orador también impone que el parámetro `timestamps` tenga el valor `true` (consulte [Indicaciones de fecha y hora de palabras](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps)).
 
 ### Ejemplo de etiquetas de orador
 {: #speakerLabelsExample}
@@ -239,7 +239,7 @@ Como resultado, es posible que los ID de orador no sean secuenciales, contiguos 
 ### Solicitud de resultados provisionales para etiquetas de orador
 {: #speakerLabelsInterim}
 
-Con la interfaz WebSocket, puede solicitar resultados provisionales, así como etiquetas de orador (consulte [Resultados provisionales](/docs/services/speech-to-text/output.html#interim)). Los resultados finales suelen ser mejores que los resultados provisionales. Sin embargo, los resultados provisionales pueden ayudar a identificar la evolución de una transcripción y la asignación de etiquetas de orador. Los resultados provisionales pueden indicar dónde han aparecido y desaparecido oradores e ID transitorios. Sin embargo, el servicio puede reutilizar los ID de los oradores que identifica inicialmente y luego reconsidera y omite. Por lo tanto, un ID puede hacer referencia a dos oradores diferentes en los resultados provisionales y finales.
+Con la interfaz WebSocket, puede solicitar resultados provisionales, así como etiquetas de orador (consulte [Resultados provisionales](/docs/services/speech-to-text?topic=speech-to-text-output#interim)). Los resultados finales suelen ser mejores que los resultados provisionales. Sin embargo, los resultados provisionales pueden ayudar a identificar la evolución de una transcripción y la asignación de etiquetas de orador. Los resultados provisionales pueden indicar dónde han aparecido y desaparecido oradores e ID transitorios. Sin embargo, el servicio puede reutilizar los ID de los oradores que identifica inicialmente y luego reconsidera y omite. Por lo tanto, un ID puede hacer referencia a dos oradores diferentes en los resultados provisionales y finales.
 
 Su solicita tanto resultados provisionales como etiquetas de orador, los resultados finales de las secuencias de audio largas pueden llegar bien después de que se devuelvan los resultados provisionales iniciales. También es posible que algunos resultados provisionales incluyan solo un campo `speaker_labels` sin los campos `results` y `result_index`. Si no solicita resultados provisionales, el servicio devuelve resultados finales que incluyen los campos `results` y `result_index` y un solo campo `speaker_labels`.
 
@@ -297,7 +297,7 @@ Una palabra clave para la que el servicio no encuentra coincidencias se omite de
     -   Las señales de la palabra clave se encuentran en el mismo bloque.
     -   Las señales son adyacentes o están separadas por un intervalo que no supera 0,1 segundo.
 
-    Este último caso se puede producir si hay una breve muletilla o una expresión no léxica, como "uhm" o "well", entre dos señales de la palabra clave. Para obtener más información, consulte [Marcadores de duda](/docs/services/speech-to-text/basic-response.html#hesitation).
+    Este último caso se puede producir si hay una breve muletilla o una expresión no léxica, como "uhm" o "well", entre dos señales de la palabra clave. Para obtener más información, consulte [Marcadores de duda](/docs/services/speech-to-text?topic=speech-to-text-basic-response#hesitation).
 
 ### Ejemplo de detección de palabras clave
 {: #keywordSpottingExample}
@@ -336,7 +336,7 @@ curl -X POST -u "apikey:{apikey}"
       },
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -375,7 +375,7 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         },
@@ -384,8 +384,8 @@ severe thunderstorms swept through Colorado on Sunday "
 severe thunderstorms swept through Colorado on Sunday "
         },
         {
-          "transcript": "several tornadoes touch down is a line of
-severe thunderstorms swept through Colorado on Sunday "
+          "transcript": "several tornadoes touch down as a line of
+severe thunderstorms swept through Colorado and Sunday "
         }
       ],
       "final": true
@@ -490,7 +490,7 @@ severe thunderstorms swept through Colorado on Sunday "
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -592,7 +592,7 @@ curl -X POST -u "apikey:{apikey}"
       ],
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -634,9 +634,9 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday ",
-          "confidence": 0.89,
           "word_confidence": [
             [
               "several",
@@ -731,7 +731,7 @@ curl -X POST -u "apikey:{apikey}"
               6.34
             ]
           ],
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }

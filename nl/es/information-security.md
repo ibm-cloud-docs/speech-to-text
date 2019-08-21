@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -35,15 +35,15 @@ Los productos, los servicios y otras prestaciones que se describen en el present
 
 Si tiene que solicitar soporte de GDPR para los recursos de {{site.data.keyword.cloud}} {{site.data.keyword.watson}} que se crean
 
--   En la Unión Europea (UE), consulte [Solicitud de soporte para los recursos de {{site.data.keyword.cloud_notm}} Watson creados en la Unión Europea](/docs/services/watson/getting-started-gdpr-sar.html#request-EU).
--   Fuera de la Unión Europea, consulte [Solicitud de soporte para recursos fuera de la Unión Europea](/docs/services/watson/getting-started-gdpr-sar.html#request-non-EU).
+-   En la Unión Europea (UE), consulte [Solicitud de soporte para los recursos de {{site.data.keyword.cloud_notm}} Watson creados en la Unión Europea](/docs/services/watson?topic=watson-gdpr-sar#request-EU).
+-   Fuera de la Unión Europea, consulte [Solicitud de soporte para recursos fuera de la Unión Europea](/docs/services/watson?topic=watson-gdpr-sar#request-non-EU).
 
 ## Reglamento General de Protección de Datos de la Unión Europea (GDPR)
 {: #gdpr}
 
 En {{site.data.keyword.IBM_notm}} nos comprometemos a proporcionar a nuestros clientes y socios soluciones innovadoras de privacidad de datos, seguridad y control para ayudarles en el cumplimiento con GDPR.
 
-Obtenga más información sobre la preparación para GDPR de {{site.data.keyword.IBM_notm}} y sobre nuestras ofertas y prestaciones de GDPR para dar soporte a la conformidad [aquí ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](../../icons/launch-glyph.svg "Icono de enlace externo")](http://www.ibm.com/gdpr){: new_window}.
+Obtenga más información sobre el camino de {{site.data.keyword.IBM_notm}} hacia la conformidad con GDPR y sobre nuestras prestaciones y ofertas relacionadas con GDPR para darle soporte en su camino hacia esta conformidad [aquí](http://www.ibm.com/gdpr){: external}.
 
 ## Etiquetado y supresión de datos en el servicio Speech to Text
 {: #gdpr-speech-to-text}
@@ -84,7 +84,7 @@ Utilice la cabecera `X-Watson-Metadata` con los métodos siguientes:
     -   `POST /v1/recognize`
 
     El ID de cliente se asocia con los datos que se envían con la solicitud individual.
--   Con solicitudes HTTP síncronas:
+-   Con solicitudes HTTP asíncronas:
     -   `POST /v1/register_callback`
     -   `POST /v1/recognitions`
 

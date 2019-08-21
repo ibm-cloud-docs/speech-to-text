@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-07-03"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -33,33 +33,34 @@ subcollection: speech-to-text
 El servicio {{site.data.keyword.speechtotextfull}} transcribe audio a texto para habilitar las prestaciones de transcripción de voz para las aplicaciones. Esta guía de aprendizaje basada en curl puede ayudarle a comenzar a utilizar rápidamente el servicio. En los ejemplos se muestra cómo llamar al método `POST /v1/recognize` del servicio para solicitar una transcripción.
 {: shortdesc}
 
-En la guía de aprendizaje se utilizan claves de API de {{site.data.keyword.cloud}} Identity and Access Management (IAM) para la autenticación. Las instancias antiguas del servicio pueden seguir utilizando los valores `{username}` y `{password}` de sus credenciales de servicio de Cloud Foundry existentes para la autenticación. Utilice la autenticación que resulte adecuada para su instancia de servicio. Para obtener más información sobre el uso que hace el servicio de la autenticación de IAM, consulte la [actualización del servicio del 30 de octubre de 2018](/docs/services/speech-to-text/release-notes.html#October2018b) en las notas del release.
-{: important}
-
 ## Antes de empezar
 {: #before-you-begin}
 
 - {: hide-dashboard}  Cree una instancia del servicio:
-    1.  {: hide-dashboard} Vaya a la página [{{site.data.keyword.speechtotextshort}} ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://{DomainName}/catalog/services/speech-to-text){: new_window} en el catálogo de {{site.data.keyword.cloud_notm}}.
+    1.  {: hide-dashboard} Vaya a la página [{{site.data.keyword.speechtotextshort}}](https://{DomainName}/catalog/services/speech-to-text){: external} en el catálogo de {{site.data.keyword.cloud_notm}}.
     1.  {: hide-dashboard} Regístrese para obtener una cuenta gratuita de {{site.data.keyword.cloud_notm}} o inicie una sesión.
     1.  {: hide-dashboard} Pulse **Crear**.
 -   Copie las credenciales para autenticarse con la instancia de servicio:
-    1.  {: hide-dashboard} En el [panel de control de {{site.data.keyword.cloud_notm}} ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://{DomainName}/dashboard/apps){: new_window}, pulse su instancia de servicio de {{site.data.keyword.speechtotextshort}} y vaya a la página del panel de control del servicio {{site.data.keyword.speechtotextshort}}.
+    1.  {: hide-dashboard} Desde la [Lista de recursos de {{site.data.keyword.cloud_notm}}](https://{DomainName}/resources){: external}, pulse la instancia del servicio {{site.data.keyword.speechtotextshort}} para ir a la página del panel de control del servicio {{site.data.keyword.speechtotextshort}}.
     1.  En la página **Gestionar**, pulse **Mostrar** para visualizar las credenciales.
     1.  Copie los valores de `Clave de API` y `URL`.
--   Asegúrese de que tiene el mandato `curl`.
-    -   En los ejemplos se utiliza el mandato `curl` para llamar a los métodos de la interfaz HTTP. Instale la versión correspondiente a su sistema operativo desde [curl.haxx.se ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://curl.haxx.se/){: new_window}. Instale la versión que da soporte al protocolo SSL (Secure Sockets Layer). Asegúrese de incluir el archivo binario instalado en la variable de entorno `PATH`.
 
-Cuando especifique un mandato, sustituya `{apikey}` y `{url}` por su clave de API y su URL reales. Omita las llaves, que indican un valor variable, en el mandato. Un valor real se asemeja al del ejemplo siguiente:
-{: hide-dashboard}
+### Utilización de los ejemplos de curl
+{: #getting-started-curl}
 
-```bash
-curl -X POST -u "apikey:L_HALhLVIksh1b73l97LSs6R_3gLo4xkujAaxm7i-b9x"
-. . .
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
-```
-{:pre}
-{: hide-dashboard}
+En esta guía de aprendizaje se utiliza el mandato `curl` para llamar a métodos de la interfaz HTTP de servicio. Asegúrese de tener instalado el mandato `curl` en el sistema.
+
+1.  Para comprobar si está instalado el mandato `curl`, ejecute el mandato siguiente en la línea de mandatos. Si en la salida se muestra que la versión de `curl` admite la capa de sockets seguros (SSL - SSL Secure Sockets Layer), estará listo para empezar a utilizar esta guía de aprendizaje.
+
+    ```bash
+    curl -V
+    ```
+    {: pre}
+
+1.  Si es necesario, instale la versión de `curl` con la opción SSL habilitada para su sistema operativo desde [curl.haxx.se](https://curl.haxx.se/){: external}.
+
+Omita las llaves de los ejemplos porque indican valores de variables.
+{: tip}
 
 ## Paso 1: Transcribir audio sin opciones
 {: #transcribe}
@@ -70,6 +71,9 @@ Llame al método `POST /v1/recognize` para solicitar una transcripción básica 
 1.  Emita el mandato siguiente para llamar al método `/v1/recognize` del servicio para la transcripción básica sin parámetros. En el ejemplo se utiliza la cabecera `Content-Type` para indicar el tipo de audio, `audio/flac`. En el ejemplo se utiliza el modelo de lenguaje predeterminado, `en-US_BroadbandModel`, para la transcripción.
     -   {: hide-dashboard} Sustituya `{apikey}` y `{url}` por su clave de API y su URL.
     -   Modifique `{path_to_file}` para especificar la ubicación del archivo `audio-file.flac`.
+
+    *Usuario de Windows:* sustituya la barra inclinada invertida (``\`) al final de cada línea por un acento circunflejo (``^`). Asegúrese de que no haya espacios finales.
+    {: tip}
 
     ```bash
     curl -X POST -u "apikey:{apikey}"{: apikey} \
@@ -87,9 +91,9 @@ Llame al método `POST /v1/recognize` para solicitar una transcripción básica 
         {
           "alternatives": [
             {
-              "confidence": 0.87
+              "confidence": 0.96
               "transcript": "several tornadoes touch down as a line of
-severe thunderstorms swept through colorado on sunday "
+severe thunderstorms swept through Colorado on Sunday "
             }
           ],
           "final": true
@@ -134,17 +138,17 @@ Llame al método `POST /v1/recognize` para transcribir el mismo archivo de audio
               ]
             },
             {
-              "confidence": 0.87
+              "confidence": 0.96
               "transcript": "several tornadoes touch down as a line
-of severe thunderstorms swept through colorado on sunday "
+of severe thunderstorms swept through Colorado on Sunday "
             },
             {
-              "transcript": "several tornadoes touched down as a line
-of severe thunderstorms swept through colorado on sunday "
+              "transcript": "several tornadoes touched down as a line of
+severe thunderstorms swept through Colorado on Sunday "
             },
             {
-              "transcript": "several tornadoes touch down is a line
-of severe thunderstorms swept through colorado on sunday "
+              "transcript": "several tornadoes touch down as a line
+of severe thunderstorms swept through Colorado and Sunday "
             }
           ],
           "final": true
@@ -157,6 +161,6 @@ of severe thunderstorms swept through colorado on sunday "
 
 ## Siguientes pasos
 
--   Obtenga más información sobre las interfaces y los SDK que están disponibles para realizar solicitudes de reconocimiento de voz en el apartado [Visión general para los desarrolladores](/docs/services/speech-to-text/developer-overview.html).
--   Consulte las solicitudes básicas de reconocimiento de voz para cada una de las interfaces del servicio en [Cómo realizar una solicitud de reconocimiento](/docs/services/speech-to-text/basic-request.html).
--   Consulte información detallada sobre todos los métodos de las interfaces del servicio en la [Consulta de API ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+-   Obtenga más información sobre las interfaces y los SDK que están disponibles para realizar solicitudes de reconocimiento de voz en el apartado [Visión general para los desarrolladores](/docs/services/speech-to-text?topic=speech-to-text-developerOverview).
+-   Consulte las solicitudes básicas de reconocimiento de voz para cada una de las interfaces del servicio en [Cómo realizar una solicitud de reconocimiento](/docs/services/speech-to-text?topic=speech-to-text-basic-request).
+-   Busque la información detallada sobre todos los métodos de las interfaces del servicio en la [Referencia de API](https://{DomainName}/apidocs/speech-to-text){: external}.
