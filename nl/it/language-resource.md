@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-12"
+lastupdated: "2019-06-06"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -29,7 +29,7 @@ Puoi popolare un modello di lingua personalizzato con le parole aggiungendo corp
 {: shortdesc}
 
 -   **Corpora:** il metodo consigliato per popolare un modello di lingua personalizzato con delle parole consiste nell'aggiungere uno o più corpora al modello. Quando aggiungi un corpus, il servizio analizza i file e aggiunge automaticamente le eventuali parole nuove che trova al modello personalizzato. L'aggiunta di un corpus a un modello personalizzato consente al servizio di estrarre parole specifiche per il dominio in contesto e questo aiuta a garantire dei migliori risultati della trascrizione. Per ulteriori informazioni, vedi [Utilizzo dei corpora](#workingCorpora).
--   **Grammatiche:** puoi aggiungere grammatiche a un modello personalizzato per limitare il riconoscimento vocale alle parole o alle frasi riconosciute da una grammatica. Quando aggiungi una grammatica a un modello, il servizio aggiunge automaticamente le nuove parole che trova al modello, proprio come fa con i corpora. Per ulteriori informazioni, vedi [Utilizzo di grammatiche con i modelli di lingua personalizzati](/docs/services/speech-to-text/grammar.html).
+-   **Grammatiche:** puoi aggiungere grammatiche a un modello personalizzato per limitare il riconoscimento vocale alle parole o alle frasi riconosciute da una grammatica. Quando aggiungi una grammatica a un modello, il servizio aggiunge automaticamente le nuove parole che trova al modello, proprio come fa con i corpora. Per ulteriori informazioni, vedi [Utilizzo di grammatiche con i modelli di lingua personalizzati](/docs/services/speech-to-text?topic=speech-to-text-grammars).
 -   **Singole parole:** puoi anche aggiungere singole parole personalizzate a un modello direttamente. Il servizio aggiunge le parole al modello proprio come fa con le parole che rileva dai corpora o dalle grammatiche. Quando aggiungi una parola direttamente, puoi specificare più pronunce e indicare in che modo deve essere visualizzata la parola. Puoi anche aggiornare le parole esistenti per modificare o aumentare le definizioni che erano state estratte da corpora o grammatiche. Per ulteriori informazioni, vedi [Utilizzo delle parole personalizzate](#workingWords).
 
 Indipendentemente da come le aggiungi, il servizio archivia tutte le parole da te aggiunte a un modello di lingua personalizzato nella risorsa di parole del modello.
@@ -50,7 +50,7 @@ La risorsa di parole contiene le seguenti informazioni su ciascuna parola OOV. I
     Puoi utilizzare il campo `display_as` per specificare un'ortografia differente per la parola. Per ulteriori informazioni, vedi [Utilizzo del campo display_as](#displayAs).
 -   `source`: il modo in cui la parola è stata aggiunta alla risorsa di parole. Se il servizio ha estratto la parola da un corpus o da una grammatica, il campo elenca il nome di tale risorsa. Poiché il servizio può rilevare la stessa parola in più risorse, il campo può elencare più nomi di corpus o grammatica. Il campo include la stringa `user` se aggiungi o modifichi la parola direttamente.
 
-Quando aggiorni la risorsa di parole di un modello in qualsiasi modo, devi addestrare il modello perché le modifiche diventino effettive durante la trascrizione. Per ulteriori informazioni, vedi [Addestra il modello di lingua personalizzato](/docs/services/speech-to-text/language-create.html#trainModel-language).
+Quando aggiorni la risorsa di parole di un modello in qualsiasi modo, devi addestrare il modello perché le modifiche diventino effettive durante la trascrizione. Per ulteriori informazioni, vedi [Addestra il modello di lingua personalizzato](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
 
 ## Di quanti dati ho bisogno?
 {: #wordsResourceAmount}
@@ -61,8 +61,8 @@ A seconda del caso d'uso, anche l'aggiunta di qualche parola direttamente a un m
 
 Il servizio limita il numero di parole che puoi aggiungere a un modello di lingua personalizzato:
 
--   Puoi aggiungere un massimo di 90.000 parole OOV alla risorsa di parole di un modello personalizzato. Ciò include le parole OOV da tutte le origini (corpora, grammatiche e singole parole personalizzate che puoi aggiungere direttamente).
--   Puoi aggiungere un massimo di 10 milioni di parole a un modello personalizzato da tutte le origini. Questa cifra include tutte le parole, sia quelle OOV che quelle che fanno già parte del vocabolario di base del servizio, che sono incluse in corpora o grammatiche.Per i corpora, il servizio utilizza queste parole aggiuntive per imparare il contesto in cui possono presentarsi le parole OOV, motivo per cui i corpora sono un metodo più efficace per migliorare l'accuratezza del riconoscimento.
+-   Puoi aggiungere un massimo di 90.000 parole OOV alla risorsa di parole di un modello personalizzato. Questa figura include parole OOV da tutte le origini (corpora, grammatiche e singole parole personalizzate che aggiungi direttamente).
+-   Puoi aggiungere un massimo di 10 milioni di parole in totale a un modello personalizzato da tutte le origini. Questa cifra include tutte le parole, sia quelle OOV che quelle che fanno già parte del vocabolario di base del servizio, che sono incluse in corpora o grammatiche. Per i corpora, il servizio utilizza queste parole aggiuntive per imparare il contesto in cui possono presentarsi le parole OOV, motivo per cui i corpora sono un metodo più efficace per migliorare l'accuratezza del riconoscimento.
 
 Un'ampia risorsa di parole può aumentare la latenza del riconoscimento vocale ma l'effetto esatto è difficile da quantificare o prevedere. Come con la quantità di dati necessaria per produrre un modello personalizzato efficace, l'impatto sulle prestazioni di un'ampia risorsa di parole dipende da molti fattori. Verifica il tuo modello personalizzato con diverse quantità di dati per determinare le prestazioni dei tuoi modelli e dei tuoi dati.
 
@@ -135,14 +135,14 @@ Le seguenti descrizioni si applicano a inglese (Stati Uniti) e a inglese (Regno 
 
 -   Converte i numeri nelle loro parole equivalenti, ad esempio:
     -   *Per l'inglese, * `500` diventa `five hundred` e `0.15` diventa `zero point fifteen`.
-    -   *Per il francese, * `500` diventa `cinq cents` e `0,15` diventa <code>z&eacute;ro quinze</code>.
+    -   *Per il francese, * `500` diventa `cinq cents` e `0,15` diventa <code>z&eacute;ro virgule quinze</code>.
     -   *Per il tedesco, * `500` diventa <code>f&uuml;nfhundert</code> e `0,15` diventa <code>null punkt f&uuml;nfzehn</code>.
     -   *Per lo spagnolo, * `500` diventa `quinientos` e `0,15` diventa `cero coma quince`.
     -   *Per il portoghese (Brasile), * `500` diventa `quinhentos` e `0,15` diventa `zero ponto quinze`.
 -   Converte i token che includono specifici simboli in rappresentazioni stringa significative, ad esempio:
     -   Converte un `$` (simbolo del dollaro) e un numero:
         -   *Per l'inglese, * `$100` diventa `one hundred dollars`.
-        -   *Per il francese, * `$100` diventa `cent dollar`.
+        -   *Per il francese,* `$100` diventa `cent dollars`.
         -   *Per il tedesco, * `$100` e `100$` diventano `einhundert dollar`.
         -   *Per lo spagnolo, * `$100` e `100$` diventano <code>cien d&oacute;lares</code> (o `cien pesos` se il dialetto è `es-LA`).
         -   *Per il portoghese (Brasile), * `$100` e `100$` diventano <code>cem d&oacute;lares</code>.
@@ -154,7 +154,7 @@ Le seguenti descrizioni si applicano a inglese (Stati Uniti) e a inglese (Regno 
         -   *Per il portoghese (Brasile), * <code>&euro;100</code> e <code>100&euro;</code> diventano `cem euros`.
     -   Converte un `%` (segno percentuale) preceduto da un numero:
         -   *Per l'inglese, * `100%` diventa `one hundred percent`.
-        -   *Per il francese, * `100%` diventa `cent pourcent`.
+        -   *Per il francese,* `100%` diventa `cent pour cent`.
         -   *Per il tedesco, * `100%` diventa `einhundert prozent`.
         -   *Per lo spagnolo, * `100%` diventa `cien por ciento`.
         -   *Per il portoghese (Brasile), * `100%` diventa `cem por cento`.
@@ -187,7 +187,7 @@ Le seguenti descrizioni si applicano a inglese (Stati Uniti) e a inglese (Regno 
     -   `$10` diventa <code>&#49901;&#45804;&#47084;</code>.
 
     Questo elenco non è esaustivo. Il servizio apporta delle regolazioni simili per altri caratteri come necessario.
--   Per le frasi formate da caratteri latini (inglese) o da una combinazione di caratteri Hangul e latini, il servizio crea delle parole OOV per le frasi esattamente come si presentano nel file di corpus.Crea inoltre delle pronunce dal suono simile (sounds-like) per le parole basate su trascrizioni Hangul.
+-   Per le frasi formate da caratteri latini (inglese) o da una combinazione di caratteri Hangul e latini, il servizio crea delle parole OOV per le frasi esattamente come si presentano nel file di corpus. Crea inoltre delle pronunce dal suono simile (sounds-like) per le parole basate su trascrizioni Hangul.
    - Dà alla parola OOV `London` un suono simile (sounds-like) di <code>&#47088;&#45912;</code>.
    - Dà alla parola OOV <code>IBM&#54856;&#54168;&#51060;&#51648;</code> un suono simile (sounds-like) di <code>&#50500;&#51060;&#32;&#48708;&#32;&#50656;&#32;&#54856;&#54168;&#51060;&#51648;</code>.
 
@@ -201,20 +201,21 @@ Potesti, ad esempio, dover utilizzare i metodi per correggere un errore di batti
 ### Codifica dei caratteri
 {: #charEncoding}
 
-In generale, è probabile che aggiungi la maggior parte delle parole personalizzate dai corpora. Assicurati di conoscere la codifica di caratteri utilizzata nei file di testo per i tuoi corpora. Il servizio preserva la codifica che trova nei file di testo. 
+In generale, è probabile che aggiungi la maggior parte delle parole personalizzate dai corpora. Assicurati di conoscere la codifica di caratteri utilizzata nei file di testo per i tuoi corpora. Il servizio preserva la codifica che trova nei file di testo.
 
 Devi utilizzare questa codifica quando utilizzi le singole parole nel modello di lingua personalizzato. Quando specifichi una parola con il metodo `GET`, `PUT` o `DELETE /v1/customizations/{customization_id}/words/{word_name}`, devi codificare in URL il `word_name` che passi nell'URL se la parola include caratteri non ASCII.
 
-Ad esempio, la seguente tabella mostra come si presenta la stessa lettera in due codifiche differenti, ASCII e UTF-8. Puoi passare il carattere ASCII in un URL come `z`. Puoi passare il carattere UTF-8 come `%EF%BD%9A`. 
-<table>
+Ad esempio, la seguente tabella mostra come si presenta la stessa lettera in due codifiche differenti, ASCII e UTF-8. Puoi passare il carattere ASCII in un URL come `z`. Puoi passare il carattere UTF-8 come `%EF%BD%9A`.
+
+<table style="width:75%">
   <caption>Tabella 1. Esempi di codifica dei caratteri</caption>
   <tr>
-    <th style="text-align:left">Lettera</th>
-    <th style="text-align:center">Codifica</th>
-    <th style="text-align:center">Valore</th>
+    <th style="width:15%; text-align:center">Lettera</th>
+    <th style="width:40%; text-align:center">Codifica</th>
+    <th style="width:45%; text-align:center">Valore</th>
   </tr>
   <tr>
-    <td style="text-align:left; width:30%">
+    <td style="text-align:center">
       `z`
     </td>
     <td style="text-align:center">
@@ -225,7 +226,7 @@ Ad esempio, la seguente tabella mostra come si presenta la stessa lettera in due
     </td>
   </tr>
   <tr>
-    <td style="text-align:left; width:30%">
+    <td style="text-align:center">
       <code>&#xff5a;</code>
     </td>
     <td style="text-align:center">
@@ -351,7 +352,7 @@ Se utilizzi i parametri `smart_formatting` o `redaction` con una richiesta di ri
 
 Supponi ad esempio di aggiungere la parola personalizzata `one` con un campo `display_as` di `one`. La formattazione intelligente modifica la parola `one` nel numero `1`, e il valore di modalità di visualizzazione (display-as) non viene applicato. Per evitare questi problema, puoi aggiungere una parola personalizzata per il numero `1` e applicare lo stesso campo `display_as` a tale parola.
 
-Per ulteriori informazioni sull'utilizzo di queste funzioni, vedi [Formattazione intelligente](/docs/services/speech-to-text/output.html#smart_formatting) e [Oscuramento numerico](/docs/services/speech-to-text/output.html#redaction).
+Per ulteriori informazioni sull'utilizzo di queste funzioni, vedi [Formattazione intelligente](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting) e [Oscuramento numerico](/docs/services/speech-to-text?topic=speech-to-text-output#redaction).
 
 ### Cosa succede quando aggiungo o modifico una parola personalizzata?
 {: #parseWord}
@@ -484,8 +485,8 @@ Soprattutto quando aggiungi un corpus a un modello di lingua personalizzato o ag
 
 Per convalidare e, se necessario, correggere una parola per un modello personalizzato, indipendentemente da come è stata aggiunta alla risorsa di parole, utilizza i seguenti metodi:
 
--   Elenca tutte le parole da un modello personalizzato utilizzando il metodo `GET /v1/customizations/{customization_id}/words` o interroga una singola parola con il metodo `GET /v1/customizations/{customization_id}/words/{word_name}`. Per ulteriori informazioni, vedi [Elenco delle parole da un modello di lingua personalizzato](/docs/services/speech-to-text/language-words.html#listWords).
+-   Elenca tutte le parole da un modello personalizzato utilizzando il metodo `GET /v1/customizations/{customization_id}/words` o interroga una singola parola con il metodo `GET /v1/customizations/{customization_id}/words/{word_name}`. Per ulteriori informazioni, vedi [Elenco delle parole da un modello di lingua personalizzato](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords).
 -   Modifica le parole in un modello personalizzato per correggere gli errori o per aggiungere valori di suono simile (sounds-like) e di modalità di visualizzazione (display-as) utilizzando il metodo `POST /v1/customizations/{customization_id}/words` o quello `PUT /v1/customizations/{customization_id}/words/{word_name}`. Per ulteriori informazioni, vedi [Utilizzo delle parole personalizzate](#workingWords).
--   Elimina le parole estranee introdotte erroneamente (ad esempio da errori di battitura o di altro tipo in un corpus) utilizzando il metodo `DELETE /v1/customizations/{customization_id}/words/{word_name}`. Per ulteriori informazioni, vedi [Eliminazione di una parola da un modello di lingua personalizzato](/docs/services/speech-to-text/language-words.html#deleteWord).
-    -   Se la parola era stata estratta da un corpus, puoi invece aggiornare il file di testo di corpus per correggere l'errore e ricaricare quindi il file utilizzando il parametro `allow_overwrite` del metodo `POST /v1/customizations/{customization_id}/corpora/{corpus_name}`. Per ulteriori informazioni, vedi [Aggiungi un corpus al modello di lingua personalizzato](/docs/services/speech-to-text/language-create.html#addCorpus). 
-    -   Se la parola era stata estratta da una grammatica, puoi aggiornare il file di grammatica per correggere l'errore e ricaricare quindi il file utilizzando il parametro `allow_overwrite` del metodo `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`. Per ulteriori informazioni, vedi [Aggiungi una grammatica al modello di lingua personalizzato](/docs/services/speech-to-text/grammar-add.html#addGrammar). 
+-   Elimina le parole estranee introdotte erroneamente (ad esempio da errori di battitura o di altro tipo in un corpus) utilizzando il metodo `DELETE /v1/customizations/{customization_id}/words/{word_name}`. Per ulteriori informazioni, vedi [Eliminazione di una parola da un modello di lingua personalizzato](/docs/services/speech-to-text?topic=speech-to-text-manageWords#deleteWord).
+    -   Se la parola era stata estratta da un corpus, puoi invece aggiornare il file di testo di corpus per correggere l'errore e ricaricare quindi il file utilizzando il parametro `allow_overwrite` del metodo `POST /v1/customizations/{customization_id}/corpora/{corpus_name}`. Per ulteriori informazioni, vedi [Aggiungi un corpus al modello di lingua personalizzato](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus).
+    -   Se la parola era stata estratta da una grammatica, puoi aggiornare il file di grammatica per correggere l'errore e ricaricare quindi il file utilizzando il parametro `allow_overwrite` del metodo `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`. Per ulteriori informazioni, vedi [Aggiungi una grammatica al modello di lingua personalizzato](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar).

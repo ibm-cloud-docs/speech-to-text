@@ -2,14 +2,14 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,14 +25,14 @@ subcollection: speech-to-text
 # Utilizzo di un modello acustico personalizzato
 {: #acousticUse}
 
-Una volta creato e addestrato il tuo modello acustico personalizzato, puoi utilizzarlo nelle richieste di riconoscimento vocale. Utilizza il parametro di query `acoustic_customization_id` per specificare il modello acustico personalizzato per una richiesta, come mostrato nei seguenti esempi. Devi immettere la richiesta con le credenziali del servizio per l'istanza del servizio proprietaria del modello.
+Una volta creato e addestrato il tuo modello acustico personalizzato, puoi utilizzarlo nelle richieste di riconoscimento vocale. Utilizza il parametro di query `acoustic_customization_id` per specificare il modello acustico personalizzato per una richiesta, come mostrato nei seguenti esempi. Devi immettere la richiesta con le credenziali per l'istanza del servizio a cui appartiene il modello.
 {: shortdesc}
 
-Puoi anche specificare un modello di lingua personalizzato da utilizzare con la richiesta, che può aumentare l'accuratezza della trascrizione. Per ulteriori informazioni, vedi [Utilizzo dei modelli di lingua e acustici personalizzati durante il riconoscimento vocale](/docs/services/speech-to-text/acoustic-both.html#useBothRecognize).
+Puoi anche specificare un modello di lingua personalizzato da utilizzare con la richiesta, che può aumentare l'accuratezza della trascrizione. Per ulteriori informazioni, vedi [Utilizzo dei modelli di lingua e acustici personalizzati durante il riconoscimento vocale](/docs/services/speech-to-text?topic=speech-to-text-useBoth#useBothRecognize).
 
 Puoi creare più modelli acustici personalizzati per domini o ambienti uguali o diversi. Tuttavia, puoi specificare un solo modello acustico personalizzato alla volta con il parametro `acoustic_customization_id`.
 
--   Per l'[interfaccia WebSocket](/docs/services/speech-to-text/websockets.html), utilizza il metodo `/v1/recognize`. Il modello personalizzato specificato viene utilizzato per tutte le richieste inviate tramite la connessione.
+-   Per l'[interfaccia WebSocket](/docs/services/speech-to-text?topic=speech-to-text-websockets), utilizza il metodo `/v1/recognize`. Il modello personalizzato specificato viene utilizzato per tutte le richieste inviate tramite la connessione.
 
     ```javascript
     var token = {authentication-token};
@@ -43,7 +43,7 @@ Puoi creare più modelli acustici personalizzati per domini o ambienti uguali o 
     var websocket = new WebSocket(wsURI);
     ```
     {: codeblock}
--   Per l'[interfaccia HTTP sincrona](/docs/services/speech-to-text/http.html), utilizza il metodo `POST /v1/recognize`. Il modello personalizzato specificato viene utilizzato per tale richiesta.
+-   Per l'[interfaccia HTTP sincrona](/docs/services/speech-to-text?topic=speech-to-text-http), utilizza il metodo `POST /v1/recognize`. Il modello personalizzato specificato viene utilizzato per tale richiesta.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -52,7 +52,7 @@ Puoi creare più modelli acustici personalizzati per domini o ambienti uguali o 
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?acoustic_customization_id={customization_id}"
     ```
     {: pre}
--   Per l'[interfaccia HTTP asincrona](/docs/services/speech-to-text/async.html), utilizza il metodo `POST /v1/recognitions`. Il modello personalizzato specificato viene utilizzato per tale richiesta.
+-   Per l'[interfaccia HTTP asincrona](/docs/services/speech-to-text?topic=speech-to-text-async), utilizza il metodo `POST /v1/recognitions`. Il modello personalizzato specificato viene utilizzato per tale richiesta.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"

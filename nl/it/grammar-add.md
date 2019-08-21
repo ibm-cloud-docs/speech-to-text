@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-07-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -32,17 +32,17 @@ Prima di poter utilizzare una grammatica per il riconoscimento vocale, devi inna
 1.  [Aggiungi una grammatica al modello di lingua personalizzato](#addGrammar). Il servizio convalida la grammatica per garantirne la correttezza.
 1.  [Convalida le parole dalla grammatica](#validateGrammar). Verifica la correttezza delle pronunce dal suono simile (sounds-like) per qualsiasi parola OOV (out-of-vocabulary) riconosciuta dalla grammatica.
 1.  [Addestra il modello di lingua personalizzato](#trainGrammar). Il servizio prepara il modello personalizzato e la grammatica per l'utilizzo nel riconoscimento vocale.
-1.  Puoi ora utilizzare il modello personalizzato e la grammatica nelle richieste di riconoscimento vocale. Per ulteriori informazioni, vedi [Utilizzo di una grammatica per il riconoscimento vocale](/docs/services/speech-to-text/grammar-use.html).
+1.  Puoi ora utilizzare il modello personalizzato e la grammatica nelle richieste di riconoscimento vocale. Per ulteriori informazioni, vedi [Utilizzo di una grammatica per il riconoscimento vocale](/docs/services/speech-to-text?topic=speech-to-text-grammarUse).
 
 Questi passi sono iterativi. Puoi aggiungere grammatiche, così come corpora e parole personalizzate, a un modello di lingua personalizzato tutte le volte che lo ritieni necessario. Devi addestrare il modello personalizzato su qualsiasi nuova risorsa di dati (grammatiche, corpora o parole personalizzate) che aggiungi. Quando lo usi per il riconoscimento vocale, un modello personalizzato riflette i dati relativi all'ultimo addestramento.
 
-Puoi utilizzare le grammatiche con qualsiasi lingua che supporti la personalizzazione del modello di lingua. La personalizzazione del modello di lingua è disponibile per la maggior parte delle lingue. Per ulteriori informazioni, vedi [Supporto delle lingue per la personalizzazione](/docs/services/speech-to-text/custom.html#languageSupport).
+La funzione delle grammatiche è una funzionalità beta. Puoi utilizzare le grammatiche con qualsiasi lingua che supporti la personalizzazione del modello di lingua. La personalizzazione del modello di lingua è disponibile per la maggior parte delle lingue. Per ulteriori informazioni, vedi [Supporto delle lingue per la personalizzazione](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
 {: note}
 
 ## Crea un modello di lingua personalizzato
 {: #createModel-grammar}
 
-Per utilizzare una grammatica con il riconoscimento vocale, devi aggiungerla a un modello di lingua personalizzato. Puoi utilizzare un modello di lingua personalizzato esistente o puoi creare un nuovo modello personalizzato utilizzando il metodo `POST /v1/customizations`. Per ulteriori informazioni sulla creazione di un nuovo modello personalizzato, vedi [Crea un modello di lingua personalizzato](/docs/services/speech-to-text/language-create.html#createModel-language).
+Per utilizzare una grammatica con il riconoscimento vocale, devi aggiungerla a un modello di lingua personalizzato. Puoi utilizzare un modello di lingua personalizzato esistente o puoi creare un nuovo modello personalizzato utilizzando il metodo `POST /v1/customizations`. Per ulteriori informazioni sulla creazione di un nuovo modello personalizzato, vedi [Crea un modello di lingua personalizzato](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language).
 
 Un modello di lingua personalizzato può contenere corpora e parole personalizzate così come le grammatiche. Durante il riconoscimento vocale, puoi utilizzare il modello personalizzato con o senza le sue grammatiche. Tuttavia, quando utilizzi una grammatica, il servizio riconosce solo le parole dalla grammatica specificata.
 
@@ -54,14 +54,13 @@ Utilizza il metodo `POST /v1/customizations/{customization_id}/grammars/{grammar
 -   Specifica l'ID di personalizzazione del modello di lingua personalizzato con il parametro di percorso `customization_id`.
 -   Specifica un nome per la grammatica con il parametro di percorso `grammar_name`. Utilizza un nome localizzato che corrisponda alla lingua del modello personalizzato e che rifletta il contenuto della grammatica.
     -   Includi un massimo di 128 caratteri nel nome.
-    -   Non includere spazi, barre o barre rovesciate nel nome.
+    -   Non utilizzare caratteri che devono essere codificati in URL. Ad esempio, non utilizzare spazi, barre, barre rovesciate, due punti, e commerciali, virgolette doppie, segni più, segni di uguale, punti interrogativi e così via nel nome. (Il servizio non impedisce l'utilizzo di questi caratteri. Tuttavia, poiché devono essere codificati in URL ovunque ricorrano, il loro uso è fortemente sconsigliato.)
     -   Non utilizzare il nome di una grammatica o un corpus che è già stato aggiunto al modello personalizzato.
     -   Non utilizzare il nome `user`, che è riservato dal servizio per denotare le parole personalizzate aggiunte o modificate dall'utente.
-
+    -   Non utilizzare il nome `base_lm` o `default_lm`. Entrambi i nomi sono riservati per un uso futuro da parte del servizio.
 -   Utilizza l'intestazione della richiesta `Content-Type` per specificare il formato della grammatica:
     -   `application/srgs` per una grammatica ABNF
     -   `application/srgs+xml` per una grammatica XML
-
 -   Passa il file che contiene la grammatica come corpo della richiesta.
 
 Il seguente esempio aggiunge il file di grammatica denominato `confirm.abnf` al modello personalizzato con l'ID specificato. L'esempio denomina la grammatica `confirm-abnf`.
@@ -110,7 +109,7 @@ Il campo `status` ha uno dei seguenti valori:
 -   `being_processed` indica che il servizio sta ancora analizzando la grammatica.
 -   `undetermined` indica che il servizio ha rilevato un errore durante l'elaborazione della grammatica.
 
-Utilizza un loop per controllare lo stato della grammatica ogni 10 secondi finché non diventa `analyzed`. Per ulteriori informazioni sul controllo dello stato di una grammatica, vedi [Elenco delle grammatiche per un modello di lingua personalizzato](/docs/services/speech-to-text/grammar-manage.html#listGrammars).
+Utilizza un loop per controllare lo stato della grammatica ogni 10 secondi finché non diventa `analyzed`. Per ulteriori informazioni sul controllo dello stato di una grammatica, vedi [Elenco delle grammatiche per un modello di lingua personalizzato](/docs/services/speech-to-text?topic=speech-to-text-manageGrammars#listGrammars).
 
 ### Gestione degli errori di aggiunta della grammatica
 {: #handleFailures}
@@ -129,21 +128,21 @@ Se la sua analisi di una grammatica non riesce, il servizio imposta lo stato del
 
 Lo stato del modello personalizzato non viene influenzato dall'errore, ma la grammatica non può essere utilizzata con il modello. Puoi risolvere il problema correggendo il file di grammatica e ripetendo la richiesta per aggiungerlo al modello personalizzato. Imposta il parametro `allow_overwrite` su `true` per sovrascrivere la versione del file di grammatica che ha avuto esito negativo.
 
-Puoi anche eliminare la grammatica dal modello personalizzato per il momento e quindi correggere e aggiungere nuovamente il file di grammatica in futuro. Per ulteriori informazioni sull'eliminazione di una grammatica, vedi [Eliminazione di una grammatica da un modello di lingua personalizzato](/docs/services/speech-to-text/grammar-manage.html#deleteGrammar).
+Puoi anche eliminare la grammatica dal modello personalizzato per il momento e quindi correggere e aggiungere nuovamente il file di grammatica in futuro. Per ulteriori informazioni sull'eliminazione di una grammatica, vedi [Eliminazione di una grammatica da un modello di lingua personalizzato](/docs/services/speech-to-text?topic=speech-to-text-manageGrammars#deleteGrammar).
 
 ## Convalida le parole dalla grammatica
 {: #validateGrammar}
 
 Quando aggiungi un file di grammatica a un modello di lingua personalizzato, il servizio analizza la grammatica per determinare se questa riconosce le parole che non fanno già parte del vocabolario di base del servizio. Tali parole sono indicate come parole OOV (out-of-vocabulary). Il servizio aggiunge le parole OOV alla risorsa di parole del modello personalizzato. Lo scopo della risorsa di parole è quello di definire le parole che non sono già presenti nel vocabolario del servizio.
 
-Le definizioni nella risorsa di parole indicano al servizio come trascrivere le parole OOV. Le informazioni includono un campo `sounds_like` che indica al servizio come viene pronunciata la parola, un campo `display_as` che indica al servizio come visualizzare una parola e un campo `source` che indica il modo in cui la parola è stata aggiunta al modello personalizzato. Per ulteriori informazioni sulla risorsa di parole e sulle parole OOV, vedi [La risorsa di parole](/docs/services/speech-to-text/language-resource.html#wordsResource).
+Le definizioni nella risorsa di parole indicano al servizio come trascrivere le parole OOV. Le informazioni includono un campo `sounds_like` che indica al servizio come viene pronunciata la parola, un campo `display_as` che indica al servizio come visualizzare una parola e un campo `source` che indica il modo in cui la parola è stata aggiunta al modello personalizzato. Per ulteriori informazioni sulla risorsa di parole e sulle parole OOV, vedi [La risorsa di parole](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#wordsResource).
 
 Dopo aver aggiunto una grammatica a un modello personalizzato, è buona norma esaminare le parole OOV nella risorsa di parole del modello per verificare le loro pronunce dal suono simile. Non tutte le grammatiche hanno le parole OOV, ma la verifica della risorsa di parole è generalmente una buona idea. Per controllare le parole del modello personalizzato dopo aver aggiunto una grammatica, utilizza i seguenti metodi:
 
 -   Utilizza il metodo `GET /v1/customizations/{customization_id}/words` per elencare tutte le parole da un modello personalizzato. Passa il valore `grammars` con il parametro `word_type` del metodo per elencare solo le parole che sono state aggiunte dalle grammatiche.
 -   Utilizza il metodo `GET /v1/customizations/{customization_id}/words/{word_name}` per visualizzare una singola parola da un modello.
 
-Verifica che le pronunce dal suono simile delle parole siano accurate e corrette. Controlla anche errori tipografici e di altro tipo nelle parole stesse. Per ulteriori informazioni sulla convalida e correzione delle parole in un modello personalizzato, vedi [Convalida di una risorsa di parole](/docs/services/speech-to-text/language-resource.html#validateModel).
+Verifica che le pronunce dal suono simile delle parole siano accurate e corrette. Controlla anche errori tipografici e di altro tipo nelle parole stesse. Per ulteriori informazioni sulla convalida e correzione delle parole in un modello personalizzato, vedi [Convalida di una risorsa di parole](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
 
 ## Addestra il modello di lingua personalizzato
 {: #trainGrammar}
@@ -183,4 +182,4 @@ Per determinare lo stato di una richiesta di addestramento, utilizza il metodo `
 ```
 {: codeblock}
 
-Il campo `status` ha il valore `training` mentre il modello è in fase di addestramento. Utilizza un loop per controllare lo stato del modello ogni 10 secondi finché non diventa `available`. Per ulteriori informazioni sul monitoraggio di una richiesta di addestramento e altri possibili valori di stato, vedi [Monitoraggio della richiesta di addestramento del modello](/docs/services/speech-to-text/language-create.html#monitorTraining-language).
+Il campo `status` ha il valore `training` mentre il modello è in fase di addestramento. Utilizza un loop per controllare lo stato del modello ogni 10 secondi finché non diventa `available`. Per ulteriori informazioni sul monitoraggio di una richiesta di addestramento e altri possibili valori di stato, vedi [Monitoraggio della richiesta di addestramento del modello](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language).

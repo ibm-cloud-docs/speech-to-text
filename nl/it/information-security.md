@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -35,15 +35,15 @@ I prodotti, i servizi e le altre funzionalità qui descritti non sono adatti per
 
 Se hai bisogno di richiedere il supporto GDPR per le risorse {{site.data.keyword.cloud}} {{site.data.keyword.watson}} che vengono create
 
--   Nell'Unione Europea, vedi [Richiesta di supporto per le risorse {{site.data.keyword.cloud_notm}} Watson create nell'Unione Europea](/docs/services/watson/getting-started-gdpr-sar.html#request-EU).
--   Al di fuori dell'Unione Europea (EU), vedi [Richiesta di supporto per le risorse fuori dall'Unione Europea](/docs/services/watson/getting-started-gdpr-sar.html#request-non-EU).
+-   Nell'Unione Europea, vedi [Richiesta di supporto per le risorse {{site.data.keyword.cloud_notm}} Watson create nell'Unione Europea](/docs/services/watson?topic=watson-gdpr-sar#request-EU).
+-   Al di fuori dell'Unione Europea (EU), vedi [Richiesta di supporto per le risorse fuori dall'Unione Europea](/docs/services/watson?topic=watson-gdpr-sar#request-non-EU).
 
 ## Regolamento generale sulla protezione dei dati (GDPR) dell'Unione Europea
 {: #gdpr}
 
 {{site.data.keyword.IBM_notm}} si impegna a offrire ai nostri clienti e partner soluzioni innovative per la privacy, la sicurezza e la governance dei dati per assisterli nel loro percorso verso la conformità GDPR.
 
-È possibile trovare ulteriori informazioni sul percorso di conformità al GDPR di {{site.data.keyword.IBM_notm}} e sulle nostre funzionalità e offerte GDPR per supportare il tuo percorso di conformità [qui![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](../../icons/launch-glyph.svg "Icona link esterno")](http://www.ibm.com/gdpr){: new_window}.
+È possibile trovare ulteriori informazioni sul percorso di conformità al GDPR di {{site.data.keyword.IBM_notm}} e sulle nostre funzionalità e offerte GDPR per supportare il tuo percorso di conformità [qui](http://www.ibm.com/gdpr){: external}.
 
 ## Etichettatura ed eliminazione dei dati nel servizio Speech to Text
 {: #gdpr-speech-to-text}

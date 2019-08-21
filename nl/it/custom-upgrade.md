@@ -2,14 +2,14 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Upgrade dei modelli personalizzati
 {: #customUpgrade}
 
-Per migliorare la qualità del riconoscimento vocale, il servizio {{site.data.keyword.speechtotextfull}} aggiorna occasionalmente i modelli di base. Poiché i modelli di base per le diverse lingue sono indipendenti l'uno dall'altro, così come i modelli a banda larga e a banda stretta per una lingua, gli aggiornamenti ai singoli modelli di base non influiscono sugli altri modelli. Le [Note sulla release](/docs/services/speech-to-text/release-notes.html) documentano tutti gli aggiornamenti dei modelli di base.
+Per migliorare la qualità del riconoscimento vocale, il servizio {{site.data.keyword.speechtotextfull}} aggiorna occasionalmente i modelli di base. Poiché i modelli di base per le diverse lingue sono indipendenti l'uno dall'altro, così come i modelli a banda larga e a banda stretta per una lingua, gli aggiornamenti ai singoli modelli di base non influiscono sugli altri modelli. Le [Note sulla release](/docs/services/speech-to-text?topic=speech-to-text-release-notes) documentano tutti gli aggiornamenti dei modelli di base.
 {: shortdesc}
 
 Quando viene rilasciata una nuova versione di un modello di base, devi eseguire l'upgrade di tutti i modelli di lingua e acustici personalizzati creati sul modello di base per usufruire degli aggiornamenti. I tuoi modelli personalizzati continuano a utilizzare la versione precedente del modello di base finché non completi l'upgrade. Come con tutte le operazioni di personalizzazione, per eseguire l'upgrade di un modello devi utilizzare le credenziali dell'istanza del servizio che possiede tale modello.
@@ -62,7 +62,7 @@ Attieniti alla seguente procedura per eseguire l'upgrade di un modello di lingua
 
 Se il processo di upgrade viene avviato correttamente, il servizio restituisce un codice di risposta 200. Puoi monitorare lo stato dell'upgrade utilizzando il metodo `GET /v1/customizations/{customization_id}` per eseguire il polling dello stato del modello. Utilizza un loop per controllare lo stato ogni 10 secondi.
 
-Durante l'upgrade, il modello personalizzato ha lo stato `upgrading`. Al termine dell'upgrade, il modello riprende lo stato che aveva prima dell'upgrade (`ready` o `available`). Il controllo dello stato di un'operazione di upgrade è identico al controllo dello stato di un'operazione di addestramento. Per ulteriori informazioni, vedi [Monitoraggio della richiesta di addestramento del modello](/docs/services/speech-to-text/language-create.html#monitorTraining-language).
+Durante l'upgrade, il modello personalizzato ha lo stato `upgrading`. Al termine dell'upgrade, il modello riprende lo stato che aveva prima dell'upgrade (`ready` o `available`). Il controllo dello stato di un'operazione di upgrade è identico al controllo dello stato di un'operazione di addestramento. Per ulteriori informazioni, vedi [Monitoraggio della richiesta di addestramento del modello](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language).
 
 Il servizio non può accettare in alcun modo richieste di modifica del modello finché la richiesta di upgrade non viene completata. Tuttavia, puoi continuare a emettere richieste di riconoscimento con la versione esistente del modello durante l'upgrade.
 
@@ -100,7 +100,7 @@ Attieniti alla seguente procedura per eseguire l'upgrade di un modello acustico 
 
 Se il processo di upgrade viene avviato correttamente, il servizio restituisce un codice di risposta 200. Puoi monitorare lo stato dell'upgrade utilizzando il metodo `GET /v1/acoustic_customizations/{customization_id}` per eseguire il polling dello stato del modello. Utilizza un loop per controllare lo stato una volta al minuto.
 
-Durante l'upgrade, il modello personalizzato ha lo stato `upgrading`. Al termine dell'upgrade, il modello riprende lo stato che aveva prima dell'upgrade (`ready` o `available`). Il controllo dello stato di un'operazione di upgrade è identico al controllo dello stato di un'operazione di addestramento. Per ulteriori informazioni, vedi [Monitoraggio della richiesta di addestramento del modello](/docs/services/speech-to-text/acoustic-create.html#monitorTraining-acoustic).
+Durante l'upgrade, il modello personalizzato ha lo stato `upgrading`. Al termine dell'upgrade, il modello riprende lo stato che aveva prima dell'upgrade (`ready` o `available`). Il controllo dello stato di un'operazione di upgrade è identico al controllo dello stato di un'operazione di addestramento. Per ulteriori informazioni, vedi [Monitoraggio della richiesta di addestramento del modello](/docs/services/speech-to-text?topic=speech-to-text-acoustic#monitorTraining-acoustic).
 
 Il servizio non può accettare in alcun modo richieste di modifica del modello finché la richiesta di upgrade non viene completata. Tuttavia, puoi continuare a emettere richieste di riconoscimento con la versione esistente del modello durante l'upgrade.
 
@@ -118,8 +118,8 @@ L'upgrade di un modello personalizzato non viene avviato se il servizio sta gest
 
 Per visualizzare le versioni del modello di base per cui è disponibile un modello personalizzato, utilizza i seguenti metodi:
 
--   Per elencare le informazioni su un modello di lingua personalizzato, utilizza il metodo `GET /v1/customizations/{customization_id}`. Per ulteriori informazioni, vedi [Elenco dei modelli di lingua personalizzati](/docs/services/speech-to-text/language-models.html#listModels-language).
--   Per elencare le informazioni su un modello acustico personalizzato, utilizza il metodo `GET /v1/acoustic_customizations/{customization_id}`. Per ulteriori informazioni, vedi [Elenco dei modelli acustici personalizzati](/docs/services/speech-to-text/acoustic-models.html#listModels-acoustic).
+-   Per elencare le informazioni su un modello di lingua personalizzato, utilizza il metodo `GET /v1/customizations/{customization_id}`. Per ulteriori informazioni, vedi [Elenco dei modelli di lingua personalizzati](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
+-   Per elencare le informazioni su un modello acustico personalizzato, utilizza il metodo `GET /v1/acoustic_customizations/{customization_id}`. Per ulteriori informazioni, vedi [Elenco dei modelli acustici personalizzati](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
 
 In entrambi i casi, l'output include un campo `versions` che mostra le informazioni relative ai modelli di base per il modello personalizzato. Il seguente output mostra le informazioni per un modello di lingua personalizzato di cui è stato eseguito l'upgrade:
 
@@ -150,7 +150,7 @@ Il campo `versions` indica che il modello personalizzato è disponibile per due 
 
 Per impostazione predefinita, il servizio utilizza la versione più recente di un modello personalizzato specificato con una richiesta di riconoscimento. Tuttavia, anche dopo l'upgrade di un modello personalizzato, puoi continuare a effettuare richieste di riconoscimento con la versione precedente del modello. Utilizza il parametro `base_model_version` di un metodo di riconoscimento per specificare la versione di un modello di base da utilizzare per il riconoscimento vocale.
 
-Ad esempio, la seguente richiesta HTTP specifica che deve essere utilizzata la versione precedente del modello base. Pertanto, viene utilizzata anche la versione precedente del modello di lingua personalizzato specificato. 
+Ad esempio, la seguente richiesta HTTP specifica che deve essere utilizzata la versione precedente del modello base. Pertanto, viene utilizzata anche la versione precedente del modello di lingua personalizzato specificato.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -162,7 +162,7 @@ curl -X POST -u "apikey:{apikey}"
 
 Puoi utilizzare questa funzione per testare le prestazioni e l'accuratezza di un modello personalizzato rispetto alla vecchia e nuova versione del suo modello di base. Se ritieni che le prestazioni di un modello di cui è stato eseguito l'upgrade non siano del tutto ottimali (ad esempio, non vengono più riconosciute alcune parole), puoi continuare a utilizzare la versione precedente con le richieste di riconoscimento.
 
-La sezione [Versione del modello di base](/docs/services/speech-to-text/input.html#version) descrive il parametro `base_model_version` e come il servizio determina quali versioni del modello di base e personalizzato utilizzare con una richiesta di riconoscimento. Oltre a tali informazioni, considera i seguenti problemi quando passi sia i modelli di lingua che acustici personalizzati con una richiesta di riconoscimento:
+La sezione [Versione del modello di base](/docs/services/speech-to-text?topic=speech-to-text-input#version) descrive il parametro `base_model_version` e come il servizio determina quali versioni del modello di base e personalizzato utilizzare con una richiesta di riconoscimento. Oltre a tali informazioni, considera i seguenti problemi quando passi sia i modelli di lingua che acustici personalizzati con una richiesta di riconoscimento:
 
 -   Entrambi i modelli personalizzati devono essere basati sullo stesso modello di base (ad esempio, `en-US_BroadbandModel`).
 -   Se entrambi i modelli personalizzati sono basati sul modello di base precedente, il servizio utilizza il vecchio modello di base per il riconoscimento.

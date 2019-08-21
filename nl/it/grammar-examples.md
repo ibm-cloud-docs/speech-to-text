@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-06"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -118,7 +118,7 @@ Le seguenti grammatiche riconoscono i codici VIN Honda. Sono più complesse risp
   </tr>
 </table>
 
-Per ulteriori informazioni sul formato VIN, vedi [Vehicle identification number ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://en.wikipedia.org/wiki/Vehicle_identification_number){: new_window} in Wikipedia.
+Per ulteriori informazioni sul formato VIN, vedi [Vehicle identification number](https://wikipedia.org/wiki/Vehicle_identification_number){: external}.
 
 ## Grammatiche con elementi facoltativi
 {: #optionalElements}
@@ -141,7 +141,7 @@ Rendendo facoltativi alcuni elementi di una risposta, puoi rendere le grammatich
   </tr>
 </table>
 
-Per ulteriori informazioni sulle espansioni facoltative nelle grammatiche, vedi [Section 2.5 Repeats ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://www.w3.org/TR/speech-grammar/#S2.5){: new_window} della specifica SRGS (Speech Recognition Grammar Specification).
+Per ulteriori informazioni sulle espansioni facoltative nelle grammatiche, vedi [Section 2.5 Repeats](https://www.w3.org/TR/speech-grammar/#S2.5){: external} nella specifica SRGS (Speech Recognition Grammar Specification).
 
 ## Grammatiche di disambiguazione
 {: #disambiguation}
