@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -33,7 +33,7 @@ La interfaz HTTP asíncrona del servicio {{site.data.keyword.speechtotextfull}} 
 
 Los dos enfoques no son mutuamente excluyentes. Puede optar por recibir notificaciones de devolución de llamada pero seguir sondeando el servicio para ver el estado más reciente o ponerse en contacto con el servicio para recuperar resultados manualmente. En las secciones siguientes se describe cómo utilizar la interfaz HTTP asíncrona con ambos enfoques.
 
-Envíe un máximo de 1 GB y un mínimo de 100 bytes de datos de audio con una sola solicitud. Para obtener información acerca de los formatos de audio y sobre el uso de la compresión para maximizar la cantidad de audio que puede enviar con una solicitud, consulte [Formatos de audio](/docs/services/speech-to-text/audio-formats.html). Para obtener más información acerca de los métodos individuales de la interfaz, revise la [Consulta de API ![Icono de enlace externo](../../icons/launch-glyph.svg "Icono de enlace externo")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+Envíe un máximo de 1 GB y un mínimo de 100 bytes de datos de audio con una sola solicitud. Para obtener información acerca de los formatos de audio y sobre el uso de la compresión para maximizar la cantidad de audio que puede enviar con una solicitud, consulte [Formatos de audio](/docs/services/speech-to-text?topic=speech-to-text-audio-formats). Para obtener más información sobre los métodos individuales de la interfaz, consulte la [Referencia de API](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ## Modelos de uso
 {: #usage}
@@ -128,9 +128,9 @@ Un trabajo de reconocimiento se crea mediante una llamada al método `POST /v1/r
     -   `user_token` para especificar una serie que se va a incluir con cada notificación para el trabajo. Puesto que puede utilizar el mismo URL de devolución de llamada con un número indefinido de trabajos, puede aprovechar las señales de usuario para diferenciar las notificaciones correspondientes a distintos trabajos.
 -   *Para utilizar el sondeo*, omita los parámetros de consulta `callback_url`, `events` y `user_token`. Debe utilizar los métodos `GET /v1/recognitions` o `GET /v1/recognitions/{id}` para comprobar el estado del trabajo, utilizando el último para recuperar los resultados cuando finaliza el trabajo.
 
-En ambos casos, puede incluir el parámetro de consulta `results_ttl` para especificar el número de minutos durante los que deben estar disponibles los resultados después de que finalice el trabajo.
+En ambos casos, puede incluir el parámetro de consulta `results_ttl` para especificar el número de minutos durante los que deben estar disponibles los resultados después de que finalice el trabajo. El nuevo trabajo propiedad de la instancia del servicio cuyas credenciales se utilizan para crearlo.
 
-Además de los parámetros anteriores, que son específicos de la interfaz asíncrona, el método `POST /v1/recognitions` da soporte a la mayoría de los parámetros a los que dan soporte las interfaces WebSocket y HTTP síncrona. Para obtener más información, consulte el [Resumen de parámetros](/docs/services/speech-to-text/summary.html).
+Además de los parámetros anteriores, que son específicos de la interfaz asíncrona, el método `POST /v1/recognitions` da soporte a la mayoría de los parámetros a los que dan soporte las interfaces WebSocket y HTTP síncrona. Para obtener más información, consulte el [Resumen de parámetros](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ### Notificaciones de devolución de llamada
 {: #notifications}
@@ -283,7 +283,7 @@ curl -X GET -u "apikey:{apikey}"
                   6.33
                 ]
               ],
-              "confidence": 0.89
+              "confidence": 0.96
             }
           ]
         }
@@ -300,7 +300,7 @@ curl -X GET -u "apikey:{apikey}"
 ## Comprobación del estado de los trabajos más recientes
 {: #jobs}
 
-Llame al método `GET /v1/recognitions` para comprobar el estado de los trabajos más recientes. El método devuelve el estado de los 100 trabajos pendientes más recientes que están asociados a las credenciales de servicio con las que se llama. El método devuelve el ID y el estado de cada trabajo, junto con su hora de creación y de actualización. Si un trabajo se ha creado con un URL de devolución de llamada y una señal de usuario, el método también devuelve la señal de usuario correspondiente al trabajo.
+Llame al método `GET /v1/recognitions` para comprobar el estado de los trabajos más recientes. El método devuelve el estado de los 100 trabajos pendientes más recientes que están asociados a las credenciales con las que se llama. El método devuelve el ID y el estado de cada trabajo, junto con su hora de creación y de actualización. Si un trabajo se ha creado con un URL de devolución de llamada y una señal de usuario, el método también devuelve la señal de usuario correspondiente al trabajo.
 
 La respuesta incluye uno de los estados siguientes:
 
@@ -314,7 +314,7 @@ Un trabajo y sus resultados están disponibles hasta que los suprime con el mét
 ### Ejemplo
 {: #statusExample}
 
-En el ejemplo siguiente se solicita el estado de los trabajos actuales más recientes que están asociados con las credenciales de servicio del emisor de la llamada. El usuario tiene tres trabajos pendientes en diversos estados. El primer trabajo se ha creado con un URL de devolución de llamada y una señal de usuario.
+En el ejemplo siguiente se solicita el estado de los trabajos actuales más recientes que están asociados con las credenciales del emisor de la llamada. El usuario tiene tres trabajos pendientes en diversos estados. El primer trabajo se ha creado con un URL de devolución de llamada y una señal de usuario.
 
 ```bash
 curl -X GET -u "apikey:{apikey}"

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,10 +25,10 @@ subcollection: speech-to-text
 # Gestión de palabras personalizadas
 {: #manageWords}
 
-La interfaz de personalización incluye los métodos `POST /v1/customizations/{customization_id}/words` y `PUT /v1/customizations/{customization_id}/words/{word_name}`, que sirven para añadir o modificar palabras para un modelo personalizado. Para obtener más información, consulte [Adición de palabras al modelo de lenguaje personalizado](/docs/services/speech-to-text/language-create.html#addWords). La interfaz también incluye los métodos siguientes para listar y suprimir palabras de un modelo de lenguaje personalizado.
+La interfaz de personalización incluye los métodos `POST /v1/customizations/{customization_id}/words` y `PUT /v1/customizations/{customization_id}/words/{word_name}`, que sirven para añadir o modificar palabras para un modelo personalizado. Para obtener más información, consulte [Adición de palabras al modelo de lenguaje personalizado](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addWords). La interfaz también incluye los métodos siguientes para listar y suprimir palabras de un modelo de lenguaje personalizado.
 {: shortdesc}
 
-Lo más probable es que añada la mayoría de las palabras desde los corpus. Asegúrese de conocer la codificación de caracteres que se utiliza en los archivos de texto para los corpus. El servicio conserva la codificación que encuentra en los archivos de texto. Debe utilizar dicha codificación cuando trabaje con palabras individuales en el modelo de lenguaje personalizado. Cuando especifique una palabra con el método `GET`, `PUT` o `DELETE /v1/customizations/{customization_id}/words/{word_name}`, debe codificar en URL el valor `word_name` que pase en el URL si la palabra incluye caracteres que no sean ASCII. Para obtener más información, consulte [Codificación de caracteres](/docs/services/speech-to-text/language-resource.html#charEncoding).
+Lo más probable es que añada la mayoría de las palabras desde los corpus. Asegúrese de conocer la codificación de caracteres que se utiliza en los archivos de texto para los corpus. El servicio conserva la codificación que encuentra en los archivos de texto. Debe utilizar dicha codificación cuando trabaje con palabras individuales en el modelo de lenguaje personalizado. Cuando especifique una palabra con el método `GET`, `PUT` o `DELETE /v1/customizations/{customization_id}/words/{word_name}`, debe codificar en URL el valor `word_name` que pase en el URL si la palabra incluye caracteres que no sean ASCII. Para obtener más información, consulte [Codificación de caracteres](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#charEncoding).
 {: important}
 
 ## Listado de las palabras de un modelo de lenguaje personalizado
@@ -48,8 +48,8 @@ La interfaz de personalización ofrece dos métodos para obtener una lista de la
 
 Además de un campo `word` que identifica la palabra, ambos métodos devuelven la información siguiente acerca de cada palabra:
 
--   Un campo `sounds_like` que representa una matriz de pronunciaciones de la palabra. La matriz puede incluir la pronunciación que genera automáticamente el servicio si no se proporciona ningún valor de pronunciación para la palabra. Para obtener más información, consulte [Utilización del campo sounds_like](/docs/services/speech-to-text/language-resource.html#soundsLike).
--   Un campo `display_as` que muestra la ortografía de la palabra personalizada que muestra el servicio en las transcripciones. El campo contiene una serie vacía si no se proporciona ningún valor display-as para la palabra, en cuyo caso la palabra se muestra tal como se ha pronunciado. Para obtener más información, consulte [Utilización del campo display_as](/docs/services/speech-to-text/language-resource.html#displayAs).
+-   Un campo `sounds_like` que representa una matriz de pronunciaciones de la palabra. La matriz puede incluir la pronunciación que genera automáticamente el servicio si no se proporciona ningún valor de pronunciación para la palabra. Para obtener más información, consulte [Utilización del campo sounds_like](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#soundsLike).
+-   Un campo `display_as` que muestra la ortografía de la palabra personalizada que muestra el servicio en las transcripciones. El campo contiene una serie vacía si no se proporciona ningún valor display-as para la palabra, en cuyo caso la palabra se muestra tal como se ha pronunciado. Para obtener más información, consulte [Utilización del campo display_as](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#displayAs).
 -   Un campo `source` que indica cómo se ha añadido la palabra al recurso de palabras del modelo personalizado. El campo incluye el nombre de cada corpus y de cada gramática de los que el servicio ha extraído la palabra. Si ha modificado o añadido la palabra directamente, el campo incluye la serie `user`.
 -   Un campo `count` que indica el número de veces que se encuentra la palabra en todos los corpus y gramáticas. Por ejemplo, si la palabra aparece cinco veces en un corpus y siete veces en otro, su recuento es `12`.
 

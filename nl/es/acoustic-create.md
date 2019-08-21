@@ -2,14 +2,14 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -32,14 +32,14 @@ Siga estos pasos para crear un modelo acústico personalizado para el servicio {
 1.  [Añada audio al modelo acústico personalizado](#addAudio). El servicio acepta los mismos formatos de archivo de audio para el modelado acústico que para el reconocimiento de voz. También acepta archivos archivadores que contienen varios archivos de audio. Los archivos archivadores son el método recomendado para añadir recursos de audio. Puede repetir el método para añadir más archivos de audio o archivadores a un modelo personalizado.
 1.  [Entrene el modelo acústico personalizado](#trainModel-acoustic). Cuando haya añadido recursos de audio al modelo personalizado, debe entrenar el modelo. El entrenamiento prepara el modelo acústico personalizado para que se utilice en el reconocimiento de voz. El entrenamiento puede llevar bastante tiempo. La duración del entrenamiento depende de la cantidad de datos de audio que contenga el modelo.
 
-    Puede especificar un modelo de lenguaje personalizado de ayuda durante el entrenamiento de su modelo acústico personalizado. Un modelo de lenguaje personalizado que incluya transcripciones de sus archivos de audio o palabras OOV (no definidas en el vocabulario) del dominio de los archivos de audio puede mejorar la calidad del modelo acústico personalizado. Para obtener más información, consulte el tema sobre [Entrenamiento de un modelo acústico personalizado con un modelo de lenguaje personalizado](/docs/services/speech-to-text/acoustic-both.html#useBothTrain).
-1.  Después de entrenar el modelo personalizado, puede utilizarlo con las solicitudes de reconocimiento. Si el audio que se pasa para la transcripción tiene calidades acústicas parecidas a las del audio del modelo personalizado, los resultados reflejan una mejor comprensión por parte del servicio. Para obtener más información, consulte [Utilización de un modelo acústico personalizado](/docs/services/speech-to-text/acoustic-use.html).
+    Puede especificar un modelo de lenguaje personalizado de ayuda durante el entrenamiento de su modelo acústico personalizado. Un modelo de lenguaje personalizado que incluya transcripciones de sus archivos de audio o palabras OOV (no definidas en el vocabulario) del dominio de los archivos de audio puede mejorar la calidad del modelo acústico personalizado. Para obtener más información, consulte el tema sobre [Entrenamiento de un modelo acústico personalizado con un modelo de lenguaje personalizado](/docs/services/speech-to-text?topic=speech-to-text-useBoth#useBothTrain).
+1.  Después de entrenar el modelo personalizado, puede utilizarlo con las solicitudes de reconocimiento. Si el audio que se pasa para la transcripción tiene calidades acústicas parecidas a las del audio del modelo personalizado, los resultados reflejan una mejor comprensión por parte del servicio. Para obtener más información, consulte [Utilización de un modelo acústico personalizado](/docs/services/speech-to-text?topic=speech-to-text-acousticUse).
 
-    Puede pasar tanto un modelo acústico personalizado como un modelo de lenguaje personalizado en la misma solicitud de reconocimiento para mejorar aún más la precisión del reconocimiento. Para obtener más información, consulte [Utilización de modelos de lenguaje personalizado y acústico personalizado durante el reconocimiento de voz](/docs/services/speech-to-text/acoustic-both.html#useBothRecognize).
+    Puede pasar tanto un modelo acústico personalizado como un modelo de lenguaje personalizado en la misma solicitud de reconocimiento para mejorar aún más la precisión del reconocimiento. Para obtener más información, consulte [Utilización de modelos de lenguaje personalizado y acústico personalizado durante el reconocimiento de voz](/docs/services/speech-to-text?topic=speech-to-text-useBoth#useBothRecognize).
 
 Los pasos para la creación de un modelo acústico personalizado son iterativos. Puede añadir o suprimir audio y entrenar o volver a entrenar un modelo con la frecuencia que desee. Debe volver a entrenar un modelo para que los cambios en su audio entren en vigor. Cuando se vuelve a entrenar un modelo, se utiliza todos los datos de audio en el entrenamiento (no solo en los datos nuevos). Por lo tanto, el tiempo de entrenamiento es proporcional a la cantidad total de audio contenida en el modelo.
 
-La personalización del modelo acústico está disponible como funcionalidad beta para todos los idiomas. Para obtener más información, consulte [Soporte de idiomas para la personalización](/docs/services/speech-to-text/custom.html#languageSupport).
+La personalización del modelo acústico está disponible como funcionalidad beta para todos los idiomas. Para obtener más información, consulte [Soporte de idiomas para la personalización](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
 {: note}
 
 ## Creación de un modelo acústico personalizado
@@ -55,7 +55,8 @@ Para crear un nuevo modelo acústico personalizado se utiliza el método `POST /
     <th style="text-align:left">Descripción</th>
   </tr>
   <tr>
-    <td><code>name</code><br/><em>Obligatorio</em></td>
+    <td><code>name</code><br/><em>      Obligatorio
+    </em></td>
     <td style="text-align:center">Serie</td>
     <td>
       Un nombre definido por el usuario para el nuevo modelo acústico personalizado. Utilice un nombre que describa
@@ -63,14 +64,16 @@ Para crear un nuevo modelo acústico personalizado se utiliza el método `POST /
     </td>
   </tr>
   <tr>
-    <td><code>base_model_name</code><br/><em>Obligatorio</em></td>
+    <td><code>base_model_name</code><br/><em>      Obligatorio
+    </em></td>
     <td style="text-align:center">Serie</td>
     <td>
       El nombre del modelo base que debe personalizarse mediante el nuevo modelo. Debe utilizar el nombre de un modelo que devuelva el método <code>GET /v1/models</code>. El nuevo modelo personalizado solo se puede utilizar con el modelo base que personaliza.
     </td>
   </tr>
   <tr>
-    <td><code>description</code><br/><em>Opcional</em></td>
+    <td><code>description</code><br/><em>      Opcional
+    </em></td>
     <td style="text-align:center">Serie</td>
     <td>
       Una descripción del nuevo modelo. Utilice una descripción en el idioma del modelo personalizado.
@@ -99,21 +102,21 @@ El ejemplo devuelve el ID de personalización del nuevo modelo. Cada modelo pers
 ```
 {: codeblock}
 
-El nuevo modelo personalizado es propiedad de la instancia de servicio cuyas credenciales se utilizan para crearlo. Para obtener más información, consulte [Propiedad de modelos personalizados](/docs/services/speech-to-text/custom.html#customOwner).
+El modelo personalizado nuevo propiedad de la instancia del servicio cuyas credenciales se utilizan para crearlo. Para obtener más información, consulte [Propiedad de modelos personalizados](/docs/services/speech-to-text?topic=speech-to-text-customization#customOwner).
 
 ## Adición de audio al modelo acústico personalizado
 {: #addAudio}
 
 Una vez que haya creado el modelo acústico personalizado, el paso siguiente consiste en añadir al mismo recursos de audio. Utilice el método `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` para añadir un recurso de audio a un modelo personalizado. Puede añadir:
 
--   Un archivo de audio individual en cualquier formato que esté soportado para el reconocimiento de voz (consulte [Formatos de audio](/docs/services/speech-to-text/audio-formats.html)).
+-   Un archivo de audio individual en cualquier formato admitido para el reconocimiento de voz. Para obtener más información, consulte [Formatos de audio](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
 -   Un archivo archivador (un archivo **.zip** o **.tar.gz**) que incluya varios archivos de audio. El hecho de recopilar varios archivos de audio en un solo archivo archivador y de cargar dicho archivo resulta más eficiente que añadir archivos de audio individualmente.
 
-El recurso de audio se pasa como cuerpo de la solicitud y se asigna al recurso un `audio_name`. Para obtener más información, consulte [Cómo trabajar con recursos de audio](/docs/services/speech-to-text/acoustic-resource.html).
+El recurso de audio se pasa como cuerpo de la solicitud y se asigna al recurso un `audio_name`. Para obtener más información, consulte [Cómo trabajar con recursos de audio](/docs/services/speech-to-text?topic=speech-to-text-audioResources).
 
 En los ejemplos siguientes se muestra cómo añadir recursos de tipo de audio y de tipo archivador:
 
--   En este ejemplo se añade un recurso de tipo de audio al modelo acústico personalizado con el `customization_id` especificado. La cabecera `Content-Type` identifica el tipo de audio como `audio/wav`. El archivo de audio, **audio1.wav**, se pasa como cuerpo de la solicitud y se asigna al recurso el nombre `audio1`.
+-   En este ejemplo se añade un recurso de tipo de audio al modelo acústico personalizado con el `customization_id` especificado. La cabecera `Content-Type` identifica el tipo de audio como `audio/wav`. El archivo audio, **audio1.wav**, se pasa como cuerpo de la solicitud y se asigna el nombre `audio1` al recurso.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -138,12 +141,14 @@ El método también acepta un parámetro de consulta opcional `allow_overwrite` 
 
 Este método es asíncrono. Puede tardar varios segundos en completarse, en función de la duración del audio. En el caso de un archivo archivador, la duración de la operación depende de la duración de los archivos de audio. Para obtener más información sobre cómo comprobar el estado de una solicitud para añadir un recurso de audio, consulte [Supervisión de la solicitud de adición de audio](#monitorAudio).
 
-Puede añadir a un modelo personalizado el número de recursos de audio que desee mediante una llamada al método para cada archivo de audio o para cada archivo archivado. Un recurso de audio se debe haber añadido por completo para poder añadir otro. Para poder entrenar un modelo personalizado, debe añadir un mínimo de 10 minutos y un máximo de 200 horas de audio que incluya voz, no silencio. Ningún recurso de tipo de audio o archivador puede tener más de 100 MB. Para obtener más información, consulte [Directrices para añadir recursos de audio](/docs/services/speech-to-text/acoustic-resource.html#audioGuidelines).
+Puede añadir a un modelo personalizado el número de recursos de audio que desee mediante una llamada al método para cada archivo de audio o para cada archivo archivado. Se pueden realizar varias solicitudes para añadir diversos recursos de forma simultánea.
+
+Para poder entrenar un modelo personalizado, debe añadir un mínimo de 10 minutos y un máximo de 200 horas de audio que incluya voz, no silencio. Ningún recurso de tipo de audio o archivador puede tener más de 100 MB. Para obtener más información, consulte [Directrices para añadir recursos de audio](/docs/services/speech-to-text?topic=speech-to-text-audioResources#audioGuidelines).
 
 ### Supervisión de la solicitud de adición de audio
 {: #monitorAudio}
 
-El servicio devuelve el código de respuesta 201 si el audio es válido. Luego analiza de forma asíncrona el contenido del archivo o archivos de audio y extrae automáticamente información sobre el audio, como su duración, la frecuencia de muestreo y la codificación. No puede enviar solicitudes para añadir más audio a un modelo acústico personalizado, ni entrenar el modelo, hasta que servicio termine de analizar todos los archivos de audio para la solicitud actual.
+El servicio devuelve el código de respuesta 201 si el audio es válido. Luego analiza de forma asíncrona el contenido del archivo o archivos de audio y extrae automáticamente información sobre el audio, como su duración, la frecuencia de muestreo y la codificación. No puede entrenar el modelo personalizado hasta que finalice el análisis de todos los recursos de audio de las solicitudes actuales del servicio.
 
 Para determinar el estado de la solicitud, utilice el método `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` para sondear el estado del audio. El método acepta el GUID del modelo personalizado y el nombre del recurso de audio. Su respuesta incluye el `status` (estado) del recurso, que tiene uno de los valores siguientes:
 
@@ -195,10 +200,11 @@ El contenido de la respuesta y la ubicación del campo `status` dependen del tip
         "status": "ok"
       },
       . . .
+    }
     ```
     {: codeblock}
 
-Utilice un bucle para comprobar el estado del recurso de audio cada pocos segundos hasta que esté en el estado `ok`. Para obtener más información acerca de otros campos que devuelve el método, consulte [Listado de recursos de audio de un modelo acústico personalizado](/docs/services/speech-to-text/acoustic-audio.html#listAudio).
+Utilice un bucle para comprobar el estado del recurso de audio cada pocos segundos hasta que esté en el estado `ok`. Para obtener más información acerca de otros campos que devuelve el método, consulte [Listado de recursos de audio de un modelo acústico personalizado](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#listAudio).
 
 ## Entrenamiento del modelo acústico personalizado
 {: #trainModel-acoustic}
@@ -213,14 +219,17 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-El método también acepta un parámetro de consulta opcional `custom_language_model_id` para especificar un modelo de lenguaje personalizado creado por separado que se va a utilizar durante el entrenamiento. Se puede entrenar con un modelo de lenguaje personalizado que contenga transcripciones de archivos de audio o que contenga palabras del corpus o palabras OOV (no definidas en el vocabulario) que sean relevantes para el contenido de los archivos de audio. Ambos modelos personalizados se deben basar en la misma versión del mismo modelo base para que el entrenamiento tenga éxito. Para obtener más información, consulte el tema sobre [Entrenamiento de un modelo acústico personalizado con un modelo de lenguaje personalizado](/docs/services/speech-to-text/acoustic-both.html#useBothTrain).
+Este método es asíncrono. El entrenamiento puede tardar entre minutos y horas en completarse, en función de la cantidad de datos de audio que contenga el modelo acústico personalizado y de la carga actual del servicio. Como directriz general, el entrenamiento de un modelo acústico personalizado tarda entre dos y cuatro veces la duración de sus datos de audio. El rango de tiempo depende del modelo que se está entrenando y de la naturaleza del audio (por ejemplo, si el audio es limpio o ruidoso). Por ejemplo, se puede tardar entre 4 y 8 horas en entrenar un modelo que contenga 2 horas de audio. Para obtener más información sobre cómo consultar el estado de una operación de entrenamiento, consulte [Supervisión de la solicitud de entrenamiento del modelo](#monitorTraining-acoustic).
 
-El método de entrenamiento es asíncrono. El entrenamiento puede tardar entre minutos y horas en completarse, en función de la cantidad de datos de audio que contenga el modelo acústico personalizado y de la carga actual del servicio. Como directriz general, el entrenamiento de un modelo acústico personalizado tarda entre dos y cuatro veces la duración de sus datos de audio. El rango de tiempo depende del modelo que se está entrenando y de la naturaleza del audio (por ejemplo, si el audio es limpio o ruidoso). Por ejemplo, se puede tardar entre 4 y 8 horas en entrenar un modelo que contenga 2 horas de audio. Para obtener más información sobre cómo consultar el estado de una operación de entrenamiento, consulte [Supervisión de la solicitud de entrenamiento del modelo](#monitorTraining-acoustic).
+El método incluye los siguientes parámetros de consulta opcionales:
+
+-   El parámetro `custom_language_model_id` especifica un modelo de lenguaje creado por separado que se va a utilizar durante el entrenamiento. Se puede entrenar con un modelo de lenguaje personalizado que contenga transcripciones de archivos de audio o que contenga palabras del corpus o palabras OOV (no definidas en el vocabulario) que sean relevantes para el contenido de los archivos de audio. Los modelos personalizados acústico y de idioma se deben basar en la misma versión del mismo modelo base para que el entrenamiento tenga éxito. Para obtener más información, consulte el tema sobre [Entrenamiento de un modelo acústico personalizado con un modelo de lenguaje personalizado](/docs/services/speech-to-text?topic=speech-to-text-useBoth#useBothTrain).
+-   El parámetro `strict` indica si el entrenamiento debe continuar si un modelo personalizado contiene una mezcla de recursos de audio válidos y no válidos. De forma predeterminada, el entrenamiento falla si el modelo contiene uno o más recursos no válidos. Establezca el parámetro `false` para permitir que el entrenamiento continúe siempre que el modelo contenga como mínimo un recurso válido. El servicio excluye del entrenamiento los recursos que no son válidos. Para obtener más información, consulte [Errores de entrenamiento](#failedTraining-acoustic).
 
 ### Supervisión de la solicitud de entrenamiento del modelo
 {: #monitorTraining-acoustic}
 
-El servicio devuelve el código de respuesta 200 si el proceso de entrenamiento se inicia correctamente. El servicio no acepta otras solicitudes de entrenamiento, ni solicitudes para añadir más recursos de audio, hasta que se complete la solicitud existente.
+El servicio devuelve el código de respuesta 200 si el proceso de entrenamiento se inicia correctamente. El servicio no acepta otras solicitudes de entrenamiento, ni solicitudes para añadir más recursos de audio, hasta que se complete la solicitud de entrenamiento existente.
 
 Para determinar el estado de una solicitud de entrenamiento, utilice el método `GET /v1/acoustic_customizations/{customization_id}` para sondear el estado del modelo. El método acepta el ID de personalización del modelo acústico y devuelve su estado, como en el ejemplo siguiente:
 
@@ -234,6 +243,7 @@ curl -X GET -u "apikey:{apikey}"
 {
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
   "created": "2016-06-01T18:42:25.324Z",
+  "updated": "2016-06-01T22:11:13.298Z",
   "language": "en-US",
   "owner": "297cfd08-330a-22ba-93ce-1a73f454dd98",
   "name": "Modelo de ejemplo",
@@ -247,23 +257,36 @@ curl -X GET -u "apikey:{apikey}"
 
 La respuesta incluye los campos `status` y `progress` que muestran el estado actual del modelo. El significado del campo `progress` depende del estado del modelo. El campo `status` puede tener uno de los valores siguientes:
 
--   `pending` indica que el modelo se ha creado pero está a la espera de que se añadan datos de entrenamiento o que el servicio termine de analizar los datos que se han añadido. El campo `progress` es `0`.
--   `ready` indica que el modelo está listo para ser entrenado. El campo `progress` es `0`.
+-   `pending` indica que el modelo se ha creado pero está a la espera de que se añadan datos de entrenamiento válidos o que el servicio termine de analizar los datos que se han añadido. El campo `progress` es `0`.
+-   `ready` indica que el modelo contiene datos válidos y que está listo para ser entrenado. El campo `progress` es `0`.
+
+    Si el modelo contiene una mezcla de recursos de audio válidos y no válidos, el entrenamiento del modelo falla a menos que establezca el parámetro de consulta `strict` en `false`. Para obtener más información, consulte [Errores de entrenamiento](#failedTraining-acoustic).
 -   `training` indica que el modelo se está entrenando. El campo `progress` pasa de `0` a `100` cuando termina el entrenamiento. <!-- The `progress` field indicates the progress of the training as a percentage complete. -->
 -   `available` indica que el modelo está entrenado y listo para su uso. El campo `progress` es `100`.
 -   `upgrading` indica que el modelo se está actualizando. El campo `progress` es `0`.
--   `failed` indica que el entrenamiento del modelo ha fallado. El campo `progress` es `0`.
+-   `failed` indica que el entrenamiento del modelo ha fallado. El campo `progress` es `0`. Para obtener más información, consulte [Errores de entrenamiento](#failedTraining-acoustic).
 
-Utilice un bucle para comprobar el estado del entrenamiento una vez por minuto hasta que el modelo esté en estado `available`. Para obtener más información acerca de otros campos que devuelve el método, consulte [Listado de modelos acústicos personalizados](/docs/services/speech-to-text/acoustic-models.html#listModels-acoustic).
+Utilice un bucle para comprobar el estado del entrenamiento una vez por minuto hasta que el modelo esté en estado `available`. Para obtener más información acerca de otros campos que devuelve el método, consulte [Listado de modelos acústicos personalizados](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
 
 ### Errores de entrenamiento
 {: #failedTraining-acoustic}
 
-El entrenamiento de un modelo acústico personalizado no se puede iniciar si el servicio está gestionando otra solicitud para el modelo personalizado. Una solicitud conflictiva podría ser otra solicitud de entrenamiento o una solicitud para añadir recursos de audio al modelo. También es posible que el entrenamiento no se inicie por los siguientes motivos:
+El entrenamiento no se puede iniciar si el servicio está gestionando otra solicitud para el modelo acústico personalizado. Una solicitud conflictiva podría ser otra solicitud de entrenamiento o una solicitud para añadir recursos de audio al modelo. El servicio devuelve un código de estado de 409.
+
+El entrenamiento tampoco se inicia por los motivos siguientes:
 
 -   El modelo personalizado contiene menos de 10 minutos de datos de audio.
 -   El modelo personalizado contiene más de 200 horas de datos de audio.
 -   Uno o varios de los recursos de audio del modelo personalizado no son válidos.
 -   Ha pasado un modelo de lenguaje personalizado incompatible con el parámetro de consulta `custom_language_model_id`. Ambos modelos personalizados se deben basar en la misma versión del mismo modelo base.
 
-Si el estado del entrenamiento de un modelo personalizado es `failed`, utilice los métodos `GET /v1/acoustic_customizations/{customization_id}/audio` y `GET /v1/acoustic_customizations/{custimozation_id}/audio/{audio_name}` para examinar los recursos de audio del modelo y solucionar los problemas que detecte. Para obtener más información, consulte [Listado de recursos de audio para un modelo acústico personalizado](/docs/services/speech-to-text/acoustic-audio.html#listAudio).
+El servicio devuelve un código de estado de 400 y establece el estado del modelo personalizado en `failed`. Efectúe
+una de las acciones siguientes:
+
+-   Utilice los métodos `GET /v1/acoustic_customizations/{customization_id}/audio` y `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` para examinar los recursos de audio del modelo. Para obtener más información, consulte [Listado de recursos de audio para un modelo acústico personalizado](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#listAudio).
+
+    Para cada recurso de audio no válido, realice una de las acciones siguientes:
+    -   Corrija el recurso de audio y utilice el parámetro `allow_overwrite` del método `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` para añadir el audio corregido al modelo. Para obtener más información, consulte [Adición de audio al modelo acústico personalizado](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio).
+    -   Utilice el método `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` para suprimir el recurso de audio del modelo. Para obtener más información, consulte [Supresión de un recurso de audio de un modelo acústico personalizado](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#deleteAudio).
+-   Establezca el parámetro `strict` del método `POST /v1/acoustic_customizations/{customization_id}/train` en `false` para excluir recursos de audio no válidos del entrenamiento. El modelo debe contener como mínimo un recurso de
+audio válido para que el entrenamiento tenga éxito. El parámetro `strict` es útil para entrenar un modelo personalizado que contiene una mezcla de recursos de audio válidos y no válidos.

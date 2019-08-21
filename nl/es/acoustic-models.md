@@ -2,14 +2,14 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,18 +25,19 @@ subcollection: speech-to-text
 # Gestión de modelos acústicos personalizados
 {: #manageAcousticModels}
 
-La interfaz de personalización incluye el método `POST /v1/acoustic_customizations` para crear un modelo acústico personalizado. La interfaz también incluye el método `POST /v1/acoustic_customizations/train` para entrenar un modelo personalizado con sus recursos de audio más recientes. Para obtener más información, consulte la documentación siguiente:
+La interfaz de personalización incluye el método `POST /v1/acoustic_customizations` para crear un modelo acústico personalizado. La interfaz también incluye el método `POST /v1/acoustic_customizations/train` para entrenar un modelo personalizado con sus recursos de audio más recientes. Para obtener más información,
+consulte
 {: shortdesc}
 
--   [Creación de un modelo acústico personalizado](/docs/services/speech-to-text/acoustic-create.html#createModel-acoustic)
--   [Entrenamiento del modelo acústico personalizado](/docs/services/speech-to-text/acoustic-create.html#trainModel-acoustic)
+-   [Creación de un modelo acústico personalizado](/docs/services/speech-to-text?topic=speech-to-text-acoustic#createModel-acoustic)
+-   [Entrenamiento del modelo acústico personalizado](/docs/services/speech-to-text?topic=speech-to-text-acoustic#trainModel-acoustic)
 
-Además, la interfaz incluye métodos para ver información acerca de modelos los acústicos personalizados, restablecer un modelo personalizado en su estado inicial y suprimir un modelo personalizado.
+Además, la interfaz incluye métodos para ver información acerca de los modelos acústicos personalizados, restablecer un modelo personalizado en su estado inicial, actualizar un modelo personalizado y suprimir un modelo personalizado. No puede entrenar, restablecer, actualizar o suprimir un modelo personalizado mientras el servicio está gestionando otra operación en ese modelo, incluida la adición de recursos de audio al modelo.
 
 ## Listado de modelos acústicos personalizados
 {: #listModels-acoustic}
 
-La interfaz de personalización proporciona dos métodos para ver información acerca de los modelos acústicos personalizados propiedad de las credenciales de servicio especificadas:
+La interfaz de personalización proporciona dos métodos para ver información acerca de los modelos acústicos personalizados propiedad de las credenciales de servicio:
 
 -   El método `GET /v1/acoustic_customizations` muestra información sobre todos los modelos acústicos personalizados o sobre todos los modelos acústicos personalizados para un idioma especificado.
 -   El método `GET /v1/acoustic_customizations/{customization_id}` muestra información sobre un modelo acústico personalizado especificado. Utilice este método para sondear el servicio sobre el estado de una solicitud de entrenamiento.
@@ -45,17 +46,18 @@ Ambos métodos devuelven la información siguiente acerca de un modelo acústico
 
 -   `customization_id` identifica el GUID (identificador global exclusivo) del modelo personalizado. El GUID sirve para identificar el modelo en los métodos de la interfaz.
 -   `created` es la fecha y la hora en Hora Universal Coordinada (UTC) en que se ha creado el modelo personalizado.
+-   `updated` es la fecha y la hora en Hora Universal Coordinada (UTC) en que se ha actualizado el modelo personalizado.
 -   `language` es el idioma del modelo personalizado.
 -   `owner` identifica las credenciales de la instancia de servicio propietaria del modelo personalizado.
 -   `name` es el nombre del modelo personalizado.
 -   `description` muestra la descripción del modelo personalizado, si se ha especificada una al crearlo.
 -   `base_model_name` indica el nombre del modelo de lenguaje para el que se ha creado el modelo personalizado.
--   `versions` proporciona una lista de las versiones disponibles del modelo personalizado. Cada elemento de la matriz indica una versión del modelo base con la que se puede utilizar el modelo personalizado. Solo existen varias versiones si se ha actualizado el modelo personalizado. De lo contrario, solo se muestra una versión. Para obtener más información, consulte [Listado de información de versión para un modelo personalizado](/docs/services/speech-to-text/custom-upgrade.html#upgradeList).
+-   `versions` proporciona una lista de las versiones disponibles del modelo personalizado. Cada elemento de la matriz indica una versión del modelo base con la que se puede utilizar el modelo personalizado. Solo existen varias versiones si se ha actualizado el modelo personalizado. De lo contrario, solo se muestra una versión. Para obtener más información, consulte [Listado de información de versión para un modelo personalizado](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade#upgradeList).
 
 Los métodos también devuelven un campo `status` que indica el estado del modelo personalizado:
 
--   `pending` indica que el modelo se ha creado. Está a la espera de que se añadan datos de entrenamiento o de que el servicio termine de analizar los datos que se han añadido.
--   `ready` indica que el modelo contiene datos de audio y que está listo para ser entrenado.
+-   `pending` indica que el modelo se ha creado. Está a la espera de que se añadan datos de entrenamiento válidos (recursos de audio) o de que el servicio termine de analizar datos que se han añadido.
+-   `ready` indica que el modelo contiene datos de audio válidos y que está listo para ser entrenado. Si el modelo contiene una mezcla de recursos de audio válidos y no válidos, el entrenamiento del modelo falla a menos que establezca el parámetro de consulta `strict` en `false`. Para obtener más información, consulte [Errores de entrenamiento](/docs/services/speech-to-text?topic=speech-to-text-acoustic#failedTraining-acoustic).
 -   `training` indica que el modelo se está entrenando con los datos de audio.
 -   `available` indica que el modelo se ha entrenado y está preparado para que se utilice con solicitudes de reconocimiento.
 -   `upgrading` indica que el modelo se está actualizando.
@@ -66,7 +68,7 @@ Además, la salida incluye un campo `progress` que indica el progreso actual del
 ### Solicitudes y respuestas de ejemplo
 {: #listExample-acoustic}
 
-El ejemplo siguiente incluye el parámetro de consulta `language` para ver todos los modelos acústicos personalizados en inglés de Estados Unidos que son propiedad de las credenciales de servicio:
+El ejemplo siguiente incluye el parámetro de consulta `language` para ver todos los modelos acústicos personalizados en inglés de Estados Unidos que son propiedad de las credenciales especificadas:
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -74,7 +76,7 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: pre}
 
-Dos de estos modelos son propiedad de las credenciales de servicio. El primer modelo está a la espera de datos o está siendo procesado por el servicio. El segundo modelo está completamente entrenado y listo para utilizarse.
+Las credenciales poseen dos modelos de este tipo. El primer modelo está a la espera de datos o está siendo procesado por el servicio. El segundo modelo está completamente entrenado y listo para utilizarse.
 
 ```javascript
 {
@@ -82,6 +84,7 @@ Dos de estos modelos son propiedad de las credenciales de servicio. El primer mo
     {
       "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
       "created": "2016-06-01T18:42:25.324Z",
+      "updated": "2016-06-01T18:42:25.324Z",
       "language": "en-US",
       "versions": [
         "en-US_BroadbandModel.v07-06082016.06202016",
@@ -97,6 +100,7 @@ Dos de estos modelos son propiedad de las credenciales de servicio. El primer mo
     {
       "customization_id": "8391f918-3b76-e109-763c-b7732fae4829",
       "created": "2016-06-01T18:51:37.291Z",
+      "updated": "2016-06-01T19:21:06.825Z",
       "language": "en-US",
       "versions": [
         "en-US_BroadbandModel.v2017-11-15"
@@ -125,6 +129,7 @@ curl -X GET -u "apikey:{apikey}"
 {
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
   "created": "2016-06-01T18:42:25.324Z",
+  "updated": "2016-06-01T18:42:25.324Z",
   "language": "en-US",
   "versions": [
     "en-US_BroadbandModel.v07-06082016.06202016",

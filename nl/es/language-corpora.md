@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Gestión de corpus
 {: #manageCorpora}
 
-La interfaz de personalización incluye el método `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` para añadir un corpus a un modelo de lenguaje personalizado. Para obtener más información, consulte [Adición de un corpus al modelo de lenguaje personalizado](/docs/services/speech-to-text/language-create.html#addCorpus). La interfaz también incluye los métodos siguientes para listar y suprimir corpus de un modelo de lenguaje personalizado.
+La interfaz de personalización incluye el método `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` para añadir un corpus a un modelo de lenguaje personalizado. Para obtener más información, consulte [Adición de un corpus al modelo de lenguaje personalizado](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus). La interfaz también incluye los métodos siguientes para listar y suprimir corpus de un modelo de lenguaje personalizado.
 {: shortdesc}
 
 ## Listado de corpus de un modelo de lenguaje personalizado
