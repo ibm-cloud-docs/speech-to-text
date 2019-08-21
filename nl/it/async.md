@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -33,7 +33,7 @@ L'interfaccia HTTP asincrona del servizio {{site.data.keyword.speechtotextfull}}
 
 I due approcci non si escludono a vicenda. Puoi scegliere di ricevere le notifiche di callback ma anche di eseguire il polling del servizio per lo stato più recente oppure contattare il servizio per richiamare i risultati manualmente. Le seguenti sezioni descrivono come utilizzare l'interfaccia HTTP asincrona con entrambi gli approcci.
 
-Inoltra un massimo di 1 GB e un minimo di 100 byte di dati audio con una singola richiesta. Per informazioni sui formati audio e sull'utilizzo della compressione per massimizzare la quantità di audio che puoi inviare con una richiesta, vedi [Formati audio](/docs/services/speech-to-text/audio-formats.html). Per ulteriori informazioni sui singoli metodi dell'interfaccia, vedi la [Guida di riferimento API ![Icona link esterno](../../icons/launch-glyph.svg "Icona link esterno")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+Inoltra un massimo di 1 GB e un minimo di 100 byte di dati audio con una singola richiesta. Per informazioni sui formati audio e sull'utilizzo della compressione per massimizzare la quantità di audio che puoi inviare con una richiesta, vedi [Formati audio](/docs/services/speech-to-text?topic=speech-to-text-audio-formats). Per ulteriori informazioni sui singoli metodi dell'interfaccia, vedi la [Guida di riferimento API](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ## Modelli di utilizzo
 {: #usage}
@@ -128,9 +128,9 @@ Crea un lavoro di riconoscimento chiamando il metodo `POST /v1/recognitions`. Il
     -   `user_token` per specificare una stringa che deve essere inclusa in ciascuna notifica per il lavoro. Poiché puoi utilizzare lo stesso URL di callback con un numero indefinito di lavori, puoi utilizzare i token utente per differenziare le notifiche per i diversi lavori.
 -   *Per utilizzare il polling*, ometti i parametri di query `callback_url`, `events` e `user_token`. Devi quindi utilizzare i metodi `GET /v1/recognitions` o `GET /v1/recognitions/{id}` per controllare lo stato del lavoro, utilizzando l'ultimo metodo per richiamare i risultati al termine del lavoro.
 
-In entrambi i casi, puoi includere il parametro di query `results_ttl` per specificare il numero di minuti per i quali i risultati devono rimanere disponibili al termine del lavoro.
+In entrambi i casi, puoi includere il parametro di query `results_ttl` per specificare il numero di minuti per i quali i risultati devono rimanere disponibili al termine del lavoro. Il nuovo lavoro appartiene all'istanza del servizio di cui vengono utilizzate le credenziali per crearlo.
 
-Oltre ai parametri precedenti, che sono specifici per l'interfaccia asincrona, il metodo `POST /v1/recognitions` supporta la maggior parte degli stessi parametri delle interfacce WebSocket e HTTP sincrona. Per ulteriori informazioni, vedi il [Riepilogo dei parametri](/docs/services/speech-to-text/summary.html).
+Oltre ai parametri precedenti, che sono specifici per l'interfaccia asincrona, il metodo `POST /v1/recognitions` supporta la maggior parte degli stessi parametri delle interfacce WebSocket e HTTP sincrona. Per ulteriori informazioni, vedi il [Riepilogo dei parametri](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ### Notifiche di callback
 {: #notifications}
@@ -283,7 +283,7 @@ curl -X GET -u "apikey:{apikey}"
                   6.33
                 ]
               ],
-              "confidence": 0.89
+              "confidence": 0.96
             }
           ]
         }
@@ -300,7 +300,7 @@ curl -X GET -u "apikey:{apikey}"
 ## Controllo dello stato dei lavori più recenti
 {: #jobs}
 
-Chiama il metodo `GET /v1/recognitions` per controllare lo stato dei lavori più recenti. Il metodo restituisce lo stato dei 100 lavori in sospeso più recenti associati alle credenziali del servizio con cui viene chiamato. Il metodo restituisce l'ID e lo stato di ogni lavoro, insieme alle relative ore di creazione e aggiornamento. Se un lavoro è stato creato con un URL di callback e un token utente, il metodo restituisce anche il token utente per il lavoro.
+Chiama il metodo `GET /v1/recognitions` per controllare lo stato dei lavori più recenti. Il metodo restituisce lo stato dei 100 lavori in sospeso più recenti associati alle credenziali con cui viene chiamato. Il metodo restituisce l'ID e lo stato di ogni lavoro, insieme alle relative ore di creazione e aggiornamento. Se un lavoro è stato creato con un URL di callback e un token utente, il metodo restituisce anche il token utente per il lavoro.
 
 La risposta include uno dei seguenti stati:
 
@@ -309,12 +309,12 @@ La risposta include uno dei seguenti stati:
 -   `completed` se il servizio ha terminato l'elaborazione del lavoro. Se il lavoro ha specificato un URL di callback e l'evento `recognitions.completed_with_results`, il servizio ha inviato i risultati con la notifica di callback. In caso contrario, utilizza il metodo `GET /v1/recognitions/{id}` per ottenere i risultati.
 -   `failed` se il lavoro non è riuscito per qualche motivo.
 
-Un lavoro e i suoi risultati rimangono disponibili finché non li elimini con il metodo `DELETE /v1/recognitions/{id}` o finché non scade la durata (TTL) del lavoro, a seconda dell'evento che si verifica per primo. 
+Un lavoro e i suoi risultati rimangono disponibili finché non li elimini con il metodo `DELETE /v1/recognitions/{id}` o finché non scade la durata (TTL) del lavoro, a seconda dell'evento che si verifica per primo.
 
 ### Esempio
 {: #statusExample}
 
-Il seguente esempio richiede lo stato degli ultimi lavori correnti associati alle credenziali del servizio del chiamante. L'utente ha tre lavori in sospeso in vari stati. Il primo lavoro è stato creato con un URL di callback e un token utente.
+Il seguente esempio richiede lo stato degli ultimi lavori correnti associati alle credenziali del chiamante. L'utente ha tre lavori in sospeso in vari stati. Il primo lavoro è stato creato con un URL di callback e un token utente.
 
 ```bash
 curl -X GET -u "apikey:{apikey}"

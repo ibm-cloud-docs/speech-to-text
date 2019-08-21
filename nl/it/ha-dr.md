@@ -2,14 +2,14 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-19"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -63,22 +63,22 @@ Conserva le seguenti informazioni sui tuoi modelli di lingua personalizzati:
     -   Utilizza il metodo `GET /v1/customizations` per elencare le informazioni su tutti i modelli personalizzati.
     -   Utilizza il metodo `GET /v1/customizations/{customization_id}` per elencare le informazioni su un modello personalizzato specificato.
 
-    Per ulteriori informazioni, vedi [Elenco dei modelli di lingua personalizzati](/docs/services/speech-to-text/language-models.html#listModels-language).
+    Per ulteriori informazioni, vedi [Elenco dei modelli di lingua personalizzati](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
 -   Copie di tutti i file di testo di corpus che aggiungi ai tuoi modelli di lingua personalizzati. Per elencare le informazioni sui corpora per i tuoi modelli personalizzati:
     -   Utilizza il metodo `GET /v1/customizations/{customization_id}/corpora` per elencare tutti i corpora per un modello personalizzato.
     -   Utilizza il metodo `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` per elencare le informazioni su un corpus specificato per un modello personalizzato.
 
-    Per ulteriori informazioni, vedi [Elenco dei corpora per un modello di lingua personalizzato](/docs/services/speech-to-text/language-corpora.html#listCorpora).
+    Per ulteriori informazioni, vedi [Elenco dei corpora per un modello di lingua personalizzato](/docs/services/speech-to-text?topic=speech-to-text-manageCorpora#listCorpora).
 -   Copie di tutti i file grammatica che aggiungi ai tuoi modelli di lingua personalizzati. Per elencare le informazioni sulle grammatiche per i tuoi modelli personalizzati:
     -   Utilizza il metodo `GET /v1/customizations/{customization_id}/grammars` per elencare le informazioni su tutte le grammatiche per un modello personalizzato.
     -   Utilizza il metodo `GET /v1/customizations/{customization_id}/grammars/{grammar_name}` per elencare le informazioni su una grammatica specificata per un modello personalizzato.
 
-    Per ulteriori informazioni, vedi [Elenco delle grammatiche per un modello di lingua personalizzato](/docs/services/speech-to-text/grammar-manage.html#listGrammars).
+    Per ulteriori informazioni, vedi [Elenco delle grammatiche per un modello di lingua personalizzato](/docs/services/speech-to-text?topic=speech-to-text-manageGrammars#listGrammars).
 -   Informazioni su tutte le parole personalizzate, incluse le loro definizioni di suono simile (sounds-like) e di modalità di visualizzazione (display-as), che aggiungi direttamente ai tuoi modelli di lingua personalizzati. Per elencare le informazioni sulle parole OOV (out-of-vocabulary) per i tuoi modelli personalizzati:
     -   Utilizza il metodo `GET /v1/customizations/{customization_id}/words` per elencare le informazioni sulle parole da un modello personalizzato. Puoi utilizzare il parametro `word_type` per elencare tutte (`all`) le parole da un modello, le parole aggiunte direttamente dall'utente (`user`), le parole estratte dai `corpora` o le parole riconosciute dalle grammatiche (`grammars`).
     -   Utilizza il metodo `GET /v1/customizations/{customization_id}/words/{word_name}` per elencare le informazioni su una parola specificata da un modello personalizzato.
 
-    Per ulteriori informazioni, vedi [Elenco delle parole da un modello di lingua personalizzato](/docs/services/speech-to-text/language-words.html#listWords).
+    Per ulteriori informazioni, vedi [Elenco delle parole da un modello di lingua personalizzato](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords).
 
 È consigliabile conservare queste informazioni in un formato che puoi utilizzare per ricreare i tuoi modelli di lingua personalizzati in caso di guasto. Conservare in modo attivo le informazioni sui tuoi modelli personalizzati e i loro dati e preparare in anticipo le chiamate elencate nella seguente sezione, può permetterti di eseguire un ripristino il più rapidamente possibile.
 
@@ -87,11 +87,11 @@ Conserva le seguenti informazioni sui tuoi modelli di lingua personalizzati:
 
 Se hai bisogno di eseguire un ripristino di emergenza, puoi utilizzare le informazioni di backup per ricreare i tuoi modelli di lingua personalizzati e i relativi dati:
 
-1.  Per ricreare i tuoi modelli di lingua personalizzati, utilizza il metodo `POST /v1/customizations`. Per ulteriori informazioni, vedi [Crea un modello di lingua personalizzato](/docs/services/speech-to-text/language-create.html#createModel-language).
-1.  Per aggiungere i file di testo di corpus ai tuoi modelli personalizzati, utilizza il metodo `POST /v1/customizations/{customization_id}/corpora/{corpus_name}`. Per ulteriori informazioni, vedi [Aggiungi un corpus al modello di lingua personalizzato](/docs/services/speech-to-text/language-create.html#addCorpus).
-1.  Per aggiungere i file di grammatica ai tuoi modelli personalizzati, utilizza il metodo `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`. Per ulteriori informazioni, vedi [Aggiungi una grammatica al modello di lingua personalizzato](/docs/services/speech-to-text/grammar-add.html#addGrammar). 
-1.  Per aggiungere più parole ai tuoi modelli personalizzati, utilizza il metodo `POST /v1/customizations/{customization_id}/words`. Per aggiungere singole parole ai tuoi modelli personalizzati, utilizza il metodo `PUT /v1/customizations/{customization_id}/words/{word_name}`. Per ulteriori informazioni, vedi [Aggiungi parole al modello di lingua personalizzato](/docs/services/speech-to-text/language-create.html#addWords).
-1.  Per addestrare i tuoi modelli personalizzati una volta ripristinati i corpora, le grammatiche e le parole personalizzate, utilizza il metodo `POST /v1/customizations/{customization_id}/train`. Per ulteriori informazioni, vedi [Addestra il modello di lingua personalizzato](/docs/services/speech-to-text/language-create.html#trainModel-language).
+1.  Per ricreare i tuoi modelli di lingua personalizzati, utilizza il metodo `POST /v1/customizations`. Per ulteriori informazioni, vedi [Crea un modello di lingua personalizzato](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language).
+1.  Per aggiungere i file di testo di corpus ai tuoi modelli personalizzati, utilizza il metodo `POST /v1/customizations/{customization_id}/corpora/{corpus_name}`. Per ulteriori informazioni, vedi [Aggiungi un corpus al modello di lingua personalizzato](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus).
+1.  Per aggiungere i file di grammatica ai tuoi modelli personalizzati, utilizza il metodo `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`. Per ulteriori informazioni, vedi [Aggiungi una grammatica al modello di lingua personalizzato](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar).
+1.  Per aggiungere più parole ai tuoi modelli personalizzati, utilizza il metodo `POST /v1/customizations/{customization_id}/words`. Per aggiungere singole parole ai tuoi modelli personalizzati, utilizza il metodo `PUT /v1/customizations/{customization_id}/words/{word_name}`. Per ulteriori informazioni, vedi [Aggiungi parole al modello di lingua personalizzato](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addWords).
+1.  Per addestrare i tuoi modelli personalizzati una volta ripristinati i corpora, le grammatiche e le parole personalizzate, utilizza il metodo `POST /v1/customizations/{customization_id}/train`. Per ulteriori informazioni, vedi [Addestra il modello di lingua personalizzato](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
 
 I metodi che utilizzi per aggiungere corpora, grammatiche e parole personalizzate e per addestrare un modello di lingua personalizzato sono asincroni. Devi monitorare le richieste fino al loro completamento.
 
@@ -111,12 +111,12 @@ Conserva le seguenti informazioni sui tuoi modelli acustici personalizzati:
     -   Utilizza il metodo `GET /v1/acoustic_customizations` per elencare le informazioni su tutti i modelli personalizzati.
     -   Utilizza il metodo `GET /v1/acoustic_customizations/{customization_id}` per elencare le informazioni su un modello personalizzato specificato.
 
-    Per ulteriori informazioni, vedi [Elenco dei modelli acustici personalizzati](/docs/services/speech-to-text/acoustic-models.html#listModels-acoustic).
+    Per ulteriori informazioni, vedi [Elenco dei modelli acustici personalizzati](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
 -   Copie di tutte le risorse audio, sia i singoli file audio che i file di archivio, che aggiungi ai tuoi modelli acustici personalizzati. Per elencare le informazioni sulle risorse audio per i tuoi modelli personalizzati:
     -   Utilizza il metodo `GET /v1/acoustic_customizations/{customization_id}/audio` per elencare le informazioni su tutte le risorse audio per un modello personalizzato.
     -   Utilizza il metodo `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` per elencare le informazioni su una risorsa audio specificata per un modello personalizzato.
 
-    Per ulteriori informazioni, vedi [Elenco delle risorse audio per un modello acustico personalizzato](/docs/services/speech-to-text/acoustic-audio.html#listAudio).
+    Per ulteriori informazioni, vedi [Elenco delle risorse audio per un modello acustico personalizzato](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#listAudio).
 
 È consigliabile conservare queste informazioni in un formato che puoi utilizzare per ricreare i tuoi modelli acustici personalizzati in caso di guasto. Conservare in modo attivo le informazioni sui tuoi modelli personalizzati e le loro risorse audio e preparare in anticipo le chiamate elencate nella seguente sezione, può permetterti di eseguire un ripristino il più rapidamente possibile.
 
@@ -125,9 +125,9 @@ Conserva le seguenti informazioni sui tuoi modelli acustici personalizzati:
 
 Se hai bisogno di eseguire un ripristino di emergenza, puoi utilizzare le informazioni di backup per ricreare i tuoi modelli acustici personalizzati e i relativi dati:
 
-1.  Per ricreare i tuoi modelli acustici personalizzati, utilizza il metodo `POST /v1/acoustic_customizations`. Per ulteriori informazioni, vedi [Crea un modello acustico personalizzato](/docs/services/speech-to-text/acoustic-create.html#createModel-acoustic).
-1.  Per aggiungere le risorse audio ai tuoi modelli personalizzati, utilizza il metodo `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`. Per ulteriori informazioni, vedi [Aggiungi l'audio al modello acustico personalizzato](/docs/services/speech-to-text/acoustic-create.html#addAudio).
-1.  Per addestrare i tuoi modelli personalizzati una volta ripristinate le tue risorse audio, utilizza il metodo `POST /v1/acoustic_customizations/{customization_id}/train`. Per ulteriori informazioni, vedi [Addestra il modello acustico personalizzato](/docs/services/speech-to-text/acoustic-create.html#trainModel-acoustic).
+1.  Per ricreare i tuoi modelli acustici personalizzati, utilizza il metodo `POST /v1/acoustic_customizations`. Per ulteriori informazioni, vedi [Crea un modello acustico personalizzato](/docs/services/speech-to-text?topic=speech-to-text-acoustic#createModel-acoustic).
+1.  Per aggiungere le risorse audio ai tuoi modelli personalizzati, utilizza il metodo `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`. Per ulteriori informazioni, vedi [Aggiungi l'audio al modello acustico personalizzato](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio).
+1.  Per addestrare i tuoi modelli personalizzati una volta ripristinate le tue risorse audio, utilizza il metodo `POST /v1/acoustic_customizations/{customization_id}/train`. Per ulteriori informazioni, vedi [Addestra il modello acustico personalizzato](/docs/services/speech-to-text?topic=speech-to-text-acoustic#trainModel-acoustic).
 
 I metodi che utilizzi per aggiungere le risorse audio e per addestrare un modello acustico personalizzato sono asincroni. Devi monitorare le richieste fino al loro completamento.
 
@@ -141,4 +141,4 @@ Per il riconoscimento vocale con l'interfaccia HTTP asincrona, devi conservare l
 -   Tutti gli URL di callback che inserisci in whitelist per l'utilizzo con l'interfaccia asincrona. Se si verifica un guasto, potresti dover utilizzare il metodo `POST /v1/register_callback` per registrare nuovamente gli URL. Il metodo restituisce una risposta appropriata se un URL è già inserito in whitelist.
 -   Copie dei file audio che inoltri all'interfaccia asincrona per il riconoscimento vocale. Se si verifica un guasto prima di ricevere o richiamare i risultati di un lavoro asincrono completato, devi utilizzare il metodo `POST /v1/recognitions` per inoltrare nuovamente i file audio quando il servizio viene ripristinato. Una volta ottenuti i risultati di un lavoro asincrono completato, non hai più bisogno di conservare i file audio.
 
-Per ulteriori informazioni, vedi [L'interfaccia HTTP asincrona](/docs/services/speech-to-text/async.html). Come con i dati di backup per i modelli personalizzati, puoi conservare attivamente queste informazioni ed essere pronto a riemettere in anticipo le richieste necessarie.
+Per ulteriori informazioni, vedi [L'interfaccia HTTP asincrona](/docs/services/speech-to-text?topic=speech-to-text-async). Come con i dati di backup per i modelli personalizzati, puoi conservare attivamente queste informazioni ed essere pronto a riemettere in anticipo le richieste necessarie.

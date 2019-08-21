@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -28,7 +28,7 @@ subcollection: speech-to-text
 I seguenti esempi introducono il supporto del servizio {{site.data.keyword.speechtotextfull}} per le grammatiche. Gli esempi creano due semplici grammatiche ABNF e mostrano i possibili risultati quando vengono utilizzate per il riconoscimento vocale. Gli esempi illustrano l'importanza di esaminare il punteggio di attendibilità che il servizio include con una trascrizione.
 {: shortdesc}
 
-Gli esempi forniscono solo i risultati delle richieste di riconoscimento vocale. Per gli esempi che mostrano come passare una grammatica per il riconoscimento vocale, vedi [Utilizzo di una grammatica per il riconoscimento vocale](/docs/services/speech-to-text/grammar-use.html). Gli esempi sono anche molto semplici. Per esempi di grammatiche più complesse, vedi [Grammatiche di esempio](/docs/services/speech-to-text/grammar-examples.html).
+Gli esempi forniscono solo i risultati delle richieste di riconoscimento vocale. Per gli esempi che mostrano come passare una grammatica per il riconoscimento vocale, vedi [Utilizzo di una grammatica per il riconoscimento vocale](/docs/services/speech-to-text?topic=speech-to-text-grammarUse). Gli esempi sono anche molto semplici. Per esempi di grammatiche più complesse, vedi [Grammatiche di esempio](/docs/services/speech-to-text?topic=speech-to-text-grammarExamples).
 
 ## Corrispondenze di singole frasi: la grammatica yesno
 {: #yesnoGrammar}

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-10"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,12 +25,12 @@ subcollection: speech-to-text
 # Funzioni di output
 {: #output}
 
-Il servizio {{site.data.keyword.speechtotextshort}} offre le seguenti funzioni per indicare le informazioni che il servizio deve includere nei suoi risultati della trascrizione per una richiesta di riconoscimento vocale. Tutti i parametri di output sono facoltativi.
+Il servizio {{site.data.keyword.speechtotextfull}} offre le seguenti funzioni per indicare le informazioni che il servizio deve includere nei suoi risultati della trascrizione per una richiesta di riconoscimento vocale. Tutti i parametri di output sono facoltativi.
 {: shortdesc}
 
--   Per degli esempi di semplici richieste di riconoscimento vocale per ciascuna delle interfacce del servizio, vedi [Effettuazione di una richiesta di riconoscimento](/docs/services/speech-to-text/basic-request.html).
--   Per degli esempi e delle descrizioni di risposte di riconoscimento vocale, vedi [Descrizione dei risultati del riconoscimento](/docs/services/speech-to-text/basic-response.html). Il servizio restituisce tutto il contenuto della risposta JSON nel set di caratteri UTF-8.
--   Per un elenco alfabetico di tutti i parametri di riconoscimento vocale disponibili, compresi il loro stato (generalmente disponibile o beta) e le lingue supportate, vedi il [Riepilogo dei parametri](/docs/services/speech-to-text/summary.html).
+-   Per degli esempi di semplici richieste di riconoscimento vocale per ciascuna delle interfacce del servizio, vedi [Effettuazione di una richiesta di riconoscimento](/docs/services/speech-to-text?topic=speech-to-text-basic-request).
+-   Per degli esempi e delle descrizioni di risposte di riconoscimento vocale, vedi [Descrizione dei risultati del riconoscimento](/docs/services/speech-to-text?topic=speech-to-text-basic-response). Il servizio restituisce tutto il contenuto della risposta JSON nel set di caratteri UTF-8.
+-   Per un elenco alfabetico di tutti i parametri di riconoscimento vocale disponibili, compresi il loro stato (generalmente disponibile o beta) e le lingue supportate, vedi il [Riepilogo dei parametri](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ## Etichette del parlante
 {: #speaker_labels}
@@ -42,7 +42,7 @@ Le etichette del parlante identificano gli individui e le parole da essi espress
 
 Le etichette del parlante sono ottimizzate per scenari con due parlanti. Funzionano al meglio per le conversazioni telefoniche che coinvolgono due persone in uno scambio prolungato. Possono gestire fino a sei parlanti ma più di due parlanti possono produrre prestazioni variabili. Gli scambi tra due persone avvengono di norma su supporti a banda stretta ma puoi utilizzare etichette del parlante con modelli supportati a banda stretta e a banda larga.
 
-Per utilizzare la funzione, imposti il parametro `speaker_labels` su `true` per una richiesta di riconoscimento; per impostazione predefinita, il parametro è `false`. Il servizio identifica i parlanti in base alle singole parole dell'audio. Si basa su un tempo di inizio e di fine di una parola per identificarne il parlante. Pertanto, abilitare le etichette del parlante forza anche il parametro `timestamps` a essere `true` (vedi [Date/ore delle parole](/docs/services/speech-to-text/output.html#word_timestamps)).
+Per utilizzare la funzione, imposti il parametro `speaker_labels` su `true` per una richiesta di riconoscimento; per impostazione predefinita, il parametro è `false`. Il servizio identifica i parlanti in base alle singole parole dell'audio. Si basa su un tempo di inizio e di fine di una parola per identificarne il parlante. Pertanto, abilitare le etichette del parlante forza anche il parametro `timestamps` a essere `true` (vedi [Date/ore delle parole](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps)).
 
 ### Esempio di etichette del parlante
 {: #speakerLabelsExample}
@@ -239,7 +239,7 @@ Di conseguenza, gli ID parlante potrebbero non essere sequenziali, contigui od o
 ### Richiesta dei risultati provvisori per le etichette del parlante
 {: #speakerLabelsInterim}
 
-Con l'interfaccia WebSocket, puoi richiedere i risultati provvisori e le etichette del parlante (vedi [Risultati provvisori](/docs/services/speech-to-text/output.html#interim)). I risultati finali sono generalmente migliori rispetto ai risultati provvisori. I risultati provvisori possono però aiutare a identificare l'evoluzione di una trascrizione e l'assegnazione delle etichette del parlante. I risultati provvisori possono indicare dove gli ID e i parlanti temporanei sono apparsi o scomparsi. Tuttavia, il servizio può riutilizzare gli ID dei parlanti che identifica inizialmente e che successivamente riconsidera od omette. Pertanto, un ID potrebbe fare riferimento a due parlanti diversi nei risultati provvisori e in quelli finali.
+Con l'interfaccia WebSocket, puoi richiedere i risultati provvisori e le etichette del parlante (vedi [Risultati provvisori](/docs/services/speech-to-text?topic=speech-to-text-output#interim)). I risultati finali sono generalmente migliori rispetto ai risultati provvisori. I risultati provvisori possono però aiutare a identificare l'evoluzione di una trascrizione e l'assegnazione delle etichette del parlante. I risultati provvisori possono indicare dove gli ID e i parlanti temporanei sono apparsi o scomparsi. Tuttavia, il servizio può riutilizzare gli ID dei parlanti che identifica inizialmente e che successivamente riconsidera od omette. Pertanto, un ID potrebbe fare riferimento a due parlanti diversi nei risultati provvisori e in quelli finali.
 
 Quando richiedi sia i risultati provvisori che le etichette del parlante, i risultati finali per lunghi flussi audio potrebbero arrivare molto dopo che sono stati restituiti i risultati provvisori iniziali. È anche possibile che qualche risultato provvisorio includa solo un campo `speaker_labels` senza i campi `results` e `result_index`. Se non richiedi i risultati provvisori, il servizio restituisce i risultati finali che includono i campi `results` e `result_index` e un singolo campo `speaker_labels`.
 
@@ -263,7 +263,7 @@ Come con tutte le trascrizioni, le prestazioni possono essere influenzate anche 
 
 La funzione di individuazione di parole chiave rileva specifiche stringhe in una trascrizione. Il servizio può individuare la stessa parola chiave più volte e notificare ciascuna ricorrenza. Il servizio individua le parole chiave solo nei risultati finali, non in quelli provvisori. Per impostazione predefinita, il servizio non esegue alcuna individuazione di parole chiave.
 
- Per utilizzare l'individuazione di parole chiave, devi specificare entrambi i seguenti parametri:
+Per utilizzare l'individuazione di parole chiave, devi specificare entrambi i seguenti parametri:
 
 -   Utilizza il parametro `keywords` per specificare un array di stringhe da individuare. Il servizio non individua alcuna parola chiave se ometti il parametro o specifichi un array vuoto. Una stringa di parole chiave può includere più di un token. Ad esempio, la parola chiave `Speech to Text` ha tre token.
 
@@ -297,7 +297,7 @@ Una parola chiave per cui il servizio non trova alcuna corrispondenza viene omes
     -   I token della parola chiave sono nello stesso blocco.
     -   I token sono adiacenti o separati da uno scarto di non più di 0,1 secondi.
 
-    Quest'ultimo caso può verificarsi se un breve riempitivo, o espressione non lessicale, come "um" o "beh," è presente tra due token della parola chiave. Per ulteriori informazioni, vedi [Indicatori di esitazione](/docs/services/speech-to-text/basic-response.html#hesitation).
+    Quest'ultimo caso può verificarsi se un breve riempitivo, o espressione non lessicale, come "um" o "beh," è presente tra due token della parola chiave. Per ulteriori informazioni, vedi [Indicatori di esitazione](/docs/services/speech-to-text?topic=speech-to-text-basic-response#hesitation).
 
 ### Esempio di individuazione di parole chiave
 {: #keywordSpottingExample}
@@ -336,7 +336,7 @@ curl -X POST -u "apikey:{apikey}"
       },
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -375,7 +375,7 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         },
@@ -384,8 +384,8 @@ severe thunderstorms swept through Colorado on Sunday "
 severe thunderstorms swept through Colorado on Sunday "
         },
         {
-          "transcript": "several tornadoes touch down is a line of
-severe thunderstorms swept through Colorado on Sunday "
+          "transcript": "several tornadoes touch down as a line of
+severe thunderstorms swept through Colorado and Sunday "
         }
       ],
       "final": true
@@ -490,7 +490,7 @@ severe thunderstorms swept through Colorado on Sunday "
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -592,7 +592,7 @@ curl -X POST -u "apikey:{apikey}"
       ],
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -634,9 +634,9 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday ",
-          "confidence": 0.89,
           "word_confidence": [
             [
               "several",
@@ -731,7 +731,7 @@ curl -X POST -u "apikey:{apikey}"
               6.34
             ]
           ],
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -841,7 +841,7 @@ La formattazione intelligente è basata sulla presenza di parole chiave ovvie ne
 -   I numeri di telefono devono essere 10 o 11 cifre e iniziare con dei prefissi validi per i numeri di telefono in Giappone. Ad esempio, dei prefissi validi includono `03` e `090`.
 -   Le parole in inglese sono convertite in caratteri ASCII (*hankaku*). Ad esempio, <code>&#65321;&#65314;&#65325;</code> viene convertito in `IBM`.
 -   I termini ambigui potrebbero non essere convertiti se non è disponibile un contesto sufficiente. Ad esempio, non è chiaro se <code>&#19968;&#26178;</code> e <code>&#21313;&#20998;</code> fanno riferimento a delle date/ore.
--   La punteggiatura viene gestita nello stesso modo con o senza formattazione intelligente. Ad esempio, in base ai calcoli delle probabilità. viene selezionato uno di <code>&#12459;&#12531;&#12510;</code> o `,`.
+-   La punteggiatura viene gestita allo stesso modo con o senza formattazione intelligente. Ad esempio, in base ai calcoli delle probabilità. viene selezionato uno di <code>&#12459;&#12531;&#12510;</code> o `,`.
 
 ### Esempio di formattazione intelligente
 {: #smartFormattingExample}

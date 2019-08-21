@@ -2,14 +2,14 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-10"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -50,7 +50,7 @@ Utilizza l'addestramento con supervisione moderata per addestrare un modello acu
 
 Per utilizzare una trascrizione o un elenco di parole, devi prima creare un modello di lingua personalizzato che contenga questi dati testuali. Per addestrare un modello acustico personalizzato con un modello di lingua personalizzato, entrambi i modelli personalizzati devono essere basati sulla stessa versione dello stesso modello di base. Se viene resa disponibile una nuova versione del modello di base, devi eseguire l'upgrade di entrambi i modelli alla stessa versione del modello di base per consentire l'addestramento.
 
-Utilizza il parametro di query facoltativo `custom_language_model_id` del metodo `POST /v1/acoustic_customizations/{customization_id}/train` per addestrare il tuo modello acustico personalizzato con un modello di lingua personalizzato. Passa il GUID del modello acustico con il parametro `customization_id` e il GUID del modello di lingua personalizzato con il parametro `custom_language_model_id`. Entrambi i modelli devono essere di proprietà delle credenziali del servizio che vengono passate con la richiesta.
+Utilizza il parametro di query facoltativo `custom_language_model_id` del metodo `POST /v1/acoustic_customizations/{customization_id}/train` per addestrare il tuo modello acustico personalizzato con un modello di lingua personalizzato. Passa il GUID del modello acustico con il parametro `customization_id` e il GUID del modello di lingua personalizzato con il parametro `custom_language_model_id`. Entrambi i modelli devono appartenere alle credenziali passate con la richiesta.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -70,7 +70,7 @@ L'utilizzo di un modello di lingua personalizzato può migliorare l'accuratezza 
 
 Se un modello di lingua personalizzato include delle grammatiche, puoi anche utilizzare tale modello e una delle sue grammatiche con un modello acustico personalizzato durante il riconoscimento vocale.
 
-Il seguente esempio passa entrambi i tipi di modello al metodo HTTP `POST /v1/recognize`. Passa il GUID del modello acustico personalizzato con il parametro `acoustic_customization_id` e il GUID del modello di lingua personalizzato con il parametro `language_customization_id`. Entrambi i modelli devono essere di proprietà delle credenziali del servizio passate con la richiesta ed entrambi devono essere basati sullo stesso modello di base (ad esempio, `en-US_BroadbandModel`).
+Il seguente esempio passa entrambi i tipi di modello al metodo HTTP `POST /v1/recognize`. Passa il GUID del modello acustico personalizzato con il parametro `acoustic_customization_id` e il GUID del modello di lingua personalizzato con il parametro `language_customization_id`. Entrambi i modelli devono appartenere alle credenziali passate con la richiesta ed entrambi devono essere basati sullo stesso modello di base (ad esempio, `en-US_BroadbandModel`).
 
 ```bash
 curl -X POST -u "apikey:{apikey}"

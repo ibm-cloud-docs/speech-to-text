@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,10 +25,10 @@ subcollection: speech-to-text
 # Gestione delle parole personalizzate
 {: #manageWords}
 
-L'interfaccia di personalizzazione include i metodi `POST /v1/customizations/{customization_id}/words` e `PUT /v1/customizations/{customization_id}/words/{word_name}`, che vengono utilizzati per aggiungere o modificare le parole per un modello personalizzato. Per ulteriori informazioni, vedi [Aggiungi parole al modello di lingua personalizzato](/docs/services/speech-to-text/language-create.html#addWords). L'interfaccia include anche i seguenti metodi per elencare ed eliminare le parole per un modello di lingua personalizzato.
+L'interfaccia di personalizzazione include i metodi `POST /v1/customizations/{customization_id}/words` e `PUT /v1/customizations/{customization_id}/words/{word_name}`, che vengono utilizzati per aggiungere o modificare le parole per un modello personalizzato. Per ulteriori informazioni, vedi [Aggiungi parole al modello di lingua personalizzato](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addWords). L'interfaccia include anche i seguenti metodi per elencare ed eliminare le parole per un modello di lingua personalizzato.
 {: shortdesc}
 
-È probabile che aggiungi la maggior parte delle parole personalizzate dai corpora. Assicurati di conoscere la codifica di caratteri utilizzata nei file di testo per i tuoi corpora. Il servizio preserva la codifica che trova nei file di testo. Devi utilizzare questa codifica quando utilizzi le singole parole nel modello di lingua personalizzato. Quando specifichi una parola con il metodo `GET`, `PUT` o `DELETE /v1/customizations/{customization_id}/words/{word_name}`, devi codificare in URL il `word_name` che passi nell'URL se la parola include caratteri non ASCII. Per ulteriori informazioni, vedi [Codifica dei caratteri](/docs/services/speech-to-text/language-resource.html#charEncoding).
+È probabile che aggiungi la maggior parte delle parole personalizzate dai corpora. Assicurati di conoscere la codifica di caratteri utilizzata nei file di testo per i tuoi corpora. Il servizio preserva la codifica che trova nei file di testo. Devi utilizzare questa codifica quando utilizzi le singole parole nel modello di lingua personalizzato. Quando specifichi una parola con il metodo `GET`, `PUT` o `DELETE /v1/customizations/{customization_id}/words/{word_name}`, devi codificare in URL il `word_name` che passi nell'URL se la parola include caratteri non ASCII. Per ulteriori informazioni, vedi [Codifica dei caratteri](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#charEncoding).
 {: important}
 
 ## Elenco delle parole da un modello di lingua personalizzato
@@ -48,8 +48,8 @@ L'interfaccia di personalizzazione offre due metodi per elencare le parole da un
 
 Oltre a un campo `word` che identifica la parola, entrambi i metodi restituiscono le seguenti informazioni su ciascuna parola:
 
--   Un campo `sounds_like` che presenta un array di pronunce per la parola. L'array può includere la pronuncia dal suono simile (sounds-like) che viene generata automaticamente dal servizio se non viene fornito alcun valore di suono simile (sounds-like) per la parola. Per ulteriori informazioni, vedi [Utilizzo del campo sounds_like](/docs/services/speech-to-text/language-resource.html#soundsLike).
--   Un campo `display_as` che mostra l'ortografia della parola personalizzata che il servizio visualizza nelle trascrizioni. Il campo contiene una stringa vuota se non viene fornito alcun valore di modalità di visualizzazione (display-as) per la parola, nel qual caso la parola viene visualizzata così come è scritta. Per ulteriori informazioni, vedi [Utilizzo del campo display_as](/docs/services/speech-to-text/language-resource.html#displayAs).
+-   Un campo `sounds_like` che presenta un array di pronunce per la parola. L'array può includere la pronuncia dal suono simile (sounds-like) che viene generata automaticamente dal servizio se non viene fornito alcun valore di suono simile (sounds-like) per la parola. Per ulteriori informazioni, vedi [Utilizzo del campo sounds_like](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#soundsLike).
+-   Un campo `display_as` che mostra l'ortografia della parola personalizzata che il servizio visualizza nelle trascrizioni. Il campo contiene una stringa vuota se non viene fornito alcun valore di modalità di visualizzazione (display-as) per la parola, nel qual caso la parola viene visualizzata così come è scritta. Per ulteriori informazioni, vedi [Utilizzo del campo display_as](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#displayAs).
 -   Un campo `source` che indica in che modo la parola è stata aggiunta alla risorsa di parole del modello personalizzato. Il campo include il nome di ogni corpus e grammatica da cui il servizio ha estratto la parola. Se hai modificato o aggiunto la parola direttamente, il campo include la stringa `user`.
 -   Un campo `count` che indica il numero di volte per cui la parola viene rilevata in tutti i corpora e in tutte le grammatiche. Ad esempio, se la parola ricorre cinque volte in un corpus e sette volte in un altro, il suo conteggio è `12`.
 
