@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -33,7 +33,7 @@ subcollection: speech-to-text
 
 這兩種方法並不互斥。您可以選擇接收回呼通知，但仍輪詢該服務以取得最新狀態，或聯絡該服務以手動擷取結果。下列各節說明如何搭配任一方法來使用非同步 HTTP 介面。
 
-以單一要求提交最多 1 GB、最少 100 個位元組的音訊資料。如需音訊格式及使用壓縮將您可在要求中傳送之音訊量最大化的相關資訊，請參閱[音訊格式](/docs/services/speech-to-text/audio-formats.html)。如需此介面的個別方法的相關資訊，請參閱 [API 參考資料 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://{DomainName}/apidocs/speech-to-text){: new_window}。
+以單一要求提交最多 1 GB、最少 100 個位元組的音訊資料。如需音訊格式和使用壓縮讓可在要求中傳送之音訊量最大化的相關資訊，請參閱[音訊格式](/docs/services/speech-to-text?topic=speech-to-text-audio-formats)。如需該介面的各個方法的相關資訊，請參閱 [API 參考資料](https://{DomainName}/apidocs/speech-to-text){: external}。
 
 ## 使用模型
 {: #usage}
@@ -128,9 +128,9 @@ HTTPS, however, is not ideal in terms of additional development overhead. Moreov
     -   `user_token`，以指定要包含在工作的每個通知中的字串。因為您可以使用有無限個工作的相同回呼 URL，所以您可以運用使用者記號來區分不同工作的通知。
 -   *若要使用輪詢*，請省略 `callback_url`、`events` 及 `user_token` 查詢參數。然後，您必須使用 `GET /v1/recognitions` 或 `GET /v1/recognitions/{id}` 方法來檢查工作的狀態，在工作完成時使用後者來擷取結果。
 
-在這兩種情況下，您都可以包括 `results_ttl` 查詢參數，以指定在工作完成之後其結果保持可用的分鐘數。
+在這兩種情況下，您都可以包括 `results_ttl` 查詢參數，以指定在工作完成之後其結果保持可用的分鐘數。擁有新工作的服務實例是其認證用於建立該工作的實例。
 
-除了非同步介面專用的前述參數之外，`POST /v1/recognitions` 方法還支援與 WebSocket 和同步 HTTP 介面大部分相同的參數。如需相關資訊，請參閱[參數摘要](/docs/services/speech-to-text/summary.html)。
+除了非同步介面專用的前述參數之外，`POST /v1/recognitions` 方法還支援與 WebSocket 和同步 HTTP 介面大部分相同的參數。如需相關資訊，請參閱[參數摘要](/docs/services/speech-to-text?topic=speech-to-text-summary)。
 
 ### 回呼通知
 {: #notifications}
@@ -283,7 +283,7 @@ curl -X GET -u "apikey:{apikey}"
                   6.33
                 ]
               ],
-              "confidence": 0.89
+              "confidence": 0.96
             }
           ]
         }
@@ -300,7 +300,7 @@ curl -X GET -u "apikey:{apikey}"
 ## 檢查最新工作的狀態
 {: #jobs}
 
-您呼叫 `GET /v1/recognitions` 方法，來檢查最新工作的狀態。此方法傳回與服務認證（用以呼叫此方法）相關聯的最新 100 個未完成之工作的狀態。此方法傳回每個工作的 ID 和狀態，以及其建立時間和更新時間。如果工作是使用回呼 URL 和使用者記號建立的，此方法也會傳回該工作的使用者記號。
+您呼叫 `GET /v1/recognitions` 方法，來檢查最新工作的狀態。此方法傳回與用於呼叫它的認證相關聯的最近 100 個未完成工作的狀態。此方法傳回每個工作的 ID 和狀態，以及其建立時間和更新時間。如果工作是使用回呼 URL 和使用者記號建立的，此方法也會傳回該工作的使用者記號。
 
 回應包括下列其中一種狀態：
 
@@ -314,7 +314,7 @@ curl -X GET -u "apikey:{apikey}"
 ### 範例
 {: #statusExample}
 
-下列範例要求與呼叫者服務認證相關聯之最新現行工作的狀態。使用者有三個未完成的工作處於不同狀態。第一個工作是使用回呼 URL 和使用者記號建立的。
+下列範例要求與呼叫者認證相關聯之最新現行工作的狀態。使用者有三個未完成的工作處於不同狀態。第一個工作是使用回呼 URL 和使用者記號建立的。
 
 ```bash
 curl -X GET -u "apikey:{apikey}"

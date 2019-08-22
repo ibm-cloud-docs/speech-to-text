@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-15"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -40,7 +40,7 @@ subcollection: speech-to-text
 
 當用戶端將資料傳送至服務時，*必須* 以文字訊息來傳遞所有 JSON 訊息，並以二進位訊息來傳遞所有音訊資料。
 
-隨後的程式碼範例 Snippet 是以 JavaScript 撰寫，並以 HTML5 WebSocket API 為基礎。如需 WebSocket 通訊協定的相關資訊，請參閱「網際網路工程任務小組 (IETF)」的 [Request for Comment (RFC) 6455 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](http://tools.ietf.org/html/rfc6455){: new_window}。
+隨後的程式碼範例 Snippet 是以 JavaScript 撰寫，並以 HTML5 WebSocket API 為基礎。如需 WebSocket 通訊協定的相關資訊，請參閱「網際網路工程任務小組 (IETF)」的 [Request for Comments (RFC) 6455](http://tools.ietf.org/html/rfc6455){: external}。
 {: note}
 
 ## 開啟連線
@@ -73,64 +73,67 @@ WebSocket 用戶端會搭配下列查詢參數來呼叫此方法，以建立與�
   </tr>
   <tr>
     <td style="text-align:left"><code>access_token</code>
-      <br/><em>選用</em></td>
+      <br/><em>      選用性</em></td>
     <td style="text-align:center">字串</td>
     <td style="text-align:left">
-      <em>如果使用 IAM 鑑別，</em>則會傳遞有效的 IAM 存取記號，以建立與服務的已鑑別連線。您會傳遞 IAM 存取記號，而不是使用呼叫來傳遞 API 金鑰。您必須在存取記號到期之前建立連線。如需取得存取記號的相關資訊，請參閱[使用 IAM 記號鑑別](/docs/services/watson/getting-started-iam.html)。<br/><br/>
+      <em>如果使用 IAM 鑑別，</em>則會傳遞有效的 IAM 存取記號，以建立與服務的已鑑別連線。您會傳遞 IAM 存取記號，而不是使用呼叫來傳遞 API 金鑰。您必須在存取記號到期之前建立連線。如需取得存取記號的相關資訊，請參閱[使用 IAM 記號鑑別](/docs/services/watson?topic=watson-iam)。<br/><br/>
       傳遞存取記號只是為了建立已鑑別的連線。建立連線之後，即可無限期地保持連線作用中。只要保持連線開啟，就可以維持已鑑別狀態。您不需要重新整理存取記號，作用中的連線會一直持續到記號的有效期限之後。
+    即使在刪除記號或其 API 金鑰之後，該連線仍可以保持作用中狀態。
     </td>
   </tr>
   <tr>
     <td style="text-align:left"><code>watson-token</code>
-      <br/><em>選用</em></td>
+      <br/><em>      選用性</em></td>
     <td style="text-align:center">字串</td>
     <td style="text-align:left">
       <em>如果使用 Cloud Foundry 服務認證，</em>則會傳遞有效的 {{site.data.keyword.watson}} 鑑別記號，以建立與服務的已鑑別連線。您會傳遞 {{site.data.keyword.watson}} 記號，而不是使用呼叫來傳遞服務認證。
-      {{site.data.keyword.watson}} 記號是以 Cloud Foundry 服務認證為基礎，這些服務認證會使用 `username` 及 `password` 進行 HTTP 基本鑑別。如需取得 {{site.data.keyword.watson}} 記號的相關資訊，請參閱 [{{site.data.keyword.watson}} 記號](/docs/services/watson/getting-started-tokens.html)。<br/><br/>
+      {{site.data.keyword.watson}} 記號是以 Cloud Foundry 服務認證為基礎，這些服務認證會使用 `username` 及 `password` 進行 HTTP 基本鑑別。如需取得 {{site.data.keyword.watson}} 記號的相關資訊，請參閱 [{{site.data.keyword.watson}} 記號](/docs/services/watson?topic=watson-gs-tokens-watson-tokens)。<br/><br/>
       傳遞 {{site.data.keyword.watson}} 記號只是為了建立已鑑別的連線。建立連線之後，即可無限期地保持連線作用中。只要保持連線開啟，就可以維持已鑑別狀態。</td>
   </tr>
   <tr>
     <td style="text-align:left"><code>model</code>
-      <br/><em>選用</em></td>
+      <br/><em>      選用性</em></td>
     <td style="text-align:center">字串</td>
     <td style="text-align:left">
-      指定要用於轉錄的語言模型。如果您未指定模型，依預設，服務會使用 <code>en-US_BroadbandModel</code> 模型。如需相關資訊，請參閱[語言和模型](/docs/services/speech-to-text/models.html)。</td>
+      指定要用於轉錄的語言模型。如果您未指定模型，依預設，服務會使用 <code>en-US_BroadbandModel</code> 模型。如需相關資訊，請參閱[語言和模型](/docs/services/speech-to-text?topic=speech-to-text-models)。</td>
   </tr>
   <tr>
     <td style="text-align:left"><code>language_customization_id</code>
-      <br/><em>選用</em></td>
+      <br/><em>      選用性</em></td>
     <td style="text-align:center">字串</td>
     <td style="text-align:left">
-      指定自訂語言模型的「廣域唯一 ID (GUID)」，該模型用於透過連線傳送的所有要求。自訂語言模型的基礎模型必須符合 <code>model</code> 參數的值。依預設，不會使用任何自訂語言模型。如需相關資訊，請參閱[自訂作業介面](/docs/services/speech-to-text/custom.html)。</td>
+      指定自訂語言模型的「廣域唯一 ID (GUID)」，該模型用於透過連線傳送的所有要求。自訂語言模型的基礎模型必須符合 <code>model</code> 參數的值。如果您包含自訂作業
+      ID，則必須使用擁有自訂模型之服務實例的服務認證來發出要求。依預設，不會使用任何自訂語言模型。如需相關資訊，請參閱[自訂作業介面](/docs/services/speech-to-text?topic=speech-to-text-customization)。</td>
   </tr>
   <tr>
     <td style="text-align:left"><code>acoustic_customization_id</code>
-      <br/><em>選用</em></td>
+      <br/><em>      選用性</em></td>
     <td style="text-align:center">字串</td>
     <td style="text-align:left">
-      指定自訂聲學模型的「廣域唯一 ID (GUID)」，該模型用於透過連線傳送的所有要求。自訂聲學模型的基礎模型必須符合 <code>model</code> 參數的值。依預設，不會使用任何自訂聲學模型。如需相關資訊，請參閱[自訂作業介面](/docs/services/speech-to-text/custom.html)。</td>
+      指定自訂聲學模型的「廣域唯一 ID (GUID)」，該模型用於透過連線傳送的所有要求。自訂聲學模型的基礎模型必須符合 <code>model</code> 參數的值。如果您包含自訂作業
+      ID，則必須使用擁有自訂模型之服務實例的服務認證來發出要求。依預設，不會使用任何自訂聲學模型。如需相關資訊，請參閱[自訂作業介面](/docs/services/speech-to-text?topic=speech-to-text-customization)。</td>
   </tr>
   <tr>
     <td style="text-align:left"><code>base_model_version</code>
-      <br/><em>選用</em></td>
+      <br/><em>      選用性</em></td>
     <td style="text-align:center">字串</td>
     <td style="text-align:left">
-      指定基礎 `model` 的版本，該模型用於透過連線傳送的所有要求。此參數主要是與已針對新基礎模型而更新的自訂模型搭配使用。預設值取決於參數是否搭配使用自訂模型。如需相關資訊，請參閱[基礎模型版本](/docs/services/speech-to-text/input.html#version)。
+      指定基礎 `model` 的版本，該模型用於透過連線傳送的所有要求。此參數主要是與已針對新基礎模型而更新的自訂模型搭配使用。預設值取決於參數是否搭配使用自訂模型。如需相關資訊，請參閱[基礎模型版本](/docs/services/speech-to-text?topic=speech-to-text-input#version)。
     </td>
   </tr>
   <tr>
     <td style="text-align:left"><code>x-watson-learning-opt-out</code>
-      <br/><em>選用</em></td>
+      <br/><em>      選用性</em></td>
     <td style="text-align:center">布林</td>
     <td style="text-align:left">
-      指出服務是否記載透過連線傳送的要求和結果。若要防止 IBM 存取您的資料進行一般服務改善，請對參數指定 <code>true</code>。如需相關資訊，請參閱[要求記載](/docs/services/speech-to-text/input.html#logging)。</td>
+      指出服務是否記載透過連線傳送的要求和結果。若要防止 IBM 存取您的資料進行一般服務改善，請對參數指定 <code>true</code>。如需相關資訊，請參閱[要求記載](/docs/services/speech-to-text?topic=speech-to-text-input#logging)。</td>
   </tr>
   <tr>
     <td style="text-align:left"><code>x-watson-metadata</code>
-      <br/><em>選用</em></td>
+      <br/><em>      選用性</em></td>
     <td style="text-align:center">字串</td>
     <td style="text-align:left">
-      建立客戶 ID 與透過連線傳遞之所有資料的關聯。此參數接受引數 <code>customer_id={id}</code>，其中 <code>id</code> 是要與資料相關聯的隨機或通用字串。您必須將引數以 URL 編碼為參數，例如，`customer_id%3dmy_customer_ID`。依預設，沒有客戶 ID 與資料相關聯。如需相關資訊，請參閱[資訊安全](/docs/services/speech-to-text/information-security.html)。</td>
+      建立客戶 ID 與透過連線傳遞之所有資料的關聯。此參數接受引數 <code>customer_id={id}</code>，其中 <code>id</code> 是要與資料相關聯的隨機或通用字串。您必須將引數以 URL 編碼為參數，例如，`customer_id%3dmy_customer_ID`。依預設，沒有客戶 ID 與資料相關聯。如需相關資訊，請參閱[資訊安全](/docs/services/speech-to-text?topic=speech-to-text-information-security)。</td>
   </tr>
 </table>
 
@@ -148,6 +151,8 @@ websocket.onmessage = function(evt) { onMessage(evt) };
 websocket.onerror = function(evt) { onError(evt) };
 ```
 {: codeblock}
+
+用戶端可以開啟與服務的多個並行 WebSocket 連線。並行連線數目僅受限於服務的容量，這通常不會對使用者造成任何問題。
 
 ## 起始辨識要求
 {: #WSstart}
@@ -177,14 +182,14 @@ websocket.onerror = function(evt) { onError(evt) };
     </td>
   </tr>
   <tr>
-    <td style="text-align:left"><code>content-type</code><br/><em>選用</em></td>
+    <td style="text-align:left"><code>content-type</code><br/><em>      選用性</em></td>
     <td style="text-align:center">字串</td>
     <td style="text-align:left">
-      識別要求的音訊資料格式（MIME 類型）。此為 `audio/alaw`、`audio/basic`、`audio/l16` 及 `audio/mulaw` 格式的必要參數。如需相關資訊，請參閱[音訊格式](/docs/services/speech-to-text/audio-formats.html)。</td>
+      識別要求的音訊資料格式（MIME 類型）。此為 `audio/alaw`、`audio/basic`、`audio/l16` 及 `audio/mulaw` 格式的必要參數。如需相關資訊，請參閱[音訊格式](/docs/services/speech-to-text?topic=speech-to-text-audio-formats)。</td>
   </tr>
 </table>
 
-訊息中也可以包含選用參數，以指定要如何處理要求的其他層面，以及要傳回的資訊。如需所有輸入和輸出特性的相關資訊，請參閱[參數摘要](/docs/services/speech-to-text/summary.html)。您只能指定語言模型、自訂語言模型及自訂聲學模型，作為 WebSocket URL 的查詢參數。
+訊息中也可以包含選用參數，以指定要如何處理要求的其他層面，以及要傳回的資訊。如需所有輸入和輸出特性的相關資訊，請參閱[參數摘要](/docs/services/speech-to-text?topic=speech-to-text-summary)。您只能指定語言模型、自訂語言模型及自訂聲學模型，作為 WebSocket URL 的查詢參數。
 
 下列 JavaScript 程式碼 Snippet 會透過 WebSocket 連線傳送辨識要求的起始設定參數。呼叫包含在用戶端的 `onOpen` 函數中，以確保只在建立連線之後才會傳送它們。
 
@@ -216,9 +221,9 @@ function onOpen(evt) {
 
 在傳送起始 `start` 訊息之後，用戶端可以開始將音訊資料傳送至服務。用戶端不需要等待服務以 `listening` 訊息來回應 `start` 訊息。服務會以非同步方式傳回轉錄結果，格式與針對 HTTP 介面傳回的結果相同。
 
-用戶端必須以二進位資料形式傳送音訊。用戶端可以使用單一話語來傳送最多 100 MB 的音訊資料（每個 `send` 要求）。針對任何要求，必須至少傳送 100 個位元組的音訊。用戶端可以透過單一 WebSocket 連線傳送多個話語。如需使用壓縮將您可在要求中傳遞至服務的音訊量最大化的相關資訊，請參閱[音訊格式](/docs/services/speech-to-text/audio-formats.html)。
+用戶端必須以二進位資料形式傳送音訊。用戶端可以使用單一話語來傳送最多 100 MB 的音訊資料（每個 `send` 要求）。針對任何要求，必須至少傳送 100 個位元組的音訊。用戶端可以透過單一 WebSocket 連線傳送多個話語。如需使用壓縮將您可在要求中傳遞至服務的音訊量最大化的相關資訊，請參閱[音訊格式](/docs/services/speech-to-text?topic=speech-to-text-audio-formats)。
 
-WebSocket 介面強制訊框大小上限為 4 MB。用戶端可以將訊框大小上限設為小於 4 MB。如果設定訊框大小不切實際，用戶端可以將訊息大小上限設為小於 4 MB，並以一系列訊息傳送音效資料。
+WebSocket 介面強制訊框大小上限為 4 MB。用戶端可以將訊框大小上限設為小於 4 MB。如果設定訊框大小不切實際，用戶端可以將訊息大小上限設為小於 4 MB，並以一系列訊息傳送音效資料。如需 WebSocket 圖文框的相關資訊，請參閱 [IETF RFC 6455](http://tools.ietf.org/html/rfc6455){: external}。
 
 下列 JavaScript 程式碼 Snippet 會以二進位訊息 (blob) 將音訊資料傳送至服務：
 
@@ -282,12 +287,16 @@ websocket.send(JSON.stringify(message));
 ## 保持連線作用中
 {: #WSkeep}
 
-如果達到閒置或階段作業逾時值，服務會終止階段作業並關閉連線：
+如果發生閒置或階段作業逾時，則服務會終止階段作業並關閉連線：
 
--   如果用戶端傳送音訊，但服務未偵測到任何語音，就會發生*閒置逾時*。依預設，閒置逾時值為 30 秒。您可以使用 `inactivity_timeout` 參數來指定其他值，包括 `-1`，將逾時值設為無限。
--   如果服務未從用戶端收到任何資料或未傳送任何臨時結果達 30 秒，就會發生*階段作業逾時*。您無法變更此逾時的長度，但您可以在發生逾時之前，傳送任何音訊資料（包括只是靜音）給服務，以延長階段作業。您還必須將 `inactivity_timeout` 設為 `-1`。您傳送至服務的任何資料（包括您傳送以延長階段作業的靜音）的持續時間都要收費。
+-   如果用戶端傳送音訊，但服務未偵測到任何語音，就會發生*閒置逾時*。依預設，閒置逾時值為 30 秒。您可以使用 `inactivity_timeout` 參數來指定其他值，包括 `-1`，將逾時值設為無限。如需相關資訊，請參閱[閒置逾時](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts-inactivity)。
+-   如果服務未從用戶端收到任何資料或未傳送任何臨時結果達 30 秒，就會發生*階段作業逾時*。您無法變更此逾時的長度，但您可以在發生逾時之前，傳送任何音訊資料（包括只是靜音）給服務，以延長階段作業。您還必須將 `inactivity_timeout` 設為 `-1`。您傳送至服務的任何資料（包括您傳送以延長階段作業的靜音）的持續時間都要收費。如需相關資訊，請參閱[階段作業逾時](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts-session)。
 
-如需相關資訊，請參閱[逾時](/docs/services/speech-to-text/input.html#timeouts)。
+WebSocket 用戶端和伺服器還可以藉由定期交換少量資料來交換 *Ping/Pong 圖文框* 以避免讀取逾時。許多 WebSocket 堆疊都會交換 Ping/Pong 圖文框，但有些不交換。若要確定您的實作是否使用 Ping/Pong 圖文框，請檢查其特性清單。您無法以程式設計方式確定或管理 Ping/Pong 圖文框。
+
+如果 WebSocket 堆疊未實作 Ping/Pong 圖文框，並且要傳送長音訊檔，則連線可能會遇到讀取逾時。若要避免這類逾時，請持續將音訊串流到服務，或向服務要求過渡期間結果。這兩種方法中的任一種都可以確保缺少 Ping/Pong 圖文框不會導致連線關閉。
+
+如需 Ping/Pong 圖文框的相關資訊，請參閱 IETF RFC 6455 的 [5.5.2 節：Ping](http://tools.ietf.org/html/rfc6455#section-5.5.2){: external} 和 [5.5.3 節：Pong](http://tools.ietf.org/html/rfc6455#section-5.5.3){: external}。
 
 ## 關閉連線
 {: #WSclose}
@@ -312,7 +321,7 @@ websocket.close();
 -   `1009` 指出訊框大小超出 4 MB 限制。
 -   `1011` 指出服務正在終止連線，因為它遇到非預期的狀況，導致無法完成要求。
 
-如果 Socket 由於錯誤而關閉，則用戶端會在 Socket 關閉之前，收到 `{"error":"{message}"}` 格式的通知訊息。如需 WebSocket 回覆碼的相關資訊，請參閱 [IETF RFC 6455 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](http://tools.ietf.org/html/rfc6455){: new_window}。
+如果 Socket 由於錯誤而關閉，則用戶端會在 Socket 關閉之前，收到 `{"error":"{message}"}` 格式的通知訊息。如需 WebSocket 回覆碼的相關資訊，請參閱 [IETF RFC 6455](http://tools.ietf.org/html/rfc6455){: external}。
 
 ## WebSocket 階段作業範例
 {: #WSexample}

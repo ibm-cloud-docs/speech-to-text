@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # 管理語料庫
 {: #manageCorpora}
 
-自訂作業介面包含 `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` 方法，用來將語料庫新增至自訂語言模型。如需相關資訊，請參閱[將語料庫新增至自訂語言模型](/docs/services/speech-to-text/language-create.html#addCorpus)。此介面還包含下列方法，用來列出及刪除自訂語言模型的語料庫。
+自訂作業介面包含 `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` 方法，用來將語料庫新增至自訂語言模型。如需相關資訊，請參閱[將語料庫新增至自訂語言模型](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus)。此介面還包含下列方法，用來列出及刪除自訂語言模型的語料庫。
 {: shortdesc}
 
 ## 列出自訂語言模型的語料庫
@@ -102,20 +102,20 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-## 從自訂語言模型中刪除語料庫
+## 從自訂語言模型刪除語料庫
 {: #deleteCorpus}
 
-使用 `DELETE /v1/customizations/{customization_id}/corpora/{corpus_name}` 方法，從自訂語言模型中移除現有語料庫。刪除語料庫時，服務會從自訂模型的字組資源中移除所有與語料庫相關聯的 OOV 字組，但下列情況除外：
+使用 `DELETE /v1/customizations/{customization_id}/corpora/{corpus_name}` 方法，從自訂語言模型移除現有語料庫。刪除語料庫時，服務會從自訂模型的字組資源移除所有與語料庫相關聯的 OOV 字組，但下列情況除外：
 
 -   這個字已由另一個語料庫或由文法所新增。
 -   這個字已透過 `POST /v1/customizations/{customization_id}/words` 或 `PUT /v1/customizations/{customization_id}/words/{word_name}` 方法加以修改。
 
-在您使用 `POST /v1/customizations/{customization_id}/train` 方法在其更新的資料上訓練此模型之前，移除語料庫並不會影響自訂模型。如果您已順利訓練語料庫的模型，則語料庫中的字組會保留在模型的詞彙中，並套用於語音辨識，直到您重新訓練模型為止。
+在您使用 `POST /v1/customizations/{customization_id}/train` 方法，根據更新的資料訓練此模型之前，移除語料庫並不會影響自訂模型。如果您已順利根據語料庫訓練模型，則語料庫中的字組會保留在模型的詞彙中，並套用於語音辨識，直到您重新訓練模型為止。
 
 ### 要求範例
 {: #deleteExample-corpus}
 
-下列範例從具有指定自訂作業 ID 的自訂模型中刪除名為 `corpus3` 的語料庫。
+下列範例從具有指定自訂作業 ID 的自訂模型刪除名為 `corpus3` 的語料庫。
 
 ```bash
 curl -X DELETE -u "apikey:{apikey}"

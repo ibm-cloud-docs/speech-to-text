@@ -2,14 +2,14 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # 升級自訂模型
 {: #customUpgrade}
 
-為了改善語音辨識品質，{{site.data.keyword.speechtotextfull}} 服務有時候會更新基礎模型。因為不同語言的基礎模型彼此獨立，就像語言的寬頻及窄頻模型，所以對個別基礎模型的更新並不會影響其他模型。[版本注意事項](/docs/services/speech-to-text/release-notes.html)文件記載所有基礎模型更新。
+為了改善語音辨識品質，{{site.data.keyword.speechtotextfull}} 服務有時候會更新基礎模型。因為不同語言的基礎模型彼此獨立，就像語言的寬頻及窄頻模型，所以對個別基礎模型的更新並不會影響其他模型。[版本注意事項](/docs/services/speech-to-text?topic=speech-to-text-release-notes)文件記載所有基礎模型更新。
 {: shortdesc}
 
 發行基礎模型的新版本時，您必須升級建置在基礎模型之上的任何自訂語言模型和自訂聲學模型，以充分運用更新項目。您的自訂模型會繼續使用基礎模型的舊版本，直到完成升級為止。就像所有自訂作業一樣，您必須使用擁有模型之服務實例的認證來升級它。
@@ -48,7 +48,7 @@ subcollection: speech-to-text
 
 請遵循下列步驟來升級自訂語言模型：
 
-1.  請確定自訂語言模型處於 `ready` 或 `available` 狀態。您可以使用 `GET /v1/customizations/{customization_id}` 方法來檢查模型的狀態。如果模型的狀態為 `ready`，請在其最新資料進行訓練之前先將該模型升級。
+1.  請確定自訂語言模型處於 `ready` 或 `available` 狀態。您可以使用 `GET /v1/customizations/{customization_id}` 方法來檢查模型的狀態。如果模型的狀態為 `ready`，請在根據其最新資料進行訓練之前，先將該模型升級。
 
 1.  使用 `POST /v1/customizations/{customization_id}/upgrade_model` 方法來升級自訂語言模型：
 
@@ -62,7 +62,7 @@ subcollection: speech-to-text
 
 如果順利起始升級程序，則服務會傳回 200 回應碼。您可以使用 `GET /v1/customizations/{customization_id}` 方法來輪詢模型的狀態，以監視升級的狀態。使用迴圈每隔 10 秒檢查一次狀態。
 
-在升級時，自訂模型的狀態為 `upgrading`。當升級完成時，模型會回復成它升級之前的狀態（`ready` 或 `available`）。檢查升級作業的狀態等於檢查訓練作業的狀態。如需相關資訊，請參閱[監視訓練模型要求](/docs/services/speech-to-text/language-create.html#monitorTraining-language)。
+在升級時，自訂模型的狀態為 `upgrading`。當升級完成時，模型會回復成它升級之前的狀態（`ready` 或 `available`）。檢查升級作業的狀態等於檢查訓練作業的狀態。如需相關資訊，請參閱[監視訓練模型要求](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language)。
 
 在升級要求完成之前，該服務無法接受以任何方式修改模型的要求。不過，在升級期間，您可以繼續以模型的現有版本來發出辨識要求。
 
@@ -73,7 +73,7 @@ subcollection: speech-to-text
 
 1.  *如果自訂聲學模型是使用自訂語言模型訓練*，您必須先將自訂語言模型升級至基礎模型的最新版本。如需相關資訊，請參閱[升級自訂語言模型](#upgradeLanguage)。
 
-1.  請確定自訂聲學模型處於 `ready` 或 `available` 狀態。您可以使用 `GET /v1/acoustic_customizations/{customization_id}` 方法來檢查模型的狀態。如果模型的狀態為 `ready`，請在其最新資料進行訓練之前先將該模型升級。
+1.  請確定自訂聲學模型處於 `ready` 或 `available` 狀態。您可以使用 `GET /v1/acoustic_customizations/{customization_id}` 方法來檢查模型的狀態。如果模型的狀態為 `ready`，請在根據其最新資料進行訓練之前，先將該模型升級。
 
 1.  使用 `POST /v1/acoustic_customizations/{customization_id}/upgrade_model` 方法來升級自訂聲學模型：
 
@@ -95,11 +95,12 @@ subcollection: speech-to-text
 
     同樣地，升級方法為非同步，且升級通常需要的時間大約是模型音訊資料長度的兩倍。
 
-    使用語言模型升級聲學模型的要求可能失敗，並顯示 400 回應碼及此訊息：`自前次訓練之後未修改任何輸入資料`。如果發生這個錯誤，請將布林 `force` 查詢參數新增至要求，並將該參數設為 `true`。在此特定狀況下，僅使用此參數來強制升級自訂聲學模型。{: note}
+    使用語言模型升級聲學模型的要求可能失敗，並顯示 400 回應碼及此訊息：`自前次訓練之後未修改任何輸入資料`。如果發生這個錯誤，請將布林 `force` 查詢參數新增至要求，並將該參數設為 `true`。在此特定狀況下，僅使用此參數來強制升級自訂聲學模型。
+    {: note}
 
 如果順利起始升級程序，則服務會傳回 200 回應碼。您可以使用 `GET /v1/acoustic_customizations/{customization_id}` 方法來輪詢模型的狀態，以監視升級的狀態。使用迴圈每分鐘檢查一次狀態。
 
-在升級時，自訂模型的狀態為 `upgrading`。當升級完成時，模型會回復成它升級之前的狀態（`ready` 或 `available`）。檢查升級作業的狀態等於檢查訓練作業的狀態。如需相關資訊，請參閱[監視訓練模型要求](/docs/services/speech-to-text/acoustic-create.html#monitorTraining-acoustic)。
+在升級時，自訂模型的狀態為 `upgrading`。當升級完成時，模型會回復成它升級之前的狀態（`ready` 或 `available`）。檢查升級作業的狀態等於檢查訓練作業的狀態。如需相關資訊，請參閱[監視訓練模型要求](/docs/services/speech-to-text?topic=speech-to-text-acoustic#monitorTraining-acoustic)。
 
 在升級要求完成之前，該服務無法接受以任何方式修改模型的要求。不過，在升級期間，您可以繼續以模型的現有版本來發出辨識要求。
 
@@ -117,8 +118,8 @@ subcollection: speech-to-text
 
 若要查看可用自訂模型的基礎模型版本，請使用下列方法：
 
--   若要列出自訂語言模型的相關資訊，請使用 `GET /v1/customizations/{customization_id}` 方法。如需相關資訊，請參閱[列出自訂語言模型](/docs/services/speech-to-text/language-models.html#listModels-language)。
--   若要列出自訂聲學模型的相關資訊，請使用 `GET /v1/acoustic_customizations/{customization_id}` 方法。如需相關資訊，請參閱[列出自訂聲學模型](/docs/services/speech-to-text/acoustic-models.html#listModels-acoustic)。
+-   若要列出自訂語言模型的相關資訊，請使用 `GET /v1/customizations/{customization_id}` 方法。如需相關資訊，請參閱[列出自訂語言模型](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language)。
+-   若要列出自訂聲學模型的相關資訊，請使用 `GET /v1/acoustic_customizations/{customization_id}` 方法。如需相關資訊，請參閱[列出自訂聲學模型](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic)。
 
 在這兩種情況下，輸出都包含 `versions` 欄位，其顯示自訂模型之基礎模型的相關資訊。下列輸出顯示已升級的自訂語言模型的資訊：
 
@@ -161,7 +162,7 @@ curl -X POST -u "apikey:{apikey}"
 
 您可以使用這個特性，同時對其基礎模型的舊版本和新版本來測試自訂模型的效能和正確性。如果您發現升級後的模型缺乏某些方面的效能（例如，無法再辨識某些字組），則您可以繼續使用舊版本來提出辨識要求。
 
-[基礎模型版本](/docs/services/speech-to-text/input.html#version)說明 `base_model_version` 參數，以及該服務如何決定要使用基礎模型和自訂模型的哪些版本來提出辨識要求。除了這項資訊之外，當您在辨識要求中傳遞自訂語言模型和自訂聲學模型時，請考量下列問題：
+[基礎模型版本](/docs/services/speech-to-text?topic=speech-to-text-input#version)說明 `base_model_version` 參數，以及該服務如何決定要使用基礎模型和自訂模型的哪些版本來提出辨識要求。除了這項資訊之外，當您在辨識要求中傳遞自訂語言模型和自訂聲學模型時，請考量下列問題：
 
 -   這兩個自訂模型都必須以相同的基礎模型為基礎（例如，`en-US_BroadbandModel`）。
 -   如果這兩個自訂模型都是以較舊的基礎模型為基礎，則該服務會使用舊的基礎模型進行辨識。

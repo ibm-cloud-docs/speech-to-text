@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-12"
+lastupdated: "2019-06-06"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -29,7 +29,7 @@ subcollection: speech-to-text
 {: shortdesc}
 
 -   **語料庫：**將字組移入自訂模型的建議方法，是將一個以上語料庫新增至模型。當您新增語料庫時，服務會分析檔案，並將其找到的任何新字組新增至自訂模型。新增語料庫至自訂模型容許服務擷取環境定義中的領域特定字組，這有助於確保獲得較佳的轉錄結果。如需相關資訊，請參閱[使用語料庫](#workingCorpora)。
--   **文法：**您可以將文法新增至自訂模型，以將語音辨識限制在文法所辨識的字組或詞組。當您將文法新增至模型時，服務會自動將其找到的任何新字組新增至模型，就像對語料庫的作法一樣。如需相關資訊，請參閱[將文法與自訂語言模型搭配使用](/docs/services/speech-to-text/grammar.html)。
+-   **文法：**您可以將文法新增至自訂模型，以將語音辨識限制在文法所辨識的字組或詞組。當您將文法新增至模型時，服務會自動將其找到的任何新字組新增至模型，就像對語料庫的作法一樣。如需相關資訊，請參閱[將文法與自訂語言模型搭配使用](/docs/services/speech-to-text?topic=speech-to-text-grammars)。
 -   **個別字組：**您也可以直接將個別自訂字組新增至模型。服務將字組新增至模型的方式，就像新增從語料庫或文法發現的字組一樣。當您直接新增字組時，可以指定多個發音，並指出要如何顯示該字組。您也可以更新現有字組，以修改或擴增從語料庫或文法擷取的定義。如需相關資訊，請參閱[使用自訂字組](#workingWords)。
 
 不論您如何新增字組，服務都會將您新增至自訂語言模型的所有字組儲存在模型的字組資源中。
@@ -50,7 +50,7 @@ subcollection: speech-to-text
     您可以使用 `display_as` 欄位來為字組指定不同的拼法。如需相關資訊，請參閱[使用 display_as 欄位](#displayAs)。
 -   `source`：字組新增至字組資源的方式。如果服務是從語料庫或文法擷取字組，則此欄位會列出該資源的名稱。因為服務可能會在多個資源中遇到相同的字組，所以此欄位可能會列出多個語料庫或文法名稱。如果您是直接新增或修改字組，則此欄位會包含字串 `user`。
 
-當您以任何方式更新模型的字組資源時，都必須訓練模型，以讓變更在轉錄期間生效。如需相關資訊，請參閱[訓練自訂語言模型](/docs/services/speech-to-text/language-create.html#trainModel-language)。
+當您以任何方式更新模型的字組資源時，都必須訓練模型，以讓變更在轉錄期間生效。如需相關資訊，請參閱[訓練自訂語言模型](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language)。
 
 ## 我需要多少資料？
 {: #wordsResourceAmount}
@@ -61,8 +61,8 @@ subcollection: speech-to-text
 
 服務會限制您可以新增至自訂語言模型的字組數目：
 
--   您最多可以新增 9 萬個 OOV 字組至自訂模型的字組資源，其中包括來自所有來源的 OOV 字組（語料庫、文法，以及您直接新增的個別自訂字組）。
--   您可以從所有來源新增最多 1000 萬個字組至自訂模型。這個數量包括內含在語料庫或文法中的所有字組（OOV 字組和已屬於服務基礎詞彙的字組）。就語料庫而言，服務會使用這些額外的字組來學習 OOV 字組可以出現的環境定義，這就是為什麼語料庫是提升辨識正確性更有效的方法。
+-   您最多可以新增 9 萬個 OOV 字組至自訂模型的字組資源，這個數字包括來自所有來源的 OOV 字組（語料庫、文法，以及您直接新增的個別自訂字組）。
+-   您可以從所有來源新增總計最多 1 千萬個字組至自訂模型。這個數量包括內含在語料庫或文法中的所有字組（OOV 字組和已屬於服務基礎詞彙的字組）。就語料庫而言，服務會使用這些額外的字組來學習 OOV 字組可以出現的環境定義，這就是為什麼語料庫是提升辨識正確性更有效的方法。
 
 大型字組資源會增加語音辨識的延遲，但實際的效果很難量化或預測。如同產生有效自訂模型所需的資料量，大型字組資源的效能影響取決於許多因素。您可以使用不同的資料量來測試自訂模型，以判斷模型和資料的效能。
 
@@ -135,14 +135,14 @@ What is Osteogenesis imperfecta OI?
 
 -   將數字轉換成其對等的字組，例如：
     -   *若為英文，*`500` 會變成 `five hundred`，而 `0.15` 會變成 `zero point fifteen`。
-    -   *若為法文，*`500` 會變成 `cinq cents`，而 `0,15` 會變成 <code>z&eacute;ro quinze</code>。
+    -   *若為法文，*`500` 會變成 `cinq cents`，而 `0,15` 會變成 <code>z&eacute;ro virgule quinze</code>。
     -   *若為德文，*`500` 會變成 <code>f&uuml;nfhundert</code>，而 `0,15` 會變成 <code>null punkt f&uuml;nfzehn</code>。
     -   *若為西班牙文，*`500` 會變成 `quinientos`，而 `0,15` 會變成 `cero coma quince`。
     -   *若為巴西葡萄牙文，*`500` 會變成 `quinhentos`，而 `0,15` 會變成 `zero ponto quinze`。
 -   將包含特定符號的記號轉換成有意義的字串表示法，例如：
     -   轉換 `$`（錢幣符號）和數字：
         -   *若為英文，*`$100` 會變成 `one hundred dollars`。
-        -   *若為法文，*`$100` 會變成 `cent dollar`。
+        -   *若為法文，*`$100` 會變成 `cent dollars`。
         -   *若為德文，*`$100` 和 `100$` 會變成 `einhundert dollar`。
         -   *若為西班牙文，*`$100` 和 `100$` 會變成 <code>cien d&oacute;lares</code>（如果用語是 `es-LA`，則變成 `cien pesos`）。
         -   *若為巴西葡萄牙文，* `$100` 和 `100$` 會變成 <code>cem d&oacute;lares</code>。
@@ -154,7 +154,7 @@ What is Osteogenesis imperfecta OI?
         -   *若為巴西葡萄牙文，*<code>&euro;100</code> 和 <code>100&euro;</code> 會變成 `cem euros`。
     -   轉換前面有數字的 `%`（百分比符號）：
         -   *若為英文，*`100%` 會變成 `one hundred percent`。
-        -   *若為法文，*`100%` 會變成 `cent pourcent`。
+        -   *若為法文，*`100%` 會變成 `cent pour cent`。
         -   *若為德文，*`100%` 會變成 `einhundert prozent`。
         -   *若為西班牙文，*`100%` 會變成 `cien por ciento`。
         -   *若為巴西葡萄牙文，*`100%` 會變成 `cem por cento`。
@@ -175,7 +175,7 @@ What is Osteogenesis imperfecta OI?
 {: #corpusLanguages-koKR}
 
 -   將數字轉換成其對等的字組，例如，<code>10</code> 會變成 <code>&#49901;</code>。
--   移除下列標點符號和特殊字元：`- ( ) * : . , ' "`。不過，針對其他語言移除的標點符號和特殊字元，並不是全部都會針對韓文移除，例如：
+-   移除下列標點符號和特殊字元：`- ( ) * : . , ' "`. 不過，針對其他語言移除的標點符號和特殊字元，並不是全部都會針對韓文移除，例如：
     -   只會移除出現在輸入行尾端的句點 (`.`) 符號。
     -   不會移除波狀 (`~`) 符號。
     -   不會移除或處理 Unicode 寬字元符號，例如 <code>&#8230;</code>（三個點或省略符號）。
@@ -206,15 +206,15 @@ What is Osteogenesis imperfecta OI?
 在使用自訂語言模型中的個別字組時，必須使用該編碼。當您使用 `GET`、`PUT` 或 `DELETE /v1/customizations/{customization_id}/words/{word_name}` 方法指定字組時，如果字組包含非 ASCII 字元，則必須將您在 URL 中傳遞的 `word_name` 以 URL 編碼。
 
 例如，下表顯示相同字母以兩種不同編碼 ASCII 和 UTF-8 呈現的樣子。您可以在 URL 上以 `z` 來傳遞 ASCII 字元。您必須以 `%EF%BD%9A` 來傳遞 UTF-8 字元。
-<table>
+<table style="width:75%">
   <caption>表 1. 字元編碼範例</caption>
   <tr>
-    <th style="text-align:left">字母</th>
-    <th style="text-align:center">編碼</th>
-    <th style="text-align:center">值</th>
+    <th style="width:15%; text-align:center">字母</th>
+    <th style="width:40%; text-align:center">編碼</th>
+    <th style="width:45%; text-align:center">值</th>
   </tr>
   <tr>
-    <td style="text-align:left; width:30%">
+    <td style="text-align:center">
       `z`
     </td>
     <td style="text-align:center">
@@ -225,7 +225,7 @@ What is Osteogenesis imperfecta OI?
     </td>
   </tr>
   <tr>
-    <td style="text-align:left; width:30%">
+    <td style="text-align:center">
       <code>&#xff5a;</code>
     </td>
     <td style="text-align:center">
@@ -351,7 +351,7 @@ curl -X PUT -u "apikey:{apikey}"
 
 例如，假設您新增自訂字組 `one`，而其 `display_as` 欄位為 `one`。智慧型格式化會將字組 `one` 變更為數字 `1`，而未套用 display-as 值。若要解決這個問題，您可以為數字 `1` 新增自訂字組，並將相同的 `display_as` 欄位套用於該字組。
 
-如需使用這些特性的相關資訊，請參閱[智慧型格式化](/docs/services/speech-to-text/output.html#smart_formatting)和[數字編寫](/docs/services/speech-to-text/output.html#redaction)。
+如需使用這些特性的相關資訊，請參閱[智慧型格式化](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting)和[數字編寫](/docs/services/speech-to-text?topic=speech-to-text-output#redaction)。
 
 ### 新增或修改自訂字組時會發生什麼情況？
 {: #parseWord}
@@ -452,8 +452,8 @@ curl -X PUT -u "apikey:{apikey}"
 
 若要驗證及（必要的話）更正自訂模型的字組，而不論其新增至字組資源的方式，請使用下列方法：
 
--   使用 `GET /v1/customizations/{customization_id}/words` 方法列出自訂模型中的所有字組，或使用 `GET /v1/customizations/{customization_id}/words/{word_name}` 方法查詢個別字組。如需相關資訊，請參閱[列出自訂語言模型中的字組](/docs/services/speech-to-text/language-words.html#listWords)。
+-   使用 `GET /v1/customizations/{customization_id}/words` 方法列出自訂模型中的所有字組，或使用 `GET /v1/customizations/{customization_id}/words/{word_name}` 方法查詢個別字組。如需相關資訊，請參閱[列出自訂語言模型中的字組](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords)。
 -   修改自訂模型中的字組以更正錯誤，或使用 `POST /v1/customizations/{customization_id}/words` 或 `PUT /v1/customizations/{customization_id}/words/{word_name}` 方法新增 sounds-like 或 display-as 值。如需相關資訊，請參閱[使用自訂字組](#workingWords)。
--   使用 `DELETE /v1/customizations/{customization_id}/words/{word_name}` 方法，刪除誤建的無關字組（例如，語料庫中拼字錯誤或其他錯誤）。如需相關資訊，請參閱[刪除自訂語言模型中的字組](/docs/services/speech-to-text/language-words.html#deleteWord)。
-    -   如果字組是擷取自語料庫，您可以改為更新語料庫文字檔來更正錯誤，然後使用 `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` 方法的 `allow_overwrite` 參數來重新載入檔案。如需相關資訊，請參閱[將語料庫新增至自訂語言模型](/docs/services/speech-to-text/language-create.html#addCorpus)。
-    -   如果字組是擷取自文法，您可以更新文法檔來更正錯誤，然後使用 `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` 方法的 `allow_overwrite` 參數來重新載入檔案。如需相關資訊，請參閱[將文法新增至自訂語言模型](/docs/services/speech-to-text/grammar-add.html#addGrammar)。
+-   使用 `DELETE /v1/customizations/{customization_id}/words/{word_name}` 方法，刪除誤建的無關字組（例如，語料庫中拼字錯誤或其他錯誤）。如需相關資訊，請參閱[刪除自訂語言模型中的字組](/docs/services/speech-to-text?topic=speech-to-text-manageWords#deleteWord)。
+    -   如果字組是擷取自語料庫，您可以改為更新語料庫文字檔來更正錯誤，然後使用 `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` 方法的 `allow_overwrite` 參數來重新載入檔案。如需相關資訊，請參閱[將語料庫新增至自訂語言模型](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus)。
+    -   如果字組是擷取自文法，您可以更新文法檔來更正錯誤，然後使用 `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` 方法的 `allow_overwrite` 參數來重新載入檔案。如需相關資訊，請參閱[將文法新增至自訂語言模型](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar)。

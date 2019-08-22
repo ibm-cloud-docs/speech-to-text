@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-15"
+lastupdated: "2019-06-10"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # 參數摘要
 {: #summary}
 
-以下是所有可用於語音辨識的參數摘要。如需 {{site.data.keyword.speechtotextshort}} 服務所有方法的相關資訊，請參閱 [API 參考資料 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://{DomainName}/apidocs/speech-to-text){: new_window}。
+以下是所有可用於語音辨識的參數摘要。如需 {{site.data.keyword.speechtotextshort}} 服務的所有方法的相關資訊，請參閱 [API 參考資料](https://{DomainName}/apidocs/speech-to-text){: external}。
 {: shortdesc}
 
 當您提出語音辨識要求時，請考量下列基本需求：
@@ -44,7 +44,7 @@ subcollection: speech-to-text
 ## access_token
 {: #summary-access-token}
 
-如果您使用 Identity and Access Management (IAM) 鑑別，這是您用來建立與 WebSocket 介面之已鑑別連線的選用性 IAM 存取記號。如需相關資訊，請參閱[開啟連線](/docs/services/speech-to-text/websockets.html#WSopen)。
+如果您使用 Identity and Access Management (IAM) 鑑別，這是您用來建立與 WebSocket 介面之已鑑別連線的選用性 IAM 存取記號。如需相關資訊，請參閱[開啟連線](/docs/services/speech-to-text?topic=speech-to-text-websockets#WSopen)。
 
 <table>
   <caption>表 1. access_token 參數</caption>
@@ -89,7 +89,7 @@ subcollection: speech-to-text
 ## acoustic_customization_id
 {: #summary-acoustic-customization-id}
 
-自訂聲學模型的選用性自訂作業 ID，該自訂聲學模型已針對環境和說話者的聲音特徵而調整。依預設，不使用任何自訂模型。如需相關資訊，請參閱[自訂模型](/docs/services/speech-to-text/input.html#custom-input)。
+自訂聲學模型的選用性自訂作業 ID，該自訂聲學模型已針對環境和說話者的聲音特徵而調整。依預設，不使用任何自訂模型。如需相關資訊，請參閱[自訂模型](/docs/services/speech-to-text?topic=speech-to-text-input#custom-input)。
 
 <table>
   <caption>表 2. acoustic_customization_id 參數</caption>
@@ -131,13 +131,58 @@ subcollection: speech-to-text
   </tr>
 </table>
 
+## audio_metrics
+{: #summary-audio-metrics}
+
+選用性的布林值，指出服務是否傳回有關輸入音訊信號特徵的度量值。依預設 (`false`)，服務不會傳回音訊度量值。如需相關資訊，請參閱[音訊度量值](/docs/services/speech-to-text?topic=speech-to-text-metrics#audio_metrics)。
+
+<table>
+  <caption>表 3. audio_metrics 參數</caption>
+  <tr>
+    <th>可用性及使用</th>
+    <th style="vertical-align:bottom">說明</th>
+  </tr>
+  <tr>
+    <td style="text-align:left; width:30%">
+      **可用性**
+    </td>
+    <td style="text-align:left">
+      針對所有語言正式發行
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      **WebSocket**
+    </td>
+    <td style="text-align:left">
+      JSON <code>start</code> 訊息的參數
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      **同步 HTTP**
+    </td>
+    <td style="text-align:left">
+      <code>POST /v1/recognize</code> 方法的查詢參數
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      **非同步 HTTP**
+    </td>
+    <td style="text-align:left">
+      <code>POST /v1/recognitions</code> 方法的查詢參數
+    </td>
+  </tr>
+</table>
+
 ## base_model_version
 {: #summary-base-model-version}
 
-基礎模型的選用版本。此參數主要是與已針對新基礎模型而更新的自訂模型搭配使用，但在沒有自訂模型的情況下也可以使用它。預設值取決於參數是否搭配自訂模型使用。如需相關資訊，請參閱[基礎模型版本](/docs/services/speech-to-text/input.html#version)。
+基礎模型的選用版本。此參數主要是與已針對新基礎模型而更新的自訂模型搭配使用，但在沒有自訂模型的情況下也可以使用它。預設值取決於參數是否搭配自訂模型使用。如需相關資訊，請參閱[基礎模型版本](/docs/services/speech-to-text?topic=speech-to-text-input#version)。
 
 <table>
-  <caption>表 3. base_model_version 參數</caption>
+  <caption>表 4. base_model_version 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -179,11 +224,10 @@ subcollection: speech-to-text
 ## Content-Type
 {: #summary-content-type}
 
-選用的音訊格式（MIME 類型），用來指定您傳遞給服務的音訊資料格式。服務可以自動偵測大部分音訊的格式，因此參數對於大部分格式而言是選用性的。對於 `audio/alaw`、`audio/basic`、`audio/l16` 及 `audio/mulaw` 格式而言是必要。如需相關資訊，請參閱[音訊格式](/docs/services/speech-to-text/audio-formats.html)。
-
+選用的音訊格式（MIME 類型），用來指定您傳遞給服務的音訊資料格式。服務可以自動偵測大部分音訊的格式，因此參數對於大部分格式而言是選用性的。對於 `audio/alaw`、`audio/basic`、`audio/l16` 及 `audio/mulaw` 等格式而言是必要。如需相關資訊，請參閱[音訊格式](/docs/services/speech-to-text?topic=speech-to-text-audio-formats)。
 
 <table>
-  <caption>表 4. Content-Type 參數</caption>
+  <caption>表 5. Content-Type 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -225,10 +269,10 @@ subcollection: speech-to-text
 ## customization_weight
 {: #summary-customization-weight}
 
-介於 0.0 到 1.0 之間的選用性倍精準數，指出服務給與來自自訂語言模型之字詞，比上來自基礎詞彙之字組的相對權重。預設值是 0.3，除非在訓練自訂語言模型時指定了不同的權重。如需相關資訊，請參閱[自訂模型](/docs/services/speech-to-text/input.html#custom-input)。
+介於 0.0 到 1.0 之間的選用性倍精準數，指出服務給與來自自訂語言模型之字詞，比上來自基礎詞彙之字組的相對權重。預設值是 0.3，除非在訓練自訂語言模型時指定了不同的權重。如需相關資訊，請參閱[自訂模型](/docs/services/speech-to-text?topic=speech-to-text-input#custom-input)。
 
 <table>
-  <caption>表 5. customization_weight 參數</caption>
+  <caption>表 6. customization_weight 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -270,10 +314,10 @@ subcollection: speech-to-text
 ## grammar_name
 {: #summary-grammar-name}
 
-識別要用於語音辨識之文法的選用性字串。服務只能辨識文法所定義的字串。您必須同時指定文法的名稱，以及文法定義對象之自訂語言模型的自訂作業 ID。如需相關資訊，請參閱[文法](/docs/services/speech-to-text/input.html#grammars-input)。
+識別要用於語音辨識之文法的選用性字串。服務只能辨識文法所定義的字串。您必須同時指定文法的名稱，以及文法定義對象之自訂語言模型的自訂作業 ID。如需相關資訊，請參閱[文法](/docs/services/speech-to-text?topic=speech-to-text-input#grammars-input)。
 
 <table>
-  <caption>表 6. grammar_name 參數</caption>
+  <caption>表 7. grammar_name 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -315,10 +359,10 @@ subcollection: speech-to-text
 ## inactivity_timeout
 {: #summary-inactivity-timeout}
 
-選用性的整數，用來指定服務閒置逾時的秒數。閒置表示服務在串流音訊中沒有偵測到任何語音。預設值是 30 秒。請使用 `-1` 來指出無限。如需相關資訊，請參閱[閒置逾時](/docs/services/speech-to-text/input.html#timeouts-inactivity)。
+選用性的整數，用來指定服務閒置逾時的秒數。閒置表示服務在串流音訊中沒有偵測到任何語音。預設值是 30 秒。請使用 `-1` 來指出無限。如需相關資訊，請參閱[閒置逾時](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts-inactivity)。
 
 <table>
-  <caption>表 7. inactivity_timeout 參數</caption>
+  <caption>表 8. inactivity_timeout 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -360,10 +404,10 @@ subcollection: speech-to-text
 ## interim_results
 {: #summary-interim-results}
 
-選用性的布林值，用來指示服務傳回可能在最終文字記錄之前變更的中間假設。依預設 (`false`)，不會傳回過渡期間結果。如需相關資訊，請參閱[過渡期間結果](/docs/services/speech-to-text/output.html#interim)。
+選用性的布林值，用來指示服務傳回可能在最終文字記錄之前變更的中間假設。依預設 (`false`)，不會傳回過渡期間結果。如需相關資訊，請參閱[過渡期間結果](/docs/services/speech-to-text?topic=speech-to-text-output#interim)。
 
 <table>
-  <caption>表 8. interim_results 參數</caption>
+  <caption>表 9. interim_results 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -405,10 +449,10 @@ subcollection: speech-to-text
 ## keywords
 {: #summary-keywords}
 
-選用性的關鍵字字串陣列，服務會在輸入音訊中辨識這些關鍵字字串。依預設，不會執行關鍵字辨識。如需相關資訊，請參閱[關鍵字辨識](/docs/services/speech-to-text/output.html#keyword_spotting)。
+選用性的關鍵字字串陣列，服務會在輸入音訊中辨識這些關鍵字字串。依預設，不會執行關鍵字辨識。如需相關資訊，請參閱[關鍵字辨識](/docs/services/speech-to-text?topic=speech-to-text-output#keyword_spotting)。
 
 <table>
-  <caption>表 9. keywords 參數</caption>
+  <caption>表 10. keywords 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -450,10 +494,10 @@ subcollection: speech-to-text
 ## keywords_threshold
 {: #summary-keywords-threshold}
 
-介於 0.0 到 1.0 之間的選用性倍精準數，指出正面關鍵字相符項的臨界值下限。依預設，不會執行關鍵字辨識。如需相關資訊，請參閱[關鍵字辨識](/docs/services/speech-to-text/output.html#keyword_spotting)。
+介於 0.0 到 1.0 之間的選用性倍精準數，指出正面關鍵字相符項的臨界值下限。依預設，不會執行關鍵字辨識。如需相關資訊，請參閱[關鍵字辨識](/docs/services/speech-to-text?topic=speech-to-text-output#keyword_spotting)。
 
 <table>
-  <caption>表 10. keywords_threshold 參數</caption>
+  <caption>表 11. keywords_threshold 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -495,10 +539,10 @@ subcollection: speech-to-text
 ## language_customization_id
 {: #summary-language-customization-id}
 
-自訂語言模型的選用性自訂作業 ID，該自訂語言模型包含來自您領域的專用術語。依預設，不使用任何自訂模型。如需相關資訊，請參閱[自訂模型](/docs/services/speech-to-text/input.html#custom-input)。
+自訂語言模型的選用性自訂作業 ID，該自訂語言模型包含來自您領域的專用術語。依預設，不使用任何自訂模型。如需相關資訊，請參閱[自訂模型](/docs/services/speech-to-text?topic=speech-to-text-input#custom-input)。
 
 <table>
-  <caption>表 11. language_customization_id 參數</caption>
+  <caption>表 12. language_customization_id 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -540,10 +584,10 @@ subcollection: speech-to-text
 ## max_alternatives
 {: #summary-max-alternatives}
 
-選用性的整數，用來指定服務傳回的替代假設數上限。依預設，服務會傳回單一最終假設。如需相關資訊，請參閱[替代項目數上限](/docs/services/speech-to-text/output.html#max_alternatives)。
+選用性的整數，用來指定服務傳回的替代假設數上限。依預設，服務會傳回單一最終假設。如需相關資訊，請參閱[替代項目數上限](/docs/services/speech-to-text?topic=speech-to-text-output#max_alternatives)。
 
 <table>
-  <caption>表 12. max_alternatives 參數</caption>
+  <caption>表 13. max_alternatives 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -585,10 +629,10 @@ subcollection: speech-to-text
 ## model
 {: #summary-model}
 
-選用性模型，用來指定音訊說話所用的語言，以及它的取樣率：寬頻或窄頻。依預設，會使用 `en-US_BroadbandModel`。如需相關資訊，請參閱[語言和模型](/docs/services/speech-to-text/models.html)。
+選用性模型，用來指定音訊說話所用的語言，以及它的取樣率：寬頻或窄頻。依預設，會使用 `en-US_BroadbandModel`。如需相關資訊，請參閱[語言和模型](/docs/services/speech-to-text?topic=speech-to-text-models)。
 
 <table>
-  <caption>表 13. model 參數</caption>
+  <caption>表 14. model 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -627,13 +671,103 @@ subcollection: speech-to-text
   </tr>
 </table>
 
+## processing_metrics
+{: #summary-processing-metrics}
+
+選用性的布林值，指出服務是否傳回有關其輸入音訊處理的度量值。依預設 (`false`)，服務不會傳回處理度量值。如需相關資訊，請參閱[處理度量值](/docs/services/speech-to-text?topic=speech-to-text-metrics#processing_metrics)。
+
+<table>
+  <caption>表 15. processing_metrics 參數</caption>
+  <tr>
+    <th>可用性及使用</th>
+    <th style="vertical-align:bottom">說明</th>
+  </tr>
+  <tr>
+    <td style="text-align:left; width:30%">
+      **可用性**
+    </td>
+    <td style="text-align:left">
+      針對所有語言正式發行
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      **WebSocket**
+    </td>
+    <td style="text-align:left">
+      JSON <code>start</code> 訊息的參數
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      **同步 HTTP**
+    </td>
+    <td style="text-align:left">
+      不支援
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      **非同步 HTTP**
+    </td>
+    <td style="text-align:left">
+      <code>POST /v1/recognitions</code> 方法的查詢參數
+    </td>
+  </tr>
+</table>
+
+## processing_metrics_interval
+{: #summary-processing-metrics-interval}
+
+至少為 0.1 的選用性浮點值，指出服務將傳回處理度量值的間隔。如果 `processing_metrics` 參數為 `true`，則依預設服務每 1.0 秒傳回處理度量值一次。如需相關資訊，請參閱[處理度量值](/docs/services/speech-to-text?topic=speech-to-text-metrics#processing_metrics)。
+
+<table>
+  <caption>表 16. processing_metrics_interval 參數</caption>
+  <tr>
+    <th>可用性及使用</th>
+    <th style="vertical-align:bottom">說明</th>
+  </tr>
+  <tr>
+    <td style="text-align:left; width:30%">
+      **可用性**
+    </td>
+    <td style="text-align:left">
+      針對所有語言正式發行
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      **WebSocket**
+    </td>
+    <td style="text-align:left">
+      JSON <code>start</code> 訊息的參數
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      **同步 HTTP**
+    </td>
+    <td style="text-align:left">
+      不支援
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align:left">
+      **非同步 HTTP**
+    </td>
+    <td style="text-align:left">
+      <code>POST /v1/recognitions</code> 方法的查詢參數
+    </td>
+  </tr>
+</table>
+
 ## profanity_filter
 {: #summary-profanity-filter}
 
-選用性的布林值，指出服務是否審查文字記錄中的褻瀆。依預設 (`true`)，會從文字記錄過濾褻瀆。如需相關資訊，請參閱[褻瀆過濾](/docs/services/speech-to-text/output.html#profanity_filter)。
+選用性的布林值，指出服務是否審查文字記錄中的褻瀆。依預設 (`true`)，會從文字記錄過濾褻瀆。如需相關資訊，請參閱[褻瀆內容過濾](/docs/services/speech-to-text?topic=speech-to-text-output#profanity_filter)。
 
 <table>
-  <caption>表 14. profanity_filter 參數</caption>
+  <caption>表 17. profanity_filter 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -675,10 +809,10 @@ subcollection: speech-to-text
 ## redaction
 {: #summary-redaction}
 
-選用性的布林值，指出服務是否編寫文字記錄中具有連續三位數以上的數字資料。如果您將 `redaction` 參數設定為 `true`，服務會自動將 `smart_formatting` 參數強制設定為 `true`。依預設 (`false`)，不會編寫數字資料。如需相關資訊，請參閱[數字編寫](/docs/services/speech-to-text/output.html#redaction)。
+選用性的布林值，指出服務是否編寫文字記錄中具有連續三位數以上的數字資料。如果您將 `redaction` 參數設定為 `true`，服務會自動將 `smart_formatting` 參數強制設定為 `true`。依預設 (`false`)，不會編寫數字資料。如需相關資訊，請參閱[數字編寫](/docs/services/speech-to-text?topic=speech-to-text-output#redaction)。
 
 <table>
-  <caption>表 15. redaction 參數</caption>
+  <caption>表 18. redaction 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -720,11 +854,10 @@ subcollection: speech-to-text
 ## smart_formatting
 {: #summary-smart-formatting}
 
-選用性的布林值，指出服務是否在最終文字記錄中，將日期、時間、數字、貨幣和類似值轉換為更為慣用的表示法。針對美式英文，此特性還會將特定關鍵字詞組轉換成標點符號。依預設 (`false`)，不會執行智慧型格式化。如需相關資訊，請參閱[智慧型格式化](/docs/services/speech-to-text/output.html#smart_formatting)。
-
+選用性的布林值，指出服務是否在最終文字記錄中，將日期、時間、數字、貨幣和類似值轉換為更為慣用的表示法。針對美式英文，此特性還會將特定關鍵字詞組轉換成標點符號。依預設 (`false`)，不會執行智慧型格式化。如需相關資訊，請參閱[智慧型格式化](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting)。
 
 <table>
-  <caption>表 16. smart_formatting 參數</caption>
+  <caption>表 19. smart_formatting 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -766,11 +899,11 @@ subcollection: speech-to-text
 ## speaker_labels
 {: #summary-speaker-labels}
 
-選用性的布林值，指出服務是否識別哪些人在多參與者交流中講了哪些字組。如果您將 `speaker_labels` 參數設定為 `true`，服務會自動將 `timestamps` 參數強制設定為 `true`。依預設 (`false`)，不會傳回說話者標籤。如需相關資訊，請參閱[說話者標籤](/docs/services/speech-to-text/output.html#speaker_labels)。
+選用性的布林值，指出服務是否識別哪些人在多參與者交流中講了哪些字組。如果您將 `speaker_labels` 參數設定為 `true`，服務會自動將 `timestamps` 參數強制設定為 `true`。依預設 (`false`)，不會傳回說話者標籤。如需相關資訊，請參閱[說話者標籤](/docs/services/speech-to-text?topic=speech-to-text-output#speaker_labels)。
 
 
 <table>
-  <caption>表 17. speaker_labels 參數</caption>
+  <caption>表 20. speaker_labels 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -812,10 +945,10 @@ subcollection: speech-to-text
 ## timestamps
 {: #summary-timestamps}
 
-選用性的布林值，指出服務是否針對文字記錄中的字組產生時間戳記。依預設 (`false`)，不會傳回時間戳記。如需相關資訊，請參閱[字組時間戳記](/docs/services/speech-to-text/output.html#word_timestamps)。
+選用性的布林值，指出服務是否針對文字記錄中的字組產生時間戳記。依預設 (`false`)，不會傳回時間戳記。如需相關資訊，請參閱[字組時間戳記](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps)。
 
 <table>
-  <caption>表 18. timestamps 參數</caption>
+  <caption>表 21. timestamps 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -857,10 +990,10 @@ subcollection: speech-to-text
 ## Transfer-Encoding
 {: #summary-transfer-encoding}
 
-選用性的值 `chunked`，導致音訊串流至服務。依預設，會以只有一次的遞送方式，一次傳送所有音訊。如需相關資訊，請參閱[音訊傳輸](/docs/services/speech-to-text/input.html#transmission)。
+選用性的值 `chunked`，導致音訊串流至服務。依預設，會以只有一次的遞送方式，一次傳送所有音訊。如需相關資訊，請參閱[音訊傳輸](/docs/services/speech-to-text?topic=speech-to-text-input#transmission)。
 
 <table>
-  <caption>表 19. Transfer-Encoding 參數</caption>
+  <caption>表 22. Transfer-Encoding 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -902,10 +1035,10 @@ subcollection: speech-to-text
 ## watson-token
 {: #summary-watson-token}
 
-如果您使用 Cloud Foundry 服務認證，這是您用來建立與 WebSocket 介面之已鑑別連線的選用性 {{site.data.keyword.watson}} 鑑別記號。如需相關資訊，請參閱[開啟連線](/docs/services/speech-to-text/websockets.html#WSopen)。
+如果您使用 Cloud Foundry 服務認證，這是您用來建立與 WebSocket 介面之已鑑別連線的選用性 {{site.data.keyword.watson}} 鑑別記號。如需相關資訊，請參閱[開啟連線](/docs/services/speech-to-text?topic=speech-to-text-websockets#WSopen)。
 
 <table>
-  <caption>表 20. watson-token 參數</caption>
+  <caption>表 23. watson-token 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -947,10 +1080,10 @@ subcollection: speech-to-text
 ## word_alternatives_threshold
 {: #summary-word-alternatives-threshold}
 
-介於 0.0 到 1.0 之間的選用性倍精準數，用來指定服務針對輸入音訊的字組，報告聲學類似替代項目的臨界值。依預設，不會傳回替代字組。如需相關資訊，請參閱[替代字組](/docs/services/speech-to-text/output.html#word_alternatives)。
+介於 0.0 到 1.0 之間的選用性倍精準數，用來指定服務針對輸入音訊的字組，報告聲學類似替代項目的臨界值。依預設，不會傳回替代字組。如需相關資訊，請參閱[替代字組](/docs/services/speech-to-text?topic=speech-to-text-output#word_alternatives)。
 
 <table>
-  <caption>表 21. word_alternatives_threshold 參數</caption>
+  <caption>表 24. word_alternatives_threshold 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -992,10 +1125,10 @@ subcollection: speech-to-text
 ## word_confidence
 {: #summary-word-confidence}
 
-選用性的布林值，指出服務是否針對文字記錄中的字組提供信賴度測量值。依預設 (`false`)，不會傳回字組信賴度測量值。如需相關資訊，請參閱[字組信賴度](/docs/services/speech-to-text/output.html#word_confidence)。
+選用性的布林值，指出服務是否針對文字記錄中的字組提供信賴度測量值。依預設 (`false`)，不會傳回字組信賴度測量值。如需相關資訊，請參閱[字組信賴度](/docs/services/speech-to-text?topic=speech-to-text-output#word_confidence)。
 
 <table>
-  <caption>表 22. word_confidence 參數</caption>
+  <caption>表 25. word_confidence 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -1043,7 +1176,7 @@ subcollection: speech-to-text
 {: note}
 
 <table>
-  <caption>表格 23. X-Watson-Authorization-Token 參數</caption>
+  <caption>表 26. X-Watson-Authorization-Token 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -1085,10 +1218,10 @@ subcollection: speech-to-text
 ## X-Watson-Learning-Opt-Out
 {: #summary-x-watson-learning-opt-out}
 
-選用性的布林值，指出您是否拒絕 {{site.data.keyword.IBM_notm}} 為了未來使用者改善服務而執行的預設要求記載。若要避免 IBM 存取您的資料以進行一般性的服務改善，請針對此參數指定 <code>true</code>。如需相關資訊，請參閱[要求記載](/docs/services/speech-to-text/input.html#logging)。
+選用性的布林值，指出您是否拒絕 {{site.data.keyword.IBM_notm}} 為了未來使用者改善服務而執行的預設要求記載。若要避免 IBM 存取您的資料以進行一般性的服務改善，請針對此參數指定 <code>true</code>。如需相關資訊，請參閱[要求記載](/docs/services/speech-to-text?topic=speech-to-text-input#logging)。
 
 <table>
-  <caption>表 24. X-Watson-Learning-Opt-Out 參數</caption>
+  <caption>表 27. X-Watson-Learning-Opt-Out 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
@@ -1130,10 +1263,10 @@ subcollection: speech-to-text
 ## X-Watson-Metadata
 {: #summary-x-watson-metadata}
 
-選用性的字串，它會建立客戶 ID 與針對辨識要求而傳遞之資料的關聯。此參數會接受引數 `customer_id={id}`。依預設，不會有任何客戶 ID 與資料相關聯。如需相關資訊，請參閱[資訊安全](/docs/services/speech-to-text/information-security.html)。
+選用性的字串，它會建立客戶 ID 與針對辨識要求而傳遞之資料的關聯。此參數會接受引數 `customer_id={id}`。依預設，不會有任何客戶 ID 與資料相關聯。如需相關資訊，請參閱[資訊安全](/docs/services/speech-to-text?topic=speech-to-text-information-security)。
 
 <table>
-  <caption>表 25. X-Watson-Metadata 參數</caption>
+  <caption>表 28. X-Watson-Metadata 參數</caption>
   <tr>
     <th>可用性及使用</th>
     <th style="vertical-align:bottom">說明</th>
