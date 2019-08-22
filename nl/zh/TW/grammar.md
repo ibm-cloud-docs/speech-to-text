@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-07-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -35,6 +35,7 @@ subcollection: speech-to-text
 當您使用自訂語言模型和文法進行語音辨識時，該服務可以從文法中傳回有效的詞組或空白結果。如果結果不是空的，則該服務會包含具有最終文字記錄的信賴分數，就像它對所有辨識要求那樣。就文法而言，此分數指出回應符合文法的可能性。總是可能會發生誤判，尤其是簡單的文法，因此您在評估其回應時，一定要考慮到服務結果的信賴度。
 
 文法特性是測試版功能。該服務對於其支援語言模型自訂作業的所有語言都支援文法。
+如需相關資訊，請參閱[自訂作業的語言支援](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport)。
 {: note}
 
 ## 支援的文法格式
@@ -49,23 +50,23 @@ subcollection: speech-to-text
 
 如需有關文法的一般資訊，請參閱下列維基百科頁面：
 
--   [語音辨識語法規格 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://en.wikipedia.org/wiki/Speech_Recognition_Grammar_Specification){: new_window}
--   [擴充巴科斯範式 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://en.wikipedia.org/wiki/Augmented_Backus%E2%80%93Naur_form){: new_window}
--   [喬姆斯基階層 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://en.wikipedia.org/wiki/Chomsky_hierarchy){: new_window}
+-   [語音辨識語法規格](https://wikipedia.org/wiki/Speech_Recognition_Grammar_Specification){: external}
+-   [擴充巴科斯範式](https://wikipedia.org/wiki/Augmented_Backus%E2%80%93Naur_form){: external}
+-   [喬姆斯基階層](https://wikipedia.org/wiki/Chomsky_hierarchy){: external}
 
 ## 語音辨識語法規格
 {: #grammarSpecification}
 
-{{site.data.keyword.speechtotextshort}} 服務支援 W3C [Speech Recognition Grammar Specification Version 1.0 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.w3.org/TR/speech-grammar/){: new_window} 定義的文法。此規格提供有關支援格式及定義文法的詳細資訊。如需支援媒體類型的相關資訊，請參閱此規格的[附錄 G. 媒體類型和檔案字尾 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.w3.org/TR/speech-grammar/#AppG){: new_window}。
+{{site.data.keyword.speechtotextshort}} 服務支援 W3C [語音辨識語法規格 1.0 版](https://www.w3.org/TR/speech-grammar/){: external}所定義的文法。此規格提供有關支援格式及定義文法的詳細資訊。如需支援媒體類型的相關資訊，請參閱此規格的[附錄 G. 媒體類型和檔案字尾](https://www.w3.org/TR/speech-grammar/#AppG){: external}。
 
 該服務目前*不* 支援「語音辨識語法規格」的所有特性。具體而言，該服務不支援此規格的下列各節所說明的特性：
 
--   [1.4 節：語意解譯 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.w3.org/TR/speech-grammar/#S1.4){: new_window}。{{site.data.keyword.IBM_notm}} 致力於在該服務的未來版本支援此特性。
--   [1.5 節：內嵌的文法 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.w3.org/TR/speech-grammar/#S1.5){: new_window}。{{site.data.keyword.IBM_notm}} 致力於在該服務的未來版本支援此特性。
--   [2.2.2 節：URI 的外部參照 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.w3.org/TR/speech-grammar/#S2.2.2){: new_window}。服務只支援區域參照，如 [2.2.1 節：區域參照 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.w3.org/TR/speech-grammar/#S2.2.1){: new_window} 所述。換言之，文法必須自行包含。
--   [2.2.3 節：特殊規則 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.w3.org/TR/speech-grammar/#S2.2.3){: new_window}。
--   [2.2.4 節：參照 N-gram 文件（僅供參考）![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.w3.org/TR/speech-grammar/#S2.2.4){: new_window}。
--   [2.7 節：語言 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.w3.org/TR/speech-grammar/#S2.7){: new_window}。服務不支援語言切換。服務只支援每個文法一種全球語言。
+-   [1.4 節：語意解譯](https://www.w3.org/TR/speech-grammar/#S1.4){: external}。{{site.data.keyword.IBM_notm}} 致力於在該服務的未來版本支援此特性。
+-   [1.5 節：內嵌的文法](https://www.w3.org/TR/speech-grammar/#S1.5){: external}。{{site.data.keyword.IBM_notm}} 致力於在該服務的未來版本支援此特性。
+-   [2.2.2 節：URI 的外部參照](https://www.w3.org/TR/speech-grammar/#S2.2.2){: external}。服務只支援區域參照，如 [2.2.1 節：區域參照](https://www.w3.org/TR/speech-grammar/#S2.2.1){: external}所述。換言之，文法必須自行包含。
+-   [2.2.3 節：特殊規則](https://www.w3.org/TR/speech-grammar/#S2.2.3){: external}。
+-   [2.2.4 節：參照 N-gram 文件（僅供參考）](https://www.w3.org/TR/speech-grammar/#S2.2.4){: external}。
+-   [2.7 節：語言](https://www.w3.org/TR/speech-grammar/#S2.7){: external}。服務不支援語言切換。服務只支援每個文法一種全球語言。
 
 文法的字組必須為 UTF-8 編碼（ASCII 是 UTF-8 的一個子集）。使用任何其他編碼可能會導致在編譯文法時發生問題，或在解碼時發生非預期的結果。服務會忽略文法標頭中指定的編碼。
 {: note}

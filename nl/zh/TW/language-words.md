@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,10 +25,10 @@ subcollection: speech-to-text
 # 管理自訂字組
 {: #manageWords}
 
-自訂作業介面包含 `POST /v1/customizations/{customization_id}/words` 和 `PUT /v1/customizations/{customization_id}/words/{word_name}` 方法，可用來新增或修改自訂模型的字組。如需相關資訊，請參閱[將字組新增至自訂語言模型](/docs/services/speech-to-text/language-create.html#addWords)。此介面還包含下列方法，用來列出及刪除自訂語言模型的字組。
+自訂作業介面包含 `POST /v1/customizations/{customization_id}/words` 和 `PUT /v1/customizations/{customization_id}/words/{word_name}` 方法，可用來新增或修改自訂模型的字組。如需相關資訊，請參閱[將字組新增至自訂語言模型](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addWords)。此介面還包含下列方法，用來列出及刪除自訂語言模型的字組。
 {: shortdesc}
 
-您可能會從語料庫中新增大部分自訂字組。請確定您知道語料庫文字檔中使用的字元編碼。服務會保留它在文字檔中找到的編碼。在使用自訂語言模型中的個別字組時，必須使用該編碼。當您使用 `GET`、`PUT` 或 `DELETE /v1/customizations/{customization_id}/words/{word_name}` 方法指定字組時，如果字組包含非 ASCII 字元，則必須將您在 URL 中傳遞的 `word_name` 以 URL 編碼。如需相關資訊，請參閱[字元編碼](/docs/services/speech-to-text/language-resource.html#charEncoding)。
+您可能會從語料庫中新增大部分自訂字組。請確定您知道語料庫文字檔中使用的字元編碼。服務會保留它在文字檔中找到的編碼。在使用自訂語言模型中的個別字組時，必須使用該編碼。當您使用 `GET`、`PUT` 或 `DELETE /v1/customizations/{customization_id}/words/{word_name}` 方法指定字組時，如果字組包含非 ASCII 字元，則必須將您在 URL 中傳遞的 `word_name` 以 URL 編碼。如需相關資訊，請參閱[字元編碼](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#charEncoding)。
 {: important}
 
 ## 列出自訂語言模型中的字組
@@ -48,8 +48,8 @@ subcollection: speech-to-text
 
 除了用來識別字組的 `word` 欄位之外，這兩個方法還會傳回每個字組的下列相關資訊：
 
--   `sounds_like` 欄位會呈現字組的發音陣列。如果沒有為字組提供 sounds-like 值，此陣列會包含服務自動產生的類似音發音。如需相關資訊，請參閱[使用 sounds_like 欄位](/docs/services/speech-to-text/language-resource.html#soundsLike)。
--   `display_as` 欄位會顯示服務在轉錄結果中呈現的自訂字組拼字。如果沒有為字組提供 display-as 值，此欄位會包含空字串，在此情況下，該字組會依其拼法顯示。如需相關資訊，請參閱[使用 display_as 欄位](/docs/services/speech-to-text/language-resource.html#displayAs)。
+-   `sounds_like` 欄位會呈現字組的發音陣列。如果沒有為字組提供 sounds-like 值，此陣列會包含服務自動產生的類似音發音。如需相關資訊，請參閱[使用 sounds_like 欄位](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#soundsLike)。
+-   `display_as` 欄位會顯示服務在轉錄結果中呈現的自訂字組拼字。如果沒有為字組提供 display-as 值，此欄位會包含空字串，在此情況下，該字組會依其拼法顯示。如需相關資訊，請參閱[使用 display_as 欄位](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#displayAs)。
 -   `source` 欄位指出該字組新增至自訂模型字組資源的方式。此欄位包含服務從中擷取字組的每個語料庫和文法的名稱。如果您直接修改或新增字組，則此欄位會包含字串 `user`。
 -   `count` 欄位指出在所有語料庫和文法中找到該字組的次數。例如，如果該字組在某個語料庫中出現五次，而在另一個語料庫中出現七次，則其計數為 `12`。
 
@@ -152,19 +152,19 @@ curl -X GET -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-## 從自訂語言模型中刪除字組
+## 從自訂語言模型刪除字組
 {: #deleteWord}
 
-使用 `DELETE /v1/customizations/{customization_id}/words/{word_name}` 方法，從自訂語言模型中刪除字組。使用此方法來移除錯誤新增的字組，例如，來自具有錯誤資料的語料庫。
+使用 `DELETE /v1/customizations/{customization_id}/words/{word_name}` 方法，從自訂語言模型刪除字組。使用此方法來移除錯誤新增的字組，例如，來自具有錯誤資料的語料庫。
 
-您可以移除透過任何方法新增至自訂模型字組資源的任何字組。不過，您無法從服務的基礎詞彙中刪除字組。從自訂模型中刪除字組時，只會刪除該字組的自訂發音；該字組仍會保留在基礎詞彙中。
+您可以移除透過任何方法新增至自訂模型字組資源的任何字組。不過，您無法從服務的基礎詞彙刪除字組。從自訂模型刪除字組時，只會刪除該字組的自訂發音；該字組仍會保留在基礎詞彙中。
 
-在您使用 `POST /v1/customizations/{customization_id}/train` 方法重新訓練模型之前，從自訂模型中移除字組並不會影響模型。如果先前曾使用該字組來訓練模型，則即使將該字組從其字組資源中刪除，此模型還是會繼續將該字組套用至語音辨識。您必須重新訓練模型，以反映刪除結果。
+在您使用 `POST /v1/customizations/{customization_id}/train` 方法重新訓練模型之前，從自訂模型移除字組並不會影響模型。如果先前曾根據該字組來訓練模型，則即使將該字組從其字組資源刪除，此模型還是會繼續將該字組套用至語音辨識。您必須重新訓練模型，以反映刪除結果。
 
 ### 要求範例
 {: #deleteExample-word}
 
-下列範例從具有指定自訂作業 ID 的自訂模型中刪除字組 `IEEE`：
+下列範例從具有指定自訂作業 ID 的自訂模型刪除字組 `IEEE`：
 
 ```bash
 curl -X DELETE -u "apikey:{apikey}"

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-07-03"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,14 +25,22 @@ subcollection: speech-to-text
 # 服務背後的科學
 {: #science}
 
-{{site.data.keyword.IBM}} 在 1960 年代初期率先投入語音辨識和音訊產生研究及系統。並以 {{site.data.keyword.speechtotextfull}} 服務延續這項傳統。下列研究及學術論文特別與服務的技術基礎相關。
+如 [Pioneering Speech Recognition](https://www.ibm.com/ibm/history/ibm100/us/en/icons/speechreco/){: external} 中所述，{{site.data.keyword.IBM}} 自 20 世紀 60 年代初以來一直處於語音辨識研究的前沿。例如，[Bahl、Jelinek 和 Mercer (1983)](/docs/services/speech-to-text?topic=speech-to-text-references#bahl1983) 說明基本上在所有現代語音辨識系統中，採用的基本語音辨識數學方法。[Jelinek (1985)](/docs/services/speech-to-text?topic=speech-to-text-references#jelinek1985) 說明聽寫用的第一個即時大型詞彙語音辨識系統的建立。本論文也說明至今仍是未解研究主題的問題。
 {: shortdesc}
 
-1.  Bahl、Lalit R.、Frederick Jelinek 及 Robert L. Mercer。[*A Maximum Likelihood Approach to Continuous Speech Recognition.* ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=4767370&url=http%3A%2F%2Fieeexplore.ieee.org%2Fiel5%2F34%2F4767360%2F04767370.pdf%3Farnumber%3D4767370){: new_window} IEEE Transactions on Pattern Analysis and Machine Intelligence, Vol. 5(2) (March 1983): pp. 179-190. 本論文說明基本上在所有現代語音辨識系統中，採用的基本語音辨識數學方法。
-1.  Hinton、Geoffrey、Li Deng、Dong Yu、George E. Dahl、Abdel-rahman Mohamed、Navdeep Jaitly、Andrew Senior、Vincent Vanhoucke、Patrick Nguyen、Tara N. Sainath 及 Brian Kingsbury。[*Deep Neural Networks for Acoustic Modeling in Speech Recognition: The shared views of four research groups.* ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6296526){: new_window} Signal Processing Magazine, IEEE, Vol. 29(6) (November 2012): pp. 82-97.
-1.  Jelinek、Frederick。[*The Development of an Experimental Discrete Dictation Recognizer.* ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=1457611&url=http%3A%2F%2Fieeexplore.ieee.org%2Fiel5%2F5%2F31355%2F01457611.pdf%3Farnumber%3D1457611){: new_window} Proceedings of the IEEE, Vol. 73(11) (November 1985): pp. 1616-1624. 本論文說明聽寫用的第一個即時大型詞彙語音辨識系統的建立。論文說明的問題至今仍是未解的研究主題。
-1.  Padmanabhan、Mukund 及 Michael Picheny。[*Large-Vocabulary Speech Recognition Algorithms.* ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=993770&url=http%3A%2F%2Fieeexplore.ieee.org%2Fiel5%2F2%2F21439%2F00993770.pdf%3Farnumber%3D993770){: new_window} Computer, Vol. 35(4) (2002): pp. 42-50.
-1.  Picheny、Michael、David Nahamoo、Vaibhava Goel、Brian Kingsbury、Bhuvana Ramabhadran、Steven J. Rennie 及 George Saon。[*Trends and Advances in Speech Recognition.* ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=6032775&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D6032775){: new_window} {{site.data.keyword.IBM_notm}} Journal of Research and Development, Vol. 55(5) (October 2011): pp. 2:1-2:18.
-1.  Saon、George、Hong-Kwang J. Kuo、Steven Rennie 及 Michael Picheny。[*The {{site.data.keyword.IBM_notm}} 2015 English Conversational Telephone Speech Recognition System.* ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://arxiv.org/pdf/1505.05899.pdf){: new_window} arXiv preprint, arXiv:1505.05899 (2015).
-1.  Saon、George、Tom Sercu、Steven Rennie 及 Hong-Kwang J. Kuo。[*The {{site.data.keyword.IBM_notm}} 2016 English Conversational Telephone Speech Recognition System.* ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://arxiv.org/pdf/1604.08242v1.pdf){: new_window} arXiv preprint, arXiv:1604.08242 (2016).
-1.  Soltau、Hagen、George Saon 及 Tara N. Sainath。[*Joint Training of Convolutional and Non-Convolutional Neural Networks.* ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=6854669&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D6854669){: new_window} Proceedings of the 2014 IEEE International Conference on Acoustic, Speech and Signal Processing (ICASSP), Florence, Italy (May 2014): pp. 5572-5576.
+{{site.data.keyword.IBM_notm}} 使用 {{site.data.keyword.speechtotextfull}} 服務延續這個豐富的研究和開發傳統。{{site.data.keyword.IBM_notm}} 已示範針對 Conversational Telephone Speech (CTS)（[Saon 及其他人，2017](/docs/services/speech-to-text?topic=speech-to-text-references#saon2017)）和播送新聞 (BN) 轉錄（[Thomas 及其他人，2019](/docs/services/speech-to-text?topic=speech-to-text-references#thomas2019)），其公用基準資料集的語音辨識準確性創下業界記錄。{{site.data.keyword.IBM_notm}} 除了示範聲學建模的有效性外，還利用類神經網路進行語言建模（[Kurata 及其他人，2017](/docs/services/speech-to-text?topic=speech-to-text-references#kurata2017a) 和 [Kurata 及其他人，2017b](/docs/services/speech-to-text?topic=speech-to-text-references#kurata2017a)）。
+
+下列公告概述 {{site.data.keyword.IBM_notm}} 近期在語音辨識方面取得的成就：
+
+-   [Reaching new records in speech recognition](https://www.ibm.com/blogs/watson/2017/03/reaching-new-records-in-speech-recognition/){: external}
+-   [{{site.data.keyword.IBM_notm}} Breaks Industry Record for Conversational Speech Recognition by Extending Deep Learning Technologies](https://www-03.ibm.com/press/us/en/pressrelease/51790.wss){: external}
+-   [{{site.data.keyword.IBM_notm}} Sets New Transcription Performance Milestone on Automatic Broadcast News Captioning](https://www.ibm.com/blogs/research/2019/05/automatic-broadcast-news-captioning/){: external}
+
+這些成就有助於進一步推動 {{site.data.keyword.IBM_notm}} 的語音服務進步。最適合雲端 {{site.data.keyword.speechtotextshort}} 服務的近期構想包括：
+
+-   *對於語言建模，*{{site.data.keyword.IBM_notm}} 利用類神經網路型語言模型來產生訓練文字（[Suzuki 及其他人，2019](/docs/services/speech-to-text?topic=speech-to-text-references#suzuki2019)）。
+-   *對於聲學建模，*{{site.data.keyword.IBM_notm}} 使用相當精簡的模型來適應雲端的資源限制。為了訓練這種精簡模型，{{site.data.keyword.IBM_notm}} 使用「教師-學生訓練/知識蒸餾」。首先，對長短期記憶 (LSTM)、VGG 和殘差網路 (ResNet) 等強大的大型類神經網路進行訓練。然後將這些網路的輸出用作教師信號，以訓練精簡模型用於實際部署（[Fukuda 及其他人，2017](/docs/services/speech-to-text?topic=speech-to-text-references#fukuda2017)）。
+
+為了進一步推送封套，{{site.data.keyword.IBM_notm}} 還專注於端對端建模。例如，IBM 已為直接聲學到字組模型建立強大的建模管線（[Audhkhasi 及其他人，2017](/docs/services/speech-to-text?topic=speech-to-text-references#audhkhasi2017) 和 [Audhkhasi 及其他人，2018](/docs/services/speech-to-text?topic=speech-to-text-references#audhkhasi2018)），目前仍在對該管線做進一步改進（[Saon 及其他人，2019](/docs/services/speech-to-text?topic=speech-to-text-references#saon2019)）。此外，IBM 還投入精力建立精簡的端對端模型，以用於未來部署到雲端（[Kurata 和 Audhkhasi，2019](/docs/services/speech-to-text?topic=speech-to-text-references#kurata2019)）。
+
+如需服務背後的科學研究相關資訊，請參閱[研究參照](/docs/services/speech-to-text?topic=speech-to-text-references)中列出的文件。

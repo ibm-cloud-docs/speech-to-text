@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-06"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -118,7 +118,7 @@ VIN 格式已充分標準化，具有固定數目的字元。典型 n-grams 對�
   </tr>
 </table>
 
-如需 VIN 格式的相關資訊，請參閱維基百科中的[車輛識別號碼 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://en.wikipedia.org/wiki/Vehicle_identification_number){: new_window}。
+如需 VIN 格式的相關資訊，請參閱[車輛識別號碼](https://wikipedia.org/wiki/Vehicle_identification_number){: external}。
 
 ## 具有選用元素的文法
 {: #optionalElements}
@@ -141,7 +141,7 @@ VIN 格式已充分標準化，具有固定數目的字元。典型 n-grams 對�
   </tr>
 </table>
 
-如需文法中選用擴充的相關資訊，請參閱「語音辨識語法規格」的 [2.5 節：重複 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://www.w3.org/TR/speech-grammar/#S2.5){: new_window}。
+如需文法中選用擴充的相關資訊，請參閱「語音辨識語法規格」的 [2.5 節：重複](https://www.w3.org/TR/speech-grammar/#S2.5){: external}。
 
 ## 澄清文法
 {: #disambiguation}

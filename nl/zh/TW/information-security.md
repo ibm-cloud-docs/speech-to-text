@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -35,15 +35,15 @@ subcollection: speech-to-text
 
 如果您需要針對建立的 {{site.data.keyword.cloud}} {{site.data.keyword.watson}} 資源要求 GDPR 支援：
 
--   在歐盟 (EU)，請參閱[要求歐盟中所建立 {{site.data.keyword.cloud_notm}} Watson 資源的支援](/docs/services/watson/getting-started-gdpr-sar.html#request-EU)。
--   在歐盟以外地區，請參閱[要求歐盟以外資源的支援](/docs/services/watson/getting-started-gdpr-sar.html#request-non-EU)。
+-   在歐盟 (EU)，請參閱[要求歐盟中所建立 {{site.data.keyword.cloud_notm}} Watson 資源的支援](/docs/services/watson?topic=watson-gdpr-sar#request-EU)。
+-   在歐盟以外地區，請參閱[要求歐盟以外資源的支援](/docs/services/watson?topic=watson-gdpr-sar#request-non-EU)。
 
 ## 歐盟一般資料保護規範 (GDPR)
 {: #gdpr}
 
 {{site.data.keyword.IBM_notm}} 致力於為我們的客戶及夥伴提供創新的資料隱私、安全及控管解決方案，以協助他們邁向 GDPR 法規遵循。
 
-在[這裡 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](../../icons/launch-glyph.svg "外部鏈結圖示")](http://www.ibm.com/gdpr){: new_window} 進一步瞭解 {{site.data.keyword.IBM_notm}} 專屬 GDPR 就緒行程以及 GDPR 功能和供應項目，以支援您的規範行程。
+在[這裡](http://www.ibm.com/gdpr){: external}進一步瞭解 {{site.data.keyword.IBM_notm}} 專屬 GDPR 就緒行程以及 GDPR 功能和供應項目，以支援您的規範行程。
 
 ## 在語音轉文字服務中標示及刪除資料
 {: #gdpr-speech-to-text}

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-10"
+lastupdated: "2019-07-21"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -30,7 +30,10 @@ subcollection: speech-to-text
 
 自訂作業介面同時支援自訂語言模型和自訂聲學模型。這兩種類型的自訂模型，其介面類似且用法直接明確。在辨識要求中使用任一類型的自訂模型也很直接明確：您在要求中指定模型的自訂作業 ID。
 
-無論是否有自訂模型，語音辨識的運作方式都一樣。當您將自訂模型用於語音辨識時，您可以使用辨識要求通常可用的所有輸入和輸出參數。如需所有可用參數的相關資訊，請參閱[參數摘要](/docs/services/speech-to-text/summary.html)。
+無論是否有自訂模型，語音辨識的運作方式都一樣。當您將自訂模型用於語音辨識時，您可以使用辨識要求通常可用的所有輸入和輸出參數。如需所有可用參數的相關資訊，請參閱[參數摘要](/docs/services/speech-to-text?topic=speech-to-text-summary)。
+
+您必須有標準定價方案才能使用語言模型或聲學模型自訂作業。精簡方案的使用者無法使用自訂作業介面。如需相關資訊，請參閱 {{site.data.keyword.speechtotextshort}} 服務的[定價頁面](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external}。
+{: note}
 
 ## 語言模型自訂作業
 {: #customLanguage-intro}
@@ -39,12 +42,12 @@ subcollection: speech-to-text
 
 *語言模型自訂作業* 介面可以改善諸如醫藥、法律、資訊科技及其他領域的語音辨識的正確性。使用語言模型自訂作業，您可以擴充及修改基礎模型的詞彙，以包含領域專用術語。
 
-您可以建立自訂語言模型，並新增領域專用的語料庫和字組。在您以加強的詞彙訓練自訂語言模型之後，即可將它用於自訂的語音辨識。該服務通常可以在幾分鐘內訓練任何自訂模型。建立模型所採用的工作層次，視您可用於模型的資料而定。
+您可以建立自訂語言模型，並新增領域專用的語料庫和字組。在您根據加強的詞彙訓練自訂語言模型之後，即可將它用於自訂的語音辨識。該服務通常可以在幾分鐘內訓練任何自訂模型。建立模型所採用的工作層次，視您可用於模型的資料而定。
 
 如需相關資訊，請參閱：
 
--   [建立自訂語言模型](/docs/services/speech-to-text/language-create.html)
--   [使用自訂語言模型](/docs/services/speech-to-text/language-use.html)
+-   [建立自訂語言模型](/docs/services/speech-to-text?topic=speech-to-text-languageCreate)
+-   [使用自訂語言模型](/docs/services/speech-to-text?topic=speech-to-text-languageUse)
 
 ## 聲學模型自訂作業
 {: #customAcoustic-intro}
@@ -61,8 +64,8 @@ subcollection: speech-to-text
 
 如需相關資訊，請參閱：
 
--   [建立自訂聲學模型](/docs/services/speech-to-text/acoustic-create.html)
--   [使用自訂聲學模型](/docs/services/speech-to-text/acoustic-use.html)
+-   [建立自訂聲學模型](/docs/services/speech-to-text?topic=speech-to-text-acoustic)
+-   [使用自訂聲學模型](/docs/services/speech-to-text?topic=speech-to-text-acousticUse)
 
 ## 文法
 {: #grammars-intro}
@@ -73,9 +76,9 @@ subcollection: speech-to-text
 
 如需相關資訊，請參閱：
 
--   [將文法與自訂語言模型搭配使用](/docs/services/speech-to-text/grammar.html)
--   [將文法新增至自訂語言模型](/docs/services/speech-to-text/grammar-add.html)
--   [使用文法進行語音辨識](/docs/services/speech-to-text/grammar-use.html)
+-   [將文法與自訂語言模型搭配使用](/docs/services/speech-to-text?topic=speech-to-text-grammars)
+-   [將文法新增至自訂語言模型](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd)
+-   [使用文法進行語音辨識](/docs/services/speech-to-text?topic=speech-to-text-grammarUse)
 
 ## 同時使用聲學和語言自訂作業
 {: #combined}
@@ -84,9 +87,7 @@ subcollection: speech-to-text
 
 藉由建立自訂語言模型來補充自訂聲學模型，您可以同時使用這兩個模型來加強語音辨識。當您訓練自訂聲學模型時，可以指定自訂語言模型，其中包括音訊資源的轉錄或資源中領域專用字組的詞彙。同樣地，當您轉錄音訊時，該服務會接受自訂語言模型、自訂聲學模型或兩者。如果您的自訂語言模型包含文法，則可以將該模型和文法與自訂聲學模型搭配使用，以進行語音辨識。
 
-如需相關資訊，請參閱：
-
--   [同時使用自訂聲學模型和自訂語言模型](/docs/services/speech-to-text/acoustic-both.html)
+如需相關資訊，請參閱[同時使用自訂聲學模型和自訂語言模型](/docs/services/speech-to-text?topic=speech-to-text-useBoth)。
 
 部分語言不會同時支援語言自訂和聲學自訂。如需相關資訊，請參閱[自訂作業的語言支援](#languageSupport)。
 {: note}
@@ -100,7 +101,7 @@ subcollection: speech-to-text
 -   *測試版* 指出介面可作為測試版供應項目使用。
 -   *不支援* 表示介面不適用於該語言。
 
-您可以將寬頻和窄頻模型與任何受支援的可用語言搭配使用。如果語言支援語言模型自訂作業，則它也支援文法。如需所有可用模型的清單，請參閱[支援的語言模型](/docs/services/speech-to-text/models.html#modelsList)。
+您可以將寬頻和窄頻模型與任何受支援的可用語言搭配使用。如果語言支援語言模型自訂作業，則它也支援文法。如需所有可用模型的清單，請參閱[支援的語言模型](/docs/services/speech-to-text?topic=speech-to-text-models#modelsList)。
 
 <table>
   <caption>表 1. 自訂作業的語言支援</caption>
@@ -116,7 +117,27 @@ subcollection: speech-to-text
     </th>
   </tr>
   <tr>
+    <td>阿拉伯文（現代標準）</td>
+    <td style="text-align:center">不支援</td>
+    <td style="text-align:center">測試版</td>
+  </tr>
+  <tr>
     <td>巴西葡萄牙文</td>
+    <td style="text-align:center">GA 版</td>
+    <td style="text-align:center">測試版</td>
+  </tr>
+  <tr>
+    <td>中文（普通話）</td>
+    <td style="text-align:center">不支援</td>
+    <td style="text-align:center">測試版</td>
+  </tr>
+  <tr>
+    <td>英文（英國）</td>
+    <td style="text-align:center">GA 版</td>
+    <td style="text-align:center">測試版</td>
+  </tr>
+  <tr>
+    <td>英文（美國）</td>
     <td style="text-align:center">GA 版</td>
     <td style="text-align:center">測試版</td>
   </tr>
@@ -141,28 +162,33 @@ subcollection: speech-to-text
     <td style="text-align:center">測試版</td>
   </tr>
   <tr>
-    <td>中文</td>
-    <td style="text-align:center">不支援</td>
+    <td>西班牙文（阿根廷）</td>
+    <td style="text-align:center">測試版</td>
     <td style="text-align:center">測試版</td>
   </tr>
   <tr>
-    <td>現代標準阿拉伯文</td>
-    <td style="text-align:center">不支援</td>
-    <td style="text-align:center">測試版</td>
-  </tr>
-  <tr>
-    <td>西班牙文</td>
+    <td>西班牙文（卡斯提亞）</td>
     <td style="text-align:center">GA 版</td>
     <td style="text-align:center">測試版</td>
   </tr>
   <tr>
-    <td>英式英文</td>
-    <td style="text-align:center">GA 版</td>
+    <td>西班牙文（智利）</td>
+    <td style="text-align:center">測試版</td>
     <td style="text-align:center">測試版</td>
   </tr>
   <tr>
-    <td>美式英文</td>
-    <td style="text-align:center">GA 版</td>
+    <td>西班牙文（哥倫比亞）</td>
+    <td style="text-align:center">測試版</td>
+    <td style="text-align:center">測試版</td>
+  </tr>
+  <tr>
+    <td>西班牙文（墨西哥）</td>
+    <td style="text-align:center">測試版</td>
+    <td style="text-align:center">測試版</td>
+  </tr>
+  <tr>
+    <td>西班牙文（秘魯）</td>
+    <td style="text-align:center">測試版</td>
     <td style="text-align:center">測試版</td>
   </tr>
 </table>
@@ -177,9 +203,9 @@ subcollection: speech-to-text
 ### 自訂模型的所有權
 {: #customOwner}
 
-自訂模型是由將其認證用來建立此模型的 {{site.data.keyword.speechtotextshort}} 服務實例所擁有。若要以任何方式使用自訂模型，您必須搭配使用針對該服務實例所建立的服務認證與自訂作業介面的方法。針對其他服務實例所建立的認證無法檢視或存取自訂模型。
+自訂模型是由將其認證用來建立此模型的 {{site.data.keyword.speechtotextshort}} 服務實例所擁有。若要以任何方式使用自訂模型，您必須搭配使用該服務實例的認證與自訂作業介面的方法。針對其他服務實例所建立的認證無法檢視或存取自訂模型。
 
-針對相同 {{site.data.keyword.speechtotextshort}} 服務實例取得的所有服務認證，會共用對為該服務實例建立之所有自訂模型的存取。若要限制對自訂模型的存取，請建立個別服務實例，並且只使用該服務實例的認證來建立及使用模型。其他服務實例的認證無法影響自訂模型。
+針對相同 {{site.data.keyword.speechtotextshort}} 服務實例取得的所有認證，會共用對為該服務實例建立之所有自訂模型的存取。若要限制對自訂模型的存取，請建立個別服務實例，並且只使用該服務實例的認證來建立及使用模型。其他服務實例的認證無法影響自訂模型。
 
 透過服務實例的認證來共用所有權的優點是，您可以取消一組認證（例如，如果它們遭洩漏的話）。然後，您可以為相同的服務實例建立新的認證，並仍保留對使用原始認證建立之自訂模型的所有權和存取權。
 
@@ -191,7 +217,7 @@ subcollection: speech-to-text
 -   服務*不會* 記載用來建置自訂模型的資料。例如，當使用自訂語言模型中的語料庫和字組時，您不需要設定 `X-Watson-Learning-Opt-Out` 要求標頭。您的訓練資料絕不會用來改善服務的基礎模型。
 -   服務*會* 在搭配使用自訂模型與辨識要求時記載資料。您必須將 `X-Watson-Learning-Opt-Out` 要求標頭設為 `true`，以防止記載辨識要求。
 
-如需相關資訊，請參閱[要求記載](/docs/services/speech-to-text/input.html#logging)。
+如需相關資訊，請參閱[要求記載](/docs/services/speech-to-text?topic=speech-to-text-input#logging)。
 
 ### 資訊安全
 {: #customSecurity}
@@ -204,4 +230,4 @@ subcollection: speech-to-text
 -   `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`
 -   `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`
 
-必要的話，您可以使用 `DELETE /v1/user_data` 方法來刪除資料。如需相關資訊，請參閱[資訊安全](/docs/services/speech-to-text/information-security.html)。
+必要的話，您可以使用 `DELETE /v1/user_data` 方法來刪除資料。如需相關資訊，請參閱[資訊安全](/docs/services/speech-to-text?topic=speech-to-text-information-security)。

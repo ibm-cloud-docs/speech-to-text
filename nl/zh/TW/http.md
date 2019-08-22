@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-08"
+lastupdated: "2019-07-10"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -29,10 +29,9 @@ subcollection: speech-to-text
 {: shortdesc}
 
 -   第一種會透過要求的內文，在單一串流中傳送所有音訊。請將作業的參數指定為要求標頭和查詢參數。如需相關資訊，請參閱[提出基本 HTTP 要求](#HTTP-basic)。
--   第二種會將音訊作為多組件要求進行傳送。請將要求的參數指定為要求標頭、查詢參數和 JSON meta 資料的組合。如需相關資訊，請參閱[提出多組件 HTTP 要求](#HTTP-multi)。
+-   第二種會將音訊作為多部分要求進行傳送。請將要求的參數指定為要求標頭、查詢參數和 JSON meta 資料的組合。如需相關資訊，請參閱[提出多部分 HTTP 要求](#HTTP-multi)。
 
-在單一要求中請提交最多 100 MB、最少 100 個位元組的音訊資料。如需音訊格式和使用壓縮讓用要求傳送之音訊量最大化的相關資訊，請參閱[音訊格式](/docs/services/speech-to-text/audio-formats.html)。如需 HTTP 介面所有方法的相關資訊，請參閱 [API 參考資料 ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://{DomainName}/apidocs/speech-to-text){: new_window}。
-
+在單一要求中請提交最多 100 MB、最少 100 個位元組的音訊資料。如需音訊格式和使用壓縮讓可在要求中傳送之音訊量最大化的相關資訊，請參閱[音訊格式](/docs/services/speech-to-text?topic=speech-to-text-audio-formats)。如需 HTTP 介面所有方法的相關資訊，請參閱 [API 參考資料](https://{DomainName}/apidocs/speech-to-text){: external}。
 
 ## 提出基本 HTTP 要求
 {: #HTTP-basic}
@@ -57,7 +56,7 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of severe thunderstorms swept through Colorado on Sunday "
         }
       ],
@@ -71,28 +70,28 @@ curl -X POST -u "apikey:{apikey}"
 
 `POST /v1/recognize` 方法只有在處理要求的所有音訊之後才會傳回結果。此方法適用於批次處理，但不適用於即時語音辨識。請使用 WebSocket 介面來轉錄即時音訊。
 
-如果您的資料包含多個音訊檔，則要提交音訊的建議方法是傳送多個要求，每個音訊檔一個要求。您可以用迴圈來提交要求，並選擇性地使用平行化，以增進效能。您也可以使用多組件語音辨識，以單一要求傳遞多個音訊檔。
+如果您的資料包含多個音訊檔，則提交音訊的建議方法是傳送多個要求，每個音訊檔一個要求。您可以用迴圈來提交要求，並選擇性地使用平行化，以增進效能。您也可以使用多部分語音辨識，以單一要求傳遞多個音訊檔。
 
-## 提出多組件 HTTP 要求
+## 提出多部分 HTTP 要求
 {: #HTTP-multi}
 
-`POST /v1/recognize` 方法也支援多組件要求。請將所有音訊資料當作多組件表單資料來傳遞。請將部分參數指定為要求標頭及查詢參數，但將 JSON meta 資料以表單資料的形式傳遞，以控制轉錄的最多層面。
+`POST /v1/recognize` 方法也支援多部分要求。請將所有音訊資料當作多部分表單資料來傳遞。請將部分參數指定為要求標頭及查詢參數，但將 JSON meta 資料以表單資料的形式傳遞，以控制轉錄的最多層面。
 
-多組件語音辨識是要用於下列使用案例：
+多部分語音辨識是要用於下列使用案例：
 
 -   使用單一語音辨識要求來傳遞多個音訊檔。
--   使用已停用 JavaScript 的瀏覽器。根據表單資料的多組件要求不需要使用 JavaScript。
--   辨識要求的參數大於 8 KB 時（這是大部分 HTTP 伺服器和 Proxy 所強制的限制）。例如，辨識非常大量的關鍵字可能使要求的大小增加超出此限制。多組件要求使用表單資料來避免此限制。
+-   使用已停用 JavaScript 的瀏覽器。根據表單資料的多部分要求不需要使用 JavaScript。
+-   辨識要求的參數大於 8 KB 時（這是大部分 HTTP 伺服器和 Proxy 所強制的限制）。例如，辨識非常大量的關鍵字可能使要求的大小增加而超出此限制。多部分要求使用表單資料來避免此限制。
 
-下列各節說明您用於多組件要求的參數，並顯示要求範例。
+下列各節說明您用於多部分要求的參數，並顯示要求範例。
 
-### 多組件要求的參數
+### 多部分要求的參數
 {: #multipartParameters}
 
-您可以將多組件語音辨識的下列參數指定為要求標頭、查詢參數和表單資料。
+您可以將多部分語音辨識的下列參數指定為要求標頭、查詢參數和表單資料。
 
-<table summary="表格的每一列說明多組件辨識要求的一個可能參數使用。">
-  <caption>表 1. 多組件要求的參數</caption>
+<table summary="表格的每一列說明多部分辨識要求之一個可能參數的使用情形。">
+  <caption>表 1. 多部分要求的參數</caption>
   <tr>
     <th id="parameter" style="text-align:left; width:20%">參數</th>
     <th id="description" style="text-align:center; width:80%">說明</th>
@@ -104,7 +103,7 @@ curl -X POST -u "apikey:{apikey}"
       <br/><em>物件</em>
     </td>
     <td>
-      <em>必要。</em>JSON 物件，提供要求的轉錄參數。物件必須是表單資料的第一部分。該資訊說明表單資料後續部分中的音訊。請參閱[多組件要求的 JSON meta 資料](#multipartJSON)。</td>
+      <em>必要。</em>JSON 物件，提供要求的轉錄參數。物件必須是表單資料的第一部分。該資訊說明表單資料後續部分中的音訊。請參閱[多部分要求的 JSON meta 資料](#multipartJSON)。</td>
   </tr>
   <tr>
     <td>
@@ -172,12 +171,12 @@ curl -X POST -u "apikey:{apikey}"
   </tr>
 </table>
 
-如需查詢參數的相關資訊，請參閱[參數摘要](/docs/services/speech-to-text/summary.html)。
+如需查詢參數的相關資訊，請參閱[參數摘要](/docs/services/speech-to-text?topic=speech-to-text-summary)。
 
-### 多組件要求的 JSON meta 資料
+### 多部分要求的 JSON meta 資料
 {: #multipartJSON}
 
-您使用多組件要求傳遞的 JSON meta 資料可以包含下列欄位：
+您使用多部分要求傳遞的 JSON meta 資料可以包含下列欄位：
 
 -   `part_content_type` (string)
 -   `data_parts_count` (integer)
@@ -195,16 +194,16 @@ curl -X POST -u "apikey:{apikey}"
 -   `grammar_name` (string)
 -   `redaction` (boolean)
 
-只有下列兩個參數是多組件要求所特有：
+只有下列兩個參數是多部分要求所特有：
 
--   對於大部分音訊格式，`part_content_type` 欄位為*選用性*。對於 `audio/alaw`、`audio/basic`、`audio/l16` 及 `audio/mulaw` 格式而言是必要。它指定要求接下來各組件中的音訊格式。所有音訊檔的格式必須相同。
--   對於所有要求，`data_parts_count` 欄位為*選用性*。它指定隨要求一起傳送的音訊檔個數。服務會將「串流結束」偵測套用到最後一個（可能是唯一的一個）資料組件。如果您省略該參數，則服務會從要求判斷組件數。
+-   對於大部分音訊格式，`part_content_type` 欄位為*選用性*。對於 `audio/alaw`、`audio/basic`、`audio/l16` 及 `audio/mulaw` 等格式而言是必要。它指定要求接下來各組件中的音訊格式。所有音訊檔的格式必須相同。
+-   對於所有要求，`data_parts_count` 欄位為*選用性*。它指定使用要求傳送的音訊檔個數。服務會將「串流結束」偵測套用到最後一個（可能是唯一的一個）資料組件。如果您省略該參數，則服務會從要求判斷組件數。
 
-meta 資料的所有其他參數都是選用性的。如需所有可用參數的說明，請參閱[參數摘要](/docs/services/speech-to-text/summary.html)。
+meta 資料的所有其他參數都是選用性的。如需所有可用參數的說明，請參閱[參數摘要](/docs/services/speech-to-text?topic=speech-to-text-summary)。
 
-### 多組件要求範例
+### 多部分要求範例
 
-下列 `curl` 範例顯示如何使用 `POST /v1/recognize` 方法來傳遞多組件辨識要求。要求會傳遞兩個音訊檔：**audio-file1.flac** 和 **audio-file2.flac**。`metadata` 參數提供要求的大部分參數；`upload` 參數提供音訊檔。
+下列 `curl` 範例顯示如何使用 `POST /v1/recognize` 方法來傳遞多部分辨識要求。要求會傳遞兩個音訊檔：**audio-file1.flac** 和 **audio-file2.flac**。`metadata` 參數提供要求的大部分參數；`upload` 參數提供音訊檔。
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -225,21 +224,21 @@ curl -X POST -u "apikey:{apikey}"
 
 ```javascript
 {
-   "results": [
-      {
-         "word_alternatives": [
+  "results": [
+    {
+      "word_alternatives": [
+        {
+          "start_time": 0.03,
+          "alternatives": [
             {
-               "start_time": 0.03,
-               "alternatives": [
-                  {
-                     "confidence": 0.96,
+              "confidence": 0.96,
                      "word": "the"
                   }
                ],
                "end_time": 0.09
             },
-            {
-               "start_time": 0.09,
+        {
+          "start_time": 0.09,
                "alternatives": [
                   {
                      "confidence": 0.96,
@@ -248,8 +247,8 @@ curl -X POST -u "apikey:{apikey}"
                ],
                "end_time": 0.62
             },
-            {
-               "start_time": 0.62,
+        {
+          "start_time": 0.62,
                "alternatives": [
                   {
                      "confidence": 0.96,
@@ -258,8 +257,8 @@ curl -X POST -u "apikey:{apikey}"
                ],
                "end_time": 0.87
             },
-            {
-               "start_time": 0.87,
+        {
+          "start_time": 0.87,
                "alternatives": [
                   {
                      "confidence": 0.96,
@@ -273,23 +272,23 @@ curl -X POST -u "apikey:{apikey}"
          "alternatives": [
             {
                "timestamps": [
-                  [
-                     "the",
+            [
+              "the",
                      0.03,
                      0.09
                   ],
-                  [
-                     "latest",
+            [
+              "latest",
                      0.09,
                      0.62
                   ],
-                  [
-                     "weather",
+            [
+              "weather",
                      0.62,
                      0.87
                   ],
-                  [
-                     "report",
+            [
+              "report",
                      0.87,
                      1.5
                   ]
@@ -302,8 +301,8 @@ curl -X POST -u "apikey:{apikey}"
       },
       {
          "word_alternatives": [
-            {
-               "start_time": 0.15,
+        {
+          "start_time": 0.15,
                "alternatives": [
                   {
                      "confidence": 1.0,
@@ -312,8 +311,8 @@ curl -X POST -u "apikey:{apikey}"
                ],
                "end_time": 0.3
             },
-            {
-               "start_time": 0.3,
+        {
+          "start_time": 0.3,
                "alternatives": [
                   {
                      "confidence": 1.0,
@@ -322,9 +321,9 @@ curl -X POST -u "apikey:{apikey}"
                ],
                "end_time": 0.64
             },
-            . . .
-            {
-               "start_time": 4.58,
+        . . .
+        {
+          "start_time": 4.58,
                "alternatives": [
                   {
                      "confidence": 0.98,
@@ -333,8 +332,8 @@ curl -X POST -u "apikey:{apikey}"
                ],
                "end_time": 5.16
             },
-            {
-               "start_time": 5.16,
+        {
+          "start_time": 5.16,
                "alternatives": [
                   {
                      "confidence": 0.98,
@@ -343,8 +342,8 @@ curl -X POST -u "apikey:{apikey}"
                ],
                "end_time": 5.32
             },
-            {
-               "start_time": 5.32,
+        {
+          "start_time": 5.32,
                "alternatives": [
                   {
                      "confidence": 0.98,
@@ -371,33 +370,33 @@ curl -X POST -u "apikey:{apikey}"
                   "end_time": 5.16
                }
             ]
-         },
-         "alternatives": [
-            {
-               "timestamps": [
-                  [
-                     "a",
+      },
+      "alternatives": [
+        {
+          "timestamps": [
+            [
+              "a",
                      0.15,
                      0.3
                   ],
-                  [
-                     "line",
+            [
+              "line",
                      0.3,
                      0.64
                   ],
-                  . . .
-                  [
-                     "Colorado",
+            . . .
+            [
+              "Colorado",
                      4.58,
                      5.16
                   ],
-                  [
-                     "on",
+            [
+              "on",
                      5.16,
                      5.32
                   ],
-                  [
-                     "Sunday",
+            [
+              "Sunday",
                      5.32,
                      6.04
                   ]
@@ -407,10 +406,10 @@ curl -X POST -u "apikey:{apikey}"
 possible tornadoes is approaching Colorado on Sunday "
             }
          ],
-         "final": true
-      }
-   ],
-   "result_index": 0
+      "final": true
+    }
+  ],
+  "result_index": 0
 }
 ```
 {: codeblock}

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,30 +25,30 @@ subcollection: speech-to-text
 # 輸入特性
 {: #input}
 
-{{site.data.keyword.speechtotextshort}} 服務提供下列特性來指定該服務要如何執行語音辨識要求。下列各節中說明的所有輸入參數都是選用的。只有輸入音訊是必要的。
+{{site.data.keyword.speechtotextfull}} 服務提供下列特性來指定該服務要如何執行語音辨識要求。下列各節中說明的所有輸入參數都是選用的。只有輸入音訊是必要的。
 {: shortdesc}
 
--   如需每個服務介面的簡單語音辨識要求的範例，請參閱[提出辨識要求](/docs/services/speech-to-text/basic-request.html)。
--   如需所有可用語音辨識參數按字母順序排列的清單，包括其狀態（正式發行版本或測試版）和支援的語言，請參閱[參數摘要](/docs/services/speech-to-text/summary.html)。
+-   如需每個服務介面的簡單語音辨識要求的範例，請參閱[提出辨識要求](/docs/services/speech-to-text?topic=speech-to-text-basic-request)。
+-   如需所有可用語音辨識參數按字母順序排列的清單，包括其狀態（正式發行版本或測試版）和支援的語言，請參閱[參數摘要](/docs/services/speech-to-text?topic=speech-to-text-summary)。
 
 ## 自訂模型
 {: #custom-input}
 
-在不同的支援層次上（正式發行版本或測試版）對不同語言提供語言和聲學模型自訂作業。如需相關資訊，請參閱[自訂作業的語言支援](/docs/services/speech-to-text/custom.html#languageSupport)。
+在不同的支援層次上（正式發行版本或測試版）對不同語言提供語言和聲學模型自訂作業。如需相關資訊，請參閱[自訂作業的語言支援](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport)。
 {: note}
 
 所有介面都接受一個用於辨識要求的自訂模型：
 
 -   *自訂語言模型* 使用特定領域中的術語來擴充服務的基礎詞彙。請使用 `language_customization_id` 參數，在要求中包括自訂語言模型。您也可以指定選用的 `customization_weight` 參數。此參數指出的相對加權是提供給來自自訂模型的字組，而不是來自基礎詞彙的字組。
 
-    如需相關資訊，請參閱[使用自訂語言模型](/docs/services/speech-to-text/language-use.html)。
+    如需相關資訊，請參閱[使用自訂語言模型](/docs/services/speech-to-text?topic=speech-to-text-languageUse)。
 -   *自訂聲學模型* 可讓您針對環境和說話者的聲音特徵來調整服務的基礎聲學模型。請使用 `acoustic_customization_id` 參數，在要求中包括自訂聲學模型。您可以在要求中同時指定自訂語言模型和自訂聲學模型。
 
-    如需相關資訊，請參閱[使用自訂聲學模型](/docs/services/speech-to-text/acoustic-use.html)。
+    如需相關資訊，請參閱[使用自訂聲學模型](/docs/services/speech-to-text?topic=speech-to-text-acousticUse)。
 
-自訂模型是以[語言和模型](/docs/services/speech-to-text/models.html)中所說明的其中一種語言模型為基礎。自訂模型只能與建立它的基礎模型搭配使用。如果自訂模型是以預設值 `en-US_BroadbandModel` 以外的模型為基礎，則您還必須在要求中指定模型名稱。若要使用自訂模型，您必須使用針對擁有自訂模型之服務實例所建立的服務認證來發出要求。
+自訂模型是以[語言和模型](/docs/services/speech-to-text?topic=speech-to-text-models)中所說明的其中一種語言模型為基礎。自訂模型只能與建立它的基礎模型搭配使用。如果自訂模型是以預設值 `en-US_BroadbandModel` 以外的模型為基礎，則您還必須在要求中指定模型名稱。若要使用自訂模型，您必須使用擁有自訂模型之服務實例的認證來發出要求。
 
-如需自訂作業的簡介，請參閱[自訂作業介面](/docs/services/speech-to-text/custom.html)。
+如需自訂作業的簡介，請參閱[自訂作業介面](/docs/services/speech-to-text?topic=speech-to-text-customization)。
 
 ### 自訂模型範例
 {: #customExample}
@@ -75,8 +75,8 @@ curl -X POST -u "apikey:{apikey}"
 
 如需將自訂模型與每個服務介面搭配使用的範例，請參閱：
 
--   [使用自訂語言模型](/docs/services/speech-to-text/language-use.html)
--   [使用自訂聲學模型](/docs/services/speech-to-text/acoustic-use.html)
+-   [使用自訂語言模型](/docs/services/speech-to-text?topic=speech-to-text-languageUse)
+-   [使用自訂聲學模型](/docs/services/speech-to-text?topic=speech-to-text-acousticUse)
 
 ## 文法
 {: #grammars-input}
@@ -90,10 +90,10 @@ curl -X POST -u "apikey:{apikey}"
 
 所有介面都接受下列參數來進行辨識要求：
 
--   `language_customization_id` 參數識別要定義文法的自訂語言模型。您必須使用擁有該模型之服務實例的服務認證來發出要求。
+-   `language_customization_id` 參數識別要定義文法的自訂語言模型。您必須使用擁有該模型之服務實例的認證來發出要求。
 -   `grammar_name` 參數指定您要使用的文法。您只能在一個要求中指定單一文法。
 
-如需相關資訊，請參閱[將文法與自訂語言模型搭配使用](/docs/services/speech-to-text/grammar.html)。
+如需相關資訊，請參閱[將文法與自訂語言模型搭配使用](/docs/services/speech-to-text?topic=speech-to-text-grammars)。
 
 ### 文法範例
 {: #grammarsExample}
@@ -108,12 +108,12 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-如需將文法與每個服務介面搭配使用的範例，請參閱[使用文法進行語音辨識](/docs/services/speech-to-text/grammar-use.html)。
+如需將文法與每個服務介面搭配使用的範例，請參閱[使用文法進行語音辨識](/docs/services/speech-to-text?topic=speech-to-text-grammarUse)。
 
 ## 基礎模型版本
 {: #version}
 
-為了改善語音辨識品質，該服務有時候會更新[語言和模型](/docs/services/speech-to-text/models.html)中所說明的基礎語言模型。語言的基礎模型彼此獨立，就像語言的寬頻及窄頻模型那樣。因此，基礎模型的更新彼此獨立進行，且對其他模型沒有影響。
+為了改善語音辨識品質，該服務有時候會更新[語言和模型](/docs/services/speech-to-text?topic=speech-to-text-models)中所說明的基礎語言模型。語言的基礎模型彼此獨立，就像語言的寬頻及窄頻模型那樣。因此，基礎模型的更新彼此獨立進行，且對其他模型沒有影響。
 
 當基礎模型有多個版本存在時，選用的 `base_model_version` 參數可指定要在辨識要求中使用的模型版本。此參數主要是與已針對新基礎模型而更新的自訂模型搭配使用，但在沒有自訂模型的情況下也可以使用它。用於要求的基礎模型版本，視您是否傳遞 `base_model_version` 參數而定。它也取決於您是否在要求中指定自訂模型（語言、聲學或兩者）。
 
@@ -129,8 +129,8 @@ curl -X POST -u "apikey:{apikey}"
 
 此參數主要是與自訂模型搭配使用。因此，您只能透過列出以它為基礎的自訂模型的相關資訊，來瞭解基礎模型的可用版本。
 
--   如需升級自訂模型的相關資訊，請參閱[升級自訂模型](/docs/services/speech-to-text/custom-upgrade.html)。
--   如需使用不同版本的基礎模型和自訂模型來進行語音辨識的相關資訊，請參閱[使用升級的自訂模型提出辨識要求](/docs/services/speech-to-text/custom-upgrade.html#upgradeRecognition)。
+-   如需升級自訂模型的相關資訊，請參閱[升級自訂模型](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade)。
+-   如需使用不同版本的基礎模型和自訂模型來進行語音辨識的相關資訊，請參閱[使用升級的自訂模型提出辨識要求](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade#upgradeRecognition)。
 
 ## 音訊傳輸
 {: #transmission}
@@ -143,8 +143,8 @@ curl -X POST -u "apikey:{apikey}"
 -   *串流* - 您可以將 `Transfer-Encoding` 要求標頭設為 `chunked` 值，並透過持續性連線來串流資料。在您將資料串流至服務之前，資料不需要完全存在。您可以在資料可用時串流資料。該服務只有在收到最終片段（藉由傳送空的片段來指出）時才會傳送結果。
 
     如需使用 `Transfer-Encoding` 標頭串流片段音訊的相關資訊，請參閱：
-    -   [en.wikipedia.org/wiki/Chunked_transfer_encoding ![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://en.wikipedia.org/wiki/Chunked_transfer_encoding){: new_window}
-    -   [*IETF RFC 7320 HTTP/1.1：訊息語法和遞送* 中的「傳送程式碼」![外部鏈結圖示](../../icons/launch-glyph.svg "外部鏈結圖示")](https://tools.ietf.org/html/rfc7230#section-4){: new_window}。
+    -   [區塊傳送編碼](https://wikipedia.org/wiki/Chunked_transfer_encoding){: external}
+    -   *IETF RFC 7320 HTTP/1.1：訊息語法和遞送* 中的[傳送程式碼](https://tools.ietf.org/html/rfc7230#section-4){: external}
 
 使用 HTTP 介面，該服務會在傳送任何結果之前，一律先轉錄整個音訊串流。結果可以包含多個 `transcript` 元素，以指出以暫停隔開的詞組。連結 `transcript` 元素，以組合完整的文字記錄。
 
@@ -221,9 +221,9 @@ curl -X POST -u "apikey:{apikey}"
 依預設，{{site.data.keyword.IBM_notm}} 會記載對 {{site.data.keyword.watson}} 服務的所有要求及其結果。記載只是為了改善服務以供未來使用者使用。所記載的資料不會共用或公開。
 
 
-如果您擔心保護使用者個人資訊的隱私權，或不希望 IBM 記載您的要求，您可以選擇不要讓 IBM 記載資料（拒絕）。您可以選擇拒絕帳戶層次或 API 要求層次的記載。如需相關資訊，請參閱[控制 {{site.data.keyword.watson}} 服務的要求記載](/docs/services/watson/getting-started-logging.html)。
+如果您擔心保護使用者個人資訊的隱私權，或不希望 IBM 記載您的要求，您可以選擇不要讓 IBM 記載資料（拒絕）。您可以選擇拒絕帳戶層次或 API 要求層次的記載。如需相關資訊，請參閱[控制 {{site.data.keyword.watson}} 服務的要求記載](/docs/services/watson?topic=watson-gs-logging-overview)。
 
 ## 資訊安全
 {: #security-input}
 
-資訊安全包括的特性可以建立客戶 ID 與透過要求傳遞給服務之資料的關聯。您藉由在要求中傳遞 `X-Watson-Metadata` 標頭，以建立客戶 ID 與資料的關聯。必要的話，您可以使用 `DELETE /v1/user_data` 方法來刪除資料。如需相關資訊，請參閱[資訊安全](/docs/services/speech-to-text/information-security.html)。
+資訊安全包括的特性可以建立客戶 ID 與透過要求傳遞給服務之資料的關聯。您藉由在要求中傳遞 `X-Watson-Metadata` 標頭，以建立客戶 ID 與資料的關聯。必要的話，您可以使用 `DELETE /v1/user_data` 方法來刪除資料。如需相關資訊，請參閱[資訊安全](/docs/services/speech-to-text?topic=speech-to-text-information-security)。

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-07-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -31,7 +31,7 @@ subcollection: speech-to-text
 ## 基本轉錄回應
 {: #response}
 
-服務會針對[提出辨識要求](/docs/services/speech-to-text/basic-request.html)中的範例，傳回下列回應。範例只會傳遞音訊檔及其內容類型。音訊會講出單一句子，並且在字組之間沒有顯著的暫停。
+服務會針對[提出辨識要求](/docs/services/speech-to-text?topic=speech-to-text-basic-request)中的範例，傳回下列回應。範例只會傳遞音訊檔及其內容類型。音訊會講出單一句子，並且在字組之間沒有顯著的暫停。
 
 ```javascript
 {
@@ -39,7 +39,7 @@ subcollection: speech-to-text
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -77,16 +77,16 @@ severe thunderstorms swept through Colorado on Sunday "
 -   對於最終結果（保證不會變更），此欄位是 `true`。服務對於它傳回作為最終結果的文字記錄，不會再傳送進一步的更新。
 -   對於過渡期間結果（可能會變更），此欄位是 `false`。如果您使用 `interim_results` 參數搭配 WebSocket 介面，服務會在轉錄音訊時傳回發展中的過渡期間假設，其格式為多個 `results` 欄位。對於過渡期間結果，`final` 欄位一律為 `false`。服務會針對音訊的最終結果將欄位設定為 `true`。服務不會再傳送該音訊轉錄的進一步更新。
 
-若要取得過渡期間結果，請使用 WebSocket 介面並將 `interim_results` 參數設定為 `true`。如需相關資訊，請參閱[過渡期間結果](/docs/services/speech-to-text/output.html#interim)。
+若要取得過渡期間結果，請使用 WebSocket 介面並將 `interim_results` 參數設定為 `true`。如需相關資訊，請參閱[過渡期間結果](/docs/services/speech-to-text?topic=speech-to-text-output#interim)。
 
 ### result_index 欄位
 {: #responseResultIndex}
 
-`result_index` 欄位提供對於該要求而言唯一的結果 ID。如果您要求過渡期間結果，則服務會傳送多個 `results` 欄位，用來發展輸入音訊的假設。相同音訊的過渡期間結果索引一律會有相同的值，相同音訊的最終結果也是一樣。
+`result_index` 欄位提供對於該要求而言唯一的結果 ID。如果您要求過渡期間結果，則服務會針對輸入音訊的發展中假設傳送多個 `results` 欄位。相同音訊的過渡期間結果索引一律會有相同的值，相同音訊的最終結果也是一樣。
 
 您收到任何音訊的最終結果之後，服務就不會針對要求的其餘部分以該索引傳送任何進一步的結果。任何進一步結果的索引會增加 1。
 
-不論您是否要求過渡期間結果，如果您的音訊包含暫停或有長時段為靜音，則服務會以不同的索引傳回多個最終結果。如需相關資訊，請參閱[暫停與靜音](#pauses-silence)。
+不論您是否要求過渡期間結果，如果您的音訊包含暫停或有長時段為靜音，則服務可能會以不同的索引傳回多個最終結果。如需相關資訊，請參閱[暫停與靜音](#pauses-silence)。
 
 如果您的音訊產生多個最終結果，請連結最終結果的 `transcript` 元素，以組合音訊的完整轉錄。請依 `result_index` 的順序來組合結果。您可以忽略 `final` 欄位為 `false` 的過渡期間結果。
 
@@ -102,7 +102,7 @@ severe thunderstorms swept through Colorado on Sunday "
 -   WebSocket 介面的 `interim_results` 參數會要求過渡期間轉錄假設。如前所述，服務會在轉錄音訊時傳送多個回應。
 -   `speaker_labels` 參數會識別多參與者交流的個別說話者。回應包含 `speaker_labels` 欄位，其層次與 `results` 及 `results_index` 欄位相同。
 
-如需這些參數及其他可能影響服務回應之參數的相關資訊，請參閱[輸出特性](/docs/services/speech-to-text/output.html)。如需所有可用參數的相關資訊，請參閱[參數摘要](/docs/services/speech-to-text/summary.html)。
+如需這些參數及其他可能影響服務回應之參數的相關資訊，請參閱[輸出特性](/docs/services/speech-to-text?topic=speech-to-text-output)。如需所有可用參數的相關資訊，請參閱[參數摘要](/docs/services/speech-to-text?topic=speech-to-text-summary)。
 
 ## 暫停與靜音
 {: #pauses-silence}
@@ -111,7 +111,7 @@ severe thunderstorms swept through Colorado on Sunday "
 
 服務用來判斷不同最終結果的預設暫停間隔大約是一秒鐘。對於大部分語言而言，暫停間隔精確地說是 0.8 秒；中文的間隔是 0.6 秒。您無法變更暫停間隔的持續時間。
 
-服務傳回結果的方式，取決於您使用的介面。下列範例顯示來自 HTTP 及 WebSocket 介面的兩個最終結果的回應。在兩種情況下都使用相同的輸入音訊。音訊會說出詞組 "one two three four five six"，並且在 "three" 和 "four" 兩個字組之間有一秒鐘的暫停。
+服務傳回結果的方式，取決於您使用的介面。下列範例顯示來自 HTTP 及 WebSocket 介面的兩個最終結果的回應。在兩個案例中都使用相同的輸入音訊。音訊會說出詞組 "one two three four five six"，並且在 "three" 和 "four" 兩個字組之間有一秒鐘的暫停。
 
 -   *對於 HTTP 介面，*服務會傳送單一 `SpeechRecognitionResults` 物件。`alternatives` 陣列針對每個最終結果都有個別的元素。回應具有單一 `result_index` 欄位，其值為 `0`。
 
@@ -142,7 +142,7 @@ severe thunderstorms swept through Colorado on Sunday "
     ```
     {: codeblock}
 
--   *對於 WebSocket 介面，*服務會傳送兩個不同的回應，具有兩個不同的 `SpeechRecognitionResults` 物件。每個回應物件有不同的 `result_index` 欄位，第一個回應的值為 `0`，第二個回應則是 `1`。
+-   *對於 WebSocket 介面，*服務會傳送兩個不同的回應，具有兩個不同的 `SpeechRecognitionResults` 物件。每個回應物件有不同的 `result_index` 欄位，第一個回應的值為 `0`，第二個回應的值則是 `1`。
 
     ```javascript
     {
@@ -178,13 +178,13 @@ severe thunderstorms swept through Colorado on Sunday "
 
 如果您的結果包含多個最終結果，請連結最終結果的 `transcript` 元素，以組合音訊的完整轉錄。
 
-串流音訊中長達 30 秒的靜音可能導致[閒置逾時](/docs/services/speech-to-text/input.html#timeouts-inactivity)。
+串流音訊中長達 30 秒的靜音可能導致[閒置逾時](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts-inactivity)。
 {: note}
 
 ## 猶豫標記
 {: #hesitation}
 
-當服務發現語音中有簡短的填補音或暫停時，可以在文字記錄中包含猶豫標記。這類的暫停也稱為不流利，可能包含例如 "uhm"、"uh"、"hmm" 之類的填補音，和相關的非詞彙話語。除非您的應用程式需要用到它們，否則可以安全地過濾掉文字記錄中的猶豫標記。
+當服務發現語音中有簡短的填補音或暫停時，可以在文字記錄中包含猶豫標記。這類的暫停也稱為「不流利」，可能包含例如 "uhm"、"uh"、"hmm" 之類的填補音，和相關的非詞彙話語。除非您的應用程式需要用到它們，否則可以安全地過濾掉文字記錄中的猶豫標記。
 
 在英文中，服務會使用猶豫記號 `%HESITATION`，如下列範例所示。其他語言可能使用不同的標記；例如，日文使用記號 `D_`。
 
@@ -206,7 +206,7 @@ severe thunderstorms swept through Colorado on Sunday "
 ```
 {: codeblock}
 
-猶豫標記也可能出現在文字記錄的其他欄位。例如，如果您要求文字記錄之個別字組的[字組時間戳記](/docs/services/speech-to-text/output.html#word_timestamps)，服務會報告每個猶豫標記的開始和結束時間。
+猶豫標記也可能出現在文字記錄的其他欄位。例如，如果您要求文字記錄之個別字組的[字組時間戳記](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps)，則服務會報告每個猶豫標記的開始和結束時間。
 
 ```javascript
 {
@@ -255,7 +255,7 @@ severe thunderstorms swept through Colorado on Sunday "
 
 對於大部分的語言，服務不會在回應文字記錄中使用大寫。如果大寫對您的應用程式而言非常重要，您必須將每一句的第一個字組以及適合大寫的任何其他詞彙都大寫。
 
-*僅限於英文，*服務會將許多專有名詞大寫。例如，服務會針對指定詞組傳回下列文字：
+*僅限於美式英文，*服務會將許多專有名詞大寫。例如，服務會針對指定詞組傳回下列文字：
 
 ```
 Barack Obama graduated from Columbia University
@@ -276,5 +276,5 @@ barack obama graduated from columbia university
 
 依預設，服務不會在回應文字記錄中插入標點符號。您必須將您需要的任何標點符號新增至服務的結果中。
 
-對於美式英文，您可以使用智慧型格式化，來指示服務用標點符號（例如逗點、句點、問號和驚嘆號）替代某些關鍵字字串。如需相關資訊，請參閱[智慧型格式化](/docs/services/speech-to-text/output.html#smart_formatting)。
+對於某些語言，您可以使用智慧型格式化，來指示服務用標點符號（例如逗點、句點、問號和驚嘆號）替代某些關鍵字字串。如需相關資訊，請參閱[智慧型格式化](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting)。
 

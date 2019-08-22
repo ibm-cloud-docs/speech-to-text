@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-10"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,12 +25,12 @@ subcollection: speech-to-text
 # 輸出特性
 {: #output}
 
-{{site.data.keyword.speechtotextshort}} 服務提供下列特性，以指出服務要在其轉錄結果中包含語音辨識要求的資訊。所有輸出參數都是選用參數。
+{{site.data.keyword.speechtotextfull}} 服務提供下列特性，以指出服務要在其轉錄結果中包含語音辨識要求的資訊。所有輸出參數都是選用參數。
 {: shortdesc}
 
--   如需每個服務介面的簡單語音辨識要求範例，請參閱[提出辨識要求](/docs/services/speech-to-text/basic-request.html)。
--   如需語音辨識回應的範例和說明，請參閱[瞭解辨識結果](/docs/services/speech-to-text/basic-response.html)。服務會以 UTF-8 字集傳回所有 JSON 回應內容。
--   如需所有可用語音辨識參數的按字母順序排列清單，包括其狀態（通常是可用或測試版）和支援的語言，請參閱[參數摘要](/docs/services/speech-to-text/summary.html)。
+-   如需每個服務介面的簡單語音辨識要求的範例，請參閱[提出辨識要求](/docs/services/speech-to-text?topic=speech-to-text-basic-request)。
+-   如需語音辨識回應的範例和說明，請參閱[瞭解辨識結果](/docs/services/speech-to-text?topic=speech-to-text-basic-response)。服務會以 UTF-8 字集傳回所有 JSON 回應內容。
+-   如需所有可用語音辨識參數按字母順序排列的清單，包括其狀態（正式發行版本或測試版）和支援的語言，請參閱[參數摘要](/docs/services/speech-to-text?topic=speech-to-text-summary)。
 
 ## 說話者標籤
 {: #speaker_labels}
@@ -42,7 +42,7 @@ subcollection: speech-to-text
 
 說話者標籤是針對兩位說話者的情境而最佳化。它們最適合用於在長時間交流中涉及兩個人的電話交談。它們可以處理最多六位說話者，但超過兩位說話者可能會導致效能變化。兩個人的交流通常是透過窄頻媒體進行，但您可以使用說話者標籤搭配受支援的窄頻與寬頻模型。
 
-若要使用此特性，請針對辨識要求將 `speaker_labels` 參數設定為 `true`；依預設，此參數為 `false`。服務會依音訊的個別字組來識別說話者。它依賴字詞的開始和結束時間來識別其說話者。因此，啟用說話者標籤也會強制 `timestamps` 參數成為 `true`（請參閱[字組時間戳記](/docs/services/speech-to-text/output.html#word_timestamps)）。
+若要使用此特性，請針對辨識要求將 `speaker_labels` 參數設定為 `true`；依預設，此參數為 `false`。服務會依音訊的個別字組來識別說話者。它依賴字詞的開始和結束時間來識別其說話者。因此，啟用說話者標籤也會強制 `timestamps` 參數成為 `true`（請參閱[字組時間戳記](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps)）。
 
 ### 說話者標籤範例
 {: #speakerLabelsExample}
@@ -239,7 +239,7 @@ curl -X POST -u "apikey:{apikey}"
 ### 要求說話者標籤的過渡期間結果
 {: #speakerLabelsInterim}
 
-透過 WebSocket 介面，您可以要求過渡期間結果，以及說話者標籤（請參閱[過渡期間結果](/docs/services/speech-to-text/output.html#interim)）。最終結果通常比過渡期間結果好。但是，過渡期間結果有助於識別文字記錄的發展，及說話者標籤的指派。過渡期間結果可以指出暫時性說話者和 ID 在何處出現或消失。不過，服務可以重複使用它一開始識別但之後重新考量而省略的說話者 ID。因此，ID 可能在過渡期間結果和最終結果中參照兩位不同的說話者。
+透過 WebSocket 介面，您可以要求過渡期間結果，以及說話者標籤（請參閱[過渡期間結果](/docs/services/speech-to-text?topic=speech-to-text-output#interim)）。最終結果通常比過渡期間結果好。但是，過渡期間結果有助於識別文字記錄的發展，及說話者標籤的指派。過渡期間結果可以指出暫時性說話者和 ID 在何處出現或消失。不過，服務可以重複使用它一開始識別但之後重新考量而省略的說話者 ID。因此，ID 可能在過渡期間結果和最終結果中參照兩位不同的說話者。
 
 當您同時要求過渡期間結果和說話者標籤時，長音訊串流的最終結果可能會在起始過渡期間結果傳回之後許久才送達。也可能某些過渡期間結果只包含 `speaker_labels` 欄位，而沒有 `results` 及 `result_index` 欄位。如果您未要求過渡期間結果，服務會傳回最終結果，其中包含 `results` 和 `result_index` 欄位，以及單一個 `speaker_labels` 欄位。
 
@@ -297,7 +297,7 @@ curl -X POST -u "apikey:{apikey}"
     -   關鍵字的記號位於相同的區塊中。
     -   記號是相鄰的，或者中間隔開的間隙不超過 0.1 秒。
 
-    如果在關鍵字的兩個記號之間有簡短的填補音或非詞彙的話語，例如 "uhm" 或 "well"，則可能發生後者的情況。如需相關資訊，請參閱[猶豫標記](/docs/services/speech-to-text/basic-response.html#hesitation)。
+    如果在關鍵字的兩個記號之間有簡短的填補音或非詞彙的話語，例如 "uhm" 或 "well"，則可能發生後者的情況。如需相關資訊，請參閱[猶豫標記](/docs/services/speech-to-text?topic=speech-to-text-basic-response#hesitation)。
 
 ### 關鍵字辨識範例
 {: #keywordSpottingExample}
@@ -336,7 +336,7 @@ curl -X POST -u "apikey:{apikey}"
       },
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -375,7 +375,7 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         },
@@ -384,8 +384,8 @@ severe thunderstorms swept through Colorado on Sunday "
 severe thunderstorms swept through Colorado on Sunday "
         },
         {
-          "transcript": "several tornadoes touch down is a line of
-severe thunderstorms swept through Colorado on Sunday "
+          "transcript": "several tornadoes touch down as a line of
+severe thunderstorms swept through Colorado and Sunday "
         }
       ],
       "final": true
@@ -490,7 +490,7 @@ severe thunderstorms swept through Colorado on Sunday "
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -592,7 +592,7 @@ curl -X POST -u "apikey:{apikey}"
       ],
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -635,9 +635,9 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday ",
-          "confidence": 0.89,
           "word_confidence": [
             [
               "several",
@@ -732,7 +732,7 @@ curl -X POST -u "apikey:{apikey}"
               6.34
             ]
           ],
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -842,7 +842,7 @@ the warranty period is short.
 -   電話號碼必須是 10 或 11 位數，且開頭為日本電話號碼的有效字首。例如，有效的字首包含 `03` 及 `090`。
 -   英文字組會轉換為 ASCII（*半角*）字元。例如，<code>&#65321;&#65314;&#65325;</code> 會轉換成 `IBM`。
 -   如果沒有足夠的上下文，可能不會轉換語義不明確的術語。例如，我們並不清楚 <code>&#19968;&#26178;</code> 及 <code>&#21313;&#20998;</code> 是否指時間。
--   標點符號的處理不論是否有智慧型格式化都相同。例如，根據機率計算，會選取 <code>&#12459;&#12531;&#12510;</code> 或 `,` 其中一個。
+-   標點符號的處理方式不論是否有智慧型格式化都相同。例如，根據機率計算，會選取 <code>&#12459;&#12531;&#12510;</code> 或 `,` 其中一個。
 
 ### 智慧型格式化範例
 {: #smartFormattingExample}
