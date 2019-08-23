@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-07-21"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -36,12 +36,12 @@ Pour la plupart des langues, le service prend en charge les modèles à large ba
 -   *Les modèles à large bande* s'appliquent aux données audio échantillonnées à une fréquence supérieure ou égale à 16 kHz. Utilisez ces modèles pour les applications réactives en temps réel, par exemple, pour les applications de conversation en direct.
 -   *Les modèles à bande étroite* s'appliquent aux données audio échantillonnées à une fréquence de 8 kHz. Utilisez ces modèles pour le décodage hors ligne d'une conversation téléphonique, qui est l'utilisation classique pour cette fréquence d'échantillonnage.
 
-Le choix du modèle adapté à votre application est important. Utilisez le modèle qui correspond à la fréquence d'échantillonnage (et à la langue) de vos données audio. Le service ajuste automatiquement la fréquence d'échantillonnage de vos données audio pour correspondre au modèle que vous spécifiez. Pour plus d'informations, voir [Fréquence d'échantillonnage](/docs/services/speech-to-text/audio-formats.html#samplingRate).
+Le choix du modèle adapté à votre application est important. Utilisez le modèle qui correspond à la fréquence d'échantillonnage (et à la langue) de vos données audio. Le service ajuste automatiquement la fréquence d'échantillonnage de vos données audio pour correspondre au modèle que vous spécifiez. Pour plus d'informations, voir [Fréquence d'échantillonnage](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#samplingRate).
 
-Pour obtenir la meilleure précision de reconnaissance possible, vous devez également considérer le contenu de vos données audio en termes de fréquence. Pour plus d'informations, voir [Fréquence audio](/docs/services/speech-to-text/audio-formats.html#frequency).
+Pour obtenir la meilleure précision de reconnaissance possible, vous devez également considérer le contenu de vos données audio en termes de fréquence. Pour plus d'informations, voir [Fréquence audio](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#frequency).
 {: tip}
 
-Le tableau 1 affiche la liste des modèles pris en charge pour chaque langue. Si vous omettez le paramètre `model` dans la demande, le service utilise par défaut le modèle anglais américain, `en-US_BroadbandModel`.
+Le tableau 1 affiche la liste des modèles pris en charge pour chaque langue. Si vous omettez le paramètre `model` dans la demande, le service utilise par défaut le modèle anglais américain, `en-US_BroadbandModel`. Sauf mention *Bêta*, toutes les langues sont généralement disponibles (*GA*) pour une utilisation en production.
 
 <table>
   <caption>Tableau 1. Modèles de langue pris en charge</caption>
@@ -51,9 +51,30 @@ Le tableau 1 affiche la liste des modèles pris en charge pour chaque langue. Si
     <th style="text-align:center">Modèle à bande étroite</th>
   </tr>
   <tr>
+    <td>Arabe (standard moderne)</td>
+    <td style="text-align:center"><code>ar-AR_BroadbandModel</code></td>
+    <td style="text-align:center">Non pris en charge</td>
+  </tr>
+  <tr>
     <td>Portugais brésilien</td>
     <td style="text-align:center"><code>pt-BR_BroadbandModel</code></td>
     <td style="text-align:center"><code>pt-BR_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>Chinois (Mandarin)</td>
+    <td style="text-align:center"><code>zh-CN_BroadbandModel</code></td>
+    <td style="text-align:center"><code>zh-CN_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>Anglais (Royaume-Uni)</td>
+    <td style="text-align:center"><code>en-GB_BroadbandModel</code></td>
+    <td style="text-align:center"><code>en-GB_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>Anglais (Etats-Unis)</td>
+    <td style="text-align:center"><code>en-US_BroadbandModel</code></td>
+    <td style="text-align:center"><code>en-US_NarrowbandModel</code></br>
+      <code>en-US_ShortForm_NarrowbandModel</code></td>
   </tr>
   <tr>
     <td>Français</td>
@@ -76,30 +97,34 @@ Le tableau 1 affiche la liste des modèles pris en charge pour chaque langue. Si
     <td style="text-align:center"><code>ko-KR_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Chinois mandarin</td>
-    <td style="text-align:center"><code>zh-CN_BroadbandModel</code></td>
-    <td style="text-align:center"><code>zh-CN_NarrowbandModel</code></td>
+    <td>Espagnol (Argentine, bêta)</td>
+    <td style="text-align:center"><code>es-AR_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-AR_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Arabe standard moderne</td>
-    <td style="text-align:center"><code>ar-AR_BroadbandModel</code></td>
-    <td style="text-align:center">Non pris en charge</td>
-  </tr>
-  <tr>
-    <td>Espagnol</td>
+    <td>Espagnol (castillan)</td>
     <td style="text-align:center"><code>es-ES_BroadbandModel</code></td>
     <td style="text-align:center"><code>es-ES_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Anglais britannique</td>
-    <td style="text-align:center"><code>en-GB_BroadbandModel</code></td>
-    <td style="text-align:center"><code>en-GB_NarrowbandModel</code></td>
+    <td>Espagnol (Chili, bêta)</td>
+    <td style="text-align:center"><code>es-CL_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-CL_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Anglais américain</td>
-    <td style="text-align:center"><code>en-US_BroadbandModel</code></td>
-    <td style="text-align:center"><code>en-US_NarrowbandModel</code></br>
-      <code>en-US_ShortForm_NarrowbandModel</code></td>
+    <td>Espagnol (Colombie, bêta)</td>
+    <td style="text-align:center"><code>es-CO_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-CO_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>Espagnol (Mexique, bêta)</td>
+    <td style="text-align:center"><code>es-MX_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-MX_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>Espagnol (Pérou, bêta)</td>
+    <td style="text-align:center"><code>es-PE_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-PE_NarrowbandModel</code></td>
   </tr>
 </table>
 
@@ -108,10 +133,10 @@ Le tableau 1 affiche la liste des modèles pris en charge pour chaque langue. Si
 
 Le modèle anglais américain simplifié, `en-US_ShortForm_NarrowbandModel`, peut améliorer la reconnaissance vocale pour les solutions de serveur vocal interactif et d'automatisation du service clients. Le modèle simplifié est entraîné pour la reconnaissance d'énoncés courts qui reviennent fréquemment dans les paramètres de support technique comme les centres d'appel d'assistance technique automatique ou avec du personnel. Le modèle est réglé, par exemple, pour des énoncés précis, tels que des chiffres, l'épellation de noms et de mots à un seul caractère, et les réponses de type oui-non. L'utilisation d'une grammaire en combinaison avec le modèle simplifié peut améliorer davantage les résultats de la reconnaissance.
 
-Comme pour tous les modèles, les environnements bruyants peuvent avoir un effet négatif sur les résultats. Par exemple, les bruits de fonds des aéroports, des véhicules en mouvement, des salles de conférence et de plusieurs locuteurs peuvent entraîner des transcriptions moins précises. Les données audio des haut-parleurs peuvent également réduire la précision en raison de l'écho obtenu avec des appareils de ce type. L'utilisation d'un modèle acoustique personnalisé avec le modèle simplifié peut neutraliser ces effets.
+Comme pour tous les modèles, les environnements bruyants peuvent avoir un effet négatif sur les résultats. Par exemple, les bruits de fonds des aéroports, des véhicules en mouvement, des salles de conférence et de plusieurs locuteurs peuvent entraîner des transcriptions moins précises.  Les données audio des haut-parleurs peuvent également réduire la précision en raison de l'écho obtenu avec des appareils de ce type. L'utilisation d'un modèle acoustique personnalisé avec le modèle simplifié peut neutraliser ces effets.
 
--   Pour plus d'informations sur la personnalisation de modèle de langue et de modèle acoustique, voir [L'interface de personnalisation](/docs/services/speech-to-text/custom.html).
--   Pour plus d'informations sur les grammaires, voir [Utilisation de grammaires avec des modèles de langue personnalisés](/docs/services/speech-to-text/grammar.html).
+-   Pour plus d'informations sur la personnalisation de modèle de langue et de modèle acoustique, voir [L'interface de personnalisation](/docs/services/speech-to-text?topic=speech-to-text-customization).
+-   Pour plus d'informations sur les grammaires, voir [Utilisation de grammaires avec des modèles de langue personnalisés](/docs/services/speech-to-text?topic=speech-to-text-grammars).
 
 ### Exemple de modèle de langue
 {: #modelsExample}

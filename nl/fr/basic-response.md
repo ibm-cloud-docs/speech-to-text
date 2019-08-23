@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-07-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -31,7 +31,7 @@ Quelle que soit l'interface que vous utilisez, le service {{site.data.keyword.sp
 ## Réponse de transcription de base
 {: #response}
 
-Le service renvoie la réponse suivante pour les exemples figurant dans la rubrique [Effectuer une demande de reconnaissance](/docs/services/speech-to-text/basic-request.html). Les exemples transmettent un seul fichier audio et son type de contenu. La séquence audio est constituée d'une seule phrase parlée sans pause perceptible entre les mots.
+Le service renvoie la réponse suivante pour les exemples figurant dans la rubrique [Effectuer une demande de reconnaissance](/docs/services/speech-to-text?topic=speech-to-text-basic-request). Les exemples transmettent un seul fichier audio et son type de contenu. La séquence audio est constituée d'une seule phrase parlée sans pause perceptible entre les mots.
 
 ```javascript
 {
@@ -39,7 +39,7 @@ Le service renvoie la réponse suivante pour les exemples figurant dans la rubri
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -77,7 +77,7 @@ La zone `final` indique si la retranscription présente les résultats finaux de
 -   La zone a la valeur `true` s'il s'agit des résultats finaux, ce qui garantit qu'ils ne changeront pas. Le service n'envoie plus aucune mise à jour pour les retranscriptions qu'il renvoie sous forme de résultats finaux.
 -   La zone a la valeur `false` s'il s'agit de résultats intermédiaires, qui sont susceptibles de changer. Si vous utilisez le paramètre `interim_results` avec l'interface WebSocket, le service renvoie des hypothèses intermédiaires fluctuantes sous la forme de plusieurs zones `results` au fur et à mesure de la transcription audio. La zone `final` a toujours la valeur `false` quand il s'agit de résultats intermédiaires. Le service définit la zone avec la valeur `true` s'il s'agit des résultats finaux des données audio. Le service n'envoie plus de mise à jour pour la transcription de cette séquence audio.
 
-Pour obtenir des résultats intermédiaires, utilisez l'interface WebSocket et définissez le paramètre `interim_results` avec la valeur `true`. Pour plus d'informations, voir [Résultats intermédiaires](/docs/services/speech-to-text/output.html#interim).
+Pour obtenir des résultats intermédiaires, utilisez l'interface WebSocket et définissez le paramètre `interim_results` avec la valeur `true`. Pour plus d'informations, voir [Résultats intermédiaires](/docs/services/speech-to-text?topic=speech-to-text-output#interim).
 
 ### Zone result_index
 {: #responseResultIndex}
@@ -102,7 +102,7 @@ De nombreux paramètres de sortie disponibles pour la reconnaissance vocale ont 
 -   Le paramètre `interim_results` de l'interface WebSocket demande des hypothèses de transcription intermédiaires. Comme indiqué précédemment, le service envoie plusieurs réponses au fur et à mesure de la transcription audio.
 -   Le paramètre `speaker_labels` identifie les locuteurs individuels d'un échange à plusieurs intervenants. La réponse comprend une zone `speaker_labels` au même niveau que les zones `results` et `results_index`.
 
-Pour plus d'informations sur ces paramètres et d'autres paramètres susceptibles d'affecter la réponse du service, voir [Fonctions de sortie](/docs/services/speech-to-text/output.html). Pour plus d'informations sur tous les paramètres disponibles, voir [Récapitulatif des paramètres](/docs/services/speech-to-text/summary.html).
+Pour plus d'informations sur ces paramètres et d'autres paramètres susceptibles d'affecter la réponse du service, voir [Fonctions de sortie](/docs/services/speech-to-text?topic=speech-to-text-output). Pour plus d'informations sur tous les paramètres disponibles, voir [Récapitulatif des paramètres](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ## Pauses et silence
 {: #pauses-silence}
@@ -176,9 +176,9 @@ La façon dont le service renvoie les résultats dépend de l'interface que vous
     ```
     {: codeblock}
 
-Si vos résultats comprennent plusieurs résultats finaux, concaténez les éléments `transcript` des résultats finaux pour constituer la transcription complète des données audio. 
+Si vos résultats comprennent plusieurs résultats finaux, concaténez les éléments `transcript` des résultats finaux pour constituer la transcription complète des données audio.
 
-Un silence de 30 secondes dans un flux audio diffusé en continu peut entraîner l'expiration du [délai d'attente d'inactivité](/docs/services/speech-to-text/input.html#timeouts-inactivity).
+Un silence de 30 secondes dans un flux audio diffusé en continu peut entraîner l'expiration du [délai d'attente d'inactivité](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts-inactivity).
 {: note}
 
 ## Marqueurs d'hésitation
@@ -206,7 +206,7 @@ En anglais, le service utilise le jeton d'hésitation `%HESITATION`, comme indiq
 ```
 {: codeblock}
 
-Les marqueurs d'hésitation peuvent également apparaître dans d'autres zones d'une retranscription. Par exemple, si vous demandez des [horodatages de mots](/docs/services/speech-to-text/output.html#word_timestamps) pour les mots individuels d'une retranscription, le service signale le début et la fin de chaque marqueur d'hésitation.
+Les marqueurs d'hésitation peuvent également apparaître dans d'autres zones d'une retranscription. Par exemple, si vous demandez des [horodatages de mots](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps) pour les mots individuels d'une retranscription, le service signale le début et la fin de chaque marqueur d'hésitation.
 
 ```javascript
 {
@@ -276,4 +276,4 @@ Le service applique toujours cette capitalisation à l'anglais américain, que v
 
 Par défaut, le service n'insère pas de ponctuation dans les retranscriptions de réponses. Vous devez ajouter la ponctuation nécessaire dans les résultats du service.
 
-Pour l'anglais américain, vous pouvez utiliser le formatage intelligent pour demander au service de remplacer les signes de ponctuation, par exemple les virgules, les points, les points d'interrogation et les points d'exclamation, pour certaines chaînes de mots clés. Pour plus d'informations, voir [Formatage intelligent](/docs/services/speech-to-text/output.html#smart_formatting).
+Pour certaines langues, vous pouvez utiliser le formatage intelligent pour demander au service de remplacer les signes de ponctuation, par exemple les virgules, les points, les points d'interrogation et les points d'exclamation, pour certaines chaînes de mots clés. Pour plus d'informations, voir [Formatage intelligent](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting).

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -33,7 +33,7 @@ Après avoir créé et entraîné votre modèle de langue personnalisé avec vot
 
 Lorsque vous utilisez une grammaire, le service reconnaît uniquement les mots de la grammaire spécifiée. Il n'utilise pas les mots personnalisés ajoutés à partir de corpus, ajoutés ou modifiés individuellement ou reconnus par d'autres grammaires.
 
--   Pour l'[interface WebSocket](/docs/services/speech-to-text/websockets.html), vous spécifiez d'abord l'ID de personnalisation avec le paramètre `language_customization_id` de la méthode `/v1/recognize`. Vous utilisez cette méthode pour établir une connexion WebSocket avec le service.
+-   Pour l'[interface WebSocket](/docs/services/speech-to-text?topic=speech-to-text-websockets), vous spécifiez d'abord l'ID de personnalisation avec le paramètre `language_customization_id` de la méthode `/v1/recognize`. Vous utilisez cette méthode pour établir une connexion WebSocket avec le service.
 
     ```javascript
     var token = {authentication-token};
@@ -58,7 +58,7 @@ Lorsque vous utilisez une grammaire, le service reconnaît uniquement les mots d
     }
     ```
     {: codeblock}
--   Pour l'[interface HTTP synchrone](/docs/services/speech-to-text/http.html), transmettez les deux paramètres avec la méthode `POST /v1/recognize`.
+-   Pour l'[interface HTTP synchrone](/docs/services/speech-to-text?topic=speech-to-text-http), transmettez les deux paramètres avec la méthode `POST /v1/recognize`.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -67,7 +67,7 @@ Lorsque vous utilisez une grammaire, le service reconnaît uniquement les mots d
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&grammar_name={grammar_name}"
     ```
     {: pre}
--   Pour l'[interface HTTP asynchrone](/docs/services/speech-to-text/async.html), transmettez les deux paramètres avec la méthode `POST /v1/recognitions`.
+-   Pour l'[interface HTTP asynchrone](/docs/services/speech-to-text?topic=speech-to-text-async), transmettez les deux paramètres avec la méthode `POST /v1/recognitions`.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"

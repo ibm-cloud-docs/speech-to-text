@@ -2,14 +2,14 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-19"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -63,22 +63,22 @@ Conservez les informations suivantes sur vos modèles de langue personnalisés :
     -   Utilisez la méthode `GET /v1/customizations` pour répertorier les informations sur tous les modèles personnalisés.
     -   Utilisez la méthode `GET /v1/customizations/{customization_id}` pour répertorier les informations concernant un modèle personnalisé spécifié.
 
-    Pour plus d'informations, voir [Affichage de la liste des modèles de langue personnalisés](/docs/services/speech-to-text/language-models.html#listModels-language).
+    Pour plus d'informations, voir [Affichage de la liste des modèles de langue personnalisés](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
 -   Des copies de tous les fichiers texte de corpus que vous ajoutez à vos modèles de langue personnalisés. Pour répertorier les informations sur les corpus de vos modèles personnalisés :
     -   Utilisez la méthode `GET /v1/customizations/{customization_id}/corpora` pour répertorier tous les corpus d'un modèle personnalisé.
     -   Utilisez la méthode `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` pour répertorier les informations sur un corpus spécifié pour un modèle personnalisé.
 
-    Pour plus d'informations, voir [Affichage de la liste des corpus d'un modèle de langue personnalisé](/docs/services/speech-to-text/language-corpora.html#listCorpora).
+    Pour plus d'informations, voir [Affichage de la liste des corpus d'un modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-manageCorpora#listCorpora).
 -   Des copies de tous les fichiers de grammaire que vous ajoutez à vos modèles de langue personnalisés. Pour répertorier les informations sur les grammaires de vos modèles personnalisés :
     -   Utilisez la méthode `GET /v1/customizations/{customization_id}/grammars` pour répertorier les informations sur toutes les grammaires d'un modèle personnalisé.
     -   Utilisez la méthode `GET /v1/customizations/{customization_id}/grammars/{grammar_name}` pour répertorier les informations sur une grammaire spécifiée pour un modèle personnalisé.
 
-    Pour plus d'informations, voir [Affichage de la liste des grammaires d'un modèle de langue personnalisé](/docs/services/speech-to-text/grammar-manage.html#listGrammars).
+    Pour plus d'informations, voir [Affichage de la liste des grammaires d'un modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-manageGrammars#listGrammars).
 -   Des informations sur tous les mots personnalisés, notamment leurs définitions sounds-like et display-as, que vous ajoutez directement dans vos modèles de langue personnalisés. Pour répertorier les informations sur les mots OOV (Out-Of-Vocabulary) de vos modèles personnalisés :
     -   Utilisez la méthode `GET /v1/customizations/{customization_id}/words` pour répertorier les informations sur les mots d'un modèle personnalisé. Vous pouvez utiliser le paramètre `word_type` pour afficher la liste de tous (`all`) les mots d'un modèle, des mots ajoutés directement par l'utilisateur (`user`), des mots extraits des corpus (`corpora`) ou des mots reconnus par des grammaires (`grammars`).
     -   Utilisez la méthode `GET /v1/customizations/{customization_id}/words/{word_name}` pour répertorier les informations sur un mot spécifié dans un modèle personnalisé.
 
-    Pour plus d'informations, voir [Affichage de la liste des mots d'un modèle de langue personnalisé](/docs/services/speech-to-text/language-words.html#listWords).
+    Pour plus d'informations, voir [Affichage de la liste des mots d'un modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords).
 
 Il est recommandé de conserver ces informations dans un format que vous pouvez utiliser pour recréer vos modèles de langue personnalisés en cas d'incident. Conserver de manière active les informations relatives à vos modèles personnalisés et leurs données, et préparer à l'avance les appels indiqués dans la section suivante, sont des opérations qui vous permettent d'assurer une restauration dans les plus brefs délais.
 
@@ -87,11 +87,11 @@ Il est recommandé de conserver ces informations dans un format que vous pouvez 
 
 Pour assurer la reprise après un incident, vous pouvez utiliser des informations de sauvegarde pour recréer vos modèles de langue personnalisés et leurs données :
 
-1.  Pour recréer vos modèles de langue personnalisés, utilisez la méthode `POST /v1/customizations`. Pour plus d'informations, voir [Création d'un modèle de langue personnalisé](/docs/services/speech-to-text/language-create.html#createModel-language).
-1.  Pour ajouter les fichiers texte de corpus à vos modèles personnalisés, utilisez la méthode `POST /v1/customizations/{customization_id}/corpora/{corpus_name}`. Pour plus d'informations, voir [Ajout d'un corpus au modèle de langue personnalisé](/docs/services/speech-to-text/language-create.html#addCorpus).
-1.  Pour ajouter des fichiers de grammaire à vos modèles personnalisés, utilisez la méthode `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`. Pour plus d'informations, voir [Ajout d'une grammaire au modèle de langue personnalisé](/docs/services/speech-to-text/grammar-add.html#addGrammar).
-1.  Pour ajouter plusieurs mots à vos modèles personnalisés, utilisez la méthode `POST /v1/customizations/{customization_id}/words`. Pour ajouter des mots uniques à vos modèles personnalisés, utilisez la méthode `PUT /v1/customizations/{customization_id}/words/{word_name}`. Pour plus d'informations, voir [Ajout de mots au modèle de langue personnalisé](/docs/services/speech-to-text/language-create.html#addWords).
-1.  Pour entraîner vos modèles personnalisés dès que vous restaurez vos corpus, grammaires et mots personnalisés, utilisez la méthode `POST /v1/customizations/{customization_id}/train`. Pour plus d'informations, voir [Entraînement du modèle de langue personnalisé](/docs/services/speech-to-text/language-create.html#trainModel-language).
+1.  Pour recréer vos modèles de langue personnalisés, utilisez la méthode `POST /v1/customizations`. Pour plus d'informations, voir [Création d'un modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language).
+1.  Pour ajouter les fichiers texte de corpus à vos modèles personnalisés, utilisez la méthode `POST /v1/customizations/{customization_id}/corpora/{corpus_name}`. Pour plus d'informations, voir [Ajout d'un corpus au modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus).
+1.  Pour ajouter des fichiers de grammaire à vos modèles personnalisés, utilisez la méthode `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`. Pour plus d'informations, voir [Ajout d'une grammaire au modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar).
+1.  Pour ajouter plusieurs mots à vos modèles personnalisés, utilisez la méthode `POST /v1/customizations/{customization_id}/words`. Pour ajouter des mots uniques à vos modèles personnalisés, utilisez la méthode `PUT /v1/customizations/{customization_id}/words/{word_name}`. Pour plus d'informations, voir [Ajout de mots au modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addWords).
+1.  Pour entraîner vos modèles personnalisés dès que vous restaurez vos corpus, grammaires et mots personnalisés, utilisez la méthode `POST /v1/customizations/{customization_id}/train`. Pour plus d'informations, voir [Entraînement du modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
 
 Les méthodes que vous utilisez pour ajouter des corpus, des grammaires et des mots, ainsi que pour entraîner un modèle de langue personnalisé sont asynchrones. Vous devez surveiller les demandes jusqu'à ce qu'elles soient terminées.
 
@@ -111,12 +111,12 @@ Conservez les informations suivantes sur vos modèles acoustiques personnalisés
     -   Utilisez la méthode `GET /v1/acoustic_customizations` pour répertorier les informations sur tous les modèles personnalisés.
     -   Utilisez la méthode `GET /v1/acoustic_customizations/{customization_id}` pour répertorier les informations concernant un modèle personnalisé spécifié.
 
-    Pour plus d'informations, voir [Affichage de la liste des modèles acoustiques personnalisés](/docs/services/speech-to-text/acoustic-models.html#listModels-acoustic).
+    Pour plus d'informations, voir [Affichage de la liste des modèles acoustiques personnalisés](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
 -   Des copies de toutes les ressources audio, qu'il s'agisse des fichiers audio individuels ou des fichiers archive, que vous ajoutez à vos modèles acoustiques personnalisés. Pour répertorier les informations sur les ressources audio de vos modèles personnalisés :
     -   Utilisez la méthode `GET /v1/acoustic_customizations/{customization_id}/audio` pour répertorier les informations sur toutes les ressources audio d'un modèle personnalisé.
     -   Utilisez la méthode `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` pour répertorier les informations sur une ressource audio spécifiée pour un modèle personnalisé.
 
-    Pour plus d'informations, voir [Affichage de la liste des ressources audio d'un modèle acoustique personnalisé](/docs/services/speech-to-text/acoustic-audio.html#listAudio).
+    Pour plus d'informations, voir [Affichage de la liste des ressources audio d'un modèle acoustique personnalisé](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#listAudio).
 
 Il est recommandé de conserver ces informations dans un format que vous pouvez utiliser pour recréer vos modèles acoustiques personnalisés en cas d'incident. Conserver de manière active les informations relatives à vos modèles personnalisés et leurs ressources audio, et préparer à l'avance les appels indiqués dans la section suivante, sont des opérations qui vous permettent d'assurer une restauration dans les plus brefs délais.
 
@@ -125,9 +125,9 @@ Il est recommandé de conserver ces informations dans un format que vous pouvez 
 
 Pour assurer la reprise après un incident, vous pouvez utiliser des informations de sauvegarde pour recréer vos modèles acoustiques personnalisés et leurs données :
 
-1.  Pour recréer vos modèles acoustiques personnalisés, utilisez la méthode `POST /v1/acoustic_customizations`. Pour plus d'informations, voir [Création d'un modèle acoustique personnalisé](/docs/services/speech-to-text/acoustic-create.html#createModel-acoustic).
-1.  Pour ajouter les ressources audio à vos modèles personnalisés, utilisez la méthode `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`. Pour plus d'informations, voir [Ajout de données audio au modèle acoustique personnalisé](/docs/services/speech-to-text/acoustic-create.html#addAudio). 
-1.  Pour entraîner vos modèles personnalisés dès que vous restaurez vos ressources audio, utilisez la méthode `POST /v1/acoustic_customizations/{customization_id}/train`. Pour plus d'informations, voir [Entraînement du modèle acoustique personnalisé](/docs/services/speech-to-text/acoustic-create.html#trainModel-acoustic).
+1.  Pour recréer vos modèles acoustiques personnalisés, utilisez la méthode `POST /v1/acoustic_customizations`. Pour plus d'informations, voir [Création d'un modèle acoustique personnalisé](/docs/services/speech-to-text?topic=speech-to-text-acoustic#createModel-acoustic).
+1.  Pour ajouter les ressources audio à vos modèles personnalisés, utilisez la méthode `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`. Pour plus d'informations, voir [Ajout de données audio au modèle acoustique personnalisé](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio).
+1.  Pour entraîner vos modèles personnalisés dès que vous restaurez vos ressources audio, utilisez la méthode `POST /v1/acoustic_customizations/{customization_id}/train`. Pour plus d'informations, voir [Entraînement du modèle acoustique personnalisé](/docs/services/speech-to-text?topic=speech-to-text-acoustic#trainModel-acoustic).
 
 Les méthodes que vous utilisez pour ajouter des ressources audio et entraîner un modèle acoustique personnalisé sont asynchrones. Vous devez surveiller les demandes jusqu'à ce qu'elles soient terminées.
 
@@ -141,4 +141,4 @@ Dans le cadre d'une reconnaissance vocale avec l'interface HTTP asynchrone, vous
 -   Toutes les URL de rappel sur liste blanche à utiliser avec l'interface asynchrone. En cas d'incident, il vous faudra peut-être utiliser la méthode `POST /v1/register_callback` pour enregistrer à nouveau les URL. Cette méthode renvoie une réponse appropriée si l'URL figure déjà sur la liste blanche.
 -   Des copies des fichiers audio que vous soumettez à l'interface asynchrone pour la reconnaissance vocale. En cas d'incident avant de recevoir ou de récupérer les résultats d'un travail asynchrone terminé, vous devez utiliser la méthode `POST /v1/recognitions` pour soumettre à nouveau les fichiers audio lorsque le service est restauré. Après avoir récupéré les résultats d'un travail asynchrone terminé, vous n'avez plus besoin de conserver les fichiers audio.
 
-Pour plus d'informations, voir [L'interface HTTP asynchrone](/docs/services/speech-to-text/async.html). A l'instar des données de sauvegarde des modèles personnalisés, vous pouvez conserver ces informations de manière active et vous préparer à l'avance à relancer les demandes nécessaires.
+Pour plus d'informations, voir [L'interface HTTP asynchrone](/docs/services/speech-to-text?topic=speech-to-text-async). A l'instar des données de sauvegarde des modèles personnalisés, vous pouvez conserver ces informations de manière active et vous préparer à l'avance à relancer les demandes nécessaires.

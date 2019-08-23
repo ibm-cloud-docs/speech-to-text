@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,30 +25,30 @@ subcollection: speech-to-text
 # Fonctions d'entrée
 {: #input}
 
-Le service {{site.data.keyword.speechtotextshort}} offre les fonctions suivantes pour spécifier comment le service doit effectuer une demande de reconnaissance vocale. Tous les paramètres d'entrée décrits dans les sections suivantes sont facultatifs. Seule l'entrée audio est obligatoire.
+Le service {{site.data.keyword.speechtotextfull}} offre les fonctions suivantes pour spécifier comment le service doit effectuer une demande de reconnaissance vocale. Tous les paramètres d'entrée décrits dans les sections suivantes sont facultatifs. Seule l'entrée audio est obligatoire.
 {: shortdesc}
 
--   Pour obtenir des exemples de demandes de reconnaissance vocale simples pour chacune des interfaces du service, voir [Effectuer une demande de reconnaissance](/docs/services/speech-to-text/basic-request.html).
--   Pour obtenir une liste alphabétique de tous les paramètres de reconnaissance vocale disponibles, y compris leur statut (GA ou bêta) et les langues prises en charge, voir [Récapitulatif des paramètres](/docs/services/speech-to-text/summary.html).
+-   Pour obtenir des exemples de demandes de reconnaissance vocale simples pour chacune des interfaces du service, voir [Effectuer une demande de reconnaissance](/docs/services/speech-to-text?topic=speech-to-text-basic-request).
+-   Pour obtenir une liste alphabétique de tous les paramètres de reconnaissance vocale disponibles, y compris leur statut (GA ou bêta) et les langues prises en charge, voir [Récapitulatif des paramètres](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ## Modèles personnalisés
 {: #custom-input}
 
-La personnalisation de modèle de langue et de modèle acoustique est disponible à différents niveaux de support (GA ou bêta) pour les différentes langues. Pour plus d'informations, voir [Support de langue pour la personnalisation](/docs/services/speech-to-text/custom.html#languageSupport).
+La personnalisation de modèle de langue et de modèle acoustique est disponible à différents niveaux de support (GA ou bêta) pour les différentes langues. Pour plus d'informations, voir [Support de langue pour la personnalisation](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
 {: note}
 
 Toutes les interfaces acceptent l'utilisation d'un modèle personnalisé dans une demande de reconnaissance :
 
--   Les *modèles de langue personnalisés* développent le vocabulaire de base du service avec la terminologie propre à des domaines spécifiques. Utilisez le paramètre `language_customization_id` pour inclure un modèle de langue personnalisé avec une demande. Vous pouvez également spécifier le paramètre facultatif `customization_weight`. Ce paramètre indique le poids relatif attribué aux mots du modèle personnalisé par opposition aux mots du vocabulaire de base. 
+-   Les *modèles de langue personnalisés* développent le vocabulaire de base du service avec la terminologie propre à des domaines spécifiques. Utilisez le paramètre `language_customization_id` pour inclure un modèle de langue personnalisé avec une demande. Vous pouvez également spécifier le paramètre facultatif `customization_weight`. Ce paramètre indique le poids relatif attribué aux mots du modèle personnalisé par opposition aux mots du vocabulaire de base.
 
-    Pour plus d'informations, voir [Utilisation d'un modèle de langue personnalisé](/docs/services/speech-to-text/language-use.html).
+Pour plus d'informations, voir [Utilisation d'un modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-languageUse).
 -   Les *modèles acoustiques personnalisés* adaptent le modèle acoustique de base du service aux caractéristiques acoustiques de votre environnement et de vos locuteurs. Utilisez le paramètre `acoustic_customization_id` pour inclure un modèle acoustique personnalisé avec une demande. Vous pouvez spécifier un modèle de langue personnalisé et un modèle acoustique personnalisé avec une demande.
 
-    Pour plus d'informations, voir [Utilisation d'un modèle acoustique personnalisé](/docs/services/speech-to-text/acoustic-use.html).
+    Pour plus d'informations, voir [Utilisation d'un modèle acoustique personnalisé](/docs/services/speech-to-text?topic=speech-to-text-acousticUse).
 
-Les modèles personnalisés sont basés sur les modèles de langue présentés à la rubrique [Langues et modèles](/docs/services/speech-to-text/models.html). Un modèle personnalisé ne peut être utilisé qu'avec le modèle de base pour lequel il est créé. Si votre modèle personnalisé n'est pas basé sur le modèle par défaut `en-US_BroadbandModel`, vous devez également spécifier le nom du modèle avec la demande. Pour utiliser un modèle personnalisé, vous devez émettre la demande avec les données d'identification du service créées pour l'instance de service propriétaire du modèle personnalisé.
+Les modèles personnalisés sont basés sur les modèles de langue présentés à la rubrique [Langues et modèles](/docs/services/speech-to-text?topic=speech-to-text-models). Un modèle personnalisé ne peut être utilisé qu'avec le modèle de base pour lequel il est créé. Si votre modèle personnalisé n'est pas basé sur le modèle par défaut `en-US_BroadbandModel`, vous devez également spécifier le nom du modèle avec la demande. Pour utiliser un modèle personnalisé, vous devez émettre la demande avec les données d'identification de l'instance du service propriétaire de ce modèle.
 
-Pour obtenir une introduction à la personnalisation, voir [L'interface de personnalisation](/docs/services/speech-to-text/custom.html).
+Pour obtenir une introduction à la personnalisation, voir [L'interface de personnalisation](/docs/services/speech-to-text?topic=speech-to-text-customization).
 
 ### Exemples de modèles personnalisés
 {: #customExample}
@@ -75,8 +75,8 @@ curl -X POST -u "apikey:{apikey}"
 
 Pour obtenir des exemples utilisant des modèles personnalisés avec chacune des interfaces du service, voir
 
--   [Utilisation d'un modèle de langue personnalisé](/docs/services/speech-to-text/language-use.html)
--   [Utilisation d'un modèle acoustique personnalisé](/docs/services/speech-to-text/acoustic-use.html)
+-   [Utilisation d'un modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-languageUse)
+-   [Utilisation d'un modèle acoustique personnalisé](/docs/services/speech-to-text?topic=speech-to-text-acousticUse)
 
 ## Grammaires
 {: #grammars-input}
@@ -90,10 +90,10 @@ Lorsque vous utilisez une grammaire pour la reconnaissance vocale, le service re
 
 Toutes les interfaces acceptent les paramètres suivants dans le cadre d'une demande de reconnaissance :
 
--   Le paramètre `language_customization_id` identifie le modèle de langue personnalisé pour lequel est définie la grammaire. Vous devez émettre la demande avec les données d'identification de l'instance de service propriétaire du modèle.
+-   Le paramètre `language_customization_id` identifie le modèle de langue personnalisé pour lequel est définie la grammaire. Vous devez émettre la demande avec les données d'identification de l'instance du service propriétaire du modèle.
 -   Le paramètre `grammar_name` spécifie la grammaire que vous souhaitez utiliser. Vous ne pouvez spécifier qu'une seule grammaire avec la demande.
 
-Pour plus d'informations, voir [Utilisation de grammaires avec des modèles de langue personnalisés](/docs/services/speech-to-text/grammar.html).
+Pour plus d'informations, voir [Utilisation de grammaires avec des modèles de langue personnalisés](/docs/services/speech-to-text?topic=speech-to-text-grammars).
 
 ### Exemples de grammaires
 {: #grammarsExample}
@@ -108,12 +108,12 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-Pour obtenir des exemples utilisant des grammaires avec chacune des interfaces du service, voir [Utilisation d'une grammaire pour la reconnaissance vocale](/docs/services/speech-to-text/grammar-use.html).
+Pour obtenir des exemples utilisant des grammaires avec chacune des interfaces du service, voir [Utilisation d'une grammaire pour la reconnaissance vocale](/docs/services/speech-to-text?topic=speech-to-text-grammarUse).
 
 ## Version du modèle de base
 {: #version}
 
-Afin d'améliorer la qualité de la reconnaissance vocale, le service met occasionnellement à jour les modèles de langue de base décrits dans la rubrique [Langues et modèles](/docs/services/speech-to-text/models.html). Les modèles de base des différentes langues sont indépendants les uns des autres, tout comme les modèles à large bande et à bande étroite correspondant à une langue. Par conséquent, les mises à jour des modèles de base se produisent indépendamment les unes des autres et n'ont aucun effet sur d'autres modèles.
+Afin d'améliorer la qualité de la reconnaissance vocale, le service met occasionnellement à jour les modèles de langue de base décrits dans la rubrique [Langues et modèles](/docs/services/speech-to-text?topic=speech-to-text-models). Les modèles de base des différentes langues sont indépendants les uns des autres, tout comme les modèles à large bande et à bande étroite correspondant à une langue. Par conséquent, les mises à jour des modèles de base se produisent indépendamment les unes des autres et n'ont aucun effet sur d'autres modèles.
 
 Lorsqu'il existe plusieurs versions d'un modèle de base, le paramètre facultatif `base_model_version` spécifie la version du modèle à utiliser avec une demande de reconnaissance. Ce paramètre est principalement conçu pour être utilisé avec des modèles personnalisés mis à jour pour un nouveau modèle de base mais il peut être utilisé sans modèle personnalisé. La version d'un modèle de base utilisé pour une demande dépend de la transmission du paramètre `base_model_version`. Elle dépend également de la spécification d'un modèle personnalisé (modèle de langue et/ou modèle acoustique) avec la demande.
 
@@ -129,8 +129,8 @@ Lorsqu'il existe plusieurs versions d'un modèle de base, le paramètre facultat
 
 Ce paramètre est conçu pour être utilisé avec les modèles personnalisés. Par conséquent, vous pouvez découvrir les versions disponibles d'un modèle de base uniquement en répertoriant les informations sur un modèle personnalisé basé sur ce modèle de base.
 
--   Pour plus d'informations sur la mise à niveau des modèles personnalisés, voir [Mise à niveau des modèles personnalisés](/docs/services/speech-to-text/custom-upgrade.html).
--   Pour plus d'informations sur l'utilisation de différentes versions de modèle de base et de modèles personnalisés, voir [Demandes de reconnaissance effectuées avec des modèles personnalisés mis à niveau](/docs/services/speech-to-text/custom-upgrade.html#upgradeRecognition).
+-   Pour plus d'informations sur la mise à niveau des modèles personnalisés, voir [Mise à niveau des modèles personnalisés](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade).
+-   Pour plus d'informations sur l'utilisation de différentes versions de modèle de base et de modèles personnalisés, voir [Demandes de reconnaissance effectuées avec des modèles personnalisés mis à niveau](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade#upgradeRecognition).
 
 ## Transmission audio
 {: #transmission}
@@ -143,8 +143,8 @@ Ce paramètre est conçu pour être utilisé avec les modèles personnalisés. P
 -   *Diffusion en continu* - Vous définissez l'en-tête de la demande `Transfer-Encoding` avec la valeur `chunked` et diffusez les données en continu via une connexion permanente. Les données n'ont pas besoin d'exister en totalité lorsque vous les diffusez en continu vers le service. Vous pouvez transmettre les données au fur et à mesure de leur disponibilité. Le service n'envoie les résultats qu'une fois qu'il a reçu le bloc final, ce que vous pouvez indiquer en envoyant un bloc vide.
 
     Pour plus d'informations sur la diffusion en continu de données audio mémorisées en blocs avec l'en-tête `Transfer-Encoding`, voir
-    -   [en.wikipedia.org/wiki/Chunked_transfer_encoding ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/Chunked_transfer_encoding){: new_window}
-    -   [Transfer Codings ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://tools.ietf.org/html/rfc7230#section-4){: new_window} dans le document *IETF RFC 7320 HTTP/1.1: Message Syntax and Routing*
+    -   [Codage de transfert segmenté](https://wikipedia.org/wiki/Chunked_transfer_encoding){: external}
+    -   [Transfer Codings](https://tools.ietf.org/html/rfc7230#section-4){: external} dans le document *IETF RFC 7320 HTTP/1.1: Message Syntax and Routing*
 
 Avec les interfaces HTTP, le service transcrit toujours le flux audio complet avant d'envoyer les résultats. Les résultats peuvent comprendre plusieurs éléments `transcript` pour indiquer que les expressions sont séparées par des pauses. Concaténez ces éléments `transcript` pour assembler la retranscription complète.
 
@@ -208,7 +208,7 @@ Vous n'avez pas besoin de vous soucier du délai d'attente de session après avo
 
 Lorsque vous transcrivez un flux audio long, le service peut prendre plus de 30 secondes pour traiter les données audio et générer une réponse. Il ne commence à calculer le délai d'attente de session qu'après avoir terminé le traitement de toutes les données audio qu'il a reçues. Le temps de traitement du service ne peut pas entraîner le dépassement du délai d'attente de session fixé à 30 secondes.
 
-Par exemple, si vous effectuez une heure de transmission audio dans les 10 premières secondes d'une session, le service peut nécessiter 300 secondes pour traiter les données audio. Pour conserver cette session active, il vous faudra rajouter au moins 15 secondes d'audio supplémentaires, y compris du silence, au plus tard 340 secondes dans la session.
+Par exemple, si vous effectuez une heure de transmission audio dans les 10 premières secondes d'une session, le service peut nécessiter 300 secondes pour traiter les données audio.  Pour conserver cette session active, il vous faudra rajouter au moins 15 secondes d'audio supplémentaires, y compris du silence, au plus tard 340 secondes dans la session.
 
 Dans cet exemple, si vous envoyez 15 secondes d'audio supplémentaires à la 100e seconde de la session, le service peut passer deux secondes de plus à traiter ces données audio. Dans ce cas, vous devrez transmettre 15 secondes d'audio supplémentaires au plus tard 342 secondes dans la session.
 
@@ -220,9 +220,9 @@ Ne vous fiez pas au temps de traitement ou à la réception des résultats pour 
 
 Par défaut, {{site.data.keyword.IBM_notm}} consigne toutes les demandes adressées aux services {{site.data.keyword.watson}} et leurs résultats. La journalisation a pour unique but d'améliorer les services pour les futurs utilisateurs. Les données de journal ne sont ni partagées ni rendues publiques.
 
-Si vous tenez à la confidentialité des informations personnelles des utilisateurs ou si vous ne souhaitez pas que vos demandes soient consignées par IBM, vous pouvez refuser la journalisation des données par IBM (en la désactivant). Vous pouvez choisir de désactiver la journalisation au niveau du compte ou au niveau de la demande d'API. Pour plus d'informations, voir [Contrôle de la journalisation des demandes pour les services {{site.data.keyword.watson}}](/docs/services/watson/getting-started-logging.html).
+Si vous tenez à la confidentialité des informations personnelles des utilisateurs ou si vous ne souhaitez pas que vos demandes soient consignées par IBM, vous pouvez refuser la journalisation des données par IBM (en la désactivant). Vous pouvez choisir de désactiver la journalisation au niveau du compte ou au niveau de la demande d'API. Pour plus d'informations, voir [Contrôle de la journalisation des demandes pour les services {{site.data.keyword.watson}}](/docs/services/watson?topic=watson-gs-logging-overview).
 
 ## Sécurité des informations
 {: #security-input}
 
-La sécurité des informations comprend des fonctions permettant d'associer un ID client aux données transmises au service dans le cadre d'une demande. Vous associez un ID client aux données en transmettant l'en-tête `X-Watson-Metadata` avec la demande. Si nécessaire, vous pouvez ensuite supprimer les données en utilisant la méthode `DELETE /v1/user_data`. Pour plus d'informations, voir [Sécurité des informations](/docs/services/speech-to-text/information-security.html).
+La sécurité des informations comprend des fonctions permettant d'associer un ID client aux données transmises au service dans le cadre d'une demande. Vous associez un ID client aux données en transmettant l'en-tête `X-Watson-Metadata` avec la demande. Si nécessaire, vous pouvez ensuite supprimer les données en utilisant la méthode `DELETE /v1/user_data`. Pour plus d'informations, voir [Sécurité des informations](/docs/services/speech-to-text?topic=speech-to-text-information-security).

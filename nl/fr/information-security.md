@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -35,16 +35,15 @@ Les produits, services et autres fonctionnalités décrits dans le présent docu
 
 Si vous avez besoin d'une assistance RGPD pour les ressources {{site.data.keyword.cloud}} {{site.data.keyword.watson}} créées
 
--   dans l'Union européenne (UE), voir [Demande de support pour les ressources {{site.data.keyword.cloud_notm}} Watson créées dans l'Union européenne](/docs/services/watson/getting-started-gdpr-sar.html#request-EU).
--   hors UE, voir [Demande de support pour les ressources situées en dehors de l'Union européenne](/docs/services/watson/getting-started-gdpr-sar.html#request-non-EU).
+-   dans l'Union européenne (UE), voir [Demande de support pour les ressources {{site.data.keyword.cloud_notm}} Watson créées dans l'Union européenne](/docs/services/watson?topic=watson-gdpr-sar#request-EU).
+-   hors UE, voir [Demande de support pour les ressources situées en dehors de l'Union européenne](/docs/services/watson?topic=watson-gdpr-sar#request-non-EU).
 
 ## Règlement général sur la protection des données (RGPD) de l'Union Européenne
 {: #gdpr}
 
 {{site.data.keyword.IBM_notm}} s'engage à fournir à nos clients et partenaires des solutions innovantes en termes de confidentialité, de sécurité et de gouvernance des données pour les aider dans leur parcours de conformité avec le RGPD.
 
-
-Pour en savoir plus sur le propre parcours de mise en conformité avec le RGPD d'{{site.data.keyword.IBM_notm}}, ainsi que nos fonctions et offres liées au RGPD pour soutenir votre parcours de conformité, [cliquez ici ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](../../icons/launch-glyph.svg "Icône de lien externe")(http://www.ibm.com/gdpr){: new_window}.
+Pour en savoir plus sur le propre parcours de mise en conformité avec le RGPD d'{{site.data.keyword.IBM_notm}}, ainsi que sur nos fonctions et offres liées au GDPR pour soutenir votre parcours de conformité, [cliquez ici](http://www.ibm.com/gdpr){: external}.
 
 ## Etiquetage et suppression de données dans le service Speech to Text
 {: #gdpr-speech-to-text}

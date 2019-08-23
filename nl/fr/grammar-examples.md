@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-06"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -118,7 +118,7 @@ Les grammaires suivantes reconnaissent les codes VIN correspondant à la marque 
   </tr>
 </table>
 
-Pour plus d'informations sur le format VIN, voir [Vehicle identification number ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/Vehicle_identification_number){: new_window} dans Wikipedia.
+Pour plus d'informations sur le format VIN, voir [Vehicle identification number](https://wikipedia.org/wiki/Vehicle_identification_number){: external}.
 
 ## Grammaires avec des éléments facultatifs
 {: #optionalElements}
@@ -141,7 +141,7 @@ En rendant des éléments de réponse facultatifs, vous pouvez obtenir des gramm
   </tr>
 </table>
 
-Pour plus d'informations sur les extensions facultatives dans les grammaires, voir [Section 2.5 Repeats ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://www.w3.org/TR/speech-grammar/#S2.5){: new_window} dans le document Speech Recognition Grammar Specification.
+Pour plus d'informations sur les extensions facultatives dans les grammaires, voir [Section 2.5 Repeats](https://www.w3.org/TR/speech-grammar/#S2.5){: external} dans le document Speech Recognition Grammar Specification.
 
 ## Grammaires de désambiguïsation
 {: #disambiguation}

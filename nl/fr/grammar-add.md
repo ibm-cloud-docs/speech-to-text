@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-07-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -31,18 +31,18 @@ Avant de pouvoir utiliser une grammaire dans le cadre de la reconnaissance vocal
 1.  [Créez un modèle de langue personnalisé](#createModel-grammar). Vous pouvez créer un modèle personnalisé ou utiliser un modèle existant.
 1.  [Ajoutez une grammaire au modèle de langue personnalisé](#addGrammar). Le service valide la grammaire pour en vérifier l'exactitude.
 1.  [Validez les mots de la grammaire](#validateGrammar). Vous vérifiez l'exactitude des prononciations possibles (sounds-like) pour les mots OOV (Out-Of-Vocabulary) reconnus par la grammaire.
-1.  [Entraînez le modèle de langue personnalisé](#trainGrammar). Le service prépare le modèle personnalisé et la grammaire pour qu'ils soient utilisés dans la reconnaissance vocale. 
-1.  Vous pouvez à présent utiliser le modèle personnalisé et la grammaire dans les demandes de reconnaissance vocale. Pour plus d'informations, voir [Utilisation d'une grammaire pour la reconnaissance vocale](/docs/services/speech-to-text/grammar-use.html).
+1.  [Entraînez le modèle de langue personnalisé](#trainGrammar). Le service prépare le modèle personnalisé et la grammaire pour qu'ils soient utilisés dans la reconnaissance vocale.
+1.  Vous pouvez à présent utiliser le modèle personnalisé et la grammaire dans les demandes de reconnaissance vocale. Pour plus d'informations, voir [Utilisation d'une grammaire pour la reconnaissance vocale](/docs/services/speech-to-text?topic=speech-to-text-grammarUse).
 
 Ces étapes sont itératives. Vous pouvez ajouter des grammaires, ainsi que des corpus et des mots personnalisés à un modèle de langue personnalisé aussi souvent que nécessaire. Vous devez entraîner le modèle personnalisé sur les nouvelles ressources de données (grammaires, corpus ou mots personnalisés) que vous ajoutez. Lorsque vous l'utilisez pour la reconnaissance vocale, un modèle personnalisé répercute les données sur lesquelles il a été entraîné en dernier.
 
-Vous pouvez utiliser des grammaires avec une langue compatible avec la personnalisation de modèle de langue. La personnalisation de modèle de langue est disponible pour la plupart des langues. Pour plus d'informations, voir [Support de langue pour la personnalisation](/docs/services/speech-to-text/custom.html#languageSupport).
+La fonction correspondant aux grammaires est une fonctionnalité bêta. Vous pouvez utiliser des grammaires avec une langue compatible avec la personnalisation de modèle de langue. La personnalisation de modèle de langue est disponible pour la plupart des langues. Pour plus d'informations, voir [Support de langue pour la personnalisation](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
 {: note}
 
 ## Création d'un modèle de langue personnalisé
 {: #createModel-grammar}
 
-Pour utiliser une grammaire avec la reconnaissance vocale, vous devez l'ajouter à un modèle de langue personnalisé. Vous pouvez utiliser un modèle de langue personnalisé existant ou créer un modèle de personnalisé en utilisant la méthode `POST /v1/customizations`. Pour plus d'informations sur la création d'un modèle personnalisé, voir [Création d'un modèle de langue personnalisé](/docs/services/speech-to-text/language-create.html#createModel-language).
+Pour utiliser une grammaire avec la reconnaissance vocale, vous devez l'ajouter à un modèle de langue personnalisé. Vous pouvez utiliser un modèle de langue personnalisé existant ou créer un modèle de personnalisé en utilisant la méthode `POST /v1/customizations`. Pour plus d'informations sur la création d'un modèle personnalisé, voir [Création d'un modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language).
 
 Un modèle de langue personnalisé peut contenir des corpus et des mots personnalisés, ainsi que des grammaires. Lors de la reconnaissance vocale, vous pouvez utiliser le modèle personnalisé avec ou sans grammaires. Cependant, lorsque vous utilisez une grammaire, le service reconnaît uniquement les mots issus de la grammaire spécifiée.
 
@@ -54,14 +54,13 @@ Vous utilisez la méthode `POST /v1/customizations/{customization_id}/grammars/{
 -   Spécifiez l'ID de personnalisation du modèle de langue personnalisé avec le paramètre de chemin `customization_id`.
 -   Indiquez un nom pour la grammaire avec le paramètre de chemin `grammar_name`. Utilisez un nom localisé qui correspond à la langue du modèle personnalisé et qui reflète le contenu de la grammaire.
     -   Indiquez un nom ne dépassant pas 128 caractères.
-    -   N'incluez pas d'espace, de barre oblique ou de barre oblique inversée dans le nom.
+    -   N'utilisez pas de caractères devant être codés dans l'URL. Par exemple, n'utilisez pas les caractères suivants dans le nom : espaces, barres obliques, barres obliques inversées, signes deux-points, perluètes, guillemets, signes plus, signes égal, points d'interrogation, etc. (Le service n'empêche pas l'utilisation de ces caractères. Toutefois, comme ils doivent être codés dans l'URL lorsqu'ils sont utilisés, leur utilisation est fortement déconseillée.)
     -   N'utilisez pas le nom d'une grammaire ou d'un corpus ayant déjà été ajouté au modèle personnalisé.
     -   N'utilisez pas le nom `user`, qui est réservé par le service pour désigner des mots personnalisés ajoutés ou modifiés par l'utilisateur.
-
+    -   N'utilisez pas le nom `base_lm` ou `default_lm`. Ces deux noms sont réservés pour une utilisation ultérieure par le service.
 -   Utilisez l'en-tête de demande `Content-Type` pour spécifier le format de la grammaire :
     -   `application/srgs` pour une grammaire au format ABNF
     -   `application/srgs+xml` pour une grammaire au format XML
-
 -   Transmettez le fichier contenant la grammaire en tant que corps de la demande.
 
 L'exemple suivant ajoute le fichier de grammaire nommé `confirm.abnf` au modèle personnalisé avec l'ID spécifié. Dans l'exemple, le nom de la grammaire est `confirm-abnf`.
@@ -107,10 +106,10 @@ La réponse comprend le statut de la grammaire :
 La zone `status` a l'une des valeurs suivantes :
 
 -   `analyzed` indique que l'analyse de la grammaire par le service a abouti.
--   `being_processed` indique que le service est encore en train d'analyser la grammaire. 
+-   `being_processed` indique que le service est encore en train d'analyser la grammaire.
 -   `undetermined` indique que le service a rencontré une erreur lors du traitement de la grammaire.
 
-Utilisez une boucle pour vérifier le statut de la grammaire toutes les 10 secondes jusqu'à ce qu'il passe à `analyzed`. Pour plus d'informations sur la vérification du statut d'une grammaire, voir [Affichage de la liste des grammaires d'un modèle de langue personnalisé](/docs/services/speech-to-text/grammar-manage.html#listGrammars).
+Utilisez une boucle pour vérifier le statut de la grammaire toutes les 10 secondes jusqu'à ce qu'il passe à `analyzed`. Pour plus d'informations sur la vérification du statut d'une grammaire, voir [Affichage de la liste des grammaires d'un modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-manageGrammars#listGrammars).
 
 ### Traitement des échecs d'ajout de grammaire
 {: #handleFailures}
@@ -129,21 +128,21 @@ Si l'analyse d'une grammaire échoue, le service définit le statut de cette gra
 
 Cette erreur n'a aucune incidence sur le statut du modèle personnalisé, mais la grammaire ne peut pas être utilisée avec le modèle. Vous pouvez traiter le problème en corrigeant le fichier de grammaire et en relançant la demande pour l'ajouter au modèle personnalisé. Définissez le paramètre `allow_overwrite` avec la valeur `true` pour remplacer la version du fichier de grammaire ayant échoué.
 
-Vous pouvez également supprimer la grammaire du modèle personnalisé pour l'instant, puis corriger et ajouter à nouveau le fichier de grammaire ultérieurement. Pour plus d'informations sur la suppression d'une grammaire, voir [Suppression d'une grammaire d'un modèle de langue personnalisé](/docs/services/speech-to-text/grammar-manage.html#deleteGrammar).
+Vous pouvez également supprimer la grammaire du modèle personnalisé pour l'instant, puis corriger et ajouter à nouveau le fichier de grammaire ultérieurement. Pour plus d'informations sur la suppression d'une grammaire, voir [Suppression d'une grammaire d'un modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-manageGrammars#deleteGrammar).
 
 ## Validation des mots de la grammaire
 {: #validateGrammar}
 
 Lorsque vous ajoutez un fichier de grammaire à un modèle de langue personnalisé, le service analyse la grammaire pour déterminer si elle reconnaît des mots qui ne font pas déjà partie du vocabulaire de base du service. Ces mots sont désignés par OOV (Out-Of-Vocabulary). Le service ajoute les mots OOV à la ressource de mots du modèle personnalisé. Le but de la ressource de mots consiste à définir des mots que ne sont pas déjà présents dans le vocabulaire du service.
 
-Des définitions dans la ressource de mots indiquent au service comment transcrire les mots OOV. Ces informations comprennent une zone `sounds_like` indiquant au service comment se prononce le mot, une zone `display_as` indiquant au service comment afficher le mot et une zone `source` indiquant comment le mot a été ajouté au modèle personnalisé. Pour plus d'informations sur la ressource de mots et les mots OOV, voir [Ressource de mots](/docs/services/speech-to-text/language-resource.html#wordsResource).
+Des définitions dans la ressource de mots indiquent au service comment transcrire les mots OOV. Ces informations comprennent une zone `sounds_like` indiquant au service comment se prononce le mot, une zone `display_as` indiquant au service comment afficher le mot et une zone `source` indiquant comment le mot a été ajouté au modèle personnalisé. Pour plus d'informations sur la ressource de mots et les mots OOV, voir [Ressource de mots](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#wordsResource).
 
 Après avoir ajouté une grammaire à un modèle personnalisé, il est recommandé d'examiner les mots OOV dans la ressource de mots du modèle pour vérifier leur prononciation possible. Toutes les grammaires ne comportent pas forcément de mots OOV, mais en principe, il est bon de vérifier la ressource de mots. Pour vérifier les mots du modèle personnalisé après avoir ajouté une grammaire, utilisez les méthodes suivantes :
 
 -   Utilisez la méthode `GET /v1/customizations/{customization_id}/words` pour répertorier tous les mots d'un modèle personnalisé. Transmettez la valeur `grammars` avec le paramètre `word_type` de la méthode pour répertorier uniquement les mots ajoutés à partir de grammaires.
 -   Utilisez la méthode `GET /v1/customizations/{customization_id}/words/{word_name}` pour afficher un mot individuel d'un modèle.
 
-Vérifiez que les prononciations possibles des mots sont exactes et correctes. Recherchez les erreurs typographiques et d'autres erreurs dans les mots eux-mêmes. Pour plus d'informations sur la validation et la correction des mots dans un modèle personnalisé, voir [Validation d'une ressource de mots](/docs/services/speech-to-text/language-resource.html#validateModel).
+Vérifiez que les prononciations possibles des mots sont exactes et correctes. Recherchez les erreurs typographiques et d'autres erreurs dans les mots eux-mêmes. Pour plus d'informations sur la validation et la correction des mots dans un modèle personnalisé, voir [Validation d'une ressource de mots](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
 
 ## Entraînement du modèle de langue personnalisé
 {: #trainGrammar}
@@ -183,4 +182,4 @@ Afin de déterminer le statut d'une demande d'entraînement, utilisez la méthod
 ```
 {: codeblock}
 
-La zone `status` a la valeur `training` tant que l'entraînement du modèle est en cours d'exécution. Utilisez une boucle pour vérifier le statut du modèle toutes les 10 secondes jusqu'à ce qu'il passe à `available`. Pour plus d'informations sur la surveillance d'une demande d'entraînement et les autres valeurs de statut possibles, voir [Surveillance de la demande d'entraînement du modèle](/docs/services/speech-to-text/language-create.html#monitorTraining-language).
+La zone `status` a la valeur `training` tant que l'entraînement du modèle est en cours d'exécution. Utilisez une boucle pour vérifier le statut du modèle toutes les 10 secondes jusqu'à ce qu'il passe à `available`. Pour plus d'informations sur la surveillance d'une demande d'entraînement et les autres valeurs de statut possibles, voir [Surveillance de la demande d'entraînement du modèle](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language).

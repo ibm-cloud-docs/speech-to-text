@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,10 +25,10 @@ subcollection: speech-to-text
 # Gestion des mots personnalisés
 {: #manageWords}
 
-L'interface de personnalisation comprend les méthodes `POST /v1/customizations/{customization_id}/words` et `PUT /v1/customizations/{customization_id}/words/{word_name}`, utilisées pour ajouter ou modifier des mots pour un modèle personnalisé. Pour plus d'informations, voir [Ajout de mots au modèle de langue personnalisé](/docs/services/speech-to-text/language-create.html#addWords). L'interface comprend également les méthodes suivantes pour répertorier et supprimer des mots pour un modèle de langue personnalisé.
+L'interface de personnalisation comprend les méthodes `POST /v1/customizations/{customization_id}/words` et `PUT /v1/customizations/{customization_id}/words/{word_name}`, utilisées pour ajouter ou modifier des mots pour un modèle personnalisé. Pour plus d'informations, voir [Ajout de mots au modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addWords). L'interface comprend également les méthodes suivantes pour répertorier et supprimer des mots pour un modèle de langue personnalisé.
 {: shortdesc}
 
-Vous serez sans doute amené à ajouter la plupart des mots personnalisés à partir de corpus. Vérifiez que vous connaissez le codage de caractères utilisé dans les fichiers texte de vos corpus. Le service conserve le codage qu'il trouve dans les fichiers texte. Vous devez utiliser ce codage lorsque vous utilisez des mots individuels dans le modèle de langue personnalisé. Lorsque vous spécifiez un mot avec la méthode `GET`, `PUT` ou `DELETE /v1/customizations/{customization_id}/words/{word_name}`, vous devez coder le paramètre `word_name` que vous transmettez dans l'URL en codage URL si le mot comprend des caractères non ASCII. Pour plus d'informations, voir [Codage de caractères](/docs/services/speech-to-text/language-resource.html#charEncoding).
+Vous serez sans doute amené à ajouter la plupart des mots personnalisés à partir de corpus. Vérifiez que vous connaissez le codage de caractères utilisé dans les fichiers texte de vos corpus. Le service conserve le codage qu'il trouve dans les fichiers texte. Vous devez utiliser ce codage lorsque vous utilisez des mots individuels dans le modèle de langue personnalisé. Lorsque vous spécifiez un mot avec la méthode `GET`, `PUT` ou `DELETE /v1/customizations/{customization_id}/words/{word_name}`, vous devez coder le paramètre `word_name` que vous transmettez dans l'URL en codage URL si le mot comprend des caractères non ASCII. Pour plus d'informations, voir [Codage de caractères](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#charEncoding).
 {: important}
 
 ## Affichage de la liste des mots d'un modèle de langue personnalisé
@@ -43,13 +43,13 @@ L'interface de personnalisation offre deux méthodes permettant de répertorier 
         -   `user` affiche uniquement les mots qui ont été ajoutés ou modifiés par l'utilisateur.
         -   `corpora` affiche uniquement les mots OOV (Out-Of-Vocabulary) extraits des corpus.
         -   `grammars` affiche uniquement les mots OOV extraits des grammaires.
-    -   Le paramètre `sort` indique comment classer les mots. Il accepte deux arguments pour indiquer comment les mots doivent être triés : `alphabetical` (par ordre alphabétique) et `count` (par nombre). Vous pouvez éventuellement ajouter un signe `+` ou `-` devant un argument pour indiquer si les résultats doivent être triés par ordre croissant ou décroissant. Par défaut, la méthode affiche les mots par ordre alphabétique croissant. 
+    -   Le paramètre `sort` indique comment classer les mots. Il accepte deux arguments pour indiquer comment les mots doivent être triés : `alphabetical` (par ordre alphabétique) et `count` (par nombre). Vous pouvez éventuellement ajouter un signe `+` ou `-` devant un argument pour indiquer si les résultats doivent être triés par ordre croissant ou décroissant. Par défaut, la méthode affiche les mots par ordre alphabétique croissant.
 -   La méthode `GET /v1/customizations/{customization_id}/words/{word_name}` répertorie les informations sur un seul mot spécifié dans la ressource de mots du modèle.
 
 En plus d'une zone `word` identifiant le mot, les deux méthodes renvoient les informations suivantes sur chaque mot :
 
--   Une zone `sounds_like` présentant le tableau des prononciations du mot. Ce tableau peut inclure des prononciations possibles automatiquement générées par le service si aucune valeur sounds-like n'est fournie pour le mot. Pour plus d'informations, voir [Utilisation de la zone sounds_like](/docs/services/speech-to-text/language-resource.html#soundsLike).
--   Une zone `display_as` indiquant comment orthographier le mot personnalisé que le service affiche dans les transcriptions. La zone contient une chaîne vide si aucune valeur display-as n'est fournie pour le mot, auquel cas le mot s'affiche comme il se prononce. Pour plus d'informations, voir [Utilisation de la zone display_as](/docs/services/speech-to-text/language-resource.html#displayAs).
+-   Une zone `sounds_like` présentant le tableau des prononciations du mot. Ce tableau peut inclure des prononciations possibles automatiquement générées par le service si aucune valeur sounds-like n'est fournie pour le mot. Pour plus d'informations, voir [Utilisation de la zone sounds_like](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#soundsLike).
+-   Une zone `display_as` indiquant comment orthographier le mot personnalisé que le service affiche dans les transcriptions. La zone contient une chaîne vide si aucune valeur display-as n'est fournie pour le mot, auquel cas le mot s'affiche comme il se prononce. Pour plus d'informations, voir [Utilisation de la zone display_as](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#displayAs).
 -   Une zone `source` indiquant comment le mot a été ajouté à la ressource de mots du modèle personnalisé. Cette zone comprend le nom de chaque corpus et grammaire d'où provient le mot extrait par le service. Si vous avez modifié ou ajouté directement le mot, cette zone comprend la chaîne `user`.
 -   Une zone `count` indiquant le nombre de fois que le mot apparaît dans l'ensemble des corpus et des grammaires. Par exemple si le mot est détecté cinq fois dans un corpus et sept fois dans un autre, la valeur de count sera `12`.
 

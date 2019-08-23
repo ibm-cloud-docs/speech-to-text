@@ -2,14 +2,14 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -32,14 +32,14 @@ Pour créer un modèle acoustique personnalisé pour le service {{site.data.keyw
 1.  [Ajoutez des données audio au modèle acoustique personnalisé](#addAudio). Le service accepte les mêmes formats de fichier audio pour la modélisation acoustique et la reconnaissance vocale. Il accepte également les fichiers archive contenant plusieurs fichiers audio. Les fichiers archive constituent le moyen privilégié pour ajouter des ressources audio. Vous pouvez répéter la procédure pour ajouter d'autres fichiers de type audio ou archive à un modèle personnalisé.
 1.  [Entraînez le modèle acoustique personnalisé](#trainModel-acoustic). Après avoir ajouté des ressources audio au modèle personnalisé, vous devez entraîner le modèle. Cet entraînement prépare le modèle acoustique personnalisé pour qu'il soit utilisé dans la reconnaissance vocale. L'entraînement peut prendre un temps relativement long. La durée d'entraînement dépend de la quantité de données audio que contient le modèle.
 
-    Vous pouvez spécifier un modèle de langue personnalisé auxiliaire lors de l'entraînement de votre modèle acoustique personnalisé. Un modèle de langue personnalisé incluant les transcriptions de vos fichiers audio ou de mots OOV (Out Of Vocabulary) issus du domaine de vos fichiers audio peut améliorer la qualité du modèle acoustique personnalisé. Pour plus d'informations, voir [Entraînement d'un modèle acoustique personnalisé avec un modèle de langue personnalisé](/docs/services/speech-to-text/acoustic-both.html#useBothTrain).
-1.  Après avoir entraîné votre modèle personnalisé, vous pouvez l'utiliser avec des demandes de reconnaissance. Si les qualités acoustiques des données transmises pour la transcription sont semblables à celles des données audio du modèle personnalisé, les résultats témoignent d'une meilleure compréhension du service. Pour plus d'informations, voir [Utilisation d'un modèle acoustique personnalisé](/docs/services/speech-to-text/acoustic-use.html).
+    Vous pouvez spécifier un modèle de langue personnalisé auxiliaire lors de l'entraînement de votre modèle acoustique personnalisé. Un modèle de langue personnalisé incluant les transcriptions de vos fichiers audio ou de mots OOV (Out Of Vocabulary) issus du domaine de vos fichiers audio peut améliorer la qualité du modèle acoustique personnalisé. Pour plus d'informations, voir [Entraînement d'un modèle acoustique personnalisé avec un modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-useBoth#useBothTrain).
+1.  Après avoir entraîné votre modèle personnalisé, vous pouvez l'utiliser avec des demandes de reconnaissance. Si les qualités acoustiques des données transmises pour la transcription sont semblables à celles des données audio du modèle personnalisé, les résultats témoignent d'une meilleure compréhension du service. Pour plus d'informations, voir [Utilisation d'un modèle acoustique personnalisé](/docs/services/speech-to-text?topic=speech-to-text-acousticUse).
 
-    Vous pouvez transmettre un modèle acoustique personnalisé et un modèle de langue personnalisé dans la même demande de reconnaissance afin d'obtenir une reconnaissance encore plus précise. Pour plus d'informations, voir [Utilisation d'un modèle de langue personnalisé et d'un modèle acoustique personnalisé lors de la reconnaissance vocale](/docs/services/speech-to-text/acoustic-both.html#useBothRecognize).
+    Vous pouvez transmettre un modèle acoustique personnalisé et un modèle de langue personnalisé dans la même demande de reconnaissance afin d'obtenir une reconnaissance encore plus précise. Pour plus d'informations, voir [Utilisation d'un modèle de langue personnalisé et d'un modèle acoustique personnalisé lors de la reconnaissance vocale](/docs/services/speech-to-text?topic=speech-to-text-useBoth#useBothRecognize).
 
 Les étapes de création d'un modèle acoustique personnalisé sont itératives. Vous pouvez ajouter ou supprimer des données audio et entraîner ou ré-entraîner un modèle aussi souvent que nécessaire. Vous devez entraîner à nouveau un modèle pour que les modifications apportées à ses données audio soient appliquées. Lorsque vous entraînez à nouveau un modèle, toutes les données audio sont utilisées dans l'entraînement (et non pas uniquement les nouvelles données). La durée d'entraînement est proportionnelle à la quantité totale de données contenue dans le modèle.
 
-La personnalisation de modèle acoustique est disponible en fonctionnalité bêta pour toutes les langues. Pour plus d'informations, voir [Support de langue pour la personnalisation](/docs/services/speech-to-text/custom.html#languageSupport).
+La personnalisation de modèle acoustique est disponible en fonctionnalité bêta pour toutes les langues. Pour plus d'informations, voir [Support de langue pour la personnalisation](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
 {: note}
 
 ## Création d'un modèle acoustique personnalisé
@@ -107,17 +107,17 @@ L'exemple renvoie l'ID de personnalisation (customization_id) du nouveau modèle
 ```
 {: codeblock}
 
-Le nouveau modèle personnalisé appartient à l'instance de service dont les données d'identification sont utilisées pour créer le service. Pour plus d'informations, voir [Propriété des modèles personnalisés](/docs/services/speech-to-text/custom.html#customOwner).
+Le nouveau modèle personnalisé appartient à l'instance du service dont les données d'identification sont utilisées pour le créer. Pour plus d'informations, voir [Propriété des modèles personnalisés](/docs/services/speech-to-text?topic=speech-to-text-customization#customOwner).
 
 ## Ajout de données audio au modèle acoustique personnalisé
 {: #addAudio}
 
 Une fois votre modèle acoustique personnalisé créé, la prochaine étape consiste à lui ajouter des ressources audio. Vous utilisez la méthode `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` pour ajouter une ressource audio à un modèle personnalisé. Vous pouvez ajouter
 
--   un fichier audio individuel dans un format pris en charge pour la reconnaissance vocale (voir [Formats audio](/docs/services/speech-to-text/audio-formats.html)).
+-   un fichier audio individuel dans un format pris en charge pour la reconnaissance vocale. Pour plus d'informations, voir [Formats audio](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
 -   un fichier archive (**.zip** ou **.tar.gz**) qui comprend plusieurs fichiers audio. Rassembler plusieurs fichiers audio en un seul fichier archive et charger ce fichier unique est beaucoup plus efficace qu'ajouter des fichiers audio individuellement.
 
-Vous transmettez la ressource audio en tant que corps de la demande et vous lui attribuez un nom `audio_name`. Pour plus d'informations, voir [Utilisation des ressources audio](/docs/services/speech-to-text/acoustic-resource.html).
+Vous transmettez la ressource audio en tant que corps de la demande et vous lui attribuez un nom `audio_name`. Pour plus d'informations, voir [Utilisation des ressources audio](/docs/services/speech-to-text?topic=speech-to-text-audioResources).
 
 Les exemples suivants illustrent l'ajout de ressources de type audio et de type archive :
 
@@ -146,18 +146,20 @@ La méthode accepte également le paramètre de requête facultatif `allow_overw
 
 Cette méthode est asynchrone. Elle peut prendre plusieurs secondes selon la durée de l'audio. Pour un fichier archive, la durée de l'opération dépend de la durée des fichiers audio. Pour plus d'informations sur la vérification du statut d'une demande d'ajout de ressource audio, voir [Surveillance de la demande d'ajout de données audio](#monitorAudio).
 
-Vous pouvez ajouter n'importe quel nombre de ressources audio à un modèle personnalisé en appelant la méthode une fois pour chaque fichier de type audio ou archive. L'ajout d'une ressource audio doit être entièrement terminé avant d'en ajouter une autre. Vous devez ajouter au minimum 10 minutes et au maximum 200 heures d'audio comprenant uniquement de la parole (pas de silence) à un modèle personnalisé avant de pouvoir l'entraîner. Aucune ressource de type audio ou archive ne peut dépasser 100 Mo. Pour plus d'informations, voir [Instructions pour ajouter des ressources audio](/docs/services/speech-to-text/acoustic-resource.html#audioGuidelines).
+Vous pouvez ajouter n'importe quel nombre de ressources audio à un modèle personnalisé en appelant la méthode une fois pour chaque fichier de type audio ou archive. Vous pouvez faire plusieurs demandes pour ajouter simultanément différentes ressources audio.
+
+Vous devez ajouter au minimum 10 minutes et au maximum 200 heures d'audio comprenant uniquement de la parole (pas de silence) à un modèle personnalisé avant de pouvoir l'entraîner. Aucune ressource de type audio ou archive ne peut dépasser 100 Mo. Pour plus d'informations, voir [Instructions pour ajouter des ressources audio](/docs/services/speech-to-text?topic=speech-to-text-audioResources#audioGuidelines).
 
 ### Surveillance de la demande d'ajout de données audio
 {: #monitorAudio}
 
-Le service renvoie le code de réponse 201 si les données audio sont valides. Il effectue ensuite l'analyse asynchrone du ou des fichiers audio et extrait automatiquement les informations sur les données audio, par exemple la durée, la fréquence d'échantillonnage et le codage. Vous ne pouvez pas soumettre de demandes pour ajouter d'autres ressources à un modèle acoustique personnalisé ou entraîner le modèle, tant que le service n'a pas terminé l'analyse de tous les fichiers audio pour la demande en cours.
+Le service renvoie le code de réponse 201 si les données audio sont valides. Il effectue ensuite l'analyse asynchrone du ou des fichiers audio et extrait automatiquement les informations sur les données audio, par exemple la durée, la fréquence d'échantillonnage et le codage. Vous ne pouvez pas entraîner le modèle personnalisé tant que l'analyse du service de toutes les ressources audio des demandes en cours n'est pas terminée.
 
 Pour déterminer le statut de la demande, utilisez la méthode `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` permettant d'interroger le statut
 des données audio. La méthode accepte l'identificateur global unique (GUID) du modèle personnalisé et le nom de la ressource audio. Sa réponse comprend le statut (`status`) de la ressource, qui peut correspondre à l'une des valeurs suivantes :
 
 -   `ok` indique que les données audio sont acceptables et que l'analyse est terminée.
--   `being_processed` indique que le service est encore en train d'analyser les données audio. 
+-   `being_processed` indique que le service est encore en train d'analyser les données audio.
 -   `invalid` indique que le fichier audio n'est pas acceptable pour le traitement. Il se peut que son format ou sa fréquence d'échantillonnage soient incorrects ou que ce ne soit pas un fichier audio. Pour un fichier archive, si l'un des fichiers audio qu'il contient est non valide, l'archive dans son intégralité est non valide.
 
 Le contenu de la réponse et l'emplacement de la zone `status` dépendent du type de ressource (audio ou archive).
@@ -204,10 +206,11 @@ Le contenu de la réponse et l'emplacement de la zone `status` dépendent du typ
         "status": "ok"
       },
       . . .
+    }
     ```
     {: codeblock}
 
-Utilisez une boucle pour vérifier le statut toutes les quelques secondes jusqu'à ce qu'il passe à `ok`. Pour plus d'informations sur les autres zones renvoyées par la méthode, voir [Affichage de la liste des ressources audio pour un modèle acoustique personnalisé](/docs/services/speech-to-text/acoustic-audio.html#listAudio).
+Utilisez une boucle pour vérifier le statut toutes les quelques secondes jusqu'à ce qu'il passe à `ok`. Pour plus d'informations sur les autres zones renvoyées par la méthode, voir [Affichage de la liste des ressources audio pour un modèle acoustique personnalisé](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#listAudio).
 
 ## Entraînement du modèle acoustique personnalisé
 {: #trainModel-acoustic}
@@ -222,14 +225,17 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-La méthode accepte également le paramètre de requête facultatif `custom_language_model_id` pour indiquer un modèle de langue personnalisé créé séparément à utiliser lors de l'entraînement. Vous pouvez effectuer l'entraînement avec un modèle de langue personnalisé qui contient les transcriptions de vos fichiers audio ou les corpus ou mots OOV pertinents par rapport au contenu des fichiers audio. Les deux modèles personnalisés doivent être basés sur la même version du même modèle de base pour que l'entraînement réussisse. Pour plus d'informations, voir [Entraînement d'un modèle acoustique personnalisé avec un modèle de langue personnalisé](/docs/services/speech-to-text/acoustic-both.html#useBothTrain).
+Cette méthode est asynchrone. L'entraînement peut prendre de quelques minutes à quelques heures en fonction de la quantité de données audio que contient le modèle acoustique personnalisé et de la charge en cours sur le service. En règle générale, l'entraînement d'un modèle acoustique personnalisé dure approximativement deux à quatre fois plus que la durée de ses données audio. L'échelle de durée dépend du modèle entraîné et de la nature des données audio, selon qu'elles soient nettes ou bruitées. Par exemple, l'entraînement d'un modèle contenant 2 heures d'audio peut prendre 4 à 8 heures. Pour plus d'informations sur la vérification du statut d'une opération d'entraînement, voir [Surveillance de la demande d'entraînement du modèle](#monitorTraining-acoustic).
 
-La méthode d'entraînement est asynchrone. L'entraînement peut prendre de quelques minutes à quelques heures en fonction de la quantité de données audio que contient le modèle acoustique personnalisé et de la charge en cours sur le service. En règle générale, l'entraînement d'un modèle acoustique personnalisé dure approximativement deux à quatre fois plus que la durée de ses données audio. L'échelle de durée dépend du modèle entraîné et de la nature des données audio, selon qu'elles soient nettes ou bruitées. Par exemple, l'entraînement d'un modèle contenant 2 heures d'audio peut prendre 4 à 8 heures. Pour plus d'informations sur la vérification du statut d'une opération d'entraînement, voir [Surveillance de la demande d'entraînement du modèle](#monitorTraining-acoustic).
+La méthode comprend les paramètres de requête facultatifs suivants :
+
+-   Le paramètre `custom_language_model_id` indique un modèle de langue personnalisé créé séparément à utiliser lors de l'entraînement. Vous pouvez effectuer l'entraînement avec un modèle de langue personnalisé qui contient les transcriptions de vos fichiers audio ou les corpus ou mots OOV pertinents par rapport au contenu des fichiers audio. Les modèles acoustiques personnalisés et modèles de langue personnalisés doivent être basés sur la même version du même modèle de base pour que l'entraînement aboutisse. Pour plus d'informations, voir [Entraînement d'un modèle acoustique personnalisé avec un modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-useBoth#useBothTrain).
+-   Le paramètre `strict` indique si l'entraînement doit se poursuivre si le modèle personnalisé contient à la fois des ressources audio valides et non valides. Par défaut, l'entraînement échoue si le modèle contient une ou plusieurs ressources non valides. Définissez le paramètre sur `false` pour permettre la poursuite de l'entraînement tant que le modèle contient au moins une ressource valide. Le service exclut les ressources non valides de l'entraînement. Pour plus d'informations, voir [Echecs d'entraînement](#failedTraining-acoustic).
 
 ### Surveillance de la demande d'entraînement du modèle
 {: #monitorTraining-acoustic}
 
-Le service renvoie le code de réponse 200 si le processus d'entraînement a été initié avec succès. Il n'accepte pas d'autres demandes d'entraînement ou des demandes d'ajout de ressources audio supplémentaires, tant que la demande existante n'est pas terminée.
+Le service renvoie le code de réponse 200 si le processus d'entraînement a été initié avec succès. Il n'accepte pas d'autres demandes d'entraînement ou des demandes d'ajout d'autres ressources audio tant que la demande d'entraînement existante n'est pas terminée.
 
 Pour déterminer le statut d'une demande d'entraînement, utilisez la méthode `GET /v1/acoustic_customizations/{customization_id}` permettant d'interroger le statut du modèle. La méthode accepte l'ID de personnalisation du modèle acoustique et renvoie son statut, comme illustré dans l'exemple suivant :
 
@@ -243,6 +249,7 @@ curl -X GET -u "apikey:{apikey}"
 {
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
   "created": "2016-06-01T18:42:25.324Z",
+  "updated": "2016-06-01T22:11:13.298Z",
   "language": "en-US",
   "owner": "297cfd08-330a-22ba-93ce-1a73f454dd98",
   "name": "Example model",
@@ -256,23 +263,34 @@ curl -X GET -u "apikey:{apikey}"
 
 La réponse comprend les zones `status` et `progress` qui indiquent l'état en cours du modèle. La signification de la zone `progress` dépend du statut du modèle. La zone `status` peut avoir l'une des valeurs suivantes :
 
--   `pending` indique que le modèle a été créé mais attend que des données d'entraînement soient ajoutées ou que le service termine l'analyse des données qui ont été ajoutées. La zone `progress` a la valeur `0`.
--   `ready` indique que le modèle est prêt pour l'entraînement. La zone `progress` a la valeur `0`.
+-   `pending` indique que le modèle a été créé mais attend que des données d'entraînement valides soient ajoutées ou que le service termine l'analyse des données qui ont été ajoutées. La zone `progress` a la valeur `0`.
+-   `ready` indique que le modèle contient des données valides et qu'il est prêt à être entraîné. La zone `progress` a la valeur `0`.
+
+    Si le modèle contient à la fois des ressources audio valides et non valides, l'entraînement du modèle échoue tant que vous ne définissez pas le paramètre de requête `strict` sur `false`. Pour plus d'informations, voir [Echecs d'entraînement](#failedTraining-acoustic).
 -   `training` indique que le modèle est en cours d'entraînement. La zone `progress` passe de `0` à `100` lorsque l'entraînement est terminé. <!-- The `progress` field indicates the progress of the training as a percentage complete. -->
 -   `available` indique que l'entraînement du modèle est terminé et que le modèle est prêt à l'emploi. La zone `progress` a la valeur `100`.
 -   `upgrading` indique que le modèle est en cours de mise à niveau. La zone `progress` a la valeur `0`.
--   `failed` indique que l'entraînement du modèle a échoué. La zone `progress` a la valeur `0`.
+-   `failed` indique que l'entraînement du modèle a échoué. La zone `progress` a la valeur `0`. Pour plus d'informations, voir [Echecs d'entraînement](#failedTraining-acoustic).
 
-Utilisez une boucle pour vérifier le statut de l'entraînement toutes les minutes, jusqu'à ce que le modèle passe à l'état `available`. Pour plus d'informations sur les autres zones renvoyées par la méthode, voir [Affichage de la liste des modèles acoustiques personnalisés](/docs/services/speech-to-text/acoustic-models.html#listModels-acoustic).
+Utilisez une boucle pour vérifier le statut de l'entraînement toutes les minutes, jusqu'à ce que le modèle passe à l'état `available`. Pour plus d'informations sur les autres zones renvoyées par la méthode, voir [Affichage de la liste des modèles acoustiques personnalisés](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
 
 ### Echecs d'entraînement
 {: #failedTraining-acoustic}
 
-L'entraînement d'un modèle acoustique personnalisé ne parvient pas à démarrer si le service est en train de traiter une autre demande pour le modèle personnalisé. Une demande conflictuelle peut être une autre demande d'entraînement ou une demande d'ajout de ressources audio au modèle. De même, l'entraînement ne parvient pas à démarrer pour les raisons suivantes :
+L'entraînement ne parvient pas à démarrer si le service est en train de gérer une autre demande pour le modèle acoustique personnalisé. Une demande conflictuelle peut être une autre demande d'entraînement ou une demande d'ajout de ressources audio au modèle. Le service renvoie le code d'état 409.
+
+De même, l'entraînement ne parvient pas à démarrer pour les raisons suivantes :
 
 -   Le modèle personnalisé contient moins de 10 minutes de données audio.
 -   Le modèle personnalisé contient plus de 200 heures de données audio.
 -   Une ou plusieurs ressources audio du modèle personnalisé ne sont pas valides.
--   Vous avez transmis un modèle de langue personnalisé incompatible avec le paramètre de requête `custom_language_model_id`. Les deux modèles personnalisés doivent être basés sur la même version du même modèle de base. 
+-   Vous avez transmis un modèle de langue personnalisé incompatible avec le paramètre de requête `custom_language_model_id`. Les deux modèles personnalisés doivent être basés sur la même version du même modèle de base.
 
-Si le statut d'entraînement d'un modèle personnalisé est `failed`, utilisez les méthodes `GET /v1/acoustic_customizations/{customization_id}/audio` et `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` pour examiner les ressources audio du modèle et résoudre les problèmes que vous rencontrez. Pour plus d'informations, voir [Affichage de la liste des ressources audio d'un modèle acoustique personnalisé](/docs/services/speech-to-text/acoustic-audio.html#listAudio).
+Le service renvoie le code d'état 400 et définit l'état du modèle personnalisé sur `failed`. Effectuez alors l'une des actions suivantes :
+
+-   Utilisez les méthodes `GET /v1/acoustic_customizations/{customization_id}/audio` et `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` pour examiner les ressources audio du modèle. Pour plus d'informations, voir [Affichage de la liste des ressources audio d'un modèle acoustique personnalisé](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#listAudio).
+
+    Pour chaque ressource audio non valide, effectuez l'une des actions suivantes :
+    -   Corrigez la ressource audio et utilisez le paramètre `allow_overwrite` de la méthode `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` pour ajouter la ressource audio correcte au modèle. Pour plus d'informations, voir [Ajout de données audio au modèle acoustique personnalisé](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio).
+    -   Utilisez la méthode `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` pour supprimer la ressource audio du modèle. Pour plus d'informations, voir [Suppression d'une ressource audio d'un modèle acoustique personnalisé](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#deleteAudio).
+-   Définissez le paramètre `strict` de la méthode `POST /v1/acoustic_customizations/{customization_id}/train` sur `false` pour exclure les ressources audio non valides de l'entraînement. Le modèle doit contenir au moins une ressource audio valide pour que l'entraînement aboutisse. Le paramètre `strict` est utile pour entraîner un modèle personnalisé contenant à la fois des ressources audio valides et non valides.

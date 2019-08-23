@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-10"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,12 +25,12 @@ subcollection: speech-to-text
 # Fonctions de sortie
 {: #output}
 
-Le service {{site.data.keyword.speechtotextshort}} offre les fonctions suivantes pour indiquer les informations que le service doit inclure dans ses résultats de transcription pour une demande de reconnaissance vocale. Tous les paramètres de sortie sont facultatifs.
+Le service {{site.data.keyword.speechtotextfull}} offre les fonctions suivantes pour indiquer les informations que le service doit inclure dans ses résultats de transcription pour une demande de reconnaissance vocale. Tous les paramètres de sortie sont facultatifs.
 {: shortdesc}
 
--   Pour obtenir des exemples de demandes de reconnaissance vocale simples pour chacune des interfaces du service, voir [Effectuer une demande de reconnaissance](/docs/services/speech-to-text/basic-request.html).
--   Pour obtenir des exemples et des descriptions de réponses de reconnaissance vocale, voir [Description des résultats de reconnaissance](/docs/services/speech-to-text/basic-response.html). Le service renvoie le contenu de toutes les réponses JSON en jeu de caractères UTF-8.
--   Pour obtenir une liste alphabétique de tous les paramètres de reconnaissance vocale disponibles, y compris leur statut (GA ou bêta) et les langues prises en charge, voir [Récapitulatif des paramètres](/docs/services/speech-to-text/summary.html).
+-   Pour obtenir des exemples de demandes de reconnaissance vocale simples pour chacune des interfaces du service, voir [Effectuer une demande de reconnaissance](/docs/services/speech-to-text?topic=speech-to-text-basic-request).
+-   Pour obtenir des exemples et des descriptions de réponses de reconnaissance vocale, voir [Description des résultats de reconnaissance](/docs/services/speech-to-text?topic=speech-to-text-basic-response). Le service renvoie le contenu de toutes les réponses JSON en jeu de caractères UTF-8.
+-   Pour obtenir une liste alphabétique de tous les paramètres de reconnaissance vocale disponibles, y compris leur statut (GA ou bêta) et les langues prises en charge, voir [Récapitulatif des paramètres](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ## Etiquettes de locuteur (Speaker labels)
 {: #speaker_labels}
@@ -42,7 +42,7 @@ Les éléments speaker_labels identifient qui sont les différentes personnes qu
 
 Les étiquettes de locuteur sont optimisées pour les scénarios à deux locuteurs. Elles fonctionnent le mieux pour les conversations téléphoniques impliquant deux personnes dans un échange prolongé. Elles peuvent gérer jusqu'à six locuteurs, mais les résultats peuvent avoir des performances variables s'il y a plus de deux locuteurs. Les échanges à deux personnes sont en principe régies sur un support à bande étroite, mais vous pouvez utiliser les étiquettes de locuteur avec les modèles à large bande ou à bande étroite pris en charge.
 
-Pour utiliser cette fonction, vous définissez le paramètre `speaker_labels` avec la valeur `true` pour une demande de reconnaissance ; le paramètre a la valeur `false` par défaut. Le service identifie les locuteurs par des mots audio individuels. Il s'appuie sur les moments de début et de fin d'un mot pour identifier son locuteur. Par conséquent, l'activation de la fonction d'étiquettes de locuteur force également le paramètre `timestamps` à avoir la valeur `true` (voir [Horodatages des mots](/docs/services/speech-to-text/output.html#word_timestamps)).
+Pour utiliser cette fonction, vous définissez le paramètre `speaker_labels` avec la valeur `true` pour une demande de reconnaissance ; le paramètre a la valeur `false` par défaut. Le service identifie les locuteurs par des mots audio individuels. Il s'appuie sur les moments de début et de fin d'un mot pour identifier son locuteur. Par conséquent, l'activation de la fonction d'étiquettes de locuteur force également le paramètre `timestamps` à avoir la valeur `true` (voir [Horodatages des mots](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps)).
 
 ### Exemple d'étiquettes de locuteur
 {: #speakerLabelsExample}
@@ -239,7 +239,7 @@ Par conséquent, les ID des locuteurs ne sont pas forcément séquentiels, conti
 ### Demande de résultats intermédiaires pour les étiquettes de locuteur
 {: #speakerLabelsInterim}
 
-Avec l'interface WebSocket, vous pouvez demander des résultats intermédiaires ainsi que des étiquettes de locuteur (voir [Résultats intermédiaires](/docs/services/speech-to-text/output.html#interim)). Les résultats finaux sont en principe meilleurs que les résultats intermédiaires. Mais les résultats intermédiaires peuvent aider à identifier l'évolution d'une retranscription et l'affectation des étiquettes de locuteur. Les résultats intermédiaires peuvent indiquer à quel endroit les locuteurs de passage et les ID sont apparus ou ont disparu. Cependant, le service peut réutiliser les ID des locuteurs qu'il a identifiés initialement et les reconsidérer et les omettre par la suite. C'est pourquoi un ID peut se référer à deux locuteurs différents dans les résultats intermédiaires et les résultats finaux.
+Avec l'interface WebSocket, vous pouvez demander des résultats intermédiaires ainsi que des étiquettes de locuteur (voir [Résultats intermédiaires](/docs/services/speech-to-text?topic=speech-to-text-output#interim)). Les résultats finaux sont en principe meilleurs que les résultats intermédiaires. Mais les résultats intermédiaires peuvent aider à identifier l'évolution d'une retranscription et l'affectation des étiquettes de locuteur. Les résultats intermédiaires peuvent indiquer à quel endroit les locuteurs de passage et les ID sont apparus ou ont disparu. Cependant, le service peut réutiliser les ID des locuteurs qu'il a identifiés initialement et les reconsidérer et les omettre par la suite. C'est pourquoi un ID peut se référer à deux locuteurs différents dans les résultats intermédiaires et les résultats finaux.
 
 Lorsque vous demandez des résultats intermédiaires et des étiquettes de locuteur, les résultats finaux de flux audio longs peuvent arriver bien après le renvoi des premiers résultats intermédiaires. Il est également possible que certains résultats intermédiaires ne comprennent qu'une zone `speaker_labels` sans les zones `results` et `result_index`. Si vous ne demandez pas de résultats intermédiaires, le service renvoie les résultats finaux qui comprennent les zones `results` et `result_index`, avec une seule zone `speaker_labels`.
 
@@ -297,7 +297,7 @@ Un mot clé dont le service ne détecte aucune occurrence est omis dans le table
     -   Les sèmes du mot clé figurent dans le même bloc.
     -   Les sèmes sont adjacents ou séparés par un écart inférieur ou égal à 0,1 seconde.
 
-    Le dernier cas de figure peut se produire si un petit mot de remplissage ou un énoncé non lexical, de type "hum" ou "bon," se trouve entre deux sèmes du mot clé. Pour plus d'informations, voir [Marqueurs d'hésitation](/docs/services/speech-to-text/basic-response.html#hesitation).
+    Le dernier cas de figure peut se produire si un petit mot de remplissage ou un énoncé non lexical, de type "hum" ou "bon," se trouve entre deux sèmes du mot clé. Pour plus d'informations, voir [Marqueurs d'hésitation](/docs/services/speech-to-text?topic=speech-to-text-basic-response#hesitation).
 
 ### Exemple de détection de mots clés
 {: #keywordSpottingExample}
@@ -336,7 +336,7 @@ curl -X POST -u "apikey:{apikey}"
       },
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -375,7 +375,7 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         },
@@ -384,10 +384,10 @@ severe thunderstorms swept through Colorado on Sunday "
 severe thunderstorms swept through Colorado on Sunday "
         },
         {
-          "transcript": "several tornadoes touch down is a line of
-severe thunderstorms swept through Colorado on Sunday "
-        }
-      ],
+          "transcript": "several tornadoes touch down as a line
+of severe thunderstorms swept through Colorado and Sunday "
+            }
+          ],
       "final": true
     }
   ],
@@ -490,7 +490,7 @@ severe thunderstorms swept through Colorado on Sunday "
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -510,7 +510,7 @@ La fonction d'autres propositions de mots (word alternatives), également désig
 
 Par défaut, le service ne signale pas d'autres propositions de mots. Pour indiquer que vous voulez recevoir d'autres propositions d'hypothèses, utilisez le paramètre `word_alternatives_threshold` pour indiquer une probabilité entre 0,0 et 1,0. Le seuil indique la limite inférieure du niveau de confiance que le service doit avoir dans une hypothèse pour la renvoyer comme autre proposition de mot. Une hypothèse n'est renvoyée que si le niveau de confiance est supérieur ou égal au seuil spécifié.
 
-Vous pouvez envisager les autres propositions de mots (word alternatives) comme une chronologie d'une retranscription qui est découpée en intervalles plus petits ou en casiers. Chaque casier peut avoir une ou plusieurs hypothèses avec différentes orthographes et différents niveaux de confiance. Le paramètre `word_alternatives_threshold` contrôle la densité des résultats renvoyés par le service. La spécification d'un seuil faible peut produire un grand nombre d'hypothèses. 
+Vous pouvez envisager les autres propositions de mots (word alternatives) comme une chronologie d'une retranscription qui est découpée en intervalles plus petits ou en casiers. Chaque casier peut avoir une ou plusieurs hypothèses avec différentes orthographes et différents niveaux de confiance. Le paramètre `word_alternatives_threshold` contrôle la densité des résultats renvoyés par le service. La spécification d'un seuil faible peut produire un grand nombre d'hypothèses.
 
 ### Résultats des autres propositions de mots
 {: #wordAlternativesResults}
@@ -592,7 +592,7 @@ curl -X POST -u "apikey:{apikey}"
       ],
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -634,9 +634,9 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday ",
-          "confidence": 0.89,
           "word_confidence": [
             [
               "several",
@@ -731,7 +731,7 @@ curl -X POST -u "apikey:{apikey}"
               6.34
             ]
           ],
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }

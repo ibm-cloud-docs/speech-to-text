@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-10"
+lastupdated: "2019-07-21"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -30,7 +30,10 @@ Le service {{site.data.keyword.speechtotextfull}} offre une interface de personn
 
 L'interface de personnalisation prend en charge les modèles de langue personnalisés et les modèles acoustiques personnalisés. Les interfaces correspondant à ces deux types de modèle sont semblables et simples à utiliser. L'utilisation des deux types de modèle personnalisé avec une demande de reconnaissance est également simple : il vous suffit d'indiquer l'ID de personnalisation du modèle avec la demande.
 
-La reconnaissance vocale fonctionne de la même manière avec ou sans modèle personnalisé. Lorsque vous utilisez un modèle personnalisé pour la reconnaissance vocale, vous pouvez inclure tous les paramètres d'entrée et de sortie qui sont en principe disponibles avec une demande de reconnaissance. Pour plus d'informations sur tous les paramètres disponibles, voir [Récapitulatif des paramètres](/docs/services/speech-to-text/summary.html).
+La reconnaissance vocale fonctionne de la même manière avec ou sans modèle personnalisé. Lorsque vous utilisez un modèle personnalisé pour la reconnaissance vocale, vous pouvez inclure tous les paramètres d'entrée et de sortie qui sont en principe disponibles avec une demande de reconnaissance. Pour plus d'informations sur tous les paramètres disponibles, voir [Récapitulatif des paramètres](/docs/services/speech-to-text?topic=speech-to-text-summary).
+
+Vous devez disposer du plan de tarification standard pour pouvoir utiliser la personnalisation du modèle de langue ou du modèle acoustique. Les utilisateurs du plan Lite ne peuvent pas utiliser l'interface de personnalisation. Pour plus d'informations, voir la [page de tarification](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} du service {{site.data.keyword.speechtotextshort}}.
+{: note}
 
 ## Personnalisation de modèle de langue
 {: #customLanguage-intro}
@@ -43,8 +46,8 @@ Vous créez un modèle de langue personnalisé et ajoutez des corpus et des mots
 
 Pour plus d'informations, voir
 
--   [Création d'un modèle de langue personnalisé](/docs/services/speech-to-text/language-create.html)
--   [Utilisation d'un modèle de langue personnalisé](/docs/services/speech-to-text/language-use.html)
+-   [Création d'un modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-languageCreate)
+-   [Utilisation d'un modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-languageUse)
 
 ## Personnalisation de modèle acoustique
 {: #customAcoustic-intro}
@@ -61,8 +64,8 @@ La durée d'entraînement du modèle personnalisé par le service dépend de la 
 
 Pour plus d'informations, voir
 
--   [Création d'un modèle acoustique personnalisé](/docs/services/speech-to-text/acoustic-create.html)
--   [Utilisation d'un modèle acoustique personnalisé](/docs/services/speech-to-text/acoustic-use.html)
+-   [Création d'un modèle acoustique personnalisé](/docs/services/speech-to-text?topic=speech-to-text-acoustic)
+-   [Utilisation d'un modèle acoustique personnalisé](/docs/services/speech-to-text?topic=speech-to-text-acousticUse)
 
 ## Grammaires
 {: #grammars-intro}
@@ -73,9 +76,9 @@ Vous ajoutez une grammaire à un modèle de langue personnalisé et entraînez l
 
 Pour plus d'informations, voir
 
--   [Utilisation de grammaires avec des modèles de langue personnalisés](/docs/services/speech-to-text/grammar.html)
--   [Ajout d'une grammaire à un modèle de langue personnalisé](/docs/services/speech-to-text/grammar-add.html)
--   [Utilisation d'une grammaire pour la reconnaissance vocale](/docs/services/speech-to-text/grammar-use.html)
+-   [Utilisation de grammaires avec des modèles de langue personnalisés](/docs/services/speech-to-text?topic=speech-to-text-grammars)
+-   [Ajout d'une grammaire à un modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd)
+-   [Utilisation d'une grammaire pour la reconnaissance vocale](/docs/services/speech-to-text?topic=speech-to-text-grammarUse)
 
 ## Utilisation conjointe de la personnalisation acoustique et linguistique
 {: #combined}
@@ -84,9 +87,7 @@ L'utilisation d'un modèle acoustique personnalisé uniquement peut améliorer l
 
 En créant un modèle de langue personnalisé qui vient compléter votre modèle acoustique personnalisé, vous pouvez améliorer la reconnaissance vocale en utilisant les deux modèles à la fois. Lorsque vous entraînez un modèle acoustique personnalisé, vous pouvez spécifier un modèle de langue personnalisé qui comprend les transcriptions des ressources audio ou un vocabulaire de mots spécifiques à un domaine à partir de ces ressources. De même, lorsque vous transcrivez des données audio, le service accepte un modèle de langue personnalisé, un modèle acoustique personnalisé ou ces deux types de modèle. Et si votre modèle de langue personnalisé comprend une grammaire, vous pouvez utiliser ce modèle et cette grammaire avec un modèle acoustique personnalisé pour la reconnaissance vocale.
 
-Pour plus d'informations, voir
-
--   [Utilisation d'un modèle acoustique personnalisé avec un modèle de langue personnalisé](/docs/services/speech-to-text/acoustic-both.html)
+Pour plus d'informations, voir [Utilisation d'un modèle acoustique personnalisé avec un modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-useBoth).
 
 Certaines langues ne sont pas compatibles avec la personnalisation à la fois linguistique et acoustique. Pour plus d'informations, voir [Support de langue pour la personnalisation](#languageSupport).
 {: note}
@@ -100,7 +101,7 @@ La personnalisation des modèles de langue et des modèles acoustiques est dispo
 -   *Bêta* indique que l'interface est disponible en tant qu'offre en version bêta.
 -   *Non prise en charge* indique que l'interface n'est pas disponible pour cette langue.
 
-Vous pouvez utiliser des modèles à large bande et à bande étroite disponibles avec les langues prises en charge. Si une langue prend en charge la personnalisation de modèle de langue, elle prend également en charge les grammaires. Pour obtenir la liste de tous les modèles disponibles, voir [Modèles de langue pris en charge](/docs/services/speech-to-text/models.html#modelsList).
+Vous pouvez utiliser des modèles à large bande et à bande étroite disponibles avec les langues prises en charge. Si une langue prend en charge la personnalisation de modèle de langue, elle prend également en charge les grammaires. Pour obtenir la liste de tous les modèles disponibles, voir [Modèles de langue pris en charge](/docs/services/speech-to-text?topic=speech-to-text-models#modelsList).
 
 <table>
   <caption>Tableau 1. Support de langue pour la personnalisation</caption>
@@ -116,7 +117,27 @@ Vous pouvez utiliser des modèles à large bande et à bande étroite disponible
     </th>
   </tr>
   <tr>
+    <td>Arabe (standard moderne)</td>
+    <td style="text-align:center">Non pris en charge</td>
+    <td style="text-align:center">Bêta</td>
+  </tr>
+  <tr>
     <td>Portugais brésilien</td>
+    <td style="text-align:center">GA</td>
+    <td style="text-align:center">Bêta</td>
+  </tr>
+  <tr>
+    <td>Chinois (Mandarin)</td>
+    <td style="text-align:center">Non pris en charge</td>
+    <td style="text-align:center">Bêta</td>
+  </tr>
+  <tr>
+    <td>Anglais (Royaume-Uni)</td>
+    <td style="text-align:center">GA</td>
+    <td style="text-align:center">Bêta</td>
+  </tr>
+  <tr>
+    <td>Anglais (Etats-Unis)</td>
     <td style="text-align:center">GA</td>
     <td style="text-align:center">Bêta</td>
   </tr>
@@ -141,28 +162,33 @@ Vous pouvez utiliser des modèles à large bande et à bande étroite disponible
     <td style="text-align:center">Bêta</td>
   </tr>
   <tr>
-    <td>Chinois mandarin</td>
-    <td style="text-align:center">Non prise en charge</td>
+    <td>Espagnol (Argentine)</td>
+    <td style="text-align:center">Bêta</td>
     <td style="text-align:center">Bêta</td>
   </tr>
   <tr>
-    <td>Arabe standard moderne</td>
-    <td style="text-align:center">Non prise en charge</td>
-    <td style="text-align:center">Bêta</td>
-  </tr>
-  <tr>
-    <td>Espagnol</td>
+    <td>Espagnol (castillan)</td>
     <td style="text-align:center">GA</td>
     <td style="text-align:center">Bêta</td>
   </tr>
   <tr>
-    <td>Anglais britannique</td>
-    <td style="text-align:center">GA</td>
+    <td>Espagnol (Chili)</td>
+    <td style="text-align:center">Bêta</td>
     <td style="text-align:center">Bêta</td>
   </tr>
   <tr>
-    <td>Anglais américain</td>
-    <td style="text-align:center">GA</td>
+    <td>Espagnol (Colombie)</td>
+    <td style="text-align:center">Bêta</td>
+    <td style="text-align:center">Bêta</td>
+  </tr>
+  <tr>
+    <td>Espagnol (Mexique)</td>
+    <td style="text-align:center">Bêta</td>
+    <td style="text-align:center">Bêta</td>
+  </tr>
+  <tr>
+    <td>Espagnol (Pérou)</td>
+    <td style="text-align:center">Bêta</td>
     <td style="text-align:center">Bêta</td>
   </tr>
 </table>
@@ -177,9 +203,9 @@ Les remarques d'utilisation suivantes s'appliquent à la fois à la personnalisa
 ### Propriété des modèles personnalisés
 {: #customOwner}
 
-Un modèle personnalisé appartient à l'instance du service {{site.data.keyword.speechtotextshort}} dont les données d'identification sont utilisées pour le créer. Pour exploiter le modèle personnalisé de quelque manière que ce soit, vous devez utiliser les données d'identification du service créées pour cette instance du service avec les méthodes de l'interface de personnalisation. Les données d'identification créées pour d'autres instances du service ne peuvent pas afficher ou accéder au modèle personnalisé.
+Un modèle personnalisé appartient à l'instance du service {{site.data.keyword.speechtotextshort}} dont les données d'identification sont utilisées pour le créer. Pour exploiter le modèle personnalisé de quelque manière que ce soit, vous devez utiliser des données d'identification pour cette instance du service avec les méthodes de l'interface de personnalisation. Les données d'identification créées pour d'autres instances du service ne peuvent pas afficher ou accéder au modèle personnalisé.
 
-Toutes les données d'identification du service obtenues pour la même instance du service {{site.data.keyword.speechtotextshort}} partagent l'accès à tous les modèles personnalisés créés pour cette instance de service. Pour limiter l'accès à un modèle personnalisé, créez une instance de service distincte et utilisez uniquement les données d'identification de cette instance de service pour créer et utiliser le modèle. Les données d'identification des autres instances de service ne peuvent pas affecter le modèle personnalisé.
+Toutes les données d'identification obtenues pour la même instance du service {{site.data.keyword.speechtotextshort}} partagent l'accès à tous les modèles personnalisés créés pour cette instance de service. Pour limiter l'accès à un modèle personnalisé, créez une instance de service distincte et utilisez uniquement les données d'identification de cette instance de service pour créer et utiliser le modèle. Les données d'identification des autres instances de service ne peuvent pas affecter le modèle personnalisé.
 
 L'un des avantages de partager la propriété avec les données d'identification d'une instance de service réside dans le fait que vous pouvez annuler un ensemble de données d'identification, par exemple, si elles venaient à être compromises. Vous pouvez ensuite créer d'autres données d'identification pour la même instance de service et conserver la propriété et l'accès aux modèles personnalisés créés avec les données d'identification initiales.
 
@@ -191,12 +217,12 @@ La façon dont le service traite la journalisation des demandes pour les appels 
 -   Le service *ne consigne pas* les données utilisées pour construire des modèles personnalisés. Par exemple, lorsque vous utilisez des corpus et des mots dans un modèle de langue personnalisé, vous n'avez pas besoin de définir l'en-tête de demande `X-Watson-Learning-Opt-Out`. Vos données d'entraînement ne sont jamais utilisées pour améliorer les modèles de base du service.
 -   Le service *consigne* les données lorsqu'un modèle personnalisé est utilisé avec une demande de reconnaissance. Vous devez définir l'en-tête de demande `X-Watson-Learning-Opt-Out` avec la valeur `true` pour empêcher la journalisation des demandes de reconnaissance.
 
-Pour plus d'informations, voir [Journalisation des demandes](/docs/services/speech-to-text/input.html#logging).
+Pour plus d'informations, voir [Journalisation des demandes](/docs/services/speech-to-text?topic=speech-to-text-input#logging).
 
 ### Sécurité des informations
 {: #customSecurity}
 
-Vous pouvez associer un ID client aux données ajoutées ou mises à jour pour les modèles de langue personnalisés et les modèles acoustiques personnalisés. Vous associez un ID client aux corpus, aux mots personnalisés, aux grammaires et aux ressources audio en transmettant l'en-tête `X-Watson-Metadata` avec les méthodes suivantes : 
+Vous pouvez associer un ID client aux données ajoutées ou mises à jour pour les modèles de langue personnalisés et les modèles acoustiques personnalisés. Vous associez un ID client aux corpus, aux mots personnalisés, aux grammaires et aux ressources audio en transmettant l'en-tête `X-Watson-Metadata` avec les méthodes suivantes :
 
 -   `POST /v1/customizations/{customization_id}/corpora/{corpus_name}`
 -   `POST /v1/customizations/{customization_id}/words`
@@ -204,4 +230,4 @@ Vous pouvez associer un ID client aux données ajoutées ou mises à jour pour l
 -   `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`
 -   `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`
 
-Si nécessaire, vous pouvez ensuite supprimer les données en utilisant la méthode `DELETE /v1/user_data`. Pour plus d'informations, voir [Sécurité des informations](/docs/services/speech-to-text/information-security.html).
+Si nécessaire, vous pouvez ensuite supprimer les données en utilisant la méthode `DELETE /v1/user_data`. Pour plus d'informations, voir [Sécurité des informations](/docs/services/speech-to-text?topic=speech-to-text-information-security).

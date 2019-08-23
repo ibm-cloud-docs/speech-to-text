@@ -2,14 +2,14 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Mise à niveau des modèles personnalisés
 {: #customUpgrade}
 
-Afin d'améliorer la qualité de la reconnaissance vocale, le service {{site.data.keyword.speechtotextfull}} met à jour les modèles de base occasionnellement. Etant donné que les modèles de base correspondant aux différentes langues sont indépendants les uns des autres, tout comme les modèles à large bande et à bande étroite d'une langue, les mises à jour de modèles de base individuels n'affectent pas d'autres modèles. Les [notes sur l'édition](/docs/services/speech-to-text/release-notes.html) documentent toutes les mises à jour des modèles de base.
+Afin d'améliorer la qualité de la reconnaissance vocale, le service {{site.data.keyword.speechtotextfull}} met à jour les modèles de base occasionnellement. Etant donné que les modèles de base correspondant aux différentes langues sont indépendants les uns des autres, tout comme les modèles à large bande et à bande étroite d'une langue, les mises à jour de modèles de base individuels n'affectent pas d'autres modèles. Les [notes sur l'édition](/docs/services/speech-to-text?topic=speech-to-text-release-notes) documentent toutes les mises à jour des modèles de base.
 {: shortdesc}
 
 Lorsqu'une nouvelle version d'un modèle de base est publiée, vous devez effectuer la mise à niveau des modèles de langue personnalisés ou des modèles acoustiques personnalisés construits sur le modèle de base pour tirer parti de ces mises à jour. Vos modèles personnalisés continuent à utiliser l'ancienne version du modèle de base tant que la mise à niveau n'est pas terminée. Comme pour toute opération de personnalisation, vous devez utiliser les données d'identification de l'instance du service propriétaire d'un modèle pour en effectuer la mise à niveau.
@@ -60,9 +60,9 @@ Pour mettre à niveau un modèle de langue personnalisé, procédez comme suit :
 
     Cette méthode de mise à niveau est asynchrone. Elle peut prendre quelques minutes en fonction du nombre de mots figurant dans la ressource de mots du modèle et de la charge en cours sur le service.
 
-Le service renvoie le code de réponse 200 si le processus de mise à niveau a été initié avec succès. Vous pouvez surveiller le statut d'une mise à niveau à l'aide de la méthode `GET /v1/customizations/{customization_id}` pour interroger le statut du modèle. Utilisez une boucle pour vérifier le statut toutes les 10 secondes. 
+Le service renvoie le code de réponse 200 si le processus de mise à niveau a été initié avec succès. Vous pouvez surveiller le statut d'une mise à niveau à l'aide de la méthode `GET /v1/customizations/{customization_id}` pour interroger le statut du modèle. Utilisez une boucle pour vérifier le statut toutes les 10 secondes.
 
-Lorsque le modèle personnalisé est en cours de mise à niveau, son statut est `upgrading`. Une fois la mise à niveau terminée, le modèle reprend le statut qu'il avait avant la mise à niveau (`ready` ou `available`). La vérification du statut d'une opération de mise à niveau est identique à la vérification du statut d'une opération d'entraînement. Pour plus d'informations, voir [Surveillance de la demande d'entraînement du modèle](/docs/services/speech-to-text/language-create.html#monitorTraining-language).
+Lorsque le modèle personnalisé est en cours de mise à niveau, son statut est `upgrading`. Une fois la mise à niveau terminée, le modèle reprend le statut qu'il avait avant la mise à niveau (`ready` ou `available`). La vérification du statut d'une opération de mise à niveau est identique à la vérification du statut d'une opération d'entraînement. Pour plus d'informations, voir [Surveillance de la demande d'entraînement du modèle](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language).
 
 Le service ne peut accepter aucune demande de modification du modèle tant que la demande de mise à niveau n'est pas terminée. Vous pouvez toutefois continuer à émettre des demandes de reconnaissance avec la version existante du modèle pendant la mise à niveau.
 
@@ -98,9 +98,9 @@ Pour mettre à niveau un modèle acoustique personnalisé, procédez comme suit.
     La demande de mise à niveau d'un modèle acoustique avec le modèle de langue peut échouer avec le code de réponse 400 et le message `No input data modified since last training`. Si cette erreur se produit, ajoutez le paramètre de requête booléen `force` dans la demande et définissez ce paramètre avec la valeur `true`. Utilisez ce paramètre uniquement pour forcer la mise à niveau d'un modèle acoustique personnalisé dans ce cas particulier.
     {: note}
 
-Le service renvoie le code de réponse 200 si le processus de mise à niveau a été initié avec succès. Vous pouvez surveiller le statut d'une mise à niveau à l'aide de la méthode `GET /v1/acoustic_customizations/{customization_id}` pour interroger le statut du modèle. Utilisez une boucle pour vérifier le statut toutes les minutes. 
+Le service renvoie le code de réponse 200 si le processus de mise à niveau a été initié avec succès. Vous pouvez surveiller le statut d'une mise à niveau à l'aide de la méthode `GET /v1/acoustic_customizations/{customization_id}` pour interroger le statut du modèle. Utilisez une boucle pour vérifier le statut toutes les minutes.
 
-Lorsque le modèle personnalisé est en cours de mise à niveau, son statut est `upgrading`. Une fois la mise à niveau terminée, le modèle reprend le statut qu'il avait avant la mise à niveau (`ready` ou `available`). La vérification du statut d'une opération de mise à niveau est identique à la vérification du statut d'une opération d'entraînement. Pour plus d'informations, voir [Surveillance de la demande d'entraînement du modèle](/docs/services/speech-to-text/acoustic-create.html#monitorTraining-acoustic).
+Lorsque le modèle personnalisé est en cours de mise à niveau, son statut est `upgrading`. Une fois la mise à niveau terminée, le modèle reprend le statut qu'il avait avant la mise à niveau (`ready` ou `available`). La vérification du statut d'une opération de mise à niveau est identique à la vérification du statut d'une opération d'entraînement. Pour plus d'informations, voir [Surveillance de la demande d'entraînement du modèle](/docs/services/speech-to-text?topic=speech-to-text-acoustic#monitorTraining-acoustic).
 
 Le service ne peut accepter aucune demande de modification du modèle tant que la demande de mise à niveau n'est pas terminée. Vous pouvez toutefois continuer à émettre des demandes de reconnaissance avec la version existante du modèle pendant la mise à niveau.
 
@@ -111,15 +111,15 @@ La mise à niveau d'un modèle personnalisé ne parvient pas à démarrer si le 
 
 -   Le modèle personnalisé n'est pas à l'état `ready` ou `available`.
 -   Le modèle personnalisé ne contient pas de données (mots personnalisés ou ressources audio).
--   S'il s'agit d'un modèle acoustique personnalisé entraîné avec un modèle de langue personnalisé, les modèles personnalisés sont basés sur différentes versions du modèle de base. Vous devez mettre à niveau le modèle de langue personnalisé avant le modèle acoustique personnalisé. 
+-   S'il s'agit d'un modèle acoustique personnalisé entraîné avec un modèle de langue personnalisé, les modèles personnalisés sont basés sur différentes versions du modèle de base. Vous devez mettre à niveau le modèle de langue personnalisé avant le modèle acoustique personnalisé.
 
 ## Affichage de la liste des informations de version d'un modèle personnalisé
 {: #upgradeList}
 
 Pour voir les versions du modèle de base pour lequel un modèle personnalisé est disponible, utilisez les méthodes suivantes :
 
--   Pour afficher des informations sur un modèle de langue personnalisé, utilisez la méthode `GET /v1/customizations/{customization_id}`. Pour plus d'informations, voir [Affichage de la liste des modèles de langue personnalisés](/docs/services/speech-to-text/language-models.html#listModels-language).
--   Pour afficher des informations sur un modèle acoustique personnalisé, utilisez la méthode `GET /v1/acoustic_customizations/{customization_id}`. Pour plus d'informations, voir [Affichage de la liste des modèles acoustiques personnalisés](/docs/services/speech-to-text/acoustic-models.html#listModels-acoustic).
+-   Pour afficher des informations sur un modèle de langue personnalisé, utilisez la méthode `GET /v1/customizations/{customization_id}`. Pour plus d'informations, voir [Affichage de la liste des modèles de langue personnalisés](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
+-   Pour afficher des informations sur un modèle acoustique personnalisé, utilisez la méthode `GET /v1/acoustic_customizations/{customization_id}`. Pour plus d'informations, voir [Affichage de la liste des modèles acoustiques personnalisés](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
 
 Dans les deux cas, la sortie comprend une zone `versions` indiquant des informations relatives aux modèles de base correspondant au modèle personnalisé. La sortie suivante illustre les informations obtenues pour un modèle de langue personnalisé mis à niveau :
 
@@ -148,7 +148,7 @@ La zone `versions` indique que le modèle personnalisé est disponible pour deux
 ## Demandes de reconnaissance effectuées avec des modèles personnalisés mis à niveau
 {: #upgradeRecognition}
 
-Par défaut, le service utilise la dernière version d'un modèle personnalisé spécifié avec une demande de reconnaissance. Cependant, même après la mise à niveau du modèle personnalisé, vous pouvez continuer à effectuer des demandes de reconnaissance avec l'ancienne version du modèle. Utilisez le paramètre `base_model_version` d'une méthode de reconnaissance pour spécifier la version d'un modèle de base à utiliser pour la reconnaissance vocale. 
+Par défaut, le service utilise la dernière version d'un modèle personnalisé spécifié avec une demande de reconnaissance. Cependant, même après la mise à niveau du modèle personnalisé, vous pouvez continuer à effectuer des demandes de reconnaissance avec l'ancienne version du modèle. Utilisez le paramètre `base_model_version` d'une méthode de reconnaissance pour spécifier la version d'un modèle de base à utiliser pour la reconnaissance vocale.
 
 Par exemple, la demande HTTP suivante précise qu'il faut utiliser l'ancienne version du modèle de base. Par conséquent, l'ancienne version du modèle de langue personnalisé indiqué est également utilisée.
 
@@ -162,7 +162,7 @@ curl -X POST -u "apikey:{apikey}"
 
 Vous pouvez utiliser cette fonction pour tester les performances et l'exactitude d'un modèle personnalisé par rapport à l'ancienne et à la nouvelle version du modèle de base correspondant. Si vous constatez que les performances d'un modèle mis à niveau laissent à désirer (par exemple, si certains mots ne sont plus reconnus), vous pouvez continuer à utiliser l'ancienne version avec les demandes de reconnaissance.
 
-La rubrique [Version du modèle de base](/docs/services/speech-to-text/input.html#version) décrit le paramètre `base_model_version` et indique comment le service détermine les versions des modèles de base et des modèles personnalisés à utiliser avec une demande de reconnaissance. En plus de ces informations, tenez compte des facteurs suivants lorsque vous transmettez à la fois un modèle de langue personnalisé et un modèle acoustique personnalisé avec une demande de reconnaissance :
+La rubrique [Version du modèle de base](/docs/services/speech-to-text?topic=speech-to-text-input#version) décrit le paramètre `base_model_version` et indique comment le service détermine les versions des modèles de base et des modèles personnalisés à utiliser avec une demande de reconnaissance. En plus de ces informations, tenez compte des facteurs suivants lorsque vous transmettez à la fois un modèle de langue personnalisé et un modèle acoustique personnalisé avec une demande de reconnaissance :
 
 -   Les deux modèles personnalisés doivent être basés sur le même modèle de base (par exemple, `en-US_BroadbandModel`).
 -   Si les deux modèles personnalisés sont basés sur l'ancien modèle de base, le service utilise cet ancien modèle pour la reconnaissance.

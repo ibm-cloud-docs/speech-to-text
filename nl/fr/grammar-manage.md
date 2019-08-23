@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Gestion des grammaires
 {: #manageGrammars}
 
-L'interface de personnalisation comprend la méthode `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` pour ajouter une grammaire à un modèle de langue personnalisé. Pour plus d'informations, voir [Ajout d'une grammaire au modèle de langue personnalisé](/docs/services/speech-to-text/grammar-add.html#addGrammar). L'interface comprend également les méthodes suivantes pour répertorier et supprimer des grammaires d'un modèle de langue personnalisé.
+L'interface de personnalisation comprend la méthode `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` pour ajouter une grammaire à un modèle de langue personnalisé. Pour plus d'informations, voir [Ajout d'une grammaire au modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar). L'interface comprend également les méthodes suivantes pour répertorier et supprimer des grammaires d'un modèle de langue personnalisé.
 {: shortdesc}
 
 ## Affichage de la liste des grammaires d'un modèle de langue personnalisé

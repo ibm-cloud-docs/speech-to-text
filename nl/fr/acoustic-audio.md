@@ -2,14 +2,14 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-19"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Gestion des ressources audio
 {: #manageAudio}
 
-L'interface de personnalisation comprend la méthode `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`, qui est utilisée pour ajouter une ressource audio à un modèle acoustique personnalisé. Pour plus d'informations, voir [Ajout de données audio au modèle acoustique personnalisé](/docs/services/speech-to-text/acoustic-create.html#addAudio). Cette interface comprend également les méthodes suivantes permettant d'afficher la liste et de supprimer des ressources audio pour un modèle acoustique personnalisé.
+L'interface de personnalisation comprend la méthode `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`, qui est utilisée pour ajouter une ressource audio à un modèle acoustique personnalisé. Pour plus d'informations, voir [Ajout de données audio au modèle acoustique personnalisé](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio). Cette interface comprend également les méthodes suivantes permettant d'afficher la liste et de supprimer des ressources audio pour un modèle acoustique personnalisé.
 {: shortdesc}
 
 ## Affichage de la liste des ressources audio d'un modèle acoustique personnalisé
@@ -171,7 +171,7 @@ curl -X GET -u "apikey:{apikey}"
 ## Suppression d'une ressource audio d'un modèle acoustique personnalisé
 {: #deleteAudio}
 
-Utilisez la méthode `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` pour retirer une ressource audio existante d'un modèle acoustique personnalisé. Lorsque vous effectuez cette opération, le service retire toute l'archive de fichiers. L'interface actuelle ne permet pas la suppression de fichiers individuels d'une ressource de type archive.
+Utilisez la méthode `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` pour retirer une ressource audio existante d'un modèle acoustique personnalisé. Lorsque vous effectuez cette opération, le service retire toute l'archive de fichiers. Le service ne permet pas la suppression de fichiers individuels d'une ressource de type archive.
 
 Le retrait d'une ressource audio n'affecte pas le modèle personnalisé tant que vous n'avez pas entraîné le modèle sur les données mises à jour à l'aide de la méthode `POST /v1/acoustic_customizations/{customization_id}/train`. Si vous avez entraîné le modèle sur la ressource et jusqu'à ce que vous l'entraîniez à nouveau, les données audio existantes sont toujours utilisées pour la reconnaissance vocale.
 

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -33,7 +33,7 @@ L'interface HTTP asynchrone du service {{site.data.keyword.speechtotextfull}} of
 
 Ces deux approches ne s'excluent pas mutuellement. Vous pouvez choisir de recevoir des notifications de rappel tout en continuant à interroger le service pour obtenir le dernier statut ou à contacter le service pour extraire les résultats manuellement. Les sections suivantes indiquent comment utiliser l'interface HTTP asynchrone avec ces deux approches.
 
-Soumettez au maximum 1 Go et au minimum 100 octets de données audio avec une seule demande. Pour plus d'informations sur les formats audio et sur l'utilisation de la compression pour maximiser la quantité de données audio que vous pouvez envoyer avec une demande, voir [Formats audio](/docs/services/speech-to-text/audio-formats.html). Pour plus d'informations sur les méthodes individuelles de l'interface, voir [Référence d'API ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+Soumettez au maximum 1 Go et au minimum 100 octets de données audio avec une seule demande. Pour plus d'informations sur les formats audio et sur l'utilisation de la compression pour maximiser la quantité de données audio que vous pouvez envoyer avec une demande, voir [Formats audio](/docs/services/speech-to-text?topic=speech-to-text-audio-formats). Pour plus d'informations sur les méthodes individuelles de l'interface, voir [Référence d'API](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ## Modèles d'utilisation
 {: #usage}
@@ -128,9 +128,9 @@ Vous pouvez créer un travail de reconnaissance en appelant la méthode `POST /v
     -   `user_token` pour spécifier une chaîne à inclure dans chaque notification concernant le travail. Comme vous pouvez utiliser la même URL de rappel avec un nombre indéfini de travaux, vous pouvez tirer parti des jetons utilisateur pour distinguer les notifications de différents travaux.
 -   *Pour utiliser l'interrogation*, omettez les paramètres de requête `callback_url`, `events` et `user_token`. Vous devez ensuite utiliser les méthodes `GET /v1/recognitions` ou `GET /v1/recognitions/{id}` pour vérifier le statut du travail, en utilisant ce statut pour extraire les résultats une fois le travail terminé.
 
-Dans les deux cas, vous pouvez inclure le paramètre de requête `results_ttl` pour spécifier la durée en minutes de la disponibilité des résultats une fois le travail terminé.
+Dans les deux cas, vous pouvez inclure le paramètre de requête `results_ttl` pour spécifier la durée en minutes de la disponibilité des résultats une fois le travail terminé. Le nouveau travail appartient à l'instance du service dont les données d'identification sont utilisées pour créer le service.
 
-En plus des paramètres précédents, qui sont propres à l'interface asynchrone, la méthode `POST /v1/recognitions` prend en charge la plupart des paramètres utilisés par les interfaces WebSocket et HTTP synchrone. Pour plus d'informations, voir [Récapitulatif des paramètres](/docs/services/speech-to-text/summary.html).
+En plus des paramètres précédents, qui sont propres à l'interface asynchrone, la méthode `POST /v1/recognitions` prend en charge la plupart des paramètres utilisés par les interfaces WebSocket et HTTP synchrone. Pour plus d'informations, voir [Récapitulatif des paramètres](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ### Notifications de rappel
 {: #notifications}
@@ -283,7 +283,7 @@ curl -X GET -u "apikey:{apikey}"
                   6.33
                 ]
               ],
-              "confidence": 0.89
+              "confidence": 0.96
             }
           ]
         }
@@ -300,7 +300,7 @@ curl -X GET -u "apikey:{apikey}"
 ## Vérification du statut des derniers travaux
 {: #jobs}
 
-Vous appelez la méthode `GET /v1/recognitions` pour vérifier le statut des derniers travaux. La méthode renvoie le statut des 100 travaux en attente les plus récents qui sont associés aux données d'identification du service avec lequel elle est appelée. La méthode renvoie l'ID et le statut de chaque travail, ainsi que son heure de création et de mise à jour. Si un travail a été créé avec une URL de rappel et un jeton utilisateur, la méthode renvoie également le jeton utilisateur du travail.
+Vous appelez la méthode `GET /v1/recognitions` pour vérifier le statut des derniers travaux. La méthode renvoie le statut des 100 travaux en attente les plus récents qui sont associés aux données d'identification avec lesquelles le service est appelé. La méthode renvoie l'ID et le statut de chaque travail, ainsi que son heure de création et de mise à jour. Si un travail a été créé avec une URL de rappel et un jeton utilisateur, la méthode renvoie également le jeton utilisateur du travail.
 
 La réponse comprend l'un des états suivants :
 
@@ -309,12 +309,12 @@ La réponse comprend l'un des états suivants :
 -   `completed` si le service a terminé le traitement du travail. Si le travail spécifiait une URL de rappel et l'événement `recognitions.completed_with_results`, le service a renvoyé les résultats avec la notification de rappel. Autrement, utilisez la méthode `GET /v1/recognitions/{id}` pour obtenir les résultats.
 -   `failed` si le travail a échoué pour une raison quelconque.
 
-Un travail et ses résultats sont disponibles jusqu'à ce que vous les supprimiez avec la méthode `DELETE /v1/recognitions/{id}` ou jusqu'à ce que la durée de vie du travail soit écoulée, selon ce qui survient en premier. 
+Un travail et ses résultats sont disponibles jusqu'à ce que vous les supprimiez avec la méthode `DELETE /v1/recognitions/{id}` ou jusqu'à ce que la durée de vie du travail soit écoulée, selon ce qui survient en premier.
 
 ### Exemple
 {: #statusExample}
 
-L'exemple suivant demande le statut des derniers travaux en cours associés aux données d'identification de service du demandeur. L'utilisateur a trois travaux en attente, chacun avec des états différents. Le premier travail a été créé avec une URL de rappel et un jeton utilisateur.
+L'exemple suivant demande le statut des derniers travaux en cours associés aux données d'identification du demandeur. L'utilisateur a trois travaux en attente, chacun avec des états différents. Le premier travail a été créé avec une URL de rappel et un jeton utilisateur.
 
 ```bash
 curl -X GET -u "apikey:{apikey}"

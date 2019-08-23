@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -28,7 +28,7 @@ subcollection: speech-to-text
 Les exemples suivants présentent le support des grammaires du service {{site.data.keyword.speechtotextfull}}. Dans ces exemples, deux grammaires ABNF simples sont créées et les résultats possibles sont affichés lorsqu'elles sont utilisées dans le cadre de la reconnaissance vocale. Ces exemples illustrent l'importance de la cote de confiance que le service inclut dans une retranscription.
 {: shortdesc}
 
-Ces exemples fournissent uniquement les résultats des demandes de reconnaissance vocale. Pour consulter des exemples illustrant comment transmettre une grammaire pour la reconnaissance vocale, voir [Utilisation d'une grammaire pour la reconnaissance vocale](/docs/services/speech-to-text/grammar-use.html). Ces exemples sont également très simples. Pour obtenir des exemples de grammaire plus complexes, voir [Exemples de grammaires](/docs/services/speech-to-text/grammar-examples.html).
+Ces exemples fournissent uniquement les résultats des demandes de reconnaissance vocale. Pour consulter des exemples illustrant comment transmettre une grammaire pour la reconnaissance vocale, voir [Utilisation d'une grammaire pour la reconnaissance vocale](/docs/services/speech-to-text?topic=speech-to-text-grammarUse). Ces exemples sont également très simples. Pour obtenir des exemples de grammaire plus complexes, voir [Exemples de grammaires](/docs/services/speech-to-text?topic=speech-to-text-grammarExamples).
 
 ## Correspondances à une seule expression : la grammaire yesno
 {: #yesnoGrammar}
