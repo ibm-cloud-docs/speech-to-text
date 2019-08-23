@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-12"
+lastupdated: "2019-06-06"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -29,7 +29,7 @@ Vous pouvez alimenter un modèle de langue personnalisé avec des mots en ajouta
 {: shortdesc}
 
 -   **Corpus :** le moyen recommandé pour alimenter un modèle de langue personnalisé avec des mots est d'ajouter un ou plusieurs corpus au modèle. Lorsque vous ajoutez un corpus, le service analyse le fichier et ajoute automatiquement les mots nouveaux qu'il détecte au modèle personnalisé. L'ajout d'un corpus à un modèle personnalisé permet au service d'extraire des mots spécifiques à un domaine en contexte, ce qui permet de garantir de meilleurs résultats de transcription. Pour plus d'informations, voir [Utilisation des corpus](#workingCorpora).
--   **Grammaires :** vous pouvez ajouter des grammaires à un modèle personnalisé pour limiter la reconnaissance vocale aux mots ou expressions qui sont reconnus par une grammaire. Lorsque vous ajoutez une grammaire à un modèle, le service ajoute automatiquement les mots nouveaux qu'il détecte au modèle, de la même manière que pour les corpus. Pour plus d'informations, voir [Utilisation de grammaires avec des modèles de langue personnalisés](/docs/services/speech-to-text/grammar.html).
+-   **Grammaires :** vous pouvez ajouter des grammaires à un modèle personnalisé pour limiter la reconnaissance vocale aux mots ou expressions qui sont reconnus par une grammaire. Lorsque vous ajoutez une grammaire à un modèle, le service ajoute automatiquement les mots nouveaux qu'il détecte au modèle, de la même manière que pour les corpus. Pour plus d'informations, voir [Utilisation de grammaires avec des modèles de langue personnalisés](/docs/services/speech-to-text?topic=speech-to-text-grammars).
 -   **Mots individuels :** vous pouvez également ajouter directement des mots personnalisés individuels à un modèle. Le service ajoute les mots au modèle de la même manière que lorsqu'il les détecte dans les corpus et les grammaires. Lorsque vous ajoutez un mot directement, vous pouvez spécifier plusieurs prononciations et indiquer comment le mot doit s'afficher. Vous pouvez également mettre à jour des mots existants pour modifier ou compléter les définitions qui étaient extraites des corpus ou des grammaires. Pour plus d'informations, voir [Utilisation des mots personnalisés](#workingWords).
 
 Quel que soit le mode d'ajout employé, le service stocke tous les mots que vous ajoutez dans un modèle de langue personnalisé dans la ressource de mots du modèle.
@@ -50,7 +50,7 @@ La ressource de mots contient les informations suivantes sur chacun de ces mots 
     Vous pouvez utiliser la zone `display_as` pour indiquer une autre orthographe du mot. Pour plus d'informations, voir [Utilisation de la zone display_as](#displayAs).
 -   `source` : indique comment le mot a été ajouté à la ressource de mots. Si le service a extrait le mot à partir d'un corpus ou d'une grammaire, la zone indique le nom de cette ressource. Comme le service peut rencontrer le même mot dans plusieurs ressources, cette zone peut répertorier plusieurs noms de corpus ou de grammaire. Cette zone comprend la chaîne `user` si vous ajoutez ou modifiez le mot directement.
 
-Lorsque vous mettez à jour la ressource de mots d'un modèle avec la méthode de votre choix, vous devez entraîner le modèle pour que les modifications soient appliquées lors de la transcription. Pour plus d'informations, voir [Entraînement du modèle de langue personnalisé](/docs/services/speech-to-text/language-create.html#trainModel-language).
+Lorsque vous mettez à jour la ressource de mots d'un modèle avec la méthode de votre choix, vous devez entraîner le modèle pour que les modifications soient appliquées lors de la transcription. Pour plus d'informations, voir [Entraînement du modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
 
 ## De quelle quantité de données ai-je besoin ?
 {: #wordsResourceAmount}
@@ -62,7 +62,7 @@ En fonction du cas d'utilisation, même l'ajout direct de quelques mots à un mo
 Le service limite le nombre de mots que vous pouvez ajouter à un modèle de langue personnalisé :
 
 -   Vous pouvez ajouter 90 mille mots OOV maximum à la ressource de mots d'un modèle personnalisé. Ce nombre inclut les mots OOV de toutes les sources (corpus, grammaires et mots personnalisés individuels que vous ajoutez directement).
--   Vous pouvez ajouter 10 millions de mots maximum à un modèle personnalisé à partir de toutes les sources. Ce nombre inclut tous les mots, OOV et les mots faisant déjà partie du vocabulaire de base du service, qui figurent dans les corpus et les grammaires. Pour les corpus, le service utilise ces mots supplémentaires pour connaître le contexte dans lequel peuvent apparaître des mots OOV, c'est la raison pour laquelle les corpus constituent un moyen plus efficace d'améliorer la précision de la reconnaissance.
+-   Vous pouvez ajouter un total de 10 millions maximum à un modèle personnalisé à partir de toutes les sources. Ce nombre inclut tous les mots, OOV et les mots faisant déjà partie du vocabulaire de base du service, qui figurent dans les corpus et les grammaires. Pour les corpus, le service utilise ces mots supplémentaires pour connaître le contexte dans lequel peuvent apparaître des mots OOV, c'est la raison pour laquelle les corpus constituent un moyen plus efficace d'améliorer la précision de la reconnaissance.
 
 Une ressource de mots volumineuse peut augmenter le temps d'attente de la reconnaissance vocale mais il est difficile de quantifier ou de prévoir exactement l'effet produit. Comme pour la quantité de données nécessaire pour obtenir un modèle personnalisé efficace, l'impact sur les performances d'une ressource de mots volumineuse dépend de plusieurs facteurs. Testez votre modèle personnalisé avec différentes quantités de données pour déterminer les performances de vos modèles et de vos données.
 
@@ -135,14 +135,14 @@ Les descriptions suivantes s'appliquent à l'anglais américain et britannique, 
 
 -   Conversion des nombres en mots équivalents, par exemple :
     -   *En anglais,* `500` devient `five hundred` et `0.15` devient `zero point fifteen`.
-    -   *En français,* `500` devient `cinq cents` et `0,15` devient <code>z&eacute;ro virgule quinze</code>.
+    -   *En français, * `500` devient `cinq cents` et `0,15` devient <code>z&eacute;ro virgule quinze</code>.
     -   *En allemand,* `500` devient <code>f&uuml;nfhundert</code> et `0,15` devient <code>null punkt f&uuml;nfzehn</code>.
     -   *En espagnol,* `500` devient `quinientos` et `0,15` devient `cero coma quince`.
     -   *En portugais brésilien, * `500` devient `quinhentos` et `0,15` devient `zero ponto quinze`.
 -   Conversion des sèmes incluant certains symboles en représentations de chaîne significatives, par exemple :
     -   Conversion de `$` (symbole du dollar) et d'un nombre :
         -   *En anglais,* `$100` devient `one hundred dollars`.
-        -   *En français,* `$100` devient `cent dollars`.
+        -   *En français, * `$100` devient `cent dollars`.
         -   *En allemand,* `$100` et `100$` deviennent `einhundert dollar`.
         -   *En espagnol,* `$100` et `100$` deviennent <code>cien d&oacute;lares</code> (ou `cien pesos` si le dialecte est `es-LA`).
         -   *En portugais brésilien,* `$100` et `100$` deviennent <code>cem d&oacute;lares</code>.
@@ -154,7 +154,7 @@ Les descriptions suivantes s'appliquent à l'anglais américain et britannique, 
         -   *En portugais brésilien,* <code>&euro;100</code> et <code>100&euro;</code> deviennent `cem euros`.
     -   Conversion de `%` (signe pourcentage) précédé d'un nombre :
         -   *En anglais,* `100%` devient `one hundred percent`.
-        -   *En français,* `100%` devient `cent pour cent`.
+        -   *En français, * `100%` devient `cent pour cent`.
         -   *En allemand,* `100%` devient `einhundert prozent`.
         -   *En espagnol,* `100%` devient `cien por ciento`.
         -   *En portugais brésilien,* `100%` devient `cem por cento`.
@@ -201,21 +201,21 @@ Vous serez, par exemple, peut-être amené à utiliser ces méthodes pour corrig
 ### Codage de caractères
 {: #charEncoding}
 
-En général, vous serez amené à ajouter la plupart des mots personnalisés à partir de corpus. Vérifiez que vous connaissez le codage de caractères utilisé dans les fichiers texte de vos corpus. Le service conserve le codage qu'il trouve dans les fichiers texte. 
+En général, vous serez amené à ajouter la plupart des mots personnalisés à partir de corpus. Vérifiez que vous connaissez le codage de caractères utilisé dans les fichiers texte de vos corpus. Le service conserve le codage qu'il trouve dans les fichiers texte.
 
 Vous devez utiliser ce codage lorsque vous utilisez des mots individuels dans le modèle de langue personnalisé. Lorsque vous spécifiez un mot avec la méthode `GET`, `PUT` ou `DELETE /v1/customizations/{customization_id}/words/{word_name}`, vous devez coder le paramètre `word_name` que vous transmettez dans l'URL en codage URL si le mot comprend des caractères non ASCII.
 
 Par exemple, le tableau suivant présente à quoi ressemble la même lettre dans deux codages différents, ASCII et UTF-8. Vous pouvez transmettre le caractère ASCII dans une URL sous la forme `z`. Vous devez transmettre le caractère UTF-8 sous la forme `%EF%BD%9A`.
 
-<table>
+<table style="width:75%">
   <caption>Tableau 1. Exemples de codage de caractères</caption>
   <tr>
-    <th style="text-align:left">Lettre</th>
-    <th style="text-align:center">Codage</th>
-    <th style="text-align:center">Valeur</th>
+    <th style="width:15%; text-align:center">Lettre</th>
+    <th style="width:40%; text-align:center">Codage</th>
+    <th style="width:45%; text-align:center">Valeur</th>
   </tr>
   <tr>
-    <td style="text-align:left; width:30%">
+    <td style="text-align:center">
       `z`
     </td>
     <td style="text-align:center">
@@ -226,7 +226,7 @@ Par exemple, le tableau suivant présente à quoi ressemble la même lettre dans
     </td>
   </tr>
   <tr>
-    <td style="text-align:left; width:30%">
+    <td style="text-align:center">
       <code>&#xff5a;</code>
     </td>
     <td style="text-align:center">
@@ -352,7 +352,7 @@ Si vous utilisez les paramètres `smart_formatting` ou `redaction` avec une dema
 
 Par exemple, supposons que vous ajoutez le mot personnalisé `one` avec une zone `display_as` définie avec `one`. Le formatage intelligent remplace le mot `one` par le nombre `1`, et la valeur de la zone display-as n'est pas appliquée. Pour contourner le problème, vous pouvez ajouter un mot personnalisé pour le nombre `1` et appliquer à ce mot la même valeur dans la zone `display_as`.
 
-Pour plus d'informations sur l'utilisation de ces fonctions, voir [Formatage intelligent](/docs/services/speech-to-text/output.html#smart_formatting) et [Occultation numérique](/docs/services/speech-to-text/output.html#redaction).
+Pour plus d'informations sur l'utilisation de ces fonctions, voir [Formatage intelligent](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting) et [Occultation numérique](/docs/services/speech-to-text?topic=speech-to-text-output#redaction).
 
 ### Que se passe-t-il lorsque j'ajoute ou modifie un mot personnalisé ?
 {: #parseWord}
@@ -485,8 +485,8 @@ Particulièrement quand vous ajoutez un corpus à un modèle de langue personnal
 
 Pour valider, et, le cas échéant, corriger un mot pour un modèle personnalisé, quelle que soit la façon dont il a été ajouté dans la ressource de mots, utilisez les méthodes suivantes :
 
--   Répertoriez tous les mots d'un modèle personnalisé en utilisant la méthode `GET /v1/customizations/{customization_id}/words` ou effectuez une requête sur un mot individuel avec la méthode `GET /v1/customizations/{customization_id}/words/{word_name}`. Pour plus d'informations, voir [Affichage de la liste des mots d'un modèle de langue personnalisé](/docs/services/speech-to-text/language-words.html#listWords).
+-   Répertoriez tous les mots d'un modèle personnalisé en utilisant la méthode `GET /v1/customizations/{customization_id}/words` ou effectuez une requête sur un mot individuel avec la méthode `GET /v1/customizations/{customization_id}/words/{word_name}`. Pour plus d'informations, voir [Affichage de la liste des mots d'un modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords).
 -   Modifiez les mots d'un modèle personnalisé pour corriger les erreurs ou pour ajouter des valeurs sounds-like ou display-as en utilisant la méthode `POST /v1/customizations/{customization_id}/words` ou `PUT /v1/customizations/{customization_id}/words/{word_name}`. Pour plus d'informations, voir [Utilisation des mots personnalisés](#workingWords).
--   Supprimez les mots superflus introduits par erreur (par exemple via des erreurs typographiques ou d'autres erreurs dans un corpus) en utilisant la méthode `DELETE /v1/customizations/{customization_id}/words/{word_name}`. Pour plus d'informations, voir [Suppression d'un mot d'un modèle de langue personnalisé](/docs/services/speech-to-text/language-words.html#deleteWord).
-    -   Si le mot a été extrait d'un corpus, vous pouvez plutôt mettre à jour le fichier texte du corpus pour corriger l'erreur, puis recharger le fichier en utilisant le paramètre `allow_overwrite` de la méthode `POST /v1/customizations/{customization_id}/corpora/{corpus_name}`. Pour plus d'informations, voir [Ajout d'un corpus au modèle de langue personnalisé](/docs/services/speech-to-text/language-create.html#addCorpus).
-    -   Si le mot a été extrait d'une grammaire, vous pouvez mettre à jour le fichier de grammaire pour corriger l'erreur, puis recharger le fichier en utilisant le paramètre `allow_overwrite` de la méthode `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`. Pour plus d'informations, voir [Ajout d'une grammaire au modèle de langue personnalisé](/docs/services/speech-to-text/grammar-add.html#addGrammar).
+-   Supprimez les mots superflus introduits par erreur (par exemple via des erreurs typographiques ou d'autres erreurs dans un corpus) en utilisant la méthode `DELETE /v1/customizations/{customization_id}/words/{word_name}`. Pour plus d'informations, voir [Suppression d'un mot d'un modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-manageWords#deleteWord).
+    -   Si le mot a été extrait d'un corpus, vous pouvez plutôt mettre à jour le fichier texte du corpus pour corriger l'erreur, puis recharger le fichier en utilisant le paramètre `allow_overwrite` de la méthode `POST /v1/customizations/{customization_id}/corpora/{corpus_name}`. Pour plus d'informations, voir [Ajout d'un corpus au modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus).
+    -   Si le mot a été extrait d'une grammaire, vous pouvez mettre à jour le fichier de grammaire pour corriger l'erreur, puis recharger le fichier en utilisant le paramètre `allow_overwrite` de la méthode `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`. Pour plus d'informations, voir [Ajout d'une grammaire au modèle de langue personnalisé](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar).

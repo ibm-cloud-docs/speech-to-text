@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-08"
+lastupdated: "2019-07-10"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -31,7 +31,7 @@ L'interface HTTP synchrone du service {{site.data.keyword.speechtotextfull}} fou
 -   Le premier mode consiste à envoyer toutes les données audio en un seul flux via le corps de la demande. Vous spécifiez les paramètres de l'opération sous forme d'en-têtes de demande et de paramètres de requête. Pour plus d'informations, voir [Création d'une demande HTTP de base](#HTTP-basic).
 -   Le second mode consiste à envoyer les données audio sous forme de demande multiparties. Vous spécifiez les paramètres de la demande avec une combinaison d'en-têtes de demande, de paramètres de requête et de métadonnées JSON. Pour plus d'informations, voir [Création d'une demande HTTP multiparties](#HTTP-multi).
 
-Soumettez au maximum 100 Mo et au minimum 100 octets de données audio avec une seule demande. Pour plus d'informations sur les formats audio et sur l'utilisation de la compression pour maximiser la quantité de données audio que vous pouvez envoyer avec une demande, voir [Formats audio](/docs/services/speech-to-text/audio-formats.html). Pour plus d'informations sur toutes les méthodes de l'interface HTTP, voir [Référence d'API ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://{DomainName}/apidocs/speech-to-text){: new_window}.
+Soumettez au maximum 100 Mo et au minimum 100 octets de données audio avec une seule demande. Pour plus d'informations sur les formats audio et sur l'utilisation de la compression pour maximiser la quantité de données audio que vous pouvez envoyer avec une demande, voir [Formats audio](/docs/services/speech-to-text?topic=speech-to-text-audio-formats). Pour plus d'informations sur toutes les méthodes de l'interface HTTP, voir [Référence d'API](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ## Création d'une demande HTTP de base
 {: #HTTP-basic}
@@ -56,8 +56,9 @@ L'exemple renvoie la retranscription suivante des données audio :
     {
       "alternatives": [
         {
-          "confidence": 0.89,
-          "transcript": "several tornadoes touch down as a line of severe thunderstorms swept through Colorado on Sunday "
+          "confidence": 0.96,
+          "transcript": "several tornadoes touch down as a line of
+severe thunderstorms swept through Colorado on Sunday "
         }
       ],
       "final": true
@@ -126,8 +127,8 @@ Vous spécifiez les paramètres suivants d'une reconnaissance vocale multipartie
   <tr>
     <td>
       <code>Content-Type</code>
+      <br/><em>En-tête</em>
       <br/><em>Chaîne</em>
-      <br/><em>d'en-tête</em>
     </td>
     <td>
       <em>Obligatoire.</em> Spécifiez `multipart/form-data` pour indiquer
@@ -138,8 +139,8 @@ Vous spécifiez les paramètres suivants d'une reconnaissance vocale multipartie
   <tr>
     <td>
       <code>Transfer-Encoding</code>
+      <br/><em>En-tête</em>
       <br/><em>Chaîne</em>
-      <br/><em>d'en-tête</em>
     </td>
     <td>
       <em>Facultatif.</em> Indiquez `chunked` pour diffuser en continu les données audio
@@ -149,8 +150,8 @@ Vous spécifiez les paramètres suivants d'une reconnaissance vocale multipartie
   <tr>
     <td>
       <code>model</code>
+      <br/><em>Demande</em>
       <br/><em>Chaîne</em>
-      <br/><em>de requête</em>
     </td>
     <td>
       <em>Facultatif.</em> Identificateur du modèle à utiliser avec la
@@ -160,8 +161,8 @@ Vous spécifiez les paramètres suivants d'une reconnaissance vocale multipartie
   <tr>
     <td>
       <code>language_customization_id</code>
+      <br/><em>Demande</em>
       <br/><em>Chaîne</em>
-      <br/><em>de requête</em>
     </td>
     <td>
       <em>Facultatif.</em> Identificateur global unique (GUID) d'un modèle de langue personnalisé
@@ -171,8 +172,8 @@ Vous spécifiez les paramètres suivants d'une reconnaissance vocale multipartie
   <tr>
     <td>
       <code>acoustic_customization_id</code>
+      <br/><em>Demande</em>
       <br/><em>Chaîne</em>
-      <br/><em>de requête</em>
     </td>
     <td>
       <em>Facultatif.</em> Identificateur global unique (GUID) d'un modèle acoustique personnalisé
@@ -182,8 +183,8 @@ Vous spécifiez les paramètres suivants d'une reconnaissance vocale multipartie
   <tr>
     <td>
       <code>base_model_version</code>
+      <br/><em>Demande</em>
       <br/><em>Chaîne</em>
-      <br/><em>de requête</em>
     </td>
     <td>
       <em>Facultatif.</em> Version du modèle de base spécifié à
@@ -192,7 +193,7 @@ Vous spécifiez les paramètres suivants d'une reconnaissance vocale multipartie
   </tr>
 </table>
 
-Pour plus d'informations sur les paramètres de requête, voir [Récapitulatif des paramètres](/docs/services/speech-to-text/summary.html).
+Pour plus d'informations sur les paramètres de requête, voir [Récapitulatif des paramètres](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ### Métadonnées JSON pour les demandes multiparties
 {: #multipartJSON}
@@ -220,7 +221,7 @@ Seuls les deux paramètres suivants sont spécifiques aux demandes multiparties 
 -   La zone `part_content_type` est *facultative* pour la plupart des formats audio. Elle est obligatoire pour les formats `audio/alaw`, `audio/basic`, `audio/l16` et `audio/mulaw`. Elle indique le format audio dans les parties suivantes de la demande. Tous les fichiers audio doivent être au même format.
 -   La zone `data_parts_count` est *facultative* pour toutes les demandes. Elle indique le nombre de fichiers audio envoyés avec la demande. Le service applique une détection de fin de flux à la dernière partie des données (et parfois la seule). Si vous omettez ce paramètre, le service détermine le nombre de parties à partir de la demande.
 
-Tous les autres paramètres de métadonnées sont facultatifs. Pour obtenir la description de tous les paramètres disponibles, voir [Récapitulatif des paramètres](/docs/services/speech-to-text/summary.html).
+Tous les autres paramètres de métadonnées sont facultatifs. Pour obtenir la description de tous les paramètres disponibles, voir [Récapitulatif des paramètres](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
 ### Exemple de demande multiparties
 
@@ -245,192 +246,192 @@ L'exemple renvoie la retranscription suivante des fichiers audio. Le service ren
 
 ```javascript
 {
-   "results": [
-      {
-         "word_alternatives": [
+  "results": [
+    {
+      "word_alternatives": [
+        {
+          "start_time": 0.03,
+          "alternatives": [
             {
-               "start_time": 0.03,
-               "alternatives": [
-                  {
-                     "confidence": 0.96,
+              "confidence": 0.96,
                      "word": "the"
                   }
-               ],
+          ],
                "end_time": 0.09
-            },
-            {
-               "start_time": 0.09,
+        },
+        {
+          "start_time": 0.09,
                "alternatives": [
                   {
-                     "confidence": 0.96,
+              "confidence": 0.96,
                      "word": "latest"
                   }
-               ],
+          ],
                "end_time": 0.62
-            },
-            {
-               "start_time": 0.62,
+        },
+        {
+          "start_time": 0.62,
                "alternatives": [
                   {
-                     "confidence": 0.96,
+              "confidence": 0.96,
                      "word": "weather"
                   }
-               ],
+          ],
                "end_time": 0.87
-            },
-            {
-               "start_time": 0.87,
+        },
+        {
+          "start_time": 0.87,
                "alternatives": [
                   {
-                     "confidence": 0.96,
+              "confidence": 0.96,
                      "word": "report"
                   }
-               ],
+          ],
                "end_time": 1.5
             }
-         ],
+      ],
          "keywords_result": {},
          "alternatives": [
             {
-               "timestamps": [
-                  [
-                     "the",
+          "timestamps": [
+            [
+              "the",
                      0.03,
                      0.09
-                  ],
-                  [
-                     "latest",
+            ],
+            [
+              "latest",
                      0.09,
                      0.62
-                  ],
-                  [
-                     "weather",
+            ],
+            [
+              "weather",
                      0.62,
                      0.87
-                  ],
-                  [
-                     "report",
+            ],
+            [
+              "report",
                      0.87,
                      1.5
                   ]
-               ],
+          ],
                "confidence": 0.99,
                "transcript": "the latest weather report "
             }
-         ],
+      ],
          "final": true
       },
       {
-         "word_alternatives": [
-            {
-               "start_time": 0.15,
+      "word_alternatives": [
+        {
+          "start_time": 0.15,
                "alternatives": [
                   {
-                     "confidence": 1.0,
+              "confidence": 1.0,
                      "word": "a"
                   }
-               ],
+          ],
                "end_time": 0.3
-            },
-            {
-               "start_time": 0.3,
+        },
+        {
+          "start_time": 0.3,
                "alternatives": [
                   {
-                     "confidence": 1.0,
+              "confidence": 1.0,
                      "word": "line"
                   }
-               ],
+          ],
                "end_time": 0.64
-            },
-            . . .
-            {
-               "start_time": 4.58,
+        },
+        . . .
+        {
+          "start_time": 4.58,
                "alternatives": [
                   {
-                     "confidence": 0.98,
+              "confidence": 0.98,
                      "word": "Colorado"
                   }
-               ],
+          ],
                "end_time": 5.16
-            },
-            {
-               "start_time": 5.16,
+        },
+        {
+          "start_time": 5.16,
                "alternatives": [
                   {
-                     "confidence": 0.98,
+              "confidence": 0.98,
                      "word": "on"
                   }
-               ],
+          ],
                "end_time": 5.32
-            },
-            {
-               "start_time": 5.32,
+        },
+        {
+          "start_time": 5.32,
                "alternatives": [
                   {
-                     "confidence": 0.98,
+              "confidence": 0.98,
                      "word": "Sunday"
                   }
-               ],
+          ],
                "end_time": 6.04
             }
-         ],
+      ],
          "keywords_result": {
-            "tornadoes": [
+        "tornadoes": [
                {
-                  "normalized_text": "tornadoes",
+            "normalized_text": "tornadoes",
                   "start_time": 3.03,
                   "confidence": 0.98,
                   "end_time": 3.84
                }
-            ],
+        ],
             "colorado": [
                {
-                  "normalized_text": "Colorado",
+            "normalized_text": "Colorado",
                   "start_time": 4.58,
                   "confidence": 0.98,
                   "end_time": 5.16
                }
-            ]
-         },
-         "alternatives": [
-            {
-               "timestamps": [
-                  [
-                     "a",
+        ]
+      },
+      "alternatives": [
+        {
+          "timestamps": [
+            [
+              "a",
                      0.15,
                      0.3
-                  ],
-                  [
-                     "line",
+            ],
+            [
+              "line",
                      0.3,
                      0.64
-                  ],
-                  . . .
-                  [
-                     "Colorado",
+            ],
+            . . .
+            [
+              "Colorado",
                      4.58,
                      5.16
-                  ],
-                  [
-                     "on",
+            ],
+            [
+              "on",
                      5.16,
                      5.32
-                  ],
-                  [
-                     "Sunday",
+            ],
+            [
+              "Sunday",
                      5.32,
                      6.04
                   ]
-               ],
+          ],
                "confidence": 0.99,
                "transcript": "a line of severe thunderstorms with several
 possible tornadoes is approaching Colorado on Sunday "
             }
-         ],
-         "final": true
-      }
-   ],
-   "result_index": 0
+      ],
+      "final": true
+    }
+  ],
+  "result_index": 0
 }
 ```
 {: codeblock}

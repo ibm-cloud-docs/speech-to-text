@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-07-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -34,7 +34,7 @@ Par exemple, lorsque vous devez reconnaître des mots ou des expressions spécif
 
 Lorsque vous utilisez un modèle de langue personnalisé et une grammaire pour la reconnaissance vocale, le service peut renvoyer une expression valide de la grammaire ou un résultat vide. Si le résultat n'est pas vide, le service inclut une cote de confiance avec la retranscription finale, comme pour toutes les demandes de reconnaissance. Pour les grammaires, cette cote indique la probabilité de correspondance de la réponse par rapport à la grammaire. La possibilité de résultats positifs erronés est toujours possible, notamment pour les grammaires simples, par conséquent vous devez toujours considérer le niveau de confiance des résultats du service lorsque vous évaluez sa réponse.
 
-La fonction correspondant aux grammaires est une fonctionnalité bêta. Le service prend en charge les grammaires pour toutes les langues compatibles avec la personnalisation de modèle de langue.
+La fonction correspondant aux grammaires est une fonctionnalité bêta. Le service prend en charge les grammaires pour toutes les langues compatibles avec la personnalisation de modèle de langue. Pour plus d'informations, voir [Support de langue pour la personnalisation](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
 {: note}
 
 ## Formats de grammaire pris en charge
@@ -49,23 +49,23 @@ Ces deux formats de grammaire ont la puissance expressive d'une grammaire hors-c
 
 Pour obtenir des informations générales sur les grammaires, voir les pages Wikipedia suivantes :
 
--   [Speech Recognition Grammar Specification ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/Speech_Recognition_Grammar_Specification){: new_window}
--   [Augmented Backus-Naur form ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/Augmented_Backus%E2%80%93Naur_form){: new_window}
--   [Chomsky hierarchy ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/Chomsky_hierarchy){: new_window}
+-   [Spécification SRGS (Speech Recognition Grammar Specification)](https://wikipedia.org/wiki/Speech_Recognition_Grammar_Specification){: external}
+-   [Format ABNF (Augmented Backus-Naur Form)](https://wikipedia.org/wiki/Augmented_Backus%E2%80%93Naur_form){: external}
+-   [Hiérarchie Chomsky](https://wikipedia.org/wiki/Chomsky_hierarchy){: external}
 
 ## Spécification SRGS (Speech Recognition Grammar Specification)
 {: #grammarSpecification}
 
-Le service {{site.data.keyword.speechtotextshort}} prend en charge les grammaires définies par la norme W3C [Speech Recognition Grammar Specification Version 1.0 ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://www.w3.org/TR/speech-grammar/){: new_window}. Cette spécification fournit des informations détaillées sur les formats pris en charge et indique comment définir une grammaire. Pour plus d'informations sur les types de média pris en charge, voir [Appendix G. Media Types and File Suffix ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://www.w3.org/TR/speech-grammar/#AppG){: new_window} de cette spécification.
+Le service {{site.data.keyword.speechtotextshort}} prend en charge les grammaires définies par la norme W3C [Speech Recognition Grammar Specification Version 1.0](https://www.w3.org/TR/speech-grammar/){: external}. Cette spécification fournit des informations détaillées sur les formats pris en charge et indique comment définir une grammaire. Pour plus d'informations sur les types de média pris en charge, voir la section [Appendix G. Media Types and File Suffix](https://www.w3.org/TR/speech-grammar/#AppG){: external} de la spécification.
 
 Actuellement, le service *ne prend pas en charge* toutes les fonctions de la spécification SRGS. Plus précisément, il ne prend pas en charge les fonctions décrites dans les sections suivantes de la spécification :
 
--   [Section 1.4 Semantic Interpretation ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://www.w3.org/TR/speech-grammar/#S1.4){: new_window}. {{site.data.keyword.IBM_notm}} s'efforce de trouver une solution pour prendre en charge cette fonction dans une édition ultérieure du service.
--   [Section 1.5 Embedded Grammars ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://www.w3.org/TR/speech-grammar/#S1.5){: new_window}. {{site.data.keyword.IBM_notm}} s'efforce de trouver une solution pour prendre en charge cette fonction dans une édition ultérieure du service.
--   [Section 2.2.2 External Reference by URI ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://www.w3.org/TR/speech-grammar/#S2.2.2){: new_window}. Le service prend en charge uniquement les références locales, conformément aux indications de la [Section 2.2.1 Local References ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://www.w3.org/TR/speech-grammar/#S2.2.1){: new_window}. En d'autres termes, une grammaire doit être autonome.
--   [Section 2.2.3 Special Rules ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://www.w3.org/TR/speech-grammar/#S2.2.3){: new_window}.
--   [Section 2.2.4 Referencing N-gram Documents (Informative) ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://www.w3.org/TR/speech-grammar/#S2.2.4){: new_window}.
--   [Section 2.7 Language ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://www.w3.org/TR/speech-grammar/#S2.7){: new_window}. Le service ne prend pas en charge le changement de langue. Il ne prend en charge qu'une langue globale par grammaire.
+-   [Section 1.4 Semantic Interpretation](https://www.w3.org/TR/speech-grammar/#S1.4){: external}. {{site.data.keyword.IBM_notm}} s'efforce de trouver une solution pour prendre en charge cette fonction dans une édition ultérieure du service.
+-   [Section 1.5 Embedded Grammars](https://www.w3.org/TR/speech-grammar/#S1.5){: external}. {{site.data.keyword.IBM_notm}} s'efforce de trouver une solution pour prendre en charge cette fonction dans une édition ultérieure du service.
+-   [Section 2.2.2 External Reference by URI](https://www.w3.org/TR/speech-grammar/#S2.2.2){: external}. Le service prend uniquement en charge les références locales, conformément aux indications de la [Section 2.2.1 Local References](https://www.w3.org/TR/speech-grammar/#S2.2.1){: external}. En d'autres termes, une grammaire doit être autonome.
+-   [Section 2.2.3 Special Rules](https://www.w3.org/TR/speech-grammar/#S2.2.3){: external}.
+-   [Section 2.2.4 Referencing N-gram Documents (Informative)](https://www.w3.org/TR/speech-grammar/#S2.2.4){: external}.
+-   [Section 2.7 Language](https://www.w3.org/TR/speech-grammar/#S2.7){: external}. Le service ne prend pas en charge le changement de langue. Il ne prend en charge qu'une langue globale par grammaire.
 
 Les mots de la grammaire doivent être codés en UTF-8 (ASCII est un sous-ensemble du codage UTF-8). L'utilisation d'un autre codage peut provoquer des erreurs lors de la compilation de la grammaire ou des résultats imprévisibles lors du décodage. Le service ignore le codage spécifié dans l'en-tête de la grammaire.
 {: note}

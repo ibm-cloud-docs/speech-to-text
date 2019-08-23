@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,12 +25,12 @@ subcollection: speech-to-text
 # Utilisation d'un modèle de langue personnalisé
 {: #languageUse}
 
-Après avoir créé et entraîné votre modèle de langue personnalisé, vous pouvez l'utiliser dans des demandes de reconnaissance vocale. Vous utilisez le paramètre de requête `language_customization_id` pour spécifier le modèle de langue personnalisé d'une demande, comme illustré dans les exemples suivants. Vous indiquez également au service le poids à attribuer aux mots du modèle personnalisé. Pour plus d'informations, voir [Utilisation d'un poids de personnalisation](#weight). Vous devez émettre la demande avec les données d'identification du service correspondant à l'instance de service propriétaire du modèle.
+Après avoir créé et entraîné votre modèle de langue personnalisé, vous pouvez l'utiliser dans des demandes de reconnaissance vocale. Vous utilisez le paramètre de requête `language_customization_id` pour spécifier le modèle de langue personnalisé d'une demande, comme illustré dans les exemples suivants. Vous indiquez également au service le poids à attribuer aux mots du modèle personnalisé. Pour plus d'informations, voir [Utilisation d'un poids de personnalisation](#weight). Vous devez émettre la demande avec les données d'identification de l'instance du service propriétaire du modèle.
 {: shortdesc}
 
-Vous pouvez créer plusieurs modèles de langue personnalisés pour un même domaine ou pour des domaines différents. Cependant, vous ne pouvez spécifier qu'un seul modèle de langue personnalisé à la fois avec le paramètre `language_customization_id`. Pour obtenir des exemples d'utilisation d'une grammaire avec un modèle de langue personnalisé, voir [Utilisation d'une grammaire pour la reconnaissance vocale](/docs/services/speech-to-text/grammar-use.html).
+Vous pouvez créer plusieurs modèles de langue personnalisés pour un même domaine ou pour des domaines différents. Cependant, vous ne pouvez spécifier qu'un seul modèle de langue personnalisé à la fois avec le paramètre `language_customization_id`. Pour obtenir des exemples d'utilisation d'une grammaire avec un modèle de langue personnalisé, voir [Utilisation d'une grammaire pour la reconnaissance vocale](/docs/services/speech-to-text?topic=speech-to-text-grammarUse).
 
--   Pour l'[interface WebSocket](/docs/services/speech-to-text/websockets.html), utilisez la méthode `/v1/recognize`. Le modèle personnalisé spécifié est utilisé pour toutes les demandes envoyées via la connexion.
+-   Pour l'[interface WebSocket](/docs/services/speech-to-text?topic=speech-to-text-websockets), utilisez la méthode `/v1/recognize`. Le modèle personnalisé spécifié est utilisé pour toutes les demandes envoyées via la connexion.
 
     ```javascript
     var token = {authentication-token};
@@ -41,7 +41,7 @@ Vous pouvez créer plusieurs modèles de langue personnalisés pour un même dom
     var websocket = new WebSocket(wsURI);
     ```
     {: codeblock}
--   Pour l'[interface HTTP synchrone](/docs/services/speech-to-text/http.html), utilisez la méthode `POST /v1/recognize`. Le modèle personnalisé spécifié est utilisé pour cette demande.
+-   Pour l'[interface HTTP synchrone](/docs/services/speech-to-text?topic=speech-to-text-http), utilisez la méthode `POST /v1/recognize`. Le modèle personnalisé spécifié est utilisé pour cette demande.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -50,7 +50,7 @@ Vous pouvez créer plusieurs modèles de langue personnalisés pour un même dom
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}"
     ```
     {: pre}
--   Pour l'[interface HTTP asynchrone](/docs/services/speech-to-text/async.html), utilisez la méthode `POST /v1/recognitions`. Le modèle personnalisé spécifié est utilisé pour cette demande.
+-   Pour l'[interface HTTP asynchrone](/docs/services/speech-to-text?topic=speech-to-text-async), utilisez la méthode `POST /v1/recognitions`. Le modèle personnalisé spécifié est utilisé pour cette demande.
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -60,7 +60,7 @@ Vous pouvez créer plusieurs modèles de langue personnalisés pour un même dom
     ```
     {: pre}
 
-Vous pouvez omettre le modèle de langue dans la demande si le modèle personnalisé est basé sur le modèle de langue par défaut, `en-US_BroadbandModel`. Autrement, vous devez utiliser le paramètre `model` pour spécifier le modèle de base, comme indiqué dans l'exemple correspondant à WebSocket. Un modèle personnalisé ne peut être utilisé qu'avec le modèle de base pour lequel il est créé. 
+Vous pouvez omettre le modèle de langue dans la demande si le modèle personnalisé est basé sur le modèle de langue par défaut, `en-US_BroadbandModel`. Autrement, vous devez utiliser le paramètre `model` pour spécifier le modèle de base, comme indiqué dans l'exemple correspondant à WebSocket. Un modèle personnalisé ne peut être utilisé qu'avec le modèle de base pour lequel il est créé.
 
 ## Utilisation d'un poids de personnalisation
 {: #weight}
@@ -100,6 +100,6 @@ Vous spécifiez un poids de personnalisation en utilisant le paramètre `customi
 
 Si vous appliquez un modèle de langue personnalisé à la reconnaissance vocale mais que vous constatez que le service ne semble pas utiliser les mots inclus dans le modèle, recherchez les problèmes éventuels suivants :
 
--   Vérifiez que vous avez correctement transmis l'ID de personnalisation dans la demande de reconnaissance, comme indiqué à la section [Utilisation d'un modèle de langue personnalisé](#languageUse).
--   Vérifiez que le statut du modèle personnalisé est `available`, ce qui signifie que son entraînement est terminé et qu'il est prêt à l'emploi. Pour plus d'informations, voir [Affichage de la liste des modèles de langue personnalisés](/docs/services/speech-to-text/language-models.html#listModels-language).
--   Vérifiez les prononciations générées pour les mots nouveaux pour vous assurer qu'elles sont correctes. Pour plus d'informations, voir [Validation d'une ressource de mots](/docs/services/speech-to-text/language-resource.html#validateModel).
+-   Vérifiez que vous avez correctement transmis l'ID de personnalisation dans la demande de reconnaissance, comme indiqué dans les exemples précédents.
+-   Vérifiez que le statut du modèle personnalisé est `available`, ce qui signifie que son entraînement est terminé et qu'il est prêt à l'emploi. Pour plus d'informations, voir [Affichage de la liste des modèles de langue personnalisés](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
+-   Vérifiez les prononciations générées pour les mots nouveaux pour vous assurer qu'elles sont correctes. Pour plus d'informations, voir [Validation d'une ressource de mots](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).

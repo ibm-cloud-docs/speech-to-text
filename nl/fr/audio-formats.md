@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-15"
+lastupdated: "2019-06-06"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Formats audio
 {: #audio-formats}
 
-Le service {{site.data.keyword.speechtotextfull}} peut extraire des conversations audio dans de nombreux formats différents.
+Le service {{site.data.keyword.speechtotextfull}} peut extraire des conversations audio dans de nombreux formats.
 
 -   Si l'audio ne vous est pas familier et si vous ignorez comment il est décrit et spécifié, commencez par la section [Caractéristiques et terminologie audio](#terminology) pour vous y initier.
 -   Si vous savez déjà comment utiliser l'audio, passez à la section [Formats audio pris en charge](#formats) pour obtenir des informations détaillées sur les formats pris en charge par le service.
@@ -61,8 +61,8 @@ En théorie, vous pouvez envoyer 44 kHz d'audio avec un modèle à large bande o
 #### Informations complémentaires
 {: #samplingRateMore}
 
--   Pour plus d'informations sur les fréquences d'échantillonnage, voir [en.wikipedia.org/wiki/Sampling ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/Sampling){: new_window}. Sélectionnez *Sampling (signal processing)*.
--   Pour plus d'informations sur les modèles proposés par le service pour chaque langue prise en charge, voir [Langues et modèles](/docs/services/speech-to-text/models.html).
+-   Pour plus d'informations sur les fréquences d'échantillonnage, voir [Sampling (signal processing)](https://wikipedia.org/wiki/Sampling_%28signal_processing%29){: external}.
+-   Pour plus d'informations sur les modèles proposés par le service pour chaque langue prise en charge, voir [Langues et modèles](/docs/services/speech-to-text?topic=speech-to-text-models).
 
 ### Débit binaire
 {: #bitRate}
@@ -74,8 +74,8 @@ Par exemple, l'audio utilisant une fréquence d'échantillonnage large bande de 
 #### Informations complémentaires
 {: #bitRateMore}
 
--   Pour plus d'informations sur les débits binaires, voir [en.wikipedia.org/wiki/Bit_rate ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/Bit_rate){: new_window}.
--   Pour une discussion générale sur les fréquences d'échantillonnage et les débits binaires, voir [What are bit rates? ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](http://www.richardfarrar.com/what-are-bit-rates/){: new_window} et [Choosing bit rates for podcasts ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](http://www.richardfarrar.com/choosing-bit-rates-for-podcasts/){: new_window}.
+-   Pour plus d'informations sur les débits binaires, voir [Débit binaire](https://wikipedia.org/wiki/Bit_rate){: external}.
+-   Pour une discussion générale sur les fréquences d'échantillonnage et les débits binaires, voir [What are bit rates?](http://www.richardfarrar.com/what-are-bit-rates/){: external} et [Choosing bit rates for podcasts](http://www.richardfarrar.com/choosing-bit-rates-for-podcasts/){: external}.
 
 ### Compression
 {: #compression}
@@ -96,7 +96,7 @@ Avec le service {{site.data.keyword.speechtotextshort}}, vous pouvez utiliser la
 #### Informations complémentaires
 {: #compressionMore}
 
--   Pour plus d'informations sur la compression audio, voir [en.wikipedia.org/wiki/Data_compression#Audio ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/Data_compression#Audio){: new_window}.
+-   Pour plus d'informations sur la compression audio, voir [Data compression (Audio)](https://wikipedia.org/wiki/Data_compression#Audio){: external}.
 -   Pour plus d'informations sur l'utilisation de la compression de données pour augmenter la quantité de données audio que vous pouvez transmettre avec une demande, voir [Limites et compression de données](#limits).
 
 ### Canaux
@@ -118,7 +118,7 @@ Le service {{site.data.keyword.speechtotextshort}} accepte 16 canaux audio maxim
 #### Informations complémentaires
 {: #channelsMore}
 
--   Pour plus d'informations sur les canaux audio, voir [en.wikipedia.org/wiki/Audio_signal ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/Audio_signal){: new_window}.
+-   Pour plus d'informations sur les canaux audio, voir [Audio signal](https://wikipedia.org/wiki/Audio_signal){: external}.
 
 ### Ordre d'octets
 {: #endianness}
@@ -138,7 +138,7 @@ Le service {{site.data.keyword.speechtotextshort}} détecte automatiquement l'or
 #### Informations complémentaires
 {: #endiannessMore}
 
--   Pour plus d'informations sur l'ordre d'octets, voir [en.wikipedia.org/wiki/Endianness ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/Endianness){: new_window}.
+-   Pour plus d'informations sur l'ordre des octets, voir [Ordre d'octets](https://wikipedia.org/wiki/Endianness){: external}.
 
 ### Fréquence audio
 {: #frequency}
@@ -159,7 +159,7 @@ Le *sur-échantillonnage* (upsampling) augmente la fréquence d'échantillonnage
 
 Les informations audio échantillonnées à l'origine à une fréquence à bande étroite sont limitées à une plage de 0 à 4 kHz. Sur-échantillonner des données audio à bande étroite à une fréquence d'échantillonnage plus élevée offre peu de chance d'améliorer la précision de la reconnaissance vocale. Si vous sur-échantillonnez des données audio à bande étroite, il manquera des informations de plage escomptées par les modèles à large bande. De plus, les informations recueillies dans la plage prévue pour un échantillon à bande étroite sont qualitativement différentes de celles recueillies dans la même plage pour un échantillon à large bande. Par conséquent, le sur-échantillonnage nuit à l'exactitude de la reconnaissance.
 
-Pour une fréquence d'échantillonnage à large bande de 16 kHz, la valeur prévue pour la fréquence maximale présente dans le signal audio échantillonné est de 8 kHz. Par conséquent, vous devez filtrer le signal d'origine à 8 kHz avant de l'échantillonner à une fréquence de 16 kHz. Autrement, la qualité est altérée en raison d'un phénomène connu sous le nom de *aliasing* (repliement de spectre). Pour comprendre pourquoi, voir [Nyquist frequency ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/Nyquist_frequency){: new_window}.
+Pour une fréquence d'échantillonnage à large bande de 16 kHz, la valeur prévue pour la fréquence maximale présente dans le signal audio échantillonné est de 8 kHz. Par conséquent, vous devez filtrer le signal d'origine à 8 kHz avant de l'échantillonner à une fréquence de 16 kHz. Autrement, la qualité est altérée en raison d'un phénomène connu sous le nom de *aliasing* (repliement de spectre). Pour comprendre pourquoi, voir [Nyquist frequency](https://wikipedia.org/wiki/Nyquist_frequency){: external}.
 
 Une comparaison utile serait d'imaginer visionner une cassette VHS sur un grand écran plat HDTV. L'image serait floue car regarder la cassette sur un lecteur en haute définition ne peut réellement rien ajouter au flux d'informations. Cela permet juste de rendre le format compatible avec le meilleur lecteur. Il en va de même pour le sur-échantillonnage audio.
 
@@ -173,9 +173,9 @@ Sous-échantillonner vos données audio peut s'avérer efficace dans certains ca
 #### Informations complémentaires
 {: #frequencyMore}
 
--   Pour plus d'informations sur la fréquence audio, voir [https://en.wikipedia.org/wiki/Audio_frequency ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/Audio_frequency){: new_window}.
--   Pour plus d'informations sur le sur-échantillonnage, voir [https://en.wikipedia.org/wiki/Upsampling ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/Upsampling){: new_window}.
--   Pour plus d'informations sur le sous-échantillonnage, voir [https://en.wikipedia.org/wiki/Downsampling ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/Downsampling_%28signal_processing%29){: new_window}.
+-   Pour plus d'informations sur la fréquence audio, voir [Fréquence audio](https://wikipedia.org/wiki/Audio_frequency){: external}.
+-   Pour plus d'informations sur le sur-échantillonnage, voir [Sur-échantillonnage](https://wikipedia.org/wiki/Upsampling){: external}.
+-   Pour plus d'informations sur le sous-échantillonnage, voir [Sous-échantillonnage](https://wikipedia.org/wiki/Downsampling_%28signal_processing%29){: external}.
 
 ## Formats audio pris en charge
 {: #formats}
@@ -262,7 +262,7 @@ Le tableau 1 présente un récapitulatif des formats audio pris en charge par le
   </tr>
   <tr>
     <td style="text-align:left">
-      [audio/l16](#l16)<br/>Aucune
+      [audio/l16](#l16)<br/>Aucun
     </td>
     <td style="text-align:center">
       Obligatoire
@@ -321,7 +321,7 @@ Le tableau 1 présente un récapitulatif des formats audio pris en charge par le
   </tr>
   <tr>
     <td style="text-align:left">
-      [audio/wav](#wav)<br/>Aucune, sans <br/>ou avec perte
+      [audio/wav](#wav)<br/>Aucun, sans perte<br/>ou avec perte
     </td>
     <td style="text-align:center">
       Facultatif
@@ -355,7 +355,7 @@ Lorsque vous utilisez la commande `curl` pour effectuer une demande de reconnais
 ### Format audio/alaw
 {: #alaw}
 
-*A-law* (`audio/alaw`) est un format audio avec perte mono-canal. Il utilise un algorithme similaire à l'algorithme u-law appliqué par les formats `audio/basic` et `audio/mulaw`, bien que l'algorithme A-law produise des caractéristiques de signal différentes. Lorsque vous utilisez ce format, le service nécessite un paramètre supplémentaire sur la spécification du format.
+*A-law* (`audio/alaw`) est un format audio avec perte mono-canal. Il utilise un algorithme similaire à l'algorithme u-law appliqué par les formats `audio/basic` et `audio/mulaw`, bien que l'algorithme A-law produise des caractéristiques de signal différentes. Lorsque vous utilisez ce format, le service nécessite un paramètre supplémentaire sur la spécification de format.
 
 <table>
   <caption>Tableau 2. Paramètre pour le format `audio/alaw`</caption>
@@ -380,24 +380,24 @@ Lorsque vous utilisez la commande `curl` pour effectuer une demande de reconnais
   </tr>
 </table>
 
-Pour plus d'informations, voir [en.wikipedia.org/wiki/A-law_algorithm ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/A-law_algorithm){: new_window}.
+Pour plus d'informations, voir [A-law algorithm](https://wikipedia.org/wiki/A-law_algorithm){: external}.
 
 ### Format audio/basic
 {: #basic}
 
 *Basic audio* (`audio/basic`) est un format audio avec perte mono-canal codé en utilisant des données u-law (ou mu-law) 8 bits échantillonnées à 8 kHz. Ce format fournit un plus petit dénominateur commun pour indiquer le type de support audio. Le service prend en charge l'utilisation de fichiers au format `audio/basic` uniquement avec les modèles à bande étroite.
 
-Pour plus d'informations, voir le document de l'Internet Engineering Task Force (IETF) [Request for Comment (RFC) 2046 ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://tools.ietf.org/html/rfc2046){: new_window} et [iana.org/assignments/media-types/audio/basic ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](http://www.iana.org/assignments/media-types/audio/basic){: new_window}.
+Pour plus d'informations, voir le document de l'Internet Engineering Task Force (IETF) [Request for Comment (RFC) 2046](https://tools.ietf.org/html/rfc2046){: external} et [iana.org/assignments/media-types/audio/basic](http://www.iana.org/assignments/media-types/audio/basic){: external}.
 
 ### Format audio/flac
 {: #flac}
 
-*Free Lossless Audio Codec (FLAC)* (`audio/flac`) est un format audio sans perte. Pour plus d'informations, voir [en.wikipedia.org/wiki/FLAC ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/FLAC){: new_window}.
+*Free Lossless Audio Codec (FLAC)* (`audio/flac`) est un format audio sans perte. Pour plus d'informations, voir [FLAC](https://wikipedia.org/wiki/FLAC){: external}.
 
 ### Format audio/g729
 {: #g729}
 
-*G.729* (`audio/g729`) est un format audio avec perte qui prend en charge les données codées à 8 kHz. Le service prend en charge uniquement G.729 Annex D, et non pas Annex J, ainsi que l'utilisation des fichiers au format `audio/g729` uniquement avec les modèles à bande étroite. Pour plus d'informations, voir [en.wikipedia.org/wiki/G.729 ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/G.729){: new_window}.
+*G.729* (`audio/g729`) est un format audio avec perte qui prend en charge les données codées à 8 kHz. Le service prend en charge uniquement G.729 Annex D, et non pas Annex J, ainsi que l'utilisation des fichiers au format `audio/g729` uniquement avec les modèles à bande étroite. Pour plus d'informations, voir [G.729](https://wikipedia.org/wiki/G.729){: external}.
 
 ### Format audio/l16
 {: #l16}
@@ -450,23 +450,23 @@ Pour plus d'informations, voir le document de l'Internet Engineering Task Force 
       supprimer la connexion pour un fichier audio court au format `audio/l16`. Indiquer
       l'ordre d'octets désactive la détection automatique. Spécifiez
       <code>big-endian</code> ou <code>little-endian</code>. Par
-      exemple, spécifiez le paramètre suivant pour des données audio
-      capturées à 16 kHz au format little-endian :<br/><br/>
+      exemple, indiquez le paramètre suivant pour les données audio
+      capturées à 16 kHz au format little endian :<br/><br/>
       <code>audio/l16;rate=16000;endianness=little-endian</code><br/><br/>
       La section 5.1 du document
-      <a target="_blank" href="https://tools.ietf.org/html/rfc2045#section-5.1">Request for Comment (RFC) 2045 ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")</a>
-      spécifie le format big-endian pour les données <code>audio/l16</code>, mais
-      nombreuses sont les personnes qui utilisent le format little-endian.
+      [Request for Comment (RFC) 2045](https://tools.ietf.org/html/rfc2045#section-5.1)
+      spécifie le format big endian pour les données <code>audio/l16</code>, mais
+      nombreuses sont les personnes qui utilisent le format little endian.
     </td>
   </tr>
 </table>
 
-Pour plus d'informations, voir l'IETF [Request for Comment (RFC) 2586 ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://tools.ietf.org/html/rfc2586){: new_window} et [en.wikipedia.org/wiki/Pulse-code_modulation ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/Pulse-code_modulation){: new_window}.
+Pour plus d'informations, voir les documents de l'IETF [Request for Comment (RFC) 2586](https://tools.ietf.org/html/rfc2586){: external} et [Pulse-code modulation](https://wikipedia.org/wiki/Pulse-code_modulation){: external}.
 
 ### Formats audio/mp3 et audio/mpeg
 {: #mp3}
 
-*MP3* (`audio/mp3`) ou *MPEG (Motion Picture Experts Group)* (`audio/mpeg`) est un format audio avec perte. (MP3 et MPEG désignent le même format.) Pour plus d'informations, voir [en.wikipedia.org/wiki/MP3 ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/MP3){: new_window}.
+*MP3* (`audio/mp3`) ou *MPEG (Motion Picture Experts Group)* (`audio/mpeg`) est un format audio avec perte. (MP3 et MPEG désignent le même format.) Pour plus d'informations, voir [MP3](https://wikipedia.org/wiki/MP3){: external}.
 
 ### Format audio/mulaw
 {: #mulaw}
@@ -496,36 +496,36 @@ Pour plus d'informations, voir l'IETF [Request for Comment (RFC) 2586 ![Icône d
   </tr>
 </table>
 
-Pour plus d'informations, voir [en.wikipedia.org/wiki/M-law_algorithm ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/M-law_algorithm){: new_window}.
+Pour plus d'informations, voir [M-law algorithm](https://wikipedia.org/wiki/M-law_algorithm){: external}.
 
 ### Format audio/ogg
 {: #ogg}
 
-*Ogg* (`audio/ogg`) est un format conteneur ouvert géré par Xiph.org Foundation ([xiph.org/ogg ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://www.xiph.org/ogg){: new_window}). Vous pouvez utiliser des flux audio compressés avec les codecs avec perte suivants :
+*Ogg* (`audio/ogg`) est un format conteneur ouvert géré par Xiph.org Foundation ([xiph.org/ogg](https://www.xiph.org/ogg){: external}). Vous pouvez utiliser des flux audio compressés avec les codecs avec perte suivants :
 
--   *Opus* (`audio/ogg;codecs=opus`). Pour plus d'informations, voir [opus-codec.org ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://www.opus-codec.org/){: new_window} et [en.wikipedia.org/wiki/Opus (audio format) ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/Opus){: new_window}. Sur la page *Opus (audio format)*, examinez particulièrement la section *Containers*.
--   *Vorbis* (`audio/ogg;codecs=vorbis`). Pour plus d'informations, voir [xiph.org/vorbis ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://xiph.org/vorbis/){: new_window} et [en.wikipedia.org/wiki/Vorbis ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/Vorbis){: new_window}.
+-   *Opus* (`audio/ogg;codecs=opus`). Pour plus d'informations, voir [opus-codec.org](https://www.opus-codec.org/){: external} et [Opus (audio format)](https://wikipedia.org/wiki/Opus_%28audio_format%29){: external}. Consultez plus particulièrement la section *Containers*.
+-   *Vorbis* (`audio/ogg;codecs=vorbis`). Pour plus d'informations, voir [xiph.org/vorbis](https://xiph.org/vorbis/){: external} et [Vorbis](https://wikipedia.org/wiki/Vorbis){: external}.
 
-Si vous omettez le codec, le service le détecte automatiquement dans l'entrée audio. Opus est le codec privilégié ; il est normalisé par l'Internet Engineering Task Force (IETF) sous [Request for Comment (RFC) 6716 ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://tools.ietf.org/html/rfc6716){: new_window}.
+Si vous omettez le codec, le service le détecte automatiquement dans l'entrée audio. Opus est le codec privilégié ; il est normalisé par l'Internet Engineering Task Force (IETF) sous [Request for Comment (RFC) 6716](https://tools.ietf.org/html/rfc6716){: external}.
 
 ### Format audio/wav
 {: #wav}
 
 *Waveform Audio File Format (WAV)* (`audio/wav`) est un format conteneur souvent utilisé pour les flux audio non compressés, mais il peut également contenir des données audio compressées. Le service prend en charge le format audio WAV utilisant n'importe quel codage. Il accepte le format audio WAV avec une limite maximale de 9 canaux (en raison d'une limitation de l'outil FFmpeg).
 
-Pour plus d'informations sur le format WAV, voir [en.wikipedia.org/wiki/WAV ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/WAV){: new_window}. Pour plus d'informations sur la réduction de la taille des données audio WAV en les convertissant avec le codec Opus, voir [Conversion au format audio/ogg avec le codec Opus](#conversionOgg).
+Pour plus d'informations sur le format WAV, voir [WAV](https://wikipedia.org/wiki/WAV){: external}. Pour plus d'informations sur la réduction de la taille des données audio WAV en les convertissant avec le codec Opus, voir [Conversion au format audio/ogg avec le codec Opus](#conversionOgg).
 
 ### Format audio/webm
 {: #webm}
 
-*Web Media (WebM)* (`audio/webm`) est un format conteneur ouvert géré par le projet WebM ([webmproject.org ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://www.webmproject.org/){: new_window}). Vous pouvez utiliser des flux audio compressés avec les codecs avec perte suivants :
+*Web Media (WebM)* (`audio/webm`) est un format conteneur ouvert géré par le projet WebM ([webmproject.org](https://www.webmproject.org/){: external}). Vous pouvez utiliser des flux audio compressés avec les codecs avec perte suivants :
 
--   *Opus* (`audio/webm;codecs=opus`). Pour plus d'informations, voir [opus-codec.org ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://www.opus-codec.org/){: new_window} et [en.wikipedia.org/wiki/Opus (audio format) ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/Opus){: new_window}. Sur la page *Opus (audio format)*, examinez particulièrement la section *Containers*.
--   *Vorbis* (`audio/webm;codecs=vorbis`). Pour plus d'informations, voir [xiph.org/vorbis ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://xiph.org/vorbis/){: new_window} et [en.wikipedia.org/wiki/Vorbis ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://en.wikipedia.org/wiki/Vorbis){: new_window}.
+-   *Opus* (`audio/webm;codecs=opus`). Pour plus d'informations, voir [opus-codec.org](https://www.opus-codec.org/){: external} et [Opus (audio format)](https://wikipedia.org/wiki/Opus_%28audio_format%29){: external}. Consultez plus particulièrement la section *Containers*.
+-   *Vorbis* (`audio/webm;codecs=vorbis`). Pour plus d'informations, voir [xiph.org/vorbis](https://xiph.org/vorbis/){: external} et [Vorbis](https://wikipedia.org/wiki/Vorbis){: external}.
 
-Si vous omettez le codec, le service le détecte automatiquement dans l'entrée audio. 
+Si vous omettez le codec, le service le détecte automatiquement dans l'entrée audio.
 
-Pour obtenir le code JavaScript qui montre comment faire des captures audio à partir d'un micro dans un navigateur Chrome et coder les données en flux de données WebM, voir [jsbin.com/hedujihuqo/edit?js,console ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://jsbin.com/hedujihuqo/edit?js,console){: new_window}. Le code ne soumet pas les captures audio au service.
+Pour obtenir le code JavaScript qui montre comment faire des captures audio à partir d'un micro dans un navigateur Chrome et coder les données en flux de données WebM, voir [jsbin.com/hedujihuqo/edit?js,console](https://jsbin.com/hedujihuqo/edit?js,console){: external}. Le code ne soumet pas les captures audio au service.
 {: tip}
 
 ## Limites et compression de données
@@ -585,21 +585,21 @@ Vous pouvez recourir à divers outils pour convertir vos données audio dans un 
 
 Les outils logiciels gratuits suivants sont disponibles pour convertir vos données audio d'un format à un autre :
 
--   Sound eXchange (SoX) ([sox.sourceforge.net ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](http://sox.sourceforge.net){: new_window})
--   FFmpeg ([ffmpeg.org ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://www.ffmpeg.org){: new_window})
--   Audacity&reg; ([audacityteam.org ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](http://www.audacityteam.org/){: new_window})
--   Pour le format Ogg avec le codec Opus, **opus-tools** ([opus-codec.org/downloads/ ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](http://opus-codec.org/downloads/){: new_window})
+-   Sound eXchange (SoX) ([sox.sourceforge.net](http://sox.sourceforge.net){: external})
+-   FFmpeg ([ffmpeg.org](https://www.ffmpeg.org){: external})
+-   Audacity&reg; ([audacityteam.org](http://www.audacityteam.org/){: external})
+-   Pour le format Ogg avec le codec Opus, **opus-tools** ([opus-codec.org/downloads/](http://opus-codec.org/downloads/){: external})
 
 Ces outils offrent une prise en charge multiplateforme pour plusieurs formats audio. De plus, vous pouvez utiliser de nombreux outils pour lire vos données audio. Veillez à respecter les lois sur les droits d'auteur applicables en utilisant ces outils.
 
 ### Conversion en format audio/ogg avec le codec Opus
 {: #conversionOgg}
 
-Les outils [**opus-tools** ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](http://opus-codec.org/downloads/){: new_window} comprennent trois utilitaires de ligne de commande pour utiliser des données audio au format Ogg dans le codec Opus :
+Les outils [**opus-tools**](http://opus-codec.org/downloads/){: external} comprennent trois utilitaires de ligne de commande pour utiliser des données audio au format Ogg dans le codec Opus :
 
--   L'utilitaire [**opusenc** ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusenc.html){: new_window} code les données audio à partir des formats WAV, FLAC et d'autres formats en format Ogg avec le codec Opus. La page indique comment compresser les flux audio. La compression est utile pour transmettre des données audio en temps réel au service.
--   L'utilitaire [**opusdec** ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusdec.html){: new_window} décode les données audio à partir du codec Opus en fichiers WAV PCM non compressés.
--   L'utilitaire [**opusinfo** ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusinfo.html){: new_window} fournit des informations sur les fichiers Opus ainsi qu'une vérification de leur validité.
+-   L'utilitaire [**opusenc**](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusenc.html){: external} code les données audio à partir des formats WAV, FLAC et d'autres formats en format Ogg avec le codec Opus. La page indique comment compresser les flux audio. La compression est utile pour transmettre des données audio en temps réel au service.
+-   L'utilitaire [**opusdec**](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusdec.html){: external} décode les données audio à partir du codec Opus en fichiers WAV PCM non compressés.
+-   L'utilitaire [**opusinfo**](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusinfo.html){: external} fournit des informations sur les fichiers Opus ainsi qu'une vérification de leur validité.
 
 De nombreux utilisateurs envoient des fichiers WAV pour la reconnaissance vocale. Avec la taille limite de 100 Mo du service pour les demandes WebSocket et HTTP synchrones, le format WAV réduit la quantité de données audio pouvant être reconnues avec une seule demande. L'utilisation de la commande **opusenc** pour convertir les données audio au format privilégié `audio/ogg:codecs=opus` peut considérablement augmenter le volume de données audio que vous pouvez envoyer avec une demande de reconnaissance.
 
@@ -610,7 +610,7 @@ opusenc input.wav output.opus
 ```
 {: pre}
 
-La conversion offre une compression audio multipliée par quatre et produit un fichier de sortie avec un débit binaire de 64 kbit/s. Cependant, selon les [paramètres recommandés avec Opus ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://wiki.xiph.org/Opus_Recommended_Settings){: new_window}, vous pouvez réduire sans problème le débit binaire à 24 kbit/s tout en conservant une bande complète pour la voix. Cette réduction offre une compression audio multipliée par 10. La commande suivante utilise l'option `--bitrate` pour obtenir un fichier de sortie avec un débit binaire de 24 kbit/s :
+La conversion offre une compression audio multipliée par quatre et produit un fichier de sortie avec un débit binaire de 64 kbit/s. Cependant, selon les [paramètres recommandés avec Opus](https://wiki.xiph.org/Opus_Recommended_Settings){: external}, vous pouvez réduire sans problème le débit binaire à 24 kbit/s tout en conservant une bande complète pour la voix. Cette réduction offre une compression audio multipliée par 10. La commande suivante utilise l'option `--bitrate` pour obtenir un fichier de sortie avec un débit binaire de 24 kbit/s :
 
 ```bash
 opusenc --bitrate 24 input.wav output.opus
@@ -632,4 +632,4 @@ Les astuces suivantes peuvent vous aider à améliorer la qualité de la reconna
     -   Les bruits de moteur, les appareils en fonctionnement, les bruits de la rue et les conversations en arrière-plan peuvent nuire considérablement à la précision de la reconnaissance.
     -   Les accents régionaux et les différences de prononciation peuvent également avoir un impact négatif sur la précision.
 
-    Si vos données audio ont ces caractéristiques, envisagez d'utiliser la personnalisation de modèle acoustique pour obtenir une meilleure reconnaissance vocale. Pour plus d'informations, voir [L'interface de personnalisation](/docs/services/speech-to-text/custom.html).
+    Si vos données audio ont ces caractéristiques, envisagez d'utiliser la personnalisation de modèle acoustique pour obtenir une meilleure reconnaissance vocale. Pour plus d'informations, voir [L'interface de personnalisation](/docs/services/speech-to-text?topic=speech-to-text-customization).

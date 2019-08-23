@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-15"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -40,7 +40,7 @@ Le cycle de demande et de réponse d'une reconnaissance est constitué des étap
 
 Lorsque le client envoie des données au service, il *doit* transmettre tous les paramètres JSON sous forme de messages texte et toutes les données audio sous forme de messages binaires.
 
-Les fragments d'exemples de code suivants sont écrits en JavaScript et s'appuient sur l'API WebSocket HTML5. Pour plus d'informations sur le protocole WebSocket, voir le document de l'Internet Engineering Task Force (IETF) [Request for Comment (RFC) 6455 ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](http://tools.ietf.org/html/rfc6455){: new_window}.
+Les fragments d'exemples de code suivants sont écrits en JavaScript et s'appuient sur l'API WebSocket HTML5. Pour plus d'informations sur le protocole WebSocket, voir le document de l'Internet Engineering Task Force (IETF) [Request for Comment (RFC) 6455](http://tools.ietf.org/html/rfc6455){: external}.
 {: note}
 
 ## Ouverture d'une connexion
@@ -82,12 +82,13 @@ Un client WebSocket appelle cette méthode avec les paramètres de requête suiv
       Vous transmettez avec l'appel un jeton d'accès IAM au lieu d'une clé
       d'API. Vous devez établir la connexion avant le délai d'expiration du
       jeton d'accès. Pour plus d'informations sur l'obtention d'un jeton d'accès, voir
-      [Authentification avec des jetons IAM](/docs/services/watson/getting-started-iam.html).<br/><br/>
+      [Authentification avec des jetons IAM](/docs/services/watson?topic=watson-iam).<br/><br/>
       Vous transmettez un jeton d'accès uniquement pour établir une connexion authentifiée.
       Une fois la connexion établie, vous pouvez la garder active indéfiniment.
       Vous restez authentifié tant que vous conservez la connexion ouverte.
       Vous n'avez pas besoin d'actualiser le jeton d'accès pour une connexion active
-      qui dure au-delà du délai d'expiration du jeton.
+      qui dure au-delà du délai d'expiration du jeton. Une connexion peut rester
+      active même après la suppression du jeton ou de sa clé d'API.
     </td>
   </tr>
   <tr>
@@ -103,12 +104,12 @@ Un client WebSocket appelle cette méthode avec les paramètres de requête suiv
       basés sur les données d'identification de service Cloud Foundry, qui utilisent un nom d'utilisateur (`username`)
       et un mot de passe (`password`) pour l'authentification de base HTTP. Pour savoir comment
       obtenir un jeton {{site.data.keyword.watson}}, voir
-      [Jetons {{site.data.keyword.watson}}](/docs/services/watson/getting-started-tokens.html).<br/><br/>
+      [Jetons {{site.data.keyword.watson}}](/docs/services/watson?topic=watson-gs-tokens-watson-tokens).<br/><br/>
       Vous transmettez un jeton {{site.data.keyword.watson}} uniquement pour établir
       une connexion authentifiée. Une fois la connexion établie, vous pouvez la
       garder active indéfiniment. Vous restez authentifié tant que vous conservez
       la connexion ouverte.
-      </td>
+    </td>
   </tr>
   <tr>
     <td style="text-align:left"><code>model</code>
@@ -119,7 +120,7 @@ Un client WebSocket appelle cette méthode avec les paramètres de requête suiv
       Si vous n'indiquez pas de modèle, le service utilise le
       modèle <code>en-US_BroadbandModel</code> par défaut. Pour plus
       d'informations, voir
-      [Langues et modèles](/docs/services/speech-to-text/models.html).
+      [Langues et modèles](/docs/services/speech-to-text?topic=speech-to-text-models).
     </td>
   </tr>
   <tr>
@@ -130,9 +131,11 @@ Un client WebSocket appelle cette méthode avec les paramètres de requête suiv
       Spécifie l'identificateur unique global (GUID) d'un modèle de
       langue personnalisé à utiliser pour toutes les demandes envoyées
       via la connexion. Le modèle de base du modèle de langue personnalisé
-      doit correspondre à la valeur du paramètre <code>model</code>. Par
+      doit correspondre à la valeur du paramètre <code>model</code>. Si vous
+      incluez un ID de personnalisation, vous devez faire la demande avec les données d'identification
+      de l'instance du service propriétaire du modèle personnalisé. Par
       défaut, aucun modèle de langue personnalisé n'est utilisé. Pour plus d'informations, voir
-      [L'interface de personnalisation](/docs/services/speech-to-text/custom.html).
+      [L'interface de personnalisation](/docs/services/speech-to-text?topic=speech-to-text-customization).
     </td>
   </tr>
   <tr>
@@ -143,9 +146,11 @@ Un client WebSocket appelle cette méthode avec les paramètres de requête suiv
       Spécifie l'identificateur unique global (GUID) d'un modèle
       acoustique personnalisé à utiliser pour toutes les demandes envoyées
       via la connexion. Le modèle de base du modèle acoustique personnalisé
-      doit correspondre à la valeur du paramètre <code>model</code>. Par
+      doit correspondre à la valeur du paramètre <code>model</code>. Si vous
+      incluez un ID de personnalisation, vous devez faire la demande avec les données d'identification
+      de l'instance du service propriétaire du modèle personnalisé. Par
       défaut, aucun modèle acoustique personnalisé n'est utilisé. Pour plus d'informations, voir
-      [L'interface de personnalisation](/docs/services/speech-to-text/custom.html).
+      [L'interface de personnalisation](/docs/services/speech-to-text?topic=speech-to-text-customization).
     </td>
   </tr>
   <tr>
@@ -158,7 +163,7 @@ Un client WebSocket appelle cette méthode avec les paramètres de requête suiv
       conçu pour être utilisé avec des modèles personnalisés mis à niveau pour un nouveau
       modèle de base. La valeur par défaut dépend de l'utilisation de ce paramètre avec ou sans
       modèle personnalisé. Pour plus d'informations, voir
-      [Version du modèle de base](/docs/services/speech-to-text/input.html#version).
+      [Version du modèle de base](/docs/services/speech-to-text?topic=speech-to-text-input#version).
     </td>
   </tr>
   <tr>
@@ -170,7 +175,7 @@ Un client WebSocket appelle cette méthode avec les paramètres de requête suiv
       via la connexion. Pour empêcher IBM d'accéder à vos données en vue
       d'apporter des améliorations générales au service, spécifiez la valeur <code>true</code> pour ce paramètre. Pour
       plus d'informations, voir
-      [Journalisation des demandes](/docs/services/speech-to-text/input.html#logging).
+      [Journalisation des demandes](/docs/services/speech-to-text?topic=speech-to-text-input#logging).
     </td>
   </tr>
   <tr>
@@ -185,7 +190,7 @@ Un client WebSocket appelle cette méthode avec les paramètres de requête suiv
       coder l'argument de ce paramètre en codage URL, par exemple,
       `customer_id%3dmy_customer_ID`. Par défaut, aucun ID client n'est associé
       aux données. Pour plus d'informations, voir
-      [Sécurité des informations](/docs/services/speech-to-text/information-security.html).
+      [Sécurité des informations](/docs/services/speech-to-text?topic=speech-to-text-information-security).
     </td>
   </tr>
 </table>
@@ -204,6 +209,8 @@ websocket.onmessage = function(evt) { onMessage(evt) };
 websocket.onerror = function(evt) { onError(evt) };
 ```
 {: codeblock}
+
+Le client peut ouvrir plusieurs connexions WebSocket simultanées au service. Le nombre de connexions simultanées est limité uniquement à la capacité du service, ce qui pose généralement des problèmes aux utilisateurs.
 
 ## Initiation d'une demande de reconnaissance
 {: #WSstart}
@@ -243,12 +250,12 @@ Pour initier une demande de reconnaissance, le client envoie un message texte JS
       Identifie le format (type MIME) des données audio pour la demande.
       Ce paramètre est obligatoire pour les formats `audio/alaw`, `audio/basic`,
       `audio/l16` et `audio/mulaw`. Pour plus d'informations, voir
-      [Formats audio](/docs/services/speech-to-text/audio-formats.html).
+      [Formats audio](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
     </td>
   </tr>
 </table>
 
-Le message peut également contenir des paramètres facultatifs pour indiquer d'autres aspects de traitement de la demande et les informations qui doivent être renvoyées. Pour plus d'informations sur les fonctions d'entrée et de sortie, voir [Récapitulatif des paramètres](/docs/services/speech-to-text/summary.html). Vous pouvez spécifier un modèle de langue, un modèle de langue personnalisé et un modèle acoustique personnalisé uniquement en tant que paramètres de requête de l'URL WebSocket.
+Le message peut également contenir des paramètres facultatifs pour indiquer d'autres aspects de traitement de la demande et les informations qui doivent être renvoyées. Pour plus d'informations sur les fonctions d'entrée et de sortie, voir [Récapitulatif des paramètres](/docs/services/speech-to-text?topic=speech-to-text-summary). Vous pouvez spécifier un modèle de langue, un modèle de langue personnalisé et un modèle acoustique personnalisé uniquement en tant que paramètres de requête de l'URL WebSocket.
 
 Le fragment de code JavaScript suivant envoie des paramètres d'initialisation pour la demande de reconnaissance via la connexion WebSocket. Les appels sont inclus dans la fonction `onOpen` du client pour garantir qu'ils sont envoyés uniquement une fois que la connexion est établie.
 
@@ -279,9 +286,9 @@ Si le client indique un paramètre de requête ou une zone JSON non valide pour 
 
 Après avoir envoyé le message `start` initial, le client peut commencer à envoyer des données audio au service. Il n'a pas besoin d'attendre que le service réponde au message `start` par le message `listening`. Le service renvoie les résultats de la transcription de manière asynchrone dans le même format que les résultats qu'il renvoie pour les interfaces HTTP.
 
-Le client doit envoyer les données audio sous forme de données binaires. Il peut envoyer jusqu'à 100 Mo de données audio maximum avec un seul énoncé (par demande `send`). Il doit envoyer au moins 100 octets de données audio pour toute demande. Le client peut envoyer plusieurs énoncés via une seule connexion WebSocket. Pour plus d'informations sur l'utilisation de la compression pour maximiser la quantité de données audio que vous pouvez transmettre au service avec une demande, voir [Formats audio](/docs/services/speech-to-text/audio-formats.html).
+Le client doit envoyer les données audio sous forme de données binaires. Il peut envoyer jusqu'à 100 Mo de données audio maximum avec un seul énoncé (par demande `send`). Il doit envoyer au moins 100 octets de données audio pour toute demande. Le client peut envoyer plusieurs énoncés via une seule connexion WebSocket. Pour plus d'informations sur l'utilisation de la compression pour maximiser la quantité de données audio que vous pouvez transmettre au service avec une demande, voir [Formats audio](/docs/services/speech-to-text?topic=speech-to-text-audio-formats).
 
-L'interface WebSocket impose une taille de trame maximale de 4 Mo. Le client peut définir cette taille maximale avec une valeur inférieure à 4 Mo. S'il n'est pas pratique de définir la taille de trame, le client peut définir la taille maximale des messages à moins de 4 Mo et envoyer les données audio sous forme de séquence de messages.
+L'interface WebSocket impose une taille de trame maximale de 4 Mo. Le client peut définir cette taille maximale avec une valeur inférieure à 4 Mo. S'il n'est pas pratique de définir la taille de trame, le client peut définir la taille maximale des messages à moins de 4 Mo et envoyer les données audio sous forme de séquence de messages. Pour plus d'informations sur les cadres WebSocket, voir [IETF RFC 6455](http://tools.ietf.org/html/rfc6455){: external}.
 
 Le fragment de code JavaScript suivant envoie des données au service sous forme de message binaire (blob) :
 
@@ -347,10 +354,14 @@ websocket.send(JSON.stringify(message));
 
 Le service met fin à la session et ferme la connexion en cas d'expiration du délai d'attente d'inactivité ou de session :
 
--   Une *expiration de délai d'attente d'inactivité* se produit si les données audio sont envoyées par le client mais que le service ne détecte pas de paroles. Ce délai est fixé à 30 secondes par défaut. Vous pouvez utiliser le paramètre `inactivity_timeout` pour spécifier une autre valeur, y compris `-1` pour définir une valeur illimitée à ce délai.
--   Une *expiration du délai d'attente de session* se produit si le service ne reçoit aucune donnée du client ou n'envoie aucun résultat intermédiaire pendant une durée de 30 secondes. Vous ne pouvez pas modifier la durée de ce délai d'attente mais vous pouvez étendre la session en envoyant au service des données audio, constituées uniquement de silence, avant l'expiration du délai. Vous devez également définir le paramètre `inactivity_timeout` avec la valeur `-1`. Vous êtes facturé pour toutes les données que vous envoyez au service, notamment le silence que vous envoyez pour étendre une session.
+-   Une *expiration de délai d'attente d'inactivité* se produit si les données audio sont envoyées par le client mais que le service ne détecte pas de paroles. Ce délai est fixé à 30 secondes par défaut. Vous pouvez utiliser le paramètre `inactivity_timeout` pour spécifier une autre valeur, y compris `-1` pour définir une valeur illimitée à ce délai. Pour plus d'informations, voir [Délai d'attente d'inactivité](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts-inactivity).
+-   Une *expiration du délai d'attente de session* se produit si le service ne reçoit aucune donnée du client ou n'envoie aucun résultat intermédiaire pendant une durée de 30 secondes. Vous ne pouvez pas modifier la durée de ce délai d'attente mais vous pouvez étendre la session en envoyant au service des données audio, constituées uniquement de silence, avant l'expiration du délai. Vous devez également définir le paramètre `inactivity_timeout` avec la valeur `-1`. Vous êtes facturé pour toutes les données que vous envoyez au service, notamment le silence que vous envoyez pour étendre une session. Pour plus d'informations, voir [Délai d'attente de session](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts-session).
 
-Pour plus d'informations, voir [Délais d'attente](/docs/services/speech-to-text/input.html#timeouts).
+Les clients et les serveurs WebSocket peuvent également échanger des *cadres de type ping-pong* pour éviter les délais de lecture en échangeant régulièrement de petites quantités de données. De nombreuses piles WebSocket échangent des cadres de type ping-pong, d'autres non. Pour déterminer si votre implémentation utilise des cadres de type ping-pong, consultez la liste de ses fonctionnalités. Vous ne pouvez pas déterminer ou gérer des cadres de type ping-pong à l'aide d'un programme.
+
+Si votre pile WebSocket n'implémente pas de cadres de type ping-pong et que vous envoyez des fichiers audio longs, votre connexion peut connaître un délai de lecture. Pour éviter ces problèmes de délai, diffusez en continu du contenu audio sur le service ou demandez des résultats intermédiaires au service. Quelle que soit l'approche choisie, vous pouvez vous assurer que le manque de cadres de type ping-pong ne provoque pas la fermeture de votre connexion.
+
+Pour plus d'informations sur les cadres de type ping-pong, voir la [Section 5.5.2 Ping](http://tools.ietf.org/html/rfc6455#section-5.5.2){: external} et la [Section 5.5.3 Pong](http://tools.ietf.org/html/rfc6455#section-5.5.3){: external} de l'IETF RFC 6455.
 
 ## Fermeture d'une connexion
 {: #WSclose}
@@ -375,7 +386,7 @@ Le service peut envoyer les codes de retour suivants au client via la connexion 
 -   `1009` indique que la taille de trame dépasse la limite de 4 Mo.
 -   `1011` indique que le service met fin à la connexion car il a rencontré une condition inattendue qui l'empêche de finaliser la demande.
 
-Si le socket ferme avec une erreur, le client reçoit un message d'information sous la forme `{"error":"{message}"}` avant la fermeture du socket. Pour plus d'informations sur les codes de retour WebSocket, voir le document [IETF RFC 6455 ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](http://tools.ietf.org/html/rfc6455){: new_window}.
+Si le socket ferme avec une erreur, le client reçoit un message d'information sous la forme `{"error":"{message}"}` avant la fermeture du socket. Pour plus d'informations sur les codes retour WebSocket, voir le document [IETF RFC 6455](http://tools.ietf.org/html/rfc6455){: external}.
 
 ## Exemple de session WebSocket
 {: #WSexample}

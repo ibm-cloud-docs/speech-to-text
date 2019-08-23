@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-07-03"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,14 +25,22 @@ subcollection: speech-to-text
 # Contexte scientifique du service
 {: #science}
 
-{{site.data.keyword.IBM}} est à l'origine des recherches et des systèmes de reconnaissance vocale et de génération audio dès le début des années 60. Avec le service {{site.data.keyword.speechtotextfull}}, IBM perpétue cette tradition. Les documents de recherche et les articles universitaires suivants traitent des bases techniques du service.
+Comme le décrit [Pioneering Speech Recognition](https://www.ibm.com/ibm/history/ibm100/us/en/icons/speechreco/){: external}, {{site.data.keyword.IBM}} est à la pointe de la recherche sur la reconnaissance vocale depuis le début des années 60. Par exemple, le document [Bahl, Jelinek et Mercer (1983)](/docs/services/speech-to-text?topic=speech-to-text-references#bahl1983) présente l'approche mathématique de base de la reconnaissance vocale employée dans la quasi-totalité des systèmes de reconnaissance vocal modernes. Et le document [Jelinek (1985)](/docs/services/speech-to-text?topic=speech-to-text-references#jelinek1985) décrit la création du premier système de reconnaissance vocale en temps réel à vocabulaire étendu pour la dictée. Il décrit également les problèmes qui constituent encore des thèmes de recherche à résoudre à l'heure actuelle.
 {: shortdesc}
 
-1.  Bahl, Lalit R., Frederick Jelinek et Robert L. Mercer. [*A Maximum Likelihood Approach to Continuous Speech Recognition.* ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=4767370&url=http%3A%2F%2Fieeexplore.ieee.org%2Fiel5%2F34%2F4767360%2F04767370.pdf%3Farnumber%3D4767370){: new_window} IEEE Transactions on Pattern Analysis and Machine Intelligence, Vol. 5(2) (mars 1983) : p. 179-190. Ce document présente l'approche mathématique de base de la reconnaissance vocale employée dans la quasi-totalité des systèmes de reconnaissance vocale modernes.
-1.  Hinton, Geoffrey, Li Deng, Dong Yu, George E. Dahl, Abdel-rahman Mohamed, Navdeep Jaitly, Andrew Senior, Vincent Vanhoucke, Patrick Nguyen, Tara N. Sainath et Brian Kingsbury. [*Deep Neural Networks for Acoustic Modeling in Speech Recognition: The shared views of four research groups.* ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6296526){: new_window} Signal Processing Magazine, IEEE, Vol. 29(6) (novembre 2012) : p. 82-97.
-1.  Jelinek, Frederick. [*The Development of an Experimental Discrete Dictation Recognizer.* ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=1457611&url=http%3A%2F%2Fieeexplore.ieee.org%2Fiel5%2F5%2F31355%2F01457611.pdf%3Farnumber%3D1457611){: new_window} Proceedings of the IEEE, Vol. 73(11) (novembre 1985) : p. 1616-1624. Ce document décrit la création du premier système de reconnaissance vocale en temps réel à vocabulaire étendu pour la dictée. Il décrit les problèmes qui constituent encore des thèmes de recherche à résoudre à l'heure actuelle.
-1.  Padmanabhan, Mukund et Michael Picheny. [*Large-Vocabulary Speech Recognition Algorithms.* ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=993770&url=http%3A%2F%2Fieeexplore.ieee.org%2Fiel5%2F2%2F21439%2F00993770.pdf%3Farnumber%3D993770){: new_window} Computer, Vol. 35(4) (2002) : p. 42-50.
-1.  Picheny, Michael, David Nahamoo, Vaibhava Goel, Brian Kingsbury, Bhuvana Ramabhadran, Steven J. Rennie et George Saon. [*Trends and Advances in Speech Recognition.* ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=6032775&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D6032775){: new_window} {{site.data.keyword.IBM_notm}} Journal of Research and Development, Vol. 55(5) (octobre 2011) : p. 2:1-2:18.
-1.  Saon, George, Hong-Kwang J. Kuo, Steven Rennie et Michael Picheny. [*The {{site.data.keyword.IBM_notm}} 2015 English Conversational Telephone Speech Recognition System.* ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://arxiv.org/pdf/1505.05899.pdf){: new_window} arXiv preprint, arXiv:1505.05899 (2015).
-1.  Saon, George, Tom Sercu, Steven Rennie et Hong-Kwang J. Kuo. [*The {{site.data.keyword.IBM_notm}} 2016 English Conversational Telephone Speech Recognition System.* ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](https://arxiv.org/pdf/1604.08242v1.pdf){: new_window} arXiv preprint, arXiv:1604.08242 (2016).
-1.  Soltau, Hagen, George Saon et Tara N. Sainath. [*Joint Training of Convolutional and Non-Convolutional Neural Networks.* ![Icône de lien externe](../../icons/launch-glyph.svg "Icône de lien externe")](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=6854669&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D6854669){: new_window} Actes de la conférence internationale 2014 IEEE International Conference on Acoustic, Speech and Signal Processing (ICASSP), Florence, Italie (mai 2014) : p. 5572-5576.
+{{site.data.keyword.IBM_notm}} poursuit cette riche tradition de recherche et de développement avec le service {{site.data.keyword.speechtotextfull}}. {{site.data.keyword.IBM_notm}} a démontré un record de précision de la reconnaissance vocale dans l'industrie sur les ensembles de données de référence publics pour la transcription des conversations téléphoniques ([Saon and others, 2017](/docs/services/speech-to-text?topic=speech-to-text-references#saon2017)) et des informations audiovisuelles ([Thomas and others, 2019](/docs/services/speech-to-text?topic=speech-to-text-references#thomas2019)). En plus de démontrer l'efficacité de la modélisation acoustique, {{site.data.keyword.IBM_notm}} a exploité des réseaux de neurones pour modéliser la langue ([Kurata and others, 2017a](/docs/services/speech-to-text?topic=speech-to-text-references#kurata2017a) et [Kurata and others, 2017b](/docs/services/speech-to-text?topic=speech-to-text-references#kurata2017a)).
+
+Les annonces suivantes résument les réalisations récentes d'{{site.data.keyword.IBM_notm}} en matière de reconnaissance vocale :
+
+-   [Atteinte de nouveaux records en matière de reconnaissance vocale](https://www.ibm.com/blogs/watson/2017/03/reaching-new-records-in-speech-recognition/){: external}
+-   [{{site.data.keyword.IBM_notm}} établit un record de l'industrie pour la reconnaissance vocale conversationnelle en développant des technologies d'apprentissage en profondeur](https://www-03.ibm.com/press/us/en/pressrelease/51790.wss){: external}
+-   [{{site.data.keyword.IBM_notm}} établit de nouvelles performances en matière de transcription pour le sous-titrage automatique du journal télévisé](https://www.ibm.com/blogs/research/2019/05/automatic-broadcast-news-captioning/){: external}
+
+Ces réalisations contribuent à faire progresser les services vocaux d'{{site.data.keyword.IBM_notm}}. Parmi les idées récentes qui correspondent le mieux au service cloud {{site.data.keyword.speechtotextshort}} :
+
+-   *Pour la modélisation de la langue, * {{site.data.keyword.IBM_notm}} exploite un modèle de langue basé sur un réseau de neurones pour générer un texte d'entraînement ([Suzuki and others, 2019](/docs/services/speech-to-text?topic=speech-to-text-references#suzuki2019)).
+-   *Pour la modélisation acoustique, * {{site.data.keyword.IBM_notm}} utilise un modèle assez compact pour s'adapter aux limitations de ressources du cloud. Pour entraîner ce modèle compact, {{site.data.keyword.IBM_notm}} utilise "l'entraînement enseignant-élève / la distillation des connaissances". Les réseaux de neurones les plus importants et puissants tels que LSTM (Long Short-Term Memory), VGG et ResNet (Residual Network) sont les premiers à être entraînés. La sortie de ces réseaux est ensuite utilisée comme signaux d'enseignement pour entraîner un modèle compact pour le déploiement réel ([Fukuda and others, 2017](/docs/services/speech-to-text?topic=speech-to-text-references#fukuda2017)).
+
+Pour repousser encore les limites, {{site.data.keyword.IBM_notm}} se concentre également sur la modélisation de bout en bout. Par exemple, un solide pipeline de modélisation a été mis en place pour les modèles acoustiques-mots directs ([Audhkhasi and others, 2017](/docs/services/speech-to-text?topic=speech-to-text-references#audhkhasi2017) et [Audhkhasi and others, 2018](/docs/services/speech-to-text?topic=speech-to-text-references#audhkhasi2018)) qui s'améliore encore ([Saon and others, 2019](/docs/services/speech-to-text?topic=speech-to-text-references#saon2019)). Des efforts sont également fait pour créer des modèles de bout en bout compacts pour un déploiement ultérieur sur le cloud ([Kurata and Audhkhasi, 2019](/docs/services/speech-to-text?topic=speech-to-text-references#kurata2019)).
+
+Pour plus d'informations sur la recherche scientifique à l'origine de ce service, voir les documents répertoriés dans [Références de recherche](/docs/services/speech-to-text?topic=speech-to-text-references).
