@@ -2,14 +2,14 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-10"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -50,7 +50,7 @@ subcollection: speech-to-text
 
 要使用转录或词列表，可首先创建包含此文本数据的定制语言模型。要使用定制语言模型来训练定制声学模型，这两种定制模型必须基于同一基本模型的相同版本。如果基本模型的新版本可用，那么必须将这两种模型升级到基本模型的相同版本，才能成功进行训练。
 
-使用 `POST /v1/acoustic_customizations/{customization_id}/train` 方法的可选 `custom_language_model_id` 查询参数通过定制语言模型来训练定制声学模型。使用 `customization_id` 参数和 `custom_language_model_id` 参数分别传递声学模型的 GUID 和定制语言模型的 GUID。这两种模型必须由随请求一起传递的服务凭证所拥有。
+使用 `POST /v1/acoustic_customizations/{customization_id}/train` 方法的可选 `custom_language_model_id` 查询参数通过定制语言模型来训练定制声学模型。使用 `customization_id` 参数和 `custom_language_model_id` 参数分别传递声学模型的 GUID 和定制语言模型的 GUID。这两种模型必须由随请求一起传递的凭证所拥有。
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -70,7 +70,7 @@ curl -X POST -u "apikey:{apikey}"
 
 如果定制语言模型包含语法，那么还可以在语音识别期间将定制语言模型以及其中一个语法用于定制声学模型。
 
-以下示例将这两种类型的模型传递到 HTTP `POST /v1/recognize` 方法。使用 `acoustic_customization_id` 参数和 `language_customization_id` 参数分别传递定制声学模型的 GUID 和定制语言模型的 GUID。这两种模型必须由随请求一起传递的服务凭证所拥有，并且必须基于同一基本模型（例如，`en-US_BroadbandModel`）。
+以下示例将这两种类型的模型传递到 HTTP `POST /v1/recognize` 方法。使用 `acoustic_customization_id` 参数和 `language_customization_id` 参数分别传递定制声学模型的 GUID 和定制语言模型的 GUID。这两种模型必须由随请求一起传递的凭证所拥有，并且必须基于同一基本模型（例如，`en-US_BroadbandModel`）。
 
 ```bash
 curl -X POST -u "apikey:{apikey}"

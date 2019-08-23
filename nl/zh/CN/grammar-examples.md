@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-06"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -118,7 +118,7 @@ VIN 格式的标准化程度很高，具有固定的字符数。对于这些类�
   </tr>
 </table>
 
-有关 VIN 格式的更多信息，请参阅维基百科中的 [Vehicle identification number ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/Vehicle_identification_number){: new_window}。
+有关 VIN 格式的更多信息，请参阅 [Vehicle identification number](https://wikipedia.org/wiki/Vehicle_identification_number){: external}。
 
 ## 具有可选元素的语法
 {: #optionalElements}
@@ -141,7 +141,7 @@ VIN 格式的标准化程度很高，具有固定的字符数。对于这些类�
   </tr>
 </table>
 
-有关语法中可选扩展的更多信息，请参阅 Speech Recognition Grammar Specification 中的 [Section 2.5 Repeats ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://www.w3.org/TR/speech-grammar/#S2.5){: new_window}。
+有关语法中可选扩展的更多信息，请参阅 Speech Recognition Grammar Specification 中的 [2.5 Repeats](https://www.w3.org/TR/speech-grammar/#S2.5){: external} 部分。
 
 ## 消歧语法
 {: #disambiguation}

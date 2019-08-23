@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-11"
+lastupdated: "2019-07-21"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -30,15 +30,15 @@ subcollection: speech-to-text
 
 1.  [创建定制语言模型](#createModel-language)。可以针对相同或不同的领域创建多个定制模型。对于创建的任何模型，此过程都是相同的。但是，在识别请求中一次只能指定一个定制模型。
 1.  [向定制语言模型添加语料库](#addCorpus)。语料库是一个纯文本文档，在上下文中使用某个领域的术语。服务通过从语料库中抽取其基本词汇表中不存在的术语，为定制模型构建词汇表。可以向一个定制模型添加多个语料库。
-1.  [向定制语言模型添加词](#addWords)。您还可以单独向模型添加定制词。此外，还可以使用相同的方法来修改从语料库中抽取的定制词。通过这些方法，可以指定词的读法以及词在语音抄本中的显示方式。
+1.  [向定制语言模型添加词](#addWords)。您还可以单独向模型添加定制词。此外，还可以使用相同的方法来修改从语料库中抽取的定制词。通过这些方法，可以指定词的读法以及词在语音文字记录中的显示方式。
 1.  [训练定制语言模型](#trainModel-language)。将词添加到定制模型后，必须基于这些词对该模型进行训练。通过训练，可准备定制模型以用于语音识别。在训练模型之前，模型不会使用新词或修改的词。
-1.  训练定制模型后，可以将其用于识别请求。如果传递用于转录的音频包含定制模型中定义的特定于领域的词，那么请求的结果会反映出模型的增强词汇表。有关更多信息，请参阅[使用定制语言模型](/docs/services/speech-to-text/language-use.html)。
+1.  训练定制模型后，可以将其用于识别请求。如果传递用于转录的音频包含定制模型中定义的特定于领域的词，那么请求的结果会反映出模型的增强词汇表。有关更多信息，请参阅[使用定制语言模型](/docs/services/speech-to-text?topic=speech-to-text-languageUse)。
 
 创建定制语言模型的步骤是迭代的。您可以根据需要，随时添加语料库，添加词，以及训练或重新训练模型。
 
-您还可以向定制语言模型添加语法。语法将服务的响应限制为仅语法识别到的那些词。有关更多信息，请参阅[将语法用于定制语言模型](/docs/services/speech-to-text/grammar.html)。
+您还可以向定制语言模型添加语法。语法将服务的响应限制为仅语法识别到的那些词。有关更多信息，请参阅[将语法用于定制语言模型](/docs/services/speech-to-text?topic=speech-to-text-grammars)。
 
-语言模型定制可用于大多数语言。有关更多信息，请参阅[支持定制的语言](/docs/services/speech-to-text/custom.html#languageSupport)。
+语言模型定制可用于大多数语言。有关更多信息，请参阅[支持定制的语言](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport)。
 {: note}
 
 ## 创建定制语言模型
@@ -54,39 +54,53 @@ subcollection: speech-to-text
     <th style="text-align:left">描述</th>
   </tr>
   <tr>
-    <td><code>name</code><br/><em>必需</em></td>
+    <td><code>name</code><br/><em>      必需
+    </em></td>
     <td style="text-align:center">字符串</td>
     <td>
       新定制模型的用户定义名称。请使用描述定制模型领域的名称，例如<code>医疗定制模型</code>或<code>法律定制模型</code>。使用的名称应在您拥有的所有定制语言模型中唯一。请使用与定制模型的语言相匹配的本地化名称。
     </td>
   </tr>
   <tr>
-    <td><code>base_model_name</code><br/><em>必需</em></td>
+    <td><code>base_model_name</code><br/><em>      必需
+    </em></td>
     <td style="text-align:center">字符串</td>
     <td>
       要由新定制模型定制的语言模型的名称。指定由 <code>GET /v1/models</code> 方法返回的其中一个支持的语言模型。新模型只能用于它所定制的基本模型。</td>
   </tr>
   <tr>
-    <td><code>dialect</code><br/><em>可选</em></td>
+    <td><code>dialect</code><br/><em>      可选
+    </em></td>
     <td style="text-align:center">字符串</td>
     <td>
-      指定语言中要用于定制模型的方言。缺省情况下，方言与基本模型的语言相匹配；例如，对于任一美国英语语言模型 <code>en-US_BroadbandModel</code> 或 <code>en-US_NarrowbandModel</code>，dialect 为 <code>en-US</code>。<br/></br>
-      此参数仅对西班牙语模型有意义，服务会为其创建适合所指示方言的语音的定制模型：<ul style="margin-left:20px; padding:0px;">
+      指定语言中要用于新定制模型的方言。对于大多数语言，缺省情况下，方言与基本模型的语言相匹配。例如，`en-US` 用于任一美国英语语言模型。<br><br>
+      对于西班牙语语言，服务会创建适合下列其中一种方言的语音的定制模型：
+      <ul style="margin-left:20px; padding:0px;">
         <li style="margin:10px 0px; line-height:120%;">
-          <code>es-ES</code>，用于卡斯蒂利亚西班牙语（缺省）
+          `es-ES`，用于卡斯蒂利亚西班牙语（`es-ES` 模型）
         </li>
         <li style="margin:10px 0px; line-height:120%;">
-          <code>es-LA</code>，用于拉丁美洲西班牙语
+          `es-LA`，用于拉丁美洲西班牙语（`es-AR`、`es-CL`、`es-CO` 和 `es-PE` 模型）
         </li>
         <li style="margin:10px 0px; line-height:120%;">
-          <code>es-US</code>，用于北美（墨西哥）西班牙语
+          `es-US` 用于墨西哥（北美）西班牙语（`es-MX` 模型）
         </li>
       </ul>
-      如果指定方言，该方言必须对基本模型有效。
+      此参数仅对西班牙语模型有意义，您始终可以安全地省略此参数，以使服务创建正确的映射。
+        <ul style="margin-left:20px; padding:0px;">
+        <li style="margin:10px 0px; line-height:120%;">
+          如果对非西班牙语语言模型指定 `dialect` 参数，那么其值必须与基本模型的语言相匹配。
+        </li>
+        <li style="margin:10px 0px; line-height:120%;">
+          如果为西班牙语语言模型指定 `dialect` ，那么其值必须与所示的其中一个已定义映射（`es-ES`、`es-LA` 或 `es-MX`）相匹配。
+        </li>
+      </ul>
+      所有 dialect 值都不区分大小写。
     </td>
   </tr>
   <tr>
-    <td><code>description</code><br/><em>可选</em></td>
+    <td><code>description</code><br/><em>      可选
+    </em></td>
     <td style="text-align:center">字符串</td>
     <td>
       新模型的描述。请使用与定制模型的语言相匹配的本地化描述。
@@ -106,7 +120,7 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-示例返回了新模型的定制标识。每个定制模型都通过唯一的定制标识进行标识，这是全局唯一标识 (GUID)。使用与模型关联的调用的 `customization_id` 参数可指定定制模型的 GUID。
+该示例将返回新模型的定制标识。每个定制模型都通过唯一的定制标识进行标识，这是全局唯一标识 (GUID)。使用与模型关联的调用的 `customization_id` 参数可指定定制模型的 GUID。
 
 ```javascript
 {
@@ -115,7 +129,7 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-拥有新定制模型的服务实例是其凭证用于创建该模型的实例。有关更多信息，请参阅[定制模型的所有权](/docs/services/speech-to-text/custom.html#customOwner)。
+拥有新定制模型的服务实例是其凭证用于创建该模型的实例。有关更多信息，请参阅[定制模型的所有权](/docs/services/speech-to-text?topic=speech-to-text-customization#customOwner)。
 
 ## 向定制语言模型添加语料库
 {: #addCorpus}
@@ -124,8 +138,8 @@ curl -X POST -u "apikey:{apikey}"
 
 语料库是一个纯文本文件，理想情况下包含您领域中的样本句子。服务会解析语料库文件的内容，并抽取其基本词汇表中不包含的任何词。此类词称为未登录 (OOV) 词。
 
--   有关使用语料库的更多信息，请参阅[使用语料库](/docs/services/speech-to-text/language-resource.html#workingCorpora)。
--   有关服务如何向模型添加语料库的更多信息，请参阅[添加语料库文件时的处理过程](/docs/services/speech-to-text/language-resource.html#parseCorpus)。
+-   有关使用语料库的更多信息，请参阅[使用语料库](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#workingCorpora)。
+-   有关服务如何向模型添加语料库的更多信息，请参阅[添加语料库文件时的处理过程](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#parseCorpus)。
 
 通过提供包含新词的句子，语料库允许服务在上下文中学习词。然后，可以单独扩充或修改模型的词。相对于基于从语料库添加的词来训练模型，仅基于单个词对模型进行训练会耗时更长，并且可能会生成有效性更低的结果。
 {: tip}
@@ -135,12 +149,13 @@ curl -X POST -u "apikey:{apikey}"
 -   使用 `customization_id` 路径参数指定定制模型的定制标识。
 -   使用 `corpus_name` 路径参数指定语料库的名称。请使用与定制模型的语言相匹配并反映语料库内容的本地化名称。
     -   名称中最多可包含 128 个字符。
-    -   不要在名称中包含空格、`/`（斜杠）或 `\`（反斜杠）。
-    -   不要使用已添加到定制模型的语料库的名称。
+    -   不要使用需要进行 URL 编码的字符。例如，不要在名称中使用空格、斜杠、反斜杠、冒号、& 符号、双引号、加号、等号和问号等。（服务不会阻止使用这些字符。但是，由于这些字符在使用的任何位置都必须进行 URL 编码，因此强烈建议不要使用。）
+    -   不要使用已添加到定制模型的语料库或语法的名称。
     -   不要使用名称 `user`，此名称由服务保留用于表示用户添加或修改的定制词。
+    -   不要使用名称 `base_lm` 或 `default_lm`。这两个名称都保留供服务未来使用。
 -   将语料库文本文件作为请求主体传递。
 
-最多可以从所有源中添加 9 万个 OOV 词，总共可添加 1000 万个词。这包括语料库和语法中的词，以及您直接添加的词。有关更多信息，请参阅[我需要多少数据？](/docs/services/speech-to-text/language-resource.html#wordsResourceAmount)
+最多可以从所有源中添加 9 万个 OOV 词，总共可添加 1000 万个词。这包括语料库和语法中的词，以及您直接添加的词。有关更多信息，请参阅[我需要多少数据？](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#wordsResourceAmount)
 {: note}
 
 以下示例将语料库文本文件 `healthcare.txt` 添加到具有指定标识的定制模型。示例将语料库命名为 `healthcare`。
@@ -156,7 +171,7 @@ curl -X POST -u "apikey:{apikey}"
 
 这是异步方法。可能需要大约一两分钟时间才能完成。操作的持续时间取决于语料库中的总词数、服务在语料库中找到的新词数以及服务上的当前负载。有关检查语料库的状态的更多信息，请参阅[监视添加语料库请求](#monitorCorpus)。
 
-通过对每个语料库文本文件调用此方法一次，可以将任意数量的语料库添加到定制模型。一个语料库的添加操作必须完全完成后，才能添加其他语料库。向定制模型添加语料库后，请检查新的定制词以确定是否有拼写错误和其他错误。有关更多信息，请参阅[验证词资源](/docs/services/speech-to-text/language-resource.html#validateModel)。
+通过对每个语料库文本文件调用此方法一次，可以将任意数量的语料库添加到定制模型。一个语料库的添加操作必须完全完成后，才能添加其他语料库。向定制模型添加语料库后，请检查新的定制词以确定是否有拼写错误和其他错误。有关更多信息，请参阅[验证词资源](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel)。
 
 ### 监视添加语料库请求
 {: #monitorCorpus}
@@ -189,7 +204,7 @@ curl -X GET -u "apikey:{apikey}"
 -   `being_processed` 指示服务仍在分析语料库。
 -   `undetermined` 指示服务在处理语料库时遇到错误。
 
-使用循环每 10 秒检查一次语料库的状态，直到它变为 `analyzed`。有关检查模型的语料库状态的更多信息，请参阅[列出定制语言模型的语料库](/docs/services/speech-to-text/language-corpora.html#listCorpora)。
+使用循环每 10 秒检查一次语料库的状态，直到它变为 `analyzed`。有关检查模型的语料库状态的更多信息，请参阅[列出定制语言模型的语料库](/docs/services/speech-to-text?topic=speech-to-text-manageCorpora#listCorpora)。
 
 ## 向定制语言模型添加词
 {: #addWords}
@@ -198,8 +213,8 @@ curl -X GET -u "apikey:{apikey}"
 
 如果您只有一个或几个词要添加到模型中，使用语料库来添加词可能并不实用，甚至并不可行。最简单的方法是添加仅包含其拼写的词。但是，您也可以为词提供多种读法，并指示词的显示方式。
 
--   有关直接添加词的更多信息，请参阅[使用定制词](/docs/services/speech-to-text/language-resource.html#workingWords)。
--   有关服务如何向模型添加定制词的更多信息，请参阅[添加或修改定制词时的处理过程](/docs/services/speech-to-text/language-resource.html#parseWord)。
+-   有关直接添加词的更多信息，请参阅[使用定制词](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#workingWords)。
+-   有关服务如何向模型添加定制词的更多信息，请参阅[添加或修改定制词时的处理过程](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#parseWord)。
 
 可以使用以下方法向定制模型添加词：
 
@@ -250,7 +265,7 @@ curl -X GET -u "apikey:{apikey}"
 
     这是同步方法。服务会返回响应代码，以立即报告请求是成功还是失败。
 
-与添加语料库一样，添加词后，请检查新的定制词以确定是否有拼写错误和其他错误。一次添加多个词时，此检查特别重要。有关更多信息，请参阅[验证词资源](/docs/services/speech-to-text/language-resource.html#validateModel)。
+与添加语料库一样，添加词后，请检查新的定制词以确定是否有拼写错误和其他错误。一次添加多个词时，此检查特别重要。有关更多信息，请参阅[验证词资源](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel)。
 
 ### 监视添加词请求
 {: #monitorWords}
@@ -269,6 +284,7 @@ curl -X GET -u "apikey:{apikey}"
 {
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
   "created": "2016-06-01T18:42:25.324Z",
+  "updated": "2016-06-01T18:45:11.737Z",
   "language": "en-US",
   "dialect": "en-US",
   "owner": "297cfd08-330a-22ba-93ce-1a73f454dd98",
@@ -303,16 +319,17 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-可以使用可选的 `word_type_to_add` 查询参数来指定训练定制模型所要基于的词：
-
--   指定 `all` 或省略此参数将基于模型的所有词（不管其来源是什么）来训练模型。
--   指定 `user` 将仅基于用户添加或修改的词来训练模型，而忽略仅从语料库或语法中抽取的词。
-
-    如果添加的语料库具有噪声数据（例如，包含拼写错误的词），那么此选项非常有用。在基于此类数据训练模型之前，可以使用 `GET /v1/customizations/{customization_id}/words` 方法的 `word_type` 查询参数来复查从语料库和语法中抽取的词。有关更多信息，请参阅[列出定制语言模型中的词](/docs/services/speech-to-text/language-words.html#listWords)。
-
-此外，还可以使用可选的 `customization_weight` 查询参数。将定制模型用于语音识别时，此参数指定给予定制模型中词相对于基本词汇表中词的权重。您还可以在使用定制模型的任何识别请求中指定定制权重。有关更多信息，请参阅[使用定制权重](/docs/services/speech-to-text/language-use.html#weight)。
-
 这是异步方法。根据训练模型所基于的新词数和服务上的当前负载，训练可能大约需要几分钟才能完成。有关检查训练操作的状态的更多信息，请参阅[监视训练模型请求](#monitorTraining-language)。
+
+此方法包含以下可选的查询参数：
+
+-   `word_type_to_add` 参数指定训练定制模型所要基于的词：
+    -   指定 `all` 或省略此参数将基于模型的所有词（不管其来源是什么）来训练模型。
+    -   指定 `user` 将仅基于用户添加或修改的词来训练模型，而忽略仅从语料库或语法中抽取的词。
+
+如果添加的语料库具有噪声数据（例如，包含拼写错误的词），那么此选项非常有用。在基于此类数据训练模型之前，可以使用 `GET /v1/customizations/{customization_id}/words` 方法的 `word_type` 查询参数来复查从语料库和语法中抽取的词。有关更多信息，请参阅[列出定制语言模型中的词](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords)。
+-   `customization_weight` 参数指定在将定制模型用于语音识别时，给予定制模型中词相对于基本词汇表中词的权重。您还可以在使用定制模型的任何识别请求中指定定制权重。有关更多信息，请参阅[使用定制权重](/docs/services/speech-to-text?topic=speech-to-text-languageUse#weight)。
+-   `strict` 参数指示在定制模型包含有效和无效资源的组合（语料库、语法和词）时，训练是否继续进行。缺省情况下，如果模型包含一个或多个无效资源，训练会失败。将此参数设置为 `false`，以允许只要模型包含至少一个有效资源，就继续进行训练。服务会从训练中排除无效的资源。有关更多信息，请参阅[训练失败](#failedTraining-language)。
 
 ### 监视训练模型请求
 {: #monitorTraining-language}
@@ -331,6 +348,7 @@ curl -X GET -u "apikey:{apikey}"
 {
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
   "created": "2016-06-01T18:42:25.324Z",
+  "updated": "2016-06-01T18:45:11.737Z",
   "language": "en-US",
   "dialect": "en-US",
   "owner": "297cfd08-330a-22ba-93ce-1a73f454dd98",
@@ -345,30 +363,40 @@ curl -X GET -u "apikey:{apikey}"
 
 响应包含用于报告定制模型状态的 `status` 和 `progress` 字段。`progress` 字段的含义取决于模型的状态。`status` 字段可以具有下列其中一个值：
 
--   `pending` 指示模型已创建，但正在等待添加训练数据或等待服务完成对已添加数据的分析。`progress` 字段为 `0`。
--   `ready` 指示模型已准备好进行训练。`progress` 字段为 `0`。
+-   `pending` 指示模型已创建，但正在等待添加有效训练数据或等待服务完成对已添加的数据的分析。`progress` 字段为 `0`。
+-   `ready` 指示模型包含有效数据，已准备好进行训练。`progress` 字段为 `0`。
+
+    如果模型包含有效和无效资源的组合（例如，有效和无效的定制词），那么除非您将 `strict` 查询参数设置为 `false`，否则模型训练会失败。有关更多信息，请参阅[训练失败](#failedTraining-language)。
 -   `training` 指示正在训练模型。训练完成时，`progress` 字段会从 `0` 更改为 `100`。<!-- The `progress` field indicates the progress of the training as a percentage complete. -->
 -   `available` 指示模型已训练并已准备好供使用。`progress` 字段为 `100`。
 -   `upgrading` 指示正在升级模型。`progress` 字段为 `0`。
--   `failed` 指示模型训练失败。`progress` 字段为 `0`。
+-   `failed` 指示模型训练失败。`progress` 字段为 `0`。有关更多信息，请参阅[训练失败](#failedTraining-language)。
 
-使用循环每 10 秒检查一次状态，直到它变为 `available`。有关检查定制模型的状态的更多信息，请参阅[列出定制语言模型](/docs/services/speech-to-text/language-models.html#listModels-language)。
+使用循环每 10 秒检查一次状态，直到它变为 `available`。有关检查定制模型的状态的更多信息，请参阅[列出定制语言模型](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language)。
 
 ### 训练失败
 {: #failedTraining-language}
 
-如果服务正在处理定制语言模型的其他请求，那么训练无法启动。例如，服务正在执行以下操作时，训练请求无法启动：
+如果服务正在处理定制语言模型的其他请求，那么训练无法启动。例如，服务正在执行以下操作时，训练请求无法启动，状态码为 409：
 
 -   处理语料库或语法以生成 OOV 词的列表
 -   处理定制词以验证或自动生成发音相似的读法
 -   处理其他训练请求
 
-训练还可能由于以下原因而无法启动：
+如果定制模型存在以下情况，训练也无法启动，状态码为 400：
 
--   自定制模型创建或上次训练以来，未向其添加过任何训练数据（语料库、语法或词）。
--   添加到定制模型的一个或多个词具有无效的发音相似的读法，必须进行修正。
+-   自定制模型创建或上次训练以来，未包含任何新的有效训练数据（语料库、语法或词）
+-   包含一个或多个无效的语料库、语法或词（例如，定制词具有无效的发音相似的读法）
 
-如果定制模型的训练状态为 `failed`，请使用定制接口的方法来检查模型的词，并修正发现的任何错误。有关更多信息，请参阅[验证词资源](/docs/services/speech-to-text/language-resource.html#validateModel)。
+如果训练请求失败且状态码为 400，那么服务会将定制模型的状态设置为 `failed`。请执行下列其中一项操作：
+
+-   使用定制接口的方法来检查模型的资源，并修正发现的任何错误：
+    -   对于无效的语料库，可以更正语料库文本文件，然后使用 `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` 方法的 `allow_overwrite` 参数将更正后的文件添加到模型。有关更多信息，请参阅[向定制语言模型添加语料库](#addCorpus)。
+    -   对于无效的语法，可以更正语法文件，然后使用 `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` 方法的 `allow_overwrite` 参数将更正后的文件添加到模型。有关更多信息，请参阅[向定制语言模型添加语法](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar)。
+    -   对于无效的定制词，可以使用 `POST /v1/customizations/{customization_id}/words` 或 `PUT /v1/customizations/{customization_id}/words/{word_name}` 方法直接在模型的词资源中修改该词。有关更多信息，请参阅[修改定制模型中的词](#modifyWord)。
+
+    有关验证定制语言模型中词的更多信息，请参阅[验证词资源](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel)。
+-   将 `POST /v1/customizations/{customization_id}/train` 方法的 `strict` 参数设置为 `false`，以从训练中排除无效的资源。模型必须包含至少一个有效资源（语料库、语法或词），才能成功进行训练。`strict` 参数对于训练包含有效和无效资源组合的定制模型非常有用。
 
 ## 示例脚本
 {: #exampleScripts}
@@ -401,8 +429,8 @@ curl -X GET -u "apikey:{apikey}"
     ```
     {: pre}
 
-    有关该库的更多信息，请参阅 [pypi.python.org/pypi/requests ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://pypi.python.org/pypi/requests){: new_window}。
-1.  编辑脚本，将 `password` 字符串 `iam_apikey` 替换为 {{site.data.keyword.speechtotextshort}} 服务凭证中的 API 密钥：
+    有关该库的更多信息，请参阅 [pypi.python.org/pypi/requests](https://pypi.python.org/pypi/requests){: external}。
+1.  编辑脚本，将 `password` 字符串 `iam_apikey` 替换为 {{site.data.keyword.speechtotextshort}} 凭证中的 API 密钥：
 
     ```
     password = "iam_apikey"
@@ -426,8 +454,8 @@ curl -X GET -u "apikey:{apikey}"
 
 1.  下载名为 <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.sh" download="testSTTcustom.sh">testSTTcustom.sh <img src="../../icons/launch-glyph.svg" alt="外部链接图标" title="外部链接图标"></a> 的 shell 脚本。
 1.  下载要用于脚本的示例语料库文本文件。您可以自由使用任一语料库文本文件进行测试，也可以使用您自己选择的文件进行测试。缺省情况下，所有语料库文本文件都必须位于脚本所在的目录中。
-1.  脚本使用 `curl` 命令向服务发出 HTTP 请求。如果尚未下载 `curl`，那么可以通过 [curl.haxx.se ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](http://curl.haxx.se){: new_window} 安装适用于您操作系统的版本。安装支持安全套接字层 (SSL) 协议的版本，并确保在 `PATH` 环境变量中包含已安装的二进制文件。
-1.  编辑脚本，将 `PASSWORD` 字符串 `iam_apikey` 替换为 {{site.data.keyword.speechtotextshort}} 服务凭证中的 API 密钥：
+1.  脚本使用 `curl` 命令向服务发出 HTTP 请求。如果尚未下载 `curl`，那么可以从 [curl.haxx.se](http://curl.haxx.se){: external} 安装适用于您操作系统的版本。安装支持安全套接字层 (SSL) 协议的版本，并确保在 `PATH` 环境变量中包含已安装的二进制文件。
+1.  编辑脚本，将 `PASSWORD` 字符串 `iam_apikey` 替换为 {{site.data.keyword.speechtotextshort}} 凭证中的 API 密钥：
 
     ```
     PASSWORD="iam_apikey"

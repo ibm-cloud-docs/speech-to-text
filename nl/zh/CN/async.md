@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -28,12 +28,12 @@ subcollection: speech-to-text
 {{site.data.keyword.speechtotextfull}} 服务的异步 HTTP 接口提供了多个方法，用于通过对服务的非阻塞调用来转录音频。该接口使用用户指定的私钥字符串和数字签名，为通过 HTTP 协议发出的请求提供安全级别。要使用异步接口，可以执行以下操作：
 {: shortdesc}
 
--   注册回调 URL，以自动收到服务关于作业状态和结果的通知。
+-   注册回调 URL 用于自动接收服务发送的作业状态和结果通知。
 -   轮询服务以手动获取作业状态和结果。
 
 这两种方法并不是互斥的。您可以选择接收回调通知，但仍轮询服务以获取最新状态，或者访问服务以手动检索结果。以下各部分描述了如何将异步 HTTP 接口与任一方法配合使用。
 
-一个请求中提交的音频数据最大为 1 GB，最小为 100 字节。有关音频格式的信息以及有关使用压缩来最大化可以通过请求发送的音频量的信息，请参阅[音频格式](/docs/services/speech-to-text/audio-formats.html)。有关该接口的各个方法的更多信息，请参阅 [API 参考 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://{DomainName}/apidocs/speech-to-text){: new_window}。
+一个请求中提交的音频数据最大为 1 GB，最小为 100 字节。有关音频格式的信息以及有关使用压缩来最大化可以通过请求发送的音频量的信息，请参阅[音频格式](/docs/services/speech-to-text?topic=speech-to-text-audio-formats)。有关该接口的各个方法的更多信息，请参阅 [API 参考](https://{DomainName}/apidocs/speech-to-text){: external}。
 
 ## 使用情况模型
 {: #usage}
@@ -42,7 +42,7 @@ subcollection: speech-to-text
 
 -   使用回调通知：
     1.  调用 `POST /v1/register_callback` 方法向服务注册回调 URL。可以提供可选的用户指定私钥字符串，以便为发送到 URL 的回调启用认证和数据完整性。
-    1.  调用 `POST /v1/recognitions` 方法，其中包含服务在作业状态更改时会向其发送通知的已注册回调 URL。指定要通知的事件的列表。缺省情况下，服务会在作业启动时、作业完成时以及发生错误时发送通知。还可以要求在完成通知中提供请求的结果。否则，需要使用 `GET /v1/recognitions/{id}` 方法来检索结果。
+    1.  调用含已注册回调 URL 的 `POST /v1/recognitions` 方法，在作业状态更改时服务会向该 URL 发送通知。指定要通知的事件的列表。缺省情况下，服务会在作业启动时、作业完成时以及发生错误时发送通知。还可以要求在完成通知中提供请求的结果。否则，需要使用 `GET /v1/recognitions/{id}` 方法来检索结果。
 -   轮询服务：
     1.  调用不包含回调 URL、事件或用户令牌的 `POST /v1/recognitions` 方法。
     1.  定期调用 `GET /v1/recognitions` 方法来检查最新作业的状态，或定期调用 `GET /v1/recognitions/{id}` 方法来检查特定作业的状态。
@@ -83,7 +83,7 @@ subcollection: speech-to-text
     ```
     {: codeblock}
 
-1.  服务检查质询字符串是否在对其 `GET` 请求的响应的主体中返回。如果是，服务会将该回调 URL 列入白名单，并使用状态码 201 响应原始 `POST` 请求。响应主体包含一个 JSON 对象，其中 `status` 字段的值为 `created`，`url` 字段为该回调 URL 的值。
+1.  服务会检查在对其 `GET` 请求的响应主体中是否返回了质询字符串。如果是，服务会将该回调 URL 列入白名单，并使用状态码 201 响应原始 `POST` 请求。响应主体包含一个 JSON 对象，其中 `status` 字段的值为 `created`，`url` 字段为该回调 URL 的值。
 
     ```
     response code: 201 Created
@@ -128,9 +128,9 @@ HTTPS, however, is not ideal in terms of additional development overhead. Moreov
     -   `user_token`，用于指定要包含在作业的每个通知中的字符串。由于可以将同一回调 URL 用于无限数量的作业，因此可以利用用户令牌来区分不同作业的通知。
 -   *要使用轮询*，请省略 `callback_url`、`events` 和 `user_token` 查询参数。然后，必须使用 `GET /v1/recognitions` 或 `GET /v1/recognitions/{id}` 方法来检查作业的状态，使用后一种方法可在作业完成时检索结果。
 
-对于这两种方法，都可以包含 `results_ttl` 查询参数，用于指定在作业完成后结果将保持可用的时间（以分钟为单位）。
+对于这两种情况，都可以包含 `results_ttl` 查询参数，用于指定在作业完成后结果保持可用的时间长度（以分钟为单位）。拥有新作业的服务实例是其凭证用于创建该作业的实例。
 
-除了先前特定于异步接口的参数外，`POST /v1/recognitions` 方法支持的大部分参数与 WebSocket 和同步 HTTP 接口的相同。有关更多信息，请参阅[参数摘要](/docs/services/speech-to-text/summary.html)。
+除了先前特定于异步接口的参数外，`POST /v1/recognitions` 方法支持的大部分参数与 WebSocket 和同步 HTTP 接口的相同。有关更多信息，请参阅[参数摘要](/docs/services/speech-to-text?topic=speech-to-text-summary)。
 
 ### 回调通知
 {: #notifications}
@@ -219,7 +219,7 @@ curl -X POST -u "apikey:{apikey}"
 -   提交作业时使用了回调 URL，但未指定 `recognitions.completed_with_results` 事件。
 -   作业不属于 100 个最新的未完成作业。省略 `id` 路径参数时，仅返回 100 个最新作业。
 
-但是，您仍可以使用此方法来检索指定了回调 URL 和 `recognitions.completed_with_results` 事件的作业的结果。可以根据需要多次检索任何作业的结果，只要这些结果仍然可用。作业及其结果会保持可用，直到您使用 `DELETE /v1/recognitions/{id}` 方法将其删除，或者作业的生存时间到期，两者以最先发生的时间为准。缺省情况下，除非使用 `POST /v1/recognitions` 方法的 `results_ttl` 参数不指定了不同的生存时间，否则结果会在一周后到期。
+但是，您仍可以使用此方法来检索指定了回调 URL 和 `recognitions.completed_with_results` 事件的作业的结果。可以根据需要多次检索任何作业的结果，只要这些结果仍然可用。作业及其结果会保持可用，直到您使用 `DELETE /v1/recognitions/{id}` 方法将其删除，或者作业的生存时间到期，两者以最先发生的时间为准。缺省情况下，除非使用 `POST /v1/recognitions` 方法的 `results_ttl` 参数指定了不同的生存时间，否则结果会在一周后到期。
 
 ### 没有结果的状态示例
 {: #withoutResults}
@@ -283,7 +283,7 @@ curl -X GET -u "apikey:{apikey}"
                   6.33
                 ]
               ],
-              "confidence": 0.89
+              "confidence": 0.96
             }
           ]
         }
@@ -300,7 +300,7 @@ curl -X GET -u "apikey:{apikey}"
 ## 检查最新作业的状态
 {: #jobs}
 
-调用 `GET /v1/recognitions` 方法来检查最新作业的状态。此方法返回与用于调用它的服务凭证关联的最近 100 个未完成作业的状态。此方法返回每个作业的标识和状态以及作业创建时间和更新时间。如果创建作业时使用了回调 URL 和用户令牌，那么此方法还会返回作业的用户令牌。
+调用 `GET /v1/recognitions` 方法来检查最新作业的状态。此方法返回与用于调用它的凭证关联的最近 100 个未完成作业的状态。此方法返回每个作业的标识和状态以及作业创建时间和更新时间。如果创建作业时使用了回调 URL 和用户令牌，那么此方法还会返回作业的用户令牌。
 
 响应包含下列其中一种状态：
 
@@ -314,7 +314,7 @@ curl -X GET -u "apikey:{apikey}"
 ### 示例
 {: #statusExample}
 
-以下示例请求与调用者的服务凭证关联的最新当前作业的状态。用户有三个未完成作业，分别处于不同的状态。第一个作业创建时使用了回调 URL 和用户令牌。
+以下示例请求与调用者凭证关联的最新当前作业的状态。用户有三个未完成作业，分别处于不同的状态。第一个作业创建时使用了回调 URL 和用户令牌。
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
@@ -354,7 +354,7 @@ curl -X GET -u "apikey:{apikey}"
 
 可以使用 `DELETE /v1/recognitions/{id}` 方法来删除使用 `id` 路径参数指定的作业。通常，在从服务获取作业的结果后，会删除该作业。删除作业后，其结果将不再可用。无法删除服务正在积极处理的作业。
 
-缺省情况下，服务会保留每个作业的结果，直到作业的生存时间到期。缺省生存时间为一周，但您可以使用 `POST /v1/recognitions` 方法的 `results_ttl` 参数来指定服务保留结果的时间（以分钟为单位）。
+缺省情况下，服务会保留每个作业的结果，直到作业的生存时间到期。缺省生存时间为一周，但您可以使用 `POST /v1/recognitions` 方法的 `results_ttl` 参数来指定服务保留结果的时间长度（以分钟为单位）。
 
 ### 示例
 {: #deleteExample-async}

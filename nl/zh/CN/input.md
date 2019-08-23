@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,30 +25,30 @@ subcollection: speech-to-text
 # 输入功能
 {: #input}
 
-{{site.data.keyword.speechtotextshort}} 服务提供了以下功能来指定服务将如何执行语音识别请求。以下各部分中描述的所有输入参数都是可选的。只有输入音频是必需的。
+{{site.data.keyword.speechtotextfull}} 服务提供了以下功能来指定服务将如何执行语音识别请求。以下各部分中描述的所有输入参数都是可选的。只有输入音频是必需的。
 {: shortdesc}
 
--   有关每个服务接口的简单语音识别请求的示例，请参阅[发出识别请求](/docs/services/speech-to-text/basic-request.html)。
--   有关所有可用语音识别参数的列表（按字母顺序排列），包括其状态（一般可用或 Beta）和支持的语言，请参阅[参数摘要](/docs/services/speech-to-text/summary.html)。
+-   有关每个服务接口的简单语音识别请求的示例，请参阅[发出识别请求](/docs/services/speech-to-text?topic=speech-to-text-basic-request)。
+-   有关所有可用语音识别参数的列表（按字母顺序排列），包括其状态（一般可用或 Beta）和支持的语言，请参阅[参数摘要](/docs/services/speech-to-text?topic=speech-to-text-summary)。
 
 ## 定制模型
 {: #custom-input}
 
-语言模型和声学模型定制针对不同的语言提供不同的支持级别（一般可用或 Beta）。有关更多信息，请参阅[支持定制的语言](/docs/services/speech-to-text/custom.html#languageSupport)。
+语言模型和声学模型定制针对不同的语言提供不同的支持级别（一般可用或 Beta）。有关更多信息，请参阅[支持定制的语言](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport)。
 {: note}
 
 所有接口都接受定制模型用于识别请求：
 
 -   *定制语言模型*使用特定领域中的术语来扩展服务的基本词汇表。使用 `language_customization_id` 参数可在请求中包含定制语言模型。此外，还可以指定可选的 `customization_weight` 参数。此参数指示给予定制模型中的词相对于基本词汇表中的词的权重。
 
-    有关更多信息，请参阅[使用定制语言模型](/docs/services/speech-to-text/language-use.html)。
+    有关更多信息，请参阅[使用定制语言模型](/docs/services/speech-to-text?topic=speech-to-text-languageUse)。
 -   *定制声学模型*可调整服务的基本声学模型，以适应环境和说话者的声学特征。使用 `acoustic_customization_id` 参数可在请求中包含定制声学模型。可以在请求中同时指定定制语言模型和定制声学模型。
 
-    有关更多信息，请参阅[使用定制声学模型](/docs/services/speech-to-text/acoustic-use.html)。
+    有关更多信息，请参阅[使用定制声学模型](/docs/services/speech-to-text?topic=speech-to-text-acousticUse)。
 
-定制模型基于[语言和模型](/docs/services/speech-to-text/models.html)中描述的其中一种语言模型。定制模型只能用于创建该模型所针对的基本模型。如果定制模型基于除 `en-US_BroadbandModel`（缺省值）以外的模型，那么还必须在请求中指定该模型的名称。要使用定制模型，必须使用为拥有该定制模型的服务实例所创建的服务凭证来发出请求。
+定制模型基于[语言和模型](/docs/services/speech-to-text?topic=speech-to-text-models)中描述的其中一种语言模型。为某个基本模型创建的定制模型只能用于该基本模型。如果定制模型基于除 `en-US_BroadbandModel`（缺省值）以外的模型，那么还必须在请求中指定该模型的名称。要使用定制模型，必须使用拥有该定制模型的服务实例的凭证来发出请求。
 
-有关定制的简介，请参阅[定制接口](/docs/services/speech-to-text/custom.html)。
+有关定制的简介，请参阅[定制接口](/docs/services/speech-to-text?topic=speech-to-text-customization)。
 
 ### 定制模型示例
 {: #customExample}
@@ -75,8 +75,8 @@ curl -X POST -u "apikey:{apikey}"
 
 有关将定制模型用于每个服务接口的示例，请参阅：
 
--   [使用定制语言模型](/docs/services/speech-to-text/language-use.html)
--   [使用定制声学模型](/docs/services/speech-to-text/acoustic-use.html)
+-   [使用定制语言模型](/docs/services/speech-to-text?topic=speech-to-text-languageUse)
+-   [使用定制声学模型](/docs/services/speech-to-text?topic=speech-to-text-acousticUse)
 
 ## 语法
 {: #grammars-input}
@@ -90,10 +90,11 @@ curl -X POST -u "apikey:{apikey}"
 
 所有接口都接受以下参数用于识别请求：
 
--   `language_customization_id` 参数用于标识为其定义了语法的定制语言模型。您必须使用拥有该模型的服务实例的服务凭证来发出请求。
+-   `language_customization_id` 参数用于标识为其定义了语法的定制语言模型。您必须使用拥有该模型的服务实例的凭证来发出请求。
+
 -   `grammar_name` 参数用于指定要使用的语法。一个请求只能指定一个语法。
 
-有关更多信息，请参阅[将语法用于定制语言模型](/docs/services/speech-to-text/grammar.html)。
+有关更多信息，请参阅[将语法用于定制语言模型](/docs/services/speech-to-text?topic=speech-to-text-grammars)。
 
 ### 语法示例
 {: #grammarsExample}
@@ -108,12 +109,12 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-有关将语法用于每个服务接口的示例，请参阅[将语法用于语音识别](/docs/services/speech-to-text/grammar-use.html)。
+有关将语法用于每个服务接口的示例，请参阅[将语法用于语音识别](/docs/services/speech-to-text?topic=speech-to-text-grammarUse)。
 
 ## 基本模型版本
 {: #version}
 
-为了提高语音识别的质量，服务会不定期更新[语言和模型](/docs/services/speech-to-text/models.html)中描述的基本语言模型。各个语言的基本模型相互独立，并且一种语言的宽带和窄带模型也同样相互独立。因此，对基本模型的更新是相互独立执行的，对其他模型没有影响。
+为了提高语音识别的质量，服务会不定期更新[语言和模型](/docs/services/speech-to-text?topic=speech-to-text-models)中描述的基本语言模型。各个语言的基本模型相互独立，并且一种语言的宽带和窄带模型也同样相互独立。因此，对基本模型的更新是相互独立执行的，对其他模型没有影响。
 
 一个基本模型存在多个版本时，可选的 `base_model_version` 参数可指定要用于识别请求的模型版本。此参数主要用于已针对新基本模型更新的定制模型，但也可以在没有定制模型的情况下使用。用于请求的基本模型版本取决于是否传递了 `base_model_version` 参数。它还取决于是否在请求中指定了定制模型（语言和/或声学）。
 
@@ -129,8 +130,8 @@ curl -X POST -u "apikey:{apikey}"
 
 此参数旨在与定制模型配合使用。因此，要了解基本模型的可用版本，只能通过列出基于该基本模型的定制模型的相关信息来实现。
 
--   有关升级定制模型的更多信息，请参阅[升级定制模型](/docs/services/speech-to-text/custom-upgrade.html)。
--   有关使用不同版本的基本模型和定制模型进行语音识别的更多信息，请参阅[使用升级的定制模型发出识别请求](/docs/services/speech-to-text/custom-upgrade.html#upgradeRecognition)。
+-   有关升级定制模型的更多信息，请参阅[升级定制模型](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade)。
+-   有关使用不同版本的基本模型和定制模型进行语音识别的更多信息，请参阅[使用升级的定制模型发出识别请求](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade#upgradeRecognition)。
 
 ## 音频传输
 {: #transmission}
@@ -143,10 +144,10 @@ curl -X POST -u "apikey:{apikey}"
 -   *流式传输* - 将 `Transfer-Encoding` 请求头设置为 `chunked` 值，并通过持久连接流式传输数据。在将数据流式传输到服务之前，这些数据无需完整存在。您可以在数据可用时对其进行流式传输。服务仅当收到最后一个块（通过发送空块来指示）时，才会发送结果。
 
     有关使用 `Transfer-Encoding` 头流式传输分块音频的更多信息，请参阅：
-    -   [en.wikipedia.org/wiki/Chunked_transfer_encoding ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/Chunked_transfer_encoding){: new_window}
-    -   *IETF RFC 7320 HTTP/1.1: Message Syntax and Routing* 中的 [Transfer Codings ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://tools.ietf.org/html/rfc7230#section-4){: new_window}
+    -   [Chunked transfer encoding](https://wikipedia.org/wiki/Chunked_transfer_encoding){: external}
+    -   *IETF RFC 7320 HTTP/1.1: Message Syntax and Routing* 中的 [Transfer Codings](https://tools.ietf.org/html/rfc7230#section-4){: external}
 
-使用 HTTP 接口时，服务始终会转录整个音频流后，才会发送任何结果。结果可能包含多个 `transcript` 元素，指示由停顿分隔的各个短语。连接 `transcript` 元素可组合出完整的抄本。
+使用 HTTP 接口时，服务始终会转录整个音频流后，才会发送任何结果。结果可能包含多个 `transcript` 元素，指示由停顿分隔的各个短语。连接 `transcript` 元素可组合出完整的文字记录。
 
 服务会对流式会话强制实施超时。如果服务检测到长时间静默，或者在 30 秒时间段内没有收到音频，那么服务会终止流式会话。有关超时以及如何避免超时的更多信息，请参阅[超时](#timeouts)。
 
@@ -220,9 +221,9 @@ curl -X POST -u "apikey:{apikey}"
 
 缺省情况下，{{site.data.keyword.IBM_notm}} 会记录对 {{site.data.keyword.watson}} 服务的所有请求及其结果。日志记录仅用于针对未来用户改进服务。记录的数据不会共享或公开。
 
-如果您对保护用户个人信息的隐私有担忧，或者不希望 IBM 记录您的请求，那么可以选择不让 IBM 记录数据（选择性停用）。您可以选择在帐户级别或 API 请求级别选择性停用日志记录。有关更多信息，请参阅[控制 {{site.data.keyword.watson}} 服务的请求日志记录](/docs/services/watson/getting-started-logging.html)。
+如果您对保护用户个人信息的隐私有担忧，或者不希望 IBM 记录您的请求，那么可以选择不让 IBM 记录数据（选择性停用）。您可以选择在帐户级别或 API 请求级别选择性停用日志记录。有关更多信息，请参阅[控制 {{site.data.keyword.watson}} 服务的请求日志记录](/docs/services/watson?topic=watson-gs-logging-overview)。
 
 ## 信息安全
 {: #security-input}
 
-信息安全包括用于将客户标识与通过请求传递到服务的数据相关联的功能。通过在请求中传递 `X-Watson-Metadata` 头，可将客户标识与数据相关联。如果需要，随后可以使用 `DELETE /v1/user_data` 方法来删除数据。有关更多信息，请参阅[信息安全](/docs/services/speech-to-text/information-security.html)。
+信息安全包括用于将客户标识与通过请求传递到服务的数据相关联的功能。通过在请求中传递 `X-Watson-Metadata` 头，可将客户标识与数据相关联。如果需要，随后可以使用 `DELETE /v1/user_data` 方法来删除数据。有关更多信息，请参阅[信息安全](/docs/services/speech-to-text?topic=speech-to-text-information-security)。

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-19"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -57,41 +57,41 @@ subcollection: speech-to-text
 #### 备份定制语言模型
 {: #disaster-recovery-language-backup}
 
-保留有关定制语言模型的以下信息：
+保留以下有关定制语言模型的信息：
 
 -   所有定制语言模型及其定义的列表。要列出有关定制模型的信息，请使用以下方法：
     -   使用 `GET /v1/customizations` 方法来列出有关所有定制模型的信息。
     -   使用 `GET /v1/customizations/{customization_id}` 方法来列出有关指定定制模型的信息。
 
-    有关更多信息，请参阅[列出定制语言模型](/docs/services/speech-to-text/language-models.html#listModels-language)。
+    有关更多信息，请参阅[列出定制语言模型](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language)。
 -   添加到定制语言模型的所有语料库文本文件的副本。要列出有关定制模型的语料库的信息，请使用以下方法：
     -   使用 `GET /v1/customizations/{customization_id}/corpora` 方法来列出定制模型的所有语料库。
     -   使用 `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` 方法来列出有关定制模型的指定语料库的信息。
 
-    有关更多信息，请参阅[列出定制语言模型的语料库](/docs/services/speech-to-text/language-corpora.html#listCorpora)。
+    有关更多信息，请参阅[列出定制语言模型的语料库](/docs/services/speech-to-text?topic=speech-to-text-manageCorpora#listCorpora)。
 -   添加到定制语言模型的所有语法文件的副本。要列出有关定制模型的语法的信息，请使用以下方法：
     -   使用 `GET /v1/customizations/{customization_id}/grammars` 方法来列出有关定制模型的所有语法的信息。
     -   使用 `GET /v1/customizations/{customization_id}/grammars/{grammar_name}` 方法来列出有关定制模型的指定语法的信息。
 
-    有关更多信息，请参阅[列出定制语言模型的语法](/docs/services/speech-to-text/grammar-manage.html#listGrammars)。
+有关更多信息，请参阅[列出定制语言模型的语法](/docs/services/speech-to-text?topic=speech-to-text-manageGrammars#listGrammars)。
 -   有关您直接添加到定制语言模型的所有定制词的信息，包括这些词发音相似的读法和显示方式定义。要列出有关定制模型的未登录 (OOV) 词的信息，请使用以下方法：
     -   使用 `GET /v1/customizations/{customization_id}/words` 方法来列出有关定制模型中词的信息。可以使用 `word_type` 参数来列出模型中的所有词 (`all`)、用户直接添加的词 (`user`)、从语料库中抽取的词 (`corpora`) 或通过语法识别到的词 (`grammars`)。
     -   使用 `GET /v1/customizations/{customization_id}/words/{word_name}` 方法来列出有关定制模型中指定词的信息。
 
-    有关更多信息，请参阅[列出定制语言模型中的词](/docs/services/speech-to-text/language-words.html#listWords)。
+    有关更多信息，请参阅[列出定制语言模型中的词](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords)。
 
 保留这些信息时，最好采用发生故障时可用于重新创建定制语言模型的格式。通过主动保留有关定制模型及其数据的信息，并提前准备好以下部分中列出的调用，您可以尽快恢复。
 
 #### 复原定制语言模型
 {: #disaster-recovery-language-restore}
 
-如果需要从灾难进行恢复，可以使用备份信息来重新创建定制语言模型及其数据：
+如果需要从灾难中恢复，可以使用备份信息来重新创建定制语言模型及其数据：
 
-1.  要重新创建定制语言模型，请使用 `POST /v1/customizations` 方法。有关更多信息，请参阅[创建定制语言模型](/docs/services/speech-to-text/language-create.html#createModel-language)。
-1.  要向定制模型添加语料库文本文件，请使用 `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` 方法。有关更多信息，请参阅[向定制语言模型添加语料库](/docs/services/speech-to-text/language-create.html#addCorpus)。
-1.  要向定制模型添加语法文件，请使用 `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` 方法。有关更多信息，请参阅[向定制语言模型添加语法](/docs/services/speech-to-text/grammar-add.html#addGrammar)。
-1.  要向定制模型添加多个词，请使用 `POST /v1/customizations/{customization_id}/words` 方法。要向定制模型添加单个词，请使用 `PUT /v1/customizations/{customization_id}/words/{word_name}` 方法。有关更多信息，请参阅[向定制语言模型添加词](/docs/services/speech-to-text/language-create.html#addWords)。
-1.  要在复原语料库、语法和定制词后对定制模型进行训练，请使用 `POST /v1/customizations/{customization_id}/train` 方法。有关更多信息，请参阅[训练定制语言模型](/docs/services/speech-to-text/language-create.html#trainModel-language)。
+1.  要重新创建定制语言模型，请使用 `POST /v1/customizations` 方法。有关更多信息，请参阅[创建定制语言模型](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language)。
+1.  要向定制模型添加语料库文本文件，请使用 `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` 方法。有关更多信息，请参阅[向定制语言模型添加语料库](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus)。
+1.  要向定制模型添加语法文件，请使用 `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` 方法。有关更多信息，请参阅[向定制语言模型添加语法](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar)。
+1.  要向定制模型添加多个词，请使用 `POST /v1/customizations/{customization_id}/words` 方法。要向定制模型添加单个词，请使用 `PUT /v1/customizations/{customization_id}/words/{word_name}` 方法。有关更多信息，请参阅[向定制语言模型添加词](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addWords)。
+1.  要在复原语料库、语法和定制词后对定制模型进行训练，请使用 `POST /v1/customizations/{customization_id}/train` 方法。有关更多信息，请参阅[训练定制语言模型](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language)。
 
 用于添加语料库、语法和词的方法以及训练定制语言模型的方法是异步执行的。您需要监视这些请求，直到它们完成。
 
@@ -105,29 +105,29 @@ subcollection: speech-to-text
 #### 备份定制声学模型
 {: #disaster-recovery-acoustic-backup}
 
-保留有关定制声学模型的以下信息：
+保留以下有关定制声学模型的信息：
 
 -   所有定制声学模型及其定义的列表。要列出有关定制模型的信息，请使用以下方法：
     -   使用 `GET /v1/acoustic_customizations` 方法来列出有关所有定制模型的信息。
     -   使用 `GET /v1/acoustic_customizations/{customization_id}` 方法来列出有关指定定制模型的信息。
 
-    有关更多信息，请参阅[列出定制声学模型](/docs/services/speech-to-text/acoustic-models.html#listModels-acoustic)。
+    有关更多信息，请参阅[列出定制声学模型](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic)。
 -   添加到定制声学模型的所有音频资源（各个音频文件和归档文件）的副本。要列出有关定制模型的音频资源的信息，请使用以下方法：
     -   使用 `GET /v1/acoustic_customizations/{customization_id}/audio` 方法来列出有关定制模型的所有音频资源的信息。
     -   使用 `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` 方法来列出有关定制模型的指定音频资源的信息。
 
-    有关更多信息，请参阅[列出定制声学模型的音频资源](/docs/services/speech-to-text/acoustic-audio.html#listAudio)。
+    有关更多信息，请参阅[列出定制声学模型的音频资源](/docs/services/speech-to-text?topic=speech-to-text-manageAudio#listAudio)。
 
 保留这些信息时，最好采用发生故障时可用于重新创建定制声学模型的格式。通过主动保留有关定制模型及其音频资源的信息，并提前准备好以下部分中列出的调用，您可以尽快恢复。
 
 #### 复原定制声学模型
 {: #disaster-recovery-acoustic-restore}
 
-如果需要从灾难进行恢复，可以使用备份信息来重新创建定制声学模型及其数据：
+如果需要从灾难中恢复，可以使用备份信息来重新创建定制声学模型及其数据：
 
-1.  要重新创建定制声学模型，请使用 `POST /v1/acoustic_customizations` 方法。有关更多信息，请参阅[创建定制声学模型](/docs/services/speech-to-text/acoustic-create.html#createModel-acoustic)。
-1.  要向定制模型添加音频资源，请使用 `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` 方法。有关更多信息，请参阅[向定制声学模型添加音频](/docs/services/speech-to-text/acoustic-create.html#addAudio)。
-1.  要在复原音频资源后对定制模型进行训练，请使用 `POST /v1/acoustic_customizations/{customization_id}/train` 方法。有关更多信息，请参阅[训练定制声学模型](/docs/services/speech-to-text/acoustic-create.html#trainModel-acoustic)。
+1.  要重新创建定制声学模型，请使用 `POST /v1/acoustic_customizations` 方法。有关更多信息，请参阅[创建定制声学模型](/docs/services/speech-to-text?topic=speech-to-text-acoustic#createModel-acoustic)。
+1.  要向定制模型添加音频资源，请使用 `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` 方法。有关更多信息，请参阅[向定制声学模型添加音频](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio)。
+1.  要在复原音频资源后对定制模型进行训练，请使用 `POST /v1/acoustic_customizations/{customization_id}/train` 方法。有关更多信息，请参阅[训练定制声学模型](/docs/services/speech-to-text?topic=speech-to-text-acoustic#trainModel-acoustic)。
 
 用于添加音频资源的方法以及训练定制声学模型的方法是异步执行的。您需要监视这些请求，直到它们完成。
 
@@ -141,4 +141,4 @@ subcollection: speech-to-text
 -   列入白名单以用于异步接口的所有回调 URL。如果发生故障，您可能需要使用 `POST /v1/register_callback` 方法来重新注册这些 URL。如果 URL 已列入白名单，那么此方法会返回相应的响应。
 -   提交给异步接口进行语音识别的音频文件的副本。如果在接收或检索完成的异步作业的结果之前发生故障，那么在复原服务时，需要使用 `POST /v1/recognitions` 方法重新提交音频文件。已具有完成的异步作业的结果后，就不再需要保留音频文件。
 
-有关更多信息，请参阅[异步 HTTP 接口](/docs/services/speech-to-text/async.html)。与定制模型的备份数据一样，您可以主动保留这些信息，并提前准备好重新发出必要的请求。
+有关更多信息，请参阅[异步 HTTP 接口](/docs/services/speech-to-text?topic=speech-to-text-async)。与定制模型的备份数据一样，您可以主动保留这些信息，并提前准备好重新发出必要的请求。

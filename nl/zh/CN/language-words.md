@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,10 +25,10 @@ subcollection: speech-to-text
 # 管理定制词
 {: #manageWords}
 
-定制接口包含 `POST /v1/customizations/{customization_id}/words` 和 `PUT /v1/customizations/{customization_id}/words/{word_name}` 方法，用于添加或修改定制模型的词。有关更多信息，请参阅[向定制语言模型添加词](/docs/services/speech-to-text/language-create.html#addWords)。该接口还包含以下方法，用于列出和删除定制语言模型的词。
+定制接口包含 `POST /v1/customizations/{customization_id}/words` 和 `PUT /v1/customizations/{customization_id}/words/{word_name}` 方法，用于添加或修改定制模型的词。有关更多信息，请参阅[向定制语言模型添加词](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addWords)。该接口还包含以下方法，用于列出和删除定制语言模型的词。
 {: shortdesc}
 
-您很可能会通过语料库来添加大多数定制词。请确保您知道在语料库的文本文件中使用的字符编码。服务会保留在文本文件中找到的编码。在定制语言模型中使用各个词时，必须使用该编码。使用 `GET`、`PUT` 或 `DELETE /v1/customizations/{customization_id}/words/{word_name}` 方法来指定词时，必须对在 URL 中传递的 `word_name` 进行 URL 编码（如果词包含非 ASCII 字符）。有关更多信息，请参阅[字符编码](/docs/services/speech-to-text/language-resource.html#charEncoding)。
+您很可能会通过语料库来添加大多数定制词。请确保您知道在语料库的文本文件中使用的字符编码。服务会保留在文本文件中找到的编码。在定制语言模型中使用各个词时，必须使用该编码。使用 `GET`、`PUT` 或 `DELETE /v1/customizations/{customization_id}/words/{word_name}` 方法来指定词时，必须对在 URL 中传递的 `word_name` 进行 URL 编码（如果词包含非 ASCII 字符）。有关更多信息，请参阅[字符编码](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#charEncoding)。
 {: important}
 
 ## 列出定制语言模型中的词
@@ -48,13 +48,13 @@ subcollection: speech-to-text
 
 除了用于标识词的 `word` 字段外，这两种方法都会返回有关每个词的以下信息：
 
--   `sounds_like` 字段，用于提供词的读法数组。如果没有为词提供 sounds_like 值，那么此数组会包含服务自动生成的发音相似的读法。有关更多信息，请参阅[使用 sounds_like 字段](/docs/services/speech-to-text/language-resource.html#soundsLike)。
+-   `sounds_like` 字段，用于提供词的读法数组。如果没有为词提供 sounds_like 值，那么此数组会包含服务自动生成的发音相似的读法。有关更多信息，请参阅[使用 sounds_like 字段](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#soundsLike)。
 
--   `display_as` 字段，用于显示服务在转录中显示的定制词的拼写。如果没有为词提供 display_as 值，那么此字段包含空字符串，在这种情况下，词会显示为其拼写形式。有关更多信息，请参阅[使用 display_as 字段](/docs/services/speech-to-text/language-resource.html#displayAs)。
+-   `display_as` 字段，用于显示服务在转录中显示的定制词的拼写。如果没有为词提供 display_as 值，那么此字段包含空字符串，在这种情况下，词会显示为其拼写形式。有关更多信息，请参阅[使用 display_as 字段](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#displayAs)。
 -   `source` 字段，用于指示将词添加到定制模型的词资源的方式。此字段包含服务从中抽取词的每个语料库和语法的名称。如果是直接修改或添加的词，那么此字段包含字符串 `user`。
 -   `count` 字段，用于指示在所有语料库和语法中找到该词的次数。例如，如果该词在一个语料库中出现了 5 次，在另一个语料库中出现了 7 次，那么其计数为 `12`。
 
-    如果先将某个定制词添加到模型，然后该词由任何语料库或语法添加，那么计数会从 `1` 开始。如果该词先从语料库或语法添加，并在以后进行修改，那么计数仅反映在语料库和语法中找到该词的次数。
+    如果某个定制词在由任何语料库或语法添加之前已添加到模型，那么计数会从 `1` 开始。如果该词先从语料库或语法添加，并在以后进行修改，那么计数仅反映在语料库和语法中找到该词的次数。
 
     对于在引入 `count` 字段之前创建的定制模型，此字段始终保持为 `0`。要针对此类模型更新此字段，请重新添加模型的语料库和语法，并在请求中包含 `allow_overwrite` 参数。
     {: note}
