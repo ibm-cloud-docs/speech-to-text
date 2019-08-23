@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-15"
+lastupdated: "2019-06-06"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # 音频格式
 {: #audio-formats}
 
-{{site.data.keyword.speechtotextfull}} 服务可从多种不同格式的音频中抽取语音。
+{{site.data.keyword.speechtotextfull}} 服务可从多种格式的音频中抽取语音。
 
 -   如果您不熟悉音频，也不了解如何描述和指定音频，请首先参阅[音频特征和术语](#terminology)以帮助您入门。
 -   如果您已了解如何使用音频，请跳转至[支持的音频格式](#formats)，以获取有关服务支持的格式的详细信息。
@@ -61,8 +61,8 @@ subcollection: speech-to-text
 #### 更多信息
 {: #samplingRateMore}
 
--   有关采样率的更多信息，请参阅 [en.wikipedia.org/wiki/Sampling ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/Sampling){: new_window}。选择*采样（信号处理）*。
--   有关服务为每种受支持语言提供的模型的更多信息，请参阅[语言和模型](/docs/services/speech-to-text/models.html)。
+-   有关采样率的更多信息，请参阅[采样（信号处理）](https://wikipedia.org/wiki/Sampling_%28signal_processing%29){: external}。
+-   有关服务为每种受支持语言提供的模型的更多信息，请参阅[语言和模型](/docs/services/speech-to-text?topic=speech-to-text-models)。
 
 ### 比特率
 {: #bitRate}
@@ -74,8 +74,8 @@ subcollection: speech-to-text
 #### 更多信息
 {: #bitRateMore}
 
--   有关比特率的更多信息，请参阅 [en.wikipedia.org/wiki/Bit_rate ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/Bit_rate){: new_window}。
--   有关采样率和比特率的一般讨论，请参阅 [What are bit rates? ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](http://www.richardfarrar.com/what-are-bit-rates/){: new_window} 和 [Choosing bit rates for podcasts ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](http://www.richardfarrar.com/choosing-bit-rates-for-podcasts/){: new_window}。
+-   有关比特率的更多信息，请参阅 [Bit rate](https://wikipedia.org/wiki/Bit_rate){: external}。
+-   有关采样率和比特率的一般讨论，请参阅 [What are bit rates?](http://www.richardfarrar.com/what-are-bit-rates/){: external} 和 [Choosing bit rates for podcasts](http://www.richardfarrar.com/choosing-bit-rates-for-podcasts/){: external}。
 
 ### 压缩
 {: #compression}
@@ -96,7 +96,7 @@ subcollection: speech-to-text
 #### 更多信息
 {: #compressionMore}
 
--   有关音频压缩的更多信息，请参阅 [en.wikipedia.org/wiki/Data_compression#Audio ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/Data_compression#Audio){: new_window}。
+-   有关音频压缩的更多信息，请参阅 [Data compression (Audio)](https://wikipedia.org/wiki/Data_compression#Audio){: external}。
 -   有关使用数据压缩来增加可以通过请求发送的音频量的更多信息，请参阅[数据限制和压缩](#limits)。
 
 ### 声道
@@ -118,7 +118,7 @@ subcollection: speech-to-text
 #### 更多信息
 {: #channelsMore}
 
--   有关音频声道的更多信息，请参阅 [en.wikipedia.org/wiki/Audio_signal ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/Audio_signal){: new_window}。
+-   有关音频声道的更多信息，请参阅 [Audio signal](https://wikipedia.org/wiki/Audio_signal){: external}。
 
 ### 字节序
 {: #endianness}
@@ -138,7 +138,7 @@ subcollection: speech-to-text
 #### 更多信息
 {: #endiannessMore}
 
--   有关字节序的更多信息，请参阅 [en.wikipedia.org/wiki/Endianness ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/Endianness){: new_window}。
+-   有关字节序的更多信息，请参阅 [Endianness](https://wikipedia.org/wiki/Endianness){: external}。
 
 ### 音频频率
 {: #frequency}
@@ -159,7 +159,7 @@ subcollection: speech-to-text
 
 以窄带频率原始采样的音频中的信息限制在 0 到 4 千赫兹范围内。通过对窄带音频执行升采样来提高其采样率，不太可能提高语音识别准确性。如果对窄带音频执行升采样，那么该音频会缺少宽带模型预期的范围内的信息。此外，在窄带样本的预期范围内找到的信息与在宽带样本中同一范围内找到的信息有质的不同。因此，升采样实际上会导致识别准确性下降。
 
-对于 16 千赫兹的宽带采样率，被采样音频信号中的最大频率应该为 8 千赫兹。因此，在以 16 千赫兹的采样率对原始信号采样之前，必须按 8 千赫兹对该信号进行过滤。否则，由于称为*重叠*的现象，会发生质量下降。要了解原因，请参阅 [Nyquist frequency ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/Nyquist_frequency){: new_window}。
+对于 16 千赫兹的宽带采样率，被采样音频信号中的最大频率应该为 8 千赫兹。因此，在以 16 千赫兹的采样率对原始信号采样之前，必须按 8 千赫兹对该信号进行过滤。否则，由于称为*重叠*的现象，会发生质量下降。要了解原因，请参阅 [Nyquist frequency](https://wikipedia.org/wiki/Nyquist_frequency){: external}。
 
 打个比方来说，假设在大型平板屏幕 HDTV 上查看 VHS 磁带。您会看到图像模糊不清，这是因为在高清设备上播放磁带无法将新信息真正添加到流中。它只是为了使格式能与更好的设备兼容。对音频执行升采样也是同样的道理。
 
@@ -173,9 +173,9 @@ subcollection: speech-to-text
 #### 更多信息
 {: #frequencyMore}
 
--   有关音频频率的更多信息，请参阅 [https://en.wikipedia.org/wiki/Audio_frequency ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/Audio_frequency){: new_window}。
--   有关升采样的更多信息，请参阅 [https://en.wikipedia.org/wiki/Upsampling ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/Upsampling){: new_window}。
--   有关降采样的更多信息，请参阅 [https://en.wikipedia.org/wiki/Downsampling ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/Downsampling_%28signal_processing%29){: new_window}。
+-   有关音频频率的更多信息，请参阅 [Audio frequency](https://wikipedia.org/wiki/Audio_frequency){: external}。
+-   有关上采样的更多信息，请参阅 [Upsampling](https://wikipedia.org/wiki/Upsampling){: external}。
+-   有关下采样的更多信息，请参阅 [Downsampling](https://wikipedia.org/wiki/Downsampling_%28signal_processing%29){: external}。
 
 ## 支持的音频格式
 {: #formats}
@@ -198,10 +198,12 @@ subcollection: speech-to-text
       内容类型<br/>规范
     </th>
     <th style="text-align:center; vertical-align:bottom">
-      必需<br/>参数
+      必需
+    <br/>参数
     </th>
     <th style="text-align:center; vertical-align:bottom">
-      可选<br/>参数
+      可选
+    <br/>参数
     </th>
   </tr>
   <tr>
@@ -262,7 +264,7 @@ subcollection: speech-to-text
   </tr>
   <tr>
     <td style="text-align:left">
-      [audio/l16](#l16)<br/>无
+      [audio/l16](#l16)<br/>      无
     </td>
     <td style="text-align:center">
       必需
@@ -378,24 +380,24 @@ subcollection: speech-to-text
   </tr>
 </table>
 
-有关更多信息，请参阅 [en.wikipedia.org/wiki/A-law_algorithm ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/A-law_algorithm){: new_window}。
+有关更多信息，请参阅 [A-law algorithm](https://wikipedia.org/wiki/A-law_algorithm){: external}。
 
 ### audio/basic 格式
 {: #basic}
 
 *基本音频* (`audio/basic`) 是一种单声道有损音频格式，使用采样率为 8 千赫兹的 8 位 u-law（或 mu-law）数据进行编码。此格式提供了用于指示音频媒体类型的最基础格式。服务仅支持将 `audio/basic` 格式的文件用于窄带模型。
 
-有关更多信息，请参阅因特网工程任务组织 (IETF) 的 [Request for Comments (RFC) 2046 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://tools.ietf.org/html/rfc2046){: new_window} 和 [iana.org/assignments/media-types/audio/basic ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](http://www.iana.org/assignments/media-types/audio/basic){: new_window}。
+有关更多信息，请参阅因特网工程任务组织 (IETF) 的 [Request for Comments (RFC) 2046](https://tools.ietf.org/html/rfc2046){: external} 和 [iana.org/assignments/media-types/audio/basic](http://www.iana.org/assignments/media-types/audio/basic){: external}。
 
 ### audio/flac 格式
 {: #flac}
 
-*自由无损音频编码解码器 (FLAC)* (`audio/flac`) 是一种无损音频格式。有关更多信息，请参阅 [en.wikipedia.org/wiki/FLAC ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/FLAC){: new_window}。
+*自由无损音频编码解码器 (FLAC)* (`audio/flac`) 是一种无损音频格式。有关更多信息，请参阅 [FLAC](https://wikipedia.org/wiki/FLAC){: external}。
 
 ### audio/g729 格式
 {: #g729}
 
-*G.729* (`audio/g729`) 是一种有损音频格式，支持以 8 千赫兹编码的数据。服务仅支持 G.729 附录 D，不支持附录 J。服务仅支持将 `audio/g729` 格式的文件用于窄带模型。有关更多信息，请参阅 [en.wikipedia.org/wiki/G.729 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/G.729){: new_window}。
+*G.729* (`audio/g729`) 是一种有损音频格式，支持以 8 千赫兹编码的数据。服务仅支持 G.729 附录 D，不支持附录 J。服务仅支持将 `audio/g729` 格式的文件用于窄带模型。有关更多信息，请参阅 [G.729](https://wikipedia.org/wiki/G.729){: external}。
 
 ### audio/l16 格式
 {: #l16}
@@ -438,17 +440,17 @@ subcollection: speech-to-text
     <td>
       缺省情况下，服务会自动检测传入音频的字节序。但是，服务的自动检测功能有时会失败，并断开 `audio/l16` 格式短音频的连接。指定 endianness 可禁用自动检测。请指定 <code>big-endian</code> 或 <code>little-endian</code>。例如，对于以 16 千赫兹采样率捕获的小尾数法格式的音频数据，请指定以下参数：<br/><br/>
       <code>audio/l16;rate=16000;endianness=little-endian</code><br/><br/>
-      <a target="_blank" href="https://tools.ietf.org/html/rfc2045#section-5.1">Request for Comments (RFC) 2045 ![外部链接图标 ](../../icons/launch-glyph.svg "外部链接图标 ")</a> 的第 5.1 部分为 <code>audio/l16</code> 数据指定了大尾数法格式，但许多人会使用小尾数法格式。
+      [Request for Comment (RFC) 2045](https://tools.ietf.org/html/rfc2045#section-5.1) 中的第 5.1 部分规定对于 <code>audio/l16</code> 数据应使用大尾数法格式，但许多人仍使用小尾数法格式。
     </td>
   </tr>
 </table>
 
-有关更多信息，请参阅 [Request for Comments (RFC) 2586 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://tools.ietf.org/html/rfc2586){: new_window} 和 [en.wikipedia.org/wiki/Pulse-code_modulation ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/Pulse-code_modulation){: new_window}。
+有关更多信息，请参阅 [Request for Comment (RFC) 2586](https://tools.ietf.org/html/rfc2586){: external} 和 [Pulse-code modulation](https://wikipedia.org/wiki/Pulse-code_modulation){: external}。
 
 ### audio/mp3 和 audio/mpeg 格式
 {: #mp3}
 
-*MP3* (`audio/mp3`) 或*运动图像专家组 (MPEG)* (`audio/mpeg`) 是一种有损音频格式。（MP3 和 MPEG 指的是相同的格式。）有关更多信息，请参阅 [en.wikipedia.org/wiki/MP3 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/MP3){: new_window}。
+*MP3* (`audio/mp3`) 或*运动图像专家组 (MPEG)* (`audio/mpeg`) 是一种有损音频格式。（MP3 和 MPEG 指的是相同的格式。）有关更多信息，请参阅 [MP3](https://wikipedia.org/wiki/MP3){: external}。
 
 ### audio/mulaw 格式
 {: #mulaw}
@@ -476,36 +478,36 @@ subcollection: speech-to-text
   </tr>
 </table>
 
-有关更多信息，请参阅 [en.wikipedia.org/wiki/M-law_algorithm ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/M-law_algorithm){: new_window}。
+有关更多信息，请参阅 [M-law algorithm](https://wikipedia.org/wiki/M-law_algorithm){: external}。
 
 ### audio/ogg 格式
 {: #ogg}
 
-*Ogg* (`audio/ogg`) 是一种开放式容器格式，由 Xiph.org Foundation ([xiph.org/ogg ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://www.xiph.org/ogg){: new_window}) 进行维护。可以使用通过以下有损编码解码器压缩的音频流：
+*Ogg* (`audio/ogg`) 是一种开放式容器格式，由 Xiph.org Foundation ([xiph.org/ogg](https://www.xiph.org/ogg){: external}) 进行维护。可以使用通过以下有损编码解码器压缩的音频流：
 
--   *Opus* (`audio/ogg;codecs=opus`)。有关更多信息，请参阅 [opus-codec.org ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://www.opus-codec.org/){: new_window} 和 [en.wikipedia.org/wiki/Opus (audio format) ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/Opus){: new_window}。在 *Opus (audio format)* 页面上，请特别查看 *Containers* 部分。
--   *Vorbis* (`audio/ogg;codecs=vorbis`)。有关更多信息，请参阅 [xiph.org/vorbis ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://xiph.org/vorbis/){: new_window} 和 [en.wikipedia.org/wiki/Vorbis ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/Vorbis){: new_window}。
+-   *Opus* (`audio/ogg;codecs=opus`)。有关更多信息，请参阅 [opus-codec.org](https://www.opus-codec.org/){: external} 和 [Opus (audio format)](https://wikipedia.org/wiki/Opus_%28audio_format%29){: external}。请特别查看 *Containers* 部分。
+-   *Vorbis* (`audio/ogg;codecs=vorbis`)。有关更多信息，请参阅 [xiph.org/vorbis](https://xiph.org/vorbis/){: external} 和 [Vorbis](https://wikipedia.org/wiki/Vorbis){: external}。
 
-如果省略编码解码器，那么服务会自动在输入音频中检测编码解码器。Opus 是首选的编码解码器；因特网工程任务组织 (IETF) 已将其标准化为 [Request for Comments (RFC) 6716 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://tools.ietf.org/html/rfc6716){: new_window}。
+如果省略编码解码器，那么服务会自动在输入音频中检测编码解码器。Opus 是首选的编码解码器；因特网工程任务组织 (IETF) 已将其标准化为 [Request for Comments (RFC) 6716](https://tools.ietf.org/html/rfc6716){: external}。
 
 ### audio/wav 格式
 {: #wav}
 
 *波形音频文件格式 (WAV)* (`audio/wav`) 是一种容器格式，通常用于未压缩的音频流，但也可以包含压缩音频。服务支持使用任何编码的 WAV 音频。服务接受最多有 9 个声道（由于 FFmpeg 限制）的 WAV 音频。
 
-有关 WAV 格式的更多信息，请参阅 [en.wikipedia.org/wiki/WAV ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/WAV){: new_window}。有关通过将 WAV 音频转换为 Opus 编码解码器来减小 WAV 音频大小的更多信息，请参阅[使用 Opus 编码解码器转换为 audio/ogg](#conversionOgg)。
+有关 WAV 格式的更多信息，请参阅 [WAV](https://wikipedia.org/wiki/WAV){: external}。有关通过将 WAV 音频转换为 Opus 编码解码器来减小 WAV 音频大小的更多信息，请参阅[使用 Opus 编码解码器转换为 audio/ogg](#conversionOgg)。
 
 ### audio/webm 格式
 {: #webm}
 
-*Web 媒体 (WebM)* (`audio/webm`) 是一种开放式容器格式，由 WebM 项目 [webmproject.org ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://www.webmproject.org/){: new_window}) 进行维护。可以使用通过以下有损编码解码器压缩的音频流：
+*Web 媒体 (WebM)* (`audio/webm`) 是一种开放式容器格式，由 WebM 项目 ([webmproject.org](https://www.webmproject.org/){: external}) 进行维护。可以使用通过以下有损编码解码器压缩的音频流：
 
--   *Opus* (`audio/webm;codecs=opus`)。有关更多信息，请参阅 [opus-codec.org ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://www.opus-codec.org/){: new_window} 和 [en.wikipedia.org/wiki/Opus (audio format) ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/Opus){: new_window}。在 *Opus (audio format)* 页面上，请特别查看 *Containers* 部分。
--   *Vorbis* (`audio/webm;codecs=vorbis`)。有关更多信息，请参阅 [xiph.org/vorbis ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://xiph.org/vorbis/){: new_window} 和 [en.wikipedia.org/wiki/Vorbis ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://en.wikipedia.org/wiki/Vorbis){: new_window}。
+-   *Opus* (`audio/webm;codecs=opus`)。有关更多信息，请参阅 [opus-codec.org](https://www.opus-codec.org/){: external} 和 [Opus (audio format)](https://wikipedia.org/wiki/Opus_%28audio_format%29){: external}。请特别查看 *Containers* 部分。
+-   *Vorbis* (`audio/webm;codecs=vorbis`)。有关更多信息，请参阅 [xiph.org/vorbis](https://xiph.org/vorbis/){: external} 和 [Vorbis](https://wikipedia.org/wiki/Vorbis){: external}。
 
 如果省略编码解码器，那么服务会自动在输入音频中检测编码解码器。
 
-有关用于说明如何在 Chrome 浏览器中从麦克风捕获音频并将其编码为 WebM 数据流的 JavaScript 代码，请参阅 [jsbin.com/hedujihuqo/edit?js,console ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://jsbin.com/hedujihuqo/edit?js,console){: new_window}。该代码不会将捕获到的音频提交给服务。
+有关用于说明如何在 Chrome 浏览器中从麦克风捕获音频并将其编码为 WebM 数据流的 JavaScript 代码，请参阅 [jsbin.com/hedujihuqo/edit?js,console](https://jsbin.com/hedujihuqo/edit?js,console){: external}。该代码不会将捕获到的音频提交给服务。
 {: tip}
 
 ## 数据限制和压缩
@@ -565,21 +567,21 @@ subcollection: speech-to-text
 
 以下免费软件工具可用于将音频从一种格式转换为另一种格式：
 
--   Sound eXchange (SoX) ([sox.sourceforge.net ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](http://sox.sourceforge.net){: new_window})
--   FFmpeg ([ffmpeg.org ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://www.ffmpeg.org){: new_window})
--   Audacity&reg; ([audacityteam.org ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](http://www.audacityteam.org/){: new_window})
--   对于使用 Opus 编码解码器的 Ogg 格式，请使用 **opus-tools** ([opus-codec.org/downloads/ ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](http://opus-codec.org/downloads/){: new_window})
+-   Sound eXchange (SoX) ([sox.sourceforge.net](http://sox.sourceforge.net){: external})
+-   FFmpeg ([ffmpeg.org](https://www.ffmpeg.org){: external})
+-   Audacity&reg; ([audacityteam.org](http://www.audacityteam.org/){: external})
+-   对于使用 Opus 编码解码器的 Ogg 格式，请使用 **opus-tools** ([opus-codec.org/downloads/](http://opus-codec.org/downloads/){: external})
 
 这些工具为多种音频格式提供跨平台支持。此外，还可以使用许多工具来播放音频。请勿使用这些工具来违反适用的版权法。
 
 ### 转换为使用 Opus 编码解码器的 audio/ogg
 {: #conversionOgg}
 
-[**opus-tools** ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](http://opus-codec.org/downloads/){: new_window} 包含三个命令行实用程序，用于在 Opus 编码解码器中处理 Ogg 音频：
+[**opus-tools**](http://opus-codec.org/downloads/){: external} 包含三个命令行实用程序，用于在 Opus 编码解码器中处理 Ogg 音频：
 
--   [**opusenc** ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusenc.html){: new_window} 实用程序用于将 WAV、FLAC 和其他格式的音频编码为使用 Opus 编码解码器的 Ogg。此页面说明了如何压缩音频流。压缩对于将实时音频传递到服务非常有用。
--   [**opusdec** ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusdec.html){: new_window} 实用程序用于将音频从 Opus 编码解码器解码为未压缩的 PCM WAV 文件。
--   [**opusinfo** ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusinfo.html){: new_window} 实用程序用于提供有关 Opus 文件的信息并对这些文件执行有效性检查。
+-   [**opusenc**](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusenc.html){: external} 实用程序用于将 WAV、FLAC 和其他格式的音频编码为使用 Opus 编码解码器的 Ogg。此页面说明了如何压缩音频流。压缩对于将实时音频传递到服务非常有用。
+-   [**opusdec**](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusdec.html){: external} 实用程序用于将音频从 Opus 编码解码器解码为未压缩的 PCM WAV 文件。
+-   [**opusinfo**](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusinfo.html){: external} 实用程序用于提供有关 Opus 文件的信息并对这些文件执行有效性检查。
 
 许多用户会发送 WAV 文件进行语音识别。由于服务为同步 HTTP 和 WebSocket 请求设定了 100 MB 数据限制，WAV 格式会减少可以通过单个请求识别的音频量。使用 **opusenc** 命令将音频转换为首选的 `audio/ogg:codecs=opus` 格式后，会大大增加可以通过一个识别请求发送的音频量。
 
@@ -590,7 +592,7 @@ opusenc input.wav output.opus
 ```
 {: pre}
 
-该转换使音频压缩为原来的 1/4，并生成比特率为 64 千位/秒的输出文件。但是，根据 [Opus Recommended Settings ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://wiki.xiph.org/Opus_Recommended_Settings){: new_window}，您可以安全地将比特率降低到 24 千位/秒，同时仍保留语音音频的完整频带。此比特率降低将使音频压缩为原来的 1/10。以下命令使用 `--bitrate` 选项来生成比特率为 24 千位/秒的输出文件：
+该转换使音频压缩为原来的 1/4，并生成比特率为 64 千位/秒的输出文件。但是，根据 [Opus Recommended Settings](https://wiki.xiph.org/Opus_Recommended_Settings){: external}，您可以安全地将比特率降低到 24 千位/秒，同时仍保留语音音频的完整频带。此比特率降低将使音频压缩为原来的 1/10。以下命令使用 `--bitrate` 选项来生成比特率为 24 千位/秒的输出文件：
 
 ```bash
 opusenc --bitrate 24 input.wav output.opus
@@ -609,7 +611,7 @@ opusenc --bitrate 24 input.wav output.opus
     -   避免使用系统的内置麦克风。移动设备和平板电脑上通常安装的麦克风往往不够好。
     -   确保说话者靠近麦克风。说话者离麦克风越远，准确性越低。例如，如果离麦克风 10 英尺，服务很难生成足够好的结果。
 -   语音识别对背景噪声和人声的细微差别非常敏感。
-    -   发动机噪声、运转的设备、街道噪声和背景对话都会大幅降低识别准确性。
+    -   发动机噪声、运转的设备、街道噪声和背景会话都会大幅降低识别准确性。
     -   地方口音和发音差异也会降低准确性。
 
-    如果音频具有上述这些特征，请考虑使用声学模型定制来提高语音识别的准确性。有关更多信息，请参阅[定制接口](/docs/services/speech-to-text/custom.html)。
+    如果音频具有上述这些特征，请考虑使用声学模型定制来提高语音识别的准确性。有关更多信息，请参阅[定制接口](/docs/services/speech-to-text?topic=speech-to-text-customization)。

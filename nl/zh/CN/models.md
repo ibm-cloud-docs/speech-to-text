@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-07-21"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -36,12 +36,12 @@ subcollection: speech-to-text
 -   *宽带模型*用于采样率大于或等于 16 千赫兹的音频。请将宽带模型用于响应式实时应用，例如用于实时语音应用。
 -   *窄带模型*用于采样率为 8 千赫兹的音频。请将窄带模型用于电话语音的脱机解码，这是此采样率的典型用途。
 
-针对您的应用选择正确的模型很重要。请使用与音频采样率（和语言）相匹配的模型。服务会自动调整音频的采样率，以匹配指定的模型。有关更多信息，请参阅[采样率](/docs/services/speech-to-text/audio-formats.html#samplingRate)。
+针对您的应用选择正确的模型很重要。请使用与音频采样率（和语言）相匹配的模型。服务会自动调整音频的采样率，以匹配指定的模型。有关更多信息，请参阅[采样率](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#samplingRate)。
 
-为了实现最佳识别准确性，还需要考虑音频的频率内容。有关更多信息，请参阅[音频频率](/docs/services/speech-to-text/audio-formats.html#frequency)。
+为了实现最佳识别准确性，还需要考虑音频的频率内容。有关更多信息，请参阅[音频频率](/docs/services/speech-to-text?topic=speech-to-text-audio-formats#frequency)。
 {: tip}
 
-表 1 列出了每种语言支持的模型。如果在请求中省略 `model` 参数，那么缺省情况下，服务会使用美国英语宽带模型 `en-US_BroadbandModel`。
+表 1 列出了每种语言支持的模型。如果在请求中省略 `model` 参数，那么缺省情况下，服务会使用美国英语宽带模型 `en-US_BroadbandModel`。除了标记为 *Beta* 的语言外，其他所有语言均已正式发布 (*GA*)，可供生产使用。
 
 <table>
   <caption>表 1. 支持的语言模型</caption>
@@ -51,9 +51,30 @@ subcollection: speech-to-text
     <th style="text-align:center">窄带模型</th>
   </tr>
   <tr>
+    <td>阿拉伯语（现代标准）</td>
+    <td style="text-align:center"><code>ar-AR_BroadbandModel</code></td>
+    <td style="text-align:center">不支持</td>
+  </tr>
+  <tr>
     <td>巴西葡萄牙语</td>
     <td style="text-align:center"><code>pt-BR_BroadbandModel</code></td>
     <td style="text-align:center"><code>pt-BR_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>中文（普通话）</td>
+    <td style="text-align:center"><code>zh-CN_BroadbandModel</code></td>
+    <td style="text-align:center"><code>zh-CN_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>英语（英国）</td>
+    <td style="text-align:center"><code>en-GB_BroadbandModel</code></td>
+    <td style="text-align:center"><code>en-GB_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>英语（美国）</td>
+    <td style="text-align:center"><code>en-US_BroadbandModel</code></td>
+    <td style="text-align:center"><code>en-US_NarrowbandModel</code></br>
+      <code>en-US_ShortForm_NarrowbandModel</code></td>
   </tr>
   <tr>
     <td>法语</td>
@@ -76,42 +97,46 @@ subcollection: speech-to-text
     <td style="text-align:center"><code>ko-KR_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>普通话</td>
-    <td style="text-align:center"><code>zh-CN_BroadbandModel</code></td>
-    <td style="text-align:center"><code>zh-CN_NarrowbandModel</code></td>
+    <td>西班牙语（阿根廷，Beta）</td>
+    <td style="text-align:center"><code>es-AR_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-AR_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>现代标准阿拉伯语</td>
-    <td style="text-align:center"><code>ar-AR_BroadbandModel</code></td>
-    <td style="text-align:center">不支持</td>
-  </tr>
-  <tr>
-    <td>西班牙语</td>
+    <td>西班牙语（卡斯蒂利亚）</td>
     <td style="text-align:center"><code>es-ES_BroadbandModel</code></td>
     <td style="text-align:center"><code>es-ES_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>英国英语</td>
-    <td style="text-align:center"><code>en-GB_BroadbandModel</code></td>
-    <td style="text-align:center"><code>en-GB_NarrowbandModel</code></td>
+    <td>西班牙语（智利，Beta）</td>
+    <td style="text-align:center"><code>es-CL_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-CL_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>美国英语</td>
-    <td style="text-align:center"><code>en-US_BroadbandModel</code></td>
-    <td style="text-align:center"><code>en-US_NarrowbandModel</code></br>
-      <code>en-US_ShortForm_NarrowbandModel</code></td>
+    <td>西班牙语（哥伦比亚，Beta）</td>
+    <td style="text-align:center"><code>es-CO_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-CO_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>西班牙语（墨西哥，Beta）</td>
+    <td style="text-align:center"><code>es-MX_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-MX_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>西班牙语（秘鲁，Beta）</td>
+    <td style="text-align:center"><code>es-PE_BroadbandModel</code></td>
+    <td style="text-align:center"><code>es-PE_NarrowbandModel</code></td>
   </tr>
 </table>
 
 ### 美国英语短格式模型
 {: #modelsShortform}
 
-美国英语短格式模型 `en-US_ShortForm_NarrowbandModel` 可以改进用于交互式语音响应 (IVR) 和自动客户支持解决方案的语音识别。短格式模型经过训练，可识别客户支持设置（如自动化和人工支持呼叫中心）中经常表达的简短话语。例如，模型经过调整后，可获得精确的话语，如数字、单字符词和姓名拼写以及是/否响应。将语法与短格式模型组合使用，可以进一步提高识别结果。
+美国英语短格式模型 `en-US_ShortForm_NarrowbandModel` 可以改进用于交互式声音响应 (IVR) 和自动客户支持解决方案的语音识别。短格式模型经过训练，可识别客户支持设置（如自动化和人工支持呼叫中心）中经常表达的简短话语。例如，模型经过调整后，可获得精确的话语，如数字、单字符词和姓名拼写以及是/否响应。将语法与短格式模型组合使用，可以进一步提高识别结果。
 
 与所有模型一样，噪声环境可能会对结果产生负面影响。例如，来自机场、行驶车辆、会议室和多个说话者的背景声学噪声可能会降低转录准确性。说话者的电话有回音很常见，因此来自此类设备的音频也可能会降低准确性。将定制声学模型与短格式模型配合使用可以应对此类影响。
 
--   有关语言模型和声学模型定制的更多信息，请参阅[定制接口](/docs/services/speech-to-text/custom.html)。
--   有关语法的更多信息，请参阅[将语法用于定制语言模型](/docs/services/speech-to-text/grammar.html)。
+-   有关语言模型和声学模型定制的更多信息，请参阅[定制接口](/docs/services/speech-to-text?topic=speech-to-text-customization)。
+-   有关语法的更多信息，请参阅[将语法用于定制语言模型](/docs/services/speech-to-text?topic=speech-to-text-grammars)。
 
 ### 语言模型示例
 {: #modelsExample}

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-10"
+lastupdated: "2019-07-21"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -30,7 +30,10 @@ subcollection: speech-to-text
 
 定制接口支持定制语言模型和定制声学模型。这两种类型的定制模型的接口比较类似，并且易于使用。将任一类型的定制模型用于识别请求也很简单：在请求中指定模型的定制标识即可。
 
-无论是否使用定制模型，语音识别的工作方式都一样。将定制模型用于语音识别时，可以使用通常可用于识别请求的所有输入和输出参数。有关所有可用参数的更多信息，请参阅[参数摘要](/docs/services/speech-to-text/summary.html)。
+无论是否使用定制模型，语音识别的工作方式都一样。将定制模型用于语音识别时，可以使用通常可用于识别请求的所有输入和输出参数。有关所有可用参数的更多信息，请参阅[参数摘要](/docs/services/speech-to-text?topic=speech-to-text-summary)。
+
+您必须有标准价格套餐，才能使用语言模型定制或声学模型定制。轻量套餐的用户无法使用定制接口。有关更多信息，请参阅 {{site.data.keyword.speechtotextshort}} 服务的[定价页面](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external}。
+{: note}
 
 ## 语言模型定制
 {: #customLanguage-intro}
@@ -43,8 +46,8 @@ subcollection: speech-to-text
 
 有关更多信息，请参阅：
 
--   [创建定制语言模型](/docs/services/speech-to-text/language-create.html)
--   [使用定制语言模型](/docs/services/speech-to-text/language-use.html)
+-   [创建定制语言模型](/docs/services/speech-to-text?topic=speech-to-text-languageCreate)
+-   [使用定制语言模型](/docs/services/speech-to-text?topic=speech-to-text-languageUse)
 
 ## 声学模型定制
 {: #customAcoustic-intro}
@@ -61,8 +64,8 @@ subcollection: speech-to-text
 
 有关更多信息，请参阅：
 
--   [创建定制声学模型](/docs/services/speech-to-text/acoustic-create.html)
--   [使用定制声学模型](/docs/services/speech-to-text/acoustic-use.html)
+-   [创建定制声学模型](/docs/services/speech-to-text?topic=speech-to-text-acoustic)
+-   [使用定制声学模型](/docs/services/speech-to-text?topic=speech-to-text-acousticUse)
 
 ## 语法
 {: #grammars-intro}
@@ -73,9 +76,9 @@ subcollection: speech-to-text
 
 有关更多信息，请参阅：
 
--   [将语法用于定制语言模型](/docs/services/speech-to-text/grammar.html)
--   [向定制语言模型添加语法](/docs/services/speech-to-text/grammar-add.html)
--   [将语法用于语音识别](/docs/services/speech-to-text/grammar-use.html)
+-   [将语法用于定制语言模型](/docs/services/speech-to-text?topic=speech-to-text-grammars)
+-   [向定制语言模型添加语法](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd)
+-   [将语法用于语音识别](/docs/services/speech-to-text?topic=speech-to-text-grammarUse)
 
 ## 将声学和语言定制一起使用
 {: #combined}
@@ -84,9 +87,7 @@ subcollection: speech-to-text
 
 通过创建用于对定制声学模型进行补充的定制语言模型，可以将这两种模型一起使用以增强语音识别功能。在训练定制声学模型时，可以指定定制语言模型，其中包括音频资源的转录或资源中特定于领域的词的词汇表。与此类似，转录音频时，服务可接受定制语言模型和/或定制声学模型。如果定制语言模型包含语法，那么可以将该模型和语法用于定制声学模型以进行语音识别。
 
-有关更多信息，请参阅：
-
--   [将定制声学模型和定制语言模型一起使用](/docs/services/speech-to-text/acoustic-both.html)
+有关更多信息，请参阅[将定制声学模型和定制语言模型一起使用](/docs/services/speech-to-text?topic=speech-to-text-useBoth)。
 
 某些语言不同时支持语言和声学定制。有关更多信息，请参阅[支持定制的语言](#languageSupport)。
 {: note}
@@ -100,7 +101,7 @@ subcollection: speech-to-text
 -   *Beta* 指示接口作为 Beta 产品提供。
 -   *不支持*表示接口不可用于该语言。
 
-可以将宽带和窄带模型同时用于这些模型可用于的任何受支持语言。如果一种语言支持语言模型定制，那么也支持语法。有关所有可用模型的列表，请参阅[支持的语言模型](/docs/services/speech-to-text/models.html#modelsList)。
+可以将宽带和窄带模型同时用于这些模型可用于的任何受支持语言。如果一种语言支持语言模型定制，那么也支持语法。有关所有可用模型的列表，请参阅[支持的语言模型](/docs/services/speech-to-text?topic=speech-to-text-models#modelsList)。
 
 <table>
   <caption>表 1. 支持定制的语言</caption>
@@ -116,7 +117,27 @@ subcollection: speech-to-text
     </th>
   </tr>
   <tr>
+    <td>阿拉伯语（现代标准）</td>
+    <td style="text-align:center">不支持</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
     <td>巴西葡萄牙语</td>
+    <td style="text-align:center">GA</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
+    <td>中文（普通话）</td>
+    <td style="text-align:center">不支持</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
+    <td>英语（英国）</td>
+    <td style="text-align:center">GA</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
+    <td>英语（美国）</td>
     <td style="text-align:center">GA</td>
     <td style="text-align:center">Beta</td>
   </tr>
@@ -141,28 +162,33 @@ subcollection: speech-to-text
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>普通话</td>
-    <td style="text-align:center">不支持</td>
+    <td>西班牙语（阿根廷）</td>
+    <td style="text-align:center">Beta</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>现代标准阿拉伯语</td>
-    <td style="text-align:center">不支持</td>
-    <td style="text-align:center">Beta</td>
-  </tr>
-  <tr>
-    <td>西班牙语</td>
+    <td>西班牙语（卡斯蒂利亚）</td>
     <td style="text-align:center">GA</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>英国英语</td>
-    <td style="text-align:center">GA</td>
+    <td>西班牙语（智利）</td>
+    <td style="text-align:center">Beta</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
-    <td>美国英语</td>
-    <td style="text-align:center">GA</td>
+    <td>西班牙语（哥伦比亚）</td>
+    <td style="text-align:center">Beta</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
+    <td>西班牙语（墨西哥）</td>
+    <td style="text-align:center">Beta</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
+    <td>西班牙语（秘鲁）</td>
+    <td style="text-align:center">Beta</td>
     <td style="text-align:center">Beta</td>
   </tr>
 </table>
@@ -177,9 +203,9 @@ subcollection: speech-to-text
 ### 定制模型的所有权
 {: #customOwner}
 
-拥有定制模型的 {{site.data.keyword.speechtotextshort}} 服务实例是其凭证用于创建该模型的实例。要以任何方式使用定制模型，必须在定制接口的方法中使用为该服务实例创建的服务凭证。为其他服务实例创建的凭证无法查看或访问该定制模型。
+拥有定制模型的 {{site.data.keyword.speechtotextshort}} 服务实例是其凭证用于创建该模型的实例。要以任何方式使用定制模型，必须在定制接口的方法中使用该服务实例的凭证。为其他服务实例创建的凭证无法查看或访问该定制模型。
 
-针对同一 {{site.data.keyword.speechtotextshort}} 服务实例获取的所有服务凭证，共享对创建用于该服务实例的所有定制模型的访问权。要限制对定制模型的访问权，请创建单独的服务实例，并仅使用该服务实例的凭证来创建和使用该模型。其他服务实例的凭证无法影响该定制模型。
+针对同一 {{site.data.keyword.speechtotextshort}} 服务实例获取的所有凭证将共享对创建用于该服务实例的所有定制模型的访问权。要限制对定制模型的访问权，请创建单独的服务实例，并仅使用该服务实例的凭证来创建和使用该模型。其他服务实例的凭证无法影响该定制模型。
 
 在服务实例的凭证之间共享所有权的优点是可以取消一组凭证，例如在凭证泄露时。然后，可以为同一服务实例创建新凭证，并仍然保留使用原始凭证创建的定制模型的所有权和访问权。
 
@@ -191,7 +217,7 @@ subcollection: speech-to-text
 -   服务*不会*记录用于构建定制模型的数据。例如，使用定制语言模型中的语料库和词时，无需设置 `X-Watson-Learning-Opt-Out` 请求头。您的训练数据绝不会用于改进服务的基本模型。
 -   定制模型用于识别请求时，服务*会*记录数据。必须将 `X-Watson-Learning-Opt-Out` 请求头设置为 `true`，才能阻止对识别请求进行日志记录。
 
-有关更多信息，请参阅[请求日志记录](/docs/services/speech-to-text/input.html#logging)。
+有关更多信息，请参阅[请求日志记录](/docs/services/speech-to-text?topic=speech-to-text-input#logging)。
 
 ### 信息安全
 {: #customSecurity}
@@ -204,4 +230,4 @@ subcollection: speech-to-text
 -   `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`
 -   `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`
 
-如果需要，随后可以使用 `DELETE /v1/user_data` 方法来删除数据。有关更多信息，请参阅[信息安全](/docs/services/speech-to-text/information-security.html)。
+如果需要，随后可以使用 `DELETE /v1/user_data` 方法来删除数据。有关更多信息，请参阅[信息安全](/docs/services/speech-to-text?topic=speech-to-text-information-security)。

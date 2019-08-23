@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -28,12 +28,13 @@ subcollection: speech-to-text
 使用语法创建并训练定制语言模型后，可以将语法用于通过服务的 WebSocket 和 HTTP 接口发出的语音识别请求。
 {: shortdesc}
 
--   使用 `language_customization_id` 参数可为已定义语法的定制语言模型指定定制标识 (GUID)。您必须使用拥有该模型的服务实例的服务凭证来发出请求。
+-   使用 `language_customization_id` 参数可为已定义语法的定制语言模型指定定制标识 (GUID)。您必须使用拥有该模型的服务实例的凭证来发出请求。
+
 -   使用 `grammar_name` 参数可指定语法的名称。一个请求只能指定一个语法。
 
 使用语法时，服务仅会根据指定的语法来识别词。服务不会使用从语料库中添加的定制词、单独添加或修改的定制词，也不会使用其他语法可识别的定制词。
 
--   对于 [WebSocket 接口](/docs/services/speech-to-text/websockets.html)，请首先使用 `/v1/recognize` 方法的 `language_customization_id` 参数来指定定制标识。使用此方法可建立与服务的 WebSocket 连接。
+-   对于 [WebSocket 接口](/docs/services/speech-to-text?topic=speech-to-text-websockets)，请首先使用 `/v1/recognize` 方法的 `language_customization_id` 参数来指定定制标识。使用此方法可建立与服务的 WebSocket 连接。
 
     ```javascript
     var token = {authentication-token};
@@ -58,7 +59,7 @@ subcollection: speech-to-text
     }
     ```
     {: codeblock}
--   对于[同步 HTTP 接口](/docs/services/speech-to-text/http.html)，请使用 `POST /v1/recognize` 方法来传递这两个参数。
+-   对于[同步 HTTP 接口](/docs/services/speech-to-text?topic=speech-to-text-http)，请使用 `POST /v1/recognize` 方法来传递这两个参数。
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
@@ -67,7 +68,7 @@ subcollection: speech-to-text
     "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&grammar_name={grammar_name}"
     ```
     {: pre}
--   对于[异步 HTTP 接口](/docs/services/speech-to-text/async.html)，请使用 `POST /v1/recognitions` 方法来传递这两个参数。
+-   对于[异步 HTTP 接口](/docs/services/speech-to-text?topic=speech-to-text-async)，请使用 `POST /v1/recognitions` 方法来传递这两个参数。
 
     ```bash
     curl -X POST -u "apikey:{apikey}"

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-19"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # 管理音频资源
 {: #manageAudio}
 
-定制接口包含 `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` 方法，用于向定制声学模型添加音频资源。有关更多信息，请参阅[向定制声学模型添加音频](/docs/services/speech-to-text/acoustic-create.html#addAudio)。该接口还包含以下方法，用于列出和删除定制声学模型的音频资源。
+定制接口包含 `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` 方法，用于向定制声学模型添加音频资源。有关更多信息，请参阅[向定制声学模型添加音频](/docs/services/speech-to-text?topic=speech-to-text-acoustic#addAudio)。该接口还包含以下方法，用于列出和删除定制声学模型的音频资源。
 {: shortdesc}
 
 ## 列出定制声学模型的音频资源
@@ -171,9 +171,9 @@ curl -X GET -u "apikey:{apikey}"
 ## 从定制声学模型中删除音频资源
 {: #deleteAudio}
 
-使用 `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` 方法可从定制声学模型中除去现有音频资源。删除归档类型音频资源时，服务会除去整个文件归档。当前接口不允许从归档资源中删除单个文件。
+使用 `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` 方法可从定制声学模型中除去现有音频资源。删除归档类型音频资源时，服务会除去整个文件归档。服务不允许从归档资源中删除单个文件。
 
-除去音频资源不会影响定制模型，直到使用 `POST /v1/acoustic_customizations/{customization_id}/train` 方法来基于模型更新后的数据来训练模型。如果您基于资源成功训练了模型，那么在重新训练模型之前，现有音频数据会继续用于语音识别。
+除去音频资源并不会影响定制模型，直到使用 `POST /v1/acoustic_customizations/{customization_id}/train` 方法，基于更新的数据对定制模型进行了训练。如果基于资源成功训练了模型，那么现有音频数据会继续用于语音识别，直到您重新训练模型为止。
 
 ### 示例请求
 {: #deleteExample-audio}

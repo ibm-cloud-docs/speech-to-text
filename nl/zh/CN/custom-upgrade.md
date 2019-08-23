@@ -2,14 +2,14 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # 升级定制模型
 {: #customUpgrade}
 
-为了提高语音识别的质量，{{site.data.keyword.speechtotextfull}} 服务会不定期更新基本模型。由于不同语言的基本模型相互独立（正如语言的宽带和窄带模型那样），因此对单个基本模型的更新不会影响其他模型。[发行说明](/docs/services/speech-to-text/release-notes.html)记录了所有基本模型更新。
+为了提高语音识别的质量，{{site.data.keyword.speechtotextfull}} 服务会不定期更新基本模型。由于不同语言的基本模型相互独立（正如语言的宽带和窄带模型那样），因此对单个基本模型的更新不会影响其他模型。[发行说明](/docs/services/speech-to-text?topic=speech-to-text-release-notes)记录了所有基本模型更新。
 {: shortdesc}
 
 基本模型的新版本发布后，您必须升级基于基本模型构建的所有定制语言模型和定制声学模型，才能利用这些更新。在完成升级之前，定制模型会继续使用基本模型的旧版本。与所有定制操作一样，您必须使用拥有模型的服务实例的凭证，才能对该模型升级。
@@ -62,7 +62,7 @@ subcollection: speech-to-text
 
 如果升级过程成功启动，服务会返回 200 响应代码。可以使用 `GET /v1/customizations/{customization_id}` 方法来轮询模型的状态，从而监视升级的状态。使用循环每 10 秒检查一次状态。
 
-定制模型升级期间，其状态为 `upgrading`。升级完成后，模型的状态会恢复为其升级之前的状态（`ready` 或 `available`）。检查升级操作的状态完全等同于检查训练操作的状态。有关更多信息，请参阅[监视训练模型请求](/docs/services/speech-to-text/language-create.html#monitorTraining-language)。
+定制模型升级期间，其状态为 `upgrading`。升级完成后，模型的状态会恢复为其升级之前的状态（`ready` 或 `available`）。检查升级操作的状态完全等同于检查训练操作的状态。有关更多信息，请参阅[监视训练模型请求](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language)。
 
 升级请求完成之前，服务无法接受以任何方式修改模型的请求。但是，在升级期间，可以继续使用模型的现有版本发出识别请求。
 
@@ -100,7 +100,7 @@ subcollection: speech-to-text
 
 如果升级过程成功启动，服务会返回 200 响应代码。可以使用 `GET /v1/acoustic_customizations/{customization_id}` 方法来轮询模型的状态，从而监视升级的状态。使用循环每分钟检查一次状态。
 
-定制模型升级期间，其状态为 `upgrading`。升级完成后，模型的状态会恢复为其升级之前的状态（`ready` 或 `available`）。检查升级操作的状态完全等同于检查训练操作的状态。有关更多信息，请参阅[监视训练模型请求](/docs/services/speech-to-text/acoustic-create.html#monitorTraining-acoustic)。
+定制模型升级期间，其状态为 `upgrading`。升级完成后，模型的状态会恢复为其升级之前的状态（`ready` 或 `available`）。检查升级操作的状态完全等同于检查训练操作的状态。有关更多信息，请参阅[监视训练模型请求](/docs/services/speech-to-text?topic=speech-to-text-acoustic#monitorTraining-acoustic)。
 
 升级请求完成之前，服务无法接受以任何方式修改模型的请求。但是，在升级期间，可以继续使用模型的现有版本发出识别请求。
 
@@ -118,8 +118,8 @@ subcollection: speech-to-text
 
 要查看定制模型可用于的基本模型的版本，请使用以下方法：
 
--   要列出有关定制语言模型的信息，请使用 `GET /v1/customizations/{customization_id}` 方法。有关更多信息，请参阅[列出定制语言模型](/docs/services/speech-to-text/language-models.html#listModels-language)。
--   要列出有关定制声学模型的信息，请使用 `GET /v1/acoustic_customizations/{customization_id}` 方法。有关更多信息，请参阅[列出定制声学模型](/docs/services/speech-to-text/acoustic-models.html#listModels-acoustic)。
+-   要列出有关定制语言模型的信息，请使用 `GET /v1/customizations/{customization_id}` 方法。有关更多信息，请参阅[列出定制语言模型](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language)。
+-   要列出有关定制声学模型的信息，请使用 `GET /v1/acoustic_customizations/{customization_id}` 方法。有关更多信息，请参阅[列出定制声学模型](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic)。
 
 在这两种情况下，输出都会包含 `versions` 字段，用于显示有关定制模型的基本模型的信息。以下输出显示了已升级定制语言模型的信息：
 
@@ -162,7 +162,7 @@ curl -X POST -u "apikey:{apikey}"
 
 可以使用此功能来针对定制模型的基本模型的旧版本和新版本，测试定制模型的性能和准确性。如果发现某个已升级模型的性能在某个方面有欠缺（例如，无法再识别某些词），那么可以继续在识别请求中使用旧版本。
 
-[基本模型版本](/docs/services/speech-to-text/input.html#version)描述了 `base_model_version` 参数以及服务如何确定基本模型和定制模型的哪些版本要用于识别请求。除了这些信息外，在通过识别请求同时传递定制语言模型和定制声学模型时，请考虑以下问题：
+[基本模型版本](/docs/services/speech-to-text?topic=speech-to-text-input#version)描述了 `base_model_version` 参数以及服务如何确定基本模型和定制模型的哪些版本要用于识别请求。除了这些信息外，在通过识别请求同时传递定制语言模型和定制声学模型时，请考虑以下问题：
 
 -   这两种定制模型必须基于同一基本模型（例如，`en-US_BroadbandModel`）。
 -   如果这两种定制模型都基于旧版基本模型，那么服务将使用旧版基本模型进行识别。

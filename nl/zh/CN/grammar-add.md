@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-07-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -32,17 +32,17 @@ subcollection: speech-to-text
 1.  [向定制语言模型添加语法](#addGrammar)。服务会验证语法以确保其正确性。
 1.  [验证根据语法确定的词](#validateGrammar)。您将验证语法识别到的任何未登录 (OOV) 词的发音相似的读法是否正确。
 1.  [训练定制语言模型](#trainGrammar)。服务会准备定制模型和语法以用于语音识别。
-1.  现在，可以在语音识别请求中使用定制模型和语法。有关更多信息，请参阅[将语法用于语音识别](/docs/services/speech-to-text/grammar-use.html)。
+1.  现在，可以在语音识别请求中使用定制模型和语法。有关更多信息，请参阅[将语法用于语音识别](/docs/services/speech-to-text?topic=speech-to-text-grammarUse)。
 
 这些步骤是迭代的。您可以根据需要，随时向定制语言模型添加语法以及语料库和定制词。必须基于添加的任何新数据资源（语法、语料库或定制词）来训练定制模型。将定制模型用于语音识别时，该模型反映的是最后一次训练所基于的数据。
 
-可以将语法用于支持语言模型定制的任何语言。语言模型定制可用于大多数语言。有关更多信息，请参阅[支持定制的语言](/docs/services/speech-to-text/custom.html#languageSupport)。
+语法是 Beta 功能。可以将语法用于支持语言模型定制的任何语言。语言模型定制可用于大多数语言。有关更多信息，请参阅[支持定制的语言](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport)。
 {: note}
 
 ## 创建定制语言模型
 {: #createModel-grammar}
 
-要将语法用于语音识别，必须将其添加到定制语言模型。可以使用现有定制语言模型，也可以使用 `POST /v1/customizations` 方法来创建新的定制模型。有关创建新定制模型的信息，请参阅[创建定制语言模型](/docs/services/speech-to-text/language-create.html#createModel-language)。
+要将语法用于语音识别，必须将其添加到定制语言模型。可以使用现有定制语言模型，也可以使用 `POST /v1/customizations` 方法来创建新的定制模型。有关创建新定制模型的信息，请参阅[创建定制语言模型](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language)。
 
 定制语言模型可以包含语料库和定制词以及语法。在语音识别期间，可以使用包含或不包含语法的定制模型。但是，使用语法时，服务仅根据指定的语法来识别词。
 
@@ -54,14 +54,13 @@ subcollection: speech-to-text
 -   使用 `customization_id` 路径参数指定定制语言模型的定制标识。
 -   使用 `grammar_name` 路径参数指定语法的名称。请使用与定制模型的语言相匹配并反映语法内容的本地化名称。
     -   名称中最多可包含 128 个字符。
-    -   不要在名称中包含空格、斜杠或反斜杠。
+    -   不要使用需要进行 URL 编码的字符。例如，不要在名称中使用空格、斜杠、反斜杠、冒号、& 符号、双引号、加号、等号和问号等。（服务不会阻止使用这些字符。但是，由于这些字符在使用的任何位置都必须进行 URL 编码，因此强烈建议不要使用。）
     -   不要使用已添加到定制模型的语法或语料库的名称。
     -   不要使用名称 `user`，此名称由服务保留用于表示用户添加或修改的定制词。
-
+    -   不要使用名称 `base_lm` 或 `default_lm`。这两个名称都保留供服务未来使用。
 -   使用 `Content-Type` 请求头指定语法的格式：
     -   `application/srgs` 表示 ABNF 语法
     -   `application/srgs+xml` 表示 XML 语法
-
 -   将包含语法的文件作为请求主体传递。
 
 以下示例将名为 `confirm.abnf` 的语法文件添加到具有指定标识的定制模型。示例将语法命名为 `confirm-abnf`。
@@ -110,7 +109,7 @@ curl -X GET -u "apikey:{apikey}"
 -   `being_processed` 指示服务仍在分析语法。
 -   `undetermined` 指示服务在处理语法时遇到错误。
 
-使用循环每 10 秒检查一次语法的状态，直到它变为 `analyzed`。有关检查语法状态的更多信息，请参阅[列出定制语言模型的语法](/docs/services/speech-to-text/grammar-manage.html#listGrammars)。
+使用循环每 10 秒检查一次语法的状态，直到它变为 `analyzed`。有关检查语法状态的更多信息，请参阅[列出定制语言模型的语法](/docs/services/speech-to-text?topic=speech-to-text-manageGrammars#listGrammars)。
 
 ### 处理添加语法失败
 {: #handleFailures}
@@ -129,21 +128,21 @@ curl -X GET -u "apikey:{apikey}"
 
 定制模型的状态不受此错误的影响，但语法不能用于该模型。通过更正语法文件并重复将其添加到定制模型的请求，可以解决此问题。将 `allow_overwrite` 参数设置为 `true` 可覆盖失败的语法文件版本。
 
-您还可以从定制模型中暂时删除语法，然后更正语法文件，并在未来重新添加该语法文件。有关删除语法的更多信息，请参阅[从定制语言模型中删除语法](/docs/services/speech-to-text/grammar-manage.html#deleteGrammar)。
+您还可以从定制模型中暂时删除语法，然后更正语法文件，并在未来重新添加该语法文件。有关删除语法的更多信息，请参阅[从定制语言模型中删除语法](/docs/services/speech-to-text?topic=speech-to-text-manageGrammars#deleteGrammar)。
 
 ## 验证根据语法确定的词
 {: #validateGrammar}
 
 将语法文件添加到定制语言模型时，服务会解析语法，以确定语法是否可识别到任何尚不属于服务基本词汇表的词。此类词称为未登录 (OOV) 词。服务会将 OOV 词添加到定制模型的词资源。词资源的用途是定义服务的词汇表中尚不存在的词。
 
-词资源中的定义会指示服务如何转录 OOV 词。信息包含 `sounds_like` 字段（指示服务如何对词发音）、`display_as` 字段（指示服务如何显示词）和 `source` 字段（指示将词添加到定制模型的方式）。有关词资源和 OOV 词的更多信息，请参阅[词资源](/docs/services/speech-to-text/language-resource.html#wordsResource)。
+词资源中的定义会指示服务如何转录 OOV 词。信息包含 `sounds_like` 字段（指示服务如何对词发音）、`display_as` 字段（指示服务如何显示词）和 `source` 字段（指示将词添加到定制模型的方式）。有关词资源和 OOV 词的更多信息，请参阅[词资源](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#wordsResource)。
 
 将语法添加到定制模型后，检查模型词资源中的 OOV 词以验证其发音相似的读法是一种不错的做法。并非所有语法都包含 OOV 词，但验证词资源通常是很好的想法。要在添加语法后检查定制模型的词，请使用以下方法：
 
 -   使用 `GET /v1/customizations/{customization_id}/words` 方法来列出定制模型中的所有词。使用此方法的 `word_type` 参数传递值 `grammars` 可仅列出通过语法添加的词。
 -   使用 `GET /v1/customizations/{customization_id}/words/{word_name}` 方法来查看模型中的单个词。
 
-验证词的发音相似的读法是否准确且正确。另请在词本身中查找拼写和其他错误。有关验证和更正定制模型中词的更多信息，请参阅[验证词资源](/docs/services/speech-to-text/language-resource.html#validateModel)。
+验证词的发音相似的读法是否准确且正确。另请在词本身中查找拼写和其他错误。有关验证和更正定制模型中词的更多信息，请参阅[验证词资源](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel)。
 
 ## 训练定制语言模型
 {: #trainGrammar}
@@ -183,4 +182,4 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-正在训练模型期间，`status` 字段的值为 `training`。使用循环每 10 秒检查一次模型的状态，直到它变为 `available`。有关监视训练请求和其他可能状态值的更多信息，请参阅[监视训练模型请求](/docs/services/speech-to-text/language-create.html#monitorTraining-language)。
+正在训练模型期间，`status` 字段的值为 `training`。使用循环每 10 秒检查一次模型的状态，直到它变为 `available`。有关监视训练请求和其他可能状态值的更多信息，请参阅[监视训练模型请求](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language)。

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-07"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # 管理语法
 {: #manageGrammars}
 
-定制接口包含 `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` 方法，用于向定制语言模型添加语法。有关更多信息，请参阅[向定制语言模型添加语法](/docs/services/speech-to-text/grammar-add.html#addGrammar)。该接口还包含以下方法，用于列出和删除定制语言模型的语法。
+定制接口包含 `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` 方法，用于向定制语言模型添加语法。有关更多信息，请参阅[向定制语言模型添加语法](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar)。该接口还包含以下方法，用于列出和删除定制语言模型的语法。
 {: shortdesc}
 
 ## 列出定制语言模型的语法
@@ -105,7 +105,7 @@ curl -X GET -u "apikey:{apikey}"
 -   其他语法或语料库也添加了该词。
 -   已使用 `POST /v1/customizations/{customization_id}/words` 或 `PUT /v1/customizations/{customization_id}/words/{word_name}` 方法对该词进行了某种修改。
 
-除去语法并不会影响定制模型，但如果使用 `POST /v1/customizations/{customization_id}/train` 方法，基于更新的数据对定制模型进行了训练，那么将另当别论。如果基于语法成功训练了模型，那么语法会继续可用于语音识别，直到您重新训练模型为止。
+除去语法并不会影响定制模型，直到使用 `POST /v1/customizations/{customization_id}/train` 方法，基于更新的数据对定制模型进行了训练。如果基于语法成功训练了模型，那么语法会继续可用于语音识别，直到您重新训练模型为止。
 
 ### 示例请求
 {: #deleteExample-grammar}

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-07-24"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -31,7 +31,7 @@ subcollection: speech-to-text
 ## 基本转录响应
 {: #response}
 
-对于[发出识别请求](/docs/services/speech-to-text/basic-request.html)中的示例，服务返回了以下响应。这些示例仅传递音频文件及其内容类型。音频读的是单个句子，词与词之间没有明显停顿。
+对于[发出识别请求](/docs/services/speech-to-text?topic=speech-to-text-basic-request)中的示例，服务返回了以下响应。这些示例仅传递音频文件及其内容类型。音频读的是单个句子，词与词之间没有明显停顿。
 
 ```javascript
 {
@@ -39,7 +39,7 @@ subcollection: speech-to-text
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -64,7 +64,7 @@ severe thunderstorms swept through Colorado on Sunday "
 
 `alternatives` 字段提供有关转录结果的数组。对于此请求，该数组包含单个元素。
 
--   `confidence` 字段是分数，用于指示服务对抄本的置信度，对于此示例，置信度接近 90%。
+-   `confidence` 字段是分数，用于指示服务对文字记录的置信度，对于此示例，置信度接近 90%。
 -   `transcript` 字段提供转录的结果。
 
 `final` 和 `result_index` 字段限定了这些字段的含义。
@@ -72,12 +72,12 @@ severe thunderstorms swept through Colorado on Sunday "
 ### final 字段
 {: #responseFinal}
 
-`final` 字段指示抄本是否显示的是最终转录结果：
+`final` 字段指示文字记录是否显示的是最终转录结果：
 
--   对于最终结果，此字段为 `true`，这些结果保证不会更改。对于服务作为最终结果返回的抄本，服务不会再发送进一步的更新。
+-   对于最终结果，此字段为 `true`，这些结果保证不会更改。对于服务作为最终结果返回的文字记录，服务不会再发送进一步的更新。
 -   对于中间结果，此字段为 `false`，这些结果会随时更改。如果将 `interim_results` 参数用于 WebSocket 接口，那么服务在转录音频时，会以多个 `results` 字段的形式返回不断变化的中间假设。对于中间结果，`final` 字段始终为 `false`。对于音频的最终结果，服务会将此字段设置为 `true`。此后，服务不会再发送对该音频转录的进一步更新。
 
-要获取中间结果，请使用 WebSocket 接口并将 `interm_results` 参数设置为 `true`。有关更多信息，请参阅[中间结果](/docs/services/speech-to-text/output.html#interim)。
+要获取中间结果，请使用 WebSocket 接口并将 `interim_results` 参数设置为 `true`。有关更多信息，请参阅[中间结果](/docs/services/speech-to-text?topic=speech-to-text-output#interim)。
 
 ### result_index 字段
 {: #responseResultIndex}
@@ -95,14 +95,14 @@ severe thunderstorms swept through Colorado on Sunday "
 
 可用于语音识别的许多输出参数都会影响服务响应的内容。例如，以下参数会使服务返回有关音频的其他信息：
 
--   `max_alternatives` 参数用于请求多个替代抄本。`alternatives` 数组包含表示每个替代项的单独元素。数组的每个元素都包含一个 `transcript` 字段。只有最有可能的替代项会包含 `confidence` 字段。
--   `word_confidence` 和 `timestamps` 参数用于请求有关抄本中各个词的其他信息。`alternatives` 数组包含具有这些名称的其他字段。
+-   `max_alternatives` 参数用于请求多个替代文字记录。`alternatives` 数组包含表示每个替代项的单独元素。数组的每个元素都包含一个 `transcript` 字段。只有最有可能的替代项会包含 `confidence` 字段。
+-   `word_confidence` 和 `timestamps` 参数用于请求有关文字记录中各个词的其他信息。`alternatives` 数组包含具有这些名称的其他字段。
 -   `keywords` 和 `keywords_threshold` 参数用于请求识别关键字。`results` 数组包含 `keywords_result` 字段。
 -   `word_alternatives_threshold` 参数用于请求各个词的声学类似结果。`results` 数组包含 `word_alternatives` 字段。
 -   WebSocket 接口的 `interim_results` 参数用于请求中间转录假设。如前所述，服务会在转录音频时发送多个响应。
 -   `speaker_labels` 参数用于标识多个参与者交流中的各个说话者。响应包含与 `results` 和 `results_index` 字段位于同一级别的 `speaker_labels` 字段。
 
-有关这些参数以及可能影响服务响应的其他参数的更多信息，请参阅[输出功能](/docs/services/speech-to-text/output.html)。有关所有可用参数的更多信息，请参阅[参数摘要](/docs/services/speech-to-text/summary.html)。
+有关这些参数以及可能影响服务响应的其他参数的更多信息，请参阅[输出功能](/docs/services/speech-to-text?topic=speech-to-text-output)。有关所有可用参数的更多信息，请参阅[参数摘要](/docs/services/speech-to-text?topic=speech-to-text-summary)。
 
 ## 停顿和静默
 {: #pauses-silence}
@@ -178,13 +178,13 @@ severe thunderstorms swept through Colorado on Sunday "
 
 如果结果包含多个最终结果，请将最终结果的 `transcript` 元素连接在一起，以组合成音频的完整转录。
 
-流式音频中的 30 秒静默可能会导致[不活动超时](/docs/services/speech-to-text/input.html#timeouts-inactivity)。
+流式音频中的 30 秒静默可能会导致[不活动超时](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts-inactivity)。
 {: note}
 
 ## 迟疑标记
 {: #hesitation}
 
-服务发现语音中有短暂补白或停顿时，可以在抄本中包含迟疑标记。此类停顿也称为非流利项，可能包括“uhm”、“uh”、“hmm”等补白以及相关的非词汇话语。除非您需要将这些话语用于应用程序，否则可以从抄本中安全地过滤掉迟疑标记。
+服务发现语音中有短暂补白或停顿时，可以在文字记录中包含迟疑标记。此类停顿也称为非流利项，可能包括“uhm”、“uh”、“hmm”等补白以及相关的非词汇话语。除非您需要将这些迟疑标记用于应用程序，否则可以从文字记录中安全地过滤掉迟疑标记。
 
 在英语中，服务使用的迟疑标记为 `%HESITATION`，如以下示例中所示。其他语言可能使用不同的标记；例如，日语使用的是标记 `D_`。
 
@@ -206,7 +206,7 @@ severe thunderstorms swept through Colorado on Sunday "
 ```
 {: codeblock}
 
-迟疑标记还可以出现在抄本的其他字段中。例如，如果为抄本中的单个词请求了[词时间戳记](/docs/services/speech-to-text/output.html#word_timestamps)，那么服务会报告每个迟疑标记的开始时间和结束时间。
+迟疑标记还可以出现在文字记录的其他字段中。例如，如果为文字记录中的单个词请求了[词时间戳记](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps)，那么服务会报告每个迟疑标记的开始时间和结束时间。
 
 ```javascript
 {
@@ -253,7 +253,7 @@ severe thunderstorms swept through Colorado on Sunday "
 ## 首字母大写
 {: #capitalization}
 
-对于大多数语言，服务不会在响应抄本中使用首字母大写。如果首字母大写对于应用程序很重要，那么必须对每个句子的第一个词以及需要首字母大写的其他任何词汇进行首字母大写。
+对于大多数语言，服务不会在响应文字记录中使用首字母大写。如果首字母大写对于应用程序很重要，那么必须对每个句子的第一个词以及需要首字母大写的其他任何词汇进行首字母大写。
 
 *仅对于美国英语*，服务会对许多专有名词进行首字母大写。例如，对于指定短语，服务会返回以下文本：
 
@@ -274,6 +274,6 @@ barack obama graduated from columbia university
 ## 标点符号
 {: #punctuation}
 
-缺省情况下，服务不会在响应抄本中插入标点。您必须向服务结果添加所需的任何标点。
+缺省情况下，服务不会在响应文字记录中插入标点。您必须向服务结果添加所需的任何标点。
 
-对于美国英语，可以使用智能格式设置来指导服务使用标点符号（例如，逗号、句点、问号和惊叹号）替换特定关键字字符串。有关更多信息，请参阅[智能格式设置](/docs/services/speech-to-text/output.html#smart_formatting)。
+对于某些语言，可以使用智能格式设置来指导服务使用标点符号（例如，逗号、句点、问号和惊叹号）替换特定关键字字符串。有关更多信息，请参阅[智能格式设置](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting)。

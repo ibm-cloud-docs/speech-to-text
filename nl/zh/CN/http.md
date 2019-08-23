@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-08"
+lastupdated: "2019-07-10"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,13 +25,13 @@ subcollection: speech-to-text
 # 同步 HTTP 接口
 {: #http}
 
-{{site.data.keyword.speechtotextfull}} 服务的同步 HTTP 接口提供了单个 `POST /v1/recognize` 方法，用于向服务请求语音识别。此方法是获取抄本的最简单方法。它通过两种方式来提交语音识别请求：
+{{site.data.keyword.speechtotextfull}} 服务的同步 HTTP 接口提供了单个 `POST /v1/recognize` 方法，用于向服务请求语音识别。此方法是获取文字记录的最简方法。它通过两种方式来提交语音识别请求：
 {: shortdesc}
 
 -   第一种方式是通过请求主体在单个流中发送所有音频。您可将操作的参数指定为请求头和查询参数。有关更多信息，请参阅[发出基本 HTTP 请求](#HTTP-basic)。
 -   第二种方式是将音频作为多部分请求发送。您可将请求的参数指定为请求头、查询参数和 JSON 元数据的组合。有关更多信息，请参阅[发出多部分 HTTP 请求](#HTTP-multi)。
 
-单个请求中提交的音频数据最大为 100 MB，最小为 100 字节。有关音频格式的信息以及有关使用压缩来最大化可以通过请求发送的音频量的信息，请参阅[音频格式](/docs/services/speech-to-text/audio-formats.html)。有关 HTTP 接口的所有方法的信息，请参阅 [API 参考 ![外部链接图标](../../icons/launch-glyph.svg "外部链接图标")](https://{DomainName}/apidocs/speech-to-text){: new_window}。
+单个请求中提交的音频数据最大为 100 MB，最小为 100 字节。有关音频格式的信息以及有关使用压缩来最大化可以通过请求发送的音频量的信息，请参阅[音频格式](/docs/services/speech-to-text?topic=speech-to-text-audio-formats)。有关 HTTP 接口的所有方法的信息，请参阅 [API 参考](https://{DomainName}/apidocs/speech-to-text){: external}。
 
 ## 发出基本 HTTP 请求
 {: #HTTP-basic}
@@ -48,7 +48,7 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-示例返回了音频的以下抄本：
+该示例将返回音频的以下文字记录：
 
 ```javascript
 {
@@ -56,7 +56,7 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of severe thunderstorms swept through Colorado on Sunday "
         }
       ],
@@ -178,7 +178,7 @@ curl -X POST -u "apikey:{apikey}"
   </tr>
 </table>
 
-有关查询参数的更多信息，请参阅[参数摘要](/docs/services/speech-to-text/summary.html)。
+有关查询参数的更多信息，请参阅[参数摘要](/docs/services/speech-to-text?topic=speech-to-text-summary)。
 
 ### 多部分请求的 JSON 元数据
 {: #multipartJSON}
@@ -206,7 +206,7 @@ curl -X POST -u "apikey:{apikey}"
 -   对于大多数音频格式，`part_content_type` 字段是*可选*的。对于 `audio/alaw`、`audio/basic`、`audio/l16` 和 `audio/mulaw` 格式，此字段是必需的。它指定请求后续部分中的音频的格式。所有音频文件必须为相同的格式。
 -   对于所有请求，`data_parts_count` 字段是*可选*的。它指定随请求一起发送的音频文件数。服务会将流结束检测应用于最后一个（并且可能是仅有的一个）数据部分。如果省略此参数，服务将确定请求中的部分数。
 
-元数据的其他所有参数都是可选的。有关所有可用参数的描述，请参阅[参数摘要](/docs/services/speech-to-text/summary.html)。
+元数据的其他所有参数都是可选的。有关所有可用参数的描述，请参阅[参数摘要](/docs/services/speech-to-text?topic=speech-to-text-summary)。
 
 ### 示例多部分请求
 
@@ -227,25 +227,25 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-示例返回了音频文件的以下抄本。服务会按两个文件的发送顺序返回其结果。（示例输出中缩略了第二个文件的结果。）
+该示例将返回音频文件的以下文字记录。服务会按两个文件的发送顺序返回其结果。（示例输出中缩略了第二个文件的结果。）
 
 ```javascript
 {
-   "results": [
-      {
-         "word_alternatives": [
+  "results": [
+    {
+      "word_alternatives": [
+        {
+          "start_time": 0.03,
+          "alternatives": [
             {
-               "start_time": 0.03,
-               "alternatives": [
-                  {
-                     "confidence": 0.96,
+              "confidence": 0.96,
                      "word": "the"
                   }
                ],
                "end_time": 0.09
             },
-            {
-               "start_time": 0.09,
+        {
+          "start_time": 0.09,
                "alternatives": [
                   {
                      "confidence": 0.96,
@@ -254,8 +254,8 @@ curl -X POST -u "apikey:{apikey}"
                ],
                "end_time": 0.62
             },
-            {
-               "start_time": 0.62,
+        {
+          "start_time": 0.62,
                "alternatives": [
                   {
                      "confidence": 0.96,
@@ -264,8 +264,8 @@ curl -X POST -u "apikey:{apikey}"
                ],
                "end_time": 0.87
             },
-            {
-               "start_time": 0.87,
+        {
+          "start_time": 0.87,
                "alternatives": [
                   {
                      "confidence": 0.96,
@@ -279,23 +279,23 @@ curl -X POST -u "apikey:{apikey}"
          "alternatives": [
             {
                "timestamps": [
-                  [
-                     "the",
+            [
+              "the",
                      0.03,
                      0.09
                   ],
-                  [
-                     "latest",
+            [
+              "latest",
                      0.09,
                      0.62
                   ],
-                  [
-                     "weather",
+            [
+              "weather",
                      0.62,
                      0.87
                   ],
-                  [
-                     "report",
+            [
+              "report",
                      0.87,
                      1.5
                   ]
@@ -308,8 +308,8 @@ curl -X POST -u "apikey:{apikey}"
       },
       {
          "word_alternatives": [
-            {
-               "start_time": 0.15,
+        {
+          "start_time": 0.15,
                "alternatives": [
                   {
                      "confidence": 1.0,
@@ -318,8 +318,8 @@ curl -X POST -u "apikey:{apikey}"
                ],
                "end_time": 0.3
             },
-            {
-               "start_time": 0.3,
+        {
+          "start_time": 0.3,
                "alternatives": [
                   {
                      "confidence": 1.0,
@@ -328,9 +328,9 @@ curl -X POST -u "apikey:{apikey}"
                ],
                "end_time": 0.64
             },
-            . . .
-            {
-               "start_time": 4.58,
+        . . .
+        {
+          "start_time": 4.58,
                "alternatives": [
                   {
                      "confidence": 0.98,
@@ -339,8 +339,8 @@ curl -X POST -u "apikey:{apikey}"
                ],
                "end_time": 5.16
             },
-            {
-               "start_time": 5.16,
+        {
+          "start_time": 5.16,
                "alternatives": [
                   {
                      "confidence": 0.98,
@@ -349,8 +349,8 @@ curl -X POST -u "apikey:{apikey}"
                ],
                "end_time": 5.32
             },
-            {
-               "start_time": 5.32,
+        {
+          "start_time": 5.32,
                "alternatives": [
                   {
                      "confidence": 0.98,
@@ -377,33 +377,33 @@ curl -X POST -u "apikey:{apikey}"
                   "end_time": 5.16
                }
             ]
-         },
-         "alternatives": [
-            {
-               "timestamps": [
-                  [
-                     "a",
+      },
+      "alternatives": [
+        {
+          "timestamps": [
+            [
+              "a",
                      0.15,
                      0.3
                   ],
-                  [
-                     "line",
+            [
+              "line",
                      0.3,
                      0.64
                   ],
-                  . . .
-                  [
-                     "Colorado",
+            . . .
+            [
+              "Colorado",
                      4.58,
                      5.16
                   ],
-                  [
-                     "on",
+            [
+              "on",
                      5.16,
                      5.32
                   ],
-                  [
-                     "Sunday",
+            [
+              "Sunday",
                      5.32,
                      6.04
                   ]
@@ -413,10 +413,10 @@ curl -X POST -u "apikey:{apikey}"
 possible tornadoes is approaching Colorado on Sunday "
             }
          ],
-         "final": true
-      }
-   ],
-   "result_index": 0
+      "final": true
+    }
+  ],
+  "result_index": 0
 }
 ```
 {: codeblock}

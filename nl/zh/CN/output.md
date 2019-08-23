@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-10"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,13 +25,13 @@ subcollection: speech-to-text
 # 输出功能
 {: #output}
 
-{{site.data.keyword.speechtotextshort}} 服务提供了以下功能来指示服务要包含在语音识别请求的转录结果中的信息。所有输出参数都是可选的。
+{{site.data.keyword.speechtotextfull}} 服务提供了以下功能来指示服务要包含在语音识别请求的转录结果中的信息。所有输出参数都是可选的。
 {: shortdesc}
 
--   有关每个服务接口的简单语音识别请求的示例，请参阅[发出识别请求](/docs/services/speech-to-text/basic-request.html)。
--   有关语音识别响应的示例和描述，请参阅[了解识别结果](/docs/services/speech-to-text/basic-response.html)。服务会以 UTF-8 字符集返回所有 JSON 响应内容。
+-   有关每个服务接口的简单语音识别请求的示例，请参阅[发出识别请求](/docs/services/speech-to-text?topic=speech-to-text-basic-request)。
+-   有关语音识别响应的示例和描述，请参阅[了解识别结果](/docs/services/speech-to-text?topic=speech-to-text-basic-response)。服务会以 UTF-8 字符集返回所有 JSON 响应内容。
 
--   有关所有可用语音识别参数的列表（按字母顺序排列），包括其状态（一般可用或 Beta）和支持的语言，请参阅[参数摘要](/docs/services/speech-to-text/summary.html)。
+-   有关所有可用语音识别参数的列表（按字母顺序排列），包括其状态（一般可用或 Beta）和支持的语言，请参阅[参数摘要](/docs/services/speech-to-text?topic=speech-to-text-summary)。
 
 ## 说话者标签
 {: #speaker_labels}
@@ -39,11 +39,11 @@ subcollection: speech-to-text
 说话者标签是 Beta 功能，可用于美国英语、日语、西班牙语和英国英语，前三种语言的宽带和窄带模型均适用，英国英语仅限窄带模型。
 {: note}
 
-说话者标签用于标识哪些人在多参与者交流中说了哪些词。（标注谁在何时讲话有时也称为*说话者归类*。）可以使用这些信息来编制音频流（如对呼叫中心的联系）中每个人的抄本。或者，可以使用这些信息来制作与会话式机器人或头像交流的动画。为了获得最佳性能，请使用长度至少为一分钟的音频。
+说话者标签用于标识哪些人在多参与者交流中说了哪些词。（标注谁在何时讲话有时也称为*说话者归类*。）可以使用这些信息来编制音频流（如对呼叫中心的联系）中每个人的文字记录。或者，可以使用这些信息来制作与会话式机器人或头像交流的动画。为了获得最佳性能，请使用长度至少为一分钟的音频。
 
 说话者标签针对双人会话场景进行了优化。它们最适合涉及两人长时间交流的电话会话。此功能最多可以处理六个说话者，但两个以上的说话者可能会使性能不稳定。双人交流通常是通过窄带媒体执行的，但您可以将说话者标签用于支持的窄带和宽带模型。
 
-要使用此功能，请将识别请求的 `speaker_labels` 参数设置为 `true`；缺省情况下，此参数为 `false`。服务会按音频中的单个词来识别说话者。服务依赖于词的开始时间和结束时间来识别其说话者。因此，启用说话者标签还会强制将 `timestamps` 参数设置为 `true`（请参阅[词时间戳记](/docs/services/speech-to-text/output.html#word_timestamps)）。
+要使用此功能，请将识别请求的 `speaker_labels` 参数设置为 `true`；缺省情况下，此参数为 `false`。服务会按音频中的单个词来识别说话者。服务依赖于词的开始时间和结束时间来识别其说话者。因此，启用说话者标签还会强制将 `timestamps` 参数设置为 `true`（请参阅[词时间戳记](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps)）。
 
 ### 说话者标签示例
 {: #speakerLabelsExample}
@@ -142,7 +142,7 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: codeblock}
 
-`transcript` 字段显示音频的最后一个抄本，其中列出了所有参与者所说的词。通过将说话者标签与时间戳记进行比较和同步，可以按会话实际发生情况来重新组合会话。
+`transcript` 字段显示音频的最终文字记录，其中列出了所有参与者所说的词。通过将说话者标签与时间戳记进行比较和同步，可以按会话实际发生情况来重新组合会话。
 
 <table style="width:50%">
   <caption>表 1. 说话者标签示例</caption>
@@ -240,7 +240,7 @@ curl -X POST -u "apikey:{apikey}"
 ### 请求说话者标签的中间结果
 {: #speakerLabelsInterim}
 
-通过 WebSocket 接口，可以请求中间结果以及说话者标签（请参阅[中间结果](/docs/services/speech-to-text/output.html#interim)）。最终结果通常会优于中间结果。但是，中间结果可帮助识别抄本以及说话者标签分配的变化过程。中间结果可以指示瞬态说话者和标识在何处出现或消失。但是，服务可以复用初始识别到，但在后续重新考虑并省略的说话者标识。因此，一个标识在中间结果和最终结果中可能指的是两个不同的说话者。
+通过 WebSocket 接口，可以请求中间结果以及说话者标签（请参阅[中间结果](/docs/services/speech-to-text?topic=speech-to-text-output#interim)）。最终结果通常会优于中间结果。但是，中间结果可帮助识别文字记录以及说话者标签分配的变化过程。中间结果可以指示瞬态说话者和标识在何处出现或消失。但是，服务可以复用初始识别到，但在后续重新考虑并省略的说话者标识。因此，一个标识在中间结果和最终结果中可能指的是两个不同的说话者。
 
 请求中间结果和说话者标签时，长音频流的最终结果可能会在初始中间结果返回之后很久才到达。此外，某些中间结果还可能仅包含 `speaker_labels` 字段，而不包含 `results` 和 `result_index` 字段。如果不请求中间结果，那么服务返回的最终结果中包含 `results` 和 `result_index` 字段以及单个 `speaker_labels` 字段。
 
@@ -262,7 +262,7 @@ curl -X POST -u "apikey:{apikey}"
 ## 关键字识别
 {: #keyword_spotting}
 
-关键字识别功能用于在抄本中检测指定的字符串。服务可能多次识别到同一个关键字，并且每次识别到时都会进行报告。但服务仅在最终结果中（而不是在中间结果中）识别关键字。缺省情况下，服务不会执行关键字识别。
+关键字识别功能用于在文字记录中检测指定的字符串。服务可能多次识别到同一个关键字，并且每次识别到时都会进行报告。但服务仅在最终结果中（而不是在中间结果中）识别关键字。缺省情况下，服务不会执行关键字识别。
 
 要使用关键字识别，必须同时指定以下两个参数：
 
@@ -271,11 +271,11 @@ curl -X POST -u "apikey:{apikey}"
     对于美国英语，服务会将每个关键字进行规范化，以匹配口头和书面字符串。例如，服务会对数字进行规范化，以匹配其口头读法和书面写法。对于其他语言，关键字必须指定为其读法。
 
     通过单个请求最多可以识别 1000 个关键字。关键字不区分大小写。
--   使用 `keywords_threshold` 参数为关键字匹配指定介于 0.0 和 1.0 之间的概率。此阈值指示要使某个词与关键字相匹配，服务对该词必须具有的置信度级别下限。仅当关键字的置信度大于或等于指定的阈值时，才会在抄本中识别到该关键字。
+-   使用 `keywords_threshold` 参数为关键字匹配指定介于 0.0 和 1.0 之间的概率。此阈值指示要使某个词与关键字相匹配，服务对该词必须具有的置信度级别下限。仅当关键字的置信度大于或等于指定的阈值时，才会在文字记录中识别到该关键字。
 
     指定较小的阈值可能会生成许多匹配项。如果指定阈值，那么还必须指定一个或多个关键字。省略此参数不会返回匹配项。
 
-关键字识别功能对于识别音频流中的关键字是必需的。无法通过处理最终抄本来识别关键字，因为抄本表示服务对输入音频的最佳解码结果。它不会包含置信度分数较低的记号，这些记号可能表示相关词。因此，将文本处理工具应用于客户端的抄本可能无法识别关键字。需要更丰富的解码结果表示法，并且该表示法仅在服务器上可用。
+关键字识别功能对于识别音频流中的关键字是必需的。无法通过处理最终文字记录来识别关键字，因为文字记录表示服务对输入音频的最佳解码结果。它不会包含置信度分数较低的记号，这些记号可能表示相关词。因此，将文本处理工具应用于客户端的文字记录可能无法识别关键字。需要更丰富的解码结果表示法，并且该表示法仅在服务器上可用。
 
 ### 关键字识别结果
 {: #keywordSpottingResults}
@@ -298,7 +298,7 @@ curl -X POST -u "apikey:{apikey}"
     -   关键字的记号位于同一块中。
     -   记号相邻或者各记号的间隔时间不超过 0.1 秒。
 
-    如果在关键字的两个记号之间有短暂的补白或非词汇话语（例如，“uhm”或“well”），那么可能会发生后一种情况。有关更多信息，请参阅[迟疑标记](/docs/services/speech-to-text/basic-response.html#hesitation)。
+    如果在关键字的两个记号之间有短暂的补白或非词汇话语（例如，“uhm”或“well”），那么可能会发生后一种情况。有关更多信息，请参阅[迟疑标记](/docs/services/speech-to-text?topic=speech-to-text-basic-response#hesitation)。
 
 ### 关键字识别示例
 {: #keywordSpottingExample}
@@ -337,7 +337,7 @@ curl -X POST -u "apikey:{apikey}"
       },
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -376,7 +376,7 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         },
@@ -385,8 +385,8 @@ severe thunderstorms swept through Colorado on Sunday "
 severe thunderstorms swept through Colorado on Sunday "
         },
         {
-          "transcript": "several tornadoes touch down is a line of
-severe thunderstorms swept through Colorado on Sunday "
+          "transcript": "several tornadoes touch down as a line of
+severe thunderstorms swept through Colorado and Sunday "
         }
       ],
       "final": true
@@ -410,7 +410,7 @@ severe thunderstorms swept through Colorado on Sunday "
 
 相比最终结果，中间结果到达的速度更快，返回频率更高。可以使用中间结果来帮助应用程序更快响应，或者测量转录的进度。
 
-要接收中间结果，请将 WebSocket 识别请求的 `start` 消息中的 `interim_results` JSON 参数设置为 `true`。如果省略 `interim_results` 参数或将其设置为 `false`，那么服务仅在音频结束时返回单个 JSON 抄本。请遵循以下准则来使用此参数：
+要接收中间结果，请将 WebSocket 识别请求的 `start` 消息中的 `interim_results` JSON 参数设置为 `true`。如果省略 `interim_results` 参数或将其设置为 `false`，那么服务仅在音频结束时返回单个 JSON 文字记录。请遵循以下准则来使用此参数：
 
 -   如果要执行脱机转录或批量转录，不需要最短等待时间，以及需要的是所有音频的单个 JSON 结果，请省略此参数或将其设置为 `false`。
 -   如果希望在服务处理音频时结果以渐进方式到达，或者如果需要具有最短等待时间的结果，请将此参数设置为 `true`。请记住，服务在处理更多音频时，可能会更新中间结果。
@@ -491,7 +491,7 @@ severe thunderstorms swept through Colorado on Sunday "
     {
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -511,7 +511,7 @@ severe thunderstorms swept through Colorado on Sunday "
 
 缺省情况下，服务不会报告词替代项。要指示您希望接收替代假设，请使用 `word_alternatives_threshold` 参数来指定介于 0.0 到 1.0 之间的概率。此阈值指示要使服务将某个假设作为词替代项返回，服务对该假设必须具有的置信度级别下限。仅当假设的置信度大于或等于指定阈值时，才会返回该假设。
 
-可以将词替代项视为切分成更小时间间隔（或分箱）的抄本时间线。每个分箱可以有一个或多个具有不同拼写和置信度的假设。`word_alternatives_threshold` 参数用于控制服务返回的结果的密度。指定较小的阈值可能会生成许多假设。
+可以将词替代项视为切分成更小时间间隔（或分箱）的文字记录时间线。每个分箱可以有一个或多个具有不同拼写和置信度的假设。`word_alternatives_threshold` 参数用于控制服务返回的结果的密度。指定较小的阈值可能会生成许多假设。
 
 ### 词替代项结果
 {: #wordAlternativesResults}
@@ -593,7 +593,7 @@ curl -X POST -u "apikey:{apikey}"
       ],
       "alternatives": [
         {
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -609,7 +609,7 @@ severe thunderstorms swept through Colorado on Sunday "
 ## 词置信度
 {: #word_confidence}
 
-`word_confidence` 参数指示服务是否为转录中的词提供置信度度量。缺省情况下，服务仅将最终抄本作为整体报告置信度度量。将 `word_confidence` 设置为 `true` 会指示服务为抄本中的每个单独的词报告置信度度量。
+`word_confidence` 参数指示服务是否为转录中的词提供置信度度量。缺省情况下，服务仅将最终文字记录作为整体报告置信度度量。将 `word_confidence` 设置为 `true` 会指示服务为文字记录中的每个单独的词报告置信度度量。
 
 置信度度量指示服务基于声学证据对转录词正确性的估计。置信度分数范围为 0.0 到 1.0。
 
@@ -635,9 +635,9 @@ curl -X POST -u "apikey:{apikey}"
     {
       "alternatives": [
         {
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday ",
-          "confidence": 0.89,
           "word_confidence": [
             [
               "several",
@@ -732,7 +732,7 @@ curl -X POST -u "apikey:{apikey}"
               6.34
             ]
           ],
-          "confidence": 0.89,
+          "confidence": 0.96,
           "transcript": "several tornadoes touch down as a line of
 severe thunderstorms swept through Colorado on Sunday "
         }
@@ -762,7 +762,7 @@ severe thunderstorms swept through Colorado on Sunday "
 
 将 `smart_formatting` 参数设置为 `true` 可启用智能格式设置。缺省情况下，服务不会执行智能格式设置。
 
-服务仅将智能格式设置应用于识别请求的最终抄本。文本规范化完成后，服务在将结果返回给客户机之前，才会应用智能格式设置。该转换可使抄本更容易阅读，并能对转录结果进行更好的后处理。
+服务仅将智能格式设置应用于识别请求的最终文字记录。文本规范化完成后，服务在将结果返回给客户机之前，才会应用智能格式设置。该转换可使文字记录更容易阅读，并能对转录结果进行更好的后处理。
 
 ### 标点（美国英语）
 {: #smartFormattingPunctuation}
@@ -816,7 +816,7 @@ the warranty period is short period
 ```
 {: codeblock}
 
-转换为抄本中的以下文本：
+在文字记录中转换为以下文本：
 
 ```
 the warranty period is short.
@@ -826,7 +826,7 @@ the warranty period is short.
 ### 语言差异
 {: #smartFormattingDifferences}
 
-智能格式设置基于在抄本中存在明显的关键字。支持的语言以略有不同的方式处理智能格式设置。
+智能格式设置的应用将基于文字记录中存在的明显关键字。受支持的各种语言处理智能格式设置的方式略有不同。
 
 #### 美国英语和西班牙语
 {: #smartFormattingEnglishSpanish}
@@ -842,7 +842,7 @@ the warranty period is short.
 -   电话号码必须是 10 位或 11 位数字，并以日本电话号码的有效前缀开头。例如，有效前缀包括 `03` 和 `090`。
 -   英语词会转换为 ASCII (*hankaku*) 字符。例如，<code>&#65321;&#65314;&#65325;</code> 会转换为 `IBM`。
 -   如果没有充分的上下文可用，那么可能不会转换歧义词。例如，不清楚<code>&#19968;&#26178;</code>和<code>&#21313;&#20998;</code>是否是指时间。
--   不管使用还是不使用智能格式设置，对标点的处理方式都相同。例如，根据概率计算，选择了<code>&#12459;&#12531;&#12510;</code>或 `,` 其中一项。
+-   不管是否使用智能格式设置，对标点的处理方式都相同。例如，根据概率计算，选择了<code>&#12459;&#12531;&#12510;</code>或 `,` 其中一项。
 
 ### 智能格式设置示例
 {: #smartFormattingExample}
@@ -860,10 +860,10 @@ curl -X POST -u "apikey:{apikey}"
 ### 智能格式设置结果
 {: #smartFormattingResults}
 
-下表显示了使用和不使用智能格式设置的最终抄本的示例。抄本基于美国英语音频。
+下表显示了使用和不使用智能格式设置的最终文字记录的示例。文字记录基于美国英语音频。
 
 <table summary="每个标题行后跟多行示例，用于显示标题中标识的元素的智能格式设置效果。">
-  <caption>表 3. 智能格式设置示例抄本</caption>
+  <caption>表 3. 智能格式设置示例文字记录</caption>
   <tr>
     <th id="without_formatting" style="width:45%; text-align:left">不使用智能格式设置</th>
     <th id="with_formatting" style="text-align:left">使用智能格式设置</th>
@@ -1036,10 +1036,10 @@ curl -X POST -u "apikey:{apikey}"
   </tr>
 </table>
 
-### 包含长时间停顿的示例抄本
+### 包含长时间停顿的示例文字记录
 {: #smartFormattingLongPauses}
 
-如果话语包含足够长的静默，那么服务会将抄本拆分为两个或更多个最终音块。这会影响格式设置结果，如以下示例中所示。
+如果话语包含足够长的静默，那么服务会将文字记录拆分为两个或更多个最终音块。这会影响格式设置结果，如以下示例中所示。
 
 <table>
   <caption>表 4. 长时间停顿的智能格式设置示例脚本</caption>
@@ -1074,15 +1074,15 @@ curl -X POST -u "apikey:{apikey}"
 数字编辑是 Beta 功能，可用于美国英语、日语和韩语。
 {: note}
 
-`redaction` 参数指示服务对最终抄本中的数字数据执行编辑（或掩蔽）。此功能对具有三位或更多连续位数的任何数字，通过将每位数替换为 `X` 字符来进行编辑。此功能旨在编辑敏感数字信息，例如信用卡号。
+`redaction` 参数指示服务对最终文字记录中的数字数据执行编辑（或掩蔽）。此功能对具有三位或更多连续位数的任何数字，通过将每位数替换为 `X` 字符来进行编辑。此功能旨在编辑敏感数字信息，例如信用卡号。
 
 缺省情况下，服务不会编辑数字数据。将 `redaction` 参数设置为 `true` 可启用数字编辑。启用编辑时，服务会自动启用智能格式设置，不管您是否显式禁用了智能格式设置功能。为了确保最大安全性，启用编辑时，服务还会强制实施以下参数值：
 
 -   服务会禁用关键字识别，不管是否为 `keywords` 和 `keywords_threshold` 参数指定了值。
 -   服务会禁用中间结果，不管是否将 WebSocket 接口的 `interim_results` 参数设置为 `true`。
--   服务仅返回单个最终抄本，不管是否为 `maximum_alternatives` 参数指定了值。
+-   服务仅返回单个最终文字记录，不管是否为 `maximum_alternatives` 参数指定了值。
 
-此功能的设计与现有智能格式设置功能类似。在将结果返回给客户机之前，且在文本规范化完成之后，服务才会将编辑功能应用于识别请求的最终抄本。
+此功能的设计与现有智能格式设置功能类似。在将结果返回给客户机之前，且在文本规范化完成之后，服务才会将编辑功能应用于识别请求的最终文字记录。
 
 此功能的未来版本可能会扩展编辑能力，以掩蔽所有电话号码、街道地址、银行帐户、社会保障号和其他敏感数字数据。
 {: note}
@@ -1131,7 +1131,7 @@ curl -X POST -u "apikey:{apikey}"
 ### 数字编辑示例
 {: #redactionExample}
 
-以下示例在识别请求中通过将 `redaction` 参数设置为 `true` 来请求数字编辑。由于请求启用了编辑，因此服务会通过请求隐式启用智能格式设置。服务实际上会禁用请求的其他参数，使这些参数无效：服务会返回单个最终抄本，并且不识别任何关键字。以下部分显示了编辑的影响。
+以下示例在识别请求中通过将 `redaction` 参数设置为 `true` 来请求数字编辑。由于请求启用了编辑，因此服务会通过请求隐式启用智能格式设置。服务实际上会禁用请求的其他参数，使这些参数无效：服务会返回单个最终文字记录，并且不识别任何关键字。以下部分显示了编辑的影响。
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
@@ -1144,10 +1144,10 @@ curl -X POST -u "apikey:{apikey}"
 ### 数字编辑结果
 {: #redactionResults}
 
-下表显示了在每种支持的语言中使用和不使用数字编辑的最终抄本的示例。
+下表显示了在每种支持的语言中使用和不使用数字编辑的最终文字记录的示例。
 
-<table style="width:90%" summary="每个标题行标识一种语言，随后一行显示不启用和启用数字编辑的同一抄本。">
-  <caption>表 6. 数字编辑示例抄本</caption>
+<table style="width:90%" summary="每个标题行标识一种语言，随后一行显示不启用和启用数字编辑的同一文字记录。">
+  <caption>表 6. 数字编辑示例文字记录</caption>
   <tr>
     <th id="without_redaction" style="text-align:left">不使用编辑</th>
     <th id="with_redaction" style="text-align:left">使用编辑</th>
@@ -1199,9 +1199,9 @@ curl -X POST -u "apikey:{apikey}"
 不雅言辞过滤功能仅对于美国英语一般可用。
 {: note}
 
-`profanity_filter` 参数指示服务是否要从其结果中检剔不雅言辞。缺省情况下，服务会通过将抄本中的所有不雅言辞替换为一系列星号，从而隐藏这些不雅言辞。将此参数设置为 `false` 时，输出中显示的词与转录的内容完全相同。
+`profanity_filter` 参数指示服务是否要从其结果中检剔不雅言辞。缺省情况下，服务会通过将文字记录中的所有不雅言辞替换为一系列星号，从而隐藏这些不雅言辞。将此参数设置为 `false` 时，输出中显示的词与转录的内容完全相同。
 
-服务会从所有最终抄本和任何替代抄本中检剔不雅言辞。此外，服务还会从与词替代项、词置信度和词时间戳记关联的结果中检剔不雅言辞。唯一的例外是关键字识别，对于此功能，服务会返回用户指定的所有词，而不管 `profanity_filter` 是否为 `true`。
+服务会从所有最终文字记录和任何替代文字记录中检剔不雅言辞。此外，服务还会从与词替代项、词置信度和词时间戳记关联的结果中检剔不雅言辞。唯一的例外是关键字识别，对于此功能，服务会返回用户指定的所有词，而不管 `profanity_filter` 是否为 `true`。
 
 ### 不雅言辞过滤示例
 {: #profanityFilteringExample}

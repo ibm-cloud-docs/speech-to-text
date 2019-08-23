@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-04-12"
+lastupdated: "2019-06-06"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -29,7 +29,7 @@ subcollection: speech-to-text
 {: shortdesc}
 
 -   **语料库：**使用词填充定制语言模型的建议方法是向模型添加一个或多个语料库。添加语料库时，服务会分析该文件，并自动将其找到的任何新词添加到定制模型。通过向定制模型添加语料库，服务可以在上下文中抽取特定于领域的词，这有助于确保更好的转录结果。有关更多信息，请参阅[使用语料库](#workingCorpora)。
--   **语法：**可以向定制模型添加语法，以将语音识别限制为语法识别到的词或短语。向模型添加语法时，服务会自动将其找到的任何新词添加到模型，就像添加语料库一样。有关更多信息，请参阅[将语法用于定制语言模型](/docs/services/speech-to-text/grammar.html)。
+-   **语法：**可以向定制模型添加语法，以将语音识别限制为语法识别到的词或短语。向模型添加语法时，服务会自动将其找到的任何新词添加到模型，就像添加语料库一样。有关更多信息，请参阅[将语法用于定制语言模型](/docs/services/speech-to-text?topic=speech-to-text-grammars)。
 -   **单个词：**还可以将单个定制词直接添加到模型。服务向模型添加词的方式，就像添加从语料库或语法中发现的词一样。直接添加词时，可以指定多种读法并指示词的显示方式。此外，还可以更新现有词，以修改或扩充从语料库或语法中抽取的定义。有关更多信息，请参阅[使用定制词](#workingWords)。
 
 无论采用哪种方式添加词，服务都会将添加到定制语言模型的所有词存储在模型的词资源中。
@@ -45,12 +45,12 @@ subcollection: speech-to-text
 -   `sounds_like`：词的读法。对于从语料库和语法中抽取的词，此值表示服务如何认为词的读法是基于其语言规则的。在许多情况下，读法反映的是 `word` 字段的拼写。
 
     可以使用 `sounds_like` 字段来修改词的读法。还可以使用此字段为一个词指定多种读法。有关更多信息，请参阅[使用 sounds_like 字段](#soundsLike)。
--   `display_as`：服务在抄本中使用的词的拼写。此字段指示词的显示方式。在大多数情况下，拼写与 `word` 字段的值相匹配。
+-   `display_as`：服务在文字记录中使用的词的拼写。此字段指示词的显示方式。在大多数情况下，拼写与 `word` 字段的值相匹配。
 
     可以使用 `display_as` 字段为词指定不同的拼写。有关更多信息，请参阅[使用 display_as 字段](#displayAs)。
 -   `source`：将词添加到词资源的方式。如果服务是从语料库或语法中抽取的词，那么此字段会列出该资源的名称。由于服务可能在多个资源中遇到同一词，因此该字段可能列出多个语料库或语法名称。如果是直接添加或修改的词，那么此字段包含字符串 `user`。
 
-以任何方式更新模型的词资源后，必须训练模型以使更改在转录期间生效。有关更多信息，请参阅[训练定制语言模型](/docs/services/speech-to-text/language-create.html#trainModel-language)。
+以任何方式更新模型的词资源后，必须训练模型以使更改在转录期间生效。有关更多信息，请参阅[训练定制语言模型](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language)。
 
 ## 我需要多少数据？
 {: #wordsResourceAmount}
@@ -61,8 +61,8 @@ subcollection: speech-to-text
 
 服务限制了可以添加到定制语言模型的词数：
 
--   最多可以向定制模型的词资源添加 9 万个 OOV 词。这包括来自所有源（语料库、语法和直接添加的单个定制词）的 OOV 词。
--   最多可以从所有源向定制模型添加 1000 万个词。此数字包含所有词，包括 OOV 词、服务基本词汇表中已包含的词以及语料库或语法中包含的词。对于语料库，服务会使用这些额外的词来了解可能出现 OOV 词的上下文，这就是为什么语料库是提高识别准确性的更有效方法的原因。
+-   最多可以向定制模型的词资源添加 9 万个 OOV 词。此数字包括来自所有源（语料库、语法和直接添加的单个定制词）的 OOV 词。
+-   最多可以从所有源向定制模型添加共 1000 万个词。此数字包含所有词，包括 OOV 词、服务基本词汇表中已包含的词以及语料库或语法中包含的词。对于语料库，服务会使用这些额外的词来了解可能出现 OOV 词的上下文，这就是为什么语料库是提高识别准确性的更有效方法的原因。
 
 大型词资源可能会增加语音识别的等待时间，但确切的影响很难量化或预测。与生成有效定制模型所需的数据量一样，大型词资源的性能影响也取决于诸多因素。请使用不同数据量来测试定制模型，以确定模型和数据的性能。
 
@@ -135,14 +135,14 @@ NINDS 还支持通过向美国全国各地主要研究机构拨款来开展额�
 
 -   将数字转换为其等效词，例如：
     -   *对于英语*，`500` 转换为 `five hundred`，`0.15` 转换为 `zero point fifteen`。
-    -   *对于法语*，`500` 转换为 `cinq cents`，`0,15` 转换为 <code>z&eacute;ro quinze</code>。
+    -   *对于法语*，`500` 转换为 `cinq cents`，`0,15` 转换为 <code>z&eacute;ro virgule quinze</code>。
     -   *对于德语*，`500` 转换为 <code>f&uuml;nfhundert</code>，`0,15` 转换为 <code>null punkt f&uuml;nfzehn</code>。
     -   *对于西班牙语*，`500` 转换为 `quinientos`，`0,15` 转换为 `cero coma quince`。
     -   *对于巴西葡萄牙语*，`500` 转换为 `quinhentos`，`0,15` 转换为 `zero ponto quinze`。
 -   将包含特定符号的记号转换为有意义的字符串表示法，例如：
     -   转换 `$`（美元符号）和数字：
         -   *对于英语*，`$100` 转换为 `one hundred dollars`。
-        -   *对于法语*，`$100` 转换为 `cent dollar`。
+        -   *对于法语*，`$100` 转换为 `cent dollars`。
         -   *对于德语*，`$100` 和 `100$` 转换为 `einhundert dollar`。
         -   *对于西班牙语*，`$100` 和 `100$` 转换为 <code>cien d&oacute;lares</code>（或者如果方言为 `es-LA`，那么转换为 `cien pesos`）。
         -   *对于巴西葡萄牙语*，`$100` 和 `100$` 转换为 <code>cem d&oacute;lares</code>。
@@ -154,7 +154,7 @@ NINDS 还支持通过向美国全国各地主要研究机构拨款来开展额�
         -   *对于巴西葡萄牙*，<code>&euro;100</code> 和 <code>100&euro;</code> 转换为 `cem euros`。
     -   转换后跟 `%`（百分比符号）的数字：
         -   *对于英语，* `100%` 转换为 `one hundred percent`。
-        -   *对于法语*，`100%` 转换为 `cent pourcent`。
+        -   *对于法语*，`100%` 转换为 `cent pour cent`。
         -   *对于德语*，`100%` 转换为 `einhundert prozent`。
         -   *对于西班牙语*，`100%` 转换为 `cien por ciento`。
         -   *对于巴西葡萄牙语*，`100%` 转换为 `cem por cento`。
@@ -175,7 +175,7 @@ NINDS 还支持通过向美国全国各地主要研究机构拨款来开展额�
 {: #corpusLanguages-koKR}
 
 -   将数字转换为其等效词，例如 <code>10</code> 转换为 <code>&#49901;</code>。
--   除去以下标点和特殊字符：`- ( ) * : . , ' "`。但是，对于其他语言会除去的标点和特殊字符，对于韩语不一定会全部除去，例如：
+-   除去以下标点和特殊字符：`- ( ) * : . , ' "`. 但是，对于其他语言会除去的标点和特殊字符，对于韩语不一定会全部除去，例如：
     -   仅当句点 (`.`) 符号出现在输入行末时才将其除去。
     -   不除去波浪号 (`~`)。
     -   不除去或以其他方式处理 Unicode 宽字符符号，例如 <code>&#8230;</code>（三个点或省略符）。
@@ -206,15 +206,15 @@ NINDS 还支持通过向美国全国各地主要研究机构拨款来开展额�
 在定制语言模型中使用各个词时，必须使用该编码。使用 `GET`、`PUT` 或 `DELETE /v1/customizations/{customization_id}/words/{word_name}` 方法来指定词时，必须对在 URL 中传递的 `word_name` 进行 URL 编码（如果词包含非 ASCII 字符）。
 
 例如，下表显示了相同字母采用两种不同编码（ASCII 和 UTF-8）的情况。在 URL 中可以将 ASCII 字符作为 `z` 传递。但 UTF-8 字符必须作为 `%EF%BD%9A` 传递。
-<table>
+<table style="width:75%">
   <caption>表 1. 字符编码示例</caption>
   <tr>
-    <th style="text-align:left">字母</th>
-    <th style="text-align:center">编码</th>
-    <th style="text-align:center">值</th>
+    <th style="width:15%; text-align:center">字母</th>
+    <th style="width:40%; text-align:center">编码</th>
+    <th style="width:45%; text-align:center">值</th>
   </tr>
   <tr>
-    <td style="text-align:left; width:30%">
+    <td style="text-align:center">
       `z`
     </td>
     <td style="text-align:center">
@@ -225,7 +225,7 @@ NINDS 还支持通过向美国全国各地主要研究机构拨款来开展额�
     </td>
   </tr>
   <tr>
-    <td style="text-align:left; width:30%">
+    <td style="text-align:center">
       <code>&#xff5a;</code>
     </td>
     <td style="text-align:center">
@@ -305,7 +305,6 @@ NINDS 还支持通过向美国全国各地主要研究机构拨款来开展额�
 <code>&#12500;&#12515;</code>、<code>&#12500;&#12517;</code>、<code>&#12500;&#12519;</code>、<code>&#12501;&#12449;</code>、<code>&#12501;&#12451;</code>、<code>&#12501;&#12455;</code>、<code>&#12501;&#12457;</code>、<code>&#12501;&#12517;</code>、<code>&#12511;&#12515;</code>、<code>&#12511;&#12517;</code>、<code>&#12511;&#12519;</code>、<code>&#12522;&#12451;</code>、<code>&#12522;&#12455;</code>、<code>&#12522;&#12515;</code>、<code>&#12522;&#12517;</code>、<br/>
 <code>&#12522;&#12519;</code>、<code>&#12532;&#12449;</code>、<code>&#12532;&#12451;</code>、<code>&#12532;&#12455;</code>、<code>&#12532;&#12457;</code>、<code>&#12532;&#12517;</code>
 
-
 -   请仅在促音（*soku-on* 或日语的&#20419;&#38899;）后使用以下音节：
 
     <code>&#12496;</code>、<code>&#12499;</code>、<code>&#12502;</code>、<code>&#12505;</code>、<code>&#12508;</code>、<code>&#12481;</code>、<code>&#12481;&#12455;</code>、<code>&#12481;&#12515;</code>、<code>&#12481;&#12517;</code>、<code>&#12481;&#12519;</code>、<code>&#12480;</code>、<code>&#12487;</code>、<code>&#12487;&#12451;</code>、<code>&#12489;</code>、<code>&#12489;&#12453;</code>、<code>&#12501;</code>、<br/>
@@ -328,7 +327,7 @@ NINDS 还支持通过向美国全国各地主要研究机构拨款来开展额�
 ### 使用 display_as 字段
 {: #displayAs}
 
-`display_as` 字段指定词在抄本中的显示方式。此字段适用于您希望服务显示与词拼写不同的字符串的情况。例如，可以指示词 `hhonors` 显示为 `HHonors`，而不管其发音相似的读法是 `hilton honors` 还是 `h honors`。
+`display_as` 字段指定词在文字记录中的显示方式。此字段适用于您希望服务显示与词拼写不同的字符串的情况。例如，可以指示词 `hhonors` 显示为 `HHonors`，而不管其发音相似的读法是 `hilton honors` 还是 `h honors`。
 
 ```bash
 curl -X PUT -u "apikey:{apikey}"
@@ -352,7 +351,7 @@ curl -X PUT -u "apikey:{apikey}"
 
 例如，假设添加了`display_as` 字段为 `one` 的定制词 `one`。智能格式设置会将词 `one` 更改为数字 `1`，并且不会应用 display-as 值。要解决此问题，可以为数字 `1` 添加定制词，并将相同的 `display_as` 字段应用于该词。
 
-有关使用这些功能的更多信息，请参阅[智能格式设置](/docs/services/speech-to-text/output.html#smart_formatting)和[数字编辑](/docs/services/speech-to-text/output.html#redaction)。
+有关使用这些功能的更多信息，请参阅[智能格式设置](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting)和[数字编辑](/docs/services/speech-to-text?topic=speech-to-text-output#redaction)。
 
 ### 添加或修改定制词时的处理过程
 {: #parseWord}
@@ -458,8 +457,8 @@ curl -X PUT -u "apikey:{apikey}"
 
 要验证定制模型的词并根据需要进行更正（不管词是以何种方式添加到词资源的），请使用以下方法：
 
--   使用 `GET /v1/customizations/{customization_id}/words` 方法来列出定制模型中的所有词，或使用 `GET /v1/customizations/{customization_id}/words/{word_name}` 方法来查询单个词。有关更多信息，请参阅[列出定制语言模型中的词](/docs/services/speech-to-text/language-words.html#listWords)。
+-   使用 `GET /v1/customizations/{customization_id}/words` 方法来列出定制模型中的所有词，或使用 `GET /v1/customizations/{customization_id}/words/{word_name}` 方法来查询单个词。有关更多信息，请参阅[列出定制语言模型中的词](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords)。
 -   修改定制模型中的词以更正错误，或者使用 `POST /v1/customizations/{customization_id}/words` 或 `PUT /v1/customizations/{customization_id}/words/{word_name}` 方法来添加 sounds-like 或 display-as 值。有关更多信息，请参阅[使用定制词](#workingWords)。
--   使用 `DELETE /v1/customizations/{customization_id}/words/{word_name}` 方法来删除错误地（例如，因语料库中的拼写错误或其他错误）引入的无关词。有关更多信息，请参阅[从定制语言模型中删除词](/docs/services/speech-to-text/language-words.html#deleteWord)。
-    -   如果词是从语料库中抽取的，那么可以改为更新语料库文本文件来更正错误，然后使用 `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` 方法的 `allow_overwrite` 参数来重新装入该文件。有关更多信息，请参阅[向定制语言模型添加语料库](/docs/services/speech-to-text/language-create.html#addCorpus)。
-    -   如果词是从语法中抽取的，那么可以更新语法文件来更正错误，然后使用 `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` 方法的 `allow_overwrite` 参数来重新装入该文件。有关更多信息，请参阅[向定制语言模型添加语法](/docs/services/speech-to-text/grammar-add.html#addGrammar)。
+-   使用 `DELETE /v1/customizations/{customization_id}/words/{word_name}` 方法来删除错误地（例如，因语料库中的拼写错误或其他错误）引入的无关词。有关更多信息，请参阅[从定制语言模型中删除词](/docs/services/speech-to-text?topic=speech-to-text-manageWords#deleteWord)。
+    -   如果词是从语料库中抽取的，那么可以改为更新语料库文本文件来更正错误，然后使用 `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` 方法的 `allow_overwrite` 参数来重新装入该文件。有关更多信息，请参阅[向定制语言模型添加语料库](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus)。
+    -   如果词是从语法中抽取的，那么可以更新语法文件来更正错误，然后使用 `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` 方法的 `allow_overwrite` 参数来重新装入该文件。有关更多信息，请参阅[向定制语言模型添加语法](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar)。

@@ -2,14 +2,14 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-03-11"
+lastupdated: "2019-06-04"
 
 subcollection: speech-to-text
 
 ---
 
 {:shortdesc: .shortdesc}
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
@@ -25,10 +25,10 @@ subcollection: speech-to-text
 # 了解语法
 {: #grammarUnderstand}
 
-以下示例介绍了 {{site.data.keyword.speechtotextfull}} 服务对语法的支持。这些示例创建了两个简单的 ABNF 语法，并显示将其用于语音识别时可能获得的结果。这些示例说明了检查服务在抄本中包含的置信度分数的重要性。
+以下示例介绍了 {{site.data.keyword.speechtotextfull}} 服务对语法的支持。这些示例创建了两个简单的 ABNF 语法，并显示将其用于语音识别时可能获得的结果。这些示例说明了检查服务在文字记录中包含的置信度分数的重要性。
 {: shortdesc}
 
-这些示例仅提供语音识别请求的结果。有关说明如何传递语法用于语音识别的示例，请参阅[将语法用于语音识别](/docs/services/speech-to-text/grammar-use.html)。此外，这些示例是非常基本的例子。有关更复杂语法的示例，请参阅[示例语法](/docs/services/speech-to-text/grammar-examples.html)。
+这些示例仅提供语音识别请求的结果。有关说明如何传递语法用于语音识别的示例，请参阅[将语法用于语音识别](/docs/services/speech-to-text?topic=speech-to-text-grammarUse)。此外，这些示例是非常基本的例子。有关更复杂语法的示例，请参阅[示例语法](/docs/services/speech-to-text?topic=speech-to-text-grammarExamples)。
 
 ## 单短语匹配：yesno 语法
 {: #yesnoGrammar}
@@ -45,7 +45,7 @@ $yesno = yes | no ;
 ```
 {: codeblock}
 
-将此语法应用于语音识别请求时，服务可以返回包含分数的抄本，分数指示服务对匹配项的置信度。如果输入显然与两个短语中的任一项都不匹配，那么也可以不返回任何结果。
+将此语法应用于语音识别请求时，服务可以返回包含分数的文字记录，分数指示服务对匹配项的置信度。如果输入显然与两个短语中的任一项都不匹配，那么也可以不返回任何结果。
 
 例如，如果用户回复 `yes`，那么服务返回的响应可能非常类似于以下结果。`confidence` 字段中的分数指示这是完全可靠的匹配项。
 
@@ -74,7 +74,7 @@ $yesno = yes | no ;
 
 使用多短语语法时，用户的响应必须完整才能被识别到。用户不能省略词或在响应中途停止。即使缺少一个词，也会导致服务返回空结果。
 
-此外，如果用户说短语时，各短语之间的静默足够长，以指示它们是独立的话语时，那么服务可能返回多个抄本。例如，考虑简单的 `names` 语法，该语法可以与三个多词姓名之一相匹配。
+此外，如果用户说短语时，各短语之间的静默足够长，以指示它们是独立的话语时，那么服务可能返回多个文字记录。例如，考虑简单的 `names` 语法，该语法可以与三个多词姓名之一相匹配。
 
 ```
 #ABNF 1.0 ISO-8859-1;
@@ -105,7 +105,7 @@ $names = Yi Wen Tan | Yon See | Youngjoon Lee ;
 ```
 {: codeblock}
 
-现在，假设用户在说两个姓名时中间有足够长的静默（至少为 0.8 秒），以指示它们是单独的话语：`Yon See` [静默 1.0 秒] `Yi Wen Tan`。在这种情况下，服务会为每个抄本发送具有不同置信度分数的两个单独响应。
+现在，假设用户在说两个姓名时中间有足够长的静默（至少为 0.8 秒），以指示它们是单独的话语：`Yon See` [静默 1.0 秒] `Yi Wen Tan`。在这种情况下，服务会为每个文字记录发送具有不同置信度分数的两个单独响应。
 
 ```
 {
