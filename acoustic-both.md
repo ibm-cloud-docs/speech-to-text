@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-06-24"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -54,7 +54,7 @@ Use the optional `custom_language_model_id` query parameter of the `POST /v1/aco
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/train?custom_language_model_id={customization_id}"
+"{url}/v1/acoustic_customizations/{customization_id}/train?custom_language_model_id={customization_id}"
 ```
 {: pre}
 
@@ -76,7 +76,7 @@ The following example passes both types of model to the HTTP `POST /v1/recognize
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @audio-file1.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?acoustic_customization_id={customization_id}&language_customization_id={customization_id}"
+"{url}/v1/recognize?acoustic_customization_id={customization_id}&language_customization_id={customization_id}"
 ```
 {: pre}
 

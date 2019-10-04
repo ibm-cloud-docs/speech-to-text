@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -51,7 +51,7 @@ The following example lists all corpora for the custom model with the specified 
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/corpora"
+"{url}/v1/customizations/{customization_id}/corpora"
 ```
 {: pre}
 
@@ -88,7 +88,7 @@ The following example returns information about the corpus that is named `corpus
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/corpora/corpus1"
+"{url}/v1/customizations/{customization_id}/corpora/corpus1"
 ```
 {: pre}
 
@@ -119,6 +119,6 @@ The following example deletes the corpus that is named `corpus3` from the custom
 
 ```bash
 curl -X DELETE -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/corpora/corpus3"
+"{url}/v1/customizations/{customization_id}/corpora/corpus3"
 ```
 {: pre}

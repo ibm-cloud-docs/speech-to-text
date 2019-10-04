@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-24"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -94,7 +94,7 @@ curl -X POST -u "apikey:{apikey}"
 --data "{\"name\": \"Example acoustic model\",
   \"base_model_name\": \"en-US_BroadbandModel\",
   \"description\": \"Example custom acoustic model\"}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations"
+"{url}/v1/acoustic_customizations"
 ```
 {: pre}
 
@@ -127,7 +127,7 @@ The following examples show the addition of both audio- and archive-type resourc
     curl -X POST -u "apikey:{apikey}"
     --header "Content-Type: audio/wav"
     --data-binary @audio1.wav
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio1"
+    "{url}/v1/acoustic_customizations/{customization_id}/audio/audio1"
     ```
     {: pre}
 
@@ -138,7 +138,7 @@ The following examples show the addition of both audio- and archive-type resourc
     --header "Content-Type: application/zip"
     --header "Contained-Content-Type: audio/l16;rate=16000"
     --data-binary @audio2.zip
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio2"
+    "{url}/v1/acoustic_customizations/{customization_id}/audio/audio2"
     ```
     {: pre}
 
@@ -168,7 +168,7 @@ The content of the response and location of the `status` field depend on the typ
 
     ```bash
     curl -X GET -u "apikey:{apikey}"
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio1"
+    "{url}/v1/acoustic_customizations/{customization_id}/audio/audio1"
     ```
     {: pre}
 
@@ -190,7 +190,7 @@ The content of the response and location of the `status` field depend on the typ
 
     ```bash
     curl -X GET -u "apikey:{apikey}"
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio2"
+    "{url}/v1/acoustic_customizations/{customization_id}/audio/audio2"
     ```
     {: pre}
 
@@ -221,7 +221,7 @@ You use the `POST /v1/acoustic_customizations/{customization_id}/train` method t
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/train"
+"{url}/v1/acoustic_customizations/{customization_id}/train"
 ```
 {: pre}
 
@@ -241,7 +241,7 @@ To determine the status of a training request, use the `GET /v1/acoustic_customi
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}"
+"{url}/v1/acoustic_customizations/{customization_id}"
 ```
 {: pre}
 

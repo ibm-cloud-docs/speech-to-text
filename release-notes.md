@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-08-24"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -572,7 +572,7 @@ For language model customization, the Korean models are generally available for 
     ```bash
     curl -X POST -u "{username}:{password}"
     --cookie-jar cookies.txt
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/sessions"
+    "{url}/v1/sessions"
     ```
     {: pre}
 

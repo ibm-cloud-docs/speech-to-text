@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-24"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -36,7 +36,7 @@ You can create multiple custom acoustic models for the same or different domains
 
     ```javascript
     var token = {authentication-token};
-    var wsURI = 'wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
+    var wsURI = '{ws_url}/v1/recognize'
       + '?access_token=' + IAM_access_token
       + '&model=en-US_NarrowbandModel'
       + '&acoustic_customization_id={customization_id}';
@@ -49,7 +49,7 @@ You can create multiple custom acoustic models for the same or different domains
     curl -X POST -u "apikey:{apikey}"
     --header "Content-Type: audio/flac"
     --data-binary @audio-file1.flac
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?acoustic_customization_id={customization_id}"
+    "{url}/v1/recognize?acoustic_customization_id={customization_id}"
     ```
     {: pre}
 -   For the [asynchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-async), use the `POST /v1/recognitions` method. The specified custom model is used for that request.
@@ -58,7 +58,7 @@ You can create multiple custom acoustic models for the same or different domains
     curl -X POST -u "apikey:{apikey}"
     --header "Content-Type: audio/flac"
     --data-binary @audio-file.flac
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions?acoustic_customization_id={customization_id}"
+    "{url}/v1/recognitions?acoustic_customization_id={customization_id}"
     ```
     {: pre}
 

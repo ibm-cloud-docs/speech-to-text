@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-10"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -216,7 +216,7 @@ The following example shows a speech recognition request for the `/v1/recognitio
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions?processing_metrics=true&processing_metrics_interval=0.25"
+"{url}/v1/recognitions?processing_metrics=true&processing_metrics_interval=0.25"
 ```
 {: pre}
 
@@ -345,7 +345,7 @@ The following example shows a speech recognition request with the synchronous HT
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognitize?audio_metrics=true"
+"{url}/v1/recognitize?audio_metrics=true"
 ```
 {: pre}
 

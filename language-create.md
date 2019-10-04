@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-07-21"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -131,7 +131,7 @@ curl -X POST -u "apikey:{apikey}"
 --data "{\"name\": \"Example model\",
   \"base_model_name\": \"en-US_BroadbandModel\",
   \"description\": \"Example custom language model\"}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations"
+"{url}/v1/customizations"
 ```
 {: pre}
 
@@ -178,7 +178,7 @@ The following example adds the corpus text file `healthcare.txt` to the custom m
 ```bash
 curl -X POST -u "apikey:{apikey}"
 --data-binary @healthcare.txt
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/corpora/healthcare"
+"{url}/v1/customizations/{customization_id}/corpora/healthcare"
 ```
 {: pre}
 
@@ -197,7 +197,7 @@ To determine the status of the analysis, use the `GET /v1/customizations/{custom
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/corpora/corpus1"
+"{url}/v1/customizations/{customization_id}/corpora/corpus1"
 ```
 {: pre}
 
@@ -241,15 +241,15 @@ You can use the following methods to add words to a custom model:
     --data "{\"words\": [
       {\"word\": \"HHonors\", \"sounds_like\": [\"hilton honors\", \"H. honors\"], \"display_as\": \"HHonors\"},
       {\"word\": \"IEEE\", \"sounds_like\": [\"I. triple E.\"]}]}"
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words"
+    "{url}/v1/customizations/{customization_id}/words"
     ```
     {: pre}
 
     You can also add the words from a file. For example, the file `words.json` defines the same two custom words.
 
-    ```
-    {"words":
-      [
+    ```javascript
+    {
+      "words": [
         {"word": "HHonors", "sounds_like": ["hilton honors", "H. honors"], "display_as": "HHonors"},
         {"word": "IEEE", "sounds_like": ["I. triple E."]}
       ]
@@ -263,7 +263,7 @@ You can use the following methods to add words to a custom model:
     curl -X POST -u "apikey:{apikey}"
     --header "Content-Type: application/json"
     --data-binary @words.json
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words"
+    "{url}/v1/customizations/{customization_id}/words"
     ```
     {: pre}
 
@@ -274,7 +274,7 @@ You can use the following methods to add words to a custom model:
     curl -X PUT -u "apikey:{apikey}"
     --header "Content-Type: application/json"
     --data "{\"sounds_like\": [\"N. C. A. A.\", \"N. C. double A.\"]}"
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words/NCAA"
+    "{url}/v1/customizations/{customization_id}/words/NCAA"
     ```
     {: pre}
 
@@ -291,7 +291,7 @@ To determine the status of the request, use the `GET /v1/customizations/{customi
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}"
+"{url}/v1/customizations/{customization_id}"
 ```
 {: pre}
 
@@ -330,7 +330,7 @@ You use the `POST /v1/customizations/{customization_id}/train` method to train a
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/train"
+"{url}/v1/customizations/{customization_id}/train"
 ```
 {: pre}
 
@@ -355,7 +355,7 @@ To determine the status of a training request, use the `GET /v1/customizations/{
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}"
+"{url}/v1/customizations/{customization_id}"
 ```
 {: pre}
 

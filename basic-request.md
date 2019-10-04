@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -58,7 +58,7 @@ The following example provides JavaScript code that establishes a connection and
 
 ```javascript
 var token = {authentication-token};
-var wsURI = 'wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
+var wsURI = '{ws_url}/v1/recognize'
   + '?access_token=' + IAM_access_token;
 var websocket = new WebSocket(wsURI);
 
@@ -82,7 +82,7 @@ The following `curl` example shows a basic HTTP recognition request:
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
+"{url}/v1/recognize"
 ```
 {: pre}
 
@@ -97,6 +97,6 @@ The following `curl` example shows a simple asynchronous HTTP recognition reques
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions"
+"{url}/v1/recognitions"
 ```
 {: pre}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-07-21"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -147,7 +147,7 @@ The following example HTTP request uses the model `en-US-NarrowbandModel` for sp
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?model=en-US_NarrowbandModel"
+"{url}/v1/recognize?model=en-US_NarrowbandModel"
 ```
 {: pre}
 
@@ -177,7 +177,7 @@ The following example lists all models that are supported by the service:
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/models"
+"{url}/v1/models"
 ```
 {: pre}
 
@@ -187,7 +187,7 @@ curl -X GET -u "apikey:{apikey}"
     {
       "name": "pt-BR_NarrowbandModel",
       "language": "pt-BR",
-      "url": "https://stream.watsonplatform.net/speech-to-text/api/v1/models/pt-BR_NarrowbandModel",
+      "url": "{url}/v1/models/pt-BR_NarrowbandModel",
       "rate": 8000,
       "supported_features": {
         "custom_language_model": false,
@@ -198,7 +198,7 @@ curl -X GET -u "apikey:{apikey}"
     {
       "name": "ko-KR_BroadbandModel",
       "language": "ko-KR",
-      "url": "https://stream.watsonplatform.net/speech-to-text/api/v1/models/ko-KR_BroadbandModel",
+      "url": "{url}/v1/models/ko-KR_BroadbandModel",
       "rate": 16000,
       "supported_features": {
         "custom_language_model": true,
@@ -209,7 +209,7 @@ curl -X GET -u "apikey:{apikey}"
     {
       "name": "fr-FR_BroadbandModel",
       "language": "fr-FR",
-      "url": "https://stream.watsonplatform.net/speech-to-text/api/v1/models/fr-FR_BroadbandModel",
+      "url": "{url}/v1/models/fr-FR_BroadbandModel",
       "rate": 16000,
       "supported_features": {
         "custom_language_model": true,
@@ -227,7 +227,7 @@ The following example shows information about the US English broadband model. Th
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/models/en-US_BroadbandModel"
+"{url}/v1/models/en-US_BroadbandModel"
 ```
 {: pre}
 
@@ -236,7 +236,7 @@ curl -X GET -u "apikey:{apikey}"
   "rate": 16000,
   "name": "en-US_BroadbandModel",
   "language": "en-US",
-  "url": "https://stream.watsonplatform.net/speech-to-text/api/v1/models/en-US_BroadbandModel",
+  "url": "{url}/v1/models/en-US_BroadbandModel",
   "supported_features": {
     "custom_language_model": true,
     "speaker_labels": true

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-24"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -59,7 +59,7 @@ The following example request includes the `language_customization_id` parameter
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&customization_weight=0.5"
+"{url}/v1/recognize?language_customization_id={customization_id}&customization_weight=0.5"
 ```
 {: pre}
 
@@ -69,7 +69,7 @@ The following example request uses both a custom language model and a custom aco
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file1.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&acoustic_customization_id={customization_id}"
+"{url}/v1/recognize?language_customization_id={customization_id}&acoustic_customization_id={customization_id}"
 ```
 {: pre}
 
@@ -104,7 +104,7 @@ The following example request includes the `language_customization_id` and `gram
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&grammar_name=list-abnf"
+"{url}/v1/recognize?language_customization_id={customization_id}&grammar_name=list-abnf"
 ```
 {: pre}
 
@@ -160,7 +160,7 @@ curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --header "Transfer-Encoding: chunked"
 --data-binary @{path}audio-file1.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
+"{url}/v1/recognize"
 ```
 {: pre}
 
@@ -188,7 +188,7 @@ curl -X POST -u "apikey:{apikey}"
 --header "Transfer-Encoding: chunked"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file1.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?inactivity_timeout=60"
+"{url}/v1/recognize?inactivity_timeout=60"
 ```
 {: pre}
 

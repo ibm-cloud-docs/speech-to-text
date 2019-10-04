@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-24"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -61,6 +61,9 @@ where `{host_name}` is the location in which your application is hosted:
 -   `gateway-wdc.watsonplatform.net` for Washington, DC
 -   `gateway-tok.watsonplatform.net` for Tokyo
 -   `gateway-lon.watsonplatform.net` for London
+
+The examples in the documentation abbreviate `wss://{host_name}/speech-to-text/api` to `{ws_url}`. So all WebSocket examples call the method as `{ws_url}/v1/recognize`.
+{: note}
 
 A WebSocket client calls this method with the following query parameters to establish an authenticated connection with the service. If you use Identity and Access Management (IAM) authentication, use the `access_token` query parameter. If you use Cloud Foundry service credentials, use the `watson-token` query parameter.
 
@@ -199,7 +202,7 @@ The following snippet of JavaScript code opens a connection with the service. Th
 
 ```javascript
 var IAM_access_token = '{access_token}';
-var wsURI = 'wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
+var wsURI = '{ws_url}/v1/recognize'
   + '?access_token=' + IAM_access_token
   + '&model=es-ES_BroadbandModel';
 var websocket = new WebSocket(wsURI);

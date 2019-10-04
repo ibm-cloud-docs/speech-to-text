@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-19"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -56,7 +56,7 @@ The following example from [Add audio to the custom acoustic model](/docs/servic
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/wav"
 --data-binary @audio1.wav
-"https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio1"
+"{url}/v1/acoustic_customizations/{customization_id}/audio/audio1"
 ```
 {: pre}
 
@@ -85,7 +85,7 @@ curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: application/zip"
 --header "Contained-Content-Type: audio/l16;rate=16000"
 --data-binary @audio2.zip
-"https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio2"
+"{url}/v1/acoustic_customizations/{customization_id}/audio/audio2"
 ```
 {: pre}
 

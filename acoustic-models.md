@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-06-24"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -71,7 +71,7 @@ The following example includes the `language` query parameter to list all US Eng
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations?language=en-US"
+"{url}/v1/acoustic_customizations?language=en-US"
 ```
 {: pre}
 
@@ -120,7 +120,7 @@ The following example returns information about the custom model that has the sp
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}"
+"{url}/v1/acoustic_customizations/{customization_id}"
 ```
 {: pre}
 
@@ -156,7 +156,7 @@ The following example resets the custom acoustic model with the specified custom
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/reset"
+"{url}/v1/acoustic_customizations/{customization_id}/reset"
 ```
 {: pre}
 
@@ -172,6 +172,6 @@ The following example deletes the custom acoustic model with the specified custo
 
 ```bash
 curl -X DELETE -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}"
+"{url}/v1/acoustic_customizations/{customization_id}"
 ```
 {: pre}

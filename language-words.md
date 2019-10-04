@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -69,7 +69,7 @@ The following example lists all of the words, regardless of type, from the custo
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words"
+"{url}/v1/customizations/{customization_id}/words"
 ```
 {: pre}
 
@@ -129,7 +129,7 @@ The following example shows information about the word `NCAA` from the words res
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words/NCAA"
+"{url}/v1/customizations/{customization_id}/words/NCAA"
 ```
 {: pre}
 
@@ -168,6 +168,6 @@ The following example deletes the word `IEEE` from the custom model with the spe
 
 ```bash
 curl -X DELETE -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words/IEEE"
+"{url}/v1/customizations/{customization_id}/words/IEEE"
 ```
 {: pre}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-24"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -37,7 +37,7 @@ When you use a grammar, the service recognizes only words from the specified gra
 
     ```javascript
     var token = {authentication-token};
-    var wsURI = 'wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
+    var wsURI = '{ws_url}/v1/recognize'
       + '?access_token=' + IAM_access_token
       + '&language_customization_id={customization_id}';
     var websocket = new WebSocket(wsURI);
@@ -64,7 +64,7 @@ When you use a grammar, the service recognizes only words from the specified gra
     curl -X POST -u "apikey:{apikey}"
     --header "Content-Type: audio/flac"
     --data-binary @audio-file.flac
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&grammar_name={grammar_name}"
+    "{url}/v1/recognize?language_customization_id={customization_id}&grammar_name={grammar_name}"
     ```
     {: pre}
 -   For the [asynchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-async), pass both parameters with the `POST /v1/recognitions` method.
@@ -73,6 +73,6 @@ When you use a grammar, the service recognizes only words from the specified gra
     curl -X POST -u "apikey:{apikey}"
     --header "Content-Type: audio/flac"
     --data-binary @audio-file.flac
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions?language_customization_id={customization_id}&grammar_name={grammar_name}"
+    "{url}/v1/recognitions?language_customization_id={customization_id}&grammar_name={grammar_name}"
     ```
     {: pre}
