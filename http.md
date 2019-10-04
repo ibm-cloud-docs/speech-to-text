@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-07-10"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -44,7 +44,7 @@ The following `curl` example sends a recognition request for a single FLAC file 
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
+"{url}/v1/recognize"
 ```
 {: pre}
 
@@ -237,7 +237,7 @@ curl -X POST -u "apikey:{apikey}"
   \"keywords_threshold\":0.5}"
 --form upload="@{path}audio-file1.flac"
 --form upload="@{path}audio-file2.flac"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
+"{url}/v1/recognize"
 ```
 {: pre}
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-07-24"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -69,7 +69,7 @@ The following example adds the grammar file named `confirm.abnf` to the custom m
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: application/srgs"
 --data-binary @confirm.abnf
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/grammars/confirm-abnf"
+"{url}/v1/customizations/{customization_id}/grammars/confirm-abnf"
 ```
 {: pre}
 
@@ -88,7 +88,7 @@ To determine the status of the analysis, use the `GET /v1/customizations/{custom
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/grammars/confirm-abnf"
+"{url}/v1/customizations/{customization_id}/grammars/confirm-abnf"
 ```
 {: pre}
 
@@ -153,7 +153,7 @@ You use the `POST /v1/customizations/{customization_id}/train` method to train a
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/train"
+"{url}/v1/customizations/{customization_id}/train"
 ```
 {: pre}
 

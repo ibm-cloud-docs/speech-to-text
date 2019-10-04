@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-10"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -53,7 +53,7 @@ The following example request shows a response that includes speaker labels. The
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-multi.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?model=en-US_NarrowbandModel&speaker_labels=true"
+"{url}/v1/recognize?model=en-US_NarrowbandModel&speaker_labels=true"
 ```
 {: pre}
 
@@ -308,7 +308,7 @@ The following example request sets the `keywords` parameter to a URL-encoded arr
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?keywords=%22colorado%22%2C%22tornado%22%2C%22tornadoes%22&keywords_threshold=0.5"
+"{url}/v1/recognize?keywords=%22colorado%22%2C%22tornado%22%2C%22tornadoes%22&keywords_threshold=0.5"
 ```
 {: pre}
 
@@ -365,7 +365,7 @@ The following example request sets the `max_alternatives` parameter to `3`; the 
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?max_alternatives=3"
+"{url}/v1/recognize?max_alternatives=3"
 ```
 {: pre}
 
@@ -423,7 +423,7 @@ The following abbreviated example requests interim results for a WebSocket reque
 
 ```javascript
 var token = {authentication-token};
-var wsURI = 'wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
+var wsURI = '{ws_url}/v1/recognize'
   + '?access_token=' + IAM_access_token;
 var websocket = new WebSocket(wsURI);
 
@@ -530,7 +530,7 @@ The following example request specifies a `word_alternatives_threshold` of `0.9`
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?word_alternatives_threshold=0.9"
+"{url}/v1/recognize?word_alternatives_threshold=0.9"
 ```
 {: pre}
 
@@ -624,7 +624,7 @@ The following example requests word confidence scores for the words of the trans
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?word_confidence=true"
+"{url}/v1/recognize?word_confidence=true"
 ```
 {: pre}
 
@@ -688,7 +688,7 @@ The following example requests timestamps for the words of the transcription.
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?timestamps=true"
+"{url}/v1/recognize?timestamps=true"
 ```
 {: pre}
 
@@ -852,7 +852,7 @@ The following example requests smart formatting with a recognition request by se
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?smart_formatting=true"
+"{url}/v1/recognize?smart_formatting=true"
 ```
 {: pre}
 
@@ -1138,7 +1138,7 @@ The following example requests numeric redaction with a recognition request by s
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/wav"
 --data-binary @{path}audio-file.wav
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?&redaction=true&max_alternatives=3&keywords=%22birth%22%2C%22birthday%22&keywords_threshold=0.5"
+"{url}/v1/recognize?&redaction=true&max_alternatives=3&keywords=%22birth%22%2C%22birthday%22&keywords_threshold=0.5"
 ```
 {: pre}
 
@@ -1213,7 +1213,7 @@ The following example shows the results for a brief audio file that is transcrib
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?word_alternatives_threshold=0.99&word_confidence=true&timestamps=true"
+"{url}/v1/recognize?word_alternatives_threshold=0.99&word_confidence=true&timestamps=true"
 ```
 {: pre}
 

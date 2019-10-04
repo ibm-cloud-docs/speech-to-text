@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -54,7 +54,7 @@ Follow these steps to upgrade a custom language model:
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/upgrade_model"
+    "{url}/v1/customizations/{customization_id}/upgrade_model"
     ```
     {: pre}
 
@@ -79,7 +79,7 @@ Follow these steps to upgrade a custom acoustic model. If the custom acoustic mo
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/upgrade_model"
+    "{url}/v1/acoustic_customizations/{customization_id}/upgrade_model"
     ```
     {: pre}
 
@@ -89,7 +89,7 @@ Follow these steps to upgrade a custom acoustic model. If the custom acoustic mo
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/upgrade_model?custom_language_model_id={custom_language_model_id}"
+    "{url}/v1/acoustic_customizations/{customization_id}/upgrade_model?custom_language_model_id={custom_language_model_id}"
     ```
     {: pre}
 
@@ -156,7 +156,7 @@ For example, the following HTTP request specifies that the older version of the 
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?model=en-US_BroadbandModel&base_model_version=en-US_BroadbandModel.v07-06082016.06202016&language_customization_id={customization_id}"
+"{url}/v1/recognize?model=en-US_BroadbandModel&base_model_version=en-US_BroadbandModel.v07-06082016.06202016&language_customization_id={customization_id}"
 ```
 {: pre}
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -68,7 +68,7 @@ curl -X POST -u "apikey:{apikey}"
 --header "X-Watson-Metadata: customer_id=my_customer_ID"
 --header "Content-Type: audio/wav"
 --data-binary @audio.wav
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognize"
+"{url}/v1/recognize"
 ```
 {: pre}
 
@@ -108,7 +108,7 @@ To delete all data that is associated with a customer ID, use the `DELETE /v1/us
 
 ```bash
 curl -X DELETE -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/user_data?customer_id=my_customer_ID"
+"{url}/v1/user_data?customer_id=my_customer_ID"
 ```
 {: pre}
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-24"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -34,7 +34,7 @@ You can create multiple custom language models for the same or different domains
 
     ```javascript
     var token = {authentication-token};
-    var wsURI = 'wss://stream.watsonplatform.net/speech-to-text/api/v1/recognize'
+    var wsURI = '{ws_url}/v1/recognize'
       + '?access_token=' + IAM_access_token
       + '&model=es-ES_BroadbandModel'
       + '&language_customization_id={customization_id}';
@@ -47,7 +47,7 @@ You can create multiple custom language models for the same or different domains
     curl -X POST -u "apikey:{apikey}"
     --header "Content-Type: audio/flac"
     --data-binary @audio-file.flac
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}"
+    "{url}/v1/recognize?language_customization_id={customization_id}"
     ```
     {: pre}
 -   For the [asynchronous HTTP interface](/docs/services/speech-to-text?topic=speech-to-text-async), use the `POST /v1/recognitions` method. The specified custom model is used for that request.
@@ -56,7 +56,7 @@ You can create multiple custom language models for the same or different domains
     curl -X POST -u "apikey:{apikey}"
     --header "Content-Type: audio/flac"
     --data-binary @audio-file.flac
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions?language_customization_id={customization_id}"
+    "{url}/v1/recognitions?language_customization_id={customization_id}"
     ```
     {: pre}
 
@@ -77,7 +77,7 @@ You specify a customization weight by using the `customization_weight` parameter
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/train?customization_weight=0.5"
+    "{url}/v1/customizations/{customization_id}/train?customization_weight=0.5"
     ```
     {: pre}
 
@@ -89,7 +89,7 @@ You specify a customization weight by using the `customization_weight` parameter
     curl -X POST -u "apikey:{apikey}"
     --header "Content-Type: audio/flac"
     --data-binary @audio-file1.flac
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?language_customization_id={customization_id}&customization_weight=0.7"
+    "{url}/v1/recognize?language_customization_id={customization_id}&customization_weight=0.7"
     ```
     {: pre}
 

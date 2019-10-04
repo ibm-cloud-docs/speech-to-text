@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-04"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -51,7 +51,7 @@ The following example lists information about all grammars that have been added 
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/grammars"
+"{url}/v1/customizations/{customization_id}/grammars"
 ```
 {: pre}
 
@@ -84,7 +84,7 @@ The following example shows information about the specified grammar, `list-abnf`
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/grammars/list-abnf"
+"{url}/v1/customizations/{customization_id}/grammars/list-abnf"
 ```
 {: pre}
 
@@ -114,6 +114,6 @@ The following example deletes the grammar named `list-abnf` from the custom mode
 
 ```bash
 curl -X DELETE -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/ {customization_id}/grammars/list-abnf"
+"{url}/v1/customizations/{customization_id}/grammars/list-abnf"
 ```
 {: pre}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-06-19"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -56,7 +56,7 @@ The following example lists all audio resources for the custom acoustic model wi
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio"
+"{url}/v1/acoustic_customizations/{customization_id}/audio"
 ```
 {: pre}
 
@@ -101,7 +101,7 @@ The following example returns information about the audio-type resource named `a
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio1"
+"{url}/v1/acoustic_customizations/{customization_id}/audio/audio1"
 ```
 {: pre}
 
@@ -126,7 +126,7 @@ The following example returns information about the archive-type resource named 
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio2"
+"{url}/v1/acoustic_customizations/{customization_id}/audio/audio2"
 ```
 {: pre}
 
@@ -182,6 +182,6 @@ The following method deletes the audio resource that is named `audio3` from the 
 
 ```bash
 curl -X DELETE -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/acoustic_customizations/{customization_id}/audio/audio3"
+"{url}/v1/acoustic_customizations/{customization_id}/audio/audio3"
 ```
 {: pre}

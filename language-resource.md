@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-06"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -249,7 +249,7 @@ The `sounds_like` field specifies how a word is pronounced by speakers. By defau
     curl -X PUT -u "apikey:{apikey}"
     --header "Content-Type: application/json"
     --data "{\"sounds_like\": [\"N. C. A. A.\", \"N. C. double A.\"]}"
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words/NCAA"
+    "{url}/v1/customizations/{customization_id}/words/NCAA"
     ```
     {: pre}
 
@@ -334,7 +334,7 @@ The `display_as` field specifies how a word is displayed in a transcript. It is 
 curl -X PUT -u "apikey:{apikey}"
 --header "Content-Type: application/json"
 --data "{\"sounds_like\": [\"hilton honors\", \"H. honors\"], \"display_as\": \"HHonors\"}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words/hhonors"
+"{url}/v1/customizations/{customization_id}/words/hhonors"
 ```
 {: pre}
 
@@ -343,7 +343,7 @@ As another example, you can indicate that the word `IBM` is to be displayed as <
 <pre><code class="language-bash">curl -X PUT -u "apikey:{apikey}"
 --header "Content-Type: application/json"
 --data "{\"sounds_like\": [\"I. B. M.\"], \"display_as\":\"IBM&#8482;\"}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/customizations/{customization_id}/words/IBM"</code></pre>
+"{url}/v1/customizations/{customization_id}/words/IBM"</code></pre>
 
 #### Interaction with smart formatting and numeric redaction
 {: #displaySmart}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-24"
+lastupdated: "2019-10-04"
 
 subcollection: speech-to-text
 
@@ -59,7 +59,7 @@ You register a callback URL by calling the `POST /v1/register_callback` method. 
 
     ```bash
     curl -X POST -u "apikey:{apikey}"
-    "https://stream.watsonplatform.net/speech-to-text/api/v1/register_callback?callback_url=http://{user_callback_path}/results&user_secret=ThisIsMySecret"
+    "{url}/v1/register_callback?callback_url=http://{user_callback_path}/results&user_secret=ThisIsMySecret"
     ```
     {: pre}
 
@@ -167,7 +167,7 @@ The following example creates a job that is associated with the previously white
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/flac"
 --data-binary @{path}audio-file.flac
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions?callback_url=http://{user_callback_path}/results&user_token=job25&timestamps=true"
+"{url}/v1/recognitions?callback_url=http://{user_callback_path}/results&user_token=job25&timestamps=true"
 ```
 {: pre}
 
@@ -177,7 +177,7 @@ The service returns the status of the request, which is `waiting` to indicate th
 {
   "created": "2016-08-17T19:15:17.926Z",
   "id": "4bd734c0-e575-21f3-de03-f932aa0468a0",
-  "url": "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions/4bd734c0-e575-21f3-de03-f932aa0468a0",
+  "url": "{url}/v1/recognitions/4bd734c0-e575-21f3-de03-f932aa0468a0",
   "status": "waiting"
 }
 ```
@@ -192,7 +192,7 @@ The following example creates a job that is not associated with a callback URL. 
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/wav"
 --data-binary @{path}audio-file.wav
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions?timestamps=true"
+"{url}/v1/recognitions?timestamps=true"
 ```
 {: pre}
 
@@ -202,7 +202,7 @@ The service returns a status of `processing` to indicate that it is already proc
 {
   "created": "2016-08-17T19:13:23.622Z",
   "id": "4bb1dca0-f6b1-11e5-80bc-71fb7b058b20",
-  "url": "https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions/4bb1dca0-f6b1-11e5-80bc-71fb7b058b20",
+  "url": "{url}/v1/recognitions/4bb1dca0-f6b1-11e5-80bc-71fb7b058b20",
   "status": "processing"
 }
 ```
@@ -228,7 +228,7 @@ The following example checks the status of the job with the specified ID. The jo
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions/{job_id}"
+"{url}/v1/recognitions/{job_id}"
 ```
 {: pre}
 
@@ -249,7 +249,7 @@ The following example requests the status of the job with the specified ID. The 
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions/{job_id}"
+"{url}/v1/recognitions/{job_id}"
 ```
 {: pre}
 
@@ -318,7 +318,7 @@ The following example requests the status of the latest current jobs that are as
 
 ```bash
 curl -X GET -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions"
+"{url}/v1/recognitions"
 ```
 {: pre}
 
@@ -363,6 +363,6 @@ The following example deletes the job with the specified ID:
 
 ```bash
 curl -X DELETE -u "apikey:{apikey}"
-"https://stream.watsonplatform.net/speech-to-text/api/v1/recognitions/{job_id}"
+"{url}/v1/recognitions/{job_id}"
 ```
 {: pre}
