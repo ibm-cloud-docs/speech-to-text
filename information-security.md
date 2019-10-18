@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-10-04"
+lastupdated: "2019-10-18"
 
 subcollection: speech-to-text
 
@@ -44,6 +44,13 @@ If you need to request GDPR support for {{site.data.keyword.cloud}} {{site.data.
 {{site.data.keyword.IBM_notm}} is committed to providing our clients and partners with innovative data privacy, security and governance solutions to assist them on their journey to GDPR compliance.
 
 Learn more about {{site.data.keyword.IBM_notm}}'s own GDPR readiness journey and our GDPR capabilities and offerings to support your compliance journey [here](http://www.ibm.com/gdpr){: external}.
+
+## Health Insurance Portability and Accountability Act (HIPAA)
+{: #hipaa}
+
+US Health Insurance Portability and Accountability Act (HIPAA) support is available for Premium plans that are hosted in the Washington, DC, location and are created on or after 1 April 2019. For more information, see [Enabling EU and HIPAA supported settings](https://cloud.ibm.com/docs/account?topic=account-eu-hipaa-supported#eu-hipaa-supported){: external}.
+
+Do not include personal health information (PHI) in data that you pass to the service. In particular, be sure to remove any PHI from data that you use for custom language models or custom acoustic models.
 
 ## Labeling and deleting data in the Speech to Text service
 {: #gdpr-speech-to-text}

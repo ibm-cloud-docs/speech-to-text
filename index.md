@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-07-30"
+lastupdated: "2019-10-16"
 
 subcollection: speech-to-text
 
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on July 30, 2019. The service now offers beta models for five additional Spanish dialects: Argentinian, Chilean, Colombian, Mexican, and Peruvian. For more information about the new Spanish dialects, see the [30 July 2019 service update](/docs/services/speech-to-text?topic=speech-to-text-release-notes#July2019) in the release notes.*
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service is frequently updated with new features and fixes. For more information, see the [Release notes](/docs/services/speech-to-text?topic=speech-to-text-release-notes).*
 
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}
