@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-10-04"
+lastupdated: "2019-11-13"
 
 subcollection: speech-to-text
 
@@ -61,6 +61,7 @@ where `{host_name}` is the location in which your application is hosted:
 -   `gateway-wdc.watsonplatform.net` for Washington, DC
 -   `gateway-tok.watsonplatform.net` for Tokyo
 -   `gateway-lon.watsonplatform.net` for London
+-   `gateway-seo.watsonplatform.net` for Seoul
 
 The examples in the documentation abbreviate `wss://{host_name}/speech-to-text/api` to `{ws_url}`. So all WebSocket examples call the method as `{ws_url}/v1/recognize`.
 {: note}
