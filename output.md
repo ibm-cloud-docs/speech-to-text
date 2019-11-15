@@ -844,7 +844,7 @@ Smart formatting is based on the presence of obvious keywords in the transcript.
 -   English words are converted to ASCII (*hankaku*) characters. For example, <code>&#65321;&#65314;&#65325;</code> is converted to `IBM`.
 -   Ambiguous terms might not be converted if sufficient context is unavailable. For example, it is unclear whether <code>&#19968;&#26178;</code> and <code>&#21313;&#20998;</code> refer to times.
 -   Punctuation is handled in the same way with or without smart formatting. For example, based on probability calculations, one of <code>&#12459;&#12531;&#12510;</code> or `,` is selected.
--   In Japanese, yen values are not replaced with the yen currency symbol.
+-   Yen values are not replaced with the yen currency symbol.
 
 ### Smart formatting example
 {: #smartFormattingExample}
