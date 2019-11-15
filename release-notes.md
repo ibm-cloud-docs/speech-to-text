@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-10-21"
+lastupdated: "2019-11-15"
 
 subcollection: speech-to-text
 
@@ -32,6 +32,11 @@ The following sections document the new features and changes that were included 
 {: #limitations}
 
 No known limitations at this time.
+
+## 12 November 2019
+{: #November2019}
+
+You can now create {{site.data.keyword.speechtotextshort}} instances in the Seoul location. As with other locations, the {{site.data.keyword.cloud_notm}} Seoul location uses token-based Identity and Access Management (IAM) authentication.
 
 ## 1 October 2019
 {: #October2019}
