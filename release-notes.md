@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-10-21"
+lastupdated: "2019-11-19"
 
 subcollection: speech-to-text
 
@@ -32,6 +32,16 @@ The following sections document the new features and changes that were included 
 {: #limitations}
 
 No known limitations at this time.
+
+## 12 November 2019
+{: #12November2019}
+
+You can now create {{site.data.keyword.speechtotextshort}} instances in the Seoul location. As with other locations, the {{site.data.keyword.cloud_notm}} Seoul location uses token-based Identity and Access Management (IAM) authentication.
+
+## 1 November 2019
+{: #1November2019}
+
+You can create no more than 1024 custom language models and no more than 1024 custom acoustic models. If you try to create more than 1024 custom models of either type, the service returns an error. You do not lose any existing models, but you cannot create any more until your model count is below the limit of 1024.
 
 ## 1 October 2019
 {: #October2019}
