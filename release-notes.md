@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-11-19"
+lastupdated: "2019-11-25"
 
 subcollection: speech-to-text
 
@@ -33,10 +33,15 @@ The following sections document the new features and changes that were included 
 
 No known limitations at this time.
 
+## 25 November 2019
+{: #25November2019}
+
+In the API, single channel diarization is updated to improve the identification of individual speakers for further analysis of your audio sample.
+
 ## 12 November 2019
 {: #12November2019}
 
-You can now create {{site.data.keyword.speechtotextshort}} instances in the Seoul location. As with other locations, the {{site.data.keyword.cloud_notm}} Seoul location uses token-based Identity and Access Management (IAM) authentication.
+You can now create {{site.data.keyword.speechtotextshort}} instances in the Seoul location. As with other locations, the IBM Cloud Seoul location uses token-based Identity and Access Management (IAM) authentication.
 
 ## 1 November 2019
 {: #1November2019}
