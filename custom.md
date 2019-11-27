@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-07-21"
+lastupdated: "2019-11-19"
 
 subcollection: speech-to-text
 
@@ -48,6 +48,9 @@ For more information, see
 
 -   [Creating a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate)
 -   [Using a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageUse)
+
+You can create no more than 1024 custom acoustic models and no more than 1024 custom language models. If you try to create more than 1024 custom models of either type, the service returns an error. You do not lose any existing models, but you cannot create any more until your model count is below the limit of 1024.
+{: note}
 
 ## Acoustic model customization
 {: #customAcoustic-intro}

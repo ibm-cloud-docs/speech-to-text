@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-10-04"
+lastupdated: "2019-11-19"
 
 subcollection: speech-to-text
 
@@ -35,6 +35,9 @@ Follow these steps to create a custom language model for the {{site.data.keyword
 1.  After you train your custom model, you can use it with recognition requests. If the audio that is passed for transcription contains domain-specific words that are defined in the custom model, the results of the request reflect the model's enhanced vocabulary. For more information, see [Using a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageUse).
 
 The steps for creating a custom language model are iterative. You can add corpora, add words, and train or retrain a model as often as needed.
+
+You can create a maximum of 1024 custom language models, per credential. The service returns an error if you attempt to create more than 1024 models. You do not lose any models, but you cannot create any more until your model count is below the limit.
+{: note}
 
 You can also add grammars to a custom language model. Grammars restrict the service's response to only those words that are recognized by a grammar. For more information, see [Using grammars with custom language models](/docs/services/speech-to-text?topic=speech-to-text-grammars).
 

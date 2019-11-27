@@ -44,7 +44,7 @@ In the API, single channel diarization is updated to improve the identification 
 You can now create {{site.data.keyword.speechtotextshort}} instances in the Seoul location. As with other locations, the IBM Cloud Seoul location uses token-based Identity and Access Management (IAM) authentication.
 
 ## 1 November 2019
-{: #1November 2019}
+{: #1November2019}
 
 You can create no more than 1024 custom language models and no more than 1024 custom acoustic models. If you try to create more than 1024 custom models of either type, the service returns an error. You do not lose any existing models, but you cannot create any more until your model count is below the limit of 1024.
 
