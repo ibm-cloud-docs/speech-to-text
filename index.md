@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-10-16"
+lastupdated: "2019-12-10"
 
 subcollection: speech-to-text
 
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service is frequently updated with new features and fixes. For more information, see the [Release notes](/docs/services/speech-to-text?topic=speech-to-text-release-notes).*
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 10 December 2019. The service now offers beta broadband and narrowband models for the Dutch language. For more information, see the [10 December 2019 service update](/docs/services/speech-to-text?topic=speech-to-text-release-notes#December2019) in the release notes.*
 
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}
@@ -89,6 +89,7 @@ The service offers models for the following languages and dialects:
 -   Arabic (Modern Standard)
 -   Brazilian Portuguese
 -   Chinese (Mandarin)
+-   Dutch
 -   English (United Kingdom and United States)
 -   French
 -   German
@@ -99,6 +100,7 @@ The service offers models for the following languages and dialects:
 The service does not support all features for all languages. Moreover, it supports some features as generally available (GA) for production use and others as beta offerings for different languages.
 
 -   The Spanish Castilian dialect is generally available. The other five Spanish dialects are beta.
+-   The Dutch language models are beta.
 -   The WebSocket and HTTP interfaces are generally available for all languages.
 -   The service offers broadband models, narrowband models, or both for different languages. For more information, see [Languages and models](/docs/services/speech-to-text?topic=speech-to-text-models).
 -   Some speech recognition features are available only for some languages. For more information, see the [Parameter summary](/docs/services/speech-to-text?topic=speech-to-text-summary).

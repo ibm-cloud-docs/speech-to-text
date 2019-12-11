@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-11-19"
+lastupdated: "2019-12-09"
 
 subcollection: speech-to-text
 
@@ -48,9 +48,6 @@ For more information, see
 
 -   [Creating a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate)
 -   [Using a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageUse)
-
-You can create no more than 1024 custom acoustic models and no more than 1024 custom language models. If you try to create more than 1024 custom models of either type, the service returns an error. You do not lose any existing models, but you cannot create any more until your model count is below the limit of 1024.
-{: note}
 
 ## Acoustic model customization
 {: #customAcoustic-intro}
@@ -135,6 +132,12 @@ You can use both broadband and narrowband models with any supported language for
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
+  <tr>
+    <td>Dutch</td>
+    <td style="text-align:center">Not supported</td>
+    <td style="text-align:center">Beta</td>
+  </tr>
+  <tr>
     <td>English (United Kingdom)</td>
     <td style="text-align:center">GA</td>
     <td style="text-align:center">Beta</td>
@@ -211,6 +214,11 @@ A custom model is owned by the instance of the {{site.data.keyword.speechtotexts
 All credentials that are obtained for the same instance of the {{site.data.keyword.speechtotextshort}} service share access to all custom models created for that service instance. To restrict access to a custom model, create a separate instance of the service and use only the credentials for that service instance to create and work with the model. Credentials for other service instances cannot affect the custom model.
 
 An advantage of sharing ownership across credentials for a service instance is that you can cancel a set of credentials, for example, if they become compromised. You can then create new credentials for the same service instance and still maintain ownership of and access to custom models created with the original credentials.
+
+### Maximum number of custom models
+{: #customMaximum}
+
+You can create no more than 1024 custom acoustic models and no more than 1024 custom language models per owning credentials. If you try to create more than 1024 custom models of either type, the service returns an error. You do not lose any existing models, but you cannot create any more until your model count is below the limit of 1024.
 
 ### Request logging and data privacy
 {: #customLogging}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-10-04"
+lastupdated: "2019-12-09"
 
 subcollection: speech-to-text
 
@@ -64,6 +64,11 @@ Table 1 lists the supported models for each language. If you omit the `model` pa
     <td>Chinese (Mandarin)</td>
     <td style="text-align:center"><code>zh-CN_BroadbandModel</code></td>
     <td style="text-align:center"><code>zh-CN_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>Dutch (Beta)</td>
+    <td style="text-align:center"><code>nl-NL_BroadbandModel</code></td>
+    <td style="text-align:center"><code>nl-NL_NarrowbandModel</code></td>
   </tr>
   <tr>
     <td>English (United Kingdon)</td>

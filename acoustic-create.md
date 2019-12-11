@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-11-19"
+lastupdated: "2019-12-10"
 
 subcollection: speech-to-text
 
@@ -33,14 +33,11 @@ Follow these steps to create a custom acoustic model for the {{site.data.keyword
 1.  [Train the custom acoustic model](#trainModel-acoustic). Once you add audio resources to the custom model, you must train the model. Training prepares the custom acoustic model for use in speech recognition. Training can take a significant amount of time. The length of the training depends on the amount of audio data that the model contains.
 
     You can specify a helper custom language model during training of your custom acoustic model. A custom language model that includes transcriptions of your audio files or OOV words from the domain of your audio files can improve the quality of the custom acoustic model. For more information, see [Training a custom acoustic model with a custom language model](/docs/services/speech-to-text?topic=speech-to-text-useBoth#useBothTrain).
-1.  After you train your custom model, you can use it with recognition requests. If the audio passed for transcription has acoustic qualities that are similar to the audio of the custom model, the results reflect the service's enhanced understanding. For more information, see [Using a custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acousticUse).
+1.  After you train your custom model, you can use it with recognition requests. If the audio passed for transcription has acoustic qualities that are similar to the audio of the custom model, the results reflect the service's enhanced understanding. You can use only one custom acoustic model at a time with a speech recognition request. For more information, see [Using a custom acoustic model](/docs/services/speech-to-text?topic=speech-to-text-acousticUse).
 
     You can pass both a custom acoustic model and a custom language model in the same recognition request to further improve recognition accuracy. For more information, see [Using custom language and custom acoustic models during speech recognition](/docs/services/speech-to-text?topic=speech-to-text-useBoth#useBothRecognize).
 
 The steps for creating a custom acoustic model are iterative. You can add or delete audio and train or retrain a model as often as needed. You must retrain a model for any changes to its audio to take effect. When you retrain a model, all audio data is used in the training (not just the new data). So the training time is commensurate with the total amount of audio that is contained in the model.
-
-You can create a maximum of 1024 custom acoustic models, per credential. The service returns an error if you attempt to create more than 1024 models. You do not lose any models, but you cannot create any more until your model count is below the limit.
-{: note}
 
 Acoustic model customization is available as beta functionality for all languages. For more information, see [Language support for customization](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
 {: note}
@@ -48,7 +45,9 @@ Acoustic model customization is available as beta functionality for all language
 ## Create a custom acoustic model
 {: #createModel-acoustic}
 
-You use the `POST /v1/acoustic_customizations` method to create a new custom acoustic model. You can create any number of custom acoustic models, but you can use only one custom acoustic model at a time with a speech recognition request. The method accepts a JSON object that defines the attributes of the new custom model as the body of the request.
+You use the `POST /v1/acoustic_customizations` method to create a new custom acoustic model. The method accepts a JSON object that defines the attributes of the new custom model as the body of the request. The new custom model is owned by the instance of the service whose credentials are used to create it. For more information, see [Ownership of custom models](/docs/services/speech-to-text?topic=speech-to-text-customization#customOwner).
+
+You can create a maximum of 1024 custom acoustic models per owning credentials. The service returns an error if you attempt to create more than 1024 models. You do not lose any models, but you cannot create any more until your model count is below the limit.
 
 <table>
   <caption>Table 1. Attributes of a new custom acoustic model</caption>
@@ -109,8 +108,6 @@ The example returns the customization ID of the new model. Each custom model is 
 }
 ```
 {: codeblock}
-
-The new custom model is owned by the instance of the service whose credentials are used to create it. For more information, see [Ownership of custom models](/docs/services/speech-to-text?topic=speech-to-text-customization#customOwner).
 
 ## Add audio to the custom acoustic model
 {: #addAudio}
