@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-11-19"
+lastupdated: "2019-12-10"
 
 subcollection: speech-to-text
 
@@ -32,12 +32,9 @@ Follow these steps to create a custom language model for the {{site.data.keyword
 1.  [Add a corpus to the custom language model](#addCorpus). A corpus is a plain text document that uses terminology from the domain in context. The service builds a vocabulary for a custom model by extracting terms from corpora that do not exist in its base vocabulary. You can add multiple corpora to a custom model.
 1.  [Add words to the custom language model](#addWords). You can also add custom words to a model individually. In addition, you can use the same methods to modify custom words that are extracted from corpora. The methods let you specify the pronunciation of words and how the words are displayed in a speech transcript.
 1.  [Train the custom language model](#trainModel-language). Once you add words to the custom model, you must train the model on the words. Training prepares the custom model for use in speech recognition. The model does not use new or modified words until you train it.
-1.  After you train your custom model, you can use it with recognition requests. If the audio that is passed for transcription contains domain-specific words that are defined in the custom model, the results of the request reflect the model's enhanced vocabulary. For more information, see [Using a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageUse).
+1.  After you train your custom model, you can use it with recognition requests. If the audio that is passed for transcription contains domain-specific words that are defined in the custom model, the results of the request reflect the model's enhanced vocabulary. You can use only one model at a time with a speech recognition request. For more information, see [Using a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageUse).
 
 The steps for creating a custom language model are iterative. You can add corpora, add words, and train or retrain a model as often as needed.
-
-You can create a maximum of 1024 custom language models, per credential. The service returns an error if you attempt to create more than 1024 models. You do not lose any models, but you cannot create any more until your model count is below the limit.
-{: note}
 
 You can also add grammars to a custom language model. Grammars restrict the service's response to only those words that are recognized by a grammar. For more information, see [Using grammars with custom language models](/docs/services/speech-to-text?topic=speech-to-text-grammars).
 
@@ -47,7 +44,9 @@ Language model customization is available for most languages. For more informati
 ## Create a custom language model
 {: #createModel-language}
 
-You use the `POST /v1/customizations` method to create a new custom language model. You can create any number of custom language models, but you can use only one model at a time with a speech recognition request. The method accepts a JSON object that defines the attributes of the new custom model as the body of the request.
+You use the `POST /v1/customizations` method to create a new custom language model. The method accepts a JSON object that defines the attributes of the new custom model as the body of the request. The new custom model is owned by the instance of the service whose credentials are used to create it. For more information, see [Ownership of custom models](/docs/services/speech-to-text?topic=speech-to-text-customization#customOwner).
+
+You can create a maximum of 1024 custom language models per owning credentials. The service returns an error if you attempt to create more than 1024 models. You do not lose any models, but you cannot create any more until your model count is below the limit.
 
 <table>
   <caption>Table 1. Attributes of a new custom language model</caption>
@@ -146,8 +145,6 @@ The example returns the customization ID of the new model. Each custom model is 
 }
 ```
 {: codeblock}
-
-The new custom model is owned by the instance of the service whose credentials are used to create it. For more information, see [Ownership of custom models](/docs/services/speech-to-text?topic=speech-to-text-customization#customOwner).
 
 ## Add a corpus to the custom language model
 {: #addCorpus}

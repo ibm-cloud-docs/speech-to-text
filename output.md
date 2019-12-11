@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-11-15"
+lastupdated: "2019-12-06"
 
 subcollection: speech-to-text
 

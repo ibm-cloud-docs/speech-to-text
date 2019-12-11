@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-11-13"
+lastupdated: "2019-12-09"
 
 subcollection: speech-to-text
 
@@ -55,7 +55,7 @@ wss://{host_name}/speech-to-text/api/v1/recognize
 
 where `{host_name}` is the location in which your application is hosted:
 
--   `stream.watsonplatform.net` for Dallas (the following examples use this host name)
+-   `stream.watsonplatform.net` for Dallas
 -   `stream-fra.watsonplatform.net` for Frankfurt
 -   `gateway-syd.watsonplatform.net` for Sydney
 -   `gateway-wdc.watsonplatform.net` for Washington, DC

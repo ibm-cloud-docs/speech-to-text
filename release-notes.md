@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-11-25"
+lastupdated: "2019-12-10"
 
 subcollection: speech-to-text
 
@@ -33,55 +33,38 @@ The following sections document the new features and changes that were included 
 
 No known limitations at this time.
 
-## 25 November 2019
-{: #25November2019}
+## 10 December 2019
+{: #December2019}
 
-In the API, single channel diarization is updated to improve the identification of individual speakers for further analysis of your audio sample.
+The service now offers beta broadband and narrowband models for the Dutch language:
 
-## 12 November 2019
-{: #12November2019}
+-   `nl-NL_BroadbandModel`
+-   `nl-NL_NarrowbandModel`
 
-You can now create {{site.data.keyword.speechtotextshort}} instances in the Seoul location. As with other locations, the IBM Cloud Seoul location uses token-based Identity and Access Management (IAM) authentication.
-
-## 1 November 2019
-{: #1November2019}
-
-You can create no more than 1024 custom language models and no more than 1024 custom acoustic models. If you try to create more than 1024 custom models of either type, the service returns an error. You do not lose any existing models, but you cannot create any more until your model count is below the limit of 1024.
-
-## 1 October 2019
-{: #October2019}
-
-US HIPAA support is available for Premium plans that are hosted in the Washington, DC, location and are created on or after 1 April 2019. For more information, see [US Health Insurance Portability and Accountability Act (HIPAA)](/docs/services/speech-to-text?topic=speech-to-text-information-security#hipaa).
-
-## 22 August 2019
-{: #August2019}
-
-The service was updated for small defect fixes and improvements.
-
-## 30 July 2019
-{: #July2019}
-
-The service now offers broadband and narrowband language models in six Spanish dialects:
-
--   Argentinian Spanish (`es-AR_BroadbandModel` and `es-AR_NarrowbandModel`)
--   Castilian Spanish (`es-ES_BroadbandModel` and `es-ES_NarrowbandModel`)
--   Chilean Spanish (`es-CL_BroadbandModel` and `es-CL_NarrowbandModel`)
--   Colombian Spanish (`es-CO_BroadbandModel` and `es-CO_NarrowbandModel`)
--   Mexican Spanish (`es-MX_BroadbandModel` and `es-MX_NarrowbandModel`)
--   Peruvian Spanish (`es-PE_BroadbandModel` and `es-PE_NarrowbandModel`)
-
-The Castilian Spanish models are not new. They are generally available for speech recognition and language model customization, and beta for acoustic model customization.
-
-The other five dialects are new and are beta for all uses. Because they are beta, these additional dialects might not be ready for production use and are subject to change. They are initial offerings that are expected to improve in quality with time and usage.
+These language models support acoustic model customization. They do not support language model customization. Because they are beta, these models might not be ready for production use and are subject to change. They are initial offerings that are expected to improve in quality with time and usage.
 
 For more information, see the following sections:
 
 -   [Supported language models](/docs/services/speech-to-text?topic=speech-to-text-models#modelsList)
 -   [Language support for customization](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport)
 
+## 25 November 2019
+{: #November2019c}
+
+Speaker labels are updated to improve the identification of individual speakers for further analysis of your audio sample. For more information, see [Speaker labels](/docs/services/speech-to-text?topic=speech-to-text-output#speaker_labels).
+
+## 12 November 2019
+{: #November2019b}
+
+The service is now available in the {{site.data.keyword.cloud_notm}} Seoul location (**kr-seo**). As with other locations, the {{site.data.keyword.cloud_notm}} location uses token-based IAM authentication. All new services instances that you create in this location use IAM authentication.
+
 ## Older releases
 {: #older}
 
+-   [1 November 2019](#November2019a)
+-   [1 October 2019](#October2019)
+-   [22 August 2019](#August2019)
+-   [30 July 2019](#July2019)
 -   [24 June 2019](#June2019b)
 -   [10 June 2019](#June2019a)
 -   [17 May 2019](#May2019b)
@@ -124,6 +107,42 @@ For more information, see the following sections:
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 1 November 2019
+{: #November2019a}
+
+You can create no more than 1024 custom language models and no more than 1024 custom acoustic models per owning credentials. For more information, see [Maximum number of custom models](/docs/services/speech-to-text?topic=speech-to-text-customization#customMaximum).
+
+### 1 October 2019
+{: #October2019}
+
+US HIPAA support is available for Premium plans that are hosted in the Washington, DC, location and are created on or after 1 April 2019. For more information, see [US Health Insurance Portability and Accountability Act (HIPAA)](/docs/services/speech-to-text?topic=speech-to-text-information-security#hipaa).
+
+### 22 August 2019
+{: #August2019}
+
+The service was updated for small defect fixes and improvements.
+
+### 30 July 2019
+{: #July2019}
+
+The service now offers broadband and narrowband language models in six Spanish dialects:
+
+-   Argentinian Spanish (`es-AR_BroadbandModel` and `es-AR_NarrowbandModel`)
+-   Castilian Spanish (`es-ES_BroadbandModel` and `es-ES_NarrowbandModel`)
+-   Chilean Spanish (`es-CL_BroadbandModel` and `es-CL_NarrowbandModel`)
+-   Colombian Spanish (`es-CO_BroadbandModel` and `es-CO_NarrowbandModel`)
+-   Mexican Spanish (`es-MX_BroadbandModel` and `es-MX_NarrowbandModel`)
+-   Peruvian Spanish (`es-PE_BroadbandModel` and `es-PE_NarrowbandModel`)
+
+The Castilian Spanish models are not new. They are generally available for speech recognition and language model customization, and beta for acoustic model customization.
+
+The other five dialects are new and are beta for all uses. Because they are beta, these additional dialects might not be ready for production use and are subject to change. They are initial offerings that are expected to improve in quality with time and usage.
+
+For more information, see the following sections:
+
+-   [Supported language models](/docs/services/speech-to-text?topic=speech-to-text-models#modelsList)
+-   [Language support for customization](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport)
 
 ### 24 June 2019
 {: #June2019b}
