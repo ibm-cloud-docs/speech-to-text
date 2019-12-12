@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-12-09"
+lastupdated: "2019-12-12"
 
 subcollection: speech-to-text
 
@@ -49,21 +49,24 @@ The snippets of example code that follow are written in JavaScript and are based
 The {{site.data.keyword.speechtotextshort}} service uses the WebSocket Secure (WSS) protocol to make the `/v1/recognize` method available at the following endpoint:
 
 ```
-wss://{host_name}/speech-to-text/api/v1/recognize
+wss://api.{location}.speech-to-text.watson.cloud.ibm.com/instances/{instance_id}/v1/recognize
 ```
 {: codeblock}
 
-where `{host_name}` is the location in which your application is hosted:
+where `{location}` indicates where your application is hosted:
 
--   `stream.watsonplatform.net` for Dallas
--   `stream-fra.watsonplatform.net` for Frankfurt
--   `gateway-syd.watsonplatform.net` for Sydney
--   `gateway-wdc.watsonplatform.net` for Washington, DC
--   `gateway-tok.watsonplatform.net` for Tokyo
--   `gateway-lon.watsonplatform.net` for London
--   `gateway-seo.watsonplatform.net` for Seoul
 
-The examples in the documentation abbreviate `wss://{host_name}/speech-to-text/api` to `{ws_url}`. So all WebSocket examples call the method as `{ws_url}/v1/recognize`.
+-   `us-south` for Dallas
+-   `us-east` for Washington, DC
+-   `eu-de` for Frankfurt
+-   `au-syd` for Sydney
+-   `jp-tok` for Tokyo
+-   `eu-gb` for London
+-   `kr-seo` for Seoul
+
+And `{instance_id}` is the unique identifier of the service instance.
+
+The examples in the documentation abbreviate `wss://api.{location}.speech-to-text.watson.cloud.ibm.com/instances/{instance_id}` to `{ws_url}`. So all WebSocket examples call the method as `{ws_url}/v1/recognize`.
 {: note}
 
 A WebSocket client calls this method with the following query parameters to establish an authenticated connection with the service. If you use Identity and Access Management (IAM) authentication, use the `access_token` query parameter. If you use Cloud Foundry service credentials, use the `watson-token` query parameter.
@@ -86,7 +89,7 @@ A WebSocket client calls this method with the following query parameters to esta
       You pass an IAM access token instead of passing an API key with
       the call. You must establish the connection before the access
       token expires. For information about obtaining an access token, see
-      [Authenticating with IAM tokens](/docs/services/watson?topic=watson-iam).<br/><br/>
+      [Authenticating to Watson services](/docs/services/watson?topic=watson-iam).<br/><br/>
       You pass an access token only to establish an authenticated connection.
       Once you establish a connection, you can keep it alive indefinitely.
       You remain authenticated for as long as you keep the connection open.
