@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-12-10"
+lastupdated: "2019-12-12"
 
 subcollection: speech-to-text
 
@@ -33,8 +33,32 @@ The following sections document the new features and changes that were included 
 
 No known limitations at this time.
 
+## 12 December 2019
+{: #December2019b}
+
+-   **Full support for IBM Cloud IAM**
+    -   The {{site.data.keyword.speechtotextshort}} service now supports the full implementation of {{site.data.keyword.cloud}} Identity and Access Management (IAM). API keys for Watson services are no longer limited to a single service instance. You can create access policies and API keys that apply to more than one service, and you can grant access between services. For more information about IAM, see [Authenticating to Watson services](/docs/services/watson?topic=watson-iam).
+    -   To support this change, the API service endpoints use a different domain and include the service instance ID. The pattern is `api.{location}.speech-to-text.watson.cloud.ibm.com/instances/{instance_id}`.
+
+        -   Example HTTP URL for an instance hosted in the Dallas location:
+
+            `https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/6bbda3b3-d572-45e1-8c54-22d6ed9e52c2`
+
+        -   Example WebSocket URL for an instance hosted in the Dallas location:
+
+            `wss://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/6bbda3b3-d572-45e1-8c54-22d6ed9e52c2`
+
+        For more information about the URLs, see the [API reference](https://{DomainName}/apidocs/speech-to-text/speech-to-text#service-endpoint){: external}.
+
+        These URLs do not constitute a breaking change. The new URLs work for both your existing service instances and for new instances. The original URLs continue to work on your existing service instances for at least one year, until December 2020.
+-   **New network and data security features** for users of Premium plans:
+    -   *Support for data encryption with customer-managed keys*
+        -   You can integrate {{site.data.keyword.keymanagementservicefull}} with the {{site.data.keyword.speechtotextshort}} service to encrypt your data and manage encryption keys. For more information, see [Protecting sensitive information in your Watson service](/docs/services/watson?topic=watson-keyservice).
+    -   *Support for private network endpoints*
+        -   You can create private network endpoints to connect to the {{site.data.keyword.speechtotextshort}} service over a private network. Connections to private network endpoints do not require public internet access. For more information, see [Public and private network endpoints](/docs/speech-to-text/?topic=watson-public-private-endpoints).
+
 ## 10 December 2019
-{: #December2019}
+{: #December2019a}
 
 The service now offers beta broadband and narrowband models for the Dutch language:
 
@@ -53,14 +77,10 @@ For more information, see the following sections:
 
 Speaker labels are updated to improve the identification of individual speakers for further analysis of your audio sample. For more information, see [Speaker labels](/docs/services/speech-to-text?topic=speech-to-text-output#speaker_labels).
 
-## 12 November 2019
-{: #November2019b}
-
-The service is now available in the {{site.data.keyword.cloud_notm}} Seoul location (**kr-seo**). As with other locations, the {{site.data.keyword.cloud_notm}} location uses token-based IAM authentication. All new services instances that you create in this location use IAM authentication.
-
 ## Older releases
 {: #older}
 
+-   [12 November 2019](#November2019b)
 -   [1 November 2019](#November2019a)
 -   [1 October 2019](#October2019)
 -   [22 August 2019](#August2019)
@@ -107,6 +127,11 @@ The service is now available in the {{site.data.keyword.cloud_notm}} Seoul locat
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 12 November 2019
+{: #November2019b}
+
+The service is now available in the {{site.data.keyword.cloud_notm}} Seoul location (**kr-seo**). As with other locations, the {{site.data.keyword.cloud_notm}} location uses token-based IAM authentication. All new services instances that you create in this location use IAM authentication.
 
 ### 1 November 2019
 {: #November2019a}
@@ -213,8 +238,6 @@ Custom acoustic models now accept a maximum of 200 hours of audio. The previous 
 Users can now see only service credential information that is associated with the role that has been assigned to their {{site.data.keyword.cloud_notm}} account. For example, if you are assigned a `reader` role, any `writer` or higher levels of service credentials are no longer visible.
 
 This change does not affect API access for users or applications with existing service credentials. The change affects only the viewing of credentials within {{site.data.keyword.cloud_notm}}.
-
-For more information about service keys and user roles, see [IAM service API keys](/docs/services/watson?topic=watson-api-key-bp#api-key-bp).
 
 ### 15 March 2019
 {: #March2019c}
@@ -332,8 +355,7 @@ The migration to IAM authentication affects new and existing service instances d
 For more information, see the following documentation:
 
 -   To learn which authentication mechanism your service instance uses, view your service credentials by clicking the instance on the [{{site.data.keyword.cloud_notm}} dashboard](https://{DomainName}/dashboard/apps){: external}.
--   For more information about using IAM tokens with Watson services, see [Authenticating with IAM tokens](/docs/services/watson?topic=watson-iam).
--   For more information about using IAM API keys with Watson services, see [IAM service API keys](/docs/services/watson?topic=watson-api-key-bp).
+-   For more information about using IAM tokens with Watson services, see [Authenticating to Watson services](/docs/services/watson?topic=watson-iam).
 -   For examples that use IAM authentication, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ### 9 October 2018
