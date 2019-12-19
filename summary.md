@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-12-15"
+lastupdated: "2019-12-19"
 
 subcollection: speech-to-text
 
@@ -977,7 +977,7 @@ An optional boolean that indicates whether the service identifies which individu
 ## split_transcript_at_phrase_end
 {: #summary-split-transcript}
 
-An optional boolean that indicates whether the service splits a transcript into multiple final results based on semantic features of the input such as sentences. By default (`false`), the service produces no semantic splits. For more information, see [Split transcript at phrase end](/docs/services/speech-to-text?topic=speech-to-text-output#split_transcript).
+An optional boolean that indicates whether the service splits a transcript into multiple final results based on semantic features of the input such as sentences. The service bases its understanding of semantic features on the base language model, which can be further influenced by custom language models and grammars. By default (`false`), the service produces no semantic splits. For more information, see [Split transcript at phrase end](/docs/services/speech-to-text?topic=speech-to-text-output#split_transcript).
 
 <table>
   <caption>Table 22. The split_transcript_at_phrase_end parameter</caption>
