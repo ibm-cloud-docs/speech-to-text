@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-12-09"
+lastupdated: "2019-12-16"
 
 subcollection: speech-to-text
 
@@ -90,6 +90,11 @@ Table 1 lists the supported models for each language. If you omit the `model` pa
     <td>German</td>
     <td style="text-align:center"><code>de-DE_BroadbandModel</code></td>
     <td style="text-align:center"><code>de-DE_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>Italian (Beta)</td>
+    <td style="text-align:center"><code>it-IT_BroadbandModel</code></td>
+    <td style="text-align:center"><code>it-IT_NarrowbandModel</code></td>
   </tr>
   <tr>
     <td>Japanese</td>

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-12-12"
+lastupdated: "2019-12-17"
 
 subcollection: speech-to-text
 
@@ -32,6 +32,31 @@ The following sections document the new features and changes that were included 
 {: #limitations}
 
 No known limitations at this time.
+
+## 18 December 2019
+{: #December2019c}
+
+-   The service now offers beta broadband and narrowband models for the Italian language:
+
+    -   `it-IT_BroadbandModel`
+    -   `it-IT_NarrowbandModel`
+
+    These language models support acoustic model customization. They do not support language model customization. Because they are beta, these models might not be ready for production use and are subject to change. They are initial offerings that are expected to improve in quality with time and usage.
+
+    For more information, see the following sections:
+
+    -   [Supported language models](/docs/services/speech-to-text?topic=speech-to-text-models#modelsList)
+    -   [Language support for customization](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport)
+-   For speech recognition, the service now supports the `end_of_phrase_silence_time` parameter. The parameter specifies the duration of the pause interval at which the service splits a transcript into multiple final results. Each final result indicates a pause or extended silence that exceeds the pause interval. For most languages, the default pause interval is 0.8 seconds; for Chinese the default interval is 0.6 seconds.
+
+    You can use the parameter to effect a trade-off between how often a final result is produced and the accuracy of the transcription. Increase the interval when accuracy is more important than latency. Decrease the interval when the speaker is expected to say short phrases or single words.
+
+    For more information, see [End of phrase silence time](/docs/services/speech-to-text?topic=speech-to-text-output#silence_time).
+-   For speech recognition, the service now supports the `split_transcript_at_phrase_end` parameter. The parameter directs the service to split the transcript into multiple final results based on semantic features of the input, such as at the conclusion of sentences. The service bases its understanding of semantic features on the base language model that you use with a request. Custom language models and grammars can also influence how and where the service splits a transcript.
+
+    The parameter causes the service to add an `end_of_utterance` field to each final result to indicate the motivation for the split: `full_stop`, `silence`, `end_of_data`, or `reset`.
+
+    For more information, see [Split transcript at phrase end](/docs/services/speech-to-text?topic=speech-to-text-output#split_transcript).
 
 ## 12 December 2019
 {: #December2019b}
@@ -72,14 +97,10 @@ For more information, see the following sections:
 -   [Supported language models](/docs/services/speech-to-text?topic=speech-to-text-models#modelsList)
 -   [Language support for customization](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport)
 
-## 25 November 2019
-{: #November2019c}
-
-Speaker labels are updated to improve the identification of individual speakers for further analysis of your audio sample. For more information, see [Speaker labels](/docs/services/speech-to-text?topic=speech-to-text-output#speaker_labels).
-
 ## Older releases
 {: #older}
 
+-   [25 November 2019](#November2019c)
 -   [12 November 2019](#November2019b)
 -   [1 November 2019](#November2019a)
 -   [1 October 2019](#October2019)
@@ -127,6 +148,11 @@ Speaker labels are updated to improve the identification of individual speakers 
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 25 November 2019
+{: #November2019c}
+
+Speaker labels are updated to improve the identification of individual speakers for further analysis of your audio sample. For more information, see [Speaker labels](/docs/services/speech-to-text?topic=speech-to-text-output#speaker_labels).
 
 ### 12 November 2019
 {: #November2019b}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-10-04"
+lastupdated: "2019-12-15"
 
 subcollection: speech-to-text
 
@@ -214,6 +214,8 @@ The JSON metadata that you pass with a multipart request can include the followi
 -   `speaker_labels` (boolean)
 -   `grammar_name` (string)
 -   `redaction` (boolean)
+-   `end_of_phrase_silence_time` (double)
+-   `split_transcript_at_phrase_end` (boolean)
 
 Only the following two parameters are specific to multipart requests:
 
