@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-12-12"
+lastupdated: "2019-12-17"
 
 subcollection: speech-to-text
 
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 12 December 2019. The service now offers full support for IBM Cloud Identity and Access Management (IAM) and, for users of Premium plans, new network and data security features. For more information, see the [12 December 2019 service update](/docs/services/speech-to-text?topic=speech-to-text-release-notes#December2019b) in the release notes.*
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 18 December 2019. The service now supports beta Italian broadband and narrowband models. In addition, you can now specify the pause interval at which the service splits a transcript into multiple final results. And you can also direct the service to split the transcript into multiple final results for semantic features such as sentences. For more information, see the [18 December 2019 service update](/docs/services/speech-to-text?topic=speech-to-text-release-notes#December2019c) in the release notes.*
 
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}
@@ -78,6 +78,8 @@ The interfaces also support the following common output features:
 -   [Smart formatting](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting) converts dates, times, numbers, currency values, phone numbers, and internet addresses into more readable, conventional forms in final transcripts. For US English, you can also provide keyword phrases to include certain punctuation symbols in final transcripts. Smart formatting is supported for US English, Japanese, and Spanish audio. (Beta functionality.)
 -   [Numeric redaction](/docs/services/speech-to-text?topic=speech-to-text-output#redaction) redacts, or masks, numeric data from a final transcript. Redaction is intended to remove sensitive personal information, such as credit card numbers, from transcripts. The feature is supported for US English, Japanese, and Korean audio. (Beta functionality.)
 -   [Profanity filtering](/docs/services/speech-to-text?topic=speech-to-text-output#profanity_filter) censors profanity from US English transcripts.
+-   [End of phrase silence time](/docs/services/speech-to-text?topic=speech-to-text-output#silence_time) specifies the duration of the pause interval at which the service splits a transcript into multiple final results in response to silence.
+-   [Split transcript at phrase end](/docs/services/speech-to-text?topic=speech-to-text-output#split_transcript) directs the services to split a transcript into multiple final results for semantic features such as sentences. The service bases its understanding of semantic features on the base language model that you use with a request. Custom language models and grammars can also influence how and where the service splits a transcript.
 -   [Processing metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#processing_metrics) provide detailed timing information about the service's analysis of the input audio.
 -   [Audio metrics](/docs/services/speech-to-text?topic=speech-to-text-metrics#audio_metrics) provide detailed information about the signal characteristics of the input audio.
 
@@ -93,6 +95,7 @@ The service offers models for the following languages and dialects:
 -   English (United Kingdom and United States)
 -   French
 -   German
+-   Italian
 -   Japanese
 -   Korean
 -   Spanish (Argentinian, Castilian, Chilean, Colombian, Mexican, and Peruvian)
@@ -100,7 +103,7 @@ The service offers models for the following languages and dialects:
 The service does not support all features for all languages. Moreover, it supports some features as generally available (GA) for production use and others as beta offerings for different languages.
 
 -   The Spanish Castilian dialect is generally available. The other five Spanish dialects are beta.
--   The Dutch language models are beta.
+-   The Dutch and Italian language models are beta.
 -   The WebSocket and HTTP interfaces are generally available for all languages.
 -   The service offers broadband models, narrowband models, or both for different languages. For more information, see [Languages and models](/docs/services/speech-to-text?topic=speech-to-text-models).
 -   Some speech recognition features are available only for some languages. For more information, see the [Parameter summary](/docs/services/speech-to-text?topic=speech-to-text-summary).

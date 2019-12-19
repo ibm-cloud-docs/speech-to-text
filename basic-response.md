@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-07-24"
+lastupdated: "2019-12-15"
 
 subcollection: speech-to-text
 
@@ -101,6 +101,7 @@ Many of the output parameters that are available for speech recognition impact t
 -   The `word_alternatives_threshold` parameter requests acoustically similar results for individual words. The `results` array includes a `word_alternatives` field.
 -   The `interim_results` parameter of the WebSocket interface requests interim transcription hypotheses. As mentioned previously, the service sends multiple responses as it transcribes the audio.
 -   The `speaker_labels` parameter identifies the individual speakers of a multi-participant exchange. The response includes a `speaker_labels` field at the same level as the `results` and `results_index` fields.
+-   The `split_transcript_at_phrase_end` parameter directs the service to split a transcript into multiple final results for semantic features of the input such as sentences. Each `final_result` includes an additional `end_of_utterance` field to indicate why the service split the transcript at that point.
 
 For more information about these and other parameters that can affect the service's response, see [Output features](/docs/services/speech-to-text?topic=speech-to-text-output). For more information about all available parameters, see the [Parameter summary](/docs/services/speech-to-text?topic=speech-to-text-summary).
 
@@ -109,9 +110,9 @@ For more information about these and other parameters that can affect the servic
 
 The service transcribes an entire audio stream until either the stream ends or a timeout occurs. However, if the audio includes pauses or extended silence between spoken words or phrases, recognition results can include multiple final results.
 
-The default pause interval that the service uses to determine separate final results is approximately one second. For most languages, the pause interval is precisely 0.8 second; for Chinese the interval is 0.6 second. You cannot change the duration of the pause interval.
+For most languages, the default pause interval that the service uses to determine separate final results is 0.8 seconds; for Chinese the default interval is 0.6 seconds. You can use the `end_or_phrase_silence_time` parameter to change the duration of the interval. For more information, see [End of phrase silence time](/docs/services/speech-to-text?topic=speech-to-text-output#silence_time).
 
-How the service returns the results depends on the interface that you use. The following examples show responses with two final results from the HTTP and WebSocket interfaces. The same input audio is used in both cases. The audio speaks the phrase "one two three four five six," with a one-second pause between the words "three" and "four."
+How the service returns the results depends on the interface that you use. The following examples show responses with two final results from the HTTP and WebSocket interfaces. The same input audio is used in both cases. The audio speaks the phrase "one two three four five six," with a one-second pause between the words "three" and "four." The examples use the default pause interval for speech recognition.
 
 -   *For the HTTP interfaces,* the service sends a single `SpeechRecognitionResults` object. The `alternatives` array has a separate element for each final result. The response has a single `result_index` field with a value of `0`.
 
@@ -130,7 +131,7 @@ How the service returns the results depends on the interface that you use. The f
         {
           "alternatives": [
             {
-              "confidence": 0.98,
+              "confidence": 0.99,
               "transcript": "four five six "
             }
           ],
@@ -164,7 +165,7 @@ How the service returns the results depends on the interface that you use. The f
         {
           "alternatives": [
             {
-              "confidence": 0.98,
+              "confidence": 0.99,
               "transcript": "four five six "
             }
           ],
