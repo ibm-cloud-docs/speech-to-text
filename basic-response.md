@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2019
-lastupdated: "2019-12-15"
+  years: 2015, 2020
+lastupdated: "2020-01-30"
 
 subcollection: speech-to-text
 
@@ -110,7 +110,7 @@ For more information about these and other parameters that can affect the servic
 
 The service transcribes an entire audio stream until either the stream ends or a timeout occurs. However, if the audio includes pauses or extended silence between spoken words or phrases, recognition results can include multiple final results.
 
-For most languages, the default pause interval that the service uses to determine separate final results is 0.8 seconds; for Chinese the default interval is 0.6 seconds. You can use the `end_or_phrase_silence_time` parameter to change the duration of the interval. For more information, see [End of phrase silence time](/docs/services/speech-to-text?topic=speech-to-text-output#silence_time).
+For most languages, the default pause interval that the service uses to determine separate final results is 0.8 seconds; for Chinese the default interval is 0.6 seconds. You can use the `end_of_phrase_silence_time` parameter to change the duration of the interval. For more information, see [End of phrase silence time](/docs/services/speech-to-text?topic=speech-to-text-output#silence_time).
 
 How the service returns the results depends on the interface that you use. The following examples show responses with two final results from the HTTP and WebSocket interfaces. The same input audio is used in both cases. The audio speaks the phrase "one two three four five six," with a one-second pause between the words "three" and "four." The examples use the default pause interval for speech recognition.
 
