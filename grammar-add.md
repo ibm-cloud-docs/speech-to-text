@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2019
-lastupdated: "2019-10-04"
+  years: 2015, 2020
+lastupdated: "2020-02-04"
 
 subcollection: speech-to-text
 
@@ -32,17 +32,17 @@ Before you can use a grammar for speech recognition, you must first use the cust
 1.  [Add a grammar to the custom language model](#addGrammar). The service validates the grammar to ensure its correctness.
 1.  [Validate the words from the grammar](#validateGrammar). You verify the correctness of the sounds-like pronunciations for any out-of-vocabulary (OOV) words that are recognized by the grammar.
 1.  [Train the custom language model](#trainGrammar). The service prepares the custom model and grammar for use in speech recognition.
-1.  You can now use the custom model and grammar in speech recognition requests. For more information, see [Using a grammar for speech recognition](/docs/services/speech-to-text?topic=speech-to-text-grammarUse).
+1.  You can now use the custom model and grammar in speech recognition requests. For more information, see [Using a grammar for speech recognition](/docs/speech-to-text?topic=speech-to-text-grammarUse).
 
 These steps are iterative. You can add grammars, as well as corpora and custom words, to a custom language model as often as needed. You must train the custom model on any new data resources (grammars, corpora, or custom words) that you add. When you use it for speech recognition, a custom model reflects the data on which it was last trained.
 
-The grammars feature is beta functionality. You can use grammars with any language that supports language model customization. Language model customization is available for most languages. For more information, see [Language support for customization](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
+The grammars feature is beta functionality. You can use grammars with any language that supports language model customization. Language model customization is available for most languages. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
 {: note}
 
 ## Create a custom language model
 {: #createModel-grammar}
 
-To use a grammar with speech recognition, you must add it to a custom language model. You can use an existing custom language model, or you can create a new custom model by using the `POST /v1/customizations` method. For information about creating a new custom model, see [Create a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language).
+To use a grammar with speech recognition, you must add it to a custom language model. You can use an existing custom language model, or you can create a new custom model by using the `POST /v1/customizations` method. For information about creating a new custom model, see [Create a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#createModel-language).
 
 A custom language model can contain corpora and custom words as well as grammars. During speech recognition, you can use the custom model with or without its grammars. However, when you use a grammar, the service recognizes only words from the specified grammar.
 
@@ -109,7 +109,7 @@ The `status` field has one of the following values:
 -   `being_processed` indicates that the service is still analyzing the grammar.
 -   `undetermined` indicates that the service encountered an error while processing the grammar.
 
-Use a loop to check the status of the grammar every 10 seconds until it becomes `analyzed`. For more information about checking the status of a grammar, see [Listing grammars for a custom language model](/docs/services/speech-to-text?topic=speech-to-text-manageGrammars#listGrammars).
+Use a loop to check the status of the grammar every 10 seconds until it becomes `analyzed`. For more information about checking the status of a grammar, see [Listing grammars for a custom language model](/docs/speech-to-text?topic=speech-to-text-manageGrammars#listGrammars).
 
 ### Handling add grammar failures
 {: #handleFailures}
@@ -128,21 +128,21 @@ If its analysis of a grammar fails, the service sets the grammar's status to `un
 
 The status of the custom model is not affected by the error, but the grammar cannot be used with the model. You can address the problem by correcting the grammar file and repeating the request to add it to the custom model. Set the `allow_overwrite` parameter to `true` to overwrite the version of the grammar file that failed.
 
-You can also delete the grammar from the custom model for the time being, and then correct and add the grammar file again in the future. For more information about deleting a grammar, see [Deleting a grammar from a custom language model](/docs/services/speech-to-text?topic=speech-to-text-manageGrammars#deleteGrammar).
+You can also delete the grammar from the custom model for the time being, and then correct and add the grammar file again in the future. For more information about deleting a grammar, see [Deleting a grammar from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageGrammars#deleteGrammar).
 
 ## Validate the words from the grammar
 {: #validateGrammar}
 
 When you add a grammar file to a custom language model, the service parses the grammar to determine whether the grammar recognizes any words that are not already part of the service's base vocabulary. Such words are referred to as out-of-vocabulary (OOV) words. The service adds OOV words to the custom model's words resource. The purpose of the words resource is to define words that are not already present in the service's vocabulary.
 
-Definitions in the words resource tell the service how to transcribe the OOV words. The information includes a `sounds_like` field that tells the service how the word is pronounced, a `display_as` field that tells the service how to display the word, and a `source` field that indicates how the word was added to the custom model. For more information about the words resource and OOV words, see [The words resource](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#wordsResource).
+Definitions in the words resource tell the service how to transcribe the OOV words. The information includes a `sounds_like` field that tells the service how the word is pronounced, a `display_as` field that tells the service how to display the word, and a `source` field that indicates how the word was added to the custom model. For more information about the words resource and OOV words, see [The words resource](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordsResource).
 
 After you add a grammar to a custom model, it is good practice to examine the OOV words in the model's words resource to verify their sounds-like pronunciations. Not all grammars have OOV words, but verifying the words resource is generally a good idea. To check the words of the custom model after you add a grammar, use the following methods:
 
 -   Use the `GET /v1/customizations/{customization_id}/words` method to list all of the words from a custom model. Pass the value `grammars` with the method's `word_type` parameter to list only words that were added from grammars.
 -   Use the `GET /v1/customizations/{customization_id}/words/{word_name}` method to view an individual word from a model.
 
-Verify that the sounds-like pronunciations of the words are accurate and correct. Also look for typographical and other errors in the words themselves. For more information about validating and correcting the words in a custom model, see [Validating a words resource](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
+Verify that the sounds-like pronunciations of the words are accurate and correct. Also look for typographical and other errors in the words themselves. For more information about validating and correcting the words in a custom model, see [Validating a words resource](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
 
 ## Train the custom language model
 {: #trainGrammar}
@@ -182,4 +182,4 @@ To determine the status of a training request, use the `GET /v1/customizations/{
 ```
 {: codeblock}
 
-The `status` field has the value `training` while the model is being trained. Use a loop to check the status of the model every 10 seconds until it becomes `available`. For more information about monitoring a training request and other possible status values, see [Monitoring the train model request](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language).
+The `status` field has the value `training` while the model is being trained. Use a loop to check the status of the model every 10 seconds until it becomes `available`. For more information about monitoring a training request and other possible status values, see [Monitoring the train model request](/docs/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language).

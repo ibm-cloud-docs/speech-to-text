@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2019
-lastupdated: "2019-12-17"
+  years: 2015, 2020
+lastupdated: "2020-02-04"
 
 subcollection: speech-to-text
 
@@ -28,7 +28,7 @@ subcollection: speech-to-text
 The following examples introduce the {{site.data.keyword.speechtotextfull}} service's support for grammars. The examples create two simple ABNF grammars and show possible results when they are used for speech recognition. The examples illustrate the importance of examining the confidence score that the service includes with a transcript.
 {: shortdesc}
 
-The examples provide only the results of speech recognition requests. For examples that show how to pass a grammar for speech recognition, see [Using a grammar for speech recognition](/docs/services/speech-to-text?topic=speech-to-text-grammarUse). The examples are also very basic. For examples of more complex grammars, see [Example grammars](/docs/services/speech-to-text?topic=speech-to-text-grammarExamples).
+The examples provide only the results of speech recognition requests. For examples that show how to pass a grammar for speech recognition, see [Using a grammar for speech recognition](/docs/speech-to-text?topic=speech-to-text-grammarUse). The examples are also very basic. For examples of more complex grammars, see [Example grammars](/docs/speech-to-text?topic=speech-to-text-grammarExamples).
 
 ## Single-phrase matches: The yesno grammar
 {: #yesnoGrammar}
@@ -146,8 +146,8 @@ Now consider the case where the user instead says something like `Yon See` [1.0 
 
 Other factors and parameters can also effect grammar recognition:
 
--   If the service encounters a pause that separates the phrases that are to be matched, the grammar fails to recognize the multi-phrase rule. You can use the `end_of_phrase_silence_time` parameter to increase the pause interval and avoid receiving multiple final results. For more information, see [End of phrase silence time](/docs/services/speech-to-text?topic=speech-to-text-output#silence_time).
--   If the `split_transcript_at_phrase_end` parameter is set to `true`, the service can split a transcript into multiple final results based on semantic features of the input. Such splits are unlikely to impact grammar recognition. But the use of a custom language model and a grammar can influence how the service interprets semantic features. For more information, see [Split transcript at phrase end](/docs/services/speech-to-text?topic=speech-to-text-output#split_transcript).
+-   If the service encounters a pause that separates the phrases that are to be matched, the grammar fails to recognize the multi-phrase rule. You can use the `end_of_phrase_silence_time` parameter to increase the pause interval and avoid receiving multiple final results. For more information, see [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-output#silence_time).
+-   If the `split_transcript_at_phrase_end` parameter is set to `true`, the service can split a transcript into multiple final results based on semantic features of the input. Such splits are unlikely to impact grammar recognition. But the use of a custom language model and a grammar can influence how the service interprets semantic features. For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-output#split_transcript).
 
 ## Confidence scores and empty results
 {: #confidenceScores}

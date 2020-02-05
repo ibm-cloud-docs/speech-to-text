@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2019
-lastupdated: "2019-12-17"
+  years: 2015, 2020
+lastupdated: "2020-02-04"
 
 subcollection: speech-to-text
 
@@ -28,9 +28,9 @@ subcollection: speech-to-text
 The {{site.data.keyword.speechtotextfull}} service offers the following features to indicate the information that the service is to include in its transcription results for a speech recognition request. All output parameters are optional.
 {: shortdesc}
 
--   For examples of simple speech recognition requests for each of the service's interfaces, see [Making a recognition request](/docs/services/speech-to-text?topic=speech-to-text-basic-request).
--   For examples and descriptions of speech recognition responses, see [Understanding recognition results](/docs/services/speech-to-text?topic=speech-to-text-basic-response). The service returns all JSON response content in the UTF-8 character set.
--   For an alphabetized list of all available speech recognition parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/services/speech-to-text?topic=speech-to-text-summary).
+-   For examples of simple speech recognition requests for each of the service's interfaces, see [Making a recognition request](/docs/speech-to-text?topic=speech-to-text-basic-request).
+-   For examples and descriptions of speech recognition responses, see [Understanding recognition results](/docs/speech-to-text?topic=speech-to-text-basic-response). The service returns all JSON response content in the UTF-8 character set.
+-   For an alphabetized list of all available speech recognition parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
 
 ## Speaker labels
 {: #speaker_labels}
@@ -42,7 +42,7 @@ Speaker labels identify which individuals spoke which words in a multi-participa
 
 Speaker labels are optimized for two-speaker scenarios. They work best for telephone conversations that involve two people in an extended exchange. They can handle up to six speakers, but more than two speakers can result in variable performance. Two-person exchanges are typically conducted over narrowband media, but you can use speaker labels with supported narrowband and broadband models.
 
-To use the feature, you set the `speaker_labels` parameter to `true` for a recognition request; the parameter is `false` by default. The service identifies speakers by individual words of the audio. It relies on a word's start and end time to identify its speaker. Therefore, enabling speaker labels also forces the `timestamps` parameter to be `true`. For more information, see [Word timestamps](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps).
+To use the feature, you set the `speaker_labels` parameter to `true` for a recognition request; the parameter is `false` by default. The service identifies speakers by individual words of the audio. It relies on a word's start and end time to identify its speaker. Therefore, enabling speaker labels also forces the `timestamps` parameter to be `true`. For more information, see [Word timestamps](/docs/speech-to-text?topic=speech-to-text-output#word_timestamps).
 
 ### Speaker labels example
 {: #speakerLabelsExample}
@@ -239,7 +239,7 @@ As a result, speaker IDs might not be sequential, contiguous, or ordered. For in
 ### Requesting interim results for speaker labels
 {: #speakerLabelsInterim}
 
-With the WebSocket interface, you can request interim results as well as speaker labels (for more information, see [Interim results](/docs/services/speech-to-text?topic=speech-to-text-output#interim)). Final results are generally better than interim results. But interim results can help identify the evolution of a transcript and the assignment of speaker labels. Interim results can indicate where transient speakers and IDs appeared or disappeared. However, the service can reuse the IDs of speakers that it initially identifies and later reconsiders and omits. Therefore, an ID might refer to two different speakers in interim and final results.
+With the WebSocket interface, you can request interim results as well as speaker labels (for more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-output#interim)). Final results are generally better than interim results. But interim results can help identify the evolution of a transcript and the assignment of speaker labels. Interim results can indicate where transient speakers and IDs appeared or disappeared. However, the service can reuse the IDs of speakers that it initially identifies and later reconsiders and omits. Therefore, an ID might refer to two different speakers in interim and final results.
 
 When you request both interim results and speaker labels, final results for long audio streams might arrive well after initial interim results are returned. It is also possible for some interim results to include only a `speaker_labels` field without the `results` and `result_index` fields. If you do not request interim results, the service returns final results that include `results` and `result_index` fields and a single `speaker_labels` field.
 
@@ -297,7 +297,7 @@ A keyword for which the service finds no matches is omitted from the array. A ke
     -   The keyword's tokens are in the same block.
     -   The tokens are either adjacent or separated by a gap of no more than 0.1 seconds.
 
-    The latter case can occur if a brief filler or non-lexical utterance, such as "uhm" or "well," lies between two tokens of the keyword. For more information, see [Hesitation markers](/docs/services/speech-to-text?topic=speech-to-text-basic-response#hesitation).
+    The latter case can occur if a brief filler or non-lexical utterance, such as "uhm" or "well," lies between two tokens of the keyword. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#hesitation).
 
 ### Keyword spotting example
 {: #keywordSpottingExample}
@@ -1059,7 +1059,7 @@ In cases where an utterance contains long enough pauses of silence, the service 
   </tr>
 </table>
 
-For more information about specifying a pause interval that affects the service's response, see [End of phrase silence time](/docs/services/speech-to-text?topic=speech-to-text-output#silence_time).
+For more information about specifying a pause interval that affects the service's response, see [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-output#silence_time).
 
 ### Smart formatting example
 {: #smartFormattingExample}
@@ -1273,7 +1273,7 @@ curl -X POST -u "apikey:{apikey}"
 ## End of phrase silence time
 {: #silence_time}
 
-The `end_of_phrase_silence_time` parameter specifies the duration of the pause interval at which the service splits a transcript into multiple final results. If the service detects pauses or extended silence before it reaches the end of the audio stream, its response can include multiple final results. Silence indicates a point at which the speaker pauses between spoken words or phrases. For most languages, the default pause interval is 0.8 seconds; for Chinese the default interval is 0.6 seconds. For more information, see [Pauses and silence](/docs/services/speech-to-text?topic=speech-to-text-basic-response#pauses-silence).
+The `end_of_phrase_silence_time` parameter specifies the duration of the pause interval at which the service splits a transcript into multiple final results. If the service detects pauses or extended silence before it reaches the end of the audio stream, its response can include multiple final results. Silence indicates a point at which the speaker pauses between spoken words or phrases. For most languages, the default pause interval is 0.8 seconds; for Chinese the default interval is 0.6 seconds. For more information, see [Pauses and silence](/docs/speech-to-text?topic=speech-to-text-basic-response#pauses-silence).
 
 By using the `end_of_phrase_silence_time` parameter, you can specify a double value between 0.0 and 120.0 seconds that indicates a different pause interval:
 
@@ -1372,7 +1372,7 @@ If you apply a custom language model to speech recognition, the service is likel
 
 However, the degree to which custom language models and grammars influence the service's splitting of a transcript depends on many factors. Such factors include the amount of training data with which the custom model is built and the qualities of the audio itself. Small changes in the audio can affect the results.
 
-Regardless, the service can still produce multiple final results in response to pauses and silence. If you omit the `split_transcript_at_phrase_end` parameter or set it to `false`, the service splits transcripts based solely on the pause interval. The pause interval has precedence over splitting due to semantic features. For more information, see [End of phrase silence time](/docs/services/speech-to-text?topic=speech-to-text-output#silence_time).
+Regardless, the service can still produce multiple final results in response to pauses and silence. If you omit the `split_transcript_at_phrase_end` parameter or set it to `false`, the service splits transcripts based solely on the pause interval. The pause interval has precedence over splitting due to semantic features. For more information, see [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-output#silence_time).
 
 ### Split transcript at phrase end results
 {: #split_transcript_results}

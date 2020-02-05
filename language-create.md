@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2019
-lastupdated: "2019-12-10"
+  years: 2015, 2020
+lastupdated: "2020-02-04"
 
 subcollection: speech-to-text
 
@@ -32,19 +32,19 @@ Follow these steps to create a custom language model for the {{site.data.keyword
 1.  [Add a corpus to the custom language model](#addCorpus). A corpus is a plain text document that uses terminology from the domain in context. The service builds a vocabulary for a custom model by extracting terms from corpora that do not exist in its base vocabulary. You can add multiple corpora to a custom model.
 1.  [Add words to the custom language model](#addWords). You can also add custom words to a model individually. In addition, you can use the same methods to modify custom words that are extracted from corpora. The methods let you specify the pronunciation of words and how the words are displayed in a speech transcript.
 1.  [Train the custom language model](#trainModel-language). Once you add words to the custom model, you must train the model on the words. Training prepares the custom model for use in speech recognition. The model does not use new or modified words until you train it.
-1.  After you train your custom model, you can use it with recognition requests. If the audio that is passed for transcription contains domain-specific words that are defined in the custom model, the results of the request reflect the model's enhanced vocabulary. You can use only one model at a time with a speech recognition request. For more information, see [Using a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageUse).
+1.  After you train your custom model, you can use it with recognition requests. If the audio that is passed for transcription contains domain-specific words that are defined in the custom model, the results of the request reflect the model's enhanced vocabulary. You can use only one model at a time with a speech recognition request. For more information, see [Using a custom language model](/docs/speech-to-text?topic=speech-to-text-languageUse).
 
 The steps for creating a custom language model are iterative. You can add corpora, add words, and train or retrain a model as often as needed.
 
-You can also add grammars to a custom language model. Grammars restrict the service's response to only those words that are recognized by a grammar. For more information, see [Using grammars with custom language models](/docs/services/speech-to-text?topic=speech-to-text-grammars).
+You can also add grammars to a custom language model. Grammars restrict the service's response to only those words that are recognized by a grammar. For more information, see [Using grammars with custom language models](/docs/speech-to-text?topic=speech-to-text-grammars).
 
-Language model customization is available for most languages. For more information, see [Language support for customization](/docs/services/speech-to-text?topic=speech-to-text-customization#languageSupport).
+Language model customization is available for most languages. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
 {: note}
 
 ## Create a custom language model
 {: #createModel-language}
 
-You use the `POST /v1/customizations` method to create a new custom language model. The method accepts a JSON object that defines the attributes of the new custom model as the body of the request. The new custom model is owned by the instance of the service whose credentials are used to create it. For more information, see [Ownership of custom models](/docs/services/speech-to-text?topic=speech-to-text-customization#customOwner).
+You use the `POST /v1/customizations` method to create a new custom language model. The method accepts a JSON object that defines the attributes of the new custom model as the body of the request. The new custom model is owned by the instance of the service whose credentials are used to create it. For more information, see [Ownership of custom models](/docs/speech-to-text?topic=speech-to-text-customization#customOwner).
 
 You can create a maximum of 1024 custom language models per owning credentials. The service returns an error if you attempt to create more than 1024 models. You do not lose any models, but you cannot create any more until your model count is below the limit.
 
@@ -153,8 +153,8 @@ Once you create your custom language model, the next step is to add data (domain
 
 A corpus is a plain text file that ideally contains sample sentences from your domain. The service parses a corpus file's contents and extracts any words that are not in its base vocabulary. Such words are referred to out-of-vocabulary (OOV) words.
 
--   For more information about using corpora, see [Working with corpora](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#workingCorpora).
--   For more information about how the service adds corpora to a model, see [What happens when I add a corpus file?](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#parseCorpus)
+-   For more information about using corpora, see [Working with corpora](/docs/speech-to-text?topic=speech-to-text-corporaWords#workingCorpora).
+-   For more information about how the service adds corpora to a model, see [What happens when I add a corpus file?](/docs/speech-to-text?topic=speech-to-text-corporaWords#parseCorpus)
 
 By providing sentences that include new words, corpora allow the service to learn the words in context. You can then augment or modify the model's words individually. Training a model only on individual words as opposed to words added from corpora is more time-consuming and can produce less effective results.
 {: tip}
@@ -170,7 +170,7 @@ You use the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` m
     -   Do not use the name `base_lm` or `default_lm`. Both names are reserved for future use by the service.
 -   Pass the corpus text file as the body of the request.
 
-You can add a maximum of 90 thousand OOV words and 10 million total words from all sources combined. This includes words from corpora and grammars, and words that you add directly. For more information, see [How much data do I need?](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#wordsResourceAmount)
+You can add a maximum of 90 thousand OOV words and 10 million total words from all sources combined. This includes words from corpora and grammars, and words that you add directly. For more information, see [How much data do I need?](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordsResourceAmount)
 {: note}
 
 The following example adds the corpus text file `healthcare.txt` to the custom model with the specified ID. The example names the corpus `healthcare`.
@@ -186,7 +186,7 @@ The method also accepts an optional `allow_overwrite` query parameter that overw
 
 The method is asynchronous. It can take on the order of a minute or two to complete. The duration of the operation depends on the total number of words in the corpus, the number of new words that the service finds in the corpus, and the current load on the service. For more information about checking the status of a corpus, see [Monitoring the add corpus request](#monitorCorpus).
 
-You can add any number of corpora to a custom model by calling the method once for each corpus text file. The addition of one corpus must be fully complete before you can add another. After you add a corpus to a custom model, examine the new custom words to check for typographical and other errors. For more information, see [Validating a words resource](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
+You can add any number of corpora to a custom model by calling the method once for each corpus text file. The addition of one corpus must be fully complete before you can add another. After you add a corpus to a custom model, examine the new custom words to check for typographical and other errors. For more information, see [Validating a words resource](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
 
 ### Monitoring the add corpus request
 {: #monitorCorpus}
@@ -219,7 +219,7 @@ The `status` field has one of the following values:
 -   `being_processed` indicates that the service is still analyzing the corpus.
 -   `undetermined` indicates that the service encountered an error while processing the corpus.
 
-Use a loop to check the status of the corpus every 10 seconds until it becomes `analyzed`. For more information about checking the status of a model's corpora, see [Listing corpora for a custom language model](/docs/services/speech-to-text?topic=speech-to-text-manageCorpora#listCorpora).
+Use a loop to check the status of the corpus every 10 seconds until it becomes `analyzed`. For more information about checking the status of a model's corpora, see [Listing corpora for a custom language model](/docs/speech-to-text?topic=speech-to-text-manageCorpora#listCorpora).
 
 ## Add words to the custom language model
 {: #addWords}
@@ -228,8 +228,8 @@ Although adding corpora is the recommended means of adding words to a custom lan
 
 If you have only one or a few words to add to a model, using corpora to add the words might not be practical or even viable. The simplest approach is to add a word with only its spelling. But you can also provide multiple pronunciations for the word and indicate how the word is to be displayed.
 
--   For more information about adding words directly, see [Working with custom words](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#workingWords).
--   For more information about how the service adds custom words to a model, see [What happens when I add or modify a custom word?](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#parseWord)
+-   For more information about adding words directly, see [Working with custom words](/docs/speech-to-text?topic=speech-to-text-corporaWords#workingWords).
+-   For more information about how the service adds custom words to a model, see [What happens when I add or modify a custom word?](/docs/speech-to-text?topic=speech-to-text-corporaWords#parseWord)
 
 You can use the following methods to add words to a custom model:
 
@@ -280,7 +280,7 @@ You can use the following methods to add words to a custom model:
 
     This method is synchronous. The service returns a response code that reports the success or failure of the request immediately.
 
-As with adding corpora, examine the new custom words to check for typographical and other errors. This check is especially important when you add multiple words at once. For more information, see [Validating a words resource](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
+As with adding corpora, examine the new custom words to check for typographical and other errors. This check is especially important when you add multiple words at once. For more information, see [Validating a words resource](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
 
 ### Monitoring the add words request
 {: #monitorWords}
@@ -342,8 +342,8 @@ The method includes the following optional query parameters:
     -   Specify `all` or omit the parameter to train the model on all of its words, regardless of their origin.
     -   Specify `user` to train the model only on words that were added or modified by the user, ignoring words that were extracted only from corpora or grammars.
 
-    This option is useful if you add corpora with noisy data, such as words that contain typographical errors. Before training the model on such data, you can use the `word_type` query parameter of the `GET /v1/customizations/{customization_id}/words` method to review words that are extracted from corpora and grammars. For more information, see [Listing words from a custom language model](/docs/services/speech-to-text?topic=speech-to-text-manageWords#listWords).
--   The `customization_weight` parameter specifies the relative weight that is given to words from the custom model as opposed to words from the base vocabulary when the custom model is used for speech recognition. You can also specify a customization weight with any recognition request that uses the custom model. For more information, see [Using customization weight](/docs/services/speech-to-text?topic=speech-to-text-languageUse#weight).
+    This option is useful if you add corpora with noisy data, such as words that contain typographical errors. Before training the model on such data, you can use the `word_type` query parameter of the `GET /v1/customizations/{customization_id}/words` method to review words that are extracted from corpora and grammars. For more information, see [Listing words from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageWords#listWords).
+-   The `customization_weight` parameter specifies the relative weight that is given to words from the custom model as opposed to words from the base vocabulary when the custom model is used for speech recognition. You can also specify a customization weight with any recognition request that uses the custom model. For more information, see [Using customization weight](/docs/speech-to-text?topic=speech-to-text-languageUse#weight).
 -   The `strict` parameter indicates whether training is to proceed if the custom model contains a mix of valid and invalid resources (corpora, grammars, and words). By default, training fails if the model contains one or more invalid resources. Set the parameter to `false` to allow training to proceed as long as the model contains at least one valid resource. The service excludes invalid resources from the training. For more information, see [Training failures](#failedTraining-language).
 
 ### Monitoring the train model request
@@ -387,7 +387,7 @@ The response includes `status` and `progress` fields that report the state of th
 -   `upgrading` indicates that the model is being upgraded. The `progress` field is `0`.
 -   `failed` indicates that training of the model failed. The `progress` field is `0`. For more information, see [Training failures](#failedTraining-language).
 
-Use a loop to check the status every 10 seconds until it becomes `available`. For more information about checking the status of a custom model, see [Listing custom language models](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
+Use a loop to check the status every 10 seconds until it becomes `available`. For more information about checking the status of a custom model, see [Listing custom language models](/docs/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
 
 ### Training failures
 {: #failedTraining-language}
@@ -407,10 +407,10 @@ If the training request fails with a status code of 400, the service sets the cu
 
 -   Use methods of the customization interface to examine the model's resources and fix any errors that you find:
     -   For an invalid corpus, you can correct the corpus text file and use the `allow_overwrite` parameter of the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method to add the corrected file to the model. For more information, see [Add a corpus to the custom language model](#addCorpus).
-    -   For an invalid grammar, you can correct the grammar file and use the `allow_overwrite` parameter of the `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` method to add the corrected file to the model. For more information, see [Add a grammar to the custom language model](/docs/services/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar).
+    -   For an invalid grammar, you can correct the grammar file and use the `allow_overwrite` parameter of the `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` method to add the corrected file to the model. For more information, see [Add a grammar to the custom language model](/docs/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar).
     -   For an invalid custom word, you can use the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method to modify the word directly in the model's words resource. For more information, see [Modifying words in a custom model](#modifyWord).
 
-    For more information about validating the words in a custom language model, see [Validating a words resource](/docs/services/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
+    For more information about validating the words in a custom language model, see [Validating a words resource](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
 -   Set the `strict` parameter of the `POST /v1/customizations/{customization_id}/train` method to `false` to exclude invalid resources from the training. The model must contain at least one valid resource (corpus, grammar, or word) for training to succeed. The `strict` parameter is useful for training a custom model that contains a mix of valid and invalid resources.
 
 ## Example scripts

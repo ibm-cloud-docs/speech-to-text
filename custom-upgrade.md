@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2019
-lastupdated: "2019-10-04"
+  years: 2017, 2020
+lastupdated: "2020-02-04"
 
 subcollection: speech-to-text
 
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Upgrading custom models
 {: #customUpgrade}
 
-To improve the quality of speech recognition, the {{site.data.keyword.speechtotextfull}} service occasionally updates base models. Because base models for different languages are independent of each other, as are the broadband and narrowband models for a language, updates to individual base models do not affect other models. The [Release notes](/docs/services/speech-to-text?topic=speech-to-text-release-notes) document all base model updates.
+To improve the quality of speech recognition, the {{site.data.keyword.speechtotextfull}} service occasionally updates base models. Because base models for different languages are independent of each other, as are the broadband and narrowband models for a language, updates to individual base models do not affect other models. The [Release notes](/docs/speech-to-text?topic=speech-to-text-release-notes) document all base model updates.
 {: shortdesc}
 
 When a new version of a base model is released, you must upgrade any custom language and custom acoustic models that are built on the base model to take advantage of the updates. Your custom models continue to use the older version of the base model until you complete the upgrade. As with all customization operations, you must use credentials for the instance of the service that owns a model to upgrade it.
@@ -62,7 +62,7 @@ Follow these steps to upgrade a custom language model:
 
 The service returns a 200 response code if the upgrade process is successfully initiated. You can monitor the status of the upgrade by using the `GET /v1/customizations/{customization_id}` method to poll the model's status. Use a loop to check the status every 10 seconds.
 
-While it is being upgraded, the custom model has the status `upgrading`. When the upgrade is complete, the model resumes the status that it had before upgrade (`ready` or `available`). Checking the status of an upgrade operation is identical to checking the status of a training operation. For more information, see [Monitoring the train model request](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language).
+While it is being upgraded, the custom model has the status `upgrading`. When the upgrade is complete, the model resumes the status that it had before upgrade (`ready` or `available`). Checking the status of an upgrade operation is identical to checking the status of a training operation. For more information, see [Monitoring the train model request](/docs/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language).
 
 The service cannot accept requests to modify the model in any way until the upgrade request completes. However, you can continue to issue recognition requests with the existing version of the model during the upgrade.
 
@@ -100,7 +100,7 @@ Follow these steps to upgrade a custom acoustic model. If the custom acoustic mo
 
 The service returns a 200 response code if the upgrade process is successfully initiated. You can monitor the status of the upgrade by using the `GET /v1/acoustic_customizations/{customization_id}` method to poll the model's status. Use a loop to check the status once a minute.
 
-While it is being upgraded, the custom model has the status `upgrading`. When the upgrade is complete, the model resumes the status that it had before upgrade (`ready` or `available`). Checking the status of an upgrade operation is identical to checking the status of a training operation. For more information, see [Monitoring the train model request](/docs/services/speech-to-text?topic=speech-to-text-acoustic#monitorTraining-acoustic).
+While it is being upgraded, the custom model has the status `upgrading`. When the upgrade is complete, the model resumes the status that it had before upgrade (`ready` or `available`). Checking the status of an upgrade operation is identical to checking the status of a training operation. For more information, see [Monitoring the train model request](/docs/speech-to-text?topic=speech-to-text-acoustic#monitorTraining-acoustic).
 
 The service cannot accept requests to modify the model in any way until the upgrade request completes. However, you can continue to issue recognition requests with the existing version of the model during the upgrade.
 
@@ -118,8 +118,8 @@ The upgrade of a custom model fails to start if the service is handling another 
 
 To see the versions of the base model for which a custom model is available, use the following methods:
 
--   To list information about a custom language model, use the `GET /v1/customizations/{customization_id}` method. For more information, see [Listing custom language models](/docs/services/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
--   To list information about a custom acoustic model, use the `GET /v1/acoustic_customizations/{customization_id}` method. For more information, see [Listing custom acoustic models](/docs/services/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
+-   To list information about a custom language model, use the `GET /v1/customizations/{customization_id}` method. For more information, see [Listing custom language models](/docs/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
+-   To list information about a custom acoustic model, use the `GET /v1/acoustic_customizations/{customization_id}` method. For more information, see [Listing custom acoustic models](/docs/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
 
 In both cases, the output includes a `versions` field that shows information about the base models for the custom model. The following output shows information for an upgraded custom language model:
 
@@ -162,7 +162,7 @@ curl -X POST -u "apikey:{apikey}"
 
 You can use this feature to test the performance and accuracy of a custom model against both the old and new versions of its base model. If you find that an upgraded model's performance is lacking in some way (for instance, certain words are no longer recognized), you can continue to use the older version with recognition requests.
 
-[Base model version](/docs/services/speech-to-text?topic=speech-to-text-input#version) describes the `base_model_version` parameter and how the service determines what versions of the base and custom models to use with a recognition request. In addition to that information, consider the following issues when you pass both custom language and custom acoustic models with a recognition request:
+[Base model version](/docs/speech-to-text?topic=speech-to-text-input#version) describes the `base_model_version` parameter and how the service determines what versions of the base and custom models to use with a recognition request. In addition to that information, consider the following issues when you pass both custom language and custom acoustic models with a recognition request:
 
 -   Both custom models must be based on the same base model (for example, `en-US_BroadbandModel`).
 -   If both custom models are based on the older base model, the service uses the old base model for recognition.
