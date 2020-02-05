@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-01-30"
+lastupdated: "2020-02-04"
 
 subcollection: speech-to-text
 
@@ -31,7 +31,7 @@ Regardless of the interface that you use, the {{site.data.keyword.speechtotextfu
 ## Basic transcription response
 {: #response}
 
-The service returns the following response for the examples in [Making a recognition request](/docs/services/speech-to-text?topic=speech-to-text-basic-request). The examples pass only an audio file and its content type. The audio speaks a single sentence with no noticeable pauses between words.
+The service returns the following response for the examples in [Making a recognition request](/docs/speech-to-text?topic=speech-to-text-basic-request). The examples pass only an audio file and its content type. The audio speaks a single sentence with no noticeable pauses between words.
 
 ```javascript
 {
@@ -77,7 +77,7 @@ The `final` field indicates whether the transcript shows final transcription res
 -   The field is `true` for final results, which are guaranteed not to change. The service sends no further updates for transcripts that it returns as final results.
 -   The field is `false` for interim results, which are subject to change. If you use the `interim_results` parameter with the WebSocket interface, the service returns evolving interim hypotheses in the form of multiple `results` fields as it transcribes the audio. The `final` field is always `false` for interim results. The service sets the field to `true` for the final results for the audio. The service sends no further updates for the transcription of that audio.
 
-To obtain interim results, use the WebSocket interface and set the `interim_results` parameter to `true`. For more information, see [Interim results](/docs/services/speech-to-text?topic=speech-to-text-output#interim).
+To obtain interim results, use the WebSocket interface and set the `interim_results` parameter to `true`. For more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-output#interim).
 
 ### The result_index field
 {: #responseResultIndex}
@@ -103,14 +103,14 @@ Many of the output parameters that are available for speech recognition impact t
 -   The `speaker_labels` parameter identifies the individual speakers of a multi-participant exchange. The response includes a `speaker_labels` field at the same level as the `results` and `results_index` fields.
 -   The `split_transcript_at_phrase_end` parameter directs the service to split a transcript into multiple final results for semantic features of the input such as sentences. Each `final_result` includes an additional `end_of_utterance` field to indicate why the service split the transcript at that point.
 
-For more information about these and other parameters that can affect the service's response, see [Output features](/docs/services/speech-to-text?topic=speech-to-text-output). For more information about all available parameters, see the [Parameter summary](/docs/services/speech-to-text?topic=speech-to-text-summary).
+For more information about these and other parameters that can affect the service's response, see [Output features](/docs/speech-to-text?topic=speech-to-text-output). For more information about all available parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
 
 ## Pauses and silence
 {: #pauses-silence}
 
 The service transcribes an entire audio stream until either the stream ends or a timeout occurs. However, if the audio includes pauses or extended silence between spoken words or phrases, recognition results can include multiple final results.
 
-For most languages, the default pause interval that the service uses to determine separate final results is 0.8 seconds; for Chinese the default interval is 0.6 seconds. You can use the `end_of_phrase_silence_time` parameter to change the duration of the interval. For more information, see [End of phrase silence time](/docs/services/speech-to-text?topic=speech-to-text-output#silence_time).
+For most languages, the default pause interval that the service uses to determine separate final results is 0.8 seconds; for Chinese the default interval is 0.6 seconds. You can use the `end_of_phrase_silence_time` parameter to change the duration of the interval. For more information, see [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-output#silence_time).
 
 How the service returns the results depends on the interface that you use. The following examples show responses with two final results from the HTTP and WebSocket interfaces. The same input audio is used in both cases. The audio speaks the phrase "one two three four five six," with a one-second pause between the words "three" and "four." The examples use the default pause interval for speech recognition.
 
@@ -179,7 +179,7 @@ How the service returns the results depends on the interface that you use. The f
 
 If your results include multiple final results, concatenate the `transcript` elements of the final results to assemble the complete transcription of the audio.
 
-Silence of 30 seconds in streamed audio can result in an [inactivity timeout](/docs/services/speech-to-text?topic=speech-to-text-input#timeouts-inactivity).
+Silence of 30 seconds in streamed audio can result in an [inactivity timeout](/docs/speech-to-text?topic=speech-to-text-input#timeouts-inactivity).
 {: note}
 
 ## Hesitation markers
@@ -207,7 +207,7 @@ In English, the service uses the hesitation token `%HESITATION`, as shown in the
 ```
 {: codeblock}
 
-Hesitation markers can also appear in other fields of a transcript. For example, if you request [Word timestamps](/docs/services/speech-to-text?topic=speech-to-text-output#word_timestamps) for the individual words of a transcript, the service reports the start and end time of each hesitation marker.
+Hesitation markers can also appear in other fields of a transcript. For example, if you request [Word timestamps](/docs/speech-to-text?topic=speech-to-text-output#word_timestamps) for the individual words of a transcript, the service reports the start and end time of each hesitation marker.
 
 ```javascript
 {
@@ -277,4 +277,4 @@ The service always applies this capitalization to US English, regardless of whet
 
 The service does not insert punctuation in response transcripts by default. You must add any punctuation that you need to the service's results.
 
-For some languages, you can use smart formatting to direct the service to substitute punctuation symbols, such as commas, periods, question marks, and exclamation points, for certain keyword strings. For more information, see [smart formatting](/docs/services/speech-to-text?topic=speech-to-text-output#smart_formatting).
+For some languages, you can use smart formatting to direct the service to substitute punctuation symbols, such as commas, periods, question marks, and exclamation points, for certain keyword strings. For more information, see [smart formatting](/docs/speech-to-text?topic=speech-to-text-output#smart_formatting).

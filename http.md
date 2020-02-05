@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2019
-lastupdated: "2019-12-15"
+  years: 2015, 2020
+lastupdated: "2020-02-04"
 
 subcollection: speech-to-text
 
@@ -31,7 +31,7 @@ The synchronous HTTP interface of the {{site.data.keyword.speechtotextfull}} ser
 -   The first sends all of the audio in a single stream via the body of the request. You specify the parameters of the operation as request headers and query parameters. For more information, see [Making a basic HTTP request](#HTTP-basic).
 -   The second sends the audio as a multipart request. You specify the parameters of the request as a combination of request headers, query parameters, and JSON metadata. For more information, see [Making a multipart HTTP request](#HTTP-multi).
 
-Submit a maximum of 100 MB and a minimum of 100 bytes of audio data with a single request. For information about audio formats and about using compression to maximize the amount of audio that you can send with a request, see [Audio formats](/docs/services/speech-to-text?topic=speech-to-text-audio-formats). For information about all methods of the HTTP interface, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+Submit a maximum of 100 MB and a minimum of 100 bytes of audio data with a single request. For information about audio formats and about using compression to maximize the amount of audio that you can send with a request, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats). For information about all methods of the HTTP interface, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ## Making a basic HTTP request
 {: #HTTP-basic}
@@ -192,7 +192,7 @@ You specify the following parameters of multipart speech recognition as request 
   </tr>
 </table>
 
-For more information about the query parameters, see the [Parameter summary](/docs/services/speech-to-text?topic=speech-to-text-summary).
+For more information about the query parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
 
 ### JSON metadata for multipart requests
 {: #multipartJSON}
@@ -222,7 +222,7 @@ Only the following two parameters are specific to multipart requests:
 -   The `part_content_type` field is *optional* for most audio formats. It is required for the `audio/alaw`, `audio/basic`, `audio/l16`, and `audio/mulaw` formats. It specifies the format of the audio in the following parts of the request. All audio files must be in the same format.
 -   The `data_parts_count` field is *optional* for all requests. It specifies the number of audio files that are sent with the request. The service applies end-of-stream detection to the last (and possibly the only) data part. If you omit the parameter, the service determines the number of parts from the request.
 
-All other parameters of the metadata are optional. For descriptions of all available parameters, see the [Parameter summary](/docs/services/speech-to-text?topic=speech-to-text-summary).
+All other parameters of the metadata are optional. For descriptions of all available parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
 
 ### Example multipart request
 

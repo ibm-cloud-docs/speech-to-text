@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-01-17"
+lastupdated: "2020-02-04"
 
 keywords: speech to text,IBM cloud,getting started,tutorial,transcribe audio,speech recognition
 
@@ -163,6 +163,6 @@ of severe thunderstorms swept through Colorado and Sunday "
 
 ## Next steps
 
--   Learn more about the interfaces and SDKs that are available for making speech recognition requests in the [Overview for developers](/docs/services/speech-to-text?topic=speech-to-text-developerOverview).
--   See basic speech recognition requests for each of the service's interfaces in [Making a recognition request](/docs/services/speech-to-text?topic=speech-to-text-basic-request).
+-   Learn more about the interfaces and SDKs that are available for making speech recognition requests in the [Overview for developers](/docs/speech-to-text?topic=speech-to-text-developerOverview).
+-   See basic speech recognition requests for each of the service's interfaces in [Making a recognition request](/docs/speech-to-text?topic=speech-to-text-basic-request).
 -   Find detailed information about all methods of the service's interfaces in the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.

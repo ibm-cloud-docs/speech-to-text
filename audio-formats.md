@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2019
-lastupdated: "2019-06-06"
+  years: 2015, 2020
+lastupdated: "2020-02-04"
 
 subcollection: speech-to-text
 
@@ -62,7 +62,7 @@ In theory, you can send 44 kHz audio with a broadband or narrowband model, but t
 {: #samplingRateMore}
 
 -   For more information about sampling rates, see [Sampling (signal processing)](https://wikipedia.org/wiki/Sampling_%28signal_processing%29){: external}.
--   For more information about the models that the service offers for each supported language, see [Languages and models](/docs/services/speech-to-text?topic=speech-to-text-models).
+-   For more information about the models that the service offers for each supported language, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
 
 ### Bit rate
 {: #bitRate}
@@ -632,4 +632,4 @@ The following tips can help you improve the quality of speech recognition:
     -   Engine noise, working devices, street noise, and background conversations can significantly reduce recognition accuracy.
     -   Regional accents and differences in pronunciation can also reduce accuracy.
 
-    If your audio has these characteristics, consider using acoustic model customization to improve the accuracy of speech recognition. For more information, see [The customization interface](/docs/services/speech-to-text?topic=speech-to-text-customization).
+    If your audio has these characteristics, consider using acoustic model customization to improve the accuracy of speech recognition. For more information, see [The customization interface](/docs/speech-to-text?topic=speech-to-text-customization).

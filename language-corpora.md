@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2019
-lastupdated: "2019-10-04"
+  years: 2015, 2020
+lastupdated: "2020-02-04"
 
 subcollection: speech-to-text
 
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Managing corpora
 {: #manageCorpora}
 
-The customization interface includes the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method for adding a corpus to a custom language model. For more information, see [Add a corpus to the custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#addCorpus). The interface also includes the following methods for listing and deleting corpora for a custom language model.
+The customization interface includes the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method for adding a corpus to a custom language model. For more information, see [Add a corpus to the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#addCorpus). The interface also includes the following methods for listing and deleting corpora for a custom language model.
 {: shortdesc}
 
 ## Listing corpora for a custom language model

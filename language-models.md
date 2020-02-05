@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2019
-lastupdated: "2019-10-04"
+  years: 2015, 2020
+lastupdated: "2020-02-04"
 
 subcollection: speech-to-text
 
@@ -28,8 +28,8 @@ subcollection: speech-to-text
 The customization interface includes the `POST /v1/customizations` method for creating a custom language model. The interface also includes the `POST /v1/customizations/train` method for training a custom model on the latest data from its words resource. For more information, see
 {: shortdesc}
 
--   [Create a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language)
--   [Train the custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language)
+-   [Create a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#createModel-language)
+-   [Train the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language)
 
 In addition, the interface includes methods for listing information about custom language models, resetting a custom model to its initial state, upgrading a custom model, and deleting a custom model. You cannot train, reset, upgrade, or delete a custom model while the service is handling another operation on that model, including adding resources to the model.
 
@@ -47,17 +47,17 @@ Both methods return the following information about a custom model:
 -   `created` is the date and time in Coordinated Universal Time (UTC) at which the custom model was created.
 -   `updated` is the date and time in Coordinated Universal Time (UTC) at which the custom model was last modified.
 -   `language` is the language of the custom model.
--   `dialect` is the dialect of the language for the custom model, which does not necessarily match the language of the custom model for Spanish models. For more information, see the description of the `dialect` parameter in [Create a custom language model](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#createModel-language).
+-   `dialect` is the dialect of the language for the custom model, which does not necessarily match the language of the custom model for Spanish models. For more information, see the description of the `dialect` parameter in [Create a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#createModel-language).
 -   `owner` identifies the credentials of the service instance that owns the custom model.
 -   `name` is the name of the custom model.
 -   `description` shows the description of the custom model, if one was provided at its creation.
 -   `base_model` indicates the name of the language model for which the custom model was created.
--   `versions` provides a list of the available versions of the custom model. Each element of the array indicates a version of the base model with which the custom model can be used. Multiple versions exist only if the custom model is upgraded. Otherwise, only a single version is shown. For more information, see [Listing version information for a custom model](/docs/services/speech-to-text?topic=speech-to-text-customUpgrade#upgradeList).
+-   `versions` provides a list of the available versions of the custom model. Each element of the array indicates a version of the base model with which the custom model can be used. Multiple versions exist only if the custom model is upgraded. Otherwise, only a single version is shown. For more information, see [Listing version information for a custom model](/docs/speech-to-text?topic=speech-to-text-customUpgrade#upgradeList).
 
 The method also returns a `status` field that indicates the state of the custom model:
 
 -   `pending` indicates that the model was created. It is waiting either for valid training data (corpora, grammars, or words) to be added or for the service to finish analyzing data that was added.
--   `ready` indicates that the model contains valid data and is ready to be trained. If the model contains a mix of valid and invalid resources, training of the model fails unless you set the `strict` query parameter to `false`. For more information, see [Training failures](/docs/services/speech-to-text?topic=speech-to-text-languageCreate#failedTraining-language).
+-   `ready` indicates that the model contains valid data and is ready to be trained. If the model contains a mix of valid and invalid resources, training of the model fails unless you set the `strict` query parameter to `false`. For more information, see [Training failures](/docs/speech-to-text?topic=speech-to-text-languageCreate#failedTraining-language).
 -   `training` indicates that the model is being trained on data.
 -   `available` indicates that the model is trained and ready to use with a recognition request.
 -   `upgrading` indicates that the model is being upgraded.
