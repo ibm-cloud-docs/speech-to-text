@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-02-06"
 
 subcollection: speech-to-text
 
@@ -470,17 +470,17 @@ Follow these steps to use the Bash shell script:
 1.  Download the shell script named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.sh" download="testSTTcustom.sh">testSTTcustom.sh <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
 1.  Download the example corpus text files to use with the script. You are free to test with either of the corpus text files or with a file of your own choosing. By default, all corpus text files must reside in the same directory as the script.
 1.  The script uses the `curl` command for HTTP requests to the service. If you have not already downloaded `curl`, you can install the version for your operating system from [curl.haxx.se](http://curl.haxx.se){: external}. Install the version that supports the Secure Sockets Layer (SSL) protocol, and make sure to include the installed binary file on your `PATH` environment variable.
-1.  Edit the script to replace the `PASSWORD` string `iam_apikey` with the API key from your {{site.data.keyword.speechtotextshort}} credentials:
+1.  Edit the script to replace the `PASSWORD` string `YOUR_IAM_APIKEY` with the API key from your {{site.data.keyword.speechtotextshort}} credentials:
 
     ```
-    PASSWORD="iam_apikey"
+    PASSWORD="YOUR_IAM_APIKEY"
     ```
     {: codeblock}
 
-1.  Edit the script to replace the `URL` string with the URL for the location in which you created your service instance. The script uses the following default URL for the Dallas location:
+1.  Edit the script to replace the `URL` string `YOUR_URL` with the URL for your service instance as provided in your service credentials:
 
     ```
-    URL="https://stream.watsonplatform.net/speech-to-text/api/v1"
+    URL="YOUR_URL"
     ```
     {: codeblock}
 
