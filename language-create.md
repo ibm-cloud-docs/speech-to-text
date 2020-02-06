@@ -445,10 +445,17 @@ Follow these steps to use the Python script:
     {: pre}
 
     For more information about the library, see [pypi.python.org/pypi/requests](https://pypi.python.org/pypi/requests){: external}.
-1.  Edit the script to replace the `password` string `iam_apikey` with the API key from your {{site.data.keyword.speechtotextshort}} credentials:
+1.  Edit the script to replace the `password` string `YOUR_IAM_APIKEY` with the API key from your {{site.data.keyword.speechtotextshort}} credentials:
 
     ```
-    password = "iam_apikey"
+    password = "YOUR_API_KEY"
+    ```
+    {: codeblock}
+
+1.  Edit the script to replace the `url` string `YOUR_URL` with the URL for your service instance as provided in your service credentials:
+
+    ```
+    url = "YOUR_URL"
     ```
     {: codeblock}
 
@@ -458,9 +465,6 @@ Follow these steps to use the Python script:
     python testSTTcustom.py
     ```
     {: pre}
-
-The script uses the following default URL for the Dallas location: `https://stream.watsonplatform.net`. If you created your service instance in a different location, modify the `uri` variables to use your location. For example, use `https://gateway-wdc.watsonplatform.net` if your service instance resides in the Washington, DC, location.
-{: note}
 
 ### Example shell script
 {: #shellScript}
