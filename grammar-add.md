@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-02-15"
 
 subcollection: speech-to-text
 
@@ -75,7 +75,7 @@ curl -X POST -u "apikey:{apikey}"
 
 The method also accepts an optional `allow_overwrite` query parameter that you can include to overwrite an existing grammar with the same name. Use the parameter if you need to update a grammar after you add it to a model.
 
-The method is asynchronous. It can take a few seconds for the service to analyze the grammar, depending on the size of the grammar and the current load on the service. For information about checking the status of a grammar, see [Monitoring the add grammar request](#monitorGrammar).
+The method is asynchronous. It can take a few seconds or minutes for the service to analyze the grammar, depending on the size of the grammar and the current load on the service. For information about checking the status of a grammar, see [Monitoring the add grammar request](#monitorGrammar).
 
 You can add any number of grammars to a custom model by calling the method once for each grammar file. The addition of one grammar must be fully complete before you can add another.
 
@@ -157,7 +157,7 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-The training method is asynchronous. Training typically takes only seconds to complete. But it can take longer depending on the size and complexity of the grammar and the current load on the service. For information about checking the status of a training operation, see [Monitoring the training request](#monitorTraining-grammar).
+The training method is asynchronous. Training typically takes only seconds or a few minutes to complete. But it can take longer depending on the size and complexity of the grammar and the current load on the service. For information about checking the status of a training operation, see [Monitoring the training request](#monitorTraining-grammar).
 
 ### Monitoring the training request
 {: #monitorTraining-grammar}

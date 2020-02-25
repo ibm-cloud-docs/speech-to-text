@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-02-15"
 
 subcollection: speech-to-text
 
@@ -144,7 +144,7 @@ The following examples show the addition of both audio- and archive-type resourc
 
 The method also accepts an optional `allow_overwrite` query parameter to overwrite an existing audio resource for a custom model. Use the parameter if you need to update an audio resource after you add it to a model.
 
-The method is asynchronous. It can take several seconds to complete depending on the duration of the audio. For an archive file, the length of the operation depends on the duration of the audio files. For more information about checking the status of a request to add an audio resource, see [Monitoring the add audio request](#monitorAudio).
+The method is asynchronous. It can take several seconds or minutes to complete depending on the duration of the audio. For an archive file, the length of the operation depends on the duration of all audio files contained in the archive. The duration of the operation also depends on the current load on the service. For more information about checking the status of a request to add an audio resource, see [Monitoring the add audio request](#monitorAudio).
 
 You can add any number of audio resources to a custom model by calling the method once for each audio or archive file. You can make multiple requests to add different audio resources simultaneously.
 
@@ -155,8 +155,7 @@ You must add a minimum of 10 minutes and a maximum of 200 hours of audio that in
 
 The service returns a 201 response code if the audio is valid. It then asynchronously analyzes the contents of the audio file or files and automatically extracts information about the audio such as length, sampling rate, and encoding. You cannot train the custom model until the service's analysis of all audio resources for current requests completes.
 
-To determine the status of the request, use the `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to poll the status
-of the audio. The method accepts the GUID of the custom model and the name of the audio resource. Its response includes the `status` of the resource, which has one of the following values:
+To determine the status of the request, use the `GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to poll the status of the audio. The method accepts the customization ID of the custom model and the name of the audio resource. Its response includes the `status` of the resource, which has one of the following values:
 
 -   `ok` indicates that the audio is acceptable and analysis is complete.
 -   `being_processed` indicates that the service is still analyzing the audio.
@@ -225,7 +224,7 @@ curl -X POST -u "apikey:{apikey}"
 ```
 {: pre}
 
-The method is asynchronous. Training can take on the order of minutes or hours to complete, depending on the amount of audio data that the custom acoustic model contains and the current load on the service. A general guideline is that training a custom acoustic model takes approximately two to four times the length of its audio data. The range of time depends on the model that is being trained and the nature of the audio, such as whether the audio is clean or noisy. For example, it can take between 4 and 8 hours to train a model that contains 2 hours of audio. For more information about checking the status of a training operation, see [Monitoring the train model request](#monitorTraining-acoustic).
+The method is asynchronous. Training can take on the order of minutes or hours to complete, depending on the amount of audio data that the custom acoustic model contains and the current load on the service. A general guideline is that training a custom acoustic model can take approximately two to four times the length of its audio data. The actual time depends on the model that is being trained and the nature of the audio, such as whether the audio is clean or noisy. For example, it can take between 4 and 8 hours to train a model that contains 2 hours of audio. For more information about checking the status of a training operation, see [Monitoring the train model request](#monitorTraining-acoustic).
 
 The method includes the following optional query parameters:
 

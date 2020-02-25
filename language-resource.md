@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-02-14"
 
 subcollection: speech-to-text
 
@@ -128,34 +128,42 @@ More sentences result in better accuracy. But the service does limit a model to 
 
 When you add a corpus file, the service analyzes the file's contents. It extracts any new (OOV) words that it finds and adds each OOV word to the custom model's words resource. To distill the most meaning from the content, the service tokenizes and parses the data that it reads from a corpus file. The following sections describe how the service parses a corpus file for each supported language.
 
-#### Parsing of English, French, German, Spanish, and Brazilian Portuguese
+#### Parsing of English, Dutch, French, German, Italian, Spanish, and Brazilian Portuguese
 {: #corpusLanguages}
 
-The following descriptions apply to US and UK English, French, German, Spanish, and Brazilian Portuguese.
+The following descriptions apply to US and UK English, Dutch, French, German, Italian, Spanish, and Brazilian Portuguese.
 
 -   Converts numbers to their equivalent words, for example:
     -   *For English,* `500` becomes `five hundred`, and `0.15` becomes `zero point fifteen`.
+    -   *For Dutch,* `500` becomes `vijfhonderd`, and `0,15` becomes `nul komma vijftien`.
     -   *For French,* `500` becomes `cinq cents`, and `0,15` becomes <code>z&eacute;ro virgule quinze</code>.
     -   *For German,* `500` becomes <code>f&uuml;nfhundert</code>, and `0,15` becomes <code>null punkt f&uuml;nfzehn</code>.
+    -   *For Italian,* `500` becomes `cinquecento`, and `0,15` becomes `zero virgola quindici`.
     -   *For Spanish,* `500` becomes `quinientos`, and `0,15` becomes `cero coma quince`.
     -   *For Brazilian Portuguese,* `500` becomes `quinhentos`, and `0,15` becomes `zero ponto quinze`.
 -   Converts tokens that include certain symbols to meaningful string representations, for example:
     -   Converts a `$` (dollar sign) and a number:
         -   *For English,* `$100` becomes `one hundred dollars`.
+        -   *For Dutch,* `$100` becomes `honderd dollar`.
         -   *For French,* `$100` becomes `cent dollars`.
         -   *For German,* `$100` and `100$` become `einhundert dollar`.
+        -   *For Italian,* `$100` becomes `cento dollari`.
         -   *For Spanish,* `$100`  and `100$` become <code>cien d&oacute;lares</code> (or `cien pesos` if the dialect is `es-LA`).
         -   *For Brazilian Portuguese,* `$100` and `100$` become <code>cem d&oacute;lares</code>.
     -   Converts a <code>&euro;</code> (euro sign) and a number:
         -   *For English,* <code>&euro;100</code> becomes `one hundred euros`.
+        -   *For Dutch,* <code>&euro;100</code> becomes `honderd euro`.
         -   *For French,* <code>&euro;100</code> becomes `cent euros`.
         -   *For German,* <code>&euro;100</code> and <code>100&euro;</code> become `einhundert euro`.
+        -   *For Italian,* <code>&euro;100</code> becomes `cento euro`.
         -   *For Spanish,* <code>&euro;100</code> and <code>100&euro;</code> become `cien euros`.
         -   *For Brazilian Portuguese,* <code>&euro;100</code> and <code>100&euro;</code> become `cem euros`.
     -   Converts a `%` (percent sign) preceded by a number:
         -   *For English,* `100%` becomes `one hundred percent`.
+        -   *For Dutch,* `100%` becomes `honderd procent`.
         -   *For French,* `100%` becomes `cent pour cent`.
         -   *For German,* `100%` becomes `einhundert prozent`.
+        -   *For Italian,* `100%` becomes `cento per cento`.
         -   *For Spanish,* `100%` becomes `cien por ciento`.
         -   *For Brazilian Portuguese,* `100%` becomes `cem por cento`.
 
@@ -279,7 +287,7 @@ Speech recognition uses statistical algorithms to analyze audio, so adding a wor
 -   To pronounce a single letter, use the letter followed by a space. For example, use `N C A A`, *not* `N. C. A. A.`, `N.C.A.A.`, or `NCAA`.
 -   Use the spelling of numbers without dashes, for example, `seventy five` for `75`.
 
-#### Guidelines for French, German, Spanish, and Brazilian Portuguese
+#### Guidelines for Dutch, French, German, Italian, Spanish, and Brazilian Portuguese
 {: #wordLanguages-esES-frFR}
 
 -   You **cannot** use dashes in sounds-like pronunciations.
@@ -287,8 +295,10 @@ Speech recognition uses statistical algorithms to analyze audio, so adding a wor
 -   To pronounce a single letter, use the letter followed by a period. If the period is followed by another character, be sure to use a space between the period and the next character. For example, use `N. C. A. A.`, *not* `N.C.A.A.`
 -   Use real or made-up words that are pronounceable in the language for words that are difficult to pronounce.
 -   Use the spelling of numbers without dashes, for example, for `75` use
+    -   *Dutch:* `vijfenzeventig`
     -   *French:* `soixante quinze`
     -   *German:* <code>f&uuml;nfundsiebzig</code>
+    -   *Italian:* `settantacinque`
     -   *Spanish:* `setenta y cinco`
     -   *Brazilian Portuguese:* `setenta e cinco`
 -   You can include multiple words that are separated by spaces, but the service enforces a maximum of 40 total characters not including spaces.

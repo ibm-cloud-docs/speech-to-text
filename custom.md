@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-02-14"
 
 subcollection: speech-to-text
 
@@ -134,7 +134,7 @@ You can use both broadband and narrowband models with any supported language for
   <tr>
   <tr>
     <td>Dutch</td>
-    <td style="text-align:center">Not supported</td>
+    <td style="text-align:center">Beta</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>
@@ -159,7 +159,7 @@ You can use both broadband and narrowband models with any supported language for
   </tr>
   <tr>
     <td>Italian</td>
-    <td style="text-align:center">Not supported</td>
+    <td style="text-align:center">Beta</td>
     <td style="text-align:center">Beta</td>
   </tr>
   <tr>

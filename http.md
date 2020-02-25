@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-02-21"
 
 subcollection: speech-to-text
 
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # The synchronous HTTP interface
 {: #http}
 
-The synchronous HTTP interface of the {{site.data.keyword.speechtotextfull}} service provides a single `POST /v1/recognize` method for requesting speech recognition with the service. This method is the simplest means of obtaining a transcript. It offers two ways of submitting a speech recognition request:
+The  synchronous HTTP interface of the {{site.data.keyword.speechtotextfull}} service provides a single `POST /v1/recognize` method for requesting speech recognition with the service. This method is the simplest means of obtaining a transcript. It offers two ways of submitting a speech recognition request:
 {: shortdesc}
 
 -   The first sends all of the audio in a single stream via the body of the request. You specify the parameters of the operation as request headers and query parameters. For more information, see [Making a basic HTTP request](#HTTP-basic).
@@ -216,6 +216,8 @@ The JSON metadata that you pass with a multipart request can include the followi
 -   `redaction` (boolean)
 -   `end_of_phrase_silence_time` (double)
 -   `split_transcript_at_phrase_end` (boolean)
+-   `speech_detector_sensitivity` (float)
+-   `background_audio_suppression` (float)
 
 Only the following two parameters are specific to multipart requests:
 

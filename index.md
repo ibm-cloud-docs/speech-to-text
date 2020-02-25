@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-02-25"
 
 subcollection: speech-to-text
 
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 18 December 2019. The service now supports beta Italian broadband and narrowband models. In addition, you can now specify the pause interval at which the service splits a transcript into multiple final results. And you can also direct the service to split the transcript into multiple final results for semantic features such as sentences. For more information, see the [18 December 2019 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#December2019c) in the release notes.*
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 24 February 2020. Many language models have been updated, and the Dutch and Italian models now support language model customization. Also, the service now offers two new parameters to control speech activity detection. It also supports the use of Activity Tracker for all customization operations.  For more information about these and additional changes, see the [24 February 2020 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#February2020) in the release notes.*
 
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}
@@ -61,6 +61,7 @@ The service's interfaces share common input features for transcribing speech to 
 
 -   [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats) - You can transcribe Ogg or Web Media (WebM) audio with the Opus or Vorbis codec, MP3 (or MPEG), Waveform Audio File Format (WAV), Free Lossless Audio Codec (FLAC), Linear 16-bit Pulse-Code Modulation (PCM), G.729, A-Law, mu-law (or u-law), and basic audio. By using a format that supports compression, you can maximize the amount of audio data that you can send with a request.
 -   [Languages and models](/docs/speech-to-text?topic=speech-to-text-models) - For most languages, you can transcribe audio by using broadband or narrowband models. Use broadband for audio that is sampled at a minimum rate of 16 kHz. Use narrowband for audio that is sampled at a minimum rate of 8 kHz.
+-   [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-input#detection) - For most languages, you can use two parameters to control which parts of the audio stream are used for speech recognition. The parameters can help ensure that only relevant audio is processed for speech recognition by suppressing background noise and non-speech events that can adversely affect the quality of speech recognition.
 -   [Audio transmission](/docs/speech-to-text?topic=speech-to-text-input#transmission) - You can pass audio as a continuous stream of data chunks or as a one-shot delivery that passes all of the data at one time. With streaming, the service enforces inactivity and session [timeouts](/docs/speech-to-text?topic=speech-to-text-input#timeouts).
 
 ## Output features
