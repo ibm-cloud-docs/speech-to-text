@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-02-25"
 
 subcollection: speech-to-text
 
@@ -32,6 +32,36 @@ The following sections document the new features and changes that were included 
 {: #limitations}
 
 No known limitations at this time.
+
+## 24 February 2020
+{: #February2020}
+
+-   The following models have been updated for improved speech recognition:
+    -   US English broadband model (`en-US_BroadbandModel`)
+    -   Japanese narrowband model (`ja-JP_NarrowbandModel`)
+    -   Dutch broadband model (`nl-NL_BroadbandModel`)
+    -   Dutch narrowband model (`nl-NL_NarrowbandModel`)
+    -   Italian broadband model (`it-IT_BroadbandModel`)
+    -   Italian narrowband model (`it-IT_NarrowbandModel`)
+
+    By default, the service automatically uses the updated models for all speech recognition requests. If you have custom language or custom acoustic models that are based on the models, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
+    -   `POST /v1/customizations/{customization_id}/upgrade_model`
+    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+
+    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+-   Language model customization is now supported for Dutch and Italian with the new versions of the broadband and narrowband models. For more information, see
+    -   [Parsing of English, Dutch, French, German, Italian, Spanish, and Brazilian Portuguese](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages)
+    -   [Guidelines for Dutch, French, German, Italian, Spanish, and Brazilian Portuguese](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR)
+
+    Because the Dutch and Italian models are beta, their support for language model customization is also beta.
+-   The Japanese narrowband model (`ja-JP_NarrowbandModel`) now includes some multigram word units for digits and decimal fractions. The service returns these multigram units regardless of whether you enable smart formatting. The smart formatting feature understands and returns the multigram units that the model generates. If you apply your own post-processing to transcription results, you need to handle these units appropriately. For more information, see [Japanese](/docs/speech-to-text?topic=speech-to-text-output#smartFormattingJapanese) in the smart formatting documentation.
+-   The service now offers two new optional parameters for controlling the level of speech activity detection. The parameters can help ensure that only relevant audio is processed for speech recognition.
+    -   The `speech_detector_sensitivity` parameter adjusts the sensitivity of speech activity detection. You can use the parameter to suppress word insertions from music, coughing, and other non-speech events.
+    -   `background_audio_suppression` suppresses background audio based on its volume to prevent it from being transcribed or otherwise interfering with speech recognition. You can use the parameter to suppress side conversations or background noise.
+
+    You can use the parameters individually or together. They are available for all interfaces and for most language models. For more information about the parameters, their allowable values, and their effect on the quality and latency of speech recognition, see [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-input#detection).
+-   The service now supports the use of Activity Tracker events for all customization operations. {{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in IBM Cloud. You can use this service to investigate abnormal activity and critical actions and to comply with regulatory audit requirements. In addition, you can be alerted about actions as they happen. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-atEvents).
+-   The WebSocket interface now works seamlessly when generating processing metrics. Previously, processing metrics could continue to be delivered after the client sent a `stop` message to the service.
 
 ## 18 December 2019
 {: #December2019c}
@@ -82,24 +112,10 @@ No known limitations at this time.
     -   *Support for private network endpoints*
         -   You can create private network endpoints to connect to the {{site.data.keyword.speechtotextshort}} service over a private network. Connections to private network endpoints do not require public internet access. For more information, see [Public and private network endpoints](/docs/speech-to-text/?topic=watson-public-private-endpoints).
 
-## 10 December 2019
-{: #December2019a}
-
-The service now offers beta broadband and narrowband models for the Dutch language:
-
--   `nl-NL_BroadbandModel`
--   `nl-NL_NarrowbandModel`
-
-These language models support acoustic model customization. They do not support language model customization. Because they are beta, these models might not be ready for production use and are subject to change. They are initial offerings that are expected to improve in quality with time and usage.
-
-For more information, see the following sections:
-
--   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList)
--   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
-
 ## Older releases
 {: #older}
 
+-   [10 December 2019](#December2019a)
 -   [25 November 2019](#November2019c)
 -   [12 November 2019](#November2019b)
 -   [1 November 2019](#November2019a)
@@ -148,6 +164,21 @@ For more information, see the following sections:
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 10 December 2019
+{: #December2019a}
+
+The service now offers beta broadband and narrowband models for the Dutch language:
+
+-   `nl-NL_BroadbandModel`
+-   `nl-NL_NarrowbandModel`
+
+These language models support acoustic model customization. They do not support language model customization. Because they are beta, these models might not be ready for production use and are subject to change. They are initial offerings that are expected to improve in quality with time and usage.
+
+For more information, see the following sections:
+
+-   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList)
+-   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
 
 ### 25 November 2019
 {: #November2019c}
