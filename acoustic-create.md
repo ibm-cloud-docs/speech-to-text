@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-15"
+lastupdated: "2020-03-02"
 
 subcollection: speech-to-text
 
@@ -228,7 +228,7 @@ The method is asynchronous. Training can take on the order of minutes or hours t
 
 The method includes the following optional query parameters:
 
--   The `custom_language_model_id` parameter specifies a separately created custom language model that is to be used during training. You can train with a custom language model that contains transcriptions of your audio files or that contains corpora or OOV words that are relevant to the contents of the audio files. The custom acoustic and custom language models must be based on the same version of the same base model for training to succeed. For more information, see [Training a custom acoustic model with a custom language model](/docs/speech-to-text?topic=speech-to-text-useBoth#useBothTrain).
+-   The `custom_language_model_id` parameter specifies a separately created custom language model that is to be used during training. You can train with a custom language model that contains transcriptions of your audio files or that contains corpora or OOV words that are relevant to the contents of the audio files. For training to succeed, the custom language model must be fully trained and available, and the custom acoustic and custom language models must be based on the same version of the same base model. For more information, see [Training a custom acoustic model with a custom language model](/docs/speech-to-text?topic=speech-to-text-useBoth#useBothTrain).
 -   The `strict` parameter indicates whether training is to proceed if the custom model contains a mix of valid and invalid audio resources. By default, training fails if the model contains one or more invalid resources. Set the parameter to `false` to allow training to proceed as long as the model contains at least one valid resource. The service excludes invalid resources from the training. For more information, see [Training failures](#failedTraining-acoustic).
 
 ### Monitoring the train model request
@@ -283,6 +283,7 @@ Training also fails to start for the following reasons:
 -   The custom model contains less than 10 minutes of audio data.
 -   The custom model contains more than 200 hours of audio data.
 -   One or more of the custom model's audio resources is invalid.
+-   You passed a custom language model with the `custom_language_model_id` query parameter that is not in the `available` state. A custom language model must be fully trained and available to be used to train a custom acoustic model.
 -   You passed an incompatible custom language model with the `custom_language_model_id` query parameter. Both custom models must be based on the same version of the same base model.
 
 The service returns a status code of 400 and sets the custom model's status to `failed`. Take one of the following actions:

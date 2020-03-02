@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-10-04"
+lastupdated: "2020-03-02"
 
 subcollection: speech-to-text
 
@@ -48,7 +48,11 @@ Use lightly supervised training to train a custom acoustic model with a custom l
 
     For example, suppose that you are creating a custom acoustic model that is based on call-center audio for a specific product. You can train the custom acoustic model with a custom language model that is based on transcriptions of related calls or that includes names of specific products that are handled by the call center.
 
-To use a transcription or list of words, you first create a custom language model that contains this textual data. To train a custom acoustic model with a custom language model, both custom models must be based on the same version of the same base model. If a new version of the base model is made available, you must upgrade both models to the same version of the base model for training to succeed.
+To train a custom acoustic model with a custom language model, you must
+
+-   Create a custom language model that contains a transcription or list of words that is appropriate for the custom acoustic model.
+-   Ensure that the custom language model is fully trained and in the `available` state. Training fails if the custom language model is not `available`.
+-   Ensure that both custom models are based on the same version of the same base model. If a new version of the base model is made available, you must upgrade both models to the same version of the base model for training to succeed. For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
 
 Use the optional `custom_language_model_id` query parameter of the `POST /v1/acoustic_customizations/{customization_id}/train` method to train your custom acoustic model with a custom language model. Pass the GUID of the acoustic model with the `customization_id` parameter and the GUID of the custom language model with the `custom_language_model_id` parameter. Both models must be owned by the credentials that are passed with the request.
 
