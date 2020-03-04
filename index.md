@@ -2,12 +2,14 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-25"
+lastupdated: "2020-03-04"
 
 subcollection: speech-to-text
 
 ---
 
+{:support: data-reuse='support'}
+{:help: .help}
 {:shortdesc: .shortdesc}
 {:external: target="_blank" .external}
 {:tip: .tip}
@@ -40,6 +42,8 @@ The service is ideal for clients who need to extract high-quality speech transcr
 
 ## Supported interfaces
 {: #interfaces}
+{: help}
+{: support}
 
 The {{site.data.keyword.speechtotextshort}} service offers three interfaces for speech recognition:
 
@@ -56,6 +60,8 @@ SDKs are available in many programming languages to simplify your use of the ser
 
 ## Input features
 {: #inputFeatures}
+{: help}
+{: support}
 
 The service's interfaces share common input features for transcribing speech to text:
 
@@ -66,6 +72,8 @@ The service's interfaces share common input features for transcribing speech to 
 
 ## Output features
 {: #outputFeatures}
+{: help}
+{: support}
 
 The interfaces also support the following common output features:
 
@@ -86,6 +94,8 @@ The interfaces also support the following common output features:
 
 ## Language support
 {: #languages}
+{: help}
+{: support}
 
 The service offers models for the following languages and dialects:
 

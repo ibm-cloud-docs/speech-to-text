@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-03-04"
 
 subcollection: speech-to-text
 
@@ -36,7 +36,7 @@ When you use a grammar, the service recognizes only words from the specified gra
 -   For the [WebSocket interface](/docs/speech-to-text?topic=speech-to-text-websockets), you first specify the customization ID with the `language_customization_id` parameter of the `/v1/recognize` method. You use this method to establish a WebSocket connection with the service.
 
     ```javascript
-    var token = {authentication-token};
+    var IAM_access_token = {access_token};
     var wsURI = '{ws_url}/v1/recognize'
       + '?access_token=' + IAM_access_token
       + '&language_customization_id={customization_id}';

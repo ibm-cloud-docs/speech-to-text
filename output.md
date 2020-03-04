@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-18"
+lastupdated: "2020-03-04"
 
 subcollection: speech-to-text
 
@@ -422,7 +422,7 @@ Interim results are indicated in the JSON response with the `final` field set to
 The following abbreviated example requests interim results for a WebSocket request. In its response, the service sets the `final` attribute to `true` only for the final result.
 
 ```javascript
-var token = {authentication-token};
+var IAM_access_token = {access_token};
 var wsURI = '{ws_url}/v1/recognize'
   + '?access_token=' + IAM_access_token;
 var websocket = new WebSocket(wsURI);
@@ -1248,7 +1248,7 @@ The following table shows examples of final transcripts both with and without nu
 ### Numeric redaction example
 {: #redactionExample}
 
-The following example requests numeric redaction with a recognition request by setting the `redaction` parameter to `true`. Because the request enables redaction, the service implicitly enables smart formatting with the request. The service effectively disables the other parameters of the request so that they have no effect: The service returns a single final transcript and recognizes no keywords. The following section shows the effects of redaction.
+The following example requests numeric redaction with a recognition request by setting the `redaction` parameter to `true`. Because the request enables redaction, the service implicitly enables smart formatting with the request. The service effectively disables the other parameters of the request so that they have no effect: The service returns a single final transcript and recognizes no keywords.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"
