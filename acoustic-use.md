@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-03-04"
 
 subcollection: speech-to-text
 
@@ -35,7 +35,7 @@ You can create multiple custom acoustic models for the same or different domains
 -   For the [WebSocket interface](/docs/speech-to-text?topic=speech-to-text-websockets), use the `/v1/recognize` method. The specified custom model is used for all requests that are sent over the connection.
 
     ```javascript
-    var token = {authentication-token};
+    var IAM_access_token = {access_token};
     var wsURI = '{ws_url}/v1/recognize'
       + '?access_token=' + IAM_access_token
       + '&model=en-US_NarrowbandModel'

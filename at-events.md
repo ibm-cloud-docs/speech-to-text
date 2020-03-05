@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-02-25"
+lastupdated: "2020-02-27"
 
 keywords: IBM,activity tracker,LogDNA,event,security,speech to text
 
@@ -99,26 +99,26 @@ The following table lists the {{site.data.keyword.speechtotextshort}} `.upgrade`
 <!-- Not available with 20.03
 The following table lists the {{site.data.keyword.speechtotextshort}} `.create` asynchronous recognition actions that generate an event.
 
-| Action                                                     | Description                                         |
-|------------------------------------------------------------|-----------------------------------------------------|
-| `speech-to-text.async-recognition-job.create`              | Create an asynchronous recognition job              |
-| `speech-to-text.async-recognition-notification-url.create` | Create an asynchronous recognition notification URL |
+| Action                                                     | Description                                                                         |
+|------------------------------------------------------------|-------------------------------------------------------------------------------------|
+| `speech-to-text.async-recognition-job.create`              | Create an asynchronous recognition job (`POST /v1/recognitions`).                   |
+| `speech-to-text.async-recognition-notification-url.create` | Create an asynchronous recognition notification URL (`POST /v1/register_callback`). |
 {: caption="Table 7. Asynchronous recognition .create actions that generate events" caption-side="top"}
 
 The following table lists the {{site.data.keyword.speechtotextshort}} `.read` asynchronous recognition actions that generate an event.
 
-| Action                                           | Description                               |
-|--------------------------------------------------|-------------------------------------------|
-| `speech-to-text.async-recognition-job-list.read` | Read an asynchronous recognition job list |
-| `speech-to-text.async-recognition-job.read`      | Read an asynchronous recognition job      |
+| Action                                           | Description                                                         |
+|--------------------------------------------------|---------------------------------------------------------------------|
+| `speech-to-text.async-recognition-job-list.read` | Read an asynchronous recognition job list (`GET /v1/recognitions`). |
+| `speech-to-text.async-recognition-job.read`      | Read an asynchronous recognition job (`GET /v1/recognitions/{id}`). |
 {: caption="Table 8. Asynchronous recognition .read actions that generate events" caption-side="top"}
 
 The following table lists the {{site.data.keyword.speechtotextshort}} `.delete` asynchronous recognition actions that generate an event.
 
-| Action                                                     | Description                                         |
-|------------------------------------------------------------|-----------------------------------------------------|
-| `speech-to-text.async-recognition-job.delete`              | Delete an asynchronous recognition job              |
-| `speech-to-text.async-recognition-notification-url.delete` | Delete an asynchronous recognition notification URL |
+| Action                                                     | Description                                                                           |
+|------------------------------------------------------------|---------------------------------------------------------------------------------------|
+| `speech-to-text.async-recognition-job.delete`              | Delete an asynchronous recognition job (`DELETE /v1/recognitions/{id}`).              |
+| `speech-to-text.async-recognition-notification-url.delete` | Delete an asynchronous recognition notification URL (`POST /v1/unregister_callback`). |
 {: caption="Table 9. Asynchronous recognition .delete actions that generate events" caption-side="top"}
 -->
 

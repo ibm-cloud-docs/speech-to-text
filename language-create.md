@@ -2,12 +2,14 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-15"
+lastupdated: "2020-03-04"
 
 subcollection: speech-to-text
 
 ---
 
+{:troubleshoot: data-hd-content-type='troubleshoot'}
+{:support: data-reuse='support'}
 {:shortdesc: .shortdesc}
 {:external: target="_blank" .external}
 {:tip: .tip}
@@ -344,7 +346,7 @@ The method includes the following optional query parameters:
 
     This option is useful if you add corpora with noisy data, such as words that contain typographical errors. Before training the model on such data, you can use the `word_type` query parameter of the `GET /v1/customizations/{customization_id}/words` method to review words that are extracted from corpora and grammars. For more information, see [Listing words from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageWords#listWords).
 -   The `customization_weight` parameter specifies the relative weight that is given to words from the custom model as opposed to words from the base vocabulary when the custom model is used for speech recognition. You can also specify a customization weight with any recognition request that uses the custom model. For more information, see [Using customization weight](/docs/speech-to-text?topic=speech-to-text-languageUse#weight).
--   The `strict` parameter indicates whether training is to proceed if the custom model contains a mix of valid and invalid resources (corpora, grammars, and words). By default, training fails if the model contains one or more invalid resources. Set the parameter to `false` to allow training to proceed as long as the model contains at least one valid resource. The service excludes invalid resources from the training. For more information, see [Training failures](#failedTraining-language).
+-   The `strict` parameter indicates whether training is to proceed if the custom model contains a mix of valid and invalid resources (corpora, grammars, and words). By default, training fails if the model contains one or more invalid resources. Set the parameter to `false` to allow training to proceed as long as the model contains at least one valid resource. The service excludes invalid resources from the training. For more information, see [Training failures for custom language models](#failedTraining-language).
 
 ### Monitoring the train model request
 {: #monitorTraining-language}
@@ -381,16 +383,18 @@ The response includes `status` and `progress` fields that report the state of th
 -   `pending` indicates that the model was created but is waiting either for valid training data to be added or for the service to finish analyzing data that was added. The `progress` field is `0`.
 -   `ready` indicates that the model contains valid data and is ready to be trained. The `progress` field is `0`.
 
-    If the model contains a mix of valid and invalid resources (for example, both valid and invalid custom words), training of the model fails unless you set the `strict` query parameter to `false`. For more information, see [Training failures](#failedTraining-language).
+    If the model contains a mix of valid and invalid resources (for example, both valid and invalid custom words), training of the model fails unless you set the `strict` query parameter to `false`. For more information, see [Training failures for custom language models](#failedTraining-language).
 -   `training` indicates that the model is being trained. The `progress` field changes from `0` to `100` when training is complete. <!-- The `progress` field indicates the progress of the training as a percentage complete. -->
 -   `available` indicates that the model is trained and ready to use. The `progress` field is `100`.
 -   `upgrading` indicates that the model is being upgraded. The `progress` field is `0`.
--   `failed` indicates that training of the model failed. The `progress` field is `0`. For more information, see [Training failures](#failedTraining-language).
+-   `failed` indicates that training of the model failed. The `progress` field is `0`. For more information, see [Training failures for custom language models](#failedTraining-language).
 
 Use a loop to check the status every 10 seconds until it becomes `available`. For more information about checking the status of a custom model, see [Listing custom language models](/docs/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
 
-### Training failures
+### Training failures for custom language models
 {: #failedTraining-language}
+{: troubleshoot}
+{: support}
 
 Training fails to start if the service is handling another request for the custom language model. For instance, a training request fails to start with a status code of 409 if the service is
 

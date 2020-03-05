@@ -2,12 +2,14 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-02"
+lastupdated: "2020-03-04"
 
 subcollection: speech-to-text
 
 ---
 
+{:troubleshoot: data-hd-content-type='troubleshoot'}
+{:support: data-reuse='support'}
 {:shortdesc: .shortdesc}
 {:external: target="_blank" .external}
 {:tip: .tip}
@@ -229,7 +231,7 @@ The method is asynchronous. Training can take on the order of minutes or hours t
 The method includes the following optional query parameters:
 
 -   The `custom_language_model_id` parameter specifies a separately created custom language model that is to be used during training. You can train with a custom language model that contains transcriptions of your audio files or that contains corpora or OOV words that are relevant to the contents of the audio files. For training to succeed, the custom language model must be fully trained and available, and the custom acoustic and custom language models must be based on the same version of the same base model. For more information, see [Training a custom acoustic model with a custom language model](/docs/speech-to-text?topic=speech-to-text-useBoth#useBothTrain).
--   The `strict` parameter indicates whether training is to proceed if the custom model contains a mix of valid and invalid audio resources. By default, training fails if the model contains one or more invalid resources. Set the parameter to `false` to allow training to proceed as long as the model contains at least one valid resource. The service excludes invalid resources from the training. For more information, see [Training failures](#failedTraining-acoustic).
+-   The `strict` parameter indicates whether training is to proceed if the custom model contains a mix of valid and invalid audio resources. By default, training fails if the model contains one or more invalid resources. Set the parameter to `false` to allow training to proceed as long as the model contains at least one valid resource. The service excludes invalid resources from the training. For more information, see [Training failures for custom acoustic models](#failedTraining-acoustic).
 
 ### Monitoring the train model request
 {: #monitorTraining-acoustic}
@@ -265,16 +267,18 @@ The response includes `status` and `progress` fields that report the current sta
 -   `pending` indicates that the model was created but is waiting either for valid training data to be added or for the service to finish analyzing data that was added. The `progress` field is `0`.
 -   `ready` indicates that the model contains valid data and is ready to be trained. The `progress` field is `0`.
 
-    If the model contains a mix of valid and invalid audio resources, training of the model fails unless you set the `strict` query parameter to `false`. For more information, see [Training failures](#failedTraining-acoustic).
+    If the model contains a mix of valid and invalid audio resources, training of the model fails unless you set the `strict` query parameter to `false`. For more information, see [Training failures for custom acoustic models](#failedTraining-acoustic).
 -   `training` indicates that the model is being trained. The `progress` field changes from `0` to `100` when training is complete. <!-- The `progress` field indicates the progress of the training as a percentage complete. -->
 -   `available` indicates that the model is trained and ready to use. The `progress` field is `100`.
 -   `upgrading` indicates that the model is being upgraded. The `progress` field is `0`.
--   `failed` indicates that training of the model failed. The `progress` field is `0`. For more information, see [Training failures](#failedTraining-acoustic).
+-   `failed` indicates that training of the model failed. The `progress` field is `0`. For more information, see [Training failures for custom acoustic models](#failedTraining-acoustic).
 
 Use a loop to check the status of the training once a minute until the model becomes `available`. For more information about other fields that are returned by the method, see [Listing custom acoustic models](/docs/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
 
-### Training failures
+### Training failures for custom acoustic models
 {: #failedTraining-acoustic}
+{: troubleshoot}
+{: support}
 
 Training fails to start if the service is handling another request for the custom acoustic model. A conflicting request could be another training request or a request to add audio resources to the model. The service returns a status code of 409.
 

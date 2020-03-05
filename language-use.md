@@ -2,12 +2,14 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-03-04"
 
 subcollection: speech-to-text
 
 ---
 
+{:troubleshoot: data-hd-content-type='troubleshoot'}
+{:support: data-reuse='support'}
 {:shortdesc: .shortdesc}
 {:external: target="_blank" .external}
 {:tip: .tip}
@@ -33,7 +35,7 @@ You can create multiple custom language models for the same or different domains
 -   For the [WebSocket interface](/docs/speech-to-text?topic=speech-to-text-websockets), use the `/v1/recognize` method. The specified custom model is used for all requests that are sent over the connection.
 
     ```javascript
-    var token = {authentication-token};
+    var IAM_access_token = {access_token};
     var wsURI = '{ws_url}/v1/recognize'
       + '?access_token=' + IAM_access_token
       + '&model=es-ES_BroadbandModel'
@@ -97,6 +99,8 @@ You specify a customization weight by using the `customization_weight` parameter
 
 ## Troubleshooting the use of custom language models
 {: #languageTroubleshoot}
+{: troubleshoot}
+{: support}
 
 If you apply a custom language model to speech recognition but find that the service does not appear to be using words that the model contains, check for the following possible problems:
 

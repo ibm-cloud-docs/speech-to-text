@@ -2,12 +2,14 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-03-05"
 
 subcollection: speech-to-text
 
 ---
 
+{:troubleshoot: data-hd-content-type='troubleshoot'}
+{:support: data-reuse='support'}
 {:shortdesc: .shortdesc}
 {:external: target="_blank" .external}
 {:tip: .tip}
@@ -385,6 +387,8 @@ websocket.close();
 
 ## WebSocket return codes
 {: #WSreturn}
+{: troubleshoot}
+{: support}
 
 The service can send the following return codes to the client over the WebSocket connection:
 

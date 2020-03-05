@@ -2,12 +2,14 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-03-04"
 
 subcollection: speech-to-text
 
 ---
 
+{:troubleshoot: data-hd-content-type='troubleshoot'}
+{:support: data-reuse='support'}
 {:shortdesc: .shortdesc}
 {:external: target="_blank" .external}
 {:tip: .tip}
@@ -621,6 +623,8 @@ Compression with the **opusenc** utility is fast. Compression happens at a rate 
 
 ## Tips for improving speech recognition
 {: #audioTips}
+{: troubleshoot}
+{: support}
 
 The following tips can help you improve the quality of speech recognition:
 

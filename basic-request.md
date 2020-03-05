@@ -2,12 +2,14 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-03-04"
 
 subcollection: speech-to-text
 
 ---
 
+{:help: data-hd-content-type='help'}
+{:support: data-reuse='support'}
 {:shortdesc: .shortdesc}
 {:external: target="_blank" .external}
 {:tip: .tip}
@@ -65,6 +67,8 @@ If you are recognizing large amounts of audio, you can manually divide the audio
 
 ## Using the WebSocket interface
 {: #basic-request-websocket}
+{: help}
+{: support}
 
 [The WebSocket interface](/docs/speech-to-text?topic=speech-to-text-websockets) offers an efficient implementation that provides low latency and high throughput over a full-duplex connection. All requests and responses are sent over the same WebSocket connection. Because of their advantages, WebSockets are the preferred mechanism for speech recognition. For more information, see [Advantages of the WebSocket interface](/docs/speech-to-text?topic=speech-to-text-developerOverview#advantages).
 
@@ -73,7 +77,7 @@ To use the WebSocket interface, you first use the `/v1/recognize` method to esta
 The following example provides JavaScript code that establishes a connection and sends the text and binary messages for a recognition request. The example does not include the code to install the event handlers.
 
 ```javascript
-var token = {authentication-token};
+var IAM_access_token = {access_token};
 var wsURI = '{ws_url}/v1/recognize'
   + '?access_token=' + IAM_access_token;
 var websocket = new WebSocket(wsURI);
@@ -89,6 +93,8 @@ websocket.send(JSON.stringify({action: 'stop'}));
 
 ## Using the synchronous HTTP interface
 {: #basic-request-sync}
+{: help}
+{: support}
 
 [The synchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-http) provides the simplest way to make a recognition request. You use the `POST /v1/recognize` method to make a request to the service. You pass the audio and all parameters with the single request.
 
@@ -104,6 +110,8 @@ curl -X POST -u "apikey:{apikey}"
 
 ## Using the asynchronous HTTP interface
 {: #basic-request-async}
+{: help}
+{: support}
 
 [The asynchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-async) provides a non-blocking interface for transcribing audio. You can use the interface with or without first registering a callback URL with the service. With a callback URL, the service sends callback notifications with job status and recognition results. The interface uses HMAC-SHA1 signatures based on a user-specified secret to provide authentication and data integrity for its notifications. Without a callback URL, you must poll the service for job status and results. With either approach, you use the `POST /v1/recognitions` method to make a recognition request.
 
