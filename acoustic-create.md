@@ -8,8 +8,8 @@ subcollection: speech-to-text
 
 ---
 
+{:troubleshoot: data-hd-content-type='troubleshoot'}
 {:support: data-reuse='support'}
-{:troubleshoot: .troubleshoot}
 {:shortdesc: .shortdesc}
 {:external: target="_blank" .external}
 {:tip: .tip}

@@ -8,7 +8,7 @@ subcollection: speech-to-text
 
 ---
 
-{:faq: .faq}
+{:faq: data-hd-content-type='faq'}
 {:support: data-reuse='support'}
 {:shortdesc: .shortdesc}
 {:external: target="_blank" .external}

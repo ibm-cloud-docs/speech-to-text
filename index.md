@@ -9,7 +9,7 @@ subcollection: speech-to-text
 ---
 
 {:support: data-reuse='support'}
-{:help: .help}
+{:help: data-hd-content-type='help'}
 {:shortdesc: .shortdesc}
 {:external: target="_blank" .external}
 {:tip: .tip}
