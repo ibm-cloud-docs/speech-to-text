@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-03-11"
 
 subcollection: speech-to-text
 
@@ -99,5 +99,5 @@ SDKs are available for the {{site.data.keyword.speechtotextshort}} service to si
 For more information about working with {{site.data.keyword.watson}} services and {{site.data.keyword.cloud_notm}}, see the following:
 
 -   For an introduction to working with {{site.data.keyword.watson}} services and {{site.data.keyword.cloud_notm}}, see [Getting started with {{site.data.keyword.watson}} and {{site.data.keyword.cloud_notm}}](/docs/watson?topic=watson-about).
--   For information about using {{site.data.keyword.cloud_notm}} Identity and Access Management, see [Authenticating to Watson services](/docs/watson?topic=watson-iam).
+-   For information about using {{site.data.keyword.cloud_notm}} Identity and Access Management, see [Authenticating to {{site.data.keyword.watson}} services](/docs/watson?topic=watson-iam).
 -   For information about controlling the default request logging that is performed for all {{site.data.keyword.watson}} services, see [Controlling request logging for {{site.data.keyword.watson}} services](/docs/watson?topic=watson-gs-logging-overview).

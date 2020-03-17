@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-25"
+lastupdated: "2020-03-16"
 
 subcollection: speech-to-text
 
@@ -33,6 +33,12 @@ The following sections document the new features and changes that were included 
 
 No known limitations at this time.
 
+## 16 March 2020
+{: #March2020}
+
+-   The service now supports speaker labels (the `speaker_labels` parameter) for German and Korean language models. Speaker labels identify which individuals spoke which words in a multi-participant exchange. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
+-   The service now supports the use of Activity Tracker events for all operations of the asynchronous HTTP interface. {{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud}}. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-atEvents).
+
 ## 24 February 2020
 {: #February2020}
 
@@ -60,7 +66,7 @@ No known limitations at this time.
     -   `background_audio_suppression` suppresses background audio based on its volume to prevent it from being transcribed or otherwise interfering with speech recognition. You can use the parameter to suppress side conversations or background noise.
 
     You can use the parameters individually or together. They are available for all interfaces and for most language models. For more information about the parameters, their allowable values, and their effect on the quality and latency of speech recognition, see [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-input#detection).
--   The service now supports the use of Activity Tracker events for all customization operations. {{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in IBM Cloud. You can use this service to investigate abnormal activity and critical actions and to comply with regulatory audit requirements. In addition, you can be alerted about actions as they happen. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-atEvents).
+-   The service now supports the use of Activity Tracker events for all customization operations. {{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. You can use this service to investigate abnormal activity and critical actions and to comply with regulatory audit requirements. In addition, you can be alerted about actions as they happen. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-atEvents).
 -   The WebSocket interface now works seamlessly when generating processing metrics. Previously, processing metrics could continue to be delivered after the client sent a `stop` message to the service.
 
 ## 18 December 2019
@@ -88,33 +94,10 @@ No known limitations at this time.
 
     For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-output#split_transcript).
 
-## 12 December 2019
-{: #December2019b}
-
--   **Full support for IBM Cloud IAM**
-    -   The {{site.data.keyword.speechtotextshort}} service now supports the full implementation of {{site.data.keyword.cloud}} Identity and Access Management (IAM). API keys for Watson services are no longer limited to a single service instance. You can create access policies and API keys that apply to more than one service, and you can grant access between services. For more information about IAM, see [Authenticating to Watson services](/docs/watson?topic=watson-iam).
-    -   To support this change, the API service endpoints use a different domain and include the service instance ID. The pattern is `api.{location}.speech-to-text.watson.cloud.ibm.com/instances/{instance_id}`.
-
-        -   Example HTTP URL for an instance hosted in the Dallas location:
-
-            `https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/6bbda3b3-d572-45e1-8c54-22d6ed9e52c2`
-
-        -   Example WebSocket URL for an instance hosted in the Dallas location:
-
-            `wss://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/6bbda3b3-d572-45e1-8c54-22d6ed9e52c2`
-
-        For more information about the URLs, see the [API reference](https://{DomainName}/apidocs/speech-to-text/speech-to-text#service-endpoint){: external}.
-
-        These URLs do not constitute a breaking change. The new URLs work for both your existing service instances and for new instances. The original URLs continue to work on your existing service instances for at least one year, until December 2020.
--   **New network and data security features** for users of Premium plans:
-    -   *Support for data encryption with customer-managed keys*
-        -   You can integrate {{site.data.keyword.keymanagementservicefull}} with the {{site.data.keyword.speechtotextshort}} service to encrypt your data and manage encryption keys. For more information, see [Protecting sensitive information in your Watson service](/docs/watson?topic=watson-keyservice).
-    -   *Support for private network endpoints*
-        -   You can create private network endpoints to connect to the {{site.data.keyword.speechtotextshort}} service over a private network. Connections to private network endpoints do not require public internet access. For more information, see [Public and private network endpoints](/docs/speech-to-text/?topic=watson-public-private-endpoints).
-
 ## Older releases
 {: #older}
 
+-   [12 December 2019](#December2019b)
 -   [10 December 2019](#December2019a)
 -   [25 November 2019](#November2019c)
 -   [12 November 2019](#November2019b)
@@ -164,6 +147,30 @@ No known limitations at this time.
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 12 December 2019
+{: #December2019b}
+
+-   **Full support for IBM Cloud IAM**
+    -   The {{site.data.keyword.speechtotextshort}} service now supports the full implementation of {{site.data.keyword.cloud_notm}} Identity and Access Management (IAM). API keys for Watson services are no longer limited to a single service instance. You can create access policies and API keys that apply to more than one service, and you can grant access between services. For more information about IAM, see [Authenticating to Watson services](/docs/watson?topic=watson-iam).
+    -   To support this change, the API service endpoints use a different domain and include the service instance ID. The pattern is `api.{location}.speech-to-text.watson.cloud.ibm.com/instances/{instance_id}`.
+
+        -   Example HTTP URL for an instance hosted in the Dallas location:
+
+            `https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/6bbda3b3-d572-45e1-8c54-22d6ed9e52c2`
+
+        -   Example WebSocket URL for an instance hosted in the Dallas location:
+
+            `wss://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/6bbda3b3-d572-45e1-8c54-22d6ed9e52c2`
+
+        For more information about the URLs, see the [API reference](https://{DomainName}/apidocs/speech-to-text/speech-to-text#service-endpoint){: external}.
+
+        These URLs do not constitute a breaking change. The new URLs work for both your existing service instances and for new instances. The original URLs continue to work on your existing service instances for at least one year, until December 2020.
+-   **New network and data security features** for users of Premium plans:
+    -   *Support for data encryption with customer-managed keys*
+        -   You can integrate {{site.data.keyword.keymanagementservicefull}} with the {{site.data.keyword.speechtotextshort}} service to encrypt your data and manage encryption keys. For more information, see [Protecting sensitive information in your Watson service](/docs/watson?topic=watson-keyservice).
+    -   *Support for private network endpoints*
+        -   You can create private network endpoints to connect to the {{site.data.keyword.speechtotextshort}} service over a private network. Connections to private network endpoints do not require public internet access. For more information, see [Public and private network endpoints](/docs/speech-to-text/?topic=watson-public-private-endpoints).
 
 ### 10 December 2019
 {: #December2019a}

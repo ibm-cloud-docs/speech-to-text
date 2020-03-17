@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-03-04"
+lastupdated: "2020-03-16"
 
 subcollection: speech-to-text
 
@@ -53,6 +53,9 @@ The words resource contains the following information about each OOV word. The s
 -   `source`: How the word was added to the words resource. If the service extracted the word from a corpus or grammar, the field lists the name of that resource. Because the service can encounter the same word in multiple resources, the field can list multiple corpus or grammar names. The field includes the string `user` if you add or modify the word directly.
 
 When you update a model's words resource in any way, you must train the model for the changes to take effect during transcription. For more information, see [Train the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
+
+After adding or modifying a word in a model's words resource, it is important that you verify the correctness of the word's definition. For more information, see [Validating a words resource](#validateModel).
+{: important}
 
 ## How much data do I need?
 {: #wordsResourceAmount}
@@ -122,8 +125,9 @@ Follow these guidelines to prepare a corpus text file:
 
     Include additional contextual information where available, for example, `Doctor Sebastian Leifson` or `President Malcolm Ingersol`. As with all words, duplicating the names multiple times and, if possible, in different contexts can improve recognition accuracy.
 -   Beware of typographical errors. The service assumes that typographical errors are new words. Unless you correct them before you train the model, the service adds them to the model's vocabulary. Remember the adage *Garbage in, garbage out!*
+-   More sentences result in better accuracy. But the service does limit a model to a maximum of 10 million total words and 90 thousand OOV words from all sources combined.
 
-More sentences result in better accuracy. But the service does limit a model to a maximum of 10 million total words and 90 thousand OOV words from all sources combined.
+The service cannot generate a pronunciation for all words. After adding a corpus, you must validate the words resource to ensure that each OOV word's definition is complete and valid. For more information, see [Validating a words resource](#validateModel).
 
 ### What happens when I add a corpus file?
 {: #parseCorpus}
@@ -251,7 +255,9 @@ For example, the following table shows what looks like the same letter in two di
 ### Using the sounds_like field
 {: #soundsLike}
 
-The `sounds_like` field specifies how a word is pronounced by speakers. By default, the service automatically completes the field with the word's spelling. You can provide as many as five alternative pronunciations for a word that is difficult to pronounce or that can be pronounced in different ways. Consider using the field to
+The `sounds_like` field specifies how a word is pronounced by speakers. By default, the service automatically attempts to complete the field with the word's spelling. But the service cannot generate a pronunciation for all words. After adding or modifying words, you must validate the words resource to ensure that each word's definition is complete and valid. For more information, see [Validating a words resource](#validateModel).
+
+You can provide as many as five alternative pronunciations for a word that is difficult to pronounce or that can be pronounced in different ways. Consider using the field to
 
 -   *Provide different pronunciations for acronyms.* For example, the acronym `NCAA` can be pronounced as it is spelled or colloquially as *N. C. double A.* The following example adds both of these sounds-like pronunciations for the word `NCAA`:
 
@@ -389,10 +395,13 @@ How the service responds to a request to add or modify a custom word depends on 
       <ul style="margin-left:20px; padding:0px">
         <li style="margin:10px 0px; line-height:120%">
           <em>If the word does not exist in the service's base
-          vocabulary,</em> the service sets the <code>sounds_like</code>
-          field to its pronunciation of the word. It sets the
-          <code>display_as</code> field to the value of the
-          <code>word</code> field.
+          vocabulary,</em> the service attempts to set the
+          <code>sounds_like</code> field to its pronunciation
+          of the word. It cannot generate a pronunciation for
+          all words, so you must review the word's definition
+          to ensure that it is complete and valid. The service
+          sets the <code>display_as</code> field to the value
+          of the <code>word</code> field.
         </li>
         <li style="margin:10px 0px; line-height:120%">
           <em>If the word exists in the service's base vocabulary,</em>
@@ -450,9 +459,12 @@ How the service responds to a request to add or modify a custom word depends on 
       <ul style="margin-left:20px; padding:0px">
         <li style="margin:10px 0px; line-height:120%">
           <em>If the word does not exist in the service's base
-          vocabulary,</em> the service sets the <code>sounds_like</code>
-          field to its pronunciation of the word and leaves the
-          <code>display_as</code> field as specified.
+          vocabulary,</em> the service attempts to set the
+          <code>sounds_like</code> field to its pronunciation
+          of the word. It cannot generate a pronunciation for
+          all words, so you must review the word's definition
+          to ensure that it is complete and valid. The service
+          leaves the <code>display_as</code> field as specified.
         </li>
         <li style="margin:10px 0px; line-height:120%">
           <em>If the word exists in the service's base vocabulary,</em>
@@ -495,7 +507,7 @@ How the service responds to a request to add or modify a custom word depends on 
 Especially when you add a corpus to a custom language model or add multiple custom words at once, examine the OOV words in the model's words resource.
 
 -   *Look for typographical and other errors.* Especially when you add corpora, which can be large, mistakes are easily made. Typographical errors in a corpus (or grammar) file have the unintended consequence of adding new words to a model's words resource, as do ill-formed HTML tags that are left in a corpus file.
--   *Verify the sounds-like pronunciations.* The service generates sounds-like pronunciations for OOV words automatically. In most cases, these pronunciations are sufficient. But for words that have unusual spellings or are difficult to pronounce, and for acronyms and technical terms, reviewing the pronunciations for accuracy is recommended.
+-   *Verify the sounds-like pronunciations.* The service tries to generate sounds-like pronunciations for OOV words automatically. In most cases, these pronunciations are sufficient. But the service cannot generate a pronunciation for all words, so you must review the word's definition to ensure that it is complete and valid. Reviewing the pronunciations for accuracy is also recommended for words that have unusual spellings or are difficult to pronounce, and for acronyms and technical terms.
 
 To validate and, if necessary, correct a word for a custom model, regardless of how it was added to the words resource, use the following methods:
 

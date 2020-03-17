@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-03-04"
+lastupdated: "2020-03-16"
 
 subcollection: speech-to-text
 
@@ -27,7 +27,7 @@ subcollection: speech-to-text
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 24 February 2020. Many language models have been updated, and the Dutch and Italian models now support language model customization. Also, the service now offers two new parameters to control speech activity detection. It also supports the use of Activity Tracker for all customization operations.  For more information about these and additional changes, see the [24 February 2020 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#February2020) in the release notes.*
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 16 March 2020. The service now supports speaker labels for German and Korean language models. It also supports the use of Activity Tracker for all operations of the asynchronous HTTP interface. For more information, see the [16 March 2020 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#March2020) in the release notes.*
 
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}
@@ -77,7 +77,7 @@ The service's interfaces share common input features for transcribing speech to 
 
 The interfaces also support the following common output features:
 
--   [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels) recognize different speakers from audio in US English, UK English, Spanish, or Japanese. The transcription labels each speaker's contributions to a multi-participant conversation. (Beta functionality.)
+-   [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels) recognize different speakers from audio in US English, UK English, German, Japanese, Korean, and Spanish. The transcription labels each speaker's contributions to a multi-participant conversation. (Beta functionality.)
 -   [Keyword spotting](/docs/speech-to-text?topic=speech-to-text-output#keyword_spotting) identifies spoken phrases that match specified keyword strings with a user-defined level of confidence. Keyword spotting is especially useful when individual phrases from the audio are more important than the full transcription. For example, a customer support system might identify keywords to determine how to route user requests.
 -   [Interim results](/docs/speech-to-text?topic=speech-to-text-output#interim) return progressive hypotheses as transcription progresses. The service returns final results when transcription is complete. Interim results are available only with the WebSocket interface.
 -   [Maximum alternatives](/docs/speech-to-text?topic=speech-to-text-output#max_alternatives) provide possible alternative transcripts. The service indicates final results in which it has the greatest confidence.
