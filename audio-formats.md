@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-03-04"
+lastupdated: "2020-03-31"
 
 subcollection: speech-to-text
 
@@ -32,7 +32,7 @@ The {{site.data.keyword.speechtotextfull}} service can extract speech from audio
 -   If you are unfamiliar with audio and how it is described and specified, begin with [Audio characteristics and terminology](#terminology) to help you get started.
 -   If you already understand how to use audio, jump to [Supported audio formats](#formats) for detailed information about the formats that the service supports.
 
-The final sections, [Data limits and compression](#limits), [Audio conversion](#conversion), and [Tips for improving speech recognition](#audioTips), can help you get the most from your use of the service.
+The final sections, [Data limits and compression](#limits), [Audio conversion](#conversion), [Tips for improving speech recognition](#audioTips), and [Transcribing speech from video files](#videoFiles) can help you get the most from your use of the service.
 
 ## Audio characteristics and terminology
 {: #terminology}
@@ -587,10 +587,10 @@ You can use various tools to convert your audio to a different format. The tools
 
 The following freeware tools are available to convert your audio from one format to another:
 
--   Sound eXchange (SoX) ([sox.sourceforge.net](http://sox.sourceforge.net){: external})
--   FFmpeg ([ffmpeg.org](https://www.ffmpeg.org){: external})
--   Audacity&reg; ([audacityteam.org](http://www.audacityteam.org/){: external})
--   For Ogg format with the Opus codec, **opus-tools** ([opus-codec.org/downloads/](http://opus-codec.org/downloads/){: external})
+-   Sound eXchange (SoX) ([sox.sourceforge.net](http://sox.sourceforge.net){: external}).
+-   FFmpeg ([ffmpeg.org](https://www.ffmpeg.org){: external}). You can also use FFmpeg to separate audio from a multimedia file that contains both audio and video data. For more information, see [Transcribing speech from video files](#videoFiles).
+-   Audacity&reg; ([audacityteam.org](http://www.audacityteam.org/){: external}).
+-   For Ogg format with the Opus codec, **opus-tools** ([opus-codec.org/downloads/](http://opus-codec.org/downloads/){: external}).
 
 These tools offer cross-platform support for multiple audio formats. Moreover, you can use many of the tools to play your audio. Do not use the tools to violate applicable copyright laws.
 
@@ -637,3 +637,10 @@ The following tips can help you improve the quality of speech recognition:
     -   Regional accents and differences in pronunciation can also reduce accuracy.
 
     If your audio has these characteristics, consider using acoustic model customization to improve the accuracy of speech recognition. For more information, see [The customization interface](/docs/speech-to-text?topic=speech-to-text-customization).
+
+## Transcribing speech from video files
+{: #videoFiles}
+
+You cannot transcribe speech from a multimedia file that contains both audio and video. The service accepts only audio data for speech recognition.
+
+To transcribe the speech from a multimedia file that contains audio and video, you must separate the audio data from the video data. You can use the FFmpeg utility to separate the audio from the video source. For more information, see [ffmpeg.org](https://www.ffmpeg.org){: external}.
