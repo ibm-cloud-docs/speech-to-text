@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-03-16"
+lastupdated: "2020-03-31"
 
 subcollection: speech-to-text
 
@@ -32,6 +32,15 @@ The following sections document the new features and changes that were included 
 {: #limitations}
 
 No known limitations at this time.
+
+## 1 April 2020
+{: #April2020}
+
+Acoustic model customization is now generally available (GA) for all supported languages. As with custom language models, {{site.data.keyword.IBM_notm}} does not charge for creating or hosting a custom acoustic model. You are charged only for using a custom model with a speech recognition request.
+
+Using a custom language model, a custom acoustic model, or both types of model for transcription incurs an add-on charge of $0.03 (USD) per minute. This charge is in addition to the standard usage charge of $0.02 (USD) per minute, and it applies to all languages supported by the customization interface. So the total charge for using one or more custom models for speech recognition is $0.05 (USD) per minute.
+
+For more information, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service.
 
 ## 16 March 2020
 {: #March2020}
@@ -69,34 +78,10 @@ No known limitations at this time.
 -   The service now supports the use of Activity Tracker events for all customization operations. {{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. You can use this service to investigate abnormal activity and critical actions and to comply with regulatory audit requirements. In addition, you can be alerted about actions as they happen. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-atEvents).
 -   The WebSocket interface now works seamlessly when generating processing metrics. Previously, processing metrics could continue to be delivered after the client sent a `stop` message to the service.
 
-## 18 December 2019
-{: #December2019c}
-
--   The service now offers beta broadband and narrowband models for the Italian language:
-
-    -   `it-IT_BroadbandModel`
-    -   `it-IT_NarrowbandModel`
-
-    These language models support acoustic model customization. They do not support language model customization. Because they are beta, these models might not be ready for production use and are subject to change. They are initial offerings that are expected to improve in quality with time and usage.
-
-    For more information, see the following sections:
-
-    -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList)
-    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
--   For speech recognition, the service now supports the `end_of_phrase_silence_time` parameter. The parameter specifies the duration of the pause interval at which the service splits a transcript into multiple final results. Each final result indicates a pause or extended silence that exceeds the pause interval. For most languages, the default pause interval is 0.8 seconds; for Chinese the default interval is 0.6 seconds.
-
-    You can use the parameter to effect a trade-off between how often a final result is produced and the accuracy of the transcription. Increase the interval when accuracy is more important than latency. Decrease the interval when the speaker is expected to say short phrases or single words.
-
-    For more information, see [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-output#silence_time).
--   For speech recognition, the service now supports the `split_transcript_at_phrase_end` parameter. The parameter directs the service to split the transcript into multiple final results based on semantic features of the input, such as at the conclusion of sentences. The service bases its understanding of semantic features on the base language model that you use with a request. Custom language models and grammars can also influence how and where the service splits a transcript.
-
-    The parameter causes the service to add an `end_of_utterance` field to each final result to indicate the motivation for the split: `full_stop`, `silence`, `end_of_data`, or `reset`.
-
-    For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-output#split_transcript).
-
 ## Older releases
 {: #older}
 
+-   [18 December 2019](#December2019c)
 -   [12 December 2019](#December2019b)
 -   [10 December 2019](#December2019a)
 -   [25 November 2019](#November2019c)
@@ -147,6 +132,31 @@ No known limitations at this time.
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 18 December 2019
+{: #December2019c}
+
+-   The service now offers beta broadband and narrowband models for the Italian language:
+
+    -   `it-IT_BroadbandModel`
+    -   `it-IT_NarrowbandModel`
+
+    These language models support acoustic model customization. They do not support language model customization. Because they are beta, these models might not be ready for production use and are subject to change. They are initial offerings that are expected to improve in quality with time and usage.
+
+    For more information, see the following sections:
+
+    -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList)
+    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
+-   For speech recognition, the service now supports the `end_of_phrase_silence_time` parameter. The parameter specifies the duration of the pause interval at which the service splits a transcript into multiple final results. Each final result indicates a pause or extended silence that exceeds the pause interval. For most languages, the default pause interval is 0.8 seconds; for Chinese the default interval is 0.6 seconds.
+
+    You can use the parameter to effect a trade-off between how often a final result is produced and the accuracy of the transcription. Increase the interval when accuracy is more important than latency. Decrease the interval when the speaker is expected to say short phrases or single words.
+
+    For more information, see [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-output#silence_time).
+-   For speech recognition, the service now supports the `split_transcript_at_phrase_end` parameter. The parameter directs the service to split the transcript into multiple final results based on semantic features of the input, such as at the conclusion of sentences. The service bases its understanding of semantic features on the base language model that you use with a request. Custom language models and grammars can also influence how and where the service splits a transcript.
+
+    The parameter causes the service to add an `end_of_utterance` field to each final result to indicate the motivation for the split: `full_stop`, `silence`, `end_of_data`, or `reset`.
+
+    For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-output#split_transcript).
 
 ### 12 December 2019
 {: #December2019b}

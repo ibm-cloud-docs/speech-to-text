@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-03-04"
+lastupdated: "2020-03-31"
 
 subcollection: speech-to-text
 
@@ -81,6 +81,4 @@ You must have the Standard pricing plan to use language model or acoustic model 
 {: faq}
 {: support}
 
-For *language model customization*, {{site.data.keyword.IBM_notm}} does not charge for creating or hosting a custom language model, only for using the model with a recognition request. Using a custom language model for transcription incurs an add-on charge of $0.03 (USD) per minute. This charge is in addition to the standard usage charge of $0.02 (USD) per minute. It applies to all languages supported by the customization interface. So the total charge for using a custom language model for speech recognition is $0.05 (USD) per minute.
-
-For *acoustic model customization*, which is a beta interface for all supported languages, {{site.data.keyword.IBM_notm}} does not charge for creating, hosting, or recognizing speech with a custom acoustic model. Free use of custom acoustic models for recognition requests is subject to change in the future.
+{{site.data.keyword.IBM_notm}} does not charge for creating or hosting a custom language or custom acoustic model. You are charged only for using a custom model with a speech recognition request. Using a custom language model, a custom acoustic model, or both types of model for transcription incurs an add-on charge of $0.03 (USD) per minute. This charge is in addition to the standard usage charge of $0.02 (USD) per minute, and it applies to all languages supported by the customization interface. So the total charge for using one or more custom models for speech recognition is $0.05 (USD) per minute.
