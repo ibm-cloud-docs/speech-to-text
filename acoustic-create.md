@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-04"
+lastupdated: "2020-03-31"
 
 subcollection: speech-to-text
 
@@ -40,9 +40,6 @@ Follow these steps to create a custom acoustic model for the {{site.data.keyword
     You can pass both a custom acoustic model and a custom language model in the same recognition request to further improve recognition accuracy. For more information, see [Using custom language and custom acoustic models during speech recognition](/docs/speech-to-text?topic=speech-to-text-useBoth#useBothRecognize).
 
 The steps for creating a custom acoustic model are iterative. You can add or delete audio and train or retrain a model as often as needed. You must retrain a model for any changes to its audio to take effect. When you retrain a model, all audio data is used in the training (not just the new data). So the training time is commensurate with the total amount of audio that is contained in the model.
-
-Acoustic model customization is available as beta functionality for all languages. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
-{: note}
 
 ## Create a custom acoustic model
 {: #createModel-acoustic}

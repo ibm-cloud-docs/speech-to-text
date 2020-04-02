@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-03-04"
+lastupdated: "2020-03-31"
 
 subcollection: speech-to-text
 
@@ -64,6 +64,7 @@ If you are recognizing large amounts of audio, you can manually divide the audio
 
 -   For more information about audio formats that use compression, see [Supported audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats#formats).
 -   For more information about the effects of compression and about converting your audio to a format that uses it, see [Data limits and compression](/docs/speech-to-text?topic=speech-to-text-audio-formats#limits) and [Audio conversion](/docs/speech-to-text?topic=speech-to-text-audio-formats#conversion).
+-   For more information about transcribing the audio from a multimedia file that contains both audio and video, see [Transcribing speech from video files](/docs/speech-to-text?topic=speech-to-text-audio-formats#videoFiles).
 
 ## Using the WebSocket interface
 {: #basic-request-websocket}
