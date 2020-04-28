@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-03-31"
+lastupdated: "2020-04-28"
 
 subcollection: speech-to-text
 
@@ -33,8 +33,26 @@ The following sections document the new features and changes that were included 
 
 No known limitations at this time.
 
+## 28 April 2020
+{: #April2020b}
+
+-   The Italian broadband (`it-IT_BroadbandModel`) and narrowband (`it-IT_NarrowbandModel`) models have been updated for improved speech recognition. By default, the service automatically uses the updated models for all speech recognition requests. If you have custom language or custom acoustic models that are based on these models, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
+    -   `POST /v1/customizations/{customization_id}/upgrade_model`
+    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+
+    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+-   The Dutch and Italian language models are now generally available (GA) for speech recognition and for language model and acoustic model customization:
+    -   Dutch broadband model (`nl-NL_BroadbandModel`)
+    -   Dutch narrowband model (`nl-NL_NarrowbandModel`)
+    -   Italian broadband model (`it-IT_BroadbandModel`)
+    -   Italian narrowband model (`it-IT_NarrowbandModel`)
+
+    For more information about all available language models, see
+    -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList)
+    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
+
 ## 1 April 2020
-{: #April2020}
+{: #April2020a}
 
 Acoustic model customization is now generally available (GA) for all supported languages. As with custom language models, {{site.data.keyword.IBM_notm}} does not charge for creating or hosting a custom acoustic model. You are charged only for using a custom model with a speech recognition request.
 
@@ -49,39 +67,10 @@ Using a custom language model, a custom acoustic model, or both types of model f
 -   The service now supports speaker labels (the `speaker_labels` parameter) for German and Korean language models. Speaker labels identify which individuals spoke which words in a multi-participant exchange. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
 -   The service now supports the use of Activity Tracker events for all operations of the asynchronous HTTP interface. {{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud}}. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-atEvents).
 
-## 24 February 2020
-{: #February2020}
-
--   The following models have been updated for improved speech recognition:
-    -   US English broadband model (`en-US_BroadbandModel`)
-    -   Japanese narrowband model (`ja-JP_NarrowbandModel`)
-    -   Dutch broadband model (`nl-NL_BroadbandModel`)
-    -   Dutch narrowband model (`nl-NL_NarrowbandModel`)
-    -   Italian broadband model (`it-IT_BroadbandModel`)
-    -   Italian narrowband model (`it-IT_NarrowbandModel`)
-
-    By default, the service automatically uses the updated models for all speech recognition requests. If you have custom language or custom acoustic models that are based on the models, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
-    -   `POST /v1/customizations/{customization_id}/upgrade_model`
-    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
-
-    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
--   Language model customization is now supported for Dutch and Italian with the new versions of the broadband and narrowband models. For more information, see
-    -   [Parsing of English, Dutch, French, German, Italian, Spanish, and Brazilian Portuguese](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages)
-    -   [Guidelines for Dutch, French, German, Italian, Spanish, and Brazilian Portuguese](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR)
-
-    Because the Dutch and Italian models are beta, their support for language model customization is also beta.
--   The Japanese narrowband model (`ja-JP_NarrowbandModel`) now includes some multigram word units for digits and decimal fractions. The service returns these multigram units regardless of whether you enable smart formatting. The smart formatting feature understands and returns the multigram units that the model generates. If you apply your own post-processing to transcription results, you need to handle these units appropriately. For more information, see [Japanese](/docs/speech-to-text?topic=speech-to-text-output#smartFormattingJapanese) in the smart formatting documentation.
--   The service now offers two new optional parameters for controlling the level of speech activity detection. The parameters can help ensure that only relevant audio is processed for speech recognition.
-    -   The `speech_detector_sensitivity` parameter adjusts the sensitivity of speech activity detection. You can use the parameter to suppress word insertions from music, coughing, and other non-speech events.
-    -   `background_audio_suppression` suppresses background audio based on its volume to prevent it from being transcribed or otherwise interfering with speech recognition. You can use the parameter to suppress side conversations or background noise.
-
-    You can use the parameters individually or together. They are available for all interfaces and for most language models. For more information about the parameters, their allowable values, and their effect on the quality and latency of speech recognition, see [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-input#detection).
--   The service now supports the use of Activity Tracker events for all customization operations. {{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. You can use this service to investigate abnormal activity and critical actions and to comply with regulatory audit requirements. In addition, you can be alerted about actions as they happen. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-atEvents).
--   The WebSocket interface now works seamlessly when generating processing metrics. Previously, processing metrics could continue to be delivered after the client sent a `stop` message to the service.
-
 ## Older releases
 {: #older}
 
+-   [24 February 2020](#February2020)
 -   [18 December 2019](#December2019c)
 -   [12 December 2019](#December2019b)
 -   [10 December 2019](#December2019a)
@@ -133,6 +122,36 @@ Using a custom language model, a custom acoustic model, or both types of model f
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 24 February 2020
+{: #February2020}
+
+-   The following models have been updated for improved speech recognition:
+    -   US English broadband model (`en-US_BroadbandModel`)
+    -   Japanese narrowband model (`ja-JP_NarrowbandModel`)
+    -   Dutch broadband model (`nl-NL_BroadbandModel`)
+    -   Dutch narrowband model (`nl-NL_NarrowbandModel`)
+    -   Italian broadband model (`it-IT_BroadbandModel`)
+    -   Italian narrowband model (`it-IT_NarrowbandModel`)
+
+    By default, the service automatically uses the updated models for all speech recognition requests. If you have custom language or custom acoustic models that are based on the models, you must upgrade your existing custom models to take advantage of the updates by usingp the following methods:
+    -   `POST /v1/customizations/{customization_id}/upgrade_model`
+    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+
+    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+-   Language model customization is now supported for Dutch and Italian with the new versions of the broadband and narrowband models. For more information, see
+    -   [Parsing of English, Dutch, French, German, Italian, Spanish, and Brazilian Portuguese](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages)
+    -   [Guidelines for Dutch, French, German, Italian, Spanish, and Brazilian Portuguese](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR)
+
+    Because the Dutch and Italian models are beta, their support for language model customization is also beta.
+-   The Japanese narrowband model (`ja-JP_NarrowbandModel`) now includes some multigram word units for digits and decimal fractions. The service returns these multigram units regardless of whether you enable smart formatting. The smart formatting feature understands and returns the multigram units that the model generates. If you apply your own post-processing to transcription results, you need to handle these units appropriately. For more information, see [Japanese](/docs/speech-to-text?topic=speech-to-text-output#smartFormattingJapanese) in the smart formatting documentation.
+-   The service now offers two new optional parameters for controlling the level of speech activity detection. The parameters can help ensure that only relevant audio is processed for speech recognition.
+    -   The `speech_detector_sensitivity` parameter adjusts the sensitivity of speech activity detection. You can use the parameter to suppress word insertions from music, coughing, and other non-speech events.
+    -   `background_audio_suppression` suppresses background audio based on its volume to prevent it from being transcribed or otherwise interfering with speech recognition. You can use the parameter to suppress side conversations or background noise.
+
+    You can use the parameters individually or together. They are available for all interfaces and for most language models. For more information about the parameters, their allowable values, and their effect on the quality and latency of speech recognition, see [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-input#detection).
+-   The service now supports the use of Activity Tracker events for all customization operations. {{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. You can use this service to investigate abnormal activity and critical actions and to comply with regulatory audit requirements. In addition, you can be alerted about actions as they happen. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-atEvents).
+-   The WebSocket interface now works seamlessly when generating processing metrics. Previously, processing metrics could continue to be delivered after the client sent a `stop` message to the service.
 
 ### 18 December 2019
 {: #December2019c}

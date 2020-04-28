@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-04-10"
+lastupdated: "2020-04-20"
 
 subcollection: speech-to-text
 
@@ -66,7 +66,7 @@ Table 1 lists the supported models for each language. If you omit the `model` pa
     <td style="text-align:center"><code>zh-CN_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Dutch (Beta)</td>
+    <td>Dutch</td>
     <td style="text-align:center"><code>nl-NL_BroadbandModel</code></td>
     <td style="text-align:center"><code>nl-NL_NarrowbandModel</code></td>
   </tr>
@@ -92,7 +92,7 @@ Table 1 lists the supported models for each language. If you omit the `model` pa
     <td style="text-align:center"><code>de-DE_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>Italian (Beta)</td>
+    <td>Italian</td>
     <td style="text-align:center"><code>it-IT_BroadbandModel</code></td>
     <td style="text-align:center"><code>it-IT_NarrowbandModel</code></td>
   </tr>

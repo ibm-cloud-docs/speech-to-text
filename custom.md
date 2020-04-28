@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-03-31"
+lastupdated: "2020-04-20"
 
 subcollection: speech-to-text
 
@@ -138,8 +138,8 @@ You can use both broadband and narrowband models with any supported language for
   <tr>
   <tr>
     <td>Dutch</td>
-    <td style="text-align:center">Beta</td>
-    <td style="text-align:center">Beta</td>
+    <td style="text-align:center">GA</td>
+    <td style="text-align:center">GA</td>
   </tr>
   <tr>
     <td>English (United Kingdom)</td>
@@ -163,8 +163,8 @@ You can use both broadband and narrowband models with any supported language for
   </tr>
   <tr>
     <td>Italian</td>
-    <td style="text-align:center">Beta</td>
-    <td style="text-align:center">Beta</td>
+    <td style="text-align:center">GA</td>
+    <td style="text-align:center">GA</td>
   </tr>
   <tr>
     <td>Japanese</td>
