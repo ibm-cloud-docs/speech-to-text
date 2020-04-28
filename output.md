@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-04-17"
+lastupdated: "2020-04-23"
 
 subcollection: speech-to-text
 
@@ -1491,7 +1491,7 @@ The second example recognizes the same audio but sets `split_transcript_at_phras
 curl -X POST -u "apikey:{apikey}"
 --header "Content-Type: audio/wav"
 --data-binary @{path}audio-file.wav
-"{url}/v1/recognize?spit_transcript_at_phrase_end=true"
+"{url}/v1/recognize?split_transcript_at_phrase_end=true"
 ```
 {: pre}
 
