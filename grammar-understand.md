@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-05-06"
 
 subcollection: speech-to-text
 
@@ -35,15 +35,17 @@ The examples provide only the results of speech recognition requests. For exampl
 
 The first example defines a very simple `yesno` grammar that accepts two valid single-word responses, `yes` and `no`. The grammar is useful in cases where the user must respond with only one of the two phrases.
 
-```
-#ABNF 1.0 ISO-8859-1;
-language en-US;
-mode voice;
-root $yesno;
+-   The `yesno` grammar:
 
-$yesno = yes | no ;
-```
-{: codeblock}
+    ```
+    #ABNF 1.0 ISO-8859-1;
+    language en-US;
+    mode voice;
+    root $yesno;
+
+    $yesno = yes | no ;
+    ```
+    {: codeblock}
 
 When you apply this grammar to a speech recognition request, the service can return a transcript with a score that indicates its confidence in the match. It can also return no result if the input clearly does not match one of the two phrases.
 
@@ -76,14 +78,16 @@ With a multi-phrase grammar, the user's response must be complete to be recogniz
 
 Moreover, the service can return multiple transcripts if the user speaks phrases that are separated by sufficient silence to indicate that they are independent utterances. For example, consider the simple `names` grammar, which can match one of three multi-word names.
 
-```
-#ABNF 1.0 ISO-8859-1;
-language en-US;
-mode voice;
-root $names;
-$names = Yi Wen Tan | Yon See | Youngjoon Lee ;
-```
-{: codeblock}
+-   The `names` grammar:
+
+    ```
+    #ABNF 1.0 ISO-8859-1;
+    language en-US;
+    mode voice;
+    root $names;
+    $names = Yi Wen Tan | Yon See | Youngjoon Lee ;
+    ```
+    {: codeblock}
 
 Suppose the user speaks one of the names from the grammar's rules, `Yon See`. The service returns a response that indicates a very high level of confidence in the match.
 
