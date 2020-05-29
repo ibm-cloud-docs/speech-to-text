@@ -86,6 +86,7 @@ Speech to Text
 
     {: .navgroup id="help"}
     release-notes.md
+    faq-usage.md
     faq-pricing.md
 
     {: .topicgroup}
