@@ -40,7 +40,6 @@ For most languages, the service supports both broadband and narrowband models:
 Choosing the correct model for your application is important. Use the model that matches the sampling rate (and language) of your audio. The service automatically adjusts the sampling rate of your audio to match the model that you specify. For more information, see [Sampling rate](/docs/speech-to-text?topic=speech-to-text-audio-formats#samplingRate).
 
 To achieve the best recognition accuracy, you also need to consider the frequency content of your audio. For more information, see [Audio frequency](/docs/speech-to-text?topic=speech-to-text-audio-formats#frequency).
-{: tip}
 
 Table 1 lists the supported models for each language. If you omit the `model` parameter from a request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
 
