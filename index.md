@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-04-28"
+lastupdated: "2020-06-05"
 
 subcollection: speech-to-text
 
@@ -27,7 +27,7 @@ subcollection: speech-to-text
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 28 April 2020. The Italian broadband and narrowband models have been updated for improved speech recognition, and the broadband and narrowband models for both Dutch and Italian are now generally available (GA). For more information, see the [28 April 2020 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#April2020b) in the release notes.*
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 4 June 2020 to improve the latency for custom language models that include a large number of grammars. For more information, see the [4 June 2020 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#June2020) in the release notes.*
 
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}
