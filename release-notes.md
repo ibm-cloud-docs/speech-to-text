@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-04-28"
+lastupdated: "2020-06-05"
 
 subcollection: speech-to-text
 
@@ -33,6 +33,11 @@ The following sections document the new features and changes that were included 
 
 No known limitations at this time.
 
+## 4 June 2020
+{: #June2020}
+
+This release fixes a latency issue for custom language models that contain a large number of grammars. When initially used for speech recognition, such custom models could take multiple seconds to load. The custom models now load much faster, greatly reducing latency when they are used for recognition.
+
 ## 28 April 2020
 {: #April2020b}
 
@@ -61,15 +66,10 @@ Using a custom language model, a custom acoustic model, or both types of model f
 -   For more information about support for individual language models, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
 -   For more information about pricing, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service or the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
 
-## 16 March 2020
-{: #March2020}
-
--   The service now supports speaker labels (the `speaker_labels` parameter) for German and Korean language models. Speaker labels identify which individuals spoke which words in a multi-participant exchange. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
--   The service now supports the use of Activity Tracker events for all operations of the asynchronous HTTP interface. {{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud}}. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-atEvents).
-
 ## Older releases
 {: #older}
 
+-   [16 March 2020](#March2020)
 -   [24 February 2020](#February2020)
 -   [18 December 2019](#December2019c)
 -   [12 December 2019](#December2019b)
@@ -122,6 +122,12 @@ Using a custom language model, a custom acoustic model, or both types of model f
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 16 March 2020
+{: #March2020}
+
+-   The service now supports speaker labels (the `speaker_labels` parameter) for German and Korean language models. Speaker labels identify which individuals spoke which words in a multi-participant exchange. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
+-   The service now supports the use of Activity Tracker events for all operations of the asynchronous HTTP interface. {{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud}}. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-atEvents).
 
 ### 24 February 2020
 {: #February2020}
