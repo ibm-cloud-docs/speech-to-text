@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-15"
+lastupdated: "2020-06-05"
 
 subcollection: speech-to-text
 
@@ -13,6 +13,7 @@ subcollection: speech-to-text
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
+{:beta: .beta}
 {:deprecated: .deprecated}
 {:pre: .pre}
 {:codeblock: .codeblock}
@@ -36,8 +37,8 @@ Before you can use a grammar for speech recognition, you must first use the cust
 
 These steps are iterative. You can add grammars, as well as corpora and custom words, to a custom language model as often as needed. You must train the custom model on any new data resources (grammars, corpora, or custom words) that you add. When you use it for speech recognition, a custom model reflects the data on which it was last trained.
 
-The grammars feature is beta functionality. You can use grammars with any language that supports language model customization. Language model customization is available for most languages. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
-{: note}
+The grammars feature is beta functionality. You can use grammars with any language that supports language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+{: beta}
 
 ## Create a custom language model
 {: #createModel-grammar}
