@@ -12,8 +12,6 @@ subcollection: speech-to-text
 {:external: target="_blank" .external}
 {:tip: .tip}
 {:important: .important}
-
-http://earth1.fyre.ibm.com:9081/support/knowledgecenter/SSQNUZ_3.0.0/svc-welcome/wstt.html
 {:note: .note}
 {:beta: .beta}
 {:deprecated: .deprecated}
