@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-05"
+lastupdated: "2020-06-08"
 
 subcollection: speech-to-text
 
@@ -760,11 +760,13 @@ The `smart_formatting` parameter directs the service to convert the following st
 -   Currency values (for US English and Spanish)
 -   Internet email and web addresses (for US English and Spanish, and only in some cases)
 
-You set the `smart_formatting` parameter to `true` to enable smart formatting. By default, the service does not perform smart formatting.
+You set the `smart_formatting` parameter to `true` to enable smart formatting. By default, the service does not perform smart formatting. The service applies smart formatting just before it returns the final results to the client, when text normalization is complete. The conversion makes the transcript more readable and enables better post-processing of the transcription results.
 
-The service applies smart formatting only to the final transcript of a recognition request. It applies smart formatting just before it returns the results to the client, when text normalization is complete. The conversion makes the transcript more readable and enables better post-processing of the transcription results.
+You need to be aware of the following effects of smart formatting:
 
-Hesitation markers and disfluencies can adversely impact the results of smart formatting. Fillers such as "uhm" and "uh" can disrupt the conversion of phrases and strings. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#hesitation).
+-   Smart formatting affects only words in the `transcript` field of final results, those results for which the `final` field is `true`. It does not affect interim results, for which `final` is `false`.
+-   Smart formatting does not affect words in other fields of the response. For example, smart formatting is not applied to response data in the `timestamps` and `alternatives` fields.
+-   Hesitation markers and disfluencies, such as "uhm" and "uh", can adversely impact the conversion of phrases and strings by smart formatting. Therefore, smart formatting suppresses hesitation markers from the `transcript` field for final results. Hesitation markers continue to appear in interim results. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#hesitation).
 
 ### Punctuation (US English)
 {: #smartFormattingPunctuation}
