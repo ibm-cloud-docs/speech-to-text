@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-05-29"
+lastupdated: "2020-06-08"
 
 subcollection: speech-to-text
 
@@ -185,7 +185,7 @@ Silence of 30 seconds in streamed audio can result in an [inactivity timeout](/d
 ## Hesitation markers
 {: #hesitation}
 
-The service can include hesitation markers in a transcript when it discovers brief fillers or pauses in speech. Also referred to as disfluencies, such pauses can include fillers such as "uhm", "uh", "hmm", and related non-lexical utterances. Unless you need to use them for your application, you can safely filter hesitation markers from a transcript.
+The service can include hesitation markers in transcription results when it discovers brief fillers or pauses in speech. Also referred to as disfluencies, such pauses can include fillers such as "uhm", "uh", "hmm", and related non-lexical utterances. Unless you need to use them for your application, you can safely filter hesitation markers from a transcript.
 
 In English, the service uses the hesitation token `%HESITATION`, as shown in the following example. Other languages can use different markers. Hesitation markers can appear in both interim and final results.
 
@@ -250,6 +250,9 @@ Hesitation markers can also appear in other fields of a transcript. For example,
 }
 ```
 {: codeblock}
+
+Enabling smart formatting prevents hesitation markers from appearing in final transcription results. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-output#smart_formatting).
+{: note}
 
 ## Capitalization
 {: #capitalization}
