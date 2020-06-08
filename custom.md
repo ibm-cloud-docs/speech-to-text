@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-05"
+lastupdated: "2020-06-08"
 
 subcollection: speech-to-text
 
@@ -136,7 +136,6 @@ You can use both broadband and narrowband models with any supported language for
     <td style="text-align:center">Not supported</td>
     <td style="text-align:center">GA</td>
   </tr>
-  <tr>
   <tr>
     <td>Dutch</td>
     <td style="text-align:center">GA</td>
