@@ -4,8 +4,10 @@
         "cost for Speech to Text Lite",
         "the cost of STT lite plan",
         "how many minutes do I get free with STT lite",
+        "STT Lite provide access to the service's customization interfaces",
+        "access to STT customization interfaces with Lite plan",
         "how much is STT lite",
-        "information for  Speech to Text Lite Plan",
+        "information for Speech to Text Lite Plan",
         "is STT free",
         "how many minutes do I get in STT lite",
         "included with Speech to Text price"
@@ -18,6 +20,8 @@
         "information for Speech to Text standard plan",
         "how much is STT for standard plan",
         "included with Speech to Text Standard price",
+        "STT standard plan provide access to the service's customization interfaces",
+        "access to customization interfaces with STT Standard plan",
         "pricing plan for STT"
     ],
     "faq-pricing-two": [
@@ -25,7 +29,10 @@
         "price per minute mean for STT",
         "STT price calculated per minute",
         "STT use price per minute",
-        "STT price calculated per minute duration or audio",
+        "pricing per minute for STT",
+        "STT price calculated per minute duration of audio",
+        "STT pricing per minute depend on duration to process the audio",
+        "pricing for STT depend on duration to process the audio",
         "price per min mean for STT"
     ],
     "faq-pricing-three": [
@@ -36,8 +43,10 @@
         "every call rounded up in STT",
         "call rounded up to the nearest min per API call",
         "calculation of usage minutes in Speech to Text",
-        "calculate the usage minutes per month",
-        "every call rounded up to next minute"
+        "calculate the usage minutes per month for speech to text",
+        "minute usage calculated per month in speech to text",
+        "every call rounded up to next minute",
+        "how is minute usage calculated for speech to text"
     ],
     "faq-pricing-four": [
         "does Graduated Tiered Pricing work",
@@ -46,6 +55,8 @@
         "volume-based Graduated Tiered Pricing calculated in STT",
         "Graduated Tiered Pricing used in STT",
         "STT tiered pricing",
+        "how does Graduated Tiered Pricing work for STT",
+        "volume-based Graduated Tiered Pricing calculated for STT",
         "pricing costs for STT tiered pricing"
     ],
     "faq-pricing-five": [
@@ -76,13 +87,15 @@
         "charge for creating a custom language or custom acoustic model",
         "cost more for a custom model in STT",
         "cost extra for a custom acoustic model",
-        "how much  language model customization",
+        "total charge for using custom models for speech to text",
+        "how much is language model customization",
         "how much is acoustic model customization"
     ],
     "faq-usage-zero": [
         "create STT service",
         "creating Speech to Text service",
         "sign up for Speech to Text service",
+        "create a Speech to Text Service",
         "creating a Speech to Text instance",
         "how to create a Speech to Text",
         "signing up for STT service",
@@ -98,6 +111,9 @@
         "find my API Key for Speech to Text",
         "obtain STT API Key",
         "obtain speech to text URL Endpoint",
+        "access my API Key for STT",
+        "access the url endpoint in speech to text",
+        "find the url endpoint in STT",
         "find STT API Key",
         "finding Speech To Text URL Endpoint",
         "locate STT API Key",
@@ -111,6 +127,8 @@
         "audio data size in speech to Text",
         "How much audio data can I use in STT",
         "limit to the amount of STT audio data",
+        "much audio data do interfaces accept for STT",
+        "amount of audio that can be submitted in a single speech recognition request for STT",
         "request size limit",
         "amount of audio that can be submitted to STT",
         "STT file size limit"
@@ -151,11 +169,12 @@
     ],
     "faq-usage-six": [
         "can Speech to Text recognize phone numbers",
-        "STT  does not recognize dates",
+        "STT does not recognize dates",
         "how does Speech to Text process dates",
         "how does STT handle currency values",
         "how to handle series of digits and numbers",
         "STT transcribe numbers as digits instead of strings",
+        "transcribe numbers as digits in Speech to Text",
         "transcribing numbers as digits in STT"
     ]
 }
