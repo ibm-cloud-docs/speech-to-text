@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-06-17"
 
 subcollection: speech-to-text
 
@@ -95,7 +95,7 @@ Use the `X-Watson-Metadata` header with the following methods:
     -   `POST /v1/register_callback`
     -   `POST /v1/recognitions`
 
-    The customer ID is associated with the white-listed callback URL or with the data that is sent with the individual recognition request.
+    The customer ID is associated with the allowlisted callback URL or with the data that is sent with the individual recognition request.
 -   With requests to add corpora, custom words, or grammars to custom language models:
     -   `POST /v1/customizations/{customization_id}/corpora/{corpus_name}`
     -   `POST /v1/customizations/{customization_id}/words`
