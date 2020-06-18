@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-06-17"
 
 subcollection: speech-to-text
 
@@ -63,7 +63,7 @@ You register a callback URL by calling the `POST /v1/register_callback` method. 
     ```
     {: pre}
 
-1.  The service attempts to validate, or white-list, the callback URL if it is not already registered by sending a `GET` request to the callback URL. The service passes a random alphanumeric challenge string via the `challenge_string` query parameter of the request. The request includes an `Accept` header that specifies `text/plain` as the required response type.
+1.  The service attempts to validate, or allowlist, the callback URL if it is not already registered by sending a `GET` request to the callback URL. The service passes a random alphanumeric challenge string via the `challenge_string` query parameter of the request. The request includes an `Accept` header that specifies `text/plain` as the required response type.
 
     If the call to the `register_callback` method included a user secret, the `GET` request from the service also includes an `X-Callback-Signature` header that specifies the HMAC-SHA1 signature of the challenge string. The service calculates the signature by using the user secret as the key.
 
@@ -83,7 +83,7 @@ You register a callback URL by calling the `POST /v1/register_callback` method. 
     ```
     {: codeblock}
 
-1.  The service checks whether the challenge string is returned in the body of the response to its `GET` request. If it is, the service white-lists the callback URL and responds to your original `POST` request with status code 201. The body of the response includes a JSON object with a `status` field that has the value `created` and a `url` field that has the value of your callback URL.
+1.  The service checks whether the challenge string is returned in the body of the response to its `GET` request. If it is, the service allowlists the callback URL and responds to your original `POST` request with status code 201. The body of the response includes a JSON object with a `status` field that has the value `created` and a `url` field that has the value of your callback URL.
 
     ```
     response code: 201 Created
@@ -94,12 +94,12 @@ You register a callback URL by calling the `POST /v1/register_callback` method. 
     ```
     {: codeblock}
 
-The service sends only a single `GET` request to a callback URL during the registration process. The service must receive a reply with response code 200 that includes the challenge string in its body within five seconds. Otherwise, it does not white-list the URL. Instead, it sends status code 400 in response to the `POST /v1/register_callback` request. If the callback URL was already successfully white-listed, the service sends status code 200 in response to the initial `POST` request.
+The service sends only a single `GET` request to a callback URL during the registration process. The service must receive a reply with response code 200 that includes the challenge string in its body within five seconds. Otherwise, it does not allowlist the URL. Instead, it sends status code 400 in response to the `POST /v1/register_callback` request. If the callback URL was already successfully allowlisted, the service sends status code 200 in response to the initial `POST` request.
 
 ### Security considerations
 {: #security-async}
 
-When you successfully use the `POST /v1/register_callback` method to register a callback URL, the service white-lists the URL to indicate that it is verified for use with callback notifications. If you specify a user secret with the registration call, white-listing also means that the URL has been validated for added security. Specifying a user secret provides authentication and data integrity for requests that use the callback URL with the asynchronous HTTP interface.
+When you successfully use the `POST /v1/register_callback` method to register a callback URL, the service allowlists the URL to indicate that it is verified for use with callback notifications. If you specify a user secret with the registration call, allowlisting also means that the URL has been validated for added security. Specifying a user secret provides authentication and data integrity for requests that use the callback URL with the asynchronous HTTP interface.
 
 The service uses the user secret to compute an HMAC-SHA1 signature over the payload of every callback notification that it sends to the URL. The service sends the signature via the `X-Callback-Signature` header with each notification. The client can use the secret to compute its own signature of each notification payload. If its signature matches the value of the `X-Callback-Signature` header, the client knows that the notification was sent by the service and that its contents have not been altered during transmission. This knowledge guarantees that the client is not the victim of a man-in-middle-attack.
 
@@ -116,7 +116,7 @@ HTTPS, however, is not ideal in terms of additional development overhead. Moreov
 ### Unregistering a callback URL
 {: #unregister}
 
-You can unregister a white-listed callback URL at any time by calling the `POST /v1/unregister_callback` method. Unregistering a callback URL can be useful for testing your application with the service. Once you unregister a callback URL, you can no longer use it with asynchronous recognition requests.
+You can unregister an allowlisted callback URL at any time by calling the `POST /v1/unregister_callback` method. Unregistering a callback URL can be useful for testing your application with the service. Once you unregister a callback URL, you can no longer use it with asynchronous recognition requests.
 
 ## Creating a job
 {: #create}
@@ -161,7 +161,7 @@ signature = hashed.digest().encode("base64").rstrip('\n')
 ### Callback example
 {: #callback}
 
-The following example creates a job that is associated with the previously white-listed callback URL `http://{user_callback_path}/results`. The example passes the user token `job25` to identify the job in callback notifications that are sent by the service. The call uses the default events, so the user must call the `GET /v1/recognitions/{id}` method to retrieve the results when the service sends a callback notification to indicate that the job is complete. The call sets the `timestamps` query parameter of the recognition request to `true`.
+The following example creates a job that is associated with the previously allowlisted callback URL `http://{user_callback_path}/results`. The example passes the user token `job25` to identify the job in callback notifications that are sent by the service. The call uses the default events, so the user must call the `GET /v1/recognitions/{id}` method to retrieve the results when the service sends a callback notification to indicate that the job is complete. The call sets the `timestamps` query parameter of the recognition request to `true`.
 
 ```bash
 curl -X POST -u "apikey:{apikey}"

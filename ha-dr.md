@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-06-17"
 
 subcollection: speech-to-text
 
@@ -138,7 +138,7 @@ You can incrementally add audio resources and train your custom acoustic models 
 
 For speech recognition with the asynchronous HTTP interface, you need to maintain the following information:
 
--   All callback URLs that you whitelist for use with the asynchronous interface. If a failure occurs, you might need to use the `POST /v1/register_callback` method to re-register the URLs. The method returns an appropriate response if a URL is already whitelisted.
+-   All callback URLs that you allowlist for use with the asynchronous interface. If a failure occurs, you might need to use the `POST /v1/register_callback` method to re-register the URLs. The method returns an appropriate response if a URL is already allowlisted.
 -   Copies of the audio files that you submit to the asynchronous interface for speech recognition. If a failure occurs before you receive or retrieve the results of a completed asynchronous job, you need to use the `POST /v1/recognitions` method to resubmit the audio files when the service is restored. Once you have the results of a completed asynchronous job, you no longer need to maintain the audio files.
 
 For more information, see [The asynchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-async). As with the backup data for custom models, you can actively preserve this information and be prepared to reissue the necessary requests ahead of time.
