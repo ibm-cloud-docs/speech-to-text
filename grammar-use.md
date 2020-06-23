@@ -37,6 +37,9 @@ When you use a grammar, the service recognizes only words from the specified gra
 The grammars feature is beta functionality. You can use grammars with any language that supports language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
 {: beta}
 
+## Examples of using a grammar with a custom language model
+{: #grammarUse-examples}
+
 -   For the [WebSocket interface](/docs/speech-to-text?topic=speech-to-text-websockets), you first specify the customization ID with the `language_customization_id` parameter of the `/v1/recognize` method. You use this method to establish a WebSocket connection with the service.
 
     ```javascript
