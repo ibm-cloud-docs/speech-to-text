@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2019
-lastupdated: "2019-10-04"
+  years: 2018, 2020
+lastupdated: "2020-06-23"
 
 subcollection: speech-to-text
 
@@ -213,9 +213,9 @@ The following example output shows the first few processing metrics results that
 The following example shows a speech recognition request for the `/v1/recognitions` method of the asynchronous HTTP interface. The request enables processing metrics and specifies an interval of 0.25 seconds. The audio file again includes the message "hello world long pause stop".
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/flac"
---data-binary @{path}audio-file.flac
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file.flac \
 "{url}/v1/recognitions?processing_metrics=true&processing_metrics_interval=0.25"
 ```
 {: pre}
@@ -342,9 +342,9 @@ Each `AudioMetricsHistogramBin` object describes a bin with defined `begin` and 
 The following example shows a speech recognition request with the synchronous HTTP interface that returns audio metrics. The audio file includes the simple message "hello world long pause stop".
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/flac"
---data-binary @{path}audio-file.flac
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file.flac \
 "{url}/v1/recognitize?audio_metrics=true"
 ```
 {: pre}

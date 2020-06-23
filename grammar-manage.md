@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-06-23"
 
 subcollection: speech-to-text
 
@@ -50,7 +50,7 @@ Both methods return the same information about a grammar. The information includ
 The following example lists information about all grammars that have been added to the custom model with the specified customization ID.
 
 ```bash
-curl -X GET -u "apikey:{apikey}"
+curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/customizations/{customization_id}/grammars"
 ```
 {: pre}
@@ -83,7 +83,7 @@ Three grammars were successfully added to the custom model: `confirm-xml`, `conf
 The following example shows information about the specified grammar, `list-abnf`.
 
 ```bash
-curl -X GET -u "apikey:{apikey}"
+curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/customizations/{customization_id}/grammars/list-abnf"
 ```
 {: pre}
@@ -113,7 +113,7 @@ Removing a grammar does not affect the custom model until you train the model on
 The following example deletes the grammar named `list-abnf` from the custom model with the specified customization ID.
 
 ```bash
-curl -X DELETE -u "apikey:{apikey}"
+curl -X DELETE -u "apikey:{apikey}" \
 "{url}/v1/customizations/{customization_id}/grammars/list-abnf"
 ```
 {: pre}

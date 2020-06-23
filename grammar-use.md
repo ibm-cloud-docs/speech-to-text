@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-05"
+lastupdated: "2020-06-23"
 
 subcollection: speech-to-text
 
@@ -65,18 +65,18 @@ The grammars feature is beta functionality. You can use grammars with any langua
 -   For the [synchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-http), pass both parameters with the `POST /v1/recognize` method.
 
     ```bash
-    curl -X POST -u "apikey:{apikey}"
-    --header "Content-Type: audio/flac"
-    --data-binary @audio-file.flac
+    curl -X POST -u "apikey:{apikey}" \
+    --header "Content-Type: audio/flac" \
+    --data-binary @audio-file.flac \
     "{url}/v1/recognize?language_customization_id={customization_id}&grammar_name={grammar_name}"
     ```
     {: pre}
 -   For the [asynchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-async), pass both parameters with the `POST /v1/recognitions` method.
 
     ```bash
-    curl -X POST -u "apikey:{apikey}"
-    --header "Content-Type: audio/flac"
-    --data-binary @audio-file.flac
+    curl -X POST -u "apikey:{apikey}" \
+    --header "Content-Type: audio/flac" \
+    --data-binary @audio-file.flac \
     "{url}/v1/recognitions?language_customization_id={customization_id}&grammar_name={grammar_name}"
     ```
     {: pre}

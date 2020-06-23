@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-03-04"
+lastupdated: "2020-06-23"
 
 subcollection: speech-to-text
 
@@ -46,18 +46,18 @@ You can create multiple custom acoustic models for the same or different domains
 -   For the [synchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-http), use the `POST /v1/recognize` method. The specified custom model is used for that request.
 
     ```bash
-    curl -X POST -u "apikey:{apikey}"
-    --header "Content-Type: audio/flac"
-    --data-binary @audio-file1.flac
+    curl -X POST -u "apikey:{apikey}" \
+    --header "Content-Type: audio/flac" \
+    --data-binary @audio-file1.flac \
     "{url}/v1/recognize?acoustic_customization_id={customization_id}"
     ```
     {: pre}
 -   For the [asynchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-async), use the `POST /v1/recognitions` method. The specified custom model is used for that request.
 
     ```bash
-    curl -X POST -u "apikey:{apikey}"
-    --header "Content-Type: audio/flac"
-    --data-binary @audio-file.flac
+    curl -X POST -u "apikey:{apikey}" \
+    --header "Content-Type: audio/flac" \
+    --data-binary @audio-file.flac \
     "{url}/v1/recognitions?acoustic_customization_id={customization_id}"
     ```
     {: pre}

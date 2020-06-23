@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-06-23"
 
 subcollection: speech-to-text
 
@@ -53,9 +53,9 @@ The `application/octet-stream` specification for an audio format is not supporte
 The following example from [Add audio to the custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acoustic#addAudio) adds an `audio/wav` file:
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/wav"
---data-binary @audio1.wav
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/wav" \
+--data-binary @audio1.wav \
 "{url}/v1/acoustic_customizations/{customization_id}/audio/audio1"
 ```
 {: pre}
@@ -81,10 +81,10 @@ The name of an audio file that is contained in an archive-type resource can incl
 The following example from [Add audio to the custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acoustic#addAudio) adds an `application/zip` file that contains audio files in `audio/l16` format that are sampled at 16 kHz:
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: application/zip"
---header "Contained-Content-Type: audio/l16;rate=16000"
---data-binary @audio2.zip
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: application/zip" \
+--header "Contained-Content-Type: audio/l16;rate=16000" \
+--data-binary @audio2.zip \
 "{url}/v1/acoustic_customizations/{customization_id}/audio/audio2"
 ```
 {: pre}

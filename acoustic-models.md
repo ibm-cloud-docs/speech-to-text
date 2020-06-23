@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-06-23"
 
 subcollection: speech-to-text
 
@@ -70,7 +70,7 @@ Additionally, the output includes a `progress` field that indicates the current 
 The following example includes the `language` query parameter to list all US English custom acoustic models that are owned by the specified credentials:
 
 ```bash
-curl -X GET -u "apikey:{apikey}"
+curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/acoustic_customizations?language=en-US"
 ```
 {: pre}
@@ -119,7 +119,7 @@ The credentials own two such models. The first model is awaiting data or is bein
 The following example returns information about the custom model that has the specified customization ID:
 
 ```bash
-curl -X GET -u "apikey:{apikey}"
+curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/acoustic_customizations/{customization_id}"
 ```
 {: pre}
@@ -155,7 +155,7 @@ Use the `POST /v1/acoustic_customizations/{customization_id}/reset` method to re
 The following example resets the custom acoustic model with the specified customization ID:
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
+curl -X POST -u "apikey:{apikey}" \
 "{url}/v1/acoustic_customizations/{customization_id}/reset"
 ```
 {: pre}
@@ -171,7 +171,7 @@ Use the `DELETE /v1/acoustic_customizations/{customization_id}` method to delete
 The following example deletes the custom acoustic model with the specified customization ID:
 
 ```bash
-curl -X DELETE -u "apikey:{apikey}"
+curl -X DELETE -u "apikey:{apikey}" \
 "{url}/v1/acoustic_customizations/{customization_id}"
 ```
 {: pre}

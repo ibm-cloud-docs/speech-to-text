@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-06-23"
 
 subcollection: speech-to-text
 
@@ -68,7 +68,7 @@ An error can occur, for example, if you add a custom word with an invalid `sound
 The following example lists all of the words, regardless of type, from the custom model with the specified customization ID. The words are displayed in the default sort order, ascending alphabetical.
 
 ```bash
-curl -X GET -u "apikey:{apikey}"
+curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/customizations/{customization_id}/words"
 ```
 {: pre}
@@ -128,7 +128,7 @@ The words resource for the model contains four words. The first word was added d
 The following example shows information about the word `NCAA` from the words resource of the specified model:
 
 ```bash
-curl -X GET -u "apikey:{apikey}"
+curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/customizations/{customization_id}/words/NCAA"
 ```
 {: pre}
@@ -167,7 +167,7 @@ Removing a word from a custom model does not affect the model until you retrain 
 The following example deletes the word `IEEE` from the custom model with the specified customization ID:
 
 ```bash
-curl -X DELETE -u "apikey:{apikey}"
+curl -X DELETE -u "apikey:{apikey}" \
 "{url}/v1/customizations/{customization_id}/words/IEEE"
 ```
 {: pre}

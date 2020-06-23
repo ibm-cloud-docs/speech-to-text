@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-03-16"
+lastupdated: "2020-06-23"
 
 subcollection: speech-to-text
 
@@ -262,9 +262,9 @@ You can provide as many as five alternative pronunciations for a word that is di
 -   *Provide different pronunciations for acronyms.* For example, the acronym `NCAA` can be pronounced as it is spelled or colloquially as *N. C. double A.* The following example adds both of these sounds-like pronunciations for the word `NCAA`:
 
     ```bash
-    curl -X PUT -u "apikey:{apikey}"
-    --header "Content-Type: application/json"
-    --data "{\"sounds_like\": [\"N. C. A. A.\", \"N. C. double A.\"]}"
+    curl -X PUT -u "apikey:{apikey}" \
+    --header "Content-Type: application/json" \
+    --data "{\"sounds_like\": [\"N. C. A. A.\", \"N. C. double A.\"]}" \
     "{url}/v1/customizations/{customization_id}/words/NCAA"
     ```
     {: pre}
@@ -349,18 +349,18 @@ Speech recognition uses statistical algorithms to analyze audio, so adding a wor
 The `display_as` field specifies how a word is displayed in a transcript. It is intended for cases where you want the service to display a string that is different from the word's spelling. For example, you can indicate that the word `hhonors` is to be displayed as `HHonors` regardless of whether it sounds like `hilton honors` or `h honors`.
 
 ```bash
-curl -X PUT -u "apikey:{apikey}"
---header "Content-Type: application/json"
---data "{\"sounds_like\": [\"hilton honors\", \"H. honors\"], \"display_as\": \"HHonors\"}"
+curl -X PUT -u "apikey:{apikey}" \
+--header "Content-Type: application/json" \
+--data "{\"sounds_like\": [\"hilton honors\", \"H. honors\"], \"display_as\": \"HHonors\"}" \
 "{url}/v1/customizations/{customization_id}/words/hhonors"
 ```
 {: pre}
 
 As another example, you can indicate that the word `IBM` is to be displayed as <code>IBM&trade;</code>.
 
-<pre><code class="language-bash">curl -X PUT -u "apikey:{apikey}"
---header "Content-Type: application/json"
---data "{\"sounds_like\": [\"I. B. M.\"], \"display_as\":\"IBM&#8482;\"}"
+<pre><code class="language-bash">curl -X PUT -u "apikey:{apikey}" \
+--header "Content-Type: application/json" \
+--data "{\"sounds_like\": [\"I. B. M.\"], \"display_as\":\"IBM&#8482;\"}" \
 "{url}/v1/customizations/{customization_id}/words/IBM"</code></pre>
 
 #### Interaction with smart formatting and numeric redaction

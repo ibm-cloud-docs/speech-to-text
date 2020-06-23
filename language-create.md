@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-03-04"
+lastupdated: "2020-06-23"
 
 subcollection: speech-to-text
 
@@ -130,11 +130,11 @@ You can create a maximum of 1024 custom language models per owning credentials. 
 The following example creates a new custom language model named `Example model`. The model is created for the base model `en-US-BroadbandModel` and has the description `Example custom language model`. The `Content-Type` header specifies that JSON data is being passed to the method.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: application/json"
---data "{\"name\": \"Example model\",
-  \"base_model_name\": \"en-US_BroadbandModel\",
-  \"description\": \"Example custom language model\"}"
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: application/json" \
+--data "{\"name\": \"Example model\", \
+  \"base_model_name\": \"en-US_BroadbandModel\", \
+  \"description\": \"Example custom language model\"}" \
 "{url}/v1/customizations"
 ```
 {: pre}
@@ -178,8 +178,8 @@ You can add a maximum of 90 thousand OOV words and 10 million total words from a
 The following example adds the corpus text file `healthcare.txt` to the custom model with the specified ID. The example names the corpus `healthcare`.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---data-binary @healthcare.txt
+curl -X POST -u "apikey:{apikey}" \
+--data-binary @healthcare.txt \
 "{url}/v1/customizations/{customization_id}/corpora/healthcare"
 ```
 {: pre}
@@ -198,7 +198,7 @@ The service returns a 201 response code if the corpus is valid. It then asynchro
 To determine the status of the analysis, use the `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` method to poll the status of the corpus. The method accepts the ID of the model and the name of the corpus, as shown in the following example:
 
 ```bash
-curl -X GET -u "apikey:{apikey}"
+curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/customizations/{customization_id}/corpora/corpus1"
 ```
 {: pre}
@@ -238,11 +238,11 @@ You can use the following methods to add words to a custom model:
 -   The `POST /v1/customizations/{customization_id}/words` method adds multiple words at one time. You pass a JSON object that provides information about each word via the body of the request. The following example adds two custom words, `HHonors` and `IEEE`, to the custom model with the specified ID. The `Content-Type` header specifies that JSON data is being passed to the method.
 
     ```bash
-    curl -X POST -u "apikey:{apikey}"
-    --header "Content-Type: application/json"
-    --data "{\"words\": [
-      {\"word\": \"HHonors\", \"sounds_like\": [\"hilton honors\", \"H. honors\"], \"display_as\": \"HHonors\"},
-      {\"word\": \"IEEE\", \"sounds_like\": [\"I. triple E.\"]}]}"
+    curl -X POST -u "apikey:{apikey}" \
+    --header "Content-Type: application/json" \
+    --data "{\"words\": [ \
+      {\"word\": \"HHonors\", \"sounds_like\": [\"hilton honors\", \"H. honors\"], \"display_as\": \"HHonors\"}, \
+      {\"word\": \"IEEE\", \"sounds_like\": [\"I. triple E.\"]}]}" \
     "{url}/v1/customizations/{customization_id}/words"
     ```
     {: pre}
@@ -262,9 +262,9 @@ You can use the following methods to add words to a custom model:
     The following command adds the words from the file:
 
     ```bash
-    curl -X POST -u "apikey:{apikey}"
-    --header "Content-Type: application/json"
-    --data-binary @words.json
+    curl -X POST -u "apikey:{apikey}" \
+    --header "Content-Type: application/json" \
+    --data-binary @words.json \
     "{url}/v1/customizations/{customization_id}/words"
     ```
     {: pre}
@@ -273,9 +273,9 @@ You can use the following methods to add words to a custom model:
 -   The `PUT /v1/customizations/{customization_id}/words/{word_name}` method adds individual words. You pass a JSON object that provides information about the word. The following example adds the word `NCAA` to the model with the specified ID. The `Content-Type` header again indicates that JSON data is being passed to the method.
 
     ```bash
-    curl -X PUT -u "apikey:{apikey}"
-    --header "Content-Type: application/json"
-    --data "{\"sounds_like\": [\"N. C. A. A.\", \"N. C. double A.\"]}"
+    curl -X PUT -u "apikey:{apikey}" \
+    --header "Content-Type: application/json" \
+    --data "{\"sounds_like\": [\"N. C. A. A.\", \"N. C. double A.\"]}" \
     "{url}/v1/customizations/{customization_id}/words/NCAA"
     ```
     {: pre}
@@ -292,7 +292,7 @@ When you use the `POST /v1/customizations/{customization_id}/words` method, the 
 To determine the status of the request, use the `GET /v1/customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the model and returns information that includes the model's status, as in the following example:
 
 ```bash
-curl -X GET -u "apikey:{apikey}"
+curl -X GET -u "apikey:{apikey}"\
 "{url}/v1/customizations/{customization_id}"
 ```
 {: pre}
@@ -331,7 +331,7 @@ Once you populate a custom language model with new words (by adding corpora, by 
 You use the `POST /v1/customizations/{customization_id}/train` method to train a custom model. You pass the method the customization ID of the model that you want to train, as in the following example:
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
+curl -X POST -u "apikey:{apikey}" \
 "{url}/v1/customizations/{customization_id}/train"
 ```
 {: pre}
@@ -356,7 +356,7 @@ The service returns a 200 response code if it initiates the training process suc
 To determine the status of a training request, use the `GET /v1/customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the model and returns information about the model.
 
 ```bash
-curl -X GET -u "apikey:{apikey}"
+curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/customizations/{customization_id}"
 ```
 {: pre}
