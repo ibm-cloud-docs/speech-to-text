@@ -32,6 +32,9 @@ You can also specify a custom language model to be used with the request, which 
 
 You can create multiple custom acoustic models for the same or different domains or environments. However, you can specify only one custom acoustic model at a time with the `acoustic_customization_id` parameter.
 
+## Examples of using a custom acoustic model
+{: #acousticUse-examples}
+
 -   For the [WebSocket interface](/docs/speech-to-text?topic=speech-to-text-websockets), use the `/v1/recognize` method. The specified custom model is used for all requests that are sent over the connection.
 
     ```javascript

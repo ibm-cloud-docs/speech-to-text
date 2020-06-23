@@ -32,6 +32,9 @@ Once you create and train your custom language model, you can use it in speech r
 
 You can create multiple custom language models for the same or different domains. However, you can specify only one custom language model at a time with the `language_customization_id` parameter. For examples that use a grammar with a custom language model, see [Using a grammar for speech recognition](/docs/speech-to-text?topic=speech-to-text-grammarUse).
 
+## Examples of using a custom language model
+{: #languageUse-examples}
+
 -   For the [WebSocket interface](/docs/speech-to-text?topic=speech-to-text-websockets), use the `/v1/recognize` method. The specified custom model is used for all requests that are sent over the connection.
 
     ```javascript
