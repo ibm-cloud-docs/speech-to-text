@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-03-31"
+lastupdated: "2020-06-23"
 
 subcollection: speech-to-text
 
@@ -102,9 +102,9 @@ websocket.send(JSON.stringify({action: 'stop'}));
 The following `curl` example shows a basic HTTP recognition request:
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/flac"
---data-binary @audio-file.flac
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @audio-file.flac \
 "{url}/v1/recognize"
 ```
 {: pre}
@@ -119,9 +119,9 @@ curl -X POST -u "apikey:{apikey}"
 The following `curl` example shows a simple asynchronous HTTP recognition request. The request does not include a callback URL, so you must poll the service to get the job status and the resulting transcript.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/flac"
---data-binary @audio-file.flac
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @audio-file.flac \
 "{url}/v1/recognitions"
 ```
 {: pre}

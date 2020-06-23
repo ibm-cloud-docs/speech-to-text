@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-03-04"
+lastupdated: "2020-06-23"
 
 subcollection: speech-to-text
 
@@ -46,18 +46,18 @@ You can create multiple custom language models for the same or different domains
 -   For the [synchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-http), use the `POST /v1/recognize` method. The specified custom model is used for that request.
 
     ```bash
-    curl -X POST -u "apikey:{apikey}"
-    --header "Content-Type: audio/flac"
-    --data-binary @audio-file.flac
+    curl -X POST -u "apikey:{apikey}" \
+    --header "Content-Type: audio/flac" \
+    --data-binary @audio-file.flac \
     "{url}/v1/recognize?language_customization_id={customization_id}"
     ```
     {: pre}
 -   For the [asynchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-async), use the `POST /v1/recognitions` method. The specified custom model is used for that request.
 
     ```bash
-    curl -X POST -u "apikey:{apikey}"
-    --header "Content-Type: audio/flac"
-    --data-binary @audio-file.flac
+    curl -X POST -u "apikey:{apikey}" \
+    --header "Content-Type: audio/flac" \
+    --data-binary @audio-file.flac \
     "{url}/v1/recognitions?language_customization_id={customization_id}"
     ```
     {: pre}
@@ -78,7 +78,7 @@ You specify a customization weight by using the `customization_weight` parameter
 -   For a training request, the following example specifies a customization weight of `0.5` with the `POST /v1/customizations/{customization_id}/train` method:
 
     ```bash
-    curl -X POST -u "apikey:{apikey}"
+    curl -X POST -u "apikey:{apikey}" \
     "{url}/v1/customizations/{customization_id}/train?customization_weight=0.5"
     ```
     {: pre}
@@ -88,9 +88,9 @@ You specify a customization weight by using the `customization_weight` parameter
 -   For a recognition request, the following example specifies a customization weight of `0.7` with the `POST /v1/recognize` method:
 
     ```bash
-    curl -X POST -u "apikey:{apikey}"
-    --header "Content-Type: audio/flac"
-    --data-binary @audio-file1.flac
+    curl -X POST -u "apikey:{apikey}" \
+    --header "Content-Type: audio/flac" \
+    --data-binary @audio-file1.flac \
     "{url}/v1/recognize?language_customization_id={customization_id}&customization_weight=0.7"
     ```
     {: pre}

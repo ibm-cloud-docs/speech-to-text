@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-05"
+lastupdated: "2020-06-23"
 
 subcollection: speech-to-text
 
@@ -67,9 +67,9 @@ You use the `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`
 The following example adds the grammar file named `confirm.abnf` to the custom model with the specified ID. The example names the grammar `confirm-abnf`.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: application/srgs"
---data-binary @confirm.abnf
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: application/srgs" \
+--data-binary @confirm.abnf \
 "{url}/v1/customizations/{customization_id}/grammars/confirm-abnf"
 ```
 {: pre}
@@ -88,7 +88,7 @@ The service returns a 201 response code if the grammar is valid. It then asynchr
 To determine the status of the analysis, use the `GET /v1/customizations/{customization_id}/grammars/{grammar_name}` method to poll the status of the grammar. The method accepts the ID of the custom model and the name of the grammar. The following example checks the status of the grammar named `confirm-abnf`.
 
 ```bash
-curl -X GET -u "apikey:{apikey}"
+curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/customizations/{customization_id}/grammars/confirm-abnf"
 ```
 {: pre}
@@ -153,7 +153,7 @@ The final step before you can use a grammar with a custom language model is to t
 You use the `POST /v1/customizations/{customization_id}/train` method to train a custom model. You pass the method the customization ID of the model that you want to train, as in the following example.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
+curl -X POST -u "apikey:{apikey}" \
 "{url}/v1/customizations/{customization_id}/train"
 ```
 {: pre}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-07"
+lastupdated: "2020-06-23"
 
 subcollection: speech-to-text
 
@@ -41,9 +41,9 @@ The HTTP `POST /v1/recognize` method provides a simple means of transcribing aud
 The following `curl` example sends a recognition request for a single FLAC file named `audio-file.flac`. The request omits the `model` query parameter to use the default language model, `en-US_BroadbandModel`.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/flac"
---data-binary @{path}audio-file.flac
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file.flac \
 "{url}/v1/recognize"
 ```
 {: pre}
@@ -231,16 +231,16 @@ All other parameters of the metadata are optional. For descriptions of all avail
 The following `curl` example shows how to pass a multipart recognition request with the `POST /v1/recognize` method. The request passes two audio files, **audio-file1.flac** and **audio-file2.flac**. The `metadata` parameter provides most parameters of the request; the `upload` parameters provide the audio files.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: multipart/form-data"
---form metadata="{\"part_content_type\":\"application/octet-stream\",
-  \"data_parts_count\":2,
-  \"timestamps\":true,
-  \"word_alternatives_threshold\":0.9,
-  \"keywords\":[\"colorado\",\"tornado\",\"tornadoes\"],
-  \"keywords_threshold\":0.5}"
---form upload="@{path}audio-file1.flac"
---form upload="@{path}audio-file2.flac"
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: multipart/form-data" \
+--form metadata="{\"part_content_type\":\"application/octet-stream\", \
+  \"data_parts_count\":2, \
+  \"timestamps\":true, \
+  \"word_alternatives_threshold\":0.9, \
+  \"keywords\":[\"colorado\",\"tornado\",\"tornadoes\"], \
+  \"keywords_threshold\":0.5}" \
+--form upload="@{path}audio-file1.flac" \
+--form upload="@{path}audio-file2.flac" \
 "{url}/v1/recognize"
 ```
 {: pre}

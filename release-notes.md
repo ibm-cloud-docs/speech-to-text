@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-17"
+lastupdated: "2020-06-23"
 
 subcollection: speech-to-text
 
@@ -732,8 +732,8 @@ For language model customization, the Korean models are generally available for 
     For example, you now call the `POST /v1/sessions` method with `curl` as follows:
 
     ```bash
-    curl -X POST -u "{username}:{password}"
-    --cookie-jar cookies.txt
+    curl -X POST -u "{username}:{password}" \
+    --cookie-jar cookies.txt \
     "{url}/v1/sessions"
     ```
     {: pre}

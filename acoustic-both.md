@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2020-03-02"
+lastupdated: "2020-06-23"
 
 subcollection: speech-to-text
 
@@ -57,7 +57,7 @@ To train a custom acoustic model with a custom language model, you must
 Use the optional `custom_language_model_id` query parameter of the `POST /v1/acoustic_customizations/{customization_id}/train` method to train your custom acoustic model with a custom language model. Pass the GUID of the acoustic model with the `customization_id` parameter and the GUID of the custom language model with the `custom_language_model_id` parameter. Both models must be owned by the credentials that are passed with the request.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
+curl -X POST -u "apikey:{apikey}" \
 "{url}/v1/acoustic_customizations/{customization_id}/train?custom_language_model_id={customization_id}"
 ```
 {: pre}
@@ -77,9 +77,9 @@ If a custom language model includes grammars, you can also use the custom langua
 The following example passes both types of model to the HTTP `POST /v1/recognize` method. Pass the GUID of the custom acoustic model with the `acoustic_customization_id` parameter and the GUID of the custom language model with the `language_customization_id` parameter. Both models must be owned by the credentials that are passed with the request, and both must be based on the same base model (for example, `en-US_BroadbandModel`).
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/flac"
---data-binary @audio-file1.flac
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @audio-file1.flac \
 "{url}/v1/recognize?acoustic_customization_id={customization_id}&language_customization_id={customization_id}"
 ```
 {: pre}

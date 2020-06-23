@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-08"
+lastupdated: "2020-06-23"
 
 subcollection: speech-to-text
 
@@ -51,9 +51,9 @@ To use the feature, you set the `speaker_labels` parameter to `true` for a recog
 The following example request shows a response that includes speaker labels. The numeric values that are associated with each element of the `timestamps` array are the start and end times of the word in the audio.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/flac"
---data-binary @{path}audio-multi.flac
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-multi.flac \
 "{url}/v1/recognize?model=en-US_NarrowbandModel&speaker_labels=true"
 ```
 {: pre}
@@ -306,9 +306,9 @@ A keyword for which the service finds no matches is omitted from the array. A ke
 The following example request sets the `keywords` parameter to a URL-encoded array of three strings (`colorado`, `tornado`, and `tornadoes`) and the `keywords_threshold` parameter to `0.5`. The service finds qualifying occurrences of `colorado` and `tornadoes`.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/flac"
---data-binary @{path}audio-file.flac
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file.flac \
 "{url}/v1/recognize?keywords=colorado%2Ctornado%2Ctornadoes&keywords_threshold=0.5"
 ```
 {: pre}
@@ -363,9 +363,9 @@ The service reports a confidence score only for the best alternative that it ret
 The following example request sets the `max_alternatives` parameter to `3`; the service reports a confidence for the most likely of the three alternatives.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/flac"
---data-binary @{path}audio-file.flac
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file.flac \
 "{url}/v1/recognize?max_alternatives=3"
 ```
 {: pre}
@@ -528,9 +528,9 @@ The service returns the results in a `word_alternatives` field that is an elemen
 The following example request specifies a `word_alternatives_threshold` of `0.9`. The output includes potential hypotheses and confidence scores for a number of words, along with their start and end times.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/flac"
---data-binary @{path}audio-file.flac
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file.flac \
 "{url}/v1/recognize?word_alternatives_threshold=0.9"
 ```
 {: pre}
@@ -622,9 +622,9 @@ A confidence measure indicates the service's estimation that the transcribed wor
 The following example requests word confidence scores for the words of the transcription.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/flac"
---data-binary @{path}audio-file.flac
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file.flac \
 "{url}/v1/recognize?word_confidence=true"
 ```
 {: pre}
@@ -686,9 +686,9 @@ The `timestamps` parameter tells the service whether to produce timestamps for t
 The following example requests timestamps for the words of the transcription.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/flac"
---data-binary @{path}audio-file.flac
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file.flac \
 "{url}/v1/recognize?timestamps=true"
 ```
 {: pre}
@@ -1129,9 +1129,9 @@ For more information about specifying a pause interval that affects the service'
 The following example requests smart formatting with a recognition request by setting the `smart_formatting` parameter to `true`. The following sections show the effects of smart formatting on the results of a request.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/flac"
---data-binary @{path}audio-file.flac
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file.flac \
 "{url}/v1/recognize?smart_formatting=true"
 ```
 {: pre}
@@ -1254,9 +1254,9 @@ The following table shows examples of final transcripts both with and without nu
 The following example requests numeric redaction with a recognition request by setting the `redaction` parameter to `true`. Because the request enables redaction, the service implicitly enables smart formatting with the request. The service effectively disables the other parameters of the request so that they have no effect: The service returns a single final transcript and recognizes no keywords.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/wav"
---data-binary @{path}audio-file.wav
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/wav" \
+--data-binary @{path}audio-file.wav \
 "{url}/v1/recognize?&redaction=true&max_alternatives=3&keywords=birth%2Cbirthday&keywords_threshold=0.5"
 ```
 {: pre}
@@ -1277,9 +1277,9 @@ The service censors profanity from all final transcripts and from any alternativ
 The following example shows the results for a brief audio file that is transcribed with the default `true` value for the `profanity_filter` parameter. The request also sets the `word_alternatives_threshold` parameter to a relatively high value of `0.99` and the `word_confidence` and `timestamps` parameters to `true`.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/flac"
---data-binary @{path}audio-file.flac
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file.flac \
 "{url}/v1/recognize?word_alternatives_threshold=0.99&word_confidence=true&timestamps=true"
 ```
 {: pre}
@@ -1361,9 +1361,9 @@ The following example requests show the effect of using the `end_of_phrase_silen
 The first example uses the default pause interval of 0.8 seconds. Because the pause is greater than the default interval, the service splits the transcript at the pause. The `confidence` of both results is `0.99`, so transcription accuracy is very good despite the pause.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/wav"
---data-binary @{path}audio-file.wav
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/wav" \
+--data-binary @{path}audio-file.wav \
 "{url}/v1/recognize"
 ```
 {: pre}
@@ -1400,9 +1400,9 @@ But suppose speech recognition is performed with a grammar that expects the user
 The second example uses the same audio but sets the `end_of_phrase_silence_time` to 1.5 seconds. Because this value is greater than the length of the speaker's pause, the service returns a single final result that contains the entire spoken phrase. A grammar that expects to find six digits recognizes this transcript.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/wav"
---data-binary @{path}audio-file.wav
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/wav" \
+--data-binary @{path}audio-file.wav \
 "{url}/v1/recognize?end_of_phrase_silence_time=1.5"
 ```
 {: pre}
@@ -1454,9 +1454,9 @@ The following example requests demonstrate the use of the `split_transcript_at_p
 The first example shows the results for a request that omits the parameter. The service returns two final results, splitting the transcript only at the speaker's extended pause.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/wav"
---data-binary @{path}audio-file.wav
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/wav" \
+--data-binary @{path}audio-file.wav \
 "{url}/v1/recognize"
 ```
 {: pre}
@@ -1491,9 +1491,9 @@ curl -X POST -u "apikey:{apikey}"
 The second example recognizes the same audio but sets `split_transcript_at_phrase_end` to `true`. The service returns three final results, adding a result for the semantic stop after the first sentence. Each result includes the `end_of_utterance` field to identify the reason for the split.
 
 ```bash
-curl -X POST -u "apikey:{apikey}"
---header "Content-Type: audio/wav"
---data-binary @{path}audio-file.wav
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/wav" \
+--data-binary @{path}audio-file.wav \
 "{url}/v1/recognize?split_transcript_at_phrase_end=true"
 ```
 {: pre}
