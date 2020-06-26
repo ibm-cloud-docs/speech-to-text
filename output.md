@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-23"
+lastupdated: "2020-06-26"
 
 subcollection: speech-to-text
 
@@ -525,83 +525,90 @@ The service returns the results in a `word_alternatives` field that is an elemen
 ### Word alternatives example
 {: #wordAlternativesExample}
 
-The following example request specifies a `word_alternatives_threshold` of `0.9`. The output includes potential hypotheses and confidence scores for a number of words, along with their start and end times.
+The following example request specifies a rather low `word_alternatives_threshold` of `0.10`. The simple input audio includes words with common homonyms and different possible acoustic interpretations. Because of the low threshold, the service returns multiple hypotheses and confidence scores for some of the words, along with the start and end times of all words. The final transcript correctly recognizes the input audio.
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
---header "Content-Type: audio/flac" \
---data-binary @{path}audio-file.flac \
-"{url}/v1/recognize?word_alternatives_threshold=0.9"
+--header "Content-Type: audio/wav" \
+--data-binary @{path}audio-file.wav \
+"{url}/v1/recognize?word_alternatives_threshold=0.10"
 ```
 {: pre}
 
 ```javascript
 {
-  "results": [
-    {
-      "word_alternatives": [
-        {
-          "start_time": 1.01,
-          "alternatives": [
+   "result_index": 0,
+   "results": [
+      {
+         "final": true,
+         "alternatives": [
             {
-              "confidence": 1.0,
-              "word": "several"
+               "transcript": "yes I ate that tuna ",
+               "confidence": 0.82
             }
-          ],
-          "end_time": 1.52
-        },
-        {
-          "start_time": 1.52,
-          "alternatives": [
+         ],
+         "word_alternatives": [
             {
-              "confidence": 1.0,
-              "word": "tornadoes"
-            }
-          ],
-          "end_time": 2.15
-        },
-        {
-          "start_time": 3.39,
-          "alternatives": [
+               "start_time": 0.0,
+               "end_time": 0.31,
+               "alternatives": [
+                  {
+                     "word": "yes",
+                     "confidence": 1.0
+                  }
+               ]
+            },
             {
-              "confidence": 0.96,
-              "word": "severe"
-            }
-          ],
-          "end_time": 3.77
-        },
-        {
-          "start_time": 3.77,
-          "alternatives": [
+               "start_time": 0.31,
+               "end_time": 0.46,
+               "alternatives": [
+                  {
+                     "word": "I",
+                     "confidence": 1.0
+                  }
+               ]
+            },
             {
-              "confidence": 0.99,
-              "word": "thunderstorms"
-            }
-          ],
-          "end_time": 4.51
-        },
-        {
-          "start_time": 4.51,
-          "alternatives": [
+               "start_time": 0.46,
+               "end_time": 0.63,
+               "alternatives": [
+                  {
+                     "word": "ate",
+                     "confidence": 0.89
+                  },
+                  {
+                     "word": "eat",
+                     "confidence": 0.11
+                  }
+               ]
+            },
             {
-              "confidence": 0.97,
-              "word": "swept"
+               "start_time": 0.63,
+               "end_time": 0.77,
+               "alternatives": [
+                  {
+                     "word": "that",
+                     "confidence": 0.72
+                  },
+                  {
+                     "word": "the",
+                     "confidence": 0.27
+                  }
+               ]
+            },
+            {
+               "start_time": 0.77,
+               "end_time": 1.2,
+               "alternatives": [
+                  {
+                     "word": "tuna",
+                     "confidence": 0.94
+                  }
+               ]
             }
-          ],
-          "end_time": 4.81
-        }
-      ],
-      "alternatives": [
-        {
-          "confidence": 0.96,
-          "transcript": "several tornadoes touch down as a line of
-severe thunderstorms swept through Colorado on Sunday "
-        }
-      ],
-      "final": true
-    }
-  ],
-  "result_index": 0
+         ]
+      }
+   ]
 }
 ```
 {: codeblock}
