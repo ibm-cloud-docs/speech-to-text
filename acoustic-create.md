@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-23"
+lastupdated: "2020-06-27"
 
 subcollection: speech-to-text
 
@@ -223,7 +223,7 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-The method is asynchronous. Training can take on the order of minutes or hours to complete, depending on the amount of audio data that the custom acoustic model contains and the current load on the service. A general guideline is that training a custom acoustic model can take approximately two to four times the length of its audio data. The actual time depends on the model that is being trained and the nature of the audio, such as whether the audio is clean or noisy. For example, it can take between 4 and 8 hours to train a model that contains 2 hours of audio. For more information about checking the status of a training operation, see [Monitoring the train model request](#monitorTraining-acoustic).
+The method is asynchronous. Training can take on the order of minutes or hours to complete, depending on the amount of audio data that the custom acoustic model contains and the current load on the service. A general guideline is that training a custom acoustic model can take approximately two to four times the length of its audio data. For example, it can take between 4 and 8 hours to train a model that contains 2 hours of audio. The actual time depends on the model that is being trained and the nature of the audio, such as whether the audio is clean or noisy. For more information about checking the status of a training operation, see [Monitoring the train model request](#monitorTraining-acoustic).
 
 The method includes the following optional query parameters:
 
