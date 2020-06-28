@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-23"
+lastupdated: "2020-06-27"
 
 subcollection: speech-to-text
 
@@ -31,7 +31,7 @@ Follow these steps to create a custom language model for the {{site.data.keyword
 {: shortdesc}
 
 1.  [Create a custom language model](#createModel-language). You can create multiple custom models for the same or different domains. The process is the same for any model that you create. However, you can specify only a single custom model at a time with a recognition request.
-1.  [Add a corpus to the custom language model](#addCorpus). A corpus is a plain text document that uses terminology from the domain in context. The service builds a vocabulary for a custom model by extracting terms from corpora that do not exist in its base vocabulary. You can add multiple corpora to a custom model.
+1.  [Add a corpus to the custom language model](#addCorpus). A corpus is a plain text document that uses terminology from the domain in context. The service builds a vocabulary for a custom model by extracting terms from corpora that do not exist in its base vocabulary. You can add multiple corpora serially, one at a time, to a custom model.
 1.  [Add words to the custom language model](#addWords). You can also add custom words to a model individually. In addition, you can use the same methods to modify custom words that are extracted from corpora. The methods let you specify the pronunciation of words and how the words are displayed in a speech transcript.
 1.  [Train the custom language model](#trainModel-language). Once you add words to the custom model, you must train the model on the words. Training prepares the custom model for use in speech recognition. The model does not use new or modified words until you train it.
 1.  After you train your custom model, you can use it with recognition requests. If the audio that is passed for transcription contains domain-specific words that are defined in the custom model, the results of the request reflect the model's enhanced vocabulary. You can use only one model at a time with a speech recognition request. For more information, see [Using a custom language model](/docs/speech-to-text?topic=speech-to-text-languageUse).
@@ -188,7 +188,9 @@ The method also accepts an optional `allow_overwrite` query parameter that overw
 
 The method is asynchronous. It can take on the order of minutes to complete. The duration of the operation depends on the total number of words in the corpus, the number of new words that the service finds in the corpus, and the current load on the service. For more information about checking the status of a corpus, see [Monitoring the add corpus request](#monitorCorpus).
 
-You can add any number of corpora to a custom model by calling the method once for each corpus text file. The addition of one corpus must be fully complete before you can add another. After you add a corpus to a custom model, examine the new custom words to check for typographical and other errors. For more information, see [Validating a words resource](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
+You can add any number of corpora to a custom model by calling the method once for each corpus text file. The addition of one corpus must be fully complete before you can add another. A corpus has the status `being_processed` when you first add it to a model. Its status becomes `analyzed` when the service finishes processing it.
+
+Once the addition of a corpus is complete, examine the new custom words that were extracted from it to check for typographical and other errors. For more information, see [Validating a words resource](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
 
 ### Monitoring the add corpus request
 {: #monitorCorpus}
