@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-23"
+lastupdated: "2020-06-27"
 
 subcollection: speech-to-text
 
@@ -38,7 +38,7 @@ The customization interface provides two methods for listing information about t
 
 Both methods return the `name` of the corpus, the `total_words` read from the corpus, and the number of `out-of-vocabulary_words` extracted from the corpus. The methods also list the `status` of the corpus. The status is important for checking the service's analysis of a corpus in response to a request to add it to a custom model:
 
--   `analyzed` indicates that the service successfully analyzed the corpus. The custom model can be trained with data from the corpus.
+-   `analyzed` indicates that the service successfully analyzed the corpus. You can train the custom model with data from the corpus, or you can add additional corpora or words to the model.
 -   `being_processed` indicates that the service is still analyzing the corpus. The service cannot accept requests to add new corpora or words, or to train the custom model, until its analysis is complete.
 -   `undetermined` indicates that the service encountered an error while processing the corpus. The information that is returned for the corpus includes an error message that offers guidance for correcting the error.
 
