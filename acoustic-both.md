@@ -1,8 +1,8 @@
 ---
 
-copyright:
+Copyright:
   years: 2019, 2020
-lastupdated: "2020-06-27"
+lastupdated: "2020-06-30"
 
 subcollection: speech-to-text
 
@@ -34,7 +34,7 @@ You can improve speech recognition accuracy by using complementary custom langua
 The following terms differentiate how a custom acoustic model is trained, alone or with a custom language model:
 
 -   *Unsupervised training* refers to training a custom acoustic model with audio data alone. Training a custom acoustic model on audio alone can improve transcription quality if the characteristics of the custom model's audio match those of the audio that is being transcribed.
--   *Lightly supervised training* refers to training a custom acoustic model with a complementary custom language model. Lightly supervised training is more effective than unsupervised training in improving the quality of speech recognition.
+-   *Lightly supervised training* refers to training a custom acoustic model with a complementary, or "helper," custom language model. Lightly supervised training is more effective than unsupervised training in improving the quality of speech recognition.
 
 Use lightly supervised training in the following cases:
 
@@ -46,16 +46,18 @@ Use lightly supervised training in the following cases:
 
     If you don't have transcripts of your audio files, you can train with a custom language model that includes OOV words from the same domain as your audio data. Training with a custom language model that includes OOV words that are used in the audio can improve speech recognition.
 
-For example, suppose you are creating a custom acoustic model that is based on call-center audio for specific products. You can train the custom acoustic model with a custom language model that contains transcripts of related calls, or you can train with a custom language model that includes just names of specific products that are handled by the call center.
+For example, suppose you are creating a custom acoustic model that is based on call-center audio for specific products. Optimally, you can train the custom acoustic model with a custom language model that contains transcripts of related calls. If transcripts are unavailable, you can still train with a custom language model that includes just names of specific products that are handled by the call center.
 
 ### Guidelines for using lightly supervised training
 {: #useBothTrainGuidelines}
 
-Follow these guidelines when you have transcripts of the audio files from the custom acoustic acoustic model:
+Follow these guidelines when you have transcripts of the audio files from the custom acoustic model:
 
--   Add a transcript to a custom language model as a corpus. The custom language model can include other corpora and words, including transcripts of other audio files. It does not need to be dedicated to a single transcript or to transcripts alone. It is not strictly necessary for the corpus to include only one sentence per line. But as with all corpora, the service can make better use of a corpus that includes each sentence on its own line.
--   It is neither necessary nor possible to associate a specific corpora with a specific audio file. A custom language model can contain multiple corpora, just as a custom acoustic model can include multiple audio files. All contents of a custom language model can help improve the internal transcript of the audio that the service generates during the training process.
--   A transcript does not need to be a verbatim match of all sentences and words from the audio. It can include only sentences and words of the audio that are relevant to the domain. For both language model and acoustic model customization, the training data needs to reflect the actual use-case of the speech that you want to recognize. If only 20 percent of the data (transcript or audio) is specific to the domain of the use-case, use just that 20 percent of the data for training.
+-   Create a dedicated custom language model whose sole purpose is to help train this specific custom acoustic model. The dedicated helper model can contain multiple transcripts for multiple audio files of the same custom acoustic model. It can also include custom words that are relevant to the audio files, though transcripts are more effective in training the custom acoustic model.
+-   Use the dedicated custom language model solely for training the custom acoustic model. Once the custom acoustic model is trained, the custom language model needs to be used only if you update the audio files in the acoustic model.
+-   Add transcripts of your audio files to the custom language model as corpora. It is not strictly necessary for a corpus to include only one sentence per line. But as with all corpora, the service makes noticeably better use of a corpus that includes each sentence on its own line. In general, shorter utterances that occupy separate lines of the corpus are most effective.
+-   It is neither necessary nor possible to associate a specific corpora with a specific audio file. A custom language model can contain multiple corpora, just as a custom acoustic model can include multiple audio files. All contents of a custom language model help improve the internal transcript of the audio that the service generates during the training process.
+-   A transcript does not need to be a verbatim reflection of all sentences and words from the audio. It can include only sentences and words of the audio that are relevant to the domain. For both language model and acoustic model customization, the training data needs to reflect the actual use-case of the speech that you want to recognize. If only 20 percent of the data (transcript or audio) is specific to the domain of the use-case, use just that 20 percent of the data for training.
 
     However, if you are using acoustic model customization to achieve better results for accented speech (for example, for speech by non-native speakers), keep as much audio as possible, even if it's not relevant to the domain. The same is true if you are using acoustic model customization to improve speech recognition accuracy under difficult acoustic conditions, such as a noisy background.
 -   A verbatim transcript does not need to contain the disfluencies, verbal tics, and filler statements that are common to human speech. You can remove these elements from the transcript, the audio, or both. (You can also remove audio in which people are talking over each other, since that does not contribute to the training.)
