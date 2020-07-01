@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-27"
+lastupdated: "2020-07-01"
 
 subcollection: speech-to-text
 
@@ -424,15 +424,15 @@ If the training request fails with a status code of 400, the service sets the cu
 
 You can use the following scripts to experiment with the steps for creating a custom language model:
 
--   A Python script named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.py" download="testSTTcustom.py">testSTTcustom.py <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>. For more information, see [Example Python script](#pythonScript).
--   A Bash shell script named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.sh" download="testSTTcustom.sh">testSTTcustom.sh <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>. For more information, see [Example shell script](#shellScript).
+-   A Python script named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.py" download="testSTTcustom.py">testSTTcustom.py <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>. For more information, see [Example Python script](#pythonScript).
+-   A Bash shell script named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.sh" download="testSTTcustom.sh">testSTTcustom.sh <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>. For more information, see [Example shell script](#shellScript).
 
 The two scripts provide identical functionality. Each script creates a custom model, adds words from a corpus text file, and adds both single and multiple words to the model directly. The script queries the model to list words added from a corpus and directly by the user. It also trains the model and demonstrates the polling that is recommended for monitoring the results of asynchronous operations.
 
 You can use either of two provided corpus text files with the scripts, or you can test with your own corpus files:
 
--   <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/corpus.txt" download="corpus.txt">corpus.txt <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a> is an abbreviated 6 KB corpus that adds six healthcare-related terms to a model. This file produces a small amount of output when used with the scripts. The scripts use this file by default.
--   <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/healthcare.txt" download="healthcare.txt">healthcare.txt <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a> is a richer 164 KB corpus that adds many healthcare-related terms to a model. This file produces much more output when used with the scripts.
+-   <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/corpus.txt" download="corpus.txt">corpus.txt <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a> is an abbreviated 6 KB corpus that adds six healthcare-related terms to a model. This file produces a small amount of output when used with the scripts. The scripts use this file by default.
+-   <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/healthcare.txt" download="healthcare.txt">healthcare.txt <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a> is a richer 164 KB corpus that adds many healthcare-related terms to a model. This file produces much more output when used with the scripts.
 
 By default, the new custom model that you create with either script is available for use with recognition requests. The scripts include an optional step for deleting the new custom model, which can be helpful when you are experimenting with the process. Follow the comments in the scripts to enable the deletion step.
 
@@ -441,7 +441,7 @@ By default, the new custom model that you create with either script is available
 
 Follow these steps to use the Python script:
 
-1.  Download the Python script named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.py" download="testSTTcustom.py">testSTTcustom.py <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
+1.  Download the Python script named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.py" download="testSTTcustom.py">testSTTcustom.py <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
 1.  Download the example corpus text files to use with the script. You are free to test with either of the corpus text files or with a file of your own choosing. By default, all corpus text files must reside in the same directory as the script.
 1.  The script uses the Python `requests` library for HTTP requests to the service. Use `pip` or `easy_install` to install the library for use by the script, for example:
 
@@ -477,7 +477,7 @@ Follow these steps to use the Python script:
 
 Follow these steps to use the Bash shell script:
 
-1.  Download the shell script named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.sh" download="testSTTcustom.sh">testSTTcustom.sh <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
+1.  Download the shell script named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.sh" download="testSTTcustom.sh">testSTTcustom.sh <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
 1.  Download the example corpus text files to use with the script. You are free to test with either of the corpus text files or with a file of your own choosing. By default, all corpus text files must reside in the same directory as the script.
 1.  The script uses the `curl` command for HTTP requests to the service. If you have not already downloaded `curl`, you can install the version for your operating system from [curl.haxx.se](http://curl.haxx.se){: external}. Install the version that supports the Secure Sockets Layer (SSL) protocol, and make sure to include the installed binary file on your `PATH` environment variable.
 1.  Edit the script to replace the `PASSWORD` string `YOUR_IAM_APIKEY` with the API key from your {{site.data.keyword.speechtotextshort}} credentials:

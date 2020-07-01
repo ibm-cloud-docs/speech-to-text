@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-02-04"
+lastupdated: "2020-07-01"
 
 keywords: speech to text,IBM cloud,getting started,tutorial,transcribe audio,speech recognition
 
@@ -69,7 +69,7 @@ Omit the braces from the examples. They indicate variable values.
 
 Call the `POST /v1/recognize` method to request a basic transcript of a FLAC audio file with no additional request parameters.
 
-1.  Download the sample audio file <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac" download="audio-file.flac">audio-file.flac <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
+1.  Download the sample audio file <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac" download="audio-file.flac">audio-file.flac <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
 1.  Issue the following command to call the service's `/v1/recognize` method for basic transcription with no parameters. The example uses the `Content-Type` header to indicate the type of the audio, `audio/flac`. The example uses the default language model, `en-US_BroadbandModel`, for transcription.
     -   {: hide-dashboard} Replace `{apikey}` and `{url}` with your API key and URL.
     -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
@@ -111,7 +111,7 @@ severe thunderstorms swept through Colorado on Sunday "
 
 Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but specify two transcription parameters.
 
-1.  If necessary, download the sample audio file <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac" download="audio-file.flac">audio-file.flac <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
+1.  If necessary, download the sample audio file <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac" download="audio-file.flac">audio-file.flac <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
 1.  Issue the following command to call the service's `/v1/recognize` method with two extra parameters. Set the `timestamps` parameter to `true` to indicate the beginning and end of each word in the audio stream. Set the `max_alternatives` parameter to `3` to receive the three most likely alternatives for the transcription. The example uses the `Content-Type` header to indicate the type of the audio, `audio/flac`, and the request uses the default model, `en-US_BroadbandModel`.
     -   {: hide-dashboard} Replace `{apikey}` and `{url}` with your API key and URL.
     -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
