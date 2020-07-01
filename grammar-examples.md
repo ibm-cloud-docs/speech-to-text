@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2019
-lastupdated: "2019-06-06"
+lastupdated: "2019-07-01"
 
 subcollection: speech-to-text
 
@@ -44,10 +44,10 @@ Confirmation grammars are useful for applications that expect a one-word answer 
   </tr>
   <tr>
     <td style="text-align:center">
-      <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/confirm.abnf" download="confirm.abnf">confirm.abnf <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>
+      <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/confirm.abnf" download="confirm.abnf">confirm.abnf <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>
     </td>
     <td style="text-align:center">
-      <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/confirm.xml" download="confirm.xml">confirm.xml <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>
+      <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/confirm.xml" download="confirm.xml">confirm.xml <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>
     </td>
   </tr>
 </table>
@@ -67,10 +67,10 @@ List grammars are useful for applications that expect the user to select an opti
       </tr>
       <tr>
         <td style="text-align:center">
-          <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/list-numbers.abnf" download="list-numbers.abnf">list-numbers.abnf <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>
+          <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/list-numbers.abnf" download="list-numbers.abnf">list-numbers.abnf <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>
         </td>
         <td style="text-align:center">
-          <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/list-numbers.xml" download="list-numbers.xml">list-numbers.xml <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>
+          <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/list-numbers.xml" download="list-numbers.xml">list-numbers.xml <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>
         </td>
       </tr>
     </table>
@@ -85,7 +85,7 @@ List grammars are useful for applications that expect the user to select an opti
       </tr>
       <tr>
         <td style="text-align:center">
-          <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/list-names.abnf" download="list-names.abnf">list-names.abnf <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>
+          <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/list-names.abnf" download="list-names.abnf">list-names.abnf <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>
         </td>
         <td style="text-align:center">
           Not available
@@ -110,10 +110,10 @@ The following grammars recognize Honda VIN codes. They are more complex than the
   </tr>
   <tr>
     <td style="text-align:center">
-      <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/vins.abnf" download="vins.abnf">vins.abnf <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
+      <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/vins.abnf" download="vins.abnf">vins.abnf <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
     </td>
     <td style="text-align:center">
-      <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/vins.xml" download="vins.xml">vins.xml <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
+      <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/vins.xml" download="vins.xml">vins.xml <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
     </td>
   </tr>
 </table>
@@ -133,7 +133,7 @@ By making certain elements of a response optional, you can make grammars more fl
   </tr>
   <tr>
     <td style="text-align:center">
-      <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/optional.abnf" download="optional.abnf">optional.abnf <img src="../../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>
+      <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/optional.abnf" download="optional.abnf">optional.abnf <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>
     </td>
     <td style="text-align:center">
       Not available
