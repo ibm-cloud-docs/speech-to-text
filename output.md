@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-26"
+lastupdated: "2020-07-02"
 
 subcollection: speech-to-text
 
@@ -755,7 +755,7 @@ severe thunderstorms swept through Colorado on Sunday "
 ## Smart formatting
 {: #smart_formatting}
 
-The smart formatting feature is beta functionality that is available for US English, Japanese, and Spanish.
+The smart formatting feature is beta functionality that is available for US English, Spanish, and Japanese.
 {: beta}
 
 The `smart_formatting` parameter directs the service to convert the following strings into more conventional representations:
@@ -765,139 +765,96 @@ The `smart_formatting` parameter directs the service to convert the following st
 -   Series of digits and numbers
 -   Phone numbers
 -   Currency values (for US English and Spanish)
--   Internet email and web addresses (for US English and Spanish, and only in some cases)
+-   Internet email and web addresses (for US English and Spanish)
 
-You set the `smart_formatting` parameter to `true` to enable smart formatting. By default, the service does not perform smart formatting. The service applies smart formatting just before it returns the final results to the client, when text normalization is complete. The conversion makes the transcript more readable and enables better post-processing of the transcription results.
+You set the `smart_formatting` parameter to `true` to enable smart formatting. By default, the service does not perform smart formatting. The service applies smart formatting just before it returns the final results to the client, when text normalization is complete. The conversion makes the transcript more readable and promotes better post-processing of transcription results by representing these artifacts as they would normally be written.
 
-You need to be aware of the following effects of smart formatting:
+### What results does smart formatting affect?
+{: #smartFormattingEffects}
+
+Smart formatting impacts some transcription results and not others:
 
 -   Smart formatting affects only words in the `transcript` field of final results, those results for which the `final` field is `true`. It does not affect interim results, for which `final` is `false`.
--   Smart formatting does not affect words in other fields of the response. For example, smart formatting is not applied to response data in the `timestamps` and `alternatives` fields.
+-   Smart formatting does not affect words in other fields of the response. For example, smart formatting is not applied to response data in the `timestamps` or `alternatives` fields.
 -   Hesitation markers and disfluencies, such as "uhm" and "uh", can adversely impact the conversion of phrases and strings by smart formatting. Therefore, smart formatting suppresses hesitation markers from the `transcript` field for final results. Hesitation markers continue to appear in interim results. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#hesitation).
-
-### Punctuation (US English)
-{: #smartFormattingPunctuation}
-
-For US English, the feature also directs the service to substitute punctuation symbols for the following spoken keyword strings in the audio.
-
-<table style="width:50%">
-  <caption>Table 2. Smart formatting punctuation keywords</caption>
-  <tr>
-    <th style="width:45%; text-align:left">Keyword string</th>
-    <th style="text-align:center">Resulting punctuation</th>
-  </tr>
-  <tr>
-    <td>
-      Comma
-    </td>
-    <td style="text-align:center">
-      <code>,</code>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Period
-    </td>
-    <td style="text-align:center">
-      <code>.</code>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Question mark
-    </td>
-    <td style="text-align:center">
-      <code>?</code>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      Exclamation point
-    </td>
-    <td style="text-align:center">
-      <code>!</code>
-    </td>
-  </tr>
-</table>
-
-The service converts these keyword strings to symbols only in appropriate places. For example, the service converts the spoken phrase
-
-```
-the warranty period is short period
-```
-{: codeblock}
-
-to the following text in a transcript
-
-```
-the warranty period is short.
-```
-{: codeblock}
 
 ### Language differences
 {: #smartFormattingDifferences}
 
-Smart formatting is based on the presence of obvious keywords in the transcript. The supported languages handle smart formatting slightly differently.
+Smart formatting is based on the presence of obvious keywords in the transcript. Because of differences among the supported languages, smart formatting works slightly differently for each language. The following sections describe the strings and content that trigger smart formatting changes for [US English and Spanish](#smartFormattingEnglishSpanish) and for [Japanese](#smartFormattingJapanese).
 
 #### US English and Spanish
 {: #smartFormattingEnglishSpanish}
 
 -   Times are identified by keywords such as `AM`, `PM`, or `EST`.
--   Military times are converted if they are identified by the keyword `hours`.
--   Phone numbers must be either `911` or a number with 10 or 11 digits that starts with the number `1`.
--   In US English, dollar, cent, and euro values are replaced with their respective currency symbols.
--   In Spanish, dolar, peso, peseta, libras esterlinas, libra, and euro values are replaced with their respective currency symbols.
--   Internet email addresses are converted in some cases. Specifically, the service converts email addresses if the input audio uses the phrasing "email address . . . {address}". The following examples show correct conversions.
+-   Military times are converted if they are identified by the keyword `hours` (*US English*) or `horas` (*Spanish*).
+-   Phone numbers must be either `911` or a number that contains 10 or 11 digits and starts with the number `1`.
+-   Currency symbols are substituted for the following strings in appropriate contexts:
+    -   *For US English,* dollar, cent, and euro.
+    -   *For Spanish,* dolar, peso, peseta, libras esterlinas, libra, and euro.
+-   Internet email addresses are converted in some cases. Specifically, the service converts email addresses if the input audio uses the phrasing `email address ... {address}`. The following examples show a correct conversion of spoken phrases:
+    -   `My email address is j dot d o e at i b m dot com` becomes `My email address is j.doe@ibm.com`.
+    -   `Mi correo electronico es j punto d o e arroba i b m punto com` becomes `Mi correo electronico es j.doe@ibm.com`.
+-   Internet web addresses are converted in their short forms. Fully qualified web addresses are not converted. The following examples show complete conversions:
+    -   `I saw the story on yahoo dot com` becomes `I saw the story on yahoo.com`.
+    -   `Vi la historia en yahoo punto com` becomes `Vi la historia en yahoo.com`.
 
-    <table style="width:100%">
-      <caption>Table 3. Smart formatting of email addresses</caption>
+    The following examples show incomplete conversions:
+    -   `I saw the story on w w w dot yahoo dot com` becomes `I saw the story on w w w .yahoo.com`.
+    -   `Vi la historia en w w w punto yahoo punto com` becomes `Vi la historia en w w w .yahoo.com`.
+-   Conversion of large numbers and currency values can be challenging. The service converts digits and many numbers well. But larger and more complex numbers and currency values work best with more precise phrasing. For example, the service correctly converts the following transcripts because of their precise wording:
+    -   `sixty nine thousand five hundred sixty dollars and twenty five cents` becomes `$69560.25`,
+    -   `sixty nine thousand five hundred sixty dollars point twenty five` becomes `$69560.25`.
+
+    But the service cannot correctly convert the following transcripts due to their looser phrasing:
+    -   `sixty nine thousand five sixty dollars and twenty five cents` becomes `60 9000 $560.25`.
+    -   `sixty nine thousand five sixty dollars point twenty five` becomes `60 9000 $560.25`.
+
+    To correctly convert a greater possible variety of complex numbers, you need to experiment with the results of smart formatting and customize your own post-processing utilities.
+-   *For US English,* certain punctuation symbols are added for special keywords that occur in appropriate places. The service substitutes punctuation symbols for the following keyword strings based on where it finds them in a transcript.
+
+    <table style="width:50%">
+      <caption>Table 2. Smart formatting punctuation keywords for US English</caption>
       <tr>
-        <th style="width:50%; text-align:left">Spoken audio</th>
-        <th style="text-align:left">Trascription</th>
+        <th style="width:45%; text-align:left">Keyword string</th>
+        <th style="text-align:center">Resulting punctuation</th>
       </tr>
       <tr>
         <td>
-          My email address is j dot d o e at i b m dot com
+          `Comma`
         </td>
-        <td>
-          My email address is j.doe@ibm.com
+        <td style="text-align:center">
+          <code>,</code>
         </td>
       </tr>
       <tr>
         <td>
-          Mi correo electronico es j punto d o e arroba i b m punto com
+          `Period`
         </td>
+        <td style="text-align:center">
+          <code>.</code>
+        </td>
+      </tr>
+      <tr>
         <td>
-          Mi correo electronico es j.doe@ibm.com
+          `Question mark`
+        </td>
+        <td style="text-align:center">
+          <code>?</code>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          `Exclamation point`
+        </td>
+        <td style="text-align:center">
+          <code>!</code>
         </td>
       </tr>
     </table>
 
--   Internet web addresses are converted in their short forms. Fully qualified web addresses are not converted. The following examples show complete and incomplete conversions.
-
-    <table style="width:100%">
-      <caption>Table 4. Smart formatting of web addresses</caption>
-      <tr>
-        <th style="width:50%; text-align:left">Spoken audio</th>
-        <th style="text-align:left">Trascription</th>
-      </tr>
-      <tr>
-        <td>
-          I saw the story on yahoo dot com
-        </td>
-        <td>
-          I saw the story on yahoo.com
-        </td>
-      </tr>
-      <tr>
-        <td>
-          I saw the story on w w w dot yahoo dot com
-        </td>
-        <td>
-          I saw the story on w w w .yahoo.com
-        </td>
-      </tr>
-    </table>
+    The service converts these keyword strings to symbols only in appropriate positions of a transcript. In the following example, the speaker says the word `period` at the end of the sentence. The service correctly differentiates between the noun that appears earlier in the sentence and the concluding punctuation.
+    -   `the warranty period is short period` becomes `the warranty period is short.`
 
 #### Japanese
 {: #smartFormattingJapanese}
@@ -906,10 +863,9 @@ Smart formatting is based on the presence of obvious keywords in the transcript.
 -   English words are converted to ASCII (*hankaku*) characters. For example, <code>&#65321;&#65314;&#65325;</code> is converted to `IBM`.
 -   Ambiguous terms might not be converted if sufficient context is unavailable. For example, it is unclear whether <code>&#19968;&#26178;</code> and <code>&#21313;&#20998;</code> refer to times.
 -   Punctuation is handled in the same way with or without smart formatting. For example, based on probability calculations, one of <code>&#12459;&#12531;&#12510;</code> or `,` is selected.
--   Yen values are not replaced with the yen currency symbol.
--   Internet email and web addresses are not converted.
+-   Strings that describe yen values are not replaced with the yen currency symbol.
+-   Internet email and web addresses in any form are not converted.
 -   The Japanese narrowband model (`ja-JP_NarrowbandModel`) includes some multigram word units for digits and decimal fractions. The service returns these multigram units regardless of whether you enable smart formatting. The following examples show the units that the service returns. The numbers in parentheses show the equivalent Arabic numeric expression for each unit.
-
     -   *Digits:* <code>&#12295;&#19968;</code> (01), ..., <code>&#12295;&#20061;</code> (09), <code>&#19968;&#12295;</code> (10), ..., <code>&#20061;&#12295;</code> (90)
     -   *Decimal fractions:* <code>&#12295;&#12539;</code> (0.), <code>&#19968;&#12539;</code> (1.), ..., <code>&#21313;&#12539;</code> (10.)
 
@@ -921,7 +877,7 @@ Smart formatting is based on the presence of obvious keywords in the transcript.
 The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
 
 <table summary="Each heading row is followed by multiple rows of examples that show the effect of smart formatting for the element that is identified in the heading.">
-  <caption>Table 5. Smart formatting example transcripts</caption>
+  <caption>Table 3. Smart formatting example transcripts</caption>
   <tr>
     <th id="without_formatting" style="width:45%; text-align:left">Without
       smart formatting</th>
@@ -1102,7 +1058,7 @@ The following table shows examples of final transcripts both with and without sm
 In cases where an utterance contains long enough pauses of silence, the service can split the transcript into two or more final results. This affects the contents of the response, as shown in the following examples.
 
 <table>
-  <caption>Table 6. Smart formatting example transcripts for long pauses</caption>
+  <caption>Table 4. Smart formatting example transcripts for long pauses</caption>
   <tr>
     <th style="width:45%; text-align:left">Audio speech</th>
     <th style="text-align:left">Formatted transcription results</th>
@@ -1173,10 +1129,10 @@ The feature works exactly as described for US English models but has the followi
 Japanese redaction has the following differences:
 
 -   In addition to masking strings of three or more consecutive digits, redaction also masks street addresses and numbers, regardless of whether they contain fewer than three digits.
--   Similarly, redaction also masks date information in Japanese-style birth dates. In Japanese, date information is usually presented in Latin *Anno Domini* format but sometimes follows Japanese style, particularly for birth dates. In this case, the year and month are masked even though they contain just one or two digits. For example, numeric redaction changes the following string as shown.
+-   Similarly, redaction also masks date information in Japanese-style birth dates. In Japanese, date information is usually presented in Common Era format but sometimes follows Japanese style, particularly for birth dates. In this case, the year and month are masked even though they contain just one or two digits. For example, numeric redaction changes the following string as shown.
 
     <table style="width:50%">
-      <caption>Table 7. Example redaction of Japanese-style birth date</caption>
+      <caption>Table 5. Example redaction of Japanese-style birth date</caption>
       <tr>
         <th style="text-align:left">Without redaction</th>
         <th style="text-align:left">With redaction</th>
@@ -1209,7 +1165,7 @@ Korean redaction has the following differences:
 The following table shows examples of final transcripts both with and without numeric redaction in each supported language.
 
 <table style="width:90%" summary="Each heading row identifies a language and is followed by a single row that shows the same transcript both without and with numeric redaction enabled.">
-  <caption>Table 8. Numeric redaction example transcripts</caption>
+  <caption>Table 6. Numeric redaction example transcripts</caption>
   <tr>
     <th id="without_redaction" style="text-align:left">Without redaction</th>
     <th id="with_redaction" style="text-align:left">With redaction</th>
