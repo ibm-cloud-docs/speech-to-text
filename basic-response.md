@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-08"
+lastupdated: "2020-07-04"
 
 subcollection: speech-to-text
 
@@ -187,7 +187,7 @@ Silence of 30 seconds in streamed audio can result in an [inactivity timeout](/d
 
 The service can include hesitation markers in transcription results when it discovers brief fillers or pauses in speech. Also referred to as disfluencies, such pauses can include fillers such as "uhm", "uh", "hmm", and related non-lexical utterances. Unless you need to use them for your application, you can safely filter hesitation markers from a transcript.
 
-In English, the service uses the hesitation token `%HESITATION`, as shown in the following example. Other languages can use different markers. Hesitation markers can appear in both interim and final results.
+In English, the service uses the hesitation token `%HESITATION`, as shown in the following example. Other languages can use different markers. For instance, Japanese markers begin with `D_`.
 
 ```javascript
 {
@@ -206,6 +206,9 @@ In English, the service uses the hesitation token `%HESITATION`, as shown in the
 }
 ```
 {: codeblock}
+
+Hesitation markers can appear in both interim and final results. However, enabling smart formatting prevents hesitation markers from appearing in final results. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-output#smart_formatting).
+{: note}
 
 Hesitation markers can also appear in other fields of a transcript. For example, if you request [Word timestamps](/docs/speech-to-text?topic=speech-to-text-output#word_timestamps) for the individual words of a transcript, the service reports the start and end time of each hesitation marker.
 
@@ -250,9 +253,6 @@ Hesitation markers can also appear in other fields of a transcript. For example,
 }
 ```
 {: codeblock}
-
-Enabling smart formatting prevents hesitation markers from appearing in final transcription results. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-output#smart_formatting).
-{: note}
 
 ## Capitalization
 {: #capitalization}
