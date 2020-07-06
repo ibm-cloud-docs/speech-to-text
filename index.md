@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-05"
+lastupdated: "2020-07-06"
 
 subcollection: speech-to-text
 
@@ -86,7 +86,7 @@ The interfaces also support the following common output features:
 -   [Word timestamps](/docs/speech-to-text?topic=speech-to-text-output#word_timestamps) return timestamps for the start and end of each word of a transcript.
 -   [Smart formatting](/docs/speech-to-text?topic=speech-to-text-output#smart_formatting) converts dates, times, numbers, currency values, phone numbers, and internet addresses into more readable, conventional forms in final transcripts. For US English, you can also provide keyword phrases to include certain punctuation symbols in final transcripts. Smart formatting is supported for US English, Japanese, and Spanish audio. (Beta functionality.)
 -   [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-output#redaction) redacts, or masks, numeric data from a final transcript. Redaction is intended to remove sensitive personal information, such as credit card numbers, from transcripts. The feature is supported for US English, Japanese, and Korean audio. (Beta functionality.)
--   [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-output#profanity_filter) censors profanity from US English transcripts.
+-   [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-output#profanity_filter) censors profanity from US English transcripts and metadata.
 -   [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-output#silence_time) specifies the duration of the pause interval at which the service splits a transcript into multiple final results in response to silence.
 -   [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-output#split_transcript) directs the services to split a transcript into multiple final results for semantic features such as sentences. The service bases its understanding of semantic features on the base language model that you use with a request. Custom language models and grammars can also influence how and where the service splits a transcript.
 -   [Processing metrics](/docs/speech-to-text?topic=speech-to-text-metrics#processing_metrics) provide detailed timing information about the service's analysis of the input audio.

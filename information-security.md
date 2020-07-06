@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-23"
+lastupdated: "2020-07-06"
 
 subcollection: speech-to-text
 
@@ -52,7 +52,7 @@ US Health Insurance Portability and Accountability Act (HIPAA) support is availa
 
 Do not include personal health information (PHI) in data that you pass to the service. In particular, be sure to remove any PHI from data that you use for custom language models or custom acoustic models.
 
-## Labeling and deleting data in the Speech to Text service
+## Labeling and deleting data in the {{site.data.keyword.speechtotextshort}} service
 {: #gdpr-speech-to-text}
 
 The {{site.data.keyword.speechtotextfull}} service enables you to delete all data that is associated with recognition requests, custom language models, and custom acoustic models. To delete data, you must do the following:
