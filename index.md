@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-07-06"
+lastupdated: "2020-07-09"
 
 subcollection: speech-to-text
 
@@ -32,11 +32,7 @@ subcollection: speech-to-text
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}
 
-The service provides various interfaces that make it suitable for any application where speech is the input and a textual transcript is the output. Example applications include
-
--   Voice control of applications, embedded devices, and vehicle accessories
--   Transcribing meetings and conference calls
--   Dictating email messages and notes
+The service provides various interfaces that make it suitable for any application where speech is the input and a textual transcript is the output. It can be used for applications such as voice-automated chatbots, analytic tools for customer-service call centers, and multi-media transcription. Voice control of embedded devices, transcribing meetings and conference calls, and dictating messages and notes are also possible applications, among many others.
 
 The service is ideal for clients who need to extract high-quality speech transcripts from call center audio. Clients in industries such as financial services, healthcare, insurance, and telecommunication can develop cloud-native applications for customer care, customer voice, agent assistance, and other solutions.
 
