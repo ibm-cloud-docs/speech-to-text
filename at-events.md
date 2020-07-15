@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020
-lastupdated: "2020-06-05"
+lastupdated: "2020-07-15"
 
 keywords: IBM,activity tracker,LogDNA,event,security,speech to text
 
@@ -41,7 +41,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 | `speech-to-text.custom-language-model-word.create`      | Create a word for a custom language model (`PUT /v1/customizations/{customization_id}/words/{word_name}`).              |
 | `speech-to-text.custom-language-model-corpus.create`    | Create a corpus for a custom language model (`POST /v1/customizations/{customization_id}/corpora/{corpus_name}`).       |
 | `speech-to-text.custom-language-model-grammar.create`   | Create a grammar for a custom language model (`POST /v1/customizations/{customization_id}/grammars/{grammar_name}`).    |
-{: caption="Table 1. Language model customization .create actions that generate events" caption-side="top"}
+{: caption="Table 1. Language model customization .create actions that generate events"}
 
 ### Read events
 {: #at_lm_events_read}
@@ -56,7 +56,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 | `speech-to-text.custom-language-model-corpus.read`       | Read a corpus of a custom language model (`GET /v1/customizations/{customization_id}/corpora/{corpus_name}`).       |
 | `speech-to-text.custom-language-model-grammar-list.read` | Read a grammar list of a custom language model (`GET /v1/customizations/{customization_id}/grammars`).              |
 | `speech-to-text.custom-language-model-grammar.read`      | Read a grammar of a custom language model (`GET /v1/customizations/{customization_id}/grammars/{grammar_name}`).    |
-{: caption="Table 2. Language model customization .read actions that generate events" caption-side="top"}
+{: caption="Table 2. Language model customization .read actions that generate events"}
 
 ### Delete events
 {: #at_lm_events_delete}
@@ -67,7 +67,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 | `speech-to-text.custom-language-model-word.delete`    | Delete a word from a custom language model (`DELETE /v1/customizations/{customization_id}/words/{word_name}`).             |
 | `speech-to-text.custom-language-model-corpus.delete`  | Delete a corpus from a custom language model (`DELETE /v1/customizations/{customization_id}/corpora/{corpus_name}`).       |
 | `speech-to-text.custom-language-model-grammar.delete` | Delete a grammar from a custom language model (`DELETE /v1/customizations/{customization_id}/grammars/{grammar_name}`).    |
-{: caption="Table 3. Language model customization .delete actions that generate events" caption-side="top"}
+{: caption="Table 3. Language model customization .delete actions that generate events"}
 
 ### Train event
 {: #at_lm_events_train}
@@ -75,7 +75,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 | Action                                       | Description                                                                                  |
 |----------------------------------------------|----------------------------------------------------------------------------------------------|
 | `speech-to-text.custom-language-model.train` | Train a custom language model (`POST /v1/customizations/{customization_id}/train`).          |
-{: caption="Table 4. Language model customization .train action that generates an event" caption-side="top"}
+{: caption="Table 4. Language model customization .train action that generates an event"}
 
 ### Reset event
 {: #at_lm_events_reset}
@@ -83,7 +83,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 | Action                                       | Description                                                                                  |
 |----------------------------------------------|----------------------------------------------------------------------------------------------|
 | `speech-to-text.custom-language-model.reset` | Reset a custom language model (`POST /v1/customizations/{customization_id}/reset`).          |
-{: caption="Table 5. Language model customization .reset action that generates an event" caption-side="top"}
+{: caption="Table 5. Language model customization .reset action that generates an event"}
 
 ### Upgrade event
 {: #at_lm_events_upgrade}
@@ -91,7 +91,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 | Action                                         | Description                                                                                            |
 |------------------------------------------------|--------------------------------------------------------------------------------------------------------|
 | `speech-to-text.custom-language-model.upgrade` | Upgrade a custom language model (`POST /v1/customizations/{customization_id}/upgrade_model`).          |
-{: caption="Table 6. Language model customization .upgrade action that generates an event" caption-side="top"}
+{: caption="Table 6. Language model customization .upgrade action that generates an event"}
 
 ## Acoustic model customization events
 {: #at_am_events}
@@ -105,7 +105,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 |---------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------|
 | `speech-to-text.custom-acoustic-model.create`           | Create a custom acoustic model (`POST /v1/acoustic_customizations`).                                                    |
 | `speech-to-text.custom-acoustic-model-audio.create`     | Create an audio for a custom acoustic model (`POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`). |
-{: caption="Table 7. Acoustic model customization .create actions that generate events" caption-side="top"}
+{: caption="Table 7. Acoustic model customization .create actions that generate events"}
 
 ### Read events
 {: #at_am_events_read}
@@ -116,7 +116,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 | `speech-to-text.custom-acoustic-model.read`              | Read a custom acoustic model (`GET /v1/acoustic_customizations/{customization_id}`).                                |
 | `speech-to-text.custom-acoustic-model-audio-list.read`   | Read an audio list of a custom acoustic model (`GET /v1/acoustic_customizations/{customization_id}/audio`).         |
 | `speech-to-text.custom-acoustic-model-audio.read`        | Read an audio of a custom acoustic model (`GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`). |
-{: caption="Table 8. Acoustic model customization .read actions that generate events" caption-side="top"}
+{: caption="Table 8. Acoustic model customization .read actions that generate events"}
 
 ### Delete events
 {: #at_am_events_delete}
@@ -125,7 +125,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 |-------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
 | `speech-to-text.custom-acoustic-model.delete`         | Delete a custom acoustic model (`DELETE /v1/acoustic_customizations/{customization_id}`).                                  |
 | `speech-to-text.custom-acoustic-model-audio.delete`   | Delete an audio from a custom acoustic model (`DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`). |
-{: caption="Table 9. Acoustic model customization .delete actions that generate events" caption-side="top"}
+{: caption="Table 9. Acoustic model customization .delete actions that generate events"}
 
 ### Train event
 {: #at_am_events_train}
@@ -133,7 +133,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 | Action                                       | Description                                                                                  |
 |----------------------------------------------|----------------------------------------------------------------------------------------------|
 | `speech-to-text.custom-acoustic-model.train` | Train a custom acoustic model (`POST /v1/acoustic_customizations/{customization_id}/train`). |
-{: caption="Table 10. Acoustic model customization .train action that generates an event" caption-side="top"}
+{: caption="Table 10. Acoustic model customization .train action that generates an event"}
 
 ### Reset event
 {: #at_am_events_reset}
@@ -141,7 +141,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 | Action                                       | Description                                                                                  |
 |----------------------------------------------|----------------------------------------------------------------------------------------------|
 | `speech-to-text.custom-acoustic-model.reset` | Reset a custom acoustic model (`POST /v1/acoustic_customizations/{customization_id}/reset`). |
-{: caption="Table 11. Acoustic model customization .reset action that generates an event" caption-side="top"}
+{: caption="Table 11. Acoustic model customization .reset action that generates an event"}
 
 ### Upgrade event
 {: #at_am_events_upgrade}
@@ -149,7 +149,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 | Action                                         | Description                                                                                            |
 |------------------------------------------------|--------------------------------------------------------------------------------------------------------|
 | `speech-to-text.custom-acoustic-model.upgrade` | Upgrade a custom acoustic model (`POST /v1/acoustic_customizations/{customization_id}/upgrade_model`). |
-{: caption="Table 12. Acoustic model customization .upgrade action that generates an event" caption-side="top"}
+{: caption="Table 12. Acoustic model customization .upgrade action that generates an event"}
 
 ## Asynchronous HTTP interface events
 {: #at_async_events}
@@ -163,7 +163,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 |------------------------------------------------------------|-------------------------------------------------------------------------------------|
 | `speech-to-text.async-recognition-job.create`              | Create an asynchronous recognition job (`POST /v1/recognitions`).                   |
 | `speech-to-text.async-recognition-notification-url.create` | Create an asynchronous recognition notification URL (`POST /v1/register_callback`). |
-{: caption="Table 13. Asynchronous HTTP recognition .create actions that generate events" caption-side="top"}
+{: caption="Table 13. Asynchronous HTTP recognition .create actions that generate events"}
 
 ### Read events
 {: #at_async_events_read}
@@ -172,7 +172,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 |--------------------------------------------------|---------------------------------------------------------------------|
 | `speech-to-text.async-recognition-job-list.read` | Read an asynchronous recognition job list (`GET /v1/recognitions`). |
 | `speech-to-text.async-recognition-job.read`      | Read an asynchronous recognition job (`GET /v1/recognitions/{id}`). |
-{: caption="Table 14. Asynchronous HTTP recognition .read actions that generate events" caption-side="top"}
+{: caption="Table 14. Asynchronous HTTP recognition .read actions that generate events"}
 
 ### Delete events
 {: #at_async_events_delete}
@@ -181,7 +181,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 |------------------------------------------------------------|---------------------------------------------------------------------------------------|
 | `speech-to-text.async-recognition-job.delete`              | Delete an asynchronous recognition job (`DELETE /v1/recognitions/{id}`).              |
 | `speech-to-text.async-recognition-notification-url.delete` | Delete an asynchronous recognition notification URL (`POST /v1/unregister_callback`). |
-{: caption="Table 15. Asynchronous HTTP recognition .delete actions that generate events" caption-side="top"}
+{: caption="Table 15. Asynchronous HTTP recognition .delete actions that generate events"}
 
 ## Where to view events
 {: #at_ui}
