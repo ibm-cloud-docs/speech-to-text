@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-07-03"
+lastupdated: "2020-07-15"
 
 subcollection: speech-to-text
 
@@ -74,7 +74,7 @@ Languages labeled *Beta* are currently beta functionality. Beta languages might 
     <td style="text-align:center"><code>nl-NL_NarrowbandModel</code></td>
   </tr>
   <tr>
-    <td>English (United Kingdon)</td>
+    <td>English (United Kingdom)</td>
     <td style="text-align:center"><code>en-GB_BroadbandModel</code></td>
     <td style="text-align:center"><code>en-GB_NarrowbandModel</code></td>
   </tr>
