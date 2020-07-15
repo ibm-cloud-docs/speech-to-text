@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-07-02"
+lastupdated: "2020-07-15"
 
 subcollection: speech-to-text
 
@@ -39,7 +39,7 @@ The {{site.data.keyword.speechtotextfull}} service offers the following features
 The speaker labels feature is beta functionality that is available for US English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only).
 {: beta}
 
-Speaker labels identify which individuals spoke which words in a multi-participant exchange. (Labeling who spoke and when is sometimes referred to as *speaker diarization*.) You can use the information to develop a person-by-person transcript of an audio stream, such as contact to a call center. Or you can use it to animate an exchange with a conversational robot or avatar. For best performance, use audio that is at least a minute long.
+Speaker labels identify which individuals spoke which words in a multi-participant exchange. (Labeling who spoke and when is sometimes referred to as *speaker diarization*.) You can use the feature to create a person-by-person transcript of an audio stream. For example, you can use it to develop analytics for a call-center or meeting transcript, or to animate an exchange with a conversational robot or avatar. For best performance, use audio that is at least a minute long.
 
 Speaker labels are optimized for two-speaker scenarios. They work best for telephone conversations that involve two people in an extended exchange. They can handle up to six speakers, but more than two speakers can result in variable performance. Two-person exchanges are typically conducted over narrowband media, but you can use speaker labels with supported narrowband and broadband models.
 
@@ -105,35 +105,35 @@ curl -X POST -u "apikey:{apikey}" \
       "from": 0.68,
       "to": 1.19,
       "speaker": 2,
-      "confidence": 0.42,
+      "confidence": 0.52,
       "final": false
     },
     {
       "from": 1.47,
       "to": 1.93,
       "speaker": 1,
-      "confidence": 0.52,
+      "confidence": 0.62,
       "final": false
     },
     {
       "from": 1.96,
       "to": 2.12,
       "speaker": 2,
-      "confidence": 0.41,
+      "confidence": 0.51,
       "final": false
     },
     {
       "from": 2.12,
       "to": 2.59,
       "speaker": 2,
-      "confidence": 0.41,
+      "confidence": 0.51,
       "final": false
     },
     {
       "from": 2.59,
       "to": 3.17,
       "speaker": 2,
-      "confidence": 0.41,
+      "confidence": 0.51,
       "final": false
     },
     . . .
@@ -160,7 +160,7 @@ The `transcript` field shows the final transcript of the audio, which lists the 
       <code>"from": 0.68,<br/>
       "to": 1.19,<br/>
       "speaker": 2,<br/>
-      "confidence": 0.42,<br/>
+      "confidence": 0.52,<br/>
       "final": false</code>
     </td>
   </tr>
@@ -174,7 +174,7 @@ The `transcript` field shows the final transcript of the audio, which lists the 
       <code>"from": 1.47,<br/>
       "to": 1.93,<br/>
       "speaker": 1,<br/>
-      "confidence": 0.52,<br/>
+      "confidence": 0.62,<br/>
       "final": false</code>
     </td>
   </tr>
@@ -188,7 +188,7 @@ The `transcript` field shows the final transcript of the audio, which lists the 
       <code>"from": 1.96,<br/>
       "to": 2.12,<br/>
       "speaker": 2,<br/>
-      "confidence": 0.41,<br/>
+      "confidence": 0.51,<br/>
       "final": false</code>
     </td>
   </tr>
@@ -202,7 +202,7 @@ The `transcript` field shows the final transcript of the audio, which lists the 
       <code>"from": 2.12,<br/>
       "to": 2.59,<br/>
       "speaker": 2,<br/>
-      "confidence": 0.41,<br/>
+      "confidence": 0.51,<br/>
       "final": false</code>
     </td>
   </tr>
@@ -216,7 +216,7 @@ The `transcript` field shows the final transcript of the audio, which lists the 
       <code>"from": 2.59,<br/>
       "to": 3.17,<br/>
       "speaker": 2,<br/>
-      "confidence": 0.41,<br/>
+      "confidence": 0.51,<br/>
       "final": false</code>
     </td>
   </tr>
@@ -228,23 +228,23 @@ The results clearly indicate how this two-person exchange began:
 -   **Speaker 1** - "Yeah?"
 -   **Speaker 2** - "Yeah, how's Billy?"
 
-In the example, the `confidence` fields indicate the service's confidence in its identification of the speakers. The `final` field has a value of `false` for each word. This value indicates that the service is still processing the audio. The service might change its identification of the speaker or its confidence for individual words before it is done.
+In the example, the `confidence` fields indicate the service's confidence in its identification of the speakers. The `final` field for each word is `false`. The service sets the `final` field to `true` only for the last word of the speaker labels that it returns. A value of `true` indicates that the service has completed its analysis of the audio.
 
 ### Speaker IDs for speaker labels
 {: #speakerLabelsIDs}
 
 The example also illustrates an interesting aspect of speaker IDs. In the `speaker` fields, the first speaker has an ID of `2` and the second has an ID of `1`. The service develops a better understanding of the speaker patterns as it processes the audio. Therefore, it can change speaker IDs for individual words, and can also add and remove speakers, until it generates its final results.
 
-As a result, speaker IDs might not be sequential, contiguous, or ordered. For instance, IDs typically start at `0`, but in the previous example, the earliest ID is `1`. The service likely omitted an earlier word assignment for speaker `0` based on further analysis of the audio. Omissions can happen for later speakers, as well. Omissions can result in gaps in the numbering and produce results for two speakers who are labeled, for example, `0` and `2`. Another consideration is that speakers can leave a conversation. So a participant who contributes only to the early stages of a conversation might not appear in later results.
+As a result, speaker IDs might not be sequential, contiguous, or ordered. For instance, IDs typically start at `0`, but in the previous example the earliest ID is `1`. The service likely omitted an earlier word assignment for speaker `0` based on further analysis of the audio. Omissions can happen for later speakers, as well. Omissions can result in gaps in the numbering and produce results for two speakers who are labeled, for example, `0` and `2`. Another consideration is that speakers can leave a conversation. So a participant who contributes only to the early stages of a conversation might not appear in later results.
 
 ### Requesting interim results for speaker labels
 {: #speakerLabelsInterim}
 
 With the WebSocket interface, you can request interim results as well as speaker labels (for more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-output#interim)). Final results are generally better than interim results. But interim results can help identify the evolution of a transcript and the assignment of speaker labels. Interim results can indicate where transient speakers and IDs appeared or disappeared. However, the service can reuse the IDs of speakers that it initially identifies and later reconsiders and omits. Therefore, an ID might refer to two different speakers in interim and final results.
 
-When you request both interim results and speaker labels, final results for long audio streams might arrive well after initial interim results are returned. It is also possible for some interim results to include only a `speaker_labels` field without the `results` and `result_index` fields. If you do not request interim results, the service returns final results that include `results` and `result_index` fields and a single `speaker_labels` field.
+When you request both interim results and speaker labels, final results for long audio streams might arrive well after initial interim results are returned. It is also possible for some interim results to include only a `speaker_labels` field without the `results` and `result_index` fields for the transcript as a whole. If you do not request interim results, the service returns final results that include `results` and `result_index` fields and a single `speaker_labels` field.
 
-The service sends final results when the audio stream is complete or in response to a timeout, whichever occurs first. The service sets the `final` field to `true` only for the last word of the speaker labels that it returns in either case.
+With interim results, a `final` field with a value of `false` for a word in the `speaker_labels` field can indicate that the service is still processing the audio. The service might change its identification of the speaker or its confidence for individual words before it is done. The service sends final results when the audio stream is complete or in response to a timeout, whichever occurs first. The service sets the `final` field to `true` only for the last word of the speaker labels that it returns in either case.
 
 ### Performance considerations for speaker labels
 {: #speakerLabelsPerformance}
@@ -255,9 +255,9 @@ As noted previously, the speaker labels feature is optimized for two-person conv
 -   Similarly, performance for audio with a dominant speaker, such as a podcast, can be poor. The service tends to miss speakers who talk for shorter amounts of time, and it can also produce hallucinations.
 -   Performance for audio with more than six speakers is undefined. The feature can handle a maximum of six speakers.
 -   Performance for short utterances can be less accurate than for long utterances. The service produces better results when participants speak for longer amounts of time, at least 30 seconds per speaker. The relative amount of audio that is available for each speaker can also affect performance.
--   Performance can degrade for the first 30 seconds of speech. It usually improves to a reasonable level after 1 minute of audio.
+-   Performance can degrade for the first 30 seconds of speech. It usually improves to a reasonable level after 1 minute of audio, as the service receives more data to work with.
 
-As with all transcription, performance can also be affected by poor audio quality, background noise, a person's manner of speech, overlapping speakers, and other aspects of the audio.
+As with all transcription, performance can also be affected by poor audio quality, background noise, a person's manner of speech, overlapping speakers, and other aspects of the audio. {{site.data.keyword.IBM_notm}} continues to refine and improve the performance of the speaker labels feature. For more information about the latest improvements, see [IBM Research AI Advances Speaker Diarization in Real Use Cases](https://www.ibm.com/blogs/research/2020/07/speaker-diarization-in-real-use-cases/){: external}.
 
 ## Keyword spotting
 {: #keyword_spotting}

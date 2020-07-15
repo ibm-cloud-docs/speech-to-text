@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-23"
+lastupdated: "2020-07-15"
 
 subcollection: speech-to-text
 
@@ -226,7 +226,7 @@ For more information, see the following sections:
 ### 25 November 2019
 {: #November2019c}
 
-Speaker labels are updated to improve the identification of individual speakers for further analysis of your audio sample. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
+Speaker labels are updated to improve the identification of individual speakers for further analysis of your audio sample. For more information about the speaker labels feature, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels). For more information about the improvements to the feature, see [IBM Research AI Advances Speaker Diarization in Real Use Cases](https://www.ibm.com/blogs/research/2020/07/speaker-diarization-in-real-use-cases/){: external}.
 
 ### 12 November 2019
 {: #November2019b}
