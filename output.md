@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-07-15"
+lastupdated: "2020-07-17"
 
 subcollection: speech-to-text
 
@@ -266,14 +266,18 @@ The keyword spotting feature detects specified strings in a transcript. The serv
 
 To use keyword spotting, you must specify both of the following parameters:
 
--   Use the `keywords` parameter to specify an array of strings to be spotted. The service spots no keywords if you omit the parameter or specify an empty array. A keyword string can include more than one token. For example, the keyword `Speech to Text` has three tokens.
+-   Use the `keywords` parameter to specify an array of strings to be spotted. The service spots no keywords if you omit the parameter or specify an empty array. A keyword string can include more than one token. For example, the keyword `Speech to Text` has three tokens. Keyword matching is case-insensitive, so `Speech to Text` is effectively equivalent to `speech to text`.
 
     For US English, the service normalizes each keyword to match spoken versus written strings. For example, it normalizes numbers to match how they are spoken as opposed to written. For other languages, keywords must be specified as they are spoken.
-
-    You can spot a maximum of 1000 keywords with a single request. A single keyword can have a maximum length of 1024 characters, though the maximum effective length for double-byte languages might be shorter. Keywords are case-insensitive.
 -   Use the `keywords_threshold` parameter to specify a probability between 0.0 and 1.0 for a keyword match. The threshold indicates the lower bound for the level of confidence the service must have for a word to match the keyword. A keyword is spotted in the transcript only if its confidence is greater than or equal to the specified threshold.
 
     Specifying a small threshold can potentially produce many matches. If you specify a threshold, you must also specify one or more keywords. Omit the parameter to return no matches.
+
+The following limits apply to keyword spotting:
+
+-   You can spot a maximum of 1000 keywords with a single request.
+-   A single keyword can have a maximum length of 1024 characters. The maximum effective length for double-byte languages might be shorter.
+-   Most HTTP servers and proxies impose a limit of 8 KB on the parameters of a request. Spotting a very large number of keywords or many lengthy keywords can exceed this limit. If you need to match more keywords, consider using a [multipart HTTP request](/docs/speech-to-text?topic=speech-to-text-http#HTTP-multi).
 
 Keyword spotting is necessary to identify keywords in an audio stream. You cannot identify keywords by processing a final transcript because the transcript represents the service's best decoding results for the input audio. It does not include tokens with lower confidence scores that might represent a word of interest. So applying text processing tools to a transcript on the client side might not identify keywords. A richer representation of decoding results is needed, and that representation is available only at the server.
 
