@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-08"
+lastupdated: "2020-07-20"
 
 subcollection: speech-to-text
 
@@ -242,7 +242,7 @@ For more information, see [Request logging](/docs/speech-to-text?topic=speech-to
 ### Information security
 {: #customSecurity}
 
-You can associate a customer ID with data that is added or updated for custom language and custom acoustic models. You associate a customer ID with corpora, custom words, grammars, and audio resources by passing the `X-Watson-Metadata` header with the following methods:
+You can associate a customer ID with data that is added or updated for custom language and custom acoustic models. You associate a customer ID with corpora, custom words, grammars, and audio resources by passing the `X-Watson-Metadata` header with the following methods. If necessary, you can then delete the data by using the `DELETE /v1/user_data` method.
 
 -   `POST /v1/customizations/{customization_id}/corpora/{corpus_name}`
 -   `POST /v1/customizations/{customization_id}/words`
@@ -250,4 +250,6 @@ You can associate a customer ID with data that is added or updated for custom la
 -   `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`
 -   `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`
 
-If necessary, you can then delete the data by using the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/speech-to-text?topic=speech-to-text-information-security).
+In addition, if you delete an instance of the {{site.data.keyword.speechtotextshort}} service from the {{site.data.keyword.cloud_notm}} console, all data associated with that service instance is automatically deleted. This includes all custom language models, corpora, grammars, and words, and all custom acoustic models and audio resources. This data is purged automatically and regardless of whether a customer ID is associated with the data.
+
+For more information, see [Information security](/docs/speech-to-text?topic=speech-to-text-information-security).
