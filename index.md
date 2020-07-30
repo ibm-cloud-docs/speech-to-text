@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-07-09"
+lastupdated: "2020-07-30"
 
 subcollection: speech-to-text
 
@@ -35,6 +35,9 @@ The {{site.data.keyword.speechtotextfull}} service provides speech transcription
 The service provides various interfaces that make it suitable for any application where speech is the input and a textual transcript is the output. It can be used for applications such as voice-automated chatbots, analytic tools for customer-service call centers, and multi-media transcription. Voice control of embedded devices, transcribing meetings and conference calls, and dictating messages and notes are also possible applications, among many others.
 
 The service is ideal for clients who need to extract high-quality speech transcripts from call center audio. Clients in industries such as financial services, healthcare, insurance, and telecommunication can develop cloud-native applications for customer care, customer voice, agent assistance, and other solutions.
+
+This documentation describes managed instances of {{site.data.keyword.speechtotextfull}} that are offered in {{site.data.keyword.cloud_notm}} or in {{site.data.keyword.icp4dfull_notm}} as a Service. If you are interested in on-premises or installed deployments of the service, see [About {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](https://{DomainName}/docs/speech-to-text-data?topic=speech-to-text-data-about#about){: external}.
+{: note}
 
 ## Supported interfaces
 {: #interfaces}
