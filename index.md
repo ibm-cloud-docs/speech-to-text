@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-07-30"
+lastupdated: "2020-08-06"
 
 subcollection: speech-to-text
 
@@ -27,7 +27,7 @@ subcollection: speech-to-text
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 4 June 2020 to improve the latency for custom language models that include a large number of grammars. For more information, see the [4 June 2020 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#June2020) in the release notes.*
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 5 August 2020. The service now offers beta broadband and narrowband models for Australian English (`en-AU_BroadbandModel` and `en-AU_NarrowbandModel`). A number of existing models have been updated for improved speech recognition. And the hesitation marker for German speech is now `%HESITATION`. For more information, see the [5 August 2020 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#August2020) in the release notes.*
 
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}
@@ -76,7 +76,7 @@ The service's interfaces share common input features for transcribing speech to 
 
 The interfaces also support the following common output features:
 
--   [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels) recognize different speakers from audio in US English, UK English, German, Japanese, Korean, and Spanish. The transcription labels each speaker's contributions to a multi-participant conversation. (Beta functionality.)
+-   [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels) recognize different speakers from audio in US English, UK English, Australian English, German, Japanese, Korean, and Spanish. The transcription labels each speaker's contributions to a multi-participant conversation. (Beta functionality.)
 -   [Keyword spotting](/docs/speech-to-text?topic=speech-to-text-output#keyword_spotting) identifies spoken phrases that match specified keyword strings with a user-defined level of confidence. Keyword spotting is especially useful when individual phrases from the audio are more important than the full transcription. For example, a customer support system might identify keywords to determine how to route user requests.
 -   [Interim results](/docs/speech-to-text?topic=speech-to-text-output#interim) return progressive hypotheses as transcription progresses. The service returns final results when transcription is complete. Interim results are available only with the WebSocket interface.
 -   [Maximum alternatives](/docs/speech-to-text?topic=speech-to-text-output#max_alternatives) provide possible alternative transcripts. The service indicates final results in which it has the greatest confidence.
@@ -102,7 +102,7 @@ The service offers models for the following languages and dialects:
 -   Brazilian Portuguese
 -   Chinese (Mandarin)
 -   Dutch
--   English (United Kingdom and United States)
+-   English (Australian, United Kingdom, and United States)
 -   French
 -   German
 -   Italian
@@ -112,6 +112,7 @@ The service offers models for the following languages and dialects:
 
 The service does not support all features for all languages. Moreover, it supports some features as generally available (GA) for production use and others as beta offerings for different languages.
 
+-   The UK and US English dialects are generally available. The Australian English dialect is beta.
 -   The Spanish Castilian dialect is generally available. The other five Spanish dialects are beta.
 -   The WebSocket and HTTP interfaces are generally available for all languages.
 -   The service offers broadband models, narrowband models, or both for different languages. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).

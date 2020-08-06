@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-07-15"
+lastupdated: "2020-08-06"
 
 subcollection: speech-to-text
 
@@ -72,6 +72,11 @@ Languages labeled *Beta* are currently beta functionality. Beta languages might 
     <td>Dutch</td>
     <td style="text-align:center"><code>nl-NL_BroadbandModel</code></td>
     <td style="text-align:center"><code>nl-NL_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>English (Australian, Beta)</td>
+    <td style="text-align:center"><code>en-AU_BroadbandModel</code></td>
+    <td style="text-align:center"><code>en-AU_NarrowbandModel</code></td>
   </tr>
   <tr>
     <td>English (United Kingdom)</td>
@@ -144,7 +149,9 @@ Languages labeled *Beta* are currently beta functionality. Beta languages might 
 ### The US English short-form model
 {: #modelsShortform}
 
-The US English short-form model, `en-US_ShortForm_NarrowbandModel`, can improve speech recognition for Interactive Voice Response (IVR) and Automated Customer Support solutions. The short-form model is trained to recognize the short utterances that are frequently expressed in customer support settings like automated support call centers. In addition to being tuned for short utterances in general, the model is also tuned for precise utterances such as digits, single-character word and name spellings, and yes-no responses. Applying a custom language model with a grammar to the short-form model can further improve recognition results.
+The US English short-form model, `en-US_ShortForm_NarrowbandModel`, can improve speech recognition for Interactive Voice Response (IVR) and Automated Customer Support solutions. The short-form model is trained to recognize the short utterances that are frequently expressed in customer support settings like automated support call centers. In addition to being tuned for short utterances in general, the model is also tuned for precise utterances such as digits, single-character word and name spellings, and yes-no responses.
+
+The `en-US_ShortForm_NarrowbandModel` is optimal for the kinds of responses that are common to human-to-machine exchanges, such as the use case of {{site.data.keyword.iva_full}}. The `en-US_NarrowbandModel` is generally optimal for human-to-human conversations. However, depending on the use case and the nature of the exchange, some users might find the short-form model suitable for human-to-human conversations as well. Given this flexibility and overlap, you might experiment with both models to determine which works best for your application. In either case, applying a custom language model with a grammar to the short-form model can further improve recognition results.
 
 As with all models, noisy environments can adversely impact the results. For example, background acoustic noise from airports, moving vehicles, conference rooms, and multiple speakers can reduce transcription accuracy. Audio from speaker phones can also reduce accuracy due to the echo common to such devices. Using the parameters available for speech activity detection can counteract such effects and help improve speech transcription accuracy. Applying a custom acoustic model can further fine-tune the acoustics for speech recognition, but only as a final measure.
 
@@ -183,6 +190,9 @@ Both methods return the following information about a model:
 -   `supported_features` describes the additional service features that are supported with the model:
     -   `custom_language_model` is a boolean that indicates whether you can create custom language models that are based on the model.
     -   `speaker_labels` indicates whether you can use the `speaker_labels` parameter with the model.
+
+    The `speaker_labels` field returns `true` for all models. However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
+    {: note}
 
 The order in which the service returns models can change from call to call. Do not rely on an alphabetized or static list of models. Because the models are returned as an array of JSON objects, the order has no bearing on programmatic uses of the response.
 {: note}

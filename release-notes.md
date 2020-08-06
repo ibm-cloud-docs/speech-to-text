@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-07-15"
+lastupdated: "2020-08-06"
 
 subcollection: speech-to-text
 
@@ -31,7 +31,34 @@ The following sections document the new features and changes that were included 
 ## Known limitations
 {: #limitations}
 
-No known limitations at this time.
+The service has the following know limitation:
+
+-   The `GET /v1/models` and `GET /v1/models/{model_id}` methods list information about language models. Under `supported_features`, the `speaker_labels` field indicates whether you can use the `speaker_labels` parameter with a model. At this time, the field returns `true` for all models. However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
+
+    For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
+
+## 5 August 2020
+{: #August2020}
+
+-   The service now offers beta broadband and narrowband models for Australian English:
+    -   `en-AU_BroadbandModel`
+    -   `en-AU_NarrowbandModel`
+
+    The new models do not support language model or acoustic model customization, or smart formatting. The new models do support speakers labels. For more information, see
+    -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList)
+    -   [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels)
+-   The following models have been updated for improved speech recognition:
+    -   `en-GB_BroadbandModel` and `en-GB_NarrowbandModel`
+    -   `de-DE_BroadbandModel` and `de-DE_NarrowbandModel`
+    -   `fr-FR_BroadbandModel`
+    -   `en-US_ShortForm_NarrowbandModel`
+
+    By default, the service automatically uses the updated models for all speech recognition requests. If you have custom language or custom acoustic models that are based on these models, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
+    -   `POST /v1/customizations/{customization_id}/upgrade_model`
+    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+
+    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+-   The hesitation marker that is used for the updated German broadband and narrowband models has changed from `[hesitation]` to `%HESITATION`. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#hesitation).
 
 ## 4 June 2020
 {: #June2020}
@@ -56,19 +83,10 @@ This release fixes a latency issue for custom language models that contain a lar
     -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList)
     -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
 
-## 1 April 2020
-{: #April2020a}
-
-Acoustic model customization is now generally available (GA) for all supported languages. As with custom language models, {{site.data.keyword.IBM_notm}} does not charge for creating or hosting a custom acoustic model. You are charged only for using a custom model with a speech recognition request.
-
-Using a custom language model, a custom acoustic model, or both types of model for transcription incurs an add-on charge of $0.03 (USD) per minute. This charge is in addition to the standard usage charge of $0.02 (USD) per minute, and it applies to all languages supported by the customization interface. So the total charge for using one or more custom models for speech recognition is $0.05 (USD) per minute.
-
--   For more information about support for individual language models, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
--   For more information about pricing, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service or the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
-
 ## Older releases
 {: #older}
 
+-   [1 April 2020](#April2020a)
 -   [16 March 2020](#March2020)
 -   [24 February 2020](#February2020)
 -   [18 December 2019](#December2019c)
@@ -122,6 +140,16 @@ Using a custom language model, a custom acoustic model, or both types of model f
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 1 April 2020
+{: #April2020a}
+
+Acoustic model customization is now generally available (GA) for all supported languages. As with custom language models, {{site.data.keyword.IBM_notm}} does not charge for creating or hosting a custom acoustic model. You are charged only for using a custom model with a speech recognition request.
+
+Using a custom language model, a custom acoustic model, or both types of model for transcription incurs an add-on charge of $0.03 (USD) per minute. This charge is in addition to the standard usage charge of $0.02 (USD) per minute, and it applies to all languages supported by the customization interface. So the total charge for using one or more custom models for speech recognition is $0.05 (USD) per minute.
+
+-   For more information about support for individual language models, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+-   For more information about pricing, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service or the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
 
 ### 16 March 2020
 {: #March2020}
