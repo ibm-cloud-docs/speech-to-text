@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-07-17"
+lastupdated: "2020-08-05"
 
 subcollection: speech-to-text
 
@@ -36,7 +36,7 @@ The {{site.data.keyword.speechtotextfull}} service offers the following features
 ## Speaker labels
 {: #speaker_labels}
 
-The speaker labels feature is beta functionality that is available for US English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only).
+The speaker labels feature is beta functionality that is available for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only).
 {: beta}
 
 Speaker labels identify which individuals spoke which words in a multi-participant exchange. (Labeling who spoke and when is sometimes referred to as *speaker diarization*.) You can use the feature to create a person-by-person transcript of an audio stream. For example, you can use it to develop analytics for a call-center or meeting transcript, or to animate an exchange with a conversational robot or avatar. For best performance, use audio that is at least a minute long.

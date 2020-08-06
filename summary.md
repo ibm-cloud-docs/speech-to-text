@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-03-31"
+lastupdated: "2020-08-05"
 
 subcollection: speech-to-text
 
@@ -993,7 +993,7 @@ An optional boolean that indicates whether the service identifies which individu
       **Availability**
     </td>
     <td style="text-align:left">
-      Beta for US English, German, Japanese, Korean, and Spanish (broadband and narrowband models) and UK English (narrowband model only)
+      Beta for US English, Australian English, German, Japanese, Korean, and Spanish (broadband and narrowband models) and UK English (narrowband model only)
     </td>
   </tr>
   <tr>
