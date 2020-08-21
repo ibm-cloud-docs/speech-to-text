@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-08-06"
+lastupdated: "2020-08-18"
 
 subcollection: speech-to-text
 
@@ -93,6 +93,11 @@ Languages labeled *Beta* are currently beta functionality. Beta languages might 
     <td>French</td>
     <td style="text-align:center"><code>fr-FR_BroadbandModel</code></td>
     <td style="text-align:center"><code>fr-FR_NarrowbandModel</code></td>
+  </tr>
+  <tr>
+    <td>French (Canadian, Beta)</td>
+    <td style="text-align:center"><code>fr-CA_BroadbandModel</code></td>
+    <td style="text-align:center"><code>fr-CA_NarrowbandModel</code></td>
   </tr>
   <tr>
     <td>German</td>

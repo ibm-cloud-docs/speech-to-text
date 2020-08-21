@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-08-05"
+lastupdated: "2020-08-18"
 
 subcollection: speech-to-text
 
@@ -160,6 +160,11 @@ You can use both broadband and narrowband models with any supported language for
     <td>French</td>
     <td style="text-align:center">GA</td>
     <td style="text-align:center">GA</td>
+  </tr>
+  <tr>
+    <td>French (Canadian)</td>
+    <td style="text-align:center">Not supported</td>
+    <td style="text-align:center">Not supported</td>
   </tr>
   <tr>
     <td>German</td>

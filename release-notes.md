@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-08-06"
+lastupdated: "2020-08-18"
 
 subcollection: speech-to-text
 
@@ -37,8 +37,17 @@ The service has the following know limitation:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
 
+## 20 August 2020
+{: #August2020b}
+
+-   The service now offers beta broadband and narrowband models for Canadian French:
+    -   `fr-CA_BroadbandModel`
+    -   `fr-CA_NarrowbandModel`
+
+    The new models do not support language model or acoustic model customization, speaker labels, or smart formatting. For more information about these and all supported models, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList).
+
 ## 5 August 2020
-{: #August2020}
+{: #August2020a}
 
 -   The service now offers beta broadband and narrowband models for Australian English:
     -   `en-AU_BroadbandModel`
@@ -83,10 +92,19 @@ This release fixes a latency issue for custom language models that contain a lar
     -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList)
     -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
 
+## 1 April 2020
+{: #April2020a}
+
+Acoustic model customization is now generally available (GA) for all supported languages. As with custom language models, {{site.data.keyword.IBM_notm}} does not charge for creating or hosting a custom acoustic model. You are charged only for using a custom model with a speech recognition request.
+
+Using a custom language model, a custom acoustic model, or both types of model for transcription incurs an add-on charge of $0.03 (USD) per minute. This charge is in addition to the standard usage charge of $0.02 (USD) per minute, and it applies to all languages supported by the customization interface. So the total charge for using one or more custom models for speech recognition is $0.05 (USD) per minute.
+
+-   For more information about support for individual language models, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+-   For more information about pricing, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service or the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
+
 ## Older releases
 {: #older}
 
--   [1 April 2020](#April2020a)
 -   [16 March 2020](#March2020)
 -   [24 February 2020](#February2020)
 -   [18 December 2019](#December2019c)
@@ -140,16 +158,6 @@ This release fixes a latency issue for custom language models that contain a lar
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
-
-### 1 April 2020
-{: #April2020a}
-
-Acoustic model customization is now generally available (GA) for all supported languages. As with custom language models, {{site.data.keyword.IBM_notm}} does not charge for creating or hosting a custom acoustic model. You are charged only for using a custom model with a speech recognition request.
-
-Using a custom language model, a custom acoustic model, or both types of model for transcription incurs an add-on charge of $0.03 (USD) per minute. This charge is in addition to the standard usage charge of $0.02 (USD) per minute, and it applies to all languages supported by the customization interface. So the total charge for using one or more custom models for speech recognition is $0.05 (USD) per minute.
-
--   For more information about support for individual language models, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
--   For more information about pricing, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service or the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
 
 ### 16 March 2020
 {: #March2020}
