@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-08-06"
+lastupdated: "2020-08-18"
 
 subcollection: speech-to-text
 
@@ -27,7 +27,7 @@ subcollection: speech-to-text
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 5 August 2020. The service now offers beta broadband and narrowband models for Australian English (`en-AU_BroadbandModel` and `en-AU_NarrowbandModel`). A number of existing models have been updated for improved speech recognition. And the hesitation marker for German speech is now `%HESITATION`. For more information, see the [5 August 2020 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#August2020) in the release notes.*
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 20 August 2020. The service now offers beta broadband and narrowband models for Canadian French (`fr-CA_BroadbandModel` and `fr-CA_NarrowbandModel`). For more information, see the [20 August 2020 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#August2020b) in the release notes.*
 
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}
@@ -103,7 +103,7 @@ The service offers models for the following languages and dialects:
 -   Chinese (Mandarin)
 -   Dutch
 -   English (Australian, United Kingdom, and United States)
--   French
+-   French (French and Canadian)
 -   German
 -   Italian
 -   Japanese
@@ -114,6 +114,7 @@ The service does not support all features for all languages. Moreover, it suppor
 
 -   The UK and US English dialects are generally available. The Australian English dialect is beta.
 -   The Spanish Castilian dialect is generally available. The other five Spanish dialects are beta.
+-   The French dialect is generally available. The Canadian French dialect is beta.
 -   The WebSocket and HTTP interfaces are generally available for all languages.
 -   The service offers broadband models, narrowband models, or both for different languages. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
 -   Some speech recognition features are available only for some languages. For more information, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
