@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-08-05"
+lastupdated: "2020-08-28"
 
 subcollection: speech-to-text
 
@@ -1394,6 +1394,9 @@ curl -X POST -u "apikey:{apikey}" \
 
 ## Split transcript at phrase end
 {: #split_transcript}
+
+The split transcript at phrase end feature is generally available for US English and UK English only.
+{: note}
 
 The `split_transcript_at_phrase_end` parameter directs the service to split the transcript into multiple final results based on semantic features of the input. Setting the parameter to `true` causes the service to split the transcript at the conclusion of meaningful phrases such as sentences. The service bases its understanding of semantic features on the base language model that you use with the request along with a custom language model or grammar that you use. Custom language models and grammars can influence how and where the service splits a transcript.
 
