@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-27"
+lastupdated: "2020-08-31"
 
 subcollection: speech-to-text
 
@@ -32,14 +32,14 @@ Follow these steps to create a custom acoustic model for the {{site.data.keyword
 
 1.  [Create a custom acoustic model](#createModel-acoustic). You can create multiple custom models for the same or different domains or environments. The process is the same for any model that you create. However, you can specify only a single custom acoustic model at a time with a recognition request.
 1.  [Add audio to the custom acoustic model](#addAudio). The service accepts the same audio file formats for acoustic modeling that it accepts for speech recognition. It also accepts archive files that contain multiple audio files. Archive files are the preferred means of adding audio resources. You can repeat the method to add more audio or archive files to a custom model.
-1.  [Train the custom acoustic model](#trainModel-acoustic). Once you add audio resources to the custom model, you must train the model. Training prepares the custom acoustic model for use in speech recognition. Training can take a significant amount of time. The length of the training depends on the amount of audio data that the model contains.
+1.  [Train the custom acoustic model](#trainModel-acoustic). Once you add audio resources to the custom model, you must train the model. Training prepares the custom acoustic model for use in speech recognition. The training time depends on the cumulative amount of audio data that the model contains.
 
     You can specify a helper custom language model during training of your custom acoustic model. A custom language model that includes transcriptions of your audio files or OOV words from the domain of your audio files can improve the quality of the custom acoustic model. For more information, see [Training a custom acoustic model with a custom language model](/docs/speech-to-text?topic=speech-to-text-useBoth#useBothTrain).
 1.  After you train your custom model, you can use it with recognition requests. If the audio passed for transcription has acoustic qualities that are similar to the audio of the custom model, the results reflect the service's enhanced understanding. You can use only one custom acoustic model at a time with a speech recognition request. For more information, see [Using a custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acousticUse).
 
     You can pass both a custom acoustic model and a custom language model in the same recognition request to further improve recognition accuracy. For more information, see [Using custom language and custom acoustic models during speech recognition](/docs/speech-to-text?topic=speech-to-text-useBoth#useBothRecognize).
 
-The steps for creating a custom acoustic model are iterative. You can add or delete audio and train or retrain a model as often as needed. You must retrain a model for any changes to its audio to take effect. When you retrain a model, all audio data is used in the training (not just the new data). So the training time is commensurate with the total amount of audio that is contained in the model.
+The steps for creating a custom acoustic model are iterative. You can add or delete audio and retrain a model as often as needed. You must retrain a model for any changes to its audio to take effect.
 
 ## Create a custom acoustic model
 {: #createModel-acoustic}
@@ -223,7 +223,9 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-The method is asynchronous. Training can take on the order of minutes or hours to complete, depending on the amount of audio data that the custom acoustic model contains and the current load on the service. A general guideline is that training a custom acoustic model can take approximately two to four times the length of its audio data. For example, it can take between 4 and 8 hours to train a model that contains 2 hours of audio. The actual time depends on the model that is being trained and the nature of the audio, such as whether the audio is clean or noisy. For more information about checking the status of a training operation, see [Monitoring the train model request](#monitorTraining-acoustic).
+The method is asynchronous. Training time depends on the cumulative amount of audio data that the custom acoustic model contains and the current load on the service. When you train or retrain a model, the service uses all of the model's audio data (not just new data) in the training. So training time is commensurate with the total amount of audio that the model contains.
+
+A general guideline is that training a custom acoustic model takes approximately as long as the length of its cumulative audio data. For example, it takes approximately 2 hours to train a model that contains a total of 2 hours of audio. For more information about checking the status of a training operation, see [Monitoring the train model request](#monitorTraining-acoustic).
 
 The method includes the following optional query parameters:
 
