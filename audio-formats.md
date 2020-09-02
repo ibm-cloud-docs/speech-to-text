@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-03-31"
+lastupdated: "2020-09-02"
 
 subcollection: speech-to-text
 
@@ -590,18 +590,18 @@ The following freeware tools are available to convert your audio from one format
 -   Sound eXchange (SoX) ([sox.sourceforge.net](http://sox.sourceforge.net){: external}).
 -   FFmpeg ([ffmpeg.org](https://www.ffmpeg.org){: external}). You can also use FFmpeg to separate audio from a multimedia file that contains both audio and video data. For more information, see [Transcribing speech from video files](#videoFiles).
 -   Audacity&reg; ([audacityteam.org](http://www.audacityteam.org/){: external}).
--   For Ogg format with the Opus codec, **opus-tools** ([opus-codec.org/downloads/](http://opus-codec.org/downloads/){: external}).
+-   For Ogg format with the Opus codec, **opus-tools** ([opus-codec.org](https://opus-codec.org/){: external}).
 
 These tools offer cross-platform support for multiple audio formats. Moreover, you can use many of the tools to play your audio. Do not use the tools to violate applicable copyright laws.
 
 ### Converting to audio/ogg with the Opus codec
 {: #conversionOgg}
 
-The [**opus-tools**](http://opus-codec.org/downloads/){: external} include three command-line utilities for working with Ogg audio in the Opus codec:
+The [**opus-tools**](https://opus-codec.org/release/dev/2018/09/18/opus-tools-0_2.html){: external} include three command-line utilities for working with Ogg audio in the Opus codec:
 
--   The [**opusenc**](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusenc.html){: external} utility encodes audio from WAV, FLAC, and other formats to Ogg with the Opus codec. The page shows how to compress audio streams. Compression is useful for passing real-time audio to the service.
--   The [**opusdec**](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusdec.html){: external} utility decodes audio from the Opus codec to uncompressed PCM WAV files.
--   The [**opusinfo**](https://mf4.xiph.org/jenkins/view/opus/job/opus-tools/ws/man/opusinfo.html){: external} utility provides information about and validity checking for Opus files.
+-   The [**opusenc**](https://opus-codec.org/docs/opus-tools/opusenc.html){: external} utility encodes audio from WAV, FLAC, and other formats to Ogg with the Opus codec. The page shows how to compress audio streams. Compression is useful for passing real-time audio to the service.
+-   The [**opusdec**](https://opus-codec.org/docs/opus-tools/opusdec.html){: external} utility decodes audio from the Opus codec to uncompressed PCM WAV files.
+-   The [**opusinfo**](https://opus-codec.org/docs/opus-tools/opusinfo.html){: external} utility provides information about and validity checking for Opus files.
 
 Many users send WAV files for speech recognition. With the service's 100 MB data limit for synchronous HTTP and WebSocket requests, the WAV format reduces the amount of audio that can be recognized with a single request. Using the **opusenc** command to convert the audio to the preferred `audio/ogg:codecs=opus` format can greatly increase the amount of audio that you can send with a recognition request.
 
