@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-09-05"
+lastupdated: "2020-09-06"
 
 subcollection: speech-to-text
 
@@ -215,7 +215,7 @@ When you use the `curl` command to make a speech recognition request with the HT
 | Parameter | Description |
 |-----------|-------------|
 | `rate`<br/>*Required* | An integer that specifies the sampling rate at which the audio is captured. For example, specify the following parameter for audio data that is captured at 8 kHz:<br/><br/>`audio/alaw;rate=8000` |
-{: caption="Table 2. Parameter for `audio/alaw` format"}
+{: caption="Table 2. Parameter for audio/alaw format"}
 
 For more information, see [A-law algorithm](https://wikipedia.org/wiki/A-law_algorithm){: external}.
 
@@ -246,7 +246,7 @@ For more information, see the Internet Engineering Task Force (IETF) [Request fo
 | `rate`<br/>*Required* | An integer that specifies the sampling rate at which the audio is captured. For example, specify the following parameter for audio data that is captured at 16 kHz:<br/><br/>`audio/l16;rate=16000` |
 | `channels`<br/>*Optional* | By default, the service treats the audio as if it has a single channel. *If the audio has more than one channel,* you must specify an integer that identifies the number of channels. For example, specify the following parameter for two-channel audio data that is captured at 16 kHz:<br/><br/>`audio/l16;rate=16000;channels=2`<br/><br/>The service accepts a maximum of 16 channels. It downmixes the audio to one channel during transcoding. |
 | `endianness`<br/>*Optional* | By default, the service auto-detects the endianness of incoming audio. But its auto-detection can sometimes fail and drop the connection for short audio in `audio/l16` format. Specifying the endianness disables auto-detection. Specify either `big-endian` or `little-endian`. For example, specify the following parameter for audio data that is captured at 16 kHz in little-endian format:<br/><br/>`audio/l16;rate=16000;endianness=little-endian`<br/><br/>Section 5.1 of [Request for Comment (RFC) 2045](https://tools.ietf.org/html/rfc2045#section-5.1) specifies big-endian format for `audio/l16` data, but many people use little-endian format. |
-{: caption="Table 3. Parameters for `audio/l16` format"}
+{: caption="Table 3. Parameters for audio/l16 format"}
 
 For more information, see the IETF [Request for Comment (RFC) 2586](https://tools.ietf.org/html/rfc2586){: external} and [Pulse-code modulation](https://wikipedia.org/wiki/Pulse-code_modulation){: external}.
 
@@ -263,7 +263,7 @@ For more information, see the IETF [Request for Comment (RFC) 2586](https://tool
 | Parameter | Description |
 |-----------|-------------|
 | `rate`<br/>*Required* | An integer that specifies the sampling rate at which the audio is captured. For example, specify the following parameter for audio data that is captured at 8 kHz:<br/><br/>`audio/mulaw;rate=8000` |
-{: caption="Table 4. Parameter for `audio/mulaw` format"}
+{: caption="Table 4. Parameter for audio/mulaw format"}
 
 For more information, see [M-law algorithm](https://wikipedia.org/wiki/M-law_algorithm){: external}.
 

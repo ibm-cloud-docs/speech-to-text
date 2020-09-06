@@ -30,9 +30,9 @@ subcollection: speech-to-text
 You can populate a custom language model with words by adding corpora or grammars to the model, or by adding custom words directly:
 {: shortdesc}
 
--   **Corpora:** The recommended means of populating a custom language model with words is to add one or more corpora to the model. When you add a corpus, the service analyzes the file and automatically adds any new words that it finds to the custom model. Adding a corpus to a custom model allows the service to extract domain-specific words in context, which helps ensure better transcription results. For more information, see [Working with Corpora](#workingCorpora).
--   **Grammars:** You can add grammars to a custom model to limit speech recognition to the words or phrases that are recognized by a grammar. When you add a grammar to a model, the service automatically adds any new words that it finds to the model, just as it does with corpora. For more information, see [Using grammars with custom language models](/docs/speech-to-text?topic=speech-to-text-grammars).
--   **Individual words:** You can also add individual custom words to a model directly. The service adds the words to the model just as it does words that it discovers from corpora or grammars. When you add a word directly, you can specify multiple pronunciations and indicate how the word is to be displayed. You can also update existing words to modify or augment the definitions that were extracted from corpora or grammars. For more information, see [Working with custom words](#workingWords).
+-   **Corpora** - The recommended means of populating a custom language model with words is to add one or more corpora to the model. When you add a corpus, the service analyzes the file and automatically adds any new words that it finds to the custom model. Adding a corpus to a custom model allows the service to extract domain-specific words in context, which helps ensure better transcription results. For more information, see [Working with Corpora](#workingCorpora).
+-   **Grammars** - You can add grammars to a custom model to limit speech recognition to the words or phrases that are recognized by a grammar. When you add a grammar to a model, the service automatically adds any new words that it finds to the model, just as it does with corpora. For more information, see [Using grammars with custom language models](/docs/speech-to-text?topic=speech-to-text-grammars).
+-   **Individual words** - You can also add individual custom words to a model directly. The service adds the words to the model just as it does words that it discovers from corpora or grammars. When you add a word directly, you can specify multiple pronunciations and indicate how the word is to be displayed. You can also update existing words to modify or augment the definitions that were extracted from corpora or grammars. For more information, see [Working with custom words](#workingWords).
 
 Regardless of how you add them, the service stores all words that you add to a custom language model in the model's words resource.
 
@@ -43,14 +43,14 @@ The *words resource* includes all words that you add from corpora, from grammars
 
 The words resource contains the following information about each OOV word. The service creates the definitions for words that are extracted from corpora and grammars. You specify the characteristics for words that you add or modify directly.
 
--   `word`: The spelling of the word as found in a corpus or grammar or as added by you.
--   `sounds_like`: The pronunciation of the word. For words extracted from corpora and grammars, the value represents how the service believes that the word is pronounced based on its language rules. In many cases, the pronunciation reflects the spelling of the `word` field.
+-   `word` - The spelling of the word as found in a corpus or grammar or as added by you.
+-   `sounds_like` - The pronunciation of the word. For words extracted from corpora and grammars, the value represents how the service believes that the word is pronounced based on its language rules. In many cases, the pronunciation reflects the spelling of the `word` field.
 
     You can use the `sounds_like` field to modify the word's pronunciation. You can also use the field to specify multiple pronunciations for a word. For more information, see [Using the sounds_like field](#soundsLike).
--   `display_as`: The spelling of the word that the service uses in transcripts. The field indicates how the word is to be displayed. In most cases, the spelling matches the value of the `word` field.
+-   `display_as` - The spelling of the word that the service uses in transcripts. The field indicates how the word is to be displayed. In most cases, the spelling matches the value of the `word` field.
 
     You can use the `display_as` field to specify a different spelling for the word. For more information, see [Using the display_as field](#displayAs).
--   `source`: How the word was added to the words resource. If the service extracted the word from a corpus or grammar, the field lists the name of that resource. Because the service can encounter the same word in multiple resources, the field can list multiple corpus or grammar names. The field includes the string `user` if you add or modify the word directly.
+-   `source` - How the word was added to the words resource. If the service extracted the word from a corpus or grammar, the field lists the name of that resource. Because the service can encounter the same word in multiple resources, the field can list multiple corpus or grammar names. The field includes the string `user` if you add or modify the word directly.
 
 When you update a model's words resource in any way, you must train the model for the changes to take effect during transcription. For more information, see [Train the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
 
