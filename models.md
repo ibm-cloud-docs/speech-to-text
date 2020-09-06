@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-08-18"
+lastupdated: "2020-09-05"
 
 subcollection: speech-to-text
 
@@ -46,110 +46,28 @@ Table 1 lists the supported models for each language. If you omit the `model` pa
 Languages labeled *Beta* are currently beta functionality. Beta languages might not be ready for production use and are subject to change. They are initial offerings that are expected to improve in quality with time and usage. All other languages are generally available (*GA*) for production use.
 {: beta}
 
-<table>
-  <caption>Table 1. Supported language models</caption>
-  <tr>
-    <th style="text-align:left">Language</th>
-    <th style="text-align:center">Broadband model</th>
-    <th style="text-align:center">Narrowband model</th>
-  </tr>
-  <tr>
-    <td>Arabic (Modern Standard)</td>
-    <td style="text-align:center"><code>ar-AR_BroadbandModel</code></td>
-    <td style="text-align:center">Not supported</td>
-  </tr>
-  <tr>
-    <td>Brazilian Portuguese</td>
-    <td style="text-align:center"><code>pt-BR_BroadbandModel</code></td>
-    <td style="text-align:center"><code>pt-BR_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>Chinese (Mandarin)</td>
-    <td style="text-align:center"><code>zh-CN_BroadbandModel</code></td>
-    <td style="text-align:center"><code>zh-CN_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>Dutch</td>
-    <td style="text-align:center"><code>nl-NL_BroadbandModel</code></td>
-    <td style="text-align:center"><code>nl-NL_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>English (Australian, Beta)</td>
-    <td style="text-align:center"><code>en-AU_BroadbandModel</code></td>
-    <td style="text-align:center"><code>en-AU_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>English (United Kingdom)</td>
-    <td style="text-align:center"><code>en-GB_BroadbandModel</code></td>
-    <td style="text-align:center"><code>en-GB_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>English (United States)</td>
-    <td style="text-align:center"><code>en-US_BroadbandModel</code></td>
-    <td style="text-align:center"><code>en-US_NarrowbandModel</code><br/><br/>
-      <code>en-US_ShortForm_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>French</td>
-    <td style="text-align:center"><code>fr-FR_BroadbandModel</code></td>
-    <td style="text-align:center"><code>fr-FR_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>French (Canadian, Beta)</td>
-    <td style="text-align:center"><code>fr-CA_BroadbandModel</code></td>
-    <td style="text-align:center"><code>fr-CA_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>German</td>
-    <td style="text-align:center"><code>de-DE_BroadbandModel</code></td>
-    <td style="text-align:center"><code>de-DE_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>Italian</td>
-    <td style="text-align:center"><code>it-IT_BroadbandModel</code></td>
-    <td style="text-align:center"><code>it-IT_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>Japanese</td>
-    <td style="text-align:center"><code>ja-JP_BroadbandModel</code></td>
-    <td style="text-align:center"><code>ja-JP_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>Korean</td>
-    <td style="text-align:center"><code>ko-KR_BroadbandModel</code></td>
-    <td style="text-align:center"><code>ko-KR_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>Spanish (Argentinian, Beta)</td>
-    <td style="text-align:center"><code>es-AR_BroadbandModel</code></td>
-    <td style="text-align:center"><code>es-AR_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>Spanish (Castilian)</td>
-    <td style="text-align:center"><code>es-ES_BroadbandModel</code></td>
-    <td style="text-align:center"><code>es-ES_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>Spanish (Chilean, Beta)</td>
-    <td style="text-align:center"><code>es-CL_BroadbandModel</code></td>
-    <td style="text-align:center"><code>es-CL_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>Spanish (Colombian, Beta)</td>
-    <td style="text-align:center"><code>es-CO_BroadbandModel</code></td>
-    <td style="text-align:center"><code>es-CO_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>Spanish (Mexican, Beta)</td>
-    <td style="text-align:center"><code>es-MX_BroadbandModel</code></td>
-    <td style="text-align:center"><code>es-MX_NarrowbandModel</code></td>
-  </tr>
-  <tr>
-    <td>Spanish (Peruvian, Beta)</td>
-    <td style="text-align:center"><code>es-PE_BroadbandModel</code></td>
-    <td style="text-align:center"><code>es-PE_NarrowbandModel</code></td>
-  </tr>
-</table>
+| Language | Broadband model | Narrowband model |
+|----------|:---------------:|:----------------:|
+| Arabic (Modern Standard) | `ar-AR_BroadbandModel` | Not supported |
+| Brazilian Portuguese | `pt-BR_BroadbandModel` | `pt-BR_NarrowbandModel` |
+| Chinese (Mandarin) | `zh-CN_BroadbandModel` | `zh-CN_NarrowbandModel` |
+| Dutch | `nl-NL_BroadbandModel` | `nl-NL_NarrowbandModel` |
+| English (Australian, Beta) | `en-AU_BroadbandModel` | `en-AU_NarrowbandModel` |
+| English (United Kingdom) | `en-GB_BroadbandModel` | `en-GB_NarrowbandModel` |
+| English (United States) | `en-US_BroadbandModel` | `en-US_NarrowbandModel`<br/><br/>`en-US_ShortForm_NarrowbandModel` |
+| French| `fr-FR_BroadbandModel` | `fr-FR_NarrowbandModel` |
+| French (Canadian, Beta) | `fr-CA_BroadbandModel` | `fr-CA_NarrowbandModel` |
+| German | `de-DE_BroadbandModel` | `de-DE_NarrowbandModel` |
+| Italian | `it-IT_BroadbandModel` | `it-IT_NarrowbandModel` |
+| Japanese | `ja-JP_BroadbandModel` | `ja-JP_NarrowbandModel` |
+| Korean | `ko-KR_BroadbandModel` | `ko-KR_NarrowbandModel` |
+| Spanish (Argentinian, Beta) | `es-AR_BroadbandModel` | `es-AR_NarrowbandModel` |
+| Spanish (Castilian) | `es-ES_BroadbandModel` | `es-ES_NarrowbandModel` |
+| Spanish (Chilean, Beta) | `es-CL_BroadbandModel` | `es-CL_NarrowbandModel` |
+| Spanish (Colombian, Beta) | `es-CO_BroadbandModel` | `es-CO_NarrowbandModel` |
+| Spanish (Mexican, Beta) | `es-MX_BroadbandModel` | `es-MX_NarrowbandModel` |
+| Spanish (Peruvian, Beta) | `es-PE_BroadbandModel` | `es-PE_NarrowbandModel` |
+{: caption="Table 1. Supported language models"}
 
 ### The US English short-form model
 {: #modelsShortform}

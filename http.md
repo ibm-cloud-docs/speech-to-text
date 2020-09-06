@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-23"
+lastupdated: "2020-09-05"
 
 subcollection: speech-to-text
 
@@ -88,111 +88,24 @@ The following sections describe the parameters that you use for multipart reques
 ### Parameters for multipart requests
 {: #multipartParameters}
 
-You specify the following parameters of multipart speech recognition as request headers, query parameters, and form data.
+You specify the following parameters of multipart speech recognition requests as *form data*:
 
-<table summary="Each row of the table describes the use of one possible parameter for a multipart recognition request.">
-  <caption>Table 1. Parameters for multipart requests</caption>
-  <tr>
-    <th id="parameter" style="text-align:left; width:20%">Parameter</th>
-    <th id="description" style="text-align:center; width:80%">Description</th>
-  </tr>
-  <tr>
-    <td>
-      <code>metadata</code>
-      <br/><em>Form data</em>
-      <br/><em>Object</em>
-    </td>
-    <td>
-      <em>Required.</em> A JSON object that provides the transcription
-      parameters for the request. The object must be the first part of
-      the form data. The information describes the audio in the subsequent
-      parts of the form data. See
-      [JSON metadata for multipart requests](#multipartJSON).
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>upload</code>
-      <br/><em>Form data</em>
-      <br/><em>File</em>
-    </td>
-    <td>
-      <em>Required.</em> One or more audio files as the remainder of the
-      form data for the request. All audio files must have the same format.
-      With the `curl` command, include a separate <code>--form</code> option
-      for each file of the request.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>Content-Type</code>
-      <br/><em>Header</em>
-      <br/><em>String</em>
-    </td>
-    <td>
-      <em>Required.</em> Specify `multipart/form-data` to indicate how
-      data is passed to the method. You specify the content type of the
-      audio with the JSON `part_content_type` parameter.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>Transfer-Encoding</code>
-      <br/><em>Header</em>
-      <br/><em>String</em>
-    </td>
-    <td>
-      <em>Optional.</em> Specify `chunked` to stream the audio data to the
-      service. Omit the parameter if you send all audio with a single request.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>model</code>
-      <br/><em>Query</em>
-      <br/><em>String</em>
-    </td>
-    <td>
-      <em>Optional.</em> The identifier of the model that is to be used with
-      the request. The default is `en-US_BroadbandModel`.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>language_customization_id</code>
-      <br/><em>Query</em>
-      <br/><em>String</em>
-    </td>
-    <td>
-      <em>Optional.</em> The GUID of a custom language model that is to be
-      used with the request.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>acoustic_customization_id</code>
-      <br/><em>Query</em>
-      <br/><em>String</em>
-    </td>
-    <td>
-      <em>Optional.</em> The GUID of a custom acoustic model that is
-      to be used with the request.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>base_model_version</code>
-      <br/><em>Query</em>
-      <br/><em>String</em>
-    </td>
-    <td>
-      <em>Optional.</em> The version of the specified base model that
-      is to be used with the request.
-    </td>
-  </tr>
-</table>
+-   `metadata` (*required* object) - A JSON object that provides the transcription parameters for the request. The object must be the first part of the form data. The information describes the audio in the subsequent parts of the form data. See [JSON metadata for multipart requests](#multipartJSON).
+-   `upload` (*required* file) - One or more audio files as the remainder of the form data for the request. All audio files must have the same format. With the `curl` command, include a separate `--form` option for each file of the request.
 
-For more information about the query parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
+You specify the following parameters as *request headers*:
+
+-   `Content-Type` (*required* string) - Specify `multipart/form-data` to indicate how data is passed to the method. You specify the content type of the audio with the JSON `part_content_type` parameter.
+-   `Transfer-Encoding` (*optional* string) - Specify `chunked` to stream the audio data to the service. Omit the parameter if you send all audio with a single request.
+
+You specify the following parameters as *query parameters*:
+
+-   `model` (*optional* string) - The identifier of the model that is to be used with the request. The default is `en-US_BroadbandModel`.
+-   `language_customization_id` (*optional* string) - The GUID of a custom language model that is to be used with the request.
+-   `acoustic_customization_id` (*optional* string) - The GUID of a custom acoustic model that is to be used with the request.
+-   `base_model_version` (*optional* string) - The version of the specified base model that is to be used with the request.
+
+For more information about request headers and query parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
 
 ### JSON metadata for multipart requests
 {: #multipartJSON}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-30"
+lastupdated: "2020-09-05"
 
 subcollection: speech-to-text
 
@@ -71,138 +71,20 @@ And `{instance_id}` is the unique identifier of the service instance.
 The examples in the documentation abbreviate `wss://api.{location}.speech-to-text.watson.cloud.ibm.com/instances/{instance_id}` to `{ws_url}`. So all WebSocket examples call the method as `{ws_url}/v1/recognize`.
 {: note}
 
-A WebSocket client calls this method with the following query parameters to establish an authenticated connection with the service. If you use Identity and Access Management (IAM) authentication, use the `access_token` query parameter. If you use Cloud Foundry service credentials, use the `watson-token` query parameter.
+A WebSocket client calls the `/v1/recognize` method with the following query parameters to establish an authenticated connection with the service:
 
-<table>
-  <caption>Table 1. Parameters of the <code>/v1/recognize</code>
-    method</caption>
-  <tr>
-    <th style="width:23%; text-align:left">Parameter</th>
-    <th style="width:12%; text-align:center">Data type</th>
-    <th style="text-align:left">Description</th>
-  </tr>
-  <tr>
-    <td style="text-align:left"><code>access_token</code>
-      <br/><em>Optional</em></td>
-    <td style="text-align:center">String</td>
-    <td style="text-align:left">
-      <em>If you use IAM authentication,</em> pass a valid IAM access
-      token to establish an authenticated connection with the service.
-      You pass an IAM access token instead of passing an API key with
-      the call. You must establish the connection before the access
-      token expires. For information about obtaining an access token, see
-      [Authenticating to Watson services](/docs/watson?topic=watson-iam).<br/><br/>
-      You pass an access token only to establish an authenticated connection.
-      Once you establish a connection, you can keep it alive indefinitely.
-      You remain authenticated for as long as you keep the connection open.
-      You do not need to refresh the access token for an active connection
-      that lasts beyond the token's expiration time. A connection can remain
-      active even after the token or its API key are deleted.
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left"><code>watson-token</code>
-      <br/><em>Optional</em></td>
-    <td style="text-align:center">String</td>
-    <td style="text-align:left">
-      <em>If you use Cloud Foundry service credentials,</em> pass a valid
-      {{site.data.keyword.watson}} authentication token to establish an
-      authenticated connection with the service. You pass a
-      {{site.data.keyword.watson}} token instead of passing service
-      credentials with the call. {{site.data.keyword.watson}} tokens are
-      based on Cloud Foundry service credentials, which use a `username`
-      and `password` for HTTP basic authentication. For information about
-      obtaining a {{site.data.keyword.watson}} token, see
-      [{{site.data.keyword.watson}} tokens](/docs/watson?topic=watson-gs-tokens-watson-tokens).<br/><br/>
-      You pass a {{site.data.keyword.watson}} token only to establish an
-      authenticated connection. Once you establish a connection, you can
-      keep it alive indefinitely. You remain authenticated for as long as
-      you keep the connection open.
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left"><code>model</code>
-      <br/><em>Optional</em></td>
-    <td style="text-align:center">String</td>
-    <td style="text-align:left">
-      Specifies the language model to be used for transcription.
-      If you do not specify a model, the service uses the
-      <code>en-US_BroadbandModel</code> model by default. For more
-      information, see
-      [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left"><code>language_customization_id</code>
-      <br/><em>Optional</em></td>
-    <td style="text-align:center">String</td>
-    <td style="text-align:left">
-      Specifies the Globally Unique Identifier (GUID) of a custom
-      language model that is to be used for all requests that are sent
-      over the connection. The base model of the custom language model
-      must match the value of the <code>model</code> parameter. If you
-      include a customization ID, you must make the request with credentials
-      for the instance of the service that owns the custom model. By
-      default, no custom language model is used. For more information, see
-      [The customization interface](/docs/speech-to-text?topic=speech-to-text-customization).
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left"><code>acoustic_customization_id</code>
-      <br/><em>Optional</em></td>
-    <td style="text-align:center">String</td>
-    <td style="text-align:left">
-      Specifies the Globally Unique Identifier (GUID) of a custom
-      acoustic model that is to be used for all requests that are sent
-      over the connection. The base model of the custom acoustic model
-      must match the value of the <code>model</code> parameter. If you
-      include a customization ID, you must make the request with credentials
-      for the instance of the service that owns the custom model. By
-      default, no custom acoustic model is used. For more information, see
-      [The customization interface](/docs/speech-to-text?topic=speech-to-text-customization).
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left"><code>base_model_version</code>
-      <br/><em>Optional</em></td>
-    <td style="text-align:center">String</td>
-    <td style="text-align:left">
-      Specifies the version of the base `model` that is to be used for all
-      requests that are sent over the connection. The parameter is intended
-      primarily for use with custom models that are upgraded for a new base
-      model. The default value depends on whether the parameter is used
-      with or without a custom model. For more information, see
-      [Base model version](/docs/speech-to-text?topic=speech-to-text-input#version).
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left"><code>x-watson-learning-opt-out</code>
-      <br/><em>Optional</em></td>
-    <td style="text-align:center">Boolean</td>
-    <td style="text-align:left">
-      Indicates whether the service logs requests and results that are sent
-      over the connection. To prevent IBM from accessing your data for general
-      service improvements, specify <code>true</code> for the parameter. For
-      more information, see
-      [Request logging](/docs/speech-to-text?topic=speech-to-text-input#logging).
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left"><code>x-watson-metadata</code>
-      <br/><em>Optional</em></td>
-    <td style="text-align:center">String</td>
-    <td style="text-align:left">
-      Associates a customer ID with all data that is passed over the
-      connection. The parameter accepts the argument
-      <code>customer_id={id}</code>, where <code>id</code> is a random
-      or generic string that is to be associated with the data. You must
-      URL-encode the argument to the parameter, for example,
-      `customer_id%3dmy_customer_ID`. By default, no customer ID is associated
-      with the data. For more information, see
-      [Information security](/docs/speech-to-text?topic=speech-to-text-information-security).
-    </td>
-  </tr>
-</table>
+-   `access_token` (*optional* string) - *If you use Identity and Access Management (IAM) authentication,* pass a valid IAM access token to establish an authenticated connection with the service. You pass an IAM access token instead of passing an API key with the call. You must establish the connection before the access token expires. For information about obtaining an access token, see [Authenticating to Watson services](/docs/watson?topic=watson-iam).
+
+    You pass an access token only to establish an authenticated connection. Once you establish a connection, you can keep it alive indefinitely. You remain authenticated for as long as you keep the connection open. You do not need to refresh the access token for an active connection that lasts beyond the token's expiration time. A connection can remain active even after the token or its API key are deleted.
+-   `watson-token` (*optional* string) - *If you use Cloud Foundry service credentials,* pass a valid {{site.data.keyword.watson}} authentication token to establish an authenticated connection with the service. You pass a {{site.data.keyword.watson}} token instead of passing service credentials with the call. {{site.data.keyword.watson}} tokens are based on Cloud Foundry service credentials, which use a `username` and `password` for HTTP basic authentication. For information about obtaining a {{site.data.keyword.watson}} token, see [{{site.data.keyword.watson}} tokens](/docs/watson?topic=watson-gs-tokens-watson-tokens).
+
+    You pass a {{site.data.keyword.watson}} token only to establish an authenticated connection. Once you establish a connection, you can keep it alive indefinitely. You remain authenticated for as long as you keep the connection open.
+-   `model` (*optional* string) - Specifies the language model to be used for transcription. If you do not specify a model, the service uses the `en-US_BroadbandModel` model by default. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+-   `language_customization_id` (*optional* string) - Specifies the Globally Unique Identifier (GUID) of a custom language model that is to be used for all requests that are sent over the connection. The base model of the custom language model must match the value of the `model` parameter. If you include a customization ID, you must make the request with credentials for the instance of the service that owns the custom model. By default, no custom language model is used. For more information, see [The customization interface](/docs/speech-to-text?topic=speech-to-text-customization).
+-   `acoustic_customization_id` (*optional* string) - Specifies the Globally Unique Identifier (GUID) of a custom acoustic model that is to be used for all requests that are sent over the connection. The base model of the custom acoustic model must match the value of the `model` parameter. If you include a customization ID, you must make the request with credentials for the instance of the service that owns the custom model. By default, no custom acoustic model is used. For more information, see [The customization interface](/docs/speech-to-text?topic=speech-to-text-customization).
+-   `base_model_version` (*optional* string) - Specifies the version of the base `model` that is to be used for all requests that are sent over the connection. The parameter is intended primarily for use with custom models that are upgraded for a new base model. The default value depends on whether the parameter is used with or without a custom model. For more information, see [Base model version](/docs/speech-to-text?topic=speech-to-text-input#version).
+-   `x-watson-learning-opt-out` (*optional* boolean) - Indicates whether the service logs requests and results that are sent over the connection. To prevent IBM from accessing your data for general service improvements, specify `true` for the parameter. For more information, see [Request logging](/docs/speech-to-text?topic=speech-to-text-input#logging).
+-   `x-watson-metadata` (*optional* string) - Associates a customer ID with all data that is passed over the connection. The parameter accepts the argument `customer_id={id}`, where `id` is a random or generic string that is to be associated with the data. You must URL-encode the argument to the parameter, for example, `customer_id%3dmy_customer_ID`. By default, no customer ID is associated with the data. For more information, see [Information security](/docs/speech-to-text?topic=speech-to-text-information-security).
 
 The following snippet of JavaScript code opens a connection with the service. The call to the `/v1/recognize` method passes the `access_token` and `model` query parameters, the latter to direct the service to use the Spanish broadband model. After it establishes the connection, the client defines the event listeners (`onOpen`, `onClose`, and so on) to respond to events from the service. The client can use the connection for multiple recognition requests.
 
@@ -227,43 +109,10 @@ The client can open multiple concurrent WebSocket connections to the service. Th
 
 To initiate a recognition request, the client sends a JSON text message to the service over the established connection. The client must send this message before it sends any audio for transcription. The message must include the `action` parameter but can usually omit the `content-type` parameter.
 
-<table>
-  <caption>Table 2. Parameters of the JSON text message</caption>
-  <tr>
-    <th style="width:23%; text-align:left">Parameter</th>
-    <th style="width:12%; text-align:center">Data type</th>
-    <th style="text-align:left">Description</th>
-  </tr>
-  <tr>
-    <td style="text-align:left"><code>action</code><br/><em>Required</em></td>
-    <td style="text-align:center">String</td>
-    <td style="text-align:left">
-      Specifies the action to be performed:
-      <ul style="margin-left:20px; padding:0px;">
-        <li style="margin:10px 0px; line-height:120%;">
-          <code>start</code> starts a recognition request or specifies
-          new parameters for subsequent requests. For more information, see
-          [Send additional requests and modify request parameters](#WSmore).
-        </li>
-        <li style="margin:10px 0px; line-height:120%;">
-          <code>stop</code> signals that all audio for a request has
-          been sent. For more information, see
-          [End a recognition request](#WSstop).
-        </li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left"><code>content-type</code><br/><em>Optional</em></td>
-    <td style="text-align:center">String</td>
-    <td style="text-align:left">
-      Identifies the format (MIME type) of the audio data for the request.
-      The parameter is required for the `audio/alaw`, `audio/basic`,
-      `audio/l16`, and `audio/mulaw` formats. For more information, see
-      [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
-    </td>
-  </tr>
-</table>
+-   `action` (*required* string) - Specifies the action to be performed:
+    -   `start` begins a recognition request. It can also specify new parameters for subsequent requests. For more information, see [Send additional requests and modify request parameters](#WSmore).
+    -   `stop` signals that all audio for a request has been sent. For more information, see [End a recognition request](#WSstop).
+-   `content-type` (*optional* string) - Identifies the format (MIME type) of the audio data for the request. The parameter is required for the `audio/alaw`, `audio/basic`, `audio/l16`, and `audio/mulaw` formats. For more information, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
 
 The message can also include optional parameters to specify other aspects of how the request is to be processed and the information that is to be returned. For information about all input and output features, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary). You can specify a language model, custom language model, and custom acoustic model only as query parameters of the WebSocket URL.
 

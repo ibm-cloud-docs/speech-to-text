@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-08-18"
+lastupdated: "2020-09-05"
 
 subcollection: speech-to-text
 
@@ -108,115 +108,28 @@ Language and acoustic model customization are available only for some languages.
 
 You can use both broadband and narrowband models with any supported language for which they are available. If a language supports language model customization, it also supports grammars. For a list of all available models, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList).
 
-<table>
-  <caption>Table 1. Language support for customization</caption>
-  <tr>
-    <th style="text-align:left; vertical-align:bottom; width 24%">
-      Language
-    </th>
-    <th style="text-align:center; vertical-align:bottom; width 37%">
-      Support for language model customization
-    </th>
-    <th style="text-align:center; vertical-align:bottom; width 37%">
-      Support for acoustic model customization
-    </th>
-  </tr>
-  <tr>
-    <td>Arabic (Modern Standard)</td>
-    <td style="text-align:center">Not supported</td>
-    <td style="text-align:center">GA</td>
-  </tr>
-  <tr>
-    <td>Brazilian Portuguese</td>
-    <td style="text-align:center">GA</td>
-    <td style="text-align:center">GA</td>
-  </tr>
-  <tr>
-    <td>Chinese (Mandarin)</td>
-    <td style="text-align:center">Not supported</td>
-    <td style="text-align:center">GA</td>
-  </tr>
-  <tr>
-    <td>Dutch</td>
-    <td style="text-align:center">GA</td>
-    <td style="text-align:center">GA</td>
-  </tr>
-  <tr>
-    <td>English (Australian)</td>
-    <td style="text-align:center">Not supported</td>
-    <td style="text-align:center">Not supported</td>
-  </tr>
-  <tr>
-    <td>English (United Kingdom)</td>
-    <td style="text-align:center">GA</td>
-    <td style="text-align:center">GA</td>
-  </tr>
-  <tr>
-    <td>English (United States)</td>
-    <td style="text-align:center">GA</td>
-    <td style="text-align:center">GA</td>
-  </tr>
-  <tr>
-    <td>French</td>
-    <td style="text-align:center">GA</td>
-    <td style="text-align:center">GA</td>
-  </tr>
-  <tr>
-    <td>French (Canadian)</td>
-    <td style="text-align:center">Not supported</td>
-    <td style="text-align:center">Not supported</td>
-  </tr>
-  <tr>
-    <td>German</td>
-    <td style="text-align:center">GA</td>
-    <td style="text-align:center">GA</td>
-  </tr>
-  <tr>
-    <td>Italian</td>
-    <td style="text-align:center">GA</td>
-    <td style="text-align:center">GA</td>
-  </tr>
-  <tr>
-    <td>Japanese</td>
-    <td style="text-align:center">GA</td>
-    <td style="text-align:center">GA</td>
-  </tr>
-  <tr>
-    <td>Korean</td>
-    <td style="text-align:center">GA</td>
-    <td style="text-align:center">GA</td>
-  </tr>
-  <tr>
-    <td>Spanish (Argentinian)</td>
-    <td style="text-align:center">Beta</td>
-    <td style="text-align:center">Beta</td>
-  </tr>
-  <tr>
-    <td>Spanish (Castilian)</td>
-    <td style="text-align:center">GA</td>
-    <td style="text-align:center">GA</td>
-  </tr>
-  <tr>
-    <td>Spanish (Chilean)</td>
-    <td style="text-align:center">Beta</td>
-    <td style="text-align:center">Beta</td>
-  </tr>
-  <tr>
-    <td>Spanish (Colombian)</td>
-    <td style="text-align:center">Beta</td>
-    <td style="text-align:center">Beta</td>
-  </tr>
-  <tr>
-    <td>Spanish (Mexican)</td>
-    <td style="text-align:center">Beta</td>
-    <td style="text-align:center">Beta</td>
-  </tr>
-  <tr>
-    <td>Spanish (Peruvian)</td>
-    <td style="text-align:center">Beta</td>
-    <td style="text-align:center">Beta</td>
-  </tr>
-</table>
+| Language | Support for language model customization | Support for acoustic model customization |
+|----------|:----------------------------------------:|:----------------------------------------:|
+| Arabic (Modern Standard) | Not supported | GA |
+| Brazilian Portuguese | GA | GA |
+| Chinese (Mandarin) | Not supported | GA |
+| Dutch | GA | GA |
+| English (Australian) | Not supported | Not supported |
+| English (United Kingdom) | GA | GA |
+| English (United States) | GA | GA |
+| French | GA | GA |
+| French (Canadian) | Not supported | Not supported |
+| German | GA | GA |
+| Italian | GA | GA |
+| Japanese | GA | GA |
+| Korean | GA | GA |
+| Spanish (Argentinian) | Beta | Beta |
+| Spanish (Castilian) | GA | GA |
+| Spanish (Chilean) | Beta | Beta |
+| Spanish (Colombian) | Beta | Beta |
+| Spanish (Mexican) | Beta | Beta |
+| Spanish (Peruvian) | Beta | Beta |
+{: caption="Table 1. Language support for customization"}
 
 You can use the `GET /v1/models` and `GET /v1/models/{model_id}` methods to check whether a language model supports language model customization. If the base model supports language model customization, the `supported_features` field of the methods' output for the model sets the `custom_language_model` field to `true`.
 
