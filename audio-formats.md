@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-09-02"
+lastupdated: "2020-09-05"
 
 subcollection: speech-to-text
 
@@ -190,166 +190,19 @@ Table 1 provides a summary of the audio formats that the service supports.
     -   For others, the content type is required. These formats do not provide the information, such as the sampling rate, that the service needs to auto-detect their format.
 -   The final columns identify additional *Required parameters* and *Optional parameters* for each format. The following sections provide more information about these parameters.
 
-<table>
-  <caption>Table 1. Summary of supported audio formats</caption>
-  <tr>
-    <th style="text-align:left; vertical-align:bottom">
-      Audio format<br>and compression
-    </th>
-    <th style="text-align:center; vertical-align:bottom">
-      Content-type<br/>specification
-    </th>
-    <th style="text-align:center; vertical-align:bottom">
-      Required<br/>parameters
-    </th>
-    <th style="text-align:center; vertical-align:bottom">
-      Optional<br/>parameters
-    </th>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      [audio/alaw](#alaw)<br/>Lossy
-    </td>
-    <td style="text-align:center">
-      Required
-    </td>
-    <td style="text-align:center">
-      <code>rate={integer}</code>
-    </td>
-    <td style="text-align:center">
-      None
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      [audio/basic](#basic)<br/>Lossy
-    </td>
-    <td style="text-align:center">
-      Required
-    </td>
-    <td style="text-align:center">
-      None
-    </td>
-    <td style="text-align:center">
-      None
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      [audio/flac](#flac)<br/>Lossless
-    </td>
-    <td style="text-align:center">
-      Optional
-    </td>
-    <td style="text-align:center">
-      None
-    </td>
-    <td style="text-align:center">
-      None
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      [audio/g729](#g729)<br/>Lossy
-    </td>
-    <td style="text-align:center">
-      Optional
-    </td>
-    <td style="text-align:center">
-      None
-    </td>
-    <td style="text-align:center">
-      None
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      [audio/l16](#l16)<br/>None
-    </td>
-    <td style="text-align:center">
-      Required
-    </td>
-    <td style="text-align:center">
-      <code>rate={integer}</code>
-    </td>
-    <td style="text-align:center">
-      <code>channels={integer}</code><br/>
-      <code>endianness=big-endian</code><br/>
-      <code>endianness=little-endian</code>
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      [audio/mp3](#mp3)<br/>
-      [audio/mpeg](#mp3)<br/>Lossy
-    </td>
-    <td style="text-align:center">
-      Optional
-    </td>
-    <td style="text-align:center">
-      None
-    </td>
-    <td style="text-align:center">
-      None
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      [audio/mulaw](#mulaw)<br/>Lossy
-    </td>
-    <td style="text-align:center">
-      Required
-    </td>
-    <td style="text-align:center">
-      <code>rate={integer}</code>
-    </td>
-    <td style="text-align:center">
-      None
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      [audio/ogg](#ogg)<br/>Lossy
-    </td>
-    <td style="text-align:center">
-      Optional
-    </td>
-    <td style="text-align:center">
-      None
-    </td>
-    <td style="text-align:center">
-      <code>codecs=opus</code><br/><code>codecs=vorbis</code>
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      [audio/wav](#wav)<br/>None, lossless,<br/>or lossy
-    </td>
-    <td style="text-align:center">
-      Optional
-    </td>
-    <td style="text-align:center">
-      None
-    </td>
-    <td style="text-align:center">
-      None
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:left">
-      [audio/webm](#webm)<br/>Lossy
-    </td>
-    <td style="text-align:center">
-      Optional
-    </td>
-    <td style="text-align:center">
-      None
-    </td>
-    <td style="text-align:center">
-      <code>codecs=opus</code><br/><code>codecs=vorbis</code>
-    </td>
-  </tr>
-</table>
+| Audio format<br>and compression | Content-type<br/>specification | Required<br/>parameters | Optional<br/>parameters |
+|---------------------------------|:------------------------------:|:-----------------------:|:------------------:|
+| [audio/alaw](#alaw)<br/>Lossy | Required | `rate={integer}` | None |
+| [audio/basic](#basic)<br/>Lossy| Required| None| None |
+| [audio/flac](#flac)<br/>Lossless| Optional | None | None |
+| [audio/g729](#g729)<br/>Lossy | Optional | None | None |
+| [audio/l16](#l16)<br/>None | Required | `rate={integer}` | `channels={integer}`<br/>`endianness=big-endian`<br/>`endianness=little-endian` |
+| [audio/mp3](#mp3)<br/>[audio/mpeg](#mp3)<br/>Lossy | Optional | None | None |
+| [audio/mulaw](#mulaw)<br/>Lossy | Required | `rate={integer}` | None |
+| [audio/ogg](#ogg)<br/>Lossy | Optional | None | `codecs=opus`<br/>`codecs=vorbis` |
+| [audio/wav](#wav)<br/>None, lossless,<br/>or lossy | Optional | None | None |
+| [audio/webm](#webm)<br/>Lossy | Optional | None | `codecs=opus`<br/>`codecs=vorbis` |
+{: caption="Table 1. Summary of supported audio formats"}
 
 When you use the `curl` command to make a speech recognition request with the HTTP interfaces, you must either specify the audio format with the `Content-Type` header, specify `"Content-Type: application/octet-stream"`, or specify `"Content-Type:"`. If you omit the header entirely, `curl` uses a default value of `application/x-www-form-urlencoded`.
 {: important}
@@ -359,28 +212,10 @@ When you use the `curl` command to make a speech recognition request with the HT
 
 *A-law* (`audio/alaw`) is a single-channel, lossy audio format. It uses an algorithm that is similar to the u-law algorithm applied by the `audio/basic` and `audio/mulaw` formats, though the A-law algorithm produces different signal characteristics. When you use this format, the service requires an extra parameter on the format specification.
 
-<table>
-  <caption>Table 2. Parameter for `audio/alaw` format</caption>
-  <tr>
-    <th style="text-align:left; vertical-align:bottom; width 20%">
-      Parameter
-    </th>
-    <th style="text-align:left; vertical-align:bottom; width 80%">
-      Description
-    </th>
-  </tr>
-  <tr>
-    <td>
-      <code>rate</code><br/><em>Required</em>
-    </td>
-    <td>
-      An integer that specifies the sampling rate at which the audio is
-      captured. For example, specify the following parameter for audio
-      data that is captured at 8 kHz:<br/><br/>
-      <code>audio/alaw;rate=8000</code>
-    </td>
-  </tr>
-</table>
+| Parameter | Description |
+|-----------|-------------|
+| `rate`<br/>*Required* | An integer that specifies the sampling rate at which the audio is captured. For example, specify the following parameter for audio data that is captured at 8 kHz:<br/><br/>`audio/alaw;rate=8000` |
+{: caption="Table 2. Parameter for `audio/alaw` format"}
 
 For more information, see [A-law algorithm](https://wikipedia.org/wiki/A-law_algorithm){: external}.
 
@@ -406,62 +241,12 @@ For more information, see the Internet Engineering Task Force (IETF) [Request fo
 
 *Linear 16-bit Pulse-Code Modulation (PCM)* (`audio/l16`) is an uncompressed audio format. Use this format to pass a raw PCM file. Linear PCM audio can also be carried inside of a container Waveform Audio File Format (WAV) file. When you use the `audio/l16` format, the service accepts extra required and optional parameters on the format specification.
 
-<table>
-  <caption>Table 3. Parameters for `audio/l16` format</caption>
-  <tr>
-    <th style="text-align:left; vertical-align:bottom; width 20%">
-      Parameter
-    </th>
-    <th style="text-align:left; vertical-align:bottom; width 80%">
-      Description
-    </th>
-  </tr>
-  <tr>
-    <td>
-      <code>rate</code><br/><em>Required</em>
-    </td>
-    <td>
-      An integer that specifies the sampling rate at which the audio is
-      captured. For example, specify the following parameter for audio
-      data that is captured at 16 kHz:<br/><br/>
-      <code>audio/l16;rate=16000</code>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>channels</code><br/><em>Optional</em>
-    </td>
-    <td>
-      By default, the service treats the audio as if it has a single channel.
-      <em>If the audio has more than one channel,</em> you must specify
-      an integer that identifies the number of channels. For example,
-      specify the following parameter for two-channel audio data that is
-      captured at 16 kHz:<br/><br/>
-      <code>audio/l16;rate=16000;channels=2</code><br/><br/>
-      The service accepts a maximum of 16 channels. It downmixes the audio
-      to one channel during transcoding.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>endianness</code><br/><em>Optional</em>
-    </td>
-    <td>
-      By default, the service auto-detects the endianness of incoming
-      audio. But its auto-detection can sometimes fail and drop the
-      connection for short audio in `audio/l16` format. Specifying
-      the endianness disables auto-detection. Specify either
-      <code>big-endian</code> or <code>little-endian</code>. For
-      example, specify the following parameter for audio data that
-      is captured at 16 kHz in little-endian format:<br/><br/>
-      <code>audio/l16;rate=16000;endianness=little-endian</code><br/><br/>
-      Section 5.1 of
-      [Request for Comment (RFC) 2045](https://tools.ietf.org/html/rfc2045#section-5.1)
-      specifies big-endian format for <code>audio/l16</code> data, but
-      many people use little-endian format.
-    </td>
-  </tr>
-</table>
+| Parameter | Description |
+|-----------|-------------|
+| `rate`<br/>*Required* | An integer that specifies the sampling rate at which the audio is captured. For example, specify the following parameter for audio data that is captured at 16 kHz:<br/><br/>`audio/l16;rate=16000` |
+| `channels`<br/>*Optional* | By default, the service treats the audio as if it has a single channel. *If the audio has more than one channel,* you must specify an integer that identifies the number of channels. For example, specify the following parameter for two-channel audio data that is captured at 16 kHz:<br/><br/>`audio/l16;rate=16000;channels=2`<br/><br/>The service accepts a maximum of 16 channels. It downmixes the audio to one channel during transcoding. |
+| `endianness`<br/>*Optional* | By default, the service auto-detects the endianness of incoming audio. But its auto-detection can sometimes fail and drop the connection for short audio in `audio/l16` format. Specifying the endianness disables auto-detection. Specify either `big-endian` or `little-endian`. For example, specify the following parameter for audio data that is captured at 16 kHz in little-endian format:<br/><br/>`audio/l16;rate=16000;endianness=little-endian`<br/><br/>Section 5.1 of [Request for Comment (RFC) 2045](https://tools.ietf.org/html/rfc2045#section-5.1) specifies big-endian format for `audio/l16` data, but many people use little-endian format. |
+{: caption="Table 3. Parameters for `audio/l16` format"}
 
 For more information, see the IETF [Request for Comment (RFC) 2586](https://tools.ietf.org/html/rfc2586){: external} and [Pulse-code modulation](https://wikipedia.org/wiki/Pulse-code_modulation){: external}.
 
@@ -475,28 +260,10 @@ For more information, see the IETF [Request for Comment (RFC) 2586](https://tool
 
 *Mu-law* (`audio/mulaw`) is a single-channel, lossy audio format. The data is encoded by using the u-law (or mu-law) algorithm. The `audio/basic` format is an equivalent format that is always sampled at 8 kHz. When you use this format, the service requires an extra parameter on the format specification.
 
-<table>
-  <caption>Table 4. Parameter for `audio/mulaw` format</caption>
-  <tr>
-    <th style="text-align:left; vertical-align:bottom; width 20%">
-      Parameter
-    </th>
-    <th style="text-align:left; vertical-align:bottom; width 80%">
-      Description
-    </th>
-  </tr>
-  <tr>
-    <td>
-      <code>rate</code><br/><em>Required</em>
-    </td>
-    <td>
-      An integer that specifies the sampling rate at which the audio is
-      captured. For example, specify the following parameter for audio
-      data that is captured at 8 kHz:<br/><br/>
-      <code>audio/mulaw;rate=8000</code>
-    </td>
-  </tr>
-</table>
+| Parameter | Description |
+|-----------|-------------|
+| `rate`<br/>*Required* | An integer that specifies the sampling rate at which the audio is captured. For example, specify the following parameter for audio data that is captured at 8 kHz:<br/><br/>`audio/mulaw;rate=8000` |
+{: caption="Table 4. Parameter for `audio/mulaw` format"}
 
 For more information, see [M-law algorithm](https://wikipedia.org/wiki/M-law_algorithm){: external}.
 
@@ -550,33 +317,13 @@ Consider the approximate size of the data stream that results from 2 hours of co
 
 The following table approximates the maximum duration of audio that can be sent for speech recognition with a synchronous HTTP or WebSocket request in different formats. The duration considers the 100 MB service limit. Actual values can vary depending on the complexity of the audio and the achieved compression rate.
 
-<table style="width:75%">
-  <caption>Table 5. Maximum duration of audio in different formats</caption>
-  <tr>
-    <th style="text-align:left; vertical-align:bottom; width 50%">
-      Audio format
-    </th>
-    <th style="text-align:center; vertical-align:bottom; width 50%">
-      Maximum duration of audio (approximate)
-    </th>
-  </tr>
-  <tr>
-    <td><code>audio/wav</code></td>
-    <td style="text-align:center">55 minutes</td>
-  </tr>
-  <tr>
-    <td><code>audio/flac</code></td>
-    <td style="text-align:center">1 hour 40 minutes</td>
-  </tr>
-  <tr>
-    <td><code>audio/mp3</code></td>
-    <td style="text-align:center">3 hours 20 minutes</td>
-  </tr>
-  <tr>
-    <td><code>audio/ogg</code></td>
-    <td style="text-align:center">8 hours 40 minutes</td>
-  </tr>
-</table>
+| Audio format | Maximum duration of audio (approximate) |
+|--------------|:---------------------------------------:|
+| `audio/wav` | 55 minutes |
+| `audio/flac` | 1 hour 40 minutes |
+| `audio/mp3` | 3 hours 20 minutes |
+| `audio/ogg` | 8 hours 40 minutes |
+{: caption="Table 5. Maximum duration of audio in different formats"}
 
 The `audio/ogg;codecs=opus` and `audio/webm;codecs=opus` formats are generally equivalent, and their sizes are almost identical. They use the same codec internally; only the container format is different.
 

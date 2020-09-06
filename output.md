@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-08-28"
+lastupdated: "2020-09-05"
 
 subcollection: speech-to-text
 
@@ -880,213 +880,36 @@ Smart formatting is based on the presence of obvious keywords in the transcript.
 
 The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
 
-<table summary="Each heading row is followed by multiple rows of examples that show the effect of smart formatting for the element that is identified in the heading.">
-  <caption>Table 3. Smart formatting example transcripts</caption>
-  <tr>
-    <th id="without_formatting" style="width:45%; text-align:left">Without
-      smart formatting</th>
-    <th id="with_formatting" style="text-align:left">With smart
-      formatting</th>
-  </tr>
-  <tr>
-    <th id="Dates" colspan="2">
-      <strong>Dates</strong>
-    </th>
-  </tr>
-  <tr>
-    <td headers="Dates without_formatting">
-      I was born on ten oh six nineteen seventy
-    </td>
-    <td headers="Dates with_formatting">
-      I was born on 10/6/1970
-    </td>
-  </tr>
-  <tr>
-    <td headers="Dates without_formatting">
-      I was born on the ninth of December nineteen hundred
-    </td>
-    <td headers="Dates with_formatting">
-      I was born on 12/9/1900
-    </td>
-  </tr>
-  <tr>
-    <td headers="Dates without_formatting">
-      Today is June sixth
-    </td>
-    <td headers="Dates with_formatting">
-      Today is June 6
-    </td>
-  </tr>
-  <tr>
-    <th id="Times" colspan="2">
-      <strong>Times</strong>
-    </th>
-  </tr>
-  <tr>
-    <td headers="Times without_formatting">
-      The meeting starts at nine thirty AM
-    </td>
-    <td headers="Times with_formatting">
-      The meeting starts at 9:30 AM
-    </td>
-  </tr>
-  <tr>
-    <td headers="Times without_formatting">
-      I am available at seven EST
-    </td>
-    <td headers="Times with_formatting">
-      I am available at 7:00 EST
-    </td>
-  </tr>
-  <tr>
-    <td headers="Times without_formatting">
-      We meet at oh seven hundred hours
-    </td>
-    <td headers="Times with_formatting">
-      We meet at 0700 hours
-    </td>
-  </tr>
-  <tr>
-    <th id="Numbers" colspan="2">
-      <strong>Numbers</strong>
-    </th>
-  </tr>
-  <tr>
-    <td headers="Numbers without_formatting">
-      The quantity is one million one hundred and one
-    </td>
-    <td headers="Numbers with_formatting">
-      The quantity is 1000101
-    </td>
-  </tr>
-  <tr>
-    <td headers="Numbers without_formatting">
-      One point five is between one and two
-    </td>
-    <td headers="Numbers with_formatting">
-      1.5 is between 1 and 2
-    </td>
-  </tr>
-  <tr>
-    <th id="phone_numbers" colspan="2">
-      <strong>Phone numbers</strong>
-    </th>
-  </tr>
-  <tr>
-    <td headers="phone_numbers without_formatting">
-      Call me at nine one four two three seven one thousand
-    </td>
-    <td headers="phone_numbers with_formatting">
-      Call me at 914-237-1000
-    </td>
-  </tr>
-  <tr>
-    <td headers="phone_numbers without_formatting">
-      Call me at one nine one four nine oh nine twenty six forty five
-    </td>
-    <td headers="phone_numbers with_formatting">
-      Call me at 1-914-909-2645
-    </td>
-  </tr>
-  <tr>
-    <th id="currency_values" colspan="2">
-      <strong>Currency values</strong>
-    </th>
-  </tr>
-  <tr>
-    <td headers="currency_values without_formatting">
-      You owe me three thousand two hundred two dollars and sixty six
-      cents
-    </td>
-    <td headers="currency_values with_formatting">
-      You owe me $3202.66
-    </td>
-  </tr>
-  <tr>
-    <td headers="currency_values without_formatting">
-      The dollar rose to one hundred and nine point seven nine yen from
-      one hundred and nine point seven two yen
-    </td>
-    <td headers="currency_values with_formatting">
-      The dollar rose to 109.79 yen from 109.72 yen
-    </td>
-  </tr>
-  <tr>
-    <th id="internet_addresses" colspan="2">
-      <strong>Internet email and web addresses</strong>
-    </th>
-  </tr>
-  <tr>
-    <td headers="internet_addresses without_formatting">
-      My email address is john dot doe at foo dot com
-    </td>
-    <td headers="internet_addresses with_formatting">
-      My email address is john.doe@foo.com
-    </td>
-  </tr>
-  <tr>
-    <td headers="internet_addresses without_formatting">
-      I saw the story on yahoo dot com
-    </td>
-    <td headers="internet_addresses with_formatting">
-      I saw the story on yahoo.com
-    </td>
-  </tr>
-  <tr>
-    <th id="Combinations" colspan="2">
-      <strong>Combinations</strong>
-    </th>
-  </tr>
-  <tr>
-    <td headers="Combinations without_formatting">
-      The code is zero two four eight one and the date of service
-      is May fifth two thousand and one
-    </td>
-    <td headers="Combinations with_formatting">
-      The code is 02481 and the date of service is 5/5/2001
-    </td>
-  </tr>
-  <tr>
-    <td headers="Combinations without_formatting">
-      There are forty seven links on Yahoo dot com now
-    </td>
-    <td headers="Combinations with_formatting">
-      There are 47 links on Yahoo.com now
-    </td>
-  </tr>
-</table>
+| Information | Without smart formatting | With smart formatting |
+|-------------|--------------------------|-----------------------|
+| Dates | I was born on ten oh six nineteen seventy | I was born on 10/6/1970 |
+|       | I was born on the ninth of December nineteen hundred | I was born on 12/9/1900 |
+|       | Today is June sixth | Today is June 6 |
+| Times | The meeting starts at nine thirty AM | The meeting starts at 9:30 AM |
+|       | I am available at seven EST | I am available at 7:00 EST |
+|       | We meet at oh seven hundred hours | We meet at 0700 hours |
+| Numbers | The quantity is one million one hundred and one | The quantity is 1000101 |
+|         | One point five is between one and two | 1.5 is between 1 and 2 |
+| Phone numbers | Call me at nine one four two three seven one thousand | Call me at 914-237-1000 |
+|               | Call me at one nine one four nine oh nine twenty six forty five | Call me at 1-914-909-2645 |
+| Currency values | You owe me three thousand two hundred two dollars and sixty six | You owe me $3202.66 |
+|                 | The dollar rose to one hundred and nine point seven nine yen from one hundred and nine point seven two yen | The dollar rose to 109.79 yen from 109.72 yen |
+| Internet email and web addresses | My email address is john dot doe at foo dot com | My email address is john.doe@foo.com |
+|                                  | I saw the story on yahoo dot com | I saw the story on yahoo.com |
+| Combinations | The code is zero two four eight one and the date of service is May fifth two thousand and one | The code is 02481 and the date of service is 5/5/2001 |
+|              | There are forty seven links on Yahoo dot com now | There are 47 links on Yahoo.com now |
+{: caption="Table 3. Smart formatting example transcripts"}
 
 ### Smart formatting results for long pauses
 {: #smartFormattingLongPauses}
 
 In cases where an utterance contains long enough pauses of silence, the service can split the transcript into two or more final results. This affects the contents of the response, as shown in the following examples.
 
-<table>
-  <caption>Table 4. Smart formatting example transcripts for long pauses</caption>
-  <tr>
-    <th style="width:45%; text-align:left">Audio speech</th>
-    <th style="text-align:left">Formatted transcription results</th>
-  </tr>
-  <tr>
-    <td>
-      My phone number is nine one four five five seven three
-      three nine two
-    </td>
-    <td>
-      "My phone number is 914-557-3392"
-    </td>
-  </tr>
-  <tr>
-    <td>
-      My phone number is nine one four <em>&lt;pause&gt;</em> five five
-      seven three three nine two
-    </td>
-    <td>
-      "My phone number is 914"<br/>
-      "5573392"
-    </td>
-  </tr>
-</table>
+| Audio speech | Formatted transcription results |
+|--------------|---------------------------------|
+| My phone number is nine one four five five seven three three nine two | "My phone number is 914-557-3392" |
+| My phone number is nine one four *&lt;pause&gt;* five five seven three three nine two | "My phone number is 914"<br/>"5573392" |
+{: caption="Table 4. Smart formatting example transcripts for long pauses"}
 
 For more information about specifying a pause interval that affects the service's response, see [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-output#silence_time).
 
@@ -1168,52 +991,12 @@ Korean redaction has the following differences:
 
 The following table shows examples of final transcripts both with and without numeric redaction in each supported language.
 
-<table style="width:90%" summary="Each heading row identifies a language and is followed by a single row that shows the same transcript both without and with numeric redaction enabled.">
-  <caption>Table 6. Numeric redaction example transcripts</caption>
-  <tr>
-    <th id="without_redaction" style="text-align:left">Without redaction</th>
-    <th id="with_redaction" style="text-align:left">With redaction</th>
-  </tr>
-  <tr>
-    <th id="US_English" colspan="2">
-      <strong>US English</strong>
-    </th>
-  </tr>
-  <tr>
-    <td headers="US_English without_redaction">
-      my credit card number is four one four seven two
-    </td>
-    <td headers="US_English with_redaction">
-      my credit card number is XXXXX
-    </td>
-  </tr>
-  <tr>
-    <th id="Japanese" colspan="2">
-      <strong>Japanese</strong>
-    </th>
-  </tr>
-  <tr>
-    <td headers="Japanese without_redaction">
-      &#31169; &#12398;&#12463;&#12524;&#12472;&#12483;&#12488; &#12459;&#12540;&#12489; &#30058;&#21495; &#12399; &#22235; &#19968; &#22235; &#19971; &#20108;&#12391;&#12377;
-    </td>
-    <td headers="Japanese with_redaction">
-      &#31169; &#12398;&#12463;&#12524;&#12472;&#12483;&#12488; &#12459;&#12540;&#12489; &#30058;&#21495; &#12399; XXXXX &#12391;&#12377;
-    </td>
-  </tr>
-  <tr>
-    <th id="Korean" colspan="2">
-      <strong>Korean</strong>
-    </th>
-  </tr>
-  <tr>
-    <td headers="Korean without_redaction">
-      &#45236; &#49888;&#50857; &#52852;&#46300; &#48264;&#54840;&#45716; &#49324; &#51068; &#49324; &#52832; &#51060; &#48264;&#51077;&#45768;&#45796;
-    </td>
-    <td headers="Korean with_redaction">
-      &#45236; &#49888;&#50857; &#52852;&#46300; &#48264;&#54840;&#45716; XXXXX &#48264;&#51077;&#45768;&#45796;
-    </td>
-  </tr>
-</table>
+| Language | Without redaction | With redaction |
+|----------|-------------------|----------------|
+| US English | my credit card number is four one four seven two | my credit card number is XXXXX |
+| Japanese | &#31169; &#12398;&#12463;&#12524;&#12472;&#12483;&#12488; &#12459;&#12540;&#12489; &#30058;&#21495; &#12399; &#22235; &#19968; &#22235; &#19971; &#20108;&#12391;&#12377; | &#31169; &#12398;&#12463;&#12524;&#12472;&#12483;&#12488; &#12459;&#12540;&#12489; &#30058;&#21495; &#12399; XXXXX &#12391;&#12377; |
+| Korean | &#45236; &#49888;&#50857; &#52852;&#46300; &#48264;&#54840;&#45716; &#49324; &#51068; &#49324; &#52832; &#51060; &#48264;&#51077;&#45768;&#45796; | &#45236; &#49888;&#50857; &#52852;&#46300; &#48264;&#54840;&#45716; XXXXX &#48264;&#51077;&#45768;&#45796; |
+{: caption="Table 6. Numeric redaction example transcripts"}
 
 ### Numeric redaction example
 {: #redactionExample}

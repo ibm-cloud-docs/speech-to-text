@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-23"
+lastupdated: "2020-09-06"
 
 subcollection: speech-to-text
 
@@ -219,38 +219,13 @@ In general, you are likely to add most custom words from corpora. Make sure that
 
 You must use that encoding when working with the individual words in the custom language model. When you specify a word with the `GET`, `PUT`, or `DELETE /v1/customizations/{customization_id}/words/{word_name}` method, you must URL-encode the `word_name` that you pass in the URL if the word includes non-ASCII characters.
 
-For example, the following table shows what looks like the same letter in two different encodings, ASCII and UTF-8. You can pass the ASCII character on a URL as `z`. You must pass the UTF-8 character as `%EF%BD%9A`.
+For example, the following table shows what looks like the same letter in two different encodings, ASCII and UTF-8. But, while you can pass the ASCII character on a URL as `z`, you must pass the UTF-8 character as `%EF%BD%9A`.
 
-<table style="width:75%">
-  <caption>Table 1. Character encoding examples</caption>
-  <tr>
-    <th style="width:15%; text-align:center">Letter</th>
-    <th style="width:40%; text-align:center">Encoding</th>
-    <th style="width:45%; text-align:center">Value</th>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      `z`
-    </td>
-    <td style="text-align:center">
-      ASCII
-    </td>
-    <td style="text-align:center">
-      `0x7a` (`7a`)
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <code>&#xff5a;</code>
-    </td>
-    <td style="text-align:center">
-      UTF-8 hexadecimal
-    </td>
-    <td style="text-align:center">
-      `0xEF 0xBD 0x9A` (`efbd9a`)
-    </td>
-  </tr>
-</table>
+| Letter | Encoding | Value |
+|:------:|:--------:|:-----:|
+| z | ASCII | `0x7a` (`7a`) |
+| &#xff5a; | UTF-8 hexadecimal | `0xEF 0xBD 0x9A` (`efbd9a`) |
+{: caption="Table 1. Character encoding examples"}
 
 ### Using the sounds_like field
 {: #soundsLike}
@@ -375,129 +350,25 @@ For more information about working with these features, see [Smart formatting](/
 ### What happens when I add or modify a custom word?
 {: #parseWord}
 
-How the service responds to a request to add or modify a custom word depends on what values you provide and whether the word exists in the service's base vocabulary.
+How the service responds to a request to add or modify a custom word depends on the fields and values that you specify. It also depends on whether the word exists in the service's base vocabulary.
 
-<table>
-  <caption>Table 1. Adding custom words with different fields</caption>
-  <tr>
-    <th style="width:20%; text-align:center; vertical-align:bottom">The <code>sounds_like</code> field is...</th>
-    <th style="width:20%; text-align:center; vertical-align:bottom">The <code>display_as</code> field is...</th>
-    <th style="text-align:left; vertical-align:bottom">Response</th>
-  </tr>
-  <tr>
-    <td style="text-align:center; vertical-align:top">
-      Not specified
-    </td>
-    <td style="text-align:center; vertical-align:top">
-      Not specified
-    </td>
-    <td style="text-align:left; vertical-align:top">
-      <ul style="margin-left:20px; padding:0px">
-        <li style="margin:10px 0px; line-height:120%">
-          <em>If the word does not exist in the service's base
-          vocabulary,</em> the service attempts to set the
-          <code>sounds_like</code> field to its pronunciation
-          of the word. It cannot generate a pronunciation for
-          all words, so you must review the word's definition
-          to ensure that it is complete and valid. The service
-          sets the <code>display_as</code> field to the value
-          of the <code>word</code> field.
-        </li>
-        <li style="margin:10px 0px; line-height:120%">
-          <em>If the word exists in the service's base vocabulary,</em>
-          the service leaves the <code>sounds_like</code> and
-          <code>display_as</code> fields empty. These fields are empty
-          only if the word exists in the service's base vocabulary. The
-          word's presence in the model's words resource is harmless but
-          unnecessary.
-        </li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center; vertical-align:top">
-      Specified
-    </td>
-    <td style="text-align:center; vertical-align:top">
-      Not specified
-    </td>
-    <td style="text-align:left; vertical-align:top">
-      <ul style="margin-left:20px; padding:0px">
-        <li style="margin:10px 0px; line-height:120%">
-          <em>If the <code>sounds_like</code> field is valid,</em> the
-          service sets the <code>display_as</code> field to the value
-          of the <code>word</code> field.
-        </li>
-        <li style="margin:10px 0px; line-height:120%">
-          <em>If the <code>sounds_like</code> field is invalid:</em>
-          <ul style="margin-left:20px; padding:0px">
-            <li style="margin:10px 0px; line-height:120%">
-              The <code>POST
-                /v1/customizations/{customization_id}/words</code>
-              method adds an <code>error</code> field to the word in the
-              model's words resource.
-            </li>
-            <li style="margin:10px 0px; line-height:120%">
-              The <code>PUT
-                /v1/customizations/{customization_id}/words/{word_name}</code>
-              method fails with a 400 response code and an error message. The
-              service does not add the word to the words resource.
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center; vertical-align:top">
-      Not specified
-    </td>
-    <td style="text-align:center; vertical-align:top">
-      Specified
-    </td>
-    <td style="text-align:left; vertical-align:top">
-      <ul style="margin-left:20px; padding:0px">
-        <li style="margin:10px 0px; line-height:120%">
-          <em>If the word does not exist in the service's base
-          vocabulary,</em> the service attempts to set the
-          <code>sounds_like</code> field to its pronunciation
-          of the word. It cannot generate a pronunciation for
-          all words, so you must review the word's definition
-          to ensure that it is complete and valid. The service
-          leaves the <code>display_as</code> field as specified.
-        </li>
-        <li style="margin:10px 0px; line-height:120%">
-          <em>If the word exists in the service's base vocabulary,</em>
-          the service leaves the <code>sounds_like</code> empty and
-          leaves the <code>display_as</code> field as specified.
-        </li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td style="text-align:center; vertical-align:top">
-      Specified
-    </td>
-    <td style="text-align:center; vertical-align:top">
-      Specified
-    </td>
-    <td style="text-align:left; vertical-align:top">
-      <ul style="margin-left:20px; padding:0px">
-        <li style="margin:10px 0px; line-height:120%">
-          <em>If the <code>sounds_like</code> field is valid,</em> the
-          service sets the <code>sounds_like</code> and <code>display_as</code>
-          fields to the specified values.
-        </li>
-        <li style="margin:10px 0px; line-height:120%">
-          <em>If the <code>sounds_like</code> field is invalid,</em>
-          the service responds as it does in the case where the
-          <code>sounds_like</code> field is specified but the
-          <code>display_as</code> field is not.
-        </li>
-      </ul>
-    </td>
-  </tr>
-</table>
+-   **Omit both the `sounds_like` and `display_as` fields:**
+    -   *If the word does not exist in the service's base vocabulary,* the service attempts to set the `sounds_like` field to its pronunciation of the word. It cannot generate a pronunciation for all words, so you must review the word's definition to ensure that it is complete and valid. The service sets the `display_as` field to the value of the `word` field.
+    -   *If the word exists in the service's base vocabulary,* the service leaves the `sounds_like` and `display_as` fields empty. These fields are empty only if the word exists in the service's base vocabulary. The word's presence in the model's words resource is harmless but unnecessary.
+
+-   **Specify only the `sounds_like` field:**
+    -   *If the `sounds_like` field is valid,* the service sets the `display_as` field to the value of the `word` field.
+    -   *If the `sounds_like` field is invalid:*
+        -   The `POST /v1/customizations/{customization_id}/words` method adds an `error` field to the word in the model's words resource.
+        -   The `PUT /v1/customizations/{customization_id}/words/{word_name}` method fails with a 400 response code and an error message. The service does not add the word to the words resource.
+
+-   **Specify only the `display_as` field:**
+    -   *If the word does not exist in the service's base vocabulary,* the service attempts to set the `sounds_like` field to its pronunciation of the word. It cannot generate a pronunciation for all words, so you must review the word's definition to ensure that it is complete and valid. The service leaves the `display_as` field as specified.
+    -   *If the word exists in the service's base vocabulary,* the service leaves the `sounds_like` empty and leaves the `display_as` field as specified.
+
+-   **Specify both the `sounds_like` and `display_as` fields:**
+    -   *If the `sounds_like` field is valid,* the service sets the `sounds_like` and `display_as` fields to the specified values.
+    -   *If the `sounds_like` field is invalid,* the service responds as it does in the case where the `sounds_like` field is specified but the `display_as` field is not.
 
 ## Validating a words resource
 {: #validateModel}

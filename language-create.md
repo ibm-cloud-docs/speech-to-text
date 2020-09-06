@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-07-01"
+lastupdated: "2020-09-05"
 
 subcollection: speech-to-text
 
@@ -50,82 +50,21 @@ You use the `POST /v1/customizations` method to create a new custom language mod
 
 You can create a maximum of 1024 custom language models per owning credentials. The service returns an error if you attempt to create more than 1024 models. You do not lose any models, but you cannot create any more until your model count is below the limit.
 
-<table>
-  <caption>Table 1. Attributes of a new custom language model</caption>
-  <tr>
-    <th style="width:20%; text-align:left">Parameter</th>
-    <th style="width:12%; text-align:center">Data type</th>
-    <th style="text-align:left">Description</th>
-  </tr>
-  <tr>
-    <td><code>name</code><br/><em>Required</em></td>
-    <td style="text-align:center">String</td>
-    <td>
-      A user-defined name for the new custom model. Use a name that
-      describes the domain of the custom model, such as <code>Medical
-        custom model</code> or <code>Legal custom model</code>. Use a
-      name that is unique among all custom language models that you own.
-      Use a localized name that matches the language of the custom model.
-    </td>
-  </tr>
-  <tr>
-    <td><code>base_model_name</code><br/><em>Required</em></td>
-    <td style="text-align:center">String</td>
-    <td>
-      The name of the language model that is to be customized by the
-      new custom model. Specify one of the supported language models
-      that is returned by the <code>GET /v1/models</code> method. The
-      new model can be used only with the base model that it customizes.
-    </td>
-  </tr>
-  <tr>
-    <td><code>dialect</code><br/><em>Optional</em></td>
-    <td style="text-align:center">String</td>
-    <td>
-      The dialect of the specified language that is to be used with the
-      new custom model. For most languages, the dialect matches the
-      language of the base model by default. For example, `en-US` is used
-      for either of the US English language models.<br><br>
-      For a Spanish language, the service creates a custom model that is
-      suited for speech in one of the following dialects:
-      <ul style="margin-left:20px; padding:0px;">
-        <li style="margin:10px 0px; line-height:120%;">
-          `es-ES` for Castilian Spanish (`es-ES` models)
-        </li>
-        <li style="margin:10px 0px; line-height:120%;">
-          `es-LA` for Latin American Spanish (`es-AR`, `es-CL`, `es-CO`,
-          and `es-PE` models)
-        </li>
-        <li style="margin:10px 0px; line-height:120%;">
-          `es-US` for Mexican (North American) Spanish (`es-MX` models)
-        </li>
-      </ul>
-      The parameter is meaningful only for Spanish models, for which
-      you can always safely omit the parameter to have the service create
-      the correct mapping.
-      <ul style="margin-left:20px; padding:0px;">
-        <li style="margin:10px 0px; line-height:120%;">
-          If you specify the `dialect` parameter for non-Spanish language
-          models, its value must match the language of the base model.
-        </li>
-        <li style="margin:10px 0px; line-height:120%;">
-          If you specify the `dialect` for Spanish language models, its
-          value must match one of the defined mappings as indicated
-          (`es-ES`, `es-LA`, or `es-MX`).
-        </li>
-      </ul>
-      All dialect values are case-insensitive.
-    </td>
-  </tr>
-  <tr>
-    <td><code>description</code><br/><em>Optional</em></td>
-    <td style="text-align:center">String</td>
-    <td>
-      A description of the new model. Use a localized description that
-      matches the language of the custom model.
-    </td>
-  </tr>
-</table>
+A new custom language model has the following attributes:
+
+-   `name` (*required* string) - A user-defined name for the new custom model. Use a name that describes the domain of the custom model, such as `Medical custom model` or `Legal custom model`. Use a name that is unique among all custom language models that you own. Use a localized name that matches the language of the custom model.
+-   `base_model_name` (*required* string) - The name of the language model that is to be customized by the new custom model. Specify one of the supported language models that is returned by the `GET /v1/models` method. The new model can be used only with the base model that it customizes.
+-   `dialect` (*optional* string) - The dialect of the specified language that is to be used with the new custom model. All dialect values are case-insensitive. For most languages, the dialect matches the language of the base model by default. For example, `en-US` is used for the US English language models.
+
+    The parameter is meaningful only for Spanish models, for which you can always safely omit the parameter to have the service create the correct mapping. For a Spanish language, the service creates a custom model that is suited for speech in one of the following dialects:
+    -   `es-ES` for Castilian Spanish (`es-ES` models)
+    -   `es-LA` for Latin American Spanish (`es-AR`, `es-CL`, `es-CO`, and `es-PE` models)
+    -   `es-US` for Mexican (North American) Spanish (`es-MX` models)
+
+    If you specify the parameter for a language, follow these guidelines:
+    -   For non-Spanish language models, the value must match the language of the base model.
+    -   For Spanish language models, the value must match one of the defined mappings (`es-ES`, `es-LA`, or `es-MX`).
+-   `description` (*optional* string) - A description of the new model. Use a localized description that matches the language of the custom model.
 
 The following example creates a new custom language model named `Example model`. The model is created for the base model `en-US-BroadbandModel` and has the description `Example custom language model`. The `Content-Type` header specifies that JSON data is being passed to the method.
 

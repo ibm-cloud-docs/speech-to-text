@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-08-31"
+lastupdated: "2020-09-05"
 
 subcollection: speech-to-text
 
@@ -48,44 +48,11 @@ You use the `POST /v1/acoustic_customizations` method to create a new custom aco
 
 You can create a maximum of 1024 custom acoustic models per owning credentials. The service returns an error if you attempt to create more than 1024 models. You do not lose any models, but you cannot create any more until your model count is below the limit.
 
-<table>
-  <caption>Table 1. Attributes of a new custom acoustic model</caption>
-  <tr>
-    <th style="width:20%; text-align:left">Parameter</th>
-    <th style="width:12%; text-align:center">Data type</th>
-    <th style="text-align:left">Description</th>
-  </tr>
-  <tr>
-    <td><code>name</code><br/><em>Required</em></td>
-    <td style="text-align:center">String</td>
-    <td>
-      A user-defined name for the new custom acoustic model. Use a name
-      that describes the acoustic environment of the custom model, such
-      as <code>Mobile custom model</code> or <code>Noisy car custom
-      model</code>. Use a name that is unique among all custom acoustic
-      models that you own. Use a localized name that matches the language
-      of the custom model.
-    </td>
-  </tr>
-  <tr>
-    <td><code>base_model_name</code><br/><em>Required</em></td>
-    <td style="text-align:center">String</td>
-    <td>
-      The name of the base model that is to be customized by the new
-      model. You must use the name of a model that is returned by the
-      <code>GET /v1/models</code> method. The new custom model can be
-      used only with the base model that it customizes.
-    </td>
-  </tr>
-  <tr>
-    <td><code>description</code><br/><em>Optional</em></td>
-    <td style="text-align:center">String</td>
-    <td>
-      A description of the new model. Use a localized description that
-      matches the language of the custom model.
-    </td>
-  </tr>
-</table>
+A new custom acoustic model has the following attributes:
+
+-   `name` (*required* string) - A user-defined name for the new custom acoustic model. Use a name that describes the acoustic environment of the custom model, such as `Mobile custom model` or `Noisy car custom model`. Use a name that is unique among all custom acoustic models that you own. Use a localized name that matches the language of the custom model.
+-   `base_model_name` (*required* string) - The name of the base model that is to be customized by the new model. You must use the name of a model that is returned by the `GET /v1/models` method. The new custom model can be used only with the base model that it customizes.
+-   `description` (*optional* string) - A description of the new model. Use a localized description that matches the language of the custom model.
 
 The following example creates a new custom acoustic model named `Example acoustic model`. The model is created for the base model `en-US_BroadbandModel` and has the description `Example custom acoustic model`. The `Content-Type` header specifies that JSON data is being passed to the method.
 
