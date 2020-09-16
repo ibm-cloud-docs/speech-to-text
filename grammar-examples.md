@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2019
-lastupdated: "2019-07-01"
+  years: 2015, 2020
+lastupdated: "2020-09-16"
 
 subcollection: speech-to-text
 
@@ -36,62 +36,21 @@ In a production rule for a grammar, including a `\` (backslash) is a syntax erro
 
 Confirmation grammars are useful for applications that expect a one-word answer in response to a question. The following grammars define a list of possible yes and no responses.
 
-<table style="width:50%">
-  <caption>Table 1. Confirmation grammars</caption>
-  <tr>
-    <th style="text-align:center">ABNF</th>
-    <th style="text-align:center">XML</th>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/confirm.abnf" download="confirm.abnf">confirm.abnf <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>
-    </td>
-    <td style="text-align:center">
-      <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/confirm.xml" download="confirm.xml">confirm.xml <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>
-    </td>
-  </tr>
-</table>
+-   **ABNF** - [confirm.abnf](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/confirm.abnf){: external}
+-   **XML** - [confirm.xml](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/confirm.xml){: external}
 
 ## List grammars
 {: #list}
 
 List grammars are useful for applications that expect the user to select an option from a predefined set of strings. The set is sometimes called a flat list. It typically consists of a list of terminal elements and does not include a complicated rule structure.
 
--   The following grammars define a list of phrases for digits.
+-   The following grammars define a list of phrases for digits:
+    -   **ABNF** - [list-numbers.abnf](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/list-numbers.abnf){: external}
+    -   **XML** - [list-numbers.xml](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/list-numbers.xml){: external}
 
-    <table style="width:50%">
-      <caption>Table 2. List numbers grammars</caption>
-      <tr>
-        <th style="text-align:center">ABNF</th>
-        <th style="text-align:center">XML</th>
-      </tr>
-      <tr>
-        <td style="text-align:center">
-          <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/list-numbers.abnf" download="list-numbers.abnf">list-numbers.abnf <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>
-        </td>
-        <td style="text-align:center">
-          <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/list-numbers.xml" download="list-numbers.xml">list-numbers.xml <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>
-        </td>
-      </tr>
-    </table>
-
--   The following grammar defines a list of valid names from which the user can choose, perhaps to select an individual from a telephone directory.
-
-    <table style="width:50%">
-      <caption>Table 3. List names grammar</caption>
-      <tr>
-        <th style="text-align:center">ABNF</th>
-        <th style="text-align:center">XML</th>
-      </tr>
-      <tr>
-        <td style="text-align:center">
-          <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/list-names.abnf" download="list-names.abnf">list-names.abnf <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>
-        </td>
-        <td style="text-align:center">
-          Not available
-        </td>
-      </tr>
-    </table>
+-   The following grammar defines a list of valid names from which the user can choose, perhaps to select an individual from a telephone directory:
+    -   **ABNF** - [list-names.abnf](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/list-names.abnf){: external}
+    -   **XML** - Not available
 
 ## Vehicle identification number grammars
 {: #vin}
@@ -102,21 +61,8 @@ The VIN format is well standardized and has a fixed number of characters. Classi
 
 The following grammars recognize Honda VIN codes. They are more complex than the previous examples but demonstrate the power of grammars nicely.
 
-<table style="width:50%">
-  <caption>Table 4. VIN grammars</caption>
-  <tr>
-    <th style="text-align:center">ABNF</th>
-    <th style="text-align:center">XML</th>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/vins.abnf" download="vins.abnf">vins.abnf <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
-    </td>
-    <td style="text-align:center">
-      <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/vins.xml" download="vins.xml">vins.xml <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
-    </td>
-  </tr>
-</table>
+-   **ABNF** - [vins.abnf](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/vins.abnf){: external}
+-   **XML** - [vins.xml](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/vins.xml){: external}
 
 For more information about the VIN format, see [Vehicle identification number](https://wikipedia.org/wiki/Vehicle_identification_number){: external}.
 
@@ -125,21 +71,8 @@ For more information about the VIN format, see [Vehicle identification number](h
 
 By making certain elements of a response optional, you can make grammars more flexible by anticipating how users might respond. The following grammar adds square brackets around the element `$optionalphrase` to make it optional. The user can speak one of a few additional phrases before stating the social security number. For instance, the user can say "my social is xxx xx xxxx" or just "xxx xx xxxx".
 
-<table style="width:50%">
-  <caption>Table 5. Optional-element grammar</caption>
-  <tr>
-    <th style="text-align:center">ABNF</th>
-    <th style="text-align:center">XML</th>
-  </tr>
-  <tr>
-    <td style="text-align:center">
-      <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/optional.abnf" download="optional.abnf">optional.abnf <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>
-    </td>
-    <td style="text-align:center">
-      Not available
-    </td>
-  </tr>
-</table>
+-   **ABNF** - [optional.abnf](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/optional.abnf){: external}
+-   **XML** - Not available
 
 For more information about optional expansions in grammars, see [Section 2.5 Repeats](https://www.w3.org/TR/speech-grammar/#S2.5){: external} of the Speech Recognition Grammar Specification.
 

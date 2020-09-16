@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-07-01"
+lastupdated: "2020-09-16"
 
 subcollection: speech-to-text
 
@@ -32,7 +32,7 @@ To request speech recognition with the {{site.data.keyword.speechtotextfull}} se
 
 The following sections show basic transcription requests, with no optional input or output parameters, for each of the service's interfaces:
 
--   The examples submit a brief FLAC file named <a target="_blank" href="https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac" download="audio-file.flac">audio-file.flac <img src="../icons/launch-glyph.svg" alt="External link icon" title="External link icon"></a>.
+-   The examples submit a brief FLAC file named [audio-file.flac](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac){: external}.
 -   The examples use the default language model, `en-US_BroadbandModel`.
 
 [Understanding recognition results](/docs/speech-to-text?topic=speech-to-text-basic-response) describes the service's response for these examples.
