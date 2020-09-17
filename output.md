@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-09-05"
+lastupdated: "2020-09-17"
 
 subcollection: speech-to-text
 
@@ -152,72 +152,72 @@ The `transcript` field shows the final transcript of the audio, which lists the 
   </tr>
   <tr>
     <td style="vertical-align:top">
-      <code>"hello",<br/>
-      0.68,<br/>
-      1.19</code>
+      `"hello",`<br/>
+      `0.68,`<br/>
+      `1.19`
     </td>
     <td>
-      <code>"from": 0.68,<br/>
-      "to": 1.19,<br/>
-      "speaker": 2,<br/>
-      "confidence": 0.52,<br/>
-      "final": false</code>
+      `"from": 0.68,`<br/>
+      `"to": 1.19,`<br/>
+      `"speaker": 2,`<br/>
+      `"confidence": 0.52,`<br/>
+      `"final": false`
     </td>
   </tr>
   <tr>
     <td style="vertical-align:top">
-      <code>"yeah",<br/>
-      1.47,<br/>
-      1.93</code>
+      `"yeah",`<br/>
+      `1.47,`<br/>
+      `1.93`
     </td>
     <td>
-      <code>"from": 1.47,<br/>
-      "to": 1.93,<br/>
-      "speaker": 1,<br/>
-      "confidence": 0.62,<br/>
-      "final": false</code>
+      `"from": 1.47,`<br/>
+      `"to": 1.93,`<br/>
+      `"speaker": 1,`<br/>
+      `"confidence": 0.62,`<br/>
+      `"final": false`
     </td>
   </tr>
   <tr>
     <td style="vertical-align:top">
-      <code>"yeah",<br/>
-      1.96,<br/>
-      2.12</code>
+      `"yeah",`<br/>
+      `1.96,`<br/>
+      `2.12`
     </td>
     <td>
-      <code>"from": 1.96,<br/>
-      "to": 2.12,<br/>
-      "speaker": 2,<br/>
-      "confidence": 0.51,<br/>
-      "final": false</code>
+      `"from": 1.96,`<br/>
+      `"to": 2.12,`<br/>
+      `"speaker": 2,`<br/>
+      `"confidence": 0.51,`<br/>
+      `"final": false`
     </td>
   </tr>
   <tr>
     <td style="vertical-align:top">
-      <code>"how's",<br/>
-      2.12,<br/>
-      2.59</code>
+      `"how's",`<br/>
+      `2.12,`<br/>
+      `2.59`
     </td>
     <td>
-      <code>"from": 2.12,<br/>
-      "to": 2.59,<br/>
-      "speaker": 2,<br/>
-      "confidence": 0.51,<br/>
-      "final": false</code>
+      `"from": 2.12,`<br/>
+      `"to": 2.59,`<br/>
+      `"speaker": 2,`<br/>
+      `"confidence": 0.51,`<br/>
+      `"final": false`
     </td>
   </tr>
   <tr>
     <td style="vertical-align:top">
-      <code>"Billy",<br/>
-      2.59,<br/>
-      3.17</code>
+      `"Billy",`<br/>
+      `2.59,`<br/>
+      `3.17`
     </td>
     <td>
-      <code>"from": 2.59,<br/>
-      "to": 3.17,<br/>
-      "speaker": 2,<br/>
-      "confidence": 0.51,<br/>
-      "final": false</code>
+      `"from": 2.59,`<br/>
+      `"to": 3.17,`<br/>
+      `"speaker": 2,`<br/>
+      `"confidence": 0.51,`<br/>
+      `"final": false`
     </td>
   </tr>
 </table>
@@ -828,7 +828,7 @@ Smart formatting is based on the presence of obvious keywords in the transcript.
           `Comma`
         </td>
         <td style="text-align:center">
-          <code>,</code>
+          `,`
         </td>
       </tr>
       <tr>
@@ -836,7 +836,7 @@ Smart formatting is based on the presence of obvious keywords in the transcript.
           `Period`
         </td>
         <td style="text-align:center">
-          <code>.</code>
+          `.`
         </td>
       </tr>
       <tr>
@@ -844,7 +844,7 @@ Smart formatting is based on the presence of obvious keywords in the transcript.
           `Question mark`
         </td>
         <td style="text-align:center">
-          <code>?</code>
+          `?`
         </td>
       </tr>
       <tr>
@@ -852,7 +852,7 @@ Smart formatting is based on the presence of obvious keywords in the transcript.
           `Exclamation point`
         </td>
         <td style="text-align:center">
-          <code>!</code>
+          `!`
         </td>
       </tr>
     </table>
