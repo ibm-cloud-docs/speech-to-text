@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-09-01"
+lastupdated: "2020-09-28"
 
 subcollection: speech-to-text
 
@@ -31,7 +31,7 @@ A summary follows of all of the parameters available for speech recognition. For
 ## access_token
 {: #summary-access-token}
 
-If you use Identity and Access Management (IAM) authentication, an optional IAM access token that you use to establish an authenticated connection with the WebSocket interface. For more information, see [Open a connection](/docs/speech-to-text?topic=speech-to-text-websockets#WSopen).
+A required Identity and Access Management (IAM) access token that you use to establish an authenticated connection with the WebSocket interface. For more information, see [Open a connection](/docs/speech-to-text?topic=speech-to-text-websockets#WSopen).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -366,19 +366,6 @@ An optional value of `chunked` that causes the audio to be streamed to the servi
 | Asynchronous HTTP      | Request header of `POST /v1/recognitions` method |
 {: caption="Table 26. The Transfer-Encoding parameter"}
 
-## watson-token
-{: #summary-watson-token}
-
-If you use Cloud Foundry service credentials, an optional {{site.data.keyword.watson}} authentication token that you use to establish an authenticated connection with the WebSocket interface. For more information, see [Open a connection](/docs/speech-to-text?topic=speech-to-text-websockets#WSopen).
-
-| Availability and usage | Description |
-|------------------------|-------------|
-| Availability           | Generally available for all languages |
-| WebSocket              | Query parameter of `/v1/recognize` connection request |
-| Synchronous HTTP       | Not supported |
-| Asynchronous HTTP      | Not supported |
-{: caption="Table 27. The watson-token parameter"}
-
 ## word_alternatives_threshold
 {: #summary-word-alternatives-threshold}
 
@@ -390,7 +377,7 @@ An optional double between 0.0 and 1.0 that specifies the threshold at which the
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 28. The word_alternatives_threshold parameter"}
+{: caption="Table 27. The word_alternatives_threshold parameter"}
 
 ## word_confidence
 {: #summary-word-confidence}
@@ -403,23 +390,7 @@ An optional boolean that indicates whether the service provides confidence measu
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 29. The word_confidence parameter"}
-
-## X-Watson-Authorization-Token
-{: #summary-x-watson-authorization-token}
-
-An optional authentication token that makes authenticated requests to the service without embedding your service credentials in every call. By default, service credentials must be passed with each request. Watson authentication tokens are based on Cloud Foundry service credentials that use a `{username}` and `{password}` for authentication.
-
-The `X-Watson-Authorization-Token` header does not accept IAM tokens or API keys.
-{: note}
-
-| Availability and usage | Description |
-|------------------------|-------------|
-| Availability           | Generally available for all languages |
-| WebSocket              | Not supported; use the `access_token` or `watson-token` query parameter |
-| Synchronous HTTP       | Request header of each request |
-| Asynchronous HTTP      | Request header of each request |
-{: caption="Table 30. The X-Watson-Authorization-Token parameter"}
+{: caption="Table 28. The word_confidence parameter"}
 
 ## X-Watson-Learning-Opt-Out
 {: #summary-x-watson-learning-opt-out}
@@ -432,7 +403,7 @@ An optional boolean that indicates whether you opt out of the default request lo
 | WebSocket              | `x-watson-learning-opt-out` query parameter of `/v1/recognize` connection request |
 | Synchronous HTTP       | Request header of each request |
 | Asynchronous HTTP      | Request header of each request |
-{: caption="Table 31. The X-Watson-Learning-Opt-Out parameter"}
+{: caption="Table 29. The X-Watson-Learning-Opt-Out parameter"}
 
 ## X-Watson-Metadata
 {: #summary-x-watson-metadata}
@@ -445,4 +416,4 @@ An optional string that associates a customer ID with data that is passed for re
 | WebSocket              | `x-watson-metadata` query parameter of `/v1/recognize` connection request. (You must URL-encode the argument, for example, `customer_id%3dmy_customer_ID`.) |
 | Synchronous HTTP       | Request header of POST `/v1/recognize` request |
 | Asynchronous HTTP      | Request header of `POST /v1/register_callback` and `POST /v1/recognitions` requests |
-{: caption="Table 32. The X-Watson-Metadata parameter"}
+{: caption="Table 30. The X-Watson-Metadata parameter"}

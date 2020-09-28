@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-09-05"
+lastupdated: "2020-09-28"
 
 subcollection: speech-to-text
 
@@ -73,12 +73,9 @@ The examples in the documentation abbreviate `wss://api.{location}.speech-to-tex
 
 A WebSocket client calls the `/v1/recognize` method with the following query parameters to establish an authenticated connection with the service:
 
--   `access_token` (*optional* string) - *If you use Identity and Access Management (IAM) authentication,* pass a valid IAM access token to establish an authenticated connection with the service. You pass an IAM access token instead of passing an API key with the call. You must establish the connection before the access token expires. For information about obtaining an access token, see [Authenticating to Watson services](/docs/watson?topic=watson-iam).
+-   `access_token` (*required* string) - A valid Identity and Access Management (IAM) access token to establish an authenticated connection with the service. You pass an IAM access token instead of passing an API key with the call. You must establish the connection before the access token expires. For information about obtaining an access token, see [Authenticating to Watson services](/docs/watson?topic=watson-iam).
 
     You pass an access token only to establish an authenticated connection. Once you establish a connection, you can keep it alive indefinitely. You remain authenticated for as long as you keep the connection open. You do not need to refresh the access token for an active connection that lasts beyond the token's expiration time. A connection can remain active even after the token or its API key are deleted.
--   `watson-token` (*optional* string) - *If you use Cloud Foundry service credentials,* pass a valid {{site.data.keyword.watson}} authentication token to establish an authenticated connection with the service. You pass a {{site.data.keyword.watson}} token instead of passing service credentials with the call. {{site.data.keyword.watson}} tokens are based on Cloud Foundry service credentials, which use a `username` and `password` for HTTP basic authentication. For information about obtaining a {{site.data.keyword.watson}} token, see [{{site.data.keyword.watson}} tokens](/docs/watson?topic=watson-gs-tokens-watson-tokens).
-
-    You pass a {{site.data.keyword.watson}} token only to establish an authenticated connection. Once you establish a connection, you can keep it alive indefinitely. You remain authenticated for as long as you keep the connection open.
 -   `model` (*optional* string) - Specifies the language model to be used for transcription. If you do not specify a model, the service uses the `en-US_BroadbandModel` model by default. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
 -   `language_customization_id` (*optional* string) - Specifies the Globally Unique Identifier (GUID) of a custom language model that is to be used for all requests that are sent over the connection. The base model of the custom language model must match the value of the `model` parameter. If you include a customization ID, you must make the request with credentials for the instance of the service that owns the custom model. By default, no custom language model is used. For more information, see [The customization interface](/docs/speech-to-text?topic=speech-to-text-customization).
 -   `acoustic_customization_id` (*optional* string) - Specifies the Globally Unique Identifier (GUID) of a custom acoustic model that is to be used for all requests that are sent over the connection. The base model of the custom acoustic model must match the value of the `model` parameter. If you include a customization ID, you must make the request with credentials for the instance of the service that owns the custom model. By default, no custom acoustic model is used. For more information, see [The customization interface](/docs/speech-to-text?topic=speech-to-text-customization).
