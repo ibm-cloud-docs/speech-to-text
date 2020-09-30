@@ -50,7 +50,7 @@ The Plus plan provides access to all of the service's features:
 
 -   Use of both broadband and narrowband models (same as the Lite plan).
 -   Unlimited creation and use of custom language and custom acoustic models at no extra charge.
--   A maximum of one hundred concurrent transcription streams from all interfaces, WebSocket and HTTP, combined.
+-   A maximum of one hundred concurrent transcriptions from all interfaces, WebSocket and HTTP, combined.
 
 The plan uses a simple tiered pricing model to give high-volume users further discounts as they use the service more heavily. Pricing is based on the aggregate number of minutes of audio that you recognize per month:
 
@@ -99,7 +99,7 @@ You must have a paid plan (Plus, Standard, or Premium) to use language model or 
 The Premium plan offers developers and organizations all of the capabilities and features of the Plus plan. The plan also offers these additional features:
 
 -   The ability to use {{site.data.keyword.ibmwatson}} services in the {{site.data.keyword.cloud}} with data isolation and added security features such as BYOK, Service Endpoints, Mutual Authentication, and US Health Insurance Portability and Accountability Act (HIPAA) readiness.
--   Significantly increased concurrent streaming capacity of 500 simultaneous streams with the option to add more, far above the limit of 100 concurrent connections for the Plus plan.
+-   Significantly greater capacity of up to 500 concurrent transcriptions with the option to add more, far above the limit of 100 concurrent transcriptions for the Plus plan.
 -   Your first 150,000 minutes of speech recognition at no charge.
 
 The Premium plan provides you with all the benefits of using the cloud while also ensuring that your data is encrypted end-to-end while in transit and at rest. To learn more or to make a purchase, [contact an {{site.data.keyword.IBM_notm}} representative](https://ibm.biz/contact-wdc-premium){: external}.
