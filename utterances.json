@@ -1,31 +1,49 @@
 {
-  "faq-pricing-zero": [
+  "faq-pricing-lite": [
     "price for using the Speech to Text Lite",
     "cost for Speech to Text Lite",
     "the cost of STT lite plan",
     "how many minutes do I get free with STT lite",
     "STT Lite provide access to the service's customization interfaces",
     "access to STT customization interfaces with Lite plan",
+    "use customization with STT lite plan",
     "how much is STT lite",
     "educational pricing for Watson Speech to Text",
     "information for Speech to Text Lite Plan",
     "is STT free",
+    "what is the STT lite plan",
+    "how long can I use speech to text lite",
     "how many minutes do I get in STT lite",
     "included with Speech to Text price"
   ],
-  "faq-pricing-one": [
-    "price for using the Speech to Text Standard",
-    "cost for Speech to Text standard plan",
-    "cost of STT standard plan",
-    "included with Speech to Text standard plan",
-    "information for Speech to Text standard plan",
-    "how much is STT for standard plan",
-    "included with Speech to Text Standard price",
-    "STT standard plan provide access to the service's customization interfaces",
-    "access to customization interfaces with STT Standard plan",
+  "faq-pricing-plus": [
+    "price for using the Speech to Text Plus",
+    "cost for Speech to Text plus plan",
+    "cost of STT plus plan",
+    "included with Speech to Text plus plan",
+    "information for Speech to Text plus plan",
+    "how much is STT for plus plan",
+    "included with Speech to Text Plus price",
+    "features of STT Plus plan",
+    "what is Plus Plan for Speech to Text",
+    "when to use a Plus Plan for STT",
+    "STT plus plan provide access to the service's customization interfaces",
+    "access to customization interfaces with STT Plus plan",
     "pricing plan for STT"
   ],
-  "faq-pricing-two": [
+  "faq-pricing-standard": [
+    "can I keep Speech to Text Standard plan",
+    "keep using the Standard Plan for STT",
+    "how long can I keep using Standard Plan for STT",
+    "continue to use Speech to Text Standard Plan",
+    "can I provision a STT Standard instance",
+    "use the Standard Plan for STT",
+    "migrate from Standard to Plus plan in speech to text",
+    "migration of my data to premium plan in STT",
+    "continue using the standard plan for Speech to Text",
+    "keep my Speech to Text on a standard plan"
+  ],
+  "faq-pricing-per-minute": [
     "pricing per minute mean",
     "price per minute mean for STT",
     "STT price calculated per minute",
@@ -36,7 +54,7 @@
     "pricing for STT depend on duration to process the audio",
     "price per min mean for STT"
   ],
-  "faq-pricing-three": [
+  "faq-pricing-rounding": [
     "round up to the nearest minute for every call to the API",
     "round up every single call to STT API",
     "length of the audio for API calls received in STT calculated",
@@ -49,49 +67,27 @@
     "every call rounded up to next minute",
     "how is minute usage calculated for speech to text"
   ],
-  "faq-pricing-four": [
-    "does Graduated Tiered Pricing work",
-    "tiered pricing model work for STT",
-    "benefits to tier pricing model for STT",
-    "volume-based Graduated Tiered Pricing calculated in STT",
-    "Graduated Tiered Pricing used in STT",
-    "STT tiered pricing",
-    "how does Graduated Tiered Pricing work for STT",
-    "volume-based Graduated Tiered Pricing calculated for STT",
-    "pricing costs for STT tiered pricing"
-  ],
-  "faq-pricing-five": [
-    "calculate the price for month using the tier pricing within STT",
-    "total charge for the month calculation example",
-    "calculate my total charge used to transcribe audio minutes",
-    "example of calculating the total charge for STT",
-    "audio minutes in one month used in calculation",
-    "example of tier pricing for a month in STT",
-    "total charges for transcribed audio calculated per month",
-    "the total charge for transcribed audio",
-    "monthly charge with the STT tiered pricing model"
-  ],
-  "faq-pricing-six": [
+  "faq-pricing-customization": [
     "pricing plan do I need to use the service's customization interface",
     "to use the customization interface for STT",
     "pay for STT customization interface usage",
     "to include the customization interface for STT",
     "use acoustic model customization with a Lite plan",
     "unable to use the customization interface for STT on Lite",
+    "use customization on a Lite plan",
     "use of customization interface on a Lite instance for STT",
     "add language model customization to Lite"
   ],
-  "faq-pricing-seven": [
-    "price for using the service's customization interface",
-    "price for acoustic model customization",
-    "cost of acoustic model customization",
-    "charge for creating a custom language or custom acoustic model",
-    "cost more for a custom model in STT",
-    "cost of speech to text with custom language models",
-    "cost extra for a custom acoustic model",
-    "total charge for using custom models for speech to text",
-    "how much is language model customization",
-    "how much is acoustic model customization"
+  "faq-pricing-premium": [
+    "advantages of using a Speech to Text Premium plan",
+    "benefit to the premium plan in STT",
+    "what does the Premium Plan include for STT",
+    "what is the speech to text premium plan",
+    "advantage of the Speech to text premium",
+    "ensure security in speech to text",
+    "data encryption offered in speech to text",
+    "data security within STT",
+    "ensure that my data is secure using speech to text"
   ],
   "faq-usage-zero": [
     "create STT service",
