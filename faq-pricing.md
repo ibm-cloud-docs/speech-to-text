@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-03-31"
+lastupdated: "2020-09-30"
 
 subcollection: speech-to-text
 
@@ -27,58 +27,79 @@ subcollection: speech-to-text
 # Pricing FAQs
 {: #faq-pricing}
 
+The {{site.data.keyword.speechtotextfull}} service is available at three pricing plans: Lite, Plus, and Premium. The following FAQs provide an overview of the pricing plans. For more information, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external} or read the blog [IBM Watson Speech to Text: Cloud Pricing Updates](https://medium.com/@kventurato/ibm-watson-speech-to-text-cloud-pricing-updates-df1adebd4b8c){: external}.
+
+The Standard plan will continue to be available for purchase for a short time. It will continue to be available to existing users of the plan indefinitely. For more information, see [Can I continue to use the {{site.data.keyword.speechtotextshort}} Standard plan?](#faq-pricing-standard).
+{: note}
+
 ## What is the price for using the {{site.data.keyword.speechtotextshort}} Lite plan?
-{: #faq-pricing-zero}
+{: #faq-pricing-lite}
 {: faq}
 {: support}
 
-The Lite plan lets you get started with 500 minutes per month of speech recognition at no cost. The Lite plan does not provide access to the service's customization interfaces. For more information, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service.
+The Lite plan lets you get started with 500 minutes per month of speech recognition at no cost. You can use both broadband and narrowband models for speech recognition. The Lite plan does not provide access to customization. To gain access to customization capabilities, you must upgrade to a paid plan, such as the Plus plan. Services that are created with the Lite plan are deleted after 30 days of inactivity.
 
-## What is the price for using the {{site.data.keyword.speechtotextshort}} Standard plan?
-{: #faq-pricing-one}
+The Lite plan is intended for any user who wants to try out the service before committing to a purchase. For more information, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}.
+
+## What is the price for using the {{site.data.keyword.speechtotextshort}} Plus plan?
+{: #faq-pricing-plus}
 {: faq}
 {: support}
 
-The Standard pricing plan is priced at $0.02 (USD) per minute of speech that you recognize. This price applies to use of both broadband and narrowband models. The plan uses a tiered pricing model, and it allows you to use the customization interfaces at an additional charge. For more information, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service.
+The Plus plan provides access to all of the service's features:
+
+-   Use of both broadband and narrowband models (same as the Lite plan).
+-   Unlimited creation and use of custom language and custom acoustic models at no extra charge.
+-   A maximum of one hundred concurrent transcription streams from all interfaces, WebSocket and HTTP, combined.
+
+The plan uses a simple tiered pricing model to give high-volume users further discounts as they use the service more heavily. Pricing is based on the aggregate number of minutes of audio that you recognize per month:
+
+-   Users who recognize 1 to 999,999 minutes of audio in a given month pay $0.02 (USD) per minute of audio for that month.
+-   Users who recognize at least 1,000,000 minutes of audio in a given month pay $0.01 (USD) per minute of audio for that month.
+
+The Plus plan is intended for small businesses. It is also a good choice for large enterprises that want to develop and test larger applications before considering moving to a Premium plan. For more information, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}.
+
+## Can I continue to use the {{site.data.keyword.speechtotextshort}} Standard plan?
+{: #faq-pricing-standard}
+{: faq}
+{: support}
+
+The Standard pricing plan will continue to be available for purchase for a short time. Existing users of the Standard plan can continue to use the plan indefinitely with no change in their pricing. Their API settings and custom models remain unaffected.
+
+Existing users can also choose to upgrade to the new Plus plan by visiting the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}. They will continue to have access to all of their settings and custom models after upgrading. And, if they find that the Plus plan does not meet their needs for any reason, they can always downgrade back to their Standard plan.
 
 ## What does "pricing per minute" mean?
-{: #faq-pricing-two}
+{: #faq-pricing-per-minute}
 {: faq}
 {: support}
 
-The price is based on the amount (number of minutes) of audio that you send to the service. The price does not depend on how long the service takes to process the audio.
+For the Plus plan, pricing is based on the cumulative amount (number of minutes) of audio that you send to the service in any one month. The per-minute price of all audio that you recognize in a month is reduced once you reach the threshold of one million minutes of audio for that month. The price does not depend on how long the service takes to process the audio. (Per-minute pricing is different for the Standard plan.)
+
+For information about pricing for the Plus and Standard plans, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}.
 
 ## Do you round up to the nearest minute for every call to the API?
-{: #faq-pricing-three}
+{: #faq-pricing-rounding}
 {: faq}
 {: support}
 
-{{site.data.keyword.IBM_notm}} does not round up the length of the audio for every API call that the service receives. Instead, {{site.data.keyword.IBM_notm}} aggregates all usage for the month and rounds to the nearest minute at the end of the month. For example, if you send two audio files that are each 30 seconds long, {{site.data.keyword.IBM_notm}} sums the duration of the total audio to one minute and charges $0.02 (USD).
-
-## How does volume-based Graduated Tiered Pricing work?
-{: #faq-pricing-four}
-{: faq}
-{: support}
-
-The tiered pricing model is intended to give high-volume users further discounts as they continue to use the service. Per-minute pricing is reduced for extra minutes of audio once certain thresholds for total monthly audio are met. For more information, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the service.
-
-## For tiered pricing, what would my total charge be if I used the service to transcribe, for example, 275 thousand audio minutes in one month?
-{: #faq-pricing-five}
-{: faq}
-{: support}
-
-For the first 250 thousand minutes of audio, you would be charged at $0.02 (USD) / minute: 250,000 \* $0.02 = $5000.00 (USD). For the remaining 25 thousand minutes of audio, you would be charged at the reduced rate of $0.015 (USD) / minute: 25,000 \* $0.015 = $375.00 (USD). In this case, your total charge for the month would be $5375.00 (USD).
+{{site.data.keyword.IBM_notm}} does not round up the length of the audio for every API call that the service receives. Instead, {{site.data.keyword.IBM_notm}} aggregates all usage for the month and rounds to the nearest minute at the end of the month. For example, if you send two audio files that are each 30 seconds long, {{site.data.keyword.IBM_notm}} sums the duration of the total audio for that month to one minute.
 
 ## What pricing plan do I need to use the service's customization interface?
-{: #faq-pricing-six}
+{: #faq-pricing-customization}
 {: faq}
 {: support}
 
-You must have the Standard pricing plan to use language model or acoustic model customization. Users of the Lite plan cannot use the customization interface. For more information, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service.
+You must have a paid plan (Plus, Standard, or Premium) to use language model or acoustic model customization. Users of the Lite plan cannot use customization.
 
-## What is the price for using the service's customization interface?
-{: #faq-pricing-seven}
+## What advantages do I get by using a {{site.data.keyword.speechtotextshort}} Premium plan?
+{: #faq-pricing-premium}
 {: faq}
 {: support}
 
-{{site.data.keyword.IBM_notm}} does not charge for creating or hosting a custom language or custom acoustic model. You are charged only for using a custom model with a speech recognition request. Using a custom language model, a custom acoustic model, or both types of model for transcription incurs an add-on charge of $0.03 (USD) per minute. This charge is in addition to the standard usage charge of $0.02 (USD) per minute, and it applies to all languages supported by the customization interface. So the total charge for using one or more custom models for speech recognition is $0.05 (USD) per minute.
+The Premium plan offers developers and organizations all of the capabilities and features of the Plus plan. The plan also offers these additional features:
+
+-   The ability to use {{site.data.keyword.ibmwatson}} services in the {{site.data.keyword.cloud}} with data isolation and added security features such as BYOK, Service Endpoints, Mutual Authentication, and US Health Insurance Portability and Accountability Act (HIPAA) readiness.
+-   Significantly increased concurrent streaming capacity of 500 simultaneous streams with the option to add more, far above the limit of 100 concurrent connections for the Plus plan.
+-   Your first 150,000 minutes of speech recognition at no charge.
+
+The Premium plan provides you with all the benefits of using the cloud while also ensuring that your data is encrypted end-to-end while in transit and at rest. To learn more or to make a purchase, [contact an {{site.data.keyword.IBM_notm}} representative](https://ibm.biz/contact-wdc-premium){: external}.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-08-28"
+lastupdated: "2020-09-29"
 
 subcollection: speech-to-text
 
@@ -27,7 +27,7 @@ subcollection: speech-to-text
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 20 August 2020. The service now offers beta broadband and narrowband models for Canadian French (`fr-CA_BroadbandModel` and `fr-CA_NarrowbandModel`). For more information, see the [20 August 2020 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#August2020b) in the release notes.*
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 30 September 2020. The service's pricing plans have been changed to offer a simplified tiered pricing model. For more information, see the [30 September 2020 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#September2020) in the release notes.*
 
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}
@@ -123,12 +123,15 @@ The service does not support all features for all languages. Moreover, it suppor
 ## Pricing
 {: #pricing-index}
 
-For more information about the pricing plans for the service, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}. For answers to questions related to pricing and examples of monthly usage costs, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
+The service offers multiple pricing plans to suit your usage and application needs:
+
+-   For general information about the pricing plans and answers to common questions, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
+-   For more information about the pricing plans or to purchase a plan, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}.
 
 ## Try out the service
 {: #tryOut}
 
-For examples of the {{site.data.keyword.speechtotextshort}} service in action, see
+You can see examples of the {{site.data.keyword.speechtotextshort}} service in action:
 
 -   A [quick demo](https://speech-to-text-demo.ng.bluemix.net/){: external} that transcribes text from streaming audio input or from a file that you upload.
 -   Applications in the {{site.data.keyword.ibmwatson}} [Starter Kits](http://www.ibm.com/watson/developercloud/starter-kits.html){: external} that demonstrate the service.
