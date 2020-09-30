@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-07"
+lastupdated: "2020-09-29"
 
 subcollection: speech-to-text
 
@@ -66,7 +66,7 @@ The WebSocket interface has a number of advantages over the HTTP interface:
 
 You can use a custom language model, a custom acoustic model, or both for speech recognition with any of the service's interfaces.
 
-You must have the Standard pricing plan to use language model or acoustic model customization. Users of the Lite plan cannot use the customization interface. For more information, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service.
+You must have the Plus, Standard, or Premium pricing plan to use language model or acoustic model customization. Users of the Lite plan cannot use the customization interface. For more information, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
 {: note}
 
 The grammars feature is beta functionality.

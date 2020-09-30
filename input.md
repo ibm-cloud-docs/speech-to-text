@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-06-23"
+lastupdated: "2020-09-29"
 
 subcollection: speech-to-text
 
@@ -50,6 +50,9 @@ All interfaces accept a custom model for use in a recognition request:
 Custom models are based on one of the language models that are described in [Languages and models](/docs/speech-to-text?topic=speech-to-text-models). A custom model can be used only with the base model for which it is created. If your custom model is based on a model other than `en-US_BroadbandModel`, the default, you must also specify the name of the model with the request. To use a custom model, you must issue the request with credentials for the instance of the service that owns the custom model.
 
 For an introduction to customization, see [The customization interface](/docs/speech-to-text?topic=speech-to-text-customization).
+
+You must have the Plus, Standard, or Premium pricing plan to use language model or acoustic model customization. Users of the Lite plan cannot use the customization interface. For more information, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
+{: note}
 
 ### Custom model examples
 {: #customExample}

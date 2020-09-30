@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-09-02"
+lastupdated: "2020-09-29"
 
 subcollection: speech-to-text
 
@@ -36,6 +36,24 @@ The service has the following know limitation:
 -   The `GET /v1/models` and `GET /v1/models/{model_id}` methods list information about language models. Under `supported_features`, the `speaker_labels` field indicates whether you can use the `speaker_labels` parameter with a model. At this time, the field returns `true` for all models. However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
+
+## 30 September 2020
+{: #September2020}
+
+The pricing plans for the service have changed:
+
+-   The service continues to offer a Lite plan that provides basic no-charge access to limited minutes of speech recognition per month.
+-   The service offers a new Plus plan that provides a simple tiered pricing model and access to the service's customization capabilities.
+-   The service offers a new Premium plan that provides significantly greater capacity and enhanced features.
+
+The Plus plan replaces the Standard plan. The Standard plan continues to be available for purchase for a short time. It also continues to be available indefinitely to existing users of the plan with no change in their pricing. Existing users can upgrade to the Plus plan at any time.
+{: note}
+
+For more information about the available pricing plans, see the following resources:
+
+-   For general information about the pricing plans and answers to common questions, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
+-   For more information about the pricing plans or to purchase a plan, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}.
+-   For an overview of the pricing plan updates, read the blog [IBM Watson Speech to Text: Cloud Pricing Updates](https://medium.com/@kventurato/ibm-watson-speech-to-text-cloud-pricing-updates-df1adebd4b8c){: external}.
 
 ## 20 August 2020
 {: #August2020b}
@@ -74,24 +92,6 @@ The service has the following know limitation:
 
 This release fixes a latency issue for custom language models that contain a large number of grammars. When initially used for speech recognition, such custom models could take multiple seconds to load. The custom models now load much faster, greatly reducing latency when they are used for recognition.
 
-## 28 April 2020
-{: #April2020b}
-
--   The Italian broadband (`it-IT_BroadbandModel`) and narrowband (`it-IT_NarrowbandModel`) models have been updated for improved speech recognition. By default, the service automatically uses the updated models for all speech recognition requests. If you have custom language or custom acoustic models that are based on these models, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
-    -   `POST /v1/customizations/{customization_id}/upgrade_model`
-    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
-
-    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
--   The Dutch and Italian language models are now generally available (GA) for speech recognition and for language model and acoustic model customization:
-    -   Dutch broadband model (`nl-NL_BroadbandModel`)
-    -   Dutch narrowband model (`nl-NL_NarrowbandModel`)
-    -   Italian broadband model (`it-IT_BroadbandModel`)
-    -   Italian narrowband model (`it-IT_NarrowbandModel`)
-
-    For more information about all available language models, see
-    -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList)
-    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
-
 ## 1 April 2020
 {: #April2020a}
 
@@ -105,6 +105,7 @@ Using a custom language model, a custom acoustic model, or both types of model f
 ## Older releases
 {: #older}
 
+-   [28 April 2020](#April2020b)
 -   [16 March 2020](#March2020)
 -   [24 February 2020](#February2020)
 -   [18 December 2019](#December2019c)
@@ -158,6 +159,24 @@ Using a custom language model, a custom acoustic model, or both types of model f
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 28 April 2020
+{: #April2020b}
+
+-   The Italian broadband (`it-IT_BroadbandModel`) and narrowband (`it-IT_NarrowbandModel`) models have been updated for improved speech recognition. By default, the service automatically uses the updated models for all speech recognition requests. If you have custom language or custom acoustic models that are based on these models, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
+    -   `POST /v1/customizations/{customization_id}/upgrade_model`
+    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+
+    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+-   The Dutch and Italian language models are now generally available (GA) for speech recognition and for language model and acoustic model customization:
+    -   Dutch broadband model (`nl-NL_BroadbandModel`)
+    -   Dutch narrowband model (`nl-NL_NarrowbandModel`)
+    -   Italian broadband model (`it-IT_BroadbandModel`)
+    -   Italian narrowband model (`it-IT_NarrowbandModel`)
+
+    For more information about all available language models, see
+    -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList)
+    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
 
 ### 16 March 2020
 {: #March2020}
@@ -224,7 +243,7 @@ Using a custom language model, a custom acoustic model, or both types of model f
 {: #December2019b}
 
 -   **Full support for IBM Cloud IAM**
-    -   The {{site.data.keyword.speechtotextshort}} service now supports the full implementation of {{site.data.keyword.cloud_notm}} Identity and Access Management (IAM). API keys for Watson services are no longer limited to a single service instance. You can create access policies and API keys that apply to more than one service, and you can grant access between services. For more information about IAM, see [Authenticating to Watson services](/docs/watson?topic=watson-iam).
+    -   The {{site.data.keyword.speechtotextshort}} service now supports the full implementation of {{site.data.keyword.cloud_notm}} Identity and Access Management (IAM). API keys for {{site.data.keyword.ibmwatson}} services are no longer limited to a single service instance. You can create access policies and API keys that apply to more than one service, and you can grant access between services. For more information about IAM, see [Authenticating to {{site.data.keyword.watson}} services](/docs/watson?topic=watson-iam).
     -   To support this change, the API service endpoints use a different domain and include the service instance ID. The pattern is `api.{location}.speech-to-text.watson.cloud.ibm.com/instances/{instance_id}`.
 
         -   Example HTTP URL for an instance hosted in the Dallas location:
@@ -240,7 +259,7 @@ Using a custom language model, a custom acoustic model, or both types of model f
         These URLs do not constitute a breaking change. The new URLs work for both your existing service instances and for new instances. The original URLs continue to work on your existing service instances for at least one year, until December 2020.
 -   **New network and data security features** for users of Premium plans:
     -   *Support for data encryption with customer-managed keys*
-        -   You can integrate {{site.data.keyword.keymanagementservicefull}} with the {{site.data.keyword.speechtotextshort}} service to encrypt your data and manage encryption keys. For more information, see [Protecting sensitive information in your Watson service](/docs/watson?topic=watson-keyservice).
+        -   You can integrate {{site.data.keyword.keymanagementservicefull}} with the {{site.data.keyword.speechtotextshort}} service to encrypt your data and manage encryption keys. For more information, see [Protecting sensitive information in your {{site.data.keyword.watson}} service](/docs/watson?topic=watson-keyservice).
     -   *Support for private network endpoints*
         -   You can create private network endpoints to connect to the {{site.data.keyword.speechtotextshort}} service over a private network. Connections to private network endpoints do not require public internet access. For more information, see [Public and private network endpoints](/docs/speech-to-text/?topic=watson-public-private-endpoints).
 
@@ -486,12 +505,12 @@ The service has migrated to token-based IAM authentication for all locations. Al
 The migration to IAM authentication affects new and existing service instances differently:
 
 -   *All new service instances that you create in any location* now use IAM authentication to access the service. You can pass either a bearer token or an API key: Tokens support authenticated requests without embedding service credentials in every call; API keys use HTTP basic authentication. When you use any of the {{site.data.keyword.watson}} SDKs, you can pass the API key and let the SDK manage the lifecycle of the tokens.
--   *Existing service instances that you created in a location before the indicated migration date* continue to use the `{username}` and `{password}` from their previous Cloud Foundry service credentials for authentication until you migrate them to use IAM authentication. For more information about migrating to IAM authentication, see [Migrating Watson services from Cloud Foundry](/docs/text-to-speech?topic=watson-migrate).
+-   *Existing service instances that you created in a location before the indicated migration date* continue to use the `{username}` and `{password}` from their previous Cloud Foundry service credentials for authentication until you migrate them to use IAM authentication. For more information about migrating to IAM authentication, see [Migrating {{site.data.keyword.watson}} services from Cloud Foundry](/docs/text-to-speech?topic=watson-migrate).
 
 For more information, see the following documentation:
 
 -   To learn which authentication mechanism your service instance uses, view your service credentials by clicking the instance on the [{{site.data.keyword.cloud_notm}} dashboard](https://{DomainName}/dashboard/apps){: external}.
--   For more information about using IAM tokens with Watson services, see [Authenticating to Watson services](/docs/watson?topic=watson-iam).
+-   For more information about using IAM tokens with {{site.data.keyword.watson}} services, see [Authenticating to {{site.data.keyword.watson}} services](/docs/watson?topic=watson-iam).
 -   For examples that use IAM authentication, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ### 9 October 2018
@@ -617,7 +636,7 @@ If your application uses the sessions interface, you must migrate to one of the 
     -   For shorter files of up to a few minutes of audio, use either the [synchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-http) `(POST /v1/recognize`) or the [asynchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-async) (`POST /v1/recognitions`).
     -   For longer files of more than a few minutes of audio, use the asynchronous HTTP interface. The asynchronous HTTP interface accepts as much as 1 GB of audio data with a single request.
 
-The WebSocket and HTTP interfaces provide the same results as the sessions interface (only the WebSocket interface provides interim results). You can also use one of the Watson SDKs, which simplify application development with any of the interfaces. For more information, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+The WebSocket and HTTP interfaces provide the same results as the sessions interface (only the WebSocket interface provides interim results). You can also use one of the {{site.data.keyword.watson}} SDKs, which simplify application development with any of the interfaces. For more information, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ### 13 July 2018
 {: #July2018}
