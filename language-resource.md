@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-09-06"
+lastupdated: "2020-10-09"
 
 subcollection: speech-to-text
 
@@ -139,41 +139,127 @@ When you add a corpus file, the service analyzes the file's contents. It extract
 
 The following descriptions apply to US and UK English, Dutch, French, German, Italian, Spanish, and Brazilian Portuguese.
 
--   Converts numbers to their equivalent words, for example:
-    -   *For English,* `500` becomes `five hundred`, and `0.15` becomes `zero point fifteen`.
-    -   *For Dutch,* `500` becomes `vijfhonderd`, and `0,15` becomes `nul komma vijftien`.
-    -   *For French,* `500` becomes `cinq cents`, and `0,15` becomes <code>z&eacute;ro virgule quinze</code>.
-    -   *For German,* `500` becomes <code>f&uuml;nfhundert</code>, and `0,15` becomes <code>null punkt f&uuml;nfzehn</code>.
-    -   *For Italian,* `500` becomes `cinquecento`, and `0,15` becomes `zero virgola quindici`.
-    -   *For Spanish,* `500` becomes `quinientos`, and `0,15` becomes `cero coma quince`.
-    -   *For Brazilian Portuguese,* `500` becomes `quinhentos`, and `0,15` becomes `zero ponto quinze`.
--   Converts tokens that include certain symbols to meaningful string representations, for example:
-    -   Converts a `$` (dollar sign) and a number:
-        -   *For English,* `$100` becomes `one hundred dollars`.
-        -   *For Dutch,* `$100` becomes `honderd dollar`.
-        -   *For French,* `$100` becomes `cent dollars`.
-        -   *For German,* `$100` and `100$` become `einhundert dollar`.
-        -   *For Italian,* `$100` becomes `cento dollari`.
-        -   *For Spanish,* `$100`  and `100$` become <code>cien d&oacute;lares</code> (or `cien pesos` if the dialect is `es-LA`).
-        -   *For Brazilian Portuguese,* `$100` and `100$` become <code>cem d&oacute;lares</code>.
-    -   Converts a <code>&euro;</code> (euro sign) and a number:
-        -   *For English,* <code>&euro;100</code> becomes `one hundred euros`.
-        -   *For Dutch,* <code>&euro;100</code> becomes `honderd euro`.
-        -   *For French,* <code>&euro;100</code> becomes `cent euros`.
-        -   *For German,* <code>&euro;100</code> and <code>100&euro;</code> become `einhundert euro`.
-        -   *For Italian,* <code>&euro;100</code> becomes `cento euro`.
-        -   *For Spanish,* <code>&euro;100</code> and <code>100&euro;</code> become `cien euros`.
-        -   *For Brazilian Portuguese,* <code>&euro;100</code> and <code>100&euro;</code> become `cem euros`.
-    -   Converts a `%` (percent sign) preceded by a number:
-        -   *For English,* `100%` becomes `one hundred percent`.
-        -   *For Dutch,* `100%` becomes `honderd procent`.
-        -   *For French,* `100%` becomes `cent pour cent`.
-        -   *For German,* `100%` becomes `einhundert prozent`.
-        -   *For Italian,* `100%` becomes `cento per cento`.
-        -   *For Spanish,* `100%` becomes `cien por ciento`.
-        -   *For Brazilian Portuguese,* `100%` becomes `cem por cento`.
+-   Converts numbers to their equivalent words. Table 1 shows some examples.
 
-    This list is not exhaustive. The service makes similar adjustments for other characters as needed.
+    <table>
+      <caption>Table 1. Examples of number conversion</caption>
+      <tr>
+        <th>Language<br/>(all dialects)</th>
+        <th style="text-align:center"><br/>Whole number</th>
+        <th style="text-align:center"><br/>Decimal number</th>
+      </tr>
+      <tr>
+        <td>Brazilian<br/>Portuguese</td>
+        <td style="text-align:center">`500` becomes `quinhentos`</td>
+        <td style="text-align:center">`0,15` becomes `zero ponto quinze`</td>
+      </tr>
+      <tr>
+        <td>Dutch</td>
+        <td style="text-align:center">`500` becomes `vijfhonderd`</td>
+        <td style="text-align:center">`0,15` becomes `nul komma vijftien`</td>
+      </tr>
+      <tr>
+        <td>English</td>
+        <td style="text-align:center">`500` becomes `five hundred`</td>
+        <td style="text-align:center">`0.15` becomes `zero point fifteen`</td>
+      </tr>
+      <tr>
+        <td>French</td>
+        <td style="text-align:center">`500` becomes `cinq cents`</td>
+        <td style="text-align:center">`0,15` becomes
+          <code>z&eacute;ro virgule quinze</code></td>
+      </tr>
+      <tr>
+        <td>German</td>
+        <td style="text-align:center">`500` becomes
+          <code>f&uuml;nfhundert</code></td>
+        <td style="text-align:center">`0,15` becomes
+          <code>null punkt f&uuml;nfzehn</code></td>
+      </tr>
+      <tr>
+        <td>Italian</td>
+        <td style="text-align:center">`500` becomes `cinquecento`</td>
+        <td style="text-align:center">`0,15` becomes
+          `zero virgola quindici`</td>
+      </tr>
+      <tr>
+        <td>Spanish</td>
+        <td style="text-align:center">`500` becomes `quinientos`</td>
+        <td style="text-align:center">`0,15` becomes `cero coma quince`</td>
+      </tr>
+    </table>
+
+-   Converts tokens that include certain symbols to meaningful string representations. Table 2 shows a few examples. These examples are not exhaustive. The service makes similar adjustments for other characters as needed.
+
+    <table>
+      <caption>Table 2. Examples of symbol conversion</caption>
+      <tr>
+        <th>Language<br/>(all dialects)</th>
+        <th style="text-align:center">A dollar sign<br/>
+          and a number</th>
+        <th style="text-align:center">A euro sign<br/>
+          and a number</th>
+        <th style="text-align:center">A percent sign<br/>
+          and a number</th>
+      </tr>
+      <tr>
+        <td>Brazilian<br/>Portuguese</td>
+        <td style="text-align:center">`$100` and `100$` become
+          <code>cem d&oacute;lares</code></td>
+        <td style="text-align:center"><code>&euro;100</code> and
+          <code>100&euro;</code> become `cem euros`</td>
+        <td style="text-align:center">`100%` becomes `cem por cento`</td>
+      </tr>
+      <tr>
+        <td>Dutch</td>
+        <td style="text-align:center">`$100` becomes `honderd dollar`</td>
+        <td style="text-align:center"><code>&euro;100</code> becomes
+          `honderd euro`</td>
+        <td style="text-align:center">`100%` becomes `honderd procent`</td>
+      </tr>
+      <tr>
+        <td>English</td>
+        <td style="text-align:center">`$100` becomes `one hundred dollars`</td>
+        <td style="text-align:center"><code>&euro;100</code> becomes
+          `one hundred euros`</td>
+        <td style="text-align:center"> `100%` becomes `one hundred percent`</td>
+      </tr>
+      <tr>
+        <td>French</td>
+        <td style="text-align:center">`$100` becomes `cent dollars`</td>
+        <td style="text-align:center"><code>&euro;100</code> becomes
+          `cent euros`</td>
+        <td style="text-align:center">`100%` becomes `cent pour cent`</td>
+      </tr>
+      <tr>
+        <td>German</td>
+        <td style="text-align:center">`$100` and `100$` become
+          `einhundert dollar`</td>
+        <td style="text-align:center"><code>&euro;100</code> and
+          <code>100&euro;</code> become `einhundert euro`</td>
+        <td style="text-align:center">`100%` becomes `einhundert prozent`</td>
+      </tr>
+      <tr>
+        <td>Italian</td>
+        <td style="text-align:center">`$100` becomes `cento dollari`</td>
+        <td style="text-align:center"><code>&euro;100</code> becomes
+          `cento euro`</td>
+        <td style="text-align:center">`100%` becomes `cento per cento`</td>
+      </tr>
+      <tr>
+        <td>Spanish</td>
+        <td style="text-align:center">`$100` and `100$` become
+          <code>cien d&oacute;lares</code> [**1**]</td>
+        <td style="text-align:center"><code>&euro;100</code> and
+          <code>100&euro;</code> become `cien euros`</td>
+        <td style="text-align:center">`100%` becomes `cien por ciento`</td>
+      </tr>
+    </table>
+
+    **Note:**
+
+    1.  If the dialect is `es-LA`, `$100` and `100$` become `cien pesos`.
+
 -   Processes non-alphanumeric, punctuation, and special characters depending on their context. For example, the service removes a `$` (dollar sign) or <code>&euro;</code> (euro symbol) unless it is followed by a number. Processing is context-dependent and consistent across the supported languages.
 -   Ignores phrases that are enclosed in `( )` (parentheses), `< >` (angle brackets), `[ ]` (square brackets), or `{ }` (curly braces).
 
@@ -225,7 +311,7 @@ For example, the following table shows what looks like the same letter in two di
 |:------:|:--------:|:-----:|
 | z | ASCII | `0x7a` (`7a`) |
 | &#xff5a; | UTF-8 hexadecimal | `0xEF 0xBD 0x9A` (`efbd9a`) |
-{: caption="Table 1. Character encoding examples"}
+{: caption="Table 3. Examples of character encoding"}
 
 ### Using the sounds_like field
 {: #soundsLike}
