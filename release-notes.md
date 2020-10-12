@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-10-08"
+lastupdated: "2020-10-12"
 
 subcollection: speech-to-text
 
@@ -211,8 +211,8 @@ Using a custom language model, a custom acoustic model, or both types of model f
 
     For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
 -   Language model customization is now supported for Dutch and Italian with the new versions of the broadband and narrowband models. For more information, see
-    -   [Parsing of English, Dutch, French, German, Italian, Spanish, and Brazilian Portuguese](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages)
-    -   [Guidelines for Dutch, French, German, Italian, Spanish, and Brazilian Portuguese](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR)
+    -   [Parsing of Brazilian Portuguese, Dutch, English, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages)
+    -   [Guidelines for Brazilian Portuguese, Dutch, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR)
 
     Because the Dutch and Italian models are beta, their support for language model customization is also beta.
 -   The Japanese narrowband model (`ja-JP_NarrowbandModel`) now includes some multigram word units for digits and decimal fractions. The service returns these multigram units regardless of whether you enable smart formatting. The smart formatting feature understands and returns the multigram units that the model generates. If you apply your own post-processing to transcription results, you need to handle these units appropriately. For more information, see [Japanese](/docs/speech-to-text?topic=speech-to-text-output#smartFormattingJapanese) in the smart formatting documentation.
@@ -560,11 +560,11 @@ For a list of issues that have been fixed since the initial release, see [Resolv
 {: important}
 
 -   The service now supports a German broadband model, `de-DE_BroadbandModel`. The new German model supports language model customization (generally available) and acoustic model customization (beta).
-    -   For information about how the service parses corpora for German, see [Parsing of English, French, German, Spanish, and Brazilian Portuguese](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages).
-    -   For more information about creating sounds-like pronunciations for custom words in German, see [Guidelines for French, German, Spanish, and Brazilian Portuguese](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR).
+    -   For information about how the service parses corpora for German, see [Parsing of Brazilian Portuguese, Dutch, English, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages).
+    -   For more information about creating sounds-like pronunciations for custom words in German, see [Guidelines for Brazilian Portuguese, Dutch, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR).
 -   The existing Brazilian Portuguese models, `pt-BR_BroadbandModel` and `pt-BR_NarrowbandModel`, now support language model customization (generally available). The models were not updated to enable this support, so no upgrade of existing custom acoustic models is required.
-    -   For information about how the service parses corpora for Brazilian Portuguese, see [Parsing of English, French, German, Spanish, and Brazilian Portuguese](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages).
-    -   For more information about creating sounds-like pronunciations for custom words in Brazilian Portuguese, see [Guidelines for French, German, Spanish, and Brazilian Portuguese](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR).
+    -   For information about how the service parses corpora for Brazilian Portuguese, see [Parsing of Brazilian Portuguese, Dutch, English, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages).
+    -   For more information about creating sounds-like pronunciations for custom words in Brazilian Portuguese, see [Guidelines for Brazilian Portuguese, Dutch, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR).
 -   New versions of the US English and Japanese broadband and narrowband models are available:
     -   `en-US_BroadbandModel`
     -   `en-US_NarrowbandModel`
@@ -689,8 +689,8 @@ The following features are enabled for applications that are hosted in Sydney (*
 {: #March2018b}
 
 -   The service now supports language model customization for the French language model, `fr-FR_BroadbandModel`. The French model is generally available for production use with language model customization.
-    -   For more information about how the service parses corpora for French, see [Parsing of English, French, German, Spanish, and Brazilian Portuguese](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages).
-    -   For more information about creating sounds-like pronunciations for custom words in French, see [Guidelines for French, German, Spanish, and Brazilian Portuguese](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR).
+    -   For more information about how the service parses corpora for French, see [Parsing of Brazilian Portuguese, Dutch, English, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages).
+    -   For more information about creating sounds-like pronunciations for custom words in French, see [Guidelines for Brazilian Portuguese, Dutch, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR).
 -   The Spanish and Korean narrowband models, `es-ES_NarrowbandModel` and `ko-KR_NarrowbandModel`, and the French broadband model, `fr-FR_BroadbandModel`, were updated for improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. If you have custom language or custom acoustic models that are based on either of these models, you must upgrade your custom models to take advantage of the updates by using the following methods:
 
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
@@ -739,8 +739,8 @@ For language model customization, the Korean models are generally available for 
 -   The various methods for making recognition requests now include a new `base_model_version` parameter that you can use to initiate requests that use either the older or upgraded versions of base and custom models. Although it is intended primarily for use with custom models that have been upgraded, the `base_model_version` parameter can also be used without custom models. For more information, see [Base model version](/docs/speech-to-text?topic=speech-to-text-input#version).
 -   The service now supports acoustic model customization as beta functionality for all available languages. You can create custom acoustic models for broadband or narrowband models for all languages. For an introduction to customization, including acoustic model customization, see [The customization interface](/docs/speech-to-text?topic=speech-to-text-customization).
 -   The service now supports language model customization for the UK English models, `en-GB_BroadbandModel` and `en-GB_NarrowbandModel`. Although the service handles UK and US English corpora and custom words in a generally similar fashion, some important differences exist:
-    -   For more information about how the service parses corpora for UK English, see [Parsing of English, French, German, Spanish, and Brazilian Portuguese](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages).
-    -   For more information about creating sounds-like pronunciations for custom words in UK English, see [Guidelines for English (US and UK)](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-enUS-enGB). Specifically, for UK English, you cannot use periods or dashes in sounds-like pronunciations.
+    -   For more information about how the service parses corpora for UK English, see [Parsing of Brazilian Portuguese, Dutch, English, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages).
+    -   For more information about creating sounds-like pronunciations for custom words in UK English, see [Guidelines for English](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-enUS-enGB). Specifically, for UK English, you cannot use periods or dashes in sounds-like pronunciations.
 -   Language model customization and all associated parameters are now generally available (GA) for all supported languages: Japanese, Spanish, UK English, and US English.
 
 ### 2 October 2017

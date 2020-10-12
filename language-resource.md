@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-10-09"
+lastupdated: "2020-10-12"
 
 subcollection: speech-to-text
 
@@ -134,10 +134,10 @@ The service cannot generate a pronunciation for all words. After adding a corpus
 
 When you add a corpus file, the service analyzes the file's contents. It extracts any new (OOV) words that it finds and adds each OOV word to the custom model's words resource. To distill the most meaning from the content, the service tokenizes and parses the data that it reads from a corpus file. The following sections describe how the service parses a corpus file for each supported language.
 
-#### Parsing of English, Dutch, French, German, Italian, Spanish, and Brazilian Portuguese
+#### Parsing of Brazilian Portuguese, Dutch, English, French, German, Italian, and Spanish
 {: #corpusLanguages}
 
-The following descriptions apply to US and UK English, Dutch, French, German, Italian, Spanish, and Brazilian Portuguese.
+The following descriptions apply to Brazilian Portuguese, Dutch, English (US and UK), French, German, Italian, and Spanish (all dialects).
 
 -   Converts numbers to their equivalent words. Table 1 shows some examples.
 
@@ -334,7 +334,7 @@ You can provide as many as five alternative pronunciations for a word that is di
 
 Speech recognition uses statistical algorithms to analyze audio, so adding a word does not guarantee that the service transcodes it with complete accuracy. When you add a word, consider how it might be pronounced. Use the `sounds_like` field to provide various pronunciations that reflect how a word can be spoken. The following sections provide language-specific guidelines for specifying a sounds-like pronunciation.
 
-#### Guidelines for English (US and UK)
+#### Guidelines for English
 {: #wordLanguages-enUS-enGB}
 
 *Guidelines for both US and UK English:*
@@ -356,7 +356,7 @@ Speech recognition uses statistical algorithms to analyze audio, so adding a wor
 -   To pronounce a single letter, use the letter followed by a space. For example, use `N C A A`, *not* `N. C. A. A.`, `N.C.A.A.`, or `NCAA`.
 -   Use the spelling of numbers without dashes, for example, `seventy five` for `75`.
 
-#### Guidelines for Dutch, French, German, Italian, Spanish, and Brazilian Portuguese
+#### Guidelines for Brazilian Portuguese, Dutch, French, German, Italian, and Spanish
 {: #wordLanguages-esES-frFR}
 
 -   You **cannot** use dashes in sounds-like pronunciations.
@@ -364,12 +364,12 @@ Speech recognition uses statistical algorithms to analyze audio, so adding a wor
 -   To pronounce a single letter, use the letter followed by a period. If the period is followed by another character, be sure to use a space between the period and the next character. For example, use `N. C. A. A.`, *not* `N.C.A.A.`
 -   Use real or made-up words that are pronounceable in the language for words that are difficult to pronounce.
 -   Use the spelling of numbers without dashes, for example, for `75` use
+    -   *Brazilian Portuguese:* `setenta e cinco`
     -   *Dutch:* `vijfenzeventig`
     -   *French:* `soixante quinze`
     -   *German:* <code>f&uuml;nfundsiebzig</code>
     -   *Italian:* `settantacinque`
     -   *Spanish:* `setenta y cinco`
-    -   *Brazilian Portuguese:* `setenta e cinco`
 -   You can include multiple words that are separated by spaces, but the service enforces a maximum of 40 total characters not including spaces.
 
 #### Guidelines for Japanese
