@@ -137,7 +137,7 @@ When you add a corpus file, the service analyzes the file's contents. It extract
 #### Parsing of Brazilian Portuguese, Dutch, English, French, German, Italian, and Spanish
 {: #corpusLanguages}
 
-The following descriptions apply to Brazilian Portuguese, Dutch, English (US and UK), French, German, Italian, and Spanish.
+The following descriptions apply to Brazilian Portuguese, Dutch, English (US and UK), French, German, Italian, and Spanish (all dialects).
 
 -   Converts numbers to their equivalent words. Table 1 shows some examples.
 
