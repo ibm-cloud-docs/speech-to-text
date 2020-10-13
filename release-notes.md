@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-10-12"
+lastupdated: "2020-10-13"
 
 subcollection: speech-to-text
 
@@ -73,37 +73,11 @@ For more information about the available pricing plans, see the following resour
 
     The new models do not support language model or acoustic model customization, speaker labels, or smart formatting. For more information about these and all supported models, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList).
 
-## 5 August 2020
-{: #August2020a}
-
--   The service now offers beta broadband and narrowband models for Australian English:
-    -   `en-AU_BroadbandModel`
-    -   `en-AU_NarrowbandModel`
-
-    The new models do not support language model or acoustic model customization, or smart formatting. The new models do support speakers labels. For more information, see
-    -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList)
-    -   [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels)
--   The following models have been updated for improved speech recognition:
-    -   `en-GB_BroadbandModel` and `en-GB_NarrowbandModel`
-    -   `de-DE_BroadbandModel` and `de-DE_NarrowbandModel`
-    -   `fr-FR_BroadbandModel`
-    -   `en-US_ShortForm_NarrowbandModel`
-
-    By default, the service automatically uses the updated models for all speech recognition requests. If you have custom language or custom acoustic models that are based on these models, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
-    -   `POST /v1/customizations/{customization_id}/upgrade_model`
-    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
-
-    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
--   The hesitation marker that is used for the updated German broadband and narrowband models has changed from `[hesitation]` to `%HESITATION`. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#hesitation).
-
-## 4 June 2020
-{: #June2020}
-
-This release fixes a latency issue for custom language models that contain a large number of grammars. When initially used for speech recognition, such custom models could take multiple seconds to load. The custom models now load much faster, greatly reducing latency when they are used for recognition.
-
 ## Older releases
 {: #older}
 
+-   [5 August 2020](#August2020a)
+-   [4 June 2020](#June2020)
 -   [1 April 2020](#April2020a)
 -   [28 April 2020](#April2020b)
 -   [16 March 2020](#March2020)
@@ -159,6 +133,34 @@ This release fixes a latency issue for custom language models that contain a lar
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 5 August 2020
+{: #August2020a}
+
+-   The service now offers beta broadband and narrowband models for Australian English:
+    -   `en-AU_BroadbandModel`
+    -   `en-AU_NarrowbandModel`
+
+    The new models do not support language model or acoustic model customization, or smart formatting. The new models do support speakers labels. For more information, see
+    -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList)
+    -   [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels)
+-   The following models have been updated for improved speech recognition:
+    -   `en-GB_BroadbandModel` and `en-GB_NarrowbandModel`
+    -   `de-DE_BroadbandModel` and `de-DE_NarrowbandModel`
+    -   `fr-FR_BroadbandModel`
+    -   `en-US_ShortForm_NarrowbandModel`
+
+    By default, the service automatically uses the updated models for all speech recognition requests. If you have custom language or custom acoustic models that are based on these models, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
+    -   `POST /v1/customizations/{customization_id}/upgrade_model`
+    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+
+    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+-   The hesitation marker that is used for the updated German broadband and narrowband models has changed from `[hesitation]` to `%HESITATION`. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#hesitation).
+
+### 4 June 2020
+{: #June2020}
+
+**Defect fix:** This release fixes a latency issue for custom language models that contain a large number of grammars. When initially used for speech recognition, such custom models could take multiple seconds to load. The custom models now load much faster, greatly reducing latency when they are used for recognition.
 
 ### 1 April 2020
 {: #April2020a}
@@ -222,7 +224,7 @@ Using a custom language model, a custom acoustic model, or both types of model f
 
     You can use the parameters individually or together. They are available for all interfaces and for most language models. For more information about the parameters, their allowable values, and their effect on the quality and latency of speech recognition, see [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-input#detection).
 -   The service now supports the use of Activity Tracker events for all customization operations. {{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. You can use this service to investigate abnormal activity and critical actions and to comply with regulatory audit requirements. In addition, you can be alerted about actions as they happen. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-atEvents).
--   The WebSocket interface now works seamlessly when generating processing metrics. Previously, processing metrics could continue to be delivered after the client sent a `stop` message to the service.
+-   **Defect fix:** The WebSocket interface now works seamlessly when generating processing metrics. Previously, processing metrics could continue to be delivered after the client sent a `stop` message to the service.
 
 ### 18 December 2019
 {: #December2019c}
