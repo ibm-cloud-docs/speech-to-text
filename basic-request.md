@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-09-16"
+lastupdated: "2020-10-14"
 
 subcollection: speech-to-text
 
@@ -71,7 +71,7 @@ If you are recognizing large amounts of audio, you can manually divide the audio
 {: help}
 {: support}
 
-[The WebSocket interface](/docs/speech-to-text?topic=speech-to-text-websockets) offers an efficient implementation that provides low latency and high throughput over a full-duplex connection. All requests and responses are sent over the same WebSocket connection. Because of their advantages, WebSockets are the preferred mechanism for speech recognition. For more information, see [Advantages of the WebSocket interface](/docs/speech-to-text?topic=speech-to-text-developerOverview#advantages).
+[The WebSocket interface](/docs/speech-to-text?topic=speech-to-text-websockets) offers an efficient implementation that provides low latency and high throughput over a full-duplex connection. All requests and responses are sent over the same WebSocket connection.
 
 To use the WebSocket interface, you first use the `/v1/recognize` method to establish a connection with the service. You specify parameters such as the language model and any custom models that are to be used for requests that are sent over the connection. You then register event listeners to handle responses from the service. To make a request, you send a JSON text message that includes the audio format and any additional parameters. You pass the audio as a binary message (blob), and then send a text message to signal the end of the audio.
 

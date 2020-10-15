@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-09-28"
+lastupdated: "2020-10-15"
 
 subcollection: speech-to-text
 
@@ -41,6 +41,8 @@ The recognition request and response cycle has the following steps:
 1.  [Close a connection](#WSclose)
 
 When the client sends data to the service, it *must* pass all JSON messages as text messages and all audio data as binary messages.
+
+Because of their advantages, WebSockets are the preferred mechanism for speech recognition. For more information, see [Advantages of the WebSocket interface](/docs/speech-to-text?topic=speech-to-text-service-features#features-websocket-advantages). For more information about the WebSocket interface and its parameters, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 The snippets of example code that follow are written in JavaScript and are based on the HTML5 WebSocket API. For more information about the WebSocket protocol, see the Internet Engineering Task Force (IETF) [Request for Comment (RFC) 6455](https://tools.ietf.org/html/rfc6455){: external}.
 {: note}

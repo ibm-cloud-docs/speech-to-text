@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-09-16"
+lastupdated: "2020-10-15"
 
 keywords: speech to text,IBM cloud,getting started,tutorial,transcribe audio,speech recognition
 
@@ -162,6 +162,6 @@ of severe thunderstorms swept through Colorado and Sunday "
 
 ## Next steps
 
--   Learn more about the interfaces and SDKs that are available for making speech recognition requests in the [Overview for developers](/docs/speech-to-text?topic=speech-to-text-developerOverview).
--   See basic speech recognition requests for each of the service's interfaces in [Making a recognition request](/docs/speech-to-text?topic=speech-to-text-basic-request).
--   Find detailed information about all methods of the service's interfaces in the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+-   To try an example application that transcribes text from streaming audio input or from a file that you upload, see the [{{site.data.keyword.speechtotextshort}} demo](https://speech-to-text-demo.ng.bluemix.net/){: external}.
+-   For more information about the service's interfaces and features, see [Service features](/docs/speech-to-text?topic=speech-to-text-service-features).
+-   For more information about all methods of the service's interfaces, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.

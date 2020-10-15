@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-10-08"
+lastupdated: "2020-10-15"
 
 subcollection: speech-to-text
 
@@ -27,76 +27,39 @@ subcollection: speech-to-text
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 7 October 2020. The `ja-JP_BroadbandModel` model has been updated for improved speech recognition. For more information, see the [7 October 2020 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#October2020) in the release notes.*
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 7 October 2020. The `ja-JP_BroadbandModel` model was updated for improved speech recognition. For more information, see the [7 October 2020 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#October2020) in the release notes.*
 
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}
 
-The service provides various interfaces that make it suitable for any application where speech is the input and a textual transcript is the output. It can be used for applications such as voice-automated chatbots, analytic tools for customer-service call centers, and multi-media transcription. Voice control of embedded devices, transcribing meetings and conference calls, and dictating messages and notes are also possible applications, among many others.
+The service provides APIs that make it suitable for any application where speech is the input and a textual transcript is the output. It can be used for applications such as voice-automated chatbots, analytic tools for customer-service call centers, and multi-media transcription. Voice control of embedded devices, transcribing meetings and conference calls, and dictating messages and notes are also possible applications, among many others.
 
 The service is ideal for clients who need to extract high-quality speech transcripts from call center audio. Clients in industries such as financial services, healthcare, insurance, and telecommunication can develop cloud-native applications for customer care, customer voice, agent assistance, and other solutions.
 
 This documentation describes managed instances of {{site.data.keyword.speechtotextfull}} that are offered in {{site.data.keyword.cloud_notm}} or in {{site.data.keyword.icp4dfull_notm}} as a Service. If you are interested in on-premises or installed deployments of the service, see [About {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](https://{DomainName}/docs/speech-to-text-data?topic=speech-to-text-data-about#about){: external}.
 {: note}
 
-## Supported interfaces
-{: #interfaces}
+## Speech recognition
+{: #about-interfaces}
 {: help}
 {: support}
 
-The {{site.data.keyword.speechtotextshort}} service offers three interfaces for speech recognition:
+The {{site.data.keyword.speechtotextshort}} service offers three interfaces for speech recognition: a WebSocket interface, a synchronous HTTP interface, and an asynchronous HTTP interface. The interfaces let you specify the language of your audio and its format and sampling rate. They also provide many parameters that you can use to tailor how you request audio and the information that the service sends in response. You can also request metrics about the service's analysis of your audio and the audio itself.
 
--   A [WebSocket interface](/docs/speech-to-text?topic=speech-to-text-websockets) for establishing persistent, full-duplex, low-latency connections with the service. You can pass a maximum of 100 MB of audio data to the service with a single request.
--   A [synchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-http) for basic HTTP calls to the service. You can pass a maximum of 100 MB of audio data with a request.
--   An [asynchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-async) for non-blocking calls to the service. You can pass as much as 1 GB of audio data with a request.
+-   For more information about the speech recognition interfaces, see [Recognizing speech with the service](/docs/speech-to-text?topic=speech-to-text-service-features#features-recognition) in the service features.
+-   For more information about the speech recognition parameters, see [Using speech recognition parameters](/docs/speech-to-text?topic=speech-to-text-service-features#features-parameters) in the service features.
 
-The service also provides a [customization interface](/docs/speech-to-text?topic=speech-to-text-customization) that you can use to tune speech recognition for your language and acoustic requirements. You can expand the vocabulary of a model with domain-specific terminology or adapt a model for the acoustic characteristics of your audio. You can also add [grammars](/docs/speech-to-text?topic=speech-to-text-grammars) to restrict the phrases that the service can recognize.
+## Customization
+{: #about-customization}
 
--   For a high-level description of application development with the service, see [Overview for developers](/docs/speech-to-text?topic=speech-to-text-developerOverview).
--   For examples of basic speech recognition requests with each of the service's interfaces, see [Making a recognition request](/docs/speech-to-text?topic=speech-to-text-basic-request).
-
-SDKs are available in many programming languages to simplify your use of the service. For more information, see the [API reference](https://{DomainName}/apidocs/speech-to-text){: external}.
-
-## Input features
-{: #inputFeatures}
-{: help}
-{: support}
-
-The service's interfaces share common input features for transcribing speech to text:
-
--   [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats) - You can transcribe Ogg or Web Media (WebM) audio with the Opus or Vorbis codec, MP3 (or MPEG), Waveform Audio File Format (WAV), Free Lossless Audio Codec (FLAC), Linear 16-bit Pulse-Code Modulation (PCM), G.729, A-Law, mu-law (or u-law), and basic audio. By using a format that supports compression, you can maximize the amount of audio data that you can send with a request.
--   [Languages and models](/docs/speech-to-text?topic=speech-to-text-models) - For most languages, you can transcribe audio by using broadband or narrowband models. Use broadband for audio that is sampled at a minimum rate of 16 kHz. Use narrowband for audio that is sampled at a minimum rate of 8 kHz.
--   [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-input#detection) - For most languages, you can use two parameters to control which parts of the audio stream are used for speech recognition. The parameters can help ensure that only relevant audio is processed for speech recognition by suppressing background noise and non-speech events that can adversely affect the quality of speech recognition.
--   [Audio transmission](/docs/speech-to-text?topic=speech-to-text-input#transmission) - You can pass audio as a continuous stream of data chunks or as a one-shot delivery that passes all of the data at one time. With streaming, the service enforces inactivity and session [timeouts](/docs/speech-to-text?topic=speech-to-text-input#timeouts).
-
-## Output features
-{: #outputFeatures}
-{: help}
-{: support}
-
-The interfaces also support the following common output features:
-
--   [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels) recognize different speakers from audio in US English, UK English, Australian English, German, Japanese, Korean, and Spanish. The transcription labels each speaker's contributions to a multi-participant conversation. (Beta functionality.)
--   [Keyword spotting](/docs/speech-to-text?topic=speech-to-text-output#keyword_spotting) identifies spoken phrases that match specified keyword strings with a user-defined level of confidence. Keyword spotting is especially useful when individual phrases from the audio are more important than the full transcription. For example, a customer support system might identify keywords to determine how to route user requests.
--   [Interim results](/docs/speech-to-text?topic=speech-to-text-output#interim) return progressive hypotheses as transcription progresses. The service returns final results when transcription is complete. Interim results are available only with the WebSocket interface.
--   [Maximum alternatives](/docs/speech-to-text?topic=speech-to-text-output#max_alternatives) provide possible alternative transcripts. The service indicates final results in which it has the greatest confidence.
--   [Word alternatives](/docs/speech-to-text?topic=speech-to-text-output#word_alternatives) request alternative words that are acoustically similar to the words of a transcript.
--   [Word confidence](/docs/speech-to-text?topic=speech-to-text-output#word_confidence) returns confidence levels for each word of a transcript.
--   [Word timestamps](/docs/speech-to-text?topic=speech-to-text-output#word_timestamps) return timestamps for the start and end of each word of a transcript.
--   [Smart formatting](/docs/speech-to-text?topic=speech-to-text-output#smart_formatting) converts dates, times, numbers, currency values, phone numbers, and internet addresses into more readable, conventional forms in final transcripts. For US English, you can also provide keyword phrases to include certain punctuation symbols in final transcripts. Smart formatting is supported for US English, Japanese, and Spanish audio. (Beta functionality.)
--   [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-output#redaction) redacts, or masks, numeric data from a final transcript. Redaction is intended to remove sensitive personal information, such as credit card numbers, from transcripts. The feature is supported for US English, Japanese, and Korean audio. (Beta functionality.)
--   [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-output#profanity_filter) censors profanity from US English transcripts and metadata.
--   [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-output#silence_time) specifies the duration of the pause interval at which the service splits a transcript into multiple final results in response to silence.
--   [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-output#split_transcript) directs the services to split a transcript into multiple final results for semantic features such as sentences. The service bases its understanding of semantic features on the base language model that you use with a request. Custom language models and grammars can also influence how and where the service splits a transcript. The feature is supported for US English and UK English audio.
--   [Processing metrics](/docs/speech-to-text?topic=speech-to-text-metrics#processing_metrics) provide detailed timing information about the service's analysis of the input audio.
--   [Audio metrics](/docs/speech-to-text?topic=speech-to-text-metrics#audio_metrics) provide detailed information about the signal characteristics of the input audio.
+The service provides a customization interface that you can use to tune speech recognition for your language and acoustic requirements. You can expand the vocabulary of a model with domain-specific terminology or adapt a model for the acoustic characteristics of your audio. You can also add grammars to restrict the phrases that the service can recognize. For more information, see [Customizing the service](/docs/speech-to-text?topic=speech-to-text-service-features#features-customization) in the service features.
 
 ## Language support
-{: #languages}
+{: #about-languages}
 {: help}
 {: support}
 
-The service offers models for the following languages and dialects:
+The service supports many languages and dialects:
 
 -   Arabic (Modern Standard)
 -   Brazilian Portuguese
@@ -110,29 +73,37 @@ The service offers models for the following languages and dialects:
 -   Korean
 -   Spanish (Argentinian, Castilian, Chilean, Colombian, Mexican, and Peruvian)
 
-The service does not support all features for all languages. Moreover, it supports some features as generally available (GA) for production use and others as beta offerings for different languages.
+For most languages, you can transcribe audio by using broadband or narrowband language models depending on the sampling rate of the audio:
 
--   The UK and US English dialects are generally available. The Australian English dialect is beta.
--   The Spanish Castilian dialect is generally available. The other five Spanish dialects are beta.
--   The French dialect is generally available. The Canadian French dialect is beta.
--   The WebSocket and HTTP interfaces are generally available for all languages.
--   The service offers broadband models, narrowband models, or both for different languages. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
--   Some speech recognition features are available only for some languages. For more information, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
--   Both the language model customization and acoustic model customization interfaces are generally available for all language models that are generally available. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+-   Use broadband for audio that is sampled at a minimum rate of 16 kHz.
+-   Use narrowband for audio that is sampled at a minimum rate of 8 kHz.
+
+Some languages are generally available (GA) for production use and others are beta and subject to change.
+
+-   For more information about the languages and their models, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+-   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+
+## Audio formats
+{: #about-formats}
+
+The service accepts audio for transcription in many popular formats:
+
+-   Ogg or Web Media (WebM) audio with the Opus or Vorbis codec
+-   MP3 (or MPEG)
+-   Waveform Audio File Format (WAV)
+-   Free Lossless Audio Codec (FLAC)
+-   Linear 16-bit Pulse-Code Modulation (PCM)
+-   G.729
+-   A-Law
+-   Mu-law (or u-law)
+-   Basic audio
+
+Different formats support different sampling rates and other characteristics. By using a format that supports compression, you can maximize the amount of audio data that you can send with a request. For more information, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
 
 ## Pricing
-{: #pricing-index}
+{: #about-pricing}
 
 The service offers multiple pricing plans to suit your usage and application needs:
 
 -   For general information about the pricing plans and answers to common questions, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
 -   For more information about the pricing plans or to purchase a plan, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}.
-
-## Try out the service
-{: #tryOut}
-
-You can see examples of the {{site.data.keyword.speechtotextshort}} service in action:
-
--   A [quick demo](https://speech-to-text-demo.ng.bluemix.net/){: external} that transcribes text from streaming audio input or from a file that you upload.
--   Applications in the {{site.data.keyword.ibmwatson}} [Starter Kits](http://www.ibm.com/watson/developercloud/starter-kits.html){: external} that demonstrate the service.
--   The {{site.data.keyword.watson}} blog post [Getting robots to listen: Using {{site.data.keyword.watson}}'s {{site.data.keyword.speechtotextshort}} service](https://www.ibm.com/blogs/watson/2016/07/getting-robots-listen-using-watsons-speech-text-service/){: external} that shows how to use the service's WebSocket interface with Python to extract speech from audio. The post provides a thorough tutorial that demonstrates the code and steps involved.
