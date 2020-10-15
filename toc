@@ -1,17 +1,14 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="speech-to-text" category="ai" audience="service" product-page="https://www.ibm.com/cloud/watson-speech-to-text" href="/docs/speech-to-text?topic=speech-to-text-gettingStarted" path="speech-to-text"}
+{: .toc subcollection="speech-to-text" category="ai" audience="service" href="/docs/speech-to-text?topic=speech-to-text-gettingStarted" path="speech-to-text"}
 Speech to Text
 
     {: .navgroup id="learn"}
     getting-started.md
     index.md
-    developer-overview.md
-
-    {: .topicgroup}
-    Demos
-        [Quick demo](https://speech-to-text-demo.ng.bluemix.net/)
+    features.md
+    [Demo](https://speech-to-text-demo.ng.bluemix.net/)
 
     {: .topicgroup}
     Additional resources
@@ -76,7 +73,7 @@ Speech to Text
     {: .navgroup-end}
 
     {: .navgroup id="reference"}
-    [API reference](https://cloud.ibm.com/apidocs/speech-to-text)
+    [API & SDK reference](https://cloud.ibm.com/apidocs/speech-to-text)
     information-security.md
     at-events.md
     /watson/watson-using-sdks
