@@ -26,7 +26,7 @@ subcollection: speech-to-text
 # Service features
 {: #service-features}
 
-The {{site.data.keyword.speechtotextfull}} service offers many advanced features to help you get the most from your audio transcription. The service offers multiple speech recognition interfaces, and these interfaces support many features that you can use to manage how you pass your audio to the service and the results that the service returns. You can also customize the service to enhance its vocabulary and to accommodate the acoustic characteristics of your audio. And as with all {{site.data.keyword.ibmwatson}} services, SDKs are available to simplify application development in many programming languages.
+The {{site.data.keyword.speechtotextfull}} service offers many advanced features to help you get the most from your audio transcription. The service offers multiple speech recognition interfaces, and these interfaces support many features that you can use to manage how you pass your audio to the service and the results that the service returns. You can also customize the service to enhance its vocabulary and to accommodate the acoustic characteristics of your audio. And as with all {{site.data.keyword.watson}} services, SDKs are available to simplify application development in many programming languages.
 {: shortdesc}
 
 ## Recognizing speech with the service
@@ -168,5 +168,5 @@ For more information about working with {{site.data.keyword.watson}} services an
 
 SDKs are available for the {{site.data.keyword.speechtotextshort}} service to simplify the development of speech applications. The SDKs support many popular programming languages and platforms.
 
--   For a complete list of SDKs and links to the SDKs on GitHub, see [Using SDKs](/docs/speech-to-text?topic=watson-using-sdks).
+-   For a complete list of SDKs and links to the SDKs on GitHub, see [{{site.data.keyword.watson}} SDKs](/docs/speech-to-text?topic=watson-using-sdks).
 -   For more information about all methods of the SDKs for the {{site.data.keyword.speechtotextshort}} service, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
