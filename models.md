@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-09-05"
+lastupdated: "2020-10-22"
 
 subcollection: speech-to-text
 
@@ -52,7 +52,7 @@ Languages labeled *Beta* are currently beta functionality. Beta languages might 
 | Brazilian Portuguese | `pt-BR_BroadbandModel` | `pt-BR_NarrowbandModel` |
 | Chinese (Mandarin) | `zh-CN_BroadbandModel` | `zh-CN_NarrowbandModel` |
 | Dutch | `nl-NL_BroadbandModel` | `nl-NL_NarrowbandModel` |
-| English (Australian, Beta) | `en-AU_BroadbandModel` | `en-AU_NarrowbandModel` |
+| English (Australian) | `en-AU_BroadbandModel` | `en-AU_NarrowbandModel` |
 | English (United Kingdom) | `en-GB_BroadbandModel` | `en-GB_NarrowbandModel` |
 | English (United States) | `en-US_BroadbandModel` | `en-US_NarrowbandModel`<br/><br/>`en-US_ShortForm_NarrowbandModel` |
 | French| `fr-FR_BroadbandModel` | `fr-FR_NarrowbandModel` |

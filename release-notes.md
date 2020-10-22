@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-10-15"
+lastupdated: "2020-10-22"
 
 subcollection: speech-to-text
 
@@ -37,8 +37,21 @@ The service has the following know limitation:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
 
+## 22 October 2020
+{: #October2020b}
+
+-   The Australian English models, `en-AU_BroadbandModel` and `en-AU_NarrowbandModel`, are now generally available; they were previously beta. They also now support language model and acoustic model customization.
+    -   For more information about supported languages and models, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+    -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+-   The Brazilian Portuguese models, `pt-BR_BroadbandModel` and `pt-BR_NarrowbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all speech recognition requests. If you have custom language or custom acoustic models that are based on the models, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
+    -   `POST /v1/customizations/{customization_id}/upgrade_model`
+    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+
+    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+-   The speech recognition parameter `split_transcript_at_phrase_end` is now generally available for all languages. Previously, it was generally available only for US and UK English. For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-output#split_transcript).
+
 ## 7 October 2020
-{: #October2020}
+{: #October2020a}
 
 -   The `ja-JP_BroadbandModel` model has been updated for improved speech recognition. By default, the service automatically uses the updated model for all speech recognition requests. If you have custom language or custom acoustic models that are based on this model, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
@@ -64,18 +77,10 @@ For more information about the available pricing plans, see the following resour
 -   For more information about the pricing plans or to purchase a plan, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}.
 -   For an overview of the pricing plan updates, read the blog [IBM Watson Speech to Text: Cloud Pricing Updates](https://medium.com/@kventurato/ibm-watson-speech-to-text-cloud-pricing-updates-df1adebd4b8c){: external}.
 
-## 20 August 2020
-{: #August2020b}
-
--   The service now offers beta broadband and narrowband models for Canadian French:
-    -   `fr-CA_BroadbandModel`
-    -   `fr-CA_NarrowbandModel`
-
-    The new models do not support language model or acoustic model customization, speaker labels, or smart formatting. For more information about these and all supported models, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList).
-
 ## Older releases
 {: #older}
 
+-   [20 August 2020](#August2020b)
 -   [5 August 2020](#August2020a)
 -   [4 June 2020](#June2020)
 -   [1 April 2020](#April2020a)
@@ -133,6 +138,15 @@ For more information about the available pricing plans, see the following resour
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 20 August 2020
+{: #August2020b}
+
+-   The service now offers beta broadband and narrowband models for Canadian French:
+    -   `fr-CA_BroadbandModel`
+    -   `fr-CA_NarrowbandModel`
+
+    The new models do not support language model or acoustic model customization, speaker labels, or smart formatting. For more information about these and all supported models, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList).
 
 ### 5 August 2020
 {: #August2020a}
