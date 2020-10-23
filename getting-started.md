@@ -2,11 +2,14 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-10-15"
+lastupdated: "2020-10-23"
 
 keywords: speech to text,IBM cloud,getting started,tutorial,transcribe audio,speech recognition
 
 subcollection: speech-to-text
+
+content-type: tutorial
+completion-time: 10m
 
 ---
 
@@ -27,9 +30,12 @@ subcollection: speech-to-text
 {:apikey: data-credential-placeholder='apikey'}
 {:url: data-credential-placeholder='url'}
 {:hide-dashboard: .hide-dashboard}
+{:step: data-tutorial-type='step'}
 
 # Getting started with {{site.data.keyword.speechtotextshort}}
 {: #gettingStarted}
+{: toc-content-type="tutorial"}
+{: toc-completion-time="10m"}
 
 The {{site.data.keyword.speechtotextfull}} service transcribes audio to text to enable speech transcription capabilities for applications. This curl-based tutorial can help you get started quickly with the service. The examples show you how to call the service's `POST /v1/recognize` method to request a transcript.
 {: shortdesc}
@@ -60,11 +66,12 @@ This tutorial uses the `curl` command to call methods of the service's HTTP inte
 
 1.  If necessary, install the version of `curl` with SSL enabled for your operating system from [curl.haxx.se](https://curl.haxx.se/){: external}.
 
-Omit the braces from the examples. They indicate variable values.
+Omit the braces (`{ }`) from the examples. They indicate variable values.
 {: tip}
 
-## Step 1: Transcribe audio with no options
+## Transcribe audio with no options
 {: #transcribe}
+{: step}
 
 Call the `POST /v1/recognize` method to request a basic transcript of a FLAC audio file with no additional request parameters.
 
@@ -105,8 +112,9 @@ severe thunderstorms swept through Colorado on Sunday "
     ```
     {: codeblock}
 
-## Step 2: Transcribe audio with options
+## Transcribe audio with options
 {: #transcribeOptions}
+{: step}
 
 Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but specify two transcription parameters.
 
