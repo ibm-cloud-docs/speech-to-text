@@ -2,13 +2,14 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-10-23"
+lastupdated: "2020-10-24"
 
 keywords: speech to text,IBM cloud,getting started,tutorial,transcribe audio,speech recognition
 
 subcollection: speech-to-text
 
 content-type: tutorial
+account-plan: lite
 completion-time: 10m
 
 ---
