@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-09-30"
+lastupdated: "2020-10-28"
 
 subcollection: speech-to-text
 
@@ -29,7 +29,7 @@ subcollection: speech-to-text
 
 The {{site.data.keyword.speechtotextfull}} service is available at three pricing plans: Lite, Plus, and Premium. The following FAQs provide an overview of the pricing plans. For more information, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external} or read the blog [IBM Watson Speech to Text: Cloud Pricing Updates](https://medium.com/@kventurato/ibm-watson-speech-to-text-cloud-pricing-updates-df1adebd4b8c){: external}.
 
-The Standard plan will continue to be available for purchase for a short time. It will continue to be available to existing users of the plan indefinitely. For more information, see [Can I continue to use the {{site.data.keyword.speechtotextshort}} Standard plan?](#faq-pricing-standard).
+The Standard plan is no longer available for purchase by new users. The Standard plan continues to be available to existing users of the plan indefinitely. For more information, see [Can I continue to use the {{site.data.keyword.speechtotextshort}} Standard plan?](#faq-pricing-standard) For new users, read about our new Plus and Premium plans below.
 {: note}
 
 ## What is the price for using the {{site.data.keyword.speechtotextshort}} Lite plan?
@@ -64,7 +64,7 @@ The Plus plan is intended for small businesses. It is also a good choice for lar
 {: faq}
 {: support}
 
-The Standard pricing plan will continue to be available for purchase for a short time. Existing users of the Standard plan can continue to use the plan indefinitely with no change in their pricing. Their API settings and custom models remain unaffected.
+Existing users of the Standard plan can continue to use the plan indefinitely with no change in their pricing. Their API settings and custom models remain unaffected. (The Standard plan is no longer available for purchase by new users.)
 
 Existing users can also choose to upgrade to the new Plus plan by visiting the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}. They will continue to have access to all of their settings and custom models after upgrading. And, if they find that the Plus plan does not meet their needs for any reason, they can always downgrade back to their Standard plan.
 
