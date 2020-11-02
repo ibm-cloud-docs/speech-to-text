@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-10-28"
+lastupdated: "2020-11-02"
 
 subcollection: speech-to-text
 
@@ -89,7 +89,7 @@ For information about pricing for the Plus and Standard plans, see the {{site.da
 {: faq}
 {: support}
 
-You must have a paid plan (Plus, Standard, or Premium) to use language model or acoustic model customization. Users of the Lite plan cannot use customization.
+You must have a paid plan (Plus, Standard, or Premium) to use language model or acoustic model customization. Users of the Lite plan cannot use customization. To use customization, users of the Lite plan must create a new paid plan; you cannot upgrade from the Lite plan to a paid plan.
 
 ## What advantages do I get by using a {{site.data.keyword.speechtotextshort}} Premium plan?
 {: #faq-pricing-premium}
