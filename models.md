@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-10-22"
+lastupdated: "2020-10-27"
 
 subcollection: speech-to-text
 
@@ -56,7 +56,7 @@ Languages labeled *Beta* are currently beta functionality. Beta languages might 
 | English (United Kingdom) | `en-GB_BroadbandModel` | `en-GB_NarrowbandModel` |
 | English (United States) | `en-US_BroadbandModel` | `en-US_NarrowbandModel`<br/><br/>`en-US_ShortForm_NarrowbandModel` |
 | French| `fr-FR_BroadbandModel` | `fr-FR_NarrowbandModel` |
-| French (Canadian, Beta) | `fr-CA_BroadbandModel` | `fr-CA_NarrowbandModel` |
+| French (Canadian) | `fr-CA_BroadbandModel` | `fr-CA_NarrowbandModel` |
 | German | `de-DE_BroadbandModel` | `de-DE_NarrowbandModel` |
 | Italian | `it-IT_BroadbandModel` | `it-IT_NarrowbandModel` |
 | Japanese | `ja-JP_BroadbandModel` | `ja-JP_NarrowbandModel` |
