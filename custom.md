@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-10-22"
+lastupdated: "2020-10-27"
 
 subcollection: speech-to-text
 
@@ -118,7 +118,7 @@ You can use both broadband and narrowband models with any supported language for
 | English (United Kingdom) | GA | GA |
 | English (United States) | GA | GA |
 | French | GA | GA |
-| French (Canadian) | Not supported | Not supported |
+| French (Canadian) | GA | GA |
 | German | GA | GA |
 | Italian | GA | GA |
 | Japanese | GA | GA |

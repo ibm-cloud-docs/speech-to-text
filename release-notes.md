@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-10-22"
+lastupdated: "2020-11-02"
 
 subcollection: speech-to-text
 
@@ -33,9 +33,18 @@ The following sections document the new features and changes that were included 
 
 The service has the following know limitation:
 
--   The `GET /v1/models` and `GET /v1/models/{model_id}` methods list information about language models. Under `supported_features`, the `speaker_labels` field indicates whether you can use the `speaker_labels` parameter with a model. At this time, the field returns `true` for all models. However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
+-   The `GET /v1/models` and `GET /v1/models/{model_id}` methods list information about language models. Under `supported_features`, the `speaker_labels` field indicates whether you can use the `speaker_labels` parameter with a model. At this time, the field returns `true` for all models.
+
+    However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
+
+## 2 November 2020
+{: #November2020}
+
+-   The Canadian French models, `fr-CA_BroadbandModel` and `fr-CA_NarrowbandModel`, are now generally available; they were previously beta. They also now support language model and acoustic model customization.
+    -   For more information about supported languages and models, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+    -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
 
 ## 22 October 2020
 {: #October2020b}
@@ -59,27 +68,10 @@ The service has the following know limitation:
 
     For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
 
-## 30 September 2020
-{: #September2020}
-
-The pricing plans for the service have changed:
-
--   The service continues to offer a Lite plan that provides basic no-charge access to limited minutes of speech recognition per month.
--   The service offers a new Plus plan that provides a simple tiered pricing model and access to the service's customization capabilities.
--   The service offers a new Premium plan that provides significantly greater capacity and enhanced features.
-
-The Plus plan replaces the Standard plan. The Standard plan continues to be available for purchase for a short time. It also continues to be available indefinitely to existing users of the plan with no change in their pricing. Existing users can upgrade to the Plus plan at any time.
-{: note}
-
-For more information about the available pricing plans, see the following resources:
-
--   For general information about the pricing plans and answers to common questions, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
--   For more information about the pricing plans or to purchase a plan, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}.
--   For an overview of the pricing plan updates, read the blog [IBM Watson Speech to Text: Cloud Pricing Updates](https://medium.com/@kventurato/ibm-watson-speech-to-text-cloud-pricing-updates-df1adebd4b8c){: external}.
-
 ## Older releases
 {: #older}
 
+-   [30 September 2020](#September2020)
 -   [20 August 2020](#August2020b)
 -   [5 August 2020](#August2020a)
 -   [4 June 2020](#June2020)
@@ -139,6 +131,24 @@ For more information about the available pricing plans, see the following resour
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
 
+### 30 September 2020
+{: #September2020}
+
+The pricing plans for the service have changed:
+
+-   The service continues to offer a Lite plan that provides basic no-charge access to limited minutes of speech recognition per month.
+-   The service offers a new Plus plan that provides a simple tiered pricing model and access to the service's customization capabilities.
+-   The service offers a new Premium plan that provides significantly greater capacity and enhanced features.
+
+The Plus plan replaces the Standard plan. The Standard plan continues to be available for purchase for a short time. It also continues to be available indefinitely to existing users of the plan with no change in their pricing. Existing users can upgrade to the Plus plan at any time.
+{: note}
+
+For more information about the available pricing plans, see the following resources:
+
+-   For general information about the pricing plans and answers to common questions, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
+-   For more information about the pricing plans or to purchase a plan, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}.
+-   For an overview of the pricing plan updates, read the blog [IBM Watson Speech to Text: Cloud Pricing Updates](https://medium.com/@kventurato/ibm-watson-speech-to-text-cloud-pricing-updates-df1adebd4b8c){: external}.
+
 ### 20 August 2020
 {: #August2020b}
 
@@ -159,17 +169,17 @@ For more information about the available pricing plans, see the following resour
     -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList)
     -   [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels)
 -   The following models have been updated for improved speech recognition:
-    -   `en-GB_BroadbandModel` and `en-GB_NarrowbandModel`
-    -   `de-DE_BroadbandModel` and `de-DE_NarrowbandModel`
-    -   `fr-FR_BroadbandModel`
-    -   `en-US_ShortForm_NarrowbandModel`
+    -   French: `fr-FR_BroadbandModel`
+    -   German: `de-DE_BroadbandModel` and `de-DE_NarrowbandModel`
+    -   UK English: `en-GB_BroadbandModel` and `en-GB_NarrowbandModel`
+    -   US English: `en-US_ShortForm_NarrowbandModel`
 
     By default, the service automatically uses the updated models for all speech recognition requests. If you have custom language or custom acoustic models that are based on these models, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
     -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
     For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
--   The hesitation marker that is used for the updated German broadband and narrowband models has changed from `[hesitation]` to `%HESITATION`. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#hesitation).
+-   The hesitation marker that is used for the updated German broadband and narrowband models has changed from `[hesitation]` to `%HESITATION`. For more information about hesitation markers, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#hesitation).
 
 ### 4 June 2020
 {: #June2020}
@@ -756,7 +766,7 @@ For language model customization, the Korean models are generally available for 
 -   The service now supports acoustic model customization as beta functionality for all available languages. You can create custom acoustic models for broadband or narrowband models for all languages. For an introduction to customization, including acoustic model customization, see [The customization interface](/docs/speech-to-text?topic=speech-to-text-customization).
 -   The service now supports language model customization for the UK English models, `en-GB_BroadbandModel` and `en-GB_NarrowbandModel`. Although the service handles UK and US English corpora and custom words in a generally similar fashion, some important differences exist:
     -   For more information about how the service parses corpora for UK English, see [Parsing of Brazilian Portuguese, Dutch, English, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages).
-    -   For more information about creating sounds-like pronunciations for custom words in UK English, see [Guidelines for English](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-enUS-enGB). Specifically, for UK English, you cannot use periods or dashes in sounds-like pronunciations.
+    -   For more information about creating sounds-like pronunciations for custom words in UK English, see [Guidelines for English](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-english). Specifically, for UK English, you cannot use periods or dashes in sounds-like pronunciations.
 -   Language model customization and all associated parameters are now generally available (GA) for all supported languages: Japanese, Spanish, UK English, and US English.
 
 ### 2 October 2017

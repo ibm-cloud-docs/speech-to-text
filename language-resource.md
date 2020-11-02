@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-10-21"
+lastupdated: "2020-10-27"
 
 subcollection: speech-to-text
 
@@ -137,7 +137,7 @@ When you add a corpus file, the service analyzes the file's contents. It extract
 #### Parsing of Brazilian Portuguese, Dutch, English, French, German, Italian, and Spanish
 {: #corpusLanguages}
 
-The following descriptions apply to Brazilian Portuguese, Dutch, English (all dialects), French, German, Italian, and Spanish (all dialects).
+The following descriptions apply to all dialects of Brazilian Portuguese, Dutch, English, French, German, Italian, and Spanish.
 
 -   Converts numbers to their equivalent words. Table 1 shows some examples.
 
@@ -335,9 +335,9 @@ You can provide as many as five alternative pronunciations for a word that is di
 Speech recognition uses statistical algorithms to analyze audio, so adding a word does not guarantee that the service transcodes it with complete accuracy. When you add a word, consider how it might be pronounced. Use the `sounds_like` field to provide various pronunciations that reflect how a word can be spoken. The following sections provide language-specific guidelines for specifying a sounds-like pronunciation.
 
 #### Guidelines for English
-{: #wordLanguages-enUS-enGB}
+{: #wordLanguages-english}
 
-*Guidelines for Australian, United States, and United Kingdom English:*
+*Guidelines for Australian, United Kingdom, and United States English:*
 
 -   Use English alphabetic characters: `a-z` and `A-Z`.
 -   Use real or made-up words that are pronounceable in English for words that are difficult to pronounce, for example, `shuchesnie` for the word `Sczcesny`.
@@ -358,6 +358,8 @@ Speech recognition uses statistical algorithms to analyze audio, so adding a wor
 
 #### Guidelines for Brazilian Portuguese, Dutch, French, German, Italian, and Spanish
 {: #wordLanguages-esES-frFR}
+
+*Guidelines for all dialects of Brazilian Portuguese, Dutch, French, German, Italian, and Spanish:*
 
 -   You **cannot** use dashes in sounds-like pronunciations.
 -   Use alphabetic characters that are valid for the language: `a-z` and `A-Z` including valid accented letters.
