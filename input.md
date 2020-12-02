@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-09-29"
+lastupdated: "2020-11-16"
 
 subcollection: speech-to-text
 
@@ -205,7 +205,7 @@ curl -X POST -u "apikey:{apikey}" \
 
 The following language models do *not* support speech activity detection at this time. The parameters are ignored if used with these models.
 
--   Arabic broadband model (`ar-AR_BroadbandModel`)
+-   Arabic broadband model (`ar-MS_BroadbandModel`)
 -   Brazilian Portuguese broadband model (`pt-BR_BroadbandModel`)
 -   Chinese broadband model (`zh-CN_BroadbandModel`)
 -   Chinese narrowband model (`zh-CN_NarrowbandModel`)

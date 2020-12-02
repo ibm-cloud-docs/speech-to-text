@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-11-02"
+lastupdated: "2020-12-01"
 
 subcollection: speech-to-text
 
@@ -39,6 +39,11 @@ The service has the following know limitation:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
 
+## 2 December 2020
+{: #December2020}
+
+The Arabic language broadband model is now named `ar-MS_BroadbandModel`. The former name, `ar-AR_BroadbandModel`, is deprecated. It will continue to function for at least one year but might be removed at a future date. You are encouraged to migrate to the new name at your earliest convenience.
+
 ## 2 November 2020
 {: #November2020}
 
@@ -59,18 +64,10 @@ The service has the following know limitation:
     For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
 -   The speech recognition parameter `split_transcript_at_phrase_end` is now generally available for all languages. Previously, it was generally available only for US and UK English. For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-output#split_transcript).
 
-## 7 October 2020
-{: #October2020a}
-
--   The `ja-JP_BroadbandModel` model has been updated for improved speech recognition. By default, the service automatically uses the updated model for all speech recognition requests. If you have custom language or custom acoustic models that are based on this model, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
-    -   `POST /v1/customizations/{customization_id}/upgrade_model`
-    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
-
-    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
-
 ## Older releases
 {: #older}
 
+-   [7 October 2020](#October2020a)
 -   [30 September 2020](#September2020)
 -   [20 August 2020](#August2020b)
 -   [5 August 2020](#August2020a)
@@ -130,6 +127,15 @@ The service has the following know limitation:
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 7 October 2020
+{: #October2020a}
+
+-   The `ja-JP_BroadbandModel` model has been updated for improved speech recognition. By default, the service automatically uses the updated model for all speech recognition requests. If you have custom language or custom acoustic models that are based on this model, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
+    -   `POST /v1/customizations/{customization_id}/upgrade_model`
+    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+
+    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
 
 ### 30 September 2020
 {: #September2020}
