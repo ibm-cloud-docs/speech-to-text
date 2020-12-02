@@ -8,7 +8,11 @@ Speech to Text
     getting-started.md
     index.md
     features.md
-    [Demo](https://speech-to-text-demo.ng.bluemix.net/)
+
+    {: .topicgroup}
+    Demos
+        [Demo (all languages)](https://speech-to-text-demo.ng.bluemix.net/)
+        [Demo (US English)](https://www.ibm.com/demos/live/speech-to-text/self-service/home)
 
     {: .topicgroup}
     Additional resources

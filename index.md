@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-11-02"
+lastupdated: "2020-12-01"
 
 subcollection: speech-to-text
 
@@ -27,7 +27,7 @@ subcollection: speech-to-text
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 2 November 2020. The Canadian French models are now generally available, and they now support language model and acoustic model customization. For more information, see the [2 November 2020 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#November2020) in the release notes.*
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 2 December 2020. The name of the Arabic Broadband model is now `ar-MS_BroadbandModel`; the former name is deprecated. For more information, see the [2 December 2020 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#December2020) in the release notes.*
 
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}

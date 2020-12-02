@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-10-21"
+lastupdated: "2020-11-16"
 
 subcollection: speech-to-text
 
@@ -74,7 +74,7 @@ An optional float between 0.0 and 1.0 that indicates the level to which backgrou
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all language models except for `ar-AR_BroadbandModel`, `pt-BR_BroadbandModel`, `zh-CN_BroadbandModel`, `zh-CN_NarrowbandModel`, and `de-DE_BroadbandModel` |
+| Availability           | Generally available for all language models except for `ar-MS_BroadbandModel`, `pt-BR_BroadbandModel`, `zh-CN_BroadbandModel`, `zh-CN_NarrowbandModel`, and `de-DE_BroadbandModel` |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -321,7 +321,7 @@ An optional float between 0.0 and 1.0 that indicates the sensitivity of speech r
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all language models except for `ar-AR_BroadbandModel`, `pt-BR_BroadbandModel`, `zh-CN_BroadbandModel`, `zh-CN_NarrowbandModel`, and `de-DE_BroadbandModel` |
+| Availability           | Generally available for all language models except for `ar-MS_BroadbandModel`, `pt-BR_BroadbandModel`, `zh-CN_BroadbandModel`, `zh-CN_NarrowbandModel`, and `de-DE_BroadbandModel` |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
