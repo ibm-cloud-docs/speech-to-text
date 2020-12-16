@@ -165,7 +165,7 @@ The service offers Plus and Premium pricing plans for its users:
 -   Plus plans are multi-tenant solutions that provide logical separation of data by using common encryption keys.
 -   Premium plans are single-tenant solutions that provide physical separation of data. Premium plans provide dedicated data storage accounts that use unique encryption keys.
 
-Users of Premium plans can also integrate with {{site.data.keyword.keymanagementservicefull}} to create, import, and manage their encryption keys. This process is commonly referred to as *Bring your own keys* (BYOK). For more information about using {{site.data.keyword.keymanagementserviceshort}}, see [Protecting sensitive information in your Watson service](/docs/watson?topic=watson-keyservice){: external}.
+Users of Premium plans can also integrate with {{site.data.keyword.keymanagementservicefull}} to create, import, and manage their encryption keys. This process is commonly referred to as *Bring your own keys* (BYOK). For more information about using {{site.data.keyword.keymanagementserviceshort}}, see [Protecting sensitive information in your Watson service](/docs/watson?topic=watson-keyservice).
 
 And finally, the service supports the European Union General Data Protection Regulation (GDPR) to mange user data. For Premium plans, it also offers US Health Insurance Portability and Accountability Act (HIPAA) readiness. For more information, see [Information security](/docs/speech-to-text?topic=speech-to-text-information-security).
 
