@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-10-15"
+lastupdated: "2020-12-16"
 
 subcollection: speech-to-text
 
@@ -26,7 +26,7 @@ subcollection: speech-to-text
 # Service features
 {: #service-features}
 
-The {{site.data.keyword.speechtotextfull}} service offers many advanced features to help you get the most from your audio transcription. The service offers multiple speech recognition interfaces, and these interfaces support many features that you can use to manage how you pass your audio to the service and the results that the service returns. You can also customize the service to enhance its vocabulary and to accommodate the acoustic characteristics of your audio. And as with all {{site.data.keyword.watson}} services, SDKs are available to simplify application development in many programming languages.
+The {{site.data.keyword.speechtotextfull}} service offers many advanced features to help you get the most from your audio transcription. The service offers multiple speech recognition interfaces, and these interfaces support many features that you can use to manage how you pass your audio to the service and the results that the service returns. You can also customize the service to enhance its vocabulary and to accommodate the acoustic characteristics of your audio.  And as with all {{site.data.keyword.watson}} services, SDKs are available to simplify application development in many programming languages.
 {: shortdesc}
 
 ## Recognizing speech with the service
@@ -149,6 +149,25 @@ You can use a custom language model, a custom acoustic model, or both for speech
 
 You must have the Plus, Standard, or Premium pricing plan to use language model or acoustic model customization. Users of the Lite plan cannot use the customization interface. For more information, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
 {: note}
+
+## Understanding data security
+{: #features-data-security}
+
+The {{site.data.keyword.speechtotextshort}} service provides security for all user data both in motion and at rest:
+
+-   Transport Layer Security (TLS) 1.2 is used to secure data in transit.
+-   Advanced Encryption Standard (AES)-256 with Secure Hash Algorithm (SHA)-256 is used to secure data at rest.
+
+For more information about data security for cloud applications, see [Security architecture for cloud applications](https://www.ibm.com/cloud/architecture/architectures/securityArchitecture/security-for-data){: external}.
+
+The service offers Plus and Premium pricing plans for its users:
+
+-   Plus plans are multi-tenant solutions that provide logical separation of data by using common encryption keys.
+-   Premium plans are single-tenant solutions that provide physical separation of data. Premium plans provide dedicated data storage accounts that use unique encryption keys.
+
+Users of Premium plans can also integrate with {{site.data.keyword.keymanagementservicefull}} to create, import, and manage their encryption keys. This process is commonly referred to as *Bring your own keys* (BYOK). For more information about using {{site.data.keyword.keymanagementserviceshort}}, see [Protecting sensitive information in your Watson service](/docs/watson?topic=watson-keyservice){: external}.
+
+And finally, the service supports the European Union General Data Protection Regulation (GDPR) to mange user data. For Premium plans, it also offers US Health Insurance Portability and Accountability Act (HIPAA) readiness. For more information, see [Information security](/docs/speech-to-text?topic=speech-to-text-information-security).
 
 ## Leveraging CORS support
 {: #features-cors}
