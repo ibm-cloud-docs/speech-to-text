@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-12-01"
+lastupdated: "2020-12-18"
 
 subcollection: speech-to-text
 
@@ -31,7 +31,13 @@ The following sections document the new features and changes that were included 
 ## Known limitations
 {: #limitations}
 
-The service has the following know limitation:
+The service has the following known limitations:
+
+-   **18 December 2020:** Since 16 December 2020, some users of the asynchronous HTTP interface in the Dallas data center (`us-south`) have been experiencing problems. A small percentage of jobs are entering infinite loops that prevent their execution.
+
+    As a short-term interim solution, the service will cause looping asynchronous jobs to fail. If you experience a failure, please retry the job; it is possible that it will succeed on a subsequent attempt. If you continue to experience failures, your jobs are being canceled by the interim solution in response to the defect.
+
+    The interim solution is **not** a permanent fix. {{site.data.keyword.IBM_notm}} is continuing to work to resolve the underlying problem and will release a permanent solution as soon as possible. We apologize for any inconvenience the current issue causes for you.
 
 -   The `GET /v1/models` and `GET /v1/models/{model_id}` methods list information about language models. Under `supported_features`, the `speaker_labels` field indicates whether you can use the `speaker_labels` parameter with a model. At this time, the field returns `true` for all models.
 

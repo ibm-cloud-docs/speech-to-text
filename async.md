@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-10-15"
+lastupdated: "2020-12-18"
 
 subcollection: speech-to-text
 
@@ -34,6 +34,9 @@ The asynchronous HTTP interface of the {{site.data.keyword.speechtotextfull}} se
 The two approaches are not mutually exclusive. You can elect to receive callback notifications but still poll the service for the latest status or contact the service to retrieve results manually. The following sections describe how to use the asynchronous HTTP interface with either approach.
 
 Submit a maximum of 1 GB and a minimum of 100 bytes of audio data with a single request. For information about audio formats and about using compression to maximize the amount of audio that you can send with a request, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats). For more information about the individual methods of the interface, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+
+Due to a recent update, some users of the service's asynchronous HTTP interface are experiencing failures. {{site.data.keyword.IBM_notm}} is working to resolve the problem. For more information, please see the **18 December 2020** update in the [Known limitations](/docs/speech-to-text?topic=speech-to-text-release-notes#limitations) section of the release notes.
+{: important}
 
 ## Usage models
 {: #usage}
