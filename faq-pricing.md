@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-12-16"
+lastupdated: "2021-01-13"
 
 subcollection: speech-to-text
 
@@ -35,7 +35,6 @@ The Standard plan is no longer available for purchase by new users. The Standard
 ## What is the price for using the {{site.data.keyword.speechtotextshort}} Lite plan?
 {: #faq-pricing-lite}
 {: faq}
-{: support}
 
 The Lite plan lets you get started with 500 minutes per month of speech recognition at no cost. You can use both broadband and narrowband models for speech recognition. The Lite plan does not provide access to customization. To gain access to customization capabilities, you must upgrade to a paid plan, such as the Plus plan. Services that are created with the Lite plan are deleted after 30 days of inactivity.
 
@@ -44,7 +43,6 @@ The Lite plan is intended for any user who wants to try out the service before c
 ## What is the price for using the {{site.data.keyword.speechtotextshort}} Plus plan?
 {: #faq-pricing-plus}
 {: faq}
-{: support}
 
 The Plus plan provides access to all of the service's features:
 
@@ -62,7 +60,6 @@ The Plus plan is intended for small businesses. It is also a good choice for lar
 ## Can I continue to use the {{site.data.keyword.speechtotextshort}} Standard plan?
 {: #faq-pricing-standard}
 {: faq}
-{: support}
 
 Existing users of the Standard plan can continue to use the plan indefinitely with no change in their pricing. Their API settings and custom models remain unaffected. (The Standard plan is no longer available for purchase by new users.)
 
@@ -80,21 +77,18 @@ For information about pricing for the Plus and Standard plans, see the {{site.da
 ## Do you round up to the nearest minute for every call to the API?
 {: #faq-pricing-rounding}
 {: faq}
-{: support}
 
 {{site.data.keyword.IBM_notm}} does not round up the length of the audio for every API call that the service receives. Instead, {{site.data.keyword.IBM_notm}} aggregates all usage for the month and rounds to the nearest minute at the end of the month. For example, if you send two audio files that are each 30 seconds long, {{site.data.keyword.IBM_notm}} sums the duration of the total audio for that month to one minute.
 
 ## What pricing plan do I need to use the service's customization interface?
 {: #faq-pricing-customization}
 {: faq}
-{: support}
 
 You must have a paid plan (Plus, Standard, or Premium) to use language model or acoustic model customization. Users of the Lite plan cannot use customization. To use customization, users of the Lite plan must create a new paid plan; you cannot upgrade from the Lite plan to a paid plan.
 
 ## What advantages do I get by using a {{site.data.keyword.speechtotextshort}} Premium plan?
 {: #faq-pricing-premium}
 {: faq}
-{: support}
 
 The Premium plan offers developers and organizations all of the capabilities and features of the Plus plan. The plan also offers these additional features:
 

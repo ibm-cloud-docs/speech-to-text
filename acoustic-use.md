@@ -2,12 +2,14 @@
 
 copyright:
   years: 2017, 2020
-lastupdated: "2020-06-23"
+lastupdated: "2021-01-13"
 
 subcollection: speech-to-text
 
 ---
 
+{:troubleshoot: data-hd-content-type='troubleshoot'}
+{:support: data-reuse='support'}
 {:shortdesc: .shortdesc}
 {:external: target="_blank" .external}
 {:tip: .tip}
@@ -66,3 +68,13 @@ You can create multiple custom acoustic models for the same or different domains
     {: pre}
 
 You can omit the language model from the request if the custom model is based on the default model, `en-US_BroadbandModel`. Otherwise, you must use the `model` parameter to specify the base model, as shown for the WebSocket example. A custom model can be used only with the base model for which it is created.
+
+## Troubleshooting the use of custom acoustic models
+{: #acousticTroubleshoot}
+{: troubleshoot}
+{: support}
+
+If you apply a custom acoustic model to speech recognition but find that the quality of speech recognition does not improve, check for the following possible problems:
+
+-   Make sure that you are correctly passing the customization ID to the recognition request as shown in the previous examples.
+-   Make sure that the status of the custom model is `available`, meaning that it is fully trained and ready to use. For more information, see [Listing custom acoustic models](/docs/speech-to-text?topic=speech-to-text-manageAcousticModels#listModels-acoustic).
