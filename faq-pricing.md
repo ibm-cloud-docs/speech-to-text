@@ -1,10 +1,12 @@
 ---
 
 copyright:
-  years: 2015, 2020
+  years: 2015, 2021
 lastupdated: "2021-01-13"
 
 subcollection: speech-to-text
+
+content-type: faq
 
 ---
 

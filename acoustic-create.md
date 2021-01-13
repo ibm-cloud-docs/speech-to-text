@@ -1,10 +1,12 @@
 ---
 
 copyright:
-  years: 2017, 2020
-lastupdated: "2020-09-05"
+  years: 2017, 2021
+lastupdated: "2021-01-13"
 
 subcollection: speech-to-text
+
+content-type: troubleshoot
 
 ---
 
