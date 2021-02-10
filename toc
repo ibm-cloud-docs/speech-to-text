@@ -66,7 +66,6 @@ Speech to Text
         grammar-examples.md
 
     custom-upgrade.md
-    ha-dr.md
     /watson/watson-keyservice
     /watson/watson-public-private-endpoints
 
@@ -78,6 +77,7 @@ Speech to Text
 
     {: .navgroup id="reference"}
     [API & SDK reference](https://cloud.ibm.com/apidocs/speech-to-text)
+    ha-dr.md
     information-security.md
     at-events.md
     /watson/watson-using-sdks
