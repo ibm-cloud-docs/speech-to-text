@@ -27,7 +27,7 @@ subcollection: speech-to-text
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 2 December 2020. The name of the Arabic Broadband model is now `ar-MS_BroadbandModel`; the former name is deprecated. For more information, see the [2 December 2020 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#December2020) in the release notes. *
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 2 December 2020.  The name of the Arabic Broadband model is now `ar-MS_BroadbandModel`; the former name is deprecated. For more information, see the [2 December 2020 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#December2020) in the release notes.*
 
 Due to a recent update, some users of the service's asynchronous HTTP interface are experiencing failures. {{site.data.keyword.IBM_notm}} is working to resolve the problem. For more information, please see the **18 December 2020** update in the [Known limitations](/docs/speech-to-text?topic=speech-to-text-release-notes#limitations) section of the release notes.
 {: important}
