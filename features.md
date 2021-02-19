@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2020
-lastupdated: "2020-12-16"
+  years: 2015, 2021
+lastupdated: "2021-02-19"
 
 subcollection: speech-to-text
 
@@ -153,21 +153,27 @@ You must have the Plus, Standard, or Premium pricing plan to use language model 
 ## Understanding data security
 {: #features-data-security}
 
-The {{site.data.keyword.speechtotextshort}} service provides security for all user data both in motion and at rest:
+The {{site.data.keyword.speechtotextshort}} service provides the following security features to help you protect your user data:
 
--   Transport Layer Security (TLS) 1.2 is used to secure data in transit.
--   Advanced Encryption Standard (AES)-256 with Secure Hash Algorithm (SHA)-256 is used to secure data at rest.
+-   The service provides security for all user data both in motion and at rest:
 
-For more information about data security for cloud applications, see [Security architecture for cloud applications](https://www.ibm.com/cloud/architecture/architectures/securityArchitecture/security-for-data){: external}.
+    -   Transport Layer Security (TLS) 1.2 is used to secure data in transit.
+    -   Advanced Encryption Standard (AES)-256 with Secure Hash Algorithm (SHA)-256 is used to secure data at rest.
 
-The service offers Plus and Premium pricing plans for its users:
+    For more information about data security for cloud applications, see [Security architecture for cloud applications](https://www.ibm.com/cloud/architecture/architectures/securityArchitecture/security-for-data){: external}.
 
--   Plus plans are multi-tenant solutions that provide logical separation of data by using common encryption keys.
--   Premium plans are single-tenant solutions that provide physical separation of data. Premium plans provide dedicated data storage accounts that use unique encryption keys.
+-   The service offers Plus and Premium pricing plans for its users:
 
-Users of Premium plans can also integrate with {{site.data.keyword.keymanagementservicefull}} to create, import, and manage their encryption keys. This process is commonly referred to as *Bring your own keys* (BYOK). For more information about using {{site.data.keyword.keymanagementserviceshort}}, see [Protecting sensitive information in your Watson service](/docs/watson?topic=watson-keyservice).
+    -   Plus plans are multi-tenant solutions that provide logical separation of data by using common encryption keys.
+    -   Premium plans are single-tenant solutions that provide physical separation of data. Premium plans provide dedicated data storage accounts that use unique encryption keys.
 
-And finally, the service supports the European Union General Data Protection Regulation (GDPR) to mange user data. For Premium plans, it also offers US Health Insurance Portability and Accountability Act (HIPAA) readiness. For more information, see [Information security](/docs/speech-to-text?topic=speech-to-text-information-security).
+    Users of Premium plans can also integrate with {{site.data.keyword.keymanagementservicefull}} to create, import, and manage their encryption keys. This process is commonly referred to as *Bring your own keys* (BYOK). For more information about using {{site.data.keyword.keymanagementserviceshort}}, see [Protecting sensitive information in your Watson service](/docs/watson?topic=watson-keyservice).
+
+-   The service lets you control the default request logging that is performed for all {{site.data.keyword.watson}} services. The service logs request and response data only to improve the service for future users. The logged data is never shared or made public.
+
+    You can opt out of the default logging to prevent the service from logging your request and response data. If you opt out, the service logs *no* user data from your requests, saving no audio or text to disk. You can choose to opt out of logging at either the account level or the API request level. For more information, see [Controlling request logging for {{site.data.keyword.watson}} services](/docs/watson?topic=watson-gs-logging-overview).
+
+-   The service supports the European Union General Data Protection Regulation (GDPR) to manage user data. For Premium plans, it also offers US Health Insurance Portability and Accountability Act (HIPAA) readiness. For more information, see [Information security](/docs/speech-to-text?topic=speech-to-text-information-security).
 
 ## Leveraging CORS support
 {: #features-cors}
@@ -183,7 +189,6 @@ For more information about working with {{site.data.keyword.watson}} services an
 
 -   For an introduction, see [Getting started with {{site.data.keyword.watson}} and {{site.data.keyword.cloud_notm}}](/docs/watson?topic=watson-about).
 -   For information about using {{site.data.keyword.cloud_notm}} Identity and Access Management, see [Authenticating to {{site.data.keyword.watson}} services](/docs/watson?topic=watson-iam).
--   For information about controlling the default request logging that is performed for all {{site.data.keyword.watson}} services, see [Controlling request logging for {{site.data.keyword.watson}} services](/docs/watson?topic=watson-gs-logging-overview).
 
 SDKs are available for the {{site.data.keyword.speechtotextshort}} service to simplify the development of speech applications. The SDKs support many popular programming languages and platforms.
 

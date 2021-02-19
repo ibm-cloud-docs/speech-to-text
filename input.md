@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2020
-lastupdated: "2020-11-16"
+  years: 2015, 2021
+lastupdated: "2021-02-19"
 
 subcollection: speech-to-text
 
@@ -299,9 +299,9 @@ Do not rely on processing time or on whether you have received results to determ
 ## Request logging
 {: #logging}
 
-By default, {{site.data.keyword.IBM_notm}} logs all requests to {{site.data.keyword.watson}} services and their results. Logging is done only to improve the services for future users. The logged data is not shared or made public.
+By default, {{site.data.keyword.IBM_notm}} logs all requests to {{site.data.keyword.watson}} services and their results. Logging is done only to improve the services for future users. The logged data is never shared or made public.
 
-If you are concerned with protecting the privacy of users' personal information or otherwise do not want your requests to be logged by IBM, you can choose not to have IBM log data (opt out). You can choose to opt out of logging at either the account level or the API request level. For more information, see [Controlling request logging for {{site.data.keyword.watson}} services](/docs/watson?topic=watson-gs-logging-overview).
+If you are concerned with protecting the privacy of users' personal information or otherwise do not want your requests to be logged by IBM, you can choose not to have IBM log data (opt out). If you opt out, the service logs *no* user data from your requests, saving no audio or text to disk. You can choose to opt out of logging at either the account level or the API request level. For more information, see [Controlling request logging for {{site.data.keyword.watson}} services](/docs/watson?topic=watson-gs-logging-overview).
 
 ## Information security
 {: #security-input}

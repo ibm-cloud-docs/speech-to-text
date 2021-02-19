@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2020
-lastupdated: "2020-11-16"
+  years: 2015, 2021
+lastupdated: "2021-02-19"
 
 subcollection: speech-to-text
 
@@ -395,7 +395,7 @@ An optional boolean that indicates whether the service provides confidence measu
 ## X-Watson-Learning-Opt-Out
 {: #summary-x-watson-learning-opt-out}
 
-An optional boolean that indicates whether you opt out of the default request logging that {{site.data.keyword.IBM_notm}} performs to improve the service for future users. To prevent IBM from accessing your data for general service improvements, specify `true` for the parameter. For more information, see [Request logging](/docs/speech-to-text?topic=speech-to-text-input#logging).
+An optional boolean that indicates whether you opt out of the default request logging that {{site.data.keyword.IBM_notm}} performs to improve the service for future users. To prevent IBM from accessing your data for general service improvements, specify `true` for the parameter. If you opt out, the service logs *no* user data from your requests, saving no audio or text to disk. For more information, see [Request logging](/docs/speech-to-text?topic=speech-to-text-input#logging).
 
 | Availability and usage | Description |
 |------------------------|-------------|
