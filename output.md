@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2020
-lastupdated: "2020-10-21"
+  years: 2015, 2021
+lastupdated: "2021-03-02"
 
 subcollection: speech-to-text
 
@@ -1014,7 +1014,7 @@ curl -X POST -u "apikey:{apikey}" \
 ## Profanity filtering
 {: #profanity_filter}
 
-The profanity filtering feature is generally available for US English only.
+The profanity filtering feature is generally available for US English and Japanese only.
 {: note}
 
 The `profanity_filter` parameter indicates whether the service is to censor profanity from its results. By default, the service obscures all profanity by replacing it with a series of asterisks in the transcript. Setting the parameter to `false` displays words in the output exactly as transcribed.

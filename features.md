@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-02-19"
+lastupdated: "2021-03-02"
 
 subcollection: speech-to-text
 
@@ -117,7 +117,7 @@ The service can filter or parse its results to provide more meaningful transcrip
 
 -   [Smart formatting](/docs/speech-to-text?topic=speech-to-text-output#smart_formatting) converts dates, times, numbers, currency values, phone numbers, and internet addresses into more readable, conventional forms in final transcripts. For US English, you can also provide keyword phrases to include certain punctuation symbols in final transcripts. Smart formatting is beta functionality that is supported for US English, Japanese, and Spanish audio.
 -   [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-output#redaction) redacts, or masks, numeric data from a final transcript. Redaction is intended to remove sensitive personal information, such as credit card numbers, from transcripts. Numeric redaction is beta functionality that is supported for US English, Japanese, and Korean audio.
--   [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-output#profanity_filter) censors profanity from US English transcripts and metadata.
+-   [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-output#profanity_filter) censors profanity from US English and Japanese transcripts and metadata.
 
 ### Response metadata
 {: #features-response-metadata}
