@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-01-13"
+lastupdated: "2021-03-04"
 
 subcollection: speech-to-text
 
@@ -81,6 +81,12 @@ For information about pricing for the Plus and Standard plans, see the {{site.da
 {: faq}
 
 {{site.data.keyword.IBM_notm}} does not round up the length of the audio for every API call that the service receives. Instead, {{site.data.keyword.IBM_notm}} aggregates all usage for the month and rounds to the nearest minute at the end of the month. For example, if you send two audio files that are each 30 seconds long, {{site.data.keyword.IBM_notm}} sums the duration of the total audio for that month to one minute.
+
+## Am I charged for all audio that I send, even audio that does not include speech?
+{: #faq-pricing-audio}
+{: faq}
+
+Yes, all audio that you send to the service contributes to your cumulative minutes of audio. This includes silence and noisy audio that does not contain or otherwise contribute to speech recognition. Because the service must process all audio that it receives, it does not distinguish between the type or quality of audio that you send. For pricing purposes, three seconds of silence is equivalent to three seconds of actual speech.
 
 ## What pricing plan do I need to use the service's customization interface?
 {: #faq-pricing-customization}
