@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2020
-lastupdated: "2020-09-03"
+  years: 2019, 2021
+lastupdated: "2021-03-21"
 
 subcollection: speech-to-text
 
@@ -25,7 +25,7 @@ subcollection: speech-to-text
 # Research references
 {: #references}
 
-For more information about the research behind the {{site.data.keyword.speechtotextfull}} service, see the following documents. IBM researchers wrote or contributed to all of these papers.
+For more information about the research behind the {{site.data.keyword.speechtotextfull}} service, see the following documents. {{site.data.keyword.IBM}} researchers wrote or contributed to all of these papers.
 {: shortdesc}
 
 1.  {: #audhkhasi2017}Audhkhasi, Kartik, Bhuvana Ramabhadran, George Saon, Michael Picheny, and David Nahamoo. [*Direct Acoustics-to-Word Models for English Conversational Speech Recognition.*](https://www.isca-speech.org/archive/Interspeech_2017/pdfs/0546.PDF){: external} Proceedings of Interspeech 2017 (August 2017): pp. 959-963.
