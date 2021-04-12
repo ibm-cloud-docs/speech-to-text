@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2021
-lastupdated: "2021-01-13"
+lastupdated: "2021-04-07"
 
 subcollection: speech-to-text
 
@@ -29,7 +29,7 @@ content-type: troubleshoot
 # Creating a custom acoustic model
 {: #acoustic}
 
-Follow these steps to create a custom acoustic model for the {{site.data.keyword.speechtotextshort}} service:
+Follow these steps to create a custom acoustic model for the {{site.data.keyword.speechtotextfull}} service:
 {: shortdesc}
 
 1.  [Create a custom acoustic model](#createModel-acoustic). You can create multiple custom models for the same or different domains or environments. The process is the same for any model that you create. However, you can specify only a single custom acoustic model at a time with a recognition request.
@@ -37,9 +37,9 @@ Follow these steps to create a custom acoustic model for the {{site.data.keyword
 1.  [Train the custom acoustic model](#trainModel-acoustic). Once you add audio resources to the custom model, you must train the model. Training prepares the custom acoustic model for use in speech recognition. The training time depends on the cumulative amount of audio data that the model contains.
 
     You can specify a helper custom language model during training of your custom acoustic model. A custom language model that includes transcriptions of your audio files or OOV words from the domain of your audio files can improve the quality of the custom acoustic model. For more information, see [Training a custom acoustic model with a custom language model](/docs/speech-to-text?topic=speech-to-text-useBoth#useBothTrain).
-1.  After you train your custom model, you can use it with recognition requests. If the audio passed for transcription has acoustic qualities that are similar to the audio of the custom model, the results reflect the service's enhanced understanding. You can use only one custom acoustic model at a time with a speech recognition request. For more information, see [Using a custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acousticUse).
+1.  After you train your custom model, you can use it with recognition requests. If the audio passed for transcription has acoustic qualities that are similar to the audio of the custom model, the results reflect the service's enhanced understanding. You can use only one custom acoustic model at a time with a speech recognition request. For more information, see [Using a custom acoustic model for speech recognition](/docs/speech-to-text?topic=speech-to-text-acousticUse).
 
-    You can pass both a custom acoustic model and a custom language model in the same recognition request to further improve recognition accuracy. For more information, see [Using custom language and custom acoustic models during speech recognition](/docs/speech-to-text?topic=speech-to-text-useBoth#useBothRecognize).
+    You can pass both a custom acoustic model and a custom language model in the same recognition request to further improve recognition accuracy. For more information, see [Using custom language and custom acoustic models for speech recognition](/docs/speech-to-text?topic=speech-to-text-useBoth#useBothRecognize).
 
 The steps for creating a custom acoustic model are iterative. You can add or delete audio and retrain a model as often as needed. You must retrain a model for any changes to its audio to take effect.
 
@@ -82,7 +82,7 @@ The example returns the customization ID of the new model. Each custom model is 
 
 Once you create your custom acoustic model, the next step is to add audio resources to it. You use the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to add an audio resource to a custom model. You can add
 
--   An individual audio file in any format that is supported for speech recognition. For more information, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
+-   An individual audio file in any format that is supported for speech recognition. For more information, see [Supported audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
 -   An archive file (a **.zip** or **.tar.gz** file) that includes multiple audio files. Gathering multiple audio files into a single archive file and loading that single file is significantly more efficient than adding audio files individually.
 
 You pass the audio resource as the body of the request and assign the resource an `audio_name`. For more information, see [Working with audio resources](/docs/speech-to-text?topic=speech-to-text-audioResources).

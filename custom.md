@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2020
-lastupdated: "2020-10-27"
+  years: 2015, 2021
+lastupdated: "2021-04-07"
 
 subcollection: speech-to-text
 
@@ -25,10 +25,10 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# The customization interface
+# Understanding customization
 {: #customization}
 
-The {{site.data.keyword.speechtotextfull}} service offers a customization interface that you can use to augment its speech recognition capabilities. You can use customization to improve the accuracy of speech recognition requests by customizing a base model for your domain and audio. Customization is available for only some languages and at different levels of support for different languages; see [Language support for customization](#languageSupport).
+The {{site.data.keyword.speechtotextfull}} service offers a customization interface that you can use to augment its speech recognition capabilities.  You can use customization to improve the accuracy of speech recognition requests by customizing a base model for your domain and audio. Customization is available for only some languages and at different levels of support for different languages; see [Language support for customization](#languageSupport).
 {: shortdesc}
 
 The customization interface supports both custom language models and custom acoustic models. The interfaces for both types of custom model are similar and straightforward to use. Using either type of custom model with a recognition request is also straightforward: You specify the customization ID of the model with the request.
@@ -50,7 +50,7 @@ You create a custom language model and add corpora and words specific to your do
 For more information, see
 
 -   [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate)
--   [Using a custom language model](/docs/speech-to-text?topic=speech-to-text-languageUse)
+-   [Using a custom language model for speech recognition](/docs/speech-to-text?topic=speech-to-text-languageUse)
 
 ## Acoustic model customization
 {: #customAcoustic-intro}
@@ -68,7 +68,7 @@ The length of time that it takes the service to train the custom model depends o
 For more information, see
 
 -   [Creating a custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acoustic)
--   [Using a custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acousticUse)
+-   [Using a custom acoustic model for speech recognition](/docs/speech-to-text?topic=speech-to-text-acousticUse)
 
 ## Grammars
 {: #grammars-intro}
@@ -106,7 +106,10 @@ Language and acoustic model customization are available only for some languages.
 -   *Beta* indicates that the interface is available as a beta offering for that language.
 -   *Not supported* means that the interface is not available for that language.
 
-You can use both broadband and narrowband models with any supported language for which they are available. If a language supports language model customization, it also supports grammars. For a list of all available models, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList).
+You can use both broadband and narrowband models with any supported language for which they are available. If a language supports language model customization, it also supports grammars. For a list of all available models, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported).
+
+The beta next-generation models do *not* support customization at this time.
+{: note}
 
 | Language | Support for language model customization | Support for acoustic model customization |
 |----------|:----------------------------------------:|:----------------------------------------:|
@@ -160,7 +163,7 @@ How the service handles request logging for calls to the customization interface
 -   The service *does not* log data that is used to build custom models. For example, when working with corpora and words in a custom language model, you do not need to set the `X-Watson-Learning-Opt-Out` request header. Your training data is never used to improve the service's base models.
 -   The service *does* log data when a custom model is used with a recognition request. You must set the `X-Watson-Learning-Opt-Out` request header to `true` to prevent logging for recognition requests.
 
-For more information, see [Request logging](/docs/speech-to-text?topic=speech-to-text-input#logging).
+For more information, see [Request logging](/docs/speech-to-text?topic=speech-to-text-data-security#data-security-request-logging).
 
 ### Information security
 {: #customSecurity}

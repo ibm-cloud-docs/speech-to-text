@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2020
-lastupdated: "2020-06-23"
+  years: 2017, 2021
+lastupdated: "2021-04-02"
 
 subcollection: speech-to-text
 
@@ -45,7 +45,7 @@ When you update a model's audio resources, you must train the model for the chan
 ## Adding an audio file
 {: #addAudioType}
 
-To add an individual audio file to a custom acoustic model, you specify the format (MIME type) of the audio with the `Content-Type` header. You can add audio with any format that is supported for use with recognition requests. Include the `rate`, `channels`, and `endianness` parameters with the specification of formats that require them. For more information about the supported audio formats, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
+To add an individual audio file to a custom acoustic model, you specify the format (MIME type) of the audio with the `Content-Type` header. You can add audio with any format that is supported for use with recognition requests. Include the `rate`, `channels`, and `endianness` parameters with the specification of formats that require them. For more information, see [Supported audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
 
 The `application/octet-stream` specification for an audio format is not supported for audio resources.
 {: note}
@@ -101,7 +101,7 @@ Follow these guidelines when you add audio resources to a custom acoustic model:
     The quality of the audio makes a difference when you are determining how much to add. The better the model's audio reflects the characteristics of the audio that is to be recognized, the better the quality of the custom model for speech recognition. If the audio is of good quality, adding more can improve transcription accuracy. But adding even five to ten hours of good quality audio can make a positive difference.
 -   Add audio resources that are no larger than 100 MB. All audio- and archive-type resources are limited to a maximum size of 100 MB.
 
-    To maximize the amount of audio that you can add with a single resource, consider using an audio format that offers compression. For more information, see [Data limits and compression](/docs/speech-to-text?topic=speech-to-text-audio-formats#limits).
+    To maximize the amount of audio that you can add with a single resource, consider using an audio format that offers compression. For more information, see [Data limits and compression](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-limits).
 -   Divide large audio files into multiple smaller files. Make sure to split the audio between words, at points of silence.
 
     Because you can submit multiple simultaneous requests to add different audio resources, you can add smaller files concurrently. This parallel approach to adding audio resources can accelerate the service's analysis of your audio.

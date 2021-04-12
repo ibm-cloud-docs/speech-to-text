@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2020
-lastupdated: "2021-01-13"
+  years: 2015, 2021
+lastupdated: "2021-04-12"
 
 subcollection: speech-to-text
 
@@ -29,10 +29,17 @@ content-type: troubleshoot
 # The WebSocket interface
 {: #websockets}
 
-The WebSocket interface of the {{site.data.keyword.speechtotextshort}} service is the most natural way for a client to interact with the service. To use the WebSocket interface for speech recognition, you first use the `/v1/recognize` method to establish a persistent connection with the service. You then send text and binary messages over the connection to initiate and manage the recognition requests.
+The WebSocket interface of the {{site.data.keyword.speechtotextfull}} service is the most natural way for a client to interact with the service. To use the WebSocket interface for speech recognition, you first use the `/v1/recognize` method to establish a persistent connection with the service. You then send text and binary messages over the connection to initiate and manage the recognition requests.
 {: shortdesc}
 
-The recognition request and response cycle has the following steps:
+Because of their advantages, WebSockets are the preferred mechanism for speech recognition. For more information, see [Advantages of the WebSocket interface](/docs/speech-to-text?topic=speech-to-text-service-features#features-websocket-advantages).
+
+For more information about the WebSocket interface and its parameters, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+
+## Managing a WebSocket connection
+{: #websockets-managing}
+
+The WebSocket recognition request and response cycle has the following steps:
 
 1.  [Open a connection](#WSopen)
 1.  [Initiate a recognition request](#WSstart)
@@ -44,12 +51,10 @@ The recognition request and response cycle has the following steps:
 
 When the client sends data to the service, it *must* pass all JSON messages as text messages and all audio data as binary messages.
 
-Because of their advantages, WebSockets are the preferred mechanism for speech recognition. For more information, see [Advantages of the WebSocket interface](/docs/speech-to-text?topic=speech-to-text-service-features#features-websocket-advantages). For more information about the WebSocket interface and its parameters, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
-
 The snippets of example code that follow are written in JavaScript and are based on the HTML5 WebSocket API. For more information about the WebSocket protocol, see the Internet Engineering Task Force (IETF) [Request for Comment (RFC) 6455](https://tools.ietf.org/html/rfc6455){: external}.
 {: note}
 
-## Open a connection
+### Open a connection
 {: #WSopen}
 
 The {{site.data.keyword.speechtotextshort}} service uses the WebSocket Secure (WSS) protocol to make the `/v1/recognize` method available at the following endpoint:
@@ -80,11 +85,17 @@ A WebSocket client calls the `/v1/recognize` method with the following query par
 -   `access_token` (*required* string) - A valid Identity and Access Management (IAM) access token to establish an authenticated connection with the service. You pass an IAM access token instead of passing an API key with the call. You must establish the connection before the access token expires. For information about obtaining an access token, see [Authenticating to Watson services](/docs/watson?topic=watson-iam).
 
     You pass an access token only to establish an authenticated connection. Once you establish a connection, you can keep it alive indefinitely. You remain authenticated for as long as you keep the connection open. You do not need to refresh the access token for an active connection that lasts beyond the token's expiration time. A connection can remain active even after the token or its API key are deleted.
--   `model` (*optional* string) - Specifies the language model to be used for transcription. If you do not specify a model, the service uses the `en-US_BroadbandModel` model by default. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
--   `language_customization_id` (*optional* string) - Specifies the Globally Unique Identifier (GUID) of a custom language model that is to be used for all requests that are sent over the connection. The base model of the custom language model must match the value of the `model` parameter. If you include a customization ID, you must make the request with credentials for the instance of the service that owns the custom model. By default, no custom language model is used. For more information, see [The customization interface](/docs/speech-to-text?topic=speech-to-text-customization).
--   `acoustic_customization_id` (*optional* string) - Specifies the Globally Unique Identifier (GUID) of a custom acoustic model that is to be used for all requests that are sent over the connection. The base model of the custom acoustic model must match the value of the `model` parameter. If you include a customization ID, you must make the request with credentials for the instance of the service that owns the custom model. By default, no custom acoustic model is used. For more information, see [The customization interface](/docs/speech-to-text?topic=speech-to-text-customization).
--   `base_model_version` (*optional* string) - Specifies the version of the base `model` that is to be used for all requests that are sent over the connection. The parameter is intended primarily for use with custom models that are upgraded for a new base model. The default value depends on whether the parameter is used with or without a custom model. For more information, see [Base model version](/docs/speech-to-text?topic=speech-to-text-input#version).
--   `x-watson-learning-opt-out` (*optional* boolean) - Indicates whether the service logs requests and results that are sent over the connection. To prevent IBM from accessing your data for general service improvements, specify `true` for the parameter. For more information, see [Request logging](/docs/speech-to-text?topic=speech-to-text-input#logging).
+
+-   `model` (*optional* string) - Specifies the language model to be used for transcription. If you do not specify a model, the service uses the `en-US_BroadbandModel` model by default. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models) and [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+
+-   `language_customization_id` (*optional* string) - Specifies the Globally Unique Identifier (GUID) of a custom language model that is to be used for all requests that are sent over the connection. The base model of the custom language model must match the value of the `model` parameter. If you include a customization ID, you must make the request with credentials for the instance of the service that owns the custom model. By default, no custom language model is used. For more information, see [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization).
+
+-   `acoustic_customization_id` (*optional* string) - Specifies the Globally Unique Identifier (GUID) of a custom acoustic model that is to be used for all requests that are sent over the connection. The base model of the custom acoustic model must match the value of the `model` parameter. If you include a customization ID, you must make the request with credentials for the instance of the service that owns the custom model. By default, no custom acoustic model is used. For more information, see [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization).
+
+-   `base_model_version` (*optional* string) - Specifies the version of the base `model` that is to be used for all requests that are sent over the connection. The parameter is intended primarily for use with custom models that are upgraded for a new base model. The default value depends on whether the parameter is used with or without a custom model. For more information, see [Making speech recognition requests with upgraded custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use#custom-upgrade-use-recognition).
+
+-   `x-watson-learning-opt-out` (*optional* boolean) - Indicates whether the service logs requests and results that are sent over the connection. To prevent IBM from accessing your data for general service improvements, specify `true` for the parameter. For more information, see [Request logging](/docs/speech-to-text?topic=speech-to-text-data-security#data-security-request-logging).
+
 -   `x-watson-metadata` (*optional* string) - Associates a customer ID with all data that is passed over the connection. The parameter accepts the argument `customer_id={id}`, where `id` is a random or generic string that is to be associated with the data. You must URL-encode the argument to the parameter, for example, `customer_id%3dmy_customer_ID`. By default, no customer ID is associated with the data. For more information, see [Information security](/docs/speech-to-text?topic=speech-to-text-information-security).
 
 The following snippet of JavaScript code opens a connection with the service. The call to the `/v1/recognize` method passes the `access_token` and `model` query parameters, the latter to direct the service to use the Spanish broadband model. After it establishes the connection, the client defines the event listeners (`onOpen`, `onClose`, and so on) to respond to events from the service. The client can use the connection for multiple recognition requests.
@@ -105,7 +116,7 @@ websocket.onerror = function(evt) { onError(evt) };
 
 The client can open multiple concurrent WebSocket connections to the service. The number of concurrent connections is limited only by the capacity of the service, which generally poses no problems for users.
 
-## Initiate a recognition request
+### Initiate a recognition request
 {: #WSstart}
 
 To initiate a recognition request, the client sends a JSON text message to the service over the established connection. The client must send this message before it sends any audio for transcription. The message must include the `action` parameter but can usually omit the `content-type` parameter.
@@ -113,9 +124,12 @@ To initiate a recognition request, the client sends a JSON text message to the s
 -   `action` (*required* string) - Specifies the action to be performed:
     -   `start` begins a recognition request. It can also specify new parameters for subsequent requests. For more information, see [Send additional requests and modify request parameters](#WSmore).
     -   `stop` signals that all audio for a request has been sent. For more information, see [End a recognition request](#WSstop).
--   `content-type` (*optional* string) - Identifies the format (MIME type) of the audio data for the request. The parameter is required for the `audio/alaw`, `audio/basic`, `audio/l16`, and `audio/mulaw` formats. For more information, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
+-   `content-type` (*optional* string) - Identifies the format (MIME type) of the audio data for the request. The parameter is required for the `audio/alaw`, `audio/basic`, `audio/l16`, and `audio/mulaw` formats. For more information, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-list).
 
-The message can also include optional parameters to specify other aspects of how the request is to be processed and the information that is to be returned. For information about all input and output features, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary). You can specify a language model, custom language model, and custom acoustic model only as query parameters of the WebSocket URL.
+The message can also include optional parameters to specify other aspects of how the request is to be processed and the information that is to be returned. These additional parameters include the `interim_results` parameter, which is available only with the WebSocket interface. (You specify a language model, custom language model, and custom acoustic model only as query parameters of the WebSocket URL.)
+
+-   For more information about all input and output features, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
+-   For more information about the `interim_results` parameter, see [Interim results](/docs/speech-to-text?topic=speech-to-text-output#interim).
 
 The following snippet of JavaScript code sends initialization parameters for the recognition request over the WebSocket connection. The calls are included in the client's `onOpen` function to ensure that they are sent only after the connection is established.
 
@@ -141,12 +155,12 @@ The `listening` state indicates that the service instance is configured (your JS
 
 If the client specifies an invalid query parameter or JSON field for the recognition request, the service's JSON response includes a `warnings` field. The field describes each invalid argument. The request succeeds despite the warnings.
 
-## Send audio and receive recognition results
+### Send audio and receive recognition results
 {: #WSaudio}
 
 After it sends the initial `start` message, the client can begin sending audio data to the service. The client does not need to wait for the service to respond to the `start` message with the `listening` message. The service returns the results of the transcription asynchronously in the same format as it returns results for the HTTP interfaces.
 
-The client must send the audio as binary data. The client can send a maximum of 100 MB of audio data with a single utterance (per `send` request). It must send at least 100 bytes of audio for any request. The client can send multiple utterances over a single WebSocket connection. For information about using compression to maximize the amount of audio that you can pass to the service with a request, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
+The client must send the audio as binary data. The client can send a maximum of 100 MB of audio data with a single utterance (per `send` request). It must send at least 100 bytes of audio for any request. The client can send multiple utterances over a single WebSocket connection. For information about using compression to maximize the amount of audio that you can pass to the service with a request, see [Data limits and compression](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-limits).
 
 The WebSocket interface imposes a maximum frame size of 4 MB. The client can set the maximum frame size to less than 4 MB. If it is not practical to set the frame size, the client can set the maximum message size to less than 4 MB and send the audio data as a sequence of messages. For more information about WebSocket frames, see [IETF RFC 6455](https://tools.ietf.org/html/rfc6455){: external}.
 
@@ -166,7 +180,7 @@ function onMessage(evt) {
 ```
 {: codeblock}
 
-## End a recognition request
+### End a recognition request
 {: #WSstop}
 
 When it is done sending the audio data for a request to the service, the client *must* signal the end of the binary audio transmission to the service in one of the following ways:
@@ -189,7 +203,7 @@ The service does not send final results until it receives confirmation that the 
 
 To receive final results between multiple recognition requests, the client must signal the end of transmission for the previous request before it sends a subsequent request. After it returns the final results for the first request, the service returns another `{"state":"listening"}` message to the client. This message indicates that the service is ready to receive another request.
 
-## Send additional requests and modify request parameters
+### Send additional requests and modify request parameters
 {: #WSmore}
 
 While the WebSocket connection remains active, the client can continue to use the connection to send further recognition requests with new audio. By default, the service continues to use the parameters that were sent with the previous `start` message for all subsequent requests that are sent over the same connection.
@@ -209,7 +223,7 @@ websocket.send(JSON.stringify(message));
 ```
 {: codeblock}
 
-## Keep a connection alive
+### Keep a connection alive
 {: #WSkeep}
 
 The service terminates the session and closes the connection if an inactivity or session timeout occurs:
@@ -223,7 +237,7 @@ If your WebSocket stack does not implement ping-pong frames and your are sending
 
 For more information about ping-pong frames, see [Section 5.5.2 Ping](http://tools.ietf.org/html/rfc6455#section-5.5.2){: external} and [Section 5.5.3 Pong](https://tools.ietf.org/html/rfc6455#section-5.5.3){: external} of IETF RFC 6455.
 
-## Close a connection
+### Close a connection
 {: #WSclose}
 
 When the client is done interacting with the service, it can close the WebSocket connection. Once the connection is closed, the client can no longer use it to send requests or to receive results. Close the connection only after you receive all results for a request. The connection eventually times out and closes if you do not explicitly close it.

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2020
-lastupdated: "2020-12-01"
+  years: 2015, 2021
+lastupdated: "2020-04-04"
 
 subcollection: speech-to-text
 
@@ -26,20 +26,21 @@ subcollection: speech-to-text
 # Languages and models
 {: #models}
 
-The {{site.data.keyword.speechtotextfull}} service supports speech recognition in many languages. For all interfaces, you can use the `model` parameter to specify the model for a speech recognition request. The model indicates the language in which the audio is spoken and the rate at which it is sampled.
+The {{site.data.keyword.speechtotextfull}} service supports speech recognition in many languages.  For all interfaces, you can use the `model` parameter to specify the model for a speech recognition request. The model indicates the language in which the audio is spoken and the rate at which it is sampled.
 {: shortdesc}
 
+The service also offers next-generation models with enhanced qualities for improved speech recognition. For more information, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+{: note}
+
 ## Supported language models
-{: #modelsList}
+{: #models-supported}
 
 For most languages, the service supports both broadband and narrowband models:
 
 -   *Broadband models* are for audio that is sampled at greater than or equal to 16 kHz. Use broadband models for responsive, real-time applications, for example, for live-speech applications.
 -   *Narrowband models* are for audio that is sampled at 8 kHz. Use narrowband models for offline decoding of telephone speech, which is the typical use for this sampling rate.
 
-Choosing the correct model for your application is important. Use the model that matches the sampling rate (and language) of your audio. The service automatically adjusts the sampling rate of your audio to match the model that you specify. For more information, see [Sampling rate](/docs/speech-to-text?topic=speech-to-text-audio-formats#samplingRate).
-
-To achieve the best recognition accuracy, you also need to consider the frequency content of your audio. For more information, see [Audio frequency](/docs/speech-to-text?topic=speech-to-text-audio-formats#frequency).
+Choosing the correct model for your application is important. Use the model that matches the sampling rate (and language) of your audio. The service automatically adjusts the sampling rate of your audio to match the model that you specify. To achieve the best recognition accuracy, you also need to consider the frequency content of your audio. For more information, see [Sampling rate](/docs/speech-to-text?topic=speech-to-text-audio-terminology#audio-terminology-sampling-rate) and [Audio frequency](/docs/speech-to-text?topic=speech-to-text-audio-terminology#audio-terminology-frequency).
 
 Table 1 lists the supported models for each language. If you omit the `model` parameter from a request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
 
@@ -71,7 +72,7 @@ The model name `ar-AR_BroadbandModel` is deprecated. Use the model name `ar-MS_B
 | Spanish (Peruvian, Beta) | `es-PE_BroadbandModel` | `es-PE_NarrowbandModel` |
 {: caption="Table 1. Supported language models"}
 
-### The US English short-form model
+## The US English short-form model
 {: #modelsShortform}
 
 The US English short-form model, `en-US_ShortForm_NarrowbandModel`, can improve speech recognition for Interactive Voice Response (IVR) and Automated Customer Support solutions. The short-form model is trained to recognize the short utterances that are frequently expressed in customer support settings like automated support call centers. In addition to being tuned for short utterances in general, the model is also tuned for precise utterances such as digits, single-character word and name spellings, and yes-no responses.
@@ -80,14 +81,14 @@ The `en-US_ShortForm_NarrowbandModel` is optimal for the kinds of responses that
 
 As with all models, noisy environments can adversely impact the results. For example, background acoustic noise from airports, moving vehicles, conference rooms, and multiple speakers can reduce transcription accuracy. Audio from speaker phones can also reduce accuracy due to the echo common to such devices. Using the parameters available for speech activity detection can counteract such effects and help improve speech transcription accuracy. Applying a custom acoustic model can further fine-tune the acoustics for speech recognition, but only as a final measure.
 
--   For more information about language model and acoustic model customization, see [The customization interface](/docs/speech-to-text?topic=speech-to-text-customization).
+-   For more information about language model and acoustic model customization, see [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization).
 -   For more information about grammars, see [Using grammars with custom language models](/docs/speech-to-text?topic=speech-to-text-grammars).
 -   For more information about speech activity detection parameters, see [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-input#detection).
 
-### Language model example
+## Specifying a model for speech recognition
 {: #modelsExample}
 
-The following example HTTP request uses the model `en-US-NarrowbandModel` for speech recognition:
+Use the `model` parameter of a speech recognition to indicate the model that is to be used. The following example HTTP request uses the model `en-US_NarrowbandModel` for speech recognition:
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
@@ -97,103 +98,15 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-## Listing models
-{: #listModels}
+If you omit the `model` parameter from a speech recognition request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
 
-The HTTP interface provides two methods for listing information about the supported models:
+## Supported features
+{: #models-features}
 
--   The `GET /v1/models` method lists information about all available models.
--   The `GET /v1/models/{model_id}` method lists information about a specified model.
+The previous-generation models described in this topic are supported for use with all of the service's features. Most features and models are generally available for production use. Where indicated, some features and models are beta functionality. Restrictions apply for some features, for example:
 
-Both methods return the following information about a model:
+-   Language model customization is not supported for the Arabic and Chinese models. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+-   Features such as speaker labels, numeric redaction, and profanity filtering are limited to certain languages and models. Such restrictions are noted with the descriptions of the individual features. For more information about all parameters that also notes all restrictions, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
+-   The `low-latency` parameter is supported only for next-generation models.
 
--   `name` is the name of the model that you use in a request.
--   `language` is the language identifier of the model (for example, `en-US`).
--   `rate` identifies the sampling rate (minimum acceptable rate for audio) that is used by the model in Hertz.
--   `url` is the URI for the model.
--   `description` provides a brief description of the model.
--   `supported_features` describes the additional service features that are supported with the model:
-    -   `custom_language_model` is a boolean that indicates whether you can create custom language models that are based on the model.
-    -   `speaker_labels` indicates whether you can use the `speaker_labels` parameter with the model.
-
-    The `speaker_labels` field returns `true` for all models. However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
-    {: note}
-
-The order in which the service returns models can change from call to call. Do not rely on an alphabetized or static list of models. Because the models are returned as an array of JSON objects, the order has no bearing on programmatic uses of the response.
-{: note}
-
-### Example requests and responses
-{: #listExample}
-
-The following example lists all models that are supported by the service:
-
-```bash
-curl -X GET -u "apikey:{apikey}" \
-"{url}/v1/models"
-```
-{: pre}
-
-```javascript
-{
-  "models": [
-    {
-      "name": "pt-BR_NarrowbandModel",
-      "language": "pt-BR",
-      "url": "{url}/v1/models/pt-BR_NarrowbandModel",
-      "rate": 8000,
-      "supported_features": {
-        "custom_language_model": true,
-        "speaker_labels": false
-      },
-      "description": "Brazilian Portuguese narrowband model."
-    },
-    {
-      "name": "ko-KR_BroadbandModel",
-      "language": "ko-KR",
-      "url": "{url}/v1/models/ko-KR_BroadbandModel",
-      "rate": 16000,
-      "supported_features": {
-        "custom_language_model": true,
-        "speaker_labels": true
-      },
-      "description": "Korean broadband model."
-    },
-    {
-      "name": "fr-FR_BroadbandModel",
-      "language": "fr-FR",
-      "url": "{url}/v1/models/fr-FR_BroadbandModel",
-      "rate": 16000,
-      "supported_features": {
-        "custom_language_model": true,
-        "speaker_labels": false
-      },
-      "description": "French broadband model."
-    },
-    . . .
-  ]
-}
-```
-{: codeblock}
-
-The following example shows information about the US English broadband model. The model supports both language model customization and speakers labels.
-
-```bash
-curl -X GET -u "apikey:{apikey}" \
-"{url}/v1/models/en-US_BroadbandModel"
-```
-{: pre}
-
-```javascript
-{
-  "rate": 16000,
-  "name": "en-US_BroadbandModel",
-  "language": "en-US",
-  "url": "{url}/v1/models/en-US_BroadbandModel",
-  "supported_features": {
-    "custom_language_model": true,
-    "speaker_labels": true
-  },
-  "description": "US English broadband model."
-}
-```
-{: codeblock}
+Otherwise, when a feature is described as being available in general or available for a specific language or languages, it supports the previous-generation models.

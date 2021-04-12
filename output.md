@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-03-02"
+lastupdated: "2021-04-07"
 
 subcollection: speech-to-text
 
@@ -29,8 +29,8 @@ subcollection: speech-to-text
 The {{site.data.keyword.speechtotextfull}} service offers the following features to indicate the information that the service is to include in its transcription results for a speech recognition request. All output parameters are optional.
 {: shortdesc}
 
--   For examples of simple speech recognition requests for each of the service's interfaces, see [Making a recognition request](/docs/speech-to-text?topic=speech-to-text-basic-request).
--   For examples and descriptions of speech recognition responses, see [Understanding recognition results](/docs/speech-to-text?topic=speech-to-text-basic-response). The service returns all JSON response content in the UTF-8 character set.
+-   For examples of simple speech recognition requests for each of the service's interfaces, see [Making a speech recognition request](/docs/speech-to-text?topic=speech-to-text-basic-request).
+-   For examples and descriptions of speech recognition responses, see [Understanding speech recognition results](/docs/speech-to-text?topic=speech-to-text-basic-response). The service returns all JSON response content in the UTF-8 character set.
 -   For an alphabetized list of all available speech recognition parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
 
 ## Speaker labels
@@ -420,6 +420,11 @@ To receive interim results, set the `interim_results` JSON parameter to `true` i
 -   Set the parameter to `true` if you want results to arrive progressively as the service processes the audio or if you want the results with minimum latency. Keep in mind that the service can update interim results as it processes more audio.
 
 Interim results are indicated in the JSON response with the `final` field set to `false`. The service can update such results with more accurate transcriptions as it processes further audio. Final results are identified with the `final` field set to `true`. The service makes no further updates to final results.
+
+### Interim results with next-generation models
+{: #interimResultsNextgen}
+
+The `interim_results` parameter behaves differently when it is used with next-generation models. Interim results are still available only with the WebSocket interface. But they are available only with next-generation models that support low latency and only if low latency is enabled. For more information, see [Requesting low latency and interim results](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-low-latency-websockets).
 
 ### Interim results example
 {: #interimResultsExample}
@@ -820,7 +825,7 @@ Smart formatting is based on the presence of obvious keywords in the transcript.
     <table style="width:50%">
       <caption>Table 2. Smart formatting punctuation keywords for US English</caption>
       <tr>
-        <th style="width:45%; text-align:left">Keyword string</th>
+        <th style="text-align:left">Keyword string</th>
         <th style="text-align:center">Resulting punctuation</th>
       </tr>
       <tr>

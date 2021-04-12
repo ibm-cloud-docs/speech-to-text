@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-02-19"
+lastupdated: "2021-04-08"
 
 subcollection: speech-to-text
 
@@ -26,115 +26,11 @@ subcollection: speech-to-text
 # Input features
 {: #input}
 
-The {{site.data.keyword.speechtotextfull}} service offers the following features to specify how the service is to perform a speech recognition request. All of the input parameters that are described in the following sections are optional. Only the input audio is required.
+The {{site.data.keyword.speechtotextfull}} service offers the following features to specify how the service is to perform a speech recognition request.  All of the input parameters that are described in the following sections are optional. Only the input audio is required.
 {: shortdesc}
 
--   For examples of simple speech recognition requests for each of the service's interfaces, see [Making a recognition request](/docs/speech-to-text?topic=speech-to-text-basic-request).
+-   For examples of simple speech recognition requests for each of the service's interfaces, see [Making a speech recognition request](/docs/speech-to-text?topic=speech-to-text-basic-request).
 -   For an alphabetized list of all available speech recognition parameters, including their status (generally available or beta) and supported languages, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
-
-## Custom models
-{: #custom-input}
-
-Language and acoustic model customization are available at different levels of support (generally available or beta) for different languages. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
-{: beta}
-
-All interfaces accept a custom model for use in a recognition request:
-
--   *Custom language models* expand the service's base vocabulary with terminology from specific domains. Use the `language_customization_id` parameter to include a custom language model with a request. You can also specify an optional `customization_weight` parameter. The parameter indicates the relative weight that is given to words from the custom model as opposed to words from the base vocabulary.
-
-    For more information, see [Using a custom language model](/docs/speech-to-text?topic=speech-to-text-languageUse).
--   *Custom acoustic models* adapt the service's base acoustic model for the acoustic characteristics of your environment and speakers. Use the `acoustic_customization_id` parameter to include a custom acoustic model with a request. You can specify both a custom language model and a custom acoustic model with a request.
-
-    For more information, see [Using a custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acousticUse).
-
-Custom models are based on one of the language models that are described in [Languages and models](/docs/speech-to-text?topic=speech-to-text-models). A custom model can be used only with the base model for which it is created. If your custom model is based on a model other than `en-US_BroadbandModel`, the default, you must also specify the name of the model with the request. To use a custom model, you must issue the request with credentials for the instance of the service that owns the custom model.
-
-For an introduction to customization, see [The customization interface](/docs/speech-to-text?topic=speech-to-text-customization).
-
-You must have the Plus, Standard, or Premium pricing plan to use language model or acoustic model customization. Users of the Lite plan cannot use the customization interface. For more information, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
-{: note}
-
-### Custom model examples
-{: #customExample}
-
-The following example request includes the `language_customization_id` parameter to use the custom language model with the specified ID. It includes the `customization_weight` parameter to indicate that words from the custom model are to be given a relative weight of `0.5`.
-
-```bash
-curl -X POST -u "apikey:{apikey}" \
---header "Content-Type: audio/flac" \
---data-binary @{path}audio-file.flac \
-"{url}/v1/recognize?language_customization_id={customization_id}&customization_weight=0.5"
-```
-{: pre}
-
-The following example request uses both a custom language model and a custom acoustic model. The former is identified with the `language_customization_id` parameter, the latter with the `acoustic_customization_id` parameter.
-
-```bash
-curl -X POST -u "apikey:{apikey}" \
---header "Content-Type: audio/flac" \
---data-binary @{path}audio-file1.flac \
-"{url}/v1/recognize?language_customization_id={customization_id}&acoustic_customization_id={customization_id}"
-```
-{: pre}
-
-For examples that use custom models with each of the service's interfaces, see
-
--   [Using a custom language model](/docs/speech-to-text?topic=speech-to-text-languageUse)
--   [Using a custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acousticUse)
-
-## Grammars
-{: #grammars-input}
-
-The grammars feature is beta functionality. The service supports grammars for all languages for which it supports language model customization.
-{: beta}
-
-You can add grammars to a custom language model and use them for speech recognition. Grammars use a formal language specification to define a set of production rules for transcribing strings. The rules specify how to form valid strings from the language's alphabet.
-
-When you use a grammar for speech recognition, the service recognizes only phrases that are recognized by the grammar. By limiting the search space for valid strings, the service can deliver results faster and more accurately.
-
-All interfaces accept the following parameters for a recognition request:
-
--   The `language_customization_id` parameter identifies the custom language model for which the grammar is defined. You must issue the request with credentials for the instance of the service that owns the model.
--   The `grammar_name` parameter specifies the grammar that you want to use. You can specify only a single grammar with a request.
-
-For more information, see [Using grammars with custom language models](/docs/speech-to-text?topic=speech-to-text-grammars).
-
-### Grammars example
-{: #grammarsExample}
-
-The following example request includes the `language_customization_id` and `grammar_name` parameters to restrict the service's response to strings that are defined in the grammar named `list-abnf`.
-
-```bash
-curl -X POST -u "apikey:{apikey}" \
---header "Content-Type: audio/flac" \
---data-binary @{path}audio-file.flac \
-"{url}/v1/recognize?language_customization_id={customization_id}&grammar_name=list-abnf"
-```
-{: pre}
-
-For examples that use grammars with each of the service's interfaces, see [Using a grammar for speech recognition](/docs/speech-to-text?topic=speech-to-text-grammarUse).
-
-## Base model version
-{: #version}
-
-To improve the quality of speech recognition, the service occasionally updates the base language models described in [Languages and models](/docs/speech-to-text?topic=speech-to-text-models). The base models for languages are independent of each other, as are the broadband and narrowband models for a language. Therefore, updates to base models occur independently of each other and have no effect on other models.
-
-When multiple versions of a base model exist, the optional `base_model_version` parameter specifies the version of the model to be used with a recognition request. The parameter is intended primarily for use with custom models that are updated for a new base model, but it can be used without a custom model. The version of a base model that is used for a request depends on whether you pass the `base_model_version` parameter. It also depends on whether you specify a custom model (language, acoustic, or both) with the request.
-
--   *If you do not specify a custom model with the request*
-
-    -   Omit the `base_model_version` parameter to use the latest version of the base model.
-    -   Specify the `base_model_version` parameter to use a specific version of the base model.
-
--   *If you specify a custom model with the request*
-
-    -   Omit the `base_model_version` parameter to use the latest version of the base model to which the custom model is upgraded. For example, if the custom model is upgraded to the latest version of the base model, the service uses the latest versions of the base and custom models.
-    -   Specify the `base_model_version` parameter to use the specified versions of both the base and custom models.
-
-The parameter is intended for use with custom models. Therefore, you can learn about the available versions of a base model only by listing information about a custom model that is based on it.
-
--   For more information about upgrading custom models, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
--   For more information about using different versions of base and custom models for speech recognition, see [Making recognition requests with upgraded custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade#upgradeRecognition).
 
 ## Speech activity detection
 {: #detection}
@@ -295,15 +191,3 @@ In this example, if you were to send another 15 seconds of audio at the 100-seco
 
 Do not rely on processing time or on whether you have received results to determine whether a streaming session is idle. Assume that the service can process all audio instantly, and send data to the service accordingly. If you stream audio in real-time, do not fall behind in sending audio at one-half real-time (15 seconds of audio) in any 30-second window. This rate is typically sufficient to accommodate network latency and delays.
 {: important}
-
-## Request logging
-{: #logging}
-
-By default, {{site.data.keyword.IBM_notm}} logs all requests to {{site.data.keyword.watson}} services and their results. Logging is done only to improve the services for future users. The logged data is never shared or made public.
-
-If you are concerned with protecting the privacy of users' personal information or otherwise do not want your requests to be logged by IBM, you can choose not to have IBM log data (opt out). If you opt out, the service logs *no* user data from your requests, saving no audio or text to disk. You can choose to opt out of logging at either the account level or the API request level. For more information, see [Controlling request logging for {{site.data.keyword.watson}} services](/docs/watson?topic=watson-gs-logging-overview).
-
-## Information security
-{: #security-input}
-
-Information security includes features to associate a customer ID with data that is passed to the service with a request. You associate a customer ID with the data by passing the `X-Watson-Metadata` header with the request. If necessary, you can then delete the data by using the `DELETE /v1/user_data` method. For more information, see [Information security](/docs/speech-to-text?topic=speech-to-text-information-security).

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-01-13"
+lastupdated: "2021-04-08"
 
 keywords: faqs,frequently asked questions,question,Speech to Text
 
@@ -77,7 +77,10 @@ You can add a maximum of 90 thousand out-of-vocabulary (OOV) words to a custom l
 {: faq}
 {: support}
 
-When a new version of a base model is released to improve the quality of speech recognition, you must upgrade any custom language and custom acoustic models that are built on the base model to take advantage of the updates. For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+When a new version of a base model is released to improve the quality of speech recognition, you must upgrade any custom language and custom acoustic models that are based on that model to take advantage of the updates. When you upgrade a custom model, you do not need to upgrade its resources individually. The service upgrades the resources automatically.
+
+-   For more information about upgrading a custom model, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
+-   For more information about using an upgraded custom model for a speech recognition request, see [Using upgraded custom models for speech recognition](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use).
 
 ## Can the {{site.data.keyword.speechtotextshort}} service transcribe numbers as digits instead of strings?
 {: #faq-usage-six}

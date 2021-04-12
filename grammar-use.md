@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2020
-lastupdated: "2020-06-25"
+  years: 2015, 2021
+lastupdated: "2021-04-07"
 
 subcollection: speech-to-text
 
@@ -26,10 +26,11 @@ subcollection: speech-to-text
 # Using a grammar for speech recognition
 {: #grammarUse}
 
-Once you create and train your custom language model with your grammar, you can use the grammar in speech recognition requests with the service's WebSocket and HTTP interfaces.
+Once you create and train your custom language model with your grammar, you can use the grammar in speech recognition requests:
 {: shortdesc}
 
--   Use the `language_customization_id` parameter to specify the customization ID (GUID) of the custom language model for which the grammar is defined. You must issue the request with credentials for the instance of the service that owns the model.
+-   Use the `language_customization_id` query parameter to specify the customization ID (GUID) of the custom language model for which the grammar is defined. A custom model can be used only with the base model for which it is created. If your custom model is based on a model other than `en-US_BroadbandModel`, the default, you must also specify that base model with the `model` query parameter. You must issue the request with credentials for the instance of the service that owns the model.
+
 -   Use the `grammar_name` parameter to specify the name of the grammar. You can specify only a single grammar with a request.
 
 When you use a grammar, the service recognizes only words from the specified grammar. The service does not use custom words that were added from corpora, that were added or modified individually, or that are recognized by other grammars.
@@ -39,6 +40,8 @@ The grammars feature is beta functionality. You can use grammars with any langua
 
 ## Examples of using a grammar with a custom language model
 {: #grammarUse-examples}
+
+The following examples show the use of a grammar with a custom language model for each speech recognition interface:
 
 -   For the [WebSocket interface](/docs/speech-to-text?topic=speech-to-text-websockets), you first specify the customization ID with the `language_customization_id` parameter of the `/v1/recognize` method. You use this method to establish a WebSocket connection with the service.
 

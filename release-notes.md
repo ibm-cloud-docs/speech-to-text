@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2020
-lastupdated: "2020-12-18"
+  years: 2015, 2021
+lastupdated: "2021-04-11"
 
 subcollection: speech-to-text
 
@@ -13,6 +13,7 @@ subcollection: speech-to-text
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
+{:beta: .beta}
 {:deprecated: .deprecated}
 {:pre: .pre}
 {:codeblock: .codeblock}
@@ -25,19 +26,13 @@ subcollection: speech-to-text
 # Release notes
 {: #release-notes}
 
-The following sections document the new features and changes that were included for each release and update of the {{site.data.keyword.speechtotextfull}} service. The information includes any known limitations. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
+The following sections document the new features and changes that were included for each release and update of the {{site.data.keyword.speechtotextfull}} service.  The information includes any known limitations. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
 {: shortdesc}
 
 ## Known limitations
 {: #limitations}
 
-The service has the following known limitations:
-
--   **18 December 2020:** Since 16 December 2020, some users of the asynchronous HTTP interface in the Dallas data center (`us-south`) have been experiencing problems. A small percentage of jobs are entering infinite loops that prevent their execution.
-
-    As a short-term interim solution, the service will cause looping asynchronous jobs to fail. If you experience a failure, please retry the job; it is possible that it will succeed on a subsequent attempt. If you continue to experience failures, your jobs are being canceled by the interim solution in response to the defect.
-
-    The interim solution is **not** a permanent fix. {{site.data.keyword.IBM_notm}} is continuing to work to resolve the underlying problem and will release a permanent solution as soon as possible. We apologize for any inconvenience the current issue causes for you.
+The service has the following known limitation:
 
 -   The `GET /v1/models` and `GET /v1/models/{model_id}` methods list information about language models. Under `supported_features`, the `speaker_labels` field indicates whether you can use the `speaker_labels` parameter with a model. At this time, the field returns `true` for all models.
 
@@ -45,34 +40,39 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
 
+## 12 April 2021
+{: #April2021}
+
+The next-generation language models and the `low_latency` parameter are beta functionality. The next-generation models support a limited number of languages and features at this time. The supported languages, models, and features will increase with future releases.
+{: beta}
+
+The service now supports a growing number of next-generation language models. The next-generation *multimedia* and *telephony* models improve upon the speech recognition capabilities of the service's previous generation of broadband and narrowband models. The new models leverage deep neural networks and bidirectional analysis to achieve both higher throughput and greater transcription accuracy. At this time, the next-generation models support only a limited number of languages and speech recognition features.
+
+Many of the next-generation models also support a new `low_latency` parameter that lets you request faster results at the possible expense of reduced transcription quality. When low latency is enabled, the service curtails its analysis of the audio, which can reduce the accuracy of the transcription. This trade-off might be acceptable if your application requires lower response time more than it does the highest possible accuracy.
+
+The `low_latency` parameter impacts your use of the `interim_results` parameter with the WebSocket interface. Interim results are available only for those next-generation models that support low latency, and only if the `low_latency` parameter is set to `true`.
+
+-   For more information about the next-generation models and their capabilities, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+-   For more information about language support for next-generation models and about which next-generation models support low latency, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
+-   For more information about feature support for next-generation models, see [Supported features](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-features).
+-   For more information about the `low_latency` parameter, see [Reducing the latency of speech recognition requests](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-low-latency).
+-   For more information about the interaction between the `low_latency` and `interim_results` parameters for next-generation models, see [Requesting low latency and interim results](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-low-latency-websockets).
+
+## 17 March 2021
+{: #March2021}
+
+**Defect fix:** The limitation that was reported with the asynchronous HTTP interface in the Dallas data center (`us-south`) on 16 December 2020 has been addressed. Previously, a small percentage of jobs were entering infinite loops that prevented their execution. Asynchronous HTTP requests in the Dallas data center no longer experience this limitation.
+
 ## 2 December 2020
 {: #December2020}
 
 The Arabic language broadband model is now named `ar-MS_BroadbandModel`. The former name, `ar-AR_BroadbandModel`, is deprecated. It will continue to function for at least one year but might be removed at a future date. You are encouraged to migrate to the new name at your earliest convenience.
 
-## 2 November 2020
-{: #November2020}
-
--   The Canadian French models, `fr-CA_BroadbandModel` and `fr-CA_NarrowbandModel`, are now generally available; they were previously beta. They also now support language model and acoustic model customization.
-    -   For more information about supported languages and models, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
-    -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
-
-## 22 October 2020
-{: #October2020b}
-
--   The Australian English models, `en-AU_BroadbandModel` and `en-AU_NarrowbandModel`, are now generally available; they were previously beta. They also now support language model and acoustic model customization.
-    -   For more information about supported languages and models, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
-    -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
--   The Brazilian Portuguese models, `pt-BR_BroadbandModel` and `pt-BR_NarrowbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all speech recognition requests. If you have custom language or custom acoustic models that are based on the models, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
-    -   `POST /v1/customizations/{customization_id}/upgrade_model`
-    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
-
-    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
--   The speech recognition parameter `split_transcript_at_phrase_end` is now generally available for all languages. Previously, it was generally available only for US and UK English. For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-output#split_transcript).
-
 ## Older releases
 {: #older}
 
+-   [2 November 2020](#November2020)
+-   [22 October 2020](#October2020b)
 -   [7 October 2020](#October2020a)
 -   [30 September 2020](#September2020)
 -   [20 August 2020](#August2020b)
@@ -134,6 +134,26 @@ The Arabic language broadband model is now named `ar-MS_BroadbandModel`. The for
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
 
+### 2 November 2020
+{: #November2020}
+
+-   The Canadian French models, `fr-CA_BroadbandModel` and `fr-CA_NarrowbandModel`, are now generally available; they were previously beta. They also now support language model and acoustic model customization.
+    -   For more information about supported languages and models, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+    -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+
+### 22 October 2020
+{: #October2020b}
+
+-   The Australian English models, `en-AU_BroadbandModel` and `en-AU_NarrowbandModel`, are now generally available; they were previously beta. They also now support language model and acoustic model customization.
+    -   For more information about supported languages and models, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+    -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+-   The Brazilian Portuguese models, `pt-BR_BroadbandModel` and `pt-BR_NarrowbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all speech recognition requests. If you have custom language or custom acoustic models that are based on the models, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
+    -   `POST /v1/customizations/{customization_id}/upgrade_model`
+    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+
+    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
+-   The speech recognition parameter `split_transcript_at_phrase_end` is now generally available for all languages. Previously, it was generally available only for US and UK English. For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-output#split_transcript).
+
 ### 7 October 2020
 {: #October2020a}
 
@@ -141,7 +161,7 @@ The Arabic language broadband model is now named `ar-MS_BroadbandModel`. The for
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
     -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 
 ### 30 September 2020
 {: #September2020}
@@ -159,7 +179,6 @@ For more information about the available pricing plans, see the following resour
 
 -   For general information about the pricing plans and answers to common questions, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
 -   For more information about the pricing plans or to purchase a plan, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}.
--   For an overview of the pricing plan updates, read the blog [IBM Watson Speech to Text: Cloud Pricing Updates](https://medium.com/@kventurato/ibm-watson-speech-to-text-cloud-pricing-updates-df1adebd4b8c){: external}.
 
 ### 20 August 2020
 {: #August2020b}
@@ -168,7 +187,7 @@ For more information about the available pricing plans, see the following resour
     -   `fr-CA_BroadbandModel`
     -   `fr-CA_NarrowbandModel`
 
-    The new models do not support language model or acoustic model customization, speaker labels, or smart formatting. For more information about these and all supported models, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList).
+    The new models do not support language model or acoustic model customization, speaker labels, or smart formatting. For more information about these and all supported models, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported).
 
 ### 5 August 2020
 {: #August2020a}
@@ -178,7 +197,7 @@ For more information about the available pricing plans, see the following resour
     -   `en-AU_NarrowbandModel`
 
     The new models do not support language model or acoustic model customization, or smart formatting. The new models do support speakers labels. For more information, see
-    -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList)
+    -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
     -   [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels)
 -   The following models have been updated for improved speech recognition:
     -   French: `fr-FR_BroadbandModel`
@@ -190,7 +209,7 @@ For more information about the available pricing plans, see the following resour
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
     -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 -   The hesitation marker that is used for the updated German broadband and narrowband models has changed from `[hesitation]` to `%HESITATION`. For more information about hesitation markers, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#hesitation).
 
 ### 4 June 2020
@@ -215,7 +234,7 @@ Using a custom language model, a custom acoustic model, or both types of model f
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
     -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 -   The Dutch and Italian language models are now generally available (GA) for speech recognition and for language model and acoustic model customization:
     -   Dutch broadband model (`nl-NL_BroadbandModel`)
     -   Dutch narrowband model (`nl-NL_NarrowbandModel`)
@@ -223,7 +242,7 @@ Using a custom language model, a custom acoustic model, or both types of model f
     -   Italian narrowband model (`it-IT_NarrowbandModel`)
 
     For more information about all available language models, see
-    -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList)
+    -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
     -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
 
 ### 16 March 2020
@@ -247,7 +266,7 @@ Using a custom language model, a custom acoustic model, or both types of model f
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
     -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 -   Language model customization is now supported for Dutch and Italian with the new versions of the broadband and narrowband models. For more information, see
     -   [Parsing of Brazilian Portuguese, Dutch, English, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages)
     -   [Guidelines for Brazilian Portuguese, Dutch, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR)
@@ -274,7 +293,7 @@ Using a custom language model, a custom acoustic model, or both types of model f
 
     For more information, see the following sections:
 
-    -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList)
+    -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
     -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
 -   For speech recognition, the service now supports the `end_of_phrase_silence_time` parameter. The parameter specifies the duration of the pause interval at which the service splits a transcript into multiple final results. Each final result indicates a pause or extended silence that exceeds the pause interval. For most languages, the default pause interval is 0.8 seconds; for Chinese the default interval is 0.6 seconds.
 
@@ -323,7 +342,7 @@ These language models support acoustic model customization. They do not support 
 
 For more information, see the following sections:
 
--   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList)
+-   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
 -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
 
 ### 25 November 2019
@@ -369,7 +388,7 @@ The other five dialects are new and are beta for all uses. Because they are beta
 
 For more information, see the following sections:
 
--   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#modelsList)
+-   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
 -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
 
 ### 24 June 2019
@@ -383,7 +402,7 @@ For more information, see the following sections:
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
     -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 -   The service now allows you to submit multiple simultaneous requests to add different audio resources to a custom acoustic model. Previously, the service allowed only one request at a time to add audio to a custom model.
 -   The output of the HTTP `GET` methods that list information about custom language and custom acoustic models now includes an `updated` field. The field indicates the date and time in Coordinated Universal Time (UTC) at which the custom model was last modified.
 -   The schema changed for a warning that is generated by a custom model training request when the `strict` parameter is set to `false`. The names of the fields changed from `warning_id` and `description` to `code` and `message`, respectively. For more information, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
@@ -405,7 +424,7 @@ For more information, see the following sections:
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
     -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 
 ### 10 May 2019
 {: #May2019}
@@ -420,7 +439,7 @@ By default, the service automatically uses the updated models for all speech rec
 -   `POST /v1/customizations/{customization_id}/upgrade_model`
 -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 
 ### 19 April 2019
 {: #April2019b}
@@ -445,7 +464,7 @@ This change does not affect API access for users or applications with existing s
 ### 15 March 2019
 {: #March2019c}
 
-The service now supports audio in the A-law (`audio/alaw`) format. For more information, see [audio/alaw format](/docs/speech-to-text?topic=speech-to-text-audio-formats#alaw).
+The service now supports audio in the A-law (`audio/alaw`) format. For more information, see [audio/alaw format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-alaw).
 
 ### 11 March 2019
 {: #March2019b}
@@ -468,7 +487,7 @@ By default, the service automatically uses the updated models for all speech rec
 -   `POST /v1/customizations/{customization_id}/upgrade_model`
 -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 
 ### 28 January 2019
 {: #January2019}
@@ -520,8 +539,8 @@ The grammar interface is fully functional in all locations as of January 8, 2019
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
     -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
--   The service now supports audio in the G.729 (`audio/g729`) format. The service supports only G.729 Annex D for narrowband audio. For more information about supported audio formats, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
+    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
+-   The service now supports audio in the G.729 (`audio/g729`) format. The service supports only G.729 Annex D for narrowband audio. For more information, see [audio/g729 format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-g729).
 -   The speaker labels feature is now available for the narrowband model for UK English (`en-GB_NarrowbandModel`). The feature is beta functionality for all supported languages. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
 -   The maximum amount of audio that you can add to a custom acoustic model has increased from 50 hours to 100 hours.
 
@@ -579,12 +598,12 @@ For more information, see the following documentation:
     -   `POST /v1/recognize` for synchronous HTTP requests. The `Content-Type` header is now optional. (For multipart requests, the `part_content_type` field of the JSON metadata is also now optional.)
     -   `POST /v1/recognitions` for asynchronous HTTP requests. The `Content-Type` header is now optional.
 
-    For more information, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
+    For more information, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-list).
 -   The Brazilian Portuguese broadband model, `pt-BR_BroadbandModel`, was updated for improved speech recognition. By default, the service automatically uses the updated model for all recognition requests. If you have custom language or custom acoustic models that are based on this model, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
     -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 -   The `customization_id` parameter of the speech recognition methods is deprecated and will be removed in a future release. To specify a custom language model for a speech recognition request, use the `language_customization_id` parameter instead. This change applies to the following methods:
     -   `/v1/recognize` for WebSocket requests
     -   `POST /v1/recognize` for synchronous HTTP requests (including multipart requests)
@@ -613,7 +632,7 @@ For a list of issues that have been fixed since the initial release, see [Resolv
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
     -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 -   The keyword spotting and word alternatives features are now generally available (GA) rather than beta functionality for all languages. For more information, see
     -   [Keyword spotting](/docs/speech-to-text?topic=speech-to-text-output#keyword_spotting)
     -   [Word alternatives](/docs/speech-to-text?topic=speech-to-text-output#word_alternatives)
@@ -694,7 +713,7 @@ The Spanish Narrowband model, `es-ES_NarrowbandModel`, was updated for improved 
 -   `POST /v1/customizations/{customization_id}/upgrade_model`
 -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 
 As of this update, the following two versions of the Spanish narrowband model are available:
 
@@ -734,7 +753,7 @@ The following features are enabled for applications that are hosted in Sydney (*
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
     -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 -   The `version` parameter of the following methods is renamed `base_model_version`:
 
     -   `/v1/recognize` for WebSocket requests
@@ -742,7 +761,7 @@ The following features are enabled for applications that are hosted in Sydney (*
     -   `POST /v1/sessions` for session-based HTTP requests
     -   `POST /v1/recognitions` for asynchronous HTTP requests
 
-    The `base_model_version` parameter specifies the version of a base model that is to be used for speech recognition. For more information, see [Making recognition requests with upgraded custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade#upgradeRecognition) and [Base model version](/docs/speech-to-text?topic=speech-to-text-input#version).
+    The `base_model_version` parameter specifies the version of a base model that is to be used for speech recognition. For more information, see [Using upgraded custom models for speech recognition](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use) and [Making speech recognition requests with upgraded custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use#custom-upgrade-use-recognition).
 -   Smart formatting is now supported for Spanish as well as US English. For US English, the feature also now converts keyword strings into punctuation symbols for periods, commas, question marks, and exclamation points. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-output#smart_formatting).
 
 ### 1 March 2018
@@ -753,7 +772,7 @@ The Spanish and French broadband models, `es-ES_BroadbandModel` and `fr-FR_Broad
 -   `POST /v1/customizations/{customization_id}/upgrade_model`
 -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade). The section presents rules for upgrading custom models, the effects of upgrading, and approaches for using upgraded models.
+For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade). The section presents rules for upgrading custom models, the effects of upgrading, and approaches for using upgraded models.
 
 ### 1 February 2018
 {: #February2018}
@@ -773,9 +792,9 @@ For language model customization, the Korean models are generally available for 
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
     -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
-    For more information about the procedure, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade). The section presents rules for upgrading custom models, the effects of upgrading, and approaches for using upgraded models. Currently, the methods apply only to the new US English base models. But the same information will apply to upgrades of other base models as they become available.
--   The various methods for making recognition requests now include a new `base_model_version` parameter that you can use to initiate requests that use either the older or upgraded versions of base and custom models. Although it is intended primarily for use with custom models that have been upgraded, the `base_model_version` parameter can also be used without custom models. For more information, see [Base model version](/docs/speech-to-text?topic=speech-to-text-input#version).
--   The service now supports acoustic model customization as beta functionality for all available languages. You can create custom acoustic models for broadband or narrowband models for all languages. For an introduction to customization, including acoustic model customization, see [The customization interface](/docs/speech-to-text?topic=speech-to-text-customization).
+    For more information about the procedure, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade). The section presents rules for upgrading custom models, the effects of upgrading, and approaches for using upgraded models. Currently, the methods apply only to the new US English base models. But the same information will apply to upgrades of other base models as they become available.
+-   The various methods for making recognition requests now include a new `base_model_version` parameter that you can use to initiate requests that use either the older or upgraded versions of base and custom models. Although it is intended primarily for use with custom models that have been upgraded, the `base_model_version` parameter can also be used without custom models. For more information, see [Making speech recognition requests with upgraded custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use#custom-upgrade-use-recognition).
+-   The service now supports acoustic model customization as beta functionality for all available languages. You can create custom acoustic models for broadband or narrowband models for all languages. For an introduction to customization, including acoustic model customization, see [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization).
 -   The service now supports language model customization for the UK English models, `en-GB_BroadbandModel` and `en-GB_NarrowbandModel`. Although the service handles UK and US English corpora and custom words in a generally similar fashion, some important differences exist:
     -   For more information about how the service parses corpora for UK English, see [Parsing of Brazilian Portuguese, Dutch, English, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages).
     -   For more information about creating sounds-like pronunciations for custom words in UK English, see [Guidelines for English](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-english). Specifically, for UK English, you cannot use periods or dashes in sounds-like pronunciations.
@@ -789,18 +808,18 @@ For language model customization, the Korean models are generally available for 
     Custom acoustic models complement custom language models. You can train a custom acoustic model with a custom language model, and you can use both types of model during speech recognition. Acoustic model customization is a beta interface that is available only for US English, Spanish, and Japanese.
 
     -   For more information about the languages that are supported by the customization interface and the level of support that is available for each language, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
-    -   For more information about the service's customization interface, see [The customization interface](/docs/speech-to-text?topic=speech-to-text-customization).
+    -   For more information about the service's customization interface, see [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization).
     -   For more information about creating a custom acoustic model, see [Creating a custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acoustic).
-    -   For more information about using a custom acoustic model, see [Using a custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acousticUse).
+    -   For more information about using a custom acoustic model, see [Using a custom acoustic model for speech recognition](/docs/speech-to-text?topic=speech-to-text-acousticUse).
     -   For more information about all methods of the customization interface, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 -   For language model customization, the service now includes a beta feature that sets an optional customization weight for a custom language model. A customization weight specifies the relative weight to be given to words from a custom language model versus words from the service's base vocabulary. You can set a customization weight during both training and speech recognition. For more information, see [Using customization weight](/docs/speech-to-text?topic=speech-to-text-languageUse#weight).
 -   The `ja-JP_BroadbandModel` language model was upgraded to capture improvements in the base model. The upgrade does not affect existing custom models that are based on the model.
--   The service now includes a parameter to specify the endianness of audio that is submitted in `audio/l16` (Linear 16-bit Pulse-Code Modulation (PCM)) format. In addition to specifying `rate` and `channels` parameters with the format, you can now also specify `big-endian` or `little-endian` with the `endianness` parameter. For more information, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
+-   The service now includes a parameter to specify the endianness of audio that is submitted in `audio/l16` (Linear 16-bit Pulse-Code Modulation (PCM)) format. In addition to specifying `rate` and `channels` parameters with the format, you can now also specify `big-endian` or `little-endian` with the `endianness` parameter. For more information, see [audio/l16 format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-l16).
 
 ### 14 July 2017
 {: #July2017b}
 
--   The service now supports the transcription of audio in the MP3 or Motion Picture Experts Group (MPEG) format. For more information about supported audio formats, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
+-   The service now supports the transcription of audio in the MP3 or Motion Picture Experts Group (MPEG) format. For more information, see [audio/mp3 and audio/mpeg formats](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-mp3).
 -   The language model customization interface now supports Spanish as beta functionality. You can create a custom model based on either of the base Spanish language models: `es-ES_BroadbandModel` or `es-ES_NarrowbandModel`; for more information, see [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate). Pricing for recognition requests that use Spanish custom language models is the same as for requests that use US English and Japanese models.
 -   The JSON `CreateLanguageModel` object that you pass to the `POST /v1/customizations` method to create a new custom language model now includes a `dialect` field. The field specifies the dialect of the language that is to be used with the custom model. By default, the dialect matches the language of the base model. The parameter is meaningful only for Spanish models, for which the service can create a custom model that is suited for speech in one of the following dialects:
     -   `es-ES` for Castilian Spanish (the default)
@@ -822,7 +841,6 @@ For language model customization, the Korean models are generally available for 
     -   Charging an additional $0.03 (USD) per minute of audio for recognition requests that use US English or Japanese custom language models
 
     For more information about the pricing updates, see
-    -   The blog post [{{site.data.keyword.IBM_notm}} {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} API - Pricing Updates](https://www.ibm.com/blogs/bluemix/2017/05/ibm-watson-speech-text-api-pricing-updates/){: external}
     -   The {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud_notm}} Catalog](https://{DomainName}/catalog/services/speech-to-text){: external}
     -   The [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing)
 -   You no longer need to pass an empty data object as the body for the following `POST` requests:
@@ -885,7 +903,7 @@ The following deprecations first announced in March 2017 are now in effect:
     -   `ja-JP_BroadbandModel`
 
     For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
--   The service now supports the Web Media (WebM) audio format with the Opus or Vorbis codec. The service now also supports the Ogg audio format with the Vorbis codec in addition to the Opus codec. For more information about supported audio formats, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
+-   The service now supports the Web Media (WebM) audio format with the Opus or Vorbis codec. The service now also supports the Ogg audio format with the Vorbis codec in addition to the Opus codec. For more information about supported audio formats, see [audio/webm format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-webm).
 -   The service now supports Cross-Origin Resource Sharing (CORS) to allow browser-based clients to call the service directly. For more information, see [Leveraging CORS support](/docs/speech-to-text?topic=speech-to-text-service-features#features-cors).
 -   The asynchronous HTTP interface now offers a `POST /v1/unregister_callback` method that removes the registration for an allowlisted callback URL. For more information, see [Unregistering a callback URL](/docs/speech-to-text?topic=speech-to-text-async#unregister).
 -   The WebSocket interface no longer times out for recognition requests for especially long audio files. You no longer need to request interim results with the JSON `start` message to avoid the timeout. (This issue was described in the release notes for March 10, 2016.)
@@ -902,7 +920,7 @@ The asynchronous HTTP interface is now generally available. Prior to this date, 
 
 -   The service now offers a beta speaker labels feature for narrowband audio in US English, Spanish, or Japanese. The feature identifies which words were spoken by which speakers in a multi-person exchange. The sessionless, session-based, asynchronous, and WebSocket recognition methods each include a `speaker_labels` parameter that accepts a boolean value to indicate whether speaker labels are to be included in the response. For more information about the feature, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
 -   The beta language model customization interface is now supported for Japanese in addition to US English. All methods of the interface support Japanese. For more information, see the following sections:
-    -   For more information, see [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate) and [Using a custom language model](/docs/speech-to-text?topic=speech-to-text-languageUse).
+    -   For more information, see [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate) and [Using a custom language model for speech recognition](/docs/speech-to-text?topic=speech-to-text-languageUse).
     -   For general and Japanese-specific considerations for adding a corpus text file, see [Preparing a corpus text file](/docs/speech-to-text?topic=speech-to-text-corporaWords#prepareCorpus) and [What happens when I add a corpus file?](/docs/speech-to-text?topic=speech-to-text-corporaWords#parseCorpus)
     -   For Japanese-specific considerations when specifying the `sounds_like` field for a custom word, see [Guidelines for Japanese](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-jaJP).
     -   For more information about all methods of the customization interface, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
@@ -923,9 +941,9 @@ For more information about the service's interface, see the [API & SDK reference
 
 -   The service now offers a new beta language model customization interface for US English. You can use the interface to tailor the service's base vocabulary and language models via the creation of custom language models that include domain-specific terminology. You can add custom words individually or have the service extract them from corpora. To use your custom models with the speech recognition methods that are offered by any of the service's interfaces, pass the `customization_id` query parameter. For more information, see
     -   [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate)
-    -   [Using a custom language model](/docs/speech-to-text?topic=speech-to-text-languageUse)
+    -   [Using a custom language model for speech recognition](/docs/speech-to-text?topic=speech-to-text-languageUse)
     -   [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}
--   The list of supported audio formats now includes `audio/mulaw`, which provides single-channel audio encoded using the u-law (or mu-law) data algorithm. When you use this format, you must also specify the sampling rate at which the audio is captured. For more information, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
+-   The list of supported audio formats now includes `audio/mulaw`, which provides single-channel audio encoded using the u-law (or mu-law) data algorithm. When you use this format, you must also specify the sampling rate at which the audio is captured. For more information, see [audio/mulaw format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-mulaw).
 -   The `GET /v1/models` and `GET /v1/models/{model_id}` methods now return a `supported_features` field as part of their output for each language model. The additional information describes whether the model supports customization. For more information, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ### 30 June 2016
@@ -939,7 +957,7 @@ The beta asynchronous HTTP interface now supports all languages that are support
 -   A beta asynchronous HTTP interface is now available. The interface provides full recognition capabilities for US English transcription via non-blocking HTTP calls. You can register callback URLs and provide user-specified secret strings to achieve authentication and data integrity with digital signatures. For more information, see [The asynchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-async) and the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 -   A beta smart formatting feature that converts dates, times, series of digits and numbers, phone numbers, currency values, and Internet addresses into more conventional representations in final transcripts. You enable the feature by setting the `smart_formatting` parameter to `true` on a recognition request. The feature is beta functionality that is available for US English only. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-output#smart_formatting).
 -   The list of supported models for speech recognition now includes `fr-FR_BroadbandModel` for audio in the French language that is sampled at a minimum of 16 kHz. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
--   The list of supported audio formats now includes `audio/basic`. The format provides single-channel audio that is encoded by using 8-bit u-law (or mu-law) data that is sampled at 8 kHz. For more information, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
+-   The list of supported audio formats now includes `audio/basic`. The format provides single-channel audio that is encoded by using 8-bit u-law (or mu-law) data that is sampled at 8 kHz. For more information, see [audio/basic format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-basic).
 -   The various recognition methods can return a `warnings` response that includes messages about invalid query parameters or JSON fields that are included with a request. The format of the warnings changed. For example, `"warnings": "Unknown arguments: [u'{invalid_arg_1}', u'{invalid_arg_2}']."` is now `"warnings": "Unknown arguments: {invalid_arg_1}, {invalid_arg_2}."`
 -   For HTTP `POST` requests that do not otherwise pass data to the service, you must include an empty request body of the form `{}`. With the `curl` command, you use the `--data` option to pass the empty data.
 
@@ -983,7 +1001,7 @@ The service was updated to include a new profanity filtering feature on January 
     Because the SDKs are beta, they are subject to change in the future.
     {: note}
 -   The service supports two new languages, Brazilian Portuguese and Mandarin Chinese. The models for these new languages are `pt-BR_BroadbandModel`, `pt-BR_NarrowbandModel`, `zh-CN_BroadbandModel`, and `zh-CN_NarrowbandModel`. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
--   The HTTP `POST` requests `/v1/sessions/{session_id}/recognize` and `/v1/recognize`, as well as the WebSocket `/v1/recognize` request, support transcription of a new media type: `audio/ogg;codecs=opus` for Ogg format files that use the Opus codec. In addition, the `audio/wav` format for the methods now supports any encoding. The restriction about the use of linear PCM encoding is removed. For more information, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
+-   The HTTP `POST` requests `/v1/sessions/{session_id}/recognize` and `/v1/recognize`, as well as the WebSocket `/v1/recognize` request, support transcription of a new media type: `audio/ogg;codecs=opus` for Ogg format files that use the Opus codec. In addition, the `audio/wav` format for the methods now supports any encoding. The restriction about the use of linear PCM encoding is removed. For more information, see [audio/ogg format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-ogg).
 -   The service now supports overcoming timeouts when you transcribe long audio files with the HTTP interface. When you use sessions, you can employ a long polling pattern by specifying sequence IDs with the `GET /v1/sessions/{session_id}/observe_result` and `POST /v1/sessions/{session_id}/recognize` methods for long-running recognition tasks. By using the new `sequence_id` parameter of these methods, you can request results before, during, or after you submit a recognition request.
 -   For the US English language models, `en_US_BroadbandModel` and `en_US_NarrowbandModel`, the service now correctly capitalizes many proper nouns. For example, the service would new return text that reads "Barack Obama graduated from Columbia University" instead of "barack obama graduated from columbia university." This change might be of interest to you if your application is sensitive in any way to the case of proper nouns.
 -   The HTTP `DELETE /v1/sessions/{session_id}` request does not return status code 415 "Unsupported Media Type." This return code is removed from the documentation for the method.
@@ -1010,7 +1028,7 @@ The service moved from beta to general availability (GA) on July 1, 2015. The fo
     -   The minimum sampling rate: *broadband* (16 kHz) or *narrowband* (8 kHz)
 
     For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
--   The `Content-Type` header of the `recognize` methods now supports `audio/wav` for Waveform Audio File Format (WAV) files, in addition to `audio/flac` and `audio/l16`. For more information about the supported audio formats, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
+-   The `Content-Type` header of the `recognize` methods now supports `audio/wav` for Waveform Audio File Format (WAV) files, in addition to `audio/flac` and `audio/l16`. For more information, see [audio/wav format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-wav).
 -   The `recognize` methods now support a number of new query parameters that you can use to tailor the service to suit your application needs:
     -   The `inactivity_timeout` parameter sets the timeout value in seconds after which the service closes the connection if it detects silence (no speech) in streaming mode. By default, the service terminates the session after 30 seconds of silence. For more information, see [Timeouts](/docs/speech-to-text?topic=speech-to-text-input#timeouts).
     -   The `max_alternatives` parameter instructs the service to return the *n*-best alternative hypotheses for the audio transcription. For more information, see [Maximum alternatives](/docs/speech-to-text?topic=speech-to-text-output#max_alternatives).
