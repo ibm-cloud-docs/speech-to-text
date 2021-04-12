@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-03-04"
+lastupdated: "2021-04-02"
 
 subcollection: speech-to-text
 
@@ -100,7 +100,7 @@ You must have a paid plan (Plus, Standard, or Premium) to use language model or 
 
 The Premium plan offers developers and organizations all of the capabilities and features of the Plus plan. The plan also offers these additional features:
 
--   The ability to use {{site.data.keyword.ibmwatson}} services in the {{site.data.keyword.cloud}} with data isolation and added security features such as *Bring your own keys* (BYOK), Service Endpoints, Mutual Authentication, and US Health Insurance Portability and Accountability Act (HIPAA) readiness.
+-   The ability to use {{site.data.keyword.ibmwatson}} services in the {{site.data.keyword.cloud}} with data isolation and added security features such as {{site.data.keyword.keymanagementservicefull}} (also referred to as *Bring your own keys* (BYOK)), Service Endpoints, Mutual Authentication, and US Health Insurance Portability and Accountability Act (HIPAA) readiness.
 -   Significantly greater capacity of up to 500 concurrent transcriptions with the option to add more, far above the limit of 100 concurrent transcriptions for the Plus plan.
 -   Your first 150,000 minutes of speech recognition at no charge.
 

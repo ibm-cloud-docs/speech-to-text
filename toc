@@ -8,6 +8,7 @@ Speech to Text
     getting-started.md
     index.md
     features.md
+    data-security.md
 
     {: .topicgroup}
     Demos
@@ -23,51 +24,72 @@ Speech to Text
 
     {: .navgroup id="howto"}
     {: .topicgroup}
-    Speech recognition
+    Using languages and models
+        models.md
+        models-ng.md
+        models-list.md
+
+    {: .topicgroup}
+    Using audio formats
+        audio-terminology.md
+        audio-formats.md
+
+    {: .topicgroup}
+    Recognizing speech with the service
         basic-request.md
         basic-response.md
-        audio-formats.md
-        models.md
+        websockets.md
+        http.md
+        async.md
+
+    {: .topicgroup}
+    Using speech recognition parameters
         input.md
         output.md
         metrics.md
         summary.md
 
-    websockets.md
-    http.md
-    async.md
-    custom.md
+    {: .topicgroup}
+    Customizing the service
+        custom.md
+
+        {: topicgroup}
+        Language model customization
+            language-create.md
+            language-use.md
+            language-resource.md
+            language-models.md
+            language-corpora.md
+            language-words.md
+
+        {: topicgroup}
+        Acoustic model customization
+            acoustic-create.md
+            acoustic-use.md
+            acoustic-both.md
+            acoustic-resource.md
+            acoustic-models.md
+            acoustic-audio.md
+
+        {: topicgroup}
+        Grammars
+            grammar.md
+            grammar-understand.md
+            grammar-add.md
+            grammar-use.md
+            grammar-manage.md
+            grammar-examples.md
+
+        {: topicgroup}
+        Custom model upgrading
+            custom-upgrade.md
+            custom-upgrade-use.md
 
     {: topicgroup}
-    Language model customization
-        language-create.md
-        language-use.md
-        language-resource.md
-        language-models.md
-        language-corpora.md
-        language-words.md
-
-    {: topicgroup}
-    Acoustic model customization
-        acoustic-create.md
-        acoustic-use.md
-        acoustic-both.md
-        acoustic-resource.md
-        acoustic-models.md
-        acoustic-audio.md
-
-    {: topicgroup}
-    Grammars
-        grammar.md
-        grammar-understand.md
-        grammar-add.md
-        grammar-use.md
-        grammar-manage.md
-        grammar-examples.md
-
-    custom-upgrade.md
-    /watson/watson-keyservice
-    /watson/watson-public-private-endpoints
+    Security topics
+        information-security.md
+        /watson/watson-keyservice
+        /watson/watson-public-private-endpoints
 
     {: topicgroup}
     Service background
@@ -78,7 +100,6 @@ Speech to Text
     {: .navgroup id="reference"}
     [API & SDK reference](https://cloud.ibm.com/apidocs/speech-to-text)
     ha-dr.md
-    information-security.md
     at-events.md
     /watson/watson-using-sdks
     [Watson GitHub repos](https://github.com/watson-developer-cloud/)

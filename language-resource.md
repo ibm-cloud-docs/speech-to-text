@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-01-13"
+lastupdated: "2021-04-01"
 
 subcollection: speech-to-text
 
@@ -307,7 +307,7 @@ In general, you are likely to add most custom words from corpora. Make sure that
 
 You must use that encoding when working with the individual words in the custom language model. When you specify a word with the `GET`, `PUT`, or `DELETE /v1/customizations/{customization_id}/words/{word_name}` method, you must URL-encode the `word_name` that you pass in the URL if the word includes non-ASCII characters.
 
-For example, the following table shows what looks like the same letter in two different encodings, ASCII and UTF-8. But, while you can pass the ASCII character on a URL as `z`, you must pass the UTF-8 character as `%EF%BD%9A`.
+For example, the following table shows what looks like the same letter in two different encodings, ASCII and UTF-8. Although you can pass the ASCII character on a URL as `z`, you must pass the UTF-8 character as `%EF%BD%9A`.
 
 | Letter | Encoding | Value |
 |:------:|:--------:|:-----:|

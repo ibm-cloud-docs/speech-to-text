@@ -1,8 +1,8 @@
 ---
 
 Copyright:
-  years: 2019, 2020
-lastupdated: "2020-06-30"
+  years: 2019, 2021
+lastupdated: "2020-04-08"
 
 subcollection: speech-to-text
 
@@ -73,12 +73,15 @@ Follow these guidelines when you have transcripts of the audio files from the cu
 ### Performing lightly supervised training
 {: #useBothTrainPerform}
 
-To train a custom acoustic model with a custom language model, you must
+To train a custom acoustic model with a custom language model, you use the optional `custom_language_model_id` query parameter of the `POST /v1/acoustic_customizations/{customization_id}/train` method. Pass the GUID of the acoustic model with the `customization_id` parameter and the GUID of the custom language model with the `custom_language_model_id` parameter. Both models must be owned by the credentials that are passed with the request.
 
 -   Ensure that the custom language model is fully trained and in the `available` state. Training fails if the custom language model is not `available`.
--   Ensure that both custom models are based on the same version of the same base model. If a new version of the base model is made available, you must upgrade both models to the same version of the base model for training to succeed. For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-customUpgrade).
+-   Ensure that both custom models are based on the same version of the same base model. If a new version of the base model is made available, you must upgrade both models to the same version of the base model for training to succeed. For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 
-Use the optional `custom_language_model_id` query parameter of the `POST /v1/acoustic_customizations/{customization_id}/train` method to train your custom acoustic model with a custom language model. Pass the GUID of the acoustic model with the `customization_id` parameter and the GUID of the custom language model with the `custom_language_model_id` parameter. Both models must be owned by the credentials that are passed with the request.
+### Example request
+{: #useBothTrainExample}
+
+The following example request shows a custom language model being used to train a custom acoustic model:
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
@@ -86,7 +89,7 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-## Using custom language and custom acoustic models during speech recognition
+## Using custom language and custom acoustic models for speech recognition
 {: #useBothRecognize}
 
 You can specify both a custom language model and a custom acoustic model with any speech recognition request. If your audio contains domain-specific OOV words, acoustic model customization alone cannot reliably produce those words during speech recognition. Using a custom language model that contains OOV words from the domain of the audio is the only way to expand the service's base vocabulary.
@@ -98,7 +101,15 @@ Using a custom language model can improve transcription accuracy regardless of w
 
 If a custom language model includes grammars, you can also use the custom language model and one of its grammars with a custom acoustic model during speech recognition.
 
-The following example passes both types of model to the HTTP `POST /v1/recognize` method. Pass the GUID of the custom acoustic model with the `acoustic_customization_id` parameter and the GUID of the custom language model with the `language_customization_id` parameter. Both models must be owned by the credentials that are passed with the request, and both must be based on the same base model (for example, `en-US_BroadbandModel`).
+For a speech recognition request, use the `acoustic_customization_id` and `language_customization_id` parameters to pass the GUIDs of the custom acoustic and custom language models for the request. Both custom models must be owned by the credentials that are passed with the request, both must be based on the same base model (for example, `en-US_BroadbandModel`), and both must be in the `available` state.
+
+For more information about the effects of custom model upgrading on speech recognition with both types of custom models, see [Considerations for using custom acoustic and custom language models together](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use#custom-upgrade-use-recognition-both).
+{: note}
+
+### Example request
+{: #useBothRecognize-example}
+
+The following example request passes both custom acoustic and custom language models to the HTTP `POST /v1/recognize` method:
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
@@ -108,4 +119,4 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-For an asynchronous HTTP request, you specify the parameters when you create the asynchronous job. For a WebSocket request, you pass the parameters when you establish a connection. For more information, see [Using a custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acousticUse).
+For an asynchronous HTTP request, you specify the parameters when you create the asynchronous job. For a WebSocket request, you pass the parameters when you establish a connection. For more information, see [Using a custom language model for speech recognition](/docs/speech-to-text?topic=speech-to-text-languageUse) and [Using a custom acoustic model for speech recognition](/docs/speech-to-text?topic=speech-to-text-acousticUse).

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2020
-lastupdated: "2020-12-18"
+  years: 2015, 2021
+lastupdated: "2021-04-02"
 
 subcollection: speech-to-text
 
@@ -33,10 +33,7 @@ The asynchronous HTTP interface of the {{site.data.keyword.speechtotextfull}} se
 
 The two approaches are not mutually exclusive. You can elect to receive callback notifications but still poll the service for the latest status or contact the service to retrieve results manually. The following sections describe how to use the asynchronous HTTP interface with either approach.
 
-Submit a maximum of 1 GB and a minimum of 100 bytes of audio data with a single request. For information about audio formats and about using compression to maximize the amount of audio that you can send with a request, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats). For more information about the individual methods of the interface, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
-
-Due to a recent update, some users of the service's asynchronous HTTP interface are experiencing failures. {{site.data.keyword.IBM_notm}} is working to resolve the problem. For more information, please see the **18 December 2020** update in the [Known limitations](/docs/speech-to-text?topic=speech-to-text-release-notes#limitations) section of the release notes.
-{: important}
+Submit a maximum of 1 GB and a minimum of 100 bytes of audio data with a single request. For information about audio formats and about using compression to maximize the amount of audio that you can send with a request, see [Supported audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats). For more information about the individual methods of the interface, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ## Usage models
 {: #usage}
@@ -110,7 +107,7 @@ HTTPS is ideal for production applications. But during application development a
 
 <!--
 
-However, communicating over the HTTPS protocol is always the most secure means of learning job status and retrieving results. Using the HTTPS `GET /v1/recognitions/{id}` method to retrieve the results of a job is therefore more secure that receiving the results via callback notification. While the use of HMAC-SHA1 signatures based on a user secret ensures authentication and data integrity for callback notifications, it does not provide confidentiality. Conversely, because it encrypts the body of the response, HTTPS can provide authentication, integrity, *and* confidentiality.
+However, communicating over the HTTPS protocol is always the most secure means of learning job status and retrieving results. Using the HTTPS `GET /v1/recognitions/{id}` method to retrieve the results of a job is therefore more secure that receiving the results via callback notification. Although the use of HMAC-SHA1 signatures based on a user secret ensures authentication and data integrity for callback notifications, it does not provide confidentiality. Conversely, because it encrypts the body of the response, HTTPS can provide authentication, integrity, *and* confidentiality.
 
 HTTPS, however, is not ideal in terms of additional development overhead. Moreover, although the service validates SSL certificates to prevent man-in-the-middle attacks when you use HTTPS, validation is not foolproof if you use self-signed certificates, which enable encryption but not authentication or data integrity. During application development, user secrets and digital signatures provide a suitable level of security for requests made over the HTTP protocol. You can work with HTTP callback notifications during prototyping and move to HTTPS only for application deployment.
 

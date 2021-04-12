@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2020
-lastupdated: "2020-07-04"
+  years: 2015, 2021
+lastupdated: "2021-04-07"
 
 subcollection: speech-to-text
 
@@ -22,7 +22,7 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Understanding recognition results
+# Understanding speech recognition results
 {: #basic-response}
 
 Regardless of the interface that you use, the {{site.data.keyword.speechtotextfull}} service returns transcription results that reflect the input and output parameters that you specify. The service returns all JSON response content in the UTF-8 character set.
@@ -31,7 +31,7 @@ Regardless of the interface that you use, the {{site.data.keyword.speechtotextfu
 ## Basic transcription response
 {: #response}
 
-The service returns the following response for the examples in [Making a recognition request](/docs/speech-to-text?topic=speech-to-text-basic-request). The examples pass only an audio file and its content type. The audio speaks a single sentence with no noticeable pauses between words.
+The service returns the following response for the examples in [Making a speeech recognition request](/docs/speech-to-text?topic=speech-to-text-basic-request). The examples pass only an audio file and its content type. The audio speaks a single sentence with no noticeable pauses between words.
 
 ```javascript
 {

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-03-02"
+lastupdated: "2021-04-12"
 
 subcollection: speech-to-text
 
@@ -26,8 +26,35 @@ subcollection: speech-to-text
 # Service features
 {: #service-features}
 
-The {{site.data.keyword.speechtotextfull}} service offers many advanced features to help you get the most from your audio transcription. The service offers multiple speech recognition interfaces, and these interfaces support many features that you can use to manage how you pass your audio to the service and the results that the service returns. You can also customize the service to enhance its vocabulary and to accommodate the acoustic characteristics of your audio.  And as with all {{site.data.keyword.watson}} services, SDKs are available to simplify application development in many programming languages.
+The {{site.data.keyword.speechtotextfull}} service offers many advanced features to help you get the most from your audio transcription. The service offers multiple speech recognition interfaces, and these interfaces support many features that you can use to manage how you pass your audio to the service and the results that the service returns. You can also customize the service to enhance its vocabulary and to accommodate the acoustic characteristics of your audio. And as with all {{site.data.keyword.watson}} services, SDKs are available to simplify application development in many programming languages.
 {: shortdesc}
+
+## Using languages and models
+{: #features-languages}
+
+The service supports speech recognition for the many languages listed in [Language support](/docs/speech-to-text?topic=speech-to-text-about#about-languages). The service provides different models for the languages that it supports.
+
+-   For all supported languages, the service offers previous-generation *Broadband* and *Narrowband* models.
+-   For a smaller but growing subset of languages, it offers beta next-generation *Multimedia* and *Telephony* models that improve upon the speech recognition capabilities of the previous-generation models. Next-generation models return results with greater throughput and higher accuracy than previous-generation models, but they offer limited language and feature support currently.
+
+For most languages, you can transcribe audio at one of two sampling rates:
+
+-   Use *Broadband* or *Multimedia* models for audio that is sampled at a minimum sampling rate of 16 kHz.
+-   Use *Narrowband* or *Telephony* models for audio that is sampled at a minimum sampling rate of 8 kHz.
+
+Some language models are generally available (GA) for production use and others are beta and subject to change.
+
+-   For more information about previous-generation languages and models, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+-   For more information about beta next-generation languages and models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+-   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+
+## Using audio formats
+{: #features-audio}
+
+The service supports speech recognition for the many audio formats listed in [Audio support](/docs/speech-to-text?topic=speech-to-text-about#about-formats). Different formats support different sampling rates and other characteristics. By using a format that supports compression, you can maximize the amount of audio data that you can send with a request.
+
+-   For more information about understanding audio concepts, see [Audio terminology and characteristics](/docs/speech-to-text?topic=speech-to-text-audio-terminology).
+-   For more information about the audio formats that you can use with the service, see [Supported audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
 
 ## Recognizing speech with the service
 {: #features-recognition}
@@ -41,7 +68,8 @@ The {{site.data.keyword.speechtotextshort}} service offers a WebSocket interface
 All interfaces provide the same basic speech recognition capabilities, but you might specify the same parameter as a request header, a query parameter, or a parameter of a JSON object depending on the interface that you use.
 
 -   For an overview of the parameters that you can use to tailor your speech recognition requests, see [Using speech recognition parameters](#features-parameters).
--   For examples of basic speech recognition requests with each of the service's interfaces, see [Making a recognition request](/docs/speech-to-text?topic=speech-to-text-basic-request).
+-   For information about making a speech recognition requests with each of the service's interfaces, see [Making a speech recognition request](/docs/speech-to-text?topic=speech-to-text-basic-request).
+-   For information about the results of a speech recognition request, see [Understanding speech recognition results](/docs/speech-to-text?topic=speech-to-text-basic-response).
 -   For detailed descriptions and examples of the speech recognition methods, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ### Data limits
@@ -52,14 +80,6 @@ The interfaces accept the following maximum amounts of audio data with a single 
 -   The WebSocket interface accepts a maximum of 100 MB of audio.
 -   The synchronous HTTP interface accepts a maximum of 100 MB of audio.
 -   The asynchronous HTTP interface accepts a maximum of 1 GB of audio.
-
-### Language and audio support
-{: #features-languages-formats}
-
-The service supports speech recognition for many languages and audio formats.
-
--   For information about the supported languages, see [Language support](/docs/speech-to-text?topic=speech-to-text-about#about-languages).
--   For information about the supported audio formats, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-about#about-formats).
 
 ### Advantages of the WebSocket interface
 {: #features-websocket-advantages}
@@ -83,9 +103,7 @@ The following sections introduce the speech recognition parameters and their fun
 ### Audio transmission
 {: #features-input}
 
-You can pass audio as a continuous stream of data chunks or as a one-shot delivery that passes all of the data at one time. With the WebSocket interface, audio data is always streamed to the service over the connection. With the HTTP interfaces, you can stream the audio or send it all at once. For more information, see [Audio transmission](/docs/speech-to-text?topic=speech-to-text-input#transmission).
-
-With the WebSocket interface, you can request interim results, which provide interim hypotheses as the transcription progresses. The service returns final results when transcription is complete. With the HTTP interfaces, the service always transcribes the entire audio stream before sending any results. For more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-output#interim).
+You can pass audio as a continuous stream of data chunks or as a one-shot delivery that passes all of the data at one time. With the WebSocket interface, audio data is always streamed to the service over the connection. With the HTTP interfaces, you can stream the audio or send it all at once. When you initiate a streaming session, the service enforces inactivity and session timeouts from which your application must recover gracefully. For more information, see [Audio transmission](/docs/speech-to-text?topic=speech-to-text-input#transmission).
 
 For most languages, you can use a pair of related parameters to control which parts of the audio stream are used for speech recognition. The parameters can help ensure that only relevant audio is processed for speech recognition by suppressing background noise and non-speech events that can adversely affect the quality of speech recognition. For more information, see [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-input#detection).
 
@@ -96,6 +114,13 @@ You can direct the service to parse the audio in ways that determine how the ser
 
 -   [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-output#silence_time) specifies the duration of the pause interval at which the service splits a transcript into multiple final results in response to silence.
 -   [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-output#split_transcript) directs the services to split a transcript into multiple final results for semantic features such as sentences. The service bases its understanding of semantic features on the base language model that you use with a request. Custom language models and grammars can also influence how and where the service splits a transcript. The feature is supported for US English and UK English audio.
+
+### Interim and low-latency results
+{: #features-interim-results}
+
+With the WebSocket interface, you can request interim results, which provide intermediate hypotheses as the transcription progresses. The service returns final results when transcription is complete. With the HTTP interfaces, the service always transcribes the entire audio stream before sending any results. For more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-output#interim).
+
+With the next-generation models, you can request that final results be returned even more quickly than usual by using the `low_latency` parameter with the HTTP and WebSocket interfaces. Low latency further enhances the already improved response times of the models, but it might reduce transcription accuracy. When you use the next-generation models with the WebSocket interface, low latency is required to obtain interim results. For more information, see [Reducing the latency of speech recognition requests](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-low-latency).
 
 ### Speaker labels
 {: #features-speaker-labels}
@@ -139,48 +164,19 @@ The service offers two types of optional metrics for speech recognition requests
 ## Customizing the service
 {: #features-customization}
 
-[The customization interface](/docs/speech-to-text?topic=speech-to-text-customization) lets you create custom models to improve the service's speech recognition capabilities:
+The customization interface lets you create custom models to improve the service's speech recognition capabilities:
 
 -   [Custom language models](/docs/speech-to-text?topic=speech-to-text-languageCreate) let you define domain-specific words for a base model. Custom language models can expand the service's base vocabulary with terminology specific to domains such as medicine and law.
 -   [Custom acoustic models](/docs/speech-to-text?topic=speech-to-text-acoustic) let you adapt a base model for the acoustic characteristics of your environment and speakers. Custom acoustic models improve the service's ability to recognize speech with distinctive acoustic characteristics.
 -   [Grammars](/docs/speech-to-text?topic=speech-to-text-grammars) let you restrict the phrases that the service can recognize to those defined in a grammar's rules. By limiting the search space for valid strings, the service can deliver results faster and more accurately. Grammars are created for and used with custom language models. The service supports grammars for all languages for which it supports language model customization. (The grammars feature is beta functionality.)
 
-You can use a custom language model, a custom acoustic model, or both for speech recognition with any of the service's interfaces. For detailed descriptions of all customization methods, along with examples, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+You can use a custom language model, a custom acoustic model, or both for speech recognition with any of the service's interfaces.
+
+-   For an introduction to customization, [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization).
+-   For detailed descriptions and examples of all customization methods, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 You must have the Plus, Standard, or Premium pricing plan to use language model or acoustic model customization. Users of the Lite plan cannot use the customization interface. For more information, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
 {: note}
-
-## Understanding data security
-{: #features-data-security}
-
-The {{site.data.keyword.speechtotextshort}} service provides the following security features to help you protect your user data:
-
--   The service provides security for all user data both in motion and at rest:
-
-    -   Transport Layer Security (TLS) 1.2 is used to secure data in transit.
-    -   Advanced Encryption Standard (AES)-256 with Secure Hash Algorithm (SHA)-256 is used to secure data at rest.
-
-    For more information about data security for cloud applications, see [Security architecture for cloud applications](https://www.ibm.com/cloud/architecture/architectures/securityArchitecture/security-for-data){: external}.
-
--   The service offers Plus and Premium pricing plans for its users:
-
-    -   Plus plans are multi-tenant solutions that provide logical separation of data by using common encryption keys.
-    -   Premium plans are single-tenant solutions that provide physical separation of data. Premium plans provide dedicated data storage accounts that use unique encryption keys.
-
-    Users of Premium plans can also integrate with {{site.data.keyword.keymanagementservicefull}} to create, import, and manage their encryption keys. This process is commonly referred to as *Bring your own keys* (BYOK). For more information about using {{site.data.keyword.keymanagementserviceshort}}, see [Protecting sensitive information in your Watson service](/docs/watson?topic=watson-keyservice).
-
--   The service lets you control the default request logging that is performed for all {{site.data.keyword.watson}} services. The service logs request and response data only to improve the service for future users. The logged data is never shared or made public.
-
-    You can opt out of the default logging to prevent the service from logging your request and response data. If you opt out, the service logs *no* user data from your requests, saving no audio or text to disk. You can choose to opt out of logging at either the account level or the API request level. For more information, see [Controlling request logging for {{site.data.keyword.watson}} services](/docs/watson?topic=watson-gs-logging-overview).
-
--   The service supports the European Union General Data Protection Regulation (GDPR) to manage user data. For Premium plans, it also offers US Health Insurance Portability and Accountability Act (HIPAA) readiness. For more information, see [Information security](/docs/speech-to-text?topic=speech-to-text-information-security).
-
-## Leveraging CORS support
-{: #features-cors}
-
-The service supports Cross-Origin Resource Sharing (CORS). By using CORS, web pages can request resources directly from a foreign domain. CORS circumvents the same-origin security policy, which otherwise prevents such requests. Because the service supports CORS, a web page can communicate directly with the service without passing the request through the web server that hosts the page.
-
-For instance, a web page that is loaded from a server in {{site.data.keyword.cloud}} can call the customization API directly, bypassing the {{site.data.keyword.cloud_notm}} server. For more information, see [enable-cors.org](https://enable-cors.org/){: external}.
 
 ## Learning more about application development
 {: #features-learn}
