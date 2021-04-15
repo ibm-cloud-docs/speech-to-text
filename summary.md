@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-08"
+lastupdated: "2021-04-15"
 
 subcollection: speech-to-text
 
@@ -57,7 +57,7 @@ An optional customization ID for a custom acoustic model that is adapted for the
 ## audio_metrics
 {: #summary-audio-metrics}
 
-An optional boolean that indicates whether the service returns metrics about the signal characteristics of the input audio. By default (`false`), the service returns no audio metrics. For more information, see [Audio metrics](/docs/speech-to-text?topic=speech-to-text-metrics#audio_metrics).
+An optional boolean that indicates whether the service returns metrics about the signal characteristics of the input audio. By default (`false`), the service returns no audio metrics. For more information, see [Audio metrics](/docs/speech-to-text?topic=speech-to-text-metrics#audio-metrics).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -70,7 +70,7 @@ An optional boolean that indicates whether the service returns metrics about the
 ## background_audio_suppression
 {: #summary-background-audio-suppression}
 
-An optional float between 0.0 and 1.0 that indicates the level to which background audio and side conversations are to be suppressed in the input audio. The default is 0.0, which provides no suppression of background audio. For more information, see [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-input#detection).
+An optional float between 0.0 and 1.0 that indicates the level to which background audio and side conversations are to be suppressed in the input audio. The default is 0.0, which provides no suppression of background audio. For more information, see [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-detection).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -122,7 +122,7 @@ An optional double between 0.0 and 1.0 that indicates the relative weight that t
 ## end_of_phrase_silence_time
 {: #summary-silence-time}
 
-An optional double between 0.0 and 120.0 that indicates the pause interval at which the service splits a transcript into multiple final results if it encounters silence. By default, the service uses a pause interval of 0.8 seconds for all languages other than Chinese, for which it uses an interval of 0.6 seconds. For more information, see [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-output#silence_time).
+An optional double between 0.0 and 120.0 that indicates the pause interval at which the service splits a transcript into multiple final results if it encounters silence. By default, the service uses a pause interval of 0.8 seconds for all languages other than Chinese, for which it uses an interval of 0.6 seconds. For more information, see [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-parsing#silence-time).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -161,7 +161,9 @@ An optional integer that specifies the number of seconds for the service's inact
 ## interim_results
 {: #summary-interim-results}
 
-An optional boolean that directs the service to return intermediate hypotheses that are likely to change before the final transcript. By default (`false`), interim results are not returned. For more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-output#interim).
+An optional boolean that directs the service to return intermediate hypotheses that are likely to change before the final transcript. By default (`false`), interim results are not returned. Interim results are available only with the WebSocket interface. For more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results).
+
+With the next-generation models, interim results are available only with those next-generation models that support low latency and only if both the `low_latency` and `interim_results` parameters are set to `true`. For more information, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -174,7 +176,7 @@ An optional boolean that directs the service to return intermediate hypotheses t
 ## keywords
 {: #summary-keywords}
 
-An optional array of keyword strings that the service spots in the input audio. By default, keyword spotting is not performed. For more information, see [Keyword spotting](/docs/speech-to-text?topic=speech-to-text-output#keyword_spotting).
+An optional array of keyword strings that the service spots in the input audio. By default, keyword spotting is not performed. For more information, see [Keyword spotting](/docs/speech-to-text?topic=speech-to-text-spotting#keyword-spotting).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -187,7 +189,7 @@ An optional array of keyword strings that the service spots in the input audio. 
 ## keywords_threshold
 {: #summary-keywords-threshold}
 
-An optional double between 0.0 and 1.0 that indicates the minimum threshold for a positive keyword match. By default, keyword spotting is not performed. For more information, see [Keyword spotting](/docs/speech-to-text?topic=speech-to-text-output#keyword_spotting).
+An optional double between 0.0 and 1.0 that indicates the minimum threshold for a positive keyword match. By default, keyword spotting is not performed. For more information, see [Keyword spotting](/docs/speech-to-text?topic=speech-to-text-spotting#keyword-spotting).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -213,11 +215,13 @@ An optional customization ID for a custom language model that includes terminolo
 ## low_latency
 {: #summary-low-latency}
 
-An optional boolean that indicates whether the service is to produce results more quickly at the possible expense of transcription accuracy. The parameter is available only for next-generation models that support low-latency. With the WebSocket interface, low latency must be enabled to obtain interim results with the next-generation models. For more information, see [Reducing the latency of speech recognition requests](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-low-latency).
+An optional boolean that indicates whether the service is to produce results more quickly at the possible expense of transcription accuracy. The parameter is available only for next-generation models that support low-latency. By default (`false`), low latency is not enabled. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
+
+With the WebSocket interface, both the `low_latency` and `interim_results` parameters must be set to `true` to obtain interim results with the next-generation models. For more information, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Beta and supported only by next-generation models that support low latency. For more information, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported). |
+| Availability           | Beta and supported only by next-generation models that support low latency. For more information, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported) for next-generation models. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -226,7 +230,7 @@ An optional boolean that indicates whether the service is to produce results mor
 ## max_alternatives
 {: #summary-max-alternatives}
 
-An optional integer that specifies the maximum number of alternative hypotheses that the service returns. By default, the service returns a single final hypothesis. For more information, see [Maximum alternatives](/docs/speech-to-text?topic=speech-to-text-output#max_alternatives).
+An optional integer that specifies the maximum number of alternative hypotheses that the service returns. By default, the service returns a single final hypothesis. For more information, see [Maximum alternatives](/docs/speech-to-text?topic=speech-to-text-metadata#max-alternatives).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -252,7 +256,7 @@ An optional model that specifies the language in which the audio is spoken and t
 ## processing_metrics
 {: #summary-processing-metrics}
 
-An optional boolean that indicates whether the service returns metrics about its processing of the input audio. By default (`false`), the service returns no processing metrics. For more information, see [Processing metrics](/docs/speech-to-text?topic=speech-to-text-metrics#processing_metrics).
+An optional boolean that indicates whether the service returns metrics about its processing of the input audio. By default (`false`), the service returns no processing metrics. For more information, see [Processing metrics](/docs/speech-to-text?topic=speech-to-text-metrics#processing-metrics).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -265,7 +269,7 @@ An optional boolean that indicates whether the service returns metrics about its
 ## processing_metrics_interval
 {: #summary-processing-metrics-interval}
 
-An optional float of at least 0.1 that indicates the interval at which the service is to return processing metrics. If the `processing_metrics` parameter is `true`, the service returns processing metrics every 1.0 seconds by default. For more information, see [Processing metrics](/docs/speech-to-text?topic=speech-to-text-metrics#processing_metrics).
+An optional float of at least 0.1 that indicates the interval at which the service is to return processing metrics. If the `processing_metrics` parameter is `true`, the service returns processing metrics every 1.0 seconds by default. For more information, see [Processing metrics](/docs/speech-to-text?topic=speech-to-text-metrics#processing-metrics).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -278,7 +282,7 @@ An optional float of at least 0.1 that indicates the interval at which the servi
 ## profanity_filter
 {: #summary-profanity-filter}
 
-An optional boolean that indicates whether the service censors profanity from a transcript. By default (`true`), profanity is filtered from the transcript. For more information, see [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-output#profanity_filter).
+An optional boolean that indicates whether the service censors profanity from a transcript. By default (`true`), profanity is filtered from the transcript. For more information, see [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-formatting#profanity-filtering).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -291,7 +295,7 @@ An optional boolean that indicates whether the service censors profanity from a 
 ## redaction
 {: #summary-redaction}
 
-An optional boolean that indicates whether the service redacts numeric data with three or more consecutive digits from a transcript. If you set the `redaction` parameter to `true`, the service automatically forces the `smart_formatting` parameter to be `true`. By default (`false`), numeric data is not redacted. For more information, see [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-output#redaction).
+An optional boolean that indicates whether the service redacts numeric data with three or more consecutive digits from a transcript. If you set the `redaction` parameter to `true`, the service automatically forces the `smart_formatting` parameter to be `true`. By default (`false`), numeric data is not redacted. For more information, see [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-formatting#numeric-redaction).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -304,7 +308,7 @@ An optional boolean that indicates whether the service redacts numeric data with
 ## smart_formatting
 {: #summary-smart-formatting}
 
-An optional boolean that indicates whether the service converts dates, times, numbers, currency, and similar values into more conventional representations in the final transcript. For US English, the feature also converts certain keyword phrases into punctuation symbols. By default (`false`), smart formatting is not performed. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-output#smart_formatting).
+An optional boolean that indicates whether the service converts dates, times, numbers, currency, and similar values into more conventional representations in the final transcript. For US English, the feature also converts certain keyword phrases into punctuation symbols. By default (`false`), smart formatting is not performed. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -317,7 +321,7 @@ An optional boolean that indicates whether the service converts dates, times, nu
 ## speaker_labels
 {: #summary-speaker-labels}
 
-An optional boolean that indicates whether the service identifies which individuals spoke which words in a multi-participant exchange. If you set the `speaker_labels` parameter to `true`, the service automatically forces the `timestamps` parameter to be `true`. By default (`false`), speaker labels are not returned. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
+An optional boolean that indicates whether the service identifies which individuals spoke which words in a multi-participant exchange. If you set the `speaker_labels` parameter to `true`, the service automatically forces the `timestamps` parameter to be `true`. By default (`false`), speaker labels are not returned. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -330,7 +334,7 @@ An optional boolean that indicates whether the service identifies which individu
 ## speech_detector_sensitivity
 {: #summary-speech-detector-sensitivity}
 
-An optional float between 0.0 and 1.0 that indicates the sensitivity of speech recognition to non-speech events in the input audio. The default is 0.5, which provides a reasonable level of sensitivity to non-speech events. For more information, see [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-input#detection).
+An optional float between 0.0 and 1.0 that indicates the sensitivity of speech recognition to non-speech events in the input audio. The default is 0.5, which provides a reasonable level of sensitivity to non-speech events. For more information, see [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-detection).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -343,7 +347,7 @@ An optional float between 0.0 and 1.0 that indicates the sensitivity of speech r
 ## split_transcript_at_phrase_end
 {: #summary-split-transcript}
 
-An optional boolean that indicates whether the service splits a transcript into multiple final results based on semantic features of the input such as sentences. The service bases its understanding of semantic features on the base language model, which can be further influenced by custom language models and grammars. By default (`false`), the service produces no semantic splits. For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-output#split_transcript).
+An optional boolean that indicates whether the service splits a transcript into multiple final results based on semantic features of the input such as sentences. The service bases its understanding of semantic features on the base language model, which can be further influenced by custom language models and grammars. By default (`false`), the service produces no semantic splits. For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-parsing#split-transcript).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -356,7 +360,7 @@ An optional boolean that indicates whether the service splits a transcript into 
 ## timestamps
 {: #summary-timestamps}
 
-An optional boolean that indicates whether the service produces timestamps for the words of the transcript. By default (`false`), timestamps are not returned. For more information, see [Word timestamps](/docs/speech-to-text?topic=speech-to-text-output#word_timestamps).
+An optional boolean that indicates whether the service produces timestamps for the words of the transcript. By default (`false`), timestamps are not returned. For more information, see [Word timestamps](/docs/speech-to-text?topic=speech-to-text-metadata#word-timestamps).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -382,7 +386,7 @@ An optional value of `chunked` that causes the audio to be streamed to the servi
 ## word_alternatives_threshold
 {: #summary-word-alternatives-threshold}
 
-An optional double between 0.0 and 1.0 that specifies the threshold at which the service reports acoustically similar alternatives for words of the input audio. By default, word alternatives are not returned. For more information, see [Word alternatives](/docs/speech-to-text?topic=speech-to-text-output#word_alternatives).
+An optional double between 0.0 and 1.0 that specifies the threshold at which the service reports acoustically similar alternatives for words of the input audio. By default, word alternatives are not returned. For more information, see [Word alternatives](/docs/speech-to-text?topic=speech-to-text-spotting#word-alternatives).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -395,7 +399,7 @@ An optional double between 0.0 and 1.0 that specifies the threshold at which the
 ## word_confidence
 {: #summary-word-confidence}
 
-An optional boolean that indicates whether the service provides confidence measures for the words of the transcript. By default (`false`), word confidence measures are not returned. For more information, see [Word confidence](/docs/speech-to-text?topic=speech-to-text-output#word_confidence).
+An optional boolean that indicates whether the service provides confidence measures for the words of the transcript. By default (`false`), word confidence measures are not returned. For more information, see [Word confidence](/docs/speech-to-text?topic=speech-to-text-metadata#word-confidence).
 
 | Availability and usage | Description |
 |------------------------|-------------|

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2020
-lastupdated: "2020-06-23"
+  years: 2018, 2021
+lastupdated: "2021-04-15"
 
 subcollection: speech-to-text
 
@@ -22,18 +22,21 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Metrics features
+# Processing and audio metrics
 {: #metrics}
 
 The {{site.data.keyword.speechtotextfull}} service can return two types of optional metrics for a speech recognition request:
 
--   [Processing metrics](#processing_metrics) provide periodic information about the service's processing of the input audio. Use the metrics to gauge the service's progress in transcribing the audio. Processing metrics are available with the WebSocket and asynchronous HTTP interfaces.
--   [Audio metrics](#audio_metrics) provide information about the signal characteristics of the input audio. Use the metrics to determine the characteristics and quality of the audio. Audio metrics are available with all speech recognition interfaces.
+-   [Processing metrics](#processing-metrics) provide periodic information about the service's processing of the input audio. Use the metrics to gauge the service's progress in transcribing the audio.
+-   [Audio metrics](#audio-metrics) provide information about the signal characteristics of the input audio. Use the metrics to determine the characteristics and quality of the audio.
 
-By default, the service returns no metrics for a request.
+By default, the service returns no processing or audio metrics for a request.
 
 ## Processing metrics
-{: #processing_metrics}
+{: #processing-metrics}
+
+Processing metrics are available only with the WebSocket and asynchronous HTTP interfaces.  They are not available with the synchronous HTTP interface.
+{: note}
 
 Processing metrics provide detailed timing information about the service's analysis of the input audio. The service returns the metrics at specified intervals and with transcription events, such as interim and final results.
 
@@ -48,7 +51,7 @@ Processing metrics can help you gauge the progress of a recognition request. The
 The metrics can also help you estimate response jitter by examining the periodic arrival times. Metrics are generated at a constant interval, so any difference in arrival times is caused by jitter.
 
 ### Requesting processing metrics
-{: #processing_metrics_request}
+{: #processing-metrics-request}
 
 To request processing metrics, use the following optional parameters:
 
@@ -67,9 +70,9 @@ The service also returns processing metrics for transcription events. If you req
 To receive processing metrics only for transcription events instead of at periodic intervals, set the processing interval to a large number. If the interval is larger than the duration of the audio, the service returns processing metrics only for transcription events.
 
 ### Understanding processing metrics
-{: #processing_metrics_understand}
+{: #processing-metrics-understand}
 
-The service returns processing metrics in the `processing_metrics` field of the `SpeechRecognitionResults` object. For metrics generated at periodic intervals, the object contains only the `processing_metrics` field, as shown in the following example.
+The service returns processing metrics for transcription events in the `processing_metrics` field of the `SpeechRecognitionResults` object. For metrics generated at periodic intervals, not with transcription events, the object contains only the `processing_metrics` field, as shown in the following example.
 
 ```javascript
 {
@@ -121,7 +124,7 @@ The following relationships can also be helpful in understanding the results:
 -   The value of the `speaker_labels` field typically trails the value of the `transcription` field during speech recognition processing. The values of the `transcription` and `speaker_labels` fields are identical when the service has finished processing the audio.
 
 ### Processing metrics example: WebSocket interface
-{: #processing_metrics_example_websocket}
+{: #processing-metrics-example-websocket}
 
 The following example shows the `start` message that is passed for a request to the WebSocket interface. The request enables processing metrics and sets the processing metrics interval to 0.25 seconds. It also sets the `interim_results` and `speaker_labels` parameters to `true`. The audio contains the simple message "hello world long pause stop."
 
@@ -208,7 +211,7 @@ The following example output shows the first few processing metrics results that
 {: codeblock}
 
 ### Processing metrics example: Asynchronous HTTP interface
-{: #processing_metrics_example_http}
+{: #processing-metrics-example-http}
 
 The following example shows a speech recognition request for the `/v1/recognitions` method of the asynchronous HTTP interface. The request enables processing metrics and specifies an interval of 0.25 seconds. The audio file again includes the message "hello world long pause stop".
 
@@ -250,14 +253,14 @@ The following example output shows the first two processing metrics results that
 {: codeblock}
 
 ## Audio metrics
-{: #audio_metrics}
+{: #audio-metrics}
 
 Audio metrics provide detailed information about the signal characteristics of the input audio. The results provide aggregated metrics for the entire input audio at the conclusion of speech processing. For a technically sophisticated user, the metrics can provide meaningful insight into the detailed characteristics of the audio.
 
 You can use audio metrics to provide a real-time indication of a problem with the input audio and possibly even a potential solution. For example, you can provide a message such as "There is too much noise in the background" or "Please come closer to the microphone." You can also use an offline analytical tool to review the signal characteristics and suggest data that is suitable for future model updates.
 
 ### Requesting audio metrics
-{: #audio_metrics_request}
+{: #audio-metrics-request}
 
 To request audio metrics, set the `audio_metrics` boolean parameter to `true`. By default, the service returns no metrics.
 
@@ -269,7 +272,7 @@ The service returns audio metrics with the final transcription results. It retur
 The WebSocket interface accepts multiple audio streams (or files) with a single connection. You delimit different streams by sending `stop` messages or empty binary blobs to the service. In this case, the service returns separate metrics for each delimited audio stream.
 
 ### Understanding audio metrics
-{: #audio_metrics_understand}
+{: #audio-metrics-understand}
 
 The service return the metrics in the `audio_metrics` field of the `SpeechRecognitionResults` object.
 
@@ -337,7 +340,7 @@ The following fields of the `AudioMetricsDetails` object provide histograms for 
 Each `AudioMetricsHistogramBin` object describes a bin with defined `begin` and `end` boundaries. Each bin indicates the `count` or number of values in the range of signal characteristics for that bin. The first and last bins of a histogram are the boundary bins. They cover the intervals between negative infinity and the first boundary, and between the last boundary and positive infinity, respectively.
 
 ### Audio metrics example
-{: #audio_metrics_example}
+{: #audio-metrics-example}
 
 The following example shows a speech recognition request with the synchronous HTTP interface that returns audio metrics. The audio file includes the simple message "hello world long pause stop".
 

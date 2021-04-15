@@ -83,7 +83,7 @@ As with all models, noisy environments can adversely impact the results. For exa
 
 -   For more information about language model and acoustic model customization, see [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization).
 -   For more information about grammars, see [Using grammars with custom language models](/docs/speech-to-text?topic=speech-to-text-grammars).
--   For more information about speech activity detection parameters, see [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-input#detection).
+-   For more information about speech activity detection parameters, see [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-detection).
 
 ## Specifying a model for speech recognition
 {: #modelsExample}
@@ -105,8 +105,8 @@ If you omit the `model` parameter from a speech recognition request, the service
 
 The previous-generation models described in this topic are supported for use with all of the service's features. Most features and models are generally available for production use. Where indicated, some features and models are beta functionality. Restrictions apply for some features, for example:
 
--   Language model customization is not supported for the Arabic and Chinese models. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
 -   Features such as speaker labels, numeric redaction, and profanity filtering are limited to certain languages and models. Such restrictions are noted with the descriptions of the individual features. For more information about all parameters that also notes all restrictions, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
--   The `low-latency` parameter is supported only for next-generation models.
+-   The `low_latency` parameter is supported only for next-generation models. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
+-   Language model customization is not supported for the Arabic and Chinese models. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
 
 Otherwise, when a feature is described as being available in general or available for a specific language or languages, it supports the previous-generation models.

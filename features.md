@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-12"
+lastupdated: "2021-04-15"
 
 subcollection: speech-to-text
 
@@ -67,10 +67,8 @@ The {{site.data.keyword.speechtotextshort}} service offers a WebSocket interface
 
 All interfaces provide the same basic speech recognition capabilities, but you might specify the same parameter as a request header, a query parameter, or a parameter of a JSON object depending on the interface that you use.
 
--   For an overview of the parameters that you can use to tailor your speech recognition requests, see [Using speech recognition parameters](#features-parameters).
 -   For information about making a speech recognition requests with each of the service's interfaces, see [Making a speech recognition request](/docs/speech-to-text?topic=speech-to-text-basic-request).
 -   For information about the results of a speech recognition request, see [Understanding speech recognition results](/docs/speech-to-text?topic=speech-to-text-basic-response).
--   For detailed descriptions and examples of the speech recognition methods, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ### Data limits
 {: #features-data-limits}
@@ -96,70 +94,63 @@ The WebSocket interface has a number of advantages over the HTTP interface. The 
 ## Using speech recognition parameters
 {: #features-parameters}
 
-The service's speech recognition interfaces share common parameters for transcribing speech to text. The parameters let you tailor aspects of your request, such as whether the data is streamed or sent all at once, and the information that the service includes in its response. A few parameters are available only for some speech recognition interfaces or for some languages.
+The service's speech recognition interfaces share largely common parameters for transcribing speech to text. The parameters let you tailor aspects of your request, such as whether the data is streamed or sent all at once, and the information that the service includes in its response. Some parameters are available only for some speech recognition interfaces or for some languages.
 
 The following sections introduce the speech recognition parameters and their functionality. For information about all parameters and their interface and language support, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
 
-### Audio transmission
+### Audio transmission and timeouts
 {: #features-input}
 
-You can pass audio as a continuous stream of data chunks or as a one-shot delivery that passes all of the data at one time. With the WebSocket interface, audio data is always streamed to the service over the connection. With the HTTP interfaces, you can stream the audio or send it all at once. When you initiate a streaming session, the service enforces inactivity and session timeouts from which your application must recover gracefully. For more information, see [Audio transmission](/docs/speech-to-text?topic=speech-to-text-input#transmission).
+-   [Audio transmission](/docs/speech-to-text?topic=speech-to-text-input#transmission) describes how you can pass audio as a continuous stream of data chunks or as a one-shot delivery that passes all of the data at one time. With the WebSocket interface, audio data is always streamed to the service over the connection. With the HTTP interfaces, you can stream the audio or send it all at once.
+-   [Timeouts](/docs/speech-to-text?topic=speech-to-text-input#timeouts) are used by the service to ensure an active flow of data during audio streaming. When you initiate a streaming session, the service enforces inactivity and session timeouts from which your application must recover gracefully. If a timeout lapses during a streaming session, the service closes the connection.
 
-For most languages, you can use a pair of related parameters to control which parts of the audio stream are used for speech recognition. The parameters can help ensure that only relevant audio is processed for speech recognition by suppressing background noise and non-speech events that can adversely affect the quality of speech recognition. For more information, see [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-input#detection).
+### Interim results and low latency
+{: #features-interim-results}
+
+-   [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results) are intermediate hypotheses that the service returns as transcription progresses. They are available only with the WebSocket interface. The service returns final results when transcription is complete. With the HTTP interfaces, the service always transcribes the entire audio stream before sending any results.
+-   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency), when used with certain next-generation models, directs the service to produce final results even more quickly than the models usually do. Low latency is available with the WebSocket and HTTP interfaces. Although low latency further enhances the already improved response times of the models, it might reduce transcription accuracy. When you use the next-generation models with the WebSocket interface, low latency is required to obtain interim results.
+
+### Speech activity detection
+{: #features-detection}
+
+-   [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-detection) lets you manipulate the audio that the service uses for speech recognition. For most languages, you can use a pair of related parameters to control which parts of the audio stream are used for speech recognition. The parameters can help ensure that only relevant audio is processed for speech recognition by suppressing background noise and non-speech events that can adversely affect the quality of speech recognition.
 
 ### Audio parsing
 {: #features-audio-parsing}
 
-You can direct the service to parse the audio in ways that determine how the service returns final transcription results:
-
--   [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-output#silence_time) specifies the duration of the pause interval at which the service splits a transcript into multiple final results in response to silence.
--   [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-output#split_transcript) directs the services to split a transcript into multiple final results for semantic features such as sentences. The service bases its understanding of semantic features on the base language model that you use with a request. Custom language models and grammars can also influence how and where the service splits a transcript. The feature is supported for US English and UK English audio.
-
-### Interim and low-latency results
-{: #features-interim-results}
-
-With the WebSocket interface, you can request interim results, which provide intermediate hypotheses as the transcription progresses. The service returns final results when transcription is complete. With the HTTP interfaces, the service always transcribes the entire audio stream before sending any results. For more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-output#interim).
-
-With the next-generation models, you can request that final results be returned even more quickly than usual by using the `low_latency` parameter with the HTTP and WebSocket interfaces. Low latency further enhances the already improved response times of the models, but it might reduce transcription accuracy. When you use the next-generation models with the WebSocket interface, low latency is required to obtain interim results. For more information, see [Reducing the latency of speech recognition requests](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-low-latency).
+-   [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-parsing#silence-time) specifies the duration of the pause interval at which the service splits a transcript into multiple final results in response to silence. If the service detects pauses or extended silence before it reaches the end of the audio stream, its response can include multiple final results. You can increase or decrease the pause interval to affect the results that you receive.
+-   [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-parsing#split-transcript) directs the services to split a transcript into multiple final results for semantic features such as sentences. The service bases its understanding of semantic features on the base language model that you use with a request. Custom language models and grammars can also influence how and where the service splits a transcript.
 
 ### Speaker labels
 {: #features-speaker-labels}
 
-[Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels) identify different speakers from the input audio. The transcription labels each speaker's contributions to a multi-participant conversation. Speakers labels are beta functionality that is available for US English, UK English, Australian English, German, Japanese, Korean, and Spanish.
+-   [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels) identify different speakers from the audio of a multi-participant exchange. The transcription labels the words and times of each speaker's contributions to a multi-participant conversation. Speakers labels are beta functionality that is available for US English, UK English, Australian English, German, Japanese, Korean, and Spanish.
 
 ### Keyword spotting and word alternatives
 {: #features-keyword-spotting}
 
-The service can identify user-specified keywords in a transcript and suggest possible alternative words that meet a specified confidence threshold:
+-   [Keyword spotting](/docs/speech-to-text?topic=speech-to-text-spotting#keyword-spotting) identifies spoken phrases that match specified keyword strings with a user-defined level of confidence. Keyword spotting is especially useful when individual phrases from the audio are more important than the full transcription. For example, a customer support system might identify keywords to determine how to route user requests.
+-   [Word alternatives](/docs/speech-to-text?topic=speech-to-text-spotting#word-alternatives) request alternative words that are acoustically similar to the words of a transcript. The words that it identifies must meet a minimum confidence threshold that is specified by the user. The service identifies similar-sounding words and provides their start and end times, as well as its confidence in the possible alternatives.
 
--   [Keyword spotting](/docs/speech-to-text?topic=speech-to-text-output#keyword_spotting) identifies spoken phrases that match specified keyword strings with a user-defined level of confidence. Keyword spotting is especially useful when individual phrases from the audio are more important than the full transcription. For example, a customer support system might identify keywords to determine how to route user requests.
--   [Word alternatives](/docs/speech-to-text?topic=speech-to-text-output#word_alternatives) request alternative words that are acoustically similar to the words of a transcript. The service identifies similar-sounding words and provides their start and end times, as well as its confidence in the possible alternatives.
-
-### Response formatting
+### Response formatting and filtering
 {: #features-response-formatting}
 
-The service can filter or parse its results to provide more meaningful transcriptions:
-
--   [Smart formatting](/docs/speech-to-text?topic=speech-to-text-output#smart_formatting) converts dates, times, numbers, currency values, phone numbers, and internet addresses into more readable, conventional forms in final transcripts. For US English, you can also provide keyword phrases to include certain punctuation symbols in final transcripts. Smart formatting is beta functionality that is supported for US English, Japanese, and Spanish audio.
--   [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-output#redaction) redacts, or masks, numeric data from a final transcript. Redaction is intended to remove sensitive personal information, such as credit card numbers, from transcripts. Numeric redaction is beta functionality that is supported for US English, Japanese, and Korean audio.
--   [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-output#profanity_filter) censors profanity from US English and Japanese transcripts and metadata.
+-   [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting) converts dates, times, numbers, currency values, phone numbers, and internet addresses into more readable, conventional forms in final transcripts. For US English, you can also provide keyword phrases to include certain punctuation symbols in final transcripts. Smart formatting is beta functionality that is supported for US English, Japanese, and Spanish audio.
+-   [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-formatting#numeric-redaction) redacts, or masks, numeric data from a final transcript. Redaction is intended to remove sensitive personal information, such as credit card numbers, from final transcripts. Numeric redaction is beta functionality that is supported for US English, Japanese, and Korean audio.
+-   [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-formatting#profanity-filtering) censors profanity from US English and Japanese transcripts and metadata.
 
 ### Response metadata
 {: #features-response-metadata}
 
-The service can provide different metadata about a transcript and the words that the transcript contains:
-
--   [Maximum alternatives](/docs/speech-to-text?topic=speech-to-text-output#max_alternatives) provide possible alternative transcripts. The service indicates final results in which it has the greatest confidence.
--   [Word confidence](/docs/speech-to-text?topic=speech-to-text-output#word_confidence) returns confidence levels for each word of a transcript.
--   [Word timestamps](/docs/speech-to-text?topic=speech-to-text-output#word_timestamps) return timestamps for the start and end of each word of a transcript.
+-   [Maximum alternatives](/docs/speech-to-text?topic=speech-to-text-metadata#max-alternatives) provide possible alternative transcripts. The service indicates final results in which it has the greatest confidence.
+-   [Word confidence](/docs/speech-to-text?topic=speech-to-text-metadata#word-confidence) returns confidence levels for each word of a transcript.
+-   [Word timestamps](/docs/speech-to-text?topic=speech-to-text-metadata#word-timestamps) return timestamps for the start and end of each word of a transcript.
 
 ### Processing and audio metrics
 {: #features-metrics}
 
-The service offers two types of optional metrics for speech recognition requests:
-
--   [Processing metrics](/docs/speech-to-text?topic=speech-to-text-metrics#processing_metrics) provide detailed timing information about the service's analysis of the input audio. The service returns the metrics at specified intervals and with transcription events, such as interim and final results. You can use the metrics to gauge the service's progress in transcribing the audio. You can request processing metrics with the WebSocket and asynchronous HTTP interfaces.
--   [Audio metrics](/docs/speech-to-text?topic=speech-to-text-metrics#audio_metrics) provide detailed information about the signal characteristics of the input audio. The results provide aggregated metrics for the entire input audio at the conclusion of speech processing. You can use the metrics to determine the characteristics and quality of the audio. You can request audio metrics with any of the service's interfaces.
+-   [Processing metrics](/docs/speech-to-text?topic=speech-to-text-metrics#processing-metrics) provide detailed timing information about the service's analysis of the input audio. The service returns the metrics at specified intervals and with transcription events, such as interim and final results. You can use the metrics to gauge the service's progress in transcribing the audio. You can request processing metrics with the WebSocket and asynchronous HTTP interfaces.
+-   [Audio metrics](/docs/speech-to-text?topic=speech-to-text-metrics#audio-metrics) provide detailed information about the signal characteristics of the input audio. The results provide aggregated metrics for the entire input audio at the conclusion of speech processing. You can use the metrics to determine the characteristics and quality of the audio. You can request audio metrics with any of the service's interfaces.
 
 ## Customizing the service
 {: #features-customization}
@@ -170,10 +161,7 @@ The customization interface lets you create custom models to improve the service
 -   [Custom acoustic models](/docs/speech-to-text?topic=speech-to-text-acoustic) let you adapt a base model for the acoustic characteristics of your environment and speakers. Custom acoustic models improve the service's ability to recognize speech with distinctive acoustic characteristics.
 -   [Grammars](/docs/speech-to-text?topic=speech-to-text-grammars) let you restrict the phrases that the service can recognize to those defined in a grammar's rules. By limiting the search space for valid strings, the service can deliver results faster and more accurately. Grammars are created for and used with custom language models. The service supports grammars for all languages for which it supports language model customization. (The grammars feature is beta functionality.)
 
-You can use a custom language model, a custom acoustic model, or both for speech recognition with any of the service's interfaces.
-
--   For an introduction to customization, [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization).
--   For detailed descriptions and examples of all customization methods, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+You can use a custom language model, a custom acoustic model, or both for speech recognition with any of the service's interfaces. For more information about customization and an overview of its capabilities, see [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization).
 
 You must have the Plus, Standard, or Premium pricing plan to use language model or acoustic model customization. Users of the Lite plan cannot use the customization interface. For more information, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
 {: note}
@@ -190,3 +178,14 @@ SDKs are available for the {{site.data.keyword.speechtotextshort}} service to si
 
 -   For a complete list of SDKs and links to the SDKs on GitHub, see [{{site.data.keyword.watson}} SDKs](/docs/speech-to-text?topic=watson-using-sdks).
 -   For more information about all methods of the SDKs for the {{site.data.keyword.speechtotextshort}} service, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+
+## Next steps
+{: #features-next-steps}
+
+Explore the features introduced in this topic to gain a more in-depth understanding of the service's capabilities. Each feature includes links to topics that describe it in much greater detail.
+
+-   [Using languages and models](#features-languages) and [Using audio formats](#features-audio) describe the basic underpinnings of the service's capabilities. You must choose a language and model that are suitable for your audio, and you must understand the characteristics of your audio to make that choice and to pass your audio to the service.
+-   [Recognizing speech with the service](#features-recognition) provides links to simple examples of speech recognition requests and responses. There are also links to detailed presentations of each of the service's interfaces. Learn more about and experiment with the interfaces to determine which is best suited to your application needs.
+-   [Using speech recognition parameters](#features-parameters) introduces the many parameters that you can use to tailor speech recognition requests and transcription responses to your needs. The service's WebSocket and HTTP interfaces support an impressive array of capabilities, most of which are common to all supported interfaces. Use the links to find the parameters that are right for you.
+-   [Customizing the service](#features-customization) describes the more advanced topics of language model and acoustic model customization, which can help you gain the most from the service's capabilities. The section also presents grammars, which you can use with language models to limit possible responses to precise strings and phrases.
+-   [Learning more about application development](#features-learn), in addition to providing links to help you get started with {{site.data.keyword.watson}} services and understand authentication, provide links to the {{site.data.keyword.watson}} SDKs, which simplify application development in a variety of popular programming languages.

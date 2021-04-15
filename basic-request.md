@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-12"
+lastupdated: "2021-04-13"
 
 subcollection: speech-to-text
 
@@ -30,7 +30,7 @@ subcollection: speech-to-text
 To request speech recognition with the {{site.data.keyword.speechtotextfull}} service, you need to provide only the audio that is to be transcribed. The service offers the same basic transcription capabilities with each of its interfaces: the WebSocket interface, the synchronous HTTP interface, and the asynchronous HTTP interface.
 {: shortdesc}
 
-The following sections show basic transcription requests, with no optional input or output parameters, for each of the service's interfaces:
+The examples that follow show basic transcription requests, with no optional parameters, for each of the service's interfaces:
 
 -   The examples submit a brief FLAC file named [audio-file.flac](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac){: external}.
 -   The examples use the default language model, `en-US_BroadbandModel`.

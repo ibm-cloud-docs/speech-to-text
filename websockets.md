@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-12"
+lastupdated: "2021-04-13"
 
 subcollection: speech-to-text
 
@@ -128,8 +128,8 @@ To initiate a recognition request, the client sends a JSON text message to the s
 
 The message can also include optional parameters to specify other aspects of how the request is to be processed and the information that is to be returned. These additional parameters include the `interim_results` parameter, which is available only with the WebSocket interface. (You specify a language model, custom language model, and custom acoustic model only as query parameters of the WebSocket URL.)
 
--   For more information about all input and output features, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
--   For more information about the `interim_results` parameter, see [Interim results](/docs/speech-to-text?topic=speech-to-text-output#interim).
+-   For more information about all speech recognition features, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
+-   For more information about the `interim_results` parameter, see [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results).
 
 The following snippet of JavaScript code sends initialization parameters for the recognition request over the WebSocket connection. The calls are included in the client's `onOpen` function to ensure that they are sent only after the connection is established.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-11"
+lastupdated: "2021-04-14"
 
 subcollection: speech-to-text
 
@@ -38,7 +38,7 @@ The service has the following known limitation:
 
     However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
 
-    For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
+    For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
 ## 12 April 2021
 {: #April2021}
@@ -55,8 +55,8 @@ The `low_latency` parameter impacts your use of the `interim_results` parameter 
 -   For more information about the next-generation models and their capabilities, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 -   For more information about language support for next-generation models and about which next-generation models support low latency, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
 -   For more information about feature support for next-generation models, see [Supported features](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-features).
--   For more information about the `low_latency` parameter, see [Reducing the latency of speech recognition requests](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-low-latency).
--   For more information about the interaction between the `low_latency` and `interim_results` parameters for next-generation models, see [Requesting low latency and interim results](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-low-latency-websockets).
+-   For more information about the `low_latency` parameter, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
+-   For more information about the interaction between the `low_latency` and `interim_results` parameters for next-generation models, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
 
 ## 17 March 2021
 {: #March2021}
@@ -152,7 +152,7 @@ The Arabic language broadband model is now named `ar-MS_BroadbandModel`. The for
     -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
 
     For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
--   The speech recognition parameter `split_transcript_at_phrase_end` is now generally available for all languages. Previously, it was generally available only for US and UK English. For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-output#split_transcript).
+-   The speech recognition parameter `split_transcript_at_phrase_end` is now generally available for all languages. Previously, it was generally available only for US and UK English. For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-parsing#split-transcript).
 
 ### 7 October 2020
 {: #October2020a}
@@ -198,7 +198,7 @@ For more information about the available pricing plans, see the following resour
 
     The new models do not support language model or acoustic model customization, or smart formatting. The new models do support speakers labels. For more information, see
     -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
-    -   [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels)
+    -   [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels)
 -   The following models have been updated for improved speech recognition:
     -   French: `fr-FR_BroadbandModel`
     -   German: `de-DE_BroadbandModel` and `de-DE_NarrowbandModel`
@@ -248,7 +248,7 @@ Using a custom language model, a custom acoustic model, or both types of model f
 ### 16 March 2020
 {: #March2020}
 
--   The service now supports speaker labels (the `speaker_labels` parameter) for German and Korean language models. Speaker labels identify which individuals spoke which words in a multi-participant exchange. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
+-   The service now supports speaker labels (the `speaker_labels` parameter) for German and Korean language models. Speaker labels identify which individuals spoke which words in a multi-participant exchange. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 -   The service now supports the use of Activity Tracker events for all operations of the asynchronous HTTP interface. {{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud}}. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-atEvents).
 
 ### 24 February 2020
@@ -272,12 +272,12 @@ Using a custom language model, a custom acoustic model, or both types of model f
     -   [Guidelines for Brazilian Portuguese, Dutch, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR)
 
     Because the Dutch and Italian models are beta, their support for language model customization is also beta.
--   The Japanese narrowband model (`ja-JP_NarrowbandModel`) now includes some multigram word units for digits and decimal fractions. The service returns these multigram units regardless of whether you enable smart formatting. The smart formatting feature understands and returns the multigram units that the model generates. If you apply your own post-processing to transcription results, you need to handle these units appropriately. For more information, see [Japanese](/docs/speech-to-text?topic=speech-to-text-output#smartFormattingJapanese) in the smart formatting documentation.
+-   The Japanese narrowband model (`ja-JP_NarrowbandModel`) now includes some multigram word units for digits and decimal fractions. The service returns these multigram units regardless of whether you enable smart formatting. The smart formatting feature understands and returns the multigram units that the model generates. If you apply your own post-processing to transcription results, you need to handle these units appropriately. For more information, see [Japanese](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-japanese) in the smart formatting documentation.
 -   The service now offers two new optional parameters for controlling the level of speech activity detection. The parameters can help ensure that only relevant audio is processed for speech recognition.
     -   The `speech_detector_sensitivity` parameter adjusts the sensitivity of speech activity detection. You can use the parameter to suppress word insertions from music, coughing, and other non-speech events.
     -   The `background_audio_suppression` parameter suppresses background audio based on its volume to prevent it from being transcribed or otherwise interfering with speech recognition. You can use the parameter to suppress side conversations or background noise.
 
-    You can use the parameters individually or together. They are available for all interfaces and for most language models. For more information about the parameters, their allowable values, and their effect on the quality and latency of speech recognition, see [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-input#detection).
+    You can use the parameters individually or together. They are available for all interfaces and for most language models. For more information about the parameters, their allowable values, and their effect on the quality and latency of speech recognition, see [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-detection).
 -   The service now supports the use of Activity Tracker events for all customization operations. {{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. You can use this service to investigate abnormal activity and critical actions and to comply with regulatory audit requirements. In addition, you can be alerted about actions as they happen. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-atEvents).
 -   **Defect fix:** The WebSocket interface now works seamlessly when generating processing metrics. Previously, processing metrics could continue to be delivered after the client sent a `stop` message to the service.
 
@@ -299,12 +299,12 @@ Using a custom language model, a custom acoustic model, or both types of model f
 
     You can use the parameter to effect a trade-off between how often a final result is produced and the accuracy of the transcription. Increase the interval when accuracy is more important than latency. Decrease the interval when the speaker is expected to say short phrases or single words.
 
-    For more information, see [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-output#silence_time).
+    For more information, see [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-parsing#silence-time).
 -   For speech recognition, the service now supports the `split_transcript_at_phrase_end` parameter. The parameter directs the service to split the transcript into multiple final results based on semantic features of the input, such as at the conclusion of sentences. The service bases its understanding of semantic features on the base language model that you use with a request. Custom language models and grammars can also influence how and where the service splits a transcript.
 
     The parameter causes the service to add an `end_of_utterance` field to each final result to indicate the motivation for the split: `full_stop`, `silence`, `end_of_data`, or `reset`.
 
-    For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-output#split_transcript).
+    For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-parsing#split-transcript).
 
 ### 12 December 2019
 {: #December2019b}
@@ -348,7 +348,7 @@ For more information, see the following sections:
 ### 25 November 2019
 {: #November2019c}
 
-Speaker labels are updated to improve the identification of individual speakers for further analysis of your audio sample. For more information about the speaker labels feature, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels). For more information about the improvements to the feature, see [IBM Research AI Advances Speaker Diarization in Real Use Cases](https://www.ibm.com/blogs/research/2020/07/speaker-diarization-in-real-use-cases/){: external}.
+Speaker labels are updated to improve the identification of individual speakers for further analysis of your audio sample. For more information about the speaker labels feature, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels). For more information about the improvements to the feature, see [IBM Research AI Advances Speaker Diarization in Real Use Cases](https://www.ibm.com/blogs/research/2020/07/speaker-diarization-in-real-use-cases/){: external}.
 
 ### 12 November 2019
 {: #November2019b}
@@ -410,14 +410,14 @@ For more information, see the following sections:
 ### 10 June 2019
 {: #June2019a}
 
-[Processing metrics](/docs/speech-to-text?topic=speech-to-text-metrics#processing_metrics) are available only with the WebSocket and asynchronous HTTP interfaces. They are not supported with the synchronous HTTP interface.
+[Processing metrics](/docs/speech-to-text?topic=speech-to-text-metrics#processing-metrics) are available only with the WebSocket and asynchronous HTTP interfaces. They are not supported with the synchronous HTTP interface.
 
 ### 17 May 2019
 {: #May2019b}
 
 -   The service now offers two types of optional metrics with speech recognition requests:
-    -   [Processing metrics](/docs/speech-to-text?topic=speech-to-text-metrics#processing_metrics) provide detailed timing information about the service's analysis of the input audio. The service returns the metrics at specified intervals and with transcription events, such as interim and final results. Use the metrics to gauge the service's progress in transcribing the audio.
-    -   [Audio metrics](/docs/speech-to-text?topic=speech-to-text-metrics#audio_metrics) provide detailed information about the signal characteristics of the input audio. The results provide aggregated metrics for the entire input audio at the conclusion of speech processing. Use the metrics to determine the characteristics and quality of the audio.
+    -   [Processing metrics](/docs/speech-to-text?topic=speech-to-text-metrics#processing-metrics) provide detailed timing information about the service's analysis of the input audio. The service returns the metrics at specified intervals and with transcription events, such as interim and final results. Use the metrics to gauge the service's progress in transcribing the audio.
+    -   [Audio metrics](/docs/speech-to-text?topic=speech-to-text-metrics#audio-metrics) provide detailed information about the signal characteristics of the input audio. The results provide aggregated metrics for the entire input audio at the conclusion of speech processing. Use the metrics to determine the characteristics and quality of the audio.
 
     You can request both types of metrics with any speech recognition request. By default, the service returns no metrics for a request.
 -   The Japanese broadband model (`ja-JP_BroadbandModel`) has been updated for improved speech recognition. By default, the service automatically uses the updated model for all speech recognition requests. If you have custom language or custom acoustic models that are based on the model, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
@@ -524,7 +524,7 @@ The grammar interface is fully functional in all locations as of January 8, 2019
     -   [Example grammars](/docs/speech-to-text?topic=speech-to-text-grammarExamples)
 
     For information about all methods of the interface, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
--   A new numeric redaction feature is now available to mask numbers that have three or more consecutive digits. Redaction is intended to remove sensitive personal information, such as credit card numbers, from transcripts. You enable the feature by setting the `redaction` parameter to `true` on a recognition request. The feature is beta functionality that is available for US English, Japanese, and Korean only. For more information, see [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-output#redaction).
+-   A new numeric redaction feature is now available to mask numbers that have three or more consecutive digits. Redaction is intended to remove sensitive personal information, such as credit card numbers, from transcripts. You enable the feature by setting the `redaction` parameter to `true` on a recognition request. The feature is beta functionality that is available for US English, Japanese, and Korean only. For more information, see [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-formatting#numeric-redaction).
 -   The following new German and French language models are now available with the service:
     -   `de-DE_NarrowbandModel`
     -   `fr-FR_NarrowbandModel`
@@ -541,7 +541,7 @@ The grammar interface is fully functional in all locations as of January 8, 2019
 
     For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 -   The service now supports audio in the G.729 (`audio/g729`) format. The service supports only G.729 Annex D for narrowband audio. For more information, see [audio/g729 format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-g729).
--   The speaker labels feature is now available for the narrowband model for UK English (`en-GB_NarrowbandModel`). The feature is beta functionality for all supported languages. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
+-   The speaker labels feature is now available for the narrowband model for UK English (`en-GB_NarrowbandModel`). The feature is beta functionality for all supported languages. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 -   The maximum amount of audio that you can add to a custom acoustic model has increased from 50 hours to 100 hours.
 
 ### 13 December 2018
@@ -552,7 +552,7 @@ The service is now available in the {{site.data.keyword.cloud_notm}} London loca
 ### 12 November 2018
 {: #November2018b}
 
-The service now supports smart formatting for Japanese speech recognition. Previously, the service supported smart formatting for US English and Spanish only. The feature is beta functionality for all supported languages. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-output#smart_formatting).
+The service now supports smart formatting for Japanese speech recognition. Previously, the service supported smart formatting for US English and Spanish only. The feature is beta functionality for all supported languages. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting).
 
 ### 7 November 2018
 {: #November2018a}
@@ -634,8 +634,8 @@ For a list of issues that have been fixed since the initial release, see [Resolv
 
     For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 -   The keyword spotting and word alternatives features are now generally available (GA) rather than beta functionality for all languages. For more information, see
-    -   [Keyword spotting](/docs/speech-to-text?topic=speech-to-text-output#keyword_spotting)
-    -   [Word alternatives](/docs/speech-to-text?topic=speech-to-text-output#word_alternatives)
+    -   [Keyword spotting](/docs/speech-to-text?topic=speech-to-text-spotting#keyword-spotting)
+    -   [Word alternatives](/docs/speech-to-text?topic=speech-to-text-spotting#word-alternatives)
 
 ### Resolved issues
 {: #known_issues}
@@ -762,7 +762,7 @@ The following features are enabled for applications that are hosted in Sydney (*
     -   `POST /v1/recognitions` for asynchronous HTTP requests
 
     The `base_model_version` parameter specifies the version of a base model that is to be used for speech recognition. For more information, see [Using upgraded custom models for speech recognition](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use) and [Making speech recognition requests with upgraded custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use#custom-upgrade-use-recognition).
--   Smart formatting is now supported for Spanish as well as US English. For US English, the feature also now converts keyword strings into punctuation symbols for periods, commas, question marks, and exclamation points. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-output#smart_formatting).
+-   Smart formatting is now supported for Spanish as well as US English. For US English, the feature also now converts keyword strings into punctuation symbols for periods, commas, question marks, and exclamation points. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting).
 
 ### 1 March 2018
 {: #March2018a}
@@ -902,7 +902,7 @@ The following deprecations first announced in March 2017 are now in effect:
     -   `es-ES-BroadbandModel`
     -   `ja-JP_BroadbandModel`
 
-    For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
+    For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 -   The service now supports the Web Media (WebM) audio format with the Opus or Vorbis codec. The service now also supports the Ogg audio format with the Vorbis codec in addition to the Opus codec. For more information about supported audio formats, see [audio/webm format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-webm).
 -   The service now supports Cross-Origin Resource Sharing (CORS) to allow browser-based clients to call the service directly. For more information, see [Leveraging CORS support](/docs/speech-to-text?topic=speech-to-text-service-features#features-cors).
 -   The asynchronous HTTP interface now offers a `POST /v1/unregister_callback` method that removes the registration for an allowlisted callback URL. For more information, see [Unregistering a callback URL](/docs/speech-to-text?topic=speech-to-text-async#unregister).
@@ -918,7 +918,7 @@ The asynchronous HTTP interface is now generally available. Prior to this date, 
 ### 1 December 2016
 {: #December2016}
 
--   The service now offers a beta speaker labels feature for narrowband audio in US English, Spanish, or Japanese. The feature identifies which words were spoken by which speakers in a multi-person exchange. The sessionless, session-based, asynchronous, and WebSocket recognition methods each include a `speaker_labels` parameter that accepts a boolean value to indicate whether speaker labels are to be included in the response. For more information about the feature, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-output#speaker_labels).
+-   The service now offers a beta speaker labels feature for narrowband audio in US English, Spanish, or Japanese. The feature identifies which words were spoken by which speakers in a multi-person exchange. The sessionless, session-based, asynchronous, and WebSocket recognition methods each include a `speaker_labels` parameter that accepts a boolean value to indicate whether speaker labels are to be included in the response. For more information about the feature, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 -   The beta language model customization interface is now supported for Japanese in addition to US English. All methods of the interface support Japanese. For more information, see the following sections:
     -   For more information, see [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate) and [Using a custom language model for speech recognition](/docs/speech-to-text?topic=speech-to-text-languageUse).
     -   For general and Japanese-specific considerations for adding a corpus text file, see [Preparing a corpus text file](/docs/speech-to-text?topic=speech-to-text-corporaWords#prepareCorpus) and [What happens when I add a corpus file?](/docs/speech-to-text?topic=speech-to-text-corporaWords#parseCorpus)
@@ -955,7 +955,7 @@ The beta asynchronous HTTP interface now supports all languages that are support
 {: #June2016a}
 
 -   A beta asynchronous HTTP interface is now available. The interface provides full recognition capabilities for US English transcription via non-blocking HTTP calls. You can register callback URLs and provide user-specified secret strings to achieve authentication and data integrity with digital signatures. For more information, see [The asynchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-async) and the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
--   A beta smart formatting feature that converts dates, times, series of digits and numbers, phone numbers, currency values, and Internet addresses into more conventional representations in final transcripts. You enable the feature by setting the `smart_formatting` parameter to `true` on a recognition request. The feature is beta functionality that is available for US English only. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-output#smart_formatting).
+-   A beta smart formatting feature that converts dates, times, series of digits and numbers, phone numbers, currency values, and Internet addresses into more conventional representations in final transcripts. You enable the feature by setting the `smart_formatting` parameter to `true` on a recognition request. The feature is beta functionality that is available for US English only. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting).
 -   The list of supported models for speech recognition now includes `fr-FR_BroadbandModel` for audio in the French language that is sampled at a minimum of 16 kHz. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
 -   The list of supported audio formats now includes `audio/basic`. The format provides single-channel audio that is encoded by using 8-bit u-law (or mu-law) data that is sampled at 8 kHz. For more information, see [audio/basic format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-basic).
 -   The various recognition methods can return a `warnings` response that includes messages about invalid query parameters or JSON fields that are included with a request. The format of the warnings changed. For example, `"warnings": "Unknown arguments: [u'{invalid_arg_1}', u'{invalid_arg_2}']."` is now `"warnings": "Unknown arguments: {invalid_arg_1}, {invalid_arg_2}."`
@@ -975,13 +975,13 @@ The WebSocket interface currently has the following known issue:
 ### 19 January 2016
 {: #January2016}
 
-The service was updated to include a new profanity filtering feature on January 19, 2016. By default, the service censors profanity from its transcription results for US English audio. For more information, see [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-output#profanity_filter).
+The service was updated to include a new profanity filtering feature on January 19, 2016. By default, the service censors profanity from its transcription results for US English audio. For more information, see [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-formatting#profanity-filtering).
 
 ### 17 December 2015
 {: #December2015}
 
--   The service now offers a keyword spotting feature. You can specify an array of keyword strings that are to be matched in the input audio. You must also specify a user-defined confidence level that a word must meet to be considered a match for a keyword. For more information, see [Keyword spotting](/docs/speech-to-text?topic=speech-to-text-output#keyword_spotting). The keyword spotting feature is beta functionality.
--   The service now offers a word alternatives feature. The feature returns alternative hypotheses for words in the input audio that meet a user-defined confidence level. For more information, see [Word alternatives](/docs/speech-to-text?topic=speech-to-text-output#word_alternatives). The word alternatives feature is beta functionality.
+-   The service now offers a keyword spotting feature. You can specify an array of keyword strings that are to be matched in the input audio. You must also specify a user-defined confidence level that a word must meet to be considered a match for a keyword. For more information, see [Keyword spotting](/docs/speech-to-text?topic=speech-to-text-spotting#keyword-spotting). The keyword spotting feature is beta functionality.
+-   The service now offers a word alternatives feature. The feature returns alternative hypotheses for words in the input audio that meet a user-defined confidence level. For more information, see [Word alternatives](/docs/speech-to-text?topic=speech-to-text-spotting#word-alternatives). The word alternatives feature is beta functionality.
 -   The service supports more languages with its transcription models: `en-UK_BroadbandModel` and `en-UK_NarrowbandModel` for UK English, and `ar-AR_BroadbandModel` for Modern Standard Arabic. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
 -   HTTP recognition requests are no longer subject to a 10-minute platform timeout. The service now keeps the connection alive by sending a space character in the response JSON object every 20 seconds as long as recognition is ongoing. For more information, see [Timeouts](/docs/speech-to-text?topic=speech-to-text-input#timeouts).
 -   The service no longer returns HTTP status code 490 for the session-based HTTP methods `GET /v1/sessions/{session_id}/observe_result` and `POST /v1/sessions/{session_id}/recognize`. The service now responds with HTTP status code 400 instead.
@@ -1031,9 +1031,9 @@ The service moved from beta to general availability (GA) on July 1, 2015. The fo
 -   The `Content-Type` header of the `recognize` methods now supports `audio/wav` for Waveform Audio File Format (WAV) files, in addition to `audio/flac` and `audio/l16`. For more information, see [audio/wav format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-wav).
 -   The `recognize` methods now support a number of new query parameters that you can use to tailor the service to suit your application needs:
     -   The `inactivity_timeout` parameter sets the timeout value in seconds after which the service closes the connection if it detects silence (no speech) in streaming mode. By default, the service terminates the session after 30 seconds of silence. For more information, see [Timeouts](/docs/speech-to-text?topic=speech-to-text-input#timeouts).
-    -   The `max_alternatives` parameter instructs the service to return the *n*-best alternative hypotheses for the audio transcription. For more information, see [Maximum alternatives](/docs/speech-to-text?topic=speech-to-text-output#max_alternatives).
-    -   The `word_confidence` parameter instructs the service to return a confidence score for each word of the transcription. For more information, see [Word confidence](/docs/speech-to-text?topic=speech-to-text-output#word_confidence).
-    -   The `timestamps` parameter instructs the service to return the beginning and ending time relative to the start of the audio for each word of the transcription. For more information, see [Word timestamps](/docs/speech-to-text?topic=speech-to-text-output#word_timestamps).
+    -   The `max_alternatives` parameter instructs the service to return the *n*-best alternative hypotheses for the audio transcription. For more information, see [Maximum alternatives](/docs/speech-to-text?topic=speech-to-text-metadata#max-alternatives).
+    -   The `word_confidence` parameter instructs the service to return a confidence score for each word of the transcription. For more information, see [Word confidence](/docs/speech-to-text?topic=speech-to-text-metadata#word-confidence).
+    -   The `timestamps` parameter instructs the service to return the beginning and ending time relative to the start of the audio for each word of the transcription. For more information, see [Word timestamps](/docs/speech-to-text?topic=speech-to-text-metadata#word-timestamps).
 -   The `GET /v1/sessions/{session_id}/observeResult` method is now named `GET /v1/sessions/{session_id}/observe_result`. The name `observeResult` is still supported for backward compatibility.
 -   The `GET /v1/sessions/{session_id}/observe_result`, `POST /v1/sessions/{session_id}/recognize`, and `POST /v1/recognize` methods now include the header parameter `X-WDC-PL-OPT-OUT` to control whether the service uses the audio and transcription data from a request to improve future results. The WebSocket interface includes an equivalent query parameter. Specify a value of `1` to prevent the service from using the audio and transcription results. The parameter applies only to the current request. The new header replaces the `X-logging` header from the beta API. See [Controlling request logging for {{site.data.keyword.watson}} services](/docs/watson?topic=watson-gs-logging-overview).
 -   The service now has a limit of 100 MB of data per session in streaming mode. You specify streaming mode by specifying the value `chunked` with the header `Transfer-Encoding`. One-shot delivery of an audio file still imposes a size limit of 4 MB on the data that is sent. For more information, see [Audio transmission](/docs/speech-to-text?topic=speech-to-text-input#transmission).
