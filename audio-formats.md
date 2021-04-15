@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-04"
+lastupdated: "2021-04-15"
 
 subcollection: speech-to-text
 
@@ -41,6 +41,9 @@ Table 1 provides a summary of the audio formats that the service supports.
 -   *Content-type specification* indicates whether you must use the `Content-Type` header or equivalent parameter to specify the format (MIME type) of the audio that you send to the service. You can specify the audio format for any request, but that's not always necessary:
     -   For most formats, the content type is optional. You can omit the content type or specify `application/octet-stream` to have the service automatically detect the format.
     -   For others, the content type is required. These formats do not provide the information, such as the sampling rate, that the service needs to auto-detect their format.
+
+    When you use the `curl` command to make a speech recognition request with the HTTP interfaces, you must either specify the audio format with the `Content-Type` header, specify `"Content-Type: application/octet-stream"`, or specify just `"Content-Type:"`. If you omit the header entirely, `curl` uses a default value of `application/x-www-form-urlencoded`.
+    {: important}
 -   The final columns identify additional *Required parameters* and *Optional parameters* for each format. The following sections provide more information about these parameters.
 
 | Audio format<br>and compression | Content-type<br/>specification | Required<br/>parameters | Optional<br/>parameters |
@@ -56,9 +59,6 @@ Table 1 provides a summary of the audio formats that the service supports.
 | [audio/wav](#audio-formats-wav)<br/>None, lossless,<br/>or lossy | Optional | None | None |
 | [audio/webm](#audio-formats-webm)<br/>Lossy | Optional | None | `codecs=opus`<br/>`codecs=vorbis` |
 {: caption="Table 1. Summary of supported audio formats"}
-
-When you use the `curl` command to make a speech recognition request with the HTTP interfaces, you must either specify the audio format with the `Content-Type` header, specify `"Content-Type: application/octet-stream"`, or specify `"Content-Type:"`. If you omit the header entirely, `curl` uses a default value of `application/x-www-form-urlencoded`.
-{: important}
 
 ### audio/alaw format
 {: #audio-formats-alaw}
@@ -244,3 +244,4 @@ The following tips can help you improve the quality of speech recognition:
     -   Regional accents and differences in pronunciation can also reduce accuracy.
 
     If your audio has these characteristics, consider using acoustic model customization to improve the accuracy of speech recognition. For more information, see [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization).
+-   To learn more about the characteristics of your audio, consider using audio metrics with your speech recognition request. If you are knowledgeable about audio-signal processing, the metrics can provide meaningful and detailed insight into your audio characteristics. For more information, see [Audio metrics](/docs/speech-to-text?topic=speech-to-text-metrics#audio-metrics).

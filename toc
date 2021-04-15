@@ -45,7 +45,13 @@ Speech to Text
     {: .topicgroup}
     Using speech recognition parameters
         input.md
-        output.md
+        interim.md
+        detection.md
+        parsing.md
+        speakers.md
+        spotting.md
+        formatting.md
+        metadata.md
         metrics.md
         summary.md
 

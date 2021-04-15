@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-01"
+lastupdated: "2021-04-14"
 
 subcollection: speech-to-text
 
@@ -435,7 +435,7 @@ If you use the `smart_formatting` or `redaction` parameters with a recognition r
 
 For instance, suppose that you add the custom word `one` with a `display_as` field of `one`. Smart formatting changes the word `one` to the number `1`, and the display-as value is not applied. To work around this issue, you could add a custom word for the number `1` and apply the same `display_as` field to that word.
 
-For more information about working with these features, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-output#smart_formatting) and [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-output#redaction).
+For more information about working with these features, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting) and [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-formatting#numeric-redaction).
 
 ### What happens when I add or modify a custom word?
 {: #parseWord}
