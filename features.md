@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-15"
+lastupdated: "2021-04-16"
 
 subcollection: speech-to-text
 
@@ -113,7 +113,8 @@ The following sections introduce the speech recognition parameters and their fun
 ### Speech activity detection
 {: #features-detection}
 
--   [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-detection) lets you manipulate the audio that the service uses for speech recognition. For most languages, you can use a pair of related parameters to control which parts of the audio stream are used for speech recognition. The parameters can help ensure that only relevant audio is processed for speech recognition by suppressing background noise and non-speech events that can adversely affect the quality of speech recognition.
+-   [Speech detector sensitivity](/docs/speech-to-text?topic=speech-to-text-detection#detection-parameters-sensitivity) adjusts the sensitivity of the service's detection of speech activity. Use the parameter to suppress word insertions from music, coughing, and other non-speech events that can adversely affect the quality of speech recognition.
+-   [Background audio suppression](/docs/speech-to-text?topic=speech-to-text-detection#detection-parameters-suppression) suppresses background audio based on its volume to prevent it from being transcribed as speech. Use the parameter to suppress side conversations or background noise from speech recognition.
 
 ### Audio parsing
 {: #features-audio-parsing}

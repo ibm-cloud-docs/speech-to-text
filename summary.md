@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-15"
+lastupdated: "2021-04-16"
 
 subcollection: speech-to-text
 
@@ -70,7 +70,7 @@ An optional boolean that indicates whether the service returns metrics about the
 ## background_audio_suppression
 {: #summary-background-audio-suppression}
 
-An optional float between 0.0 and 1.0 that indicates the level to which background audio and side conversations are to be suppressed in the input audio. The default is 0.0, which provides no suppression of background audio. For more information, see [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-detection).
+An optional float between 0.0 and 1.0 that indicates the level to which background audio and side conversations are to be suppressed in the input audio. The default is 0.0, which provides no suppression of background audio. For more information, see [Background audio suppression](/docs/speech-to-text?topic=speech-to-text-detection#detection-parameters-suppression).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -334,7 +334,7 @@ An optional boolean that indicates whether the service identifies which individu
 ## speech_detector_sensitivity
 {: #summary-speech-detector-sensitivity}
 
-An optional float between 0.0 and 1.0 that indicates the sensitivity of speech recognition to non-speech events in the input audio. The default is 0.5, which provides a reasonable level of sensitivity to non-speech events. For more information, see [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-detection).
+An optional float between 0.0 and 1.0 that indicates the sensitivity of speech recognition to non-speech events in the input audio. The default is 0.5, which provides a reasonable level of sensitivity to non-speech events. For more information, see [Speech detector sensitivity](/docs/speech-to-text?topic=speech-to-text-detection#detection-parameters-sensitivity).
 
 | Availability and usage | Description |
 |------------------------|-------------|
