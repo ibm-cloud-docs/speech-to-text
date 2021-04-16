@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-04-14"
+lastupdated: "2021-04-16"
 
 subcollection: speech-to-text
 
@@ -83,7 +83,7 @@ If you omit the `model` parameter from a speech recognition request, the service
 ## Supported features
 {: #models-ng-features}
 
-The next-generation models described in this topic are supported for use with a subset of the service's features. In cases where a supported feature is restricted to certain languages, those same language restrictions apply to the next-generation models.
+The next-generation models described in this topic are supported for use with a subset of the service's features. In cases where a supported feature is restricted to certain languages, those same language restrictions apply to the next-generation models. Also, when you use a next-generation model for speech recognition, final transcription results do not include the `confidence` field. When you use a previous-generation model, final transcription results always include the `confidence` field.
 
 Table 1 lists each parameter (and request header) that is supported for use with the next-generation models. It provides a brief description of the parameter and cites any language or model restrictions that apply for the next-generation models. Features not listed in the table are not supported for use with the next-generation models. Next-generation models do not support language model customization, acoustic model customization, or grammars.
 
