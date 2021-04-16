@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-14"
+lastupdated: "2021-04-16"
 
 subcollection: speech-to-text
 
@@ -31,7 +31,7 @@ Regardless of the interface that you use, the {{site.data.keyword.speechtotextfu
 ## Basic transcription response
 {: #response}
 
-The service returns the following response for the examples in [Making a speeech recognition request](/docs/speech-to-text?topic=speech-to-text-basic-request). The examples pass only an audio file and its content type. The audio speaks a single sentence with no noticeable pauses between words.
+The service returns the following response for the examples in [Making a speech recognition request](/docs/speech-to-text?topic=speech-to-text-basic-request). The examples pass only an audio file and its content type. The audio speaks a single sentence with no noticeable pauses between words.
 
 ```javascript
 {
@@ -64,7 +64,7 @@ If the input audio is more complex or the request includes additional parameters
 
 The `alternatives` field provides an array of transcription results. For this request, the array includes a single element.
 
--   The `confidence` field is a score that indicates the service's confidence in the transcript, which for this example approaches 90 percent.
+-   The `confidence` field is a score that indicates the service's confidence in the transcript, which for this example exceeds 90 percent. When you use a previous-generation model, the `confidence` field is always included for `final` transcription results. When you use a next-generation model, the `confidence` field is never included.
 -   The `transcript` field provides the results of the transcription.
 
 The `final` and `result_index` fields qualify the meaning of these fields.
@@ -75,7 +75,7 @@ The `final` and `result_index` fields qualify the meaning of these fields.
 The `final` field indicates whether the transcript shows final transcription results:
 
 -   The field is `true` for final results, which are guaranteed not to change. The service sends no further updates for transcripts that it returns as final results.
--   The field is `false` for interim results, which are subject to change. If you use the `interim_results` parameter with the WebSocket interface, the service returns evolving interim hypotheses in the form of multiple `results` fields as it transcribes the audio. The `final` field is always `false` for interim results. The service sets the field to `true` for the final results for the audio. The service sends no further updates for the transcription of that audio.
+-   The field is `false` for interim results, which are subject to change. If you use the `interim_results` parameter with the WebSocket interface, the service returns evolving interim hypotheses in the form of multiple `results` fields as it transcribes the audio. The `final` field is always `false` for interim results. The service sets the field to `true` for the final results for the audio. The service sends no further updates for the transcription of that audio. The `confidence` field is always omitted from interim results.
 
 To obtain interim results, use the WebSocket interface and set the `interim_results` parameter to `true`. For more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results).
 
