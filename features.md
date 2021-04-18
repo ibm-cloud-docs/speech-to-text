@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-16"
+lastupdated: "2021-04-18"
 
 subcollection: speech-to-text
 
@@ -116,7 +116,7 @@ The following sections introduce the speech recognition parameters and their fun
 -   [Speech detector sensitivity](/docs/speech-to-text?topic=speech-to-text-detection#detection-parameters-sensitivity) adjusts the sensitivity of the service's detection of speech activity. Use the parameter to suppress word insertions from music, coughing, and other non-speech events that can adversely affect the quality of speech recognition.
 -   [Background audio suppression](/docs/speech-to-text?topic=speech-to-text-detection#detection-parameters-suppression) suppresses background audio based on its volume to prevent it from being transcribed as speech. Use the parameter to suppress side conversations or background noise from speech recognition.
 
-### Audio parsing
+### Speech audio parsing
 {: #features-audio-parsing}
 
 -   [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-parsing#silence-time) specifies the duration of the pause interval at which the service splits a transcript into multiple final results in response to silence. If the service detects pauses or extended silence before it reaches the end of the audio stream, its response can include multiple final results. You can increase or decrease the pause interval to affect the results that you receive.

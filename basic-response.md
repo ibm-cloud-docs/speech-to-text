@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-16"
+lastupdated: "2021-04-18"
 
 subcollection: speech-to-text
 
@@ -29,7 +29,7 @@ Regardless of the interface that you use, the {{site.data.keyword.speechtotextfu
 {: shortdesc}
 
 ## Basic transcription response
-{: #response}
+{: #response-content}
 
 The service returns the following response for the examples in [Making a speech recognition request](/docs/speech-to-text?topic=speech-to-text-basic-request). The examples pass only an audio file and its content type. The audio speaks a single sentence with no noticeable pauses between words.
 
@@ -60,7 +60,7 @@ The service returns a `SpeechRecognitionResults` object, which is the top-level 
 If the input audio is more complex or the request includes additional parameters, the results can contain much more information.
 
 ### The alternatives field
-{: #responseAlternatives}
+{: #response-alternatives}
 
 The `alternatives` field provides an array of transcription results. For this request, the array includes a single element.
 
@@ -70,7 +70,7 @@ The `alternatives` field provides an array of transcription results. For this re
 The `final` and `result_index` fields qualify the meaning of these fields.
 
 ### The final field
-{: #responseFinal}
+{: #response-final}
 
 The `final` field indicates whether the transcript shows final transcription results:
 
@@ -80,33 +80,40 @@ The `final` field indicates whether the transcript shows final transcription res
 To obtain interim results, use the WebSocket interface and set the `interim_results` parameter to `true`. For more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results).
 
 ### The result_index field
-{: #responseResultIndex}
+{: #response-result-index}
 
 The `result_index` field provides an identifier for the results that is unique for that request. If you request interim results, the service sends multiple `results` fields for evolving hypotheses of the input audio. The indexes for interim results for the same audio always have the same value, as do the final results for the same audio.
 
 Once you receive final results for any audio, the service sends no further results with that index for the remainder of the request. The index for any further results is incremented by one.
 
-Regardless of whether you request interim results, the service can return multiple final results with different indexes if your audio includes pauses or extended periods of silence. For more information, see [Pauses and silence](#pauses-silence).
+Regardless of whether you request interim results, the service can return multiple final results with different indexes if your audio includes pauses or extended periods of silence. For more information, see [Pauses and silence](#response-pauses-silence).
 
 If your audio produces multiple final results, concatenate the `transcript` elements of the final results to assemble the complete transcription of the audio. Assemble the results in order by `result_index`. You can ignore interim results for which the `final` field is `false`.
 
 ### Additional response content
-{: #responseAdditional}
+{: #response-additional-parameters}
 
-Many of the output parameters that are available for speech recognition impact the contents of the service's response. For example, the following parameters cause the service to return additional information about the audio:
+Many speech recognition parameters impact the contents of the service's response. Some cause the service to return multiple transcription results. Some change the contents of a transcript. Others add more information to the results.
 
--   The `max_alternatives` parameter requests multiple alternative transcripts. The `alternatives` array includes a separate element for each alternative. Each element of the array includes a `transcript` field. Only the most likely alternative includes a `confidence` field.
--   The `word_confidence` and `timestamps` parameters request additional information about individual words of the transcript. The `alternatives` array includes additional fields with those names.
--   The `keywords` and `keywords_threshold` parameters request keyword spotting. The `results` array includes a `keywords_result` field.
--   The `word_alternatives_threshold` parameter requests acoustically similar results for individual words. The `results` array includes a `word_alternatives` field.
--   The `interim_results` parameter of the WebSocket interface requests interim transcription hypotheses. As mentioned previously, the service sends multiple responses as it transcribes the audio.
--   The `speaker_labels` parameter identifies the individual speakers of a multi-participant exchange. The response includes a `speaker_labels` field at the same level as the `results` and `results_index` fields.
--   The `split_transcript_at_phrase_end` parameter directs the service to split a transcript into multiple final results for semantic features of the input such as sentences. Each `final_result` includes an additional `end_of_utterance` field to indicate why the service split the transcript at that point.
+-   `interim_results`
+-   `end_of_phrase_silence_time`
+-   `split_transcript_at_phrase_end`
+-   `speaker_labels`
+-   `keywords` and `keywords_threshold`
+-   `word_alternatives_threshold`
+-   `smart_formatting`
+-   `redaction`
+-   `profanity_filter`
+-   `max_alternatives`
+-   `word_confidence`
+-   `timestamps`
+-   `processing_metrics` and `processing_metrics_interval`
+-   `audio_metrics`
 
-For more information about these and all parameters that can affect the service's response, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
+For more information about the available parameters, see [Using speech recognition parameters](/docs/speech-to-text?topic=speech-to-text-service-features#features-parameters) and the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
 
 ## Pauses and silence
-{: #pauses-silence}
+{: #response-pauses-silence}
 
 The service transcribes an entire audio stream until either the stream ends or a timeout occurs. However, if the audio includes pauses or extended silence between spoken words or phrases, recognition results can include multiple final results.
 
@@ -183,7 +190,7 @@ Silence of 30 seconds in streamed audio can result in an [inactivity timeout](/d
 {: note}
 
 ## Hesitation markers
-{: #hesitation}
+{: #response-hesitation}
 
 The service can include hesitation markers in transcription results when it discovers brief fillers or pauses in speech. Also referred to as disfluencies, such pauses can include fillers such as "uhm", "uh", "hmm", and related non-lexical utterances. Unless you need to use them for your application, you can safely filter hesitation markers from a transcript.
 
@@ -255,7 +262,7 @@ Hesitation markers can also appear in other fields of a transcript. For example,
 {: codeblock}
 
 ## Capitalization
-{: #capitalization}
+{: #response-capitalization}
 
 For most languages, the service does not use capitalization in response transcripts. If capitalization is important for your application, you must capitalize the first word of each sentence and any other terms for which capitalization is appropriate.
 
@@ -276,7 +283,7 @@ barack obama graduated from columbia university
 The service always applies this capitalization to US English, regardless of whether you use smart formatting.
 
 ## Punctuation
-{: #punctuation}
+{: #response-punctuation}
 
 The service does not insert punctuation in response transcripts by default. You must add any punctuation that you need to the service's results.
 

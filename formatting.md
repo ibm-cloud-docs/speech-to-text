@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-15"
+lastupdated: "2021-04-18"
 
 subcollection: speech-to-text
 
@@ -53,7 +53,7 @@ Smart formatting impacts some transcription results and not others:
 
 -   Smart formatting affects only words in the `transcript` field of final results, those results for which the `final` field is `true`. It does not affect interim results, for which `final` is `false`.
 -   Smart formatting does not affect words in other fields of the response. For example, smart formatting is not applied to response data in the `timestamps` or `alternatives` fields.
--   Hesitation markers and disfluencies, such as "uhm" and "uh", can adversely impact the conversion of phrases and strings by smart formatting. Therefore, smart formatting suppresses hesitation markers from the `transcript` field for final results. Hesitation markers continue to appear in interim results. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#hesitation).
+-   Hesitation markers and disfluencies, such as "uhm" and "uh", can adversely impact the conversion of phrases and strings by smart formatting. Therefore, smart formatting suppresses hesitation markers from the `transcript` field for final results. Hesitation markers continue to appear in interim results. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 
 ### Language differences
 {: #smart-formatting-differences}
