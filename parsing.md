@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-14"
+lastupdated: "2021-04-18"
 
 subcollection: speech-to-text
 
@@ -23,7 +23,7 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Audio parsing
+# Speech audio parsing
 {: #parsing}
 
 The {{site.data.keyword.speechtotextfull}} service provides two features that determine how the service is to parse audio to produce final transcription results. End of phrase silence time specifies the duration of the pause interval at which the service splits a transcript into multiple final results. Split transcript at phrase end directs the services to split a transcript into multiple final results for semantic features such as sentences.
@@ -32,7 +32,7 @@ The {{site.data.keyword.speechtotextfull}} service provides two features that de
 ## End of phrase silence time
 {: #silence-time}
 
-The `end_of_phrase_silence_time` parameter specifies the duration of the pause interval at which the service splits a transcript into multiple final results. If the service detects pauses or extended silence before it reaches the end of the audio stream, its response can include multiple final results. Silence indicates a point at which the speaker pauses between spoken words or phrases. For most languages, the default pause interval is 0.8 seconds; for Chinese the default interval is 0.6 seconds. For more information, see [Pauses and silence](/docs/speech-to-text?topic=speech-to-text-basic-response#pauses-silence).
+The `end_of_phrase_silence_time` parameter specifies the duration of the pause interval at which the service splits a transcript into multiple final results. If the service detects pauses or extended silence before it reaches the end of the audio stream, its response can include multiple final results. Silence indicates a point at which the speaker pauses between spoken words or phrases. For most languages, the default pause interval is 0.8 seconds; for Chinese the default interval is 0.6 seconds. For more information, see [Pauses and silence](/docs/speech-to-text?topic=speech-to-text-basic-response#response-pauses-silence).
 
 By using the `end_of_phrase_silence_time` parameter, you can specify a double value between 0.0 and 120.0 seconds that indicates a different pause interval:
 
