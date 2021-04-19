@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-18"
+lastupdated: "2021-04-19"
 
 subcollection: speech-to-text
 
@@ -93,22 +93,28 @@ If your audio produces multiple final results, concatenate the `transcript` elem
 ### Additional response content
 {: #response-additional-parameters}
 
-Many speech recognition parameters impact the contents of the service's response. Some cause the service to return multiple transcription results. Some change the contents of a transcript. Others add more information to the results.
+Many speech recognition parameters impact the contents of the service's response. Some parameters cause the service to return multiple transcription results:
 
--   `interim_results`
 -   `end_of_phrase_silence_time`
+-   `interim_results`
 -   `split_transcript_at_phrase_end`
--   `speaker_labels`
--   `keywords` and `keywords_threshold`
--   `word_alternatives_threshold`
--   `smart_formatting`
--   `redaction`
+
+Some parameters modify the contents of a transcript:
+
 -   `profanity_filter`
--   `max_alternatives`
--   `word_confidence`
--   `timestamps`
--   `processing_metrics` and `processing_metrics_interval`
+-   `redaction`
+-   `smart_formatting`
+
+Other parameters add more information to the results:
+
 -   `audio_metrics`
+-   `keywords` and `keywords_threshold`
+-   `max_alternatives`
+-   `processing_metrics` and `processing_metrics_interval`
+-   `speaker_labels`
+-   `timestamps`
+-   `word_alternatives_threshold`
+-   `word_confidence`
 
 For more information about the available parameters, see [Using speech recognition parameters](/docs/speech-to-text?topic=speech-to-text-service-features#features-parameters) and the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
 
