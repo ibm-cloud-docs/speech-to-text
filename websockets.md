@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-13"
+lastupdated: "2021-04-20"
 
 subcollection: speech-to-text
 
@@ -274,7 +274,7 @@ The following example shows a WebSocket session between a client and the {{site.
 
 In the first exchange, the client sends audio that contains the string `Name the Mayflower`. The client sends a binary message with a single chunk of PCM (`audio/l16`) audio data, for which it indicates the required sampling rate. The client does not wait for the `{"state":"listening"}` response from the service to begin sending the audio data and to signal the end of the request. Sending the data immediately reduces latency because the audio is available to the service as soon as it is ready to handle a recognition request.
 
--   The *client* sends:
+-   The client sends:
 
     ```javascript
     {
@@ -288,7 +288,7 @@ In the first exchange, the client sends audio that contains the string `Name the
     ```
     {: codeblock}
 
--   The *service* responds:
+-   The service responds:
 
     ```javascript
     {"state": "listening"}
@@ -303,7 +303,7 @@ In the first exchange, the client sends audio that contains the string `Name the
 
 In the second exchange, the client sends audio that contains the string `Second audio transcript`. The client sends the audio in a single binary message and uses the same parameters that it specified in the first request.
 
--   The *client* sends:
+-   The client sends:
 
     ```javascript
     <binary audio data>
@@ -313,7 +313,7 @@ In the second exchange, the client sends audio that contains the string `Second 
     ```
     {: codeblock}
 
--   The *service* responds:
+-   The service responds:
 
     ```javascript
     {"results": [{"alternatives": [{"transcript": "second audio transcript "}],
@@ -327,7 +327,7 @@ In the second exchange, the client sends audio that contains the string `Second 
 
 In the third exchange, the client again sends audio that contains the string `Name the Mayflower`. The client again sends a binary message with a single chunk of PCM audio data. But this time, the client requests interim results with the transcription.
 
--   The *client* sends:
+-   The client sends:
 
     ```javascript
     {
@@ -342,7 +342,7 @@ In the third exchange, the client again sends audio that contains the string `Na
     ```
     {: codeblock}
 
--   The *service* responds:
+-   The service responds:
 
     ```javascript
     {"state":"listening"}

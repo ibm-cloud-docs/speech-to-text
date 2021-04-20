@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-18"
+lastupdated: "2021-04-20"
 
 subcollection: speech-to-text
 
@@ -34,12 +34,12 @@ The following sections document the new features and changes that were included 
 
 The service has the following known limitation:
 
--   The `GET /v1/models` and `GET /v1/models/{model_id}` methods list information about language models. Under `supported_features`, the `speaker_labels` field indicates whether you can use the `speaker_labels` parameter with a model. At this time, the field returns `true` for all models.
+-   **12 April 2021:** When you use a next-generation model for speech recognition, final transcription results do not include the `confidence` field. The field is always included in final transcription results when you use a previous-generation model.
+-   **6 August 2020:** The `GET /v1/models` and `GET /v1/models/{model_id}` methods list information about language models. Under `supported_features`, the `speaker_labels` field indicates whether you can use the `speaker_labels` parameter with a model. At this time, the field returns `true` for all models.
 
     However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
--   **12 April 2021:** When you use a next-generation model for speech recognition, final transcription results do not include the `confidence` field. The field is always included in final transcription results when you use a previous-generation model.
 
 ## 12 April 2021
 {: #April2021}
