@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-19"
+lastupdated: "2021-04-22"
 
 subcollection: speech-to-text
 
@@ -62,7 +62,7 @@ If the input audio is more complex or the request includes additional parameters
 ### The alternatives field
 {: #response-alternatives}
 
-The `alternatives` field provides an array of transcription results. For this request, the array includes a single element.
+The `alternatives` field provides an array of transcription results. For this request, the array includes just one element.
 
 -   The `confidence` field is a score that indicates the service's confidence in the transcript, which for this example exceeds 90 percent. When you use a previous-generation model, the `confidence` field is always included for `final` transcription results. When you use a next-generation model, the `confidence` field is never included.
 -   The `transcript` field provides the results of the transcription.
@@ -74,8 +74,8 @@ The `final` and `result_index` fields qualify the meaning of these fields.
 
 The `final` field indicates whether the transcript shows final transcription results:
 
--   The field is `true` for final results, which are guaranteed not to change. The service sends no further updates for transcripts that it returns as final results.
--   The field is `false` for interim results, which are subject to change. If you use the `interim_results` parameter with the WebSocket interface, the service returns evolving interim hypotheses in the form of multiple `results` fields as it transcribes the audio. The `final` field is always `false` for interim results. The service sets the field to `true` for the final results for the audio. The service sends no further updates for the transcription of that audio. The `confidence` field is always omitted from interim results.
+-   The field is `true` for final results, which are guaranteed not to change. The service sends no further updates for final results.
+-   The field is `false` for interim results, which are subject to change. If you use the `interim_results` parameter with the WebSocket interface, the service returns evolving hypotheses in the form of multiple `results` fields as it transcribes the audio. For interim results, the `final` field is always `false` and the `confidence` field is always omitted.
 
 To obtain interim results, use the WebSocket interface and set the `interim_results` parameter to `true`. For more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results).
 
@@ -88,24 +88,24 @@ Once you receive final results for any audio, the service sends no further resul
 
 Regardless of whether you request interim results, the service can return multiple final results with different indexes if your audio includes pauses or extended periods of silence. For more information, see [Pauses and silence](#response-pauses-silence).
 
-If your audio produces multiple final results, concatenate the `transcript` elements of the final results to assemble the complete transcription of the audio. Assemble the results in order by `result_index`. You can ignore interim results for which the `final` field is `false`.
+If your audio produces multiple final results, concatenate the `transcript` elements of the final results to assemble the complete transcription of the audio. Assemble the results in order by `result_index`. When you assemble a complete final transcript, you can ignore interim results for which the `final` field is `false`.
 
 ### Additional response content
 {: #response-additional-parameters}
 
-Many speech recognition parameters impact the contents of the service's response. Some parameters cause the service to return multiple transcription results:
+Many speech recognition parameters impact the contents of the service's response. Some parameters can cause the service to return multiple transcription results:
 
 -   `end_of_phrase_silence_time`
 -   `interim_results`
 -   `split_transcript_at_phrase_end`
 
-Some parameters modify the contents of a transcript:
+Some parameters can modify the contents of a transcript:
 
 -   `profanity_filter`
 -   `redaction`
 -   `smart_formatting`
 
-Other parameters add more information to the results:
+Other parameters can add more information to the results:
 
 -   `audio_metrics`
 -   `keywords` and `keywords_threshold`
@@ -125,9 +125,9 @@ The service transcribes an entire audio stream until either the stream ends or a
 
 For most languages, the default pause interval that the service uses to determine separate final results is 0.8 seconds; for Chinese the default interval is 0.6 seconds. You can use the `end_of_phrase_silence_time` parameter to change the duration of the interval. For more information, see [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-parsing#silence-time).
 
-How the service returns the results depends on the interface that you use. The following examples show responses with two final results from the HTTP and WebSocket interfaces. The same input audio is used in both cases. The audio speaks the phrase "one two three four five six," with a one-second pause between the words "three" and "four." The examples use the default pause interval for speech recognition.
+How the service returns results depends on the interface and the model that you use for speech recognition. The following examples show responses with two final results from the HTTP and WebSocket interfaces. The same input audio is used in both cases. The audio speaks the phrase "one two three four five six," with a one-second pause between the words "three" and "four." The examples use the default pause interval for speech recognition.
 
--   *For the HTTP interfaces,* the service sends a single `SpeechRecognitionResults` object. The `alternatives` array has a separate element for each final result. The response has a single `result_index` field with a value of `0`.
+-   *For the HTTP interfaces,* the service always sends a single `SpeechRecognitionResults` object. The `alternatives` array has a separate element for each final result. The response has a single `result_index` field with a value of `0`.
 
     ```javascript
     {
@@ -156,7 +156,9 @@ How the service returns the results depends on the interface that you use. The f
     ```
     {: codeblock}
 
--   *For the WebSocket interface,* the service sends two separate responses with two different `SpeechRecognitionResults` objects. Each response object has a different `result_index` field, which has a value of `0` for the first response and `1` for the second response.
+-   *For the WebSocket interface with a previous-generation model,* the service sends the same results as the previous example. The response includes a single `SpeechRecognitionResults` object.
+
+-   *For the WebSocket interface with a next-generation model,* the service sends two separate responses with two different `SpeechRecognitionResults` objects. Each response object has a different `result_index` field, which has a value of `0` for the first response and `1` for the second response.
 
     ```javascript
     {
@@ -190,7 +192,7 @@ How the service returns the results depends on the interface that you use. The f
     ```
     {: codeblock}
 
-If your results include multiple final results, concatenate the `transcript` elements of the final results to assemble the complete transcription of the audio.
+For more information about results from the WebSocket interface with previous and next-generation models and with the `interim_results` parameter, see [How the service sends recognition results](/docs/speech-to-text?topic=speech-to-text-websockets#ws-results).
 
 Silence of 30 seconds in streamed audio can result in an [inactivity timeout](/docs/speech-to-text?topic=speech-to-text-input#timeouts-inactivity).
 {: note}

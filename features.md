@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-18"
+lastupdated: "2021-04-22"
 
 subcollection: speech-to-text
 
@@ -65,7 +65,7 @@ The {{site.data.keyword.speechtotextshort}} service offers a WebSocket interface
 -   [The synchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-http) provides a basic interface to transcribe audio with blocking requests.
 -   [The asynchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-async) provides a non-blocking interface that lets you register a callback URL to receive notifications or poll the service for job status and results.
 
-All interfaces provide the same basic speech recognition capabilities, but you might specify the same parameter as a request header, a query parameter, or a parameter of a JSON object depending on the interface that you use.
+All interfaces provide the same basic speech recognition capabilities, but you might specify the same parameter as a request header, a query parameter, or a parameter of a JSON object depending on the interface that you use. The service can also return different results depending on the interface and parameters that you use with a request.
 
 -   For information about making a speech recognition requests with each of the service's interfaces, see [Making a speech recognition request](/docs/speech-to-text?topic=speech-to-text-basic-request).
 -   For information about the results of a speech recognition request, see [Understanding speech recognition results](/docs/speech-to-text?topic=speech-to-text-basic-response).
@@ -84,12 +84,13 @@ The interfaces accept the following maximum amounts of audio data with a single 
 
 The WebSocket interface has a number of advantages over the HTTP interface. The WebSocket interface
 
--   Provides a single-socket, full-duplex communication channel. The interface lets the client send requests and audio to the service and receive results over a single connection in an asynchronous fashion.
+-   Provides a single-socket, full-duplex communication channel. The interface lets the client send multiple requests to the service and receive results over a single connection in an asynchronous fashion.
 -   Provides a much simpler and more powerful programming experience. The service sends event-driven responses to the client's messages, eliminating the need for the client to poll the server.
 -   Allows you to establish and use a single authenticated connection indefinitely. The HTTP interfaces require you to authenticate each call to the service.
 -   Reduces latency. Recognition results arrive faster because the service sends them directly to the client. The HTTP interface requires four distinct requests and connections to achieve the same results.
 -   Reduces network utilization. The WebSocket protocol is lightweight. It requires only a single connection to perform live-speech recognition.
 -   Enables audio to be streamed directly from browsers (HTML5 WebSocket clients) to the service.
+-   Returns results as soon as they are available when you use a next-generation model or request interim results.
 
 ## Using speech recognition parameters
 {: #features-parameters}
@@ -107,7 +108,7 @@ The following sections introduce the speech recognition parameters and their fun
 ### Interim results and low latency
 {: #features-interim-results}
 
--   [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results) are intermediate hypotheses that the service returns as transcription progresses. They are available only with the WebSocket interface. The service returns final results when transcription is complete. With the HTTP interfaces, the service always transcribes the entire audio stream before sending any results.
+-   [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results) are intermediate hypotheses that the service returns as transcription progresses. They are available only with the WebSocket interface. The service returns final results when a transcript is complete. With the HTTP interfaces, the service always transcribes the entire audio stream before sending any results.
 -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency), when used with certain next-generation models, directs the service to produce final results even more quickly than the models usually do. Low latency is available with the WebSocket and HTTP interfaces. Although low latency further enhances the already improved response times of the models, it might reduce transcription accuracy. When you use the next-generation models with the WebSocket interface, low latency is required to obtain interim results.
 
 ### Speech activity detection

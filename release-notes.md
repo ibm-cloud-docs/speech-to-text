@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-20"
+lastupdated: "2021-04-22"
 
 subcollection: speech-to-text
 
@@ -32,7 +32,7 @@ The following sections document the new features and changes that were included 
 ## Known limitations
 {: #limitations}
 
-The service has the following known limitation:
+The service has the following known limitations:
 
 -   **12 April 2021:** When you use a next-generation model for speech recognition, final transcription results do not include the `confidence` field. The field is always included in final transcription results when you use a previous-generation model.
 -   **6 August 2020:** The `GET /v1/models` and `GET /v1/models/{model_id}` methods list information about language models. Under `supported_features`, the `speaker_labels` field indicates whether you can use the `speaker_labels` parameter with a model. At this time, the field returns `true` for all models.
@@ -498,7 +498,7 @@ The WebSocket interface now supports token-based Identity and Access Management 
 -   If you use IAM authentication, include the `access_token` query parameter.
 -   If you use Cloud Foundry service credentials, include the `watson-token` query parameter.
 
-For more information, see [Open a connection](/docs/speech-to-text?topic=speech-to-text-websockets#WSopen).
+For more information, see [Open a connection](/docs/speech-to-text?topic=speech-to-text-websockets#ws-open).
 
 ### 20 December 2018
 {: #December2018b}
@@ -965,7 +965,7 @@ The beta asynchronous HTTP interface now supports all languages that are support
 ### 10 March 2016
 {: #March2016}
 
--   Both forms of data transmission (one-shot delivery and streaming) now impose a size limit of 100 MB on the audio data, as does the WebSocket interface. Formerly, the one-shot approach had a maximum limit of 4 MB of data. For more information, see [Audio transmission](/docs/speech-to-text?topic=speech-to-text-input#transmission) (for all interfaces) and [Send audio and receive recognition results](/docs/speech-to-text?topic=speech-to-text-websockets#WSaudio) (for the WebSocket interface). The WebSocket section also discusses the maximum frame or message size of 4 MB enforced by the WebSocket interface.
+-   Both forms of data transmission (one-shot delivery and streaming) now impose a size limit of 100 MB on the audio data, as does the WebSocket interface. Formerly, the one-shot approach had a maximum limit of 4 MB of data. For more information, see [Audio transmission](/docs/speech-to-text?topic=speech-to-text-input#transmission) (for all interfaces) and [Send audio and receive recognition results](/docs/speech-to-text?topic=speech-to-text-websockets#ws-audio) (for the WebSocket interface). The WebSocket section also discusses the maximum frame or message size of 4 MB enforced by the WebSocket interface.
 -   The JSON response for a recognition request can now include an array of warning messages for invalid query parameters or JSON fields that are included with a request. Each element of the array is a string that describes the nature of the warning followed by an array of invalid argument strings. For example, `"warnings": [ "Unknown arguments: [u'{invalid_arg_1}', u'{invalid_arg_2}']." ]`. For more information, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 -   The beta *{{site.data.keyword.watson}} Speech Software Development Kit (SDK) for the Apple&reg; iOS operating system* is deprecated. Use the *{{site.data.keyword.watson}} SDK for the Apple&reg; iOS operating system* instead. The new SDK is available from the [ios-sdk repository](https://github.com/watson-developer-cloud/ios-sdk){: external} in the `watson-developer-cloud` namespace on GitHub.
 

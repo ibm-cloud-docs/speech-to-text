@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-04-16"
+lastupdated: "2021-04-21"
 
 subcollection: speech-to-text
 
@@ -89,7 +89,7 @@ Table 1 lists each parameter (and request header) that is supported for use with
 
 | <br/>Parameter | <br/>Description | Next-generation language<br/>and model support |
 |-----------|-------------|--------------------------------------------|
-| `access_token` | A required Identity and Access Management (IAM) access token that you use to establish an authenticated connection with the WebSocket interface. For more information, see [Open a connection](/docs/speech-to-text?topic=speech-to-text-websockets#WSopen). | All languages and models. |
+| `access_token` | A required Identity and Access Management (IAM) access token that you use to establish an authenticated connection with the WebSocket interface. For more information, see [Open a connection](/docs/speech-to-text?topic=speech-to-text-websockets#ws-open). | All languages and models. |
 | `background_audio_suppression` | An optional float between 0.0 and 1.0 that indicates the level to which background audio and side conversations are to be suppressed in the input audio. For more information, see [Background audio suppression](/docs/speech-to-text?topic=speech-to-text-detection#detection-parameters-suppression). | All languages and models. |
 | `Content-Type` | An optional audio format (MIME type) that specifies the format of the audio data that you pass to the service. For more information, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-list). | All languages and models. |
 | `inactivity_timeout` | An optional integer that specifies the number of seconds for the service's inactivity timeout. For more information, see [Inactivity timeout](/docs/speech-to-text?topic=speech-to-text-input#timeouts-inactivity). | All languages and models. |
