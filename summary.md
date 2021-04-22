@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-16"
+lastupdated: "2021-04-21"
 
 subcollection: speech-to-text
 
@@ -31,7 +31,7 @@ A summary follows of all of the parameters available for speech recognition. For
 ## access_token
 {: #summary-access-token}
 
-A required Identity and Access Management (IAM) access token that you use to establish an authenticated connection with the WebSocket interface. For more information, see [Open a connection](/docs/speech-to-text?topic=speech-to-text-websockets#WSopen).
+A required Identity and Access Management (IAM) access token that you use to establish an authenticated connection with the WebSocket interface. For more information, see [Open a connection](/docs/speech-to-text?topic=speech-to-text-websockets#ws-open).
 
 | Availability and usage | Description |
 |------------------------|-------------|

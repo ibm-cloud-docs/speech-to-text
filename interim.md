@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-15"
+lastupdated: "2021-04-22"
 
 subcollection: speech-to-text
 
@@ -44,9 +44,9 @@ Interim results are intermediate transcription hypotheses that are likely to cha
 
 Interim results evolve as the service's processing of an utterance progresses. They arrive more often and more quickly than final results. You can use them to enable your application to respond more quickly or to gauge the progress of the transcription. Once its processing of an utterance is complete, the service sends final results that represent its best transcription of the audio for that utterance.
 
-To receive interim results, set the `interim_results` parameter to `true` in the JSON `start` message for a WebSocket recognition request. If you omit the `interim_results` parameter or set it to `false`, the service returns only a single final transcript at the end of the audio. Follow these guidelines to use the parameter:
+To receive interim results, set the `interim_results` parameter to `true` in the JSON `start` message for a WebSocket recognition request. If you omit the `interim_results` parameter or set it to `false`, the service does not return interim results. Follow these guidelines to use the parameter:
 
--   Omit the parameter or set it to `false` if you are doing offline or batch transcription, do not need minimum latency, and want a single transcription result for your audio.
+-   Omit the parameter or set it to `false` if you are doing offline or batch transcription and do not need interim results with minimum latency.
 -   Set the parameter to `true` if you want results to arrive progressively as the service processes the audio or if you want the results with minimum latency. Keep in mind that the service can update interim results as it processes more audio.
 
 Interim results are indicated in a transcript with the `final` field set to `false`. The service can update such results with more accurate transcriptions as it processes further audio. Final results are identified with the `final` field set to `true`. The service makes no further updates to final results.
@@ -54,7 +54,7 @@ Interim results are indicated in a transcript with the `final` field set to `fal
 ### Interim results example
 {: #interim-results-example}
 
-The following abbreviated WebSocket example requests interim results for a WebSocket request. In its response, the service sets the `final` attribute to `true` only for the final results.
+The following abbreviated WebSocket example requests interim results. The service sends multiple response objects. It sets the `final` attribute to `true` only for the final results.
 
 ```javascript
 var IAM_access_token = {access_token};

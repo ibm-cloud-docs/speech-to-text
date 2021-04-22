@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-20"
+lastupdated: "2021-04-22"
 
 subcollection: speech-to-text
 
@@ -29,25 +29,23 @@ content-type: troubleshoot
 # The WebSocket interface
 {: #websockets}
 
-The WebSocket interface of the {{site.data.keyword.speechtotextfull}} service is the most natural way for a client to interact with the service. To use the WebSocket interface for speech recognition, you first use the `/v1/recognize` method to establish a persistent connection with the service. You then send text and binary messages over the connection to initiate and manage the recognition requests.
+The WebSocket interface of the {{site.data.keyword.speechtotextfull}} service is the most natural way for a client to interact with the service. To use the WebSocket interface for speech recognition, you first use the `/v1/recognize` method to establish a persistent connection with the service. You then send text and binary messages over the connection to initiate and manage recognition requests.
 {: shortdesc}
 
-Because of their advantages, WebSockets are the preferred mechanism for speech recognition. For more information, see [Advantages of the WebSocket interface](/docs/speech-to-text?topic=speech-to-text-service-features#features-websocket-advantages).
-
-For more information about the WebSocket interface and its parameters, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+Because of their advantages, WebSockets are the preferred mechanism for speech recognition. For more information, see [Advantages of the WebSocket interface](/docs/speech-to-text?topic=speech-to-text-service-features#features-websocket-advantages). For more information about the WebSocket interface and its parameters, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ## Managing a WebSocket connection
-{: #websockets-managing}
+{: #ws-managing}
 
 The WebSocket recognition request and response cycle has the following steps:
 
-1.  [Open a connection](#WSopen)
-1.  [Initiate a recognition request](#WSstart)
-1.  [Send audio and receive recognition results](#WSaudio)
-1.  [End a recognition request](#WSstop)
-1.  [Send additional requests and modify request parameters](#WSmore)
-1.  [Keep a connection alive](#WSkeep)
-1.  [Close a connection](#WSclose)
+1.  [Open a connection](#ws-open)
+1.  [Initiate a recognition request](#ws-start)
+1.  [Send audio and receive recognition results](#ws-audio)
+1.  [End a recognition request](#ws-stop)
+1.  [Send additional requests and modify request parameters](#ws-more)
+1.  [Keep a connection alive](#ws-keep)
+1.  [Close a connection](#ws-close)
 
 When the client sends data to the service, it *must* pass all JSON messages as text messages and all audio data as binary messages.
 
@@ -55,7 +53,7 @@ The snippets of example code that follow are written in JavaScript and are based
 {: note}
 
 ### Open a connection
-{: #WSopen}
+{: #ws-open}
 
 The {{site.data.keyword.speechtotextshort}} service uses the WebSocket Secure (WSS) protocol to make the `/v1/recognize` method available at the following endpoint:
 
@@ -75,22 +73,22 @@ where `{location}` indicates where your application is hosted:
 -   `eu-gb` for London
 -   `kr-seo` for Seoul
 
-And `{instance_id}` is the unique identifier of the service instance.
+And `{instance_id}` is the unique identifier of your service instance.
 
-The examples in the documentation abbreviate `wss://api.{location}.speech-to-text.watson.cloud.ibm.com/instances/{instance_id}` to `{ws_url}`. So all WebSocket examples call the method as `{ws_url}/v1/recognize`.
+The examples in the documentation abbreviate `wss://api.{location}.speech-to-text.watson.cloud.ibm.com/instances/{instance_id}` to `{ws_url}`. All WebSocket examples call the method as `{ws_url}/v1/recognize`.
 {: note}
 
-A WebSocket client calls the `/v1/recognize` method with the following query parameters to establish an authenticated connection with the service:
+A WebSocket client calls the `/v1/recognize` method with the following query parameters to establish an authenticated connection with the service. You can specify these aspects of the request only as query parameters of the WebSocket URL.
 
 -   `access_token` (*required* string) - A valid Identity and Access Management (IAM) access token to establish an authenticated connection with the service. You pass an IAM access token instead of passing an API key with the call. You must establish the connection before the access token expires. For information about obtaining an access token, see [Authenticating to Watson services](/docs/watson?topic=watson-iam).
 
-    You pass an access token only to establish an authenticated connection. Once you establish a connection, you can keep it alive indefinitely. You remain authenticated for as long as you keep the connection open. You do not need to refresh the access token for an active connection that lasts beyond the token's expiration time. A connection can remain active even after the token or its API key are deleted.
+    You pass an access token only to establish an authenticated connection. Once you establish a connection, you can keep it alive indefinitely. You remain authenticated for as long as you keep the connection open. You do not need to refresh the access token for an active connection that lasts beyond the token's expiration time. Once a connection is established, it can remain active even after the token or its API key are deleted.
 
--   `model` (*optional* string) - Specifies the language model to be used for transcription. If you do not specify a model, the service uses the `en-US_BroadbandModel` model by default. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models) and [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+-   `model` (*optional* string) - Specifies the language model to be used for transcription. If you do not specify a model, the service uses `en-US_BroadbandModel` by default. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models) and [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 
--   `language_customization_id` (*optional* string) - Specifies the Globally Unique Identifier (GUID) of a custom language model that is to be used for all requests that are sent over the connection. The base model of the custom language model must match the value of the `model` parameter. If you include a customization ID, you must make the request with credentials for the instance of the service that owns the custom model. By default, no custom language model is used. For more information, see [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization).
+-   `language_customization_id` (*optional* string) - Specifies the Globally Unique Identifier (GUID) of a custom language model that is to be used for all requests that are sent over the connection. The base model of the custom language model must match the value of the `model` parameter. If you include a custom language model ID, you must make the request with credentials for the instance of the service that owns the custom model. By default, no custom language model is used. For more information, see [Using a custom language model for speech recognition](/docs/speech-to-text?topic=speech-to-text-languageUse).
 
--   `acoustic_customization_id` (*optional* string) - Specifies the Globally Unique Identifier (GUID) of a custom acoustic model that is to be used for all requests that are sent over the connection. The base model of the custom acoustic model must match the value of the `model` parameter. If you include a customization ID, you must make the request with credentials for the instance of the service that owns the custom model. By default, no custom acoustic model is used. For more information, see [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization).
+-   `acoustic_customization_id` (*optional* string) - Specifies the GUID of a custom acoustic model that is to be used for all requests that are sent over the connection. The base model of the custom acoustic model must match the value of the `model` parameter. If you include a custom acoustic model ID, you must make the request with credentials for the instance of the service that owns the custom model. By default, no custom acoustic model is used. For more information, see [Using a custom acoustic model for speech recognition](/docs/speech-to-text?topic=speech-to-text-acousticUse).
 
 -   `base_model_version` (*optional* string) - Specifies the version of the base `model` that is to be used for all requests that are sent over the connection. The parameter is intended primarily for use with custom models that are upgraded for a new base model. The default value depends on whether the parameter is used with or without a custom model. For more information, see [Making speech recognition requests with upgraded custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use#custom-upgrade-use-recognition).
 
@@ -117,16 +115,16 @@ websocket.onerror = function(evt) { onError(evt) };
 The client can open multiple concurrent WebSocket connections to the service. The number of concurrent connections is limited only by the capacity of the service, which generally poses no problems for users.
 
 ### Initiate a recognition request
-{: #WSstart}
+{: #ws-start}
 
 To initiate a recognition request, the client sends a JSON text message to the service over the established connection. The client must send this message before it sends any audio for transcription. The message must include the `action` parameter but can usually omit the `content-type` parameter.
 
 -   `action` (*required* string) - Specifies the action to be performed:
-    -   `start` begins a recognition request. It can also specify new parameters for subsequent requests. For more information, see [Send additional requests and modify request parameters](#WSmore).
-    -   `stop` signals that all audio for a request has been sent. For more information, see [End a recognition request](#WSstop).
+    -   `start` begins a recognition request. It can also specify new parameters for subsequent requests. For more information, see [Send additional requests and modify request parameters](#ws-more).
+    -   `stop` signals that all audio for a request has been sent. For more information, see [End a recognition request](#ws-stop).
 -   `content-type` (*optional* string) - Identifies the format (MIME type) of the audio data for the request. The parameter is required for the `audio/alaw`, `audio/basic`, `audio/l16`, and `audio/mulaw` formats. For more information, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-list).
 
-The message can also include optional parameters to specify other aspects of how the request is to be processed and the information that is to be returned. These additional parameters include the `interim_results` parameter, which is available only with the WebSocket interface. (You specify a language model, custom language model, and custom acoustic model only as query parameters of the WebSocket URL.)
+The message can also include optional parameters to specify other aspects of how the request is to be processed and the information that is to be returned. These additional parameters include the `interim_results` parameter, which is available only with the WebSocket interface.
 
 -   For more information about all speech recognition features, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
 -   For more information about the `interim_results` parameter, see [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results).
@@ -144,25 +142,25 @@ function onOpen(evt) {
 ```
 {: codeblock}
 
-If it receives the request successfully, the service returns the following text message to indicate that it is `listening`:
+If it receives the request successfully, the service returns the following text message to indicate that it is `listening`. The `listening` state indicates that the service instance is configured (the JSON `start` message was valid) and is ready to accept audio for a recognition request.
 
 ```javascript
 {'state': 'listening'}
 ```
 {: codeblock}
 
-The `listening` state indicates that the service instance is configured (your JSON `start` message was valid) and is ready to process a new utterance for a recognition request. Once it begins listening, the service processes any audio that was sent before the `listening` message.
-
 If the client specifies an invalid query parameter or JSON field for the recognition request, the service's JSON response includes a `warnings` field. The field describes each invalid argument. The request succeeds despite the warnings.
 
 ### Send audio and receive recognition results
-{: #WSaudio}
+{: #ws-audio}
 
-After it sends the initial `start` message, the client can begin sending audio data to the service. The client does not need to wait for the service to respond to the `start` message with the `listening` message. The service returns the results of the transcription asynchronously in the same format as it returns results for the HTTP interfaces.
+After it sends the initial `start` message, the client can begin to send audio data to the service. The client does not need to wait for the service to respond to the `start` message with the `listening` message. Once it begins listening, the service processes any audio that was sent before the `listening` message.
 
-The client must send the audio as binary data. The client can send a maximum of 100 MB of audio data with a single utterance (per `send` request). It must send at least 100 bytes of audio for any request. The client can send multiple utterances over a single WebSocket connection. For information about using compression to maximize the amount of audio that you can pass to the service with a request, see [Data limits and compression](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-limits).
+The client must send the audio as binary data. The client can send a maximum of 100 MB of audio data per `send` request. It must send at least 100 bytes of audio for any request. The client can send multiple requests over a single WebSocket connection. For information about using compression to maximize the amount of audio that you can pass to the service with a request, see [Data limits and compression](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-limits).
 
 The WebSocket interface imposes a maximum frame size of 4 MB. The client can set the maximum frame size to less than 4 MB. If it is not practical to set the frame size, the client can set the maximum message size to less than 4 MB and send the audio data as a sequence of messages. For more information about WebSocket frames, see [IETF RFC 6455](https://tools.ietf.org/html/rfc6455){: external}.
+
+How the service sends recognition results to the client depends on whether the WebSocket connection uses a previous- or next-generation model. It also depends on whether the client requests interim results. For more information, see [How the service sends recognition results](#ws-results).
 
 The following snippet of JavaScript code sends audio data to the service as a binary message (blob):
 
@@ -180,8 +178,10 @@ function onMessage(evt) {
 ```
 {: codeblock}
 
+Your code must be prepared to handle return return codes from the service. For more information, see [WebSocket return codes](#ws-return).
+
 ### End a recognition request
-{: #WSstop}
+{: #ws-stop}
 
 When it is done sending the audio data for a request to the service, the client *must* signal the end of the binary audio transmission to the service in one of the following ways:
 
@@ -199,16 +199,14 @@ When it is done sending the audio data for a request to the service, the client 
     ```
     {: codeblock}
 
-The service does not send final results until it receives confirmation that the audio transmission is complete. If you fail to signal that the transmission is complete, the connection can time out without the service sending final results.
-
-To receive final results between multiple recognition requests, the client must signal the end of transmission for the previous request before it sends a subsequent request. After it returns the final results for the first request, the service returns another `{"state":"listening"}` message to the client. This message indicates that the service is ready to receive another request.
+If the client fails to signal that the transmission is complete, the connection can time out without the service sending final results. To receive final results between multiple recognition requests, the client must signal the end of transmission for the previous request before it sends a subsequent request. After it returns the final results for the first request, the service returns another `{"state":"listening"}` message to the client. This message indicates that the service is ready to receive another request.
 
 ### Send additional requests and modify request parameters
-{: #WSmore}
+{: #ws-more}
 
 While the WebSocket connection remains active, the client can continue to use the connection to send further recognition requests with new audio. By default, the service continues to use the parameters that were sent with the previous `start` message for all subsequent requests that are sent over the same connection.
 
-To change the parameters for subsequent requests, the client can send another `start` message with the new parameters after it receives the final recognition results and `{"state":"listening"}` message from the service. The client can change any parameters except for those parameters that are specified when the connection is opened (`model`, `language_customization_id`, and so on).
+To change the parameters for subsequent requests, the client can send another `start` message with the new parameters after it receives the final recognition results and a new `{"state":"listening"}` message from the service. The client can change any parameters except for those parameters that are specified when the connection is opened (`model`, `language_customization_id`, and so on).
 
 The following example sends a `start` message with new parameters for subsequent recognition requests that are sent over the connection. The message specifies the same `content-type` as the previous example, but it directs the service to return confidence measures and timestamps for the words of the transcription.
 
@@ -224,7 +222,7 @@ websocket.send(JSON.stringify(message));
 {: codeblock}
 
 ### Keep a connection alive
-{: #WSkeep}
+{: #ws-keep}
 
 The service terminates the session and closes the connection if an inactivity or session timeout occurs:
 
@@ -238,9 +236,9 @@ If your WebSocket stack does not implement ping-pong frames and your are sending
 For more information about ping-pong frames, see [Section 5.5.2 Ping](http://tools.ietf.org/html/rfc6455#section-5.5.2){: external} and [Section 5.5.3 Pong](https://tools.ietf.org/html/rfc6455#section-5.5.3){: external} of IETF RFC 6455.
 
 ### Close a connection
-{: #WSclose}
+{: #ws-close}
 
-When the client is done interacting with the service, it can close the WebSocket connection. Once the connection is closed, the client can no longer use it to send requests or to receive results. Close the connection only after you receive all results for a request. The connection eventually times out and closes if you do not explicitly close it.
+When the client is done interacting with the service, it can close the WebSocket connection. Once the connection is closed, the client can no longer use it to send requests or to receive results. Close the connection only after the client receives all results for a request. The connection eventually times out and closes if the client does not explicitly close it.
 
 The following snippet of JavaScript code closes an open connection:
 
@@ -249,28 +247,265 @@ websocket.close();
 ```
 {: codeblock}
 
-## WebSocket return codes
-{: #WSreturn}
-{: troubleshoot}
-{: support}
+## How the service sends recognition results
+{: #ws-results}
 
-The service can send the following return codes to the client over the WebSocket connection:
+How the service sends speech recognition results to the client depends on two factors:
 
--   `1000` indicates normal closure of the connection, meaning that the purpose for which the connection was established has been fulfilled.
--   `1002` indicates that the service is closing the connection due to a protocol error.
--   `1006` indicates that the connection closed abnormally.
--   `1009` indicates that the frame size exceeded the 4 MB limit.
--   `1011` indicates that the service is terminating the connection because it encountered an unexpected condition that prevents it from fulfilling the request.
+-   Whether the client uses a previous-generation (`Broadband` or `Narrowband`) or next-generation (`Multimedia` or `Telephony`) model.
+-   Whether the client requests interim results.
 
-If the socket closes with an error, the client receives an informative message of the form `{"error":"{message}"}` before the socket closes. For more information about WebSocket return codes, see [IETF RFC 6455](https://tools.ietf.org/html/rfc6455){: external}.
+In the following descriptions, final results are labeled `"final": true` in the response JSON, and interim results are labeled `"final": false`. An utterance is a component of the input audio that elicits a response, usually as a result of extended silence. For more information, see [Understanding speech recognition results](/docs/speech-to-text?topic=speech-to-text-basic-response).
 
-## Example WebSocket session
-{: #WSexample}
+In the following examples, the results show the service's response for the same input audio submitted to the different interfaces with different parameters. The audio speaks the phrase "one two three four," with a one-second pause between the words "two" and "three." The examples use the default pause interval for speech recognition.
 
-The following example shows a WebSocket session between a client and the {{site.data.keyword.speechtotextshort}} service. The session is shown as three separate exchanges to make it easier to follow. But all three exchanges are part of a single session with the service. The example focuses on the exchange of messages; it does not show opening and closing the connection.
+If your results include multiple final results, concatenate the `transcript` elements of the final results to assemble the complete transcription of the audio. For more information, see [The result_index field](/docs/speech-to-text?topic=speech-to-text-basic-response#response-result-index).
+{: note}
+
+### Previous-generation models without interim results
+{: #ws-results-pg-without-interim}
+
+The client receives a single JSON object in response only after the client sends a `stop` message. The response object can contain multiple final results for separate utterances of the audio. The service does not send the single response object until it receives a `stop` message to indicate that audio transmission for the request is complete.
+
+```javascript
+{
+  "results": [
+    {
+      "alternatives": [
+        {
+          "confidence": 0.99,
+          "transcript": "one two "
+        }
+      ],
+      "final": true
+    },
+    {
+      "alternatives": [
+        {
+          "confidence": 0.99,
+          "transcript": "three four "
+        }
+      ],
+      "final": true
+    }
+  ],
+  "result_index": 0
+}
+```
+{: codeblock}
+
+### For previous-generation models with interim results
+{: #ws-results-pg-with-interim}
+
+The client receives multiple JSON objects in response. The service returns separate response objects for each final result and for each each interim result that is generated by the audio. The service sends responses as soon as they are available. It does not wait for a `stop` message to send its results, though the `stop` message is still required to signal the end of transmission for the request.
+
+```javascript
+{
+  "results": [
+    {
+      "alternatives": [
+        {
+          "transcript": "one "
+        }
+      ],
+      "final": false
+    }
+  ],
+  "result_index": 0
+}{
+  "results": [
+    {
+      "alternatives": [
+        {
+          "transcript": "one two "
+        }
+      ],
+      "final": false
+    }
+  ],
+  "result_index": 0
+}{
+  "results": [
+    {
+      "alternatives": [
+        {
+          "confidence": 0.99,
+          "transcript": "one two "
+        }
+      ],
+      "final": true
+    }
+  ],
+  "result_index": 0
+}{
+  "results": [
+    {
+      "alternatives": [
+        {
+          "transcript": "three "
+        }
+      ],
+      "final": false
+    }
+  ],
+  "result_index": 1
+}{
+  "results": [
+    {
+      "alternatives": [
+        {
+          "transcript": "three four "
+        }
+      ],
+      "final": false
+    }
+  ],
+  "result_index": 1
+}{
+  "results": [
+    {
+      "alternatives": [
+        {
+          "confidence": 0.99,
+          "transcript": "three four "
+        }
+      ],
+      "final": true
+    }
+  ],
+  "result_index": 1
+}
+```
+{: codeblock}
+
+### For next-generation models without interim results
+{: #ws-results-ng-without-interim}
+
+The client can receive multiple JSON objects in response. The response can contain multiple final results for separate utterances of the audio. The service always returns separate response objects for each final result. The service sends responses as soon as they are available. It does not wait for a `stop` message to send its results, but the `stop` message is still required to signal the end of transmission for the request.
+
+```javascript
+{
+  "results": [
+    {
+      "alternatives": [
+        {
+          "transcript": "one two "
+        }
+      ],
+      "final": true
+    },
+  ],
+  "result_index": 0
+}{
+  "results": [
+    {
+      "alternatives": [
+        {
+          "transcript": "three four "
+        }
+      ],
+      "final": true
+    }
+  ],
+  "result_index": 1
+}
+```
+{: codeblock}
+
+When you use a next-generation model, the service does not currently send a `confidence` field with final results. For more information, see [Known limitations](/docs/speech-to-text?topic=speech-to-text-release-notes#limitations).
+{: note}
+
+### For next-generation models with interim results
+{: #ws-results-ng-with-interim}
+
+The client receives multiple JSON objects in response. The service returns separate response objects for each final result and for each each interim result that is generated by the audio. The service sends responses as soon as they are available. It does not wait for a `stop` message to send its results, but the `stop` message is still required to signal the end of transmission for the request.
+
+The service's response when you request interim results is the same regardless of whether you use a previous- or next-generation model. To receive interim results with a next-generation model, the model must support low latency and both the `interim_results` and `low_latency` parameters must be set to `true`. For more information, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
+
+```javascript
+{
+  "results": [
+    {
+      "alternatives": [
+        {
+          "transcript": "one "
+        }
+      ],
+      "final": false
+    }
+  ],
+  "result_index": 0
+}{
+  "results": [
+    {
+      "alternatives": [
+        {
+          "transcript": "one two "
+        }
+      ],
+      "final": false
+    }
+  ],
+  "result_index": 0
+}{
+  "results": [
+    {
+      "alternatives": [
+        {
+          "transcript": "one two "
+        }
+      ],
+      "final": true
+    }
+  ],
+  "result_index": 0
+}{
+  "results": [
+    {
+      "alternatives": [
+        {
+          "transcript": "three "
+        }
+      ],
+      "final": false
+    }
+  ],
+  "result_index": 1
+}{
+  "results": [
+    {
+      "alternatives": [
+        {
+          "transcript": "three four "
+        }
+      ],
+      "final": false
+    }
+  ],
+  "result_index": 1
+}{
+  "results": [
+    {
+      "alternatives": [
+        {
+          "transcript": "three four "
+        }
+      ],
+      "final": true
+    }
+  ],
+  "result_index": 1
+}
+```
+{: codeblock}
+
+## Example WebSocket exchanges
+{: #ws-examples}
+
+The following examples show a series of exchanges between a client and the {{site.data.keyword.speechtotextshort}} service over a single WebSocket connection. The examples focus on the exchange of messages and data. They do not show opening and closing the connection. (The examples are based on a previous-generation model, so the final transcript for each response includes a `confidence` field.)
 
 ### First example exchange
-{: #firstExample}
+{: #ws-first-example}
 
 In the first exchange, the client sends audio that contains the string `Name the Mayflower`. The client sends a binary message with a single chunk of PCM (`audio/l16`) audio data, for which it indicates the required sampling rate. The client does not wait for the `{"state":"listening"}` response from the service to begin sending the audio data and to signal the end of the request. Sending the data immediately reduces latency because the audio is available to the service as soon as it is ready to handle a recognition request.
 
@@ -292,14 +527,14 @@ In the first exchange, the client sends audio that contains the string `Name the
 
     ```javascript
     {"state": "listening"}
-    {"results": [{"alternatives": [{"transcript": "name the mayflower "}],
-                  "final": true}], "result_index": 0}
+    {"results": [{"alternatives": [{"transcript": "name the mayflower ",
+                 "confidence": 0.91}], "final": true}], "result_index": 0}
     {"state":"listening"}
     ```
     {: codeblock}
 
 ### Second example exchange
-{: #secondExample}
+{: #ws-second-example}
 
 In the second exchange, the client sends audio that contains the string `Second audio transcript`. The client sends the audio in a single binary message and uses the same parameters that it specified in the first request.
 
@@ -316,16 +551,16 @@ In the second exchange, the client sends audio that contains the string `Second 
 -   The service responds:
 
     ```javascript
-    {"results": [{"alternatives": [{"transcript": "second audio transcript "}],
-                  "final": true}], "result_index": 0}
+    {"results": [{"alternatives": [{"transcript": "second audio transcript ",
+                 "confidence": 0.99}], "final": true}], "result_index": 0}
     {"state":"listening"}
     ```
     {: codeblock}
 
 ### Third example exchange
-{: #thirdExample}
+{: #ws-third-example}
 
-In the third exchange, the client again sends audio that contains the string `Name the Mayflower`. The client again sends a binary message with a single chunk of PCM audio data. But this time, the client requests interim results with the transcription.
+In the third exchange, the client again sends audio that contains the string `Name the Mayflower`. It sends a binary message with a single chunk of PCM audio data. But this time, the client sends a new `start` message that requests interim results from the service.
 
 -   The client sends:
 
@@ -345,15 +580,32 @@ In the third exchange, the client again sends audio that contains the string `Na
 -   The service responds:
 
     ```javascript
-    {"state":"listening"}
     {"results": [{"alternatives": [{"transcript": "name "}],
-                  "final": false}], "result_index": 0}
+                 "final": false}], "result_index": 0}
     {"results": [{"alternatives": [{"transcript": "name may "}],
-                  "final": false}], "result_index": 0}
+                 "final": false}], "result_index": 0}
     {"results": [{"alternatives": [{"transcript": "name may flour "}],
-                  "final": false}], "result_index": 0}
-    {"results": [{"alternatives": [{"transcript": "name the mayflower "}],
-                  "final": true}], "result_index": 0}
+                 "final": false}], "result_index": 0}
+    {"results": [{"alternatives": [{"transcript": "name the mayflower ",
+                 "confidence": 0.91}], "final": true}], "result_index": 0}
     {"state":"listening"}
     ```
     {: codeblock}
+
+## WebSocket return codes
+{: #ws-return}
+{: troubleshoot}
+{: support}
+
+The service can send the following return codes to the client over the WebSocket connection:
+
+-   `1000` indicates normal closure of the connection, meaning that the purpose for which the connection was established has been fulfilled.
+-   `1002` indicates that the service is closing the connection due to a protocol error.
+-   `1006` indicates that the connection closed abnormally.
+-   `1009` indicates that the frame size exceeded the 4 MB limit.
+-   `1011` indicates that the service is terminating the connection because it encountered an unexpected condition that prevents it from fulfilling the request.
+
+If the socket closes with an error, the client receives an informative message of the form `{"error":"{message}"}` before the socket closes. Use the `onerror` event handler to respond appropriately. For more information about WebSocket return codes, see [IETF RFC 6455](https://tools.ietf.org/html/rfc6455){: external}.
+
+The WebSocket implementations of the SDKs can return different or additional response codes. For more information, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+{: note}
