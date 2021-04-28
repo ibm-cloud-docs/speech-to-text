@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-22"
+lastupdated: "2021-04-28"
 
 subcollection: speech-to-text
 
@@ -165,7 +165,7 @@ The customization interface lets you create custom models to improve the service
 
 You can use a custom language model, a custom acoustic model, or both for speech recognition with any of the service's interfaces. For more information about customization and an overview of its capabilities, see [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization).
 
-You must have the Plus, Standard, or Premium pricing plan to use language model or acoustic model customization. Users of the Lite plan cannot use the customization interface. For more information, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
+You must have the Plus, Standard, or Premium pricing plan to use language model or acoustic model customization. Users of the Lite plan cannot use the customization interface, but they can upgrade to the Plus plan to gain access to customization. For more information, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
 {: note}
 
 ## Learning more about application development
