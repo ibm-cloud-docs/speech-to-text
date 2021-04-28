@@ -35,7 +35,7 @@ By default, the service returns no processing or audio metrics for a request.
 ## Processing metrics
 {: #processing-metrics}
 
-Processing metrics are available only with the WebSocket and asynchronous HTTP interfaces.  They are not available with the synchronous HTTP interface.
+Processing metrics are available only with the WebSocket and asynchronous HTTP interfaces. They are not available with the synchronous HTTP interface.
 {: note}
 
 Processing metrics provide detailed timing information about the service's analysis of the input audio. The service returns the metrics at specified intervals and with transcription events, such as interim and final results.
