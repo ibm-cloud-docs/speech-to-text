@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2020-04-04"
+lastupdated: "2020-04-23"
 
 subcollection: speech-to-text
 
@@ -52,7 +52,6 @@ The model name `ar-AR_BroadbandModel` is deprecated. Use the model name `ar-MS_B
 | Language | Broadband model | Narrowband model |
 |----------|:---------------:|:----------------:|
 | Arabic (Modern Standard) | `ar-MS_BroadbandModel` | Not supported |
-| Brazilian Portuguese | `pt-BR_BroadbandModel` | `pt-BR_NarrowbandModel` |
 | Chinese (Mandarin) | `zh-CN_BroadbandModel` | `zh-CN_NarrowbandModel` |
 | Dutch | `nl-NL_BroadbandModel` | `nl-NL_NarrowbandModel` |
 | English (Australian) | `en-AU_BroadbandModel` | `en-AU_NarrowbandModel` |
@@ -64,6 +63,7 @@ The model name `ar-AR_BroadbandModel` is deprecated. Use the model name `ar-MS_B
 | Italian | `it-IT_BroadbandModel` | `it-IT_NarrowbandModel` |
 | Japanese | `ja-JP_BroadbandModel` | `ja-JP_NarrowbandModel` |
 | Korean | `ko-KR_BroadbandModel` | `ko-KR_NarrowbandModel` |
+| Portuguese (Brazilian) | `pt-BR_BroadbandModel` | `pt-BR_NarrowbandModel` |
 | Spanish (Argentinian, Beta) | `es-AR_BroadbandModel` | `es-AR_NarrowbandModel` |
 | Spanish (Castilian) | `es-ES_BroadbandModel` | `es-ES_NarrowbandModel` |
 | Spanish (Chilean, Beta) | `es-CL_BroadbandModel` | `es-CL_NarrowbandModel` |

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-11"
+lastupdated: "2021-04-27"
 
 subcollection: speech-to-text
 
@@ -27,7 +27,7 @@ subcollection: speech-to-text
 # About
 {: #about}
 
-**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 12 April 2021. The service now supports next-generation language models that leverage deep neural networks and bidirectional analysis to achieve both higher throughput and greater transcription accuracy. The next-generation models are beta functionality. For more information, see the [12 April 2021 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#April2021) in the release notes.*
+**Service update:** *The {{site.data.keyword.speechtotextshort}} service was updated on 27 April 2021. The service supports two new beta next-generation models, `ar-MS_Telephony` and `pt-BR_Telephony`. The `es-ES_Telephony` model now supports low latency. And some next-generation models now support speaker labels with a few limitations. For more information about these and all recent updates, see the [27 April 2021 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#April2021b) in the release notes.*
 
 The {{site.data.keyword.speechtotextfull}} service provides speech transcription capabilities for your applications. The service leverages machine learning to combine knowledge of grammar, language structure, and the composition of audio and voice signals to accurately transcribe the human voice. It continuously updates and refines its transcription as it receives more speech.
 {: shortdesc}
@@ -62,7 +62,6 @@ The service provides a customization interface that you can use to tune speech r
 The service supports many languages and dialects:
 
 -   Arabic (Modern Standard)
--   Brazilian Portuguese
 -   Chinese (Mandarin)
 -   Dutch
 -   English (Australian, United Kingdom, and United States)
@@ -71,6 +70,7 @@ The service supports many languages and dialects:
 -   Italian
 -   Japanese
 -   Korean
+-   Portuguese (Brazilian)
 -   Spanish (Argentinian, Castilian, Chilean, Colombian, Mexican, and Peruvian)
 
 For more information about the supported languages and about using previous- and next-generation models for speech recognition, see [Using languages and models](/docs/speech-to-text?topic=speech-to-text-service-features#features-languages).

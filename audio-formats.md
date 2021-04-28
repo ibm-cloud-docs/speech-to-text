@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-15"
+lastupdated: "2021-04-27"
 
 subcollection: speech-to-text
 
@@ -37,14 +37,10 @@ The {{site.data.keyword.speechtotextfull}} service can extract speech from audio
 
 Table 1 provides a summary of the audio formats that the service supports.
 
--   *Audio format and compression* identifies each format and indicates its supported compression. You can send a maximum of 100 MB of audio to the service with a single synchronous HTTP or WebSocket request. By using a format that supports compression, you can reduce the size of your audio to maximize the amount of data that you can pass to the service. For more information, see [Data limits and compression](#audio-formats-limits).
--   *Content-type specification* indicates whether you must use the `Content-Type` header or equivalent parameter to specify the format (MIME type) of the audio that you send to the service. You can specify the audio format for any request, but that's not always necessary:
-    -   For most formats, the content type is optional. You can omit the content type or specify `application/octet-stream` to have the service automatically detect the format.
-    -   For others, the content type is required. These formats do not provide the information, such as the sampling rate, that the service needs to auto-detect their format.
+-   *Audio format and compression* identifies each format and indicates its supported compression. By using a format that supports compression, you can reduce the size of your audio to maximize the amount of data that you can pass to the service. For more information, see [Data limits and compression](#audio-formats-limits).
+-   *Content-type specification* indicates whether you must use the `Content-Type` header or equivalent parameter to specify the format (MIME type) of the audio that you send to the service. For more information, see [Specifying an audio format](#audio-formats-specifying).
 
-    When you use the `curl` command to make a speech recognition request with the HTTP interfaces, you must either specify the audio format with the `Content-Type` header, specify `"Content-Type: application/octet-stream"`, or specify just `"Content-Type:"`. If you omit the header entirely, `curl` uses a default value of `application/x-www-form-urlencoded`.
-    {: important}
--   The final columns identify additional *Required parameters* and *Optional parameters* for each format. The following sections provide more information about these parameters.
+The final columns identify additional *Required parameters* and *Optional parameters* for each format. The following sections provide more information about these parameters.
 
 | Audio format<br>and compression | Content-type<br/>specification | Required<br/>parameters | Optional<br/>parameters |
 |---------------------------------|:------------------------------:|:-----------------------:|:------------------:|
@@ -149,6 +145,21 @@ If you omit the codec, the service automatically detects it from the input audio
 
 For JavaScript code that shows how to capture audio from a microphone in a Chrome browser and encode it into a WebM data stream, see [jsbin.com/hedujihuqo/edit?js,console](https://jsbin.com/hedujihuqo/edit?js,console){: external}. The code does not submit the captured audio to the service.
 {: tip}
+
+## Specifying an audio format
+{: #audio-formats-specifying}
+
+You use the `Content-Type` request header or equivalent parameter to specify the format (MIME type) of the audio that you send to the service. You can specify the audio format for any request, but that's not always necessary:
+
+-   For most formats, the content type is optional. You can omit the content type or specify `application/octet-stream` to have the service automatically detect the format.
+-   For other formats, the content type is required. These formats do not provide the information, such as the sampling rate, that the service needs to auto-detect their format. You must specify a content type for the `audio/alaw`, `audio/basic`, `audio/l16`, and `audio/mulaw` formats.
+
+For more information about the formats that require a content-type specification, see Table 1 in [Audio formats](#audio-formats-list). The table's *Content-type specification* column indicates whether you must specify the content type.
+
+For examples of specifying a content type with each of the service's interfaces, see [Making a speech recognition request](/docs/speech-to-text?topic=speech-to-text-basic-request). All of the examples in that topic specify a content type.
+
+When you use the `curl` command to make a speech recognition request with the HTTP interfaces, you must either specify the audio format with the `Content-Type` header, specify `"Content-Type: application/octet-stream"`, or specify just `"Content-Type:"`. If you omit the header entirely, `curl` uses a default value of `application/x-www-form-urlencoded`.
+{: important}
 
 ## Data limits and compression
 {: #audio-formats-limits}

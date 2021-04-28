@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-22"
+lastupdated: "2021-04-27"
 
 subcollection: speech-to-text
 
@@ -26,7 +26,7 @@ subcollection: speech-to-text
 # Release notes
 {: #release-notes}
 
-The following sections document the new features and changes that were included for each release and update of the {{site.data.keyword.speechtotextfull}} service.  The information includes any known limitations. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
+The following sections document the new features and changes that were included for each release and update of the {{site.data.keyword.speechtotextfull}} service. The information includes any known limitations. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
 {: shortdesc}
 
 ## Known limitations
@@ -34,15 +34,116 @@ The following sections document the new features and changes that were included 
 
 The service has the following known limitations:
 
--   **12 April 2021:** When you use a next-generation model for speech recognition, final transcription results do not include the `confidence` field. The field is always included in final transcription results when you use a previous-generation model.
+-   **27 April 2021:** When you use previous-generation models with the WebSocket interface, if you request both speaker labels and interim results, the speaker labels response includes an extra object. The final results duplicate the object for the last speaker label. Instead of appearing once with `"final": true`, the object appears twice: once with `"final": false` and once with `"final": true`.
+
+    For example, a WebSocket request that includes both speaker labels and interim results sends a `start` message like the following:
+
+    ```javascript
+    var message = {
+      action: 'start',
+      speaker_labels: true,
+      interim_results: true
+    };
+    websocket.send(JSON.stringify(message));
+    ```
+    {: codeblock}
+
+    To indicate final results for speaker labels, the service is supposed to return a response of the following form:
+
+    ```javascript
+    {
+      "speaker_labels": [
+        . . .
+        {
+          "from": 1.01,
+          "to": 1.75,
+          "speaker": 0,
+          "confidence": 0.75,
+          "final": false
+        },
+        {
+          "from": 1.76,
+          "to": 2.50,
+          "speaker": 1,
+          "confidence": 0.80,
+          "final": true
+        }
+      ]
+    }
+    ```
+    {: codeblock}
+
+    Instead, the service returns final results like the following. Note that the object for the last speaker label, which begins at `1.76` and ends at `2.50`, is returned twice. The `"final": true` indication is associated with the second instance of the label.
+
+    ```javascript
+    {
+      "speaker_labels": [
+        . . .
+        {
+          "from": 1.01,
+          "to": 1.75,
+          "speaker": 0,
+          "confidence": 0.75,
+          "final": false
+        },
+        {
+          "from": 1.76,
+          "to": 2.50,
+          "speaker": 1,
+          "confidence": 0.80,
+          "final": false
+        }
+      ]
+    }{
+      "from": 1.76,
+      "to": 2.50,
+      "speaker": 1,
+      "confidence": 0.80,
+      "final": true
+    }
+    ```
+    {: codeblock}
+
+    For more information about using speaker labels with interim results, see [Requesting interim results for speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels#speaker-labels-interim).
+
+-   **12 April 2021:** When you use a next-generation model for speech recognition, final transcription results do not include the `confidence` field. The field is always included in final transcription results when you use a previous-generation model. For more information, see [Understanding speech recognition results](/docs/speech-to-text?topic=speech-to-text-basic-response).
+
 -   **6 August 2020:** The `GET /v1/models` and `GET /v1/models/{model_id}` methods list information about language models. Under `supported_features`, the `speaker_labels` field indicates whether you can use the `speaker_labels` parameter with a model. At this time, the field returns `true` for all models.
 
     However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
+## 27 April 2021
+{: #April2021b}
+
+-   The service supports two new beta next-generation models:
+    -   The Brazilian Portuguese `pt-BR_Telephony` model, which supports low latency.
+    -   The Modern Standard Arabic `ar-MS_Telephony` model, which does not support low latency.
+
+    For more information, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+-   The beta next-generation Castilian Spanish `es-ES_Telephony` model now supports the `low_latency` parameter. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
+-   The `speaker_labels` parameter is now supported for use with the following next-generation models:
+    -   The Australian English `en-AU_Telephony` model
+    -   The UK English `en-GB_Telephony` model
+    -   The US English `en-US_Multimedia` and `en-US_Telephony` models
+    -   The German `de-DE_Telephony` model
+    -   The Castilian Spanish `es-ES_Telephony` model
+
+    With the next generation models, the `speaker_labels` parameter is not supported for use with the `interim_results` or `low_latency` parameters at this time. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
+-   The `word_confidence` parameter is not supported for use with next-generation models. The service now returns a 400 error code if you use the `word_confidence` parameter with a next-generation model for speech recognition. For example:
+
+    ```javascript
+    {
+      "error": "word_confidence is not a supported feature for model en-US_Telephony",
+      "code": 400,
+      "code_description": "Bad Request"
+    }
+    ```
+    {: codeblock}
+
 ## 12 April 2021
-{: #April2021}
+{: #April2021a}
 
 The next-generation language models and the `low_latency` parameter are beta functionality. The next-generation models support a limited number of languages and features at this time. The supported languages, models, and features will increase with future releases.
 {: beta}
@@ -64,14 +165,10 @@ The `low_latency` parameter impacts your use of the `interim_results` parameter 
 
 **Defect fix:** The limitation that was reported with the asynchronous HTTP interface in the Dallas data center (`us-south`) on 16 December 2020 has been addressed. Previously, a small percentage of jobs were entering infinite loops that prevented their execution. Asynchronous HTTP requests in the Dallas data center no longer experience this limitation.
 
-## 2 December 2020
-{: #December2020}
-
-The Arabic language broadband model is now named `ar-MS_BroadbandModel`. The former name, `ar-AR_BroadbandModel`, is deprecated. It will continue to function for at least one year but might be removed at a future date. You are encouraged to migrate to the new name at your earliest convenience.
-
 ## Older releases
 {: #older}
 
+-   [2 December 2020](#December2020)
 -   [2 November 2020](#November2020)
 -   [22 October 2020](#October2020b)
 -   [7 October 2020](#October2020a)
@@ -135,12 +232,18 @@ The Arabic language broadband model is now named `ar-MS_BroadbandModel`. The for
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
 
+### 2 December 2020
+{: #December2020}
+
+The Arabic language broadband model is now named `ar-MS_BroadbandModel`. The former name, `ar-AR_BroadbandModel`, is deprecated. It will continue to function for at least one year but might be removed at a future date. You are encouraged to migrate to the new name at your earliest convenience.
+
 ### 2 November 2020
 {: #November2020}
 
--   The Canadian French models, `fr-CA_BroadbandModel` and `fr-CA_NarrowbandModel`, are now generally available; they were previously beta. They also now support language model and acoustic model customization.
-    -   For more information about supported languages and models, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
-    -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+The Canadian French models, `fr-CA_BroadbandModel` and `fr-CA_NarrowbandModel`, are now generally available; they were previously beta. They also now support language model and acoustic model customization.
+
+-   For more information about supported languages and models, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+-   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
 
 ### 22 October 2020
 {: #October2020b}
@@ -158,11 +261,12 @@ The Arabic language broadband model is now named `ar-MS_BroadbandModel`. The for
 ### 7 October 2020
 {: #October2020a}
 
--   The `ja-JP_BroadbandModel` model has been updated for improved speech recognition. By default, the service automatically uses the updated model for all speech recognition requests. If you have custom language or custom acoustic models that are based on this model, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
-    -   `POST /v1/customizations/{customization_id}/upgrade_model`
-    -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+The `ja-JP_BroadbandModel` model has been updated for improved speech recognition. By default, the service automatically uses the updated model for all speech recognition requests. If you have custom language or custom acoustic models that are based on this model, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
 
-    For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
+-   `POST /v1/customizations/{customization_id}/upgrade_model`
+-   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
+
+For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 
 ### 30 September 2020
 {: #September2020}
@@ -184,11 +288,12 @@ For more information about the available pricing plans, see the following resour
 ### 20 August 2020
 {: #August2020b}
 
--   The service now offers beta broadband and narrowband models for Canadian French:
-    -   `fr-CA_BroadbandModel`
-    -   `fr-CA_NarrowbandModel`
+The service now offers beta broadband and narrowband models for Canadian French:
 
-    The new models do not support language model or acoustic model customization, speaker labels, or smart formatting. For more information about these and all supported models, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported).
+-   `fr-CA_BroadbandModel`
+-   `fr-CA_NarrowbandModel`
+
+The new models do not support language model or acoustic model customization, speaker labels, or smart formatting. For more information about these and all supported models, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported).
 
 ### 5 August 2020
 {: #August2020a}

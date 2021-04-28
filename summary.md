@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-21"
+lastupdated: "2021-04-27"
 
 subcollection: speech-to-text
 
@@ -15,6 +15,7 @@ subcollection: speech-to-text
 {:note: .note}
 {:deprecated: .deprecated}
 {:pre: .pre}
+{:beta: .beta}
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:javascript: .ph data-hd-programlang='javascript'}
@@ -25,8 +26,14 @@ subcollection: speech-to-text
 # Parameter summary
 {: #summary}
 
-A summary follows of all of the parameters available for speech recognition. For more information about all methods of the {{site.data.keyword.speechtotextshort}} service, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+The following sections provide a summary of all of the parameters that are available for speech recognition. The information includes availability for previous- and next-generation models, and support and usage for speech recognition interfaces.
 {: shortdesc}
+
+-   For more information about supported previous-generation languages and models, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+-   For more information about supported next-generation languages and models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+
+All next-generation models are beta functionality.
+{: beta}
 
 ## access_token
 {: #summary-access-token}
@@ -35,7 +42,8 @@ A required Identity and Access Management (IAM) access token that you use to est
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all languages. *Supported by next-generation models.* |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Beta for all next-generation languages. |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
 | Synchronous HTTP       | Not supported |
 | Asynchronous HTTP      | Not supported |
@@ -48,7 +56,8 @@ An optional customization ID for a custom acoustic model that is adapted for the
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available or beta for all models that support acoustic model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport). |
+| Previous-generation models | Generally available or beta for all models that support acoustic model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport). |
+| Next-generation models     | Not available. |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -61,7 +70,8 @@ An optional boolean that indicates whether the service returns metrics about the
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all languages. |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -74,7 +84,8 @@ An optional float between 0.0 and 1.0 that indicates the level to which backgrou
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all language models except for `ar-MS_BroadbandModel`, `pt-BR_BroadbandModel`, `zh-CN_BroadbandModel`, `zh-CN_NarrowbandModel`, and `de-DE_BroadbandModel`. *Supported by next-generation models.* |
+| Previous-generation models | Generally available for all language models except for `ar-MS_BroadbandModel`, `pt-BR_BroadbandModel`, `zh-CN_BroadbandModel`, `zh-CN_NarrowbandModel`, and `de-DE_BroadbandModel`. |
+| Next-generation models     | Beta for all next-generation languages. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -87,7 +98,8 @@ An optional version of a base model. The parameter is intended primarily for use
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all languages. |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Not available. |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -96,11 +108,12 @@ An optional version of a base model. The parameter is intended primarily for use
 ## Content-Type
 {: #summary-content-type}
 
-An optional audio format (MIME type) that specifies the format of the audio data that you pass to the service. The service can automatically detect the format of most audio, so the parameter is optional for most formats. It is required for the `audio/alaw`, `audio/basic`, `audio/l16`, and `audio/mulaw` formats. For more information, see [Supported audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
+An optional audio format (MIME type) that specifies the format of the audio data that you pass to the service. The service can automatically detect the format of most audio, so the parameter is optional for most formats. It is required for the `audio/alaw`, `audio/basic`, `audio/l16`, and `audio/mulaw` formats. For more information, see [Specifying an audio format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-specifying).
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all languages. *Supported by next-generation models.* |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Beta for all next-generation languages. |
 | WebSocket              | `content-type` parameter of JSON `start` message |
 | Synchronous HTTP       | Request header of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Request header of `POST /v1/recognitions` method |
@@ -113,7 +126,8 @@ An optional double between 0.0 and 1.0 that indicates the relative weight that t
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available or beta for all models that support language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport). |
+| Previous-generation models | Generally available or beta for all models that support language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport). |
+| Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -126,7 +140,8 @@ An optional double between 0.0 and 120.0 that indicates the pause interval at wh
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all languages. |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -139,7 +154,8 @@ An optional string that identifies a grammar that is to be used for speech recog
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Beta for all models that support language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport). |
+| Previous-generation models | Beta for all models that support language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport). |
+| Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -152,7 +168,8 @@ An optional integer that specifies the number of seconds for the service's inact
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all languages. *Supported by next-generation models.* |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Beta for all next-generation languages. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -163,11 +180,10 @@ An optional integer that specifies the number of seconds for the service's inact
 
 An optional boolean that directs the service to return intermediate hypotheses that are likely to change before the final transcript. By default (`false`), interim results are not returned. Interim results are available only with the WebSocket interface. For more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results).
 
-With the next-generation models, interim results are available only with those next-generation models that support low latency and only if both the `low_latency` and `interim_results` parameters are set to `true`. For more information, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
-
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all languages. *Supported by next-generation models that support low latency, but only when the `low_latency` parameter is set to `true`.* |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Beta for next-generation models that support low latency, but only if both the `interim_results` and `low_latency` parameters are set to `true`. For more information, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency). |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Not supported |
 | Asynchronous HTTP      | Not supported |
@@ -180,7 +196,8 @@ An optional array of keyword strings that the service spots in the input audio. 
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all languages. |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -193,7 +210,8 @@ An optional double between 0.0 and 1.0 that indicates the minimum threshold for 
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all languages. |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -206,7 +224,8 @@ An optional customization ID for a custom language model that includes terminolo
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available or beta for all models that support language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport). |
+| Previous-generation models | Generally available or beta for all models that support language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport). |
+| Next-generation models     | Not available. |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -215,13 +234,12 @@ An optional customization ID for a custom language model that includes terminolo
 ## low_latency
 {: #summary-low-latency}
 
-An optional boolean that indicates whether the service is to produce results more quickly at the possible expense of transcription accuracy. The parameter is available only for next-generation models that support low-latency. By default (`false`), low latency is not enabled. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
-
-With the WebSocket interface, both the `low_latency` and `interim_results` parameters must be set to `true` to obtain interim results with the next-generation models. For more information, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
+An optional boolean that indicates whether the service is to produce results more quickly at the possible expense of transcription accuracy. By default (`false`), low latency is not enabled. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Beta and supported only by next-generation models that support low latency. For more information, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported) for next-generation models. |
+| Previous-generation models | Not available. |
+| Next-generation models     | Beta for all next-generation models that support low latency. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -234,7 +252,8 @@ An optional integer that specifies the maximum number of alternative hypotheses 
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all languages. |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -247,7 +266,8 @@ An optional model that specifies the language in which the audio is spoken and t
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all languages. *Supported by next-generation models.* |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Beta for all next-generation languages. |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -260,7 +280,8 @@ An optional boolean that indicates whether the service returns metrics about its
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all languages. |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Not supported |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -273,7 +294,8 @@ An optional float of at least 0.1 that indicates the interval at which the servi
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all languages. |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Not supported |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -286,7 +308,8 @@ An optional boolean that indicates whether the service censors profanity from a 
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for US English and Japanese. *Supported by next-generation models.* |
+| Previous-generation models | Generally available for US English and Japanese. |
+| Next-generation models     | Beta for US English. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -295,11 +318,12 @@ An optional boolean that indicates whether the service censors profanity from a 
 ## redaction
 {: #summary-redaction}
 
-An optional boolean that indicates whether the service redacts numeric data with three or more consecutive digits from a transcript. If you set the `redaction` parameter to `true`, the service automatically forces the `smart_formatting` parameter to be `true`. By default (`false`), numeric data is not redacted. For more information, see [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-formatting#numeric-redaction).
+An optional boolean that indicates whether the service redacts numeric data with three or more consecutive digits from a transcript. By default (`false`), numeric data is not redacted. If you set the `redaction` parameter to `true`, the service automatically forces the `smart_formatting` parameter to be `true`, and it disables the `keywords`, `keywords_threshold`, `max_alternatives`, and (for the WebSocket interface) `interim_results` parameters. For more information, see [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-formatting#numeric-redaction).
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Beta for US English, Japanese, and Korean. *Supported by next-generation models.* |
+| Previous-generation models | Beta for US English, Japanese, and Korean. |
+| Next-generation models     | Beta for US English. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -312,7 +336,8 @@ An optional boolean that indicates whether the service converts dates, times, nu
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Beta for US English, Japanese, and Spanish. *Supported by next-generation models.* |
+| Previous-generation models | Beta for US English, Japanese, and Spanish. |
+| Next-generation models     | Beta for US English and Spanish. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -325,7 +350,8 @@ An optional boolean that indicates whether the service identifies which individu
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Beta for US English, Australian English, German, Japanese, Korean, and Spanish (broadband and narrowband models) and UK English (narrowband model only). |
+| Previous-generation models | Beta for US English, Australian English, German, Japanese, Korean, and Spanish (broadband and narrowband models) and UK English (narrowband model only). |
+| Next-generation models     | Beta for English (Australian, UK, and US), German, and Spanish. Not supported for use with the `interim_results` or `low_latency` parameters. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -338,7 +364,8 @@ An optional float between 0.0 and 1.0 that indicates the sensitivity of speech r
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all language models except for `ar-MS_BroadbandModel`, `pt-BR_BroadbandModel`, `zh-CN_BroadbandModel`, `zh-CN_NarrowbandModel`, and `de-DE_BroadbandModel`. *Supported by next-generation models.* |
+| Previous-generation models | Generally available for all language models except for `ar-MS_BroadbandModel`, `pt-BR_BroadbandModel`, `zh-CN_BroadbandModel`, `zh-CN_NarrowbandModel`, and `de-DE_BroadbandModel`. |
+| Next-generation models     | Beta for all next-generation languages. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -351,7 +378,8 @@ An optional boolean that indicates whether the service splits a transcript into 
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all languages. |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -364,7 +392,8 @@ An optional boolean that indicates whether the service produces timestamps for t
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all languages. *Supported by next-generation models.* |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Beta for all next-generation languages. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -377,7 +406,8 @@ An optional value of `chunked` that causes the audio to be streamed to the servi
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all languages. *Supported by next-generation models.* |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Beta for all next-generation languages. |
 | WebSocket              | Not applicable; always streamed |
 | Synchronous HTTP       | Request header of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Request header of `POST /v1/recognitions` method |
@@ -390,7 +420,8 @@ An optional double between 0.0 and 1.0 that specifies the threshold at which the
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all languages. |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -403,7 +434,8 @@ An optional boolean that indicates whether the service provides confidence measu
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all languages. |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -416,7 +448,8 @@ An optional boolean that indicates whether you opt out of the default request lo
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all languages. *Supported by next-generation models.* |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Beta for all next-generation languages. |
 | WebSocket              | `x-watson-learning-opt-out` query parameter of `/v1/recognize` connection request |
 | Synchronous HTTP       | Request header of each request |
 | Asynchronous HTTP      | Request header of each request |
@@ -429,7 +462,8 @@ An optional string that associates a customer ID with data that is passed for re
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Availability           | Generally available for all languages. *Supported by next-generation models.* |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Beta for all next-generation languages. |
 | WebSocket              | `x-watson-metadata` query parameter of `/v1/recognize` connection request. (You must URL-encode the argument, for example, `customer_id%3dmy_customer_ID`.) |
 | Synchronous HTTP       | Request header of POST `/v1/recognize` request |
 | Asynchronous HTTP      | Request header of `POST /v1/register_callback` and `POST /v1/recognitions` requests |
