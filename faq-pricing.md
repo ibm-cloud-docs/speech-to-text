@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-02"
+lastupdated: "2021-04-28"
 
 subcollection: speech-to-text
 
@@ -31,16 +31,17 @@ content-type: faq
 
 The {{site.data.keyword.speechtotextfull}} service is available at three pricing plans: Lite, Plus, and Premium. The following FAQs provide an overview of the pricing plans. For more information, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external} or read the blog [IBM Watson Speech to Text: Cloud Pricing Updates](https://medium.com/@kventurato/ibm-watson-speech-to-text-cloud-pricing-updates-df1adebd4b8c){: external}.
 
-The Standard plan is no longer available for purchase by new users. The Standard plan continues to be available to existing users of the plan indefinitely. For more information, see [Can I continue to use the {{site.data.keyword.speechtotextshort}} Standard plan?](#faq-pricing-standard) For new users, read about our new Plus and Premium plans below.
+The Standard plan is no longer available for purchase by users. The Standard plan continues to be available to its existing users indefinitely. For more information, see [Can I continue to use the {{site.data.keyword.speechtotextshort}} Standard plan?](#faq-pricing-standard) For new users, read about the new Plus and Premium plans below.
 {: note}
 
 ## What is the price for using the {{site.data.keyword.speechtotextshort}} Lite plan?
 {: #faq-pricing-lite}
 {: faq}
 
-The Lite plan lets you get started with 500 minutes per month of speech recognition at no cost. You can use both broadband and narrowband models for speech recognition. The Lite plan does not provide access to customization. To gain access to customization capabilities, you must upgrade to a paid plan, such as the Plus plan. Services that are created with the Lite plan are deleted after 30 days of inactivity.
+The Lite plan lets you get started with 500 minutes per month of speech recognition at no cost. You can use any available model for speech recognition. The Lite plan does not provide access to customization. You must use a paid plan to use customization.
 
 The Lite plan is intended for any user who wants to try out the service before committing to a purchase. For more information, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}.
+Services that are created with the Lite plan are deleted after 30 days of inactivity.
 
 ## What is the price for using the {{site.data.keyword.speechtotextshort}} Plus plan?
 {: #faq-pricing-plus}
@@ -48,9 +49,9 @@ The Lite plan is intended for any user who wants to try out the service before c
 
 The Plus plan provides access to all of the service's features:
 
--   Use of both broadband and narrowband models (same as the Lite plan).
+-   Use of all available models (same as the Lite plan).
 -   Unlimited creation and use of custom language and custom acoustic models at no extra charge.
--   A maximum of one hundred concurrent transcriptions from all interfaces, WebSocket and HTTP, combined.
+-   A maximum of one hundred concurrent transcription requests from all interfaces, WebSocket and HTTP, combined.
 
 The plan uses a simple tiered pricing model to give high-volume users further discounts as they use the service more heavily. Pricing is based on the aggregate number of minutes of audio that you recognize per month:
 
@@ -63,9 +64,25 @@ The Plus plan is intended for small businesses. It is also a good choice for lar
 {: #faq-pricing-standard}
 {: faq}
 
-Existing users of the Standard plan can continue to use the plan indefinitely with no change in their pricing. Their API settings and custom models remain unaffected. (The Standard plan is no longer available for purchase by new users.)
+The Standard plan is no longer available for purchase by new users. But existing users of the Standard plan can continue to use the plan indefinitely with no change in their pricing. Their API settings and custom models remain unaffected.
 
 Existing users can also choose to upgrade to the new Plus plan by visiting the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}. They will continue to have access to all of their settings and custom models after upgrading. And, if they find that the Plus plan does not meet their needs for any reason, they can always downgrade back to their Standard plan.
+
+## What pricing plan do I need to use the service's customization interface?
+{: #faq-pricing-customization}
+{: faq}
+
+You must have a paid plan (Plus, Standard, or Premium) to use language model or acoustic model customization. Users of the Lite plan cannot use customization. To use customization, users of the Lite plan must upgrade to a paid plan such as the Plus plan.
+
+## How do I upgrade from the Lite plan to the Plus plan?
+{: #faq-pricing-upgrade}
+{: faq}
+
+You can upgrade from the Lite plan to the Plus plan, for example, to gain access to customization. To upgrade from the Lite plan to the Plus plan, use the **Upgrade** button in the resource catalog page for your service instance:
+
+-   From the [resource list](https://cloud.ibm.com/resources){: external}, click on your {{site.data.keyword.speechtotextshort}} instance to go to the {{site.data.keyword.speechtotextshort}} dashboard page.
+-   From the **Manage** page, click **Upgrade** to move to the Plus plan.
+-   Follow the steps on the **Plan** page to complete your upgrade.
 
 ## What does "pricing per minute" mean?
 {: #faq-pricing-per-minute}
@@ -87,12 +104,6 @@ For information about pricing for the Plus and Standard plans, see the {{site.da
 {: faq}
 
 Yes, all audio that you send to the service contributes to your cumulative minutes of audio. This includes silence and noisy audio that does not contain or otherwise contribute to speech recognition. Because the service must process all audio that it receives, it does not distinguish between the type or quality of audio that you send. For pricing purposes, three seconds of silence is equivalent to three seconds of actual speech.
-
-## What pricing plan do I need to use the service's customization interface?
-{: #faq-pricing-customization}
-{: faq}
-
-You must have a paid plan (Plus, Standard, or Premium) to use language model or acoustic model customization. Users of the Lite plan cannot use customization. To use customization, users of the Lite plan must create a new paid plan; you cannot upgrade from the Lite plan to a paid plan.
 
 ## What advantages do I get by using a {{site.data.keyword.speechtotextshort}} Premium plan?
 {: #faq-pricing-premium}
