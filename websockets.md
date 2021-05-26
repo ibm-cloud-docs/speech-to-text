@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-22"
+lastupdated: "2021-05-26"
 
 subcollection: speech-to-text
 
@@ -389,6 +389,7 @@ The client can receive multiple JSON objects in response. The response can conta
     {
       "alternatives": [
         {
+          "confidence": 0.99,
           "transcript": "one two "
         }
       ],
@@ -401,6 +402,7 @@ The client can receive multiple JSON objects in response. The response can conta
     {
       "alternatives": [
         {
+          "confidence": 0.99,
           "transcript": "three four "
         }
       ],
@@ -411,9 +413,6 @@ The client can receive multiple JSON objects in response. The response can conta
 }
 ```
 {: codeblock}
-
-When you use a next-generation model, the service does not currently send a `confidence` field with final results. For more information, see [Known limitations](/docs/speech-to-text?topic=speech-to-text-release-notes#limitations).
-{: note}
 
 ### For next-generation models with interim results
 {: #ws-results-ng-with-interim}
@@ -452,6 +451,7 @@ The service's response when you request interim results is the same regardless o
     {
       "alternatives": [
         {
+          "confidence": 0.99,
           "transcript": "one two "
         }
       ],
@@ -488,6 +488,7 @@ The service's response when you request interim results is the same regardless o
     {
       "alternatives": [
         {
+          "confidence": 0.99,
           "transcript": "three four "
         }
       ],

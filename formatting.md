@@ -32,7 +32,7 @@ The {{site.data.keyword.speechtotextfull}} service provides three features that 
 ## Smart formatting
 {: #smart-formatting}
 
-The smart formatting feature is beta functionality that is available for US English, Spanish, and Japanese.
+The smart formatting feature is beta functionality that is available for US English, Japanese, and Spanish.
 {: beta}
 
 The `smart_formatting` parameter directs the service to convert the following strings into more conventional representations:
@@ -53,7 +53,13 @@ Smart formatting impacts some transcription results and not others:
 
 -   Smart formatting affects only words in the `transcript` field of final results, those results for which the `final` field is `true`. It does not affect interim results, for which `final` is `false`.
 -   Smart formatting does not affect words in other fields of the response. For example, smart formatting is not applied to response data in the `timestamps` or `alternatives` fields.
--   Hesitation markers and disfluencies, such as "uhm" and "uh", can adversely impact the conversion of phrases and strings by smart formatting. Therefore, smart formatting suppresses hesitation markers from the `transcript` field for final results. Hesitation markers continue to appear in interim results. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
+-   Hesitation markers and disfluencies, such as "uhm" and "uh", can adversely impact the conversion of phrases and strings by smart formatting for some languages.
+    -   *For US English,* smart formatting suppresses hesitation markers from the `transcript` field for final results.
+    -   *For Japanese,* hesitation markers continue to appear in final results.
+    -   *For both US English and Japanese,* hesitation markers continue to appear in interim results.
+    -   *For Spanish,* the service does not produce hesitation markers for any results.
+
+    For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 
 ### Language differences
 {: #smart-formatting-differences}
