@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-27"
+lastupdated: "2021-05-26"
 
 subcollection: speech-to-text
 
@@ -71,7 +71,7 @@ An optional boolean that indicates whether the service returns metrics about the
 | Availability and usage | Description |
 |------------------------|-------------|
 | Previous-generation models | Generally available for all languages. |
-| Next-generation models     | Not available. |
+| Next-generation models     | Beta for all next-generation languages. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -435,7 +435,7 @@ An optional boolean that indicates whether the service provides confidence measu
 | Availability and usage | Description |
 |------------------------|-------------|
 | Previous-generation models | Generally available for all languages. |
-| Next-generation models     | Not available. |
+| Next-generation models     | Beta for all next-generation languages. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |

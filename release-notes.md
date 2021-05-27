@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-27"
+lastupdated: "2021-05-26"
 
 subcollection: speech-to-text
 
@@ -28,6 +28,11 @@ subcollection: speech-to-text
 
 The following sections document the new features and changes that were included for each release and update of the {{site.data.keyword.speechtotextfull}} service. The information includes any known limitations. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
 {: shortdesc}
+
+## Beta features
+{: release-notes-beta-features}
+
+IBM occasionally releases features and language support that are classified as beta. Such features are provided so that you can evaluate their functionality. They might not provide the same level of performance or compatibility that generally available (GA) features provide. They might be unstable and are subject to change or removal with short notice. They are not intended for use in a production environment.
 
 ## Known limitations
 {: #limitations}
@@ -106,13 +111,22 @@ The service has the following known limitations:
 
     For more information about using speaker labels with interim results, see [Requesting interim results for speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels#speaker-labels-interim).
 
--   **12 April 2021:** When you use a next-generation model for speech recognition, final transcription results do not include the `confidence` field. The field is always included in final transcription results when you use a previous-generation model. For more information, see [Understanding speech recognition results](/docs/speech-to-text?topic=speech-to-text-basic-response).
-
 -   **6 August 2020:** The `GET /v1/models` and `GET /v1/models/{model_id}` methods list information about language models. Under `supported_features`, the `speaker_labels` field indicates whether you can use the `speaker_labels` parameter with a model. At this time, the field returns `true` for all models.
 
     However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
+
+## 26 May 2021
+{: #May2021}
+
+-   The `audio_metrics` parameter is now supported as beta functionality for use with all next-generation languages and models. For more information, see [Audio metrics](/docs/speech-to-text?topic=speech-to-text-metrics#audio-metrics).
+-   The `word_confidence` parameter is now supported as beta functionality for use with all next-generation languages and models. For more information, see [Word confidence](/docs/speech-to-text?topic=speech-to-text-metadata#word-confidence).
+-   **Defect fix:** When you use a next-generation model for speech recognition, final transcription results now include the `confidence` field. The field was always included in final transcription results when you use a previous-generation model. This fix addresses a limitation that was reported for the 12 April 2021 release of the next-generation models.
+-   **Defect fix:** The documentation incorrectly stated that using the `smart_formatting` parameter causes the service to remove hesitation markers from final transcription results for Japanese. Smart formatting does not remove hesitation markers from final results for Japanese, only for US English. For more information, see [What results does smart formatting affect?](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-effects)
+
+The [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external} is not yet updated for these changes.
+{: note}
 
 ## 27 April 2021
 {: #April2021b}
@@ -122,7 +136,9 @@ The service has the following known limitations:
     -   The Modern Standard Arabic `ar-MS_Telephony` model, which does not support low latency.
 
     For more information, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+
 -   The beta next-generation Castilian Spanish `es-ES_Telephony` model now supports the `low_latency` parameter. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
+
 -   The `speaker_labels` parameter is now supported for use with the following next-generation models:
     -   The Australian English `en-AU_Telephony` model
     -   The UK English `en-GB_Telephony` model
@@ -131,6 +147,7 @@ The service has the following known limitations:
     -   The Castilian Spanish `es-ES_Telephony` model
 
     With the next generation models, the `speaker_labels` parameter is not supported for use with the `interim_results` or `low_latency` parameters at this time. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
+
 -   The `word_confidence` parameter is not supported for use with next-generation models. The service now returns a 400 error code if you use the `word_confidence` parameter with a next-generation model for speech recognition. For example:
 
     ```javascript
@@ -160,14 +177,10 @@ The `low_latency` parameter impacts your use of the `interim_results` parameter 
 -   For more information about the `low_latency` parameter, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
 -   For more information about the interaction between the `low_latency` and `interim_results` parameters for next-generation models, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
 
-## 17 March 2021
-{: #March2021}
-
-**Defect fix:** The limitation that was reported with the asynchronous HTTP interface in the Dallas data center (`us-south`) on 16 December 2020 has been addressed. Previously, a small percentage of jobs were entering infinite loops that prevented their execution. Asynchronous HTTP requests in the Dallas data center no longer experience this limitation.
-
 ## Older releases
 {: #older}
 
+-   [17 March 2021](#March2021)
 -   [2 December 2020](#December2020)
 -   [2 November 2020](#November2020)
 -   [22 October 2020](#October2020b)
@@ -231,6 +244,11 @@ The `low_latency` parameter impacts your use of the `interim_results` parameter 
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 17 March 2021
+{: #March2021}
+
+**Defect fix:** The limitation that was reported with the asynchronous HTTP interface in the Dallas data center (`us-south`) on 16 December 2020 has been addressed. Previously, a small percentage of jobs were entering infinite loops that prevented their execution. Asynchronous HTTP requests in the Dallas data center no longer experience this limitation.
 
 ### 2 December 2020
 {: #December2020}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-22"
+lastupdated: "2021-05-26"
 
 subcollection: speech-to-text
 
@@ -64,8 +64,8 @@ If the input audio is more complex or the request includes additional parameters
 
 The `alternatives` field provides an array of transcription results. For this request, the array includes just one element.
 
--   The `confidence` field is a score that indicates the service's confidence in the transcript, which for this example exceeds 90 percent. When you use a previous-generation model, the `confidence` field is always included for `final` transcription results. When you use a next-generation model, the `confidence` field is never included.
 -   The `transcript` field provides the results of the transcription.
+-   The `confidence` field is a score that indicates the service's confidence in the transcript, which for this example exceeds 90 percent.
 
 The `final` and `result_index` fields qualify the meaning of these fields.
 
@@ -200,9 +200,15 @@ Silence of 30 seconds in streamed audio can result in an [inactivity timeout](/d
 ## Hesitation markers
 {: #response-hesitation}
 
-The service can include hesitation markers in transcription results when it discovers brief fillers or pauses in speech. Also referred to as disfluencies, such pauses can include fillers such as "uhm", "uh", "hmm", and related non-lexical utterances. Unless you need to use them for your application, you can safely filter hesitation markers from a transcript.
+For most languages, the service can include hesitation markers in transcription results when it discovers brief fillers or pauses in speech. Also referred to as disfluencies, such pauses can include fillers such as "uhm", "uh", "hmm", and related non-lexical utterances. Unless you need to use them for your application, you can safely filter hesitation markers from a transcript.
 
-In English, the service uses the hesitation token `%HESITATION`, as shown in the following example. Other languages can use different markers. For instance, Japanese markers begin with `D_`.
+Different languages can use different hesitation markers or not indicate hesitation at all:
+
+-   *For Spanish,* the service does not produce hesitation markers.
+-   *For Japanese,* hesitation markers typically begin with `D_`.
+-   *For US English,* hesitation markers are indicated by the token `%HESITATION`.
+
+The following example shows the token `%HESITATION` for a US English transcript:
 
 ```javascript
 {
@@ -222,7 +228,7 @@ In English, the service uses the hesitation token `%HESITATION`, as shown in the
 ```
 {: codeblock}
 
-Hesitation markers can appear in both interim and final results. However, enabling smart formatting prevents hesitation markers from appearing in final results. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting).
+Hesitation markers can appear in both interim and final results. Enabling smart formatting prevents hesitation markers from appearing in final results for US English. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting).
 {: note}
 
 Hesitation markers can also appear in other fields of a transcript. For example, if you request [Word timestamps](/docs/speech-to-text?topic=speech-to-text-metadata#word-timestamps) for the individual words of a transcript, the service reports the start and end time of each hesitation marker.
