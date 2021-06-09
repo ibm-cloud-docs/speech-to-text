@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-28"
+lastupdated: "2021-06-09"
 
 subcollection: speech-to-text
 
@@ -114,9 +114,8 @@ The beta next-generation models do *not* support customization at this time.
 | Language | Support for language model customization | Support for acoustic model customization |
 |----------|:----------------------------------------:|:----------------------------------------:|
 | Arabic (Modern Standard) | Not supported | GA |
-| Brazilian Portuguese | GA | GA |
 | Chinese (Mandarin) | Not supported | GA |
-| Dutch | GA | GA |
+| Dutch (Netherlands) | GA | GA |
 | English (Australian) | GA | GA |
 | English (United Kingdom) | GA | GA |
 | English (United States) | GA | GA |
@@ -126,6 +125,7 @@ The beta next-generation models do *not* support customization at this time.
 | Italian | GA | GA |
 | Japanese | GA | GA |
 | Korean | GA | GA |
+| Portuguese (Brazilian) | GA | GA |
 | Spanish (Argentinian) | Beta | Beta |
 | Spanish (Castilian) | GA | GA |
 | Spanish (Chilean) | Beta | Beta |
