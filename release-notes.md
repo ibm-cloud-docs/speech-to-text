@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-26"
+lastupdated: "2021-06-09"
 
 subcollection: speech-to-text
 
@@ -117,6 +117,29 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
+## 14 June 2021
+{: #June2021}
+
+The collection of available next-generation language models has been updated and expanded:
+
+-   The following next-generation language model is now available for the Belgian Dutch language. The new model supports low latency. Like all next-generation models, the new model is beta functionality.
+    -   `nl-BE_Telephony`
+
+-   The following existing next-generation language models now support low latency:
+    -   `ar-MS_Telephony`
+    -   `fr-CA_Telephony`
+    -   `it-IT_Telephony`
+
+-   The following existing next-generation language models have been updated for improved speech recognition:
+    -   `ar-MS_Telephony`
+    -   `en-US_Telephony`
+    -   `pt-BR_Telephony`
+
+For more information about the next-generation models and about low latency, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng) and [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
+
+The [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external} is not yet updated for these changes.
+{: note}
+
 ## 26 May 2021
 {: #May2021}
 
@@ -177,10 +200,14 @@ The `low_latency` parameter impacts your use of the `interim_results` parameter 
 -   For more information about the `low_latency` parameter, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
 -   For more information about the interaction between the `low_latency` and `interim_results` parameters for next-generation models, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
 
+## 17 March 2021
+{: #March2021}
+
+**Defect fix:** The limitation that was reported with the asynchronous HTTP interface in the Dallas data center (`us-south`) on 16 December 2020 has been addressed. Previously, a small percentage of jobs were entering infinite loops that prevented their execution. Asynchronous HTTP requests in the Dallas data center no longer experience this limitation.
+
 ## Older releases
 {: #older}
 
--   [17 March 2021](#March2021)
 -   [2 December 2020](#December2020)
 -   [2 November 2020](#November2020)
 -   [22 October 2020](#October2020b)
@@ -244,11 +271,6 @@ The `low_latency` parameter impacts your use of the `interim_results` parameter 
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
-
-### 17 March 2021
-{: #March2021}
-
-**Defect fix:** The limitation that was reported with the asynchronous HTTP interface in the Dallas data center (`us-south`) on 16 December 2020 has been addressed. Previously, a small percentage of jobs were entering infinite loops that prevented their execution. Asynchronous HTTP requests in the Dallas data center no longer experience this limitation.
 
 ### 2 December 2020
 {: #December2020}
