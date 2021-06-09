@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-05-26"
+lastupdated: "2021-06-09"
 
 subcollection: speech-to-text
 
@@ -52,14 +52,15 @@ Table 1 lists the supported next-generation languages and models. Low-latency co
 
 | <br/>Language | <br/>Multimedia model | Multimedia<br/>low-latency support | <br/>Telephony model | Telephony<br/>low-latency support |
 |----------|:----------------:|:-------------------:|:---------------:|:-------------------:|
-| Arabic (Modern Standard) | Not available | Not available | `ar-MS_Telephony` | No |
+| Arabic (Modern Standard) | Not available | Not available | `ar-MS_Telephony` | **Yes** |
+| Dutch (Belgian) | Not available | Not available | `nl-BE_Telephony` | **Yes** |
 | English (Australian) | Not available | Not available | `en-AU_Telephony` | **Yes** |
 | English (United Kingdom) | Not available | Not available | `en-GB_Telephony` | **Yes** |
-| English (United States) | `en-US_Multimedia` | No | `en-US_Telephony` | **Yes** |
-| French | Not available | Not available | `fr-FR_Telephony` | **Yes** |
-| French (Canadian) | Not available | Not available | `fr-CA_Telephony` | No |
+| English (United States) | `en-US_Multimedia` | **No** | `en-US_Telephony` | **Yes** |
+| French (Canadian) | Not available | Not available | `fr-CA_Telephony` | **Yes** |
+| French (France) | Not available | Not available | `fr-FR_Telephony` | **Yes** |
 | German | Not available | Not available | `de-DE_Telephony` | **Yes** |
-| Italian | Not available | Not available | `it-IT_Telephony` | No |
+| Italian | Not available | Not available | `it-IT_Telephony` | **Yes** |
 | Portuguese (Brazilian) | Not available | Not available | `pt-BR_Telephony` | **Yes** |
 | Spanish (Castilian) | Not available | Not available | `es-ES_Telephony` | **Yes** |
 {: caption="Table 1. Supported next-generation language models"}
