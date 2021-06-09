@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-14"
+lastupdated: "2021-06-09"
 
 keywords: faqs,frequently asked questions,question,Speech to Text
 
@@ -41,6 +41,18 @@ Go to the [{{site.data.keyword.speechtotextshort}}](https://{DomainName}/catalog
 {: support}
 
 From the [{{site.data.keyword.cloud}} Resource list](https://{DomainName}/resources){: external}, click on your {{site.data.keyword.speechtotextshort}} service instance to go to the {{site.data.keyword.speechtotextshort}} service dashboard page. On the **Manage** page, click **Show Credentials** to view your API key and URL endpoint. For more information, see [Before you begin](/docs/speech-to-text?topic=speech-to-text-gettingStarted#before-you-begin).
+
+## What languages does the service support?
+{: #faq-language-support}
+{: faq}
+{: support}
+
+The {{site.data.keyword.speechtotextshort}} service supports Arabic (Modern Standard), Chinese (Mandarin), Dutch (Belgian and Netherlands), English (Australian, United Kingdom, and United States), French (Canadian and France), German, Italian, Japanese, Korean, Portuguese (Brazilian), and Spanish (Argentinian, Castilian, Chilean, Colombian, Mexican, and Peruvian).
+
+Most languages support both broadband and narrowband models, which have minimum sampling rates of 16 kHz and 8 kHz, respectively. Many languages also support next-generation multimedia and telephony models, which have the same respective sampling rates. For more information about the available models for all languages, see the following topics:
+
+-   [Languages and models](/docs/speech-to-text?topic=speech-to-text-models)
+-   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
 
 ## How much audio data can I submit to the service?
 {: #faq-usage-two}
