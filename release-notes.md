@@ -117,7 +117,7 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
-## 14 June 2021
+## 15 June 2021
 {: #June2021}
 
 The collection of available next-generation language models has been updated and expanded:
