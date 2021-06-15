@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-26"
+lastupdated: "2021-06-09"
 
 subcollection: speech-to-text
 
@@ -61,9 +61,9 @@ The service supports many languages and dialects:
 
 -   Arabic (Modern Standard)
 -   Chinese (Mandarin)
--   Dutch
+-   Dutch (Belgian and Netherlands)
 -   English (Australian, United Kingdom, and United States)
--   French (French and Canadian)
+-   French (Canadian and France)
 -   German
 -   Italian
 -   Japanese

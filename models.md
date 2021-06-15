@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2020-04-23"
+lastupdated: "2020-06-09"
 
 subcollection: speech-to-text
 
@@ -53,12 +53,12 @@ The model name `ar-AR_BroadbandModel` is deprecated. Use the model name `ar-MS_B
 |----------|:---------------:|:----------------:|
 | Arabic (Modern Standard) | `ar-MS_BroadbandModel` | Not supported |
 | Chinese (Mandarin) | `zh-CN_BroadbandModel` | `zh-CN_NarrowbandModel` |
-| Dutch | `nl-NL_BroadbandModel` | `nl-NL_NarrowbandModel` |
+| Dutch (Netherlands) | `nl-NL_BroadbandModel` | `nl-NL_NarrowbandModel` |
 | English (Australian) | `en-AU_BroadbandModel` | `en-AU_NarrowbandModel` |
 | English (United Kingdom) | `en-GB_BroadbandModel` | `en-GB_NarrowbandModel` |
 | English (United States) | `en-US_BroadbandModel` | `en-US_NarrowbandModel`<br/><br/>`en-US_ShortForm_NarrowbandModel` |
-| French| `fr-FR_BroadbandModel` | `fr-FR_NarrowbandModel` |
 | French (Canadian) | `fr-CA_BroadbandModel` | `fr-CA_NarrowbandModel` |
+| French (France) | `fr-FR_BroadbandModel` | `fr-FR_NarrowbandModel` |
 | German | `de-DE_BroadbandModel` | `de-DE_NarrowbandModel` |
 | Italian | `it-IT_BroadbandModel` | `it-IT_NarrowbandModel` |
 | Japanese | `ja-JP_BroadbandModel` | `ja-JP_NarrowbandModel` |

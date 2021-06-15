@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-28"
+lastupdated: "2021-06-09"
 
 subcollection: speech-to-text
 
@@ -32,20 +32,16 @@ The {{site.data.keyword.speechtotextfull}} service offers many advanced features
 ## Using languages and models
 {: #features-languages}
 
-The service supports speech recognition for the many languages listed in [Language support](/docs/speech-to-text?topic=speech-to-text-about#about-languages). The service provides different models for the languages that it supports.
+The service supports speech recognition for the many languages listed in [Language support](/docs/speech-to-text?topic=speech-to-text-about#about-languages). The service provides different models for the languages that it supports. Some language models are generally available (GA) for production use and others are beta and subject to change.
 
--   For all supported languages, the service offers previous-generation *Broadband* and *Narrowband* models.
--   For a smaller but growing subset of languages, it offers beta next-generation *Multimedia* and *Telephony* models that improve upon the speech recognition capabilities of the previous-generation models. Next-generation models return results with greater throughput and higher accuracy than previous-generation models, but they offer limited language and feature support currently.
+-   For most languages, the service offers previous-generation *Broadband* and *Narrowband* models. All previous-generation models are GA. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+-   For a smaller but growing subset of languages, the service offers next-generation *Multimedia* and *Telephony* models that improve upon the speech recognition capabilities of the previous-generation models. All next-generation models are beta. Next-generation models return results with greater throughput and higher accuracy than previous-generation models, but they offer limited language and feature support currently. For more information, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 
 For most languages, you can transcribe audio at one of two sampling rates:
 
 -   Use *Broadband* or *Multimedia* models for audio that is sampled at a minimum sampling rate of 16 kHz.
 -   Use *Narrowband* or *Telephony* models for audio that is sampled at a minimum sampling rate of 8 kHz.
 
-Some language models are generally available (GA) for production use and others are beta and subject to change.
-
--   For more information about previous-generation languages and models, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
--   For more information about beta next-generation languages and models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
 
 ## Using audio formats
