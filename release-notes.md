@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-06-09"
+lastupdated: "2021-06-15"
 
 subcollection: speech-to-text
 
@@ -132,7 +132,6 @@ The collection of available next-generation language models has been updated and
 
 -   The following existing next-generation language models have been updated for improved speech recognition:
     -   `ar-MS_Telephony`
-    -   `en-US_Telephony`
     -   `pt-BR_Telephony`
 
 For more information about the next-generation models and about low latency, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng) and [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
