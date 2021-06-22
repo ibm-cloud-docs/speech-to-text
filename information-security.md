@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2020
-lastupdated: "2020-07-20"
+  years: 2015, 2021
+lastupdated: "2021-06-22"
 
 subcollection: speech-to-text
 
@@ -50,7 +50,7 @@ Learn more about {{site.data.keyword.IBM_notm}}'s own GDPR readiness journey and
 
 US Health Insurance Portability and Accountability Act (HIPAA) support is available for Premium plans that are hosted in the Washington, DC, location and are created on or after 1 April 2019. For more information, see [Enabling EU and HIPAA supported settings](https://cloud.ibm.com/docs/account?topic=account-eu-hipaa-supported#eu-hipaa-supported){: external}.
 
-Do not include personal health information (PHI) in data that you pass to the service. In particular, be sure to remove any PHI from data that you use for custom language models or custom acoustic models.
+Do not include personal health information (PHI) in data that is to be added to custom models. Specifically, be sure to remove any PHI from data that you use for custom language models or custom acoustic models.
 
 ## Labeling and deleting data in the {{site.data.keyword.speechtotextshort}} service
 {: #gdpr-speech-to-text}
