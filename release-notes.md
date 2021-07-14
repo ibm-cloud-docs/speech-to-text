@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-07-08"
+lastupdated: "2021-07-14"
 
 subcollection: speech-to-text
 
@@ -117,10 +117,11 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
-## 13 July 2021
+## 15 July 2021
 {: #July2021}
 
-The next-generation US English Telephony model (`en-US_Telephony`) has been updated for improved speech recognition.
+-   The next-generation language model `fr-FR_Multimedia` is now available for the French language. The model does not support low latency. The new model is beta functionality.
+-   The next-generation US English Telephony model (`en-US_Telephony`) has been updated for improved speech recognition. The updated model continues to be beta functionality.
 
 ## 15 June 2021
 {: #June2021}
