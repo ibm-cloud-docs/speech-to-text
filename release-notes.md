@@ -123,6 +123,9 @@ The service has the following known limitations:
 -   The next-generation language model `fr-FR_Multimedia` is now available for the French language. The model does not support low latency. The new model is beta functionality.
 -   The next-generation US English Telephony model (`en-US_Telephony`) has been updated for improved speech recognition. The updated model continues to be beta functionality.
 
+The [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external} is not yet updated for these changes.
+{: note}
+
 ## 15 June 2021
 {: #June2021}
 
