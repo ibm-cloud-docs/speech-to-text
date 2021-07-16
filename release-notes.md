@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-07-14"
+lastupdated: "2021-07-16"
 
 subcollection: speech-to-text
 
@@ -117,7 +117,7 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
-## 15 July 2021
+## 16 July 2021
 {: #July2021}
 
 -   The next-generation language model `fr-FR_Multimedia` is now available for the French language. The model does not support low latency. The new model is beta functionality.
