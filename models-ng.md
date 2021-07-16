@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-06-09"
+lastupdated: "2021-07-14"
 
 subcollection: speech-to-text
 
@@ -58,7 +58,7 @@ Table 1 lists the supported next-generation languages and models. Low-latency co
 | English (United Kingdom) | Not available | Not available | `en-GB_Telephony` | **Yes** |
 | English (United States) | `en-US_Multimedia` | **No** | `en-US_Telephony` | **Yes** |
 | French (Canadian) | Not available | Not available | `fr-CA_Telephony` | **Yes** |
-| French (France) | Not available | Not available | `fr-FR_Telephony` | **Yes** |
+| French (France) | `fr-FR_Multimedia`<br/>IBM Cloud only | Not available | `fr-FR_Telephony` | **Yes** |
 | German | Not available | Not available | `de-DE_Telephony` | **Yes** |
 | Italian | Not available | Not available | `it-IT_Telephony` | **Yes** |
 | Portuguese (Brazilian) | Not available | Not available | `pt-BR_Telephony` | **Yes** |
