@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-14"
+lastupdated: "2021-05-10"
 
 subcollection: speech-to-text
 
@@ -13,6 +13,7 @@ subcollection: speech-to-text
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
+{:beta: .beta}
 {:deprecated: .deprecated}
 {:pre: .pre}
 {:codeblock: .codeblock}
@@ -24,6 +25,9 @@ subcollection: speech-to-text
 
 # Understanding grammars
 {: #grammarUnderstand}
+
+The grammars feature is beta functionality. The service supports grammars for all languages for which it supports language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+{: beta}
 
 The following examples introduce the {{site.data.keyword.speechtotextfull}} service's support for grammars. The examples create two simple ABNF grammars and show possible results when they are used for speech recognition. The examples illustrate the importance of examining the confidence score that the service includes with a transcript.
 {: shortdesc}

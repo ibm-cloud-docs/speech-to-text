@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2020-06-09"
+lastupdated: "2021-06-11"
 
 subcollection: speech-to-text
 
@@ -29,7 +29,7 @@ subcollection: speech-to-text
 The {{site.data.keyword.speechtotextfull}} service supports speech recognition in many languages.  For all interfaces, you can use the `model` parameter to specify the model for a speech recognition request. The model indicates the language in which the audio is spoken and the rate at which it is sampled.
 {: shortdesc}
 
-The service also offers next-generation models with enhanced qualities for improved speech recognition. For more information, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+These models are often referred to as *previous-generation models*. The service also offers next-generation models with enhanced qualities for improved speech recognition. For more information, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 {: note}
 
 ## Supported language models
@@ -42,11 +42,11 @@ For most languages, the service supports both broadband and narrowband models:
 
 Choosing the correct model for your application is important. Use the model that matches the sampling rate (and language) of your audio. The service automatically adjusts the sampling rate of your audio to match the model that you specify. To achieve the best recognition accuracy, you also need to consider the frequency content of your audio. For more information, see [Sampling rate](/docs/speech-to-text?topic=speech-to-text-audio-terminology#audio-terminology-sampling-rate) and [Audio frequency](/docs/speech-to-text?topic=speech-to-text-audio-terminology#audio-terminology-frequency).
 
-Table 1 lists the supported models for each language. If you omit the `model` parameter from a request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
+Table 1 lists the supported models for each language. All previous-generation models are available for all versions of the product. If you omit the `model` parameter from a request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
 
 Languages labeled *Beta* are currently beta functionality. Beta languages might not be ready for production use and are subject to change. They are initial offerings that are expected to improve in quality with time and usage. All other languages are generally available (*GA*) for production use.
 
-The model name `ar-AR_BroadbandModel` is deprecated. Use the model name `ar-MS_BroadbandModel` instead. For more information, see the [2 December 2020 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#December2020) in the release notes.
+The model name `ar-AR_BroadbandModel` is deprecated. Use the model name `ar-MS_BroadbandModel` instead.
 {: note}
 
 | Language | Broadband model | Narrowband model |
@@ -86,9 +86,16 @@ As with all models, noisy environments can adversely impact the results. For exa
 -   For more information about speech activity detection parameters, see [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-detection).
 
 ## Specifying a model for speech recognition
-{: #modelsExample}
+{: #models-specify}
 
-Use the `model` parameter of a speech recognition to indicate the model that is to be used. The following example HTTP request uses the model `en-US_NarrowbandModel` for speech recognition:
+You use the `model` parameter of a speech recognition request to indicate the model that is to be used with the request. If you omit the `model` parameter from a speech recognition request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
+
+### Specify a model example
+{: #models-specify-example}
+
+The following example HTTP request uses the model `en-US_NarrowbandModel` for speech recognition:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
@@ -98,7 +105,16 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-If you omit the `model` parameter from a speech recognition request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file.flac \
+"{url}/v1/recognize?model=en-US_NarrowbandModel"
+```
+{: pre}
 
 ## Supported features
 {: #models-features}

@@ -2,7 +2,7 @@
 
 Copyright:
   years: 2019, 2021
-lastupdated: "2020-04-08"
+lastupdated: "2020-05-14"
 
 subcollection: speech-to-text
 
@@ -78,13 +78,24 @@ To train a custom acoustic model with a custom language model, you use the optio
 -   Ensure that the custom language model is fully trained and in the `available` state. Training fails if the custom language model is not `available`.
 -   Ensure that both custom models are based on the same version of the same base model. If a new version of the base model is made available, you must upgrade both models to the same version of the base model for training to succeed. For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 
-### Example request
+### Lightly supervised training example
 {: #useBothTrainExample}
 
 The following example request shows a custom language model being used to train a custom acoustic model:
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+"{url}/v1/acoustic_customizations/{customization_id}/train?custom_language_model_id={customization_id}"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 "{url}/v1/acoustic_customizations/{customization_id}/train?custom_language_model_id={customization_id}"
 ```
 {: pre}
@@ -106,13 +117,26 @@ For a speech recognition request, use the `acoustic_customization_id` and `langu
 For more information about the effects of custom model upgrading on speech recognition with both types of custom models, see [Considerations for using custom acoustic and custom language models together](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use#custom-upgrade-use-recognition-both).
 {: note}
 
-### Example request
+### Example of using both custom language and custom acoustic models
 {: #useBothRecognize-example}
 
 The following example request passes both custom acoustic and custom language models to the HTTP `POST /v1/recognize` method:
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @audio-file1.flac \
+"{url}/v1/recognize?acoustic_customization_id={customization_id}&language_customization_id={customization_id}"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --header "Content-Type: audio/flac" \
 --data-binary @audio-file1.flac \
 "{url}/v1/recognize?acoustic_customization_id={customization_id}&language_customization_id={customization_id}"

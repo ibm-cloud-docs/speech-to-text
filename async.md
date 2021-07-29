@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-02"
+lastupdated: "2021-05-14"
 
 subcollection: speech-to-text
 
@@ -57,8 +57,19 @@ You register a callback URL by calling the `POST /v1/register_callback` method. 
 
 1.  You call the `POST /v1/register_callback` method and pass a callback URL. Optionally, you can also specify a user-specified secret. The service uses the secret to compute keyed-hash message authentication code (HMAC) Secure Hash Algorithm 1 (SHA1) signatures for authentication and data integrity. The following example registers a user callback that responds at the URL `http://{user_callback_path}/results`. The call includes a user secret of `ThisIsMySecret`.
 
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
     ```bash
     curl -X POST -u "apikey:{apikey}" \
+    "{url}/v1/register_callback?callback_url=http://{user_callback_path}/results&user_secret=ThisIsMySecret"
+    ```
+    {: pre}
+
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X POST \
+    --header "Authorization: Bearer {token}" \
     "{url}/v1/register_callback?callback_url=http://{user_callback_path}/results&user_secret=ThisIsMySecret"
     ```
     {: pre}
@@ -118,13 +129,24 @@ HTTPS, however, is not ideal in terms of additional development overhead. Moreov
 
 You can unregister an allowlisted callback URL at any time by calling the `POST /v1/unregister_callback` method. Unregistering a callback URL can be useful for testing your application with the service. Once you unregister a callback URL, you can no longer use it with asynchronous recognition requests.
 
-#### Example
+#### Unregister a callback URL example
 {: #unregisterExample-async}
 
 The following example unregisters a previously registered callback URL:
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+"{url}/v1/unregister_callback?callback_url=http://{user_callback_path}/results"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 "{url}/v1/unregister_callback?callback_url=http://{user_callback_path}/results"
 ```
 {: pre}
@@ -169,13 +191,26 @@ signature = hashed.digest().encode("base64").rstrip('\n')
 ```
 {: codeblock}
 
-### Callback example
+### Create a job with a callback URL example
 {: #callback}
 
 The following example creates a job that is associated with the previously allowlisted callback URL `http://{user_callback_path}/results`. The example passes the user token `job25` to identify the job in callback notifications that are sent by the service. The call uses the default events, so the user must call the `GET /v1/recognitions/{id}` method to retrieve the results when the service sends a callback notification to indicate that the job is complete. The call sets the `timestamps` query parameter of the recognition request to `true`.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file.flac \
+"{url}/v1/recognitions?callback_url=http://{user_callback_path}/results&user_token=job25&timestamps=true"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --header "Content-Type: audio/flac" \
 --data-binary @{path}audio-file.flac \
 "{url}/v1/recognitions?callback_url=http://{user_callback_path}/results&user_token=job25&timestamps=true"
@@ -194,13 +229,26 @@ The service returns the status of the request, which is `waiting` to indicate th
 ```
 {: codeblock}
 
-### Polling example
+### Create a job with polling example
 {: #polling}
 
 The following example creates a job that is not associated with a callback URL. The user must poll the service to learn when the job is complete and then retrieve the results with the `GET /v1/recognitions/{id}` method. Like the previous example, the call sets the `timestamps` parameter of the recognition request to `true`.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/wav" \
+--data-binary @{path}audio-file.wav \
+"{url}/v1/recognitions?timestamps=true"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --header "Content-Type: audio/wav" \
 --data-binary @{path}audio-file.wav \
 "{url}/v1/recognitions?timestamps=true"
@@ -232,16 +280,29 @@ The `GET /v1/recognitions/{id}` method is the only way to retrieve job results i
 
 However, you can still use the method to retrieve the results for a job that specified a callback URL and the `recognitions.completed_with_results` event. You can retrieve the results for any job as many times as you want while they remain available. A job and its results remain available until you delete them with the `DELETE /v1/recognitions/{id}` method or until the job's time to live expires, whichever comes first. By default, results expire after one week unless you specify a different time to live with the `results_ttl` parameter of the `POST /v1/recognitions` method.
 
-### Example of status without results
+### Check job status without results example
 {: #withoutResults}
 
-The following example checks the status of the job with the specified ID. The job is not yet complete, so the response does not include the results.
+The following example checks the status of the job with the specified ID:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/recognitions/{job_id}"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
+"{url}/v1/recognitions/{job_id}"
+```
+{: pre}
+
+The job is not yet complete, so the response does not include the results.
 
 ```javascript
 {
@@ -253,16 +314,29 @@ curl -X GET -u "apikey:{apikey}" \
 ```
 {: codeblock}
 
-### Example of status with results
+### Check job status with results example
 {: #withResults}
 
-The following example requests the status of the job with the specified ID. The job is complete, so the response includes the results of the request.
+The following example requests the status of the job with the specified ID:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/recognitions/{job_id}"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
+"{url}/v1/recognitions/{job_id}"
+```
+{: pre}
+
+The job is complete, so the response includes the results of the request.
 
 ```javascript
 {
@@ -322,16 +396,29 @@ The response includes one of the following states:
 
 A job and its results remain available until you delete them with the `DELETE /v1/recognitions/{id}` method or until the job's time to live expires, whichever comes first.
 
-### Example
+### Check the status of the latest jobs example
 {: #statusExample}
 
-The following example requests the status of the latest current jobs that are associated with the caller's credentials. The user has three outstanding jobs in various states. The first job was created with a callback URL and a user token.
+The following example requests the status of the latest current jobs that are associated with the caller's credentials:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/recognitions"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
+"{url}/v1/recognitions"
+```
+{: pre}
+
+The user has three outstanding jobs in various states. The first job was created with a callback URL and a user token.
 
 ```javascript
 {
@@ -367,13 +454,24 @@ You can use the `DELETE /v1/recognitions/{id}` method to delete the job that is 
 
 By default, the service maintains the results of each job until the job's time to live expires. The default time to live is one week, but you can use the `results_ttl` parameter of the `POST /v1/recognitions` method to specify the number of minutes that the service is to maintain the results.
 
-### Example
+### Delete a job example
 {: #deleteExample-async}
 
 The following example deletes the job with the specified ID:
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X DELETE -u "apikey:{apikey}" \
+"{url}/v1/recognitions/{job_id}"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X DELETE \
+--header "Authorization: Bearer {token}" \
 "{url}/v1/recognitions/{job_id}"
 ```
 {: pre}

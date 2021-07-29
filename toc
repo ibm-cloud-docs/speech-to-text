@@ -17,12 +17,14 @@ Speech to Text
 
     {: .topicgroup}
     Additional resources
+        [Pricing](https://www.ibm.com/cloud/watson-speech-to-text/pricing)
         [Blog](https://developer.ibm.com/watson/blog/)
         [Webinars](https://www.ibm.com/watson/webinars/)
-        [Watson videos](https://www.youtube.com/user/IBMWatsonSolutions/)
     {: .navgroup-end}
 
     {: .navgroup id="howto"}
+    speech-install-data.md
+
     {: .topicgroup}
     Using languages and models
         models.md
@@ -109,10 +111,32 @@ Speech to Text
     at-events.md
     /watson/watson-using-sdks
     [Watson GitHub repos](https://github.com/watson-developer-cloud/)
+
+    {: .topicgroup}
+    Installing and managing previous versions
+
+        {: .topicgroup}
+        Installing and managing version 1.2
+            speech-install-12.md
+            speech-override-12.md
+            speech-cluster-12.md
+            speech-datastores-12.md
+            speech-scaling-12.md
+            speech-backup-12.md
+
+        {: .topicgroup}
+        Installing and managing version 1.1.4
+            speech-install.md
+            speech-override.md
+            speech-cluster.md
+            speech-datastores.md
+            speech-scaling.md
+            speech-backup.md
     {: .navgroup-end}
 
     {: .navgroup id="help"}
     release-notes.md
+    release-notes-data.md
     faq-usage.md
     faq-pricing.md
 

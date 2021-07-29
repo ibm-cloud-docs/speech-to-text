@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-13"
+lastupdated: "2021-05-10"
 
 subcollection: speech-to-text
 
@@ -79,9 +79,9 @@ To use the WebSocket interface, you first use the `/v1/recognize` method to esta
 The following example provides JavaScript code that establishes a connection and sends the text and binary messages for a recognition request. The basic example does not include the code to define all of the necessary event handlers for the connection.
 
 ```javascript
-var IAM_access_token = {access_token};
+var access_token = {access_token};
 var wsURI = '{ws_url}/v1/recognize'
-  + '?access_token=' + IAM_access_token;
+  + '?access_token=' + access_token;
 var websocket = new WebSocket(wsURI);
 
 websocket.onopen = function(evt) { onOpen(evt) };
@@ -103,12 +103,23 @@ function onOpen(evt) {
 {: help}
 {: support}
 
-[The synchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-http) provides the simplest way to make a recognition request. You use the `POST /v1/recognize` method to make a request to the service. You pass the audio and all parameters with the single request.
+[The synchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-http) provides the simplest way to make a recognition request. You use the `POST /v1/recognize` method to make a request to the service. You pass the audio and all parameters with the single request. The following `curl` example shows a basic HTTP recognition request:
 
-The following `curl` example shows a basic HTTP recognition request:
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @audio-file.flac \
+"{url}/v1/recognize"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --header "Content-Type: audio/flac" \
 --data-binary @audio-file.flac \
 "{url}/v1/recognize"
@@ -124,8 +135,21 @@ curl -X POST -u "apikey:{apikey}" \
 
 The following `curl` example shows a simple asynchronous HTTP recognition request. The request does not include a callback URL, so you must poll the service to get the job status and the resulting transcript.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @audio-file.flac \
+"{url}/v1/recognitions"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --header "Content-Type: audio/flac" \
 --data-binary @audio-file.flac \
 "{url}/v1/recognitions"

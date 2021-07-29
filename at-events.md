@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2021
-lastupdated: "2021-04-08"
+lastupdated: "2021-05-10"
 
 keywords: IBM,activity tracker,event,security,speech to text
 
@@ -20,6 +20,8 @@ subcollection: speech-to-text
 
 # Activity Tracker events
 {: #atEvents}
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
 
 As a security officer, auditor, or manager, you can use the Activity Tracker service to track how users and applications interact with {{site.data.keyword.speechtotextfull}} in {{site.data.keyword.cloud}}.
 {: shortdesc}

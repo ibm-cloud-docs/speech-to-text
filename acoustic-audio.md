@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2020
-lastupdated: "2020-06-23"
+  years: 2019, 2021
+lastupdated: "2021-05-14"
 
 subcollection: speech-to-text
 
@@ -49,16 +49,29 @@ The methods also list the status of the audio data. The status is important for 
 -   `being_processed` indicates that the service is still analyzing the audio data. The service cannot accept requests to add new audio or to train the custom model until its analysis is complete.
 -   `invalid` indicates that the audio data is not valid for training the model (possibly because it has the wrong format or sampling rate, or because it is corrupted).
 
-### Example request: List all audio resources
+### List all audio resources example
 {: #listExample-audio}
 
-The following example lists all audio resources for the custom acoustic model with the specified customization ID. The acoustic model has three audio resources. The service has successfully analyzed `audio1` and `audio2`; it is still analyzing `audio3`.
+The following example lists all audio resources for the custom acoustic model with the specified customization ID:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/acoustic_customizations/{customization_id}/audio"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
+"{url}/v1/acoustic_customizations/{customization_id}/audio"
+```
+{: pre}
+
+The acoustic model has three audio resources. The service has successfully analyzed `audio1` and `audio2`; it is still analyzing `audio3`.
 
 ```javascript
 {
@@ -94,16 +107,29 @@ curl -X GET -u "apikey:{apikey}" \
 ```
 {: codeblock}
 
-### Example request: Get information for an audio-type resource
+### List an audio-type resource example
 {: #getExampleAudio}
 
-The following example returns information about the audio-type resource named `audio1`. The resource is 131 seconds long and is encoded with the `pcm_s16le` codec. It was successfully added to the model.
+The following example returns information about the audio-type resource named `audio1`:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/acoustic_customizations/{customization_id}/audio/audio1"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
+"{url}/v1/acoustic_customizations/{customization_id}/audio/audio1"
+```
+{: pre}
+
+The resource is 131 seconds long and is encoded with the `pcm_s16le` codec. It was successfully added to the model.
 
 ```javascript
 {
@@ -119,16 +145,29 @@ curl -X GET -u "apikey:{apikey}" \
 ```
 {: codeblock}
 
-### Example request: Get information for an archive-type resource
+### List an archive-type resource example
 {: #getExampleArchive}
 
-The following example returns information about the archive-type resource named `audio2`. The resource is a **.zip** file that contains more than 9 minutes of audio. It too was successfully added to the model. As the example shows, querying information about an archive-type resource also provides information about the files that it contains.
+The following example returns information about the archive-type resource named `audio2`:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/acoustic_customizations/{customization_id}/audio/audio2"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
+"{url}/v1/acoustic_customizations/{customization_id}/audio/audio2"
+```
+{: pre}
+
+The resource is a **.zip** file that contains more than 9 minutes of audio. It too was successfully added to the model. As the example shows, querying information about an archive-type resource also provides information about the files that it contains.
 
 ```javascript
 {
@@ -175,13 +214,24 @@ Use the `DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name
 
 Removing an audio resource does not affect the custom model until you train the model on its updated data by using the `POST /v1/acoustic_customizations/{customization_id}/train` method. If you successfully trained the model on the resource, until you retrain the model, the existing audio data continues to be used for speech recognition.
 
-### Example request
+### Delete an audio resource example
 {: #deleteExample-audio}
 
 The following method deletes the audio resource that is named `audio3` from the custom model with the specified customization ID:
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X DELETE -u "apikey:{apikey}" \
+"{url}/v1/acoustic_customizations/{customization_id}/audio/audio3"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X DELETE \
+--header "Authorization: Bearer {token}" \
 "{url}/v1/acoustic_customizations/{customization_id}/audio/audio3"
 ```
 {: pre}

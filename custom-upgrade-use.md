@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2021
-lastupdated: "2021-04-09"
+lastupdated: "2021-05-14"
 
 subcollection: speech-to-text
 
@@ -38,13 +38,24 @@ Listing information about a custom model is the only way to see the available ve
 
 In both cases, the output includes a `versions` field that shows information about the base models that are available for the custom model. If the custom model has not been upgraded or only a single version of its base model exists, the `versions` field shows a single version.
 
-### Example request and response
+### List version information example
 {: #custom-upgrade-use-listing-example}
 
 The following example request shows information for an upgraded custom language model:
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X GET -u "apikey:{apikey}" \
+"{url}/v1/customizations?language=en-US"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
 "{url}/v1/customizations?language=en-US"
 ```
 {: pre}
@@ -112,7 +123,7 @@ In addition to the behavior described in the previous topic, the service conside
 
 Both custom models must be owned by the credentials that are passed with the request, both must be based on the same base model (for example, `en-US_BroadbandModel`), and both must be in the `available` state. For more information about using both types of custom models with a recognition request, see [Using custom language and custom acoustic models for speech recognition](/docs/speech-to-text?topic=speech-to-text-useBoth#useBothRecognize).
 
-### Example request
+### Example of using an upgraded custom model
 {: #custom-upgrade-use-recognition-example}
 
 The earlier example listed the following available versions for a custom language model:
@@ -127,8 +138,21 @@ The earlier example listed the following available versions for a custom languag
 
 The following synchronous HTTP request specifies that the older version of the base model is to be used. Thus, the older version of the specified custom language model is also used.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file.flac \
+"{url}/v1/recognize?model=en-US_BroadbandModel&base_model_version=en-US_BroadbandModel.v07-06082016.06202016&language_customization_id={customization_id}"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --header "Content-Type: audio/flac" \
 --data-binary @{path}audio-file.flac \
 "{url}/v1/recognize?model=en-US_BroadbandModel&base_model_version=en-US_BroadbandModel.v07-06082016.06202016&language_customization_id={customization_id}"

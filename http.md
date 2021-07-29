@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-02"
+lastupdated: "2021-05-14"
 
 subcollection: speech-to-text
 
@@ -33,15 +33,35 @@ The  synchronous HTTP interface of the {{site.data.keyword.speechtotextfull}} se
 
 Submit a maximum of 100 MB and a minimum of 100 bytes of audio data with a single request. For information about audio formats and about using compression to maximize the amount of audio that you can send with a request, see [Supported audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats). For information about all methods of the HTTP interface, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
-## Making a basic HTTP request
+## Making a basic HTTP speech recognition request
 {: #HTTP-basic}
 
 The HTTP `POST /v1/recognize` method provides a simple means of transcribing audio. You pass all audio via the body of the request and specify the parameters as request headers and query parameters.
 
-The following `curl` example sends a recognition request for a single FLAC file named `audio-file.flac`. The request omits the `model` query parameter to use the default language model, `en-US_BroadbandModel`.
+The method returns results only after it processes all of the audio for a request. The method is appropriate for batch processing but not for live speech recognition. Use the WebSocket interface to transcribe live audio.
+
+If your data consists of multiple audio files, the recommended means of submitting the audio is by sending multiple requests, one for each audio file. You can submit the requests in a loop, optionally with parallelism to improve performance. You can also use multipart speech recognition to pass multiple audio files with a single request.
+
+### Basic request example
+{: #HTTP-basic-example}
+
+The following example sends a recognition request for a single FLAC file named `audio-file.flac`. The request omits the `model` query parameter to use the default language model, `en-US_BroadbandModel`.
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file.flac \
+"{url}/v1/recognize"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --header "Content-Type: audio/flac" \
 --data-binary @{path}audio-file.flac \
 "{url}/v1/recognize"
@@ -68,14 +88,10 @@ The example returns the following transcript for the audio:
 ```
 {: codeblock}
 
-The `POST /v1/recognize` method returns results only after it processes all of the audio for a request. The method is appropriate for batch processing but not for live speech recognition. Use the WebSocket interface to transcribe live audio.
-
-If your data consists of multiple audio files, the recommended means of submitting the audio is by sending multiple requests, one for each audio file. You can submit the requests in a loop, optionally with parallelism to improve performance. You can also use multipart speech recognition to pass multiple audio files with a single request.
-
-## Making a multipart HTTP request
+## Making a multipart HTTP speech recognition request
 {: #HTTP-multi}
 
-The `POST /v1/recognize` method also supports multipart requests. You pass all audio data as multipart form data. You specify some parameters as request headers and query parameters, but you pass JSON metadata as form data to control most aspects of the transcription.
+The `POST /v1/recognize` method also supports multipart requests for speech recognition. You pass all audio data as multipart form data. You specify some parameters as request headers and query parameters, but you pass JSON metadata as form data to control most aspects of the transcription.
 
 Multipart speech recognition is intended for the following use cases:
 
@@ -140,12 +156,32 @@ Only the following two parameters are specific to multipart requests:
 
 All other parameters of the metadata are optional. For descriptions of all available parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
 
-### Example multipart request
+### Multipart request example
 
-The following `curl` example shows how to pass a multipart recognition request with the `POST /v1/recognize` method. The request passes two audio files, **audio-file1.flac** and **audio-file2.flac**. The `metadata` parameter provides most parameters of the request; the `upload` parameters provide the audio files.
+The following example shows how to pass a multipart recognition request with the `POST /v1/recognize` method. The request passes two audio files, **audio-file1.flac** and **audio-file2.flac**. The `metadata` parameter provides most parameters of the request; the `upload` parameters provide the audio files.
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: multipart/form-data" \
+--form metadata="{\"part_content_type\":\"application/octet-stream\", \
+  \"data_parts_count\":2, \
+  \"timestamps\":true, \
+  \"word_alternatives_threshold\":0.9, \
+  \"keywords\":[\"colorado\",\"tornado\",\"tornadoes\"], \
+  \"keywords_threshold\":0.5}" \
+--form upload="@{path}audio-file1.flac" \
+--form upload="@{path}audio-file2.flac" \
+"{url}/v1/recognize"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --header "Content-Type: multipart/form-data" \
 --form metadata="{\"part_content_type\":\"application/octet-stream\", \
   \"data_parts_count\":2, \

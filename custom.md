@@ -35,7 +35,7 @@ The customization interface supports both custom language models and custom acou
 
 Speech recognition works the same with or without a custom model. When you use a custom model for speech recognition, you can use all of the parameters that are normally available with a recognition request. For more information about all available parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
 
-You must have the Plus, Standard, or Premium pricing plan to use language model or acoustic model customization. Users of the Lite plan cannot use the customization interface, but they can upgrade to the Plus plan to gain access to customization. For more information, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only.** You must have the Plus, Standard, or Premium pricing plan to use language model or acoustic model customization. Users of the Lite plan cannot use the customization interface, but they can upgrade to the Plus plan to gain access to customization. For more information, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
 {: note}
 
 ## Language model customization
@@ -83,6 +83,9 @@ For more information, see
 -   [Adding a grammar to a custom language model](/docs/speech-to-text?topic=speech-to-text-grammarAdd)
 -   [Using a grammar for speech recognition](/docs/speech-to-text?topic=speech-to-text-grammarUse)
 
+The grammars feature is beta functionality. The service supports grammars for all languages for which it supports language model customization.
+{: beta}
+
 ## Using acoustic and language customization together
 {: #combined}
 
@@ -92,7 +95,7 @@ By creating a custom language model that complements your custom acoustic model,
 
 For more information, see [Using custom acoustic and custom language models together](/docs/speech-to-text?topic=speech-to-text-useBoth).
 
-Some languages do not support both language and acoustic customization. For more information, see [Language support for customization](#languageSupport).
+Some languages do not support both language and acoustic customization.
 {: note}
 
 ## Language support for customization
@@ -119,8 +122,8 @@ The beta next-generation models do *not* support customization at this time.
 | English (Australian) | GA | GA |
 | English (United Kingdom) | GA | GA |
 | English (United States) | GA | GA |
-| French | GA | GA |
 | French (Canadian) | GA | GA |
+| French (France) | GA | GA |
 | German | GA | GA |
 | Italian | GA | GA |
 | Japanese | GA | GA |
@@ -155,16 +158,6 @@ An advantage of sharing ownership across credentials for a service instance is t
 
 You can create no more than 1024 custom acoustic models and no more than 1024 custom language models per owning credentials. If you try to create more than 1024 custom models of either type, the service returns an error. You do not lose any existing models, but you cannot create any more until your model count is below the limit of 1024.
 
-### Request logging and data privacy
-{: #customLogging}
-
-How the service handles request logging for calls to the customization interface depends on the request:
-
--   The service *does not* log data that is used to build custom models. For example, when working with corpora and words in a custom language model, you do not need to set the `X-Watson-Learning-Opt-Out` request header. Your training data is never used to improve the service's base models.
--   The service *does* log data when a custom model is used with a recognition request. You must set the `X-Watson-Learning-Opt-Out` request header to `true` to prevent logging for recognition requests.
-
-For more information, see [Request logging](/docs/speech-to-text?topic=speech-to-text-data-security#data-security-request-logging).
-
 ### Information security
 {: #customSecurity}
 
@@ -179,3 +172,15 @@ You can associate a customer ID with data that is added or updated for custom la
 In addition, if you delete an instance of the {{site.data.keyword.speechtotextshort}} service from the {{site.data.keyword.cloud_notm}} console, all data associated with that service instance is automatically deleted. This includes all custom language models, corpora, grammars, and words, and all custom acoustic models and audio resources. This data is purged automatically and regardless of whether a customer ID is associated with the data.
 
 For more information, see [Information security](/docs/speech-to-text?topic=speech-to-text-information-security).
+
+### Request logging and data privacy
+{: #customLogging}
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
+
+How the service handles request logging for calls to the customization interface depends on the request:
+
+-   The service *does not* log data that is used to build custom models. For example, when working with corpora and words in a custom language model, you do not need to set the `X-Watson-Learning-Opt-Out` request header. Your training data is never used to improve the service's base models.
+-   The service *does* log data when a custom model is used with a recognition request. You must set the `X-Watson-Learning-Opt-Out` request header to `true` to prevent logging for recognition requests.
+
+For more information, see [Request logging](/docs/speech-to-text?topic=speech-to-text-data-security#data-security-request-logging).

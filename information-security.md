@@ -48,6 +48,8 @@ Learn more about {{site.data.keyword.IBM_notm}}'s own GDPR readiness journey and
 ## Health Insurance Portability and Accountability Act (HIPAA)
 {: #hipaa}
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
+
 US Health Insurance Portability and Accountability Act (HIPAA) support is available for Premium plans that are hosted in the Washington, DC, location and are created on or after 1 April 2019. For more information, see [Enabling EU and HIPAA supported settings](https://cloud.ibm.com/docs/account?topic=account-eu-hipaa-supported#eu-hipaa-supported){: external}.
 
 Do not include personal health information (PHI) in data that is to be added to custom models. Specifically, be sure to remove any PHI from data that you use for custom language models or custom acoustic models.
@@ -68,20 +70,14 @@ Experimental and beta features are not intended for use with a production enviro
 ### Specifying a customer ID
 {: #specify-customer-id}
 
-To associate a customer ID with data, include the `X-Watson-Metadata` header with the request that passes the information. You pass the string `customer_id={id}` as the argument of the header. The following example associates the customer ID `my_customer_ID` with the data passed with a `POST /v1/recognize` request:
-
-```bash
-curl -X POST -u "apikey:{apikey}" \
---header "X-Watson-Metadata: customer_id=my_customer_ID" \
---header "Content-Type: audio/wav" \
---data-binary @audio.wav \
-"{url}/v1/recognize"
-```
-{: pre}
+To associate a customer ID with data, include the `X-Watson-Metadata` header with the request that passes the information. You pass the string `customer_id={id}` as the argument of the header.
 
 A customer ID can include any characters except for the `;` (semicolon) and `=` (equals sign). Specify a random or generic string for the customer ID; do not specify a personally identifiable string, such as an email address or Twitter ID. You can specify different customer IDs with different requests. A customer ID that you specify is associated with the instance of the service whose credentials are used with the request; only credentials for that instance of the service can delete data associated with the ID.
 
-Use the `X-Watson-Metadata` header with the following methods:
+#### Supported methods
+{: #specify-customer-id-methods}
+
+You can use the `X-Watson-Metadata` header with the following methods:
 
 -   With WebSocket requests:
     -   `/v1/recognize`
@@ -108,10 +104,47 @@ Use the `X-Watson-Metadata` header with the following methods:
 
     The customer ID is associated with the audio resource that is added or updated by the request.
 
-### Deleting data
+#### Specify a customer ID example
+{: #specify-customer-id-example}
+
+The following example associates the customer ID `my_customer_ID` with the data passed with a `POST /v1/recognize` request:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
+```bash
+curl -X POST -u "apikey:{apikey}" \
+--header "X-Watson-Metadata: customer_id=my_customer_ID" \
+--header "Content-Type: audio/wav" \
+--data-binary @audio.wav \
+"{url}/v1/recognize"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
+--header "X-Watson-Metadata: customer_id=my_customer_ID" \
+--header "Content-Type: audio/wav" \
+--data-binary @audio.wav \
+"{url}/v1/recognize"
+```
+{: pre}
+
+### Deleting customer data
 {: #delete-pi}
 
-To delete all data that is associated with a customer ID, use the `DELETE /v1/user_data` method. You pass the string `customer_id={id}` as a query parameter with the request. The following example deletes all data for the customer ID `my_customer_ID`:
+To delete all data that is associated with a customer ID, use the `DELETE /v1/user_data` method. You pass the string `customer_id={id}` as a query parameter with the request.
+
+The `/v1/user_data` method deletes all data that is associated with the specified customer ID, regardless of the method by which the information was added. The method has no effect if no data is associated with the customer ID. You must issue the request with credentials for the same instance of the service that was used to associate the customer ID with the data.
+
+#### Delete customer data example
+{: #delete-pi-example}
+
+The following example deletes all data for the customer ID `my_customer_ID`:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X DELETE -u "apikey:{apikey}" \
@@ -119,10 +152,19 @@ curl -X DELETE -u "apikey:{apikey}" \
 ```
 {: pre}
 
-The `/v1/user_data` method deletes all data that is associated with the specified customer ID, regardless of the method by which the information was added. The method has no effect if no data is associated with the customer ID. You must issue the request with credentials for the same instance of the service that was used to associate the customer ID with the data.
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X DELETE \
+--header "Authorization: Bearer {token}" \
+"{url}/v1/user_data?customer_id=my_customer_ID"
+```
+{: pre}
 
 ## Deletion of all data for a {{site.data.keyword.speechtotextshort}} service instance
 {: #gdpr-speech-to-text-instance}
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
 
 If you delete an instance of the {{site.data.keyword.speechtotextshort}} service from the {{site.data.keyword.cloud_notm}} console, all data associated with that service instance is automatically deleted. This includes all custom language models, corpora, grammars, and words; all custom acoustic models and audio resources; all registered endpoints for the asynchronous HTTP interface; and all data related to speech recognition requests.
 

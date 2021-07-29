@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2020
-lastupdated: "2020-06-05"
+  years: 2015, 2021
+lastupdated: "2021-05-10"
 
 subcollection: speech-to-text
 
@@ -26,6 +26,9 @@ subcollection: speech-to-text
 # Using grammars with custom language models
 {: #grammars}
 
+The grammars feature is beta functionality. The service supports grammars for all languages for which it supports language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+{: beta}
+
 The {{site.data.keyword.speechtotextfull}} service supports the use of grammars with custom language models. You can add grammars to a custom language model and use them for speech recognition. Grammars restrict the set of phrases that the service can recognize from audio.
 {: shortdesc}
 
@@ -34,9 +37,6 @@ A grammar uses a formal language specification to define a set of production rul
 For example, when you need to recognize specific words or phrases, such as *yes* or *no*, individual letters or numbers, or a list of names, using grammars can be more effective than examining alternative words and transcripts. Moreover, by limiting the search space for valid strings, the service can deliver results faster and more accurately.
 
 When you use a custom language model and a grammar for speech recognition, the service can return a valid phrase from the grammar or an empty result. If the result is not empty, the service includes a confidence score with the final transcript, as it does for all recognition requests. For grammars, the score indicates the likelihood that the response matched the grammar. False-positives are always possible, especially for simple grammars, so you must always consider the confidence of the service's results when evaluating its response.
-
-The grammars feature is beta functionality. The service supports grammars for all languages for which it supports language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
-{: beta}
 
 ## Supported grammar formats
 {: #grammarFormats}

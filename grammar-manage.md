@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2020
-lastupdated: "2020-06-23"
+  years: 2015, 2021
+lastupdated: "2021-05-14"
 
 subcollection: speech-to-text
 
@@ -13,6 +13,7 @@ subcollection: speech-to-text
 {:tip: .tip}
 {:important: .important}
 {:note: .note}
+{:beta: .beta}
 {:deprecated: .deprecated}
 {:pre: .pre}
 {:codeblock: .codeblock}
@@ -24,6 +25,9 @@ subcollection: speech-to-text
 
 # Managing grammars
 {: #manageGrammars}
+
+The grammars feature is beta functionality. The service supports grammars for all languages for which it supports language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+{: beta}
 
 The customization interface includes the `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` method for adding a grammar to a custom language model. For more information, see [Add a grammar to the custom language model](/docs/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar). The interface also includes the following methods for listing and deleting grammars for a custom language model.
 {: shortdesc}
@@ -44,13 +48,24 @@ Both methods return the same information about a grammar. The information includ
 
     For example, the grammar might be invalid, or you might have tried to add a grammar with the same name as an existing grammar. You can try to add the grammar again and include the `allow_overwrite` parameter with the request. You can also delete the grammar and then try adding it again.
 
-### Example requests and responses
-{: #listExample-grammars}
+### List all grammars example
+{: #listExample-grammars-all}
 
 The following example lists information about all grammars that have been added to the custom model with the specified customization ID.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X GET -u "apikey:{apikey}" \
+"{url}/v1/customizations/{customization_id}/grammars"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
 "{url}/v1/customizations/{customization_id}/grammars"
 ```
 {: pre}
@@ -80,13 +95,29 @@ Three grammars were successfully added to the custom model: `confirm-xml`, `conf
 ```
 {: codeblock}
 
-The following example shows information about the specified grammar, `list-abnf`.
+### List a specific grammar example
+{: #listExample-grammars-specific}
+
+The following example shows information about the specified grammar, `list-abnf`:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/customizations/{customization_id}/grammars/list-abnf"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
+"{url}/v1/customizations/{customization_id}/grammars/list-abnf"
+```
+{: pre}
+
+The grammar contains eight OOV words and is fully analyzed:
 
 ```javascript
 {
@@ -107,13 +138,24 @@ Use the `DELETE /v1/customizations/{customization_id}/grammars/{grammar_name}` m
 
 Removing a grammar does not affect the custom model until you train the model on its updated data by using the `POST /v1/customizations/{customization_id}/train` method. If you successfully trained the model on the grammar, the grammar continues to be available for speech recognition until you retrain the model.
 
-### Example request
+### Delete a grammar example
 {: #deleteExample-grammar}
 
 The following example deletes the grammar named `list-abnf` from the custom model with the specified customization ID.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X DELETE -u "apikey:{apikey}" \
+"{url}/v1/customizations/{customization_id}/grammars/list-abnf"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X DELETE \
+--header "Authorization: Bearer {token}" \
 "{url}/v1/customizations/{customization_id}/grammars/list-abnf"
 ```
 {: pre}

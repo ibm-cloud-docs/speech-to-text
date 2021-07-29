@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-14"
+lastupdated: "2021-05-13"
 
 subcollection: speech-to-text
 
@@ -39,7 +39,9 @@ The service reports a confidence score only for the best alternative that it ret
 ### Maximum alternatives example
 {: #maximum-alternatives-example}
 
-The following example request sets the `max_alternatives` parameter to `3`; the service reports a confidence for the most likely of the three alternatives.
+The following example request sets the `max_alternatives` parameter to `3`:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
@@ -48,6 +50,19 @@ curl -X POST -u "apikey:{apikey}" \
 "{url}/v1/recognize?max_alternatives=3"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file.flac \
+"{url}/v1/recognize?max_alternatives=3"
+```
+{: pre}
+
+The service reports a confidence only for the most likely of the three alternatives:
 
 ```javascript
 {
@@ -89,7 +104,9 @@ A confidence measure indicates the service's estimation that the transcribed wor
 ### Word confidence example
 {: #word-confidence-example}
 
-The following example requests word confidence scores for the words of the transcription.
+The following example requests word confidence scores for the words of the transcription:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
@@ -98,6 +115,19 @@ curl -X POST -u "apikey:{apikey}" \
 "{url}/v1/recognize?word_confidence=true"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file.flac \
+"{url}/v1/recognize?word_confidence=true"
+```
+{: pre}
+
+The service returns a confidence score for each word of the audio:
 
 ```javascript
 {
@@ -155,7 +185,9 @@ Timestamps are automatically enabled when you request speaker labels. For more i
 ### Word timestamps example
 {: #word-timestamps-example}
 
-The following example requests timestamps for the words of the transcription.
+The following example requests timestamps for the words of the transcription:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
@@ -164,6 +196,19 @@ curl -X POST -u "apikey:{apikey}" \
 "{url}/v1/recognize?timestamps=true"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file.flac \
+"{url}/v1/recognize?timestamps=true"
+```
+{: pre}
+
+The service returns a timestamp for each word of the audio:
 
 ```javascript
 {

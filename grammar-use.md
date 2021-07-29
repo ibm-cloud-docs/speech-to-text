@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-07"
+lastupdated: "2021-05-10"
 
 subcollection: speech-to-text
 
@@ -26,6 +26,9 @@ subcollection: speech-to-text
 # Using a grammar for speech recognition
 {: #grammarUse}
 
+The grammars feature is beta functionality. You can use grammars with any language that supports language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+{: beta}
+
 Once you create and train your custom language model with your grammar, you can use the grammar in speech recognition requests:
 {: shortdesc}
 
@@ -35,9 +38,6 @@ Once you create and train your custom language model with your grammar, you can 
 
 When you use a grammar, the service recognizes only words from the specified grammar. The service does not use custom words that were added from corpora, that were added or modified individually, or that are recognized by other grammars.
 
-The grammars feature is beta functionality. You can use grammars with any language that supports language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
-{: beta}
-
 ## Examples of using a grammar with a custom language model
 {: #grammarUse-examples}
 
@@ -46,9 +46,9 @@ The following examples show the use of a grammar with a custom language model fo
 -   For the [WebSocket interface](/docs/speech-to-text?topic=speech-to-text-websockets), you first specify the customization ID with the `language_customization_id` parameter of the `/v1/recognize` method. You use this method to establish a WebSocket connection with the service.
 
     ```javascript
-    var IAM_access_token = {access_token};
+    var access_token = {access_token};
     var wsURI = '{ws_url}/v1/recognize'
-      + '?access_token=' + IAM_access_token
+      + '?access_token=' + access_token
       + '&language_customization_id={customization_id}';
     var websocket = new WebSocket(wsURI);
     ```
@@ -70,6 +70,8 @@ The following examples show the use of a grammar with a custom language model fo
     {: codeblock}
 -   For the [synchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-http), pass both parameters with the `POST /v1/recognize` method.
 
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
     ```bash
     curl -X POST -u "apikey:{apikey}" \
     --header "Content-Type: audio/flac" \
@@ -77,10 +79,34 @@ The following examples show the use of a grammar with a custom language model fo
     "{url}/v1/recognize?language_customization_id={customization_id}&grammar_name={grammar_name}"
     ```
     {: pre}
+
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X POST  \
+    --header "Authorization: Bearer {token}" \
+    --header "Content-Type: audio/flac" \
+    --data-binary @audio-file.flac \
+    "{url}/v1/recognize?language_customization_id={customization_id}&grammar_name={grammar_name}"
+    ```
+    {: pre}
 -   For the [asynchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-async), pass both parameters with the `POST /v1/recognitions` method.
+
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
     ```bash
     curl -X POST -u "apikey:{apikey}" \
+    --header "Content-Type: audio/flac" \
+    --data-binary @audio-file.flac \
+    "{url}/v1/recognitions?language_customization_id={customization_id}&grammar_name={grammar_name}"
+    ```
+    {: pre}
+
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X POST \
+    --header "Authorization: Bearer {token}" \
     --header "Content-Type: audio/flac" \
     --data-binary @audio-file.flac \
     "{url}/v1/recognitions?language_customization_id={customization_id}&grammar_name={grammar_name}"

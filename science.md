@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2020
-lastupdated: "2020-07-15"
+lastupdated: "2020-07-29"
 
 subcollection: speech-to-text
 
@@ -36,6 +36,7 @@ The following announcements summarize {{site.data.keyword.IBM_notm}}'s recent sp
 -   [{{site.data.keyword.IBM_notm}} Breaks Industry Record for Conversational Speech Recognition by Extending Deep Learning Technologies](https://www-03.ibm.com/press/us/en/pressrelease/51790.wss){: external}
 -   [{{site.data.keyword.IBM_notm}} Sets New Transcription Performance Milestone on Automatic Broadcast News Captioning](https://www.ibm.com/blogs/research/2019/05/automatic-broadcast-news-captioning/){: external}
 -   [IBM Research AI Advances Speaker Diarization in Real Use Cases](https://www.ibm.com/blogs/research/2020/07/speaker-diarization-in-real-use-cases/){: external}
+-   [Advancing RNN Transducer Technology for Speech Recognition](https://arxiv.org/abs/2103.09935){: external}
 
 These accomplishments contribute to further advance {{site.data.keyword.IBM_notm}}'s speech services. Recent ideas that best fit the cloud-based {{site.data.keyword.speechtotextshort}} service include
 

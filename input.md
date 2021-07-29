@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-13"
+lastupdated: "2021-05-10"
 
 subcollection: speech-to-text
 
@@ -52,8 +52,22 @@ The service enforces timeouts on a streaming session. It can terminate a streami
 
 The following example request specifies `chunked` for the `Transfer-Encoding` header to use streaming mode. The connection remains open to accept additional chunks of audio.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--header "Transfer-Encoding: chunked" \
+--data-binary @{path}audio-file1.flac \
+"{url}/v1/recognize"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --header "Content-Type: audio/flac" \
 --header "Transfer-Encoding: chunked" \
 --data-binary @{path}audio-file1.flac \
@@ -83,8 +97,22 @@ The default inactivity timeout is 30 seconds. You can override this value by usi
 
 The following example request sets the inactivity timeout to 60 seconds. The request sends an initial file to begin the streaming session.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--header "Transfer-Encoding: chunked" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file1.flac \
+"{url}/v1/recognize?inactivity_timeout=60"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --header "Transfer-Encoding: chunked" \
 --header "Content-Type: audio/flac" \
 --data-binary @{path}audio-file1.flac \

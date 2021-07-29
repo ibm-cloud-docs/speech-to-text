@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2020
-lastupdated: "2020-06-17"
+  years: 2019, 2021
+lastupdated: "2021-05-14"
 
 subcollection: speech-to-text
 
@@ -24,6 +24,8 @@ subcollection: speech-to-text
 
 # High availability and disaster recovery
 {: #ha-dr}
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
 
 The {{site.data.keyword.speechtotextfull}} service is highly available within any {{site.data.keyword.cloud_notm}} location (for example, Dallas or Washington, DC). However, recovering from potential disasters that affect an entire location requires planning and preparation.
 {: shortdesc}
@@ -78,7 +80,7 @@ Preserve the following information about your custom language models:
     -   Use the `GET /v1/customizations/{customization_id}/words` method to list information about the words from a custom model. You can use the `word_type` parameter to list `all` words from a model, words added directly by the `user`, words extracted from `corpora`, or words recognized by `grammars`.
     -   Use the `GET /v1/customizations/{customization_id}/words/{word_name}` method to list information about a specified word from a custom model.
 
-    For more information, see [Listing words from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageWords#listWords).
+    For more information, see [Listing custom words from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageWords#listWords).
 
 It is a best practice to preserve this information in a format that you can use to re-create your custom language models in the event of a failure. Actively maintaining the information about your custom models and their data, and preparing the calls listed in the following section ahead of time, can enable you to recover as quickly as possible.
 

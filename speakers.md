@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-27"
+lastupdated: "2021-05-14"
 
 subcollection: speech-to-text
 
@@ -26,13 +26,13 @@ subcollection: speech-to-text
 # Speaker labels
 {: #speaker-labels}
 
-The speaker labels feature is beta functionality that is available for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). For next-generation models, speakers are not supported for use with interim results or low latency.
+The speaker labels feature is beta functionality that is available for English (Australian, UK (narrowband/telephony), and US), German, Japanese, Korean, and Spanish only. For next-generation models, speaker labels are not supported for use with interim results or low latency.
 {: beta}
 
 With speaker labels, the {{site.data.keyword.speechtotextfull}} service identifies which individuals spoke which words in a multi-participant exchange. You can use the feature to create a person-by-person transcript of an audio stream. For example, you can use it to develop analytics for a call-center or meeting transcript, or to animate an exchange with a conversational robot or avatar. For best performance, use audio that is at least a minute long. (Labeling who spoke what and when is sometimes referred to as *speaker diarization*.)
 {: shortdesc}
 
-Speaker labels are optimized for two-speaker scenarios. They work best for telephone conversations that involve two people in an extended exchange. They can handle up to six speakers, but more than two speakers can result in variable performance. Two-person exchanges are typically conducted over narrowband media, but you can use speaker labels with supported narrowband and broadband models.
+Speaker labels are optimized for two-speaker scenarios. They work best for telephone conversations that involve two people in an extended exchange. They can handle up to six speakers, but more than two speakers can result in variable performance. Two-person exchanges are typically conducted over narrowband (telephony) media, but you can use speaker labels with supported narrowband and broadband (multimedia) models.
 
 To use the feature, you set the `speaker_labels` parameter to `true` for a recognition request; the parameter is `false` by default. The service identifies speakers by individual words of the audio. It relies on a word's start and end time to identify its speaker.
 
@@ -42,7 +42,9 @@ Setting the `speaker_labels` parameter to `true` forces the `timestamps` paramet
 ## Speaker labels example
 {: #speaker-labels-example}
 
-The following example request shows a response that includes speaker labels. The numeric values that are associated with each element of the `timestamps` array are the start and end times of the word in the audio.
+An example is the best way to show how speaker labels work. The following example requests speaker labels with a speech recognition request:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
@@ -51,6 +53,19 @@ curl -X POST -u "apikey:{apikey}" \
 "{url}/v1/recognize?model=en-US_NarrowbandModel&speaker_labels=true"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-multi.flac \
+"{url}/v1/recognize?model=en-US_NarrowbandModel&speaker_labels=true"
+```
+{: pre}
+
+The response includes arrays of timestamps and speaker labels. The numeric values that are associated with each element of the `timestamps` array are the start and end times of each word in the `speaker_labels` array.
 
 ```javascript
 {
@@ -259,7 +274,7 @@ As a result, speaker IDs might not be sequential, contiguous, or ordered. For in
 ## Requesting interim results for speaker labels
 {: #speaker-labels-interim}
 
-When you use speaker labels with interim results, the service duplicates the final speaker label object. For more information, see the limitation dated 27 April 2021 in [Known limitations](/docs/speech-to-text?topic=speech-to-text-release-notes#limitations).
+When you use speaker labels with interim results, the service duplicates the final speaker label object. For more information, see the known limitations in the [Release notes for IBM Cloud](/docs/speech-to-text?topic=speech-to-text-release-notes) or the [Release notes for IBM Cloud Pak for Data](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: important}
 
 With the WebSocket interface, you can request interim results as well as speaker labels (for more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results)). Final results are generally better than interim results. But interim results can help identify the evolution of a transcript and the assignment of speaker labels. Interim results can indicate where transient speakers and IDs appeared or disappeared. However, the service can reuse the IDs of speakers that it initially identifies and later reconsiders and omits. Therefore, an ID might refer to two different speakers in interim and final results.

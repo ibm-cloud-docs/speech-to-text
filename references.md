@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2021
-lastupdated: "2021-03-21"
+lastupdated: "2021-07-29"
 
 subcollection: speech-to-text
 
@@ -42,7 +42,8 @@ For more information about the research behind the {{site.data.keyword.speechtot
 1.  {: #saon2015}Saon, George, Hong-Kwang J. Kuo, Steven Rennie, and Michael Picheny. [*The {{site.data.keyword.IBM_notm}} 2015 English Conversational Telephone Speech Recognition System.*](https://arxiv.org/pdf/1505.05899.pdf){: external} Submitted to Interspeech 2015 (2015).
 1.  {: #saon2016}Saon, George, Tom Sercu, Steven Rennie, and Hong-Kwang J. Kuo. [*The {{site.data.keyword.IBM_notm}} 2016 English Conversational Telephone Speech Recognition System.*](https://arxiv.org/pdf/1604.08242v1.pdf){: external} Submitted to Interspeech 2016 (2016).
 1.  {: #saon2017}Saon, George, Gakuto Kurata, Tom Sercu, Kartik Audhkhasi, Samuel Thomas, Dimitrios Dimitriadis, Xiaodong Cui, Bhuvana Ramabhadran, Michael Picheny, Lynn-Li Lim, Bergul Roomi, and Phil Hall. [*English Conversational Telephone Speech Recognition by Humans and Machines.*](https://www.isca-speech.org/archive/Interspeech_2017/pdfs/0405.PDF){: external} Proceedings of Interspeech 2017 (August 2017): pp. 132-136.
-1.  {: #saon2019}Saon, George, Zoltan Tuske, Kartik Audhkhasi, and Brian Kingsbury. [*Sequence Noise Injected Training for End-to-end Speech Recognition.*](https://ieeexplore.ieee.org/document/8683706){: external} Proceedings of the IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP) (May 2019).
+1.  {: #saon2019}Saon, George, Zoltan Tueske, Kartik Audhkhasi, and Brian Kingsbury. [*Sequence Noise Injected Training for End-to-end Speech Recognition.*](https://ieeexplore.ieee.org/document/8683706){: external} Proceedings of the IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP) (May 2019).
+1.  {: #saon2021}Saon, George, Zoltan Tueske, Daniel Bolanos, and Brian Kingsbury. [*Advancing RNN Transducer Technology for Speech Recognition*](https://arxiv.org/abs/2103.09935){: external} Proceedings of the IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP) (March 2021).
 1.  {: #soltau2014}Soltau, Hagen, George Saon, and Tara N. Sainath. [*Joint Training of Convolutional and Non-Convolutional Neural Networks.*](https://ieeexplore.ieee.org/document/6854669){: external} Proceedings of the IEEE International Conference on Acoustic, Speech and Signal Processing (ICASSP), Florence, Italy (May 2014): pp. 5572-5576.
 1.  {: #suzuki2019}Suzuki, Masayuki, Nobuyasu Itoh, Tohru Nagano, Gakuto Kurata, and Samuel Thomas. [*Improvements to N-gram Language Model Using Text Generated from Neural Language Model.*](https://ieeexplore.ieee.org/document/8683481){: external} Proceedings of the IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP) (May 2019).
 1.  {: #thomas2019}Thomas, Samuel, Masayuki Suzuki, Yinghui Huang, Gakuto Kurata, Zoltan Tuske, George Saon, Brian Kingsbury, and Michael Picheny. [*English Broadcast News Speech Recognition by Humans and Machines.*](https://arxiv.org/pdf/1904.13258.pdf){: external} Proceedings of the IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP) (2019).

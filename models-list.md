@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2020-04-03"
+lastupdated: "2020-05-14"
 
 subcollection: speech-to-text
 
@@ -44,7 +44,7 @@ Regardless of whether you list information about all available models or about a
     -   `low_latency` is a boolean that indicates whether you can use the `low_latency` parameter with a next-generation model. The service includes this field only for next-generation models. Previous-generation models do not support the `low_latency` parameter.
     -   `speaker_labels` indicates whether you can use the `speaker_labels` parameter with the model.
 
-    The `speaker_labels` field returns `true` for all models. However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
+    The `speaker_labels` field returns `true` for all models. However, speaker labels are supported as beta functionality only for English (Australian, UK (narrowband/telephony), and US), German, Japanese, Korean, and Spanish. Do not rely on the field to identify which models support speaker labels.
     {: note}
 
 ## Listing all models
@@ -54,16 +54,29 @@ You use the HTTP `GET /v1/models` method to list information about all available
 
 The order in which the service returns models can change from call to call. So, do not rely on an alphabetized or static list of models. Because the models are returned as an array of JSON objects, the order has no bearing on programmatic uses of the response.
 
-### Example request and response
+### List all models example
 {: #models-list-all-example}
 
-The following example lists all models that are supported by the service. The output is abbreviated to show only the first few models.
+The following example lists all models that are supported by the service:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/models"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
+"{url}/v1/models"
+```
+{: pre}
+
+The response is abbreviated to show only the first few models.
 
 ```javascript
 {
@@ -112,16 +125,29 @@ curl -X GET -u "apikey:{apikey}" \
 
 You use the HTTP `GET /v1/models/{model_id}` method to list information about a specified model. The service returns information only for that model.
 
-### Example requests and responses
+### List a specific model examples
 {: #models-list-specific-examples}
 
-The following example shows information about the US English broadband model. The model supports both language model customization and speakers labels.
+The following example shows information about the US English broadband model:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/models/en-US_BroadbandModel"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
+"{url}/v1/models/en-US_BroadbandModel"
+```
+{: pre}
+
+The model supports both language model customization and speakers labels.
 
 ```javascript
 {
@@ -138,13 +164,26 @@ curl -X GET -u "apikey:{apikey}" \
 ```
 {: codeblock}
 
-The following example shows information about the next-generation US English telephony model. The model supports low latency and speakers labels. It does not support language model customization.
+The following example shows information about the next-generation US English telephony model:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/models/en-US_Telephony"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
+"{url}/v1/models/en-US_Telephony"
+```
+{: pre}
+
+The model supports low latency and speakers labels. It does not support language model customization.
 
 ```javascript
 {

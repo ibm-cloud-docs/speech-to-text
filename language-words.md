@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2020
-lastupdated: "2020-06-23"
+  years: 2015, 2021
+lastupdated: "2021-05-14"
 
 subcollection: speech-to-text
 
@@ -31,7 +31,7 @@ The customization interface includes the `POST /v1/customizations/{customization
 You are likely to add most custom words from corpora. Make sure that you know the character encoding that is used in the text files for your corpora. The service preserves the encoding that it finds in the text files. You must use that encoding when working with the individual words in the custom language model. When you specify a word with the `GET`, `PUT`, or `DELETE /v1/customizations/{customization_id}/words/{word_name}` method, you must URL-encode the `word_name` that you pass in the URL if the word includes non-ASCII characters. For more information, see [Character encoding](/docs/speech-to-text?topic=speech-to-text-corporaWords#charEncoding).
 {: important}
 
-## Listing words from a custom language model
+## Listing custom words from a custom language model
 {: #listWords}
 
 The customization interface offers two methods for listing words from a custom language model:
@@ -62,13 +62,24 @@ If the service discovers one or more problems with a custom word's definition, t
 
 An error can occur, for example, if you add a custom word with an invalid `sounds_like` field, one that violates one of the rules for adding a pronunciation. You cannot train a custom model whose words resource includes a word with an error. You must correct or delete the word before you can train the model.
 
-### Example requests and responses
-{: #listExample-words}
+### List all custom words example
+{: #listExample-words-all}
 
 The following example lists all of the words, regardless of type, from the custom model with the specified customization ID. The words are displayed in the default sort order, ascending alphabetical.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X GET -u "apikey:{apikey}" \
+"{url}/v1/customizations/{customization_id}/words"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
 "{url}/v1/customizations/{customization_id}/words"
 ```
 {: pre}
@@ -125,10 +136,24 @@ The words resource for the model contains four words. The first word was added d
 ```
 {: codeblock}
 
+### List a specific custom word example
+{: #listExample-words-specific}
+
 The following example shows information about the word `NCAA` from the words resource of the specified model:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X GET -u "apikey:{apikey}" \
+"{url}/v1/customizations/{customization_id}/words/NCAA"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
 "{url}/v1/customizations/{customization_id}/words/NCAA"
 ```
 {: pre}
@@ -152,7 +177,7 @@ The user added the word initially. The service then found the word twice in `cor
 ```
 {: codeblock}
 
-## Deleting a word from a custom language model
+## Deleting a custom word from a custom language model
 {: #deleteWord}
 
 Use the `DELETE /v1/customizations/{customization_id}/words/{word_name}` method to delete a word from a custom language model. Use the method to remove words that were added in error, for example, from a corpus with faulty data.
@@ -161,13 +186,24 @@ You can remove any word that you added to the custom model's words resource via 
 
 Removing a word from a custom model does not affect the model until you retrain it by using the `POST /v1/customizations/{customization_id}/train` method. If the model was previously trained on the word, the model continues to apply the word to speech recognition even after you delete the word from its words resource. You must retrain the model to reflect the deletion.
 
-### Example request
+### Delete a custom word example
 {: #deleteExample-word}
 
 The following example deletes the word `IEEE` from the custom model with the specified customization ID:
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X DELETE -u "apikey:{apikey}" \
+"{url}/v1/customizations/{customization_id}/words/IEEE"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X DELETE \
+--header "Authorization: Bearer {token}" \
 "{url}/v1/customizations/{customization_id}/words/IEEE"
 ```
 {: pre}
