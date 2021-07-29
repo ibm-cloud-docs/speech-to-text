@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-07"
+lastupdated: "2021-05-14"
 
 subcollection: speech-to-text
 
@@ -70,8 +70,23 @@ A new custom language model has the following attributes:
 
 The following example creates a new custom language model named `Example model`. The model is created for the base model `en-US-BroadbandModel` and has the description `Example custom language model`. The `Content-Type` header specifies that JSON data is being passed to the method.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: application/json" \
+--data "{\"name\": \"Example model\", \
+  \"base_model_name\": \"en-US_BroadbandModel\", \
+  \"description\": \"Example custom language model\"}" \
+"{url}/v1/customizations"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --header "Content-Type: application/json" \
 --data "{\"name\": \"Example model\", \
   \"base_model_name\": \"en-US_BroadbandModel\", \
@@ -118,8 +133,20 @@ You can add a maximum of 90 thousand OOV words and 10 million total words from a
 
 The following example adds the corpus text file `healthcare.txt` to the custom model with the specified ID. The example names the corpus `healthcare`.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--data-binary @healthcare.txt \
+"{url}/v1/customizations/{customization_id}/corpora/healthcare"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --data-binary @healthcare.txt \
 "{url}/v1/customizations/{customization_id}/corpora/healthcare"
 ```
@@ -140,8 +167,19 @@ The service returns a 201 response code if the corpus is valid. It then asynchro
 
 To determine the status of the analysis, use the `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` method to poll the status of the corpus. The method accepts the ID of the model and the name of the corpus, as shown in the following example:
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X GET -u "apikey:{apikey}" \
+"{url}/v1/customizations/{customization_id}/corpora/corpus1"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
 "{url}/v1/customizations/{customization_id}/corpora/corpus1"
 ```
 {: pre}
@@ -180,8 +218,23 @@ You can use the following methods to add words to a custom model:
 
 -   The `POST /v1/customizations/{customization_id}/words` method adds multiple words at one time. You pass a JSON object that provides information about each word via the body of the request. The following example adds two custom words, `HHonors` and `IEEE`, to the custom model with the specified ID. The `Content-Type` header specifies that JSON data is being passed to the method.
 
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
     ```bash
     curl -X POST -u "apikey:{apikey}" \
+    --header "Content-Type: application/json" \
+    --data "{\"words\": [ \
+      {\"word\": \"HHonors\", \"sounds_like\": [\"hilton honors\", \"H. honors\"], \"display_as\": \"HHonors\"}, \
+      {\"word\": \"IEEE\", \"sounds_like\": [\"I. triple E.\"]}]}" \
+    "{url}/v1/customizations/{customization_id}/words"
+    ```
+    {: pre}
+
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X POST \
+    --header "Authorization: Bearer {token}" \
     --header "Content-Type: application/json" \
     --data "{\"words\": [ \
       {\"word\": \"HHonors\", \"sounds_like\": [\"hilton honors\", \"H. honors\"], \"display_as\": \"HHonors\"}, \
@@ -204,8 +257,21 @@ You can use the following methods to add words to a custom model:
 
     The following command adds the words from the file:
 
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
     ```bash
     curl -X POST -u "apikey:{apikey}" \
+    --header "Content-Type: application/json" \
+    --data-binary @words.json \
+    "{url}/v1/customizations/{customization_id}/words"
+    ```
+    {: pre}
+
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X POST \
+    --header "Authorization: Bearer {token}" \
     --header "Content-Type: application/json" \
     --data-binary @words.json \
     "{url}/v1/customizations/{customization_id}/words"
@@ -215,8 +281,21 @@ You can use the following methods to add words to a custom model:
     This method is asynchronous. It can take on the order of minutes to complete. The time that it takes to complete depends on the number of words that you add and the current load on the service. For more information about checking the status of the operation, see [Monitoring the add words request](#monitorWords).
 -   The `PUT /v1/customizations/{customization_id}/words/{word_name}` method adds individual words. You pass a JSON object that provides information about the word. The following example adds the word `NCAA` to the model with the specified ID. The `Content-Type` header again indicates that JSON data is being passed to the method.
 
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
     ```bash
     curl -X PUT -u "apikey:{apikey}" \
+    --header "Content-Type: application/json" \
+    --data "{\"sounds_like\": [\"N. C. A. A.\", \"N. C. double A.\"]}" \
+    "{url}/v1/customizations/{customization_id}/words/NCAA"
+    ```
+    {: pre}
+
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X PUT \
+    --header "Authorization: Bearer {token}" \
     --header "Content-Type: application/json" \
     --data "{\"sounds_like\": [\"N. C. A. A.\", \"N. C. double A.\"]}" \
     "{url}/v1/customizations/{customization_id}/words/NCAA"
@@ -232,13 +311,26 @@ As with adding corpora, examine the new custom words to check for typographical 
 
 When you use the `POST /v1/customizations/{customization_id}/words` method, the service returns a 201 response code if the input data is valid. It then asynchronously processes the words to add them to the model. You cannot submit requests to add data to the custom model or to train the model until the service completes the request to add new words.
 
-To determine the status of the request, use the `GET /v1/customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the model and returns information that includes the model's status, as in the following example:
+To determine the status of the request, use the `GET /v1/customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the model, as in the following example:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
-curl -X GET -u "apikey:{apikey}"\
+curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/customizations/{customization_id}"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
+"{url}/v1/customizations/{customization_id}"
+```
+{: pre}
+
+The request includes information about the status of the model:
 
 ```javascript
 {
@@ -273,8 +365,19 @@ Once you populate a custom language model with new words (by adding corpora, by 
 
 You use the `POST /v1/customizations/{customization_id}/train` method to train a custom model. You pass the method the customization ID of the model that you want to train, as in the following example:
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+"{url}/v1/customizations/{customization_id}/train"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 "{url}/v1/customizations/{customization_id}/train"
 ```
 {: pre}
@@ -287,7 +390,7 @@ The method includes the following optional query parameters:
     -   Specify `all` or omit the parameter to train the model on all of its words, regardless of their origin.
     -   Specify `user` to train the model only on words that were added or modified by the user, ignoring words that were extracted only from corpora or grammars.
 
-    This option is useful if you add corpora with noisy data, such as words that contain typographical errors. Before training the model on such data, you can use the `word_type` query parameter of the `GET /v1/customizations/{customization_id}/words` method to review words that are extracted from corpora and grammars. For more information, see [Listing words from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageWords#listWords).
+    This option is useful if you add corpora with noisy data, such as words that contain typographical errors. Before training the model on such data, you can use the `word_type` query parameter of the `GET /v1/customizations/{customization_id}/words` method to review words that are extracted from corpora and grammars. For more information, see [Listing custom words from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageWords#listWords).
 -   The `customization_weight` parameter specifies the relative weight that is given to words from the custom model as opposed to words from the base vocabulary when the custom model is used for speech recognition. You can also specify a customization weight with any recognition request that uses the custom model. For more information, see [Using customization weight](/docs/speech-to-text?topic=speech-to-text-languageUse#weight).
 -   The `strict` parameter indicates whether training is to proceed if the custom model contains a mix of valid and invalid resources (corpora, grammars, and words). By default, training fails if the model contains one or more invalid resources. Set the parameter to `false` to allow training to proceed as long as the model contains at least one valid resource. The service excludes invalid resources from the training. For more information, see [Training failures for custom language models](#failedTraining-language).
 
@@ -296,13 +399,26 @@ The method includes the following optional query parameters:
 
 The service returns a 200 response code if it initiates the training process successfully. The service cannot accept subsequent training requests, or requests to add new corpora, grammars, or words, until the existing request completes.
 
-To determine the status of a training request, use the `GET /v1/customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the model and returns information about the model.
+To determine the status of a training request, use the `GET /v1/customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the model:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/customizations/{customization_id}"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
+"{url}/v1/customizations/{customization_id}"
+```
+{: pre}
+
+The request includes information about the model's status:
 
 ```javascript
 {
@@ -360,6 +476,7 @@ If the training request fails with a status code of 400, the service sets the cu
     For more information about validating the words in a custom language model, see [Validating a words resource](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
 -   Set the `strict` parameter of the `POST /v1/customizations/{customization_id}/train` method to `false` to exclude invalid resources from the training. The model must contain at least one valid resource (corpus, grammar, or word) for training to succeed. The `strict` parameter is useful for training a custom model that contains a mix of valid and invalid resources.
 
+<!-- COMMENTED FOR UNIFICATION ON 05/10/21.
 ## Example scripts
 {: #exampleScripts}
 
@@ -441,3 +558,4 @@ Follow these steps to use the Bash shell script:
     ./testSTTcustom.sh
     ```
     {: pre}
+-->

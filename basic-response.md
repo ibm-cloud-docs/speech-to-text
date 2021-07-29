@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-26"
+lastupdated: "2021-07-26"
 
 subcollection: speech-to-text
 
@@ -40,8 +40,7 @@ The service returns the following response for the examples in [Making a speech 
       "alternatives": [
         {
           "confidence": 0.96,
-          "transcript": "several tornadoes touch down as a line of
-severe thunderstorms swept through Colorado on Sunday "
+          "transcript": "several tornadoes touch down as a line of severe thunderstorms swept through Colorado on Sunday "
         }
       ],
       "final": true
@@ -121,11 +120,14 @@ For more information about the available parameters, see [Using speech recogniti
 ## Pauses and silence
 {: #response-pauses-silence}
 
-The service transcribes an entire audio stream until either the stream ends or a timeout occurs. However, if the audio includes pauses or extended silence between spoken words or phrases, recognition results can include multiple final results.
+How the service returns results depends on the interface and the model that you use for speech recognition, as well as the audio that you pass to the service. By default, the service transcribes an entire audio stream as a single utterance and returns a single final result for all of the audio. However, the service can return multiple final results in response to the following conditions:
 
-For most languages, the default pause interval that the service uses to determine separate final results is 0.8 seconds; for Chinese the default interval is 0.6 seconds. You can use the `end_of_phrase_silence_time` parameter to change the duration of the interval. For more information, see [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-parsing#silence-time).
+-   *For previous-generation models,* the utterance reaches a two-minute maximum. The service splits a transcript into multiple final results after two minutes of continuous processing.
+-   The audio contains a pause or extended silence between spoken words or phrases. For most languages, the default pause interval that the service uses to determine separate final results is 0.8 seconds. For Chinese, the default interval is 0.6 seconds.
 
-How the service returns results depends on the interface and the model that you use for speech recognition. The following examples show responses with two final results from the HTTP and WebSocket interfaces. The same input audio is used in both cases. The audio speaks the phrase "one two three four five six," with a one-second pause between the words "three" and "four." The examples use the default pause interval for speech recognition.
+    *For previous-generation models,* you can use the `end_of_phrase_silence_time` parameter to change the duration of the pause interval. For more information, see [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-parsing#silence-time).
+
+The following examples show responses with two final results from the HTTP and WebSocket interfaces. The same input audio is used in both cases. The audio speaks the phrase "one two three four five six," with a one-second pause between the words "three" and "four." The examples use the default pause interval for speech recognition.
 
 -   *For the HTTP interfaces,* the service always sends a single `SpeechRecognitionResults` object. The `alternatives` array has a separate element for each final result. The response has a single `result_index` field with a value of `0`.
 
@@ -192,13 +194,16 @@ How the service returns results depends on the interface and the model that you 
     ```
     {: codeblock}
 
-For more information about results from the WebSocket interface with previous and next-generation models and with the `interim_results` parameter, see [How the service sends recognition results](/docs/speech-to-text?topic=speech-to-text-websockets#ws-results).
+For more information about results from the WebSocket interface with previous- and next-generation models when you use the `interim_results` parameter, see [How the service sends recognition results](/docs/speech-to-text?topic=speech-to-text-websockets#ws-results).
 
-Silence of 30 seconds in streamed audio can result in an [inactivity timeout](/docs/speech-to-text?topic=speech-to-text-input#timeouts-inactivity).
+Silence of 30 seconds in streamed audio can result in an inactivity timeout. For more information, see [Timeouts](/docs/speech-to-text?topic=speech-to-text-input#timeouts).
 {: note}
 
 ## Hesitation markers
 {: #response-hesitation}
+
+Hesitation markers are produced only by previous-generation models. Next-generation models do not produce hesitation markers.
+{: note}
 
 For most languages, the service can include hesitation markers in transcription results when it discovers brief fillers or pauses in speech. Also referred to as disfluencies, such pauses can include fillers such as "uhm", "uh", "hmm", and related non-lexical utterances. Unless you need to use them for your application, you can safely filter hesitation markers from a transcript.
 

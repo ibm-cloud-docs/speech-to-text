@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-22"
+lastupdated: "2021-05-10"
 
 subcollection: speech-to-text
 
@@ -57,9 +57,9 @@ Interim results are indicated in a transcript with the `final` field set to `fal
 The following abbreviated WebSocket example requests interim results. The service sends multiple response objects. It sets the `final` attribute to `true` only for the final results.
 
 ```javascript
-var IAM_access_token = {access_token};
+var access_token = {access_token};
 var wsURI = '{ws_url}/v1/recognize'
-  + '?access_token=' + IAM_access_token;
+  + '?access_token=' + access_token;
 var websocket = new WebSocket(wsURI);
 
 websocket.onopen = function(evt) { onOpen(evt) };
@@ -160,8 +160,21 @@ The nature of the response to a request that includes low latency depends on the
 
 The following synchronous HTTP example requests low latency with the `en-US_Telephony` model. The example sets the `low_latency` query parameter to `true`.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/wav" \
+--data-binary @{path}audio-file.wav \
+"{url}/v1/recognize?model=en-US_Telephony&low_latency=true"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --header "Content-Type: audio/wav" \
 --data-binary @{path}audio-file.wav \
 "{url}/v1/recognize?model=en-US_Telephony&low_latency=true"
@@ -219,9 +232,9 @@ The following abbreviated WebSocket example requests both interim results and lo
 The results are the generally the same as those for the previous interim results example. They just arrive more quickly.
 
 ```javascript
-var IAM_access_token = {access_token};
+var access_token = {access_token};
 var wsURI = '{ws_url}/v1/recognize'
-  + '?access_token=' + IAM_access_token
+  + '?access_token=' + access_token
   + '&model=en-US_Telephony';
 var websocket = new WebSocket(wsURI);
 

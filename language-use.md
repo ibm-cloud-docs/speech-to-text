@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-07"
+lastupdated: "2021-05-10"
 
 subcollection: speech-to-text
 
@@ -44,15 +44,17 @@ The following examples show the use of a custom language model with each speech 
 -   For the [WebSocket interface](/docs/speech-to-text?topic=speech-to-text-websockets), use the `/v1/recognize` method. The specified custom model is used for all requests that are sent over the connection.
 
     ```javascript
-    var IAM_access_token = {access_token};
+    var access_token = {access_token};
     var wsURI = '{ws_url}/v1/recognize'
-      + '?access_token=' + IAM_access_token
+      + '?access_token=' + access_token
       + '&model=es-ES_BroadbandModel'
       + '&language_customization_id={customization_id}';
     var websocket = new WebSocket(wsURI);
     ```
     {: codeblock}
 -   For the [synchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-http), use the `POST /v1/recognize` method. The specified custom model is used for that request.
+
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
     ```bash
     curl -X POST -u "apikey:{apikey}" \
@@ -61,10 +63,34 @@ The following examples show the use of a custom language model with each speech 
     "{url}/v1/recognize?language_customization_id={customization_id}"
     ```
     {: pre}
+
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X POST \
+    --header "Authorization: Bearer {token}" \
+    --header "Content-Type: audio/flac" \
+    --data-binary @audio-file.flac \
+    "{url}/v1/recognize?language_customization_id={customization_id}"
+    ```
+    {: pre}
 -   For the [asynchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-async), use the `POST /v1/recognitions` method. The specified custom model is used for that request.
+
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
     ```bash
     curl -X POST -u "apikey:{apikey}" \
+    --header "Content-Type: audio/flac" \
+    --data-binary @audio-file.flac \
+    "{url}/v1/recognitions?language_customization_id={customization_id}"
+    ```
+    {: pre}
+
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X POST \
+    --header "Authorization: Bearer {token}" \
     --header "Content-Type: audio/flac" \
     --data-binary @audio-file.flac \
     "{url}/v1/recognitions?language_customization_id={customization_id}"
@@ -84,8 +110,19 @@ You specify a customization weight by using the `customization_weight` parameter
 
 -   For a training request, the following example specifies a customization weight of `0.5` with the `POST /v1/customizations/{customization_id}/train` method:
 
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
     ```bash
     curl -X POST -u "apikey:{apikey}" \
+    "{url}/v1/customizations/{customization_id}/train?customization_weight=0.5"
+    ```
+    {: pre}
+
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X POST \
+    --header "Authorization: Bearer {token}" \
     "{url}/v1/customizations/{customization_id}/train?customization_weight=0.5"
     ```
     {: pre}
@@ -94,8 +131,21 @@ You specify a customization weight by using the `customization_weight` parameter
 
 -   For a recognition request, the following example specifies a customization weight of `0.7` with the `POST /v1/recognize` method:
 
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
     ```bash
     curl -X POST -u "apikey:{apikey}" \
+    --header "Content-Type: audio/flac" \
+    --data-binary @audio-file1.flac \
+    "{url}/v1/recognize?language_customization_id={customization_id}&customization_weight=0.7"
+    ```
+    {: pre}
+
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X POST \
+    --header "Authorization: Bearer {token}" \
     --header "Content-Type: audio/flac" \
     --data-binary @audio-file1.flac \
     "{url}/v1/recognize?language_customization_id={customization_id}&customization_weight=0.7"

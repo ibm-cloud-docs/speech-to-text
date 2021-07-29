@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2021
-lastupdated: "2021-04-02"
+lastupdated: "2021-05-10"
 
 subcollection: speech-to-text
 
@@ -52,8 +52,21 @@ The `application/octet-stream` specification for an audio format is not supporte
 
 The following example from [Add audio to the custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acoustic#addAudio) adds an `audio/wav` file:
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/wav" \
+--data-binary @audio1.wav \
+"{url}/v1/acoustic_customizations/{customization_id}/audio/audio1"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --header "Content-Type: audio/wav" \
 --data-binary @audio1.wav \
 "{url}/v1/acoustic_customizations/{customization_id}/audio/audio1"
@@ -80,8 +93,22 @@ The name of an audio file that is contained in an archive-type resource can incl
 
 The following example from [Add audio to the custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acoustic#addAudio) adds an `application/zip` file that contains audio files in `audio/l16` format that are sampled at 16 kHz:
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: application/zip" \
+--header "Contained-Content-Type: audio/l16;rate=16000" \
+--data-binary @audio2.zip \
+"{url}/v1/acoustic_customizations/{customization_id}/audio/audio2"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --header "Content-Type: application/zip" \
 --header "Contained-Content-Type: audio/l16;rate=16000" \
 --data-binary @audio2.zip \

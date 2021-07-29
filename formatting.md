@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-26"
+lastupdated: "2021-07-26"
 
 subcollection: speech-to-text
 
@@ -59,7 +59,8 @@ Smart formatting impacts some transcription results and not others:
     -   *For both US English and Japanese,* hesitation markers continue to appear in interim results.
     -   *For Spanish,* the service does not produce hesitation markers for any results.
 
-    For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
+    Only previous-generation models can produce hesitation markers in a transcript. Next-generation models do not produce hesitation markers. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
+    {: note}
 
 ### Language differences
 {: #smart-formatting-differences}
@@ -197,8 +198,21 @@ For more information about specifying a pause interval that affects the service'
 
 The following example requests smart formatting with a recognition request by setting the `smart_formatting` parameter to `true`. The following sections show the effects of smart formatting on the results of a request.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file.flac \
+"{url}/v1/recognize?smart_formatting=true"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --header "Content-Type: audio/flac" \
 --data-binary @{path}audio-file.flac \
 "{url}/v1/recognize?smart_formatting=true"
@@ -279,8 +293,21 @@ The following table shows examples of final transcripts both with and without nu
 
 The following example requests numeric redaction with a recognition request by setting the `redaction` parameter to `true`. Because the request enables redaction, the service implicitly enables smart formatting with the request. The service effectively disables the other parameters of the request so that they have no effect: The service returns a single final transcript and recognizes no keywords.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/wav" \
+--data-binary @{path}audio-file.wav \
+"{url}/v1/recognize?&redaction=true&max_alternatives=3&keywords=birth%2Cbirthday&keywords_threshold=0.5"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --header "Content-Type: audio/wav" \
 --data-binary @{path}audio-file.wav \
 "{url}/v1/recognize?&redaction=true&max_alternatives=3&keywords=birth%2Cbirthday&keywords_threshold=0.5"
@@ -302,6 +329,8 @@ The service censors profanity from all final transcripts and from any alternativ
 
 The following example shows the results for a brief audio file that is transcribed with the default `true` value for the `profanity_filter` parameter. The request also sets the `word_alternatives_threshold` parameter to a relatively high value of `0.99` and the `word_confidence` and `timestamps` parameters to `true`.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
 --header "Content-Type: audio/flac" \
@@ -309,6 +338,19 @@ curl -X POST -u "apikey:{apikey}" \
 "{url}/v1/recognize?word_alternatives_threshold=0.99&word_confidence=true&timestamps=true"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file.flac \
+"{url}/v1/recognize?word_alternatives_threshold=0.99&word_confidence=true&timestamps=true"
+```
+{: pre}
+
+The service masks profanity from the response by replacing it with a series of asterisks:
 
 ```javascript
 {

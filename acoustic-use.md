@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2021
-lastupdated: "2021-04-07"
+lastupdated: "2021-05-10"
 
 subcollection: speech-to-text
 
@@ -44,15 +44,17 @@ The following examples show the use of a custom acoustic model with each speech 
 -   For the [WebSocket interface](/docs/speech-to-text?topic=speech-to-text-websockets), use the `/v1/recognize` method. The specified custom model is used for all requests that are sent over the connection.
 
     ```javascript
-    var IAM_access_token = {access_token};
+    var access_token = {access_token};
     var wsURI = '{ws_url}/v1/recognize'
-      + '?access_token=' + IAM_access_token
+      + '?access_token=' + access_token
       + '&model=en-US_NarrowbandModel'
       + '&acoustic_customization_id={customization_id}';
     var websocket = new WebSocket(wsURI);
     ```
     {: codeblock}
 -   For the [synchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-http), use the `POST /v1/recognize` method. The specified custom model is used for that request.
+
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
     ```bash
     curl -X POST -u "apikey:{apikey}" \
@@ -61,10 +63,34 @@ The following examples show the use of a custom acoustic model with each speech 
     "{url}/v1/recognize?acoustic_customization_id={customization_id}"
     ```
     {: pre}
+
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X POST \
+    --header "Authorization: Bearer {token}" \
+    --header "Content-Type: audio/flac" \
+    --data-binary @audio-file1.flac \
+    "{url}/v1/recognize?acoustic_customization_id={customization_id}"
+    ```
+    {: pre}
 -   For the [asynchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-async), use the `POST /v1/recognitions` method. The specified custom model is used for that request.
+
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
     ```bash
     curl -X POST -u "apikey:{apikey}" \
+    --header "Content-Type: audio/flac" \
+    --data-binary @audio-file.flac \
+    "{url}/v1/recognitions?acoustic_customization_id={customization_id}"
+    ```
+    {: pre}
+
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X POST \
+    --header "Authorization: Bearer {token}" \
     --header "Content-Type: audio/flac" \
     --data-binary @audio-file.flac \
     "{url}/v1/recognitions?acoustic_customization_id={customization_id}"

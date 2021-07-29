@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-14"
+lastupdated: "2021-07-26"
 
 subcollection: speech-to-text
 
@@ -72,12 +72,14 @@ A keyword for which the service finds no matches is omitted from the array. A ke
     -   The keyword's tokens are in the same block.
     -   The tokens are either adjacent or separated by a gap of no more than 0.1 seconds.
 
-    The latter case can occur if a brief filler or non-lexical utterance, such as "uhm" or "well," lies between two tokens of the keyword. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#hesitation).
+    In the latter case, a brief filler or non-lexical utterance, such as "uhm" or "well," can lie between two tokens of the keyword. In this case, previous-generation models can insert a hesitation marker at this position of the transcript. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 
 ### Keyword spotting example
 {: #keyword-spotting-example}
 
-The following example request sets the `keywords` parameter to a URL-encoded array of three strings (`colorado`, `tornado`, and `tornadoes`) and the `keywords_threshold` parameter to `0.5`. The service finds qualifying occurrences of `colorado` and `tornadoes`.
+The following example request sets the `keywords` parameter to a URL-encoded array of three strings (`colorado`, `tornado`, and `tornadoes`) and the `keywords_threshold` parameter to `0.5`:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
@@ -86,6 +88,19 @@ curl -X POST -u "apikey:{apikey}" \
 "{url}/v1/recognize?keywords=colorado%2Ctornado%2Ctornadoes&keywords_threshold=0.5"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file.flac \
+"{url}/v1/recognize?keywords=colorado%2Ctornado%2Ctornadoes&keywords_threshold=0.5"
+```
+{: pre}
+
+The service finds qualifying occurrences of `colorado` and `tornadoes`:
 
 ```javascript
 {
@@ -145,7 +160,9 @@ The service returns the results in a `word_alternatives` field that is an elemen
 ### Word alternatives example
 {: #word-alternatives-example}
 
-The following example request specifies a rather low `word_alternatives_threshold` of `0.10`. The simple input audio includes words with common homonyms and different possible acoustic interpretations. Because of the low threshold, the service returns multiple hypotheses and confidence scores for some of the words, along with the start and end times of all words. The final transcript correctly recognizes the input audio.
+The following example request specifies a rather low `word_alternatives_threshold` of `0.10`. The simple input audio includes words with common homonyms and different possible acoustic interpretations.
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
@@ -154,6 +171,19 @@ curl -X POST -u "apikey:{apikey}" \
 "{url}/v1/recognize?word_alternatives_threshold=0.10"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
+--header "Content-Type: audio/wav" \
+--data-binary @{path}audio-file.wav \
+"{url}/v1/recognize?word_alternatives_threshold=0.10"
+```
+{: pre}
+
+Because of the low threshold, the service returns multiple hypotheses and confidence scores for some of the words, along with the start and end times of all words. The final transcript correctly recognizes the input audio.
 
 ```javascript
 {

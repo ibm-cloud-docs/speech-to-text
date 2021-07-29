@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2021
-lastupdated: "2021-04-08"
+lastupdated: "2021-05-10"
 
 subcollection: speech-to-text
 
@@ -25,12 +25,15 @@ subcollection: speech-to-text
 # Upgrading custom models
 {: #custom-upgrade}
 
-To improve the quality of speech recognition, the {{site.data.keyword.speechtotextfull}} service occasionally updates base models. Because base models for different languages are independent of each other, as are the broadband and narrowband models for a language, updates to individual base models do not affect other models. The [Release notes](/docs/speech-to-text?topic=speech-to-text-release-notes) document all base model updates.
+To improve the quality of speech recognition, the {{site.data.keyword.speechtotextfull}} service occasionally updates base models. Because base models for different languages are independent of each other, as are the broadband and narrowband models for a language, updates to individual base models do not affect other models.
 {: shortdesc}
 
 When a new version of a base model is released, you must upgrade any custom language and custom acoustic models that are built on the base model to take advantage of the updates. Your custom models continue to use the older version of the base model until you complete the upgrade. As with all customization operations, you must use credentials for the instance of the service that owns a model to upgrade it.
 
 Upgrade to the latest version of an updated base model as soon as possible. The sooner you upgrade a custom model, the sooner you can experience the improved performance of the new model. In addition, older versions of base models can be removed at a future time. To encourage upgrading, the service returns a warning message with the results for recognition requests that use custom models that are based on older base models.
+
+All base model updates are documented in the [Release notes for IBM Cloud](/docs/speech-to-text?topic=speech-to-text-release-notes) and the [Release notes for IBM Cloud Pak for Data](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
+{: note}
 
 ## How upgrading works
 {: #custom-upgrade-how}
@@ -52,8 +55,19 @@ Follow these steps to upgrade a custom language model:
 
 1.  Upgrade the custom language model by using the `POST /v1/customizations/{customization_id}/upgrade_model` method:
 
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
     ```bash
     curl -X POST -u "apikey:{apikey}" \
+    "{url}/v1/customizations/{customization_id}/upgrade_model"
+    ```
+    {: pre}
+
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X POST \
+    --header "Authorization: Bearer {token}" \
     "{url}/v1/customizations/{customization_id}/upgrade_model"
     ```
     {: pre}
@@ -77,8 +91,19 @@ Follow these steps to upgrade a custom acoustic model. If the custom acoustic mo
 
 1.  Upgrade the custom acoustic model by using the `POST /v1/acoustic_customizations/{customization_id}/upgrade_model` method:
 
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
     ```bash
     curl -X POST -u "apikey:{apikey}" \
+    "{url}/v1/acoustic_customizations/{customization_id}/upgrade_model"
+    ```
+    {: pre}
+
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X POST \
+    --header "Authorization: Bearer {token}" \
     "{url}/v1/acoustic_customizations/{customization_id}/upgrade_model"
     ```
     {: pre}
@@ -87,8 +112,19 @@ Follow these steps to upgrade a custom acoustic model. If the custom acoustic mo
 
 1.  *If the custom acoustic model was trained with a custom language model,* upgrade the custom acoustic model again, this time with the previously upgraded custom language model. Use the `custom_language_model_id` query parameter to specify the customization ID of the custom language model.
 
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
     ```bash
     curl -X POST -u "apikey:{apikey}" \
+    "{url}/v1/acoustic_customizations/{customization_id}/upgrade_model?custom_language_model_id={custom_language_model_id}"
+    ```
+    {: pre}
+
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X POST \
+    --header "Authorization: Bearer {token}" \
     "{url}/v1/acoustic_customizations/{customization_id}/upgrade_model?custom_language_model_id={custom_language_model_id}"
     ```
     {: pre}

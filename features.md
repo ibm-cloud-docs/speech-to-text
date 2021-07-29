@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-06-15"
+lastupdated: "2021-06-16"
 
 subcollection: speech-to-text
 
@@ -42,7 +42,7 @@ For most languages, you can transcribe audio at one of two sampling rates:
 -   Use *Broadband* or *Multimedia* models for audio that is sampled at a minimum sampling rate of 16 kHz.
 -   Use *Narrowband* or *Telephony* models for audio that is sampled at a minimum sampling rate of 8 kHz.
 
-For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+For more information about which languages support customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
 
 ## Using audio formats
 {: #features-audio}
@@ -161,21 +161,25 @@ The customization interface lets you create custom models to improve the service
 
 You can use a custom language model, a custom acoustic model, or both for speech recognition with any of the service's interfaces. For more information about customization and an overview of its capabilities, see [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization).
 
-You must have the Plus, Standard, or Premium pricing plan to use language model or acoustic model customization. Users of the Lite plan cannot use the customization interface, but they can upgrade to the Plus plan to gain access to customization. For more information, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
-{: note}
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only.** You must have the Plus, Standard, or Premium pricing plan to use language model or acoustic model customization. Users of the Lite plan cannot use the customization interface, but they can upgrade to the Plus plan to gain access to customization. For more information, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
 
-## Learning more about application development
-{: #features-learn}
-
-For more information about working with {{site.data.keyword.watson}} services and {{site.data.keyword.cloud_notm}}:
-
--   For an introduction, see [Getting started with {{site.data.keyword.watson}} and {{site.data.keyword.cloud_notm}}](/docs/watson?topic=watson-about).
--   For information about using {{site.data.keyword.cloud_notm}} Identity and Access Management, see [Authenticating to {{site.data.keyword.watson}} services](/docs/watson?topic=watson-iam).
+## Using software development kits
+{: #features-sdks}
 
 SDKs are available for the {{site.data.keyword.speechtotextshort}} service to simplify the development of speech applications. The SDKs support many popular programming languages and platforms.
 
 -   For a complete list of SDKs and links to the SDKs on GitHub, see [{{site.data.keyword.watson}} SDKs](/docs/speech-to-text?topic=watson-using-sdks).
 -   For more information about all methods of the SDKs for the {{site.data.keyword.speechtotextshort}} service, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+
+## Learning more about application development
+{: #features-learn}
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
+
+For more information about working with {{site.data.keyword.watson}} services and {{site.data.keyword.cloud_notm}}:
+
+-   For an introduction, see [Getting started with {{site.data.keyword.watson}} and {{site.data.keyword.cloud_notm}}](/docs/watson?topic=watson-about).
+-   For information about using {{site.data.keyword.cloud_notm}} Identity and Access Management, see [Authenticating to {{site.data.keyword.watson}} services](/docs/watson?topic=watson-iam).
 
 ## Next steps
 {: #features-next-steps}
@@ -186,4 +190,5 @@ Explore the features introduced in this topic to gain a more in-depth understand
 -   [Recognizing speech with the service](#features-recognition) provides links to simple examples of speech recognition requests and responses. There are also links to detailed presentations of each of the service's interfaces. Learn more about and experiment with the interfaces to determine which is best suited to your application needs.
 -   [Using speech recognition parameters](#features-parameters) introduces the many parameters that you can use to tailor speech recognition requests and transcription responses to your needs. The service's WebSocket and HTTP interfaces support an impressive array of capabilities, most of which are common to all supported interfaces. Use the links to find the parameters that are right for you.
 -   [Customizing the service](#features-customization) describes the more advanced topics of language model and acoustic model customization, which can help you gain the most from the service's capabilities. The section also presents grammars, which you can use with language models to limit possible responses to precise strings and phrases.
--   [Learning more about application development](#features-learn), in addition to providing links to help you get started with {{site.data.keyword.watson}} services and understand authentication, provide links to the {{site.data.keyword.watson}} SDKs, which simplify application development in a variety of popular programming languages.
+-   [Using software development kits](#features-sdks) provide links to the SDKs that are available to simplify application development in many programming languages.
+-   ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only.** [Learning more about application development](#features-learn) provides links to help you get started with {{site.data.keyword.watson}} services and understand authentication.

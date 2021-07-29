@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-16"
+lastupdated: "2021-05-10"
 
 subcollection: speech-to-text
 
@@ -62,8 +62,21 @@ This parameter can affect both the quality and the latency of speech recognition
 
 The following example request specifies a value of 0.6 for the `speech_detector_sensitivity` parameter with the synchronous HTTP interface. The service recognizes slightly more potential non-speech events than it would by default.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file1.flac \
+"{url}/v1/recognize?speech_detector_sensitivity=0.6"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --header "Content-Type: audio/flac" \
 --data-binary @{path}audio-file1.flac \
 "{url}/v1/recognize?speech_detector_sensitivity=0.6"
@@ -84,8 +97,21 @@ This  parameter can also affect both the quality and the latency of speech recog
 
 The following example request specifies a value of 0.5 for the `background_audio_suppression` parameter with the synchronous HTTP interface. The service suppresses a reasonable level of background audio.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/flac" \
+--data-binary @{path}audio-file1.flac \
+"{url}/v1/recognize?background_audio_suppression=0.5"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --header "Content-Type: audio/flac" \
 --data-binary @{path}audio-file1.flac \
 "{url}/v1/recognize?background_audio_suppression=0.5"

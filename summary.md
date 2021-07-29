@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-26"
+lastupdated: "2021-05-25"
 
 subcollection: speech-to-text
 
@@ -29,16 +29,13 @@ subcollection: speech-to-text
 The following sections provide a summary of all of the parameters that are available for speech recognition. The information includes availability for previous- and next-generation models, and support and usage for speech recognition interfaces.
 {: shortdesc}
 
--   For more information about supported previous-generation languages and models, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
--   For more information about supported next-generation languages and models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
-
-All next-generation models are beta functionality.
-{: beta}
+-   For more information about previous-generation languages and models, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+-   For more information about next-generation languages and models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 
 ## access_token
 {: #summary-access-token}
 
-A required Identity and Access Management (IAM) access token that you use to establish an authenticated connection with the WebSocket interface. For more information, see [Open a connection](/docs/speech-to-text?topic=speech-to-text-websockets#ws-open).
+A required access token that you use to establish an authenticated connection with the WebSocket interface. For more information, see [Open a connection](/docs/speech-to-text?topic=speech-to-text-websockets#ws-open).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -443,6 +440,8 @@ An optional boolean that indicates whether the service provides confidence measu
 
 ## X-Watson-Learning-Opt-Out
 {: #summary-x-watson-learning-opt-out}
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
 
 An optional boolean that indicates whether you opt out of the default request logging that {{site.data.keyword.IBM_notm}} performs to improve the service for future users. To prevent IBM from accessing your data for general service improvements, specify `true` for the parameter. If you opt out, the service logs *no* user data from your requests, saving no audio or text to disk. For more information, see [Request logging](/docs/speech-to-text?topic=speech-to-text-data-security#data-security-request-logging).
 

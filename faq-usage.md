@@ -26,21 +26,19 @@ content-type: faq
 # Usage FAQs
 {: #faq-usage}
 
-FAQs for {{site.data.keyword.speechtotextfull}} include questions about speech recognition, audio transmission, customization, and other topics. To find all FAQs for {{site.data.keyword.cloud}}, see our [FAQ library](/docs/faqs){: external}.
+FAQs for {{site.data.keyword.speechtotextfull}} include questions about speech recognition, audio transmission, customization, and other topics. To find all FAQs for {{site.data.keyword.cloud}}, see the [FAQ library](/docs/faqs){: external}.
 
-## How do I create an instance of the service?
-{: #faq-usage-zero}
+## How do I access my service credentials?
+{: #faq-credentials}
 {: faq}
 {: support}
 
-Go to the [{{site.data.keyword.speechtotextshort}}](https://{DomainName}/catalog/services/speech-to-text){: external} page in the {{site.data.keyword.cloud_notm}} Catalog, then click **Create**. For more information, see [Before you begin](/docs/speech-to-text?topic=speech-to-text-gettingStarted#before-you-begin).
+How you access your service credentials depends on whether you are using {{site.data.keyword.speechtotextshort}} with {{site.data.keyword.cloud}} or {{site.data.keyword.icp4dfull}}. For more information about obtaining your credentials for both versions, see [Before you begin](/docs/speech-to-text?topic=speech-to-text-gettingStarted#getting-started-before-you-begin) in the getting started tutorial.
 
-## How do I access my API key and URL endpoint?
-{: #faq-usage-one}
-{: faq}
-{: support}
+Once you have your service credentials, see the following topics for information about authenticating to the service:
 
-From the [{{site.data.keyword.cloud}} Resource list](https://{DomainName}/resources){: external}, click on your {{site.data.keyword.speechtotextshort}} service instance to go to the {{site.data.keyword.speechtotextshort}} service dashboard page. On the **Manage** page, click **Show Credentials** to view your API key and URL endpoint. For more information, see [Before you begin](/docs/speech-to-text?topic=speech-to-text-gettingStarted#before-you-begin).
+-   [Authenticating to {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-data-security#data-security-authentication-cloud)
+-   [Authenticating to {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-data-security#data-security-authentication-icpd)
 
 ## What languages does the service support?
 {: #faq-language-support}
@@ -53,6 +51,16 @@ Most languages support both broadband and narrowband models, which have minimum 
 
 -   [Languages and models](/docs/speech-to-text?topic=speech-to-text-models)
 -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+
+## What are the input audio formats?
+{: #faq-audio-types}
+{: faq}
+{: support}
+
+The service supports many audio formats (MIME types). Different formats support different sampling rates and other characteristics. By using a format that supports compression, you can maximize the amount of audio data that you can send with a request. For more information about the supported audio formats, see the following topics:
+
+-   [Audio terminology and characteristics](/docs/speech-to-text?topic=speech-to-text-audio-terminology)
+-   [Supported audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats)
 
 ## How much audio data can I submit to the service?
 {: #faq-usage-two}

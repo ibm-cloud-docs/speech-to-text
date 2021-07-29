@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2020
-lastupdated: "2020-06-23"
+  years: 2015, 2021
+lastupdated: "2021-05-10"
 
 subcollection: speech-to-text
 
@@ -26,6 +26,9 @@ subcollection: speech-to-text
 # Adding a grammar to a custom language model
 {: #grammarAdd}
 
+The grammars feature is beta functionality. You can use grammars with any language that supports language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+{: beta}
+
 Before you can use a grammar for speech recognition, you must first use the customization interface to add the grammar to a custom language model. The steps to add a grammar to a custom language model parallel those used to add corpora or custom words:
 {: shortdesc}
 
@@ -36,9 +39,6 @@ Before you can use a grammar for speech recognition, you must first use the cust
 1.  You can now use the custom model and grammar in speech recognition requests. For more information, see [Using a grammar for speech recognition](/docs/speech-to-text?topic=speech-to-text-grammarUse).
 
 These steps are iterative. You can add grammars, as well as corpora and custom words, to a custom language model as often as needed. You must train the custom model on any new data resources (grammars, corpora, or custom words) that you add. When you use it for speech recognition, a custom model reflects the data on which it was last trained.
-
-The grammars feature is beta functionality. You can use grammars with any language that supports language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
-{: beta}
 
 ## Create a custom language model
 {: #createModel-grammar}
@@ -66,8 +66,21 @@ You use the `POST /v1/customizations/{customization_id}/grammars/{grammar_name}`
 
 The following example adds the grammar file named `confirm.abnf` to the custom model with the specified ID. The example names the grammar `confirm-abnf`.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: application/srgs" \
+--data-binary @confirm.abnf \
+"{url}/v1/customizations/{customization_id}/grammars/confirm-abnf"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --header "Content-Type: application/srgs" \
 --data-binary @confirm.abnf \
 "{url}/v1/customizations/{customization_id}/grammars/confirm-abnf"
@@ -87,8 +100,19 @@ The service returns a 201 response code if the grammar is valid. It then asynchr
 
 To determine the status of the analysis, use the `GET /v1/customizations/{customization_id}/grammars/{grammar_name}` method to poll the status of the grammar. The method accepts the ID of the custom model and the name of the grammar. The following example checks the status of the grammar named `confirm-abnf`.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X GET -u "apikey:{apikey}" \
+"{url}/v1/customizations/{customization_id}/grammars/confirm-abnf"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
 "{url}/v1/customizations/{customization_id}/grammars/confirm-abnf"
 ```
 {: pre}
@@ -152,8 +176,19 @@ The final step before you can use a grammar with a custom language model is to t
 
 You use the `POST /v1/customizations/{customization_id}/train` method to train a custom model. You pass the method the customization ID of the model that you want to train, as in the following example.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+"{url}/v1/customizations/{customization_id}/train"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 "{url}/v1/customizations/{customization_id}/train"
 ```
 {: pre}

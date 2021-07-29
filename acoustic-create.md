@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2021
-lastupdated: "2021-04-07"
+lastupdated: "2021-05-13"
 
 subcollection: speech-to-text
 
@@ -58,8 +58,23 @@ A new custom acoustic model has the following attributes:
 
 The following example creates a new custom acoustic model named `Example acoustic model`. The model is created for the base model `en-US_BroadbandModel` and has the description `Example custom acoustic model`. The `Content-Type` header specifies that JSON data is being passed to the method.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: application/json" \
+--data "{\"name\": \"Example acoustic model\", \
+  \"base_model_name\": \"en-US_BroadbandModel\", \
+  \"description\": \"Example custom acoustic model\"}" \
+"{url}/v1/acoustic_customizations"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 --header "Content-Type: application/json" \
 --data "{\"name\": \"Example acoustic model\", \
   \"base_model_name\": \"en-US_BroadbandModel\", \
@@ -91,6 +106,8 @@ The following examples show the addition of both audio- and archive-type resourc
 
 -   This example adds an audio-type resource to the custom acoustic model with the specified `customization_id`. The `Content-Type` header identifies the type of the audio as `audio/wav`. The audio file, **audio1.wav**, is passed as the body of the request, and the resource is given the name `audio1`.
 
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
     ```bash
     curl -X POST -u "apikey:{apikey}" \
     --header "Content-Type: audio/wav" \
@@ -99,10 +116,35 @@ The following examples show the addition of both audio- and archive-type resourc
     ```
     {: pre}
 
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X POST \
+    --header "Authorization: Bearer {token}" \
+    --header "Content-Type: audio/wav" \
+    --data-binary @audio1.wav \
+    "{url}/v1/acoustic_customizations/{customization_id}/audio/audio1"
+    ```
+    {: pre}
+
 -   This example adds an archive-type resource to the specified custom acoustic model. The `Content-Type` header identifies the type of the archive as `application/zip`. The `Contained-Contented-Type` header indicates that all files that are contained in the archive have the format `audio/l16` and are sampled at a rate of 16 kHz. The archive file, **audio2.zip**, is passed as the body of the request, and the resource is given the name `audio2`.
+
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
     ```bash
     curl -X POST -u "apikey:{apikey}" \
+    --header "Content-Type: application/zip" \
+    --header "Contained-Content-Type: audio/l16;rate=16000" \
+    --data-binary @audio2.zip \
+    "{url}/v1/acoustic_customizations/{customization_id}/audio/audio2"
+    ```
+    {: pre}
+
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X POST \
+    --header "Authorization: Bearer {token}" \
     --header "Content-Type: application/zip" \
     --header "Contained-Content-Type: audio/l16;rate=16000" \
     --data-binary @audio2.zip \
@@ -133,11 +175,24 @@ The content of the response and location of the `status` field depend on the typ
 
 -   *For an audio-type resource,* the `status` field is located in the top-level (`AudioListing`) object.
 
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
     ```bash
     curl -X GET -u "apikey:{apikey}" \
     "{url}/v1/acoustic_customizations/{customization_id}/audio/audio1"
     ```
     {: pre}
+
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X GET \
+    --header "Authorization: Bearer {token}" \
+    "{url}/v1/acoustic_customizations/{customization_id}/audio/audio1"
+    ```
+    {: pre}
+
+    The status of the audio-type resource is `ok`:
 
     ```javascript
     {
@@ -155,11 +210,24 @@ The content of the response and location of the `status` field depend on the typ
 
 -   *For an archive-type resource,* the `status` field is located in the second-level (`AudioResource`) object that is nested in the `container` field.
 
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
     ```bash
     curl -X GET -u "apikey:{apikey}" \
     "{url}/v1/acoustic_customizations/{customization_id}/audio/audio2"
     ```
     {: pre}
+
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X GET \
+    --header "Authorization: Bearer {token}" \
+    "{url}/v1/acoustic_customizations/{customization_id}/audio/audio2"
+    ```
+    {: pre}
+
+    The status of the archive-type resource is `ok`:
 
     ```javascript
     {
@@ -186,8 +254,19 @@ Once you populate a custom acoustic model with audio resources, you must train t
 
 You use the `POST /v1/acoustic_customizations/{customization_id}/train` method to train a custom model. You pass the method the customization ID of the model that you want to train, as in the following example.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+"{url}/v1/acoustic_customizations/{customization_id}/train"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 "{url}/v1/acoustic_customizations/{customization_id}/train"
 ```
 {: pre}
@@ -206,13 +285,26 @@ The method includes the following optional query parameters:
 
 The service returns a 200 response code if the training process is successfully initiated. The service cannot accept subsequent training requests, or requests to add more audio resources, until the existing training request completes.
 
-To determine the status of a training request, use the `GET /v1/acoustic_customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the acoustic model and returns its status, as in the following example:
+To determine the status of a training request, use the `GET /v1/acoustic_customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the acoustic model, as in the following example:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/acoustic_customizations/{customization_id}"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
+"{url}/v1/acoustic_customizations/{customization_id}"
+```
+{: pre}
+
+The response includes the status of the model, which is `training`:
 
 ```javascript
 {

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-07-16"
+lastupdated: "2021-07-26"
 
 subcollection: speech-to-text
 
@@ -23,11 +23,16 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Release notes
+# Release notes for {{site.data.keyword.cloud_notm}}
 {: #release-notes}
 
-The following sections document the new features and changes that were included for each release and update of the {{site.data.keyword.speechtotextfull}} service. The information includes any known limitations. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
+
+The following features and changes were included for each release and update of managed instances of {{site.data.keyword.speechtotextfull}} that are hosted on {{site.data.keyword.cloud_notm}} or for instances that are hosted on [IBM Cloud Pak for Data as a Service](https://dataplatform.cloud.ibm.com/docs/content/wsj/landings/wstt.html){: external}. The information includes known limitations. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
 {: shortdesc}
+
+For information about releases and updates for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
+{: note}
 
 ## Beta features
 {: release-notes-beta-features}
@@ -35,7 +40,7 @@ The following sections document the new features and changes that were included 
 IBM occasionally releases features and language support that are classified as beta. Such features are provided so that you can evaluate their functionality. They might not provide the same level of performance or compatibility that generally available (GA) features provide. They might be unstable and are subject to change or removal with short notice. They are not intended for use in a production environment.
 
 ## Known limitations
-{: #limitations}
+{: #release-notes-limitations}
 
 The service has the following known limitations:
 
@@ -122,9 +127,7 @@ The service has the following known limitations:
 
 -   The next-generation language model `fr-FR_Multimedia` is now available for the French language. The model does not support low latency. The new model is beta functionality.
 -   The next-generation US English Telephony model (`en-US_Telephony`) has been updated for improved speech recognition. The updated model continues to be beta functionality.
-
-The [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external} is not yet updated for these changes.
-{: note}
+-   **Defect fix:** The documentation failed to state that next-generation models do *not* produce hesitation markers. The documentation has been updated to note that only previous-generation models produce hesitation markers. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 
 ## 15 June 2021
 {: #June2021}
@@ -145,9 +148,6 @@ The collection of available next-generation language models has been updated and
 
 For more information about the next-generation models and about low latency, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng) and [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
 
-The [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external} is not yet updated for these changes.
-{: note}
-
 ## 26 May 2021
 {: #May2021}
 
@@ -155,9 +155,6 @@ The [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: externa
 -   The `word_confidence` parameter is now supported as beta functionality for use with all next-generation languages and models. For more information, see [Word confidence](/docs/speech-to-text?topic=speech-to-text-metadata#word-confidence).
 -   **Defect fix:** When you use a next-generation model for speech recognition, final transcription results now include the `confidence` field. The field was always included in final transcription results when you use a previous-generation model. This fix addresses a limitation that was reported for the 12 April 2021 release of the next-generation models.
 -   **Defect fix:** The documentation incorrectly stated that using the `smart_formatting` parameter causes the service to remove hesitation markers from final transcription results for Japanese. Smart formatting does not remove hesitation markers from final results for Japanese, only for US English. For more information, see [What results does smart formatting affect?](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-effects)
-
-The [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external} is not yet updated for these changes.
-{: note}
 
 ## 27 April 2021
 {: #April2021b}
@@ -200,7 +197,7 @@ The service now supports a growing number of next-generation language models. Th
 
 Many of the next-generation models also support a new `low_latency` parameter that lets you request faster results at the possible expense of reduced transcription quality. When low latency is enabled, the service curtails its analysis of the audio, which can reduce the accuracy of the transcription. This trade-off might be acceptable if your application requires lower response time more than it does the highest possible accuracy.
 
-The `low_latency` parameter impacts your use of the `interim_results` parameter with the WebSocket interface. Interim results are available only for those next-generation models that support low latency, and only if the `low_latency` parameter is set to `true`.
+The `low_latency` parameter impacts your use of the `interim_results` parameter with the WebSocket interface. Interim results are available only for those next-generation models that support low latency, and only if both the `interim_results` and `low_latency` parameters are set to `true`.
 
 -   For more information about the next-generation models and their capabilities, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 -   For more information about language support for next-generation models and about which next-generation models support low latency, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
@@ -209,7 +206,7 @@ The `low_latency` parameter impacts your use of the `interim_results` parameter 
 -   For more information about the interaction between the `low_latency` and `interim_results` parameters for next-generation models, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
 
 ## Older releases
-{: #older}
+{: #release-notes-older}
 
 -   [17 March 2021](#March2021)
 -   [2 December 2020](#December2020)
@@ -1061,7 +1058,7 @@ The following deprecations first announced in March 2017 are now in effect:
 -   The service now supports the Web Media (WebM) audio format with the Opus or Vorbis codec. The service now also supports the Ogg audio format with the Vorbis codec in addition to the Opus codec. For more information about supported audio formats, see [audio/webm format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-webm).
 -   The service now supports Cross-Origin Resource Sharing (CORS) to allow browser-based clients to call the service directly. For more information, see [Leveraging CORS support](/docs/speech-to-text?topic=speech-to-text-service-features#features-cors).
 -   The asynchronous HTTP interface now offers a `POST /v1/unregister_callback` method that removes the registration for an allowlisted callback URL. For more information, see [Unregistering a callback URL](/docs/speech-to-text?topic=speech-to-text-async#unregister).
--   The WebSocket interface no longer times out for recognition requests for especially long audio files. You no longer need to request interim results with the JSON `start` message to avoid the timeout. (This issue was described in the release notes for March 10, 2016.)
+-   The WebSocket interface no longer times out for recognition requests for especially long audio files. You no longer need to request interim results with the JSON `start` message to avoid the timeout. (This issue was described in the [update for 10 March 2016](#March2016).)
 -   The `DELETE /v1/customizations/{customization_id}` method now returns HTTP response code 401 if you attempt to delete a nonexistent custom model.
 -   The `DELETE /v1/customizations/{customization_id}/corpora/{corpus_name}` method now returns HTTP response code 400 if you attempt to delete a nonexistent corpus.
 
@@ -1080,13 +1077,13 @@ The asynchronous HTTP interface is now generally available. Prior to this date, 
     -   For Japanese-specific considerations when specifying the `sounds_like` field for a custom word, see [Guidelines for Japanese](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-jaJP).
     -   For more information about all methods of the customization interface, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 -   The language model customization interface now includes a `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` method that lists information about a specified corpus. The method is useful for monitoring the status of a request to add a corpus to a custom model. For more information, see [Listing corpora for a custom language model](/docs/speech-to-text?topic=speech-to-text-manageCorpora#listCorpora).
--   The JSON output that is returned by the `GET /v1/customizations/{customization_id}/words` and `GET /v1/customizations/{customization_id}/words/{word_name}` methods now includes a `count` field for each word. The field indicates the number of times the word is found across all corpora. If you add a custom word to a model before it is added by any corpora, the count begins at `1`. If the word is added from a corpus first and later modified, the count reflects only the number of times it is found in corpora. For more information, see [Listing words from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageWords#listWords).
+-   The JSON output that is returned by the `GET /v1/customizations/{customization_id}/words` and `GET /v1/customizations/{customization_id}/words/{word_name}` methods now includes a `count` field for each word. The field indicates the number of times the word is found across all corpora. If you add a custom word to a model before it is added by any corpora, the count begins at `1`. If the word is added from a corpus first and later modified, the count reflects only the number of times it is found in corpora. For more information, see [Listing custom words from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageWords#listWords).
 
     For custom models that were created prior to the existence of the `count` field, the field always remains at `0`. To update the field for such models, add the model's corpora again and include the `allow_overwrite` parameter with the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method.
--   The `GET /v1/customizations/{customization_id}/words` method now includes a `sort` query parameter that controls the order in which the words are to be listed. The parameter accepts two arguments, `alphabetical` or `count`, to indicate how the words are to be sorted. You can prepend an optional `+` or `-` to an argument to indicate whether the results are to be sorted in ascending or descending order. By default, the method displays the words in ascending alphabetical order. For more information, see [Listing words from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageWords#listWords).
+-   The `GET /v1/customizations/{customization_id}/words` method now includes a `sort` query parameter that controls the order in which the words are to be listed. The parameter accepts two arguments, `alphabetical` or `count`, to indicate how the words are to be sorted. You can prepend an optional `+` or `-` to an argument to indicate whether the results are to be sorted in ascending or descending order. By default, the method displays the words in ascending alphabetical order. For more information, see [Listing custom words from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageWords#listWords).
 
     For custom models created prior to the introduction of the `count` field, use of the `count` argument with the `sort` parameter is meaningless. Use the default `alphabetical` argument with such models.
--   The `error` field that can be returned as part of the JSON response from the `GET /v1/customizations/{customization_id}/words` and `GET /v1/customizations/{customization_id}/words/{word_name}` methods is now an array. If the service discovered one or more problems with a custom word's definition, the field lists each problem element from the definition and provides a message that describes the problem. For more information, see [Listing words from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageWords#listWords).
+-   The `error` field that can be returned as part of the JSON response from the `GET /v1/customizations/{customization_id}/words` and `GET /v1/customizations/{customization_id}/words/{word_name}` methods is now an array. If the service discovered one or more problems with a custom word's definition, the field lists each problem element from the definition and provides a message that describes the problem. For more information, see [Listing custom words from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageWords#listWords).
 -   The `keywords_threshold` and `word_alternatives_threshold` parameters of the recognition methods no longer accept a null value. To omit keywords and word alternatives from the response, omit the parameters. A specified value must be a float.
 
 For more information about the service's interface, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.

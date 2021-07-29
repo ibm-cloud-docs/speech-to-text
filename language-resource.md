@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-29"
+lastupdated: "2021-06-09"
 
 subcollection: speech-to-text
 
@@ -229,8 +229,21 @@ You can provide as many as five alternative pronunciations for a word that is di
 
 -   *Provide different pronunciations for acronyms.* For example, the acronym `NCAA` can be pronounced as it is spelled or colloquially as *N. C. double A.* The following example adds both of these sounds-like pronunciations for the word `NCAA`:
 
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
     ```bash
     curl -X PUT -u "apikey:{apikey}" \
+    --header "Content-Type: application/json" \
+    --data "{\"sounds_like\": [\"N. C. A. A.\", \"N. C. double A.\"]}" \
+    "{url}/v1/customizations/{customization_id}/words/NCAA"
+    ```
+    {: pre}
+
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X PUT \
+    --header "Authorization: Bearer {token}" \
     --header "Content-Type: application/json" \
     --data "{\"sounds_like\": [\"N. C. A. A.\", \"N. C. double A.\"]}" \
     "{url}/v1/customizations/{customization_id}/words/NCAA"
@@ -318,6 +331,8 @@ Speech recognition uses statistical algorithms to analyze audio, so adding a wor
 
 The `display_as` field specifies how a word is displayed in a transcript. It is intended for cases where you want the service to display a string that is different from the word's spelling. For example, you can indicate that the word `hhonors` is to be displayed as `HHonors` regardless of whether it sounds like `hilton honors` or `h honors`.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X PUT -u "apikey:{apikey}" \
 --header "Content-Type: application/json" \
@@ -326,9 +341,30 @@ curl -X PUT -u "apikey:{apikey}" \
 ```
 {: pre}
 
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X PUT \
+--header "Authorization: Bearer {token}" \
+--header "Content-Type: application/json" \
+--data "{\"sounds_like\": [\"hilton honors\", \"H. honors\"], \"display_as\": \"HHonors\"}" \
+"{url}/v1/customizations/{customization_id}/words/hhonors"
+```
+{: pre}
+
 As another example, you can indicate that the word `IBM` is to be displayed as <code>IBM&trade;</code>.
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 <pre><code class="language-bash">curl -X PUT -u "apikey:{apikey}" \
+--header "Content-Type: application/json" \
+--data "{\"sounds_like\": [\"I. B. M.\"], \"display_as\":\"IBM&#8482;\"}" \
+"{url}/v1/customizations/{customization_id}/words/IBM"</code></pre>
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+<pre><code class="language-bash">curl -X PUT \
+--header "Authorization: Bearer {token}" \
 --header "Content-Type: application/json" \
 --data "{\"sounds_like\": [\"I. B. M.\"], \"display_as\":\"IBM&#8482;\"}" \
 "{url}/v1/customizations/{customization_id}/words/IBM"</code></pre>
@@ -377,7 +413,7 @@ Especially when you add a corpus to a custom language model or add multiple cust
 
 To validate and, if necessary, correct a word for a custom model, regardless of how it was added to the words resource, use the following methods:
 
--   List all of the words from a custom model by using the `GET /v1/customizations/{customization_id}/words` method or query an individual word with the `GET /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Listing words from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageWords#listWords).
+-   List all of the words from a custom model by using the `GET /v1/customizations/{customization_id}/words` method or query an individual word with the `GET /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Listing custom words from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageWords#listWords).
 -   Modify words in a custom model to correct errors or to add sounds-like or display-as values by using the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Working with custom words](#workingWords).
 -   Delete extraneous words that are introduced in error (for example, by typographical or other mistakes in a corpus) by using the `DELETE /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Deleting a word from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageWords#deleteWord).
     -   If the word was extracted from a corpus, you can instead update the corpus text file to correct the error and then reload the file by using the `allow_overwrite` parameter of the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method. For more information, see [Add a corpus to the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#addCorpus).

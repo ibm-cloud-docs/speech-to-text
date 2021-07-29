@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2021
-lastupdated: "2021-04-08"
+lastupdated: "2021-05-14"
 
 subcollection: speech-to-text
 
@@ -64,13 +64,24 @@ The methods also return a `status` field that indicates the state of the custom 
 
 Additionally, the output includes a `progress` field that indicates the current progress of the custom model's training. If you used the `POST /v1/acoustic_customizations/{customization_id}/train` method to start training the model, this field indicates the current progress of that request as a percentage complete. At this time, the value of the field is `100` if the status is `available`; otherwise, it is `0`.
 
-### Example requests and responses
-{: #listExample-acoustic}
+### List all custom acoustic models example
+{: #listExample-acoustic-all}
 
 The following example includes the `language` query parameter to list all US English custom acoustic models that are owned by the specified credentials:
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X GET -u "apikey:{apikey}" \
+"{url}/v1/acoustic_customizations?language=en-US"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
 "{url}/v1/acoustic_customizations?language=en-US"
 ```
 {: pre}
@@ -116,13 +127,29 @@ The credentials own two such models. The first model is awaiting data or is bein
 ```
 {: codeblock}
 
+### List a specific custom acoustic model example
+{: #listExample-acoustic-specific}
+
 The following example returns information about the custom model that has the specified customization ID:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/acoustic_customizations/{customization_id}"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
+"{url}/v1/acoustic_customizations/{customization_id}"
+```
+{: pre}
+
+The response duplicates the information from the previous example:
 
 ```javascript
 {
@@ -149,13 +176,24 @@ curl -X GET -u "apikey:{apikey}" \
 
 Use the `POST /v1/acoustic_customizations/{customization_id}/reset` method to reset a custom acoustic model. Resetting a custom model removes all of the audio resources from the model, initializing the model to its state at creation. The method does not delete the model itself or metadata such as its name and language. However, when you reset a model, its audio resources are removed and must be re-created.
 
-### Example request
+### Reset a custom acoustic model example
 {: #resetExample-acoustic}
 
 The following example resets the custom acoustic model with the specified customization ID:
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X POST -u "apikey:{apikey}" \
+"{url}/v1/acoustic_customizations/{customization_id}/reset"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
 "{url}/v1/acoustic_customizations/{customization_id}/reset"
 ```
 {: pre}
@@ -165,13 +203,24 @@ curl -X POST -u "apikey:{apikey}" \
 
 Use the `DELETE /v1/acoustic_customizations/{customization_id}` method to delete a custom acoustic model that you no longer need. The method deletes all audio that is associated with the custom model and the model itself. Use this method with caution: A custom model and its data cannot be reclaimed after you delete the model.
 
-### Example request
+### Delete a custom acoustic model example
 {: #deleteExample-acoustic}
 
 The following example deletes the custom acoustic model with the specified customization ID:
 
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
 ```bash
 curl -X DELETE -u "apikey:{apikey}" \
+"{url}/v1/acoustic_customizations/{customization_id}"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X DELETE \
+--header "Authorization: Bearer {token}" \
 "{url}/v1/acoustic_customizations/{customization_id}"
 ```
 {: pre}

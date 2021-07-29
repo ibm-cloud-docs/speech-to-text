@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-18"
+lastupdated: "2021-05-20"
 
 subcollection: speech-to-text
 
@@ -50,12 +50,17 @@ You can use the parameter to strike a balance between how often a final result i
 
 Increase the interval when accuracy is more important than latency. Decrease the interval when the speaker is expected to say short phrases or single-word responses.
 
+*For previous-generation models,* the service generates a final result for audio when an utterance reaches a two-minute maximum. The service splits a transcript into multiple final results after two minutes of continuous processing.
+{: note}
+
 ### End of phrase silence time example
 {: #silence-time-example}
 
 The following example requests show the effect of using the `end_of_phrase_silence_time` parameter. The audio speaks the phrase "one two three four five six," with a one-second pause between the words "three" and "four." The speaker might be reading a six-digit number from an identification card, for example, and pause to confirm the number.
 
-The first example uses the default pause interval of 0.8 seconds. Because the pause is greater than the default interval, the service splits the transcript at the pause. The `confidence` of both results is `0.99`, so transcription accuracy is very good despite the pause.
+The first example uses the default pause interval of 0.8 seconds:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
@@ -64,6 +69,19 @@ curl -X POST -u "apikey:{apikey}" \
 "{url}/v1/recognize"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
+--header "Content-Type: audio/wav" \
+--data-binary @{path}audio-file.wav \
+"{url}/v1/recognize"
+```
+{: pre}
+
+Because the pause is greater than the default interval, the service splits the transcript at the pause. The `confidence` of both results is `0.99`, so transcription accuracy is very good despite the pause.
 
 ```javascript
 {
@@ -94,7 +112,9 @@ curl -X POST -u "apikey:{apikey}" \
 
 But suppose speech recognition is performed with a grammar that expects the user to speak six digits in a single-phrase response. Because the service splits the transcript at the one-second pause, the results are empty. The grammar is applied to each final result, but neither result, "one two three" nor "four five six", contains six digits.
 
-The second example uses the same audio but sets the `end_of_phrase_silence_time` to 1.5 seconds. Because this value is greater than the length of the speaker's pause, the service returns a single final result that contains the entire spoken phrase. A grammar that expects to find six digits recognizes this transcript.
+The second example uses the same audio but sets the `end_of_phrase_silence_time` to 1.5 seconds:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
@@ -103,6 +123,19 @@ curl -X POST -u "apikey:{apikey}" \
 "{url}/v1/recognize?end_of_phrase_silence_time=1.5"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
+--header "Content-Type: audio/wav" \
+--data-binary @{path}audio-file.wav \
+"{url}/v1/recognize?end_of_phrase_silence_time=1.5"
+```
+{: pre}
+
+Because this value is greater than the length of the speaker's pause, the service returns a single final result that contains the entire spoken phrase. A grammar that expects to find six digits recognizes this transcript.
 
 ```javascript
 {
@@ -148,7 +181,9 @@ When the split transcript at phrase end feature is enabled, each final result in
 
 The following example requests demonstrate the use of the `split_transcript_at_phrase_end` parameter. The audio speaks the phrase "I have an identification card. The number is one two three four five six." The speaker pauses for one second between the words "three" and "four."
 
-The first example shows the results for a request that omits the parameter. The service returns two final results, splitting the transcript only at the speaker's extended pause.
+The first example shows the results for a request that omits the parameter:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
@@ -157,6 +192,19 @@ curl -X POST -u "apikey:{apikey}" \
 "{url}/v1/recognize"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
+--header "Content-Type: audio/wav" \
+--data-binary @{path}audio-file.wav \
+"{url}/v1/recognize"
+```
+{: pre}
+
+The service returns two final results, splitting the transcript only at the speaker's extended pause:
 
 ```javascript
 {
@@ -185,7 +233,9 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: codeblock}
 
-The second example recognizes the same audio but sets `split_transcript_at_phrase_end` to `true`. The service returns three final results, adding a result for the semantic stop after the first sentence. Each result includes the `end_of_utterance` field to identify the reason for the split.
+The second example recognizes the same audio but sets `split_transcript_at_phrase_end` to `true`:
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
@@ -194,6 +244,19 @@ curl -X POST -u "apikey:{apikey}" \
 "{url}/v1/recognize?split_transcript_at_phrase_end=true"
 ```
 {: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
+--header "Content-Type: audio/wav" \
+--data-binary @{path}audio-file.wav \
+"{url}/v1/recognize?split_transcript_at_phrase_end=true"
+```
+{: pre}
+
+The service returns three final results, adding a result for the semantic stop after the first sentence. Each result includes the `end_of_utterance` field to identify the reason for the split.
 
 ```javascript
 {
