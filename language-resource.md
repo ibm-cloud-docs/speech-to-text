@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-06-09"
+lastupdated: "2021-07-30"
 
 subcollection: speech-to-text
 
@@ -356,18 +356,24 @@ As another example, you can indicate that the word `IBM` is to be displayed as <
 
 ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
-<pre><code class="language-bash">curl -X PUT -u "apikey:{apikey}" \
+```bash
+curl -X PUT -u "apikey:{apikey}" \
 --header "Content-Type: application/json" \
---data "{\"sounds_like\": [\"I. B. M.\"], \"display_as\":\"IBM&#8482;\"}" \
-"{url}/v1/customizations/{customization_id}/words/IBM"</code></pre>
+--data "{\"sounds_like\": [\"I. B. M.\"], \"display_as\":\"IBM™\"}" \
+"{url}/v1/customizations/{customization_id}/words/IBM"
+```
+{: pre}
 
 ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
 
-<pre><code class="language-bash">curl -X PUT \
+```bash
+curl -X PUT \
 --header "Authorization: Bearer {token}" \
 --header "Content-Type: application/json" \
---data "{\"sounds_like\": [\"I. B. M.\"], \"display_as\":\"IBM&#8482;\"}" \
-"{url}/v1/customizations/{customization_id}/words/IBM"</code></pre>
+--data "{\"sounds_like\": [\"I. B. M.\"], \"display_as\":\"IBM™\"}" \
+"{url}/v1/customizations/{customization_id}/words/IBM"
+```
+{: pre}
 
 #### Interaction with smart formatting and numeric redaction
 {: #displaySmart}
