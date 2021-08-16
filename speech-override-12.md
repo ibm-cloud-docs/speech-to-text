@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2021
-lastupdated: "2021-06-16"
+lastupdated: "2021-08-12"
 
 subcollection: speech-to-text
 
@@ -337,7 +337,7 @@ global:
 ```
 {: codeblock}
 
-For more information about all available models, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models). For information about changing the installed models, see [Modifying the installed models and voices](/docs/speech-to-text?topic=speech-to-text-speech-cluster-12#speech-cluster-models-voices-12).
+For more information about all available models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models). For information about changing the installed models, see [Modifying the installed models and voices](/docs/speech-to-text?topic=speech-to-text-speech-cluster-12#speech-cluster-models-voices-12).
 
 | Value | Installs ... | Default |
 |-------|--------------|:-------:|

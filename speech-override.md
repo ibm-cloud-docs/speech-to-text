@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2021
-lastupdated: "2021-06-16"
+lastupdated: "2021-08-12"
 
 subcollection: speech-to-text
 
@@ -242,7 +242,7 @@ global:
 ```
 {: codeblock}
 
-For more information about all available models, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models). For information about updating the override file to install ad hoc models, see [Installing ad hoc models and voices](/docs/speech-to-text?topic=speech-to-text-speech-cluster#speech-cluster-model-install-adhoc).
+For more information about all available models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models). For information about updating the override file to install ad hoc models, see [Installing ad hoc models and voices](/docs/speech-to-text?topic=speech-to-text-speech-cluster#speech-cluster-model-install-adhoc).
 
 | Value | Installs ... | Default |
 |-------|--------------|:-------:|

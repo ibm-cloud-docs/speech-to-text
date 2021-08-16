@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-10"
+lastupdated: "2021-08-12"
 
 subcollection: speech-to-text
 
@@ -141,7 +141,7 @@ severe thunderstorms swept through Colorado on Sunday "
 ## Low latency
 {: #low-latency}
 
-The low-latency feature is beta functionality that is available only for some next-generation models. For more information about the next-generation models that support low latency, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported) for next-generation models. Low latency is *not* available for use with previous-generation models.
+The low-latency feature is beta functionality that is available only for some next-generation models. For more information about the next-generation models that support low latency, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported). Low latency is *not* available for use with previous-generation models.
 {: beta}
 
 The next-generation multimedia and telephony models have generally faster response times than the previous-generation models. But there may be cases where you want to receive results even faster. With some next-generation models, you can set the `low_latency` parameter to `true` to receive results more quickly. The parameter is `false` by default.

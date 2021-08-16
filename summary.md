@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-25"
+lastupdated: "2021-08-12"
 
 subcollection: speech-to-text
 
@@ -29,7 +29,7 @@ subcollection: speech-to-text
 The following sections provide a summary of all of the parameters that are available for speech recognition. The information includes availability for previous- and next-generation models, and support and usage for speech recognition interfaces.
 {: shortdesc}
 
--   For more information about previous-generation languages and models, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+-   For more information about previous-generation languages and models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
 -   For more information about next-generation languages and models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 
 ## access_token
@@ -259,7 +259,7 @@ An optional integer that specifies the maximum number of alternative hypotheses 
 ## model
 {: #summary-model}
 
-An optional model that specifies the language in which the audio is spoken and the rate at which it was sampled: broadband/multimedia or narrowband/telephony. By default, `en-US_BroadbandModel` is used. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models) and [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+An optional model that specifies the language in which the audio is spoken and the rate at which it was sampled: broadband/multimedia or narrowband/telephony. By default, `en-US_BroadbandModel` is used. For more information, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models) and [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -306,7 +306,7 @@ An optional boolean that indicates whether the service censors profanity from a 
 | Availability and usage | Description |
 |------------------------|-------------|
 | Previous-generation models | Generally available for US English and Japanese. |
-| Next-generation models     | Beta for US English. |
+| Next-generation models     | Beta for US English and Japanese. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -320,7 +320,7 @@ An optional boolean that indicates whether the service redacts numeric data with
 | Availability and usage | Description |
 |------------------------|-------------|
 | Previous-generation models | Beta for US English, Japanese, and Korean. |
-| Next-generation models     | Beta for US English. |
+| Next-generation models     | Beta for US English, Japanese, and Korean. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -334,7 +334,7 @@ An optional boolean that indicates whether the service converts dates, times, nu
 | Availability and usage | Description |
 |------------------------|-------------|
 | Previous-generation models | Beta for US English, Japanese, and Spanish. |
-| Next-generation models     | Beta for US English and Spanish. |
+| Next-generation models     | Beta for US English, Japanese, and Spanish. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -348,7 +348,7 @@ An optional boolean that indicates whether the service identifies which individu
 | Availability and usage | Description |
 |------------------------|-------------|
 | Previous-generation models | Beta for US English, Australian English, German, Japanese, Korean, and Spanish (broadband and narrowband models) and UK English (narrowband model only). |
-| Next-generation models     | Beta for English (Australian, UK, and US), German, and Spanish. Not supported for use with the `interim_results` or `low_latency` parameters. |
+| Next-generation models     | Beta for English (Australian, Indian, UK, and US), German, Japanese, Korean, and Spanish. Not supported for use with the `interim_results` or `low_latency` parameters. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |

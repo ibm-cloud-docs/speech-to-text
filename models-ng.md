@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-07-29"
+lastupdated: "2021-08-12"
 
 subcollection: speech-to-text
 
@@ -40,7 +40,7 @@ In addition to providing greater transcription accuracy, the models have the abi
 
 For more information about the technology that underlies the next-generation models, see [Advancing RNN Transducer Technology for Speech Recognition](https://arxiv.org/abs/2103.09935){: external}.
 
-## Supported language models
+## Supported next-generation language models
 {: #models-ng-supported}
 
 The service makes available two types of next-generation models:
@@ -50,19 +50,23 @@ The service makes available two types of next-generation models:
 
 Choose the model that most closely matches the source and sampling rate of your audio. The service automatically adjusts the sampling rate of your audio to match the model that you specify. To achieve the best recognition accuracy, also consider the frequency content of your audio. For more information, see [Sampling rate](/docs/speech-to-text?topic=speech-to-text-audio-terminology#audio-terminology-sampling-rate) and [Audio frequency](/docs/speech-to-text?topic=speech-to-text-audio-terminology#audio-terminology-frequency).
 
-Table 1 lists the supported next-generation languages and models. It indicates the product versions for which each model is available. Low-latency columns indicate whether each model supports the `low_latency` parameter for speech recognition. It indicates the product versions for which low-latency is available. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
+Table 1 lists the supported next-generation languages and models. It indicates the product versions for which each model is available. Low-latency columns indicate whether each model supports the `low_latency` parameter for speech recognition and the product versions for which low latency is available. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
 
 | <br/>Language | <br/>Multimedia model | Multimedia<br/>low-latency support | <br/>Telephony model | Telephony<br/>low-latency support |
 |----------|:----------------:|:-------------------:|:---------------:|:-------------------:|
 | Arabic (Modern Standard) | Not available | Not available | `ar-MS_Telephony`<br/>All product versions | **Yes**<br/>IBM Cloud only |
 | Dutch (Belgian) | Not available | Not available | `nl-BE_Telephony`<br/>IBM Cloud only | **Yes**<br/>IBM Cloud only |
 | English (Australian) | Not available | Not available | `en-AU_Telephony`<br/>All product versions | **Yes**<br/>All product versions |
+| English (Indian) | Not available | Not available | `en-IN_Telephony`<br/>IBM Cloud only | **Yes**<br/>IBM Cloud only |
 | English (United Kingdom) | Not available | Not available | `en-GB_Telephony`<br/>All product versions | **Yes**<br/>All product versions |
 | English (United States) | `en-US_Multimedia`<br/>All product versions | **No** | `en-US_Telephony`<br/>All product versions | **Yes**<br/>All product versions |
 | French (Canadian) | Not available | Not available | `fr-CA_Telephony`<br/>All product versions | **Yes**<br/>IBM Cloud only |
-| French (France) | `fr-FR_Multimedia`<br/>IBM Cloud only | Not available | `fr-FR_Telephony`<br/>All product versions | **Yes**<br/>All product versions |
+| French (France) | `fr-FR_Multimedia`<br/>IBM Cloud only | **No** | `fr-FR_Telephony`<br/>All product versions | **Yes**<br/>All product versions |
 | German | Not available | Not available | `de-DE_Telephony`<br/>All product versions | **Yes**<br/>All product versions |
+| Hindi (Indian) | Not available | Not available | `hi-IN_Telephony`<br/>IBM Cloud only | **Yes**<br/>IBM Cloud only |
 | Italian | Not available | Not available | `it-IT_Telephony`<br/>All product versions | **Yes**<br/>IBM Cloud only |
+| Japanese | `ja-JP_Multimedia`<br/>IBM Cloud only | **No** | Not available | Not available |
+| Korean | `ko-KR_Multimedia`<br/>IBM Cloud only | **No** | `ko-KR_Telephony`<br/>IBM Cloud only | **No** |
 | Portuguese (Brazilian) | Not available | Not available | `pt-BR_Telephony`<br/>All product versions | **Yes**<br/>All product versions |
 | Spanish (Castilian) | Not available | Not available | `es-ES_Telephony`<br/>All product versions | **Yes**<br/>All product versions |
 {: caption="Table 1. Supported next-generation language models"}
@@ -118,10 +122,10 @@ Table 1 lists each parameter (and request header) that is supported for use with
 | `interim_results` | All languages and models that support low latency, but only if both the `interim_results` and `low_latency` parameters are set to `true`. For more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results). |
 | `low_latency` | Next-generation models that support low latency only. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency). |
 | `model` | All languages and models. For more information, see [Specifying a model for speech recognition](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-example). |
-| `profanity_filter` | US English models only. For more information, see [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-formatting#profanity-filtering). |
-| `redaction` | US English models only. For more information, see [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-formatting#numeric-redaction). |
-| `smart_formatting` | US English and Spanish models only. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting). |
-| `speaker_labels` | English (Australian, UK, and US), German, and Spanish models only. Not supported for use with the `interim_results` or `low_latency` parameters. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels). |
+| `profanity_filter` | US English and Japanese models only. For more information, see [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-formatting#profanity-filtering). |
+| `redaction` | US English, Japanese, and Korean models only. For more information, see [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-formatting#numeric-redaction). |
+| `smart_formatting` | US English, Japanese, and Spanish models only. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting). |
+| `speaker_labels` | English (Australian, Indian, UK, and US), German, Japanese, Korean, and Spanish models only. Not supported for use with the `interim_results` or `low_latency` parameters. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels). |
 | `speech_detector_sensitivity` | All languages and models. For more information, see [Speech detector sensitivity](/docs/speech-to-text?topic=speech-to-text-detection#detection-parameters-sensitivity). |
 | `timestamps` | All languages and models. For more information, see [Word timestamps](/docs/speech-to-text?topic=speech-to-text-metadata#word-timestamps). |
 | `Transfer-Encoding` | All languages and models. For more information, see [Audio transmission](/docs/speech-to-text?topic=speech-to-text-input#transmission). |

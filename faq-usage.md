@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-06-09"
+lastupdated: "2021-08-12"
 
 keywords: faqs,frequently asked questions,question,Speech to Text
 
@@ -49,7 +49,7 @@ The {{site.data.keyword.speechtotextshort}} service supports Arabic (Modern Stan
 
 Most languages support both broadband and narrowband models, which have minimum sampling rates of 16 kHz and 8 kHz, respectively. Many languages also support next-generation multimedia and telephony models, which have the same respective sampling rates. For more information about the available models for all languages, see the following topics:
 
--   [Languages and models](/docs/speech-to-text?topic=speech-to-text-models)
+-   [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models)
 -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
 
 ## What are the input audio formats?
