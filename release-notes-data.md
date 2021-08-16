@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2021
-lastupdated: "2021-07-29"
+lastupdated: "2021-08-16"
 
 subcollection: speech-to-text
 
@@ -152,7 +152,7 @@ Many of the next-generation models also support a new `low_latency` parameter th
 The `low_latency` parameter impacts your use of the `interim_results` parameter with the WebSocket interface. Interim results are available only for those next-generation models that support low latency, and only if both the `interim_results` and `low_latency` parameters are set to `true`.
 
 -   For more information about the next-generation models and their capabilities, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
--   For more information about language support for next-generation models and about which next-generation models support low latency, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
+-   For more information about language support for next-generation models and about which next-generation models support low latency, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
 -   For more information about feature support for next-generation models, see [Supported features](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-features) and [Unsupported features](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-unsupported).
 -   For more information about the `low_latency` parameter, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
 -   For more information about the interaction between the `low_latency` and `interim_results` parameters for next-generation models, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
@@ -234,7 +234,7 @@ The release includes the following functional changes and enhancements:
     -   Canadian French: `fr-CA_BroadbandModel` and `fr-CA_NarrowbandModel`
 
     The new models are generally available, and they support both language model and acoustic model customization.
-    -   For more information about supported languages and models, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+    -   For more information about supported languages and models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
     -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
 -   The following language models have been updated for improved speech recognition:
     -   Brazilian Portuguese: `pt-BR_BroadbandModel` and `pt-BR_NarrowbandModel`
@@ -256,6 +256,9 @@ The release includes the following functional changes and enhancements:
 ## Version 1.1.4 (19 June 2020)
 {: #v114}
 
+{{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}} for {{site.data.keyword.icp4dfull_notm}} version 1.1.4 go out of service on **30 September 2021**. You must upgrade to a later version of the services on {{site.data.keyword.icp4dfull_notm}} before that date. As of 1 October 2021, the documentation for version 1.1.4 will no longer be available.
+{: important}
+
 {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 1.1.4 is now available. Installation and administration of the service include many changes. This version supports {{site.data.keyword.icp4dfull_notm}} versions 2.5 and 3.0.1, and Red Hat OpenShift versions 3.11 and 4.3. For more information about installing and managing the service, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} version 1.1.4](/docs/speech-to-text?topic=speech-to-text-speech-install).
 
 {{site.data.keyword.icp4dfull_notm}} 3.0.1 is deprecating support for Red Hat OpenShift 4.3 on 1 September 2020. Red Hat OpenShift 4.3 is going out of service on 22 October 2020. {{site.data.keyword.icp4dfull_notm}} is introducing support for Red Hat OpenShift 4.5. {{site.data.keyword.icp4dfull_notm}} is recommending that clients upgrade to Red Hat OpenShift 4.5 before 22 October 2020. IBM Support will work with any customers who already installed {{site.data.keyword.icp4dfull_notm}} 3.0.1 on Red Hat OpenShift 4.3. New customers who want to install on Red Hat OpenShift 4.x are instructed to install Red Hat OpenShift 4.5.
@@ -276,7 +279,7 @@ The release includes the following functional changes and enhancements:
     -   Italian narrowband model (`it-IT_NarrowbandModel`)
 
     Dutch and Italian language models are generally available (GA) for speech recognition and for language model and acoustic model customization. For more information about all available language models, see
-    -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
+    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
     -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
 -   The service now supports speaker labels (the `speaker_labels` parameter) for German and Korean language models. Speaker labels identify which individuals spoke which words in a multi-participant exchange. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 -   The Japanese narrowband model (`ja-JP_NarrowbandModel`) now includes some multigram word units for digits and decimal fractions. The service returns these multigram units regardless of whether you enable smart formatting. The smart formatting feature understands and returns the multigram units that the model generates. If you apply your own post-processing to transcription results, you need to handle these units appropriately. For more information, see [Japanese](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-japanese) in the smart formatting documentation.
@@ -334,7 +337,7 @@ The release includes the following functional changes and enhancements:
 
     For more information, see the following sections:
 
-    -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
+    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
     -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
 -   Federal Information Security Management Act (FISMA) support is now available for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}. The service is FISMA High Ready.
 

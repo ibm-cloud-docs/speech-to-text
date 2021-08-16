@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-07-26"
+lastupdated: "2021-08-16"
 
 subcollection: speech-to-text
 
@@ -122,6 +122,18 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
+## 16 August 2021
+{: #August2021}
+
+The service now supports five new next-generation language models. All of the new models are beta functionality.
+
+-   *Indian English:* `en-IN_Telephony`. The model supports low latency.
+-   *Indian Hindi:* `hi-IN_Telephony`. The model supports low latency.
+-   *Japanese:* `ja-JP_Multimedia`. The model does not support low latency.
+-   *Korean:* `ko-KR_Multimedia` and `ko-KR_Telephony`. The models do not support low latency.
+
+For more information about the next-generation models and low latency, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng) and [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
+
 ## 16 July 2021
 {: #July2021}
 
@@ -200,7 +212,7 @@ Many of the next-generation models also support a new `low_latency` parameter th
 The `low_latency` parameter impacts your use of the `interim_results` parameter with the WebSocket interface. Interim results are available only for those next-generation models that support low latency, and only if both the `interim_results` and `low_latency` parameters are set to `true`.
 
 -   For more information about the next-generation models and their capabilities, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
--   For more information about language support for next-generation models and about which next-generation models support low latency, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
+-   For more information about language support for next-generation models and about which next-generation models support low latency, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
 -   For more information about feature support for next-generation models, see [Supported features](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-features).
 -   For more information about the `low_latency` parameter, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
 -   For more information about the interaction between the `low_latency` and `interim_results` parameters for next-generation models, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
@@ -288,14 +300,14 @@ The Arabic language broadband model is now named `ar-MS_BroadbandModel`. The for
 
 The Canadian French models, `fr-CA_BroadbandModel` and `fr-CA_NarrowbandModel`, are now generally available; they were previously beta. They also now support language model and acoustic model customization.
 
--   For more information about supported languages and models, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+-   For more information about supported languages and models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
 -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
 
 ### 22 October 2020
 {: #October2020b}
 
 -   The Australian English models, `en-AU_BroadbandModel` and `en-AU_NarrowbandModel`, are now generally available; they were previously beta. They also now support language model and acoustic model customization.
-    -   For more information about supported languages and models, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+    -   For more information about supported languages and models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
     -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
 -   The Brazilian Portuguese models, `pt-BR_BroadbandModel` and `pt-BR_NarrowbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all speech recognition requests. If you have custom language or custom acoustic models that are based on the models, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
@@ -339,7 +351,7 @@ The service now offers beta broadband and narrowband models for Canadian French:
 -   `fr-CA_BroadbandModel`
 -   `fr-CA_NarrowbandModel`
 
-The new models do not support language model or acoustic model customization, speaker labels, or smart formatting. For more information about these and all supported models, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported).
+The new models do not support language model or acoustic model customization, speaker labels, or smart formatting. For more information about these and all supported models, see [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported).
 
 ### 5 August 2020
 {: #August2020a}
@@ -349,7 +361,7 @@ The new models do not support language model or acoustic model customization, sp
     -   `en-AU_NarrowbandModel`
 
     The new models do not support language model or acoustic model customization, or smart formatting. The new models do support speakers labels. For more information, see
-    -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
+    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
     -   [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels)
 -   The following models have been updated for improved speech recognition:
     -   French: `fr-FR_BroadbandModel`
@@ -394,7 +406,7 @@ Using a custom language model, a custom acoustic model, or both types of model f
     -   Italian narrowband model (`it-IT_NarrowbandModel`)
 
     For more information about all available language models, see
-    -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
+    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
     -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
 
 ### 16 March 2020
@@ -445,7 +457,7 @@ Using a custom language model, a custom acoustic model, or both types of model f
 
     For more information, see the following sections:
 
-    -   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
+    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
     -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
 -   For speech recognition, the service now supports the `end_of_phrase_silence_time` parameter. The parameter specifies the duration of the pause interval at which the service splits a transcript into multiple final results. Each final result indicates a pause or extended silence that exceeds the pause interval. For most languages, the default pause interval is 0.8 seconds; for Chinese the default interval is 0.6 seconds.
 
@@ -494,7 +506,7 @@ These language models support acoustic model customization. They do not support 
 
 For more information, see the following sections:
 
--   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
+-   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
 -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
 
 ### 25 November 2019
@@ -540,7 +552,7 @@ The other five dialects are new and are beta for all uses. Because they are beta
 
 For more information, see the following sections:
 
--   [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
+-   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
 -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
 
 ### 24 June 2019
@@ -929,7 +941,7 @@ For more information, see [Upgrading custom models](/docs/speech-to-text?topic=s
 ### 1 February 2018
 {: #February2018}
 
-The service now offers models for the Korean language for speech recognition: `ko-KR_BroadbandModel` for audio that is sampled at a minimum of 16 kHz, and `ko-KR_NarrowbandModel` for audio that is sampled at a minimum of 8 kHz. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+The service now offers models for the Korean language for speech recognition: `ko-KR_BroadbandModel` for audio that is sampled at a minimum of 16 kHz, and `ko-KR_NarrowbandModel` for audio that is sampled at a minimum of 8 kHz. For more information, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
 
 For language model customization, the Korean models are generally available for production use; for acoustic model customization, they are beta functionality. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
 
@@ -1108,7 +1120,7 @@ The beta asynchronous HTTP interface now supports all languages that are support
 
 -   A beta asynchronous HTTP interface is now available. The interface provides full recognition capabilities for US English transcription via non-blocking HTTP calls. You can register callback URLs and provide user-specified secret strings to achieve authentication and data integrity with digital signatures. For more information, see [The asynchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-async) and the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 -   A beta smart formatting feature that converts dates, times, series of digits and numbers, phone numbers, currency values, and Internet addresses into more conventional representations in final transcripts. You enable the feature by setting the `smart_formatting` parameter to `true` on a recognition request. The feature is beta functionality that is available for US English only. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting).
--   The list of supported models for speech recognition now includes `fr-FR_BroadbandModel` for audio in the French language that is sampled at a minimum of 16 kHz. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+-   The list of supported models for speech recognition now includes `fr-FR_BroadbandModel` for audio in the French language that is sampled at a minimum of 16 kHz. For more information, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
 -   The list of supported audio formats now includes `audio/basic`. The format provides single-channel audio that is encoded by using 8-bit u-law (or mu-law) data that is sampled at 8 kHz. For more information, see [audio/basic format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-basic).
 -   The various recognition methods can return a `warnings` response that includes messages about invalid query parameters or JSON fields that are included with a request. The format of the warnings changed. For example, `"warnings": "Unknown arguments: [u'{invalid_arg_1}', u'{invalid_arg_2}']."` is now `"warnings": "Unknown arguments: {invalid_arg_1}, {invalid_arg_2}."`
 -   For HTTP `POST` requests that do not otherwise pass data to the service, you must include an empty request body of the form `{}`. With the `curl` command, you use the `--data` option to pass the empty data.
@@ -1134,7 +1146,7 @@ The service was updated to include a new profanity filtering feature on January 
 
 -   The service now offers a keyword spotting feature. You can specify an array of keyword strings that are to be matched in the input audio. You must also specify a user-defined confidence level that a word must meet to be considered a match for a keyword. For more information, see [Keyword spotting](/docs/speech-to-text?topic=speech-to-text-spotting#keyword-spotting). The keyword spotting feature is beta functionality.
 -   The service now offers a word alternatives feature. The feature returns alternative hypotheses for words in the input audio that meet a user-defined confidence level. For more information, see [Word alternatives](/docs/speech-to-text?topic=speech-to-text-spotting#word-alternatives). The word alternatives feature is beta functionality.
--   The service supports more languages with its transcription models: `en-UK_BroadbandModel` and `en-UK_NarrowbandModel` for UK English, and `ar-AR_BroadbandModel` for Modern Standard Arabic. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+-   The service supports more languages with its transcription models: `en-UK_BroadbandModel` and `en-UK_NarrowbandModel` for UK English, and `ar-AR_BroadbandModel` for Modern Standard Arabic. For more information, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
 -   HTTP recognition requests are no longer subject to a 10-minute platform timeout. The service now keeps the connection alive by sending a space character in the response JSON object every 20 seconds as long as recognition is ongoing. For more information, see [Timeouts](/docs/speech-to-text?topic=speech-to-text-input#timeouts).
 -   The service no longer returns HTTP status code 490 for the session-based HTTP methods `GET /v1/sessions/{session_id}/observe_result` and `POST /v1/sessions/{session_id}/recognize`. The service now responds with HTTP status code 400 instead.
 
@@ -1152,7 +1164,7 @@ The service was updated to include a new profanity filtering feature on January 
 
     Because the SDKs are beta, they are subject to change in the future.
     {: note}
--   The service supports two new languages, Brazilian Portuguese and Mandarin Chinese. The models for these new languages are `pt-BR_BroadbandModel`, `pt-BR_NarrowbandModel`, `zh-CN_BroadbandModel`, and `zh-CN_NarrowbandModel`. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+-   The service supports two new languages, Brazilian Portuguese and Mandarin Chinese. The models for these new languages are `pt-BR_BroadbandModel`, `pt-BR_NarrowbandModel`, `zh-CN_BroadbandModel`, and `zh-CN_NarrowbandModel`. For more information, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
 -   The HTTP `POST` requests `/v1/sessions/{session_id}/recognize` and `/v1/recognize`, as well as the WebSocket `/v1/recognize` request, support transcription of a new media type: `audio/ogg;codecs=opus` for Ogg format files that use the Opus codec. In addition, the `audio/wav` format for the methods now supports any encoding. The restriction about the use of linear PCM encoding is removed. For more information, see [audio/ogg format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-ogg).
 -   The service now supports overcoming timeouts when you transcribe long audio files with the HTTP interface. When you use sessions, you can employ a long polling pattern by specifying sequence IDs with the `GET /v1/sessions/{session_id}/observe_result` and `POST /v1/sessions/{session_id}/recognize` methods for long-running recognition tasks. By using the new `sequence_id` parameter of these methods, you can request results before, during, or after you submit a recognition request.
 -   For the US English language models, `en_US_BroadbandModel` and `en_US_NarrowbandModel`, the service now correctly capitalizes many proper nouns. For example, the service would new return text that reads "Barack Obama graduated from Columbia University" instead of "barack obama graduated from columbia university." This change might be of interest to you if your application is sensitive in any way to the case of proper nouns.
@@ -1179,7 +1191,7 @@ The service moved from beta to general availability (GA) on July 1, 2015. The fo
     -   The language: *English*, *Japanese*, or *Spanish*
     -   The minimum sampling rate: *broadband* (16 kHz) or *narrowband* (8 kHz)
 
-    For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+    For more information, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
 -   The `Content-Type` header of the `recognize` methods now supports `audio/wav` for Waveform Audio File Format (WAV) files, in addition to `audio/flac` and `audio/l16`. For more information, see [audio/wav format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-wav).
 -   The `recognize` methods now support a number of new query parameters that you can use to tailor the service to suit your application needs:
     -   The `inactivity_timeout` parameter sets the timeout value in seconds after which the service closes the connection if it detects silence (no speech) in streaming mode. By default, the service terminates the session after 30 seconds of silence. For more information, see [Timeouts](/docs/speech-to-text?topic=speech-to-text-input#timeouts).

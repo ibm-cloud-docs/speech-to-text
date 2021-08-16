@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-02"
+lastupdated: "2021-08-12"
 
 subcollection: speech-to-text
 
@@ -37,15 +37,17 @@ The following terminology is used to describe the characteristics of audio data 
 
 *Sampling rate* (or sampling frequency) is the number of audio samples that are taken per second. Sampling rate is measured in Hertz (Hz) or kilohertz (kHz). For example, a rate of 16,000 samples per second is equal to 16,000 Hz (or 16 kHz). With the {{site.data.keyword.speechtotextshort}} service, you specify a model to indicate the sampling rate of your audio:
 
--   *Broadband* models are used for audio that is sampled at no less than 16 kHz, which {{site.data.keyword.IBM}} recommends for responsive, real-time applications (for example, for live-speech applications).
--   *Narrowband* models are used for audio that is sampled at no less than 8 kHz, which is the rate that is typically used for telephonic audio.
+-   *Broadband* and *multimedia* models are used for audio that is sampled at no less than 16 kHz, which {{site.data.keyword.IBM}} recommends for responsive, real-time applications (for example, for live-speech applications).
+-   *Narrowband* and *telephony* models are used for audio that is sampled at no less than 8 kHz, which is the rate that is typically used for telephonic audio.
 
-The service supports both broadband and narrowband audio for most languages and formats. It automatically adjusts the sampling rate of your audio to match the model that you specify before it recognizes speech.
+The service supports both sampling rates for most languages and formats. It automatically adjusts the sampling rate of your audio to match the model that you specify before it recognizes speech.
 
--   For broadband models, the service converts audio recorded at higher sampling rates to 16 kHz.
--   For narrowband models, it converts the audio to 8 kHz.
+-   For broadband and multimedia models, the service converts audio recorded at higher sampling rates to 16 kHz.
+-   For narrowband and telephony models, it converts audio recorded at higher sampling rates to 8 kHz.
 
-In theory, you can send 44 kHz audio with a broadband or narrowband model, but that needlessly increases the size of the audio. To maximize the amount of audio that you can send, match the sampling rate of your audio to the model that you use. The service does not accept audio that is sampled at a rate that is less than the intrinsic sampling rate of the model.
+You can, for instance, send 44 kHz audio with any model, but that needlessly increases the size of the audio. To maximize the amount of audio that you can send, match the sampling rate of your audio to the model that you use.
+
+The service does not accept audio that is sampled at a rate that is less than the sampling rate of the model. For example, you cannot use a broadband or multimedia model to recognize audio that is sampled at a rate of 8 kHz.
 
 ### Notes about audio formats
 {: #audio-terminology-sampling-rate-notes}
@@ -57,7 +59,7 @@ In theory, you can send 44 kHz audio with a broadband or narrowband model, but t
 {: #audio-terminology-sampling-rate-more}
 
 -   For more information about sampling rates, see [Sampling (signal processing)](https://wikipedia.org/wiki/Sampling_%28signal_processing%29){: external}.
--   For more information about the models that the service offers for each supported language, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models) and [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+-   For more information about the models that the service offers for each supported language, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models) and [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 
 ## Bit rate
 {: #audio-terminology-bit-rate}

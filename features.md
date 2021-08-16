@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-06-16"
+lastupdated: "2021-08-12"
 
 subcollection: speech-to-text
 
@@ -34,7 +34,7 @@ The {{site.data.keyword.speechtotextfull}} service offers many advanced features
 
 The service supports speech recognition for the many languages listed in [Language support](/docs/speech-to-text?topic=speech-to-text-about#about-languages). The service provides different models for the languages that it supports. Some language models are generally available (GA) for production use and others are beta and subject to change.
 
--   For most languages, the service offers previous-generation *Broadband* and *Narrowband* models. All previous-generation models are GA. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+-   For most languages, the service offers previous-generation *Broadband* and *Narrowband* models. All previous-generation models are GA. For more information, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
 -   For a smaller but growing subset of languages, the service offers next-generation *Multimedia* and *Telephony* models that improve upon the speech recognition capabilities of the previous-generation models. All next-generation models are beta. Next-generation models return results with greater throughput and higher accuracy than previous-generation models, but they offer limited language and feature support currently. For more information, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 
 For most languages, you can transcribe audio at one of two sampling rates:
@@ -91,9 +91,9 @@ The WebSocket interface has a number of advantages over the HTTP interface. The 
 ## Using speech recognition parameters
 {: #features-parameters}
 
-The service's speech recognition interfaces share largely common parameters for transcribing speech to text. The parameters let you tailor aspects of your request, such as whether the data is streamed or sent all at once, and the information that the service includes in its response. Some parameters are available only for some speech recognition interfaces or for some languages.
+The service's speech recognition interfaces share largely common parameters for transcribing speech to text. The parameters let you tailor aspects of your request, such as whether the data is streamed or sent all at once, and the information that the service includes in its response.
 
-The following sections introduce the speech recognition parameters and their functionality. For information about all parameters and their interface and language support, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
+The following sections introduce the speech recognition parameters and their functionality. Some parameters are available only for some speech recognition interfaces or for some languages and models. For information about all parameters and their interface and language support, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
 
 ### Audio transmission and timeouts
 {: #features-input}
@@ -122,7 +122,7 @@ The following sections introduce the speech recognition parameters and their fun
 ### Speaker labels
 {: #features-speaker-labels}
 
--   [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels) identify different speakers from the audio of a multi-participant exchange. The transcription labels the words and times of each speaker's contributions to a multi-participant conversation. Speakers labels are beta functionality that is available for US English, UK English, Australian English, German, Japanese, Korean, and Spanish.
+-   [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels) identify different speakers from the audio of a multi-participant exchange. The transcription labels the words and times of each speaker's contributions to a multi-participant conversation. Speakers labels are beta functionality.
 
 ### Keyword spotting and word alternatives
 {: #features-keyword-spotting}
@@ -133,9 +133,9 @@ The following sections introduce the speech recognition parameters and their fun
 ### Response formatting and filtering
 {: #features-response-formatting}
 
--   [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting) converts dates, times, numbers, currency values, phone numbers, and internet addresses into more readable, conventional forms in final transcripts. For US English, you can also provide keyword phrases to include certain punctuation symbols in final transcripts. Smart formatting is beta functionality that is supported for US English, Japanese, and Spanish audio.
--   [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-formatting#numeric-redaction) redacts, or masks, numeric data from a final transcript. Redaction is intended to remove sensitive personal information, such as credit card numbers, from final transcripts. Numeric redaction is beta functionality that is supported for US English, Japanese, and Korean audio.
--   [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-formatting#profanity-filtering) censors profanity from US English and Japanese transcripts and metadata.
+-   [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting) converts dates, times, numbers, currency values, phone numbers, and internet addresses into more readable, conventional forms in final transcripts. For US English, you can also provide keyword phrases to include certain punctuation symbols in final transcripts. Smart formatting is beta functionality.
+-   [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-formatting#numeric-redaction) redacts, or masks, numeric data from a final transcript. Redaction is intended to remove sensitive personal information, such as credit card numbers, from final transcripts. Numeric redaction is beta functionality.
+-   [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-formatting#profanity-filtering) censors profanity from transcripts and metadata.
 
 ### Response metadata
 {: #features-response-metadata}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-25"
+lastupdated: "2021-08-12"
 
 subcollection: speech-to-text
 
@@ -84,7 +84,7 @@ A WebSocket client calls the `/v1/recognize` method with the following query par
     -   ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only.** Pass an Identity and Access Management (IAM) access token to authenticate with the service. You pass an IAM access token instead of passing an API key with the call. For more information, see [Authenticating to {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-data-security#data-security-authentication-cloud).
     -   ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}} only.** Pass an access token as you would with the `Authorization` header of an HTTP request. For more information, see [Authenticating to {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-data-security#data-security-authentication-icpd).
 
--   `model` (*optional* string) - Specifies the language model to be used for transcription. If you do not specify a model, the service uses `en-US_BroadbandModel` by default. For more information, see [Languages and models](/docs/speech-to-text?topic=speech-to-text-models) and [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+-   `model` (*optional* string) - Specifies the language model to be used for transcription. If you do not specify a model, the service uses `en-US_BroadbandModel` by default. For more information, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models) and [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 -   `language_customization_id` (*optional* string) - Specifies the Globally Unique Identifier (GUID) of a custom language model that is to be used for all requests that are sent over the connection. The base model of the custom language model must match the value of the `model` parameter. If you include a custom language model ID, you must make the request with credentials for the instance of the service that owns the custom model. By default, no custom language model is used. For more information, see [Using a custom language model for speech recognition](/docs/speech-to-text?topic=speech-to-text-languageUse).
 -   `acoustic_customization_id` (*optional* string) - Specifies the GUID of a custom acoustic model that is to be used for all requests that are sent over the connection. The base model of the custom acoustic model must match the value of the `model` parameter. If you include a custom acoustic model ID, you must make the request with credentials for the instance of the service that owns the custom model. By default, no custom acoustic model is used. For more information, see [Using a custom acoustic model for speech recognition](/docs/speech-to-text?topic=speech-to-text-acousticUse).
 -   `base_model_version` (*optional* string) - Specifies the version of the base `model` that is to be used for all requests that are sent over the connection. The parameter is intended primarily for use with custom models that are upgraded for a new base model. The default value depends on whether the parameter is used with or without a custom model. For more information, see [Making speech recognition requests with upgraded custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use#custom-upgrade-use-recognition).

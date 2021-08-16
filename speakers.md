@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-14"
+lastupdated: "2021-08-11"
 
 subcollection: speech-to-text
 
@@ -26,7 +26,7 @@ subcollection: speech-to-text
 # Speaker labels
 {: #speaker-labels}
 
-The speaker labels feature is beta functionality that is available for English (Australian, UK (narrowband/telephony), and US), German, Japanese, Korean, and Spanish only. For next-generation models, speaker labels are not supported for use with interim results or low latency.
+The speaker labels feature is beta functionality that is available for English (Australian, Indian, UK (narrowband/telephony), and US), German, Japanese, Korean, and Spanish only. For next-generation models, speaker labels are not supported for use with interim results or low latency.
 {: beta}
 
 With speaker labels, the {{site.data.keyword.speechtotextfull}} service identifies which individuals spoke which words in a multi-participant exchange. You can use the feature to create a person-by-person transcript of an audio stream. For example, you can use it to develop analytics for a call-center or meeting transcript, or to animate an exchange with a conversational robot or avatar. For best performance, use audio that is at least a minute long. (Labeling who spoke what and when is sometimes referred to as *speaker diarization*.)
@@ -170,87 +170,87 @@ The `transcript` field shows the final transcript of the audio, which lists the 
     <th style="text-align:left">Speaker label</th>
   </tr>
   <tr>
-    <td style="vertical-align:top">
-      `"hello",`<br/>
-      `0.68,`<br/>
-      `1.19`
+    <td>
+      <code>"hello",</code><br/>
+      <code>0.68,</code><br/>
+      <code>1.19</code>
     </td>
     <td>
-      `"from": 0.68,`<br/>
-      `"to": 1.19,`<br/>
-      `"speaker": 2,`<br/>
-      `"confidence": 0.52,`<br/>
-      `"final": false`
+      <code>"from": 0.68,</code><br/>
+      <code>"to": 1.19,</code><br/>
+      <code>"speaker": 2,</code><br/>
+      <code>"confidence": 0.52,</code><br/>
+      <code>"final": false</code>
     </td>
   </tr>
   <tr>
-    <td style="vertical-align:top">
-      `"yeah",`<br/>
-      `1.47,`<br/>
-      `1.93`
+    <td>
+      <code>"yeah",</code><br/>
+      <code>1.47,</code><br/>
+      <code>1.93</code>
     </td>
     <td>
-      `"from": 1.47,`<br/>
-      `"to": 1.93,`<br/>
-      `"speaker": 1,`<br/>
-      `"confidence": 0.62,`<br/>
-      `"final": false`
+      <code>"from": 1.47,</code><br/>
+      <code>"to": 1.93,</code><br/>
+      <code>"speaker": 1,</code><br/>
+      <code>"confidence": 0.62,</code><br/>
+      <code>"final": false</code>
     </td>
   </tr>
   <tr>
-    <td style="vertical-align:top">
-      `"yeah",`<br/>
-      `1.96,`<br/>
-      `2.12`
+    <td>
+      <code>"yeah",</code><br/>
+      <code>1.96,</code><br/>
+      <code>2.12</code>
     </td>
     <td>
-      `"from": 1.96,`<br/>
-      `"to": 2.12,`<br/>
-      `"speaker": 2,`<br/>
-      `"confidence": 0.51,`<br/>
-      `"final": false`
+      <code>"from": 1.96,</code><br/>
+      <code>"to": 2.12,</code><br/>
+      <code>"speaker": 2,</code><br/>
+      <code>"confidence": 0.51,</code><br/>
+      <code>"final": false</code>
     </td>
   </tr>
   <tr>
-    <td style="vertical-align:top">
-      `"how's",`<br/>
-      `2.12,`<br/>
-      `2.59`
+    <td>
+      <code>"how's",</code><br/>
+      <code>2.12,</code><br/>
+      <code>2.59</code>
     </td>
     <td>
-      `"from": 2.12,`<br/>
-      `"to": 2.59,`<br/>
-      `"speaker": 2,`<br/>
-      `"confidence": 0.51,`<br/>
-      `"final": false`
+      <code>"from": 2.12,</code><br/>
+      <code>"to": 2.59,</code><br/>
+      <code>"speaker": 2,</code><br/>
+      <code>"confidence": 0.51,</code><br/>
+      <code>"final": false</code>
     </td>
   </tr>
   <tr>
-    <td style="vertical-align:top">
-      `"Billy",`<br/>
-      `2.59,`<br/>
-      `3.17`
+    <td>
+      <code>"Billy",</code><br/>
+      <code>2.59,</code><br/>
+      <code>3.17</code>
     </td>
     <td>
-      `"from": 2.59,`<br/>
-      `"to": 3.17,`<br/>
-      `"speaker": 2,`<br/>
-      `"confidence": 0.51,`<br/>
-      `"final": false`
+      <code>"from": 2.59,</code><br/>
+      <code>"to": 3.17,</code><br/>
+      <code>"speaker": 2,</code><br/>
+      <code>"confidence": 0.51,</code><br/>
+      <code>"final": false</code>
     </td>
   </tr>
   <tr>
-    <td style="vertical-align:top">
-      `"good",`<br/>
-      `4.01,`<br/>
-      `4.30`
+    <td>
+      <code>"good",</code><br/>
+      <code>4.01,</code><br/>
+      <code>4.30</code>
     </td>
     <td>
-      `"from": 4.01,`<br/>
-      `"to": 4.30,`<br/>
-      `"speaker": 1,`<br/>
-      `"confidence": 0.63,`<br/>
-      `"final": true`
+      <code>"from": 4.01,</code><br/>
+      <code>"to": 4.30,</code><br/>
+      <code>"speaker": 1,</code><br/>
+      <code>"confidence": 0.63,</code><br/>
+      <code>"final": true</code>
     </td>
   </tr>
 </table>

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-07-26"
+lastupdated: "2021-08-11"
 
 subcollection: speech-to-text
 
@@ -105,34 +105,34 @@ Smart formatting is based on the presence of obvious keywords in the transcript.
       </tr>
       <tr>
         <td>
-          `Comma`
+          <code>Comma</code>
         </td>
         <td style="text-align:center">
-          `,`
+          <code>,</code>
         </td>
       </tr>
       <tr>
         <td>
-          `Period`
+          <code>Period</code>
         </td>
         <td style="text-align:center">
-          `.`
+          <code>.</code>
         </td>
       </tr>
       <tr>
         <td>
-          `Question mark`
+          <code>Question mark</code>
         </td>
         <td style="text-align:center">
-          `?`
+          <code>?</code>
         </td>
       </tr>
       <tr>
         <td>
-          `Exclamation point`
+          <code>Exclamation point</code>
         </td>
         <td style="text-align:center">
-          `!`
+          <code>!</code>
         </td>
       </tr>
     </table>

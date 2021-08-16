@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-06-09"
+lastupdated: "2021-08-12"
 
 subcollection: speech-to-text
 
@@ -109,7 +109,7 @@ Language and acoustic model customization are available only for some languages.
 -   *Beta* indicates that the interface is available as a beta offering for that language.
 -   *Not supported* means that the interface is not available for that language.
 
-You can use both broadband and narrowband models with any supported language for which they are available. If a language supports language model customization, it also supports grammars. For a list of all available models, see [Supported language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported).
+You can use both broadband and narrowband models with any supported language for which they are available. If a language supports language model customization, it also supports grammars. For a list of all available models, see [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported).
 
 The beta next-generation models do *not* support customization at this time.
 {: note}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-06-11"
+lastupdated: "2021-08-12"
 
 subcollection: speech-to-text
 
@@ -23,54 +23,54 @@ subcollection: speech-to-text
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Languages and models
+# Previous-generation languages and models
 {: #models}
 
-The {{site.data.keyword.speechtotextfull}} service supports speech recognition in many languages.  For all interfaces, you can use the `model` parameter to specify the model for a speech recognition request. The model indicates the language in which the audio is spoken and the rate at which it is sampled.
-{: shortdesc}
-
-These models are often referred to as *previous-generation models*. The service also offers next-generation models with enhanced qualities for improved speech recognition. For more information, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+The models described on this page are referred to as *previous-generation models*. The service also offers next-generation models with enhanced qualities for improved speech recognition. For more information, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 {: note}
 
-## Supported language models
+The {{site.data.keyword.speechtotextfull}} service supports speech recognition with previous-generation models in many languages. For all interfaces, you can use the `model` parameter to specify a previous-generation model for a speech recognition request. The model indicates the language in which the audio is spoken and the rate at which it is sampled.
+{: shortdesc}
+
+## Supported previous-generation language models
 {: #models-supported}
 
-For most languages, the service supports both broadband and narrowband models:
+For most languages, the service supports both broadband and narrowband previous-generation models:
 
 -   *Broadband models* are for audio that is sampled at greater than or equal to 16 kHz. Use broadband models for responsive, real-time applications, for example, for live-speech applications.
 -   *Narrowband models* are for audio that is sampled at 8 kHz. Use narrowband models for offline decoding of telephone speech, which is the typical use for this sampling rate.
 
 Choosing the correct model for your application is important. Use the model that matches the sampling rate (and language) of your audio. The service automatically adjusts the sampling rate of your audio to match the model that you specify. To achieve the best recognition accuracy, you also need to consider the frequency content of your audio. For more information, see [Sampling rate](/docs/speech-to-text?topic=speech-to-text-audio-terminology#audio-terminology-sampling-rate) and [Audio frequency](/docs/speech-to-text?topic=speech-to-text-audio-terminology#audio-terminology-frequency).
 
-Table 1 lists the supported models for each language. All previous-generation models are available for all versions of the product. If you omit the `model` parameter from a request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
+Table 1 lists the supported models for each language and the product versions for which each model is available. Languages labeled *Beta* are currently beta functionality. Beta languages might not be ready for production use and are subject to change. They are initial offerings that are expected to improve in quality with time and usage. All other languages are generally available (*GA*) for production use.
 
-Languages labeled *Beta* are currently beta functionality. Beta languages might not be ready for production use and are subject to change. They are initial offerings that are expected to improve in quality with time and usage. All other languages are generally available (*GA*) for production use.
+If you omit the `model` parameter from a request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
 
 The model name `ar-AR_BroadbandModel` is deprecated. Use the model name `ar-MS_BroadbandModel` instead.
 {: note}
 
 | Language | Broadband model | Narrowband model |
 |----------|:---------------:|:----------------:|
-| Arabic (Modern Standard) | `ar-MS_BroadbandModel` | Not supported |
-| Chinese (Mandarin) | `zh-CN_BroadbandModel` | `zh-CN_NarrowbandModel` |
-| Dutch (Netherlands) | `nl-NL_BroadbandModel` | `nl-NL_NarrowbandModel` |
-| English (Australian) | `en-AU_BroadbandModel` | `en-AU_NarrowbandModel` |
-| English (United Kingdom) | `en-GB_BroadbandModel` | `en-GB_NarrowbandModel` |
-| English (United States) | `en-US_BroadbandModel` | `en-US_NarrowbandModel`<br/><br/>`en-US_ShortForm_NarrowbandModel` |
-| French (Canadian) | `fr-CA_BroadbandModel` | `fr-CA_NarrowbandModel` |
-| French (France) | `fr-FR_BroadbandModel` | `fr-FR_NarrowbandModel` |
-| German | `de-DE_BroadbandModel` | `de-DE_NarrowbandModel` |
-| Italian | `it-IT_BroadbandModel` | `it-IT_NarrowbandModel` |
-| Japanese | `ja-JP_BroadbandModel` | `ja-JP_NarrowbandModel` |
-| Korean | `ko-KR_BroadbandModel` | `ko-KR_NarrowbandModel` |
-| Portuguese (Brazilian) | `pt-BR_BroadbandModel` | `pt-BR_NarrowbandModel` |
-| Spanish (Argentinian, Beta) | `es-AR_BroadbandModel` | `es-AR_NarrowbandModel` |
-| Spanish (Castilian) | `es-ES_BroadbandModel` | `es-ES_NarrowbandModel` |
-| Spanish (Chilean, Beta) | `es-CL_BroadbandModel` | `es-CL_NarrowbandModel` |
-| Spanish (Colombian, Beta) | `es-CO_BroadbandModel` | `es-CO_NarrowbandModel` |
-| Spanish (Mexican, Beta) | `es-MX_BroadbandModel` | `es-MX_NarrowbandModel` |
-| Spanish (Peruvian, Beta) | `es-PE_BroadbandModel` | `es-PE_NarrowbandModel` |
-{: caption="Table 1. Supported language models"}
+| Arabic (Modern Standard) | `ar-MS_BroadbandModel`<br/>All product versions | Not available |
+| Chinese (Mandarin) | `zh-CN_BroadbandModel`<br/>All product versions | `zh-CN_NarrowbandModel`<br/>All product versions |
+| Dutch (Netherlands) | `nl-NL_BroadbandModel`<br/>All product versions | `nl-NL_NarrowbandModel`<br/>All product versions |
+| English (Australian) | `en-AU_BroadbandModel`<br/>All product versions | `en-AU_NarrowbandModel`<br/>All product versions |
+| English (United Kingdom) | `en-GB_BroadbandModel`<br/>All product versions | `en-GB_NarrowbandModel`<br/>All product versions |
+| English (United States) | `en-US_BroadbandModel`<br/>All product versions | `en-US_NarrowbandModel`<br/>All product versions<br/><br/>`en-US_ShortForm_NarrowbandModel`<br/>All product versions |
+| French (Canadian) | `fr-CA_BroadbandModel`<br/>All product versions | `fr-CA_NarrowbandModel`<br/>All product versions |
+| French (France) | `fr-FR_BroadbandModel`<br/>All product versions | `fr-FR_NarrowbandModel`<br/>All product versions |
+| German | `de-DE_BroadbandModel`<br/>All product versions | `de-DE_NarrowbandModel`<br/>All product versions |
+| Italian | `it-IT_BroadbandModel`<br/>All product versions | `it-IT_NarrowbandModel`<br/>All product versions |
+| Japanese | `ja-JP_BroadbandModel`<br/>All product versions | `ja-JP_NarrowbandModel`<br/>All product versions |
+| Korean | `ko-KR_BroadbandModel`<br/>All product versions | `ko-KR_NarrowbandModel`<br/>All product versions |
+| Portuguese (Brazilian) | `pt-BR_BroadbandModel`<br/>All product versions | `pt-BR_NarrowbandModel`<br/>All product versions |
+| Spanish (Argentinian, Beta) | `es-AR_BroadbandModel`<br/>All product versions | `es-AR_NarrowbandModel`<br/>All product versions |
+| Spanish (Castilian) | `es-ES_BroadbandModel`<br/>All product versions | `es-ES_NarrowbandModel`<br/>All product versions |
+| Spanish (Chilean, Beta) | `es-CL_BroadbandModel`<br/>All product versions | `es-CL_NarrowbandModel`<br/>All product versions |
+| Spanish (Colombian, Beta) | `es-CO_BroadbandModel`<br/>All product versions | `es-CO_NarrowbandModel`<br/>All product versions |
+| Spanish (Mexican, Beta) | `es-MX_BroadbandModel`<br/>All product versions | `es-MX_NarrowbandModel`<br/>All product versions |
+| Spanish (Peruvian, Beta) | `es-PE_BroadbandModel`<br/>All product versions | `es-PE_NarrowbandModel`<br/>All product versions |
+{: caption="Table 1. Supported previous-generation language models"}
 
 ## The US English short-form model
 {: #modelsShortform}
