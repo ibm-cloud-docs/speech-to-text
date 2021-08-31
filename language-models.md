@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-14"
+lastupdated: "2021-08-29"
 
 subcollection: speech-to-text
 
@@ -52,7 +52,9 @@ Both methods return the following information about a custom model:
 -   `name` is the name of the custom model.
 -   `description` shows the description of the custom model, if one was provided at its creation.
 -   `base_model` indicates the name of the language model for which the custom model was created.
--   `versions` provides a list of the available versions of the custom model. Each element of the array indicates a version of the base model with which the custom model can be used. Multiple versions exist only if the custom model is upgraded. Otherwise, only a single version is shown. For more information, see [Listing version information for a custom model](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use#custom-upgrade-use-listing).
+-   `versions` provides a list of the available versions of the custom model.
+    -   *For custom models that are based on previous-generation models,* the field can show two versions. Each element of the array indicates a version of the base model with which the custom model can be used. Multiple versions exist only if the custom model is upgraded. Otherwise, only a single version is shown. For more information, see [Listing version information for a custom model](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use#custom-upgrade-use-listing).
+    -   *For custom models that are based on next-generation models,* the field always shows only a single version. Only one version of a next-generation model is available at any time. You do not need to upgrade a custom model when a new version of its base model becomes available.
 
 The method also returns a `status` field that indicates the state of the custom model:
 
@@ -60,7 +62,7 @@ The method also returns a `status` field that indicates the state of the custom 
 -   `ready` indicates that the model contains valid data and is ready to be trained. If the model contains a mix of valid and invalid resources, training of the model fails unless you set the `strict` query parameter to `false`. For more information, see [Training failures](/docs/speech-to-text?topic=speech-to-text-languageCreate#failedTraining-language).
 -   `training` indicates that the model is being trained on data.
 -   `available` indicates that the model is trained and ready to use with a recognition request.
--   `upgrading` indicates that the model is being upgraded.
+-   `upgrading` indicates that the model is being upgraded. *Upgrading applies only to previous-generation models.*
 -   `failed` indicates that training of the model failed. Examine the words in the model's words resource to determine the errors that prevented the model from being trained.
 
 Additionally, the output includes a `progress` field that indicates the current progress of the custom model's training. If you used the `POST /v1/customizations/{customization_id}/train` method to start training the model, this field indicates the current progress of that request as a percentage complete. At this time, the value of the field is `100` if the status is `available`; otherwise, it is `0`.
@@ -87,7 +89,7 @@ curl -X GET \
 ```
 {: pre}
 
-The credentials own two such models. The first model is awaiting data or is being processed by the service. The second model is fully trained and ready for use.
+The credentials own two such models. The first model is awaiting data or is being processed by the service. The second model is fully trained and ready for use. Both custom models are based on previous-generation models; the first custom model has two available versions.
 
 ```javascript
 {

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-08-12"
+lastupdated: "2021-08-23"
 
 keywords: faqs,frequently asked questions,question,Speech to Text
 
@@ -45,9 +45,7 @@ Once you have your service credentials, see the following topics for information
 {: faq}
 {: support}
 
-The {{site.data.keyword.speechtotextshort}} service supports Arabic (Modern Standard), Chinese (Mandarin), Dutch (Belgian and Netherlands), English (Australian, United Kingdom, and United States), French (Canadian and France), German, Italian, Japanese, Korean, Portuguese (Brazilian), and Spanish (Argentinian, Castilian, Chilean, Colombian, Mexican, and Peruvian).
-
-Most languages support both broadband and narrowband models, which have minimum sampling rates of 16 kHz and 8 kHz, respectively. Many languages also support next-generation multimedia and telephony models, which have the same respective sampling rates. For more information about the available models for all languages, see the following topics:
+The {{site.data.keyword.speechtotextshort}} service supports both previous-generation and next-generation languages and models. Most languages support both broadband/multimedia and narrowband/telephony models, which have minimum sampling rates of 16 kHz and 8 kHz, respectively. For more information about the available models and the features they support for all languages, see the following topics:
 
 -   [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models)
 -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
@@ -81,9 +79,9 @@ For more information, see [Recognizing speech with the service](/docs/speech-to-
 
 The {{site.data.keyword.speechtotextshort}} service offers a customization interface that provides many features and options to improve the speech recognition capabilities of the supported base language models:
 
--   If you are transcribing audio for a specific domain, you can create custom language models to expand and tailor a base model's vocabulary to include domain-specific terminology. When you use custom language models, you can also create and incorporate custom grammars to restrict the words that the service can recognize from your model's vocabulary. For more information, see [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate) and [Adding a grammar to a custom language model](/docs/speech-to-text?topic=speech-to-text-grammarAdd).
--   If you are transcribing audio with unique characteristics (such as speaker accents, telephone conversations, or background noise), you can create a custom acoustic model to adapt a base model for your environment and speakers. For more information, see [Creating a custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acoustic).
--   You can also use custom acoustic and custom language models together. If transcriptions or related corpora are available for your audio, you can use that data to create a complementary custom language model to further improve the quality of speech recognition based on your custom acoustic model. For more information, see [Using custom acoustic and custom language models together](/docs/speech-to-text?topic=speech-to-text-useBoth).
+-   If you are transcribing audio for a specific domain, you can create custom language models to expand and tailor a base model's vocabulary to include domain-specific terminology. When you use custom language models, you can also create and incorporate custom grammars to restrict the words that the service can recognize from your model's vocabulary. Language model customization is supported for both previous- and next-generation models. For more information, see [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate) and [Adding a grammar to a custom language model](/docs/speech-to-text?topic=speech-to-text-grammarAdd).
+-   If you are transcribing audio with unique characteristics (such as speaker accents, telephone conversations, or background noise), you can create a custom acoustic model to adapt a base model for your environment and speakers. Acoustic model customization is supported only for previous-generation models. For more information, see [Creating a custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acoustic).
+-   You can also use custom acoustic and custom language models together. If transcriptions or related corpora are available for your audio, you can use that data to create a complementary custom language model to further improve the quality of speech recognition based on your custom acoustic model. Grammars are supported only for previous-generation models. For more information, see [Using custom acoustic and custom language models together](/docs/speech-to-text?topic=speech-to-text-useBoth).
 
 ## How many words can I add to a custom language model?
 {: #faq-usage-four}
@@ -97,7 +95,7 @@ You can add a maximum of 90 thousand out-of-vocabulary (OOV) words to a custom l
 {: faq}
 {: support}
 
-When a new version of a base model is released to improve the quality of speech recognition, you must upgrade any custom language and custom acoustic models that are based on that model to take advantage of the updates. When you upgrade a custom model, you do not need to upgrade its resources individually. The service upgrades the resources automatically.
+When a new version of a previous-generation base model is released to improve the quality of speech recognition, you must upgrade any custom language and custom acoustic models that are based on that model to take advantage of the updates. When you upgrade a custom model, you do not need to upgrade its resources individually. The service upgrades the resources automatically. Custom model upgrading applies only to previous-generation models.
 
 -   For more information about upgrading a custom model, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 -   For more information about using an upgraded custom model for a speech recognition request, see [Using upgraded custom models for speech recognition](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use).

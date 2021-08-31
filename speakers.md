@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-08-11"
+lastupdated: "2021-08-24"
 
 subcollection: speech-to-text
 
@@ -25,6 +25,10 @@ subcollection: speech-to-text
 
 # Speaker labels
 {: #speaker-labels}
+
+<!-- MOVED TO 21.12:
+NG: Czech
+-->
 
 The speaker labels feature is beta functionality that is available for English (Australian, Indian, UK (narrowband/telephony), and US), German, Japanese, Korean, and Spanish only. For next-generation models, speaker labels are not supported for use with interim results or low latency.
 {: beta}

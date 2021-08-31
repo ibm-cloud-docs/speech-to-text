@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2021
-lastupdated: "2021-05-14"
+lastupdated: "2021-08-28"
 
 subcollection: speech-to-text
 
@@ -25,6 +25,9 @@ subcollection: speech-to-text
 # Using upgraded custom models for speech recognition
 {: #custom-upgrade-use}
 
+Upgrading custom models is necessary only for previous-generation models. You do not need to upgrade next-generation models.
+{: note}
+
 Once you upgrade a custom model, the service uses the latest version of the custom model by default when you specify that model with a speech recognition request. However, you can still direct the service to use the older version of the model. You need to list information about the custom model to determine the available versions.
 {: shortdesc}
 
@@ -38,7 +41,7 @@ Listing information about a custom model is the only way to see the available ve
 
 In both cases, the output includes a `versions` field that shows information about the base models that are available for the custom model. If the custom model has not been upgraded or only a single version of its base model exists, the `versions` field shows a single version.
 
-### List version information example
+### Example of listing version information
 {: #custom-upgrade-use-listing-example}
 
 The following example request shows information for an upgraded custom language model:

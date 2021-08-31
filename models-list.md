@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2020-05-14"
+lastupdated: "2021-08-17"
 
 subcollection: speech-to-text
 
@@ -44,7 +44,7 @@ Regardless of whether you list information about all available models or about a
     -   `low_latency` is a boolean that indicates whether you can use the `low_latency` parameter with a next-generation model. The service includes this field only for next-generation models. Previous-generation models do not support the `low_latency` parameter.
     -   `speaker_labels` indicates whether you can use the `speaker_labels` parameter with the model.
 
-    The `speaker_labels` field returns `true` for all models. However, speaker labels are supported as beta functionality only for English (Australian, UK (narrowband/telephony), and US), German, Japanese, Korean, and Spanish. Do not rely on the field to identify which models support speaker labels.
+    The `speaker_labels` field returns `true` for all models. However, speaker labels are supported as beta functionality for only a limited number of languages. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
     {: note}
 
 ## Listing all models

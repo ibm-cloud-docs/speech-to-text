@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-10"
+lastupdated: "2021-08-28"
 
 subcollection: speech-to-text
 
@@ -26,7 +26,7 @@ subcollection: speech-to-text
 # Using a grammar for speech recognition
 {: #grammarUse}
 
-The grammars feature is beta functionality. You can use grammars with any language that supports language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+The grammars feature is beta functionality that is available only for previous-generation models. For previous-generation models, the service supports grammars for all languages for which it supports language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
 {: beta}
 
 Once you create and train your custom language model with your grammar, you can use the grammar in speech recognition requests:

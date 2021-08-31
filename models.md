@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-08-12"
+lastupdated: "2021-08-28"
 
 subcollection: speech-to-text
 
@@ -42,34 +42,32 @@ For most languages, the service supports both broadband and narrowband previous-
 
 Choosing the correct model for your application is important. Use the model that matches the sampling rate (and language) of your audio. The service automatically adjusts the sampling rate of your audio to match the model that you specify. To achieve the best recognition accuracy, you also need to consider the frequency content of your audio. For more information, see [Sampling rate](/docs/speech-to-text?topic=speech-to-text-audio-terminology#audio-terminology-sampling-rate) and [Audio frequency](/docs/speech-to-text?topic=speech-to-text-audio-terminology#audio-terminology-frequency).
 
-Table 1 lists the supported models for each language and the product versions for which each model is available. Languages labeled *Beta* are currently beta functionality. Beta languages might not be ready for production use and are subject to change. They are initial offerings that are expected to improve in quality with time and usage. All other languages are generally available (*GA*) for production use.
-
-If you omit the `model` parameter from a request, the service uses the US English broadband model, `en-US_BroadbandModel`, by default.
+Table 1 lists the previous-generation models that are available for each language. All models are available for both product versions, {{site.data.keyword.cloud_notm}} and {{site.data.keyword.icp4dfull_notm}}. The models for languages that are labeled *Beta* are currently beta functionality. All other models are generally available (*GA*) for production use.
 
 The model name `ar-AR_BroadbandModel` is deprecated. Use the model name `ar-MS_BroadbandModel` instead.
 {: note}
 
 | Language | Broadband model | Narrowband model |
 |----------|:---------------:|:----------------:|
-| Arabic (Modern Standard) | `ar-MS_BroadbandModel`<br/>All product versions | Not available |
-| Chinese (Mandarin) | `zh-CN_BroadbandModel`<br/>All product versions | `zh-CN_NarrowbandModel`<br/>All product versions |
-| Dutch (Netherlands) | `nl-NL_BroadbandModel`<br/>All product versions | `nl-NL_NarrowbandModel`<br/>All product versions |
-| English (Australian) | `en-AU_BroadbandModel`<br/>All product versions | `en-AU_NarrowbandModel`<br/>All product versions |
-| English (United Kingdom) | `en-GB_BroadbandModel`<br/>All product versions | `en-GB_NarrowbandModel`<br/>All product versions |
-| English (United States) | `en-US_BroadbandModel`<br/>All product versions | `en-US_NarrowbandModel`<br/>All product versions<br/><br/>`en-US_ShortForm_NarrowbandModel`<br/>All product versions |
-| French (Canadian) | `fr-CA_BroadbandModel`<br/>All product versions | `fr-CA_NarrowbandModel`<br/>All product versions |
-| French (France) | `fr-FR_BroadbandModel`<br/>All product versions | `fr-FR_NarrowbandModel`<br/>All product versions |
-| German | `de-DE_BroadbandModel`<br/>All product versions | `de-DE_NarrowbandModel`<br/>All product versions |
-| Italian | `it-IT_BroadbandModel`<br/>All product versions | `it-IT_NarrowbandModel`<br/>All product versions |
-| Japanese | `ja-JP_BroadbandModel`<br/>All product versions | `ja-JP_NarrowbandModel`<br/>All product versions |
-| Korean | `ko-KR_BroadbandModel`<br/>All product versions | `ko-KR_NarrowbandModel`<br/>All product versions |
-| Portuguese (Brazilian) | `pt-BR_BroadbandModel`<br/>All product versions | `pt-BR_NarrowbandModel`<br/>All product versions |
-| Spanish (Argentinian, Beta) | `es-AR_BroadbandModel`<br/>All product versions | `es-AR_NarrowbandModel`<br/>All product versions |
-| Spanish (Castilian) | `es-ES_BroadbandModel`<br/>All product versions | `es-ES_NarrowbandModel`<br/>All product versions |
-| Spanish (Chilean, Beta) | `es-CL_BroadbandModel`<br/>All product versions | `es-CL_NarrowbandModel`<br/>All product versions |
-| Spanish (Colombian, Beta) | `es-CO_BroadbandModel`<br/>All product versions | `es-CO_NarrowbandModel`<br/>All product versions |
-| Spanish (Mexican, Beta) | `es-MX_BroadbandModel`<br/>All product versions | `es-MX_NarrowbandModel`<br/>All product versions |
-| Spanish (Peruvian, Beta) | `es-PE_BroadbandModel`<br/>All product versions | `es-PE_NarrowbandModel`<br/>All product versions |
+| Arabic (Modern Standard) | `ar-MS_BroadbandModel` | Not available |
+| Chinese (Mandarin) | `zh-CN_BroadbandModel` | `zh-CN_NarrowbandModel` |
+| Dutch (Netherlands) | `nl-NL_BroadbandModel` | `nl-NL_NarrowbandModel` |
+| English (Australian) | `en-AU_BroadbandModel` | `en-AU_NarrowbandModel` |
+| English (United Kingdom) | `en-GB_BroadbandModel` | `en-GB_NarrowbandModel` |
+| English (United States) | `en-US_BroadbandModel` | `en-US_NarrowbandModel`<br/><br/>`en-US_ShortForm_NarrowbandModel` |
+| French (Canadian) | `fr-CA_BroadbandModel` | `fr-CA_NarrowbandModel` |
+| French (France) | `fr-FR_BroadbandModel` | `fr-FR_NarrowbandModel` |
+| German | `de-DE_BroadbandModel` | `de-DE_NarrowbandModel` |
+| Italian | `it-IT_BroadbandModel` | `it-IT_NarrowbandModel` |
+| Japanese | `ja-JP_BroadbandModel` | `ja-JP_NarrowbandModel` |
+| Korean | `ko-KR_BroadbandModel` | `ko-KR_NarrowbandModel` |
+| Portuguese (Brazilian) | `pt-BR_BroadbandModel` | `pt-BR_NarrowbandModel` |
+| Spanish (Argentinian, Beta) | `es-AR_BroadbandModel` | `es-AR_NarrowbandModel` |
+| Spanish (Castilian) | `es-ES_BroadbandModel` | `es-ES_NarrowbandModel` |
+| Spanish (Chilean, Beta) | `es-CL_BroadbandModel` | `es-CL_NarrowbandModel` |
+| Spanish (Colombian, Beta) | `es-CO_BroadbandModel` | `es-CO_NarrowbandModel` |
+| Spanish (Mexican, Beta) | `es-MX_BroadbandModel` | `es-MX_NarrowbandModel` |
+| Spanish (Peruvian, Beta) | `es-PE_BroadbandModel` | `es-PE_NarrowbandModel` |
 {: caption="Table 1. Supported previous-generation language models"}
 
 ## The US English short-form model
@@ -116,13 +114,13 @@ curl -X POST \
 ```
 {: pre}
 
-## Supported features
+## Supported features for previous-generation models
 {: #models-features}
 
 The previous-generation models described in this topic are supported for use with all of the service's features. Most features and models are generally available for production use. Where indicated, some features and models are beta functionality. Restrictions apply for some features, for example:
 
 -   Features such as speaker labels, numeric redaction, and profanity filtering are limited to certain languages and models. Such restrictions are noted with the descriptions of the individual features. For more information about all parameters that also notes all restrictions, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
 -   The `low_latency` parameter is supported only for next-generation models. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
--   Language model customization is not supported for the Arabic and Chinese models. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+-   Language model customization is not supported for the Arabic and Chinese models. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
 
 Otherwise, when a feature is described as being available in general or available for a specific language or languages, it supports the previous-generation models.

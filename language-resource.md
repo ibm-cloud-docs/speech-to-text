@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-07-30"
+lastupdated: "2021-08-30"
 
 subcollection: speech-to-text
 
@@ -26,8 +26,11 @@ content-type: troubleshoot
 {:python: .ph data-hd-programlang='python'}
 {:swift: .ph data-hd-programlang='swift'}
 
-# Working with corpora and custom words
+# Working with corpora and custom words for previous-generation models
 {: #corporaWords}
+
+This information is specific to custom models that are based on *previous-generation models*. For information about corpora and custom words for custom models that are based on *next-generation models*, see [Working with corpora and custom words for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng).
+{: note}
 
 You can populate a custom language model with words by adding corpora or grammars to the model, or by adding custom words directly:
 {: shortdesc}
@@ -54,17 +57,12 @@ The words resource contains the following information about each OOV word. The s
     You can use the `display_as` field to specify a different spelling for the word. For more information, see [Using the display_as field](#displayAs).
 -   `source` - How the word was added to the words resource. If the service extracted the word from a corpus or grammar, the field lists the name of that resource. Because the service can encounter the same word in multiple resources, the field can list multiple corpus or grammar names. The field includes the string `user` if you add or modify the word directly.
 
-When you update a model's words resource in any way, you must train the model for the changes to take effect during transcription. For more information, see [Train the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
-
-After adding or modifying a word in a model's words resource, it is important that you verify the correctness of the word's definition. For more information, see [Validating a words resource](#validateModel).
-{: important}
+After adding or modifying a word in a model's words resource, it is important that you verify the correctness of the word's definition; for more information, see [Validating a words resource for previous-generation models](#validateModel). You must also train the model for the changes to take effect during transcription; for more information, see [Train the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
 
 ## How much data do I need?
 {: #wordsResourceAmount}
 
-Many factors contribute to the amount of data that you need for an effective custom language model. It is not possible to provide the exact number of words that you need to add for any custom model or application.
-
-Depending on the use case, even adding a few words directly to a custom model can improve the model's quality. But adding OOV words from a corpus that shows the words in the context in which they are used in audio can greatly improve transcription accuracy. For more information, see [Working with corpora](#workingCorpora).
+Many factors contribute to the amount of data that you need for an effective custom language model. It is not possible to indicate the exact number of words that you need to add for any custom model or application. Depending on the use case, even adding a few words directly to a custom model can improve the model's quality. But adding OOV words from a corpus that shows the words in the context in which they are used in audio can greatly improve transcription accuracy.
 
 The service limits the number of words that you can add to a custom language model:
 
@@ -73,7 +71,7 @@ The service limits the number of words that you can add to a custom language mod
 
 A large words resource can increase the latency of speech recognition, but the exact effect is difficult to quantify or predict. As with the amount of data that is needed to produce an effective custom model, the performance impact of a large words resource depends on many factors. Test your custom model with different amounts of data to determine the performance of your models and data.
 
-## Working with corpora
+## Working with corpora for previous-generation models
 {: #workingCorpora}
 
 You use the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method to add a corpus to a custom model. A corpus is a plain text file that contains sample sentences from your domain. The following example shows an abbreviated corpus for the healthcare domain. A corpus file is typically much longer.
@@ -112,11 +110,11 @@ Follow these guidelines to prepare a corpus text file:
 
 -   Provide a plain text file that is encoded in UTF-8 if it contains non-ASCII characters. The service assumes UTF-8 encoding if it encounters such characters.
 
-    Make sure that you know the character encoding of your corpus text files. The service preserves the encoding that it finds in the text files. You must use that encoding when working with the words in the custom language model. For more information, see [Character encoding](#charEncoding).
+    Make sure that you know the character encoding of your corpus text files. The service preserves the encoding that it finds in the text files. You must use that same encoding when working with custom words in the custom model. For more information, see [Character encoding for custom words](/docs/speech-to-text?topic=speech-to-text-manageWords#charEncoding).
     {: important}
 -   Use consistent capitalization for words in the corpus. The words resource is case-sensitive. Mix upper- and lowercase letters and use capitalization only when intended.
 -   Include each sentence of the corpus on its own line, and terminate each line with a carriage return. Including multiple sentences on the same line can degrade accuracy.
--   Add personal names as discrete units on separate lines. Do not add the words of a name on separate lines or as individual custom words, and do not include multiple names on the same line of the corpus. The following example shows the correct way to improve recognition accuracy for three names:
+-   Add personal names as discrete units on separate lines. Do not add the individual elements of a name on separate lines or as individual custom words, and do not include multiple names on the same line of a corpus. The following example shows the correct way to improve recognition accuracy for three names:
 
     ```
     Gakuto Kutara
@@ -125,46 +123,46 @@ Follow these guidelines to prepare a corpus text file:
     ```
     {: codeblock}
 
-    Include additional contextual information where available, for example, `Doctor Sebastian Leifson` or `President Malcolm Ingersol`. As with all words, duplicating the names multiple times and, if possible, in different contexts can improve recognition accuracy.
+    Include additional contextual information where appropriate, for example, `Doctor Sebastian Leifson` or `President Malcolm Ingersol`. As with all words, duplicating the names multiple times and, if possible, in different contexts can improve recognition accuracy.
 -   Beware of typographical errors. The service assumes that typographical errors are new words. Unless you correct them before you train the model, the service adds them to the model's vocabulary. Remember the adage *Garbage in, garbage out!*
 -   More sentences result in better accuracy. But the service does limit a model to a maximum of 10 million total words and 90 thousand OOV words from all sources combined.
 
-The service cannot generate a pronunciation for all words. After adding a corpus, you must validate the words resource to ensure that each OOV word's definition is complete and valid. For more information, see [Validating a words resource](#validateModel).
+The service cannot generate a pronunciation for all words. After adding a corpus, you must validate the words resource to ensure that each OOV word's definition is complete and valid. For more information, see [Validating a words resource for previous-generation models](#validateModel).
 
 ### What happens when I add a corpus file?
 {: #parseCorpus}
 
 When you add a corpus file, the service analyzes the file's contents. It extracts any new (OOV) words that it finds and adds each OOV word to the custom model's words resource. To distill the most meaning from the content, the service tokenizes and parses the data that it reads from a corpus file. The following sections describe how the service parses a corpus file for each supported language.
 
-#### Parsing of Brazilian Portuguese, English, French, German, Italian, Netherlands Dutch, and Spanish
+#### Parsing of Dutch, English, French, German, Italian, Portuguese, and Spanish
 {: #corpusLanguages}
 
-The following descriptions apply to all supported dialects of English, French, and Spanish, and to Brazilian Portuguese, German, Italian, and Netherlands Dutch.
+The following descriptions apply to all supported dialects of Dutch, English, French, German, Italian, Portuguese, and Spanish.
 
--   Converts numbers to their equivalent words. Table 1 shows some examples.
+-   Converts numbers to their equivalent words.
 
-| Language<br/>(all dialects) | <br/>Whole number | <br/>Decimal number |
-|-------------------------|:------------:|:--------------:|
-| Dutch<br/>(Netherlands) | `500` becomes `vijfhonderd` | `0,15` becomes `nul komma vijftien` |
-| English | `500` becomes `five hundred` | `0.15` becomes `zero point fifteen` |
-| French | `500` becomes `cinq cents` | `0,15` becomes <code>z&eacute;ro virgule quinze</code> |
-| German | `500` becomes <code>f&uuml;nfhundert</code> | `0,15` becomes <code>null punkt f&uuml;nfzehn</code> |
-| Italian | `500` becomes `cinquecento` | `0,15` becomes `zero virgola quindici` |
-| Portuguese<br/>(Brazilian) | `500` becomes `quinhentos` | `0,15` becomes `zero ponto quinze` |
-| Spanish | `500` becomes `quinientos` | `0,15` becomes `cero coma quince` |
+| Language   | Whole number | Decimal number |
+|------------|:------------:|:--------------:|
+| Dutch      | `500` becomes `vijfhonderd` | `0,15` becomes `nul komma vijftien` |
+| English    | `500` becomes `five hundred` | `0.15` becomes `zero point fifteen` |
+| French     | `500` becomes `cinq cents` | `0,15` becomes <code>z&eacute;ro virgule quinze</code> |
+| German     | `500` becomes <code>f&uuml;nfhundert</code> | `0,15` becomes <code>null punkt f&uuml;nfzehn</code> |
+| Italian    | `500` becomes `cinquecento` | `0,15` becomes `zero virgola quindici` |
+| Portuguese | `500` becomes `quinhentos` | `0,15` becomes `zero ponto quinze` |
+| Spanish    | `500` becomes `quinientos` | `0,15` becomes `cero coma quince` |
 {: caption="Table 1. Examples of number conversion"}
 
--   Converts tokens that include certain symbols to meaningful string representations. Table 2 shows a few examples. These examples are not exhaustive. The service makes similar adjustments for other characters as needed. (For Spanish, if the dialect is `es-LA`, `$100` and `100$` become `cien pesos`.)
+-   Converts tokens that include certain symbols to meaningful string representations. These examples are not exhaustive. The service makes similar adjustments for other characters as needed. (For Spanish, if the dialect is `es-LA`, `$100` and `100$` become `cien pesos`.)
 
-| Language<br/>(all dialects) | A dollar sign<br/>and a number | A euro sign<br/>and a number | A percent sign<br/>and a number |
-|-------------------------|:-------------------------------:|:---------------------------:|:-------------------------------:|
-| Dutch<br/>(Netherlands) | `$100` becomes `honderd dollar` | <code>&euro;100</code> becomes `honderd euro` | `100%` becomes `honderd procent` |
-| English | `$100` becomes `one hundred dollars` | <code>&euro;100</code> becomes `one hundred euros` | `100%` becomes `one hundred percent` |
-| French | `$100` becomes `cent dollars` | <code>&euro;100</code> becomes `cent euros` | `100%` becomes `cent pour cent` |
-| German | `$100` and `100$` become `einhundert dollar` | <code>&euro;100</code> and <code>100&euro;</code> become `einhundert euro` | `100%` becomes `einhundert prozent` |
-| Italian | `$100` becomes `cento dollari` | <code>&euro;100</code> becomes `cento euro` | `100%` becomes `cento per cento` |
-| Portuguese<br/>(Brazilian) | `$100` and `100$` become <code>cem d&oacute;lares</code> | <code>&euro;100</code> and <code>100&euro;</code> become `cem euros` | `100%` becomes `cem por cento` |
-| Spanish | `$100` and `100$` become <code>cien d&oacute;lares</code> | <code>&euro;100</code> and <code>100&euro;</code> become `cien euros` | `100%` becomes `cien por ciento` |
+| <br/>Language | A dollar sign<br/>and a number | A euro sign<br/>and a number | A percent sign<br/>and a number |
+|---------------|:-------------------------------:|:---------------------------:|:-------------------------------:|
+| Dutch      | `$100` becomes `honderd dollar` | <code>&euro;100</code> becomes `honderd euro` | `100%` becomes `honderd procent` |
+| English    | `$100` becomes `one hundred dollars` | <code>&euro;100</code> becomes `one hundred euros` | `100%` becomes `one hundred percent` |
+| French     | `$100` becomes `cent dollars` | <code>&euro;100</code> becomes `cent euros` | `100%` becomes `cent pour cent` |
+| German     | `$100` and `100$` become `einhundert dollar` | <code>&euro;100</code> and <code>100&euro;</code> become `einhundert euro` | `100%` becomes `einhundert prozent` |
+| Italian    | `$100` becomes `cento dollari` | <code>&euro;100</code> becomes `cento euro` | `100%` becomes `cento per cento` |
+| Portuguese | `$100` and `100$` become <code>cem d&oacute;lares</code> | <code>&euro;100</code> and <code>100&euro;</code> become `cem euros` | `100%` becomes `cem por cento` |
+| Spanish    | `$100` and `100$` become <code>cien d&oacute;lares</code> | <code>&euro;100</code> and <code>100&euro;</code> become `cien euros` | `100%` becomes `cien por ciento` |
 {: caption="Table 2. Examples of symbol conversion"}
 
 -   Processes non-alphanumeric, punctuation, and special characters depending on their context. For example, the service removes a `$` (dollar sign) or <code>&euro;</code> (euro symbol) unless it is followed by a number. Processing is context-dependent and consistent across the supported languages.
@@ -185,7 +183,7 @@ The following descriptions apply to all supported dialects of English, French, a
 -   Removes the following punctuation and special characters: `- ( ) * : . , ' "`. However, not all punctuation and special characters that are removed for other languages are removed for Korean, for example:
     -   Removes a period (`.`) symbol only when it occurs at the end of a line of input.
     -   Does not remove a tilde (`~`) symbol.
-    -   Does not remove or otherwise process Unicode wide-character symbols, for example, <code>&#8230;</code> (triple dot, or ellipsis).
+    -   Does not remove or otherwise process Unicode wide-character symbols, for example, <code>&#8230;</code> (triple dot or ellipsis).
 
     In general, {{site.data.keyword.IBM_notm}} recommends that you remove punctuation, special characters, and Unicode wide-characters before you process a corpus file.
 -   Does not remove or ignore phrases that are enclosed in `( )` (parentheses), `< >` (angle brackets), `[ ]` (square brackets), or `{ }` (curly braces).
@@ -198,32 +196,20 @@ The following descriptions apply to all supported dialects of English, French, a
    - It gives the OOV word `London` a sounds-like of <code>&#47088;&#45912;</code>.
    - It gives the OOV word <code>IBM&#54856;&#54168;&#51060;&#51648;</code> a sounds-like of <code>&#50500;&#51060;&#32;&#48708;&#32;&#50656;&#32;&#54856;&#54168;&#51060;&#51648;</code>.
 
-## Working with custom words
+## Working with custom words for previous-generation models
 {: #workingWords}
 
 You can use the `POST /v1/customizations/{customization_id}/words` and `PUT /v1/customizations/{customization_id}/words/{word_name}` methods to add new words to a custom model's words resource. You can also use the methods to modify or augment a word in a words resource.
 
 You might, for instance, need to use the methods to correct a typographical error or other mistake that is made when a word is added from a corpus. You might also need to add sounds-like definitions for an existing word. If you modify an existing word, the new data that you provide overwrites the word's existing definition in the words resource. The rules for adding a word also apply to modifying an existing word.
 
-### Character encoding
-{: #charEncoding}
-
-In general, you are likely to add most custom words from corpora. Make sure that you know the character encoding that is used in the text files for your corpora. The service preserves the encoding that it finds in the text files.
-
-You must use that encoding when working with the individual words in the custom language model. When you specify a word with the `GET`, `PUT`, or `DELETE /v1/customizations/{customization_id}/words/{word_name}` method, you must URL-encode the `word_name` that you pass in the URL if the word includes non-ASCII characters.
-
-For example, the following table shows what looks like the same letter in two different encodings, ASCII and UTF-8. Although you can pass the ASCII character on a URL as `z`, you must pass the UTF-8 character as `%EF%BD%9A`.
-
-| Letter | Encoding | Value |
-|:------:|:--------:|:-----:|
-| z | ASCII | `0x7a` (`7a`) |
-| &#xff5a; | UTF-8 hexadecimal | `0xEF 0xBD 0x9A` (`efbd9a`) |
-{: caption="Table 3. Examples of character encoding"}
+You are likely to add most custom words from corpora. Make sure that you know the character encoding of your corpus text files. The service preserves the encoding that it finds in the text files. You must use that same encoding when working with custom words in the custom model. For more information, see [Character encoding for custom words](/docs/speech-to-text?topic=speech-to-text-manageWords#charEncoding).
+{: important}
 
 ### Using the sounds_like field
 {: #soundsLike}
 
-The `sounds_like` field specifies how a word is pronounced by speakers. By default, the service automatically attempts to complete the field with the word's spelling. But the service cannot generate a pronunciation for all words. After adding or modifying words, you must validate the words resource to ensure that each word's definition is complete and valid. For more information, see [Validating a words resource](#validateModel).
+The `sounds_like` field specifies how a word is pronounced by speakers. By default, the service automatically attempts to complete the field with the word's spelling. But the service cannot generate a pronunciation for all words. After adding or modifying words, you must validate the words resource to ensure that each word's definition is complete and valid. For more information, see [Validating a words resource for previous-generation models](#validateModel).
 
 You can provide as many as five alternative pronunciations for a word that is difficult to pronounce or that can be pronounced in different ways. Consider using the field to
 
@@ -276,10 +262,10 @@ Speech recognition uses statistical algorithms to analyze audio, so adding a wor
 -   To pronounce a single letter, use the letter followed by a space. For example, use `N C A A`, *not* `N. C. A. A.`, `N.C.A.A.`, or `NCAA`.
 -   Use the spelling of numbers without dashes, for example, `seventy five` for `75`.
 
-#### Guidelines for Brazilian Portuguese, French, German, Italian, Netherlands Dutch, and Spanish
+#### Guidelines for Dutch, French, German, Italian, Portuguese, and Spanish
 {: #wordLanguages-esES-frFR}
 
-*Guidelines for all supported dialects of French and Spanish, and for Brazilian Portuguese, German, Italian, and Netherlands Dutch:*
+*Guidelines for all supported dialects of Dutch, French, German, Italian, Portuguese, and Spanish:*
 
 -   You **cannot** use dashes in sounds-like pronunciations.
 -   Use alphabetic characters that are valid for the language: `a-z` and `A-Z` including valid accented letters.
@@ -407,12 +393,12 @@ How the service responds to a request to add or modify a custom word depends on 
     -   *If the `sounds_like` field is valid,* the service sets the `sounds_like` and `display_as` fields to the specified values.
     -   *If the `sounds_like` field is invalid,* the service responds as it does in the case where the `sounds_like` field is specified but the `display_as` field is not.
 
-## Validating a words resource
+## Validating a words resource for previous-generation models
 {: #validateModel}
 {: troubleshoot}
 {: support}
 
-Especially when you add a corpus to a custom language model or add multiple custom words at once, examine the OOV words in the model's words resource.
+Especially when you add a corpus to a custom language model or add multiple custom words at one time, examine the OOV words in the model's words resource.
 
 -   *Look for typographical and other errors.* Especially when you add corpora, which can be large, mistakes are easily made. Typographical errors in a corpus (or grammar) file have the unintended consequence of adding new words to a model's words resource, as do ill-formed HTML tags that are left in a corpus file.
 -   *Verify the sounds-like pronunciations.* The service tries to generate sounds-like pronunciations for OOV words automatically. In most cases, these pronunciations are sufficient. But the service cannot generate a pronunciation for all words, so you must review the word's definition to ensure that it is complete and valid. Reviewing the pronunciations for accuracy is also recommended for words that have unusual spellings or are difficult to pronounce, and for acronyms and technical terms.
@@ -420,7 +406,7 @@ Especially when you add a corpus to a custom language model or add multiple cust
 To validate and, if necessary, correct a word for a custom model, regardless of how it was added to the words resource, use the following methods:
 
 -   List all of the words from a custom model by using the `GET /v1/customizations/{customization_id}/words` method or query an individual word with the `GET /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Listing custom words from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageWords#listWords).
--   Modify words in a custom model to correct errors or to add sounds-like or display-as values by using the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Working with custom words](#workingWords).
+-   Modify words in a custom model to correct errors or to add sounds-like or display-as values by using the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Working with custom words for previous-generation models](#workingWords).
 -   Delete extraneous words that are introduced in error (for example, by typographical or other mistakes in a corpus) by using the `DELETE /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Deleting a word from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageWords#deleteWord).
     -   If the word was extracted from a corpus, you can instead update the corpus text file to correct the error and then reload the file by using the `allow_overwrite` parameter of the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method. For more information, see [Add a corpus to the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#addCorpus).
     -   If the word was extracted from a grammar, you can update the grammar file to correct the error and then reload the file by using the `allow_overwrite` parameter of the `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` method. For more information, see [Add a grammar to the custom language model](/docs/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar).
