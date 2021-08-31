@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-10"
+lastupdated: "2021-08-28"
 
 subcollection: speech-to-text
 
@@ -26,7 +26,7 @@ subcollection: speech-to-text
 # Adding a grammar to a custom language model
 {: #grammarAdd}
 
-The grammars feature is beta functionality. You can use grammars with any language that supports language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+The grammars feature is beta functionality that is available only for previous-generation models. For previous-generation models, the service supports grammars for all languages for which it supports language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
 {: beta}
 
 Before you can use a grammar for speech recognition, you must first use the customization interface to add the grammar to a custom language model. The steps to add a grammar to a custom language model parallel those used to add corpora or custom words:
@@ -167,7 +167,7 @@ After you add a grammar to a custom model, it is good practice to examine the OO
 -   Use the `GET /v1/customizations/{customization_id}/words` method to list all of the words from a custom model. Pass the value `grammars` with the method's `word_type` parameter to list only words that were added from grammars.
 -   Use the `GET /v1/customizations/{customization_id}/words/{word_name}` method to view an individual word from a model.
 
-Verify that the sounds-like pronunciations of the words are accurate and correct. Also look for typographical and other errors in the words themselves. For more information about validating and correcting the words in a custom model, see [Validating a words resource](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
+Verify that the sounds-like pronunciations of the words are accurate and correct. Also look for typographical and other errors in the words themselves. For more information about validating and correcting the words in a custom model, see [Validating a words resource for previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
 
 ## Train the custom language model
 {: #trainGrammar}

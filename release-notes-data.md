@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2021
-lastupdated: "2021-08-18"
+lastupdated: "2021-08-29"
 
 subcollection: speech-to-text
 
@@ -122,8 +122,32 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
+## Version 4.0.0 (31 August 2021)
+{: #v40b}
+
+-   All next-generation language models are now generally available (GA). They are supported for use in production environments and applications.
+    -   For more information about all next-generation language models and which models are currently available for {{site.data.keyword.icp4dfull_notm}}, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+    -   For more information about the features that are supported for each next-generation model, see [Supported features for next-generation models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-features).
+-   Language model customization is now GA for all available next-generation languages and models. Language model customization for next-generation models is supported for use in production environments and applications.
+
+    You use the same commands to create, manage, and use custom language models, corpora, and custom words for next-generation models as you do for previous-generation models. But customization for next-generation models works differently from customization for previous-generation models. For custom models that are based on next-generation models:
+    -   The custom models have no concept of out-of-vocabulary (OOV) words.
+    -   Words from corpora are not added to the words resource.
+    -   You cannot currently use the sounds-like feature for custom words.
+    -   You do not need to upgrade custom models when base language models are updated.
+    -   Grammars are not currently supported.
+
+    For more information about using language model customization for next-generation models, see
+    -   [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization)
+    -   [Language support and usage notes for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
+    -   [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate)
+    -   [Using a custom language model for speech recognition](/docs/speech-to-text?topic=speech-to-text-languageUse)
+    -   [Working with corpora and custom words for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng)
+
+    Additional topics describe managing custom language models, corpora, and custom words.
+
 ## Version 4.0.0 (29 July 2021)
-{: #v40}
+{: #v40a}
 
 {{site.data.keyword.speechtotextfull}} for {{site.data.keyword.icp4dfull}} version 4.0.0 is now available.  Installation and administration of the service include many changes. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.x and Red Hat OpenShift version 4.6. For more information about installing and managing the service, see [Installing {{site.data.keyword.ibmwatson_notm}} {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-speech-install-data).
 
@@ -150,7 +174,7 @@ The `low_latency` parameter impacts your use of the `interim_results` parameter 
 
 -   For more information about the next-generation models and their capabilities, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 -   For more information about language support for next-generation models and about which next-generation models support low latency, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
--   For more information about feature support for next-generation models, see [Supported features](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-features) and [Unsupported features](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-unsupported).
+-   For more information about feature support for next-generation models, see [Supported features for next-generation models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-features) and [Unsupported features for next-generation models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-unsupported).
 -   For more information about the `low_latency` parameter, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
 -   For more information about the interaction between the `low_latency` and `interim_results` parameters for next-generation models, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
 
@@ -232,7 +256,7 @@ The release includes the following functional changes and enhancements:
 
     The new models are generally available, and they support both language model and acoustic model customization.
     -   For more information about supported languages and models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
-    -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+    -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
 -   The following language models have been updated for improved speech recognition:
     -   Brazilian Portuguese: `pt-BR_BroadbandModel` and `pt-BR_NarrowbandModel`
     -   French: `fr-FR_BroadbandModel`
@@ -277,16 +301,24 @@ The release includes the following functional changes and enhancements:
 
     Dutch and Italian language models are generally available (GA) for speech recognition and for language model and acoustic model customization. For more information about all available language models, see
     -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
-    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
+    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support)
 -   The service now supports speaker labels (the `speaker_labels` parameter) for German and Korean language models. Speaker labels identify which individuals spoke which words in a multi-participant exchange. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 -   The Japanese narrowband model (`ja-JP_NarrowbandModel`) now includes some multigram word units for digits and decimal fractions. The service returns these multigram units regardless of whether you enable smart formatting. The smart formatting feature understands and returns the multigram units that the model generates. If you apply your own post-processing to transcription results, you need to handle these units appropriately. For more information, see [Japanese](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-japanese) in the smart formatting documentation.
 
-## Version 1.1.3 (28 February 2020)
+## Older versions
+{: #release-notes-data-older}
+
+-   [Version 1.1.3 (28 February 2020)](#v113)
+-   [Version 1.1.2 (27 November 2019)](#v112)
+-   [Version 1.0.1 (30 August 2019)](#v101)
+-   [Version 1.0.0 (28 June 2019)](#v100)
+
+### Version 1.1.3 (28 February 2020)
 {: #v113}
 
 {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 1.1.3 is now available. The release includes the following changes:
 
--   **As of 1 April 2020,** acoustic model customization is now generally available (GA) for all supported languages. For more information about support for individual language models, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+-   **As of 1 April 2020,** acoustic model customization is now generally available (GA) for all supported languages. For more information about support for individual language models, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
 -   For speech recognition, the service now supports the `end_of_phrase_silence_time` parameter. The parameter specifies the duration of the pause interval at which the service splits a transcript into multiple final results. Each final result indicates a pause or extended silence that exceeds the pause interval. For most languages, the default pause interval is 0.8 seconds; for Chinese the default interval is 0.6 seconds.
 
     You can use the parameter to effect a trade-off between how often a final result is produced and the accuracy of the transcription. Increase the interval when accuracy is more important than latency. Decrease the interval when the speaker is expected to say short phrases or single words.
@@ -298,13 +330,6 @@ The release includes the following functional changes and enhancements:
 
     For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-parsing#split-transcript).
 -   Speaker labels are updated to improve the identification of individual speakers for further analysis of your audio sample. For more information about the speaker labels feature, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels). For more information about the improvements to the feature, see [IBM Research AI Advances Speaker Diarization in Real Use Cases](https://www.ibm.com/blogs/research/2020/07/speaker-diarization-in-real-use-cases/){: external}.
-
-## Older versions
-{: #release-notes-data-older}
-
--   [Version 1.1.2 (27 November 2019)](#v112)
--   [Version 1.0.1 (30 August 2019)](#v101)
--   [Version 1.0.0 (28 June 2019)](#v100)
 
 ### Version 1.1.2 (27 November 2019)
 {: #v112}
@@ -335,7 +360,7 @@ The release includes the following functional changes and enhancements:
     For more information, see the following sections:
 
     -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
-    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
+    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support)
 -   Federal Information Security Management Act (FISMA) support is now available for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}. The service is FISMA High Ready.
 
 ### Version 1.0.0 (28 June 2019)

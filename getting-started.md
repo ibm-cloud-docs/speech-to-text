@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-07-19"
+lastupdated: "2021-08-24"
 
 keywords: speech to text,IBM cloud,getting started,tutorial,transcribe audio,speech recognition
 
@@ -54,15 +54,15 @@ The {{site.data.keyword.speechtotextfull}} service transcribes audio to text to 
 
 ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
 
--   {: hide-dashboard} Create an instance of the service:
+-   Create an instance of the service: {: hide-dashboard}
 
-    1.  {: hide-dashboard} Go to the [{{site.data.keyword.speechtotextshort}}](https://{DomainName}/catalog/services/speech-to-text){: external} page in the {{site.data.keyword.cloud_notm}} Catalog.
-    1.  {: hide-dashboard} Sign up for a free {{site.data.keyword.cloud_notm}} account or log in.
-    1.  {: hide-dashboard} Click **Create**.
+    1.  Go to the [{{site.data.keyword.speechtotextshort}}](https://{DomainName}/catalog/services/speech-to-text){: external} page in the {{site.data.keyword.cloud_notm}} Catalog. {: hide-dashboard}
+    1.  Sign up for a free {{site.data.keyword.cloud_notm}} account or log in. {: hide-dashboard}
+    1.  Click **Create**. {: hide-dashboard}
 
 -   Copy the credentials to authenticate to your service instance:
 
-    1.  {: hide-dashboard} From the [{{site.data.keyword.cloud_notm}} Resource list](https://{DomainName}/resources){: external}, click on your {{site.data.keyword.speechtotextshort}} service instance to go to the {{site.data.keyword.speechtotextshort}} service dashboard page.
+    1.  From the [{{site.data.keyword.cloud_notm}} Resource list](https://{DomainName}/resources){: external}, click on your {{site.data.keyword.speechtotextshort}} service instance to go to the {{site.data.keyword.speechtotextshort}} service dashboard page. {: hide-dashboard}
     1.  On the **Manage** page, click **Show Credentials** to view your credentials.
     1.  Copy the `API Key` and `URL` values.
 
@@ -107,7 +107,7 @@ Call the `POST /v1/recognize` method to request a basic transcript of a FLAC aud
 
     ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
-    -   {: hide-dashboard} Replace `{apikey}` and `{url}` with your API key and URL.
+    -   Replace `{apikey}` and `{url}` with your API key and URL. {: hide-dashboard}
     -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
 
     ```bash
@@ -164,7 +164,7 @@ Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but
 
     ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
-    -   {: hide-dashboard} Replace `{apikey}` and `{url}` with your API key and URL.
+    -   Replace `{apikey}` and `{url}` with your API key and URL. {: hide-dashboard}
     -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
 
     ```bash

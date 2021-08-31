@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-14"
+lastupdated: "2021-08-26"
 
 subcollection: speech-to-text
 
@@ -36,7 +36,7 @@ The customization interface provides two methods for listing information about t
 -   The `GET /v1/customizations/{customization_id}/corpora` method lists information about all corpora for a custom model.
 -   The `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` method lists information about a specified corpus for a custom model.
 
-Both methods return the `name` of the corpus, the `total_words` read from the corpus, and the number of `out-of-vocabulary_words` extracted from the corpus. The methods also list the `status` of the corpus. The status is important for checking the service's analysis of a corpus in response to a request to add it to a custom model:
+Both methods return the `name` of the corpus, the `total_words` read from the corpus, and, *for custom models based on previous-generation models*, the number of `out-of-vocabulary_words` extracted from the corpus. The methods also list the `status` of the corpus. The status is important for checking the service's analysis of a corpus in response to a request to add it to a custom model.
 
 -   `analyzed` indicates that the service successfully analyzed the corpus. You can train the custom model with data from the corpus, or you can add additional corpora or words to the model.
 -   `being_processed` indicates that the service is still analyzing the corpus. The service cannot accept requests to add new corpora or words, or to train the custom model, until its analysis is complete.
@@ -66,7 +66,7 @@ curl -X GET \
 ```
 {: pre}
 
-Three corpora were added to the custom model. The service successfully analyzed `corpus1`. It is still analyzing `corpus2`, and its analysis of `corpus3` failed.
+Three corpora were added to the custom model. The service successfully analyzed `corpus1`. It is still analyzing `corpus2`, and its analysis of `corpus3` failed. Because the corpora were added to a custom model that is based on a previous-generation model, the `out_of_vocabulary_words` field shows the number of OOV words that the service extracted from the first corpus.  The field will show the number of OOV words that are extracted from `corpus2` when it is successfully analyzed. Analysis of `corpus3` failed, so no OOV words were extracted.
 
 ```javascript
 {
@@ -117,7 +117,7 @@ curl -X GET \
 ```
 {: pre}
 
-The corpus contains more than 400 OOV words and is fully analyzed:
+The corpus is fully analyzed and contains more than 400 OOV words:
 
 ```javascript
 {
@@ -132,17 +132,19 @@ The corpus contains more than 400 OOV words and is fully analyzed:
 ## Deleting a corpus from a custom language model
 {: #deleteCorpus}
 
-Use the `DELETE /v1/customizations/{customization_id}/corpora/{corpus_name}` method to remove an existing corpus from a custom language model. When it deletes the corpus, the service removes any OOV words that are associated with the corpus from the custom model's words resource unless
+Use the `DELETE /v1/customizations/{customization_id}/corpora/{corpus_name}` method to remove an existing corpus from a custom language model.
 
--   The word was also added by another corpus or by a grammar.
--   The word was modified in some way with the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method.
+-   *If the custom model is based on a next-generation model,* the service deletes the corpus from the model.
+-   *If the custom model is based on a previous-generation model,* the service deletes the corpus from the model *and* removes OOV words that are associated with the corpus from the custom model's words resource. The service removes an OOV word from a custom model unless
+    -   The word was also added by another corpus or by a grammar.
+    -   The word was modified in some way with the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method.
 
-Removing a corpus does not affect the custom model until you train the model on its updated data by using the `POST /v1/customizations/{customization_id}/train` method. If you successfully trained the model on the corpus, words from the corpus remain in the model's vocabulary and apply to speech recognition until you retrain the model.
+Removing a corpus does not affect the custom model until you train the model on its updated data by using the `POST /v1/customizations/{customization_id}/train` method. If you previously trained the model on the corpus successfully, information extracted from the corpus remains in the model and applies to speech recognition until you retrain the model.
 
 ### Delete a corpus example
 {: #deleteExample-corpus}
 
-The following example deletes the corpus that is named `corpus3` from the custom model with the specified customization ID.
+The following example deletes the corpus that is named `corpus3` from the custom model with the specified customization ID:
 
 ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 

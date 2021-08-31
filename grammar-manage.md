@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-14"
+lastupdated: "2021-08-28"
 
 subcollection: speech-to-text
 
@@ -26,7 +26,7 @@ subcollection: speech-to-text
 # Managing grammars
 {: #manageGrammars}
 
-The grammars feature is beta functionality. The service supports grammars for all languages for which it supports language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+The grammars feature is beta functionality that is available only for previous-generation models. For previous-generation models, the service supports grammars for all languages for which it supports language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
 {: beta}
 
 The customization interface includes the `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` method for adding a grammar to a custom language model. For more information, see [Add a grammar to the custom language model](/docs/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar). The interface also includes the following methods for listing and deleting grammars for a custom language model.

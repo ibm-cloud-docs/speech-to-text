@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-08-16"
+lastupdated: "2021-08-29"
 
 subcollection: speech-to-text
 
@@ -122,10 +122,50 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
-## 16 August 2021
-{: #August2021}
+## 31 August 2021
+{: #August2021b}
 
-The service now supports five new next-generation language models. All of the new models are beta functionality.
+-   All next-generation language models are now generally available (GA). They are supported for use in production environments and applications.
+    -   For more information about all available next-generation language models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+    -   For more information about the features that are supported for each next-generation model, see [Supported features for next-generation models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-features).
+-   Language model customization is now GA for all available next-generation languages and models. Language model customization for next-generation models is supported for use in production environments and applications.
+
+    You use the same commands to create, manage, and use custom language models, corpora, and custom words for next-generation models as you do for previous-generation models. But customization for next-generation models works differently from customization for previous-generation models. For custom models that are based on next-generation models:
+    -   The custom models have no concept of out-of-vocabulary (OOV) words.
+    -   Words from corpora are not added to the words resource.
+    -   You cannot currently use the sounds-like feature for custom words.
+    -   You do not need to upgrade custom models when base language models are updated.
+    -   Grammars are not currently supported.
+
+    For more information about using language model customization for next-generation models, see
+    -   [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization)
+    -   [Language support and usage notes for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
+    -   [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate)
+    -   [Using a custom language model for speech recognition](/docs/speech-to-text?topic=speech-to-text-languageUse)
+    -   [Working with corpora and custom words for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng)
+
+    Additional topics describe managing custom language models, corpora, and custom words.
+
+<!-- DELAYED 21.11:
+
+-   **Defect fix:** When you use speakers labels with next-generation models, the service now reports the speaker for all words of the input audio, including very short words that have the same start and end timestamps.
+
+-->
+
+<!-- MOVED TO 21.12:
+
+-   The service now supports the following new next-generation language models. All of the new models are GA.
+    -   *Netherlands Dutch:* `nl-NL_Telephony`. The new model does not support low latency.
+    -   *Czech:* `cs-CZ_Telephony`. The new model supports low latency.
+    -   The updated Korean model `ko-KR_Telephony` now supports low latency.
+    -   The Brazilian Portuguese model `pt-BR_Telephony` has been updated for improved speech recognition.
+
+-->
+
+## 16 August 2021
+{: #August2021a}
+
+The service now supports the following new next-generation language models. All of the new models are beta functionality.
 
 -   *Indian English:* `en-IN_Telephony`. The model supports low latency.
 -   *Indian Hindi:* `hi-IN_Telephony`. The model supports low latency.
@@ -168,58 +208,11 @@ For more information about the next-generation models and about low latency, see
 -   **Defect fix:** When you use a next-generation model for speech recognition, final transcription results now include the `confidence` field. The field was always included in final transcription results when you use a previous-generation model. This fix addresses a limitation that was reported for the 12 April 2021 release of the next-generation models.
 -   **Defect fix:** The documentation incorrectly stated that using the `smart_formatting` parameter causes the service to remove hesitation markers from final transcription results for Japanese. Smart formatting does not remove hesitation markers from final results for Japanese, only for US English. For more information, see [What results does smart formatting affect?](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-effects)
 
-## 27 April 2021
-{: #April2021b}
-
--   The service supports two new beta next-generation models:
-    -   The Brazilian Portuguese `pt-BR_Telephony` model, which supports low latency.
-    -   The Modern Standard Arabic `ar-MS_Telephony` model, which does not support low latency.
-
-    For more information, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
-
--   The beta next-generation Castilian Spanish `es-ES_Telephony` model now supports the `low_latency` parameter. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
-
--   The `speaker_labels` parameter is now supported for use with the following next-generation models:
-    -   The Australian English `en-AU_Telephony` model
-    -   The UK English `en-GB_Telephony` model
-    -   The US English `en-US_Multimedia` and `en-US_Telephony` models
-    -   The German `de-DE_Telephony` model
-    -   The Castilian Spanish `es-ES_Telephony` model
-
-    With the next generation models, the `speaker_labels` parameter is not supported for use with the `interim_results` or `low_latency` parameters at this time. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
-
--   The `word_confidence` parameter is not supported for use with next-generation models. The service now returns a 400 error code if you use the `word_confidence` parameter with a next-generation model for speech recognition. For example:
-
-    ```javascript
-    {
-      "error": "word_confidence is not a supported feature for model en-US_Telephony",
-      "code": 400,
-      "code_description": "Bad Request"
-    }
-    ```
-    {: codeblock}
-
-## 12 April 2021
-{: #April2021a}
-
-The next-generation language models and the `low_latency` parameter are beta functionality. The next-generation models support a limited number of languages and features at this time. The supported languages, models, and features will increase with future releases.
-{: beta}
-
-The service now supports a growing number of next-generation language models. The next-generation *multimedia* and *telephony* models improve upon the speech recognition capabilities of the service's previous generation of broadband and narrowband models. The new models leverage deep neural networks and bidirectional analysis to achieve both higher throughput and greater transcription accuracy. At this time, the next-generation models support only a limited number of languages and speech recognition features.
-
-Many of the next-generation models also support a new `low_latency` parameter that lets you request faster results at the possible expense of reduced transcription quality. When low latency is enabled, the service curtails its analysis of the audio, which can reduce the accuracy of the transcription. This trade-off might be acceptable if your application requires lower response time more than it does the highest possible accuracy.
-
-The `low_latency` parameter impacts your use of the `interim_results` parameter with the WebSocket interface. Interim results are available only for those next-generation models that support low latency, and only if both the `interim_results` and `low_latency` parameters are set to `true`.
-
--   For more information about the next-generation models and their capabilities, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
--   For more information about language support for next-generation models and about which next-generation models support low latency, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
--   For more information about feature support for next-generation models, see [Supported features](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-features).
--   For more information about the `low_latency` parameter, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
--   For more information about the interaction between the `low_latency` and `interim_results` parameters for next-generation models, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
-
 ## Older releases
 {: #release-notes-older}
 
+-   [27 April 2021](#April2021b)
+-   [12 April 2021](#April2021a)
 -   [17 March 2021](#March2021)
 -   [2 December 2020](#December2020)
 -   [2 November 2020](#November2020)
@@ -285,6 +278,55 @@ The `low_latency` parameter impacts your use of the `interim_results` parameter 
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
 
+### 27 April 2021
+{: #April2021b}
+
+-   The service supports two new beta next-generation models:
+    -   The Brazilian Portuguese `pt-BR_Telephony` model, which supports low latency.
+    -   The Modern Standard Arabic `ar-MS_Telephony` model, which does not support low latency.
+
+    For more information, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+
+-   The beta next-generation Castilian Spanish `es-ES_Telephony` model now supports the `low_latency` parameter. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
+
+-   The `speaker_labels` parameter is now supported for use with the following next-generation models:
+    -   The Australian English `en-AU_Telephony` model
+    -   The UK English `en-GB_Telephony` model
+    -   The US English `en-US_Multimedia` and `en-US_Telephony` models
+    -   The German `de-DE_Telephony` model
+    -   The Castilian Spanish `es-ES_Telephony` model
+
+    With the next generation models, the `speaker_labels` parameter is not supported for use with the `interim_results` or `low_latency` parameters at this time. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
+
+-   The `word_confidence` parameter is not supported for use with next-generation models. The service now returns a 400 error code if you use the `word_confidence` parameter with a next-generation model for speech recognition. For example:
+
+    ```javascript
+    {
+      "error": "word_confidence is not a supported feature for model en-US_Telephony",
+      "code": 400,
+      "code_description": "Bad Request"
+    }
+    ```
+    {: codeblock}
+
+### 12 April 2021
+{: #April2021a}
+
+The next-generation language models and the `low_latency` parameter are beta functionality. The next-generation models support a limited number of languages and features at this time. The supported languages, models, and features will increase with future releases.
+{: beta}
+
+The service now supports a growing number of next-generation language models. The next-generation *multimedia* and *telephony* models improve upon the speech recognition capabilities of the service's previous generation of broadband and narrowband models. The new models leverage deep neural networks and bidirectional analysis to achieve both higher throughput and greater transcription accuracy. At this time, the next-generation models support only a limited number of languages and speech recognition features.
+
+Many of the next-generation models also support a new `low_latency` parameter that lets you request faster results at the possible expense of reduced transcription quality. When low latency is enabled, the service curtails its analysis of the audio, which can reduce the accuracy of the transcription. This trade-off might be acceptable if your application requires lower response time more than it does the highest possible accuracy.
+
+The `low_latency` parameter impacts your use of the `interim_results` parameter with the WebSocket interface. Interim results are available only for those next-generation models that support low latency, and only if both the `interim_results` and `low_latency` parameters are set to `true`.
+
+-   For more information about the next-generation models and their capabilities, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+-   For more information about language support for next-generation models and about which next-generation models support low latency, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
+-   For more information about feature support for next-generation models, see [Supported features for next-generation models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-features) and [Unsupported features for next-generation models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-unsupported).
+-   For more information about the `low_latency` parameter, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
+-   For more information about the interaction between the `low_latency` and `interim_results` parameters for next-generation models, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
+
 ### 17 March 2021
 {: #March2021}
 
@@ -301,14 +343,14 @@ The Arabic language broadband model is now named `ar-MS_BroadbandModel`. The for
 The Canadian French models, `fr-CA_BroadbandModel` and `fr-CA_NarrowbandModel`, are now generally available; they were previously beta. They also now support language model and acoustic model customization.
 
 -   For more information about supported languages and models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
--   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+-   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
 
 ### 22 October 2020
 {: #October2020b}
 
 -   The Australian English models, `en-AU_BroadbandModel` and `en-AU_NarrowbandModel`, are now generally available; they were previously beta. They also now support language model and acoustic model customization.
     -   For more information about supported languages and models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
-    -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+    -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
 -   The Brazilian Portuguese models, `pt-BR_BroadbandModel` and `pt-BR_NarrowbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all speech recognition requests. If you have custom language or custom acoustic models that are based on the models, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
     -   `POST /v1/acoustic_customizations/{customization_id}/upgrade_model`
@@ -388,7 +430,7 @@ Acoustic model customization is now generally available (GA) for all supported l
 
 Using a custom language model, a custom acoustic model, or both types of model for transcription incurs an add-on charge of $0.03 (USD) per minute. This charge is in addition to the standard usage charge of $0.02 (USD) per minute, and it applies to all languages supported by the customization interface. So the total charge for using one or more custom models for speech recognition is $0.05 (USD) per minute.
 
--   For more information about support for individual language models, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+-   For more information about support for individual language models, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
 -   For more information about pricing, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service or the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
 
 ### 28 April 2020
@@ -407,7 +449,7 @@ Using a custom language model, a custom acoustic model, or both types of model f
 
     For more information about all available language models, see
     -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
-    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
+    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support)
 
 ### 16 March 2020
 {: #March2020}
@@ -432,8 +474,8 @@ Using a custom language model, a custom acoustic model, or both types of model f
 
     For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 -   Language model customization is now supported for Dutch and Italian with the new versions of the broadband and narrowband models. For more information, see
-    -   [Parsing of Brazilian Portuguese, Dutch, English, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages)
-    -   [Guidelines for Brazilian Portuguese, Dutch, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR)
+    -   [Parsing of Dutch, English, French, German, Italian, Portuguese, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages)
+    -   [Guidelines for Dutch, French, German, Italian, Portuguese, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR)
 
     Because the Dutch and Italian models are beta, their support for language model customization is also beta.
 -   The Japanese narrowband model (`ja-JP_NarrowbandModel`) now includes some multigram word units for digits and decimal fractions. The service returns these multigram units regardless of whether you enable smart formatting. The smart formatting feature understands and returns the multigram units that the model generates. If you apply your own post-processing to transcription results, you need to handle these units appropriately. For more information, see [Japanese](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-japanese) in the smart formatting documentation.
@@ -458,7 +500,7 @@ Using a custom language model, a custom acoustic model, or both types of model f
     For more information, see the following sections:
 
     -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
-    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
+    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support)
 -   For speech recognition, the service now supports the `end_of_phrase_silence_time` parameter. The parameter specifies the duration of the pause interval at which the service splits a transcript into multiple final results. Each final result indicates a pause or extended silence that exceeds the pause interval. For most languages, the default pause interval is 0.8 seconds; for Chinese the default interval is 0.6 seconds.
 
     You can use the parameter to effect a trade-off between how often a final result is produced and the accuracy of the transcription. Increase the interval when accuracy is more important than latency. Decrease the interval when the speaker is expected to say short phrases or single words.
@@ -507,7 +549,7 @@ These language models support acoustic model customization. They do not support 
 For more information, see the following sections:
 
 -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
--   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
+-   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support)
 
 ### 25 November 2019
 {: #November2019c}
@@ -553,7 +595,7 @@ The other five dialects are new and are beta for all uses. Because they are beta
 For more information, see the following sections:
 
 -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
--   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport)
+-   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support)
 
 ### 24 June 2019
 {: #June2019b}
@@ -693,7 +735,7 @@ The grammar interface is fully functional in all locations as of January 8, 2019
     -   `de-DE_NarrowbandModel`
     -   `fr-FR_NarrowbandModel`
 
-    Both new models support language model customization (GA) and acoustic model customization (beta). For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+    Both new models support language model customization (GA) and acoustic model customization (beta). For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
 -   A new US English language model, `en-US_ShortForm_NarrowbandModel`, is now available. The new model is intended for use in Interactive Voice Response and Automated Customer Support solutions. The model supports language model customization (GA) and acoustic model customization (beta). For more information, see [The US English short-form model](/docs/speech-to-text?topic=speech-to-text-models#modelsShortform).
 -   The following language models have been updated for improved speech recognition:
     -   `en-GB_NarrowbandModel`
@@ -781,11 +823,11 @@ For a list of issues that have been fixed since the initial release, see [Resolv
 {: important}
 
 -   The service now supports a German broadband model, `de-DE_BroadbandModel`. The new German model supports language model customization (generally available) and acoustic model customization (beta).
-    -   For information about how the service parses corpora for German, see [Parsing of Brazilian Portuguese, Dutch, English, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages).
-    -   For more information about creating sounds-like pronunciations for custom words in German, see [Guidelines for Brazilian Portuguese, Dutch, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR).
+    -   For information about how the service parses corpora for German, see [Parsing of Dutch, English, French, German, Italian, Portuguese, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages).
+    -   For more information about creating sounds-like pronunciations for custom words in German, see [Guidelines for Dutch, French, German, Italian, Portuguese, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR).
 -   The existing Brazilian Portuguese models, `pt-BR_BroadbandModel` and `pt-BR_NarrowbandModel`, now support language model customization (generally available). The models were not updated to enable this support, so no upgrade of existing custom acoustic models is required.
-    -   For information about how the service parses corpora for Brazilian Portuguese, see [Parsing of Brazilian Portuguese, Dutch, English, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages).
-    -   For more information about creating sounds-like pronunciations for custom words in Brazilian Portuguese, see [Guidelines for Brazilian Portuguese, Dutch, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR).
+    -   For information about how the service parses corpora for Brazilian Portuguese, see [Parsing of Dutch, English, French, German, Italian, Portuguese, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages).
+    -   For more information about creating sounds-like pronunciations for custom words in Brazilian Portuguese, see [Guidelines for Dutch, French, German, Italian, Portuguese, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR).
 -   New versions of the US English and Japanese broadband and narrowband models are available:
     -   `en-US_BroadbandModel`
     -   `en-US_NarrowbandModel`
@@ -910,8 +952,8 @@ The following features are enabled for applications that are hosted in Sydney (*
 {: #March2018b}
 
 -   The service now supports language model customization for the French language model, `fr-FR_BroadbandModel`. The French model is generally available for production use with language model customization.
-    -   For more information about how the service parses corpora for French, see [Parsing of Brazilian Portuguese, Dutch, English, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages).
-    -   For more information about creating sounds-like pronunciations for custom words in French, see [Guidelines for Brazilian Portuguese, Dutch, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR).
+    -   For more information about how the service parses corpora for French, see [Parsing of Dutch, English, French, German, Italian, Portuguese, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages).
+    -   For more information about creating sounds-like pronunciations for custom words in French, see [Guidelines for Dutch, French, German, Italian, Portuguese, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-esES-frFR).
 -   The Spanish and Korean narrowband models, `es-ES_NarrowbandModel` and `ko-KR_NarrowbandModel`, and the French broadband model, `fr-FR_BroadbandModel`, were updated for improved speech recognition. By default, the service automatically uses the updated models for all recognition requests. If you have custom language or custom acoustic models that are based on either of these models, you must upgrade your custom models to take advantage of the updates by using the following methods:
 
     -   `POST /v1/customizations/{customization_id}/upgrade_model`
@@ -943,7 +985,7 @@ For more information, see [Upgrading custom models](/docs/speech-to-text?topic=s
 
 The service now offers models for the Korean language for speech recognition: `ko-KR_BroadbandModel` for audio that is sampled at a minimum of 16 kHz, and `ko-KR_NarrowbandModel` for audio that is sampled at a minimum of 8 kHz. For more information, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
 
-For language model customization, the Korean models are generally available for production use; for acoustic model customization, they are beta functionality. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+For language model customization, the Korean models are generally available for production use; for acoustic model customization, they are beta functionality. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
 
 -   For more information about how the service parses corpora for Korean, see [Parsing of Korean](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages-koKR).
 -   For more information about creating sounds-like pronunciations for custom words in Korean, see [Guidelines for Korean](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-koKR).
@@ -960,7 +1002,7 @@ For language model customization, the Korean models are generally available for 
 -   The various methods for making recognition requests now include a new `base_model_version` parameter that you can use to initiate requests that use either the older or upgraded versions of base and custom models. Although it is intended primarily for use with custom models that have been upgraded, the `base_model_version` parameter can also be used without custom models. For more information, see [Making speech recognition requests with upgraded custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use#custom-upgrade-use-recognition).
 -   The service now supports acoustic model customization as beta functionality for all available languages. You can create custom acoustic models for broadband or narrowband models for all languages. For an introduction to customization, including acoustic model customization, see [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization).
 -   The service now supports language model customization for the UK English models, `en-GB_BroadbandModel` and `en-GB_NarrowbandModel`. Although the service handles UK and US English corpora and custom words in a generally similar fashion, some important differences exist:
-    -   For more information about how the service parses corpora for UK English, see [Parsing of Brazilian Portuguese, Dutch, English, French, German, Italian, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages).
+    -   For more information about how the service parses corpora for UK English, see [Parsing of Dutch, English, French, German, Italian, Portuguese, and Spanish](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages).
     -   For more information about creating sounds-like pronunciations for custom words in UK English, see [Guidelines for English](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-english). Specifically, for UK English, you cannot use periods or dashes in sounds-like pronunciations.
 -   Language model customization and all associated parameters are now generally available (GA) for all supported languages: Japanese, Spanish, UK English, and US English.
 
@@ -971,7 +1013,7 @@ For language model customization, the Korean models are generally available for 
 
     Custom acoustic models complement custom language models. You can train a custom acoustic model with a custom language model, and you can use both types of model during speech recognition. Acoustic model customization is a beta interface that is available only for US English, Spanish, and Japanese.
 
-    -   For more information about the languages that are supported by the customization interface and the level of support that is available for each language, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+    -   For more information about the languages that are supported by the customization interface and the level of support that is available for each language, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
     -   For more information about the service's customization interface, see [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization).
     -   For more information about creating a custom acoustic model, see [Creating a custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acoustic).
     -   For more information about using a custom acoustic model, see [Using a custom acoustic model for speech recognition](/docs/speech-to-text?topic=speech-to-text-acousticUse).

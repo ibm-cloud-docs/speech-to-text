@@ -60,12 +60,14 @@ Speech to Text
     {: .topicgroup}
     Customizing the service
         custom.md
+        custom-support.md
 
         {: topicgroup}
         Language model customization
             language-create.md
             language-use.md
             language-resource.md
+            language-resource-ng.md
             language-models.md
             language-corpora.md
             language-words.md

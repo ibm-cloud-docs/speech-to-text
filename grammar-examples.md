@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-10"
+lastupdated: "2021-08-28"
 
 subcollection: speech-to-text
 
@@ -26,7 +26,7 @@ subcollection: speech-to-text
 # Example grammars
 {: #grammarExamples}
 
-The grammars feature is beta functionality. The service supports grammars for all languages for which it supports language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
+The grammars feature is beta functionality that is available only for previous-generation models. For previous-generation models, the service supports grammars for all languages for which it supports language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
 {: beta}
 
 The following examples describe more complex uses for grammars with speech recognition. Most examples are provided in both ABNF (`application/srgs`) and XML (`application/srgs+xml`) formats. Use these examples to help you get started with grammars.

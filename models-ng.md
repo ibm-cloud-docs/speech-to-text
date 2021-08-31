@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-08-12"
+lastupdated: "2021-08-30"
 
 subcollection: speech-to-text
 
@@ -26,10 +26,7 @@ subcollection: speech-to-text
 # Next-generation languages and models
 {: #models-ng}
 
-The next-generation language models are beta functionality. They support a limited number of languages and features at this time. The supported languages, models, and features will increase with future releases.
-{: beta}
-
-The {{site.data.keyword.speechtotextfull}} service supports a growing collection of next-generation models that improve upon the speech recognition capabilities of the service's previous generation of models. Next-generation models have higher throughput than the previous models, so the service can return transcriptions more quickly. Next-generation models also provide noticeably better transcription accuracy.
+The {{site.data.keyword.speechtotextfull}} service supports a growing collection of next-generation models that improve upon the speech recognition capabilities of the service's previous-generation models. Next-generation models have higher throughput than the previous models, so the service can return transcriptions more quickly. Next-generation models also provide noticeably better transcription accuracy. All next-generation models are generally available (GA).
 {: shortdesc}
 
 When you use next-generation models, the service analyzes audio bidirectionally. Using deep neural networks, the model analyzes and extracts information from the audio. The model then evaluates the information forwards and backwards to predict the transcription, effectively "listening" to the audio twice.
@@ -38,7 +35,8 @@ With the additional information and context afforded by bidirectional analysis, 
 
 In addition to providing greater transcription accuracy, the models have the ability to hypothesize words that are not in the base language model and that it has not encountered in training. This capability can decrease the need for customization of domain-specific terms. A model does not need to contain a specific vocabulary term to predict that word.
 
-For more information about the technology that underlies the next-generation models, see [Advancing RNN Transducer Technology for Speech Recognition](https://arxiv.org/abs/2103.09935){: external}.
+-   For more information about the technology that underlies the next-generation models, see [Advancing RNN Transducer Technology for Speech Recognition](https://arxiv.org/abs/2103.09935){: external}.
+-   For information about migrating from previous-generation to next-generation models, see [Watson Speech to Text: How to Plan Your Migration to the Next-Generation Models](https://medium.com/ibm-data-ai/watson-speech-to-text-how-to-plan-your-migration-to-the-next-generation-models-6b10605b3bc5){: external}.
 
 ## Supported next-generation language models
 {: #models-ng-supported}
@@ -50,25 +48,33 @@ The service makes available two types of next-generation models:
 
 Choose the model that most closely matches the source and sampling rate of your audio. The service automatically adjusts the sampling rate of your audio to match the model that you specify. To achieve the best recognition accuracy, also consider the frequency content of your audio. For more information, see [Sampling rate](/docs/speech-to-text?topic=speech-to-text-audio-terminology#audio-terminology-sampling-rate) and [Audio frequency](/docs/speech-to-text?topic=speech-to-text-audio-terminology#audio-terminology-frequency).
 
-Table 1 lists the supported next-generation languages and models. It indicates the product versions for which each model is available. Low-latency columns indicate whether each model supports the `low_latency` parameter for speech recognition and the product versions for which low latency is available. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
+Table 1 lists the next-generation models that are available for each language. Low-latency columns indicate whether each model supports the `low_latency` parameter for speech recognition. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
+
+The table indicates the product versions for which each model and for which low-latency are supported. Unless otherwise qualified by {{site.data.keyword.cloud_notm}} or {{site.data.keyword.icp4dfull_notm}}, the model and low latency are supported for both product versions.
+
+<!-- MOVED TO 21.12:
+| Czech | Not available | Not available | `cz-CZ_Telephony`<br/>IBM Cloud only | **Yes**<br/>IBM Cloud only |
+| Dutch (Netherlands) | Not available | Not available | `nl-NL_Telephony`<br/>IBM Cloud only | **No** |
+| Korean | `ko-KR_Multimedia`<br/>IBM Cloud only | **No** | `ko-KR_Telephony`<br/>IBM Cloud only | **Yes**<br/>IBM Cloud only |
+-->
 
 | <br/>Language | <br/>Multimedia model | Multimedia<br/>low-latency support | <br/>Telephony model | Telephony<br/>low-latency support |
 |----------|:----------------:|:-------------------:|:---------------:|:-------------------:|
-| Arabic (Modern Standard) | Not available | Not available | `ar-MS_Telephony`<br/>All product versions | **Yes**<br/>IBM Cloud only |
+| Arabic (Modern Standard) | Not available | Not available | `ar-MS_Telephony` | **Yes**<br/>IBM Cloud only |
 | Dutch (Belgian) | Not available | Not available | `nl-BE_Telephony`<br/>IBM Cloud only | **Yes**<br/>IBM Cloud only |
-| English (Australian) | Not available | Not available | `en-AU_Telephony`<br/>All product versions | **Yes**<br/>All product versions |
+| English (Australian) | Not available | Not available | `en-AU_Telephony` | **Yes** |
 | English (Indian) | Not available | Not available | `en-IN_Telephony`<br/>IBM Cloud only | **Yes**<br/>IBM Cloud only |
-| English (United Kingdom) | Not available | Not available | `en-GB_Telephony`<br/>All product versions | **Yes**<br/>All product versions |
-| English (United States) | `en-US_Multimedia`<br/>All product versions | **No** | `en-US_Telephony`<br/>All product versions | **Yes**<br/>All product versions |
-| French (Canadian) | Not available | Not available | `fr-CA_Telephony`<br/>All product versions | **Yes**<br/>IBM Cloud only |
-| French (France) | `fr-FR_Multimedia`<br/>IBM Cloud only | **No** | `fr-FR_Telephony`<br/>All product versions | **Yes**<br/>All product versions |
-| German | Not available | Not available | `de-DE_Telephony`<br/>All product versions | **Yes**<br/>All product versions |
+| English (United Kingdom) | Not available | Not available | `en-GB_Telephony` | **Yes** |
+| English (United States) | `en-US_Multimedia` | **No** | `en-US_Telephony` | **Yes** |
+| French (Canadian) | Not available | Not available | `fr-CA_Telephony` | **Yes**<br/>IBM Cloud only |
+| French (France) | `fr-FR_Multimedia`<br/>IBM Cloud only | **No** | `fr-FR_Telephony` | **Yes** |
+| German | Not available | Not available | `de-DE_Telephony` | **Yes** |
 | Hindi (Indian) | Not available | Not available | `hi-IN_Telephony`<br/>IBM Cloud only | **Yes**<br/>IBM Cloud only |
-| Italian | Not available | Not available | `it-IT_Telephony`<br/>All product versions | **Yes**<br/>IBM Cloud only |
+| Italian | Not available | Not available | `it-IT_Telephony` | **Yes**<br/>IBM Cloud only |
 | Japanese | `ja-JP_Multimedia`<br/>IBM Cloud only | **No** | Not available | Not available |
 | Korean | `ko-KR_Multimedia`<br/>IBM Cloud only | **No** | `ko-KR_Telephony`<br/>IBM Cloud only | **No** |
-| Portuguese (Brazilian) | Not available | Not available | `pt-BR_Telephony`<br/>All product versions | **Yes**<br/>All product versions |
-| Spanish (Castilian) | Not available | Not available | `es-ES_Telephony`<br/>All product versions | **Yes**<br/>All product versions |
+| Portuguese (Brazilian) | Not available | Not available | `pt-BR_Telephony` | **Yes** |
+| Spanish (Castilian) | Not available | Not available | `es-ES_Telephony` | **Yes** |
 {: caption="Table 1. Supported next-generation language models"}
 
 Unlike previous-generation models, next-generation models do not include the word `model` in their names.
@@ -105,12 +111,16 @@ curl -X POST \
 ```
 {: pre}
 
-## Supported features
+## Supported features for next-generation models
 {: #models-ng-features}
 
-The next-generation models described in this topic are supported for use with a subset of the service's features. In cases where a supported feature is restricted to certain languages, those same language restrictions apply to the next-generation models.
+The next-generation models are supported for use with a subset of the service's features. In cases where a supported feature is restricted to certain languages, those same language restrictions apply to the next-generation models.
 
 Table 1 lists each parameter (and request header) that is supported for use with the next-generation models. For more information about all available speech recognition parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
+
+<!-- MOVED TO 21.12:
+| `speaker_labels` | Czech, English (Australian, Indian, UK, and US), German, Japanese, Korean, and Spanish models only. Not supported for use with the `interim_results` or `low_latency` parameters. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels). |
+-->
 
 | Parameter | Next-generation language and model support |
 |-----------|--------------------------------------------|
@@ -118,8 +128,10 @@ Table 1 lists each parameter (and request header) that is supported for use with
 | `audio_metrics` | All languages and models. For more information, see [Audio metrics](/docs/speech-to-text?topic=speech-to-text-metrics#audio-metrics). |
 | `background_audio_suppression` | All languages and models. For more information, see [Background audio suppression](/docs/speech-to-text?topic=speech-to-text-detection#detection-parameters-suppression). |
 | `Content-Type` | All languages and models. For more information, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-list). |
+| `customization_weight` | All languages and models. For more information, see [Using customization weight](/docs/speech-to-text?topic=speech-to-text-languageUse#weight). |
 | `inactivity_timeout` | All languages and models. For more information, see [Inactivity timeout](/docs/speech-to-text?topic=speech-to-text-input#timeouts-inactivity). |
 | `interim_results` | All languages and models that support low latency, but only if both the `interim_results` and `low_latency` parameters are set to `true`. For more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results). |
+| `language_customization_id` | All languages and models. For more information, see [Using a custom language model for speech recognition](/docs/speech-to-text?topic=speech-to-text-languageUse). |
 | `low_latency` | Next-generation models that support low latency only. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency). |
 | `model` | All languages and models. For more information, see [Specifying a model for speech recognition](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-example). |
 | `profanity_filter` | US English and Japanese models only. For more information, see [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-formatting#profanity-filtering). |
@@ -134,13 +146,13 @@ Table 1 lists each parameter (and request header) that is supported for use with
 | `X-Watson-Metadata` | All languages and models. For more information, see [Information security](/docs/speech-to-text?topic=speech-to-text-information-security). |
 {: caption="Table 2. Parameter support for next-generation languages and models"}
 
-## Unsupported features
+## Unsupported features for next-generation models
 {: #models-ng-unsupported}
 
-At this time, previous-generation models support many features that are not available with next-generation models.  Specifically, next-generation models do not support the following features:
+Previous-generation models support some features that are not available with next-generation models. Specifically, next-generation models do not support the following features:
 
 -   Any feature not listed in the previous section is not supported for use with the next-generation models.
--   Next-generation models do not support language model customization, acoustic model customization, or grammars.
+-   Next-generation models do not support acoustic model customization or grammars.
 -   Next-generation models do not produce hesitation markers. Hesitation markers are produced only by previous-generation models. For more information about hesitation markers, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 
 For more information about all available speech recognition parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).

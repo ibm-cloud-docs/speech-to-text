@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2021
-lastupdated: "2021-05-10"
+lastupdated: "2021-08-23"
 
 subcollection: speech-to-text
 
@@ -24,6 +24,9 @@ subcollection: speech-to-text
 
 # Upgrading custom models
 {: #custom-upgrade}
+
+Upgrading custom models is necessary only for previous-generation models. You do not need to upgrade next-generation models.
+{: note}
 
 To improve the quality of speech recognition, the {{site.data.keyword.speechtotextfull}} service occasionally updates base models. Because base models for different languages are independent of each other, as are the broadband and narrowband models for a language, updates to individual base models do not affect other models.
 {: shortdesc}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-10"
+lastupdated: "2021-08-28"
 
 subcollection: speech-to-text
 
@@ -39,7 +39,7 @@ For information about telling the service how much weight to give to words from 
 ## Examples of using a custom language model
 {: #languageUse-examples}
 
-The following examples show the use of a custom language model with each speech recognition interface:
+The following examples show the use of a custom language model with each speech recognition interface. In this case, the custom model that is used is based on the next-generation model `en-US_Telephony`.
 
 -   For the [WebSocket interface](/docs/speech-to-text?topic=speech-to-text-websockets), use the `/v1/recognize` method. The specified custom model is used for all requests that are sent over the connection.
 
@@ -47,11 +47,12 @@ The following examples show the use of a custom language model with each speech 
     var access_token = {access_token};
     var wsURI = '{ws_url}/v1/recognize'
       + '?access_token=' + access_token
-      + '&model=es-ES_BroadbandModel'
+      + '&model=en-US_Telephony'
       + '&language_customization_id={customization_id}';
     var websocket = new WebSocket(wsURI);
     ```
     {: codeblock}
+
 -   For the [synchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-http), use the `POST /v1/recognize` method. The specified custom model is used for that request.
 
     ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
@@ -60,7 +61,7 @@ The following examples show the use of a custom language model with each speech 
     curl -X POST -u "apikey:{apikey}" \
     --header "Content-Type: audio/flac" \
     --data-binary @audio-file.flac \
-    "{url}/v1/recognize?language_customization_id={customization_id}"
+    "{url}/v1/recognize?model=en-US_Telephony&language_customization_id={customization_id}"
     ```
     {: pre}
 
@@ -71,9 +72,10 @@ The following examples show the use of a custom language model with each speech 
     --header "Authorization: Bearer {token}" \
     --header "Content-Type: audio/flac" \
     --data-binary @audio-file.flac \
-    "{url}/v1/recognize?language_customization_id={customization_id}"
+    "{url}/v1/recognize?model=en-US_Telephony&language_customization_id={customization_id}"
     ```
     {: pre}
+
 -   For the [asynchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-async), use the `POST /v1/recognitions` method. The specified custom model is used for that request.
 
     ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
@@ -82,7 +84,7 @@ The following examples show the use of a custom language model with each speech 
     curl -X POST -u "apikey:{apikey}" \
     --header "Content-Type: audio/flac" \
     --data-binary @audio-file.flac \
-    "{url}/v1/recognitions?language_customization_id={customization_id}"
+    "{url}/v1/recognitions?model=en-US_Telephony&language_customization_id={customization_id}"
     ```
     {: pre}
 
@@ -93,7 +95,7 @@ The following examples show the use of a custom language model with each speech 
     --header "Authorization: Bearer {token}" \
     --header "Content-Type: audio/flac" \
     --data-binary @audio-file.flac \
-    "{url}/v1/recognitions?language_customization_id={customization_id}"
+    "{url}/v1/recognitions?model=en-US_Telephony&language_customization_id={customization_id}"
     ```
     {: pre}
 
@@ -163,4 +165,4 @@ If you apply a custom language model to speech recognition but find that the ser
 
 -   Make sure that you are correctly passing the customization ID to the recognition request as shown in the previous examples.
 -   Make sure that the status of the custom model is `available`, meaning that it is fully trained and ready to use. For more information, see [Listing custom language models](/docs/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
--   Check the pronunciations that were generated for the new words to make sure that they are correct. For more information, see [Validating a words resource](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
+-   *For previous-generation models,* check the pronunciations that were generated for the new words to make sure that they are correct. For more information, see [Validating a words resource previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel).

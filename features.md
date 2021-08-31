@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-08-12"
+lastupdated: "2021-08-28"
 
 subcollection: speech-to-text
 
@@ -32,17 +32,15 @@ The {{site.data.keyword.speechtotextfull}} service offers many advanced features
 ## Using languages and models
 {: #features-languages}
 
-The service supports speech recognition for the many languages listed in [Language support](/docs/speech-to-text?topic=speech-to-text-about#about-languages). The service provides different models for the languages that it supports. Some language models are generally available (GA) for production use and others are beta and subject to change.
+The service supports speech recognition for the many languages listed in [Language support](/docs/speech-to-text?topic=speech-to-text-about#about-languages). The service provides different models for the languages that it supports. Most language models are generally available (GA) for production use; a few are beta and subject to change.
 
--   For most languages, the service offers previous-generation *Broadband* and *Narrowband* models. All previous-generation models are GA. For more information, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
--   For a smaller but growing subset of languages, the service offers next-generation *Multimedia* and *Telephony* models that improve upon the speech recognition capabilities of the previous-generation models. All next-generation models are beta. Next-generation models return results with greater throughput and higher accuracy than previous-generation models, but they offer limited language and feature support currently. For more information, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+-   For most languages, the service offers previous-generation *Broadband* and *Narrowband* models. Most previous-generation models are GA. For more information, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
+-   For a growing set of languages, the service offers next-generation *Multimedia* and *Telephony* models that improve upon the speech recognition capabilities of the previous-generation models. All next-generation models are GA. Next-generation models return results with greater throughput and higher accuracy than previous-generation models. For more information, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 
 For most languages, you can transcribe audio at one of two sampling rates:
 
 -   Use *Broadband* or *Multimedia* models for audio that is sampled at a minimum sampling rate of 16 kHz.
 -   Use *Narrowband* or *Telephony* models for audio that is sampled at a minimum sampling rate of 8 kHz.
-
-For more information about which languages support customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-customization#languageSupport).
 
 ## Using audio formats
 {: #features-audio}
@@ -155,13 +153,17 @@ The following sections introduce the speech recognition parameters and their fun
 
 The customization interface lets you create custom models to improve the service's speech recognition capabilities:
 
--   [Custom language models](/docs/speech-to-text?topic=speech-to-text-languageCreate) let you define domain-specific words for a base model. Custom language models can expand the service's base vocabulary with terminology specific to domains such as medicine and law.
--   [Custom acoustic models](/docs/speech-to-text?topic=speech-to-text-acoustic) let you adapt a base model for the acoustic characteristics of your environment and speakers. Custom acoustic models improve the service's ability to recognize speech with distinctive acoustic characteristics.
--   [Grammars](/docs/speech-to-text?topic=speech-to-text-grammars) let you restrict the phrases that the service can recognize to those defined in a grammar's rules. By limiting the search space for valid strings, the service can deliver results faster and more accurately. Grammars are created for and used with custom language models. The service supports grammars for all languages for which it supports language model customization. (The grammars feature is beta functionality.)
+-   [Custom language models](/docs/speech-to-text?topic=speech-to-text-languageCreate) let you define domain-specific words for a base model. Custom language models can expand the service's base vocabulary with terminology specific to domains such as medicine and law. Language model customization is available for both previous- and next-generation models, though it works differently for the two types of models.
+-   [Custom acoustic models](/docs/speech-to-text?topic=speech-to-text-acoustic) let you adapt a base model for the acoustic characteristics of your environment and speakers. Custom acoustic models improve the service's ability to recognize speech with distinctive acoustic characteristics. Acoustic model customization is available only for previous-generation models.
+-   [Grammars](/docs/speech-to-text?topic=speech-to-text-grammars) let you restrict the phrases that the service can recognize to those defined in a grammar's rules. By limiting the search space for valid strings, the service can deliver results faster and more accurately. Grammars are created for and used with custom language models. The service supports grammars for all languages for which it supports language model customization. The grammars feature is beta functionality that is available only for previous-generation models.
 
-You can use a custom language model, a custom acoustic model, or both for speech recognition with any of the service's interfaces. For more information about customization and an overview of its capabilities, see [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization).
+You can use a custom language model, a custom acoustic model, or both for speech recognition with any of the service's interfaces.
+
+-   For more information about customization and an overview of its capabilities, see [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization).
+-   For more information about which languages support customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
 
 ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only.** You must have the Plus, Standard, or Premium pricing plan to use language model or acoustic model customization. Users of the Lite plan cannot use the customization interface, but they can upgrade to the Plus plan to gain access to customization. For more information, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
+{: note}
 
 ## Using software development kits
 {: #features-sdks}
