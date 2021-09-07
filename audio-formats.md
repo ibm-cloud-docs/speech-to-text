@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-04-27"
+lastupdated: "2021-09-03"
 
 subcollection: speech-to-text
 
@@ -37,23 +37,24 @@ The {{site.data.keyword.speechtotextfull}} service can extract speech from audio
 
 Table 1 provides a summary of the audio formats that the service supports.
 
--   *Audio format and compression* identifies each format and indicates its supported compression. By using a format that supports compression, you can reduce the size of your audio to maximize the amount of data that you can pass to the service. For more information, see [Data limits and compression](#audio-formats-limits).
+-   *Audio format* identifies each supported format by its `Content-Type` specification.
+-   *Compression* indicates the format's support for compression. By using a format that supports compression, you can reduce the size of your audio to maximize the amount of data that you can pass to the service. But you need to consider the possible effects of compression on the quality of the audio. For more information, see [Data limits and compression](#audio-formats-limits).
 -   *Content-type specification* indicates whether you must use the `Content-Type` header or equivalent parameter to specify the format (MIME type) of the audio that you send to the service. For more information, see [Specifying an audio format](#audio-formats-specifying).
 
 The final columns identify additional *Required parameters* and *Optional parameters* for each format. The following sections provide more information about these parameters.
 
-| Audio format<br>and compression | Content-type<br/>specification | Required<br/>parameters | Optional<br/>parameters |
-|---------------------------------|:------------------------------:|:-----------------------:|:------------------:|
-| [audio/alaw](#audio-formats-alaw)<br/>Lossy | Required | `rate={integer}` | None |
-| [audio/basic](#audio-formats-basic)<br/>Lossy| Required| None| None |
-| [audio/flac](#audio-formats-flac)<br/>Lossless| Optional | None | None |
-| [audio/g729](#audio-formats-g729)<br/>Lossy | Optional | None | None |
-| [audio/l16](#audio-formats-l16)<br/>None | Required | `rate={integer}` | `channels={integer}`<br/>`endianness=big-endian`<br/>`endianness=little-endian` |
-| [audio/mp3](#audio-formats-mp3)<br/>[audio/mpeg](#audio-formats-mp3)<br/>Lossy | Optional | None | None |
-| [audio/mulaw](#audio-formats-mulaw)<br/>Lossy | Required | `rate={integer}` | None |
-| [audio/ogg](#audio-formats-ogg)<br/>Lossy | Optional | None | `codecs=opus`<br/>`codecs=vorbis` |
-| [audio/wav](#audio-formats-wav)<br/>None, lossless,<br/>or lossy | Optional | None | None |
-| [audio/webm](#audio-formats-webm)<br/>Lossy | Optional | None | `codecs=opus`<br/>`codecs=vorbis` |
+| <br/>Audio format | <br/>Compression | Content-type<br/>specification | Required<br/>parameters | Optional<br/>parameters |
+|-------------------|:----------------:|:------------------------------:|:-----------------------:|:------------------:|
+| [audio/alaw](#audio-formats-alaw) | Lossy | Required | `rate={integer}` | None |
+| [audio/basic](#audio-formats-basic) | Lossy| Required| None| None |
+| [audio/flac](#audio-formats-flac) | Lossless| Optional | None | None |
+| [audio/g729](#audio-formats-g729) | Lossy | Optional | None | None |
+| [audio/l16](#audio-formats-l16) | None | Required | `rate={integer}` | `channels={integer}`<br/>`endianness=big-endian`<br/>`endianness=little-endian` |
+| [audio/mp3](#audio-formats-mp3)<br/>[audio/mpeg](#audio-formats-mp3) | Lossy | Optional | None | None |
+| [audio/mulaw](#audio-formats-mulaw) | Lossy | Required | `rate={integer}` | None |
+| [audio/ogg](#audio-formats-ogg) | Lossy | Optional | None | `codecs=opus`<br/>`codecs=vorbis` |
+| [audio/wav](#audio-formats-wav) | None, lossless, or lossy | Optional | None | None |
+| [audio/webm](#audio-formats-webm) | Lossy | Optional | None | `codecs=opus`<br/>`codecs=vorbis` |
 {: caption="Table 1. Summary of supported audio formats"}
 
 ### audio/alaw format
@@ -124,7 +125,9 @@ For more information, see [M-law algorithm](https://wikipedia.org/wiki/M-law_alg
 -   *Opus* (`audio/ogg;codecs=opus`). For more information, see [opus-codec.org](https://www.opus-codec.org/){: external} and [Opus (audio format)](https://wikipedia.org/wiki/Opus_%28audio_format%29){: external}. Look especially at the *Containers* section.
 -   *Vorbis* (`audio/ogg;codecs=vorbis`). For more information, see [xiph.org/vorbis](https://xiph.org/vorbis/){: external} and [Vorbis](https://wikipedia.org/wiki/Vorbis){: external}.
 
-If you omit the codec, the service automatically detects it from the input audio. Opus is the preferred codec; it is standardized by the Internet Engineering Task Force (IETF) as [Request for Comment (RFC) 6716](https://tools.ietf.org/html/rfc6716){: external}.
+OGG Opus is the preferred codec. It is the logical successor to OGG Vorbis because of its low latency, high audio quality, and reduced size. It is standardized by the Internet Engineering Task Force (IETF) as [Request for Comment (RFC) 6716](https://tools.ietf.org/html/rfc6716){: external}.
+
+If you omit the codec from the content type, the service automatically detects it from the input audio.
 
 ### audio/wav format
 {: #audio-formats-wav}
@@ -164,12 +167,11 @@ When you use the `curl` command to make a speech recognition request with the HT
 ## Data limits and compression
 {: #audio-formats-limits}
 
-The service accepts a maximum of 100 MB of audio data for transcription with a synchronous HTTP or WebSocket request. When you recognize long continuous audio streams or large files, take the following steps to ensure that your audio does not exceed the 100 MB data limit:
+The service accepts a maximum of 100 MB of audio data for transcription with a synchronous HTTP or WebSocket request, and 1 GB of audio data with an asynchronous HTTP request. When you recognize long continuous audio streams or large audio files, you need to consider and accommodate these data limits.
 
--   Use a sampling rate no greater than 16 kHz (for broadband models) or 8 kHz (for narrowband models), and use 16 bits per sample. The service converts audio recorded at a sampling rate that is higher than the target model (16 kHz or 8 kHz) to the rate of the model. So larger frequencies do not result in enhanced recognition accuracy, but they do increase the size of the audio stream.
--   Encode your audio in a format that offers data compression. By encoding your data more efficiently, you can send far more audio without exceeding the 100 MB limit. Audio formats such as `audio/ogg` and `audio/mp3` significantly reduce the size of your audio stream. You can use these formats to send greater amounts of audio with a single request.
+One way to maximize the amount of audio data that you can pass with a speech recognition request is to use a format that offers [Compression](/docs/speech-to-text?topic=speech-to-text-audio-terminology#audio-terminology-compression). There are two basic types of compression, lossy and lossless. The audio format and compression algorithm that you choose can have a direct impact on the accuracy of speech recognition.
 
-If you compress the audio too severely with the `audio/ogg` format, you can lose some recognition accuracy. To be safe, retain a bit rate of at least 24 kbps for your audio.
+Audio formats that use lossy compression significantly reduce the size of your audio stream. But compressing the audio too severely can result in lower transcription accuracy. You can't hear the difference, but the service is much more sensitive to such data loss.
 
 ### Comparing approximate audio sizes
 {: #audio-formats-compare-sizes}
@@ -189,7 +191,22 @@ The following table approximates the maximum duration of audio that can be sent 
 | `audio/ogg` | 8 hours 40 minutes |
 {: caption="Table 5. Maximum duration of audio in different formats"}
 
+In testing to compare the different audio formats, {{site.data.keyword.IBM}} determined that the WAV and FLAC formats delivered the best word error rate (WER). These formats can serve as a baseline for transcription accuracy because they maintain the audio intact with no data loss. The Ogg format with the Opus coded showed a slight degradation of 2% WER relative to the baseline. The MP3 format delivered the worst results, with a 10% degradation of WER relative to the baseline.
+
 The `audio/ogg;codecs=opus` and `audio/webm;codecs=opus` formats are generally equivalent, and their sizes are almost identical. They use the same codec internally; only the container format is different.
+{: note}
+
+### Maximizing transcription accuracy
+{: #audio-formats-recommendations}
+
+When choosing an audio format and compression algorithm, consider the following recommendations to maximize transcription accuracy:
+
+-   *Use an uncompressed and lossless audio format.* If the duration of your audio is less than 55 minutes (less than 100 MB), consider using the `audio/wav` format. Although the WAV format can accommodate only 55 minutes of audio, that is often sufficient for most transcription applications, such as customer support calls. And uncompressed WAV audio can produce more accurate transcription.
+-   *Use the asynchronous HTTP interface.* If you elect to use the WAV format but your audio exceeds the 100 MB limit, the asynchronous interface allows you to send up to 1 GB of data.
+-   *Use a compressed but lossless audio format.* If you have to compress your audio file, use the `audio/flac` format, which employs lossless compression. Lossless compression reduces the size of the audio but maintains its quality. The FLAC format is a good candidate for maximizing transcription accuracy.
+-   *Use lossy compression as a last resort.* If you need even greater compression, use the `audio/ogg` format with the Opus codec. Although the Ogg format uses lossy compression, the combination of the Ogg format with the Opus codec showed the least degradation in speech accuracy among lossy compression algorithms.
+
+Using other formats with greater levels of compression can compromise the accuracy of transcription. Experiment with the service to determine which format is best for your audio and application. For more ways to improve speech recognition, see [Tips for improving speech recognition](#audio-formats-tips).
 
 ## Audio conversion
 {: #audio-formats-conversion}
@@ -200,7 +217,7 @@ The following freeware tools are available to convert your audio from one format
 
 -   Sound eXchange (SoX) ([sox.sourceforge.net](http://sox.sourceforge.net){: external}).
 -   FFmpeg ([ffmpeg.org](https://www.ffmpeg.org){: external}). You can also use FFmpeg to separate audio from a multimedia file that contains both audio and video data. For more information, see [Transcribing speech from video files](#audio-formats-video).
--   Audacity&reg; ([audacityteam.org](http://www.audacityteam.org/){: external}).
+-   Audacity&reg; ([audacityteam.org](https://www.audacityteam.org/){: external}).
 -   For Ogg format with the Opus codec, **opus-tools** ([opus-codec.org](https://opus-codec.org/){: external}).
 
 These tools offer cross-platform support for multiple audio formats. Moreover, you can use many of the tools to play your audio. Do not use the tools to violate applicable copyright laws.
@@ -250,6 +267,8 @@ The following tips can help you improve the quality of speech recognition:
     -   Use a close, speech-oriented microphone (such as a headset) whenever possible and adjust the microphone settings if necessary. The service performs best when professional microphones are used to capture audio.
     -   Avoid using a system's built-in microphone. The microphones that are typically installed on mobile devices and tablets are often inadequate.
     -   Ensure that speakers are close to microphones. Accuracy declines as a speaker moves farther from a microphone. At a distance of 10 feet, for example, the service struggles to produce adequate results.
+-   Use a sampling rate no greater than 16 kHz (for broadband models) or 8 kHz (for narrowband models), and use 16 bits per sample. The service converts audio recorded at a sampling rate that is higher than the target model (16 kHz or 8 kHz) to the rate of the model. So larger frequencies do not result in enhanced recognition accuracy, but they do increase the size of the audio stream.
+-   Encode your audio in a format that offers data compression. By encoding your data more efficiently, you can send far more audio without exceeding the 100 MB limit. Because the dynamic range of the human voice is more limited than, say, music, speech can accommodate a bit rate that is lower than other types of audio. Nonetheless, {{site.data.keyword.IBM}} recommends that you choose an audio format and compression algorithm carefully. For more information, see [Maximizing transcription accuracy](#audio-formats-recommendations).
 -   Speech recognition is sensitive to background noise and nuances of human speech.
     -   Engine noise, working devices, street noise, and background conversations can significantly reduce recognition accuracy.
     -   Regional accents and differences in pronunciation can also reduce accuracy.

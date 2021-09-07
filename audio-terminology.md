@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-08-12"
+lastupdated: "2021-09-03"
 
 subcollection: speech-to-text
 
@@ -77,12 +77,12 @@ For example, audio that uses a broadband sampling rate of 16 kHz and 16 bits per
 ## Compression
 {: #audio-terminology-compression}
 
-*Compression* is used by many audio formats to reduce the size of the audio data. Compression reduces the number of bits stored per sample and thus the bit rate. Some formats use no compression, but most use one of the basic types of compression:
+*Compression* is used by many audio formats to reduce the size of the audio data. Compression reduces the number of bits stored per sample and thus the bit rate. Some formats use no compression, but most offer one of the two basic types:
 
 -   *Lossless* compression reduces the size of the audio with no loss of quality, but the compression ratio is typically small.
 -   *Lossy* compression reduces the size of the audio by as much as 10 times, but some data and some quality is irretrievably lost in the compression.
 
-With the {{site.data.keyword.speechtotextshort}} service, you can safely use lossy compression to maximize the amount of audio that you can send to the service with a recognition request. Because the dynamic range of the human voice is more limited than, say, music, speech can accommodate a bit rate that is much lower than other types of audio. For speech recognition, {{site.data.keyword.IBM}} recommends that you use 16 bits per sample for your audio and employ a format that compresses the audio data.
+You can use compression to accommodate more audio data with your speech recognition request. But the type of compression that you use has implications for transcription quality.
 
 ### Notes about audio formats
 {: #audio-terminology-compression-notes}
@@ -94,6 +94,7 @@ With the {{site.data.keyword.speechtotextshort}} service, you can safely use los
 {: #audio-terminology-compression-more}
 
 -   For more information about audio compression, see [Data compression (Audio)](https://wikipedia.org/wiki/Data_compression#Audio){: external}.
+-   For more information about the compression that is available with the audio formats that the service supports, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-list).
 -   For more information about using data compression to increase the amount of audio that you can send with a request, see [Data limits and compression](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-limits).
 
 ## Channels

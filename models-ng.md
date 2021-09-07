@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-08-30"
+lastupdated: "2021-09-01"
 
 subcollection: speech-to-text
 
@@ -50,7 +50,7 @@ Choose the model that most closely matches the source and sampling rate of your 
 
 Table 1 lists the next-generation models that are available for each language. Low-latency columns indicate whether each model supports the `low_latency` parameter for speech recognition. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
 
-The table indicates the product versions for which each model and for which low-latency are supported. Unless otherwise qualified by {{site.data.keyword.cloud_notm}} or {{site.data.keyword.icp4dfull_notm}}, the model and low latency are supported for both product versions.
+The table indicates the product versions for which each model and for which low-latency are supported. Unless otherwise indicated, the model and low latency are supported for both {{site.data.keyword.cloud_notm}} and {{site.data.keyword.icp4dfull_notm}}.
 
 <!-- MOVED TO 21.12:
 | Czech | Not available | Not available | `cz-CZ_Telephony`<br/>IBM Cloud only | **Yes**<br/>IBM Cloud only |

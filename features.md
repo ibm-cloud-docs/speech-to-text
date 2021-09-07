@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-08-28"
+lastupdated: "2021-09-03"
 
 subcollection: speech-to-text
 
@@ -72,6 +72,8 @@ The interfaces accept the following maximum amounts of audio data with a single 
 -   The WebSocket interface accepts a maximum of 100 MB of audio.
 -   The synchronous HTTP interface accepts a maximum of 100 MB of audio.
 -   The asynchronous HTTP interface accepts a maximum of 1 GB of audio.
+
+For more information about using compression to maximize the amount of data that you can send to the service, see [Data limits and compression](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-limits).
 
 ### Advantages of the WebSocket interface
 {: #features-websocket-advantages}
