@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-08-11"
+lastupdated: "2021-09-11"
 
 subcollection: speech-to-text
 
@@ -188,7 +188,7 @@ In cases where an utterance contains long enough pauses of silence, the service 
 | Audio speech | Formatted transcription results |
 |--------------|---------------------------------|
 | My phone number is nine one four five five seven three three nine two | "My phone number is 914-557-3392" |
-| My phone number is nine one four *&lt;pause&gt;* five five seven three three nine two | "My phone number is 914"<br/>"5573392" |
+| My phone number is nine one four &lt;*pause*&gt; five five seven three three nine two | "My phone number is 914"<br/>"5573392" |
 {: caption="Table 4. Smart formatting example transcripts for long pauses"}
 
 For more information about specifying a pause interval that affects the service's response, see [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-parsing#silence-time).
