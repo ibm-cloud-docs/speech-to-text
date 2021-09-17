@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-08-12"
+lastupdated: "2021-09-14"
 
 subcollection: speech-to-text
 
@@ -155,7 +155,7 @@ The client must send the audio as binary data. The client can send a maximum of 
 
 The WebSocket interface imposes a maximum frame size of 4 MB. The client can set the maximum frame size to less than 4 MB. If it is not practical to set the frame size, the client can set the maximum message size to less than 4 MB and send the audio data as a sequence of messages. For more information about WebSocket frames, see [IETF RFC 6455](https://tools.ietf.org/html/rfc6455){: external}.
 
-How the service sends recognition results to the client depends on whether the WebSocket connection uses a previous- or next-generation model. It also depends on whether the client requests interim results. For more information, see [How the service sends recognition results](#ws-results).
+How the service sends recognition results over a WebSocket connection depends on whether the client requests interim results. For more information, see [How the service sends recognition results](#ws-results).
 
 The following snippet of JavaScript code sends audio data to the service as a binary message (blob):
 
@@ -245,25 +245,22 @@ websocket.close();
 ## How the service sends recognition results
 {: #ws-results}
 
-How the service sends speech recognition results to the client depends on two factors:
+How the service sends speech recognition results to the client depends on whether the client requests interim results. In the JSON response to a request, final results are labeled `"final": true`, and interim results are labeled `"final": false`. For more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results).
 
--   Whether the client uses a previous-generation (`Broadband` or `Narrowband`) or next-generation (`Multimedia` or `Telephony`) model.
--   Whether the client requests interim results.
-
-In the following descriptions, final results are labeled `"final": true` in the response JSON, and interim results are labeled `"final": false`. An utterance is a component of the input audio that elicits a response, usually as a result of extended silence. For more information, see [Understanding speech recognition results](/docs/speech-to-text?topic=speech-to-text-basic-response).
-
-In the following examples, the results show the service's response for the same input audio submitted to the different interfaces with different parameters. The audio speaks the phrase "one two three four," with a one-second pause between the words "two" and "three." The examples use the default pause interval for speech recognition.
+In the following examples, the results show the service's response for the same input audio submitted both with and without interim results. The audio speaks the phrase "one two &lt;*pause*&gt; three four," with a one-second pause between the words "two" and "three." The pause is long enough to represent separate utterances. An utterance is a component of the input audio that elicits a response, usually as a result of extended silence. For more information, see [Understanding speech recognition results](/docs/speech-to-text?topic=speech-to-text-basic-response).
 
 If your results include multiple final results, concatenate the `transcript` elements of the final results to assemble the complete transcription of the audio. For more information, see [The result_index field](/docs/speech-to-text?topic=speech-to-text-basic-response#response-result-index).
-{: note}
 
-### Previous-generation models without interim results
-{: #ws-results-pg-without-interim}
+### Example request without interim results
+{: #ws-results-without-interim}
 
-The client receives a single JSON object in response only after the client sends a `stop` message. The response object can contain multiple final results for separate utterances of the audio. The service does not send the single response object until it receives a `stop` message to indicate that audio transmission for the request is complete.
+The client disables interim results by setting the `interim_results` parameter to `false` or by omitting the parameter from a request (the default argument for the parameter is `false`). The client receives a single JSON object in response only after it sends a `stop` message.
+
+The response object can contain multiple final results for separate utterances of the audio. The service does not send the single response object until it receives a `stop` message to indicate that audio transmission for the request is complete. The  structure and format of the service's response is the same regardless of whether you use a previous- or next-generation model.
 
 ```javascript
 {
+  "result_index": 0
   "results": [
     {
       "alternatives": [
@@ -283,19 +280,28 @@ The client receives a single JSON object in response only after the client sends
       ],
       "final": true
     }
-  ],
-  "result_index": 0
+  ]
 }
 ```
 {: codeblock}
 
-### For previous-generation models with interim results
-{: #ws-results-pg-with-interim}
+### Example request with interim results
+{: #ws-results-with-interim}
 
-The client receives multiple JSON objects in response. The service returns separate response objects for each final result and for each each interim result that is generated by the audio. The service sends responses as soon as they are available. It does not wait for a `stop` message to send its results, though the `stop` message is still required to signal the end of transmission for the request.
+The client requests interim results as follows:
+
+-   *For previous-generation models,* by setting the `interim_results` parameter to `true`.
+-   *For next-generation models,* by setting both the `interim_results` and `low_latency` parameters to `true`. To receive interim results with a next-generation model, the model must support low latency and both the `interim_results` and `low_latency` parameters must be set to `true`.
+    -   For more information about which next-generation models support low latency, see [Supported next-generation models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
+    -   For more information about the interaction of the `interim_results` and `low_latency` parameters with next-generation models, including  examples that demonstrate the different combinations of parameters, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
+
+The client receives multiple JSON objects in response. The service returns separate response objects for each interim result and for each each final result that is generated by the audio. The service sends at least one interim result for each final result.
+
+The service sends responses as soon as they are available. It does not wait for a `stop` message to send its results, though the `stop` message is still required to signal the end of transmission for the request. The structure and format of the service's response is the same regardless of whether you use a previous- or next-generation model.
 
 ```javascript
 {
+  "result_index": 0
   "results": [
     {
       "alternatives": [
@@ -305,9 +311,9 @@ The client receives multiple JSON objects in response. The service returns separ
       ],
       "final": false
     }
-  ],
-  "result_index": 0
+  ]
 }{
+  "result_index": 0
   "results": [
     {
       "alternatives": [
@@ -317,9 +323,9 @@ The client receives multiple JSON objects in response. The service returns separ
       ],
       "final": false
     }
-  ],
-  "result_index": 0
+  ]
 }{
+  "result_index": 0
   "results": [
     {
       "alternatives": [
@@ -330,9 +336,9 @@ The client receives multiple JSON objects in response. The service returns separ
       ],
       "final": true
     }
-  ],
-  "result_index": 0
+  ]
 }{
+  "result_index": 1
   "results": [
     {
       "alternatives": [
@@ -342,9 +348,9 @@ The client receives multiple JSON objects in response. The service returns separ
       ],
       "final": false
     }
-  ],
-  "result_index": 1
+  ]
 }{
+  "result_index": 1
   "results": [
     {
       "alternatives": [
@@ -354,9 +360,9 @@ The client receives multiple JSON objects in response. The service returns separ
       ],
       "final": false
     }
-  ],
-  "result_index": 1
+  ]
 }{
+  "result_index": 1
   "results": [
     {
       "alternatives": [
@@ -367,130 +373,7 @@ The client receives multiple JSON objects in response. The service returns separ
       ],
       "final": true
     }
-  ],
-  "result_index": 1
-}
-```
-{: codeblock}
-
-### For next-generation models without interim results
-{: #ws-results-ng-without-interim}
-
-The client can receive multiple JSON objects in response. The response can contain multiple final results for separate utterances of the audio. The service always returns separate response objects for each final result. The service sends responses as soon as they are available. It does not wait for a `stop` message to send its results, but the `stop` message is still required to signal the end of transmission for the request.
-
-```javascript
-{
-  "results": [
-    {
-      "alternatives": [
-        {
-          "confidence": 0.99,
-          "transcript": "one two "
-        }
-      ],
-      "final": true
-    },
-  ],
-  "result_index": 0
-}{
-  "results": [
-    {
-      "alternatives": [
-        {
-          "confidence": 0.99,
-          "transcript": "three four "
-        }
-      ],
-      "final": true
-    }
-  ],
-  "result_index": 1
-}
-```
-{: codeblock}
-
-### For next-generation models with interim results
-{: #ws-results-ng-with-interim}
-
-The client receives multiple JSON objects in response. The service returns separate response objects for each final result and for each each interim result that is generated by the audio. The service sends responses as soon as they are available. It does not wait for a `stop` message to send its results, but the `stop` message is still required to signal the end of transmission for the request.
-
-The service's response when you request interim results is the same regardless of whether you use a previous- or next-generation model. To receive interim results with a next-generation model, the model must support low latency and both the `interim_results` and `low_latency` parameters must be set to `true`. For more information, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
-
-```javascript
-{
-  "results": [
-    {
-      "alternatives": [
-        {
-          "transcript": "one "
-        }
-      ],
-      "final": false
-    }
-  ],
-  "result_index": 0
-}{
-  "results": [
-    {
-      "alternatives": [
-        {
-          "transcript": "one two "
-        }
-      ],
-      "final": false
-    }
-  ],
-  "result_index": 0
-}{
-  "results": [
-    {
-      "alternatives": [
-        {
-          "confidence": 0.99,
-          "transcript": "one two "
-        }
-      ],
-      "final": true
-    }
-  ],
-  "result_index": 0
-}{
-  "results": [
-    {
-      "alternatives": [
-        {
-          "transcript": "three "
-        }
-      ],
-      "final": false
-    }
-  ],
-  "result_index": 1
-}{
-  "results": [
-    {
-      "alternatives": [
-        {
-          "transcript": "three four "
-        }
-      ],
-      "final": false
-    }
-  ],
-  "result_index": 1
-}{
-  "results": [
-    {
-      "alternatives": [
-        {
-          "confidence": 0.99,
-          "transcript": "three four "
-        }
-      ],
-      "final": true
-    }
-  ],
-  "result_index": 1
+  ]
 }
 ```
 {: codeblock}

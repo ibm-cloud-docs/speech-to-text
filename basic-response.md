@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-07-26"
+lastupdated: "2021-09-12"
 
 subcollection: speech-to-text
 
@@ -76,18 +76,22 @@ The `final` field indicates whether the transcript shows final transcription res
 -   The field is `true` for final results, which are guaranteed not to change. The service sends no further updates for final results.
 -   The field is `false` for interim results, which are subject to change. If you use the `interim_results` parameter with the WebSocket interface, the service returns evolving hypotheses in the form of multiple `results` fields as it transcribes the audio. For interim results, the `final` field is always `false` and the `confidence` field is always omitted.
 
-To obtain interim results, use the WebSocket interface and set the `interim_results` parameter to `true`. For more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results).
+For more information about using the WebSocket interface to obtain interim results with previous- and next-generation models, see the following topics:
+
+-   [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results)
+-   [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency)
+-   [How the service sends recognition results](/docs/speech-to-text?topic=speech-to-text-websockets#ws-results)
 
 ### The result_index field
 {: #response-result-index}
 
 The `result_index` field provides an identifier for the results that is unique for that request. If you request interim results, the service sends multiple `results` fields for evolving hypotheses of the input audio. The indexes for interim results for the same audio always have the same value, as do the final results for the same audio.
 
+The same index can also be used for multiple final results of a single request. Regardless of whether you request interim results, the service can return multiple final results with the same index if your audio includes pauses or extended periods of silence. For more information, see [Pauses and silence](#response-pauses-silence).
+
 Once you receive final results for any audio, the service sends no further results with that index for the remainder of the request. The index for any further results is incremented by one.
 
-Regardless of whether you request interim results, the service can return multiple final results with different indexes if your audio includes pauses or extended periods of silence. For more information, see [Pauses and silence](#response-pauses-silence).
-
-If your audio produces multiple final results, concatenate the `transcript` elements of the final results to assemble the complete transcription of the audio. Assemble the results in order by `result_index`. When you assemble a complete final transcript, you can ignore interim results for which the `final` field is `false`.
+If your audio produces multiple final results, concatenate the `transcript` elements of the final results to assemble the complete transcription of the audio. Assemble the results in the order in which you receive them. When you assemble a complete final transcript, you can ignore interim results for which the `final` field is `false`.
 
 ### Additional response content
 {: #response-additional-parameters}
@@ -133,6 +137,7 @@ The following examples show responses with two final results from the HTTP and W
 
     ```javascript
     {
+      "result_index": 0
       "results": [
         {
           "alternatives": [
@@ -152,18 +157,17 @@ The following examples show responses with two final results from the HTTP and W
           ],
           "final": true
         }
-      ],
-      "result_index": 0
+      ]
     }
     ```
     {: codeblock}
 
--   *For the WebSocket interface with a previous-generation model,* the service sends the same results as the previous example. The response includes a single `SpeechRecognitionResults` object.
-
--   *For the WebSocket interface with a next-generation model,* the service sends two separate responses with two different `SpeechRecognitionResults` objects. Each response object has a different `result_index` field, which has a value of `0` for the first response and `1` for the second response.
+-   *For the WebSocket interface,* the service sends the same results as the previous example. The response includes a single `SpeechRecognitionResults` object,
+the `alternatives` array has a separate element for each final result, and the response has a single `result_index` field with a value of `0`.
 
     ```javascript
     {
+     "result_index": 0
       "results": [
         {
           "alternatives": [
@@ -174,11 +178,6 @@ The following examples show responses with two final results from the HTTP and W
           ],
           "final": true
         },
-      ]
-      "result_index": 0
-    }
-    {
-      "results": [
         {
           "alternatives": [
             {
@@ -188,13 +187,16 @@ The following examples show responses with two final results from the HTTP and W
           ],
           "final": true
         }
-      ],
-      "result_index": 1
+      ]
     }
     ```
     {: codeblock}
 
-For more information about results from the WebSocket interface with previous- and next-generation models when you use the `interim_results` parameter, see [How the service sends recognition results](/docs/speech-to-text?topic=speech-to-text-websockets#ws-results).
+    With the WebSocket interface, responses for interim results contain more JSON objects. For more information about using the WebSocket interface to obtain interim results with previous- and next-generation models, see the following topics:
+
+    -   [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results)
+    -   [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency)
+    -   [How the service sends recognition results](/docs/speech-to-text?topic=speech-to-text-websockets#ws-results)
 
 Silence of 30 seconds in streamed audio can result in an inactivity timeout. For more information, see [Timeouts](/docs/speech-to-text?topic=speech-to-text-input#timeouts).
 {: note}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-08-28"
+lastupdated: "2021-09-14"
 
 subcollection: speech-to-text
 
@@ -345,14 +345,10 @@ An optional boolean that indicates whether the service converts dates, times, nu
 
 An optional boolean that indicates whether the service identifies which individuals spoke which words in a multi-participant exchange. If you set the `speaker_labels` parameter to `true`, the service automatically forces the `timestamps` parameter to be `true`. By default (`false`), speaker labels are not returned. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
-<!-- MOVED TO 21.12:
-NG: Czech
--->
-
 | Availability and usage | Description |
 |------------------------|-------------|
 | Previous-generation models | Beta for US English, Australian English, German, Japanese, Korean, and Spanish (broadband and narrowband models) and UK English (narrowband model only). |
-| Next-generation models     | Beta for English (Australian, Indian, UK, and US), German, Japanese, Korean, and Spanish. Not supported for use with the `interim_results` or `low_latency` parameters. |
+| Next-generation models     | Beta for Czech, English (Australian, Indian, UK, and US), German, Japanese, Korean, and Spanish. Not supported for use with the `interim_results` or `low_latency` parameters. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |

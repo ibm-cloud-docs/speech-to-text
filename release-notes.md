@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-08-29"
+lastupdated: "2021-09-16"
 
 subcollection: speech-to-text
 
@@ -122,10 +122,26 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
+## 16 September 2021
+{: #September2021}
+
+-   The service now supports the following new next-generation language models. Both new models are beta.
+    -   *Netherlands Dutch:* `nl-NL_Telephony`. The new model does not support low latency.
+    -   *Czech:* `cs-CZ_Telephony`. The new model supports low latency.
+
+    For more information about all available next-generation language models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+-   The following next-generation models have been updated:
+    -   The Korean model `ko-KR_Telephony` now supports low latency.
+    -   The Brazilian Portuguese model `pt-BR_Telephony` has been updated for improved speech recognition.
+-   Documentation that describes the interim results and low-latency features with next-generation models has been rewritten for clarity and correctness. For more information, see the following topics:
+    -   [Interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim), especially [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency)
+    -   [How the service sends recognition results](/docs/speech-to-text?topic=speech-to-text-websockets#ws-results)
+-   **Defect fix:** When you use speakers labels with next-generation models, the service now identifies the speaker for all words of the input audio, including very short words that have the same start and end timestamps.
+
 ## 31 August 2021
 {: #August2021b}
 
--   All next-generation language models are now generally available (GA). They are supported for use in production environments and applications.
+-   All existing next-generation language models are now generally available (GA). They are supported for use in production environments and applications.
     -   For more information about all available next-generation language models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
     -   For more information about the features that are supported for each next-generation model, see [Supported features for next-generation models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-features).
 -   Language model customization is now GA for all available next-generation languages and models. Language model customization for next-generation models is supported for use in production environments and applications.
@@ -145,22 +161,6 @@ The service has the following known limitations:
     -   [Working with corpora and custom words for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng)
 
     Additional topics describe managing custom language models, corpora, and custom words.
-
-<!-- DELAYED 21.11:
-
--   **Defect fix:** When you use speakers labels with next-generation models, the service now reports the speaker for all words of the input audio, including very short words that have the same start and end timestamps.
-
--->
-
-<!-- MOVED TO 21.12:
-
--   The service now supports the following new next-generation language models. All of the new models are GA.
-    -   *Netherlands Dutch:* `nl-NL_Telephony`. The new model does not support low latency.
-    -   *Czech:* `cs-CZ_Telephony`. The new model supports low latency.
-    -   The updated Korean model `ko-KR_Telephony` now supports low latency.
-    -   The Brazilian Portuguese model `pt-BR_Telephony` has been updated for improved speech recognition.
-
--->
 
 ## 16 August 2021
 {: #August2021a}
@@ -200,17 +200,10 @@ The collection of available next-generation language models has been updated and
 
 For more information about the next-generation models and about low latency, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng) and [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
 
-## 26 May 2021
-{: #May2021}
-
--   The `audio_metrics` parameter is now supported as beta functionality for use with all next-generation languages and models. For more information, see [Audio metrics](/docs/speech-to-text?topic=speech-to-text-metrics#audio-metrics).
--   The `word_confidence` parameter is now supported as beta functionality for use with all next-generation languages and models. For more information, see [Word confidence](/docs/speech-to-text?topic=speech-to-text-metadata#word-confidence).
--   **Defect fix:** When you use a next-generation model for speech recognition, final transcription results now include the `confidence` field. The field was always included in final transcription results when you use a previous-generation model. This fix addresses a limitation that was reported for the 12 April 2021 release of the next-generation models.
--   **Defect fix:** The documentation incorrectly stated that using the `smart_formatting` parameter causes the service to remove hesitation markers from final transcription results for Japanese. Smart formatting does not remove hesitation markers from final results for Japanese, only for US English. For more information, see [What results does smart formatting affect?](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-effects)
-
 ## Older releases
 {: #release-notes-older}
 
+-   [26 May 2021](#May2021)
 -   [27 April 2021](#April2021b)
 -   [12 April 2021](#April2021a)
 -   [17 March 2021](#March2021)
@@ -277,6 +270,14 @@ For more information about the next-generation models and about low latency, see
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 26 May 2021
+{: #May2021}
+
+-   The `audio_metrics` parameter is now supported as beta functionality for use with all next-generation languages and models. For more information, see [Audio metrics](/docs/speech-to-text?topic=speech-to-text-metrics#audio-metrics).
+-   The `word_confidence` parameter is now supported as beta functionality for use with all next-generation languages and models. For more information, see [Word confidence](/docs/speech-to-text?topic=speech-to-text-metadata#word-confidence).
+-   **Defect fix:** When you use a next-generation model for speech recognition, final transcription results now include the `confidence` field. The field was always included in final transcription results when you use a previous-generation model. This fix addresses a limitation that was reported for the 12 April 2021 release of the next-generation models.
+-   **Defect fix:** The documentation incorrectly stated that using the `smart_formatting` parameter causes the service to remove hesitation markers from final transcription results for Japanese. Smart formatting does not remove hesitation markers from final results for Japanese, only for US English. For more information, see [What results does smart formatting affect?](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-effects)
 
 ### 27 April 2021
 {: #April2021b}

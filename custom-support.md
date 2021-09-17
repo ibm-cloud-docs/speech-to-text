@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-08-30"
+lastupdated: "2021-09-14"
 
 subcollection: speech-to-text
 
@@ -75,15 +75,12 @@ To learn which models are supported for {{site.data.keyword.cloud}}, {{site.data
 
 To learn which models are supported for {{site.data.keyword.cloud_notm}}, {{site.data.keyword.icp4dfull_notm}}, or both, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
 
-<!-- MOVED TO 21.12:
-| Czech | GA | Not supported | Not supported |
-| Dutch (Netherlands) | GA | Not supported | Not supported |
--->
-
 | Language<br/>(dialect) | <br/>Models | Language model<br/>customization | <br/>Grammars | Acoustic model<br/>customization |
 |------------------------|:-----------:|:----------------------------------------:|:----------------------------------------:|:----------------------------------------:|
 | Arabic<br/>(Modern Standard) | `ar-MS_Telephony` | GA | Not supported | Not supported |
+| Czech | `cz-CZ_Telephony` | Beta | Not supported | Not supported |
 | Dutch<br/>(Belgian) | `nl-BE_Telephony` | GA | Not supported | Not supported |
+| Dutch<br/>(Netherlands) | `nl-NL_Telephony` | Beta | Not supported | Not supported |
 | English<br/>(Australian) | `en-AU_Telephony` | GA | Not supported | Not supported |
 | English<br/>(Indian) | `en-IN_Telephony` | GA | Not supported | Not supported |
 | English<br/>(United Kingdom) | `en-GB_Telephony` | GA | Not supported | Not supported |

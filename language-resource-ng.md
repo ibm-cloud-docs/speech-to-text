@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-08-30"
+lastupdated: "2021-09-14"
 
 subcollection: speech-to-text
 
@@ -160,10 +160,10 @@ The following descriptions apply to all supported dialects of Dutch, English, Fr
 -   Processes non-alphanumeric, punctuation, and special characters depending on their context. For example, the service removes a `$` (dollar sign) or <code>&euro;</code> (euro symbol) unless it is followed by a number. Processing is context-dependent and consistent across the supported languages.
 -   Ignores phrases that are enclosed in `( )` (parentheses), `< >` (angle brackets), `[ ]` (square brackets), or `{ }` (curly braces).
 
-#### Parsing of Arabic and Hindi
-{: #corpusLanguages-ar-hi-ng}
+#### Parsing of Arabic, Czech, and Hindi
+{: #corpusLanguages-other-ng}
 
-Information for Arabic and Hindi is not yet available. If you need this information for your custom language model, contact your IBM Support representative.
+Information for Arabic, Czech, and Hindi is not yet available. If you need this information for your custom language model, contact your IBM Support representative.
 
 #### Parsing of Japanese
 {: #corpusLanguages-jaJP-ng}
