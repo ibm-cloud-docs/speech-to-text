@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-14"
+lastupdated: "2021-09-19"
 
 subcollection: speech-to-text
 
@@ -10,21 +10,7 @@ content-type: troubleshoot
 
 ---
 
-{:troubleshoot: data-hd-content-type='troubleshoot'}
-{:support: data-reuse='support'}
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:tip: .tip}
-{:important: .important}
-{:note: .note}
-{:deprecated: .deprecated}
-{:pre: .pre}
-{:codeblock: .codeblock}
-{:screen: .screen}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:java: .ph data-hd-programlang='java'}
-{:python: .ph data-hd-programlang='python'}
-{:swift: .ph data-hd-programlang='swift'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Working with corpora and custom words for next-generation models
 {: #corporaWords-ng}
@@ -133,29 +119,29 @@ The following descriptions apply to all supported dialects of Dutch, English, Fr
 
 -   Converts numbers to their equivalent words.
 
-| Language   | Whole number | Decimal number |
-|------------|:------------:|:--------------:|
-| Dutch      | `500` becomes `vijfhonderd` | `0,15` becomes `nul komma vijftien` |
-| English    | `500` becomes `five hundred` | `0.15` becomes `zero point fifteen` |
-| French     | `500` becomes `cinq cents` | `0,15` becomes <code>z&eacute;ro virgule quinze</code> |
-| German     | `500` becomes <code>f&uuml;nfhundert</code> | `0,15` becomes <code>null punkt f&uuml;nfzehn</code> |
-| Italian    | `500` becomes `cinquecento` | `0,15` becomes `zero virgola quindici` |
-| Portuguese | `500` becomes `quinhentos` | `0,15` becomes `zero ponto quinze` |
-| Spanish    | `500` becomes `quinientos` | `0,15` becomes `cero coma quince` |
-{: caption="Table 1. Examples of number conversion"}
+    | Language   | Whole number | Decimal number |
+    |------------|:------------:|:--------------:|
+    | Dutch      | `500` becomes `vijfhonderd` | `0,15` becomes `nul komma vijftien` |
+    | English    | `500` becomes `five hundred` | `0.15` becomes `zero point fifteen` |
+    | French     | `500` becomes `cinq cents` | `0,15` becomes <code>z&eacute;ro virgule quinze</code> |
+    | German     | `500` becomes <code>f&uuml;nfhundert</code> | `0,15` becomes <code>null punkt f&uuml;nfzehn</code> |
+    | Italian    | `500` becomes `cinquecento` | `0,15` becomes `zero virgola quindici` |
+    | Portuguese | `500` becomes `quinhentos` | `0,15` becomes `zero ponto quinze` |
+    | Spanish    | `500` becomes `quinientos` | `0,15` becomes `cero coma quince` |
+    {: caption="Table 1. Examples of number conversion"}
 
 -   Converts tokens that include certain symbols to meaningful string representations. These examples are not exhaustive. The service makes similar adjustments for other characters as needed.
 
-| <br/>Language | A dollar sign<br/>and a number | A euro sign<br/>and a number | A percent sign<br/>and a number |
-|---------------|:-------------------------------:|:---------------------------:|:-------------------------------:|
-| Dutch      | `$100` becomes `honderd dollar` | <code>&euro;100</code> becomes `honderd euro` | `100%` becomes `honderd procent` |
-| English    | `$100` becomes `one hundred dollars` | <code>&euro;100</code> becomes `one hundred euros` | `100%` becomes `one hundred percent` |
-| French     | `$100` becomes `cent dollars` | <code>&euro;100</code> becomes `cent euros`   | `100%` becomes `cent pour cent` |
-| German     | `$100` and `100$` become `einhundert dollar` | <code>&euro;100</code> and <code>100&euro;</code> become `einhundert euro` | `100%` becomes `einhundert prozent` |
-| Italian    | `$100` becomes `cento dollari` | <code>&euro;100</code> becomes `cento euro` | `100%` becomes `cento per cento` |
-| Portuguese | `$100` and `100$` become <code>cem d&oacute;lares</code> | <code>&euro;100</code> and <code>100&euro;</code> become `cem euros` | `100%` becomes `cem por cento` |
-| Spanish    | `$100` and `100$` become <code>cien d&oacute;lares</code> | <code>&euro;100</code> and <code>100&euro;</code> become `cien euros` | `100%` becomes `cien por ciento` |
-{: caption="Table 2. Examples of symbol conversion"}
+    | <br/>Language | A dollar sign<br/>and a number | A euro sign<br/>and a number | A percent sign<br/>and a number |
+    |---------------|:-------------------------------:|:---------------------------:|:-------------------------------:|
+    | Dutch      | `$100` becomes `honderd dollar` | <code>&euro;100</code> becomes `honderd euro` | `100%` becomes `honderd procent` |
+    | English    | `$100` becomes `one hundred dollars` | <code>&euro;100</code> becomes `one hundred euros` | `100%` becomes `one hundred percent` |
+    | French     | `$100` becomes `cent dollars` | <code>&euro;100</code> becomes `cent euros`   | `100%` becomes `cent pour cent` |
+    | German     | `$100` and `100$` become `einhundert dollar` | <code>&euro;100</code> and <code>100&euro;</code> become `einhundert euro` | `100%` becomes `einhundert prozent` |
+    | Italian    | `$100` becomes `cento dollari` | <code>&euro;100</code> becomes `cento euro` | `100%` becomes `cento per cento` |
+    | Portuguese | `$100` and `100$` become <code>cem d&oacute;lares</code> | <code>&euro;100</code> and <code>100&euro;</code> become `cem euros` | `100%` becomes `cem por cento` |
+    | Spanish    | `$100` and `100$` become <code>cien d&oacute;lares</code> | <code>&euro;100</code> and <code>100&euro;</code> become `cien euros` | `100%` becomes `cien por ciento` |
+    {: caption="Table 2. Examples of symbol conversion"}
 
 -   Processes non-alphanumeric, punctuation, and special characters depending on their context. For example, the service removes a `$` (dollar sign) or <code>&euro;</code> (euro symbol) unless it is followed by a number. Processing is context-dependent and consistent across the supported languages.
 -   Ignores phrases that are enclosed in `( )` (parentheses), `< >` (angle brackets), `[ ]` (square brackets), or `{ }` (curly braces).
@@ -169,11 +155,8 @@ Information for Arabic, Czech, and Hindi is not yet available. If you need this 
 {: #corpusLanguages-jaJP-ng}
 
 -   Converts all characters to full-width characters.
-
 -   Converts numbers to their equivalent words, for example, `500` becomes <code>&#20116;&#30334;</code>, and `0.15` becomes <code>&#12295;&#12539;&#19968;&#20116;</code>.
-
 -   Does not convert tokens that include symbols to equivalent strings, for example, `100%` becomes <code>&#30334;&#65285;</code>.
-
 -   Does not automatically remove punctuation. {{site.data.keyword.IBM_notm}} highly recommends that you remove punctuation if your application is transcription-based as opposed to dictation-based.
 
 #### Parsing of Korean
@@ -270,7 +253,6 @@ How the service responds to a request to add or modify a custom word depends on 
 -   When you omit the `display_as` field:
     -   *If the word does not exist in the service's base vocabulary,* the service sets the `display_as` field to the value of the `word` field.
     -   *If the word exists in the service's base vocabulary,* the service leaves the `display_as` field empty. The field is empty only if the word exists in the service's base vocabulary. The word's presence in the model's words resource is harmless but unnecessary.
-
 -   When you specify the `display_as` field:
     -   *Regardless of whether the word exists in the service's base vocabulary,* the service sets the `display_as` field as specified in the request.
 

@@ -2,26 +2,13 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-20"
+lastupdated: "2021-09-19"
 
 subcollection: speech-to-text
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:tip: .tip}
-{:important: .important}
-{:note: .note}
-{:beta: .beta}
-{:deprecated: .deprecated}
-{:pre: .pre}
-{:codeblock: .codeblock}
-{:screen: .screen}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:java: .ph data-hd-programlang='java'}
-{:python: .ph data-hd-programlang='python'}
-{:swift: .ph data-hd-programlang='swift'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Speech audio parsing
 {: #parsing}
@@ -85,6 +72,7 @@ Because the pause is greater than the default interval, the service splits the t
 
 ```javascript
 {
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -104,8 +92,7 @@ Because the pause is greater than the default interval, the service splits the t
       ],
       "final": true
     }
-  ],
-  "result_index": 0
+  ]
 }
 ```
 {: codeblock}
@@ -139,6 +126,7 @@ Because this value is greater than the length of the speaker's pause, the servic
 
 ```javascript
 {
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -149,8 +137,7 @@ Because this value is greater than the length of the speaker's pause, the servic
       ],
       "final": true
     }
-  ],
-  "result_index": 0
+  ]
 }
 ```
 {: codeblock}
@@ -208,6 +195,7 @@ The service returns two final results, splitting the transcript only at the spea
 
 ```javascript
 {
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -227,8 +215,7 @@ The service returns two final results, splitting the transcript only at the spea
       ],
       "final": true
     }
-  ],
-  "result_index": 0
+  ]
 }
 ```
 {: codeblock}
@@ -260,6 +247,7 @@ The service returns three final results, adding a result for the semantic stop a
 
 ```javascript
 {
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -291,8 +279,7 @@ The service returns three final results, adding a result for the semantic stop a
       "final": true,
       "end_of_utterance": "end_of_data"
     }
-  ],
-  "result_index": 0
+  ]
 }
 ```
 {: codeblock}

@@ -2,26 +2,13 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-11"
+lastupdated: "2021-09-19"
 
 subcollection: speech-to-text
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:tip: .tip}
-{:important: .important}
-{:note: .note}
-{:beta: .beta}
-{:deprecated: .deprecated}
-{:pre: .pre}
-{:codeblock: .codeblock}
-{:screen: .screen}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:java: .ph data-hd-programlang='java'}
-{:python: .ph data-hd-programlang='python'}
-{:swift: .ph data-hd-programlang='swift'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Response formatting and filtering
 {: #formatting}
@@ -354,6 +341,7 @@ The service masks profanity from the response by replacing it with a series of a
 
 ```javascript
 {
+  "result_index": 0,
   "results": [
     {
       "word_alternatives": [
@@ -394,8 +382,7 @@ The service masks profanity from the response by replacing it with a series of a
       ],
       "final": true
     }
-  ],
-  "result_index": 0
+  ]
 }
 ```
 {: codeblock}

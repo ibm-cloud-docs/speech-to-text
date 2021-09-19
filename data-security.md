@@ -2,26 +2,13 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-05-09"
+lastupdated: "2021-09-19"
 
 subcollection: speech-to-text
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:tip: .tip}
-{:important: .important}
-{:note: .note}
-{:beta: .beta}
-{:deprecated: .deprecated}
-{:pre: .pre}
-{:codeblock: .codeblock}
-{:screen: .screen}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:java: .ph data-hd-programlang='java'}
-{:python: .ph data-hd-programlang='python'}
-{:swift: .ph data-hd-programlang='swift'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Data security
 {: #data-security}
@@ -41,7 +28,7 @@ You authenticate to the service by using {{site.data.keyword.cloud_notm}} Identi
     curl -u "apikey:f5sAznhrKQyvBFFaZbtF60m5tzLbqWhyALQawBg5TjRI" \
     "{url}/v1/{method}"
     ```
-    {: codeblock}
+    {: pre}
 
 -   For production use, unless you use the {{site.data.keyword.watson}} SDKs, use an IAM token. Tokens support authenticated requests without embedding service credentials in every call. Use the following request to generate an IAM access token, replacing `{apikey}` with the value of your API key.
 
@@ -51,7 +38,7 @@ You authenticate to the service by using {{site.data.keyword.cloud_notm}} Identi
     -data "grant_type=urn:ibm:params:oauth:grant-type:apikey&apikey={apikey}" \
     "https://iam.cloud.ibm.com/identity/token"
     ```
-    {: codeblock}
+    {: pre}
 
     The response includes an `access_token` property. To authenticate a request to the service, replace `{access_token}` with the token from the response.
 
@@ -59,7 +46,7 @@ You authenticate to the service by using {{site.data.keyword.cloud_notm}} Identi
     curl -header "Authorization: Bearer {access_token}" \
     "{url}/v1/{method}"
     ```
-    {: codeblock}
+    {: pre}
 
 For more information, see [Authenticating to Watson services](/docs/watson?topic=watson-iam).
 
@@ -77,7 +64,7 @@ You authenticate to the service by passing an access token with each request. Yo
     curl -k -u "{username}:{password}" \
     "https://{cpd_cluster_host}{:port}/v1/preauth/validateAuth"
     ```
-    {: codeblock}
+    {: pre}
 
     The response includes an `accessToken` property. To authenticate a request to the service, replace `{access_token}` with the token from the response.
 
@@ -85,7 +72,7 @@ You authenticate to the service by passing an access token with each request. Yo
     curl -header "Authorization: Bearer {access_token}" \
     "{url}/v1/{method}"
     ```
-    {: codeblock}
+    {: pre}
 
 {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} is a multi-tenant cloud solution. Your credentials provide access to your data only, and your data is isolated from other users.
 

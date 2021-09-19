@@ -2,25 +2,13 @@
 
 copyright:
   years: 2020, 2021
-lastupdated: "2021-05-09"
+lastupdated: "2021-09-19"
 
 subcollection: speech-to-text
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:tip: .tip}
-{:important: .important}
-{:pre: .pre}
-{:note: .note}
-{:codeblock: .codeblock}
-{:screen: .screen}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:java: .ph data-hd-programlang='java'}
-{:python: .ph data-hd-programlang='python'}
-{:swift: .ph data-hd-programlang='swift'}
-{:gif: data-image-type='gif'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Scaling up your installation
 {: #speech-scaling-12}
@@ -37,7 +25,8 @@ You can scale up from the development configuration to the production configurat
 To scale up all aspects of the Speech services other than the datastores, use the following command:
 
 ```bash
-./cpd-cli scale --assembly watson-speech -n {namespace} --repo {repo_file} --config {deployment_type}
+./cpd-cli scale --assembly watson-speech -n {namespace} --repo {repo_file} \
+--config {deployment_type}
 ```
 {: pre}
 

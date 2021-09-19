@@ -2,25 +2,13 @@
 
 copyright:
   years: 2020, 2021
-lastupdated: "2021-08-12"
+lastupdated: "2021-09-19"
 
 subcollection: speech-to-text
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:tip: .tip}
-{:important: .important}
-{:pre: .pre}
-{:note: .note}
-{:codeblock: .codeblock}
-{:screen: .screen}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:java: .ph data-hd-programlang='java'}
-{:python: .ph data-hd-programlang='python'}
-{:swift: .ph data-hd-programlang='swift'}
-{:gif: data-image-type='gif'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Using the override file
 {: #speech-override-12}
@@ -102,6 +90,7 @@ You replace and use the following variable values in the file:
     oc get secrets | grep default-dockercfg
     ```
     {: pre}
+
 -   The authentication secrets for the Minio and PostgresSQL datastores must be created before the installation and must have the following values:
     -   For Minio, the `authsecretname` must be `minio`.
     -   For PostgresSQL, the `authsecretname` must be `user-provided-postgressql`.

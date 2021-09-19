@@ -10,21 +10,7 @@ content-type: troubleshoot
 
 ---
 
-{:troubleshoot: data-hd-content-type='troubleshoot'}
-{:support: data-reuse='support'}
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:tip: .tip}
-{:important: .important}
-{:note: .note}
-{:deprecated: .deprecated}
-{:pre: .pre}
-{:codeblock: .codeblock}
-{:screen: .screen}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:java: .ph data-hd-programlang='java'}
-{:python: .ph data-hd-programlang='python'}
-{:swift: .ph data-hd-programlang='swift'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Creating a custom language model
 {: #languageCreate}
@@ -298,7 +284,7 @@ You can use the following methods to add words to a custom model:
 
     This method is synchronous. The service returns a response code that reports the success or failure of the request immediately.
 
-As with adding corpora, examine the new custom words to check for typographical and other errors. This check is especially important when you add multiple words at once.
+As with adding corpora, examine the new custom words to check for typographical and other errors. This check is especially important when you add multiple words at one time.
 
 -   *For previous-generation models,* see [Validating a words resource for previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
 -   *For next-generation models,* see [Validating a words resource for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#validateModel-ng).

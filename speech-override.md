@@ -8,19 +8,7 @@ subcollection: speech-to-text
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:tip: .tip}
-{:important: .important}
-{:pre: .pre}
-{:note: .note}
-{:codeblock: .codeblock}
-{:screen: .screen}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:java: .ph data-hd-programlang='java'}
-{:python: .ph data-hd-programlang='python'}
-{:swift: .ph data-hd-programlang='swift'}
-{:gif: data-image-type='gif'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Using the override file
 {: #speech-override}

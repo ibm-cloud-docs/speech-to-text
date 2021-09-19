@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-14"
+lastupdated: "2021-09-19"
 
 subcollection: speech-to-text
 
@@ -10,21 +10,7 @@ content-type: troubleshoot
 
 ---
 
-{:troubleshoot: data-hd-content-type='troubleshoot'}
-{:support: data-reuse='support'}
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:tip: .tip}
-{:important: .important}
-{:note: .note}
-{:deprecated: .deprecated}
-{:pre: .pre}
-{:codeblock: .codeblock}
-{:screen: .screen}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:java: .ph data-hd-programlang='java'}
-{:python: .ph data-hd-programlang='python'}
-{:swift: .ph data-hd-programlang='swift'}
+{{site.data.keyword.attribute-definition-list}}
 
 # The WebSocket interface
 {: #websockets}
@@ -260,7 +246,7 @@ The response object can contain multiple final results for separate utterances o
 
 ```javascript
 {
-  "result_index": 0
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -301,7 +287,7 @@ The service sends responses as soon as they are available. It does not wait for 
 
 ```javascript
 {
-  "result_index": 0
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -313,7 +299,7 @@ The service sends responses as soon as they are available. It does not wait for 
     }
   ]
 }{
-  "result_index": 0
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -325,7 +311,7 @@ The service sends responses as soon as they are available. It does not wait for 
     }
   ]
 }{
-  "result_index": 0
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -338,7 +324,7 @@ The service sends responses as soon as they are available. It does not wait for 
     }
   ]
 }{
-  "result_index": 1
+  "result_index": 1,
   "results": [
     {
       "alternatives": [
@@ -350,7 +336,7 @@ The service sends responses as soon as they are available. It does not wait for 
     }
   ]
 }{
-  "result_index": 1
+  "result_index": 1,
   "results": [
     {
       "alternatives": [
@@ -362,7 +348,7 @@ The service sends responses as soon as they are available. It does not wait for 
     }
   ]
 }{
-  "result_index": 1
+  "result_index": 1,
   "results": [
     {
       "alternatives": [
@@ -390,7 +376,7 @@ In the first exchange, the client sends audio that contains the string `Name the
 
 -   The client sends:
 
-    ```javascript
+    ```json
     {
       "action": "start",
       "content-type": "audio/l16;rate=22050"
@@ -404,7 +390,7 @@ In the first exchange, the client sends audio that contains the string `Name the
 
 -   The service responds:
 
-    ```javascript
+    ```json
     {"state": "listening"}
     {"results": [{"alternatives": [{"transcript": "name the mayflower ",
                  "confidence": 0.91}], "final": true}], "result_index": 0}
@@ -419,7 +405,7 @@ In the second exchange, the client sends audio that contains the string `Second 
 
 -   The client sends:
 
-    ```javascript
+    ```json
     <binary audio data>
     {
       "action": "stop"
@@ -429,7 +415,7 @@ In the second exchange, the client sends audio that contains the string `Second 
 
 -   The service responds:
 
-    ```javascript
+    ```json
     {"results": [{"alternatives": [{"transcript": "second audio transcript ",
                  "confidence": 0.99}], "final": true}], "result_index": 0}
     {"state":"listening"}
@@ -443,7 +429,7 @@ In the third exchange, the client again sends audio that contains the string `Na
 
 -   The client sends:
 
-    ```javascript
+    ```json
     {
       "action": "start",
       "content-type": "audio/l16;rate=22050",
@@ -458,7 +444,7 @@ In the third exchange, the client again sends audio that contains the string `Na
 
 -   The service responds:
 
-    ```javascript
+    ```json
     {"results": [{"alternatives": [{"transcript": "name "}],
                  "final": false}], "result_index": 0}
     {"results": [{"alternatives": [{"transcript": "name may "}],

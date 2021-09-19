@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2021
-lastupdated: "2021-05-10"
+lastupdated: "2021-09-19"
 
 subcollection: speech-to-text
 
@@ -10,21 +10,7 @@ content-type: troubleshoot
 
 ---
 
-{:troubleshoot: data-hd-content-type='troubleshoot'}
-{:support: data-reuse='support'}
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:tip: .tip}
-{:important: .important}
-{:note: .note}
-{:deprecated: .deprecated}
-{:pre: .pre}
-{:codeblock: .codeblock}
-{:screen: .screen}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:java: .ph data-hd-programlang='java'}
-{:python: .ph data-hd-programlang='python'}
-{:swift: .ph data-hd-programlang='swift'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Using a custom acoustic model for speech recognition
 {: #acousticUse}
@@ -52,6 +38,7 @@ The following examples show the use of a custom acoustic model with each speech 
     var websocket = new WebSocket(wsURI);
     ```
     {: codeblock}
+
 -   For the [synchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-http), use the `POST /v1/recognize` method. The specified custom model is used for that request.
 
     ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
@@ -74,6 +61,7 @@ The following examples show the use of a custom acoustic model with each speech 
     "{url}/v1/recognize?acoustic_customization_id={customization_id}"
     ```
     {: pre}
+
 -   For the [asynchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-async), use the `POST /v1/recognitions` method. The specified custom model is used for that request.
 
     ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**

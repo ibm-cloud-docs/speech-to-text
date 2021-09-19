@@ -12,16 +12,7 @@ content-type: faq
 
 ---
 
-{:faq: data-hd-content-type='faq'}
-{:support: data-reuse='support'}
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:tip: .tip}
-{:important: .important}
-{:note: .note}
-{:deprecated: .deprecated}
-{:pre: .pre}
-{:codeblock: .codeblock}
+{{site.data.keyword.attribute-definition-list}}
 
 # Usage FAQs
 {: #faq-usage}

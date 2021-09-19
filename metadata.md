@@ -2,26 +2,13 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-13"
+lastupdated: "2021-09-19"
 
 subcollection: speech-to-text
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:tip: .tip}
-{:important: .important}
-{:note: .note}
-{:beta: .beta}
-{:deprecated: .deprecated}
-{:pre: .pre}
-{:codeblock: .codeblock}
-{:screen: .screen}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:java: .ph data-hd-programlang='java'}
-{:python: .ph data-hd-programlang='python'}
-{:swift: .ph data-hd-programlang='swift'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Response metadata
 {: #metadata}
@@ -66,6 +53,7 @@ The service reports a confidence only for the most likely of the three alternati
 
 ```javascript
 {
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -85,8 +73,7 @@ severe thunderstorms swept through Colorado and Sunday "
       ],
       "final": true
     }
-  ],
-  "result_index": 0
+  ]
 }
 ```
 {: codeblock}
@@ -131,6 +118,7 @@ The service returns a confidence score for each word of the audio:
 
 ```javascript
 {
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -169,8 +157,7 @@ severe thunderstorms swept through Colorado on Sunday ",
       ],
       "final": true
     }
-  ],
-  "result_index": 0
+  ]
 }
 ```
 {: codeblock}
@@ -212,6 +199,7 @@ The service returns a timestamp for each word of the audio:
 
 ```javascript
 {
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -256,8 +244,7 @@ severe thunderstorms swept through Colorado on Sunday "
       ],
       "final": true
     }
-  ],
-  "result_index": 0
+  ]
 }
 ```
 {: codeblock}

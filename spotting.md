@@ -2,26 +2,13 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-07-26"
+lastupdated: "2021-09-19"
 
 subcollection: speech-to-text
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:tip: .tip}
-{:important: .important}
-{:note: .note}
-{:beta: .beta}
-{:deprecated: .deprecated}
-{:pre: .pre}
-{:codeblock: .codeblock}
-{:screen: .screen}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:java: .ph data-hd-programlang='java'}
-{:python: .ph data-hd-programlang='python'}
-{:swift: .ph data-hd-programlang='swift'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Keyword spotting and word alternatives
 {: #spotting}
@@ -104,6 +91,7 @@ The service finds qualifying occurrences of `colorado` and `tornadoes`:
 
 ```javascript
 {
+  "result_index": 0,
   "results": [
     {
       "keywords_result": {
@@ -133,8 +121,7 @@ severe thunderstorms swept through Colorado on Sunday "
       ],
       "final": true
     }
-  ],
-  "result_index": 0
+  ]
 }
 ```
 {: codeblock}

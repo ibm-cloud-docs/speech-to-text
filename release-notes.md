@@ -2,26 +2,13 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-16"
+lastupdated: "2021-09-19"
 
 subcollection: speech-to-text
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:tip: .tip}
-{:important: .important}
-{:note: .note}
-{:beta: .beta}
-{:deprecated: .deprecated}
-{:pre: .pre}
-{:codeblock: .codeblock}
-{:screen: .screen}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:java: .ph data-hd-programlang='java'}
-{:python: .ph data-hd-programlang='python'}
-{:swift: .ph data-hd-programlang='swift'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Release notes for {{site.data.keyword.cloud_notm}}
 {: #release-notes}
@@ -1174,10 +1161,8 @@ The beta asynchronous HTTP interface now supports all languages that are support
 -   Both forms of data transmission (one-shot delivery and streaming) now impose a size limit of 100 MB on the audio data, as does the WebSocket interface. Formerly, the one-shot approach had a maximum limit of 4 MB of data. For more information, see [Audio transmission](/docs/speech-to-text?topic=speech-to-text-input#transmission) (for all interfaces) and [Send audio and receive recognition results](/docs/speech-to-text?topic=speech-to-text-websockets#ws-audio) (for the WebSocket interface). The WebSocket section also discusses the maximum frame or message size of 4 MB enforced by the WebSocket interface.
 -   The JSON response for a recognition request can now include an array of warning messages for invalid query parameters or JSON fields that are included with a request. Each element of the array is a string that describes the nature of the warning followed by an array of invalid argument strings. For example, `"warnings": [ "Unknown arguments: [u'{invalid_arg_1}', u'{invalid_arg_2}']." ]`. For more information, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 -   The beta *{{site.data.keyword.watson}} Speech Software Development Kit (SDK) for the Apple&reg; iOS operating system* is deprecated. Use the *{{site.data.keyword.watson}} SDK for the Apple&reg; iOS operating system* instead. The new SDK is available from the [ios-sdk repository](https://github.com/watson-developer-cloud/ios-sdk){: external} in the `watson-developer-cloud` namespace on GitHub.
-
-The WebSocket interface currently has the following known issue:
-
--   The service can take minutes to produce final results for a recognition request for an especially long audio file. For the WebSocket interface, the underlying TCP connection remains idle while the service prepares the response. Therefore, the connection can close due to a timeout. To avoid the timeout with the WebSocket interface, request interim results (`\"interim_results\": \"true\"`) in the JSON for the `start` message to initiate the request. You can discard the interim results if you do not need them. This issue will be resolved in a future update.
+-   The WebSocket interface currently has the following known issue:
+    -   The service can take minutes to produce final results for a recognition request for an especially long audio file. For the WebSocket interface, the underlying TCP connection remains idle while the service prepares the response. Therefore, the connection can close due to a timeout. To avoid the timeout with the WebSocket interface, request interim results (`\"interim_results\": \"true\"`) in the JSON for the `start` message to initiate the request. You can discard the interim results if you do not need them. This issue will be resolved in a future update.
 
 ### 19 January 2016
 {: #January2016}
