@@ -2,25 +2,13 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-12"
+lastupdated: "2021-09-19"
 
 subcollection: speech-to-text
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:tip: .tip}
-{:important: .important}
-{:note: .note}
-{:deprecated: .deprecated}
-{:pre: .pre}
-{:codeblock: .codeblock}
-{:screen: .screen}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:java: .ph data-hd-programlang='java'}
-{:python: .ph data-hd-programlang='python'}
-{:swift: .ph data-hd-programlang='swift'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Understanding speech recognition results
 {: #basic-response}
@@ -35,6 +23,7 @@ The service returns the following response for the examples in [Making a speech 
 
 ```javascript
 {
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -45,8 +34,7 @@ The service returns the following response for the examples in [Making a speech 
       ],
       "final": true
     }
-  ],
-  "result_index": 0
+  ]
 }
 ```
 {: codeblock}
@@ -137,7 +125,7 @@ The following examples show responses with two final results from the HTTP and W
 
     ```javascript
     {
-      "result_index": 0
+      "result_index": 0,
       "results": [
         {
           "alternatives": [
@@ -167,7 +155,7 @@ the `alternatives` array has a separate element for each final result, and the r
 
     ```javascript
     {
-     "result_index": 0
+     "result_index": 0,
       "results": [
         {
           "alternatives": [
@@ -219,6 +207,7 @@ The following example shows the token `%HESITATION` for a US English transcript:
 
 ```javascript
 {
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -229,8 +218,7 @@ The following example shows the token `%HESITATION` for a US English transcript:
       ],
       "final": true
     }
-  ],
-  "result_index": 0
+  ]
 }
 ```
 {: codeblock}
@@ -242,6 +230,7 @@ Hesitation markers can also appear in other fields of a transcript. For example,
 
 ```javascript
 {
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -276,8 +265,7 @@ Hesitation markers can also appear in other fields of a transcript. For example,
       ],
       "final": true
     }
-  ],
-  "result_index": 0
+  ]
 }
 ```
 {: codeblock}

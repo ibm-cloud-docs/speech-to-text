@@ -2,25 +2,13 @@
 
 copyright:
   years: 2020, 2021
-lastupdated: "2021-06-08"
+lastupdated: "2021-09-19"
 
 subcollection: speech-to-text
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:tip: .tip}
-{:important: .important}
-{:note: .note}
-{:deprecated: .deprecated}
-{:pre: .pre}
-{:codeblock: .codeblock}
-{:screen: .screen}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:java: .ph data-hd-programlang='java'}
-{:python: .ph data-hd-programlang='python'}
-{:swift: .ph data-hd-programlang='swift'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Backing up and restoring your data
 {: #speech-backup-12}
@@ -114,7 +102,7 @@ Use these steps to back up your data from MinIO.
     ```bash
     mc --insecure -C {minio_backup_directory} \
     cp -r {alias}/stt-customization-icp {minio_backup_directory}/{minio_data_dump}
-```
+    ```
     {: pre}
 
     You can use a Kubernetes job that calls the `mc` command to dump the data into a directory where a Kubernetes persistent volume (for example, a Portworx persistent volume) is mounted.
@@ -183,8 +171,9 @@ Use these steps to back up your data from PostgreSQL.
 1.  You need to back up three databases: `stt-customization`, `tts-customization`, and `stt-async`. Run the following command once per database.
 
     ```bash
-    pg_dump -v -h {release_name}-ibm-postgresql-proxy-svc.{namespace} -p 5432 \
-    -d {database_name} -U {username} -f {postgres_backup_directory}/{database_name}.backup.sql
+    pg_dump -v -h {release_name}-ibm-postgresql-proxy-svc.{namespace} \
+    -p 5432 -d {database_name} -U {username} \
+    -f {postgres_backup_directory}/{database_name}.backup.sql
     ```
     {: pre}
 
@@ -205,8 +194,8 @@ Use these steps to restore your data to PostgreSQL.
 1.  Create the databases in the target PostgreSQL server to perform the data restore.
 
     ```bash
-    psql -v -d postgres -U {username} -h {release_name}-ibm-postgresql-proxy-svc.{namespace} \
-    -p 5432
+    psql -v -d postgres -U {username} \
+    -h {release_name}-ibm-postgresql-proxy-svc.{namespace} -p 5432
     ```
     {: pre}
 
@@ -290,4 +279,4 @@ Use these steps to restore your data to PostgreSQL.
         UPDATE notification_urls SET username='{target_instance_id}' WHERE username='{source_instance_id}';
         UPDATE notification_urls SET instance_id='{target_instance_id}' WHERE instance_id='{source_instance_id}';
         UPDATE jobs SET username='{target_instance_id}' WHERE username='{source_instance_id}';
-       ```
+        ```

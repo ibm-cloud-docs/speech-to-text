@@ -2,25 +2,13 @@
 
 copyright:
   years: 2018, 2021
-lastupdated: "2021-05-10"
+lastupdated: "2021-09-19"
 
 subcollection: speech-to-text
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:tip: .tip}
-{:important: .important}
-{:note: .note}
-{:deprecated: .deprecated}
-{:pre: .pre}
-{:codeblock: .codeblock}
-{:screen: .screen}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:java: .ph data-hd-programlang='java'}
-{:python: .ph data-hd-programlang='python'}
-{:swift: .ph data-hd-programlang='swift'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Processing and audio metrics
 {: #metrics}
@@ -170,6 +158,7 @@ The following example output shows the first few processing metrics results that
     "wall_clock_since_first_byte_received": 0.51,
     "periodic": false
   },
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -191,8 +180,7 @@ The following example output shows the first few processing metrics results that
       ],
       "final": false
     }
-  ],
-  "result_index": 0
+  ]
 }
 {
   "processing_metrics": {
@@ -384,6 +372,7 @@ The `high_frequency_loss` field has a value of 0.5, meaning that the service's d
 
 ```javascript
 {
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -413,7 +402,6 @@ The `high_frequency_loss` field has a value of 0.5, meaning that the service's d
       "final": true
     }
   ],
-  "result_index": 0,
   "audio_metrics": {
     "sampling_interval": 0.1,
     "accumulated": {

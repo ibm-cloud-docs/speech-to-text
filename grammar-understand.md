@@ -2,26 +2,13 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-08-28"
+lastupdated: "2021-09-19"
 
 subcollection: speech-to-text
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:tip: .tip}
-{:important: .important}
-{:note: .note}
-{:beta: .beta}
-{:deprecated: .deprecated}
-{:pre: .pre}
-{:codeblock: .codeblock}
-{:screen: .screen}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:java: .ph data-hd-programlang='java'}
-{:python: .ph data-hd-programlang='python'}
-{:swift: .ph data-hd-programlang='swift'}
+{{site.data.keyword.attribute-definition-list}}
 
 # Understanding grammars
 {: #grammarUnderstand}
@@ -53,8 +40,9 @@ When you apply this grammar to a speech recognition request, the service can ret
 
 For instance, if the user replies `yes`, the service likely returns a response that is very much like the following result. The score in the `confidence` field indicates a perfectly reliable match.
 
-```
+```json
 {
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -65,8 +53,7 @@ For instance, if the user replies `yes`, the service likely returns a response t
       ],
       "final": true
     }
-  ],
-  "result_index": 0
+  ]
 }
 ```
 {: codeblock}
@@ -92,8 +79,9 @@ $names = Yi Wen Tan | Yon See | Youngjoon Lee ;
 
 Suppose the user speaks one of the names from the grammar's rules, `Yon See`. The service returns a response that indicates a very high level of confidence in the match.
 
-```
+```json
 {
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -104,16 +92,16 @@ Suppose the user speaks one of the names from the grammar's rules, `Yon See`. Th
       ],
       "final": true
     }
-  ],
-  "result_index": 0
+  ]
 }
 ```
 {: codeblock}
 
 Now suppose that the user speaks two names separated by enough silence, at least 0.8 seconds, to indicate that they are separate utterances: `Yon See` [1.0 seconds of silence] `Yi Wen Tan`. In this case, the service sends two separate responses with a different confidence score for each result.
 
-```
+```json
 {
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -124,10 +112,10 @@ Now suppose that the user speaks two names separated by enough silence, at least
       ],
       "final": true
     }
-  ],
-  "result_index": 0
+  ]
 },
 {
+  "result_index": 1,
   "results": [
     {
       "alternatives": [
@@ -138,8 +126,7 @@ Now suppose that the user speaks two names separated by enough silence, at least
       ],
       "final": true
     }
-  ],
-  "result_index": 1
+  ]
 }
 ```
 {: codeblock}

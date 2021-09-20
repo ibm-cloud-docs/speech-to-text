@@ -2,25 +2,13 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-14"
+lastupdated: "2021-09-19"
 
 subcollection: speech-to-text
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:tip: .tip}
-{:important: .important}
-{:note: .note}
-{:deprecated: .deprecated}
-{:pre: .pre}
-{:codeblock: .codeblock}
-{:screen: .screen}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:java: .ph data-hd-programlang='java'}
-{:python: .ph data-hd-programlang='python'}
-{:swift: .ph data-hd-programlang='swift'}
+{{site.data.keyword.attribute-definition-list}}
 
 # The synchronous HTTP interface
 {: #http}
@@ -72,6 +60,7 @@ The example returns the following transcript for the audio:
 
 ```javascript
 {
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -82,8 +71,7 @@ The example returns the following transcript for the audio:
       ],
       "final": true
     }
-  ],
-  "result_index": 0
+  ]
 }
 ```
 {: codeblock}
@@ -199,6 +187,7 @@ The example returns the following transcript for the audio files. The service re
 
 ```javascript
 {
+  "result_index": 0,
   "results": [
     {
       "word_alternatives": [
@@ -383,8 +372,7 @@ possible tornadoes is approaching Colorado on Sunday "
       ],
       "final": true
     }
-  ],
-  "result_index": 0
+  ]
 }
 ```
 {: codeblock}

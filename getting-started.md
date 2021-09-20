@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-08-24"
+lastupdated: "2021-09-19"
 
 keywords: speech to text,IBM cloud,getting started,tutorial,transcribe audio,speech recognition
 
@@ -14,25 +14,7 @@ completion-time: 10m
 
 ---
 
-{:shortdesc: .shortdesc}
-{:external: target="_blank" .external}
-{:tip: .tip}
-{:important: .important}
-{:note: .note}
-{:deprecated: .deprecated}
-{:pre: .pre}
-{:codeblock: .codeblock}
-{:screen: .screen}
-{:javascript: .ph data-hd-programlang='javascript'}
-{:java: .ph data-hd-programlang='java'}
-{:go: .ph data-hd-programlang='go'}
-{:python: .ph data-hd-programlang='python'}
-{:swift: .ph data-hd-programlang='swift'}
-{:apikey: data-credential-placeholder='apikey'}
-{:url: data-credential-placeholder='url'}
-{:hide-dashboard: .hide-dashboard}
-{:step: data-tutorial-type='step'}
-{:video: .video}
+{{site.data.keyword.attribute-definition-list}}
 
 # Getting started with {{site.data.keyword.speechtotextshort}}
 {: #gettingStarted}
@@ -111,12 +93,14 @@ Call the `POST /v1/recognize` method to request a basic transcript of a FLAC aud
     -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
 
     ```bash
-    curl -X POST -u "apikey:{apikey}"{: apikey} \
+    curl -X POST -u "apikey:{apikey}" \
     --header "Content-Type: audio/flac" \
     --data-binary @{path_to_file}audio-file.flac \
-    "{url}/v1/recognize"{: url}
+    "{url}/v1/recognize"
     ```
     {: pre}
+    {: apikey}
+    {: url}
 
     ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
 
@@ -137,6 +121,7 @@ The service returns the following transcription results:
 
 ```javascript
 {
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -147,8 +132,7 @@ The service returns the following transcription results:
       ],
       "final": true
     }
-  ],
-  "result_index": 0
+  ]
 }
 ```
 {: codeblock}
@@ -168,12 +152,14 @@ Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but
     -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
 
     ```bash
-    curl -X POST -u "apikey:{apikey}"{: apikey} \
+    curl -X POST -u "apikey:{apikey}" \
     --header "Content-Type: audio/flac" \
     --data-binary @{path_to_file}audio-file.flac \
-    "{url}/v1/recognize?timestamps=true&max_alternatives=3"{: url}
+    "{url}/v1/recognize?timestamps=true&max_alternatives=3"
     ```
     {: pre}
+    {: apikey}
+    {: url}
 
     ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
 
@@ -194,6 +180,7 @@ The service returns the following results, which include timestamps and three al
 
 ```javascript
 {
+  "result_index": 0,
   "results": [
     {
       "alternatives": [
@@ -218,8 +205,7 @@ The service returns the following results, which include timestamps and three al
       ],
       "final": true
     }
-  ],
-  "result_index": 0
+  ]
 }
 ```
 {: codeblock}

@@ -1,0 +1,177 @@
+toc:
+  properties:
+    subcollection: speech-to-text
+    version: 2
+    category: ai
+    audience: service
+    href: /docs/speech-to-text
+    product-page: https://www.ibm.com/cloud/watson-speech-to-text
+    path: speech-to-text
+    label: Speech to Text
+
+  entries:
+  - navgroup:
+      id: learn
+      topics:
+      - getting-started.md
+      - index.md
+      - features.md
+      - data-security.md
+      - topicgroup:
+          label: Demos
+          links:
+          - link:
+              label: Demo (all languages)
+              href: https://speech-to-text-demo.ng.bluemix.net/
+          - link:
+              label: Demo (US English)
+              href: https://www.ibm.com/demos/live/speech-to-text/self-service/home
+      - topicgroup:
+          label: Additional resources
+          links:
+          - link:
+              label: Pricing
+              href: https://www.ibm.com/cloud/watson-speech-to-text/pricing
+          - link:
+              label: Blogs
+              href: https://developer.ibm.com/blogs/
+          - link:
+              label: Webinars
+              href: https://www.ibm.com/watson/webinars/
+
+  - navgroup:
+      id: howto
+      topics:
+      - speech-install-data.md
+      - topicgroup:
+          label: Using languages and models
+          topics:
+          - models.md
+          - models-ng.md
+          - models-list.md
+      - topicgroup:
+          label: Using audio formats
+          topics:
+          - audio-terminology.md
+          - audio-formats.md
+      - topicgroup:
+          label: Recognizing speech with the service
+          topics:
+          - basic-request.md
+          - basic-response.md
+          - websockets.md
+          - http.md
+          - async.md
+      - topicgroup:
+          label: Using speech recognition parameters
+          topics:
+          - input.md
+          - interim.md
+          - detection.md
+          - parsing.md
+          - speakers.md
+          - spotting.md
+          - formatting.md
+          - metadata.md
+          - metrics.md
+          - summary.md
+      - topicgroup:
+          label: Customizing the service
+          topics:
+          - custom.md
+          - custom-support.md
+          - topicgroup:
+              label: Language model customization
+              topics:
+              - language-create.md
+              - language-use.md
+              - language-resource.md
+              - language-resource-ng.md
+              - language-models.md
+              - language-corpora.md
+              - language-words.md
+          - topicgroup:
+              label: Acoustic model customization
+              topics:
+              - acoustic-create.md
+              - acoustic-use.md
+              - acoustic-both.md
+              - acoustic-resource.md
+              - acoustic-models.md
+              - acoustic-audio.md
+          - topicgroup:
+              label: Grammars
+              topics:
+              - grammar.md
+              - grammar-understand.md
+              - grammar-add.md
+              - grammar-use.md
+              - grammar-manage.md
+              - grammar-examples.md
+          - topicgroup:
+              label: Custom model upgrading
+              topics:
+              - custom-upgrade.md
+              - custom-upgrade-use.md
+      - topicgroup:
+          label: Security topics
+          topics:
+          - information-security.md
+          - /watson/watson-keyservice
+          - /watson/watson-public-private-endpoints
+      - topicgroup:
+          label: Service background
+          topics:
+          - science.md
+          - references.md
+
+  - navgroup:
+      id: reference
+      topics:
+      - link:
+          label: API & SDK reference
+          href: https://{DomainName}/apidocs/speech-to-text
+      - ha-dr.md
+      - at-events.md
+      - /watson/watson-using-sdks
+      - link:
+          label: Watson GitHub repos
+          href: https://github.com/watson-developer-cloud/
+      - topicgroup:
+          label: Installing and managing previous versions
+          topics:
+          - topicgroup:
+              label: Installing and managing version 1.2
+              topics:
+              - speech-install-12.md
+              - speech-override-12.md
+              - speech-cluster-12.md
+              - speech-datastores-12.md
+              - speech-scaling-12.md
+              - speech-backup-12.md
+          - topicgroup:
+              label: Installing and managing version 1.1.4
+              topics:
+              - speech-install.md
+              - speech-override.md
+              - speech-cluster.md
+              - speech-datastores.md
+              - speech-scaling.md
+              - speech-backup.md
+
+  - navgroup:
+      id: help
+      topics:
+      - release-notes.md
+      - release-notes-data.md
+      - faq-usage.md
+      - faq-pricing.md
+      - topicgroup:
+          label: Developer community
+          links:
+          - link:
+              label: StackOverflow
+              href: http://stackoverflow.com/questions/tagged/ibm-watson-cognitive+speech-to-text
+          - link:
+              label: WDC Slack channel
+              href: http://wdc-slack-inviter.mybluemix.net/
