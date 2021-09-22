@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-19"
+lastupdated: "2021-09-22"
 
 keywords: speech to text,IBM cloud,getting started,tutorial,transcribe audio,speech recognition
 
@@ -99,8 +99,6 @@ Call the `POST /v1/recognize` method to request a basic transcript of a FLAC aud
     "{url}/v1/recognize"
     ```
     {: pre}
-    {: apikey}
-    {: url}
 
     ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
 
@@ -158,8 +156,6 @@ Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but
     "{url}/v1/recognize?timestamps=true&max_alternatives=3"
     ```
     {: pre}
-    {: apikey}
-    {: url}
 
     ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
 

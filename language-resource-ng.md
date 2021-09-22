@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-19"
+lastupdated: "2021-09-21"
 
 subcollection: speech-to-text
 
@@ -58,7 +58,7 @@ Adding a large number of corpora and words can increase the latency of speech re
 
 You use the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method to add a corpus to a custom model. A corpus is a plain text file that contains sample sentences from your domain. The following example shows an abbreviated corpus for the healthcare domain. A corpus file is typically much longer.
 
-```
+```text
 Am I at risk for health problems during travel?
 Some people are more likely to have health problems when traveling outside the United States.
 How Is Coronary Microvascular Disease Treated?
@@ -92,11 +92,12 @@ Follow these guidelines to prepare a corpus text file:
 
     Make sure that you know the character encoding of your corpus text files. The service preserves the encoding that it finds in the text files. You must use that same encoding when working with custom words in the custom model. For more information, see [Character encoding for custom words](/docs/speech-to-text?topic=speech-to-text-manageWords#charEncoding).
     {: important}
+
 -   Use consistent capitalization for words in the corpus. Mix upper- and lowercase letters and use capitalization only when intended.
 -   Include each sentence of the corpus on its own line, and terminate each line with a carriage return. Including multiple sentences on the same line can degrade accuracy.
 -   Add personal names as discrete units on separate lines. Do not add the individual elements of a name on separate lines or as individual custom words, and do not include multiple names on the same line of a corpus. The following example shows the correct way to improve recognition accuracy for three names:
 
-    ```
+    ```text
     Gakuto Kutara
     Sebastian Leifson
     Malcolm Ingersol

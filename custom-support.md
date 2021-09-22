@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-14"
+lastupdated: "2021-09-22"
 
 subcollection: speech-to-text
 
@@ -34,25 +34,25 @@ To learn which models are supported for {{site.data.keyword.cloud}}, {{site.data
 
 | Language<br/>(dialect) | <br/>Models | Language model<br/>customization | <br/>Grammars | Acoustic model<br/>customization |
 |------------------------|:-----------:|:----------------------------------------:|:----------------------------------------:|:----------------------------------------:|
-| Arabic<br/>(Modern Standard) | `ar-MS_BroadbandModel` | Not supported | Not supported | GA |
-| Chinese<br/>(Mandarin) | `zh-CN_BroadbandModel`<br/><br/>`zh-CN_NarrowbandModel` | Not supported | Not supported | GA |
-| Dutch<br/>(Netherlands) | `nl-NL_BroadbandModel`<br/><br/>`nl-NL_NarrowbandModel` | GA | GA | GA |
-| English<br/>(Australian) | `en-AU_BroadbandModel`<br/><br/>`en-AU_NarrowbandModel` | GA | GA | GA |
-| English<br/>(United Kingdom) | `en-GB_BroadbandModel`<br/><br/>`en-GB_NarrowbandModel` | GA | GA | GA |
-| English<br/>(United States) |  `en-US_BroadbandModel`<br/><br/>`en-US_NarrowbandModel`<br/><br/>`en-US_ShortForm_NarrowbandModel` | GA | GA | GA |
-| French<br/>(Canadian) | `fr-CA_BroadbandModel`<br/><br/>`fr-CA_NarrowbandModel` | GA | GA | GA |
-| French<br/>(France) | `fr-FR_BroadbandModel`<br/><br/>`fr-FR_NarrowbandModel` | GA | GA | GA |
-| German | `de-DE_BroadbandModel`<br/><br/>`de-DE_NarrowbandModel` | GA | GA | GA |
-| Italian | `it-IT_BroadbandModel`<br/><br/>`it-IT_NarrowbandModel` | GA | GA | GA |
-| Japanese | `ja-JP_BroadbandModel`<br/><br/>`ja-JP_NarrowbandModel` | GA | GA | GA |
-| Korean | `ko-KR_BroadbandModel`<br/><br/>`ko-KR_NarrowbandModel` | GA | GA | GA |
-| Portuguese<br/>(Brazilian) | `pt-BR_BroadbandModel`<br/><br/>`pt-BR_NarrowbandModel` | GA | GA | GA |
-| Spanish<br/>(Argentinian) | `es-AR_BroadbandModel`<br/><br/>`es-AR_NarrowbandModel` | Beta | Beta | Beta |
-| Spanish<br/>(Castilian) | `es-ES_BroadbandModel`<br/><br/>`es-ES_NarrowbandModel` | GA | GA | GA |
-| Spanish<br/>(Chilean) | `es-CL_BroadbandModel`<br/><br/>`es-CL_NarrowbandModel` | Beta | Beta | Beta |
-| Spanish<br/>(Colombian) | `es-CO_BroadbandModel`<br/><br/>`es-CO_NarrowbandModel` | Beta | Beta | Beta |
-| Spanish<br/>(Mexican) | `es-MX_BroadbandModel`<br/><br/>`es-MX_NarrowbandModel` | Beta | Beta | Beta |
-| Spanish<br/>(Peruvian) | `es-PE_BroadbandModel`<br/><br/>`es-PE_NarrowbandModel` | Beta | Beta | Beta |p
+| Arabic  \n (Modern Standard) | `ar-MS_BroadbandModel` | Not supported | Not supported | GA |
+| Chinese  \n (Mandarin) | `zh-CN_BroadbandModel`  \n   \n `zh-CN_NarrowbandModel` | Not supported | Not supported | GA |
+| Dutch  \n (Netherlands) | `nl-NL_BroadbandModel`  \n   \n `nl-NL_NarrowbandModel` | GA | GA | GA |
+| English  \n (Australian) | `en-AU_BroadbandModel`  \n   \n `en-AU_NarrowbandModel` | GA | GA | GA |
+| English  \n (United Kingdom) | `en-GB_BroadbandModel`  \n   \n `en-GB_NarrowbandModel` | GA | GA | GA |
+| English  \n (United States) |  `en-US_BroadbandModel`  \n   \n `en-US_NarrowbandModel`  \n   \n `en-US_ShortForm_NarrowbandModel` | GA | GA | GA |
+| French  \n (Canadian) | `fr-CA_BroadbandModel`  \n   \n `fr-CA_NarrowbandModel` | GA | GA | GA |
+| French  \n (France) | `fr-FR_BroadbandModel`  \n   \n `fr-FR_NarrowbandModel` | GA | GA | GA |
+| German | `de-DE_BroadbandModel`  \n   \n `de-DE_NarrowbandModel` | GA | GA | GA |
+| Italian | `it-IT_BroadbandModel`  \n   \n `it-IT_NarrowbandModel` | GA | GA | GA |
+| Japanese | `ja-JP_BroadbandModel`  \n   \n `ja-JP_NarrowbandModel` | GA | GA | GA |
+| Korean | `ko-KR_BroadbandModel`  \n   \n `ko-KR_NarrowbandModel` | GA | GA | GA |
+| Portuguese  \n (Brazilian) | `pt-BR_BroadbandModel`  \n   \n `pt-BR_NarrowbandModel` | GA | GA | GA |
+| Spanish  \n (Argentinian) | `es-AR_BroadbandModel`  \n   \n `es-AR_NarrowbandModel` | Beta | Beta | Beta |
+| Spanish  \n (Castilian) | `es-ES_BroadbandModel`  \n   \n `es-ES_NarrowbandModel` | GA | GA | GA |
+| Spanish  \n (Chilean) | `es-CL_BroadbandModel`  \n   \n `es-CL_NarrowbandModel` | Beta | Beta | Beta |
+| Spanish  \n (Colombian) | `es-CO_BroadbandModel`  \n   \n `es-CO_NarrowbandModel` | Beta | Beta | Beta |
+| Spanish  \n (Mexican) | `es-MX_BroadbandModel`  \n   \n `es-MX_NarrowbandModel` | Beta | Beta | Beta |
+| Spanish  \n (Peruvian) | `es-PE_BroadbandModel`  \n   \n `es-PE_NarrowbandModel` | Beta | Beta | Beta |
 {: caption="Table 1. Previous-generation language support for customization"}
 
 ### Language support for next-generation models
@@ -62,23 +62,23 @@ To learn which models are supported for {{site.data.keyword.cloud_notm}}, {{site
 
 | Language<br/>(dialect) | <br/>Models | Language model<br/>customization | <br/>Grammars | Acoustic model<br/>customization |
 |------------------------|:-----------:|:----------------------------------------:|:----------------------------------------:|:----------------------------------------:|
-| Arabic<br/>(Modern Standard) | `ar-MS_Telephony` | GA | Not supported | Not supported |
+| Arabic  \n (Modern Standard) | `ar-MS_Telephony` | GA | Not supported | Not supported |
 | Czech | `cz-CZ_Telephony` | Beta | Not supported | Not supported |
-| Dutch<br/>(Belgian) | `nl-BE_Telephony` | GA | Not supported | Not supported |
-| Dutch<br/>(Netherlands) | `nl-NL_Telephony` | Beta | Not supported | Not supported |
-| English<br/>(Australian) | `en-AU_Telephony` | GA | Not supported | Not supported |
-| English<br/>(Indian) | `en-IN_Telephony` | GA | Not supported | Not supported |
-| English<br/>(United Kingdom) | `en-GB_Telephony` | GA | Not supported | Not supported |
-| English<br/>(United States) | `en-US_Multimedia`<br/><br/>`en-US_Telephony` | GA | Not supported | Not supported |
-| French<br/>(Canadian) | `fr-CA_Telephony` | GA | Not supported | Not supported |
-| French<br/>(France) | `fr-FR_Multimedia`<br/><br/>`fr-FR_Telephony` | GA | Not supported | Not supported |
+| Dutch  \n (Belgian) | `nl-BE_Telephony` | GA | Not supported | Not supported |
+| Dutch  \n (Netherlands) | `nl-NL_Telephony` | Beta | Not supported | Not supported |
+| English  \n (Australian) | `en-AU_Telephony` | GA | Not supported | Not supported |
+| English  \n (Indian) | `en-IN_Telephony` | GA | Not supported | Not supported |
+| English  \n (United Kingdom) | `en-GB_Telephony` | GA | Not supported | Not supported |
+| English  \n (United States) | `en-US_Multimedia`  \n   \n `en-US_Telephony` | GA | Not supported | Not supported |
+| French  \n (Canadian) | `fr-CA_Telephony` | GA | Not supported | Not supported |
+| French  \n (France) | `fr-FR_Multimedia`  \n   \n `fr-FR_Telephony` | GA | Not supported | Not supported |
 | German | `de-DE_Telephony` | GA | Not supported | Not supported |
 | Hindi | `hi-IN_Telephony` | GA | Not supported | Not supported |
 | Italian | `it-IT_Telephony` | GA | Not supported | Not supported |
 | Japanese | `ja-JP_Multimedia` | GA | Not supported | Not supported |
-| Korean | `ko-KR_Multimedia`<br/><br/>`ko-KR_Telephony` | GA | Not supported | Not supported |
-| Portuguese<br/>(Brazilian) | `pt-BR_Telephony` | GA | Not supported | Not supported |
-| Spanish<br/>(Castilian) | `es-ES_Telephony` | GA | Not supported | Not supported |
+| Korean | `ko-KR_Multimedia`  \n   \n `ko-KR_Telephony` | GA | Not supported | Not supported |
+| Portuguese  \n (Brazilian) | `pt-BR_Telephony` | GA | Not supported | Not supported |
+| Spanish  \n (Castilian) | `es-ES_Telephony` | GA | Not supported | Not supported |
 {: caption="Table 2. Next-generation language support for customization"}
 
 ## Ownership of custom models
