@@ -32,7 +32,7 @@ The tables in the following sections document the service's level of support for
 
 To learn which models are supported for {{site.data.keyword.cloud}}, {{site.data.keyword.icp4dfull}}, or both, see [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported).
 
-| Language<br/>(dialect) | <br/>Models | Language model<br/>customization | <br/>Grammars | Acoustic model<br/>customization |
+| Language (dialect) | Models | Language model customization | Grammars | Acoustic model customization |
 |------------------------|:-----------:|:----------------------------------------:|:----------------------------------------:|:----------------------------------------:|
 | Arabic  \n (Modern Standard) | `ar-MS_BroadbandModel` | Not supported | Not supported | GA |
 | Chinese  \n (Mandarin) | `zh-CN_BroadbandModel`  \n   \n `zh-CN_NarrowbandModel` | Not supported | Not supported | GA |
@@ -60,7 +60,7 @@ To learn which models are supported for {{site.data.keyword.cloud}}, {{site.data
 
 To learn which models are supported for {{site.data.keyword.cloud_notm}}, {{site.data.keyword.icp4dfull_notm}}, or both, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
 
-| Language<br/>(dialect) | <br/>Models | Language model<br/>customization | <br/>Grammars | Acoustic model<br/>customization |
+| Language (dialect) |  Models | Language model customization | Grammars | Acoustic model customization |
 |------------------------|:-----------:|:----------------------------------------:|:----------------------------------------:|:----------------------------------------:|
 | Arabic  \n (Modern Standard) | `ar-MS_Telephony` | GA | Not supported | Not supported |
 | Czech | `cz-CZ_Telephony` | Beta | Not supported | Not supported |

@@ -39,7 +39,7 @@ Table 1 lists the next-generation models that are available for each language. L
 
 The table indicates the product versions for which each model and for which low-latency are supported. Unless otherwise indicated, the model and low latency are supported for both {{site.data.keyword.cloud_notm}} and {{site.data.keyword.icp4dfull_notm}}. The Czech and Netherlands Dutch models are *Beta* functionality. All other models are generally available (GA).
 
-|   <br/>Language | <br/>Multimedia model | Multimedia<br/>low-latency support | <br/>Telephony model | Telephony<br/>low-latency support |
+| Language | Multimedia model | Multimedia low-latency support | Telephony model | Telephony low-latency support |
 |----------|:----------------:|:-------------------:|:---------------:|:-------------------:|
 | Arabic  \n (Modern Standard) | Not available | Not available | `ar-MS_Telephony` | **Yes**  \n IBM Cloud only |
 | Czech | Not available | Not available | `cz-CZ_Telephony`  \n IBM Cloud only (*Beta*) | **Yes**  \n IBM Cloud only |
