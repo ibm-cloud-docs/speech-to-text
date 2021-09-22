@@ -29,7 +29,7 @@ Table 1 provides a summary of the audio formats that the service supports.
 
 The final columns identify additional *Required parameters* and *Optional parameters* for each format. The following sections provide more information about these parameters.
 
-| <br/>Audio format | <br/>Compression | Content-type<br/>specification | Required<br/>parameters | Optional<br/>parameters |
+| Audio format | Compression | Content-type specification | Required parameters | Optional parameters |
 |-------------------|:----------------:|:------------------------------:|:-----------------------:|:------------------:|
 | [audio/alaw](#audio-formats-alaw) | Lossy | Required | `rate={integer}` | None |
 | [audio/basic](#audio-formats-basic) | Lossy| Required| None| None |

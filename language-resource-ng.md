@@ -124,8 +124,8 @@ The following descriptions apply to all supported dialects of Dutch, English, Fr
     |------------|:------------:|:--------------:|
     | Dutch      | `500` becomes `vijfhonderd` | `0,15` becomes `nul komma vijftien` |
     | English    | `500` becomes `five hundred` | `0.15` becomes `zero point fifteen` |
-    | French     | `500` becomes `cinq cents` | `0,15` becomes <code>z&eacute;ro virgule quinze</code> |
-    | German     | `500` becomes <code>f&uuml;nfhundert</code> | `0,15` becomes <code>null punkt f&uuml;nfzehn</code> |
+    | French     | `500` becomes `cinq cents` | `0,15` becomes `zéro virgule quinze` |
+    | German     | `500` becomes `fünfhundert` | `0,15` becomes `null punkt fünfzehn` |
     | Italian    | `500` becomes `cinquecento` | `0,15` becomes `zero virgola quindici` |
     | Portuguese | `500` becomes `quinhentos` | `0,15` becomes `zero ponto quinze` |
     | Spanish    | `500` becomes `quinientos` | `0,15` becomes `cero coma quince` |
@@ -133,18 +133,18 @@ The following descriptions apply to all supported dialects of Dutch, English, Fr
 
 -   Converts tokens that include certain symbols to meaningful string representations. These examples are not exhaustive. The service makes similar adjustments for other characters as needed.
 
-    | <br/>Language | A dollar sign<br/>and a number | A euro sign<br/>and a number | A percent sign<br/>and a number |
+    | Language | A dollar sign and a number | A euro sign and a number | A percent sign and a number |
     |---------------|:-------------------------------:|:---------------------------:|:-------------------------------:|
-    | Dutch      | `$100` becomes `honderd dollar` | <code>&euro;100</code> becomes `honderd euro` | `100%` becomes `honderd procent` |
-    | English    | `$100` becomes `one hundred dollars` | <code>&euro;100</code> becomes `one hundred euros` | `100%` becomes `one hundred percent` |
-    | French     | `$100` becomes `cent dollars` | <code>&euro;100</code> becomes `cent euros`   | `100%` becomes `cent pour cent` |
-    | German     | `$100` and `100$` become `einhundert dollar` | <code>&euro;100</code> and <code>100&euro;</code> become `einhundert euro` | `100%` becomes `einhundert prozent` |
-    | Italian    | `$100` becomes `cento dollari` | <code>&euro;100</code> becomes `cento euro` | `100%` becomes `cento per cento` |
-    | Portuguese | `$100` and `100$` become <code>cem d&oacute;lares</code> | <code>&euro;100</code> and <code>100&euro;</code> become `cem euros` | `100%` becomes `cem por cento` |
-    | Spanish    | `$100` and `100$` become <code>cien d&oacute;lares</code> | <code>&euro;100</code> and <code>100&euro;</code> become `cien euros` | `100%` becomes `cien por ciento` |
+    | Dutch      | `$100` becomes `honderd dollar` | `€100` becomes `honderd euro` | `100%` becomes `honderd procent` |
+    | English    | `$100` becomes `one hundred dollars` | `€100` becomes `one hundred euros` | `100%` becomes `one hundred percent` |
+    | French     | `$100` becomes `cent dollars` | `€100` becomes `cent euros`   | `100%` becomes `cent pour cent` |
+    | German     | `$100` and `100$` become `einhundert dollar` | `€100` and `100€` become `einhundert euro` | `100%` becomes `einhundert prozent` |
+    | Italian    | `$100` becomes `cento dollari` | `€100` becomes `cento euro` | `100%` becomes `cento per cento` |
+    | Portuguese | `$100` and `100$` become `cem dólares` | `€100` and `100€` become `cem euros` | `100%` becomes `cem por cento` |
+    | Spanish    | `$100` and `100$` become `cien dólares` | `€100` and `100€` become `cien euros` | `100%` becomes `cien por ciento` |
     {: caption="Table 2. Examples of symbol conversion"}
 
--   Processes non-alphanumeric, punctuation, and special characters depending on their context. For example, the service removes a `$` (dollar sign) or <code>&euro;</code> (euro symbol) unless it is followed by a number. Processing is context-dependent and consistent across the supported languages.
+-   Processes non-alphanumeric, punctuation, and special characters depending on their context. For example, the service removes a `$` (dollar sign) or `€` (euro symbol) unless it is followed by a number. Processing is context-dependent and consistent across the supported languages.
 -   Ignores phrases that are enclosed in `( )` (parentheses), `< >` (angle brackets), `[ ]` (square brackets), or `{ }` (curly braces).
 
 #### Parsing of Arabic, Czech, and Hindi

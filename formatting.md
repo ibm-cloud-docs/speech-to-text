@@ -82,50 +82,18 @@ Smart formatting is based on the presence of obvious keywords in the transcript.
     -   `sixty nine thousand five sixty dollars point twenty five` becomes `60 9000 $560.25`.
 
     To correctly convert a greater possible variety of complex numbers, you need to experiment with the results of smart formatting and customize your own post-processing utilities.
--   *For US English,* certain punctuation symbols are added for special keywords that occur in appropriate places. The service substitutes punctuation symbols for the following keyword strings based on where it finds them in a transcript.
+-   *For US English,* certain punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes punctuation symbols for the following keyword strings based on where it finds them in a transcript:
 
-    <table style="width:50%">
-      <caption>Table 1. Smart formatting punctuation keywords for US English</caption>
-      <tr>
-        <th>Keyword string</th>
-        <th style="text-align:center">Resulting punctuation</th>
-      </tr>
-      <tr>
-        <td>
-          <code>Comma</code>
-        </td>
-        <td style="text-align:center">
-          <code>,</code>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <code>Period</code>
-        </td>
-        <td style="text-align:center">
-          <code>.</code>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <code>Question mark</code>
-        </td>
-        <td style="text-align:center">
-          <code>?</code>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <code>Exclamation point</code>
-        </td>
-        <td style="text-align:center">
-          <code>!</code>
-        </td>
-      </tr>
-    </table>
+    -   `Comma` (`,`)
+    -   `Period` (`.`)
+    -   `Question mark` (`?`)
+    -   `Exclamation point` (`!`)
 
-    The service converts these keyword strings to symbols only in appropriate positions of a transcript. In the following example, the speaker says the word `period` at the end of the sentence. The service correctly differentiates between the noun that appears earlier in the sentence and the concluding punctuation.
+    The service converts these keyword strings to symbols only in appropriate positions of a transcript. In the following example, the speaker says the word `period` at the end of the sentence:
+
     -   `the warranty period is short period` becomes `the warranty period is short.`
+
+    The service correctly differentiates between the noun that appears earlier in the sentence and the concluding punctuation.
 
 #### Japanese
 {: #smart-formatting-japanese}
@@ -233,23 +201,9 @@ The feature works exactly as described for US English models but has the followi
 Japanese redaction has the following differences:
 
 -   In addition to masking strings of three or more consecutive digits, redaction also masks street addresses and numbers, regardless of whether they contain fewer than three digits.
--   Similarly, redaction also masks date information in Japanese-style birth dates. In Japanese, date information is usually presented in Common Era format but sometimes follows Japanese style, particularly for birth dates. In this case, the year and month are masked even though they contain just one or two digits. For example, numeric redaction changes the following string as shown.
+-   Similarly, redaction also masks date information in Japanese-style birth dates. In Japanese, date information is usually presented in Common Era format but sometimes follows Japanese style, particularly for birth dates. In this case, the year and month are masked even though they contain just one or two digits.
 
-    <table style="width:50%">
-      <caption>Table 4. Example redaction of Japanese-style birth date</caption>
-      <tr>
-        <th style="text-align:left">Without redaction</th>
-        <th style="text-align:left">With redaction</th>
-      </tr>
-      <tr>
-        <td>
-          &#24179;&#25104; 30&#24180; 2&#26376;
-        </td>
-        <td>
-          &#24179;&#25104; XX&#24180; X&#26376;
-        </td>
-      </tr>
-    </table>
+    For example, a Japanese-style birth date without redaction is <code>&#24179;&#25104; 30&#24180; 2&#26376;</code>. With redaction, the date becomes <code>&#24179;&#25104; XX&#24180; X&#26376;</code>.
 
 #### Korean
 {: #numeric-redaction-korean}
