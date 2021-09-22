@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-19"
+lastupdated: "2021-09-21"
 
 subcollection: speech-to-text
 
@@ -26,7 +26,7 @@ The examples provide only the results of speech recognition requests. For exampl
 
 The first example defines a very simple `yesno` grammar that accepts two valid single-word responses, `yes` and `no`. The grammar is useful in cases where the user must respond with only one of the two phrases.
 
-```
+```text
 #ABNF 1.0 ISO-8859-1;
 language en-US;
 mode voice;
@@ -67,7 +67,7 @@ With a multi-phrase grammar, the user's response must be complete to be recogniz
 
 Moreover, the service can return multiple transcripts if the user speaks phrases that are separated by sufficient silence to indicate that they are independent utterances. For example, consider the simple `names` grammar, which can match one of three multi-word names.
 
-```
+```text
 #ABNF 1.0 ISO-8859-1;
 language en-US;
 mode voice;

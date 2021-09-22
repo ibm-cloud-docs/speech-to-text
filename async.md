@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-14"
+lastupdated: "2021-09-21"
 
 subcollection: speech-to-text
 
@@ -66,7 +66,7 @@ You register a callback URL by calling the `POST /v1/register_callback` method. 
 
     If the call to the `register_callback` method included a user secret, the `GET` request from the service also includes an `X-Callback-Signature` header that specifies the HMAC-SHA1 signature of the challenge string. The service calculates the signature by using the user secret as the key.
 
-    ```
+    ```text
     GET http://{user_callback_path}/results?challenge_string=n9ArPGMQ36Hiu7QC
     header: X-Callback-Signature {HMAC-SHA1_signature}
     ```
@@ -76,7 +76,7 @@ You register a callback URL by calling the `POST /v1/register_callback` method. 
 
     If the initial `POST` request included a user secret, you can calculate an HMAC-SHA1 signature of the challenge string by using the secret as the key. If the `GET` request was sent by the service, the signature matches the value specified by the `X-Callback-Signature` header.
 
-    ```
+    ```text
     response code: 200 OK
     body: n9ArPGMQ36Hiu7QC
     ```
@@ -84,7 +84,7 @@ You register a callback URL by calling the `POST /v1/register_callback` method. 
 
 1.  The service checks whether the challenge string is returned in the body of the response to its `GET` request. If it is, the service allowlists the callback URL and responds to your original `POST` request with status code 201. The body of the response includes a JSON object with a `status` field that has the value `created` and a `url` field that has the value of your callback URL.
 
-    ```
+    ```text
     response code: 201 Created
     body: {
       "status": "created",

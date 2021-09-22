@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-09-14"
+lastupdated: "2021-09-22"
 
 subcollection: speech-to-text
 
@@ -39,25 +39,25 @@ Table 1 lists the next-generation models that are available for each language. L
 
 The table indicates the product versions for which each model and for which low-latency are supported. Unless otherwise indicated, the model and low latency are supported for both {{site.data.keyword.cloud_notm}} and {{site.data.keyword.icp4dfull_notm}}. The Czech and Netherlands Dutch models are *Beta* functionality. All other models are generally available (GA).
 
-| <br/>Language | <br/>Multimedia model | Multimedia<br/>low-latency support | <br/>Telephony model | Telephony<br/>low-latency support |
+|   <br/>Language | <br/>Multimedia model | Multimedia<br/>low-latency support | <br/>Telephony model | Telephony<br/>low-latency support |
 |----------|:----------------:|:-------------------:|:---------------:|:-------------------:|
-| Arabic<br/>(Modern Standard) | Not available | Not available | `ar-MS_Telephony` | **Yes**<br/>IBM Cloud only |
-| Czech | Not available | Not available | `cz-CZ_Telephony`<br/>IBM Cloud only (*Beta*) | **Yes**<br/>IBM Cloud only |
-| Dutch<br/>(Belgian) | Not available | Not available | `nl-BE_Telephony`<br/>IBM Cloud only | **Yes**<br/>IBM Cloud only |
-| Dutch<br/>(Netherlands) | Not available | Not available | `nl-NL_Telephony`<br/>IBM Cloud only (*Beta*) | **No** |
-| English<br/>(Australian) | Not available | Not available | `en-AU_Telephony` | **Yes** |
-| English<br/>(Indian) | Not available | Not available | `en-IN_Telephony`<br/>IBM Cloud only | **Yes**<br/>IBM Cloud only |
-| English<br/>(United Kingdom) | Not available | Not available | `en-GB_Telephony` | **Yes** |
-| English<br/>(United States) | `en-US_Multimedia` | **No** | `en-US_Telephony` | **Yes** |
-| French<br/>(Canadian) | Not available | Not available | `fr-CA_Telephony` | **Yes**<br/>IBM Cloud only |
-| French<br/>(France) | `fr-FR_Multimedia`<br/>IBM Cloud only | **No** | `fr-FR_Telephony` | **Yes** |
+| Arabic  \n (Modern Standard) | Not available | Not available | `ar-MS_Telephony` | **Yes**  \n IBM Cloud only |
+| Czech | Not available | Not available | `cz-CZ_Telephony`  \n IBM Cloud only (*Beta*) | **Yes**  \n IBM Cloud only |
+| Dutch  \n (Belgian) | Not available | Not available | `nl-BE_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
+| Dutch  \n (Netherlands) | Not available | Not available | `nl-NL_Telephony`  \n IBM Cloud only (*Beta*) | **No** |
+| English  \n (Australian) | Not available | Not available | `en-AU_Telephony` | **Yes** |
+| English  \n (Indian) | Not available | Not available | `en-IN_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
+| English  \n (United Kingdom) | Not available | Not available | `en-GB_Telephony` | **Yes** |
+| English  \n (United States) | `en-US_Multimedia` | **No** | `en-US_Telephony` | **Yes** |
+| French  \n (Canadian) | Not available | Not available | `fr-CA_Telephony` | **Yes**  \n IBM Cloud only |
+| French  \n (France) | `fr-FR_Multimedia`  \n IBM Cloud only | **No** | `fr-FR_Telephony` | **Yes** |
 | German | Not available | Not available | `de-DE_Telephony` | **Yes** |
-| Hindi<br/>(Indian) | Not available | Not available | `hi-IN_Telephony`<br/>IBM Cloud only | **Yes**<br/>IBM Cloud only |
-| Italian | Not available | Not available | `it-IT_Telephony` | **Yes**<br/>IBM Cloud only |
-| Japanese | `ja-JP_Multimedia`<br/>IBM Cloud only | **No** | Not available | Not available |
-| Korean | `ko-KR_Multimedia`<br/>IBM Cloud only | **No** | `ko-KR_Telephony`<br/>IBM Cloud only | **Yes**<br/>IBM Cloud only |
-| Portuguese<br/>(Brazilian) | Not available | Not available | `pt-BR_Telephony` | **Yes** |
-| Spanish<br/>(Castilian) | Not available | Not available | `es-ES_Telephony` | **Yes** |
+| Hindi  \n (Indian) | Not available | Not available | `hi-IN_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
+| Italian | Not available | Not available | `it-IT_Telephony` | **Yes**  \n IBM Cloud only |
+| Japanese | `ja-JP_Multimedia`  \n IBM Cloud only | **No** | Not available | Not available |
+| Korean | `ko-KR_Multimedia`  \n IBM Cloud only | **No** | `ko-KR_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
+| Portuguese  \n (Brazilian) | Not available | Not available | `pt-BR_Telephony` | **Yes** |
+| Spanish  \n (Castilian) | Not available | Not available | `es-ES_Telephony` | **Yes** |
 {: caption="Table 1. Supported next-generation language models"}
 
 Unlike previous-generation models, next-generation models do not include the word `model` in their names.

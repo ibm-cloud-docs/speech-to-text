@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-03"
+lastupdated: "2021-09-22"
 
 subcollection: speech-to-text
 
@@ -35,12 +35,12 @@ The final columns identify additional *Required parameters* and *Optional parame
 | [audio/basic](#audio-formats-basic) | Lossy| Required| None| None |
 | [audio/flac](#audio-formats-flac) | Lossless| Optional | None | None |
 | [audio/g729](#audio-formats-g729) | Lossy | Optional | None | None |
-| [audio/l16](#audio-formats-l16) | None | Required | `rate={integer}` | `channels={integer}`<br/>`endianness=big-endian`<br/>`endianness=little-endian` |
-| [audio/mp3](#audio-formats-mp3)<br/>[audio/mpeg](#audio-formats-mp3) | Lossy | Optional | None | None |
+| [audio/l16](#audio-formats-l16) | None | Required | `rate={integer}` | `channels={integer}`  \n `endianness=big-endian`  \n `endianness=little-endian` |
+| [audio/mp3](#audio-formats-mp3)  \n [audio/mpeg](#audio-formats-mp3) | Lossy | Optional | None | None |
 | [audio/mulaw](#audio-formats-mulaw) | Lossy | Required | `rate={integer}` | None |
-| [audio/ogg](#audio-formats-ogg) | Lossy | Optional | None | `codecs=opus`<br/>`codecs=vorbis` |
+| [audio/ogg](#audio-formats-ogg) | Lossy | Optional | None | `codecs=opus`  \n `codecs=vorbis` |
 | [audio/wav](#audio-formats-wav) | None, lossless, or lossy | Optional | None | None |
-| [audio/webm](#audio-formats-webm) | Lossy | Optional | None | `codecs=opus`<br/>`codecs=vorbis` |
+| [audio/webm](#audio-formats-webm) | Lossy | Optional | None | `codecs=opus`  \n `codecs=vorbis` |
 {: caption="Table 1. Summary of supported audio formats"}
 
 ### audio/alaw format
@@ -50,7 +50,7 @@ The final columns identify additional *Required parameters* and *Optional parame
 
 | Parameter | Description |
 |-----------|-------------|
-| `rate`<br/>*Required* | An integer that specifies the sampling rate at which the audio is captured. For example, specify the following parameter for audio data that is captured at 8 kHz:<br/><br/>`audio/alaw;rate=8000` |
+| `rate`  \n *Required* | An integer that specifies the sampling rate at which the audio is captured. For example, specify the following parameter for audio data that is captured at 8 kHz:  \n   \n `audio/alaw;rate=8000` |
 {: caption="Table 2. Parameter for audio/alaw format"}
 
 For more information, see [A-law algorithm](https://wikipedia.org/wiki/A-law_algorithm){: external}.
@@ -79,9 +79,9 @@ For more information, see the Internet Engineering Task Force (IETF) [Request fo
 
 | Parameter | Description |
 |-----------|-------------|
-| `rate`<br/>*Required* | An integer that specifies the sampling rate at which the audio is captured. For example, specify the following parameter for audio data that is captured at 16 kHz:<br/><br/>`audio/l16;rate=16000` |
-| `channels`<br/>*Optional* | By default, the service treats the audio as if it has a single channel. *If the audio has more than one channel,* you must specify an integer that identifies the number of channels. For example, specify the following parameter for two-channel audio data that is captured at 16 kHz:<br/><br/>`audio/l16;rate=16000;channels=2`<br/><br/>The service accepts a maximum of 16 channels. It downmixes the audio to one channel during transcoding. |
-| `endianness`<br/>*Optional* | By default, the service auto-detects the endianness of incoming audio. But its auto-detection can sometimes fail and drop the connection for short audio in `audio/l16` format. Specifying the endianness disables auto-detection. Specify either `big-endian` or `little-endian`. For example, specify the following parameter for audio data that is captured at 16 kHz in little-endian format:<br/><br/>`audio/l16;rate=16000;endianness=little-endian`<br/><br/>Section 5.1 of [Request for Comment (RFC) 2045](https://tools.ietf.org/html/rfc2045#section-5.1) specifies big-endian format for `audio/l16` data, but many people use little-endian format. |
+| `rate`  \n *Required* | An integer that specifies the sampling rate at which the audio is captured. For example, specify the following parameter for audio data that is captured at 16 kHz:  \n   \n `audio/l16;rate=16000` |
+| `channels`  \n *Optional* | By default, the service treats the audio as if it has a single channel. *If the audio has more than one channel,* you must specify an integer that identifies the number of channels. For example, specify the following parameter for two-channel audio data that is captured at 16 kHz:  \n   \n `audio/l16;rate=16000;channels=2`  \n   \n The service accepts a maximum of 16 channels. It downmixes the audio to one channel during transcoding. |
+| `endianness`  \n *Optional* | By default, the service auto-detects the endianness of incoming audio. But its auto-detection can sometimes fail and drop the connection for short audio in `audio/l16` format. Specifying the endianness disables auto-detection. Specify either `big-endian` or `little-endian`. For example, specify the following parameter for audio data that is captured at 16 kHz in little-endian format:  \n   \n `audio/l16;rate=16000;endianness=little-endian`  \n   \n Section 5.1 of [Request for Comment (RFC) 2045](https://tools.ietf.org/html/rfc2045#section-5.1) specifies big-endian format for `audio/l16` data, but many people use little-endian format. |
 {: caption="Table 3. Parameters for audio/l16 format"}
 
 For more information, see the IETF [Request for Comment (RFC) 2586](https://tools.ietf.org/html/rfc2586){: external} and [Pulse-code modulation](https://wikipedia.org/wiki/Pulse-code_modulation){: external}.
@@ -98,7 +98,7 @@ For more information, see the IETF [Request for Comment (RFC) 2586](https://tool
 
 | Parameter | Description |
 |-----------|-------------|
-| `rate`<br/>*Required* | An integer that specifies the sampling rate at which the audio is captured. For example, specify the following parameter for audio data that is captured at 8 kHz:<br/><br/>`audio/mulaw;rate=8000` |
+| `rate`  \n *Required* | An integer that specifies the sampling rate at which the audio is captured. For example, specify the following parameter for audio data that is captured at 8 kHz:  \n   \n `audio/mulaw;rate=8000` |
 {: caption="Table 4. Parameter for audio/mulaw format"}
 
 For more information, see [M-law algorithm](https://wikipedia.org/wiki/M-law_algorithm){: external}.

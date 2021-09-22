@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-19"
+lastupdated: "2021-09-22"
 
 subcollection: speech-to-text
 
@@ -85,9 +85,9 @@ Smart formatting is based on the presence of obvious keywords in the transcript.
 -   *For US English,* certain punctuation symbols are added for special keywords that occur in appropriate places. The service substitutes punctuation symbols for the following keyword strings based on where it finds them in a transcript.
 
     <table style="width:50%">
-      <caption>Table 2. Smart formatting punctuation keywords for US English</caption>
+      <caption>Table 1. Smart formatting punctuation keywords for US English</caption>
       <tr>
-        <th style="text-align:left">Keyword string</th>
+        <th>Keyword string</th>
         <th style="text-align:center">Resulting punctuation</th>
       </tr>
       <tr>
@@ -165,7 +165,7 @@ The following table shows examples of final transcripts both with and without sm
 |                                  | I saw the story on yahoo dot com | I saw the story on yahoo.com |
 | Combinations | The code is zero two four eight one and the date of service is May fifth two thousand and one | The code is 02481 and the date of service is 5/5/2001 |
 |              | There are forty seven links on Yahoo dot com now | There are 47 links on Yahoo.com now |
-{: caption="Table 3. Smart formatting example transcripts"}
+{: caption="Table 2. Smart formatting example transcripts"}
 
 ### Smart formatting results for long pauses
 {: #smart-formatting-long-pauses}
@@ -175,8 +175,8 @@ In cases where an utterance contains long enough pauses of silence, the service 
 | Audio speech | Formatted transcription results |
 |--------------|---------------------------------|
 | My phone number is nine one four five five seven three three nine two | "My phone number is 914-557-3392" |
-| My phone number is nine one four &lt;*pause*&gt; five five seven three three nine two | "My phone number is 914"<br/>"5573392" |
-{: caption="Table 4. Smart formatting example transcripts for long pauses"}
+| My phone number is nine one four &lt;*pause*&gt; five five seven three three nine two | "My phone number is 914"  \n "5573392" |
+{: caption="Table 3. Smart formatting example transcripts for long pauses"}
 
 For more information about specifying a pause interval that affects the service's response, see [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-parsing#silence-time).
 
@@ -236,7 +236,7 @@ Japanese redaction has the following differences:
 -   Similarly, redaction also masks date information in Japanese-style birth dates. In Japanese, date information is usually presented in Common Era format but sometimes follows Japanese style, particularly for birth dates. In this case, the year and month are masked even though they contain just one or two digits. For example, numeric redaction changes the following string as shown.
 
     <table style="width:50%">
-      <caption>Table 5. Example redaction of Japanese-style birth date</caption>
+      <caption>Table 4. Example redaction of Japanese-style birth date</caption>
       <tr>
         <th style="text-align:left">Without redaction</th>
         <th style="text-align:left">With redaction</th>
@@ -273,7 +273,7 @@ The following table shows examples of final transcripts both with and without nu
 | US English | my credit card number is four one four seven two | my credit card number is XXXXX |
 | Japanese | &#31169; &#12398;&#12463;&#12524;&#12472;&#12483;&#12488; &#12459;&#12540;&#12489; &#30058;&#21495; &#12399; &#22235; &#19968; &#22235; &#19971; &#20108;&#12391;&#12377; | &#31169; &#12398;&#12463;&#12524;&#12472;&#12483;&#12488; &#12459;&#12540;&#12489; &#30058;&#21495; &#12399; XXXXX &#12391;&#12377; |
 | Korean | &#45236; &#49888;&#50857; &#52852;&#46300; &#48264;&#54840;&#45716; &#49324; &#51068; &#49324; &#52832; &#51060; &#48264;&#51077;&#45768;&#45796; | &#45236; &#49888;&#50857; &#52852;&#46300; &#48264;&#54840;&#45716; XXXXX &#48264;&#51077;&#45768;&#45796; |
-{: caption="Table 6. Numeric redaction example transcripts"}
+{: caption="Table 5. Numeric redaction example transcripts"}
 
 ### Numeric redaction example
 {: #numeric-redaction-example}

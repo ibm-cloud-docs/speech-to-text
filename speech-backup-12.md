@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2021
-lastupdated: "2021-09-19"
+lastupdated: "2021-09-22"
 
 subcollection: speech-to-text
 
@@ -88,7 +88,7 @@ Use these steps to back up your data from MinIO.
 
     where `{minio_backup_directory}` is the local directory that you created in the first step. The command succeeded if it returns the following buckets. This example output assumes that you installed both the `sttCustomization` and `sttAsync` components.
 
-    ```
+    ```text
     speech-service-base-models/
     stt-async-icp/
     stt-customization-icp/
@@ -168,6 +168,7 @@ Use these steps to back up your data from PostgreSQL.
 
     It is a best practice to create the backup directory on a mounted volume or file system that resides on a different host from the datastore. Alternatively, you can copy the finished backup files to a safe collection.
     {: note}
+
 1.  You need to back up three databases: `stt-customization`, `tts-customization`, and `stt-async`. Run the following command once per database.
 
     ```bash

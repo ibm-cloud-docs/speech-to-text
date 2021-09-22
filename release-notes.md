@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-19"
+lastupdated: "2021-09-22"
 
 subcollection: speech-to-text
 
@@ -703,7 +703,7 @@ The grammar interface is fully functional in all locations as of January 8, 2019
 
     The following four methods are available for working with grammars:
     -   `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` adds a grammar file to a custom language model.
-    -   `GET /v1/customizations/{customization_id}/grammars ` lists information about all grammars for a custom model.
+    -   `GET /v1/customizations/{customization_id}/grammars` lists information about all grammars for a custom model.
     -   `GET /v1/customizations/{customization_id}/grammars/{grammar_name}` returns information about a specified grammar for a custom model.
     -   `DELETE /v1/customizations/{customization_id}/grammars/{grammar_name}` removes an existing grammar from a custom model.
 
@@ -1188,10 +1188,9 @@ The service was updated to include a new profanity filtering feature on January 
     -   The *{{site.data.keyword.watson}} Speech SDK for the Google Android&trade; platform* supports streaming audio to the {{site.data.keyword.speechtotextshort}} service in real time and receiving a transcript of the audio as you speak. The project includes an example application that showcases interaction with both of the speech services. The SDK is available from the [speech-android-sdk repository](https://github.com/watson-developer-cloud/speech-android-sdk){: external} in the `watson-developer-cloud` namespace on GitHub.
     -   The *{{site.data.keyword.watson}} Speech SDK for the Apple&reg; iOS operating system* supports streaming audio to the {{site.data.keyword.speechtotextshort}} service and receiving a transcript of the audio in response. The SDK is available from the [speech-ios-sdk repository](https://github.com/watson-developer-cloud/speech-ios-sdk){: external} in the `watson-developer-cloud` namespace on GitHub.
 
-    Both SDKs support authenticating with the speech services by using either your {{site.data.keyword.cloud_notm}} service credentials or an authentication token.
-
-    Because the SDKs are beta, they are subject to change in the future.
+    Both SDKs support authenticating with the speech services by using either yopur {{site.data.keyword.cloud_notm}} service credentials or an authentication token. Because the SDKs are beta, they are subject to change in the future.
     {: note}
+
 -   The service supports two new languages, Brazilian Portuguese and Mandarin Chinese. The models for these new languages are `pt-BR_BroadbandModel`, `pt-BR_NarrowbandModel`, `zh-CN_BroadbandModel`, and `zh-CN_NarrowbandModel`. For more information, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
 -   The HTTP `POST` requests `/v1/sessions/{session_id}/recognize` and `/v1/recognize`, as well as the WebSocket `/v1/recognize` request, support transcription of a new media type: `audio/ogg;codecs=opus` for Ogg format files that use the Opus codec. In addition, the `audio/wav` format for the methods now supports any encoding. The restriction about the use of linear PCM encoding is removed. For more information, see [audio/ogg format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-ogg).
 -   The service now supports overcoming timeouts when you transcribe long audio files with the HTTP interface. When you use sessions, you can employ a long polling pattern by specifying sequence IDs with the `GET /v1/sessions/{session_id}/observe_result` and `POST /v1/sessions/{session_id}/recognize` methods for long-running recognition tasks. By using the new `sequence_id` parameter of these methods, you can request results before, during, or after you submit a recognition request.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-19"
+lastupdated: "2021-09-21"
 
 subcollection: speech-to-text
 
@@ -43,7 +43,7 @@ The snippets of example code that follow are written in JavaScript and are based
 
 The {{site.data.keyword.speechtotextshort}} service uses the WebSocket Secure (WSS) protocol to make the `/v1/recognize` method available at the following endpoint:
 
-```
+```text
 wss://api.{location}.speech-to-text.watson.cloud.ibm.com/instances/{instance_id}/v1/recognize
 ```
 {: codeblock}
@@ -244,7 +244,7 @@ The client disables interim results by setting the `interim_results` parameter t
 
 The response object can contain multiple final results for separate utterances of the audio. The service does not send the single response object until it receives a `stop` message to indicate that audio transmission for the request is complete. The  structure and format of the service's response is the same regardless of whether you use a previous- or next-generation model.
 
-```javascript
+```json
 {
   "result_index": 0,
   "results": [
@@ -285,7 +285,7 @@ The client receives multiple JSON objects in response. The service returns separ
 
 The service sends responses as soon as they are available. It does not wait for a `stop` message to send its results, though the `stop` message is still required to signal the end of transmission for the request. The structure and format of the service's response is the same regardless of whether you use a previous- or next-generation model.
 
-```javascript
+```json
 {
   "result_index": 0,
   "results": [

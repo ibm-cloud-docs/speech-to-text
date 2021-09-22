@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-19"
+lastupdated: "2021-09-21"
 
 subcollection: speech-to-text
 
@@ -21,7 +21,7 @@ Regardless of the interface that you use, the {{site.data.keyword.speechtotextfu
 
 The service returns the following response for the examples in [Making a speech recognition request](/docs/speech-to-text?topic=speech-to-text-basic-request). The examples pass only an audio file and its content type. The audio speaks a single sentence with no noticeable pauses between words.
 
-```javascript
+```json
 {
   "result_index": 0,
   "results": [
@@ -123,7 +123,7 @@ The following examples show responses with two final results from the HTTP and W
 
 -   *For the HTTP interfaces,* the service always sends a single `SpeechRecognitionResults` object. The `alternatives` array has a separate element for each final result. The response has a single `result_index` field with a value of `0`.
 
-    ```javascript
+    ```json
     {
       "result_index": 0,
       "results": [
@@ -153,7 +153,7 @@ The following examples show responses with two final results from the HTTP and W
 -   *For the WebSocket interface,* the service sends the same results as the previous example. The response includes a single `SpeechRecognitionResults` object,
 the `alternatives` array has a separate element for each final result, and the response has a single `result_index` field with a value of `0`.
 
-    ```javascript
+    ```json
     {
      "result_index": 0,
       "results": [
@@ -205,7 +205,7 @@ Different languages can use different hesitation markers or not indicate hesitat
 
 The following example shows the token `%HESITATION` for a US English transcript:
 
-```javascript
+```json
 {
   "result_index": 0,
   "results": [
@@ -228,7 +228,7 @@ Hesitation markers can appear in both interim and final results. Enabling smart 
 
 Hesitation markers can also appear in other fields of a transcript. For example, if you request [Word timestamps](/docs/speech-to-text?topic=speech-to-text-metadata#word-timestamps) for the individual words of a transcript, the service reports the start and end time of each hesitation marker.
 
-```javascript
+```json
 {
   "result_index": 0,
   "results": [
@@ -277,14 +277,14 @@ For most languages, the service does not use capitalization in response transcri
 
 *For US English only,* the service does capitalize many proper nouns. For example, the service returns the following text for the specified phrase:
 
-```
+```text
 Barack Obama graduated from Columbia University
 ```
 {: codeblock}
 
 For other languages, the service returns the following text:
 
-```
+```text
 barack obama graduated from columbia university
 ```
 {: codeblock}
