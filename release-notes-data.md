@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2021
-lastupdated: "2021-08-29"
+lastupdated: "2021-10-01"
 
 subcollection: speech-to-text
 
@@ -108,6 +108,11 @@ The service has the following known limitations:
     However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
+
+## Version 1.1.x (1 October 2021)
+{: #v11x}
+
+{{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}} for {{site.data.keyword.icp4dfull_notm}} version 1.1.x went out of service on 30 September 2021. As of 1 October 2021, the documentation for version 1.1.x is no longer available. For more information, see [Software withdrawal and support discontinuance](https://www.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/9/899/ENUSLP21-0099/index.html&request_locale=en){: external}.
 
 ## Version 4.0.0 (31 August 2021)
 {: #v40b}
@@ -261,7 +266,16 @@ The release includes the following functional changes and enhancements:
 -   The hesitation marker that is used for the updated German broadband and narrowband models has changed from `[hesitation]` to `%HESITATION`. For more information about hesitation markers, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 -   **Defect fix:** The service no longer has a latency issue for custom language models that contain a large number of grammars. When initially used for speech recognition, such custom models could take multiple seconds to load. The custom models now load much faster, greatly reducing latency when they are used for recognition.
 
-## Version 1.1.4 (19 June 2020)
+## Older versions
+{: #release-notes-data-older}
+
+-   [Version 1.1.4 (19 June 2020)](#v114)
+-   [Version 1.1.3 (28 February 2020)](#v113)
+-   [Version 1.1.2 (27 November 2019)](#v112)
+-   [Version 1.0.1 (30 August 2019)](#v101)
+-   [Version 1.0.0 (28 June 2019)](#v100)
+
+### Version 1.1.4 (19 June 2020)
 {: #v114}
 
 {{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}} for {{site.data.keyword.icp4dfull_notm}} version 1.1.4 go out of service on **30 September 2021**. You must upgrade to a later version of the services on {{site.data.keyword.icp4dfull_notm}} before that date. As of 1 October 2021, the documentation for version 1.1.4 will no longer be available.
@@ -291,14 +305,6 @@ The release includes the following functional changes and enhancements:
     -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support)
 -   The service now supports speaker labels (the `speaker_labels` parameter) for German and Korean language models. Speaker labels identify which individuals spoke which words in a multi-participant exchange. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 -   The Japanese narrowband model (`ja-JP_NarrowbandModel`) now includes some multigram word units for digits and decimal fractions. The service returns these multigram units regardless of whether you enable smart formatting. The smart formatting feature understands and returns the multigram units that the model generates. If you apply your own post-processing to transcription results, you need to handle these units appropriately. For more information, see [Japanese](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-japanese) in the smart formatting documentation.
-
-## Older versions
-{: #release-notes-data-older}
-
--   [Version 1.1.3 (28 February 2020)](#v113)
--   [Version 1.1.2 (27 November 2019)](#v112)
--   [Version 1.0.1 (30 August 2019)](#v101)
--   [Version 1.0.0 (28 June 2019)](#v100)
 
 ### Version 1.1.3 (28 February 2020)
 {: #v113}
