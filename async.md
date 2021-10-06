@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-21"
+lastupdated: "2021-09-30"
 
 subcollection: speech-to-text
 
@@ -22,6 +22,9 @@ The asynchronous HTTP interface of the {{site.data.keyword.speechtotextfull}} se
 The two approaches are not mutually exclusive. You can elect to receive callback notifications but still poll the service for the latest status or contact the service to retrieve results manually. The following sections describe how to use the asynchronous HTTP interface with either approach.
 
 Submit a maximum of 1 GB and a minimum of 100 bytes of audio data with a single request. For information about audio formats and about using compression to maximize the amount of audio that you can send with a request, see [Supported audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats). For more information about the individual methods of the interface, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+
+The asynchronous HTTP interface does not support multipart speech recognition. You can use only the synchronous HTTP interface for multipart requests. For more information, see [Making a multipart HTTP speech recognition request](/docs/speech-to-text?topic=speech-to-text-http#HTTP-multi).
+{: note}
 
 ## Usage models
 {: #usage}

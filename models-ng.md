@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-09-22"
+lastupdated: "2021-09-23"
 
 subcollection: speech-to-text
 
@@ -37,14 +37,14 @@ Choose the model that most closely matches the source and sampling rate of your 
 
 Table 1 lists the next-generation models that are available for each language. Low-latency columns indicate whether each model supports the `low_latency` parameter for speech recognition. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
 
-The table indicates the product versions for which each model and for which low-latency are supported. Unless otherwise indicated, the model and low latency are supported for both {{site.data.keyword.cloud_notm}} and {{site.data.keyword.icp4dfull_notm}}. The Czech and Netherlands Dutch models are *Beta* functionality. All other models are generally available (GA).
+The table indicates the product versions for which each model and for which low-latency are supported. Unless otherwise indicated, the model and low latency are supported for both {{site.data.keyword.cloud_notm}} and {{site.data.keyword.icp4dfull_notm}}. All models are generally available (GA).
 
 | Language | Multimedia model | Multimedia low-latency support | Telephony model | Telephony low-latency support |
 |----------|:----------------:|:-------------------:|:---------------:|:-------------------:|
 | Arabic  \n (Modern Standard) | Not available | Not available | `ar-MS_Telephony` | **Yes**  \n IBM Cloud only |
-| Czech | Not available | Not available | `cz-CZ_Telephony`  \n IBM Cloud only (*Beta*) | **Yes**  \n IBM Cloud only |
+| Czech | Not available | Not available | `cz-CZ_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
 | Dutch  \n (Belgian) | Not available | Not available | `nl-BE_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
-| Dutch  \n (Netherlands) | Not available | Not available | `nl-NL_Telephony`  \n IBM Cloud only (*Beta*) | **No** |
+| Dutch  \n (Netherlands) | Not available | Not available | `nl-NL_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
 | English  \n (Australian) | Not available | Not available | `en-AU_Telephony` | **Yes** |
 | English  \n (Indian) | Not available | Not available | `en-IN_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
 | English  \n (United Kingdom) | Not available | Not available | `en-GB_Telephony` | **Yes** |

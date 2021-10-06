@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-10"
+lastupdated: "2021-09-30"
 
 subcollection: speech-to-text
 
@@ -108,12 +108,12 @@ curl -X POST \
 ## Language model support
 {: #detection-support}
 
-The following language models do *not* support speech activity detection at this time. The parameters are ignored if used with these models.
+The `speech_detector_sensitivity` and `background_audio_suppression` parameters are supported for use with the following language models:
 
--   Arabic broadband model (`ar-MS_BroadbandModel`)
--   Brazilian Portuguese broadband model (`pt-BR_BroadbandModel`)
--   Chinese broadband model (`zh-CN_BroadbandModel`)
--   Chinese narrowband model (`zh-CN_NarrowbandModel`)
--   German broadband model (`de-DE_BroadbandModel`)
-
-The latest versions of all other language models support speech activity detection. If a model is updated for the [24 February 2020 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#February2020), only the latest version of the model supports speech activity detection. By default, the service uses the latest version of a model for speech recognition. If you use customization with a model that has been updated, you must upgrade to the latest version of the model to be able to use speech activity detection.
+-   *For next-generation models,* the parameters are supported with all models.
+-   *For previous-generation models,* the parameters are supported with most models. The following models do *not* support speech activity detection at this time. The parameters are ignored if used with these models.
+    -   Arabic broadband model (`ar-MS_BroadbandModel`)
+    -   Brazilian Portuguese broadband model (`pt-BR_BroadbandModel`)
+    -   Chinese broadband model (`zh-CN_BroadbandModel`)
+    -   Chinese narrowband model (`zh-CN_NarrowbandModel`)
+    -   German broadband model (`de-DE_BroadbandModel`)
