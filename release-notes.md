@@ -2,15 +2,19 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-22"
+lastupdated: "2021-10-06"
+
+keywords: speech to text release notes
 
 subcollection: speech-to-text
+
+content-type: release-note
 
 ---
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Release notes for {{site.data.keyword.cloud_notm}}
+# Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.cloud_notm}}
 {: #release-notes}
 
 ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
@@ -18,7 +22,7 @@ subcollection: speech-to-text
 The following features and changes were included for each release and update of managed instances of {{site.data.keyword.speechtotextfull}} that are hosted on {{site.data.keyword.cloud_notm}} or for instances that are hosted on [IBM Cloud Pak for Data as a Service](https://dataplatform.cloud.ibm.com/docs/content/wsj/landings/wstt.html){: external}. The information includes known limitations. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
 {: shortdesc}
 
-For information about releases and updates for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
+For information about releases and updates for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
 
 ## Beta features
@@ -109,6 +113,23 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
+## 6 October 2021
+{: #October2021}
+
+-   The following next-generation language models have changed as indicated:
+    -   The Czech telephony model, `cs-CZ_Telephony`, is now generally available (GA). The model continues to support low latency.
+    -   The Belgian Dutch telephony model, `nl-BE_Telephony`, has been updated for improved speech recognition. The model continues to support low latency.
+    -   The Netherlands Dutch telephony model, `nl-NL_Telephony`, is now GA. In addition, the model now supports low latency.
+
+    For more information about all available next-generation language models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+-   US Health Insurance Portability and Accountability Act (HIPAA) support is now available for Premium plans that are hosted in the Dallas (`us-south`) location. For more information, see [Health Insurance Portability and Accountability Act (HIPAA)](/docs/speech-to-text?topic=speech-to-text-information-security#hipaa).
+
+<!-- 21.13
+-   The `GET /v1/models` and `GET /v1/models/{model_id}` methods now report whether a model supports acoustic model customization. The `SupportedFeatures` object now includes an additional field, `custom_acoustic_model`, a boolean that is `true` for a model that supports acoustic model customization and false otherwise. Currently, the field is `true` for all previous-generation models and `false` for all next-generation models.
+    -   For more information about these methods, see [Listing information about models](/docs/speech-to-text?topic=speech-to-text-models-list).
+    -   For more information about support for acoustic model customization, see [Language support and usage notes for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
+-->
+
 ## 16 September 2021
 {: #September2021}
 
@@ -168,28 +189,10 @@ For more information about the next-generation models and low latency, see [Next
 -   The next-generation US English Telephony model (`en-US_Telephony`) has been updated for improved speech recognition. The updated model continues to be beta functionality.
 -   **Defect fix:** The documentation failed to state that next-generation models do *not* produce hesitation markers. The documentation has been updated to note that only previous-generation models produce hesitation markers. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 
-## 15 June 2021
-{: #June2021}
-
-The collection of available next-generation language models has been updated and expanded:
-
--   The following next-generation language model is now available for the Belgian Dutch (Flemish) language. The new model supports low latency. Like all next-generation models, the new model is beta functionality.
-    -   `nl-BE_Telephony`
-
--   The following existing next-generation language models now support low latency:
-    -   `ar-MS_Telephony`
-    -   `fr-CA_Telephony`
-    -   `it-IT_Telephony`
-
--   The following existing next-generation language models have been updated for improved speech recognition:
-    -   `ar-MS_Telephony`
-    -   `pt-BR_Telephony`
-
-For more information about the next-generation models and about low latency, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng) and [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
-
 ## Older releases
 {: #release-notes-older}
 
+-   [15 June 2021](#June2021)
 -   [26 May 2021](#May2021)
 -   [27 April 2021](#April2021b)
 -   [12 April 2021](#April2021a)
@@ -257,6 +260,25 @@ For more information about the next-generation models and about low latency, see
 -   [17 December 2015](#December2015)
 -   [21 September 2015](#September2015)
 -   [1 July 2015](#July2015)
+
+### 15 June 2021
+{: #June2021}
+
+The collection of available next-generation language models has been updated and expanded:
+
+-   The following next-generation language model is now available for the Belgian Dutch (Flemish) language. The new model supports low latency. Like all next-generation models, the new model is beta functionality.
+    -   `nl-BE_Telephony`
+
+-   The following existing next-generation language models now support low latency:
+    -   `ar-MS_Telephony`
+    -   `fr-CA_Telephony`
+    -   `it-IT_Telephony`
+
+-   The following existing next-generation language models have been updated for improved speech recognition:
+    -   `ar-MS_Telephony`
+    -   `pt-BR_Telephony`
+
+For more information about the next-generation models and about low latency, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng) and [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
 
 ### 26 May 2021
 {: #May2021}
@@ -1160,7 +1182,7 @@ The beta asynchronous HTTP interface now supports all languages that are support
 
 -   Both forms of data transmission (one-shot delivery and streaming) now impose a size limit of 100 MB on the audio data, as does the WebSocket interface. Formerly, the one-shot approach had a maximum limit of 4 MB of data. For more information, see [Audio transmission](/docs/speech-to-text?topic=speech-to-text-input#transmission) (for all interfaces) and [Send audio and receive recognition results](/docs/speech-to-text?topic=speech-to-text-websockets#ws-audio) (for the WebSocket interface). The WebSocket section also discusses the maximum frame or message size of 4 MB enforced by the WebSocket interface.
 -   The JSON response for a recognition request can now include an array of warning messages for invalid query parameters or JSON fields that are included with a request. Each element of the array is a string that describes the nature of the warning followed by an array of invalid argument strings. For example, `"warnings": [ "Unknown arguments: [u'{invalid_arg_1}', u'{invalid_arg_2}']." ]`. For more information, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
--   The beta *{{site.data.keyword.watson}} Speech Software Development Kit (SDK) for the Apple&reg; iOS operating system* is deprecated. Use the *{{site.data.keyword.watson}} SDK for the Apple&reg; iOS operating system* instead. The new SDK is available from the [ios-sdk repository](https://github.com/watson-developer-cloud/ios-sdk){: external} in the `watson-developer-cloud` namespace on GitHub.
+-   The beta *{{site.data.keyword.watson}} Speech Software Development Kit (SDK) for the Apple® iOS operating system* is deprecated. Use the *{{site.data.keyword.watson}} SDK for the Apple® iOS operating system* instead. The new SDK is available from the [ios-sdk repository](https://github.com/watson-developer-cloud/ios-sdk){: external} in the `watson-developer-cloud` namespace on GitHub.
 -   The WebSocket interface currently has the following known issue:
     -   The service can take minutes to produce final results for a recognition request for an especially long audio file. For the WebSocket interface, the underlying TCP connection remains idle while the service prepares the response. Therefore, the connection can close due to a timeout. To avoid the timeout with the WebSocket interface, request interim results (`\"interim_results\": \"true\"`) in the JSON for the `start` message to initiate the request. You can discard the interim results if you do not need them. This issue will be resolved in a future update.
 
@@ -1185,8 +1207,8 @@ The service was updated to include a new profanity filtering feature on January 
 {: #September2015}
 
 -   Two new beta mobile SDKs are available for the speech services. The SDKs enable mobile applications to interact with both the {{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}} services.
-    -   The *{{site.data.keyword.watson}} Speech SDK for the Google Android&trade; platform* supports streaming audio to the {{site.data.keyword.speechtotextshort}} service in real time and receiving a transcript of the audio as you speak. The project includes an example application that showcases interaction with both of the speech services. The SDK is available from the [speech-android-sdk repository](https://github.com/watson-developer-cloud/speech-android-sdk){: external} in the `watson-developer-cloud` namespace on GitHub.
-    -   The *{{site.data.keyword.watson}} Speech SDK for the Apple&reg; iOS operating system* supports streaming audio to the {{site.data.keyword.speechtotextshort}} service and receiving a transcript of the audio in response. The SDK is available from the [speech-ios-sdk repository](https://github.com/watson-developer-cloud/speech-ios-sdk){: external} in the `watson-developer-cloud` namespace on GitHub.
+    -   The *{{site.data.keyword.watson}} Speech SDK for the Google Android™ platform* supports streaming audio to the {{site.data.keyword.speechtotextshort}} service in real time and receiving a transcript of the audio as you speak. The project includes an example application that showcases interaction with both of the speech services. The SDK is available from the [speech-android-sdk repository](https://github.com/watson-developer-cloud/speech-android-sdk){: external} in the `watson-developer-cloud` namespace on GitHub.
+    -   The *{{site.data.keyword.watson}} Speech SDK for the Apple® iOS operating system* supports streaming audio to the {{site.data.keyword.speechtotextshort}} service and receiving a transcript of the audio in response. The SDK is available from the [speech-ios-sdk repository](https://github.com/watson-developer-cloud/speech-ios-sdk){: external} in the `watson-developer-cloud` namespace on GitHub.
 
     Both SDKs support authenticating with the speech services by using either yopur {{site.data.keyword.cloud_notm}} service credentials or an authentication token. Because the SDKs are beta, they are subject to change in the future.
     {: note}

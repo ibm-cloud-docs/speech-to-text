@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-22"
+lastupdated: "2021-09-23"
 
 subcollection: speech-to-text
 
@@ -63,9 +63,9 @@ To learn which models are supported for {{site.data.keyword.cloud_notm}}, {{site
 | Language (dialect) |  Models | Language model customization | Grammars | Acoustic model customization |
 |------------------------|:-----------:|:----------------------------------------:|:----------------------------------------:|:----------------------------------------:|
 | Arabic  \n (Modern Standard) | `ar-MS_Telephony` | GA | Not supported | Not supported |
-| Czech | `cz-CZ_Telephony` | Beta | Not supported | Not supported |
+| Czech | `cz-CZ_Telephony` | GA | Not supported | Not supported |
 | Dutch  \n (Belgian) | `nl-BE_Telephony` | GA | Not supported | Not supported |
-| Dutch  \n (Netherlands) | `nl-NL_Telephony` | Beta | Not supported | Not supported |
+| Dutch  \n (Netherlands) | `nl-NL_Telephony` | GA | Not supported | Not supported |
 | English  \n (Australian) | `en-AU_Telephony` | GA | Not supported | Not supported |
 | English  \n (Indian) | `en-IN_Telephony` | GA | Not supported | Not supported |
 | English  \n (United Kingdom) | `en-GB_Telephony` | GA | Not supported | Not supported |
