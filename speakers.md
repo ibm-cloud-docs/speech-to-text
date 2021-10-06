@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-19"
+lastupdated: "2021-09-24"
 
 subcollection: speech-to-text
 
@@ -64,33 +64,33 @@ The response includes arrays of timestamps and speaker labels. The numeric value
           "timestamps": [
             [
               "hello",
-              0.68,
-              1.19
+              0.28,
+              0.79
             ],
             [
               "yeah",
-              1.47,
-              1.91
+              1.07,
+              1.53
             ],
             [
               "yeah",
-              1.96,
-              2.12
+              1.66,
+              2.02
             ],
             [
               "how's",
-              2.12,
-              2.59
+              2.15,
+              2.44
             ],
             [
               "Billy",
-              2.59,
-              3.17
+              2.45,
+              3.03
             ],
             [
               "good",
-              4.01,
-              4.30
+              3.57,
+              3.95
             ]
           ]
           "confidence": 0.82,
@@ -102,43 +102,43 @@ The response includes arrays of timestamps and speaker labels. The numeric value
   ],
   "speaker_labels": [
     {
-      "from": 0.68,
-      "to": 1.19,
+      "from": 0.28,
+      "to": 0.79,
       "speaker": 2,
       "confidence": 0.52,
       "final": false
     },
     {
-      "from": 1.47,
-      "to": 1.93,
+      "from": 1.07,
+      "to": 1.53,
       "speaker": 1,
-      "confidence": 0.62,
+      "confidence": 0.63,
       "final": false
     },
     {
-      "from": 1.96,
-      "to": 2.12,
+      "from": 1.66,
+      "to": 2.02,
+      "speaker": 2,
+      "confidence": 0.54,
+      "final": false
+    },
+    {
+      "from": 2.15,
+      "to": 2.44,
       "speaker": 2,
       "confidence": 0.51,
       "final": false
     },
     {
-      "from": 2.12,
-      "to": 2.59,
+      "from": 2.45,
+      "to": 3.03,
       "speaker": 2,
-      "confidence": 0.51,
+      "confidence": 0.55,
       "final": false
     },
     {
-      "from": 2.59,
-      "to": 3.17,
-      "speaker": 2,
-      "confidence": 0.51,
-      "final": false
-    },
-    {
-      "from": 4.01,
-      "to": 4.30,
+      "from": 3.57,
+      "to": 3.95,
       "speaker": 1,
       "confidence": 0.63,
       "final": true
@@ -150,97 +150,12 @@ The response includes arrays of timestamps and speaker labels. The numeric value
 
 The `transcript` field shows the final transcript of the audio, which lists the words as they were spoken by all participants. By comparing and synchronizing the speaker labels with the timestamps, you can reassemble the conversation as it occurred. The `confidence` field for each speaker label indicates the service's confidence in its identification of the speaker.
 
-<table style="width:50%">
-  <caption>Table 1. Speaker labels example</caption>
-  <tr>
-    <th style="text-align:left">Timestamp</th>
-    <th style="text-align:left">Speaker label</th>
-  </tr>
-  <tr>
-    <td>
-      <code>"hello",</code><br/>
-      <code>0.68,</code><br/>
-      <code>1.19</code>
-    </td>
-    <td>
-      <code>"from": 0.68,</code><br/>
-      <code>"to": 1.19,</code><br/>
-      <code>"speaker": 2,</code><br/>
-      <code>"confidence": 0.52,</code><br/>
-      <code>"final": false</code>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>"yeah",</code><br/>
-      <code>1.47,</code><br/>
-      <code>1.93</code>
-    </td>
-    <td>
-      <code>"from": 1.47,</code><br/>
-      <code>"to": 1.93,</code><br/>
-      <code>"speaker": 1,</code><br/>
-      <code>"confidence": 0.62,</code><br/>
-      <code>"final": false</code>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>"yeah",</code><br/>
-      <code>1.96,</code><br/>
-      <code>2.12</code>
-    </td>
-    <td>
-      <code>"from": 1.96,</code><br/>
-      <code>"to": 2.12,</code><br/>
-      <code>"speaker": 2,</code><br/>
-      <code>"confidence": 0.51,</code><br/>
-      <code>"final": false</code>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>"how's",</code><br/>
-      <code>2.12,</code><br/>
-      <code>2.59</code>
-    </td>
-    <td>
-      <code>"from": 2.12,</code><br/>
-      <code>"to": 2.59,</code><br/>
-      <code>"speaker": 2,</code><br/>
-      <code>"confidence": 0.51,</code><br/>
-      <code>"final": false</code>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>"Billy",</code><br/>
-      <code>2.59,</code><br/>
-      <code>3.17</code>
-    </td>
-    <td>
-      <code>"from": 2.59,</code><br/>
-      <code>"to": 3.17,</code><br/>
-      <code>"speaker": 2,</code><br/>
-      <code>"confidence": 0.51,</code><br/>
-      <code>"final": false</code>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <code>"good",</code><br/>
-      <code>4.01,</code><br/>
-      <code>4.30</code>
-    </td>
-    <td>
-      <code>"from": 4.01,</code><br/>
-      <code>"to": 4.30,</code><br/>
-      <code>"speaker": 1,</code><br/>
-      <code>"confidence": 0.63,</code><br/>
-      <code>"final": true</code>
-    </td>
-  </tr>
-</table>
+| Timestamps  \n (0.00 - 2.14) | Speaker labels  \n (0.00 - 2.14) | Timestamps  \n (2.15 - 3.95) | Speaker labels  \n (2.15 - 3.95) |
+|--------------------------|------------------------------|-------------------------|-----------------------------|
+| `0.28,`  \n `0.79`  \n `"hello",` | `"from": 0.28,`  \n `"to": 0.79,`  \n `"speaker": 2,`  \n `"confidence": 0.52,`  \n `"final": false` | `2.15,`  \n `2.44`  \n `"how's",` | `"from": 2.15,`  \n `"to": 2.44,`  \n `"speaker": 2,`  \n `"confidence": 0.51,`  \n `"final": false` |
+| `1.07,`  \n `1.53`  \n `"yeah",` | `"from": 1.07,`  \n `"to": 1.53,`  \n `"speaker": 1,`  \n `"confidence": 0.63,`  \n `"final": false` | `2.45,`  \n `3.03`  \n `"Billy",` | `"from": 2.45,`  \n `"to": 3.03,`  \n `"speaker": 2,`  \n `"confidence": 0.55,`  \n `"final": false`|
+| `1.66,`  \n `2.02`  \n `"yeah",` | `"from": 1.66,`  \n `"to": 2.02,`  \n `"speaker": 2,`  \n `"confidence": 0.54,`  \n `"final": false` | `3.57,`  \n `3.95`  \n  `"good",` | `"from": 3.57,`  \n `"to": 3.95,`  \n `"speaker": 1,`  \n `"confidence": 0.63,`  \n `"final": true` |
+{: caption="Table 1. Speaker labels example"}
 
 The results clearly capture the brief two-person exchange:
 
