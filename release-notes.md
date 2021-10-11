@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-10-06"
+lastupdated: "2021-10-11"
 
 keywords: speech to text release notes
 
@@ -28,7 +28,7 @@ For information about releases and updates for {{site.data.keyword.icp4dfull_not
 ## Beta features
 {: release-notes-beta-features}
 
-IBM occasionally releases features and language support that are classified as beta. Such features are provided so that you can evaluate their functionality. They might not provide the same level of performance or compatibility that generally available (GA) features provide. They might be unstable and are subject to change or removal with short notice. They are not intended for use in a production environment.
+{{site.data.keyword.IBM_notm}} occasionally releases features and language support that are classified as beta. Such features are provided so that you can evaluate their functionality. They might not provide the same level of performance or compatibility that generally available (GA) features provide. They might be unstable and are subject to change or removal with short notice. They are not intended for use in a production environment.
 
 ## Known limitations
 {: #release-notes-limitations}

@@ -18,6 +18,13 @@ toc:
       - features.md
       - data-security.md
       - topicgroup:
+          label: Release notes
+          topics:
+          - topic: release-notes.md
+            navtitle: Release notes for IBM Cloud
+          - topic: release-notes-data.md
+            navtitle: Release notes for IBM Cloud Pak for Data
+      - topicgroup:
           label: Demos
           links:
           - link:
@@ -150,8 +157,6 @@ toc:
   - navgroup:
       id: help
       topics:
-      - release-notes.md
-      - release-notes-data.md
       - faq-usage.md
       - faq-pricing.md
       - topicgroup:
@@ -161,5 +166,5 @@ toc:
               label: StackOverflow
               href: http://stackoverflow.com/questions/tagged/ibm-watson-cognitive+speech-to-text
           - link:
-              label: WDC Slack channel
+              label: Watson Developer Community Slack channel
               href: http://wdc-slack-inviter.mybluemix.net/
