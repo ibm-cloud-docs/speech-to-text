@@ -2,13 +2,11 @@
 
 copyright:
   years: 2018, 2021
-lastupdated: "2021-10-11"
+lastupdated: "2021-10-13"
 
-keywords: speech to text for IBM cloud pak for data release notes
+keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
 subcollection: speech-to-text
-
-content-type: release-note
 
 ---
 
@@ -114,15 +112,13 @@ The service has the following known limitations:
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
 ## 1 October 2021 (Version 1.1.x)
-{: #speech-to-text-v11x-1october2021}
-{: release-note}
+{: #speech-to-text-data-1october2021}
 
 Version 1.1.x is out of service
 :   {{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}} for {{site.data.keyword.icp4dfull_notm}} version 1.1.x went out of service on 30 September 2021. As of 1 October 2021, the documentation for version 1.1.x is no longer available. For more information, see [Software withdrawal and support discontinuance](https://www.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/9/899/ENUSLP21-0099/index.html&request_locale=en){: external}.
 
 ## 31 August 2021 (Version 4.0.0)
-{: #speech-to-text-v40-31august2021}
-{: release-note}
+{: #speech-to-text-data-31august2021}
 
 All next-generation models are now generally available
 :   All next-generation language models are now generally available (GA). They are supported for use in production environments and applications.
@@ -149,8 +145,7 @@ Language model customization for next-generation models is now generally availab
     Additional topics describe managing custom language models, corpora, and custom words.
 
 ## 29 July 2021 (Version 4.0.0)
-{: #speech-to-text-v40-29july2021}
-{: release-note}
+{: #speech-to-text-data-29july2021}
 
 Version 4.0.0 is available
 :   {{site.data.keyword.speechtotextfull}} for {{site.data.keyword.icp4dfull}} version 4.0.0 is now available.  Installation and administration of the service include many changes. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.x and Red Hat OpenShift version 4.6. For more information about installing and managing the service, see [Installing {{site.data.keyword.ibmwatson_notm}} {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-speech-install-data).
@@ -179,7 +174,7 @@ Unified {{site.data.keyword.speechtotextshort}} documentation
     For more information about identifying information that pertains to only one version of the product, see [About {{site.data.keyword.speechtotextshort}}](/docs/speech-to-text?topic=speech-to-text-about#about-version).
 
 Defect fixes for documentation
-:   The documentation has been updated to correct the following information:
+:   **Defect fixes:** The documentation has been updated to correct the following information:
 
     -   The documentation incorrectly stated that using the `smart_formatting` parameter causes the service to remove hesitation markers from final transcription results for Japanese. Smart formatting does not remove hesitation markers from final results for Japanese, only for US English. For more information, see [What results does smart formatting affect?](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-effects)
     -   The documentation failed to state that next-generation models do *not* produce hesitation markers. The documentation has been updated to note that only previous-generation models produce hesitation markers. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
@@ -188,8 +183,7 @@ Version 1.1.x is going out of service
 :   {{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}} for {{site.data.keyword.icp4dfull_notm}} version 1.1.x go out of service on **30 September 2021**. You must upgrade to a later version of the services on {{site.data.keyword.icp4dfull_notm}} before that date. As of 1 October 2021, the documentation for version 1.1.4 will no longer be available.
 
 ## 12 April 2021 (Version 1.2.1)
-{: #speech-to-text-v121-12april2021}
-{: release-note}
+{: #speech-to-text-data-12april2021}
 
 Addition to `speech-override.yaml` file
 :   The minimal `speech-override.yaml` file includes an extra definition, `dockerRegistryPrefix`:
@@ -205,15 +199,13 @@ Addition to `speech-override.yaml` file
     `{Registry}` is the path for the internal Docker registry. It must be `image-registry.openshift-image-registry.svc:5000/{namespace}`, where `{namespace}` is the namespace in which {{site.data.keyword.icp4dfull}} is installed, normally `zen`. For more information, see [The speech-override.yaml file](/docs/speech-to-text?topic=speech-to-text-speech-override-12#speech-override-file-12).
 
 ## 9 April 2021 (Version 1.2.1)
-{: #speech-to-text-v121-9april2021}
-{: release-note}
+{: #speech-to-text-data-9april2021}
 
 Support for modifying installed models and voices
 :   The Speech services let you add or remove installed models and voices for version 1.2 or 1.2.1 of the services. For more information, see [Modifying the installed models and voices](/docs/speech-to-text?topic=speech-to-text-speech-cluster-12#speech-cluster-models-voices-12).
 
 ## Version 1.2.1 (26 March 2021)
-{: #speech-to-text-v121-26march2021}
-{: release-note}
+{: #speech-to-text-data-26march2021}
 
 Version 1.2.1 is available
 :   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 1.2.1 is now available. Versions 1.2 and 1.2.1 use the same version 1.2 documentation and installation instructions. Version 1.2.1 supports installation on Red Hat OpenShift version 4.6 in addition to versions 4.5 and 3.11.
@@ -269,8 +261,7 @@ Deletions from `speech-override.yaml` file
     You can download a complete version of the [speech-override.yaml](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/cpd-version-12/speech-override.yaml){: external} file. The complete version includes all of the detailed elements described in [Using the override file](/docs/speech-to-text?topic=speech-to-text-speech-override-12).
 
 ## Version 1.2 (9 December 2020)
-{: #speech-to-text-v12-9december2020}
-{: release-note}
+{: #speech-to-text-data-9december2020}
 
 Version 1.2 is available
 :   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 1.2 is now available. Installation and administration of the service include many changes. This version supports {{site.data.keyword.icp4dfull_notm}} versions 3.5 and 3.0.1, and Red Hat OpenShift versions 4.5 and 3.11. For more information about installing and managing the service, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} version 1.2](/docs/speech-to-text?topic=speech-to-text-speech-install-12).
@@ -306,17 +297,16 @@ Hesitation marker for German has changed
 :   The hesitation marker that is used for the updated German broadband and narrowband models has changed from `[hesitation]` to `%HESITATION`. For more information about hesitation markers, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 
 Defect fix to address latency issue for models with large numbers of grammars
-:   The service no longer has a latency issue for custom language models that contain a large number of grammars. When initially used for speech recognition, such custom models could take multiple seconds to load. The custom models now load much faster, greatly reducing latency when they are used for recognition.
+:   **Defect fix:** The service no longer has a latency issue for custom language models that contain a large number of grammars. When initially used for speech recognition, such custom models could take multiple seconds to load. The custom models now load much faster, greatly reducing latency when they are used for recognition.
 
 ## 15 July 2020 (Version 1.1.4)
-{: #speech-to-text-v114-15july2020}
+{: #speech-to-text-data-15july2020}
 
 Red Hat OpenShift version 4.3 is going out of service
 :   {{site.data.keyword.icp4dfull_notm}} 3.0.1 is deprecating support for Red Hat OpenShift 4.3 on 1 September 2020. Red Hat OpenShift 4.3 is going out of service on **22 October 2020**. {{site.data.keyword.icp4dfull_notm}} is introducing support for Red Hat OpenShift 4.5. {{site.data.keyword.icp4dfull_notm}} is recommending that clients upgrade to Red Hat OpenShift 4.5 before 22 October 2020. IBM Support will work with any customers who already installed {{site.data.keyword.icp4dfull_notm}} 3.0.1 on Red Hat OpenShift 4.3. New customers who want to install on Red Hat OpenShift 4.x are instructed to install Red Hat OpenShift 4.5.
 
 ## 19 June 2020 (Version 1.1.4)
-{: #speech-to-text-v114-19june2020}
-{: release-note}
+{: #speech-to-text-data-19june2020}
 
 Version 1.1.4 is available
 :   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 1.1.4 is now available. Installation and administration of the service include many changes. This version supports {{site.data.keyword.icp4dfull_notm}} versions 2.5 and 3.0.1, and Red Hat OpenShift versions 3.11 and 4.3. For more information about installing and managing the service, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} version 1.1.4](/docs/speech-to-text?topic=speech-to-text-speech-install).
@@ -349,15 +339,13 @@ Simplified backup and restore
 :   The service now offers greatly improved backup and restore procedures. Utilities are now available to back up data from your datastores, so you no longer need to re-create all of your data in the event of a disaster. For more information, see [Backing up and restoring your data](/docs/speech-to-text?topic=speech-to-text-speech-backup).
 
 ## 1 April 2020 (Version 1.1.3)
-{: #speech-to-text-v113-1april2020}
-{: release-note}
+{: #speech-to-text-data-1april2020}
 
 Acoustic model customization is now generally available
 :   Acoustic model customization is now generally available (GA) for all supported languages. For more information about support for individual language models, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
 
 ## 28 February 2020 (Version 1.1.3)
-{: #speech-to-text-v113-28february2020}
-{: release-note}
+{: #speech-to-text-data-28february2020}
 
 Version 1.1.3 is available
 :   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 1.1.3 is now available.
@@ -380,8 +368,7 @@ Improved `speaker_labels` parameter
 :   For speech recognition, the `speaker_labels` parameter has been updated to improve the identification of individual speakers for further analysis of your audio sample. For more information about the speaker labels feature, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels). For more information about the improvements to the feature, see [IBM Research AI Advances Speaker Diarization in Real Use Cases](https://www.ibm.com/blogs/research/2020/07/speaker-diarization-in-real-use-cases/){: external}.
 
 ## 27 November 2019 (Version 1.1.2)
-{: #speech-to-text-v112-27november2019}
-{: release-note}
+{: #speech-to-text-data-27november2019}
 
 Version 1.1.2 is available
 :   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 1.1.2 is now available.
@@ -390,8 +377,7 @@ Maximum number of custom models
 :   You can create no more than 1024 custom language models and no more than 1024 custom acoustic models per owning credentials. For more information, see [Maximum number of custom models](/docs/speech-to-text?topic=speech-to-text-customization#customMaximum).
 
 ## 30 August 2019 (Version 1.0.1)
-{: #speech-to-text-v101-30august2019}
-{: release-note}
+{: #speech-to-text-data-30august2019}
 
 Version 1.0.1 is available
 :   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 1.0.1 is now available. The service now works with {{site.data.keyword.icp4dfull_notm}} 2.1.0.1. The service now supports installing {{site.data.keyword.icp4dfull_notm}} with Red Hat OpenShift.
@@ -418,9 +404,8 @@ New broadband and narrowband models for Spanish dialects
 FISMA support
 :   Federal Information Security Management Act (FISMA) support is now available for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}. The service is FISMA High Ready.
 
-## 28 June 2019) (Version 1.0.0)
-{: #speech-to-text-v100-28june2019}
-{: release-note}
+## 28 June 2019 (Version 1.0.0)
+{: #speech-to-text-data-28june2019}
 
 Version 1.0.0 is available
 :   Version 1.0.0, the initial release of the service, is now available. {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} is based on the {{site.data.keyword.speechtotextfull}} service on the public {{site.data.keyword.cloud_notm}}. {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} differs from the public {{site.data.keyword.speechtotextshort}} service in the following ways. You might find this information helpful if you are already familiar with the {{site.data.keyword.speechtotextshort}} service on the public {{site.data.keyword.cloud_notm}}.
