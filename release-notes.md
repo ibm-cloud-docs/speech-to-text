@@ -4,7 +4,7 @@ copyright:
   years: 2015, 2021
 lastupdated: "2021-10-11"
 
-keywords: speech to text release notes
+keywords: speech to text release notes,speech to text for IBM cloud release notes
 
 subcollection: speech-to-text
 
