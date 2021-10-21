@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-22"
+lastupdated: "2021-09-28"
 
 subcollection: speech-to-text
 
@@ -203,7 +203,7 @@ The following freeware tools are available to convert your audio from one format
 
 -   Sound eXchange (SoX) ([sox.sourceforge.net](http://sox.sourceforge.net){: external}).
 -   FFmpeg ([ffmpeg.org](https://www.ffmpeg.org){: external}). You can also use FFmpeg to separate audio from a multimedia file that contains both audio and video data. For more information, see [Transcribing speech from video files](#audio-formats-video).
--   Audacity&reg; ([audacityteam.org](https://www.audacityteam.org/){: external}).
+-   Audacity® ([audacityteam.org](https://www.audacityteam.org/){: external}).
 -   For Ogg format with the Opus codec, **opus-tools** ([opus-codec.org](https://opus-codec.org/){: external}).
 
 These tools offer cross-platform support for multiple audio formats. Moreover, you can use many of the tools to play your audio. Do not use the tools to violate applicable copyright laws.

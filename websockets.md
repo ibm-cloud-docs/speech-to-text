@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-10-13"
+lastupdated: "2021-10-18"
 
 subcollection: speech-to-text
 
@@ -110,7 +110,7 @@ The client can open multiple concurrent WebSocket connections to the service. Th
 ### Initiate a recognition request
 {: #ws-start}
 
-To initiate a recognition request, the client sends a JSON text message to the service over the established connection. The client must send this message before it sends any audio for transcription. The message must include the `action` parameter but can usually omit the `content-type` parameter.
+To initiate a recognition request, the client sends a JSON text message to the service over the established connection. The client must send this message before it sends any audio for transcription. The message must include the `action` parameter but can usually omit the `content-type` parameter:
 
 `action` (*required* string)
 :   Specifies the action to be performed:

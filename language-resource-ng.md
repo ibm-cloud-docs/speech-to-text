@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-21"
+lastupdated: "2021-09-24"
 
 subcollection: speech-to-text
 
@@ -163,7 +163,7 @@ Information for Arabic, Czech, and Hindi is not yet available. If you need this 
 #### Parsing of Korean
 {: #corpusLanguages-koKR-ng}
 
--   Converts numbers to their equivalent words, for example, <code>10</code> becomes <code>&#49901;</code>.
+-   Converts numbers to their equivalent words, for example, `10` becomes <code>&#49901;</code>.
 -   Removes the following punctuation and special characters: `- ( ) * : . , ' "`. However, not all punctuation and special characters that are removed for other languages are removed for Korean, for example:
     -   Removes a period (`.`) symbol only when it occurs at the end of a line of input.
     -   Does not remove a tilde (`~`) symbol.
@@ -214,7 +214,7 @@ curl -X PUT \
 ```
 {: pre}
 
-As another example, you can indicate that the word `IBM` is to be displayed as <code>IBM&trade;</code>.
+As another example, you can indicate that the word `IBM` is to be displayed as `IBM™`.
 
 ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
