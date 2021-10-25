@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-10-21"
+lastupdated: "2021-10-22"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -114,8 +114,8 @@ The service has the following known limitations:
     -   For more information about support for acoustic model customization, see [Language support and usage notes for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
 -->
 
-## 21 October 2021
-{: #speech-to-text-21october2021}
+## 22 October 2021
+{: #speech-to-text-22october2021}
 {: release-note}
 
 Defect fix for asynchronous HTTP failures
