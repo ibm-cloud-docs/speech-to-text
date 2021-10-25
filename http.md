@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-10-01"
+lastupdated: "2021-10-18"
 
 subcollection: speech-to-text
 
@@ -37,7 +37,7 @@ The following example sends a recognition request for a single FLAC file named `
 
 ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
-```bash
+```sh
 curl -X POST -u "apikey:{apikey}" \
 --header "Content-Type: audio/flac" \
 --data-binary @{path}audio-file.flac \
@@ -47,7 +47,7 @@ curl -X POST -u "apikey:{apikey}" \
 
 ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
 
-```bash
+```sh
 curl -X POST \
 --header "Authorization: Bearer {token}" \
 --header "Content-Type: audio/flac" \
@@ -58,7 +58,7 @@ curl -X POST \
 
 The example returns the following transcript for the audio:
 
-```javascript
+```json
 {
   "result_index": 0,
   "results": [
@@ -93,29 +93,51 @@ Multipart speech recognition is intended for the following use cases:
 The following sections describe the parameters that you use for multipart requests and show an example request.
 
 ### Parameters for multipart requests
-{: #multipartParameters}
+{: #multipart-parameters}
 
-You specify the following parameters of multipart speech recognition requests as *form data*:
+You specify a number of parameters as form data, request headers, or query parameters. For more information about request headers and query parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
 
--   `metadata` (*required* object) - A JSON object that provides the transcription parameters for the request. The object must be the first part of the form data. The information describes the audio in the subsequent parts of the form data. See [JSON metadata for multipart requests](#multipartJSON).
--   `upload` (*required* file) - One or more audio files as the remainder of the form data for the request. All audio files must have the same format. With the `curl` command, include a separate `--form` option for each file of the request.
+#### Form data
+{: #multipart-parameters-form-data}
 
-You specify the following parameters as *request headers*:
+You specify the following parameters of multipart speech recognition requests as form data:
 
--   `Content-Type` (*required* string) - Specify `multipart/form-data` to indicate how data is passed to the method. You specify the content type of the audio with the JSON `part_content_type` parameter.
--   `Transfer-Encoding` (*optional* string) - Specify `chunked` to stream the audio data to the service. Omit the parameter if you send all audio with a single request.
+`metadata` (*required* object)
+:   A JSON object that provides the transcription parameters for the request. The object must be the first part of the form data. The information describes the audio in the subsequent parts of the form data. See [JSON metadata for multipart requests](#multipart-json).
 
-You specify the following parameters as *query parameters*:
+`upload` (*required* file)
+:   One or more audio files as the remainder of the form data for the request. All audio files must have the same format. With the `curl` command, include a separate `--form` option for each file of the request.
 
--   `model` (*optional* string) - The identifier of the model that is to be used with the request. The default is `en-US_BroadbandModel`.
--   `language_customization_id` (*optional* string) - The GUID of a custom language model that is to be used with the request.
--   `acoustic_customization_id` (*optional* string) - The GUID of a custom acoustic model that is to be used with the request.
--   `base_model_version` (*optional* string) - The version of the specified base model that is to be used with the request.
+#### Request headers
+{: #multipart-parameters-request-headers}
 
-For more information about request headers and query parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
+You specify the following parameters as request headers:
+
+`Content-Type` (*required* string)
+:   Specify `multipart/form-data` to indicate how data is passed to the method. You specify the content type of the audio with the JSON `part_content_type` parameter.
+
+`Transfer-Encoding` (*optional* string)
+:   Specify `chunked` to stream the audio data to the service. Omit the parameter if you send all audio with a single request.
+
+#### Query parameters
+{: #multipart-parameters-query-parameters}
+
+You specify the following parameters as query parameters:
+
+`model` (*optional* string)
+:   The identifier of the model that is to be used with the request. The default is `en-US_BroadbandModel`.
+
+`language_customization_id` (*optional* string)
+:   The GUID of a custom language model that is to be used with the request.
+
+`acoustic_customization_id` (*optional* string)
+:   The GUID of a custom acoustic model that is to be used with the request.
+
+`base_model_version` (*optional* string)
+:   The version of the specified base model that is to be used with the request.
 
 ### JSON metadata for multipart requests
-{: #multipartJSON}
+{: #multipart-json}
 
 The JSON metadata that you pass with a multipart request can include the following fields:
 
@@ -153,7 +175,7 @@ The following example shows how to pass a multipart recognition request with the
 
 ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
-```bash
+```sh
 curl -X POST -u "apikey:{apikey}" \
 --header "Content-Type: multipart/form-data" \
 --form metadata="{\"part_content_type\":\"application/octet-stream\", \
@@ -170,7 +192,7 @@ curl -X POST -u "apikey:{apikey}" \
 
 ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
 
-```bash
+```sh
 curl -X POST \
 --header "Authorization: Bearer {token}" \
 --header "Content-Type: multipart/form-data" \
@@ -188,7 +210,7 @@ curl -X POST \
 
 The example returns the following transcript for the audio files. The service returns the results for the two files in the order in which they are sent. (The example output abbreviates the results for the second file.)
 
-```javascript
+```json
 {
   "result_index": 0,
   "results": [

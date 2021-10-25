@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-22"
+lastupdated: "2021-09-30"
 
 subcollection: speech-to-text
 
@@ -245,7 +245,7 @@ function onMessage(evt) {
 ```
 {: codeblock}
 
-The WAV file that is passed to the service includes a single sentence with two embedded multi-second pauses: "Thunderstorms could produce &lt;*pause*&gt; large hail &lt;*pause*&gt; and heavy rain." The pauses are long enough to represent separate utterances and thus generate multiple final results. Because each response includes multiple final results, one per utterance, you must assemble the final results into a single string to see the full transcript.
+The WAV file that is passed to the service includes a single sentence with two embedded multi-second pauses: "Thunderstorms could produce ...*pause*... large hail ...*pause*... and heavy rain." The pauses are long enough to represent separate utterances and thus generate multiple final results. Because each response includes multiple final results, one per utterance, you must assemble the final results into a single string to see the full transcript.
 
 #### Example 1: Interim results and low latency are both false
 {: #interim-low-latency-examples-one}

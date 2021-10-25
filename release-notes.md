@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-10-15"
+lastupdated: "2021-10-22"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -19,16 +19,11 @@ content-type: release-note
 
 ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
 
-The following features and changes were included for each release and update of managed instances of {{site.data.keyword.speechtotextfull}} that are hosted on {{site.data.keyword.cloud_notm}} or for instances that are hosted on [IBM Cloud Pak for Data as a Service](https://dataplatform.cloud.ibm.com/docs/content/wsj/landings/wstt.html){: external}. The information includes known limitations. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
+The following features and changes were included for each release and update of managed instances of {{site.data.keyword.speechtotextfull}} that are hosted on {{site.data.keyword.cloud_notm}} or for instances that are hosted on [{{site.data.keyword.icp4dfull_notm}} as a Service](https://dataplatform.cloud.ibm.com/docs/content/wsj/landings/wstt.html){: external}. The information includes known limitations. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
 {: shortdesc}
 
 For information about releases and updates for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
-
-## Beta features
-{: release-notes-beta-features}
-
-{{site.data.keyword.IBM_notm}} occasionally releases features and language support that are classified as beta.  Such features are provided so that you can evaluate their functionality. They might not provide the same level of performance or compatibility that generally available (GA) features provide. They might be unstable and are subject to change or removal with short notice. They are not intended for use in a production environment.
 
 ## Known limitations
 {: #release-notes-limitations}
@@ -113,6 +108,19 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
+<!-- 21.14
+-   The `GET /v1/models` and `GET /v1/models/{model_id}` methods now report whether a model supports acoustic model customization. The `SupportedFeatures` object now includes an additional field, `custom_acoustic_model`, a boolean that is `true` for a model that supports acoustic model customization and false otherwise. Currently, the field is `true` for all previous-generation models and `false` for all next-generation models.
+    -   For more information about these methods, see [Listing information about models](/docs/speech-to-text?topic=speech-to-text-models-list).
+    -   For more information about support for acoustic model customization, see [Language support and usage notes for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
+-->
+
+## 22 October 2021
+{: #speech-to-text-22october2021}
+{: release-note}
+
+Defect fix for asynchronous HTTP failures
+:   **Defect fix:** The asynchronous HTTP interface failed to transcribe some audio. In addition, the callback for the request returned status `recognitions.completed_with_results` instead of `recognitions.failed`. This error has been resolved.
+
 ## 6 October 2021
 {: #speech-to-text-6october2021}
 {: release-note}
@@ -127,12 +135,6 @@ Updates to Czech and Dutch next-generation models
 
 New US HIPAA support for Premium plans in Dallas location
 :   US Health Insurance Portability and Accountability Act (HIPAA) support is now available for Premium plans that are hosted in the Dallas (`us-south`) location. For more information, see [Health Insurance Portability and Accountability Act (HIPAA)](/docs/speech-to-text?topic=speech-to-text-information-security#hipaa).
-
-<!-- 21.13
--   The `GET /v1/models` and `GET /v1/models/{model_id}` methods now report whether a model supports acoustic model customization. The `SupportedFeatures` object now includes an additional field, `custom_acoustic_model`, a boolean that is `true` for a model that supports acoustic model customization and false otherwise. Currently, the field is `true` for all previous-generation models and `false` for all next-generation models.
-    -   For more information about these methods, see [Listing information about models](/docs/speech-to-text?topic=speech-to-text-models-list).
-    -   For more information about support for acoustic model customization, see [Language support and usage notes for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
--->
 
 ## 16 September 2021
 {: #speech-to-text-16september2021}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-21"
+lastupdated: "2021-10-01"
 
 subcollection: speech-to-text
 
@@ -155,7 +155,7 @@ the `alternatives` array has a separate element for each final result, and the r
 
     ```json
     {
-     "result_index": 0,
+      "result_index": 0,
       "results": [
         {
           "alternatives": [

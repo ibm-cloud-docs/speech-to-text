@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-05-10"
+lastupdated: "2021-09-28"
 
 subcollection: speech-to-text
 
@@ -33,6 +33,7 @@ Consider the following basic usage requirements when you make a speech recogniti
 -   HTTP and WebSocket query parameters are case-sensitive.
 -   JSON field names are case-sensitive.
 -   All JSON response content is in the UTF-8 character set.
+-   Braces (`{ }`) are used in the documentation to indicate variable values. Omit the braces when supplying variable values.
 
 Also consider the following service-specific requirements:
 
