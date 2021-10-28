@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-10-22"
+lastupdated: "2021-10-28"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -108,11 +108,52 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
-<!-- 21.14
--   The `GET /v1/models` and `GET /v1/models/{model_id}` methods now report whether a model supports acoustic model customization. The `SupportedFeatures` object now includes an additional field, `custom_acoustic_model`, a boolean that is `true` for a model that supports acoustic model customization and false otherwise. Currently, the field is `true` for all previous-generation models and `false` for all next-generation models.
+## 28 October 2021
+{: #speech-to-text-28october2021}
+{: release-note}
+
+New Chinese next-generation telephony model
+:   The service now offers a next-generation telephony model for Mandarin Chinese: `zh-CN_Telephony`. The new model supports low latency and is generally available. For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+
+New Australian English and UK English next-generation multimedia models
+:   The service now offers the following next-generation multimedia models. The new models are generally available, and neither model supports low latency.
+    -   Australian English: `en-AU_Multimedia`
+    -   UK English: `en-GB_Multimedia`
+
+    For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+
+Updates to multiple next-generation models for improved speech recognition
+:   The following next-generation models have been updated for improved speech recognition:
+    -   Australian English telephony model (`en-AU_Telephony`)
+    -   UK English telephony model (`en-UK_Telephony`)
+    -   US English multimedia model (`en-US_Multimedia`)
+    -   US English telephony model (`en-US_Telephony`)
+    -   Castilian Spanish telephony model (`es-ES_Telephony`)
+
+    For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+
+Grammar support for previous-generation models is now generally available
+:   Grammar support is now generally available (GA) for previous-general models that meet the following conditions:
+    -   The models are generally available.
+    -   The models support language model customization.
+
+    For more information, see the following topics:
+
+    -   For information about the status of grammar support for previous-generation models, see [Language support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg).
+    -   For information about grammars, see [Grammars](/docs/speech-to-text?topic=speech-to-text-customization#grammars-intro).
+
+New beta grammar support for next-generation models
+:   Grammar support is now available as beta functionality for all next-generation models. All next-generation models are generally available (GA) and support language model customization. For more information, see the following topics:
+
+    -   For information about the status of grammar support for next-generation models, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
+    -   For information about grammars, see [Grammars](/docs/speech-to-text?topic=speech-to-text-customization#grammars-intro).
+
+    **Note:** Beta support for grammars by next-generation models is available for the {{site.data.keyword.speechtotextshort}} service on {{site.data.keyword.cloud_notm}} only. Grammars are not yet supported for next-generation models on {{site.data.keyword.icp4dfull_notm}}.
+
+New `custom_acoustic_model` field for supported features
+:   The `GET /v1/models` and `GET /v1/models/{model_id}` methods now report whether a model supports acoustic model customization. The `SupportedFeatures` object now includes an additional field, `custom_acoustic_model`, a boolean that is `true` for a model that supports acoustic model customization and false otherwise. Currently, the field is `true` for all previous-generation models and `false` for all next-generation models.
     -   For more information about these methods, see [Listing information about models](/docs/speech-to-text?topic=speech-to-text-models-list).
     -   For more information about support for acoustic model customization, see [Language support and usage notes for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
--->
 
 ## 22 October 2021
 {: #speech-to-text-22october2021}
@@ -134,7 +175,7 @@ Updates to Czech and Dutch next-generation models
     For more information about all available next-generation language models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 
 New US HIPAA support for Premium plans in Dallas location
-:   US Health Insurance Portability and Accountability Act (HIPAA) support is now available for Premium plans that are hosted in the Dallas (`us-south`) location. For more information, see [Health Insurance Portability and Accountability Act (HIPAA)](/docs/speech-to-text?topic=speech-to-text-information-security#hipaa).
+:   US Health Insurance Portability and Accountability Act (HIPAA) support is now available for Premium plans that are hosted in the Dallas (`us-south`) location.  For more information, see [Health Insurance Portability and Accountability Act (HIPAA)](/docs/speech-to-text?topic=speech-to-text-information-security#hipaa).
 
 ## 16 September 2021
 {: #speech-to-text-16september2021}
@@ -142,8 +183,8 @@ New US HIPAA support for Premium plans in Dallas location
 
 New beta Czech and Netherlands Dutch next-generation models
 :   The service now supports the following new next-generation language models. Both new models are beta functionality.
-    -   *Czech:* `cs-CZ_Telephony`. The new model supports low latency.
-    -   *Netherlands Dutch:* `nl-NL_Telephony`. The new model does not support low latency.
+    -   Czech: `cs-CZ_Telephony`. The new model supports low latency.
+    -   Netherlands Dutch: `nl-NL_Telephony`. The new model does not support low latency.
 
     For more information about all available next-generation language models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 
@@ -195,10 +236,10 @@ Language model customization for next-generation models is now generally availab
 New beta Indian English, Indian Hindi, Japanese, and Korean next-generation models
 :   The service now supports the following new next-generation language models. All of the new models are beta functionality.
 
-    -   *Indian English:* `en-IN_Telephony`. The model supports low latency.
-    -   *Indian Hindi:* `hi-IN_Telephony`. The model supports low latency.
-    -   *Japanese:* `ja-JP_Multimedia`. The model does not support low latency.
-    -   *Korean:* `ko-KR_Multimedia` and `ko-KR_Telephony`. The models do not support low latency.
+    -   Indian English: `en-IN_Telephony`. The model supports low latency.
+    -   Indian Hindi: `hi-IN_Telephony`. The model supports low latency.
+    -   Japanese: `ja-JP_Multimedia`. The model does not support low latency.
+    -   Korean: `ko-KR_Multimedia` and `ko-KR_Telephony`. The models do not support low latency.
 
     For more information about the next-generation models and low latency, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng) and [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
 

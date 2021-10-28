@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-23"
+lastupdated: "2021-10-27"
 
 subcollection: speech-to-text
 
@@ -62,23 +62,29 @@ To learn which models are supported for {{site.data.keyword.cloud_notm}}, {{site
 
 | Language (dialect) |  Models | Language model customization | Grammars | Acoustic model customization |
 |------------------------|:-----------:|:----------------------------------------:|:----------------------------------------:|:----------------------------------------:|
-| Arabic  \n (Modern Standard) | `ar-MS_Telephony` | GA | Not supported | Not supported |
-| Czech | `cz-CZ_Telephony` | GA | Not supported | Not supported |
-| Dutch  \n (Belgian) | `nl-BE_Telephony` | GA | Not supported | Not supported |
-| Dutch  \n (Netherlands) | `nl-NL_Telephony` | GA | Not supported | Not supported |
-| English  \n (Australian) | `en-AU_Telephony` | GA | Not supported | Not supported |
-| English  \n (Indian) | `en-IN_Telephony` | GA | Not supported | Not supported |
-| English  \n (United Kingdom) | `en-GB_Telephony` | GA | Not supported | Not supported |
-| English  \n (United States) | `en-US_Multimedia`  \n   \n `en-US_Telephony` | GA | Not supported | Not supported |
-| French  \n (Canadian) | `fr-CA_Telephony` | GA | Not supported | Not supported |
-| French  \n (France) | `fr-FR_Multimedia`  \n   \n `fr-FR_Telephony` | GA | Not supported | Not supported |
-| German | `de-DE_Telephony` | GA | Not supported | Not supported |
-| Hindi | `hi-IN_Telephony` | GA | Not supported | Not supported |
-| Italian | `it-IT_Telephony` | GA | Not supported | Not supported |
-| Japanese | `ja-JP_Multimedia` | GA | Not supported | Not supported |
-| Korean | `ko-KR_Multimedia`  \n   \n `ko-KR_Telephony` | GA | Not supported | Not supported |
-| Portuguese  \n (Brazilian) | `pt-BR_Telephony` | GA | Not supported | Not supported |
-| Spanish  \n (Castilian) | `es-ES_Telephony` | GA | Not supported | Not supported |
+| Arabic  \n (Modern Standard) | `ar-MS_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
+| Chinese  \n (Mandarin) | `zh-CN_Telephony`  \n IBM Cloud only | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
+| Czech | `cz-CZ_Telephony`  \n IBM Cloud only | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
+| Dutch  \n (Belgian) | `nl-BE_Telephony`  \n IBM Cloud only | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
+| Dutch  \n (Netherlands) | `nl-NL_Telephony`  \n IBM Cloud only | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
+| English  \n (Australian) | `en-AU_Multimedia`  \n IBM Cloud only | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
+| | `en-AU_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
+| English  \n (Indian) | `en-IN_Telephony`  \n IBM Cloud only | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
+| English  \n (United Kingdom) | `en-GB_Multimedia`  \n IBM Cloud only | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
+| | `en-GB_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
+| English  \n (United States) | `en-US_Multimedia` | GA | Beta  \n IBM Cloud only | Not supported |
+| | `en-US_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
+| French  \n (Canadian) | `fr-CA_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
+| French  \n (France) | `fr-FR_Multimedia`  \n IBM Cloud only | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
+| | `fr-FR_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
+| German | `de-DE_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
+| Hindi | `hi-IN_Telephony`  \n IBM Cloud only | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
+| Italian | `it-IT_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
+| Japanese | `ja-JP_Multimedia`  \n IBM Cloud only | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
+| Korean | `ko-KR_Multimedia`  \n IBM Cloud only | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
+| | `ko-KR_Telephony`  \n IBM Cloud only | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
+| Portuguese  \n (Brazilian) | `pt-BR_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
+| Spanish  \n (Castilian) | `es-ES_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
 {: caption="Table 2. Next-generation language support for customization"}
 
 ## Ownership of custom models

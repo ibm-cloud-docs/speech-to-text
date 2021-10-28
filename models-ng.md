@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-09-23"
+lastupdated: "2021-10-28"
 
 subcollection: speech-to-text
 
@@ -41,23 +41,24 @@ The table indicates the product versions for which each model and for which low-
 
 | Language | Multimedia model | Multimedia low-latency support | Telephony model | Telephony low-latency support |
 |----------|:----------------:|:-------------------:|:---------------:|:-------------------:|
-| Arabic  \n (Modern Standard) | Not available | Not available | `ar-MS_Telephony` | **Yes**  \n IBM Cloud only |
-| Czech | Not available | Not available | `cz-CZ_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
-| Dutch  \n (Belgian) | Not available | Not available | `nl-BE_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
-| Dutch  \n (Netherlands) | Not available | Not available | `nl-NL_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
-| English  \n (Australian) | Not available | Not available | `en-AU_Telephony` | **Yes** |
-| English  \n (Indian) | Not available | Not available | `en-IN_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
-| English  \n (United Kingdom) | Not available | Not available | `en-GB_Telephony` | **Yes** |
+| Arabic  \n (Modern Standard) | Model not available | Model not available | `ar-MS_Telephony` | **Yes**  \n IBM Cloud only |
+| Chinese  \n (Mandarin) | Model not available | Model not available | `zh-CN_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
+| Czech | Model not available | Model not available | `cz-CZ_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
+| Dutch  \n (Belgian) | Model not available | Model not available | `nl-BE_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
+| Dutch  \n (Netherlands) | Model not available | Model not available | `nl-NL_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
+| English  \n (Australian) | `en-AU_Multimedia`  \n IBM Cloud only | **No** | `en-AU_Telephony` | **Yes** |
+| English  \n (Indian) | Model not available | Model not available | `en-IN_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
+| English  \n (United Kingdom) | `en-GB_Multimedia`  \n IBM Cloud only | **No** | `en-GB_Telephony` | **Yes** |
 | English  \n (United States) | `en-US_Multimedia` | **No** | `en-US_Telephony` | **Yes** |
-| French  \n (Canadian) | Not available | Not available | `fr-CA_Telephony` | **Yes**  \n IBM Cloud only |
+| French  \n (Canadian) | Model not available | Model not available | `fr-CA_Telephony` | **Yes**  \n IBM Cloud only |
 | French  \n (France) | `fr-FR_Multimedia`  \n IBM Cloud only | **No** | `fr-FR_Telephony` | **Yes** |
-| German | Not available | Not available | `de-DE_Telephony` | **Yes** |
-| Hindi  \n (Indian) | Not available | Not available | `hi-IN_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
-| Italian | Not available | Not available | `it-IT_Telephony` | **Yes**  \n IBM Cloud only |
-| Japanese | `ja-JP_Multimedia`  \n IBM Cloud only | **No** | Not available | Not available |
+| German | Model not available | Model not available | `de-DE_Telephony` | **Yes** |
+| Hindi  \n (Indian) | Model not available | Model not available | `hi-IN_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
+| Italian | Model not available | Model not available | `it-IT_Telephony` | **Yes**  \n IBM Cloud only |
+| Japanese | `ja-JP_Multimedia`  \n IBM Cloud only | **No** | Model not available | Model not available |
 | Korean | `ko-KR_Multimedia`  \n IBM Cloud only | **No** | `ko-KR_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
-| Portuguese  \n (Brazilian) | Not available | Not available | `pt-BR_Telephony` | **Yes** |
-| Spanish  \n (Castilian) | Not available | Not available | `es-ES_Telephony` | **Yes** |
+| Portuguese  \n (Brazilian) | Model not available | Model not available | `pt-BR_Telephony` | **Yes** |
+| Spanish  \n (Castilian) | Model not available | Model not available | `es-ES_Telephony` | **Yes** |
 {: caption="Table 1. Supported next-generation language models"}
 
 Unlike previous-generation models, next-generation models do not include the word `model` in their names.

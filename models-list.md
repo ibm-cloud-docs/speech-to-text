@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-08-17"
+lastupdated: "2021-10-27"
 
 subcollection: speech-to-text
 
@@ -28,6 +28,7 @@ Regardless of whether you list information about all available models or about a
 -   `description` provides a brief description of the model.
 -   `supported_features` describes the additional service features that are supported with the model:
     -   `custom_language_model` is a boolean that indicates whether you can create custom language models that are based on the model.
+    -   ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only.** `custom_acoustic_model` is a boolean that indicates whether you can create custom acoustic models that are based on the model.
     -   `low_latency` is a boolean that indicates whether you can use the `low_latency` parameter with a next-generation model. The service includes this field only for next-generation models. Previous-generation models do not support the `low_latency` parameter.
     -   `speaker_labels` indicates whether you can use the `speaker_labels` parameter with the model.
 
@@ -75,6 +76,7 @@ The response is abbreviated to show only the first few models.
       "rate": 8000,
       "supported_features": {
         "custom_language_model": true,
+        "custom_acoustic_model": true,
         "speaker_labels": true
       },
       "description": "Brazilian Portuguese narrowband model."
@@ -86,6 +88,7 @@ The response is abbreviated to show only the first few models.
       "rate": 16000,
       "supported_features": {
         "custom_language_model": true,
+        "custom_acoustic_model": true,
         "speaker_labels": true
       },
       "description": "Korean broadband model."
@@ -97,6 +100,7 @@ The response is abbreviated to show only the first few models.
       "rate": 16000,
       "supported_features": {
         "custom_language_model": true,
+        "custom_acoustic_model": true,
         "speaker_labels": true
       },
       "description": "French broadband model."
@@ -144,6 +148,7 @@ The model supports both language model customization and speakers labels.
   "url": "{url}/v1/models/en-US_BroadbandModel",
   "supported_features": {
     "custom_language_model": true,
+    "custom_acoustic_model": true,
     "speaker_labels": true
   },
   "description": "US English broadband model."
@@ -179,7 +184,8 @@ The model supports low latency and speakers labels. It does not support language
    "language": "en-US",
    "description": "US English telephony model for narrowband audio (8kHz)",
    "supported_features": {
-      "custom_language_model": false,
+      "custom_language_model": true,
+      "custom_acoustic_model": false,
       "low_latency": true,
       "speaker_labels": true
    },

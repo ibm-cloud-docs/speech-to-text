@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2021
-lastupdated: "2021-09-19"
+lastupdated: "2021-10-27"
 
 subcollection: speech-to-text
 
@@ -14,6 +14,9 @@ content-type: troubleshoot
 
 # Using a custom acoustic model for speech recognition
 {: #acousticUse}
+
+Acoustic model customization is available only for previous-generation models. It is not available for next-generation models.
+{: note}
 
 Once you create and train your custom acoustic model, you can use it in speech recognition requests by using the `acoustic_customization_id` query parameter. By default, no custom acoustic model is used with a request. You can create multiple custom acoustic models for the same or different domains. But you can specify only one custom acoustic model at a time for a speech recognition request. You must issue the request with credentials for the instance of the service that owns the custom model.
 {: shortdesc}
