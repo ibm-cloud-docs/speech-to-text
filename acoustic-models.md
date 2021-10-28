@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2021
-lastupdated: "2021-05-14"
+lastupdated: "2021-10-27"
 
 subcollection: speech-to-text
 
@@ -12,6 +12,9 @@ subcollection: speech-to-text
 
 # Managing custom acoustic models
 {: #manageAcousticModels}
+
+Acoustic model customization is available only for previous-generation models. It is not available for next-generation models.
+{: note}
 
 The customization interface includes the `POST /v1/acoustic_customizations` method for creating a custom acoustic model. The interface also includes the `POST /v1/acoustic_customizations/train` method for training a custom model on its latest audio resources. For more information, see
 {: shortdesc}

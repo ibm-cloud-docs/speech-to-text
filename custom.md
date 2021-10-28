@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-08-28"
+lastupdated: "2021-10-28"
 
 subcollection: speech-to-text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 # Understanding customization
 {: #customization}
 
-The {{site.data.keyword.speechtotextfull}} service offers a customization interface that you can use to augment its speech recognition capabilities.  You can use customization to improve the accuracy of speech recognition requests by customizing a base model for your domain and audio.
+The {{site.data.keyword.speechtotextfull}} service offers a customization interface that you can use to augment its speech recognition capabilities. You can use customization to improve the accuracy of speech recognition requests by customizing a base model for your domain and audio.
 {: shortdesc}
 
 The customization interface supports both custom language models and custom acoustic models. The interfaces for both types of custom model are similar and straightforward to use. Using either type of custom model with a recognition request is also straightforward: You specify the customization ID of the model with the request.
@@ -26,7 +26,7 @@ Speech recognition works the same with or without a custom model. When you use a
 ## Language model customization
 {: #customLanguage-intro}
 
-Language model customization is available for both previous-generation and next-generation models. Customization works differently for previous- and next-generation models.
+Some models and features are available only on {{site.data.keyword.cloud_notm}}, not on {{site.data.keyword.icp4dfull_notm}}. Also, support for features differs between previous-generation and next-generation models, and some features are generally available and some are beta. For more information about the available models and the features they support, see [Language support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg) and [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
 {: note}
 
 The service was developed with a broad, general audience in mind. The service's base vocabulary contains many words that are used in everyday conversation. Its models provide sufficiently accurate recognition for many applications. But they can lack knowledge of specific terms that are associated with particular domains.
@@ -35,7 +35,7 @@ The *language model customization* interface can improve the accuracy of speech 
 
 You create a custom language model and add corpora and words specific to your domain. Once you train the custom language model on your enhanced vocabulary, you can use it for customized speech recognition. The service can typically train any custom model in a matter of minutes. The time and effort that are needed to create a custom model depend on the data that you have available for the model.
 
-For more information about getting started with language model customization, see
+Language model customization is available for both previous-generation and next-generation models, but customization works differently for previous- and next-generation models. The documentation describes the differences. For more information about getting started with language model customization, see
 
 -   [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate)
 -   [Using a custom language model for speech recognition](/docs/speech-to-text?topic=speech-to-text-languageUse)
@@ -43,7 +43,7 @@ For more information about getting started with language model customization, se
 ## Acoustic model customization
 {: #customAcoustic-intro}
 
-Acoustic model customization is available only for previous-generation models.
+Acoustic model customization is available only for previous-generation models. It is not available for next-generation models.
 {: note}
 
 Similarly, the service was developed with base acoustic models that work well for various audio characteristics. But in cases like the following, adapting a base model to suit your audio can improve speech recognition:
@@ -64,8 +64,8 @@ For more information about getting started with acoustic model customization, se
 ## Grammars
 {: #grammars-intro}
 
-Grammars are available as beta functionality and only for previous-generation models.
-{: beta}
+Grammars are available only for some previous-generation and next-generation models. Support differs between {{site.data.keyword.cloud_notm}} and {{site.data.keyword.icp4dfull_notm}}. And grammars are generally available for some models and beta for other models. For more information about the available models and the features they support, see [Language support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg) and [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
+{: note}
 
 Custom language models allow you to expand the service's base vocabulary. *Grammars* enable you to restrict the words that the service can recognize from that vocabulary. When you use a grammar with a custom language model for speech recognition, the service can recognize only words, phrases, and strings that are recognized by the grammar. Because the grammar defines a limited search space for valid matches, the service can deliver results faster and more accurately.
 

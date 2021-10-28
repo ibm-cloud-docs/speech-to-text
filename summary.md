@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-14"
+lastupdated: "2021-10-28"
 
 subcollection: speech-to-text
 
@@ -138,8 +138,8 @@ An optional string that identifies a grammar that is to be used for speech recog
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Previous-generation models | Beta for all models that support language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support). |
-| Next-generation models     | Not available. |
+| Previous-generation models | Generally available or beta for all models that support language model customization. For more information, see [Language support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
+| Next-generation models     | Beta for all models that support language model customization. For more information, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |

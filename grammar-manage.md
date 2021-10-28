@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-08-28"
+lastupdated: "2021-10-28"
 
 subcollection: speech-to-text
 
@@ -13,8 +13,8 @@ subcollection: speech-to-text
 # Managing grammars
 {: #manageGrammars}
 
-The grammars feature is beta functionality that is available only for previous-generation models. For previous-generation models, the service supports grammars for all languages for which it supports language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
-{: beta}
+Grammars are available only for some previous-generation and next-generation models. Support differs between {{site.data.keyword.cloud_notm}} and {{site.data.keyword.icp4dfull_notm}}. And grammars are generally available for some models and beta for other models. For more information about the available models and the features they support, see [Language support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg) and [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
+{: note}
 
 The customization interface includes the `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` method for adding a grammar to a custom language model. For more information, see [Add a grammar to the custom language model](/docs/speech-to-text?topic=speech-to-text-grammarAdd#addGrammar). The interface also includes the following methods for listing and deleting grammars for a custom language model.
 {: shortdesc}
@@ -27,7 +27,7 @@ The customization interface provides two methods for listing information about t
 -   The `GET /v1/customizations/{customization_id}/grammars` method lists information about all grammars for a custom model.
 -   The `GET /v1/customizations/{customization_id}/grammars/{grammar_name}` method lists information about a specified grammar for a custom model.
 
-Both methods return the same information about a grammar. The information includes the `name` of the grammar and the number of `out-of_vocabulary_words` that are recognized by the grammar. The response also includes the `status` of the grammar, which is important for checking the service's analysis of the grammar when you add it to a custom model:
+Both methods return the same information about a grammar. The information includes the `name` of the grammar and, *for custom models based on previous-generation models*, the number of `out-of_vocabulary_words` that are recognized by the grammar. The response also includes the `status` of the grammar, which is important for checking the service's analysis of the grammar when you add it to a custom model:
 
 -   `being_processed` indicates that the service is still processing the grammar in response to a `POST /v1/customizations/{customization_id}/grammars/{grammar_name}` request.
 -   `analyzed` indicates that the service has successfully processed the grammar and added it to the custom model.

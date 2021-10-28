@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-08-30"
+lastupdated: "2021-10-27"
 
 subcollection: speech-to-text
 
@@ -28,7 +28,7 @@ Follow these steps to create, add contents to, and train a custom language model
 
 The steps for creating a custom language model are iterative. You can add corpora, add words, and train or retrain a model as often as needed.
 
-*For previous-generation models,* you can also add grammars to a custom language model. Grammars restrict the service's response to only those words that are recognized by a grammar. For more information, see [Using grammars with custom language models](/docs/speech-to-text?topic=speech-to-text-grammars).
+For some models, you can also add grammars to a custom language model. Grammars restrict the service's response to only those words that are recognized by a grammar. For more information, see [Using grammars with custom language models](/docs/speech-to-text?topic=speech-to-text-grammars).
 
 ## Create a custom language model
 {: #createModel-language}
