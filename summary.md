@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-10-28"
+lastupdated: "2021-11-12"
 
 subcollection: speech-to-text
 
@@ -139,7 +139,7 @@ An optional string that identifies a grammar that is to be used for speech recog
 | Availability and usage | Description |
 |------------------------|-------------|
 | Previous-generation models | Generally available or beta for all models that support language model customization. For more information, see [Language support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
-| Next-generation models     | Beta for all models that support language model customization. For more information, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). |
+| Next-generation models     | ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only.** Beta for all models that support language model customization. For more information, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
