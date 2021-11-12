@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-10-29"
+lastupdated: "2021-11-12"
 
 subcollection: speech-to-text
 
@@ -109,7 +109,7 @@ Table 1 lists each parameter (and request header) that is supported for use with
 | `background_audio_suppression` | All languages and models. For more information, see [Background audio suppression](/docs/speech-to-text?topic=speech-to-text-detection#detection-parameters-suppression). |
 | `Content-Type` | All languages and models. For more information, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-list). |
 | `customization_weight` | All languages and models. For more information, see [Using customization weight](/docs/speech-to-text?topic=speech-to-text-languageUse#weight). |
-| `grammar_name` | All languages and models. For more information, see [Using a grammar for speech recognition](/docs/speech-to-text?topic=speech-to-text-grammarUse). |
+| `grammar_name` | ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only.** All languages and models. For more information, see [Using a grammar for speech recognition](/docs/speech-to-text?topic=speech-to-text-grammarUse). |
 | `inactivity_timeout` | All languages and models. For more information, see [Inactivity timeout](/docs/speech-to-text?topic=speech-to-text-input#timeouts-inactivity). |
 | `interim_results` | All languages and models that support low latency, but only if both the `interim_results` and `low_latency` parameters are set to `true`. For more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results). |
 | `language_customization_id` | All languages and models. For more information, see [Using a custom language model for speech recognition](/docs/speech-to-text?topic=speech-to-text-languageUse). |
@@ -133,7 +133,7 @@ Table 1 lists each parameter (and request header) that is supported for use with
 Previous-generation models support some features that are not available with next-generation models. Specifically, next-generation models do not support the following features:
 
 -   Any feature not listed in the previous section is not supported for use with the next-generation models.
--   Next-generation models do not support acoustic model customization or grammars.
+-   Next-generation models do not support acoustic model customization.
 -   Next-generation models do not produce hesitation markers. Hesitation markers are produced only by previous-generation models. For more information about hesitation markers, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 
 For more information about all available speech recognition parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
