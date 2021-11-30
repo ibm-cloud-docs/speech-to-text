@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2021
-lastupdated: "2021-10-27"
+lastupdated: "2021-11-17"
 
 subcollection: speech-to-text
 
@@ -21,7 +21,7 @@ Acoustic model customization is available only for previous-generation models. I
 Follow these steps to create a custom acoustic model for the {{site.data.keyword.speechtotextfull}} service:
 {: shortdesc}
 
-1.  [Create a custom acoustic model](#createModel-acoustic). You can create multiple custom models for the same or different domains or environments. The process is the same for any model that you create. Acoustic model customization is available for all languages that are supported by previous-generation models. For more information about which languages are generally available and beta, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
+1.  [Create a custom acoustic model](#createModel-acoustic). You can create multiple custom models for the same or different domains or environments. The process is the same for any model that you create. Acoustic model customization is available for all languages that are supported by previous-generation models. For more information about which languages are generally available and beta, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
 1.  [Add audio to the custom acoustic model](#addAudio). The service accepts the same audio file formats for acoustic modeling that it accepts for speech recognition. It also accepts archive files that contain multiple audio files. Archive files are the preferred means of adding audio resources. You can repeat the method to add more audio or archive files to a custom model.
 1.  [Train the custom acoustic model](#trainModel-acoustic). Once you add audio resources to the custom model, you must train the model. Training prepares the custom acoustic model for use in speech recognition. The training time depends on the cumulative amount of audio data that the model contains.
 
@@ -35,9 +35,9 @@ The steps for creating a custom acoustic model are iterative. You can add or del
 ## Create a custom acoustic model
 {: #createModel-acoustic}
 
-You use the `POST /v1/acoustic_customizations` method to create a new custom acoustic model. The method accepts a JSON object that defines the attributes of the new custom model as the body of the request. The new custom model is owned by the instance of the service whose credentials are used to create it. For more information, see [Ownership of custom models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-owner).
+You use the `POST /v1/acoustic_customizations` method to create a new custom acoustic model. The method accepts a JSON object that defines the attributes of the new custom model as the body of the request. The new custom model is owned by the instance of the service whose credentials are used to create it. For more information, see [Ownership of custom models](/docs/speech-to-text?topic=speech-to-text-custom-usage#custom-owner).
 
-You can create a maximum of 1024 custom acoustic models per owning credentials. For more information, see [Maximum number of custom models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-maximum).
+You can create a maximum of 1024 custom acoustic models per owning credentials. For more information, see [Maximum number of custom models](/docs/speech-to-text?topic=speech-to-text-custom-usage#custom-maximum).
 
 A new custom acoustic model has the following attributes:
 
@@ -317,7 +317,7 @@ The response includes `status` and `progress` fields that report the current sta
 -   `ready` indicates that the model contains valid data and is ready to be trained. The `progress` field is `0`.
 
     If the model contains a mix of valid and invalid audio resources, training of the model fails unless you set the `strict` query parameter to `false`. For more information, see [Training failures for custom acoustic models](#failedTraining-acoustic).
--   `training` indicates that the model is being trained. The `progress` field changes from `0` to `100` when training is complete. <!-- The `progress` field indicates the progress of the training as a percentage complete. -->
+-   `training` indicates that the model is being trained. The `progress` field changes from `0` to `100` when training is complete.
 -   `available` indicates that the model is trained and ready to use. The `progress` field is `100`.
 -   `upgrading` indicates that the model is being upgraded. The `progress` field is `0`.
 -   `failed` indicates that training of the model failed. The `progress` field is `0`. For more information, see [Training failures for custom acoustic models](#failedTraining-acoustic).

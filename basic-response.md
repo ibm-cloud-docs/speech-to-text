@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-10-01"
+lastupdated: "2021-10-29"
 
 subcollection: speech-to-text
 
@@ -150,8 +150,7 @@ The following examples show responses with two final results from the HTTP and W
     ```
     {: codeblock}
 
--   *For the WebSocket interface,* the service sends the same results as the previous example. The response includes a single `SpeechRecognitionResults` object,
-the `alternatives` array has a separate element for each final result, and the response has a single `result_index` field with a value of `0`.
+-   *For the WebSocket interface,* the service sends the same results as the previous example. The response includes a single `SpeechRecognitionResults` object, the `alternatives` array has a separate element for each final result, and the response has a single `result_index` field with a value of `0`.
 
     ```json
     {

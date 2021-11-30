@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-30"
+lastupdated: "2021-10-29"
 
 subcollection: speech-to-text
 
@@ -106,14 +106,6 @@ When you successfully use the `POST /v1/register_callback` method to register a 
 The service uses the user secret to compute an HMAC-SHA1 signature over the payload of every callback notification that it sends to the URL. The service sends the signature via the `X-Callback-Signature` header with each notification. The client can use the secret to compute its own signature of each notification payload. If its signature matches the value of the `X-Callback-Signature` header, the client knows that the notification was sent by the service and that its contents have not been altered during transmission. This knowledge guarantees that the client is not the victim of a man-in-middle-attack.
 
 HTTPS is ideal for production applications. But during application development and prototyping, the HTTP-based callback notifications that are supported by the service can simplify and accelerate the development process by avoiding the expense of HTTPS.
-
-<!--
-
-However, communicating over the HTTPS protocol is always the most secure means of learning job status and retrieving results. Using the HTTPS `GET /v1/recognitions/{id}` method to retrieve the results of a job is therefore more secure that receiving the results via callback notification. Although the use of HMAC-SHA1 signatures based on a user secret ensures authentication and data integrity for callback notifications, it does not provide confidentiality. Conversely, because it encrypts the body of the response, HTTPS can provide authentication, integrity, *and* confidentiality.
-
-HTTPS, however, is not ideal in terms of additional development overhead. Moreover, although the service validates SSL certificates to prevent man-in-the-middle attacks when you use HTTPS, validation is not foolproof if you use self-signed certificates, which enable encryption but not authentication or data integrity. During application development, user secrets and digital signatures provide a suitable level of security for requests made over the HTTP protocol. You can work with HTTP callback notifications during prototyping and move to HTTPS only for application deployment.
-
--->
 
 ### Unregistering a callback URL
 {: #unregister}

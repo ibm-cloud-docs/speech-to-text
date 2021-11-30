@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-30"
+lastupdated: "2021-10-29"
 
 subcollection: speech-to-text
 
@@ -20,7 +20,7 @@ Speech activity detection is supported for most language models. For more inform
 {: note}
 
 ## How speech activity detection works
-{: detection-works}
+{: #detection-works}
 
 Speech activity detection consumes the input audio stream and determines which parts of the stream to pass for speech recognition. Speech recognition is adversely affected by background speech and noise, causing the service to transcribe the wrong words, to produce words where none are present, or to omit words that are part of the input audio. The speech activity detection feature can help ensure that only relevant audio is processed for speech recognition.
 

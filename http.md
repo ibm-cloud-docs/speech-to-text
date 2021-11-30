@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-10-18"
+lastupdated: "2021-10-29"
 
 subcollection: speech-to-text
 
@@ -170,6 +170,7 @@ Only the following two parameters are specific to multipart requests:
 All other parameters of the metadata are optional. For descriptions of all available parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
 
 ### Multipart request example
+{: #multipart-request-example}
 
 The following example shows how to pass a multipart recognition request with the `POST /v1/recognize` method. The request passes two audio files, **audio-file1.flac** and **audio-file2.flac**. The `metadata` parameter provides most parameters of the request; the `upload` parameters provide the audio files.
 
