@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-10-28"
+lastupdated: "2021-11-17"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -153,7 +153,7 @@ New beta grammar support for next-generation models
 New `custom_acoustic_model` field for supported features
 :   The `GET /v1/models` and `GET /v1/models/{model_id}` methods now report whether a model supports acoustic model customization. The `SupportedFeatures` object now includes an additional field, `custom_acoustic_model`, a boolean that is `true` for a model that supports acoustic model customization and false otherwise. Currently, the field is `true` for all previous-generation models and `false` for all next-generation models.
     -   For more information about these methods, see [Listing information about models](/docs/speech-to-text?topic=speech-to-text-models-list).
-    -   For more information about support for acoustic model customization, see [Language support and usage notes for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
+    -   For more information about support for acoustic model customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
 
 ## 22 October 2021
 {: #speech-to-text-22october2021}
@@ -222,7 +222,7 @@ Language model customization for next-generation models is now generally availab
 
     For more information about using language model customization for next-generation models, see
     -   [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization)
-    -   [Language support and usage notes for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
+    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
     -   [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate)
     -   [Using a custom language model for speech recognition](/docs/speech-to-text?topic=speech-to-text-languageUse)
     -   [Working with corpora and custom words for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng)
@@ -368,7 +368,7 @@ Canadian French models now generally available
 :   The Canadian French models, `fr-CA_BroadbandModel` and `fr-CA_NarrowbandModel`, are now generally available (GA). They were previously beta. They also now support language model and acoustic model customization.
 
     -   For more information about supported languages and models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
-    -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
+    -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
 
 ## 22 October 2020
 {: #speech-to-text-22october2020}
@@ -377,7 +377,7 @@ Canadian French models now generally available
 Australian English models now generally available
 :   The Australian English models, `en-AU_BroadbandModel` and `en-AU_NarrowbandModel`, are now generally available (GA). They were previously beta. They also now support language model and acoustic model customization.
     -   For more information about supported languages and models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
-    -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
+    -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
 
 Updates to Brazilian Portuguese models for improved speech recognition
 :   The Brazilian Portuguese models, `pt-BR_BroadbandModel` and `pt-BR_NarrowbandModel`, have been updated for improved speech recognition. By default, the service automatically uses the updated models for all speech recognition requests. If you have custom language or custom acoustic models that are based on the models, you must upgrade your existing custom models to take advantage of the updates by using the following methods:
@@ -487,7 +487,7 @@ Dutch and Italian models now generally available
 
     For more information about all available language models, see
     -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
-    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support)
+    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
 
 ## 1 April 2020
 {: #speech-to-text-1april2020}
@@ -498,7 +498,7 @@ Acoustic model customization now generally available
 
     Using a custom language model, a custom acoustic model, or both types of model for transcription incurs an add-on charge of $0.03 (USD) per minute. This charge is in addition to the standard usage charge of $0.02 (USD) per minute, and it applies to all languages supported by the customization interface. So the total charge for using one or more custom models for speech recognition is $0.05 (USD) per minute.
 
-    -   For more information about support for individual language models, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
+    -   For more information about support for individual language models, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
     -   For more information about pricing, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service or the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
 
 ## 16 March 2020
@@ -575,7 +575,7 @@ New beta Italian models available
     For more information, see the following sections:
 
     -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
-    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support)
+    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
 
 New `end_of_phrase_silence_time` parameter for speech recognition
 :   For speech recognition, the service now supports the `end_of_phrase_silence_time` parameter. The parameter specifies the duration of the pause interval at which the service splits a transcript into multiple final results. Each final result indicates a pause or extended silence that exceeds the pause interval. For most languages, the default pause interval is 0.8 seconds; for Chinese the default interval is 0.6 seconds.
@@ -636,7 +636,7 @@ New beta Netherlands Dutch models available
     For more information, see the following sections:
 
     -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
-    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support)
+    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
 
 ## 25 November 2019
 {: #speech-to-text-25november2019}
@@ -694,7 +694,7 @@ New models for Spanish dialects now available
     For more information, see the following sections:
 
     -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
-    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support)
+    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
 
 ## 24 June 2019
 {: #speech-to-text-24june2019}
@@ -870,7 +870,7 @@ New French and German narrowband models now available
     -   French narrowband model (`fr-FR_NarrowbandModel`)
     -   German narrowband model (`de-DE_NarrowbandModel`)
 
-    Both new models support language model customization (GA) and acoustic model customization (beta). For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
+    Both new models support language model customization (GA) and acoustic model customization (beta). For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
 
 New US English `en-US_ShortForm_NarrowbandModel` now available
 :   A new US English language model, `en-US_ShortForm_NarrowbandModel`, is now available. The new model is intended for use in Interactive Voice Response and Automated Customer Support solutions. The model supports language model customization (GA) and acoustic model customization (beta). For more information, see [The US English short-form model](/docs/speech-to-text?topic=speech-to-text-models#modelsShortform).
@@ -1171,7 +1171,7 @@ Updates to French and Spanish broadband models for improved speech recognition
 New Korean models
 :   The service now offers language models for Korean: `ko-KR_BroadbandModel` for audio that is sampled at a minimum of 16 kHz, and `ko-KR_NarrowbandModel` for audio that is sampled at a minimum of 8 kHz. For more information, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
 
-    For language model customization, the Korean models are generally available (GA) for production use; for acoustic model customization, they are beta functionality. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
+    For language model customization, the Korean models are generally available (GA) for production use; for acoustic model customization, they are beta functionality. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
 
     -   For more information about how the service parses corpora for Korean, see [Parsing of Korean](/docs/speech-to-text?topic=speech-to-text-corporaWords#corpusLanguages-koKR).
     -   For more information about creating sounds-like pronunciations for custom words in Korean, see [Guidelines for Korean](/docs/speech-to-text?topic=speech-to-text-corporaWords#wordLanguages-koKR).
@@ -1211,7 +1211,7 @@ New beta acoustic model customization interface for US English, Japanese, and Sp
 
     Custom acoustic models complement custom language models. You can train a custom acoustic model with a custom language model, and you can use both types of model during speech recognition. Acoustic model customization is a beta interface that is available only for US English, Japanese, and Spanish.
 
-    -   For more information about the languages that are supported by the customization interface and the level of support that is available for each language, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
+    -   For more information about the languages that are supported by the customization interface and the level of support that is available for each language, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
     -   For more information about the service's customization interface, see [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization).
     -   For more information about creating a custom acoustic model, see [Creating a custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acoustic).
     -   For more information about using a custom acoustic model, see [Using a custom acoustic model for speech recognition](/docs/speech-to-text?topic=speech-to-text-acousticUse).
@@ -1309,6 +1309,7 @@ Sending audio required to avoid session timeout
 :   It is no longer possible to avoid a session timeout without sending audio:
     -   When you use the WebSocket interface, the client can no longer keep a connection alive by sending a JSON text message with the `action` parameter set to `no-op`. Sending a `no-op` message does not generate an error, but it has no effect.
     -   When you use sessions with the HTTP interface, the client can no longer extend the session by sending a `GET /v1/sessions/{session_id}/recognize` request. The method still returns the status of an active session, but it does not keep the session active.
+
     You can now do the following to keep a session alive:
     -   Set the `inactivity_timeout` parameter to `-1` to avoid the 30-second inactivity timeout.
     -   Send any audio data, including just silence, to the service to avoid the 30-second session timeout. You are charged for the duration of any data that you send to the service, including the silence that you send to extend a session.

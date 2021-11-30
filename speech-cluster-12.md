@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2021
-lastupdated: "2021-05-09"
+lastupdated: "2021-10-29"
 
 subcollection: speech-to-text
 
@@ -225,23 +225,3 @@ You can disable this behavior by checking the following option:
 `STT Runtime | Disable storage of customer data`
 
 Checking this option also removes sensitive information from container logs. For information about anonymizing data, see [Anonymizing logs and audio data](/docs/speech-to-text?topic=speech-to-text-speech-override-12#speech-override-anonymize-12).
-
-<!-- COMMENT OUT FOR APRIL 2021 1.2.1 ADDITION OF MODIFYING MODELS/VOICES.
-## Installing ad hoc models and voices
-{: #speech-cluster-model-install-adhoc-12}
-
-It is possible to install ad hoc models and voices, which are models and voices that are not included with this version of the service. To do so, you need to download a special package that contains data for the models and voices. You then upload the package into the cluster as you did the main package and specify the following values in the `speech-override.yaml` file during installation.
-
-| Value | Description |
-|-------|-------------|
-| `global.sttModels.$modelName.catalogName` | Model name as it is found in the catalog |
-| `global.sttModels.$modelName.size` | Memory footprint that is used to calculate memory requirements for the model |
-| `global.ttsVoices.$voiceName.catalogName` | Voice name as it is found in the catalog |
-| `global.ttsVoices.$voiceName.size` | Memory footprint that is used to calculate memory requirements for the voice |
-{: caption="Table 1. Values for ad hoc models and voices"}
-
-For example, suppose a new broadband model for the Czech language is made available after the current release. To enable it as a service update, specify the following values during installation: `$modelName` is `csCSBroadbandModel`, and `$catalogName` is `cs-CS_BroadbandModel`. For more information, see
-
--   [Installing {{site.data.keyword.speechtotextshort}} models](/docs/speech-to-text?topic=speech-to-text-speech-override-12#speech-override-stt-models-12)
--   [Installing {{site.data.keyword.texttospeechshort}} voices](/docs/speech-to-text?topic=speech-to-text-speech-override-12#speech-override-tts-voices-12)
--->

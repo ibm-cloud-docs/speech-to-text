@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-11-12"
+lastupdated: "2021-11-17"
 
 subcollection: speech-to-text
 
@@ -40,7 +40,7 @@ An optional customization ID for a custom acoustic model that is adapted for the
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Previous-generation models | Generally available or beta for all models that support acoustic model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support). |
+| Previous-generation models | Generally available or beta for all models that support acoustic model customization. For more information, see [Language support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
 | Next-generation models | Not available. |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
@@ -110,7 +110,7 @@ An optional double between 0.0 and 1.0 that indicates the relative weight that t
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Previous-generation models | Generally available or beta for all models that support language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support). |
+| Previous-generation models | Generally available or beta for all models that support language model customization. For more information, see [Language support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
@@ -208,7 +208,7 @@ An optional customization ID for a custom language model that includes terminolo
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Previous-generation models | Generally available or beta for all models that support language model customization. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support). |
+| Previous-generation models | Generally available or beta for all models that support language model customization. For more information, see [Language support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |

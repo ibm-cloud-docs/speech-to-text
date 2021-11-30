@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-11-12"
+lastupdated: "2021-11-17"
 
 subcollection: speech-to-text
 
@@ -41,22 +41,22 @@ The table indicates the product versions for which each model and for which low-
 
 | Language | Multimedia model | Multimedia low-latency support | Telephony model | Telephony low-latency support |
 |----------|:----------------:|:-------------------:|:---------------:|:-------------------:|
-| Arabic  \n (Modern Standard) | Model not available | Model not available | `ar-MS_Telephony` | **Yes**  \n IBM Cloud only |
+| Arabic  \n (Modern Standard) | Model not available | Model not available | `ar-MS_Telephony` | **Yes** |
 | Chinese  \n (Mandarin) | Model not available | Model not available | `zh-CN_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
-| Czech | Model not available | Model not available | `cz-CZ_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
-| Dutch  \n (Belgian) | Model not available | Model not available | `nl-BE_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
-| Dutch  \n (Netherlands) | Model not available | Model not available | `nl-NL_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
+| Czech | Model not available | Model not available | `cz-CZ_Telephony` | **Yes**  |
+| Dutch  \n (Belgian) | Model not available | Model not available | `nl-BE_Telephony` | **Yes** |
+| Dutch  \n (Netherlands) | Model not available | Model not available | `nl-NL_Telephony` | **Yes** |
 | English  \n (Australian) | `en-AU_Multimedia`  \n IBM Cloud only | **No** | `en-AU_Telephony` | **Yes** |
-| English  \n (Indian) | Model not available | Model not available | `en-IN_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
+| English  \n (Indian) | Model not available | Model not available | `en-IN_Telephony` | **Yes** |
 | English  \n (United Kingdom) | `en-GB_Multimedia`  \n IBM Cloud only | **No** | `en-GB_Telephony` | **Yes** |
 | English  \n (United States) | `en-US_Multimedia` | **No** | `en-US_Telephony` | **Yes** |
-| French  \n (Canadian) | Model not available | Model not available | `fr-CA_Telephony` | **Yes**  \n IBM Cloud only |
-| French  \n (France) | `fr-FR_Multimedia`  \n IBM Cloud only | **No** | `fr-FR_Telephony` | **Yes** |
+| French  \n (Canadian) | Model not available | Model not available | `fr-CA_Telephony` | **Yes** |
+| French  \n (France) | `fr-FR_Multimedia` | **No** | `fr-FR_Telephony` | **Yes** |
 | German | Model not available | Model not available | `de-DE_Telephony` | **Yes** |
-| Hindi  \n (Indian) | Model not available | Model not available | `hi-IN_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
-| Italian | Model not available | Model not available | `it-IT_Telephony` | **Yes**  \n IBM Cloud only |
-| Japanese | `ja-JP_Multimedia`  \n IBM Cloud only | **No** | Model not available | Model not available |
-| Korean | `ko-KR_Multimedia`  \n IBM Cloud only | **No** | `ko-KR_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
+| Hindi  \n (Indian) | Model not available | Model not available | `hi-IN_Telephony` | **Yes** |
+| Italian | Model not available | Model not available | `it-IT_Telephony` | **Yes** |
+| Japanese | `ja-JP_Multimedia` | **No** | Model not available | Model not available |
+| Korean | `ko-KR_Multimedia` | **No** | `ko-KR_Telephony` | **Yes** |
 | Portuguese  \n (Brazilian) | Model not available | Model not available | `pt-BR_Telephony` | **Yes** |
 | Spanish  \n (Castilian) | Model not available | Model not available | `es-ES_Telephony` | **Yes** |
 {: caption="Table 1. Supported next-generation language models"}
@@ -133,7 +133,5 @@ Table 1 lists each parameter (and request header) that is supported for use with
 Previous-generation models support some features that are not available with next-generation models. Specifically, next-generation models do not support the following features:
 
 -   Any feature not listed in the previous section is not supported for use with the next-generation models.
--   Next-generation models do not support acoustic model customization.
+-   Next-generation models do not support acoustic model customization. For more information about support for customization, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
 -   Next-generation models do not produce hesitation markers. Hesitation markers are produced only by previous-generation models. For more information about hesitation markers, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
-
-For more information about all available speech recognition parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).

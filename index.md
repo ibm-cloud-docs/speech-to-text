@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-10-28"
+lastupdated: "2021-11-23"
 
 subcollection: speech-to-text
 
@@ -30,7 +30,7 @@ The service is ideal for clients who need to extract high-quality speech transcr
     -   For information about the latest service update, see the [28 October 2021](/docs/speech-to-text?topic=speech-to-text-release-notes#speech-to-text-28october2021) update in the release notes.
 -   ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}** for installed or on-premises instances of {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}. For links to information about installing and managing {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}, see [Installing {{site.data.keyword.ibmwatson_notm}} {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-speech-install-data).
     -   For information about all service updates and known limitations, see the [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
-    -   For information about the latest service update, see [1 October 2021 (Version 1.1.x)](/docs/speech-to-text?topic=speech-to-text-release-notes-data#speech-to-text-data-1october2021) in the release notes.
+    -   For information about the latest service update, see [30 November 2021 (Version 4.0.3)](/docs/speech-to-text?topic=speech-to-text-release-notes-data#speech-to-text-data-30november2021) in the release notes.
 
 ## Speech recognition
 {: #about-interfaces}
@@ -97,7 +97,7 @@ You can use the {{site.data.keyword.speechtotextshort}} service with other {{sit
 -   *Support agents* - Provide real-time information to improve agent efficiency and focus. Use {{site.data.keyword.speechtotextshort}} to transcribe calls live, and then use {{site.data.keyword.discoveryfull}} to automatically surface relevant information so that your agent can focus on the customer rather than on the search.
 
 ## Beta features
-{: about-beta-features}
+{: #about-beta-features}
 
 {{site.data.keyword.IBM_notm}} occasionally releases features and language support that are classified as beta. Such features are provided so that you can evaluate their functionality. They might be unstable and are subject to change or removal with short notice. They are not intended for use in a production environment.
 

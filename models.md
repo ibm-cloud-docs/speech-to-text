@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-09-22"
+lastupdated: "2021-11-17"
 
 subcollection: speech-to-text
 
@@ -106,8 +106,8 @@ curl -X POST \
 
 The previous-generation models described in this topic are supported for use with all of the service's features. Most features and models are generally available for production use. Where indicated, some features and models are beta functionality. Restrictions apply for some features, for example:
 
--   Features such as speaker labels, numeric redaction, and profanity filtering are limited to certain languages and models. Such restrictions are noted with the descriptions of the individual features. For more information about all parameters that also notes all restrictions, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
+-   Features such as speaker labels, numeric redaction, and profanity filtering are limited to certain languages and models. Such restrictions are noted with the descriptions of the individual features. For more information about all available speech recognition parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
 -   The `low_latency` parameter is supported only for next-generation models. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
--   Language model customization is not supported for the Arabic and Chinese models. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
+-   Language model customization is not supported for the Arabic and Chinese models. For more information about support for customization, see [Language support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg).
 
 Otherwise, when a feature is described as being available in general or available for a specific language or languages, it supports the previous-generation models.

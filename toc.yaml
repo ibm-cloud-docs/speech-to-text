@@ -87,6 +87,7 @@ toc:
           topics:
           - custom.md
           - custom-support.md
+          - custom-usage.md
           - topicgroup:
               label: Language model customization
               topics:

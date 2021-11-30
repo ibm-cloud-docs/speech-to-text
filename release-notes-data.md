@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2021
-lastupdated: "2021-10-19"
+lastupdated: "2021-11-30"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -106,6 +106,80 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
+## 30 November 2021 (Version 4.0.3)
+{: #speech-to-text-data-30november2021}
+
+Version 4.0.3 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.0.3 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.x and Red Hat OpenShift versions 4.6 and 4.8. For more information about installing and managing the service, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
+
+License Server now a mandatory prerequisite
+:   You must now install the License Server from the {{site.data.keyword.icp4dfull_notm}} foundational services. You must install the License Server by using the YAML content that is provided to create an OperandRequest with the necessary bindings. You must also install the License Service in the same namespace as the service (operand), which is also where {{site.data.keyword.icp4dfull_notm}} is installed. For more information, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
+
+New support for in-place upgrade
+:   The service now supports in-place, operator-based upgrade from version 4.0.0 to version 4.0.3. Moving from {{site.data.keyword.icp4dfull_notm}} version 3.5 to version 4.0.3 continues to require use of migration utilities. For more information, see [Upgrading {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-upgrading-watson-speech){: external}.
+
+EDB PostgreSQL operator and license installation changes
+:   Installation, upgrade, and uninstallation for the Enterprise DB PostgreSQL operator and license have changed:
+    -   Instructions for installing the EDB PostgreSQL operator and license are now included with the {{site.data.keyword.icp4dfull_notm}} foundational services. The instructions for installing the Speech services have been updated accordingly. For more information, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
+    -   Instructions for upgrading from {{site.data.keyword.speechtotextshort}} version 4.0.0 to 4.0.3 include instructions for uninstalling the previous EDB PostgreSQL operator and license and reinstalling them with the {{site.data.keyword.icp4dfull_notm}} foundational services. For more information, see [Upgrading {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-upgrading-watson-speech){: external}.
+    -   Instructions for uninstalling the Speech services now include steps for removing the EDB PostgreSQL operator and license that were previously installed with  {{site.data.keyword.speechtotextshort}}. For more information, see [Uninstalling {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-uninstalling-watson-speech){: external}.
+
+New guidance for scaling up your installation
+:   The service now provides updated guidance about scaling up your installation. The information includes specifying the number of pods, the number of CPUs allocated per pod, and the maximum number of concurrent sessions with previous- and next-generation models. For more information, see [Administering {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-administering-watson-speech){: external}.
+
+Command-line updates to import and export utilities
+:   The commands that are used with the import and export utilities for the Speech services include new options and arguments. The import and export utilities are also the foundation for backing up and restoring the services and for migrating from {{site.data.keyword.icp4dfull_notm}} version 3.5 to version 4.0.3. For more information about using the utilities, see
+
+    -   [Administering {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-administering-watson-speech){: external}
+    -   [Upgrading {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-upgrading-watson-speech){: external}
+
+New property for specifying the CPUs for acoustic model training
+:   The `sttAMPatcher` microservice manages acoustic model customization for the service. The AM Patcher uses a dedicated number of CPUs to handle requests. You can use the new `sttAMPatcher.resources.requestsCPU` property to increase the number of CPUs that are dedicated to handling acoustic model training requests by the AM Patcher. This may be necessary if you experience training failures during acoustic model training. For more information, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
+
+New next-generation models
+:   The service now supports the following new next-generation language models. All of the new models are generally available.
+    -   Czech: `cs-CZ_Telephony`. The model supports low latency.
+    -   Belgian Dutch (Flemish): `nl-BE_Telephony`. The model supports low latency.
+    -   French: `fr-FR_Multimedia`. The new model does not support low latency.
+    -   Indian English: `en-IN_Telephony`. The model supports low latency.
+    -   Indian Hindi: `hi-IN_Telephony`. The model supports low latency.
+    -   Japanese: `ja-JP_Multimedia`. The model does not support low latency.
+    -   Korean: `ko-KR_Multimedia`. The model does not support low latency.
+    -   Korean: `ko-KR_Telephony`. The model supports low latency.
+    -   Netherlands Dutch: `nl-NL_Telephony`. The model supports low latency.
+
+    For more information about all next-generation models and about low latency, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng) and [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
+
+Updates to next-generation models
+:   The following next-generation models have been updated for improved speech recognition. All of the models are generally available.
+    -   Arabic: `ar-MS_Telephony`. The model now supports low latency.
+    -   Brazilian Portuguese: `pt-BR_Telephony`. The model continues to support low latency.
+    -   US English: `en-US_Telephony`. The model continues to support low latency.
+    -   Canadian French: `fr-CA_Telephony`. The model now supports low latency.
+    -   Italian: `it-IT_Telephony`. The model now supports low latency.
+
+    For more information about all next-generation models and about low latency, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng) and [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
+
+Defect fix for asynchronous HTTP failures
+:   **Defect fix:** The asynchronous HTTP interface failed to transcribe some audio. In addition, the callback for the request returned status `recognitions.completed_with_results` instead of `recognitions.failed`. This error has been resolved.
+
+Defect fix for speakers labels
+:   **Defect fix:** When you use speakers labels with next-generation models, the service now identifies the speaker for all words of the input audio, including very short words that have the same start and end timestamps.
+
+Defect fix for interim results and low-latency documentation
+:   **Defect fix:** Documentation that describes the interim results and low-latency features with next-generation models has been rewritten for clarity and correctness. For more information, see the following topics:
+    -   [Interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim), especially [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency)
+    -   [How the service sends recognition results](/docs/speech-to-text?topic=speech-to-text-websockets#ws-results)
+
+Defect fix for multitenancy documentation
+:   The {{site.data.keyword.icp4dfull_notm}} topic [Multitenancy support](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=planning-multitenancy-support){: external} incorrectly stated that the Speech services do not support multitenancy. The topic has been updated to state that the Speech services support the following operations:
+
+    -   Install the service in separate projects
+    -   Install the service multiple times in the same project
+    -   Install the service once and deploy multiple instances in the same project
+
+    The documentation that is specific to the Speech services correctly stated the multitenancy support.
+
 ## 1 October 2021 (Version 1.1.x)
 {: #speech-to-text-data-1october2021}
 
@@ -132,7 +206,7 @@ Language model customization for next-generation models is now generally availab
 
     For more information about using language model customization for next-generation models, see
     -   [Understanding customization](/docs/speech-to-text?topic=speech-to-text-customization)
-    -   [Language support and usage notes for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
+    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
     -   [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate)
     -   [Using a custom language model for speech recognition](/docs/speech-to-text?topic=speech-to-text-languageUse)
     -   [Working with corpora and custom words for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng)
@@ -209,7 +283,7 @@ New installation instructions
 :   For both clusters connected to the internet and air-gapped clusters, the installation instructions include the following steps:
     -   Use the `oc label` command to set up required labels for the namespace where {{site.data.keyword.icp4dfull_notm}} is installed.
     -   Use the `oc project` command to ensure that you are pointing at the correct OpenShift project.
-    -   Use the `cpd-cli install` command to install an EnterpriseDB PostgreSQL server that is used by the Speech services.
+    -   Use the `cpd-cli install` command to install an Enterprise DB PostgreSQL server that is used by the Speech services.
 
     You perform these steps before you install the Speech services. For more information, see [Installing the {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} service](https://www.ibm.com/support/knowledgecenter/SSQNUZ_3.5.0/svc-speech/stt-svc-install.html){: external}.
 
@@ -268,7 +342,7 @@ New Australian and French Canadian models
 
     The new models are generally available, and they support both language model and acoustic model customization.
     -   For more information about supported languages and models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
-    -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
+    -   For more information about language support for customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
 
 Updated models for improved speech recognition
 :   The following language models have been updated for improved speech recognition:
@@ -322,7 +396,7 @@ New broadband and narrowband models for Dutch and Italian
 
     Dutch and Italian language models are generally available (GA) for speech recognition and for language model and acoustic model customization. For more information about all available language models, see
     -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
-    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support)
+    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
 
 Support for `speaker_labels` parameter for German and Korean
 :   The service now supports speaker labels (the `speaker_labels` parameter) for German and Korean language models. Speaker labels identify which individuals spoke which words in a multi-participant exchange. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
@@ -337,7 +411,7 @@ Simplified backup and restore
 {: #speech-to-text-data-1april2020}
 
 Acoustic model customization is now generally available
-:   Acoustic model customization is now generally available (GA) for all supported languages. For more information about support for individual language models, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
+:   Acoustic model customization is now generally available (GA) for all supported languages. For more information about support for individual language models, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
 
 ## 28 February 2020 (Version 1.1.3)
 {: #speech-to-text-data-28february2020}
@@ -394,7 +468,7 @@ New broadband and narrowband models for Spanish dialects
     For more information, see the following sections:
 
     -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
-    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support)
+    -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
 
 FISMA support
 :   Federal Information Security Management Act (FISMA) support is now available for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}. The service is FISMA High Ready.

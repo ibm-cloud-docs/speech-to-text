@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-10-27"
+lastupdated: "2021-11-17"
 
 subcollection: speech-to-text
 
@@ -18,7 +18,7 @@ content-type: troubleshoot
 Follow these steps to create, add contents to, and train a custom language model for the {{site.data.keyword.speechtotextfull}} service:
 {: shortdesc}
 
-1.  [Create a custom language model](#createModel-language). You can create multiple custom models for the same or different domains. The process is the same for any model that you create. Language model customization is available for most languages that are supported by previous- and next-generation models. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support).
+1.  [Create a custom language model](#createModel-language). You can create multiple custom models for the same or different domains. The process is the same for any model that you create. Language model customization is available for most languages that are supported by previous- and next-generation models. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
 1.  [Add a corpus to the custom language model](#addCorpus). A corpus is a plain text document that uses terminology from the domain in context. You can add multiple corpora serially, one at a time, to a custom model. *For previous-generation models,* the service builds a vocabulary for a custom model by extracting terms from corpora that do not exist in its base vocabulary. *For next-generation models,* the service extracts character sequences rather than words from corpora.
 1.  [Add words to the custom language model](#addWords). You can also add custom words to a model individually. You can specify how the words from a custom model are to be displayed in a speech transcript. *For previous-generation models,* you can specify the pronunciation of words, and you can modify custom words that are extracted from corpora.
 1.  [Train the custom language model](#trainModel-language). After you add corpora and words to the custom model, you must train the model. Training prepares the custom model for use in speech recognition. The model does not use new or modified corpora or words until you train it.
@@ -33,9 +33,9 @@ For some models, you can also add grammars to a custom language model. Grammars 
 ## Create a custom language model
 {: #createModel-language}
 
-You use the `POST /v1/customizations` method to create a new custom language model. The method accepts a JSON object that defines the attributes of the new custom model as the body of the request. The new custom model is owned by the instance of the service whose credentials are used to create it. For more information, see [Ownership of custom models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-owner).
+You use the `POST /v1/customizations` method to create a new custom language model. The method accepts a JSON object that defines the attributes of the new custom model as the body of the request. The new custom model is owned by the instance of the service whose credentials are used to create it. For more information, see [Ownership of custom models](/docs/speech-to-text?topic=speech-to-text-custom-usage#custom-owner).
 
-You can create a maximum of 1024 custom language models per owning credentials. For more information, see [Maximum number of custom models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-maximum).
+You can create a maximum of 1024 custom language models per owning credentials. For more information, see [Maximum number of custom models](/docs/speech-to-text?topic=speech-to-text-custom-usage#custom-maximum).
 
 A new custom language model has the following attributes:
 
@@ -428,7 +428,7 @@ The response includes `status` and `progress` fields that report the state of th
 -   `ready` indicates that the model contains valid data and is ready to be trained. The `progress` field is `0`.
 
     If the model contains a mix of valid and invalid resources (for example, both valid and invalid custom words), training of the model fails unless you set the `strict` query parameter to `false`. For more information, see [Training failures for custom language models](#failedTraining-language).
--   `training` indicates that the model is being trained. The `progress` field changes from `0` to `100` when training is complete. <!-- The `progress` field indicates the progress of the training as a percentage complete. -->
+-   `training` indicates that the model is being trained. The `progress` field changes from `0` to `100` when training is complete.
 -   `available` indicates that the model is trained and ready to use. The `progress` field is `100`.
 -   `upgrading` indicates that the model is being upgraded. The `progress` field is `0`. *Upgrading applies only to previous-generation models.*
 -   `failed` indicates that training of the model failed. The `progress` field is `0`. For more information, see [Training failures for custom language models](#failedTraining-language).
@@ -460,87 +460,3 @@ If the training request fails with a status code of 400, the service sets the cu
 
     For more information about validating the words in a custom language model, see [Validating a words resource for previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel) and [Validating a words resource for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#validateModel-ng).
 -   Set the `strict` parameter of the `POST /v1/customizations/{customization_id}/train` method to `false` to exclude invalid resources from the training. The model must contain at least one valid resource (corpus, grammar, or word) for training to succeed. The `strict` parameter is useful for training a custom model that contains a mix of valid and invalid resources.
-
-<!-- COMMENTED FOR UNIFICATION ON 05/10/21.
-## Example scripts
-{: #exampleScripts}
-
-You can use the following scripts to experiment with the steps for creating a custom language model:
-
--   A Python script named [testSTTcustom.py](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.py){: external}. For more information, see [Example Python script](#pythonScript).
--   A Bash shell script named [testSTTcustom.sh](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.sh){: external}. For more information, see [Example shell script](#shellScript).
-
-The two scripts provide identical functionality. Each script creates a custom model, adds words from a corpus text file, and adds both single and multiple words to the model directly. The script queries the model to list words added from a corpus and directly by the user. It also trains the model and demonstrates the polling that is recommended for monitoring the results of asynchronous operations.
-
-You can use either of two provided corpus text files with the scripts, or you can test with your own corpus files:
-
--   [corpus.txt](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/corpus.txt){: external} is an abbreviated 6 KB corpus that adds six healthcare-related terms to a model. This file produces a small amount of output when used with the scripts. The scripts use this file by default.
--   [healthcare.txt](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/healthcare.txt){: external} is a richer 164 KB corpus that adds many healthcare-related terms to a model. This file produces much more output when used with the scripts.
-
-By default, the new custom model that you create with either script is available for use with recognition requests. The scripts include an optional step for deleting the new custom model, which can be helpful when you are experimenting with the process. Follow the comments in the scripts to enable the deletion step.
-
-### Example Python script
-{: #pythonScript}
-
-Follow these steps to use the Python script:
-
-1.  Download the Python script named [testSTTcustom.py](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.py){: external}.
-1.  Download the example corpus text files to use with the script. You are free to test with either of the corpus text files or with a file of your own choosing. By default, all corpus text files must reside in the same directory as the script.
-1.  The script uses the Python `requests` library for HTTP requests to the service. Use `pip` or `easy_install` to install the library for use by the script, for example:
-
-    ```bash
-    pip install requests
-    ```
-    {: pre}
-
-    For more information about the library, see [pypi.python.org/pypi/requests](https://pypi.python.org/pypi/requests){: external}.
-1.  Edit the script to replace the `password` string `YOUR_IAM_APIKEY` with the API key from your {{site.data.keyword.speechtotextshort}} credentials:
-
-    ```
-    password = "YOUR_API_KEY"
-    ```
-    {: codeblock}
-
-1.  Edit the script to replace the `url` string `YOUR_URL` with the URL for your service instance as provided in your service credentials:
-
-    ```
-    url = "YOUR_URL"
-    ```
-    {: codeblock}
-
-1.  Run the script by entering the following command:
-
-    ```bash
-    python testSTTcustom.py
-    ```
-    {: pre}
-
-### Example shell script
-{: #shellScript}
-
-Follow these steps to use the Bash shell script:
-
-1.  Download the shell script named [testSTTcustom.sh](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/testSTTcustom.sh){: external}.
-1.  Download the example corpus text files to use with the script. You are free to test with either of the corpus text files or with a file of your own choosing. By default, all corpus text files must reside in the same directory as the script.
-1.  The script uses the `curl` command for HTTP requests to the service. If you have not already downloaded `curl`, you can install the version for your operating system from [curl.haxx.se](http://curl.haxx.se){: external}. Install the version that supports the Secure Sockets Layer (SSL) protocol, and make sure to include the installed binary file on your `PATH` environment variable.
-1.  Edit the script to replace the `PASSWORD` string `YOUR_IAM_APIKEY` with the API key from your {{site.data.keyword.speechtotextshort}} credentials:
-
-    ```
-    PASSWORD="YOUR_IAM_APIKEY"
-    ```
-    {: codeblock}
-
-1.  Edit the script to replace the `URL` string `YOUR_URL` with the URL for your service instance as provided in your service credentials:
-
-    ```
-    URL="YOUR_URL"
-    ```
-    {: codeblock}
-
-1.  Make sure that the script has executable permissions, and then run the script by entering the following command:
-
-    ```bash
-    ./testSTTcustom.sh
-    ```
-    {: pre}
--->
