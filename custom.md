@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-11-17"
+lastupdated: "2021-12-03"
 
 subcollection: speech-to-text
 
@@ -39,6 +39,9 @@ Language model customization is available for both previous-generation and next-
 
 -   [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate)
 -   [Using a custom language model for speech recognition](/docs/speech-to-text?topic=speech-to-text-languageUse)
+
+As of 3 December 2021, custom language models based on certain next-generation models must be re-created. If you created custom language models based on certain versions of the `en-AU_Telephony`, `en-GB_Telephony`, `en-US_Telephony`, or `en-US_Multimedia` models, you must re-create the custom models. Until you do, speech recognition requests that attempt to use the custom models fail with HTTP error code 400. For more information, see the [3 December 2021](/docs/speech-to-text?topic=speech-to-text-release-notes#speech-to-text-3december2021) update in the release notes for {{site.data.keyword.cloud_notm}}.
+{: important}
 
 ## Acoustic model customization
 {: #customAcoustic-intro}
