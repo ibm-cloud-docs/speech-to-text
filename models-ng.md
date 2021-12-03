@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-11-17"
+lastupdated: "2021-12-03"
 
 subcollection: speech-to-text
 
@@ -37,7 +37,7 @@ Choose the model that most closely matches the source and sampling rate of your 
 
 Table 1 lists the next-generation models that are available for each language. Low-latency columns indicate whether each model supports the `low_latency` parameter for speech recognition. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
 
-The table indicates the product versions for which each model and for which low-latency are supported. Unless otherwise indicated, the model and low latency are supported for both {{site.data.keyword.cloud_notm}} and {{site.data.keyword.icp4dfull_notm}}. All models are generally available (GA).
+The table indicates the product versions for which each model and for which low-latency are supported. Unless otherwise labeled as *{{site.data.keyword.cloud_notm}} only* or *{{site.data.keyword.icp4dfull_notm}} only*, the model and low latency are supported for both versions of the service. All models are generally available (GA). (Unlike previous-generation models, next-generation models do not include the word `Model` in their names.)
 
 | Language | Multimedia model | Multimedia low-latency support | Telephony model | Telephony low-latency support |
 |----------|:----------------:|:-------------------:|:---------------:|:-------------------:|
@@ -59,9 +59,10 @@ The table indicates the product versions for which each model and for which low-
 | Korean | `ko-KR_Multimedia` | **No** | `ko-KR_Telephony` | **Yes** |
 | Portuguese  \n (Brazilian) | Model not available | Model not available | `pt-BR_Telephony` | **Yes** |
 | Spanish  \n (Castilian) | Model not available | Model not available | `es-ES_Telephony` | **Yes** |
+| Spanish  \n (Latin American) | Model not available | Model not available | `es-LA_Telephony`  \n {{site.data.keyword.cloud_notm}} only | **Yes**  \n {{site.data.keyword.cloud_notm}} only |
 {: caption="Table 1. Supported next-generation language models"}
 
-Unlike previous-generation models, next-generation models do not include the word `model` in their names.
+The Latin American Spanish model, `es-LA_Telephony`, applies to all Latin American dialects. It is the equivalent of the previous-generation models that are available for the Argentinian, Chilean, Colombian, Mexican, and Peruvian dialects. If you used a previous-generation model for any of these specific dialects, use the `es-LA_Telephony` model to migrate to the equivalent next-generation model.
 {: note}
 
 ## Specifying a model for speech recognition

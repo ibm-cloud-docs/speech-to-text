@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-11-17"
+lastupdated: "2021-12-03"
 
 subcollection: speech-to-text
 
@@ -29,6 +29,9 @@ Follow these steps to create, add contents to, and train a custom language model
 The steps for creating a custom language model are iterative. You can add corpora, add words, and train or retrain a model as often as needed.
 
 For some models, you can also add grammars to a custom language model. Grammars restrict the service's response to only those words that are recognized by a grammar. For more information, see [Using grammars with custom language models](/docs/speech-to-text?topic=speech-to-text-grammars).
+
+As of 3 December 2021, custom language models based on certain next-generation models must be re-created. If you created custom language models based on certain versions of the `en-AU_Telephony`, `en-GB_Telephony`, `en-US_Telephony`, or `en-US_Multimedia` models, you must re-create the custom models. Until you do, speech recognition requests that attempt to use the custom models fail with HTTP error code 400. For more information, see the [3 December 2021](/docs/speech-to-text?topic=speech-to-text-release-notes#speech-to-text-3december2021) update in the release notes for {{site.data.keyword.cloud_notm}}.
+{: important}
 
 ## Create a custom language model
 {: #createModel-language}

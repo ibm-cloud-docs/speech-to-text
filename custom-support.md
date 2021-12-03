@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-11-17"
+lastupdated: "2021-12-03"
 
 subcollection: speech-to-text
 
@@ -25,7 +25,7 @@ Where applicable, customization features are also identified as specific to {{si
 ## Language support for previous-generation models
 {: #custom-language-support-pg}
 
-To learn which models are supported for {{site.data.keyword.cloud}}, {{site.data.keyword.icp4dfull}}, or both, see [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported).
+Table 1 lists the previous-generation models that are supported for language model customization, grammars, and acoustic model customization. To learn which models are supported for speech recognition for {{site.data.keyword.cloud}}, {{site.data.keyword.icp4dfull}}, or both, see [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported).
 
 | Language (dialect) | Models | Language model customization | Grammars | Acoustic model customization |
 |------------------------|:-----------:|:----------------------------------------:|:----------------------------------------:|:----------------------------------------:|
@@ -53,14 +53,17 @@ To learn which models are supported for {{site.data.keyword.cloud}}, {{site.data
 ## Language support for next-generation models
 {: #custom-language-support-ng}
 
-To learn which models are supported for {{site.data.keyword.cloud_notm}}, {{site.data.keyword.icp4dfull_notm}}, or both, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
+Table 2 lists the next-generation models that are supported for language model customization, grammars, and acoustic model customization. To learn which models are supported for speech recognition for {{site.data.keyword.cloud_notm}}, {{site.data.keyword.icp4dfull_notm}}, or both, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
+
+As of 3 December 2021, custom language models based on certain next-generation models must be re-created. If you created custom language models based on certain versions of the `en-AU_Telephony`, `en-GB_Telephony`, `en-US_Telephony`, or `en-US_Multimedia` models, you must re-create the custom models. Until you do, speech recognition requests that attempt to use the custom models fail with HTTP error code 400. For more information, see the [3 December 2021](/docs/speech-to-text?topic=speech-to-text-release-notes#speech-to-text-3december2021) update in the release notes for {{site.data.keyword.cloud_notm}}.
+{: important}
 
 | Language (dialect) |  Models | Language model customization | Grammars | Acoustic model customization |
 |------------------------|:-----------:|:----------------------------------------:|:----------------------------------------:|:----------------------------------------:|
 | Arabic  \n (Modern Standard) | `ar-MS_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
 | Chinese  \n (Mandarin) | `zh-CN_Telephony`  \n IBM Cloud only | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
 | Czech | `cz-CZ_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
-| Dutch  \n (Belgian) | `nl-BE_Telephony` | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
+| Dutch  \n (Belgian) | `nl-BE_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
 | Dutch  \n (Netherlands) | `nl-NL_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
 | English  \n (Australian) | `en-AU_Multimedia`  \n IBM Cloud only | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
 | | `en-AU_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
@@ -80,4 +83,5 @@ To learn which models are supported for {{site.data.keyword.cloud_notm}}, {{site
 | | `ko-KR_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
 | Portuguese  \n (Brazilian) | `pt-BR_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
 | Spanish  \n (Castilian) | `es-ES_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
+| Spanish  \n (Latin American) | `es-LA_Telephony` | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
 {: caption="Table 2. Next-generation language support for customization"}
