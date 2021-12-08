@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-08-29"
+lastupdated: "2021-12-08"
 
 subcollection: speech-to-text
 
@@ -26,7 +26,7 @@ In addition, the interface includes methods for listing information about custom
 
 The customization interface provides two methods for listing information about the custom language models that are owned by the specified credentials:
 
--   The `GET /v1/customizations` method lists information about all custom language models or about all custom language models for a specified language.
+-   The `GET /v1/customizations` method lists information about all custom language models or, if you specify the `language` parameter, about all custom language models for the specified language. If you specify a language, use the language identifier from the name of the base model, for example, `en-US` for a US English model.
 -   The `GET /v1/customizations/{customization_id}` method lists information about a specified custom language model. Use this method to poll the service about the status of a training request or a request to add new words.
 
 Both methods return the following information about a custom model:
@@ -34,8 +34,8 @@ Both methods return the following information about a custom model:
 -   `customization_id` identifies the custom model's Globally Unique Identifier (GUID). The GUID is used to identify the model in methods of the interface.
 -   `created` is the date and time in Coordinated Universal Time (UTC) at which the custom model was created.
 -   `updated` is the date and time in Coordinated Universal Time (UTC) at which the custom model was last modified.
--   `language` is the language of the custom model.
--   `dialect` is the dialect of the language for the custom model, which does not necessarily match the language of the custom model for Spanish models. For more information, see the description of the `dialect` parameter in [Create a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#createModel-language).
+-   `language` is the language of the custom model. The value matches the language identifier from the name of the base model. For example, `en-US` for a US English language model.
+-   `dialect` is the dialect of the language for the custom model, which does not necessarily match the language of the custom model for previous-generation Spanish models. For more information, see the description of the `dialect` field in [Create a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#createModel-language).
 -   `owner` identifies the credentials of the service instance that owns the custom model.
 -   `name` is the name of the custom model.
 -   `description` shows the description of the custom model, if one was provided at its creation.
