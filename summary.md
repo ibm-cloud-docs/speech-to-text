@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-11-17"
+lastupdated: "2021-12-08"
 
 subcollection: speech-to-text
 
@@ -320,8 +320,8 @@ An optional boolean that indicates whether the service converts dates, times, nu
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Previous-generation models | Beta for US English, Japanese, and Spanish. |
-| Next-generation models     | Beta for US English, Japanese, and Spanish. |
+| Previous-generation models | Beta for US English, Japanese, and Spanish (all dialects). |
+| Next-generation models     | Beta for US English, Japanese, and Spanish (all dialects). |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |

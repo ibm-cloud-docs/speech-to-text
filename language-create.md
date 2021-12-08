@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-12-03"
+lastupdated: "2021-12-08"
 
 subcollection: speech-to-text
 
@@ -44,16 +44,16 @@ A new custom language model has the following attributes:
 
 -   `name` (*required* string) - A user-defined name for the new custom model. Use a name that describes the domain of the custom model, such as `Medical custom model` or `Legal custom model`. Use a name that is unique among all custom language models that you own. Use a localized name that matches the language of the custom model.
 -   `base_model_name` (*required* string) - The name of the language model that is to be customized by the new custom model. The new model can be used only with the base model that it customizes.
--   `dialect` (*optional* string) - The dialect of the specified language that is to be used with the new custom model. All dialect values are case-insensitive. For most languages, the dialect matches the language of the base model by default. For example, `en-US` is used for the US English language models.
+-   `dialect` (*optional* string) - The dialect of the specified language that is to be used with the new custom model. *For all languages, it is always safe to omit this field.* The service automatically uses the language identifier from the name of the base model. For example, the service automatically uses `en-US` for all US English models.
 
-    *The parameter is meaningful only for previous-generation Spanish models,* for which you can always safely omit the parameter to have the service create the correct mapping. For Spanish, the service creates a custom model that is suited for speech in one of the following dialects:
-    -   `es-ES` for Castilian Spanish (`es-ES` models)
-    -   `es-LA` for Latin American Spanish (`es-AR`, `es-CL`, `es-CO`, and `es-PE` models)
-    -   `es-US` for Mexican (North American) Spanish (`es-MX` models)
+    If you specify the `dialect` for a new custom model, follow these guidelines:
+    -   For non-Spanish previous-generation models and for next-generation models, you must specify a value that matches the five-character language identifier from the name of the base model.
+    -   For Spanish previous-generation models, you must specify one of the following values:
+        -   `es-ES` for Castilian Spanish (`es-ES` models)
+        -   `es-LA` for Latin American Spanish (`es-AR`, `es-CL`, `es-CO`, and `es-PE` models)
+        -   `es-US` for Mexican (North American) Spanish (`es-MX` models)
 
-    If you specify the parameter for a language, follow these guidelines:
-    -   For non-Spanish language models, the value must match the language of the base model.
-    -   For Spanish language models, the value must match one of the defined mappings (`es-ES`, `es-LA`, or `es-MX`).
+    All values that you pass for the `dialect` field are case-insensitive.
 -   `description` (*optional* string) - A description of the new model. Use a localized description that matches the language of the custom model.
 
 The following example creates a new custom language model named `Example model`. The model is created for the base model `en-US-BroadbandModel` and has the description `Example custom language model`. The `Content-Type` header specifies that JSON data is being passed to the method.
