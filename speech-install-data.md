@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021
-lastupdated: "2021-11-09"
+lastupdated: "2021-12-20"
 
 subcollection: speech-to-text
 
@@ -21,6 +21,5 @@ To install {{site.data.keyword.speechtotextfull}} for {{site.data.keyword.icp4df
 ## Installing and managing previous versions
 {: #speech-install-previous}
 
-For information about installing and managing previous versions of the service on {{site.data.keyword.icp4dfull_notm}}, see the following topics:
-
--   [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} version 1.2](/docs/speech-to-text?topic=speech-to-text-speech-install-12)
+You can no longer perform new installations of {{site.data.keyword.speechtotextshort}} version 1.2.x on {{site.data.keyword.icp4dfull_notm}} version 3.5. For more information, see [20 December 2021 (Version 1.2.x)](/docs/speech-to-text?topic=speech-to-text-release-notes-data#speech-to-text-data-20december2021-12) in the release notes.
+{: important}

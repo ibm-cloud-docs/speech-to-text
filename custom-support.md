@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-12-03"
+lastupdated: "2021-12-16"
 
 subcollection: speech-to-text
 
@@ -55,33 +55,33 @@ Table 1 lists the previous-generation models that are supported for language mod
 
 Table 2 lists the next-generation models that are supported for language model customization, grammars, and acoustic model customization. To learn which models are supported for speech recognition for {{site.data.keyword.cloud_notm}}, {{site.data.keyword.icp4dfull_notm}}, or both, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
 
-As of 3 December 2021, custom language models based on certain next-generation models must be re-created. If you created custom language models based on certain versions of the `en-AU_Telephony`, `en-GB_Telephony`, `en-US_Telephony`, or `en-US_Multimedia` models, you must re-create the custom models. Until you do, speech recognition requests that attempt to use the custom models fail with HTTP error code 400. For more information, see the [3 December 2021](/docs/speech-to-text?topic=speech-to-text-release-notes#speech-to-text-3december2021) update in the release notes for {{site.data.keyword.cloud_notm}}.
+*As of 3 December 2021 for {{site.data.keyword.cloud_notm}}* and *20 December 2021 for {{site.data.keyword.icp4dfull_notm}}*, custom language models based on certain next-generation models must be re-created. If you created custom language models based on certain versions of the `en-AU_Telephony`, `en-GB_Telephony`, `en-US_Telephony`, or `en-US_Multimedia` models, you must re-create the custom models. Until you do, speech recognition requests that attempt to use the custom models fail with HTTP error code 400. For more information, see the [3 December 2021](/docs/speech-to-text?topic=speech-to-text-release-notes#speech-to-text-3december2021) update in the release notes for {{site.data.keyword.cloud_notm}} and the [20 December 2021 (Version 4.0.4)](/docs/speech-to-text?topic=speech-to-text-release-notes-data#speech-to-text-data-20december2021) update in the release notes {{site.data.keyword.icp4dfull_notm}}.
 {: important}
 
 | Language (dialect) |  Models | Language model customization | Grammars | Acoustic model customization |
 |------------------------|:-----------:|:----------------------------------------:|:----------------------------------------:|:----------------------------------------:|
-| Arabic  \n (Modern Standard) | `ar-MS_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
+| Arabic  \n (Modern Standard) | `ar-MS_Telephony` | GA | Beta | Not supported |
 | Chinese  \n (Mandarin) | `zh-CN_Telephony`  \n IBM Cloud only | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
-| Czech | `cz-CZ_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
-| Dutch  \n (Belgian) | `nl-BE_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
-| Dutch  \n (Netherlands) | `nl-NL_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
+| Czech | `cz-CZ_Telephony` | GA | Beta | Not supported |
+| Dutch  \n (Belgian) | `nl-BE_Telephony` | GA | Beta | Not supported |
+| Dutch  \n (Netherlands) | `nl-NL_Telephony` | GA | Beta | Not supported |
 | English  \n (Australian) | `en-AU_Multimedia`  \n IBM Cloud only | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
-| | `en-AU_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
-| English  \n (Indian) | `en-IN_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
+| | `en-AU_Telephony` | GA | Beta | Not supported |
+| English  \n (Indian) | `en-IN_Telephony` | GA | Beta | Not supported |
 | English  \n (United Kingdom) | `en-GB_Multimedia`  \n IBM Cloud only | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
-| | `en-GB_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
-| English  \n (United States) | `en-US_Multimedia` | GA | Beta  \n IBM Cloud only | Not supported |
-| | `en-US_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
-| French  \n (Canadian) | `fr-CA_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
-| French  \n (France) | `fr-FR_Multimedia` | GA | Beta  \n IBM Cloud only | Not supported |
-| | `fr-FR_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
-| German | `de-DE_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
-| Hindi | `hi-IN_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
-| Italian | `it-IT_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
-| Japanese | `ja-JP_Multimedia` | GA | Beta  \n IBM Cloud only | Not supported |
-| Korean | `ko-KR_Multimedia` | GA | Beta  \n IBM Cloud only | Not supported |
-| | `ko-KR_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
-| Portuguese  \n (Brazilian) | `pt-BR_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
-| Spanish  \n (Castilian) | `es-ES_Telephony` | GA | Beta  \n IBM Cloud only | Not supported |
+| | `en-GB_Telephony` | GA | Beta  | Not supported |
+| English  \n (United States) | `en-US_Multimedia` | GA | Beta | Not supported |
+| | `en-US_Telephony` | GA | Beta | Not supported |
+| French  \n (Canadian) | `fr-CA_Telephony` | GA | Beta | Not supported |
+| French  \n (France) | `fr-FR_Multimedia` | GA | Beta | Not supported |
+| | `fr-FR_Telephony` | GA | Beta | Not supported |
+| German | `de-DE_Telephony` | GA | Beta | Not supported |
+| Hindi | `hi-IN_Telephony` | GA | Beta | Not supported |
+| Italian | `it-IT_Telephony` | GA | Beta | Not supported |
+| Japanese | `ja-JP_Multimedia` | GA | Beta | Not supported |
+| Korean | `ko-KR_Multimedia` | GA | Beta | Not supported |
+| | `ko-KR_Telephony` | GA | Beta | Not supported |
+| Portuguese  \n (Brazilian) | `pt-BR_Telephony` | GA | Beta | Not supported |
+| Spanish  \n (Castilian) | `es-ES_Telephony` | GA | Beta | Not supported |
 | Spanish  \n (Latin American) | `es-LA_Telephony` | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
 {: caption="Table 2. Next-generation language support for customization"}
