@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2021
-lastupdated: "2021-10-29"
+lastupdated: "2021-12-10"
 
 subcollection: speech-to-text
 
@@ -14,6 +14,9 @@ subcollection: speech-to-text
 {: #speech-install-12}
 
 ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}} only**
+
+You can no longer perform new installations of {{site.data.keyword.speechtotextshort}} version 1.2.x on {{site.data.keyword.icp4dfull_notm}} version 3.5. For more information, see [20 December 2021 (Version 1.2.x)](/docs/speech-to-text?topic=speech-to-text-release-notes-data#speech-to-text-data-20december2021-12) in the release notes.
+{: important}
 
 This and the following pages provide information about installing and managing {{site.data.keyword.speechtotextfull}} and {{site.data.keyword.texttospeechfull}} for {{site.data.keyword.icp4dfull}}. The two services share a common installation and common datastores to allow for more efficient resource consumption and simplified support. Most of the installation information therefore applies to both services.
 {: shortdesc}

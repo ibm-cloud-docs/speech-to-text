@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-12-03"
+lastupdated: "2021-12-16"
 
 subcollection: speech-to-text
 
@@ -40,7 +40,7 @@ Language model customization is available for both previous-generation and next-
 -   [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate)
 -   [Using a custom language model for speech recognition](/docs/speech-to-text?topic=speech-to-text-languageUse)
 
-As of 3 December 2021, custom language models based on certain next-generation models must be re-created. If you created custom language models based on certain versions of the `en-AU_Telephony`, `en-GB_Telephony`, `en-US_Telephony`, or `en-US_Multimedia` models, you must re-create the custom models. Until you do, speech recognition requests that attempt to use the custom models fail with HTTP error code 400. For more information, see the [3 December 2021](/docs/speech-to-text?topic=speech-to-text-release-notes#speech-to-text-3december2021) update in the release notes for {{site.data.keyword.cloud_notm}}.
+*As of 3 December 2021 for {{site.data.keyword.cloud_notm}}* and *20 December 2021 for {{site.data.keyword.icp4dfull_notm}}*, custom language models based on certain next-generation models must be re-created. If you created custom language models based on certain versions of the `en-AU_Telephony`, `en-GB_Telephony`, `en-US_Telephony`, or `en-US_Multimedia` models, you must re-create the custom models. Until you do, speech recognition requests that attempt to use the custom models fail with HTTP error code 400. For more information, see the [3 December 2021](/docs/speech-to-text?topic=speech-to-text-release-notes#speech-to-text-3december2021) update in the release notes for {{site.data.keyword.cloud_notm}} and the [20 December 2021 (Version 4.0.4)](/docs/speech-to-text?topic=speech-to-text-release-notes-data#speech-to-text-data-20december2021) update in the release notes {{site.data.keyword.icp4dfull_notm}}.
 {: important}
 
 ## Acoustic model customization
@@ -67,7 +67,7 @@ For more information about getting started with acoustic model customization, se
 ## Grammars
 {: #grammars-intro}
 
-Grammars are available only for some previous-generation and next-generation models. Support differs between {{site.data.keyword.cloud_notm}} and {{site.data.keyword.icp4dfull_notm}}. Grammars are generally available for some models and beta for other models. For more information about the available models and the features they support, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
+Grammars are available only for some previous-generation and next-generation models. Support can differ between {{site.data.keyword.cloud_notm}} and {{site.data.keyword.icp4dfull_notm}}, and grammars can be generally available for some models and beta for other models. For more information about the available models and the features they support, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
 {: note}
 
 Custom language models allow you to expand the service's base vocabulary. *Grammars* enable you to restrict the words that the service can recognize from that vocabulary. When you use a grammar with a custom language model for speech recognition, the service can recognize only words, phrases, and strings that are recognized by the grammar. Because the grammar defines a limited search space for valid matches, the service can deliver results faster and more accurately.

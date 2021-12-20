@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-12-03"
+lastupdated: "2021-12-16"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -149,7 +149,7 @@ New Australian English and UK English next-generation multimedia models
 Updates to multiple next-generation models for improved speech recognition
 :   The following next-generation models have been updated for improved speech recognition:
     -   Australian English telephony model (`en-AU_Telephony`)
-    -   UK English telephony model (`en-UK_Telephony`)
+    -   UK English telephony model (`en-GB_Telephony`)
     -   US English multimedia model (`en-US_Multimedia`)
     -   US English telephony model (`en-US_Telephony`)
     -   Castilian Spanish telephony model (`es-ES_Telephony`)
@@ -162,20 +162,18 @@ Grammar support for previous-generation models is now generally available
     -   The models support language model customization.
 
     For more information, see the following topics:
-
-    -   For information about the status of grammar support for previous-generation models, see [Language support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg).
-    -   For information about grammars, see [Grammars](/docs/speech-to-text?topic=speech-to-text-customization#grammars-intro).
+    -   For more information about the status of grammar support for previous-generation models, see [Language support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg).
+    -   For more information about grammars, see [Grammars](/docs/speech-to-text?topic=speech-to-text-customization#grammars-intro).
 
 New beta grammar support for next-generation models
 :   Grammar support is now available as beta functionality for all next-generation models. All next-generation models are generally available (GA) and support language model customization. For more information, see the following topics:
-
-    -   For information about the status of grammar support for next-generation models, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
-    -   For information about grammars, see [Grammars](/docs/speech-to-text?topic=speech-to-text-customization#grammars-intro).
+    -   For more information about the status of grammar support for next-generation models, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
+    -   For more information about grammars, see [Grammars](/docs/speech-to-text?topic=speech-to-text-customization#grammars-intro).
 
     **Note:** Beta support for grammars by next-generation models is available for the {{site.data.keyword.speechtotextshort}} service on {{site.data.keyword.cloud_notm}} only. Grammars are not yet supported for next-generation models on {{site.data.keyword.icp4dfull_notm}}.
 
 New `custom_acoustic_model` field for supported features
-:   The `GET /v1/models` and `GET /v1/models/{model_id}` methods now report whether a model supports acoustic model customization. The `SupportedFeatures` object now includes an additional field, `custom_acoustic_model`, a boolean that is `true` for a model that supports acoustic model customization and false otherwise. Currently, the field is `true` for all previous-generation models and `false` for all next-generation models.
+:   The `GET /v1/models` and `GET /v1/models/{model_id}` methods now report whether a model supports acoustic model customization. The `SupportedFeatures` object now includes an additional field, `custom_acoustic_model`, a boolean that is `true` for a model that supports acoustic model customization and `false` otherwise. Currently, the field is `true` for all previous-generation models and `false` for all next-generation models.
     -   For more information about these methods, see [Listing information about models](/docs/speech-to-text?topic=speech-to-text-models-list).
     -   For more information about support for acoustic model customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
 

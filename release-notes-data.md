@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2021
-lastupdated: "2021-11-30"
+lastupdated: "2021-12-20"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -105,6 +105,105 @@ The service has the following known limitations:
     However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
+
+## 20 December 2021 (Version 4.0.4)
+{: #speech-to-text-data-20december2021}
+
+Version 4.0.4 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.0.4 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.x and Red Hat OpenShift versions 4.6 and 4.8. For more information about installing and managing the service, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
+
+Important: Changes to properties for disabling the storage and logging of user data
+:   **Important:** The names of the properties of the Speech services custom resource that specify whether user data is stored and logged have changed. The custom resource formerly contained the following properties:
+
+    ```yaml
+    #################
+    # Anonymize logs
+    #################
+      sttRuntime:
+        anonymizeLogs: "false"  # If true, disables storage and logging of user data
+      sttAMPatcher:
+        anonymizeLogs: "false"  # If true, disables storage and logging of user data
+      ttsRuntime:
+        anonymizeLogs: "false"  # If true, disables storage and logging of user data
+    ```
+    {: codeblock}
+
+    These properties are now named as follows:
+
+    ```yaml
+    ###################################
+    # Storage and logging of user data
+    ###################################
+      sttRuntime:
+        skipAudioAndResultLogging: "false"  # If true, disables storage and logging of user data
+      sttAMPatcher:
+        skipAudioAndResultLogging: "false"  # If true, disables storage and logging of user data
+      ttsRuntime:
+        skipAudioAndResultLogging: "false"  # If true, disables storage and logging of user data
+    ```
+    {: codeblock}
+
+    If you already set these properties in your custom resource to change the default value of `false` to `true`, you need to edit your custom resource. You must manually change the names of the properties to the new values and save the updated custom resource. For more information, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
+
+Important: Changes to properties of PostgreSQL secrets object
+:   **Important:** When you install the Speech services, an object that contains a randomly generated password for the PostgreSQL datastore is created by default. You can choose instead to specify the password manually. If you do, the properties of the YAML file for the secrets object have changed. For more information, see the topic about managing your datastores in [Administering {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-administering-watson-speech){: external}.
+
+Important: PostgreSQL pods do not start with EnterpriseDB version 1.10 operator
+:   **Important:** With {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.0.3, PostgreSQL pods based on the EnterpriseDB version 1.10 operator can fail to start. This prevents the Speech services from starting. A workaround exists for this problem. If your Speech services fail to start, see [PostgreSQL pods do not start with EnterpriseDB version 1.10 operator](https://www.ibm.com/support/pages/node/6525340){: external} for information about diagnosing and resolving the problem.
+
+    This problem is fixed in {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.0.4.
+
+New support for IBM Spectrum Scale Container Native storage class
+:   Since version 4.0.3, the Speech services support the IBM Spectrum® Scale Container Native storage class. To use IBM Spectrum Scale, specify `"ibm-spectrum-scale-sc"` for the `storageClass` property of the Speech services custom resource. For more information, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
+
+Interaction of Speech services with MinIO datastore during installation
+:   The Speech services runtime components, `sttRuntime` and `ttsRuntime`, cannot start until the models and voices for the services are fully uploaded into the MinIO datastore. During installation, the services might fail and automatically restart themselves one or more times until upload of the models and voices is complete. They then start properly. No user action is required.
+
+Defect fix for upgrade documentation
+:   **Defect fix:** Documentation for upgrading the Speech services to new versions of {{site.data.keyword.icp4dfull_notm}} version 4.0.x included incorrect references in some commands. These references are now correct:
+    -   The strings `watsonSpeechToTextStatus` and `watsonTextToSpeechStatus` have been changed to `speechStatus` in both cases.
+    -   The strings `status.watsonSpeechToTextVersion` and `status.watsonTextToSpeechVersion` have been changed to `.spec.version` in both cases.
+
+    For more information, see [Upgrading {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-upgrading-watson-speech){: external}.
+
+Important: Custom language models based on certain next-generation models must be re-created
+:   **Important:** If you created custom language models based on certain next-generation models, you must re-create the custom models. Until you re-create the custom language models, speech recognition requests that attempt to use the custom models fail with HTTP error code 400.
+
+    You need to re-create custom language models that you created based on the following versions of next-generation models:
+    -   For the `en-AU_Telephony` model, custom models that you created from `en-AU_Telephony.v2021-03-03` to `en-AU_Telephony.v2021-10-04`.
+    -   For the `en-GB_Telephony` model, custom models that you created from `en-GB_Telephony.v2021-03-03` to `en-GB_Telephony.v2021-10-04`.
+    -   For the `en-US_Telephony` model, custom models that you created from `en-US_Telephony.v2021-06-17` to `en-US_Telephony.v2021-10-04`.
+    -   For the `en-US_Multimedia` model, custom models that you created from `en-US_Multimedia.v2021-03-03` to `en-US_Multimedia.v2021-10-04`.
+
+    **To identify the version of a model on which a custom language model is based,** use the `GET /v1/customizations` method to list all of your custom language models or the `GET /v1/customizations/{customization_id}` method to list a specific custom language model. The `versions` field of the output shows the base model for a custom language model. For more information, see [Listing custom language models](/docs/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
+
+    **To re-create a custom language model,** first create a new custom model. Then add all of the previous custom model's corpora and custom words to the new model. You can then delete the previous custom model. For more information, see [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate).
+
+Updates to multiple next-generation models for improved speech recognition
+:   The following next-generation models have been updated for improved speech recognition:
+    -   Australian English telephony model (`en-AU_Telephony`)
+    -   UK English telephony model (`en-GB_Telephony`)
+    -   US English multimedia model (`en-US_Multimedia`)
+    -   US English telephony model (`en-US_Telephony`)
+    -   Castilian Spanish telephony model (`es-ES_Telephony`)
+
+    For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+
+New beta grammar support for next-generation models
+:   Grammar support is now available as beta functionality for all available next-generation models. All next-generation models are generally available (GA) and support language model customization. For more information, see the following topics:
+    -   For more information about the status of grammar support for next-generation models, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
+    -   For more information about grammars, see [Grammars](/docs/speech-to-text?topic=speech-to-text-customization#grammars-intro).
+
+New `custom_acoustic_model` field for supported features
+:   The `GET /v1/models` and `GET /v1/models/{model_id}` methods now report whether a model supports acoustic model customization. The `SupportedFeatures` object now includes an additional field, `custom_acoustic_model`, a boolean that is `true` for a model that supports acoustic model customization and `false` otherwise. Currently, the field is `true` for all previous-generation models and `false` for all next-generation models.
+    -   For more information about these methods, see [Listing information about models](/docs/speech-to-text?topic=speech-to-text-models-list).
+    -   For more information about support for acoustic model customization, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
+
+## 20 December 2021 (Version 1.2.x)
+{: #speech-to-text-data-20december2021-12}
+
+Important: You can no longer install {{site.data.keyword.speechtotextshort}} version 1.2.x on {{site.data.keyword.icp4dfull_notm}} version 3.5
+:   **Important:** You can no longer perform new installations of {{site.data.keyword.speechtotextshort}} version 1.2.x on {{site.data.keyword.icp4dfull_notm}} version 3.5. The Speech services for {{site.data.keyword.icp4dfull_notm}} version 3.5 reach their End of Support date on 30 April 2022. You can install only {{site.data.keyword.speechtotextshort}} version 4.0.x on {{site.data.keyword.icp4dfull_notm}} version 4.x, as described in the previous release update.
 
 ## 30 November 2021 (Version 4.0.3)
 {: #speech-to-text-data-30november2021}
@@ -243,7 +342,7 @@ Unified {{site.data.keyword.speechtotextshort}} documentation
     For more information about identifying information that pertains to only one version of the product, see [About {{site.data.keyword.speechtotextshort}}](/docs/speech-to-text?topic=speech-to-text-about#about-version).
 
 Defect fixes for documentation
-:   **Defect fixes:** The documentation has been updated to correct the following information:
+:   **Defect fixes:**  The documentation has been updated to correct the following information:
 
     -   The documentation incorrectly stated that using the `smart_formatting` parameter causes the service to remove hesitation markers from final transcription results for Japanese. Smart formatting does not remove hesitation markers from final results for Japanese, only for US English. For more information, see [What results does smart formatting affect?](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-effects)
     -   The documentation failed to state that next-generation models do *not* produce hesitation markers. The documentation has been updated to note that only previous-generation models produce hesitation markers. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-11-17"
+lastupdated: "2021-12-14"
 
 subcollection: speech-to-text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 # Using a grammar for speech recognition
 {: #grammarUse}
 
-Grammars are available only for some previous-generation and next-generation models. Support differs between {{site.data.keyword.cloud_notm}} and {{site.data.keyword.icp4dfull_notm}}. Grammars are generally available for some models and beta for other models. For more information about the available models and the features they support, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
+Grammars are available only for some previous-generation and next-generation models. Support can differ between {{site.data.keyword.cloud_notm}} and {{site.data.keyword.icp4dfull_notm}}, and grammars can be generally available for some models and beta for other models. For more information about the available models and the features they support, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
 {: note}
 
 Once you create and train your custom language model with your grammar, you can use the grammar in speech recognition requests:

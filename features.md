@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2021
-lastupdated: "2021-11-17"
+lastupdated: "2021-12-14"
 
 subcollection: speech-to-text
 
@@ -146,7 +146,7 @@ The customization interface lets you create custom models to improve the service
 -   [Custom acoustic models](/docs/speech-to-text?topic=speech-to-text-acoustic) let you adapt a base model for the acoustic characteristics of your environment and speakers. Custom acoustic models improve the service's ability to recognize speech with distinctive acoustic characteristics. Acoustic model customization is available only for previous-generation models.
 -   [Grammars](/docs/speech-to-text?topic=speech-to-text-grammars) let you restrict the phrases that the service can recognize to those defined in a grammar's rules. By limiting the search space for valid strings, the service can deliver results faster and more accurately. Grammars are created for and used with custom language models.
 
-    The service supports grammars for all languages for which it supports language model customization. The grammars feature is generally available (GA) for previous-generation models that are generally available and that support language model customization. Grammars are beta functionality for all next-generation models.
+    The service generally supports grammars for languages and models for which it supports language model customization. However, grammars are available only for some previous-generation and next-generation models. Support can differ between {{site.data.keyword.cloud_notm}} and {{site.data.keyword.icp4dfull_notm}}, and grammars can be generally available for some models and beta for other models.
 
 You can use a custom language model, a custom acoustic model, or both for speech recognition with any of the service's interfaces.
 
