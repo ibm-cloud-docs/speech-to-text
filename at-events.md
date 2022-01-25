@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2020, 2021
-lastupdated: "2021-09-22"
+  years: 2020, 2022
+lastupdated: "2022-01-25"
 
 keywords: IBM,activity tracker,event,security,speech to text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 {{site.data.keyword.attribute-definition-list}}
 
 # Activity Tracker events
-{: #atEvents}
+{: #at-events}
 
 ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
 
@@ -23,12 +23,12 @@ As a security officer, auditor, or manager, you can use the Activity Tracker ser
 {{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. You can use this service to investigate abnormal activity and critical actions and to comply with regulatory audit requirements. In addition, you can be alerted about actions as they happen. The events that are collected comply with the Cloud Auditing Data Federation (CADF) standard.  For more information, see the tutorial [Getting started with {{site.data.keyword.at_full_notm}}](/docs/activity-tracker?topic=activity-tracker-getting-started).
 
 ## Language model customization events
-{: #at_lm_events}
+{: #at-lm-events}
 
 The following tables list the {{site.data.keyword.speechtotextshort}} actions for language model customization that generate events.
 
 ### Create events
-{: #at_lm_events_create}
+{: #at-lm-events-create}
 
 | Action            | Description                         |
 |-------------------|-------------------------------------|
@@ -40,7 +40,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 {: caption="Table 1. Language model customization .create actions that generate events"}
 
 ### Read events
-{: #at_lm_events_read}
+{: #at-lm-events-read}
 
 | Action            | Description                         |
 |-------------------|-------------------------------------|
@@ -55,7 +55,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 {: caption="Table 2. Language model customization .read actions that generate events"}
 
 ### Delete events
-{: #at_lm_events_delete}
+{: #at-lm-events-delete}
 
 | Action            | Description                         |
 |-------------------|-------------------------------------|
@@ -66,7 +66,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 {: caption="Table 3. Language model customization .delete actions that generate events"}
 
 ### Train event
-{: #at_lm_events_train}
+{: #at-lm-events-train}
 
 | Action            | Description                         |
 |-------------------|-------------------------------------|
@@ -74,7 +74,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 {: caption="Table 4. Language model customization .train action that generates an event"}
 
 ### Reset event
-{: #at_lm_events_reset}
+{: #at-lm-events-reset}
 
 | Action            | Description                         |
 |-------------------|-------------------------------------|
@@ -82,7 +82,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 {: caption="Table 5. Language model customization .reset action that generates an event"}
 
 ### Upgrade event
-{: #at_lm_events_upgrade}
+{: #at-lm-events-upgrade}
 
 | Action            | Description                         |
 |-------------------|-------------------------------------|
@@ -95,7 +95,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 The following tables list the {{site.data.keyword.speechtotextshort}} actions for acoustic model customization that generate events.
 
 ### Create events
-{: #at_am_events_create}
+{: #at-am-events-create}
 
 | Action            | Description                         |
 |-------------------|-------------------------------------|
@@ -104,7 +104,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 {: caption="Table 7. Acoustic model customization .create actions that generate events"}
 
 ### Read events
-{: #at_am_events_read}
+{: #at-am-events-read}
 
 | Action            | Description                         |
 |-------------------|-------------------------------------|
@@ -115,7 +115,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 {: caption="Table 8. Acoustic model customization .read actions that generate events"}
 
 ### Delete events
-{: #at_am_events_delete}
+{: #at-am-events-delete}
 
 | Action            | Description                         |
 |-------------------|-------------------------------------|
@@ -124,7 +124,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 {: caption="Table 9. Acoustic model customization .delete actions that generate events"}
 
 ### Train event
-{: #at_am_events_train}
+{: #at-am-events-train}
 
 | Action            | Description                         |
 |-------------------|-------------------------------------|
@@ -132,7 +132,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 {: caption="Table 10. Acoustic model customization .train action that generates an event"}
 
 ### Reset event
-{: #at_am_events_reset}
+{: #at-am-events-reset}
 
 | Action            | Description                         |
 |-------------------|-------------------------------------|
@@ -140,7 +140,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 {: caption="Table 11. Acoustic model customization .reset action that generates an event"}
 
 ### Upgrade event
-{: #at_am_events_upgrade}
+{: #at-am-events-upgrade}
 
 | Action            | Description                         |
 |-------------------|-------------------------------------|
@@ -148,12 +148,12 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 {: caption="Table 12. Acoustic model customization .upgrade action that generates an event"}
 
 ## Asynchronous HTTP interface events
-{: #at_async_events}
+{: #at-async-events}
 
 The following tables list the {{site.data.keyword.speechtotextshort}} actions for the asynchronous HTTP interface that generate events.
 
 ### Create events
-{: #at_async_events_create}
+{: #at-async-events-create}
 
 | Action            | Description                         |
 |-------------------|-------------------------------------|
@@ -162,7 +162,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 {: caption="Table 13. Asynchronous HTTP recognition .create actions that generate events"}
 
 ### Read events
-{: #at_async_events_read}
+{: #at-async-events-read}
 
 | Action            | Description                         |
 |-------------------|-------------------------------------|
@@ -171,7 +171,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 {: caption="Table 14. Asynchronous HTTP recognition .read actions that generate events"}
 
 ### Delete events
-{: #at_async_events_delete}
+{: #at-async-events-delete}
 
 | Action            | Description                         |
 |-------------------|-------------------------------------|
@@ -180,7 +180,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 {: caption="Table 15. Asynchronous HTTP recognition .delete actions that generate events"}
 
 ## Where to view events
-{: #at_ui}
+{: #at-ui}
 
 Events that are generated by an instance of the {{site.data.keyword.speechtotextshort}} service are automatically forwarded to the {{site.data.keyword.at_full_notm}} service instance that is available in the same location.
 
