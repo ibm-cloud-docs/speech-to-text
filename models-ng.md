@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021
-lastupdated: "2021-12-08"
+  years: 2021, 2022
+lastupdated: "2022-01-14"
 
 subcollection: speech-to-text
 
@@ -42,13 +42,13 @@ The table indicates the product versions for which each model and for which low-
 | Language | Multimedia model | Multimedia low-latency support | Telephony model | Telephony low-latency support |
 |----------|:----------------:|:-------------------:|:---------------:|:-------------------:|
 | Arabic  \n (Modern Standard) | Model not available | Model not available | `ar-MS_Telephony` | **Yes** |
-| Chinese  \n (Mandarin) | Model not available | Model not available | `zh-CN_Telephony`  \n IBM Cloud only | **Yes**  \n IBM Cloud only |
+| Chinese  \n (Mandarin) | Model not available | Model not available | `zh-CN_Telephony` | **Yes** |
 | Czech | Model not available | Model not available | `cz-CZ_Telephony` | **Yes**  |
 | Dutch  \n (Belgian) | Model not available | Model not available | `nl-BE_Telephony` | **Yes** |
 | Dutch  \n (Netherlands) | Model not available | Model not available | `nl-NL_Telephony` | **Yes** |
-| English  \n (Australian) | `en-AU_Multimedia`  \n IBM Cloud only | **No** | `en-AU_Telephony` | **Yes** |
+| English  \n (Australian) | `en-AU_Multimedia` | **No** | `en-AU_Telephony` | **Yes** |
 | English  \n (Indian) | Model not available | Model not available | `en-IN_Telephony` | **Yes** |
-| English  \n (United Kingdom) | `en-GB_Multimedia`  \n IBM Cloud only | **No** | `en-GB_Telephony` | **Yes** |
+| English  \n (United Kingdom) | `en-GB_Multimedia` | **No** | `en-GB_Telephony` | **Yes** |
 | English  \n (United States) | `en-US_Multimedia` | **No** | `en-US_Telephony` | **Yes** |
 | French  \n (Canadian) | Model not available | Model not available | `fr-CA_Telephony` | **Yes** |
 | French  \n (France) | `fr-FR_Multimedia` | **No** | `fr-FR_Telephony` | **Yes** |
@@ -59,7 +59,7 @@ The table indicates the product versions for which each model and for which low-
 | Korean | `ko-KR_Multimedia` | **No** | `ko-KR_Telephony` | **Yes** |
 | Portuguese  \n (Brazilian) | Model not available | Model not available | `pt-BR_Telephony` | **Yes** |
 | Spanish  \n (Castilian) | Model not available | Model not available | `es-ES_Telephony` | **Yes** |
-| Spanish  \n (Latin American) | Model not available | Model not available | `es-LA_Telephony`  \n {{site.data.keyword.cloud_notm}} only | **Yes**  \n {{site.data.keyword.cloud_notm}} only |
+| Spanish  \n (Latin American) | Model not available | Model not available | `es-LA_Telephony` | **Yes** |
 {: caption="Table 1. Supported next-generation language models"}
 
 The Latin American Spanish model, `es-LA_Telephony`, applies to all Latin American dialects. It is the equivalent of the previous-generation models that are available for the Argentinian, Chilean, Colombian, Mexican, and Peruvian dialects. If you used a previous-generation model for any of these specific dialects, use the `es-LA_Telephony` model to migrate to the equivalent next-generation model.

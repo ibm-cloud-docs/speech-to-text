@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-12-16"
+  years: 2015, 2022
+lastupdated: "2022-01-14"
 
 subcollection: speech-to-text
 
@@ -61,14 +61,14 @@ Table 2 lists the next-generation models that are supported for language model c
 | Language (dialect) |  Models | Language model customization | Grammars | Acoustic model customization |
 |------------------------|:-----------:|:----------------------------------------:|:----------------------------------------:|:----------------------------------------:|
 | Arabic  \n (Modern Standard) | `ar-MS_Telephony` | GA | Beta | Not supported |
-| Chinese  \n (Mandarin) | `zh-CN_Telephony`  \n IBM Cloud only | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
+| Chinese  \n (Mandarin) | `zh-CN_Telephony` | GA | Beta | Not supported |
 | Czech | `cz-CZ_Telephony` | GA | Beta | Not supported |
 | Dutch  \n (Belgian) | `nl-BE_Telephony` | GA | Beta | Not supported |
 | Dutch  \n (Netherlands) | `nl-NL_Telephony` | GA | Beta | Not supported |
-| English  \n (Australian) | `en-AU_Multimedia`  \n IBM Cloud only | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
+| English  \n (Australian) | `en-AU_Multimedia` | GA | Beta | Not supported |
 | | `en-AU_Telephony` | GA | Beta | Not supported |
 | English  \n (Indian) | `en-IN_Telephony` | GA | Beta | Not supported |
-| English  \n (United Kingdom) | `en-GB_Multimedia`  \n IBM Cloud only | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
+| English  \n (United Kingdom) | `en-GB_Multimedia` | GA | Beta | Not supported |
 | | `en-GB_Telephony` | GA | Beta  | Not supported |
 | English  \n (United States) | `en-US_Multimedia` | GA | Beta | Not supported |
 | | `en-US_Telephony` | GA | Beta | Not supported |
@@ -83,5 +83,5 @@ Table 2 lists the next-generation models that are supported for language model c
 | | `ko-KR_Telephony` | GA | Beta | Not supported |
 | Portuguese  \n (Brazilian) | `pt-BR_Telephony` | GA | Beta | Not supported |
 | Spanish  \n (Castilian) | `es-ES_Telephony` | GA | Beta | Not supported |
-| Spanish  \n (Latin American) | `es-LA_Telephony` | GA  \n IBM Cloud only | Beta  \n IBM Cloud only | Not supported |
+| Spanish  \n (Latin American) | `es-LA_Telephony` | GA | Beta | Not supported |
 {: caption="Table 2. Next-generation language support for customization"}
