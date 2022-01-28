@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-01-27"
+lastupdated: "2022-01-28"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -112,38 +112,24 @@ The service has the following known limitations:
 Version 4.0.5 is now available
 :   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.0.5 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.x and Red Hat OpenShift versions 4.6 and 4.8. For more information about installing and managing the service, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
 
-License Server is now automatically installed
-:   The Speech services operator now automatically installs the required License Server when it installs the Speech services. You no longer need to install the License Server from the {{site.data.keyword.icp4dfull_notm}} foundational services, and you no longer need to use additional YAML content to create an OperandRequest with the necessary bindings.
+Important: Additional step for performing an air-gapped installation of Minio datastore
+:   **Important:** If you are performing an air-gapped installation, you need to perform an additional step *before* completing either of the following steps:
 
-Removal of steps specific to PostgreSQL EnterpriseDB server
-:   The previous version of the documentation included steps for the PostgreSQL EnterpriseDB server that were specific to the Speech services. These steps were documented in the topics *Upgrading {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} (Version 4.0)* and *Uninstalling {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}*. These additional steps are no longer necessary and have been removed from the documentation.
+    -   Step 7 [Mirroring the images to the private container registry](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=registry-mirroring-images-bastion-node#reference_g4h_z1q_tpb__mirror-to-target){: external} of *Mirroring images with a bastion model*
+    -   Step 8 [Mirroring the images to the intermediary container registry](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=registry-mirroring-images-intermediary-container#preinstall_container_registry_air_gapped__mirror-to-target){: external} of *Mirroring images with an intermediary container registry*
 
-Security vulnerabilities addressed
-:   The following security vulnerabilities associated with Apache Log4j have been addressed:
-    -   [Security Bulletin: Vulnerability in Apache Log4j may affect IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data (CVE-2021-4104)](https://www.ibm.com/support/pages/node/6551170){: external}
-    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to denial of service and arbitrary code execution due to Apache Log4j (CVE-2021-45105 and CVE-2021-45046)](https://www.ibm.com/support/pages/node/6551168){: external}
-    -   [Security Bulletin: Vulnerability in Apache Log4j may affect IBM Watson Speech Services Cartridge for {{site.data.keyword.icp4dfull_notm}} (CVE-2021-4428)](https://www.ibm.com/support/pages/node/6536732){: external} (this vulnerability was fixed with Speech services version 4.0.4)
+    This step is mandatory to copy the necessary images for the Minio datastore:
 
-RabbitMQ datastore is now used only by the `sttAsync` component
-:   The RabbitMQ datastore was previously used by components of both Speech services, {{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}}. It now handles non-persistent message queuing for the Speech to Text asynchronous HTTP component (`sttAsync`) only. It is used only if the `sttAsync` component is installed and enabled.
+    ```sh
+    echo 'cp.icr.io,cp/opencontent-minio-client,1.1.4,sha256:7b4cf5e47a0455cfa7ca9ab246b80916e4dccbc1483b3e0f276fb7b0ab3e5c60,IMAGE,linux,x86_64,"",0,CASE,"",""' \
+    >> $CASE_PATH/ibm-watson-speech-4.0.5-images.csv
+    ```
+    {: codeblock}
 
-New next-generation models
-:   The service now supports the following next-generation models with {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}:
-    -   Chinese (Mandarin) telephony model (`zh-CN_Telephony`). The new model supports low latency.
-    -   English (Australian) multimedia model (`en-AU_Multimedia`). The new model does not support low latency.
-    -   English (UK) multimedia model (`en-GB_Multimedia`). The new model does not support low latency.
-    -   Spanish (Latin American) telephony model (`es-LA_Telephony`). The new model supports low latency.
+    Failure to perform this step will cause installation errors for both {{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}}.
 
-    **Note:** The Latin American Spanish model, `es-LA_Telephony`, applies to all Latin American dialects. It is the equivalent of the previous-generation models that are available for the Argentinian, Chilean, Colombian, Mexican, and Peruvian dialects. If you used a previous-generation model for any of these specific dialects, use the `es-LA_Telephony` model to migrate to the equivalent next-generation model.
-
-    The new models are generally available for speech recognition. They are generally available for language model customization and beta for grammars. They are not supported for acoustic model customization.
-    -   **Important:** If you are performing an air-gapped installation and plan to install any of the new next-generation models for {{site.data.keyword.speechtotextshort}}, you must perform additional steps *before* mirroring the images. For more information, see the following release note.
-    -   For more information about using the custom resource to install models, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
-    -   For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
-    -   For more information about customization support for next-generation models, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
-
-Important: Steps for performing an air-gapped installation of the new next-generation models
-:   **Important:** If you are performing an air-gapped installation and plan to install any of the new next-generation models for {{site.data.keyword.speechtotextshort}}, you must perform an additional step *before* completing either of the following steps:
+Important: Additional steps for performing an air-gapped installation of new next-generation models
+:   **Important:** If you are performing an air-gapped installation and plan to install any of the new next-generation models for {{site.data.keyword.speechtotextshort}} (for more information, see the later release note), you must perform an additional step *before* completing either of the following steps:
 
     -   Step 7 [Mirroring the images to the private container registry](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=registry-mirroring-images-bastion-node#reference_g4h_z1q_tpb__mirror-to-target){: external} of *Mirroring images with a bastion model*
     -   Step 8 [Mirroring the images to the intermediary container registry](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=registry-mirroring-images-intermediary-container#preinstall_container_registry_air_gapped__mirror-to-target){: external} of *Mirroring images with an intermediary container registry*
@@ -181,6 +167,36 @@ Important: Steps for performing an air-gapped installation of the new next-gener
         >> $CASE_PATH/ibm-watson-speech-4.0.5-images.csv
         ```
         {: codeblock}
+
+License Server is now automatically installed
+:   The Speech services operator now automatically installs the required License Server when it installs the Speech services. You no longer need to install the License Server from the {{site.data.keyword.icp4dfull_notm}} foundational services, and you no longer need to use additional YAML content to create an OperandRequest with the necessary bindings.
+
+Removal of steps specific to PostgreSQL EnterpriseDB server
+:   The previous version of the documentation included steps for the PostgreSQL EnterpriseDB server that were specific to the Speech services. These steps were documented in the topics *Upgrading {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} (Version 4.0)* and *Uninstalling {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}*. These additional steps are no longer necessary and have been removed from the documentation.
+
+Security vulnerabilities addressed
+:   The following security vulnerabilities associated with Apache Log4j have been addressed:
+    -   [Security Bulletin: Vulnerability in Apache Log4j may affect IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data (CVE-2021-4104)](https://www.ibm.com/support/pages/node/6551170){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to denial of service and arbitrary code execution due to Apache Log4j (CVE-2021-45105 and CVE-2021-45046)](https://www.ibm.com/support/pages/node/6551168){: external}
+    -   [Security Bulletin: Vulnerability in Apache Log4j may affect IBM Watson Speech Services Cartridge for {{site.data.keyword.icp4dfull_notm}} (CVE-2021-4428)](https://www.ibm.com/support/pages/node/6536732){: external} (this vulnerability was fixed with Speech services version 4.0.4)
+
+RabbitMQ datastore is now used only by the `sttAsync` component
+:   The RabbitMQ datastore was previously used by components of both Speech services, {{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}}. It now handles non-persistent message queuing for the Speech to Text asynchronous HTTP component (`sttAsync`) only. It is used only if the `sttAsync` component is installed and enabled.
+
+New next-generation models
+:   The service now supports the following next-generation models with {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}:
+    -   Chinese (Mandarin) telephony model (`zh-CN_Telephony`). The new model supports low latency.
+    -   English (Australian) multimedia model (`en-AU_Multimedia`). The new model does not support low latency.
+    -   English (UK) multimedia model (`en-GB_Multimedia`). The new model does not support low latency.
+    -   Spanish (Latin American) telephony model (`es-LA_Telephony`). The new model supports low latency.
+
+    **Note:** The Latin American Spanish model, `es-LA_Telephony`, applies to all Latin American dialects. It is the equivalent of the previous-generation models that are available for the Argentinian, Chilean, Colombian, Mexican, and Peruvian dialects. If you used a previous-generation model for any of these specific dialects, use the `es-LA_Telephony` model to migrate to the equivalent next-generation model.
+
+    The new models are generally available for speech recognition. They are generally available for language model customization and beta for grammars. They are not supported for acoustic model customization.
+    -   **Important:** If you are performing an air-gapped installation and plan to install any of the new next-generation models for {{site.data.keyword.speechtotextshort}}, you must perform additional steps *before* mirroring the images. For more information, see the earlier release note.
+    -   For more information about using the custom resource to install models, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
+    -   For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+    -   For more information about customization support for next-generation models, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
 
 Next-generation US English models are now installed by default
 :    The next-generation US English models, `en-US_Multimedia` and `en-US_Telephony`, are now installed by default with {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}. These models join `en-US_BroadbandModel`, `en-US_NarrowbandModel`, `en-US_ShortForm_NarrowbandModel` as the models that are installed by default. The models now have the following entries in the Speech services custom resource:
