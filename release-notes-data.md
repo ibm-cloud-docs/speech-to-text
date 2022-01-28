@@ -112,10 +112,10 @@ The service has the following known limitations:
 Version 4.0.5 is now available
 :   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.0.5 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.x and Red Hat OpenShift versions 4.6 and 4.8. For more information about installing and managing the service, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
 
-Important: Additional step for performing an air-gapped installation of Minio datastore
-:   **Important:** If you are performing an air-gapped installation, you need to perform an additional step *before* completing either of the following steps:
+Important: Additional step for performing a mirrored installation of Minio datastore
+:   **Important:** If you are performing a mirrored installation (for example, in an air-gapped environment), you need to perform an additional step *before* completing either of the following steps:
 
-    -   Step 7 [Mirroring the images to the private container registry](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=registry-mirroring-images-bastion-node#reference_g4h_z1q_tpb__mirror-to-target){: external} of *Mirroring images with a bastion model*
+    -   Step 7 [Mirroring the images to the private registry](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=registry-mirroring-images-bastion-node#reference_g4h_z1q_tpb__mirror-to-target){: external} of *Mirroring images with a bastion model*
     -   Step 8 [Mirroring the images to the intermediary container registry](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=registry-mirroring-images-intermediary-container#preinstall_container_registry_air_gapped__mirror-to-target){: external} of *Mirroring images with an intermediary container registry*
 
     This step is mandatory to copy the necessary images for the Minio datastore:
@@ -128,8 +128,8 @@ Important: Additional step for performing an air-gapped installation of Minio da
 
     Failure to perform this step will cause installation errors for both {{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}}.
 
-Important: Additional steps for performing an air-gapped installation of new next-generation models
-:   **Important:** If you are performing an air-gapped installation and plan to install any of the new next-generation models for {{site.data.keyword.speechtotextshort}} (for more information, see the later release note), you must perform an additional step *before* completing either of the following steps:
+Important: Additional steps for performing a mirrored installation of new next-generation models
+:   **Important:** If you are performing a mirrored installation (for example, for an air-gapped environment) and plan to install any of the new next-generation models for {{site.data.keyword.speechtotextshort}} (for more information, see the later release note), you must perform an additional step *before* completing either of the following steps:
 
     -   Step 7 [Mirroring the images to the private container registry](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=registry-mirroring-images-bastion-node#reference_g4h_z1q_tpb__mirror-to-target){: external} of *Mirroring images with a bastion model*
     -   Step 8 [Mirroring the images to the intermediary container registry](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=registry-mirroring-images-intermediary-container#preinstall_container_registry_air_gapped__mirror-to-target){: external} of *Mirroring images with an intermediary container registry*
@@ -193,7 +193,7 @@ New next-generation models
     **Note:** The Latin American Spanish model, `es-LA_Telephony`, applies to all Latin American dialects. It is the equivalent of the previous-generation models that are available for the Argentinian, Chilean, Colombian, Mexican, and Peruvian dialects. If you used a previous-generation model for any of these specific dialects, use the `es-LA_Telephony` model to migrate to the equivalent next-generation model.
 
     The new models are generally available for speech recognition. They are generally available for language model customization and beta for grammars. They are not supported for acoustic model customization.
-    -   **Important:** If you are performing an air-gapped installation and plan to install any of the new next-generation models for {{site.data.keyword.speechtotextshort}}, you must perform additional steps *before* mirroring the images. For more information, see the earlier release note.
+    -   **Important:** If you are performing a mirrored installation (for example, in an air-gapped environment) and plan to install any of the new next-generation models for {{site.data.keyword.speechtotextshort}}, you must perform additional steps *before* mirroring the images. For more information, see the earlier release note.
     -   For more information about using the custom resource to install models, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
     -   For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
     -   For more information about customization support for next-generation models, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
