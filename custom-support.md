@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-01-14"
+lastupdated: "2022-01-27"
 
 subcollection: speech-to-text
 
@@ -53,7 +53,7 @@ Table 1 lists the previous-generation models that are supported for language mod
 ## Language support for next-generation models
 {: #custom-language-support-ng}
 
-Table 2 lists the next-generation models that are supported for language model customization, grammars, and acoustic model customization. To learn which models are supported for speech recognition for {{site.data.keyword.cloud_notm}}, {{site.data.keyword.icp4dfull_notm}}, or both, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
+Table 2 lists the next-generation models that are supported for language model customization, grammars, and acoustic model customization. To learn which models are supported for speech recognition for {{site.data.keyword.cloud}}, {{site.data.keyword.icp4dfull}}, or both, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
 
 *As of 3 December 2021 for {{site.data.keyword.cloud_notm}}* and *20 December 2021 for {{site.data.keyword.icp4dfull_notm}}*, custom language models based on certain next-generation models must be re-created. If you created custom language models based on certain versions of the `en-AU_Telephony`, `en-GB_Telephony`, `en-US_Telephony`, or `en-US_Multimedia` models, you must re-create the custom models. Until you do, speech recognition requests that attempt to use the custom models fail with HTTP error code 400. For more information, see the [3 December 2021](/docs/speech-to-text?topic=speech-to-text-release-notes#speech-to-text-3december2021) update in the release notes for {{site.data.keyword.cloud_notm}} and the [20 December 2021 (Version 4.0.4)](/docs/speech-to-text?topic=speech-to-text-release-notes-data#speech-to-text-data-20december2021) update in the release notes {{site.data.keyword.icp4dfull_notm}}.
 {: important}
@@ -72,6 +72,7 @@ Table 2 lists the next-generation models that are supported for language model c
 | | `en-GB_Telephony` | GA | Beta  | Not supported |
 | English  \n (United States) | `en-US_Multimedia` | GA | Beta | Not supported |
 | | `en-US_Telephony` | GA | Beta | Not supported |
+| | `en-WW_Medical_Telephony` | Beta  \n {{site.data.keyword.cloud_notm}} only | Beta  \n {{site.data.keyword.cloud_notm}} only | Not supported |
 | French  \n (Canadian) | `fr-CA_Telephony` | GA | Beta | Not supported |
 | French  \n (France) | `fr-FR_Multimedia` | GA | Beta | Not supported |
 | | `fr-FR_Telephony` | GA | Beta | Not supported |

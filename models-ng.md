@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-01-14"
+lastupdated: "2022-02-02"
 
 subcollection: speech-to-text
 
@@ -30,32 +30,33 @@ In addition to providing greater transcription accuracy, the models have the abi
 
 The service makes available two types of next-generation models:
 
--   *Multimedia* models are intended for audio that is extracted from sources with a higher sampling rate, such as video. Use a multimedia model for any audio other than telephonic audio. Like previous-generation *broadband* models, this audio has a minimum sampling rate of 16 kHz.
--   *Telephony* models are intended specifically for audio that is communicated over a telephone. Like previous-generation *narrowband* models, this audio has a minimum sampling rate of 8 kHz.
+-   *Multimedia* models are intended for audio that is extracted from sources with a higher sampling rate, such as video. Use a multimedia model for any audio other than telephonic audio. Like previous-generation *broadband* models, multimedia models are intended for audio that has a minimum sampling rate of 16 kHz.
+-   *Telephony* models are intended specifically for audio that is communicated over a telephone. Like previous-generation *narrowband* models, telephony models are intended for audio that has a minimum sampling rate of 8 kHz.
 
 Choose the model that most closely matches the source and sampling rate of your audio. The service automatically adjusts the sampling rate of your audio to match the model that you specify. To achieve the best recognition accuracy, also consider the frequency content of your audio. For more information, see [Sampling rate](/docs/speech-to-text?topic=speech-to-text-audio-terminology#audio-terminology-sampling-rate) and [Audio frequency](/docs/speech-to-text?topic=speech-to-text-audio-terminology#audio-terminology-frequency).
 
 Table 1 lists the next-generation models that are available for each language. Low-latency columns indicate whether each model supports the `low_latency` parameter for speech recognition. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
 
-The table indicates the product versions for which each model and for which low-latency are supported. Unless otherwise labeled as *{{site.data.keyword.cloud_notm}} only* or *{{site.data.keyword.icp4dfull_notm}} only*, the model and low latency are supported for both versions of the service. All models are generally available (GA). (Unlike previous-generation models, next-generation models do not include the word `Model` in their names.)
+The table indicates the product versions for which each model and for which low-latency are supported. Unless otherwise labeled as *{{site.data.keyword.cloud_notm}} only* or *{{site.data.keyword.icp4dfull_notm}} only*, a model and low latency are supported for both versions of the service. Unless otherwise labeled as *Beta*, a model is generally available (GA). (Unlike previous-generation models, next-generation models do not include the word `Model` in their names.)
 
 | Language | Multimedia model | Multimedia low-latency support | Telephony model | Telephony low-latency support |
 |----------|:----------------:|:-------------------:|:---------------:|:-------------------:|
 | Arabic  \n (Modern Standard) | Model not available | Model not available | `ar-MS_Telephony` | **Yes** |
 | Chinese  \n (Mandarin) | Model not available | Model not available | `zh-CN_Telephony` | **Yes** |
-| Czech | Model not available | Model not available | `cz-CZ_Telephony` | **Yes**  |
+| Czech | Model not available | Model not available | `cz-CZ_Telephony` | **Yes** |
 | Dutch  \n (Belgian) | Model not available | Model not available | `nl-BE_Telephony` | **Yes** |
 | Dutch  \n (Netherlands) | Model not available | Model not available | `nl-NL_Telephony` | **Yes** |
 | English  \n (Australian) | `en-AU_Multimedia` | **No** | `en-AU_Telephony` | **Yes** |
 | English  \n (Indian) | Model not available | Model not available | `en-IN_Telephony` | **Yes** |
 | English  \n (United Kingdom) | `en-GB_Multimedia` | **No** | `en-GB_Telephony` | **Yes** |
 | English  \n (United States) | `en-US_Multimedia` | **No** | `en-US_Telephony` | **Yes** |
+| | Model not available | Model not available | `en-WW_Medical_Telephony`  \n Beta, {{site.data.keyword.cloud_notm}} only | **No** |
 | French  \n (Canadian) | Model not available | Model not available | `fr-CA_Telephony` | **Yes** |
 | French  \n (France) | `fr-FR_Multimedia` | **No** | `fr-FR_Telephony` | **Yes** |
 | German | Model not available | Model not available | `de-DE_Telephony` | **Yes** |
 | Hindi  \n (Indian) | Model not available | Model not available | `hi-IN_Telephony` | **Yes** |
 | Italian | Model not available | Model not available | `it-IT_Telephony` | **Yes** |
-| Japanese | `ja-JP_Multimedia` | **No** | Model not available | Model not available |
+| Japanese | `ja-JP_Multimedia` | **Yes**  \n {{site.data.keyword.cloud_notm}} only | Model not available | Model not available |
 | Korean | `ko-KR_Multimedia` | **No** | `ko-KR_Telephony` | **Yes** |
 | Portuguese  \n (Brazilian) | Model not available | Model not available | `pt-BR_Telephony` | **Yes** |
 | Spanish  \n (Castilian) | Model not available | Model not available | `es-ES_Telephony` | **Yes** |
@@ -118,7 +119,7 @@ Table 1 lists each parameter (and request header) that is supported for use with
 | `model` | All languages and models. For more information, see [Specifying a model for speech recognition](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-example). |
 | `profanity_filter` | US English and Japanese models only. For more information, see [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-formatting#profanity-filtering). |
 | `redaction` | US English, Japanese, and Korean models only. For more information, see [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-formatting#numeric-redaction). |
-| `smart_formatting` | US English, Japanese, and Spanish (Castilian and Latin American) models only. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting). |
+| `smart_formatting` | US English (including the `en-WW_Medical_Telephony` model), Japanese, and Spanish (Castilian and Latin American) models only. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting). |
 | `speaker_labels` | Czech, English (Australian, Indian, UK, and US), German, Japanese, Korean, and Spanish models only. Not supported for use with the `interim_results` or `low_latency` parameters. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels). |
 | `speech_detector_sensitivity` | All languages and models. For more information, see [Speech detector sensitivity](/docs/speech-to-text?topic=speech-to-text-detection#detection-parameters-sensitivity). |
 | `timestamps` | All languages and models. For more information, see [Word timestamps](/docs/speech-to-text?topic=speech-to-text-metadata#word-timestamps). |
@@ -134,5 +135,6 @@ Table 1 lists each parameter (and request header) that is supported for use with
 Previous-generation models support some features that are not available with next-generation models. Specifically, next-generation models do not support the following features:
 
 -   Any feature not listed in the previous section is not supported for use with the next-generation models.
+-   The `en-WW_Medical_Telephony` model supports most of the same parameters as the `en-US_Telephony` model, including `smart_formatting`, which is beta functionality. It does not support the following parameters: `low_latency`, `profanity_filter`, `redaction`, and `speaker_labels`.
 -   Next-generation models do not support acoustic model customization. For more information about support for customization, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
 -   Next-generation models do not produce hesitation markers. Hesitation markers are produced only by previous-generation models. For more information about hesitation markers, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
