@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-11-17"
+  years: 2015, 2022
+lastupdated: "2022-01-27"
 
 subcollection: speech-to-text
 
@@ -24,8 +24,8 @@ The {{site.data.keyword.speechtotextfull}} service supports speech recognition w
 
 For most languages, the service supports both broadband and narrowband previous-generation models:
 
--   *Broadband models* are for audio that is sampled at greater than or equal to 16 kHz. Use broadband models for responsive, real-time applications, for example, for live-speech applications.
--   *Narrowband models* are for audio that is sampled at 8 kHz. Use narrowband models for offline decoding of telephone speech, which is the typical use for this sampling rate.
+-   *Broadband models* are for audio that has a minimum sampling rate of 16 kHz. Use broadband models for responsive, real-time applications, for example, for live-speech applications.
+-   *Narrowband models* are for audio that has a minimum sampling rate of 8 kHz. Use narrowband models for offline decoding of telephone speech, which is the typical use for this sampling rate.
 
 Choosing the correct model for your application is important. Use the model that matches the sampling rate (and language) of your audio. The service automatically adjusts the sampling rate of your audio to match the model that you specify. To achieve the best recognition accuracy, you also need to consider the frequency content of your audio. For more information, see [Sampling rate](/docs/speech-to-text?topic=speech-to-text-audio-terminology#audio-terminology-sampling-rate) and [Audio frequency](/docs/speech-to-text?topic=speech-to-text-audio-terminology#audio-terminology-frequency).
 

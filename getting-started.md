@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-10-29"
+  years: 2015, 2022
+lastupdated: "2022-02-02"
 
 keywords: speech to text,IBM cloud,getting started,tutorial,transcribe audio,speech recognition
 
@@ -211,4 +211,4 @@ The service returns the following results, which include timestamps and three al
 
 -   To try an example application that transcribes text from streaming audio input or from a file that you upload, see the [{{site.data.keyword.speechtotextshort}} demo (all languages)](https://speech-to-text-demo.ng.bluemix.net/){: external} or the [{{site.data.keyword.speechtotextshort}} demo (US English)](https://www.ibm.com/demos/live/speech-to-text/self-service/home){: external}.
 -   For more information about the service's interfaces and features, see [Service features](/docs/speech-to-text?topic=speech-to-text-service-features).
--   For more information about all methods of the service's interfaces, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
+-   For more information about all methods of the service's interfaces, see the [API & SDK reference](/apidocs/speech-to-text){: external}.
