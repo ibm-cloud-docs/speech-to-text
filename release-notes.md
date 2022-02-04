@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-02-02"
+lastupdated: "2022-02-04"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -115,11 +115,11 @@ The service has the following known limitations:
 New beta `en-WW_Medical_Telephony` model is now available
 :   A new beta next-generation `en-WW_Medical_Telephony` is now available. The new model understands terms from the medical and pharmacological domains. Use the model in situations where you need to transcribe common medical terminology such as medicine names, product brands, medical procedures, illnesses, types of doctor, or COVID-19-related terminology. Common use cases include conversations between a patient and a medical provider (for example, a doctor, nurse, or pharmacist):
 
-    -   My head is hurting. I need an Ibuprofen, please.
-    -   Is there a cheaper alternate for Ibuprofen?
-    -   Can you please help me find an internist in Chicago?
+    -   "My head is hurting. I need an Ibuprofen, please."
+    -   "Is there a cheaper alternate for Ibuprofen?"
+    -   "Can you please help me find an internist in Chicago?"
 
-    Currently, the new model is intended for use with US English (`en-US`) speech recognition. The new model supports language model customization and grammars as beta functionality. It supports most of the same parameters as the `en-US_Telephony` model, including `smart_formatting`, which is beta functionality. It does not support the following parameters: `low_latency`, `profanity_filter`, `redaction`, and `speaker_labels`.
+    The new model is available for all supported English dialects: Australian, Indian, UK, and US. The new model supports language model customization and grammars as beta functionality. It supports most of the same parameters as the `en-US_Telephony` model, including `smart_formatting`. It does not support the following parameters: `low_latency`, `profanity_filter`, `redaction`, and `speaker_labels`.
 
     For more information, see the following topics:
 
