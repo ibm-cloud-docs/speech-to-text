@@ -92,6 +92,18 @@ Table 2 lists the available next-generation multimedia models.
 | Korean | `ko-KR_Multimedia` | **No** | GA |
 {: caption="Table 2. Next-generation multimedia models"}
 
+### The English medical telephony model
+{: #models-medical}
+
+The beta next-generation `en-WW_Medical_Telephony` understands terms from the medical and pharmacological domains. Use the model in situations where you need to transcribe common medical terminology such as medicine names, product brands, medical procedures, illnesses, types of doctor, or COVID-19-related terminology.
+
+Common use cases include conversations between a patient and a medical provider (for example, a doctor, nurse, or pharmacist):
+-   "My head is hurting. I need an Ibuprofen, please."
+-   "Can you suggest an orthopedist who specializes in osteoarthritis?"
+-   "Can you please help me find an internist in Chicago?"
+
+The new model is available for all supported English dialects: Australian, Indian, UK, and US. The new model supports language model customization and grammars as beta functionality. It supports most of the same parameters as the `en-US_Telephony` model, including `smart_formatting`. It does *not* support the following parameters: `low_latency`, `profanity_filter`, `redaction`, and `speaker_labels`.
+
 ## Specifying a model for speech recognition
 {: #models-ng-specify}
 
@@ -161,6 +173,5 @@ Table 1 lists each parameter (and request header) that is supported for use with
 Previous-generation models support some features that are not available with next-generation models. Specifically, next-generation models do not support the following features:
 
 -   Any feature not listed in the previous section is not supported for use with the next-generation models.
--   The `en-WW_Medical_Telephony` model supports most of the same parameters as the `en-US_Telephony` model, including `smart_formatting`. It does *not* support the following parameters: `low_latency`, `profanity_filter`, `redaction`, and `speaker_labels`.
 -   Next-generation models do not support acoustic model customization. For more information about support for customization, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
 -   Next-generation models do not produce hesitation markers. Hesitation markers are produced only by previous-generation models. For more information about hesitation markers, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
