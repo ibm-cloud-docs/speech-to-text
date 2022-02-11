@@ -106,7 +106,7 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
-## 11 February 2022
+## 11 February 2022 (Version 4.0.5)
 {: #speech-to-text-data-11february2022}
 {: release-note}
 
