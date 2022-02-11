@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-12-16"
+  years: 2015, 2022
+lastupdated: "2022-02-11"
 
 subcollection: speech-to-text
 
@@ -49,7 +49,7 @@ Language model customization is available for both previous-generation and next-
 Acoustic model customization is available only for previous-generation models. It is not available for next-generation models.
 {: note}
 
-Similarly, the service was developed with base acoustic models that work well for various audio characteristics. But in cases like the following, adapting a base model to suit your audio can improve speech recognition:
+The service was developed with base acoustic models that work well for various audio characteristics. But in cases like the following, adapting a base model to suit your audio can improve speech recognition:
 
 -   Your acoustic channel environment is unique. For example, the environment is noisy, microphone quality or positioning are suboptimal, or the audio suffers from far-field effects.
 -   Your speakers' speech patterns are atypical. For example, a speaker talks abnormally fast or the audio includes casual conversations.
@@ -91,20 +91,24 @@ Using a custom acoustic model alone can improve the service's recognition capabi
 
 By creating a custom language model that complements your custom acoustic model, you can enhance speech recognition by using the two models together. When you train a custom acoustic model, you can specify a custom language model that includes transcriptions of the audio resources or a vocabulary of domain-specific words from the resources. Similarly, when you transcribe audio, the service accepts a custom language model, a custom acoustic model, or both. And if your custom language model includes a grammar, you can use that model and grammar with a custom acoustic model for speech recognition.
 
-For more information, see [Using custom acoustic and custom language models together](/docs/speech-to-text?topic=speech-to-text-useBoth).
+For more information, see [Using custom acoustic and custom language models together](/docs/speech-to-text?topic=speech-to-text-
 
 ## Upgrading custom models
 {: #upgrading-intro}
 
-Upgrading custom models is necessary only for previous-generation models.
-{: note}
+To improve the quality of speech recognition, the service occasionally updates base previous- and next-generation models. An update to a base model affects only that model. The update does not affect any other models of the same or different languages.
 
-To improve the quality of speech recognition, the service occasionally updates base models. Updates to individual base models do not affect other models. Base models for different languages are independent of each other, as are previous-generation broadband and narrowband models for a language, and next-generation multimedia and telephony models for a language.
+An update to a base model can require that you upgrade any custom models that are built on that base model to take advantage of the improvements. An update to a base model that requires an upgrade produces a new version of the base model. An update that does not require an upgrade does not produce a new version.
 
--   *For previous-generation models,* when a new version of a base model is released, you must upgrade any custom language and custom acoustic models that are built on that base model to take advantage of the updates. Once you upgrade a custom model, the service uses the latest version of the custom model by default when you specify that model with a speech recognition request. But you can still direct the service to use the older version of the model.
--   *For next-generation models,* you do not need to upgrade any custom models that are built on that base model. New versions of base models are automatically and seamlessly used by custom models that are built on them.
+-   *For previous-generation models,* all updates to a base model produce a new version of the model. When a new version of a base model is released, you must upgrade any custom language and custom acoustic models that are built on the updated base model to take advantage of the improvements.
+-   *For next-generation models,* most updates do not produce a new version of the model. These updates do not require that you upgrade your custom models. Some updates, however, do generate a new version of a base model. You must upgrade any custom language models that are built on the updated base model to take advantage of the improvements.
 
-For more information about upgrading custom models that are based on previous-generation models, see
+All updates to base models and whether they require upgrades are announced in the release notes:
+
+-   [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes)
+-   [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data)
+
+Once you upgrade a custom model, the service uses the latest version of the custom model by default when you specify that model with a speech recognition request. But you can still direct the service to use the older version of the model. For more information about upgrading custom models and about using an older version of a model, see
 
 -   [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade)
 -   [Using upgraded custom models for speech recognition](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use)

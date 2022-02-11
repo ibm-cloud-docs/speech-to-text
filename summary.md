@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-02-04"
+lastupdated: "2022-02-11"
 
 subcollection: speech-to-text
 
@@ -83,7 +83,7 @@ An optional version of a base model. The parameter is intended primarily for use
 | Availability and usage | Description |
 |------------------------|-------------|
 | Previous-generation models | Generally available for all languages. |
-| Next-generation models     | Not available. |
+| Next-generation models     | Generally available for all languages. |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -321,7 +321,7 @@ An optional boolean that indicates whether the service converts dates, times, nu
 | Availability and usage | Description |
 |------------------------|-------------|
 | Previous-generation models | Beta for US English, Japanese, and Spanish (all dialects). |
-| Next-generation models     | Beta for US English, Japanese, Spanish (all dialects), and the `en-WW_Medical_Telephony` model. |
+| Next-generation models     | Beta for US English, Japanese, and Spanish (all dialects). It also also available for the `en-WW_Medical_Telephony` model when US English audio is recognized. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |

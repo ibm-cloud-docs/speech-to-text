@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-10-29"
+  years: 2015, 2022
+lastupdated: "2022-02-08"
 
 subcollection: speech-to-text
 
@@ -274,21 +274,25 @@ Hesitation markers can also appear in other fields of a transcript. For example,
 
 For most languages, the service does not use capitalization in response transcripts. If capitalization is important for your application, you must capitalize the first word of each sentence and any other terms for which capitalization is appropriate.
 
-*For US English only,* the service does capitalize many proper nouns. For example, the service returns the following text for the specified phrase:
+The service applies automatic capitalization only to the following languages and models. The service always applies this capitalization, regardless of whether you use smart formatting.
 
-```text
-Barack Obama graduated from Columbia University
-```
-{: codeblock}
+-   *For US English previous-generation models,* the service capitalizes many proper nouns. For example, the service returns the following transcript for the phrase *barack obama graduated from columbia university*:
 
-For other languages, the service returns the following text:
+    ```text
+    Barack Obama graduated from Columbia University
+    ```
+    {: codeblock}
 
-```text
-barack obama graduated from columbia university
-```
-{: codeblock}
+    The service does not capitalize proper nouns with US English next-generation models.
 
-The service always applies this capitalization to US English, regardless of whether you use smart formatting.
+-   *For the German next-generation model,* the service capitalizes many nouns. For example, the service returns the following transcript for the phrase *er braucht erst einen neuen eintrag ins vokabular punkt*:
+
+    ```text
+    er braucht erst einen neuen Eintrag ins Vokabular Punkt
+    ```
+    {: codeblock}
+
+    The service does not capitalize nouns with German previous-generation models.
 
 ## Punctuation
 {: #response-punctuation}
