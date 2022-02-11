@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-02-04"
+lastupdated: "2022-02-11"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -108,14 +108,32 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
+## 11 February 2022
+{: #speech-to-text-11february2022}
+{: release-note}
+
+Defect fix for custom model upgrade and base model version documentation
+:   **Defect fix:** The documentation that describes the upgrade of custom models and the version strings that are used for different versions of base models has been updated. The documentation now states that upgrade for language model customization also applies to next-generation models. Also, the version strings that represent different versions of base models have been updated. And the `base_model_version` parameter can also be used with upgraded next-generation models.
+
+    For more information about custom model upgrade, when upgrade is necessary, and how to use older versions of custom models, see
+    -   [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade)
+    -   [Using upgraded custom models for speech recognition](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use)
+
+Defect fix for capitalization documentation
+:   **Defect fix:** The documentation that describes the service's automatic capitalization of transcripts has been updated. The service capitalizes appropriate nouns only for the following languages and models:
+    -   All previous-generation US English models
+    -   The next-generation German model
+
+    For more information, see [Capitalization](/docs/speech-to-text?topic=speech-to-text-basic-response#response-capitalization).
+
 ## 2 February 2022
-{: #speech-to-text-2February2022}
+{: #speech-to-text-2february2022}
 {: release-note}
 
 New beta `en-WW_Medical_Telephony` model is now available
 :   A new beta next-generation `en-WW_Medical_Telephony` is now available. The new model understands terms from the medical and pharmacological domains. Use the model in situations where you need to transcribe common medical terminology such as medicine names, product brands, medical procedures, illnesses, types of doctor, or COVID-19-related terminology. Common use cases include conversations between a patient and a medical provider (for example, a doctor, nurse, or pharmacist).
 
-    The new model is available for all supported English dialects: Australian, Indian, UK, and US. The new model supports language model customization and grammars as beta functionality. It supports most of the same parameters as the `en-US_Telephony` model, including `smart_formatting`. It does not support the following parameters: `low_latency`, `profanity_filter`, `redaction`, and `speaker_labels`.
+    The new model is available for all supported English dialects: Australian, Indian, UK, and US. The new model supports language model customization and grammars as beta functionality. It supports most of the same parameters as the `en-US_Telephony` model, including `smart_formatting` for US English audio. It does not support the following parameters: `low_latency`, `profanity_filter`, `redaction`, and `speaker_labels`.
 
     For more information, see the following topics:
     -   [The English medical telephony model](/docs/speech-to-text?topic=speech-to-text-models-ng#models-medical)
@@ -126,10 +144,8 @@ Update to Chinese `zh-CN_Telephony` model
 
     If you have custom language models that are based on the updated model, you must upgrade your existing custom models to take advantage of the updates by using the `POST /v1/customizations/{customization_id}/upgrade_model` method. For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 
-    **Note:** To upgrade a custom language model that is based on a next-generation model, follow the instructions for upgrading a custom model that is based on a previous-generation model. The documentation incorrectly states that upgrade is not necessary for next-generation models. The documentation will be corrected to state that upgrade also applies to next-generation models.
-
 Update to Japanese `ja-JP_Multimedia` model to support low latency
-:   The next-genetation Japanese model `ja-JP_Multimedia` now supports low latency. You can use the `low_latency` parameter with speech recognition requests that use the model. For more information about the next-generation models and low latency, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng) and [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
+:   The next-generation Japanese model `ja-JP_Multimedia` now supports low latency. You can use the `low_latency` parameter with speech recognition requests that use the model. You do not need to upgrade custom models that are based on the updated Japanese base model. For more information about the next-generation models and low latency, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng) and [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
 
 ## 3 December 2021
 {: #speech-to-text-3december2021}

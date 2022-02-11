@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-12-08"
+  years: 2015, 2022
+lastupdated: "2022-02-11"
 
 subcollection: speech-to-text
 
@@ -40,9 +40,7 @@ Both methods return the following information about a custom model:
 -   `name` is the name of the custom model.
 -   `description` shows the description of the custom model, if one was provided at its creation.
 -   `base_model` indicates the name of the language model for which the custom model was created.
--   `versions` provides a list of the available versions of the custom model.
-    -   *For custom models that are based on previous-generation models,* the field can show two versions. Each element of the array indicates a version of the base model with which the custom model can be used. Multiple versions exist only if the custom model is upgraded. Otherwise, only a single version is shown. For more information, see [Listing version information for a custom model](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use#custom-upgrade-use-listing).
-    -   *For custom models that are based on next-generation models,* the field always shows only a single version. Only one version of a next-generation model is available at any time. You do not need to upgrade a custom model when a new version of its base model becomes available.
+-   `versions` provides a list of the available versions of the custom model. Each element of the array indicates a version of the base model with which the custom model can be used. Multiple versions exist only if the custom model is upgraded to a new version of its base model. Otherwise, only a single version is shown. For more information, see [Listing version information for a custom model](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use#custom-upgrade-use-listing).
 
 The method also returns a `status` field that indicates the state of the custom model:
 
@@ -84,13 +82,13 @@ The credentials own two such models. The first model is awaiting data or is bein
   "customizations": [
     {
       "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
-      "created": "2016-06-01T18:42:25.324Z",
-      "updated": "2016-06-01T18:42:25.324Z",
+      "created": "2016-06-01T14:21:26.894Z",
+      "updated": "2020-01-18T18:42:25.324Z",
       "language": "en-US",
       "dialect": "en-US",
       "versions": [
-        "en-US_BroadbandModel.v07-06082016.06202016",
-        "en-US_BroadbandModel.v2017-11-15"
+        "en-US_BroadbandModel.v2018-07-31",
+        "en-US_BroadbandModel.v2020-01-16"
       ],
       "owner": "297cfd08-330a-22ba-93ce-1a73f454dd98",
       "name": "Example model",
@@ -101,8 +99,8 @@ The credentials own two such models. The first model is awaiting data or is bein
     },
     {
       "customization_id": "8391f918-3b76-e109-763c-b7732fae4829",
-      "created": "2016-06-01T18:51:37.291Z",
-      "updated": "2016-06-01T20:02:10.624Z",
+      "created": "2017-12-02T18:51:37.291Z",
+      "updated": "2017-12-02T20:02:10.624Z",
       "language": "en-US",
       "dialect": "en-US",
       "versions": [
@@ -147,13 +145,13 @@ The response duplicates the information from the previous example:
 ```javascript
 {
   "customization_id": "74f4807e-b5ff-4866-824e-6bba1a84fe96",
-  "created": "2016-06-01T18:42:25.324Z",
-  "updated": "2016-06-01T18:42:25.324Z",
+  "created": "2016-06-01T14:21:26.894Z",
+  "updated": "2020-01-18T18:42:25.324Z",
   "language": "en-US",
   "dialect": "en-US",
   "versions": [
-    "en-US_BroadbandModel.v07-06082016.06202016",
-    "en-US_BroadbandModel.v2017-11-15"
+    "en-US_BroadbandModel.v2018-07-31",
+    "en-US_BroadbandModel.v2020-01-16"
   ],
   "owner": "297cfd08-330a-22ba-93ce-1a73f454dd98",
   "name": "Example model",

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-02-04"
+lastupdated: "2022-02-11"
 
 subcollection: speech-to-text
 
@@ -19,7 +19,7 @@ The {{site.data.keyword.speechtotextfull}} service provides three features that 
 ## Smart formatting
 {: #smart-formatting}
 
-The smart formatting feature is beta functionality that is available for US English, Japanese, Spanish (all dialects), and the `en-WW_Medical_Telephony` model.
+The smart formatting feature is beta functionality that is available for US English, Japanese, and Spanish (all dialects). It also also available for the `en-WW_Medical_Telephony` model when US English audio is recognized.
 {: beta}
 
 The `smart_formatting` parameter directs the service to convert the following strings into more conventional representations:

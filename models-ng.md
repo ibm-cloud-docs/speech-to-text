@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-02-04"
+lastupdated: "2022-02-11"
 
 subcollection: speech-to-text
 
@@ -157,7 +157,7 @@ Table 1 lists each parameter (and request header) that is supported for use with
 | `model` | All languages and models. For more information, see [Specifying a model for speech recognition](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-example). |
 | `profanity_filter` | US English and Japanese models only. For more information, see [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-formatting#profanity-filtering). |
 | `redaction` | US English, Japanese, and Korean models only. For more information, see [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-formatting#numeric-redaction). |
-| `smart_formatting` | US English, Japanese, and Spanish (Castilian and Latin American), and the `en-WW_Medical_Telephony` models only. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting). |
+| `smart_formatting` | US English, Japanese, and Spanish (all dialects) models only. This support includes the `en-WW_Medical_Telephony` model when US English audio is recognized. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting). |
 | `speaker_labels` | Czech, English (Australian, Indian, UK, and US), German, Japanese, Korean, and Spanish models only. Not supported for use with the `interim_results` or `low_latency` parameters. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels). |
 | `speech_detector_sensitivity` | All languages and models. For more information, see [Speech detector sensitivity](/docs/speech-to-text?topic=speech-to-text-detection#detection-parameters-sensitivity). |
 | `timestamps` | All languages and models. For more information, see [Word timestamps](/docs/speech-to-text?topic=speech-to-text-metadata#word-timestamps). |

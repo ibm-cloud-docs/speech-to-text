@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-01-31"
+lastupdated: "2022-02-11"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -105,6 +105,24 @@ The service has the following known limitations:
     However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
+
+## 11 February 2022
+{: #speech-to-text-11february2022}
+{: release-note}
+
+Defect fix for custom model upgrade and base model version documentation
+:   **Defect fix:** The documentation that describes the upgrade of custom models and the version strings that are used for different versions of base models has been updated. The documentation now states that upgrade for language model customization also applies to next-generation models. Also, the version strings that represent different versions of base models have been updated. And the `base_model_version` parameter can also be used with upgraded next-generation models.
+
+    For more information about custom model upgrade, when upgrade is necessary, and how to use older versions of custom models, see
+    -   [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade)
+    -   [Using upgraded custom models for speech recognition](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use)
+
+Defect fix for capitalization documentation
+:   **Defect fix:** The documentation that describes the service's automatic capitalization of transcripts has been updated. The service capitalizes appropriate nouns only for the following languages and models:
+    -   All previous-generation US English models
+    -   The next-generation German model
+
+    For more information, see [Capitalization](/docs/speech-to-text?topic=speech-to-text-basic-response#response-capitalization).
 
 ## 31 January 2022 (Version 4.0.5)
 {: #speech-to-text-data-31january2022}
