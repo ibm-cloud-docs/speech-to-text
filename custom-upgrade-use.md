@@ -96,7 +96,7 @@ The `base_model_version` parameter is intended primarily for use with custom mod
     -   Omit the `base_model_version` parameter to use the latest version of the base model.
     -   Specify the `base_model_version` parameter to use a specific version of the base model.
 
-To encourage upgrading, the service returns a warning message with speech recohnition results that use custom models that are based on older base models.
+To encourage upgrading, the service returns a warning message with speech recognition results that use custom models that are based on older base models.
 
 Because the `base_model_version` parameter is intended primarily for use with custom models, listing information about a custom model is the only way to see the available versions of a base model.
 {: note}
