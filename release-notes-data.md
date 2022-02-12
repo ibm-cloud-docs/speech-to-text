@@ -106,9 +106,8 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
-## 11 February 2022
-{: #speech-to-text-11february2022}
-{: release-note}
+## 11 February 2022 (Version 4.0.5)
+{: #speech-to-text-data-11february2022}
 
 Defect fix for custom model upgrade and base model version documentation
 :   **Defect fix:** The documentation that describes the upgrade of custom models and the version strings that are used for different versions of base models has been updated. The documentation now states that upgrade for language model customization also applies to next-generation models. Also, the version strings that represent different versions of base models have been updated. And the `base_model_version` parameter can also be used with upgraded next-generation models.
