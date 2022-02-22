@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-02-07"
+lastupdated: "2022-02-22"
 
 subcollection: speech-to-text
 
@@ -72,7 +72,7 @@ Table 2 lists the next-generation models that are supported for language model c
 | | `en-GB_Telephony` | GA | Beta  | Not supported |
 | English  \n (United States) | `en-US_Multimedia` | GA | Beta | Not supported |
 | | `en-US_Telephony` | GA | Beta | Not supported |
-| English  \n (all supported dialects) | `en-WW_Medical_Telephony` | Beta  \n {{site.data.keyword.cloud_notm}} only | Beta  \n {{site.data.keyword.cloud_notm}} only | Not supported |
+| English  \n (all supported dialects) | `en-WW_Medical_Telephony` | Beta | Beta | Not supported |
 | French  \n (Canadian) | `fr-CA_Telephony` | GA | Beta | Not supported |
 | French  \n (France) | `fr-FR_Multimedia` | GA | Beta | Not supported |
 | | `fr-FR_Telephony` | GA | Beta | Not supported |
