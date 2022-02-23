@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-02-21"
+lastupdated: "2022-02-23"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -146,11 +146,13 @@ Updated recommendation for OpenShift Container Storage
 New beta `en-WW_Medical_Telephony` model is now available
 :   A new beta next-generation `en-WW_Medical_Telephony` is now available. The new model understands terms from the medical and pharmacological domains. Use the model in situations where you need to transcribe common medical terminology such as medicine names, product brands, medical procedures, illnesses, types of doctor, or COVID-19-related terminology. Common use cases include conversations between a patient and a medical provider (for example, a doctor, nurse, or pharmacist).
 
-    The new model is available for all supported English dialects: Australian, Indian, UK, and US. The new model supports language model customization and grammars as beta functionality. It supports most of the same parameters as the `en-US_Telephony` model, including `smart_formatting` for US English audio. It does not support the following parameters: `low_latency`, `profanity_filter`, `redaction`, and `speaker_labels`. The model is installed from the Speech services custom resource by setting `enWwMedicalTelephony` to `enabled: true`.
+    The new model is installed from the Speech services custom resource by setting `enWwMedicalTelephony` to `enabled: true`. The model is available for all supported English dialects: Australian, Indian, UK, and US.
+    -   The model supports language model customization and grammars as beta functionality.
+    -   It supports most of the same parameters as the `en-US_Telephony` model.
+    -   It does *not* support the following parameters: `low_latency`, `profanity_filter`, `redaction`, and `speaker_labels`.
+    -   At this time, it does *not* support `smart_formatting` for {{site.data.keyword.icp4dfull_notm}}.
 
-    For more information, see the following topics:
-    -   [The English medical telephony model](/docs/speech-to-text?topic=speech-to-text-models-ng#models-medical)
-    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support)
+    For more information, see [The English medical telephony model](/docs/speech-to-text?topic=speech-to-text-models-ng#models-medical).
 
 Update to Chinese `zh-CN_Telephony` model
 :   The next-generation Chinese model `zh-CN_Telephony` has been updated for improved speech recognition. The model continues to support low latency. By default, the service automatically uses the updated model for all speech recognition requests. For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).

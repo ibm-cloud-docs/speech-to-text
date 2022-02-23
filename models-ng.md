@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-02-22"
+lastupdated: "2022-02-23"
 
 subcollection: speech-to-text
 
@@ -115,7 +115,8 @@ Common use cases include conversations between a patient and a medical provider 
 -   "Can you suggest an orthopedist who specializes in osteoarthritis?"
 -   "Can you please help me find an internist in Chicago?"
 
-The new model is available for all supported English dialects: Australian, Indian, UK, and US. The new model supports language model customization and grammars as beta functionality. It supports most of the same parameters as the `en-US_Telephony` model, including `smart_formatting`. It does *not* support the following parameters: `low_latency`, `profanity_filter`, `redaction`, and `speaker_labels`.
+
+The new model is available for all supported English dialects: Australian, Indian, UK, and US. The new model supports language model customization and grammars as beta functionality. It supports most of the same parameters as the `en-US_Telephony` model, including `smart_formatting` for US English audio for *{{site.data.keyword.cloud_notm}} only*.  It does *not* support the following parameters: `low_latency`, `profanity_filter`, `redaction`, and `speaker_labels`.
 
 ## Specifying a model for speech recognition
 {: #models-ng-specify}
