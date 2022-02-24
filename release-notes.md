@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-02-11"
+lastupdated: "2022-02-23"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -19,7 +19,7 @@ content-type: release-note
 
 ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
 
-The following features and changes were included for each release and update of managed instances of {{site.data.keyword.speechtotextfull}} that are hosted on {{site.data.keyword.cloud_notm}} or for instances that are hosted on [{{site.data.keyword.icp4dfull_notm}} as a Service](https://dataplatform.cloud.ibm.com/docs/content/wsj/landings/wstt.html){: external}.  The information includes known limitations. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
+The following features and changes were included for each release and update of managed instances of {{site.data.keyword.speechtotextfull}} that are hosted on {{site.data.keyword.cloud_notm}} or for instances that are hosted on [{{site.data.keyword.icp4dfull_notm}} as a Service](https://dataplatform.cloud.ibm.com/docs/content/wsj/landings/wstt.html){: external}. The information includes known limitations. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
 {: shortdesc}
 
 For information about releases and updates for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
@@ -135,9 +135,7 @@ New beta `en-WW_Medical_Telephony` model is now available
 
     The new model is available for all supported English dialects: Australian, Indian, UK, and US. The new model supports language model customization and grammars as beta functionality. It supports most of the same parameters as the `en-US_Telephony` model, including `smart_formatting` for US English audio. It does not support the following parameters: `low_latency`, `profanity_filter`, `redaction`, and `speaker_labels`.
 
-    For more information, see the following topics:
-    -   [The English medical telephony model](/docs/speech-to-text?topic=speech-to-text-models-ng#models-medical)
-    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support)
+    For more information, see [The English medical telephony model](/docs/speech-to-text?topic=speech-to-text-models-ng#models-medical).
 
 Update to Chinese `zh-CN_Telephony` model
 :   The next-generation Chinese model `zh-CN_Telephony` has been updated for improved speech recognition. The model continues to support low latency. By default, the service automatically uses the updated model for all speech recognition requests. For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).

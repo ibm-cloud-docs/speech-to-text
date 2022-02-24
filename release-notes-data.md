@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-02-11"
+lastupdated: "2022-02-23"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -105,6 +105,62 @@ The service has the following known limitations:
     However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
+
+## 23 February 2022 (Version 4.0.6)
+{: #speech-to-text-data-23february2022}
+
+Version 4.0.6 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.0.6 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.x and Red Hat OpenShift versions 4.6 and 4.8. For more information about installing and managing the service, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
+
+Updates to import/export scripts
+:   The `import_export.sh` and `transfer_ownership.sh` scripts have been updated. These scripts are used to import and export data between clusters, back up and restore data, and migrate data from version 3.5 to version 4.0.x. The scripts have been modified and improved as follows:
+    -   The `transfer_ownership.sh` script now requires a `-c` option to be included on the command line before the `<custom_resource_name>` argument.
+    -   The `transfer_ownership.sh` script now requires a `-v <version>` option and argument to indicate the version to which ownership of resources is being transferred. Specify `35` for version 3.5 or `40` for version 4.0.x.
+    -   The `transfer_ownership.sh` script now requires a `-p` option to be included on the command line before the `<postgres_auth_secret_name>` argument.
+    -   The `<postgres_auth_secret_name>` argument provides the Kubernetes secret that is used to authenticate to the PostgreSQL datastore to which you are transferring ownership. You can omit the authentication secret if is the same as the default value (`<custom-resource-name>-postgres-auth-secret` for version 4.0.x, `user-provided-postgressql` for version 3.5). You must provide the secret if it is different from the default value.
+    -   Both scripts now include a `-h` (`--help`) option to display information about the script and its usage.
+
+    For more information, see
+    -   [Administering {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-administering-watson-speech){: external}, specifically *Importing and exporting data* and *Backing up and restoring data*.
+    -   [Upgrading {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-upgrading-watson-speech){: external}, specifically *Migrating data from {{site.data.keyword.icp4dfull_notm}} Version 3.5*.
+
+Updated recommendation for OpenShift Container Storage
+:   Starting with Speech services version 4.0.6, the recommended storage class for OpenShift Container Storage is `ocs-storagecluster-ceph-rbd`.
+    -   If you are installing Speech services 4.0.6 or upgrading to Speech services 4.0.6 from IBM Cloud Pak for Data version 3.5, specify the `ocs-storagecluster-ceph-rbd` storage class during installation or upgrade.
+    -   If you are upgrading to Speech services 4.0.6 from a previous refresh of Cloud Pak for Data version 4.0, continue to use `ocs-storagecluster-cephfs`. You cannot change the storage that is used in an existing deployment.
+
+    The value is specified with the `storageClass` property in the Speech services custom resource:
+
+    ```yaml
+    ################
+    # Storage class
+    ################
+      storageClass: "ocs-storagecluster-ceph-rbd"
+    ```
+    {: codeblock}
+
+    The Speech services work with either version of OpenShift Container Storage. The newly recommended version has more restrictive access permissions. For more information, see
+    -   [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}
+    -   [Upgrading {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-upgrading-watson-speech){: external}
+
+New beta `en-WW_Medical_Telephony` model is now available
+:   A new beta next-generation `en-WW_Medical_Telephony` is now available. The new model understands terms from the medical and pharmacological domains. Use the model in situations where you need to transcribe common medical terminology such as medicine names, product brands, medical procedures, illnesses, types of doctor, or COVID-19-related terminology. Common use cases include conversations between a patient and a medical provider (for example, a doctor, nurse, or pharmacist).
+
+    The new model is installed from the Speech services custom resource by setting `enWwMedicalTelephony` to `enabled: true`. The model is available for all supported English dialects: Australian, Indian, UK, and US.
+    -   The model supports language model customization and grammars as beta functionality.
+    -   It supports most of the same parameters as the `en-US_Telephony` model.
+    -   It does *not* support the following parameters: `low_latency`, `profanity_filter`, `redaction`, and `speaker_labels`.
+    -   At this time, it does *not* support `smart_formatting` for {{site.data.keyword.icp4dfull_notm}}.
+
+    For more information, see [The English medical telephony model](/docs/speech-to-text?topic=speech-to-text-models-ng#models-medical).
+
+Update to Chinese `zh-CN_Telephony` model
+:   The next-generation Chinese model `zh-CN_Telephony` has been updated for improved speech recognition. The model continues to support low latency. By default, the service automatically uses the updated model for all speech recognition requests. For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+
+    If you have custom language models that are based on the updated model, you must upgrade your existing custom models to take advantage of the updates by using the `POST /v1/customizations/{customization_id}/upgrade_model` method. For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
+
+Update to Japanese `ja-JP_Multimedia` model to support low latency
+:   The next-generation Japanese model `ja-JP_Multimedia` now supports low latency. You can use the `low_latency` parameter with speech recognition requests that use the model. You do not need to upgrade custom models that are based on the updated Japanese base model.  For more information about the next-generation models and low latency, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng) and [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
 
 ## 11 February 2022 (Version 4.0.5)
 {: #speech-to-text-data-11february2022}
