@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-02-23"
+lastupdated: "2022-02-25"
 
 subcollection: speech-to-text
 
@@ -84,26 +84,14 @@ Table 2 lists the available next-generation multimedia models.
 
 | Language | Model name | Low-latency support | Status |
 |----------|:----------:|:-------------------:|:------:|
-| English  \n (Australian) | `en-AU_Multimedia` | No | GA |
-| English  \n (United Kingdom) | `en-GB_Multimedia` | No | GA |
-| English  \n (United States) | `en-US_Multimedia` | No | GA |
-| French  \n (France) | `fr-FR_Multimedia` | No | GA |
+| English  \n (Australian) | `en-AU_Multimedia` | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
+| English  \n (United Kingdom) | `en-GB_Multimedia` | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
+| English  \n (United States) | `en-US_Multimedia` | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
+| French  \n (France) | `fr-FR_Multimedia` | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
 | Japanese | `ja-JP_Multimedia` | Yes | GA |
 | Korean | `ko-KR_Multimedia` | No | GA |
+| Spanish  \n (Castilian) | `es-ES_Multimedia`  \n {{site.data.keyword.cloud_notm}} only | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
 {: caption="Table 2. Next-generation multimedia models"}
-
-<!-- Updates pening for public 22.04 release.
-| Language | Model name | Low-latency support | Status |
-|----------|:----------:|:-------------------:|:------:|
-| English  \n (Australian) | `en-AU_Multimedia` | Yes | GA |
-| English  \n (United Kingdom) | `en-GB_Multimedia` | Yes | GA |
-| English  \n (United States) | `en-US_Multimedia` | Yes | GA |
-| French  \n (France) | `fr-FR_Multimedia` | Yes | GA |
-| Japanese | `ja-JP_Multimedia` | Yes | GA |
-| Korean | `ko-KR_Multimedia` | No | GA |
-| Spanish  \n (Castilian) | `es-ES_Multimedia` | Yes | GA |
-{: caption="Table 2. Next-generation multimedia models"}
--->
 
 ### The English medical telephony model
 {: #models-medical}
@@ -115,8 +103,7 @@ Common use cases include conversations between a patient and a medical provider 
 -   "Can you suggest an orthopedist who specializes in osteoarthritis?"
 -   "Can you please help me find an internist in Chicago?"
 
-
-The new model is available for all supported English dialects: Australian, Indian, UK, and US. The new model supports language model customization and grammars as beta functionality. It supports most of the same parameters as the `en-US_Telephony` model, including `smart_formatting` for US English audio for *{{site.data.keyword.cloud_notm}} only*.  It does *not* support the following parameters: `low_latency`, `profanity_filter`, `redaction`, and `speaker_labels`.
+The new model is available for all supported English dialects: Australian, Indian, UK, and US. The new model supports language model customization and grammars as beta functionality. It supports most of the same parameters as the `en-US_Telephony` model, including `smart_formatting` for US English audio for {{site.data.keyword.cloud_notm}} only.  It does *not* support the following parameters: `low_latency`, `profanity_filter`, `redaction`, and `speaker_labels`.
 
 ## Specifying a model for speech recognition
 {: #models-ng-specify}
