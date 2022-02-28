@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-02-23"
+lastupdated: "2022-02-28"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -108,6 +108,28 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
+## 28 February 2022
+{: #speech-to-text-28february2022}
+{: release-note}
+
+Updates to English and French next-generation multimedia models to support low latency
+:   The following multimedia models have been updated to support low latency:
+    -   Australian English: `en-AU_Multimedia`
+    -   UK English: `en-GB_Multimedia`
+    -   US English: `en-US_Multimedia`
+    -   French: `fr-FR_Multimedia`
+
+    You do not need to upgrade custom language models that are built on these base models. For more information about the next-generation models and low latency, see
+    -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+    -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
+
+New Castilian Spanish next-generation multimedia model
+:   The service now offers a next-generation multimedia model for Castilian Spanish: `es-ES_Multimedia`. The new model supports low latency and is generally available. It also supports language model customization (generally available) and grammars (beta).
+
+    For more information about all available next-generation models and their customization support, see
+    -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+
 ## 11 February 2022
 {: #speech-to-text-11february2022}
 {: release-note}
@@ -143,7 +165,9 @@ Update to Chinese `zh-CN_Telephony` model
     If you have custom language models that are based on the updated model, you must upgrade your existing custom models to take advantage of the updates by using the `POST /v1/customizations/{customization_id}/upgrade_model` method. For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 
 Update to Japanese `ja-JP_Multimedia` model to support low latency
-:   The next-generation Japanese model `ja-JP_Multimedia` now supports low latency. You can use the `low_latency` parameter with speech recognition requests that use the model. You do not need to upgrade custom models that are based on the updated Japanese base model. For more information about the next-generation models and low latency, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng) and [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
+:   The next-generation Japanese model `ja-JP_Multimedia` now supports low latency. You can use the `low_latency` parameter with speech recognition requests that use the model. You do not need to upgrade custom models that are based on the updated Japanese base model. For more information about the next-generation models and low latency, see
+    -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+    -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
 
 ## 3 December 2021
 {: #speech-to-text-3december2021}
