@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-12-14"
+  years: 2015, 2022
+lastupdated: "2022-03-14"
 
 subcollection: speech-to-text
 
@@ -28,6 +28,9 @@ For most languages, you can transcribe audio at one of two sampling rates:
 
 -   Use *Broadband* or *Multimedia* models for audio that is sampled at a minimum sampling rate of 16 kHz.
 -   Use *Narrowband* or *Telephony* models for audio that is sampled at a minimum sampling rate of 8 kHz.
+
+Effective 15 March 2022, previous-generation models for all languages other than Arabic and Japanese are deprecated. The deprecated models remain available until 15 September 2022, when they will be removed from the service and the documentation. You must migrate to the equivalent next-generation model by the end of service date. For more information, see [Migrating to next-generation models](/docs/speech-to-text?topic=speech-to-text-models-migrate).
+{: deprecated}
 
 ## Using audio formats
 {: #features-audio}

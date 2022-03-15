@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-09-19"
+  years: 2015, 2022
+lastupdated: "2022-03-04"
 
 subcollection: speech-to-text
 
@@ -151,7 +151,7 @@ If you apply a custom language model to speech recognition, the service is likel
 
 However, the degree to which custom language models and grammars influence the service's splitting of a transcript depends on many factors. Such factors include the amount of training data with which the custom model is built and the qualities of the audio itself. Small changes in the audio can affect the results.
 
-Regardless, the service can still produce multiple final results in response to pauses and silence. If you omit the `split_transcript_at_phrase_end` parameter or set it to `false`, the service splits transcripts based solely on the pause interval. The pause interval has precedence over splitting due to semantic features. For more information, see [End of phrase silence time](#silence-time).
+Regardless, the service can still produce multiple final results in response to pauses and silence. If you omit the `split_transcript_at_phrase_end` parameter or set it to `false`, the service splits transcripts based solely on the pause interval. The pause interval has precedence over splitting due to semantic features. And if used together on a single request, the `end_of_phrase_silence_time` parameter has precedence over the `split_transcript_at_phrase_end` parameter. For more information, see [End of phrase silence time](#silence-time).
 
 ### Split transcript at phrase end results
 {: #split-transcript-results}

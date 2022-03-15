@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-02-23"
+lastupdated: "2022-03-14"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -105,6 +105,47 @@ The service has the following known limitations:
     However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
+
+## 15 March 2022 (Version 4.0.6)
+{: #speech-to-text-data-15march2022}
+
+Important: Deprecation of most previous-generation models
+:   **Important:** Effective **15 March 2022**, previous-generation models for all languages other than Arabic and Japanese are deprecated. The deprecated models remain available until **15 September 2022**, when they will be removed from the service and the documentation. The Arabic and Japanese previous-generation models are *not* deprecated.
+
+    The following previous-generation models are now deprecated:
+    -   Chinese (Mandarin): `zh-CN_NarrowbandModel` and `zh-CN_BroadbandModel`
+    -   Dutch (Netherlands): `nl-NL_NarrowbandModel` and `nl-NL_BroadbandModel`
+    -   English (Australian): `en-AU_NarrowbandModel` and `en-AU_BroadbandModel`
+    -   English (United Kingdom): `en-UK_NarrowbandModel` and `en-UK_BroadbandModel`
+    -   English (United States): `en-US_NarrowbandModel`, `en-US_BroadbandModel`, and `en-US_ShortForm_NarrowbandModel`
+    -   French (Canadian): `fr-CA_NarrowbandModel` and `fr-CA_BroadbandModel`
+    -   French (France): `fr-FR_NarrowbandModel` and `fr-FR_BroadbandModel`
+    -   German: `de-DE_NarrowbandModel` and `de-DE_BroadbandModel`
+    -   Italian: `it-IT_NarrowbandModel` and `it_IT_BroadbandModel`
+    -   Korean: `ko-KR_NarrowbandModel` and `ko-KR_BroadbandModel`
+    -   Portuguese (Brazilian): `pt-BR_NarrowbandModel` and `pt-BR_BroadbandModel`
+    -   Spanish (Argentinian): `es-AR_NarrowbandModel` and `es-AR_BroadbandModel`
+    -   Spanish (Castilian): `es-ES_NarrowbandModel` and `es-ES_BroadbandModel`
+    -   Spanish (Chilean): `es-CL_NarrowbandModel` and `es-CL_BroadbandModel`
+    -   Spanish (Colombian): `es-CO_NarrowbandModel` and `es-CO_BroadbandModel`
+    -   Spanish (Mexican): `es-MX_NarrowbandModel` and `es-MX_BroadbandModel`
+    -   Spanish (Peruvian): `es-PE_NarrowbandModel` and `es-PE_BroadbandModel`
+
+    If you use any of these deprecated models, you must migrate to the equivalent next-generation model by the end of service date.
+    -   For more information about the next-generation models to which you can migrate from each of the deprecated models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models)
+    -   For more information about the next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+    -   For more information about migrating from previous-generation to next-generation models, see [Migrating to next-generation models](/docs/speech-to-text?topic=speech-to-text-models-migrate).
+
+    **Note:** When the previous-generation `en-US_BroadbandModel` is removed from service on 15 September, the next-generation `en-US_Multimedia` model will become the default model for speech recognition requests.
+
+Next-generation models now support audio-parsing parameters
+:   All next-generation models now support the following audio-parsing parameters as generally available features:
+
+    -   `end_of_phrase_silence_time` specifies the duration of the pause interval at which the service splits a transcript into multiple final results. For more information, see [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-parsing#silence-time).
+    -   `split_transcript_at_phrase_end` directs the service to split the transcript into multiple final results based on semantic features of the input. For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-parsing#split-transcript).
+
+Defect fix for speaker labels documentation
+:   **Defect fix:**   Documentation of speaker labels included the following erroneous statement in multiple places: *For next-generation models, speaker labels are not supported for use with interim results or low latency.* Speaker labels are supported for use with interim results and low latency for next-generation models. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
 ## 23 February 2022 (Version 4.0.6)
 {: #speech-to-text-data-23february2022}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-02-25"
+lastupdated: "2022-03-14"
 
 subcollection: speech-to-text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 # Next-generation languages and models
 {: #models-ng}
 
-The {{site.data.keyword.speechtotextfull}} service supports a growing collection of next-generation models that improve upon the speech recognition capabilities of the service's previous-generation models. Next-generation models have higher throughput than the previous models, so the service can return transcriptions more quickly. Next-generation models also provide noticeably better transcription accuracy.
+The {{site.data.keyword.speechtotextfull}} service supports a growing collection of next-generation models that improve upon the speech recognition capabilities of the service's previous-generation models. The model indicates the language in which the audio is spoken and the rate at which it is sampled. Next-generation models have higher throughput than the previous-generation models, so the service can return transcriptions more quickly. Next-generation models also provide noticeably better transcription accuracy.
 {: shortdesc}
 
 When you use next-generation models, the service analyzes audio bidirectionally. Using deep neural networks, the model analyzes and extracts information from the audio. The model then evaluates the information forwards and backwards to predict the transcription, effectively "listening" to the audio twice.
@@ -23,7 +23,7 @@ With the additional information and context afforded by bidirectional analysis, 
 In addition to providing greater transcription accuracy, the models have the ability to hypothesize words that are not in the base language model and that it has not encountered in training. This capability can decrease the need for customization of domain-specific terms. A model does not need to contain a specific vocabulary term to predict that word.
 
 -   For more information about the technology that underlies the next-generation models, see [Advancing RNN Transducer Technology for Speech Recognition](https://arxiv.org/abs/2103.09935){: external}.
--   For information about migrating from previous-generation to next-generation models, see [Watson Speech to Text: How to Plan Your Migration to the Next-Generation Models](https://medium.com/ibm-data-ai/watson-speech-to-text-how-to-plan-your-migration-to-the-next-generation-models-6b10605b3bc5){: external}.
+-   For information about migrating from previous-generation to next-generation models, see [Migrating to next-generation models](/docs/speech-to-text?topic=speech-to-text-models-migrate).
 
 ## Next-generation model types
 {: #models-ng-types}
@@ -74,6 +74,10 @@ Table 1 lists the available next-generation telephony models.
 | Spanish  \n (Argentinian, Chilean,  \n Colombian, Mexican,  \n and Peruvian) | `es-LA_Telephony` | Yes | GA |
 {: caption="Table 1. Next-generation telephony models"}
 
+<!-- MAINTAINED FOR 22.05.
+| English  \n (all supported dialects) | `en-WW_Medical_Telephony` | Yes  \n {{site.data.keyword.cloud_notm}} only | Beta |
+-->
+
 The Latin American Spanish model, `es-LA_Telephony`, applies to all Latin American dialects. It is the equivalent of the previous-generation models that are available for the Argentinian, Chilean, Colombian, Mexican, and Peruvian dialects. If you used a previous-generation model for any of these Latin American dialects, use the `es-LA_Telephony` model to migrate to the equivalent next-generation model.
 {: note}
 
@@ -93,6 +97,10 @@ Table 2 lists the available next-generation multimedia models.
 | Spanish  \n (Castilian) | `es-ES_Multimedia`  \n {{site.data.keyword.cloud_notm}} only | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
 {: caption="Table 2. Next-generation multimedia models"}
 
+<!-- MAINTAINED FOR 22.05:
+| German | `de-DE_Multimedia`  \n {{site.data.keyword.cloud_notm}} only | No | GA |
+-->
+
 ### The English medical telephony model
 {: #models-medical}
 
@@ -103,76 +111,29 @@ Common use cases include conversations between a patient and a medical provider 
 -   "Can you suggest an orthopedist who specializes in osteoarthritis?"
 -   "Can you please help me find an internist in Chicago?"
 
-The new model is available for all supported English dialects: Australian, Indian, UK, and US. The new model supports language model customization and grammars as beta functionality. It supports most of the same parameters as the `en-US_Telephony` model, including `smart_formatting` for US English audio for {{site.data.keyword.cloud_notm}} only.  It does *not* support the following parameters: `low_latency`, `profanity_filter`, `redaction`, and `speaker_labels`.
+The new model is available for all supported English dialects: Australian, Indian, UK, and US. The new model supports language model customization and grammars as beta functionality. It supports most of the same parameters as the `en-US_Telephony` model, including `smart_formatting` for US English audio for {{site.data.keyword.cloud_notm}} only. It does *not* support the following parameters: `low_latency`, `profanity_filter`, `redaction`, and `speaker_labels`.
 
-## Specifying a model for speech recognition
-{: #models-ng-specify}
-
-You use a next-generation model in a speech recognition request just as you do a previous-generation model, by using the `model` parameter to indicate the model that is to be used. If you omit the `model` parameter from a speech recognition request, the service uses the previous-generation US English broadband model, `en-US_BroadbandModel`, by default.
-
-### Specify a model example
-{: #models-ng-specify-example}
-
-The following example HTTP request uses the `en-US_Telephony` model for speech recognition:
-
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
-
-```bash
-curl -X POST -u "apikey:{apikey}" \
---header "Content-Type: audio/wav" \
---data-binary @{path}audio-file.wav \
-"{url}/v1/recognize?model=en-US_Telephony"
-```
-{: pre}
-
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
-
-```bash
-curl -X POST \
---header "Authorization: Bearer {token}" \
---header "Content-Type: audio/wav" \
---data-binary @{path}audio-file.wav \
-"{url}/v1/recognize?model=en-US_Telephony"
-```
-{: pre}
+<!-- MAINTAINED FOR 22.05.
+It does *not* support the following parameters: `profanity_filter`, `redaction`, and `speaker_labels`.
+-->
 
 ## Supported features for next-generation models
 {: #models-ng-features}
 
-The next-generation models are supported for use with a subset of the service's features. In cases where a supported feature is restricted to certain languages, those same language restrictions apply to the next-generation models.
+The next-generation models are supported for use with a large subset of the service's speech recognition features. In cases where a supported feature is restricted to certain languages, the same language restrictions usually apply to both previous- and next-generation models.
 
-Table 1 lists each parameter (and request header) that is supported for use with the next-generation models. For more information about all available speech recognition parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
+-   For more information about the parameters that you can use with next-generation models, including their language support and whether the parameters are GA or beta, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
+-   For more information about next-generation models' support for customization, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
 
-| Parameter | Next-generation language and model support |
-|-----------|--------------------------------------------|
-| `access_token` | All languages and models. For more information, see [Open a connection](/docs/speech-to-text?topic=speech-to-text-websockets#ws-open). |
-| `audio_metrics` | All languages and models. For more information, see [Audio metrics](/docs/speech-to-text?topic=speech-to-text-metrics#audio-metrics). |
-| `background_audio_suppression` | All languages and models. For more information, see [Background audio suppression](/docs/speech-to-text?topic=speech-to-text-detection#detection-parameters-suppression). |
-| `Content-Type` | All languages and models. For more information, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-list). |
-| `customization_weight` | All languages and models. For more information, see [Using customization weight](/docs/speech-to-text?topic=speech-to-text-languageUse#weight). |
-| `grammar_name` | All languages and models. For more information, see [Using a grammar for speech recognition](/docs/speech-to-text?topic=speech-to-text-grammarUse). |
-| `inactivity_timeout` | All languages and models. For more information, see [Inactivity timeout](/docs/speech-to-text?topic=speech-to-text-input#timeouts-inactivity). |
-| `interim_results` | All languages and models that support low latency, but only if both the `interim_results` and `low_latency` parameters are set to `true`. For more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results). |
-| `language_customization_id` | All languages and models. For more information, see [Using a custom language model for speech recognition](/docs/speech-to-text?topic=speech-to-text-languageUse). |
-| `low_latency` | Next-generation models that support low latency only. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency). |
-| `model` | All languages and models. For more information, see [Specifying a model for speech recognition](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-example). |
-| `profanity_filter` | US English and Japanese models only. For more information, see [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-formatting#profanity-filtering). |
-| `redaction` | US English, Japanese, and Korean models only. For more information, see [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-formatting#numeric-redaction). |
-| `smart_formatting` | US English, Japanese, and Spanish (all dialects) models only. This support includes the `en-WW_Medical_Telephony` model when US English audio is recognized. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting). |
-| `speaker_labels` | Czech, English (Australian, Indian, UK, and US), German, Japanese, Korean, and Spanish models only. Not supported for use with the `interim_results` or `low_latency` parameters. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels). |
-| `speech_detector_sensitivity` | All languages and models. For more information, see [Speech detector sensitivity](/docs/speech-to-text?topic=speech-to-text-detection#detection-parameters-sensitivity). |
-| `timestamps` | All languages and models. For more information, see [Word timestamps](/docs/speech-to-text?topic=speech-to-text-metadata#word-timestamps). |
-| `Transfer-Encoding` | All languages and models. For more information, see [Audio transmission](/docs/speech-to-text?topic=speech-to-text-input#transmission). |
-| `word_confidence` | All languages and models. For more information, see [Word confidence](/docs/speech-to-text?topic=speech-to-text-metadata#word-confidence). |
-| `X-Watson-Learning-Opt-Out` | All languages and models. For more information, see [Request logging](/docs/speech-to-text?topic=speech-to-text-data-security#data-security-request-logging). |
-| `X-Watson-Metadata` | All languages and models. For more information, see [Information security](/docs/speech-to-text?topic=speech-to-text-information-security). |
-{: caption="Table 2. Parameter support for next-generation languages and models"}
+In summary, the next-generation models support all speech recognition parameters and headers *except* for the following:
 
-## Unsupported features for next-generation models
-{: #models-ng-unsupported}
+-   `acoustic_customization_id` (Next-generation models do not support acoustic model customization.)
+-   `keywords` and `keywords_threshold`
+-   `max_alternatives`
+-   `processing_metrics` and `processing_metrics_interval`
+-   `word_alternatives_threshold`
 
-Previous-generation models support some features that are not available with next-generation models. Specifically, next-generation models do not support the following features:
+Next-generation models also differ from previous-generation models with respect to the following additional features:
 
--   Any feature not listed in the previous section is not supported for use with the next-generation models.
--   Next-generation models do not support acoustic model customization. For more information about support for customization, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
--   Next-generation models do not produce hesitation markers. Hesitation markers are produced only by previous-generation models. For more information about hesitation markers, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
+-   Next-generation models do not produce hesitation markers. Only previous-generation models can return hesitation markers. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
+-   Next-generation models support automatic capitalization only for German models. Previous-generation models support automatic customization only for US English models. For more information, see [Capitalization](/docs/speech-to-text?topic=speech-to-text-basic-response#response-capitalization).
