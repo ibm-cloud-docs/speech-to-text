@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-02-08"
+lastupdated: "2022-03-07"
 
 subcollection: speech-to-text
 
@@ -283,16 +283,16 @@ The service applies automatic capitalization only to the following languages and
     ```
     {: codeblock}
 
-    The service does not capitalize proper nouns with US English next-generation models.
+    The service does not capitalize proper nouns for US English with next-generation models.
 
--   *For the German next-generation model,* the service capitalizes many nouns. For example, the service returns the following transcript for the phrase *er braucht erst einen neuen eintrag ins vokabular punkt*:
+-   *For German next-generation models,* the service capitalizes many nouns. For example, the service returns the following transcript for the phrase *er braucht erst einen neuen eintrag ins vokabular punkt*:
 
     ```text
     er braucht erst einen neuen Eintrag ins Vokabular Punkt
     ```
     {: codeblock}
 
-    The service does not capitalize nouns with German previous-generation models.
+    The service does not capitalize nouns for German with previous-generation models.
 
 ## Punctuation
 {: #response-punctuation}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-02-25"
+lastupdated: "2022-03-14"
 
 subcollection: speech-to-text
 
@@ -25,38 +25,57 @@ Where applicable, customization features are also identified as specific to {{si
 ## Language support for previous-generation models
 {: #custom-language-support-pg}
 
+Effective 15 March 2022, previous-generation models for all languages other than Arabic and Japanese are deprecated. The deprecated models remain available until 15 September 2022, when they will be removed from the service and the documentation. You must migrate to the equivalent next-generation model by the end of service date. For more information, see [Migrating to next-generation models](/docs/speech-to-text?topic=speech-to-text-models-migrate).
+{: deprecated}
+
 Table 1 lists the previous-generation models that are supported for language model customization, grammars, and acoustic model customization. To learn which models are supported for speech recognition for {{site.data.keyword.cloud}}, {{site.data.keyword.icp4dfull}}, or both, see [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported).
 
 | Language (dialect) | Models | Language model customization | Grammars | Acoustic model customization |
 |------------------------|:-----------:|:----------------------------------------:|:----------------------------------------:|:----------------------------------------:|
 | Arabic  \n (Modern Standard) | `ar-MS_BroadbandModel` | Not supported | Not supported | GA |
-| Chinese  \n (Mandarin) | `zh-CN_BroadbandModel`  \n   \n `zh-CN_NarrowbandModel` | Not supported | Not supported | GA |
-| Dutch  \n (Netherlands) | `nl-NL_BroadbandModel`  \n   \n `nl-NL_NarrowbandModel` | GA | GA | GA |
-| English  \n (Australian) | `en-AU_BroadbandModel`  \n   \n `en-AU_NarrowbandModel` | GA | GA | GA |
-| English  \n (United Kingdom) | `en-GB_BroadbandModel`  \n   \n `en-GB_NarrowbandModel` | GA | GA | GA |
-| English  \n (United States) |  `en-US_BroadbandModel`  \n   \n `en-US_NarrowbandModel`  \n   \n `en-US_ShortForm_NarrowbandModel` | GA | GA | GA |
-| French  \n (Canadian) | `fr-CA_BroadbandModel`  \n   \n `fr-CA_NarrowbandModel` | GA | GA | GA |
-| French  \n (France) | `fr-FR_BroadbandModel`  \n   \n `fr-FR_NarrowbandModel` | GA | GA | GA |
-| German | `de-DE_BroadbandModel`  \n   \n `de-DE_NarrowbandModel` | GA | GA | GA |
-| Italian | `it-IT_BroadbandModel`  \n   \n `it-IT_NarrowbandModel` | GA | GA | GA |
-| Japanese | `ja-JP_BroadbandModel`  \n   \n `ja-JP_NarrowbandModel` | GA | GA | GA |
-| Korean | `ko-KR_BroadbandModel`  \n   \n `ko-KR_NarrowbandModel` | GA | GA | GA |
-| Portuguese  \n (Brazilian) | `pt-BR_BroadbandModel`  \n   \n `pt-BR_NarrowbandModel` | GA | GA | GA |
-| Spanish  \n (Argentinian) | `es-AR_BroadbandModel`  \n   \n `es-AR_NarrowbandModel` | Beta | Beta | Beta |
-| Spanish  \n (Castilian) | `es-ES_BroadbandModel`  \n   \n `es-ES_NarrowbandModel` | GA | GA | GA |
-| Spanish  \n (Chilean) | `es-CL_BroadbandModel`  \n   \n `es-CL_NarrowbandModel` | Beta | Beta | Beta |
-| Spanish  \n (Colombian) | `es-CO_BroadbandModel`  \n   \n `es-CO_NarrowbandModel` | Beta | Beta | Beta |
-| Spanish  \n (Mexican) | `es-MX_BroadbandModel`  \n   \n `es-MX_NarrowbandModel` | Beta | Beta | Beta |
-| Spanish  \n (Peruvian) | `es-PE_BroadbandModel`  \n   \n `es-PE_NarrowbandModel` | Beta | Beta | Beta |
+| Chinese  \n (Mandarin) | `zh-CN_NarrowbandModel`  \n Deprecated | Not supported | Not supported | GA |
+|  | `zh-CN_BroadbandModel`  \n Deprecated | Not supported | Not supported | GA |
+| Dutch  \n (Netherlands) | `nl-NL_NarrowbandModel`  \n Deprecated | GA | GA | GA |
+|  | `nl-NL_BroadbandModel`  \n Deprecated | GA | GA | GA |
+| English  \n (Australian) | `en-AU_NarrowbandModel`  \n Deprecated | GA | GA | GA |
+|  | `en-AU_BroadbandModel`  \n Deprecated | GA | GA | GA |
+| English  \n (United Kingdom) | `en-GB_NarrowbandModel`  \n Deprecated | GA | GA | GA |
+|  | `en-GB_BroadbandModel`  \n Deprecated | GA | GA | GA |
+| English  \n (United States) | `en-US_NarrowbandModel`  \n Deprecated | GA | GA | GA |
+| | `en-US_BroadbandModel`  \n Deprecated | GA | GA | GA |
+| | `en-US_ShortForm_NarrowbandModel`  \n Deprecated | GA | GA | GA |
+| French  \n (Canadian) | `fr-CA_NarrowbandModel`  \n Deprecated | GA | GA | GA |
+| | `fr-CA_BroadbandModel`  \n Deprecated | GA | GA | GA |
+| French  \n (France) | `fr-FR_NarrowbandModel`  \n Deprecated | GA | GA | GA |
+| | `fr-FR_BroadbandModel`  \n Deprecated | GA | GA | GA |
+| German | `de-DE_NarrowbandModel`  \n Deprecated | GA | GA | GA |
+| | `de-DE_BroadbandModel`  \n Deprecated | GA | GA | GA |
+| Italian | `it-IT_NarrowbandModel`  \n Deprecated | GA | GA | GA |
+| | `it-IT_BroadbandModel`  \n Deprecated | GA | GA | GA |
+| Japanese | `ja-JP_NarrowbandModel` | GA | GA | GA |
+| | `ja-JP_BroadbandModel` | GA | GA | GA |
+| Korean | `ko-KR_NarrowbandModel`  \n Deprecated | GA | GA | GA |
+| | `ko-KR_BroadbandModel`  \n Deprecated | GA | GA | GA |
+| Portuguese  \n (Brazilian) | `pt-BR_NarrowbandModel`  \n Deprecated | GA | GA | GA |
+| | `pt-BR_BroadbandModel`  \n Deprecated | GA | GA | GA |
+| Spanish  \n (Argentinian) | `es-AR_NarrowbandModel`  \n Deprecated | Beta | Beta | Beta |
+| | `es-AR_BroadbandModel`  \n Deprecated | Beta | Beta | Beta |
+| Spanish  \n (Castilian) | `es-ES_NarrowbandModel`  \n Deprecated | GA | GA | GA |
+| | `es-ES_BroadbandModel`  \n Deprecated | GA | GA | GA |
+| Spanish  \n (Chilean) | `es-CL_NarrowbandModel`  \n Deprecated | Beta | Beta | Beta |
+| | `es-CL_BroadbandModel`  \n Deprecated | Beta | Beta | Beta |
+| Spanish  \n (Colombian) | `es-CO_NarrowbandModel`  \n Deprecated | Beta | Beta | Beta |
+| | `es-CO_BroadbandModel`  \n Deprecated | Beta | Beta | Beta |
+| Spanish  \n (Mexican) | `es-MX_NarrowbandModel`  \n Deprecated | Beta | Beta | Beta |
+| | `es-MX_BroadbandModel`  \n Deprecated | Beta | Beta | Beta |
+| Spanish  \n (Peruvian) | `es-PE_NarrowbandModel`  \n Deprecated | Beta | Beta | Beta |
+| | `es-PE_BroadbandModel`  \n Deprecated | Beta | Beta | Beta |
 {: caption="Table 1. Previous-generation language support for customization"}
 
 ## Language support for next-generation models
 {: #custom-language-support-ng}
 
 Table 2 lists the next-generation models that are supported for language model customization, grammars, and acoustic model customization. To learn which models are supported for speech recognition for {{site.data.keyword.cloud}}, {{site.data.keyword.icp4dfull}}, or both, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
-
-*As of 3 December 2021 for {{site.data.keyword.cloud_notm}}* and *20 December 2021 for {{site.data.keyword.icp4dfull_notm}}*, custom language models based on certain next-generation models must be re-created. If you created custom language models based on certain versions of the `en-AU_Telephony`, `en-GB_Telephony`, `en-US_Telephony`, or `en-US_Multimedia` models, you must re-create the custom models. Until you do, speech recognition requests that attempt to use the custom models fail with HTTP error code 400. For more information, see the [3 December 2021](/docs/speech-to-text?topic=speech-to-text-release-notes#speech-to-text-3december2021) update in the release notes for {{site.data.keyword.cloud_notm}} and the [20 December 2021 (Version 4.0.4)](/docs/speech-to-text?topic=speech-to-text-release-notes-data#speech-to-text-data-20december2021) update in the release notes {{site.data.keyword.icp4dfull_notm}}.
-{: important}
 
 | Language (dialect) |  Models | Language model customization | Grammars | Acoustic model customization |
 |------------------------|:-----------:|:----------------------------------------:|:----------------------------------------:|:----------------------------------------:|
@@ -87,3 +106,7 @@ Table 2 lists the next-generation models that are supported for language model c
 | | `es-ES_Telephony` | GA | Beta | Not supported |
 | Spanish  \n (Argentinian, Chilean,  \n Colombian, Mexican,  \n and Peruvian) | `es-LA_Telephony` | GA | Beta | Not supported |
 {: caption="Table 2. Next-generation language support for customization"}
+
+<!-- MAINTAINED FOR 22.05.
+| | `de-DE_Multimedia` | GA | Beta | Not supported |
+-->

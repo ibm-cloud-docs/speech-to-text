@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-10-27"
+  years: 2015, 2022
+lastupdated: "2022-03-08"
 
 subcollection: speech-to-text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 # Listing information about models
 {: #models-list}
 
-The {{site.data.keyword.speechtotextfull}} service provides methods for listing information about all of its available models or about a specific model.
+The {{site.data.keyword.speechtotextfull}} service provides methods for listing information about all of its available models or about a specific previous- or next-generation model.
 {: shortdesc}
 
 ## Model information
@@ -116,10 +116,10 @@ The response is abbreviated to show only the first few models.
 
 You use the HTTP `GET /v1/models/{model_id}` method to list information about a specified model. The service returns information only for that model.
 
-### List a specific model examples
-{: #models-list-specific-examples}
+### List a specific previous-generation model example
+{: #models-pg-list-specific-example}
 
-The following example shows information about the US English broadband model:
+The following example shows information about the previous-generation US English broadband model, `en-US_BroadbandModel`:
 
 ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
@@ -138,7 +138,7 @@ curl -X GET \
 ```
 {: pre}
 
-The model supports both language model customization and speakers labels.
+The model supports language model customization, acoustic model customization, and speakers labels.
 
 ```javascript
 {
@@ -156,7 +156,10 @@ The model supports both language model customization and speakers labels.
 ```
 {: codeblock}
 
-The following example shows information about the next-generation US English telephony model:
+### List a specific next-generation model example
+{: #models-ng-list-specific-example}
+
+The following example shows information about the next-generation US English telephony model, `en-US_Telephony`:
 
 ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
@@ -175,7 +178,7 @@ curl -X GET \
 ```
 {: pre}
 
-The model supports low latency and speakers labels. It does not support language model customization.
+The model supports low latency, speakers labels, and language model customization. It does not support acoustic model customization.
 
 ```javascript
 {
