@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-03-14"
+lastupdated: "2022-03-16"
 
 subcollection: speech-to-text
 
@@ -62,7 +62,7 @@ Table 1 lists the available next-generation telephony models.
 | English  \n (Indian) | `en-IN_Telephony` | Yes | GA |
 | English  \n (United Kingdom) | `en-GB_Telephony` | Yes | GA |
 | English  \n (United States) | `en-US_Telephony` | Yes | GA |
-| English  \n (all supported dialects) | `en-WW_Medical_Telephony` | No | Beta |
+| English  \n (all supported dialects) | `en-WW_Medical_Telephony` | Yes  \n {{site.data.keyword.cloud_notm}} only | Beta |
 | French  \n (Canadian) | `fr-CA_Telephony` | Yes | GA |
 | French  \n (France) | `fr-FR_Telephony` | Yes | GA |
 | German | `de-DE_Telephony` | Yes | GA |
@@ -73,10 +73,6 @@ Table 1 lists the available next-generation telephony models.
 | Spanish  \n (Castilian) | `es-ES_Telephony` | Yes | GA |
 | Spanish  \n (Argentinian, Chilean,  \n Colombian, Mexican,  \n and Peruvian) | `es-LA_Telephony` | Yes | GA |
 {: caption="Table 1. Next-generation telephony models"}
-
-<!-- MAINTAINED FOR 22.05.
-| English  \n (all supported dialects) | `en-WW_Medical_Telephony` | Yes  \n {{site.data.keyword.cloud_notm}} only | Beta |
--->
 
 The Latin American Spanish model, `es-LA_Telephony`, applies to all Latin American dialects. It is the equivalent of the previous-generation models that are available for the Argentinian, Chilean, Colombian, Mexican, and Peruvian dialects. If you used a previous-generation model for any of these Latin American dialects, use the `es-LA_Telephony` model to migrate to the equivalent next-generation model.
 {: note}
@@ -92,14 +88,11 @@ Table 2 lists the available next-generation multimedia models.
 | English  \n (United Kingdom) | `en-GB_Multimedia` | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
 | English  \n (United States) | `en-US_Multimedia` | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
 | French  \n (France) | `fr-FR_Multimedia` | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
+| German | `de-DE_Multimedia`  \n {{site.data.keyword.cloud_notm}} only | No | GA |
 | Japanese | `ja-JP_Multimedia` | Yes | GA |
 | Korean | `ko-KR_Multimedia` | No | GA |
 | Spanish  \n (Castilian) | `es-ES_Multimedia`  \n {{site.data.keyword.cloud_notm}} only | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
 {: caption="Table 2. Next-generation multimedia models"}
-
-<!-- MAINTAINED FOR 22.05:
-| German | `de-DE_Multimedia`  \n {{site.data.keyword.cloud_notm}} only | No | GA |
--->
 
 ### The English medical telephony model
 {: #models-medical}
@@ -111,11 +104,7 @@ Common use cases include conversations between a patient and a medical provider 
 -   "Can you suggest an orthopedist who specializes in osteoarthritis?"
 -   "Can you please help me find an internist in Chicago?"
 
-The new model is available for all supported English dialects: Australian, Indian, UK, and US. The new model supports language model customization and grammars as beta functionality. It supports most of the same parameters as the `en-US_Telephony` model, including `smart_formatting` for US English audio for {{site.data.keyword.cloud_notm}} only. It does *not* support the following parameters: `low_latency`, `profanity_filter`, `redaction`, and `speaker_labels`.
-
-<!-- MAINTAINED FOR 22.05.
-It does *not* support the following parameters: `profanity_filter`, `redaction`, and `speaker_labels`.
--->
+The new model is available for all supported English dialects: Australian, Indian, UK, and US. The new model supports language model customization and grammars as beta functionality. It supports most of the same parameters as the `en-US_Telephony` model, including `smart_formatting` for US English audio for {{site.data.keyword.cloud_notm}} only. In addition to those features listed in [Supported features for next-generation models](#models-ng-features), the model does *not* support the following parameters: `profanity_filter`, `redaction`, and `speaker_labels`.
 
 ## Supported features for next-generation models
 {: #models-ng-features}

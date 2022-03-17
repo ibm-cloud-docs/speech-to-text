@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-03-14"
+lastupdated: "2022-03-16"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -105,6 +105,18 @@ The service has the following known limitations:
     However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
+
+## 17 March 2022
+{: #speech-to-text-data-17march2022}
+
+Grammar support for next-generation models is now generally available
+:   Grammar support is now generally available (GA) for next-general models that meet the following conditions:
+    -   The models are generally available.
+    -   The models support language model customization.
+
+    For more information, see the following topics:
+    -   For more information about the status of grammar support for next-generation models, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
+    -   For more information about grammars, see [Grammars](/docs/speech-to-text?topic=speech-to-text-customization#grammars-intro).
 
 ## 15 March 2022 (Version 4.0.6)
 {: #speech-to-text-data-15march2022}

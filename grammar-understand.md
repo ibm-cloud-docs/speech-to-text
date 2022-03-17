@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-12-14"
+  years: 2015, 2022
+lastupdated: "2022-03-16"
 
 subcollection: speech-to-text
 
@@ -13,13 +13,13 @@ subcollection: speech-to-text
 # Understanding grammars
 {: #grammarUnderstand}
 
-Grammars are available only for some previous-generation and next-generation models. Support can differ between {{site.data.keyword.cloud_notm}} and {{site.data.keyword.icp4dfull_notm}}, and grammars can be generally available for some models and beta for other models. For more information about the available models and the features they support, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
-{: note}
-
 The following examples introduce the {{site.data.keyword.speechtotextfull}} service's support for grammars. The examples create two simple ABNF grammars and show possible results when they are used for speech recognition. The examples illustrate the importance of examining the confidence score that the service includes with a transcript.
 {: shortdesc}
 
 The examples provide only the results of speech recognition requests. For examples that show how to pass a grammar for speech recognition, see [Using a grammar for speech recognition](/docs/speech-to-text?topic=speech-to-text-grammarUse). The examples are also very basic. For examples of more complex grammars, see [Example grammars](/docs/speech-to-text?topic=speech-to-text-grammarExamples).
+
+For more information about the languages and models that support grammars and their level of support (generally available or beta), see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
+{: note}
 
 ## Single-phrase matches: The yesno grammar
 {: #yesnoGrammar}

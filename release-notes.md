@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-03-14"
+lastupdated: "2022-03-16"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -108,7 +108,18 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
-<!-- MAINTAINED FOR 22.05.
+## 17 March 2022
+{: #speech-to-text-17march2022}
+{: release-note}
+
+Grammar support for next-generation models is now generally available
+:   Grammar support is now generally available (GA) for next-general models that meet the following conditions:
+    -   The models are generally available.
+    -   The models support language model customization.
+
+    For more information, see the following topics:
+    -   For more information about the status of grammar support for next-generation models, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
+    -   For more information about grammars, see [Grammars](/docs/speech-to-text?topic=speech-to-text-customization#grammars-intro).
 
 New German next-generation multimedia model
 :   The service now offers a next-generation multimedia model for German: `de-DE_Multimedia`. The new model is generally available. It does not support low latency. It does support language model customization (generally available) and grammars (beta).
@@ -121,8 +132,6 @@ Beta next-generation `en-WW_Medical_Telephony` model now supports low latency
 :   The beta next-generation `en-WW_Medical_Telephony` model now supports low latency. For more information about all next-generation models and low latency, see
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
     -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
-
--->
 
 ## 15 March 2022
 {: #speech-to-text-15march2022}
