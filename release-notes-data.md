@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-03-16"
+lastupdated: "2022-03-17"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -106,7 +106,10 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
-## 17 March 2022
+
+
+
+## 17 March 2022 (Version 4.0.6)
 {: #speech-to-text-data-17march2022}
 
 Grammar support for next-generation models is now generally available
