@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-12-14"
+  years: 2015, 2022
+lastupdated: "2022-03-16"
 
 subcollection: speech-to-text
 
@@ -12,9 +12,6 @@ subcollection: speech-to-text
 
 # Adding a grammar to a custom language model
 {: #grammarAdd}
-
-Grammars are available only for some previous-generation and next-generation models. Support can differ between {{site.data.keyword.cloud_notm}} and {{site.data.keyword.icp4dfull_notm}}, and grammars can be generally available for some models and beta for other models. For more information about the available models and the features they support, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
-{: note}
 
 Before you can use a grammar for speech recognition, you must first use the customization interface to add the grammar to a custom language model. The steps to add a grammar to a custom language model parallel those used to add corpora or custom words:
 {: shortdesc}
@@ -26,6 +23,9 @@ Before you can use a grammar for speech recognition, you must first use the cust
 1.  You can now use the custom model and grammar in speech recognition requests. For more information, see [Using a grammar for speech recognition](/docs/speech-to-text?topic=speech-to-text-grammarUse).
 
 These steps are iterative. You can add grammars, as well as corpora and custom words, to a custom language model as often as needed. You must train the custom model on any new data resources (grammars, corpora, or custom words) that you add. When you use it for speech recognition, a custom model reflects the data on which it was last trained.
+
+For more information about the languages and models that support grammars and their level of support (generally available or beta), see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
+{: note}
 
 ## Create a custom language model
 {: #createModel-grammar}

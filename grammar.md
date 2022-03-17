@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-12-14"
+  years: 2015, 2022
+lastupdated: "2022-03-16"
 
 subcollection: speech-to-text
 
@@ -13,9 +13,6 @@ subcollection: speech-to-text
 # Using grammars with custom language models
 {: #grammars}
 
-Grammars are available only for some previous-generation and next-generation models. Support can differ between {{site.data.keyword.cloud_notm}} and {{site.data.keyword.icp4dfull_notm}}, and grammars can be generally available for some models and beta for other models. For more information about the available models and the features they support, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
-{: note}
-
 The {{site.data.keyword.speechtotextfull}} service supports the use of grammars with custom language models. You can add grammars to a custom language model and use them for speech recognition. Grammars restrict the set of phrases that the service can recognize from audio.
 {: shortdesc}
 
@@ -24,6 +21,9 @@ A grammar uses a formal language specification to define a set of production rul
 For example, when you need to recognize specific words or phrases, such as *yes* or *no*, individual letters or numbers, or a list of names, using grammars can be more effective than examining alternative words and transcripts. Moreover, by limiting the search space for valid strings, the service can deliver results faster and more accurately.
 
 When you use a custom language model and a grammar for speech recognition, the service can return a valid phrase from the grammar or an empty result. If the result is not empty, the service includes a confidence score with the final transcript, as it does for all recognition requests. For grammars, the score indicates the likelihood that the response matched the grammar. False-positives are always possible, especially for simple grammars, so you must always consider the confidence of the service's results when evaluating its response.
+
+For more information about the languages and models that support grammars and their level of support (generally available or beta), see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
+{: note}
 
 ## Supported grammar formats
 {: #grammarFormats}

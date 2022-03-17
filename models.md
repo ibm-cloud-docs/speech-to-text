@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-03-14"
+lastupdated: "2022-03-16"
 
 subcollection: speech-to-text
 
@@ -88,7 +88,7 @@ Table 2 lists the previous-generation broadband models that are available.
 | English (United States) | `en-US_BroadbandModel` | GA  \n Deprecated | `en-US_Multimedia` |
 | French (Canadian) | `fr-CA_BroadbandModel` | GA  \n Deprecated | `fr-CA_Telephony` |
 | French (France) | `fr-FR_BroadbandModel` | GA  \n Deprecated | `fr-FR_Multimedia` |
-| German | `de-DE_BroadbandModel` | GA  \n Deprecated | `de-DE_Telephony` |
+| German | `de-DE_BroadbandModel` | GA  \n Deprecated | `de-DE_Multimedia` |
 | Italian | `it-IT_BroadbandModel` | GA  \n Deprecated | `it-IT_Telephony` |
 | Japanese | `ja-JP_BroadbandModel` | GA | `ja-JP_Multimedia` |
 | Korean | `ko-KR_BroadbandModel` | GA  \n Deprecated | `ko-KR_Multimedia`|

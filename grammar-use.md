@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-12-14"
+  years: 2015, 2022
+lastupdated: "2022-03-16"
 
 subcollection: speech-to-text
 
@@ -13,9 +13,6 @@ subcollection: speech-to-text
 # Using a grammar for speech recognition
 {: #grammarUse}
 
-Grammars are available only for some previous-generation and next-generation models. Support can differ between {{site.data.keyword.cloud_notm}} and {{site.data.keyword.icp4dfull_notm}}, and grammars can be generally available for some models and beta for other models. For more information about the available models and the features they support, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
-{: note}
-
 Once you create and train your custom language model with your grammar, you can use the grammar in speech recognition requests:
 {: shortdesc}
 
@@ -23,6 +20,9 @@ Once you create and train your custom language model with your grammar, you can 
 -   Use the `grammar_name` parameter to specify the name of the grammar. You can specify only a single grammar with a request.
 
 When you use a grammar, the service recognizes only words from the specified grammar. The service does not use custom words that were added from corpora, that were added or modified individually, or that are recognized by other grammars.
+
+For more information about the languages and models that support grammars and their level of support (generally available or beta), see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
+{: note}
 
 ## Examples of using a grammar with a custom language model
 {: #grammarUse-examples}

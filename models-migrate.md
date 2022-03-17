@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-03-14"
+lastupdated: "2022-03-16"
 
 subcollection: speech-to-text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 # Migrating to next-generation models
 {: #models-migrate}
 
-The {{site.data.keyword.speechtotextfull}} service supports speech recognition with both previous-generation and next-generation models. Effective **15 March 2022**, previous-generation models for all languages other than Arabic and Japanese are deprecated. The deprecated models remain available until **15 September 2022**, when they will be removed from the service and the documentation.
+The {{site.data.keyword.speechtotextfull}} service supports speech recognition with both previous-generation and next-generation models.  Effective **15 March 2022**, previous-generation models for all languages other than Arabic and Japanese are deprecated.  The deprecated models remain available until **15 September 2022**, when they will be removed from the service and the documentation.
 {: shortdesc}
 
 You must migrate your use of any deprecated previous-generation models to the equivalent next-generation models by the end of service date. Next-generation models provide appreciably better transcription accuracy and throughput. But they currently provide slightly fewer features than previous-generation models.
@@ -90,7 +90,7 @@ curl -X POST -u "apikey:{apikey}" \
 ## Step 3: Re-create any custom language models that you use
 {: models-migrate-step3}
 
-You must re-create any custom language models that are based on previous-generation models by basing them on the equivalent next-generation models. This requires that you create a new custom language model and add your corpora and grammars to the new custom model. The ability to add custom words to custom models that are based on next-generation models is coming soon.
+You must re-create any custom language models that are based on previous-generation models by basing them on the equivalent next-generation models. This requires that you create a new custom language model and add your corpora, grammars, and custom words from the old model to the new model.
 
 In general, next-generation models do not rely as heavily on custom language models. They use a different approach to transcription that minimizes the need for language model customization.
 

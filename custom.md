@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-03-10"
+lastupdated: "2022-03-16"
 
 subcollection: speech-to-text
 
@@ -26,7 +26,7 @@ Speech recognition works the same with or without a custom model. When you use a
 ## Language model customization
 {: #customLanguage-intro}
 
-Some models and features are available only on {{site.data.keyword.cloud_notm}}, not on {{site.data.keyword.icp4dfull_notm}}. Also, support for features differs between previous-generation and next-generation models, and some features are generally available and some are beta. For more information about the available models and the features they support, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
+For more information about the languages and models that support language model customization and their level of support (generally available or beta), see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
 {: note}
 
 The service was developed with a broad, general audience in mind. The service's base vocabulary contains many words that are used in everyday conversation. Its models provide sufficiently accurate recognition for many applications. But they can lack knowledge of specific terms that are associated with particular domains.
@@ -64,7 +64,7 @@ For more information about getting started with acoustic model customization, se
 ## Grammars
 {: #grammars-intro}
 
-Grammars are available only for some previous-generation and next-generation models. Support can differ between {{site.data.keyword.cloud_notm}} and {{site.data.keyword.icp4dfull_notm}}, and grammars can be generally available for some models and beta for other models. For more information about the available models and the features they support, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
+For more information about the languages and models that support grammars and their level of support (generally available or beta), see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
 {: note}
 
 Custom language models allow you to expand the service's base vocabulary. *Grammars* enable you to restrict the words that the service can recognize from that vocabulary. When you use a grammar with a custom language model for speech recognition, the service can recognize only words, phrases, and strings that are recognized by the grammar. Because the grammar defines a limited search space for valid matches, the service can deliver results faster and more accurately.
