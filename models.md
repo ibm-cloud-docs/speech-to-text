@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-03-16"
+lastupdated: "2022-03-22"
 
 subcollection: speech-to-text
 
@@ -80,7 +80,7 @@ Table 2 lists the previous-generation broadband models that are available.
 
 | Language | Model name       | Status | Recommended next-generation model |
 |----------|:----------------:|:------:|:---------------------------------:|
-| Arabic (Modern Standard) | `ar-MS_BroadbandMoel` | GA | `ar-MS_Telephony` |
+| Arabic (Modern Standard) | `ar-MS_BroadbandModel` | GA | `ar-MS_Telephony` |
 | Chinese (Mandarin) | `zh-CN_BroadbandModel` | GA  \n Deprecated | `zh-CN_Telephony` |
 | Dutch (Netherlands) | `nl-NL_BroadbandModel` | GA  \n Deprecated | `nl-NL_Telephony` |
 | English (Australian) | `en-AU_BroadbandModel` | GA  \n Deprecated | `en-AU_Multimedia` |
