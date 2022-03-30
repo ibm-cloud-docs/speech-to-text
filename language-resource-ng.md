@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-10-22"
+  years: 2015, 2022
+lastupdated: "2022-03-29"
 
 subcollection: speech-to-text
 
@@ -40,7 +40,11 @@ The *words resource* includes custom words that you add directly to the custom m
 -   `word` - The spelling of the word as added by you.
 -   `display_as` - The spelling of the word that the service uses in transcripts. The field indicates how the word is to be displayed. Unless you specify an alternative representation, the spelling matches the value of the `word` field.
 -   `source` - How the word was added to the words resource. The field always contains the string `user` to indicate that it was added directly as a custom word.
--   `sounds_like` - Not used with custom language models that are based on next-generation models.
+-   `sounds_like` - The pronunciation of the word. The value represents how the service believes that the word is pronounced based on its language rules. In many cases, the pronunciation reflects the spelling of the `word` field. You can use the `sounds_like` field to modify the word's pronunciation. You can also use the field to specify multiple pronunciations for a word.
+
+<!--
+For more information, see [Using the sounds_like field](#soundsLike).
+-->
 
 After adding or modifying a custom word, it is important that you verify the correctness of the word's definition; for more information, see [Validating a words resource for next-generation models](#validateModel-ng). You must also train the model for the changes to take effect during transcription; for more information, see [Train the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
 

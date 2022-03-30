@@ -170,6 +170,3 @@ toc:
           - link:
               label: StackOverflow
               href: http://stackoverflow.com/questions/tagged/ibm-watson-cognitive+speech-to-text
-          - link:
-              label: Watson Developer Community Slack channel
-              href: http://wdc-slack-inviter.mybluemix.net/
