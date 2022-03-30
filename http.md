@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-10-29"
+  years: 2015, 2022
+lastupdated: "2022-03-25"
 
 subcollection: speech-to-text
 
@@ -33,7 +33,7 @@ If your data consists of multiple audio files, the recommended means of submitti
 ### Basic request example
 {: #HTTP-basic-example}
 
-The following example sends a recognition request for a single FLAC file named `audio-file.flac`. The request omits the `model` query parameter to use the default language model, `en-US_BroadbandModel`.
+The following example sends a recognition request for a single FLAC file named `audio-file.flac`. The request omits the `model` query parameter to use the default language model, `en-US_BroadbandModel`. For more information, see [The default model](/docs/speech-to-text?topic=speech-to-text-models-use#models-use-default).
 
 ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
@@ -125,7 +125,7 @@ You specify the following parameters as request headers:
 You specify the following parameters as query parameters:
 
 `model` (*optional* string)
-:   The identifier of the model that is to be used with the request. The default is `en-US_BroadbandModel`.
+:   The identifier of the model that is to be used with the request. The default is `en-US_BroadbandModel`. For more information, see [The default model](/docs/speech-to-text?topic=speech-to-text-models-use#models-use-default).
 
 `language_customization_id` (*optional* string)
 :   The GUID of a custom language model that is to be used with the request.

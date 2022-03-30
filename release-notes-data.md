@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-03-17"
+lastupdated: "2022-03-25"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -106,8 +106,41 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
+## 30 March 2022 (Version 4.0.7)
+{: #speech-to-text-data-30march2022}
 
+Version 4.0.7 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.0.7 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.x and Red Hat OpenShift versions 4.6 and 4.8. For more information about installing and managing the service, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
 
+Custom resource property for specifying a default model
+:   The default voice for speech recognition requests is `en-US_BroadbandModel`. If you do not install the `en-US_BroadbandModel`, you must either
+    -   Use the `model` parameter to pass the voice that is to be used with each request.
+    -   Specify a new default model for your installation of {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} by using the `defaultSTTModel` property in the Speech services custom resource. For more information, see  [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
+
+Updates to English and French next-generation multimedia models to support low latency
+:   The following multimedia models have been updated to support low latency:
+    -   Australian English: `en-AU_Multimedia`
+    -   UK English: `en-GB_Multimedia`
+    -   US English: `en-US_Multimedia`
+    -   French: `fr-FR_Multimedia`
+
+    You do not need to upgrade custom language models that are built on these base models. For more information about the next-generation models and low latency, see
+    -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+    -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
+
+New Castilian Spanish next-generation multimedia model
+:   The service now offers a next-generation multimedia model for Castilian Spanish: `es-ES_Multimedia`. The new model supports low latency and is generally available. It also supports language model customization and grammars.
+
+    For more information about all available next-generation models and their customization support, see
+    -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+
+Beta next-generation `en-WW_Medical_Telephony` model now supports smart formatting
+:   The beta next-generation `en-WW_Medical_Telephony` model now supports the `smart_formatting` parameter for US English audio. For more information about all next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+
+Security vulnerabilities addressed
+:   The following security vulnerabilities have been addressed:
+    -   [Red Hat CVE-2022-24407](https://access.redhat.com/security/cve/CVE-2022-24407): A flaw was found in the SQL plugin shipped with Cyrus SASL. The vulnerability occurs due to failure to properly escape SQL input and leads to an improper input validation vulnerability. This flaw allows an attacker to execute arbitrary SQL commands and the ability to change the passwords for other accounts allowing escalation of privileges.
 
 ## 17 March 2022 (Version 4.0.6)
 {: #speech-to-text-data-17march2022}

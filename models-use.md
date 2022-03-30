@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-03-08"
+lastupdated: "2022-03-25"
 
 subcollection: speech-to-text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 # Using a model for speech recognition
 {: #models-use}
 
-You use the `model` parameter of a speech recognition request to indicate the model that is to be used with the request. You can specify a previous- or next-generation model with the parameter. If you omit the `model` parameter from a speech recognition request, the service uses the previous-generation US English broadband model, `en-US_BroadbandModel`, by default.
+You use the `model` parameter of a speech recognition request to indicate the model that is to be used with the request. You can specify a previous- or next-generation model with the parameter.
 {: shortdesc}
 
 For more information about the models that are available for speech recognition, see
@@ -72,3 +72,13 @@ curl -X POST \
 "{url}/v1/recognize?model=en-US_Telephony"
 ```
 {: pre}
+
+## The default model
+{: #models-use-default}
+
+If you omit the `model` parameter from a speech recognition request, the service uses the US English `en-US_BroadbandModel` by default. This default applies to all speech recognition requests.
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}} only** If you do not install the `en-US_BroadbandModel`, it cannot serve as the default model. In this case, you must either
+
+-   Use the `model` parameter to pass the model that is to be used with each request.
+-   Specify a new default model for your installation of {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} by using the `defaultSTTModel` property in the Speech services custom resource. For more information, see  [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.

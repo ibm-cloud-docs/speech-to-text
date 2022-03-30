@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-09-28"
+  years: 2015, 2022
+lastupdated: "2022-03-25"
 
 subcollection: speech-to-text
 
@@ -19,7 +19,7 @@ To request speech recognition with the {{site.data.keyword.speechtotextfull}} se
 The examples that follow show basic transcription requests, with no optional parameters, for each of the service's interfaces:
 
 -   The examples submit a brief FLAC file named [audio-file.flac](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac){: external}.
--   The examples use the default language model, `en-US_BroadbandModel`.
+-   The examples use the default language model, `en-US_BroadbandModel`. For more information, see [The default model](/docs/speech-to-text?topic=speech-to-text-models-use#models-use-default).
 
 [Understanding speech recognition results](/docs/speech-to-text?topic=speech-to-text-basic-response) describes the service's response for these examples.
 

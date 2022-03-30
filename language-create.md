@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-03-16"
+lastupdated: "2022-03-29"
 
 subcollection: speech-to-text
 
@@ -18,9 +18,9 @@ content-type: troubleshoot
 Follow these steps to create, add contents to, and train a custom language model for the {{site.data.keyword.speechtotextfull}} service:
 {: shortdesc}
 
-1.  [Create a custom language model](#createModel-language). You can create multiple custom models for the same or different domains. The process is the same for any model that you create. Language model customization is available for most languages that are supported by previous- and next-generation models. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
+1.  [Create a custom language model](#createModel-language). You can create multiple custom models for the same or different domains. The process is the same for any model that you create. Language model customization is available for most previous-generation models and for all next-generation models. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
 1.  [Add a corpus to the custom language model](#addCorpus). A corpus is a plain text document that uses terminology from the domain in context. You can add multiple corpora serially, one at a time, to a custom model. *For previous-generation models,* the service builds a vocabulary for a custom model by extracting terms from corpora that do not exist in its base vocabulary. *For next-generation models,* the service extracts character sequences rather than words from corpora.
-1.  [Add words to the custom language model](#addWords). You can also add custom words to a model individually. You can specify how the words from a custom model are to be displayed in a speech transcript. *For previous-generation models,* you can specify the pronunciation of words, and you can modify custom words that are extracted from corpora.
+1.  [Add words to the custom language model](#addWords). You can also add custom words to a model individually. You can specify how the words from a custom model are to be displayed in a speech transcript and how they are pronounced in audio. *For previous-generation models,* you can also modify custom words that are extracted from corpora.
 1.  [Train the custom language model](#trainModel-language). After you add corpora and words to the custom model, you must train the model. Training prepares the custom model for use in speech recognition. The model does not use new or modified corpora or words until you train it.
 1.  After you train your custom model, you can use it with recognition requests. *For previous-generation models,* if the audio that is passed for transcription contains domain-specific words that are defined in the custom model, the results of the request reflect the model's enhanced vocabulary. *For next-generation models,* the results are influenced by the character sequences from corpora and words that the model contains.
 
@@ -187,7 +187,7 @@ Use a loop to check the status of the corpus every 10 seconds until it becomes `
 
 Although adding corpora is the recommended means of adding words to a custom language model, you can also add individual custom words to the model directly. The service parses custom words for the custom model just as it does the contents of words from corpora.
 
-If you have only one or a few words to add to a model, using corpora to add the words might not be practical or even viable. The simplest approach is to add a word with only its spelling. But you can also indicate how the word is to be displayed and, for previous-generation models, one or more pronunciations for the word.
+If you have only one or a few words to add to a model, using corpora to add the words might not be practical or even viable. The simplest approach is to add a word with only its spelling. But you can also indicate how the word is to be displayed and one or more pronunciations for the word.
 
 -   For more information about adding words directly to a *previous-generation model*, see [Working with custom words for previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords#workingWords).
 -   For more information about adding words directly to a *next-generation model*, see [Working with custom words for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#workingWords-ng).
@@ -335,7 +335,7 @@ The `status` field reports the current state of the model. While the service is 
 ### Modifying words in a custom model
 {: #modifyWord}
 
-You can also use the `POST /v1/customizations/{customization_id}/words` and `PUT /v1/customizations/{customization_id}/words/{word_name}` methods to modify or augment a word in a custom model. You might need to use the methods to correct a typographical error or other mistake that was made when a word was added to the model. *For previous-generation models,* you might also need to add sounds-like definitions for an existing word.
+You can also use the `POST /v1/customizations/{customization_id}/words` and `PUT /v1/customizations/{customization_id}/words/{word_name}` methods to modify or augment a word in a custom model. You might need to use the methods to correct a typographical error or other mistake that was made when a word was added to the model. You might also need to add sounds-like definitions for an existing word.
 
 You use the methods to modify the definition of an existing word exactly as you do to add a word. The new data that you provide for the word overwrites the word's existing definition. *For previous-generation models,* you can modify words that were added from corpora.
 
