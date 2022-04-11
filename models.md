@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-03-23"
+lastupdated: "2022-04-01"
 
 subcollection: speech-to-text
 
@@ -92,7 +92,7 @@ Table 2 lists the previous-generation broadband models that are available.
 | Italian | `it-IT_BroadbandModel` | GA  \n Deprecated | `it-IT_Telephony` |
 | Japanese | `ja-JP_BroadbandModel` | GA | `ja-JP_Multimedia` |
 | Korean | `ko-KR_BroadbandModel` | GA  \n Deprecated | `ko-KR_Multimedia`|
-| Portuguese (Brazilian) | `pt-BR_BroadbandModel` | GA  \n Deprecated | `pt-BR_Telephony` |
+| Portuguese (Brazilian) | `pt-BR_BroadbandModel` | GA  \n Deprecated | `pt-BR_Multimedia` |
 | Spanish (Argentinian, Beta) | `es-AR_BroadbandModel` | Beta  \n Deprecated | `es-LA_Telephony` |
 | Spanish (Castilian) | `es-ES_BroadbandModel` | GA  \n Deprecated | `es-ES_Multimedia` |
 | Spanish (Chilean, Beta) | `es-CL_BroadbandModel` | Beta  \n Deprecated | `es-LA_Telephony` |

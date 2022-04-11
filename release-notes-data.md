@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-03-25"
+lastupdated: "2022-04-08"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -106,6 +106,22 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
+## 8 April 2022 (Version 4.0.7)
+{: #speech-to-text-data-8april2022}
+
+Support for sounds-like is now documented for custom models based on next-generation models
+:   For custom language models that are based on next-generation models, support is now documented for sounds-like specifications for custom words. Support for sounds-likes has been available since late 2021.
+
+    Differences exist between the use of the `sounds_like` field for custom models that are based on next-generation and previous-generation models. For more information about using the `sounds_like` field with custom models that are based on next-generation models, see [Working with custom words for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#workingWords-ng).
+
+Important: Deprecated `customization_id` parameter removed from the documentation
+:   **Important:** On [9 October 2018](#speech-to-text-9october2018), the `customization_id` parameter of all speech recognition requests was deprecated and replaced by the `language_customization_id` parameter. The `customization_id` parameter has now been removed from the documentation for the speech recognition methods:
+    -   `/v1/recognize` for WebSocket requests
+    -   `POST /v1/recognize` for synchronous HTTP requests (including multipart requests)
+    -   `POST /v1/recognitions` for asynchronous HTTP requests
+
+    **Note:** If you use the {{site.data.keyword.watson}} SDKs, make sure that you have updated any application code to use the `language_customization_id` parameter instead of the `customization_id` parameter. The `customization_id` parameter will no longer be available from the equivalent methods of the SDKs as of their next major release. For more information about the speech recognition methods, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text/speech-to-text#service-endpoint){: external}.
+
 ## 30 March 2022 (Version 4.0.7)
 {: #speech-to-text-data-30march2022}
 
@@ -138,8 +154,8 @@ New Castilian Spanish next-generation multimedia model
 Beta next-generation `en-WW_Medical_Telephony` model now supports smart formatting
 :   The beta next-generation `en-WW_Medical_Telephony` model now supports the `smart_formatting` parameter for US English audio. For more information about all next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
 
-Security vulnerabilities addressed
-:   The following security vulnerabilities have been addressed:
+Security vulnerability addressed
+:   The following security vulnerability has been addressed:
     -   [Red Hat CVE-2022-24407](https://access.redhat.com/security/cve/CVE-2022-24407): A flaw was found in the SQL plugin shipped with Cyrus SASL. The vulnerability occurs due to failure to properly escape SQL input and leads to an improper input validation vulnerability. This flaw allows an attacker to execute arbitrary SQL commands and the ability to change the passwords for other accounts allowing escalation of privileges.
 
 ## 17 March 2022 (Version 4.0.6)

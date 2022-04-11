@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-03-18"
+lastupdated: "2022-04-01"
 
 subcollection: speech-to-text
 
@@ -103,6 +103,7 @@ Table 2 lists the next-generation models that are supported for language model c
 | Korean | `ko-KR_Telephony` | GA | GA | Not supported |
 | | `ko-KR_Multimedia` | GA | GA | Not supported |
 | Portuguese  \n (Brazilian) | `pt-BR_Telephony` | GA | GA | Not supported |
+| | `pt-BR_Multimedia` | GA | GA | Not supported |
 | Spanish  \n (Castilian) | `es-ES_Telephony` | GA | GA | Not supported |
 | | `es-ES_Multimedia` | GA | GA | Not supported |
 | Spanish  \n (Argentinian, Chilean,  \n Colombian, Mexican,  \n and Peruvian) | `es-LA_Telephony` | GA | GA | Not supported |

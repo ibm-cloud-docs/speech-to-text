@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-03-29"
+lastupdated: "2022-04-07"
 
 subcollection: speech-to-text
 
@@ -26,11 +26,11 @@ Although language model customization is similar in usage and intent for previou
 
 -   When you create a custom language model that is based on a *next-generation model*, the services relies on sequences of characters from the custom model to create transcripts that reflect domain-specific terms. In combination with character sequences from its base vocabulary, the service uses these extended series of characters from the custom model to predict and transcribe speech from audio.
 
-    You provide the information for a custom language model in the form of corpora and custom words. But rather than rely on a words resource that contains these words, the service extracts and stores character sequences from the corpora and custom words. The service does not extract words from corpora, and it does not calculate out-of-vocabulary (OOV) words from corpora and custom words. The words resource is simply where it stores custom words that you add directly to the model.
+    You provide the information for a custom language model in the form of corpora, custom words, and grammars. But rather than rely on a words resource that contains these words, the service extracts and stores character sequences from the corpora and custom words. The service does not extract and calculate out-of-vocabulary (OOV) words from corpora and custom words. The words resource is simply where it stores custom words that you add directly to the model.
 
 When you develop a custom language model based on a next-generation model, you must still provide corpora and custom words to train the model on domain-specific terminology. So the process of creating and training a custom model is largely the same for next-generation and previous-generation models.
 
-The following sections describe the rules for providing corpora and custom words for a custom language model that is based on a next-generation model. The rules are similar to those for working with a custom model based on a previous-generation model. But some differences do exist, and some features are not available.
+The following sections describe the rules for providing corpora and custom words for a custom language model that is based on a next-generation model. The rules are similar to those for working with a custom model based on a previous-generation model, but some important differences do exist.
 
 ## The words resource
 {: #wordsResource-ng}
@@ -38,15 +38,14 @@ The following sections describe the rules for providing corpora and custom words
 The *words resource* includes custom words that you add directly to the custom model. The words resource contains the following information about each custom word:
 
 -   `word` - The spelling of the word as added by you.
--   `display_as` - The spelling of the word that the service uses in transcripts. The field indicates how the word is to be displayed. Unless you specify an alternative representation, the spelling matches the value of the `word` field.
+-   `sounds_like` - The pronunciation of the word. You can use the `sounds_like` field to add one or more pronunciations for the word. For more information, see [Using the sounds_like field](#sounds-like-ng).
+-   `display_as` - The spelling of the word that the service uses in transcripts. Unless you specify an alternative representation, the spelling matches the value of the `word` field. For more information, see [Using the display_as field](#display-as-ng).
 -   `source` - How the word was added to the words resource. The field always contains the string `user` to indicate that it was added directly as a custom word.
--   `sounds_like` - The pronunciation of the word. The value represents how the service believes that the word is pronounced based on its language rules. In many cases, the pronunciation reflects the spelling of the `word` field. You can use the `sounds_like` field to modify the word's pronunciation. You can also use the field to specify multiple pronunciations for a word.
-
-<!--
-For more information, see [Using the sounds_like field](#soundsLike).
--->
 
 After adding or modifying a custom word, it is important that you verify the correctness of the word's definition; for more information, see [Validating a words resource for next-generation models](#validateModel-ng). You must also train the model for the changes to take effect during transcription; for more information, see [Train the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
+
+You can add custom words that already exist in the service's base vocabulary, for example, to add more sounds-like pronunciations. Otherwise, there is no reason to duplicate common words from the base vocabulary. Such words remain in the model's words resource, but they are harmless and unnecessary.
+{: note}
 
 ## How much data do I need?
 {: #wordsResourceAmount-ng}
@@ -85,7 +84,7 @@ The accuracy of transcription can depend largely on the data that you add to a m
 
 For example, accountants adhere to a common set of standards and procedures that are known as Generally Accepted Accounting Principles (GAAP). When you create a custom model for a financial domain, provide sentences that use the term GAAP in context. The sentences help the service distinguish between general phrases such as "the gap between them is small" and domain-centric phrases such as "GAAP provides guidelines for measuring and disclosing financial information."
 
-In general, it is better for corpora to use words in different contexts, which can improve how the service learns the phrases. However, if users speak the words in only a couple of contexts, then showing the words in other contexts does not improve the quality of the custom model. Speakers never use the words in those contexts. If speakers are likely to use the same phrase frequently, repeating that phrase in the corpora can improve the quality of the model. In some cases, even adding a few custom words directly to a custom model can make a positive difference.
+In general, it is better for corpora to use words in different contexts, which can improve how the service learns the phrases. However, if users speak the words in only a couple of contexts, then showing the words in other contexts does not improve the quality of the custom model: Speakers never use the words in those contexts. If speakers are likely to use the same phrase frequently, repeating that phrase in the corpora can improve the quality of the model. In some cases, even adding a few custom words directly to a custom model can make a positive difference.
 
 ### Preparing a corpus text file
 {: #prepareCorpus-ng}
@@ -117,7 +116,7 @@ Follow these guidelines to prepare a corpus text file:
 
 When you add a corpus file, the service analyzes the file's contents. To distill the most meaning from the content, the service tokenizes and parses the data that it reads from a corpus file. The following sections describe how the service parses a corpus file for each supported language.
 
-Information for Arabic, Chinese, Czech, and Hindi is not yet available. If you need this information for your custom language model, contact your IBM Support representative.
+Information for the following languages is not yet available: Arabic, Chinese, Czech, and Hindi. If you need this information for your custom language model, contact your IBM Support representative.
 {: note}
 
 #### Parsing of Dutch, English, French, German, Italian, Portuguese, and Spanish
@@ -190,10 +189,103 @@ You might, for instance, need to use the methods to correct a typographical erro
 You are likely to add most custom words from corpora. Make sure that you know the character encoding of your corpus text files. The service preserves the encoding that it finds in the text files. You must use that same encoding when working with custom words in the custom model. For more information, see [Character encoding for custom words](/docs/speech-to-text?topic=speech-to-text-manageWords#charEncoding).
 {: important}
 
-### Using the display_as field
-{: #displayAs-ng}
+### Using the sounds_like field
+{: #sounds-like-ng}
 
-The `display_as` field specifies how a word is displayed in a transcript. It is intended for cases where you want the service to display a string that is different from the word's spelling. For example, you can indicate that the word `hhonors` is to be displayed as `HHonors`.
+The `sounds_like` field specifies how a word is pronounced by speakers in audio. By default, the service does not automatically attempt to generate a sounds-like pronunciation for a word for which you do not provide one. You can add sounds-likes for any words that do not have them. After adding or modifying words, you must validate the words resource to ensure that each word's definition is complete and valid. For more information, see [Validating a words resource for next-generation models](#validateModel-ng).
+
+You can provide as many as five alternative pronunciations for a word that is difficult to pronounce or that can be pronounced in different ways. Some possible uses of the field follow:
+
+-   *Provide different pronunciations for acronyms.* For example, the acronym `NCAA` can be pronounced as it is spelled or colloquially as *N C double A* The following example adds both of these sounds-like pronunciations for the word `NCAA`:
+
+    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
+    ```bash
+    curl -X PUT -u "apikey:{apikey}" \
+    --header "Content-Type: application/json" \
+    --data "{\"sounds_like\": [\"N C A A\", \"N C double A\"]}" \
+    "{url}/v1/customizations/{customization_id}/words/NCAA"
+    ```
+    {: pre}
+
+    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+    ```bash
+    curl -X PUT \
+    --header "Authorization: Bearer {token}" \
+    --header "Content-Type: application/json" \
+    --data "{\"sounds_like\": [\"N C A A\", \"N C double A\"]}" \
+    "{url}/v1/customizations/{customization_id}/words/NCAA"
+    ```
+    {: pre}
+
+    For more information about how the service recognizes acronyms, see [Additional transcription efforts](#parseWord-additional-ng).
+
+-   *Handle foreign words.* For example, the French word `garçon` contains a character that is not found in the English language. You can specify a sounds-like of `gaarson`, replacing `ç` with `s`, to tell the service how English speakers would pronounce the word.
+
+The following sections provide guidelines for specifying a sounds-like pronunciation. Speech recognition uses statistical algorithms to analyze audio, so adding a word does not guarantee that the service transcodes it with complete accuracy. When you add a word, consider how it might be pronounced. Use the `sounds_like` field to provide various pronunciations that reflect how a word can be spoken.
+
+Information for the Chinese language is not yet available. If you need this information for your custom language model, contact your IBM Support representative.
+{: note}
+
+#### General guidelines for all languages
+{: #sounds-like-general-ng}
+
+Follow these guidelines when specifying a sounds-like for any language:
+
+-   *Do not use punctuation characters in sounds-likes.* For example, do not use periods, dashes, underscores, commas, end of sentence punctuation characters, and special characters such as dollar and euro signs, parentheses, brackets, and braces.
+-   *Use alphabetic characters that are valid for your language.* For English, this includes `a-z` and `A-Z`. For other languages, valid characters can include accented letters or language-specific characters.
+-   *In English, substitute equivalent English letters for non-English or accented letters.* For example, `s` for `ç`, `ny` for `ñ`, or `e` for `è`.
+-   *Use real or made-up words that are pronounceable for words that are difficult to pronounce.* For example, in English you can use the sounds-like `shuchesnie` for the word `Sczcesny`.
+-   *Use the spelling of numbers without dashes.* For example, for the number `75`, use `seventy five` in English, `setenta y cinco` in Spanish, and `soixante quinze` in French.
+-   *To pronounce a single letter, use the letter followed by a space.* For example, use `N C A A`, *not* `N. C. A. A.`, `N.C.A.A.`, or `NCAA`.
+-   *You can include multiple words that are separated by spaces.* The service enforces a maximum of 40 total characters not including spaces.
+
+#### Guidelines for Japanese
+{: #wordLanguages-jaJP-ng}
+
+-   Use only full-width Katakana characters by using the <code>&#8213;</code> lengthen symbol (*chou-on*, or &#38263;&#38899;, in Japanese). Do not use half-width characters.
+-   Use contracted sounds (*yoh-on*, or &#25303;&#38899;, in Japanese) only in the following syllable contexts:
+
+    <code>&#12452;&#12455;</code>, <code>&#12454;&#12451;</code>, <code>&#12454;&#12455;</code>, <code>&#12454;&#12457;</code>, <code>&#12461;&#12451;</code>, <code>&#12461;&#12515;</code>, <code>&#12461;&#12517;</code>, <code>&#12461;&#12519;</code>, <code>&#12462;&#12515;</code>, <code>&#12462;&#12517;</code>, <code>&#12462;&#12519;</code>, <code>&#12463;&#12449;</code>, <code>&#12463;&#12451;</code>, <code>&#12463;&#12455;</code>, <code>&#12463;&#12457;</code>
+
+    <code>&#12464;&#12449;</code>, <code>&#12464;&#12457;</code>, <code>&#12471;&#12451;</code>, <code>&#12471;&#12455;</code>, <code>&#12471;&#12515;</code>, <code>&#12471;&#12517;</code>, <code>&#12471;&#12519;</code>, <code>&#12472;&#12451;</code>, <code>&#12472;&#12455;</code>, <code>&#12472;&#12515;</code>, <code>&#12472;&#12517;</code>, <code>&#12472;&#12519;</code>, <code>&#12473;&#12451;</code>, <code>&#12474;&#12451;</code>, <code>&#12481;&#12455;</code>
+
+    <code>&#12481;&#12515;</code>, <code>&#12481;&#12517;</code>, <code>&#12481;&#12519;</code>, <code>&#12482;&#12455;</code>, <code>&#12482;&#12515;</code>, <code>&#12482;&#12517;</code>, <code>&#12482;&#12519;</code>, <code>&#12484;&#12449;</code>, <code>&#12484;&#12451;</code>, <code>&#12484;&#12455;</code>, <code>&#12484;&#12457;</code>, <code>&#12486;&#12451;</code>, <code>&#12486;&#12517;</code>, <code>&#12487;&#12451;</code>, <code>&#12487;&#12515;</code>
+
+    <code>&#12487;&#12517;</code>, <code>&#12487;&#12519;</code>, <code>&#12488;&#12453;</code>, <code>&#12489;&#12453;</code>, <code>&#12491;&#12455;</code>, <code>&#12491;&#12515;</code>, <code>&#12491;&#12517;</code>, <code>&#12491;&#12519;</code>, <code>&#12498;&#12515;</code>, <code>&#12498;&#12517;</code>, <code>&#12498;&#12519;</code>, <code>&#12499;&#12515;</code>, <code>&#12499;&#12517;</code>, <code>&#12499;&#12519;</code>, <code>&#12500;&#12451;</code>
+
+    <code>&#12500;&#12515;</code>, <code>&#12500;&#12517;</code>, <code>&#12500;&#12519;</code>, <code>&#12501;&#12449;</code>, <code>&#12501;&#12451;</code>, <code>&#12501;&#12455;</code>, <code>&#12501;&#12457;</code>, <code>&#12501;&#12517;</code>, <code>&#12511;&#12515;</code>, <code>&#12511;&#12517;</code>, <code>&#12511;&#12519;</code>, <code>&#12522;&#12451;</code>, <code>&#12522;&#12455;</code>, <code>&#12522;&#12515;</code>, <code>&#12522;&#12517;</code>
+
+    <code>&#12522;&#12519;</code>, <code>&#12532;&#12449;</code>, <code>&#12532;&#12451;</code>, <code>&#12532;&#12455;</code>, <code>&#12532;&#12457;</code>, <code>&#12532;&#12517;</code>
+
+-   Use only the following syllables after an assimilated sound (*soku-on*, or &#20419;&#38899;, in Japanese):
+
+    <code>&#12496;</code>, <code>&#12499;</code>, <code>&#12502;</code>, <code>&#12505;</code>, <code>&#12508;</code>, <code>&#12481;</code>, <code>&#12481;&#12455;</code>, <code>&#12481;&#12515;</code>, <code>&#12481;&#12517;</code>, <code>&#12481;&#12519;</code>, <code>&#12480;</code>, <code>&#12487;</code>, <code>&#12487;&#12451;</code>, <code>&#12489;</code>, <code>&#12489;&#12453;</code>, <code>&#12501;</code>
+
+    <code>&#12501;&#12449;</code>, <code>&#12501;&#12451;</code>, <code>&#12501;&#12455;</code>, <code>&#12501;&#12457;</code>, <code>&#12460;</code>, <code>&#12462;</code>, <code>&#12464;</code>, <code>&#12466;</code>, <code>&#12468;</code>, <code>&#12495;</code>, <code>&#12498;</code>, <code>&#12504;</code>, <code>&#12507;</code>, <code>&#12472;</code>, <code>&#12472;&#12455;</code>, <code>&#12472;&#12515;</code>
+
+    <code>&#12472;&#12517;</code>, <code>&#12472;&#12519;</code>, <code>&#12459;</code>, <code>&#12461;</code>, <code>&#12463;</code>, <code>&#12465;</code>, <code>&#12467;</code>, <code>&#12461;&#12515;</code>, <code>&#12461;&#12517;</code>, <code>&#12461;&#12519;</code>, <code>&#12497;</code>, <code>&#12500;</code>, <code>&#12503;</code>, <code>&#12506;</code>, <code>&#12509;</code>, <code>&#12500;&#12515;</code>
+
+    <code>&#12500;&#12517;</code>, <code>&#12500;&#12519;</code>, <code>&#12469;</code>, <code>&#12473;</code>, <code>&#12475;</code>, <code>&#12477;</code>, <code>&#12471;</code>, <code>&#12471;&#12455;</code>, <code>&#12471;&#12515;</code>, <code>&#12471;&#12517;</code>, <code>&#12471;&#12519;</code>, <code>&#12479;</code>, <code>&#12486;</code>, <code>&#12488;</code>, <code>&#12484;</code>, <code>&#12470;</code>>
+
+    <code>&#12474;</code>, <code>&#12476;</code>, <code>&#12478;</code>
+
+-   Do not use <code>&#12531;</code> as the first character of a word. For example, use <code>&#12454;&#12540;&#12531;&#12488;</code> instead of <code>&#12531;&#12540;&#12488;</code>, the latter of which is invalid.
+-   Many compound words consist of *prefix+noun* or *noun+suffix*. The service's base vocabulary covers most compound words that occur frequently (for example, <code>&#x9577;&#x96FB;&#x8A71;</code> and <code>&#x53E4;&#x65B0;&#x805E;</code>) but not those compound words that occur infrequently. If your corpus commonly contains compound words, add them as one word as the first step of your customization. For example, <code>&#x53E4;&#x925B;&#x7B46;</code> is not common in general Japanese text; if you use it often, add it to your custom model to improve transcription accuracy.
+-   Do not use a trailing assimilated sound.
+
+#### Guidelines for Korean
+{: #wordLanguages-koKR-ng}
+
+-   Use Korean Hangul characters, symbols, and syllables.
+-   You can also use Latin (English) alphabetic characters: `a-z` and `A-Z`.
+-   Do not use any characters or symbols that are not included in the previous sets.
+
+### Using the display_as field
+{: #display-as-ng}
+
+The `display_as` field specifies how a word is displayed in a transcript. By default, the service sets the field to match the spelling of the custom word. The field is intended for cases where you want the service to display a string that is different from the word's spelling. For example, you can indicate that the word `hhonors` is to be displayed as `HHonors`.
 
 ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
@@ -240,7 +332,7 @@ curl -X PUT \
 {: pre}
 
 #### Interaction with smart formatting and numeric redaction
-{: #displaySmart-ng}
+{: #display-smart-ng}
 
 If you use the `smart_formatting` or `redaction` parameters with a recognition request, be aware that the service applies smart formatting and redaction to a word before it considers the `display_as` field for the word. You might need to experiment with results to ensure that the features do not interfere with how your custom words are displayed. You might also need to add custom words to accommodate the effects.
 
@@ -251,13 +343,33 @@ For more information about working with these features, see [Smart formatting](/
 ### What happens when I add or modify a custom word?
 {: #parseWord-ng}
 
-How the service responds to a request to add or modify a custom word depends on whether you specify the `display_as` field and on whether the word exists in the service's base vocabulary:
+How the service responds to a request to add or modify a custom word depends on the fields and values that you specify. It also depends on whether the word exists in the service's base vocabulary.
 
--   When you omit the `display_as` field:
-    -   *If the word does not exist in the service's base vocabulary,* the service sets the `display_as` field to the value of the `word` field.
-    -   *If the word exists in the service's base vocabulary,* the service leaves the `display_as` field empty. The field is empty only if the word exists in the service's base vocabulary. The word's presence in the model's words resource is harmless but unnecessary.
--   When you specify the `display_as` field:
-    -   *Regardless of whether the word exists in the service's base vocabulary,* the service sets the `display_as` field as specified in the request.
+-   **Omit both the `sounds_like` and `display_as` fields:**
+    -   The service sets the `display_as` field to the value of the `word` field. The service does not attempt to set the `sounds_like` field to a pronunciation of the word.
+
+-   **Specify only the `sounds_like` field:**
+    -   *If the `sounds_like` field is valid,* the service sets the value of the `sounds_like` field to the specified value. The service also sets the `display_as` field to the value of the `word` field.
+    -   *If the `sounds_like` field is invalid:*
+        -   The `POST /v1/customizations/{customization_id}/words` method adds an `error` field to the word in the model's words resource.
+        -   The `PUT /v1/customizations/{customization_id}/words/{word_name}` method fails with a 400 response code and an error message. The service does not add the word to the words resource.
+
+-   **Specify only the `display_as` field:**
+    -   The service sets the `display_as` field to the specified value. The service does not attempt to set the `sounds_like` field to a pronunciation of the word.
+
+-   **Specify both the `sounds_like` and `display_as` fields:**
+    -   *If the `sounds_like` field is valid,* the service sets the `sounds_like` and `display_as` fields to the specified values.
+    -   *If the `sounds_like` field is invalid,* the service responds as it does in the case where the `sounds_like` field is specified but the `display_as` field is not.
+
+### Additional transcription efforts
+{: #parseWord-additional-ng}
+
+For custom language models that are based on next-generation models, the service makes additional efforts to ensure the most effective transcription:
+
+-   For sounds-like pronunciations for custom words, the service uses the reverse of the sounds-like as well as its definition in a custom word. For example, given a `sounds_like` field of `I triple E` for the word `IEEE`, the service also effectively uses a reverse sounds-like of `IEEE` for the "word" `I triple E`. This enhances the application of sounds-like pronunciations for speech recognition. (Note that it is not possible for users to create custom words that contain spaces.)
+-   For acronyms that are parsed from corpora or defined as custom words, the service makes additional speech recognition efforts. An acronym is any word that consists of two or more consecutive uppercase letters. If the acronym contains one or more vowels, the service attempts to recognize the acronym as a series of individual characters *and* as a pronounced word.
+
+    For example, the acronym `NASA` can be read as four individual letters or pronounced as a word that sounds like `nassa`. The service checks for both during speech recognition. This enhances its ability to represent acronyms correctly in a transcript.
 
 ## Validating a words resource for next-generation models
 {: #validateModel-ng}
@@ -268,6 +380,7 @@ Especially when you add a corpus to a custom language model or add multiple cust
 
 -   *Look for typographical and other errors in corpora.* Especially when you add corpora, which can be large, mistakes are easily made. Make sure to review the corpus closely before adding it to the model.
 -   *Look for typographical and other errors in custom words.* Make sure to review closely custom words that you add directly to a model.
+-   *Verify the sounds-like pronunciations.* The service tries to generate sounds-like pronunciations for custom words for which none are specified. In most cases, these pronunciations are sufficient. But the service cannot generate a pronunciation for all words, so you must review the word's definition to ensure that it is complete and valid. Reviewing the pronunciations for accuracy is also recommended for words that have unusual spellings or are difficult to pronounce, and for acronyms and technical terms.
 
 Typographical errors have the unintended consequence of modifying a custom model for nonexistent words, as do ill-formed HTML tags that are left in a corpus file.
 

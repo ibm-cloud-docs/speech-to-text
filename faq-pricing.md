@@ -101,6 +101,6 @@ The Premium plan offers developers and organizations all of the capabilities and
 
 -   The ability to use {{site.data.keyword.ibmwatson}} services in the {{site.data.keyword.cloud}} with data isolation and added security features such as {{site.data.keyword.keymanagementservicefull}} (also referred to as *Bring your own keys* (BYOK)), Service Endpoints, Mutual Authentication, and US Health Insurance Portability and Accountability Act (HIPAA) readiness.
 -   Significantly greater capacity of up to 500 concurrent transcriptions with the option to add more, far above the limit of 100 concurrent transcriptions for the Plus plan.
--   Your first 150,000 minutes of speech recognition at no charge.
+-   Your first 150,000 minutes of speech recognition each month at no charge.
 
 To learn more or to make a purchase, [contact an {{site.data.keyword.IBM_notm}} representative](https://ibm.biz/contact-wdc-premium){: external}.

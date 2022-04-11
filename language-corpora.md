@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-09-19"
+  years: 2015, 2022
+lastupdated: "2022-04-05"
 
 subcollection: speech-to-text
 
@@ -24,7 +24,7 @@ The customization interface provides two methods for listing information about t
 -   The `GET /v1/customizations/{customization_id}/corpora` method lists information about all corpora for a custom model.
 -   The `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` method lists information about a specified corpus for a custom model.
 
-Both methods return the `name` of the corpus, the `total_words` read from the corpus, and, *for custom models based on previous-generation models*, the number of `out-of-vocabulary_words` extracted from the corpus. The methods also list the `status` of the corpus. The status is important for checking the service's analysis of a corpus in response to a request to add it to a custom model.
+Both methods return the `name` of the corpus, the `total_words` read from the corpus, and, *for custom models based on previous-generation models*, the number of `out_of_vocabulary_words` extracted from the corpus. The methods also list the `status` of the corpus. The status is important for checking the service's analysis of a corpus in response to a request to add it to a custom model.
 
 -   `analyzed` indicates that the service successfully analyzed the corpus. You can train the custom model with data from the corpus, or you can add additional corpora or words to the model.
 -   `being_processed` indicates that the service is still analyzing the corpus. The service cannot accept requests to add new corpora or words, or to train the custom model, until its analysis is complete.
@@ -105,7 +105,7 @@ curl -X GET \
 ```
 {: pre}
 
-The corpus is fully analyzed and contains more than 400 OOV words:
+The corpus, which is based on a previous-generation model, is fully analyzed and contains more than 400 OOV words:
 
 ```javascript
 {
