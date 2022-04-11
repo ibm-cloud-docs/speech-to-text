@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-04-08"
+lastupdated: "2022-04-11"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -108,8 +108,8 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
-## 8 April 2022
-{: #speech-to-text-8april2022}
+## 11 April 2022
+{: #speech-to-text-11april2022}
 {: release-note}
 
 New Brazilian Portuguese `pt-BR_Multimedia` next-generation multimedia model
