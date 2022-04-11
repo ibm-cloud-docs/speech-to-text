@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-03-25"
+lastupdated: "2022-04-05"
 
 subcollection: speech-to-text
 
@@ -90,9 +90,9 @@ The following examples show the use of a custom language model with each speech 
 
 A custom language model is a combination of the custom model and the base model that it customizes. You can tell the service how much weight to give to words from the custom language model compared to words from the base model for speech recognition. The weight that is assigned to a custom model is referred to as its *customization weight*.
 
-You specify the relative weight for a custom language model as a double between 0.0 to 1.0. By default, each custom language model has a weight of 0.3. The default weight yields the best performance in the general case. It allows both OOV words from the custom model and words from the base vocabulary to be recognized.
+You specify the relative weight for a custom language model as a double between 0.0 to 1.0. By default, each custom language model has a weight of 0.3. The default weight yields the best performance in the general case. It allows both words from the custom model and words from the base vocabulary to be recognized.
 
-However, in cases where the audio to be transcribed makes frequent use of OOV words from the custom model, increasing the customization weight can improve the accuracy of transcription results. Exercise caution when you set the customization weight. Although a higher weight can improve the accuracy of phrases from the domain of the custom model, it can also negatively impact performance on non-domain phrases. (Even if you set the weight to 0.0, a small probability exists that the transcription can include custom words due to the implementation of language model customization.)
+However, in cases where the audio to be transcribed makes frequent use of words from the custom model, increasing the customization weight can improve the accuracy of transcription results. Exercise caution when you set the customization weight. Although a higher weight can improve the accuracy of phrases from the domain of the custom model, it can also negatively impact performance on non-domain phrases. (Even if you set the weight to 0.0, a small probability exists that the transcription can include custom words due to the implementation of language model customization.)
 
 You specify a customization weight by using the `customization_weight` parameter. You can specify the parameter when you train a custom language model or when you use it with a speech recognition request.
 
@@ -151,4 +151,6 @@ If you apply a custom language model to speech recognition but find that the ser
 
 -   Make sure that you are correctly passing the customization ID to the recognition request as shown in the previous examples.
 -   Make sure that the status of the custom model is `available`, meaning that it is fully trained and ready to use. For more information, see [Listing custom language models](/docs/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
--   *For previous-generation models,* check the pronunciations that were generated for the new words to make sure that they are correct. For more information, see [Validating a words resource previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
+-   Check the pronunciations that were generated for the new words to make sure that they are correct. For more information, see
+    -   [Validating a words resource for previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel)
+    -   [Validating a words resource for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#validate-model-ng)

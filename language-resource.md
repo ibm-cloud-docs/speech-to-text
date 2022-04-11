@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-10-04"
+  years: 2015, 2022
+lastupdated: "2022-04-06"
 
 subcollection: speech-to-text
 
@@ -35,12 +35,8 @@ The *words resource* includes all words that you add from corpora, from grammars
 The words resource contains the following information about each OOV word. The service creates the definitions for words that are extracted from corpora and grammars. You specify the characteristics for words that you add or modify directly.
 
 -   `word` - The spelling of the word as found in a corpus or grammar or as added by you.
--   `sounds_like` - The pronunciation of the word. For words extracted from corpora and grammars, the value represents how the service believes that the word is pronounced based on its language rules. In many cases, the pronunciation reflects the spelling of the `word` field.
-
-    You can use the `sounds_like` field to modify the word's pronunciation. You can also use the field to specify multiple pronunciations for a word. For more information, see [Using the sounds_like field](#soundsLike).
--   `display_as` - The spelling of the word that the service uses in transcripts. The field indicates how the word is to be displayed. In most cases, the spelling matches the value of the `word` field.
-
-    You can use the `display_as` field to specify a different spelling for the word. For more information, see [Using the display_as field](#displayAs).
+-   `sounds_like` - The pronunciation of the word. For words extracted from corpora and grammars, the value represents how the service believes that the word is pronounced based on its language rules. In many cases, the pronunciation reflects the spelling of the `word` field. You can use the `sounds_like` field to modify the word's pronunciation. You can also use the field to specify multiple pronunciations for a word. For more information, see [Using the sounds_like field](#sounds-like).
+-   `display_as` - The spelling of the word that the service uses in transcripts. The field indicates how the word is to be displayed. In most cases, the spelling matches the value of the `word` field. You can use the `display_as` field to specify a different spelling for the word. For more information, see [Using the display_as field](#display-as).
 -   `source` - How the word was added to the words resource. If the service extracted the word from a corpus or grammar, the field lists the name of that resource. Because the service can encounter the same word in multiple resources, the field can list multiple corpus or grammar names. The field includes the string `user` if you add or modify the word directly.
 
 After adding or modifying a word in a model's words resource, it is important that you verify the correctness of the word's definition; for more information, see [Validating a words resource for previous-generation models](#validateModel). You must also train the model for the changes to take effect during transcription; for more information, see [Train the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
@@ -87,7 +83,7 @@ The service does not apply a simple word-matching algorithm. Its transcription d
 
 For example, accountants adhere to a common set of standards and procedures that are known as Generally Accepted Accounting Principles (GAAP). When you create a custom model for a financial domain, provide sentences that use the term GAAP in context. The sentences help the service distinguish between general phrases such as "the gap between them is small" and domain-centric phrases such as "GAAP provides guidelines for measuring and disclosing financial information."
 
-In general, it is better for corpora to use words in different contexts, which can improve how the service learns the words. However, if users speak the words in only a couple of contexts, then showing the words in other contexts does not improve the quality of the custom model. Speakers never use the words in those contexts. If speakers are likely to use the same phrase frequently, then repeating that phrase in the corpora can improve the quality of the model. (In some cases, even adding a few custom words directly to a custom model can make a positive difference.)
+In general, it is better for corpora to use words in different contexts, which can improve how the service learns the words. However, if users speak the words in only a couple of contexts, then showing the words in other contexts does not improve the quality of the custom model: Speakers never use the words in those contexts. If speakers are likely to use the same phrase frequently, then repeating that phrase in the corpora can improve the quality of the model. (In some cases, even adding a few custom words directly to a custom model can make a positive difference.)
 
 ### Preparing a corpus text file
 {: #prepareCorpus}
@@ -194,7 +190,7 @@ You are likely to add most custom words from corpora. Make sure that you know th
 {: important}
 
 ### Using the sounds_like field
-{: #soundsLike}
+{: #sounds-like}
 
 The `sounds_like` field specifies how a word is pronounced by speakers. By default, the service automatically attempts to complete the field with the word's spelling. But the service cannot generate a pronunciation for all words. After adding or modifying words, you must validate the words resource to ensure that each word's definition is complete and valid. For more information, see [Validating a words resource for previous-generation models](#validateModel).
 
@@ -225,7 +221,7 @@ You can provide as many as five alternative pronunciations for a word that is di
 
 -   *Handle foreign words.* For example, the French word `garçon` contains a character that is not found in the English language. You can specify a sounds-like of `gaarson`, replacing `ç` with `s`, to tell the service how English speakers would pronounce the word.
 
-Speech recognition uses statistical algorithms to analyze audio, so adding a word does not guarantee that the service transcodes it with complete accuracy. When you add a word, consider how it might be pronounced. Use the `sounds_like` field to provide various pronunciations that reflect how a word can be spoken. The following sections provide language-specific guidelines for specifying a sounds-like pronunciation.
+The following sections provide language-specific guidelines for specifying a sounds-like pronunciation. Speech recognition uses statistical algorithms to analyze audio, so adding a word does not guarantee that the service transcodes it with complete accuracy. When you add a word, consider how it might be pronounced. Use the `sounds_like` field to provide various pronunciations that reflect how a word can be spoken.
 
 #### Guidelines for English
 {: #wordLanguages-english}
@@ -245,7 +241,7 @@ Speech recognition uses statistical algorithms to analyze audio, so adding a wor
 
 *Guidelines for United Kingdom English only:*
 
--   You **cannot** use periods or dashes in sounds-like pronunciations for UK English.
+-   You cannot use periods or dashes in sounds-like pronunciations for UK English.
 -   To pronounce a single letter, use the letter followed by a space. For example, use `N C A A`, *not* `N. C. A. A.`, `N.C.A.A.`, or `NCAA`.
 -   Use the spelling of numbers without dashes, for example, `seventy five` for `75`.
 
@@ -254,7 +250,7 @@ Speech recognition uses statistical algorithms to analyze audio, so adding a wor
 
 *Guidelines for all supported dialects of Dutch, French, German, Italian, Portuguese, and Spanish:*
 
--   You **cannot** use dashes in sounds-like pronunciations.
+-   You cannot use dashes in sounds-like pronunciations.
 -   Use alphabetic characters that are valid for the language: `a-z` and `A-Z` including valid accented letters.
 -   To pronounce a single letter, use the letter followed by a period. If the period is followed by another character, be sure to use a space between the period and the next character. For example, use `N. C. A. A.`, *not* `N.C.A.A.`
 -   Use real or made-up words that are pronounceable in the language for words that are difficult to pronounce.
@@ -309,7 +305,7 @@ Speech recognition uses statistical algorithms to analyze audio, so adding a wor
 -   Do not use any characters or symbols that are not included in the previous sets.
 
 ### Using the display_as field
-{: #displayAs}
+{: #display-as}
 
 The `display_as` field specifies how a word is displayed in a transcript. It is intended for cases where you want the service to display a string that is different from the word's spelling. For example, you can indicate that the word `hhonors` is to be displayed as `HHonors` regardless of whether it sounds like `hilton honors` or `h honors`.
 
@@ -358,7 +354,7 @@ curl -X PUT \
 {: pre}
 
 #### Interaction with smart formatting and numeric redaction
-{: #displaySmart}
+{: #display-smart}
 
 If you use the `smart_formatting` or `redaction` parameters with a recognition request, be aware that the service applies smart formatting and redaction to a word before it considers the `display_as` field for the word. You might need to experiment with results to ensure that the features do not interfere with how your custom words are displayed. You might also need to add custom words to accommodate the effects.
 
@@ -396,7 +392,7 @@ How the service responds to a request to add or modify a custom word depends on 
 
 Especially when you add a corpus to a custom language model or add multiple custom words at one time, examine the OOV words in the model's words resource.
 
--   *Look for typographical and other errors.* Especially when you add corpora, which can be large, mistakes are easily made. Typographical errors in a corpus (or grammar) file have the unintended consequence of adding new words to a model's words resource, as do ill-formed HTML tags that are left in a corpus file.
+-   *Look for typographical and other errors.* Especially when you add corpora, which can be large, mistakes are easily made. Typographical errors in a corpus fole (or in custom words or a grammar file) have the unintended consequence of adding new words to a model's words resource, as do ill-formed HTML tags that are left in a corpus file.
 -   *Verify the sounds-like pronunciations.* The service tries to generate sounds-like pronunciations for OOV words automatically. In most cases, these pronunciations are sufficient. But the service cannot generate a pronunciation for all words, so you must review the word's definition to ensure that it is complete and valid. Reviewing the pronunciations for accuracy is also recommended for words that have unusual spellings or are difficult to pronounce, and for acronyms and technical terms.
 
 To validate and, if necessary, correct a word for a custom model, regardless of how it was added to the words resource, use the following methods:

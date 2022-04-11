@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-03-16"
+lastupdated: "2022-04-08"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -107,6 +107,35 @@ The service has the following known limitations:
     However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
+
+## 8 April 2022
+{: #speech-to-text-8april2022}
+{: release-note}
+
+New Brazilian Portuguese `pt-BR_Multimedia` next-generation multimedia model
+:   The service now offers a next-generation multimedia model for Brazilian Portuguese: `pt-BR_Multimedia`. The new model supports low latency and is generally available. It also supports language model customization and grammars.
+
+    For more information about all available next-generation models and their customization support, see
+    -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+
+Update to German `de-DE_Multimedia` next-generation model to support low latency
+:   The next-generation German model `de-DE_Multimedia` now supports low latency. You can use the `low_latency` parameter with speech recognition requests that use the model. You do not need to upgrade custom models that are based on the updated German base model. For more information about the next-generation models and low latency, see
+    -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+    -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
+
+Support for sounds-like is now documented for custom models based on next-generation models
+:   For custom language models that are based on next-generation models, support is now documented for sounds-like specifications for custom words. Support for sounds-likes has been available since late 2021.
+
+    Differences exist between the use of the `sounds_like` field for custom models that are based on next-generation and previous-generation models. For more information about using the `sounds_like` field with custom models that are based on next-generation models, see [Working with custom words for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#workingWords-ng).
+
+Important: Deprecated `customization_id` parameter removed from the documentation
+:   **Important:** On [9 October 2018](#speech-to-text-9october2018), the `customization_id` parameter of all speech recognition requests was deprecated and replaced by the `language_customization_id` parameter. The `customization_id` parameter has now been removed from the documentation for the speech recognition methods:
+    -   `/v1/recognize` for WebSocket requests
+    -   `POST /v1/recognize` for synchronous HTTP requests (including multipart requests)
+    -   `POST /v1/recognitions` for asynchronous HTTP requests
+
+    **Note:** If you use the {{site.data.keyword.watson}} SDKs, make sure that you have updated any application code to use the `language_customization_id` parameter instead of the `customization_id` parameter. The `customization_id` parameter will no longer be available from the equivalent methods of the SDKs as of their next major release. For more information about the speech recognition methods, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text/speech-to-text#service-endpoint){: external}.
 
 ## 17 March 2022
 {: #speech-to-text-17march2022}
@@ -231,7 +260,7 @@ Update to Chinese `zh-CN_Telephony` model
 
     If you have custom language models that are based on the updated model, you must upgrade your existing custom models to take advantage of the updates by using the `POST /v1/customizations/{customization_id}/upgrade_model` method. For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 
-Update to Japanese `ja-JP_Multimedia` model to support low latency
+Update to Japanese `ja-JP_Multimedia` next-generation model to support low latency
 :   The next-generation Japanese model `ja-JP_Multimedia` now supports low latency. You can use the `low_latency` parameter with speech recognition requests that use the model. You do not need to upgrade custom models that are based on the updated Japanese base model. For more information about the next-generation models and low latency, see
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
     -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)

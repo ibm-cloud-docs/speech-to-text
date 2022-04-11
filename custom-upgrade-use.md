@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2022
-lastupdated: "2022-02-11"
+lastupdated: "2022-04-05"
 
 subcollection: speech-to-text
 
@@ -48,7 +48,7 @@ curl -X GET \
 ```
 {: pre}
 
-The `versions` field indicates that the custom model is available for two versions of the base model: the older version, `en-US_BroadbandModel.v07-06082016.06202016`, and the newer version, `en-US_BroadbandModel.v2017-11-15`.
+The `versions` field indicates that the custom model is available for two versions of the base model: the older version, `en-US_BroadbandModel.v2018-07-31`, and the newer version, `en-US_BroadbandModel.v2020-01-16`.
 
 ```javascript
 {
