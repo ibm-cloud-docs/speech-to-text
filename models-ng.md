@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-04-01"
+lastupdated: "2022-04-20"
 
 subcollection: speech-to-text
 
@@ -62,7 +62,7 @@ Table 1 lists the available next-generation telephony models.
 | English  \n (Indian) | `en-IN_Telephony` | Yes | GA |
 | English  \n (United Kingdom) | `en-GB_Telephony` | Yes | GA |
 | English  \n (United States) | `en-US_Telephony` | Yes | GA |
-| English  \n (all supported dialects) | `en-WW_Medical_Telephony` | Yes  \n {{site.data.keyword.cloud_notm}} only | Beta |
+| English  \n (all supported dialects) | `en-WW_Medical_Telephony` | Yes | Beta |
 | French  \n (Canadian) | `fr-CA_Telephony` | Yes | GA |
 | French  \n (France) | `fr-FR_Telephony` | Yes | GA |
 | German | `de-DE_Telephony` | Yes | GA |
@@ -88,7 +88,7 @@ Table 2 lists the available next-generation multimedia models.
 | English  \n (United Kingdom) | `en-GB_Multimedia` | Yes | GA |
 | English  \n (United States) | `en-US_Multimedia` | Yes | GA |
 | French  \n (France) | `fr-FR_Multimedia` | Yes | GA |
-| German | `de-DE_Multimedia`  \n {{site.data.keyword.cloud_notm}} only | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
+| German | `de-DE_Multimedia` | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
 | Japanese | `ja-JP_Multimedia` | Yes | GA |
 | Korean | `ko-KR_Multimedia` | No | GA |
 | Portuguese  \n (Brazilian) | `pt-BR_Multimedia`  \n {{site.data.keyword.cloud_notm}} only | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
