@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-04-27"
+lastupdated: "2022-04-29"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -155,6 +155,9 @@ Security vulnerabilities addressed
     -   [Security Bulletin: A vulnerability in PostgreSQL JDBC Driver (PgJDBC) affects IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data (CVE-2022-21724)](https://www.ibm.com/support/pages/node/6575507){: external}
     -   [Security Bulletin: A vulnerability in GNU Tar affects IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data (CVE-2019-9923)](https://www.ibm.com/support/pages/node/6575509){: external}
     -   [Security Bulletin: A vulnerability in logback-classic affects IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data (CVE-2021-42550)](https://www.ibm.com/support/pages/node/6575511){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a stack-based buffer overflow in GNU C Library (CVE-2022-23218)](https://www.ibm.com/support/pages/node/6578617){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to stack-based buffer overflow in GNU C Library (CVE-2022-23219)](https://www.ibm.com/support/pages/node/6578619){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a buffer overflow and underflow in GNU C Library (CVE-2021-3999)](https://www.ibm.com/support/pages/node/6578621){: external}
 
 ## 8 April 2022 (Version 4.0.7)
 {: #speech-to-text-data-8april2022}
