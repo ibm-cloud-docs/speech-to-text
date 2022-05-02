@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-04-29"
+lastupdated: "2022-05-02"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -105,6 +105,12 @@ The service has the following known limitations:
     However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
+
+## 1 May 2022 (Version 1.2.x)
+{: #speech-to-text-data-1may2022}
+
+Important: End of service for {{site.data.keyword.speechtotextshort}} version 1.2.x on {{site.data.keyword.icp4dfull_notm}} version 3.5
+:   **Important:** {{site.data.keyword.speechtotextshort}} version 1.2.x on {{site.data.keyword.icp4dfull_notm}} version 3.5 is out of service as of 1 May 2022. {{site.data.keyword.speechtotextshort}} version 1.2.x is no longer available, and its documentation has been removed. For more information, see [Software support discontinuance: IBM Watson API Kit for IBM Cloud Pak for Data 1.2.x](https://www.ibm.com/common/ssi/cgi-bin/ssialias?subtype=ca&infotype=an&appname=iSource&supplier=897&letternum=ENUS922-038).
 
 ## 27 April 2022 (Version 4.0.8)
 {: #speech-to-text-data-27april2022}
@@ -728,13 +734,13 @@ Addition to `speech-override.yaml` file
     ```
     {: codeblock}
 
-    `{Registry}` is the path for the internal Docker registry. It must be `image-registry.openshift-image-registry.svc:5000/{namespace}`, where `{namespace}` is the namespace in which {{site.data.keyword.icp4dfull}} is installed, normally `zen`. For more information, see [The speech-override.yaml file](/docs/speech-to-text?topic=speech-to-text-speech-override-12#speech-override-file-12).
+    `{Registry}` is the path for the internal Docker registry. It must be `image-registry.openshift-image-registry.svc:5000/{namespace}`, where `{namespace}` is the namespace in which {{site.data.keyword.icp4dfull}} is installed, normally `zen`.
 
 ## 9 April 2021 (Version 1.2.1)
 {: #speech-to-text-data-9april2021}
 
 Support for modifying installed models and voices
-:   The Speech services let you add or remove installed models and voices for version 1.2 or 1.2.1 of the services. For more information, see [Modifying the installed models and voices](/docs/speech-to-text?topic=speech-to-text-speech-cluster-12#speech-cluster-models-voices-12).
+:   The Speech services let you add or remove installed models and voices for version 1.2 or 1.2.1 of the services.
 
 ## Version 1.2.1 (26 March 2021)
 {: #speech-to-text-data-26march2021}
@@ -748,10 +754,10 @@ New installation instructions
     -   Use the `oc project` command to ensure that you are pointing at the correct OpenShift project.
     -   Use the `cpd-cli install` command to install an Enterprise DB PostgreSQL server that is used by the Speech services.
 
-    You perform these steps before you install the Speech services. For more information, see [Installing the {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} service](https://www.ibm.com/support/knowledgecenter/SSQNUZ_3.5.0/svc-speech/stt-svc-install.html){: external}.
+    You perform these steps before you install the Speech services.
 
 New uninstallation instructions
-:   A step was added to the procedure for uninstalling the Speech services to clean up all of the resources from the installation. For more information, see [Uninstalling {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/support/knowledgecenter/SSQNUZ_3.5.0/svc-speech/stt-svc-uninstall.html){: external}.
+:   A step was added to the procedure for uninstalling the Speech services to clean up all of the resources from the installation.
 
 Entitled registry for PostgreSQL datastore
 :   The entitled registry path from which the service pulls images for the PostgreSQL datastore has changed. The registry location changed from `cp.icr.io/cp/watson-speech` to `cp.icr.io/cp/cpd`. This change is transparent to users.
@@ -786,17 +792,13 @@ Deletions from `speech-override.yaml` file
     {: codeblock}
 
 
-    The abbreviated `speech-override.yaml` file has generally been reduced further by fine-tuning its contents to the essential elements. The updated version of the file appears in the following sections:
-    -   [Creating an override file for {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} installation](https://www.ibm.com/support/knowledgecenter/SSQNUZ_3.5.0/svc-speech/stt-svc-override.html){: external}
-    -   [Using the override file](/docs/speech-to-text?topic=speech-to-text-speech-override-12)
-
-    You can download a complete version of the [speech-override.yaml](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/cpd-version-12/speech-override.yaml){: external} file. The complete version includes all of the detailed elements described in [Using the override file](/docs/speech-to-text?topic=speech-to-text-speech-override-12).
+    The abbreviated `speech-override.yaml` file has generally been reduced further by fine-tuning its contents to the essential elements.
 
 ## Version 1.2 (9 December 2020)
 {: #speech-to-text-data-9december2020}
 
 Version 1.2 is available
-:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 1.2 is now available. Installation and administration of the service include many changes. This version supports {{site.data.keyword.icp4dfull_notm}} versions 3.5 and 3.0.1, and Red Hat OpenShift versions 4.5 and 3.11. For more information about installing and managing the service, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} version 1.2](/docs/speech-to-text?topic=speech-to-text-speech-install-12).
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 1.2 is now available. Installation and administration of the service include many changes. This version supports {{site.data.keyword.icp4dfull_notm}} versions 3.5 and 3.0.1, and Red Hat OpenShift versions 4.5 and 3.11.
 
 New Australian and French Canadian models
 :   The service now offers broadband and narrowband models for Australian English and Canadian French:
