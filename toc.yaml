@@ -149,15 +149,6 @@ toc:
       - link:
           label: Watson GitHub repos
           href: https://github.com/watson-developer-cloud/
-      - topicgroup:
-          label: Installing and managing version 1.2
-          topics:
-          - speech-install-12.md
-          - speech-override-12.md
-          - speech-cluster-12.md
-          - speech-datastores-12.md
-          - speech-scaling-12.md
-          - speech-backup-12.md
 
   - navgroup:
       id: help
