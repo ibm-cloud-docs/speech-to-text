@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-09-19"
+  years: 2015, 2022
+lastupdated: "2022-05-13"
 
 subcollection: speech-to-text
 
@@ -18,6 +18,9 @@ The {{site.data.keyword.speechtotextfull}} service can identify user-specified k
 
 ## Keyword spotting
 {: #keyword-spotting}
+
+The `keywords` and `keywords_threshold` parameters are supported only with previous-generation models, not with next-generation models.
+{: note}
 
 The keyword spotting feature detects specified strings in a transcript. The service can spot the same keyword multiple times and report each occurrence. The service spots keywords only in the final results, not in interim results. By default, the service does no keyword spotting.
 
@@ -128,6 +131,9 @@ severe thunderstorms swept through Colorado on Sunday "
 
 ## Word alternatives
 {: #word-alternatives}
+
+The `word_alternatives_threshold` parameter is supported only with previous-generation models, not with next-generation models.
+{: note}
 
 The word alternatives feature (also known as *Confusion Networks*) reports hypotheses for acoustically similar alternatives for words of the input audio. For instance, the word `Austin` might be the best hypothesis for a word from the audio. But the word `Boston` is another possible hypothesis in the same time interval. Hypotheses share a common start and end time but have different spellings and usually different confidence scores.
 

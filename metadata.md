@@ -19,6 +19,9 @@ The {{site.data.keyword.speechtotextfull}} service can return three types of met
 ## Maximum alternatives
 {: #max-alternatives}
 
+The `max_alternatives` parameter is supported only with previous-generation models, not with next-generation models.
+{: note}
+
 The `max_alternatives` parameter accepts an integer value that tells the service to return the *n*-best alternative hypotheses for the results. By default, the service returns only a single transcription result, which is equivalent to setting the parameter to `1`. By setting `max_alternatives` to a number greater than 1, you ask the service to return that number of the best alternative transcriptions. (If you specify a value of `0`, the service uses the default value of `1`.)
 
 The service reports a confidence score only for the best alternative that it returns. In most cases, that is the alternative to choose.
