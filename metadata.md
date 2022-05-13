@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-09-19"
+  years: 2015, 2022
+lastupdated: "2022-05-13"
 
 subcollection: speech-to-text
 
