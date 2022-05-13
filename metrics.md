@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2021
-lastupdated: "2021-09-19"
+  years: 2018, 2022
+lastupdated: "2022-05-13"
 
 subcollection: speech-to-text
 
@@ -23,7 +23,7 @@ By default, the service returns no processing or audio metrics for a request.
 ## Processing metrics
 {: #processing-metrics}
 
-Processing metrics are available only with the WebSocket and asynchronous HTTP interfaces. They are not available with the synchronous HTTP interface.
+The `processing_metrics` and `processing_metrics_interval` parameters are supported only with previous-generation models, not with next-generation models. Also, processing metrics are available only with the WebSocket and asynchronous HTTP interfaces. They are not available with the synchronous HTTP interface.
 {: note}
 
 Processing metrics provide detailed timing information about the service's analysis of the input audio. The service returns the metrics at specified intervals and with transcription events, such as interim and final results.
