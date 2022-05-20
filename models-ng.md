@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-04-20"
+lastupdated: "2022-05-18"
 
 subcollection: speech-to-text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 # Next-generation languages and models
 {: #models-ng}
 
-The {{site.data.keyword.speechtotextfull}} service supports a growing collection of next-generation models that improve upon the speech recognition capabilities of the service's previous-generation models. The model indicates the language in which the audio is spoken and the rate at which it is sampled. Next-generation models have higher throughput than the previous-generation models, so the service can return transcriptions more quickly. Next-generation models also provide noticeably better transcription accuracy.
+The {{site.data.keyword.speechtotextfull}} service supports a growing collection of next-generation models that improve upon the speech recognition capabilities of the service's previous-generation models. The model indicates the language in which the audio is spoken and the rate at which it is sampled. Next-generation models have higher throughput than the previous-generation models, so the service can return transcriptions more quickly.  Next-generation models also provide noticeably better transcription accuracy.
 {: shortdesc}
 
 When you use next-generation models, the service analyzes audio bidirectionally. Using deep neural networks, the model analyzes and extracts information from the audio. The model then evaluates the information forwards and backwards to predict the transcription, effectively "listening" to the audio twice.
@@ -89,8 +89,9 @@ Table 2 lists the available next-generation multimedia models.
 | English  \n (United States) | `en-US_Multimedia` | Yes | GA |
 | French  \n (France) | `fr-FR_Multimedia` | Yes | GA |
 | German | `de-DE_Multimedia` | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
+| Italian | `it-IT_Multimedia`  \n {{site.data.keyword.cloud_notm}} only | No | GA |
 | Japanese | `ja-JP_Multimedia` | Yes | GA |
-| Korean | `ko-KR_Multimedia` | No | GA |
+| Korean | `ko-KR_Multimedia` | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
 | Portuguese  \n (Brazilian) | `pt-BR_Multimedia`  \n {{site.data.keyword.cloud_notm}} only | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
 | Spanish  \n (Castilian) | `es-ES_Multimedia` | Yes | GA |
 {: caption="Table 2. Next-generation multimedia models"}

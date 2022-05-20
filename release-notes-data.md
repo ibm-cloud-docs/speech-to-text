@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-05-13"
+lastupdated: "2022-05-17"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -110,7 +110,7 @@ The service has the following known limitations:
 {: #speech-to-text-data-1may2022}
 
 Important: End of service for {{site.data.keyword.speechtotextshort}} version 1.2.x on {{site.data.keyword.icp4dfull_notm}} version 3.5
-:   **Important:** {{site.data.keyword.speechtotextshort}} version 1.2.x on {{site.data.keyword.icp4dfull_notm}} version 3.5 is out of service as of 1 May 2022. {{site.data.keyword.speechtotextshort}} version 1.2.x is no longer supported, available, or documented. For more information about End of Service for {{site.data.keyword.speechtotextshort}} as part of the {{site.data.keyword.watson}} API Kit, see [Software support discontinuance: IBM Watson API Kit for IBM Cloud Pak for Data 1.2.x](https://www.ibm.com/common/ssi/cgi-bin/ssialias?subtype=ca&infotype=an&appname=iSource&supplier=897&letternum=ENUS922-038).
+:   **Important:** {{site.data.keyword.speechtotextshort}} version 1.2.x on {{site.data.keyword.icp4dfull_notm}} version 3.5 is out of service as of 1 May 2022. {{site.data.keyword.speechtotextshort}} version 1.2.x is no longer supported, available, or documented. For more information about End of Service for {{site.data.keyword.speechtotextshort}}, which is part of the {{site.data.keyword.watson}} API Kit, see [Software support discontinuance: IBM Watson API Kit for IBM Cloud Pak for Data 1.2.x](https://www.ibm.com/common/ssi/cgi-bin/ssialias?subtype=ca&infotype=an&appname=iSource&supplier=897&letternum=ENUS922-038).
 
 ## 27 April 2022 (Version 4.0.8)
 {: #speech-to-text-data-27april2022}
