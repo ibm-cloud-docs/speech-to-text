@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-04-11"
+lastupdated: "2022-05-19"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -108,11 +108,28 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
+## 19 May 2022
+{: #speech-to-text-19may2022}
+{: release-note}
+
+New Italian `it-IT_Multimedia` next-generation model
+:   The service now offers a next-generation multimedia model for Italian: `it-IT_Multimedia`. The new model is generally available. It does not support low latency, but it does support language model customization and grammars. For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+
+Updated Korean telephony and multimedia next-generation models
+:   The existing Korean next-generation models have been updated:
+    -   The `ko-KR_Telephony` model has been updated for improved low-latency support for speech recognition.
+    -   The `ko-KR_Multimedia` model has been updated for improved speech recognition. The model now also supports low latency.
+
+    Both models are generally available, and both support language model customization and grammars. You do not need to upgrade custom language models that are based on these models. For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+
+Defect fix: Confidence scores are now reported for all transcription results
+:   **Defect fix:** Confidence scores are now reported for all transcription results. Previously, when the service returned multiple transcripts for a single speech recognition request, confidence scores might not be returned for all transcripts.
+
 ## 11 April 2022
 {: #speech-to-text-11april2022}
 {: release-note}
 
-New Brazilian Portuguese `pt-BR_Multimedia` next-generation multimedia model
+New Brazilian Portuguese `pt-BR_Multimedia` next-generation model
 :   The service now offers a next-generation multimedia model for Brazilian Portuguese: `pt-BR_Multimedia`. The new model supports low latency and is generally available. It also supports language model customization and grammars.
 
     For more information about all available next-generation models and their customization support, see

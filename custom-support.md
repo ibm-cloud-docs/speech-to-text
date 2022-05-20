@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-04-01"
+lastupdated: "2022-05-18"
 
 subcollection: speech-to-text
 
@@ -99,6 +99,7 @@ Table 2 lists the next-generation models that are supported for language model c
 | | `de-DE_Multimedia` | GA | GA | Not supported |
 | Hindi | `hi-IN_Telephony` | GA | GA | Not supported |
 | Italian | `it-IT_Telephony` | GA | GA | Not supported |
+|  | `it-IT_Multimedia` | GA | GA | Not supported |
 | Japanese | `ja-JP_Multimedia` | GA | GA | Not supported |
 | Korean | `ko-KR_Telephony` | GA | GA | Not supported |
 | | `ko-KR_Multimedia` | GA | GA | Not supported |
