@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-05-25"
+lastupdated: "2022-05-26"
 
 subcollection: speech-to-text
 
@@ -300,8 +300,8 @@ By default, each individual model is optimized to produce the best balance betwe
 
 You can use the `character_insertion_bias` parameter to indicate that the service is to favor shorter or longer strings as it considers subsequent characters for its hypotheses. The value you provide depends on the next-generation model that you are using for speech recognition and the characteristics of your audio. The range of acceptable values is from -1.0 to 1.0:
 
--   Negative values cause the service to prefer hypotheses with shorter strings of characters.
--   Positive values cause the service to prefer hypotheses with longer strings of characters.
+-   *Negative values* cause the service to prefer hypotheses with shorter strings of characters.
+-   *Positive values* cause the service to prefer hypotheses with longer strings of characters.
 
 As your value approaches -1.0 or 1.0, the impact of the parameter becomes more pronounced. To determine the most effective value for your scenario, start by setting the value of the parameter to a small increment, such as -0.1, -0.05, 0.05, or 0.1, and assess how the value impacts the transcription results. Then experiment with different values as necessary, adjusting the value by small increments to gauge how much to deviate from the model's default.
 
