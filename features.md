@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-03-23"
+lastupdated: "2022-05-24"
 
 subcollection: speech-to-text
 
@@ -108,6 +108,7 @@ The following sections introduce the speech recognition parameters and their fun
 
 -   [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-parsing#silence-time) specifies the duration of the pause interval at which the service splits a transcript into multiple final results in response to silence. If the service detects pauses or extended silence before it reaches the end of the audio stream, its response can include multiple final results. You can increase or decrease the pause interval to affect the results that you receive.
 -   [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-parsing#split-transcript) directs the services to split a transcript into multiple final results for semantic features such as sentences. The service bases its understanding of semantic features on the base language model that you use with a request. Custom language models and grammars can also influence how and where the service splits a transcript.
+-   [Character insertion bias](/docs/speech-to-text?topic=speech-to-text-parsing#insertion-bias) specifies whether a next-generation model is to favor shorter or longer strings as it develops hypotheses during speech recognition. As it develops transcription hypotheses, the service optimizes how it parses audio to balance between competing strings of different lengths. You can indicate that the service is to bias its analysis toward shorter or longer strings.
 
 ### Speaker labels
 {: #features-speaker-labels}

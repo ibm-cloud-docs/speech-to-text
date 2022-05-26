@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-09-30"
+  years: 2015, 2022
+lastupdated: "2022-05-25"
 
 subcollection: speech-to-text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 # Interim results and low latency
 {: #interim}
 
-With the WebSocket interface, the {{site.data.keyword.speechtotextfull}} service supports interim results, which are intermediate transcription hypotheses that arrive before final results. For the WebSocket and HTTP interfaces, certain next-generation models also offer low latency to return results even more quickly than they already do, though transcription accuracy might be reduced.
+With the WebSocket interface, the {{site.data.keyword.speechtotextfull}} service supports interim results, which are intermediate transcription hypotheses that arrive before final results. For the WebSocket and HTTP interfaces, most next-generation models also offer low latency to return results even more quickly than they already do, though transcription accuracy might be reduced.
 {: shortdesc}
 
 When you use next-generation models that support low latency with the WebSocket interface, you must enable both interim results and low latency to get interim results. Only next-generation models that support low latency can return interim results. Note that previous- and next-generation models return slightly different results in certain cases.
@@ -127,6 +127,9 @@ The response includes a single utterance with no pauses.
 
 ## Low latency
 {: #low-latency}
+
+The `low_latency` parameter is available for most next-generation models. The parameter is not available with previous-generation models.
+{: note}
 
 The next-generation multimedia and telephony models have generally faster response times than the previous-generation models. But there may be cases where you want to receive results even more quickly. With next-generation models that support low latency, you can set the `low_latency` parameter to `true` to receive results more quickly. For more information about the next-generation models that support low latency, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
 

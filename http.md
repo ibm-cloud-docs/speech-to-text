@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-03-25"
+lastupdated: "2022-05-24"
 
 subcollection: speech-to-text
 
@@ -161,6 +161,7 @@ The JSON metadata that you pass with a multipart request can include the followi
 -   `speech_detector_sensitivity` (number)
 -   `background_audio_suppression` (number)
 -   `low_latency` (boolean)
+-   `character_insertion_bias` (float)
 
 Only the following two parameters are specific to multipart requests:
 

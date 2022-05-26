@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-05-19"
+lastupdated: "2022-05-25"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -108,6 +108,15 @@ The service has the following known limitations:
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
+## 25 May 2022
+{: #speech-to-text-25may2022}
+{: release-note}
+
+New beta `character_insertion_bias` parameter for next-generation models
+:   All next-generation models now support a new beta parameter, `character_insertion_bias`, which is available with all speech recognition interfaces. By default, the service is optimized for each individual model to balance its recognition of candidate strings of different lengths. The model-specific bias is equivalent to 0.0. Each model's default bias is sufficient for most speech recognition requests.
+
+    However, certain use cases might benefit from favoring hypotheses with shorter or longer strings of characters. The parameter accepts values between -1.0 and 1.0 that represent a change from a model's default. Negative values instruct the service to favor shorter strings of characters. Positive values direct the service to favor longer strings of characters. For more information, see [Character insertion bias](/docs/speech-to-text?topic=speech-to-text-parsing#insertion-bias).
+
 ## 19 May 2022
 {: #speech-to-text-19may2022}
 {: release-note}
@@ -130,14 +139,13 @@ Defect fix: Confidence scores are now reported for all transcription results
 {: release-note}
 
 New Brazilian Portuguese `pt-BR_Multimedia` next-generation model
-:   The service now offers a next-generation multimedia model for Brazilian Portuguese: `pt-BR_Multimedia`. The new model supports low latency and is generally available. It also supports language model customization and grammars.
-
-    For more information about all available next-generation models and their customization support, see
+:   The service now offers a next-generation multimedia model for Brazilian Portuguese: `pt-BR_Multimedia`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about the next-generation models and low latency, see
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
     -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
 
 Update to German `de-DE_Multimedia` next-generation model to support low latency
-:   The next-generation German model `de-DE_Multimedia` now supports low latency. You can use the `low_latency` parameter with speech recognition requests that use the model. You do not need to upgrade custom models that are based on the updated German base model. For more information about the next-generation models and low latency, see
+:   The next-generation German model, `de-DE_Multimedia`, now supports low latency. You do not need to upgrade custom models that are based on the updated German base model. For more information about the next-generation models and low latency, see
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
     -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
 

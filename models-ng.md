@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-05-18"
+lastupdated: "2022-05-24"
 
 subcollection: speech-to-text
 
@@ -18,7 +18,7 @@ The {{site.data.keyword.speechtotextfull}} service supports a growing collection
 
 When you use next-generation models, the service analyzes audio bidirectionally. Using deep neural networks, the model analyzes and extracts information from the audio. The model then evaluates the information forwards and backwards to predict the transcription, effectively "listening" to the audio twice.
 
-With the additional information and context afforded by bidirectional analysis, the service can make smarter hypotheses about the words spoken in the audio. Despite the added analysis, recognition with next-generation models is more efficient than with previous-generation models, so the service delivers results faster and with more accuracy. Some next-generation models also offer a low-latency option to receive results even faster, though low latency might impact transcription accuracy.
+With the additional information and context afforded by bidirectional analysis, the service can make smarter hypotheses about the words spoken in the audio. Despite the added analysis, recognition with next-generation models is more efficient than with previous-generation models, so the service delivers results faster and with more accuracy. Most next-generation models also offer a low-latency option to receive results even faster, though low latency might impact transcription accuracy.
 
 In addition to providing greater transcription accuracy, the models have the ability to hypothesize words that are not in the base language model and that it has not encountered in training. This capability can decrease the need for customization of domain-specific terms. A model does not need to contain a specific vocabulary term to predict that word.
 
@@ -88,11 +88,11 @@ Table 2 lists the available next-generation multimedia models.
 | English  \n (United Kingdom) | `en-GB_Multimedia` | Yes | GA |
 | English  \n (United States) | `en-US_Multimedia` | Yes | GA |
 | French  \n (France) | `fr-FR_Multimedia` | Yes | GA |
-| German | `de-DE_Multimedia` | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
+| German | `de-DE_Multimedia` | Yes | GA |
 | Italian | `it-IT_Multimedia`  \n {{site.data.keyword.cloud_notm}} only | No | GA |
 | Japanese | `ja-JP_Multimedia` | Yes | GA |
 | Korean | `ko-KR_Multimedia` | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
-| Portuguese  \n (Brazilian) | `pt-BR_Multimedia`  \n {{site.data.keyword.cloud_notm}} only | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
+| Portuguese  \n (Brazilian) | `pt-BR_Multimedia` | Yes | GA |
 | Spanish  \n (Castilian) | `es-ES_Multimedia` | Yes | GA |
 {: caption="Table 2. Next-generation multimedia models"}
 
@@ -116,13 +116,18 @@ The next-generation models are supported for use with a large subset of the serv
 -   For more information about the parameters that you can use with next-generation models, including their language support and whether the parameters are GA or beta, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
 -   For more information about next-generation models' support for customization, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
 
-In summary, the next-generation models support all speech recognition parameters and headers *except* for the following:
+Next-generation models support all speech recognition parameters and headers *except* for the following:
 
 -   `acoustic_customization_id` (Next-generation models do not support acoustic model customization.)
 -   `keywords` and `keywords_threshold`
 -   `max_alternatives`
 -   `processing_metrics` and `processing_metrics_interval`
 -   `word_alternatives_threshold`
+
+Next-generation models also support the following parameters, which are not available with previous-generation models:
+
+-   `character_insertion_bias`, which is supported by all next-generation models. For more information, see [Character insertion bias](/docs/speech-to-text?topic=speech-to-text-parsing#insertion-bias).
+-   `low_latency`, which is supported by most next-generation models. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
 
 Next-generation models also differ from previous-generation models with respect to the following additional features:
 

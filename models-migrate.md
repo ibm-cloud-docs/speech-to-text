@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-03-16"
+lastupdated: "2022-05-25"
 
 subcollection: speech-to-text
 
@@ -65,7 +65,7 @@ For information about the features that are supported with the different model t
 
 The service continues to make new features available with next-generation models. All updates to feature support are documented in the release notes and in the documentation for the model types.
 
-To migrate to next-generation models, you must remove features that aren't supported by next-generation models from your speech recognition requests. You can also consider using features such as low latency that are available only with next-generation models.
+To migrate to next-generation models, you must remove features that aren't supported by next-generation models from your speech recognition requests. You can also consider using features such as low latency and character insertion bias that are available only with next-generation models.
 
 For example, the following speech recognition request uses the `profanity_filter`, `redaction`, and `word_alternatives_threshold` parameters with the previous-generation `en-US_NarrowbandModel`:
 
