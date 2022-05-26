@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-05-17"
+lastupdated: "2022-05-25"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -105,6 +105,31 @@ The service has the following known limitations:
     However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
+
+## 25 May 2022 (Version 4.0.9)
+{: #speech-to-text-data-25may2022}
+
+Version 4.0.9 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.0.9 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.x and Red Hat OpenShift versions 4.6 and 4.8. For more information about installing and managing the service, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
+
+New Brazilian Portuguese `pt-BR_Multimedia` next-generation model
+:   The service now offers a next-generation multimedia model for Brazilian Portuguese: `pt-BR_Multimedia`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about the next-generation models and low latency, see
+    -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
+
+Update to German `de-DE_Multimedia` next-generation model to support low latency
+:   The next-generation German model, `de-DE_Multimedia`, now supports low latency. You do not need to upgrade custom models that are based on the updated German base model. For more information about the next-generation models and low latency, see
+    -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+    -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
+
+New beta `character_insertion_bias` parameter for next-generation models
+:   All next-generation models now support a new beta parameter, `character_insertion_bias`, which is available with all speech recognition interfaces. By default, the service is optimized for each individual model to balance its recognition of candidate strings of different lengths. The model-specific bias is equivalent to 0.0. Each model's default bias is sufficient for most speech recognition requests.
+
+    However, certain use cases might benefit from favoring hypotheses with shorter or longer strings of characters. The parameter accepts values between -1.0 and 1.0 that represent a change from a model's default. Negative values instruct the service to favor shorter strings of characters. Positive values direct the service to favor longer strings of characters. For more information, see [Character insertion bias](/docs/speech-to-text?topic=speech-to-text-parsing#insertion-bias).
+
+The Speech services do not support the OADP backup and restore utility
+:   Watson Speech services do not support the {{site.data.keyword.icp4dfull_notm}} OpenShift APIs for Data Protection (OADP) backup and restore utility. If the Speech services are installed on a cluster, you might not be able to use the {{site.data.keyword.icp4dfull_notm}} OADP backup and restore utility to back up other services that are installed on that cluster. This limitation applies to version 4.0.0 and later versions of the Speech services.
 
 ## 1 May 2022 (Version 1.2.x)
 {: #speech-to-text-data-1may2022}

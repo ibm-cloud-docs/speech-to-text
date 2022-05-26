@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-03-04"
+lastupdated: "2022-05-25"
 
 subcollection: speech-to-text
 
@@ -13,8 +13,12 @@ subcollection: speech-to-text
 # Speech audio parsing
 {: #parsing}
 
-The {{site.data.keyword.speechtotextfull}} service provides two features that determine how the service is to parse audio to produce final transcription results. End of phrase silence time specifies the duration of the pause interval at which the service splits a transcript into multiple final results. Split transcript at phrase end directs the services to split a transcript into multiple final results for semantic features such as sentences.
+The {{site.data.keyword.speechtotextfull}} service provides multiple features that determine how the service is to parse audio to produce final transcription results.
 {: shortdesc}
+
+-   End of phrase silence time specifies the duration of the pause interval at which the service splits a transcript into multiple final results.
+-   Split transcript at phrase end directs the services to split a transcript into multiple final results for semantic features such as sentences.
+-   Character insertion bias directs the service to favor character sequences of shorter or greater length as it develops transcription hypotheses with next-generation models.
 
 ## End of phrase silence time
 {: #silence-time}
@@ -283,3 +287,46 @@ The service returns three final results, adding a result for the semantic stop a
 }
 ```
 {: codeblock}
+
+## Character insertion bias
+{: #insertion-bias}
+
+The `character_insertion_bias` parameter is beta functionality that is available for all next-generation models. The parameter is not available with previous-generation models.
+{: beta}
+
+The `character_insertion_bias` parameter controls the service's bias for competing strings of different lengths during speech recognition. With next-generation models, the service parses audio character by character. As it does, it establishes hypotheses of previous character strings to help determine viable next characters. During this process, it collects candidate strings of different lengths.
+
+By default, each individual model is optimized to produce the best balance between hypotheses with different numbers of characters. The optimization is model-specific and can differ from model to model. Each model's default bias is represented as the value 0.0. The default is typically adequate for most speech recognition. However, certain use cases might benefit from favoring hypotheses with shorter or longer strings of characters. In such cases, specifying a change from the default can improve speech recognition.
+
+You can use the `character_insertion_bias` parameter to indicate that the service is to favor shorter or longer strings as it considers subsequent characters for its hypotheses. The value you provide depends on the next-generation model that you are using for speech recognition and the characteristics of your audio. The range of acceptable values is from -1.0 to 1.0:
+
+-   Negative values cause the service to prefer hypotheses with shorter strings of characters.
+-   Positive values cause the service to prefer hypotheses with longer strings of characters.
+
+As your value approaches -1.0 or 1.0, the impact of the parameter becomes more pronounced. To determine the most effective value for your scenario, start by setting the value of the parameter to a small increment, such as -0.1, -0.05, 0.05, or 0.1, and assess how the value impacts the transcription results. Then experiment with different values as necessary, adjusting the value by small increments to gauge how much to deviate from the model's default.
+
+### Character insertion bias example
+{: #insertion-bias-example}
+
+The following example request directs the service to marginally favor longer strings of character hypotheses by setting the `character_insertion_bias` parameter to `0.1`. This is a small initial increment to determine the effect of the change on transcription results.
+
+![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+
+```bash
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/wav" \
+--data-binary @{path}audio-file.wav \
+"{url}/v1/recognize?model=en-US_Telephony&character_insertion_bias=0.1"
+```
+{: pre}
+
+![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+
+```bash
+curl -X POST \
+--header "Authorization: Bearer {token}" \
+--header "Content-Type: audio/wav" \
+--data-binary @{path}audio-file.wav \
+"{url}/v1/recognize?model=en-US_Telephony&character_insertion_bias=0.1"
+```
+{: pre}

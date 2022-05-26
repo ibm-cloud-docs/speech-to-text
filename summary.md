@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-03-08"
+lastupdated: "2022-05-25"
 
 subcollection: speech-to-text
 
@@ -89,6 +89,20 @@ An optional version of a base model. The parameter is intended primarily for use
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
 {: caption="Table 5. The base_model_version parameter"}
 
+## character_insertion_bias
+{: #summary-character-insertion-bias}
+
+An optional float between -1.0 and 1.0 that indicates whether the service is biased to recognize shorter (negative values) or longer (positive values) strings of characters when developing transcription hypotheses. By default, the service is optimized for each individual model to balance its recognition of strings of different lengths. The model-specific bias is equivalent to 0.0. The value that you specify represents a change from a model's default bias. For more information, see [Character insertion bias](/docs/speech-to-text?topic=speech-to-text-parsing#insertion-bias).
+
+| Availability and usage | Description |
+|------------------------|-------------|
+| Previous-generation models | Not available. |
+| Next-generation models     | Beta for all models. |
+| WebSocket              | Parameter of JSON `start` message |
+| Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
+| Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
+{: caption="Table 6. The character_insertion_bias parameter"}
+
 ## Content-Type
 {: #summary-content-type}
 
@@ -101,7 +115,7 @@ An optional audio format (MIME type) that specifies the format of the audio data
 | WebSocket              | `content-type` parameter of JSON `start` message |
 | Synchronous HTTP       | Request header of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Request header of `POST /v1/recognitions` method |
-{: caption="Table 6. The Content-Type parameter"}
+{: caption="Table 7. The Content-Type parameter"}
 
 ## customization_weight
 {: #summary-customization-weight}
@@ -115,7 +129,7 @@ An optional double between 0.0 and 1.0 that indicates the relative weight that t
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 7. The customization_weight parameter"}
+{: caption="Table 8. The customization_weight parameter"}
 
 ## end_of_phrase_silence_time
 {: #summary-silence-time}
@@ -129,7 +143,7 @@ An optional double between 0.0 and 120.0 that indicates the pause interval at wh
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 8. The end_of_phrase_silence_time parameter"}
+{: caption="Table 9. The end_of_phrase_silence_time parameter"}
 
 ## grammar_name
 {: #summary-grammar-name}
@@ -143,7 +157,7 @@ An optional string that identifies a grammar that is to be used for speech recog
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 9. The grammar_name parameter"}
+{: caption="Table 10. The grammar_name parameter"}
 
 ## inactivity_timeout
 {: #summary-inactivity-timeout}
@@ -157,7 +171,7 @@ An optional integer that specifies the number of seconds for the service's inact
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 10. The inactivity_timeout parameter"}
+{: caption="Table 11. The inactivity_timeout parameter"}
 
 ## interim_results
 {: #summary-interim-results}
@@ -171,7 +185,7 @@ An optional boolean that directs the service to return intermediate hypotheses t
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Not supported |
 | Asynchronous HTTP      | Not supported |
-{: caption="Table 11. The interim_results parameter"}
+{: caption="Table 12. The interim_results parameter"}
 
 ## keywords
 {: #summary-keywords}
@@ -185,7 +199,7 @@ An optional array of keyword strings that the service spots in the input audio. 
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 12. The keywords parameter"}
+{: caption="Table 13. The keywords parameter"}
 
 ## keywords_threshold
 {: #summary-keywords-threshold}
@@ -199,7 +213,7 @@ An optional double between 0.0 and 1.0 that indicates the minimum threshold for 
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 13. The keywords_threshold parameter"}
+{: caption="Table 14. The keywords_threshold parameter"}
 
 ## language_customization_id
 {: #summary-language-customization-id}
@@ -213,7 +227,7 @@ An optional customization ID for a custom language model that includes terminolo
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 14. The language_customization_id parameter"}
+{: caption="Table 15. The language_customization_id parameter"}
 
 ## low_latency
 {: #summary-low-latency}
@@ -227,7 +241,7 @@ An optional boolean that indicates whether the service is to produce results mor
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 15. The low_latency parameter"}
+{: caption="Table 16. The low_latency parameter"}
 
 ## max_alternatives
 {: #summary-max-alternatives}
@@ -241,7 +255,7 @@ An optional integer that specifies the maximum number of alternative hypotheses 
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 16. The max_alternatives parameter"}
+{: caption="Table 17. The max_alternatives parameter"}
 
 ## model
 {: #summary-model}
@@ -255,7 +269,7 @@ An optional model that specifies the language in which the audio is spoken and t
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 17. The model parameter"}
+{: caption="Table 18. The model parameter"}
 
 ## processing_metrics
 {: #summary-processing-metrics}
@@ -269,7 +283,7 @@ An optional boolean that indicates whether the service returns metrics about its
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Not supported |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 18. The processing_metrics parameter"}
+{: caption="Table 19. The processing_metrics parameter"}
 
 ## processing_metrics_interval
 {: #summary-processing-metrics-interval}
@@ -283,7 +297,7 @@ An optional float of at least 0.1 that indicates the interval at which the servi
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Not supported |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 19. The processing_metrics_interval parameter"}
+{: caption="Table 20. The processing_metrics_interval parameter"}
 
 ## profanity_filter
 {: #summary-profanity-filter}
@@ -297,7 +311,7 @@ An optional boolean that indicates whether the service censors profanity from a 
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 20. The profanity_filter parameter"}
+{: caption="Table 21. The profanity_filter parameter"}
 
 ## redaction
 {: #summary-redaction}
@@ -311,7 +325,7 @@ An optional boolean that indicates whether the service redacts numeric data with
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 21. The redaction parameter"}
+{: caption="Table 22. The redaction parameter"}
 
 ## smart_formatting
 {: #summary-smart-formatting}
@@ -325,7 +339,7 @@ An optional boolean that indicates whether the service converts dates, times, nu
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 22. The smart_formatting parameter"}
+{: caption="Table 23. The smart_formatting parameter"}
 
 ## speaker_labels
 {: #summary-speaker-labels}
@@ -339,7 +353,7 @@ An optional boolean that indicates whether the service identifies which individu
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 23. The speaker_labels parameter"}
+{: caption="Table 24. The speaker_labels parameter"}
 
 ## speech_detector_sensitivity
 {: #summary-speech-detector-sensitivity}
@@ -353,7 +367,7 @@ An optional float between 0.0 and 1.0 that indicates the sensitivity of speech r
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 24. The speech_detector_sensitivity parameter"}
+{: caption="Table 25. The speech_detector_sensitivity parameter"}
 
 ## split_transcript_at_phrase_end
 {: #summary-split-transcript}
@@ -367,7 +381,7 @@ An optional boolean that indicates whether the service splits a transcript into 
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 25. The split_transcript_at_phrase_end parameter"}
+{: caption="Table 26. The split_transcript_at_phrase_end parameter"}
 
 ## timestamps
 {: #summary-timestamps}
@@ -381,7 +395,7 @@ An optional boolean that indicates whether the service produces timestamps for t
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 26. The timestamps parameter"}
+{: caption="Table 27. The timestamps parameter"}
 
 ## Transfer-Encoding
 {: #summary-transfer-encoding}
@@ -395,7 +409,7 @@ An optional value of `chunked` that causes the audio to be streamed to the servi
 | WebSocket              | Not applicable; always streamed |
 | Synchronous HTTP       | Request header of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Request header of `POST /v1/recognitions` method |
-{: caption="Table 27. The Transfer-Encoding parameter"}
+{: caption="Table 28. The Transfer-Encoding parameter"}
 
 ## word_alternatives_threshold
 {: #summary-word-alternatives-threshold}
@@ -409,7 +423,7 @@ An optional double between 0.0 and 1.0 that specifies the threshold at which the
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 28. The word_alternatives_threshold parameter"}
+{: caption="Table 29. The word_alternatives_threshold parameter"}
 
 ## word_confidence
 {: #summary-word-confidence}
@@ -423,7 +437,7 @@ An optional boolean that indicates whether the service provides confidence measu
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
-{: caption="Table 29. The word_confidence parameter"}
+{: caption="Table 30. The word_confidence parameter"}
 
 ## X-Watson-Learning-Opt-Out
 {: #summary-x-watson-learning-opt-out}
@@ -439,7 +453,7 @@ An optional boolean that indicates whether you opt out of the default request lo
 | WebSocket              | `x-watson-learning-opt-out` query parameter of `/v1/recognize` connection request |
 | Synchronous HTTP       | Request header of each request |
 | Asynchronous HTTP      | Request header of each request |
-{: caption="Table 30. The X-Watson-Learning-Opt-Out parameter"}
+{: caption="Table 31. The X-Watson-Learning-Opt-Out parameter"}
 
 ## X-Watson-Metadata
 {: #summary-x-watson-metadata}
@@ -453,4 +467,4 @@ An optional string that associates a customer ID with data that is passed for re
 | WebSocket              | `x-watson-metadata` query parameter of `/v1/recognize` connection request. (You must URL-encode the argument, for example, `customer_id%3dmy_customer_ID`.) |
 | Synchronous HTTP       | Request header of POST `/v1/recognize` request |
 | Asynchronous HTTP      | Request header of `POST /v1/register_callback` and `POST /v1/recognitions` requests |
-{: caption="Table 31. The X-Watson-Metadata parameter"}
+{: caption="Table 32. The X-Watson-Metadata parameter"}
