@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-05-25"
+lastupdated: "2022-06-07"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -107,6 +107,21 @@ The service has the following known limitations:
     However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
+
+## 1 June 2022
+{: #speech-to-text-1june2022}
+{: release-note}
+
+Updates to multiple next-generation telephony models
+:   The following next-generation telephony models have been updated for improved speech recognition:
+
+    -   `en-AU_Telephony`
+    -   `en-GB_Telephony`
+    -   `en-IN_Telephony`
+    -   `en-US_Telephony`
+    -   `ko-KR_Telephony`
+
+    You do not need to upgrade custom models that are based on these models. For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 
 ## 25 May 2022
 {: #speech-to-text-25may2022}
