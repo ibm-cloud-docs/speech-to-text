@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-06-07"
+lastupdated: "2022-06-13"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -22,7 +22,7 @@ content-type: release-note
 The following features and changes were included for each release and update of managed instances of {{site.data.keyword.speechtotextfull}} that are hosted on {{site.data.keyword.cloud_notm}} or for instances that are hosted on [{{site.data.keyword.icp4dfull_notm}} as a Service](https://dataplatform.cloud.ibm.com/docs/content/wsj/landings/wstt.html){: external}. The information includes known limitations. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
 {: shortdesc}
 
-For information about releases and updates for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
+For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
 
 ## Known limitations
