@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-06-28"
+lastupdated: "2022-06-29"
 
 subcollection: speech-to-text
 
@@ -15,7 +15,7 @@ subcollection: speech-to-text
 
 ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}} only**
 
-To install {{site.data.keyword.speechtotextfull}} for {{site.data.keyword.icp4dfull}}, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/SSQNUZ_4.5.x/services-watson-speech){: external}. That page includes links to all installation and management topics for version 4.5.x of {{site.data.keyword.watson}} Speech services:
+To install {{site.data.keyword.speechtotextfull}} for {{site.data.keyword.icp4dfull}}, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=services-watson-speech){: external}. That page includes links to all installation and management topics for version 4.5.x of {{site.data.keyword.watson}} Speech services:
 {: shortdesc}
 
 -   Preparing to install
