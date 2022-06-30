@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-05-24"
+lastupdated: "2022-06-22"
 
 subcollection: speech-to-text
 
@@ -89,9 +89,9 @@ Table 2 lists the available next-generation multimedia models.
 | English  \n (United States) | `en-US_Multimedia` | Yes | GA |
 | French  \n (France) | `fr-FR_Multimedia` | Yes | GA |
 | German | `de-DE_Multimedia` | Yes | GA |
-| Italian | `it-IT_Multimedia`  \n {{site.data.keyword.cloud_notm}} only | No | GA |
+| Italian | `it-IT_Multimedia` | No | GA |
 | Japanese | `ja-JP_Multimedia` | Yes | GA |
-| Korean | `ko-KR_Multimedia` | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
+| Korean | `ko-KR_Multimedia` | Yes | GA |
 | Portuguese  \n (Brazilian) | `pt-BR_Multimedia` | Yes | GA |
 | Spanish  \n (Castilian) | `es-ES_Multimedia` | Yes | GA |
 {: caption="Table 2. Next-generation multimedia models"}

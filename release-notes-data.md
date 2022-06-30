@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-06-13"
+lastupdated: "2022-06-29"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -105,6 +105,53 @@ The service has the following known limitations:
     However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
+
+## 29 June 2022 (Version 4.5.0)
+{: #speech-to-text-data-29june2022}
+
+Version 4.5.0 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.5.0 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.5.x and Red Hat OpenShift versions 4.6, 4.8, and 4.10.
+
+Unified Speech services for {{site.data.keyword.icp4dfull_notm}} documentation
+:   The installation and administration documentation for both {{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}} is now combined in the {{site.data.keyword.icp4dfull_notm}} documentation. For more information about installing and managing the Speech services, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=services-watson-speech){: external}.
+
+Changes to Speech services custom resource
+:   The custom resource is now created when you initially install the Speech services. The process is described in the {{site.data.keyword.icp4dfull_notm}} installation documentation. The content of the custom resource has changed:
+    -   The recommended name of the custom resource has changed from `speech-prod-cr` to `speech-cr`.
+    -   All references to storage class have changed from variants of `storageClass` to `blockStorageClass`.
+    -   The name of the Portworx block storage class has changed from `portworx-shared-gp3` to `portworx-db-gp3-sc`.
+    -   The `createSecret` property has been removed for the MinIO and PostgreSQl datastores. The property is only used internally. The Speech services always use a secrets object if you create one, and they always automatically create the object if none is provided.
+
+User-provided secrets object now supported for RabbitMQ datastore
+:   You can now provide security credentials for the RabbitMQ datastore, just as you can for the MinIO and PostgreSQL datastores. The documented process is similar for all three datastores.
+
+New Italian `it-IT_Multimedia` next-generation model
+:   The service now offers a next-generation multimedia model for Italian: `it-IT_Multimedia`. The new model is generally available. It does not support low latency, but it does support language model customization and grammars. For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+
+Updated Korean telephony and multimedia next-generation models
+:   The existing Korean next-generation models have been updated:
+    -   The `ko-KR_Telephony` model has been updated for improved low-latency support for speech recognition.
+    -   The `ko-KR_Multimedia` model has been updated for improved speech recognition. The model now also supports low latency.
+
+    Both models are generally available, and both support language model customization and grammars. You do not need to upgrade custom language models that are based on these models. For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+
+Updates to multiple next-generation telephony models
+:   The following next-generation English language telephony models have been updated for improved speech recognition:
+
+    -   `en-AU_Telephony`
+    -   `en-GB_Telephony`
+    -   `en-IN_Telephony`
+    -   `en-US_Telephony`
+
+    You do not need to upgrade custom models that are based on these models. For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+
+Defect fix: Confidence scores are now reported for all transcription results
+:   **Defect fix:** Confidence scores are now reported for all transcription results. Previously, when the service returned multiple transcripts for a single speech recognition request, confidence scores might not be returned for all transcripts.
+
+<!--
+Security vulnerabilities addressed
+:   The following security vulnerabilities have been fixed:
+-->
 
 ## 25 May 2022 (Version 4.0.9)
 {: #speech-to-text-data-25may2022}

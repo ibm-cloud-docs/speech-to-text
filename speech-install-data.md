@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-05-02"
+lastupdated: "2022-06-29"
 
 subcollection: speech-to-text
 
@@ -15,10 +15,17 @@ subcollection: speech-to-text
 
 ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}} only**
 
-To install {{site.data.keyword.speechtotextfull}} for {{site.data.keyword.icp4dfull}}, see [{{site.data.keyword.ibmwatson_notm}} {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=services-watson-speech-text){: external}. That page provides an overview of the service on {{site.data.keyword.icp4dfull_notm}} and links to all installation and management documentation for that version of the service. The information describes version 4.0.x of the service.
+To install {{site.data.keyword.speechtotextfull}} for {{site.data.keyword.icp4dfull}}, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=services-watson-speech){: external}. That page includes links to all installation and management topics for version 4.5.x of {{site.data.keyword.watson}} Speech services:
 {: shortdesc}
+
+-   Preparing to install
+-   Installing
+-   Post-installation setup
+-   Upgrading
+-   Administering
+-   Uninstalling
 
 ## Installing and managing previous versions
 {: #speech-install-previous}
 
-All previous versions of {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} are out of service. Those versions and their documentation are no longer available.
+For information about installing and managing {{site.data.keyword.speechtotextfull}} for {{site.data.keyword.icp4dfull}} version 4.0.x, see [{{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=services-watson-speech-text){: external}. That page provides an overview of the service on {{site.data.keyword.icp4dfull_notm}} and links to all installation and management documentation for that version of the service.
