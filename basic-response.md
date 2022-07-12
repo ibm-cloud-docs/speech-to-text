@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-03-07"
+lastupdated: "2022-07-12"
 
 subcollection: speech-to-text
 
@@ -55,6 +55,9 @@ The `alternatives` field provides an array of transcription results. For this re
 -   The `confidence` field is a score that indicates the service's confidence in the transcript, which for this example exceeds 90 percent.
 
 The `final` and `result_index` fields qualify the meaning of these fields.
+
+Internal changes and improvements to the service can affect transcripts and confidence scores. For example, speech recognition may be improved to return more precise transcription results. Similarly, transcript and word confidence scores might change slightly as a result of improved speech recognition. Such changes are expected to be modest, but do not expect transcripts and confidence scores to remain unchanged over time.
+{: important}
 
 ### The final field
 {: #response-final}

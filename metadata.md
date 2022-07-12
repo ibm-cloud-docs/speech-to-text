@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-05-13"
+lastupdated: "2022-07-12"
 
 subcollection: speech-to-text
 
@@ -25,6 +25,9 @@ The `max_alternatives` parameter is supported only with previous-generation mode
 The `max_alternatives` parameter accepts an integer value that tells the service to return the *n*-best alternative hypotheses for the results. By default, the service returns only a single transcription result, which is equivalent to setting the parameter to `1`. By setting `max_alternatives` to a number greater than 1, you ask the service to return that number of the best alternative transcriptions. (If you specify a value of `0`, the service uses the default value of `1`.)
 
 The service reports a confidence score only for the best alternative that it returns. In most cases, that is the alternative to choose.
+
+Internal changes and improvements to the service can affect transcripts and confidence scores. For example, speech recognition may be improved to return more precise transcription results. Similarly, transcript and word confidence scores might change slightly as a result of improved speech recognition. Such changes are expected to be modest, but do not expect transcripts and confidence scores to remain unchanged over time.
+{: note}
 
 ### Maximum alternatives example
 {: #maximum-alternatives-example}
@@ -90,6 +93,9 @@ A confidence measure indicates the service's estimation that the transcribed wor
 
 -   A score of 1.0 indicates that the current transcription of the word reflects the most likely result.
 -   A score of 0.5 means that the word has a 50-percent chance of being correct.
+
+Internal changes and improvements to the service can affect transcripts and confidence scores. For example, speech recognition may be improved to return more precise transcription results. Similarly, transcript and word confidence scores might change slightly as a result of improved speech recognition. Such changes are expected to be modest, but do not expect transcripts and confidence scores to remain unchanged over time.
+{: note}
 
 ### Word confidence example
 {: #word-confidence-example}
