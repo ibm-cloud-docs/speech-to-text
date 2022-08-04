@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2019, 2021
-lastupdated: "2021-10-27"
+  years: 2019, 2022
+lastupdated: "2022-08-01"
 
 subcollection: speech-to-text
 
@@ -158,7 +158,7 @@ curl -X GET \
 ```
 {: pre}
 
-The resource is a **.zip** file that contains more than 9 minutes of audio. It too was successfully added to the model. As the example shows, querying information about an archive-type resource also provides information about the files that it contains.
+The resource is a `.zip` file that contains more than nine minutes of audio. It too was successfully added to the model. As the example shows, querying information about an archive-type resource also provides information about the files that it contains.
 
 ```javascript
 {

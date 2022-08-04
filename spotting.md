@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-05-13"
+lastupdated: "2022-09-01"
 
 subcollection: speech-to-text
 
@@ -62,7 +62,7 @@ A keyword for which the service finds no matches is omitted from the array. A ke
     -   The keyword's tokens are in the same block.
     -   The tokens are either adjacent or separated by a gap of no more than 0.1 seconds.
 
-    In the latter case, a brief filler or non-lexical utterance, such as "uhm" or "well," can lie between two tokens of the keyword. In this case, previous-generation models can insert a hesitation marker at this position of the transcript. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
+    In the latter case, a brief filler or non-lexical utterance, such as "uhm" or "well," can lie between two tokens of the keyword. In this case, previous-generation models can insert a hesitation marker at this position of the transcript. Next-generation models include the actual hesitation in the transcription results. For more information, see [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 
 ### Keyword spotting example
 {: #keyword-spotting-example}

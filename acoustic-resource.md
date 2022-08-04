@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2021
-lastupdated: "2021-10-27"
+  years: 2017, 2022
+lastupdated: "2021-08-01"
 
 subcollection: speech-to-text
 
@@ -69,8 +69,8 @@ curl -X POST \
 
 The preferred means of adding audio to a custom acoustic model is to add an archive file that includes multiple audio files. You can add the following types of archive files by specifying the type of the archive with the `Content-Type` request header:
 
--   A **.zip** file by specifying `application/zip`
--   A **.tar.gz** file by specifying `application/gzip`
+-   A `.zip` file by specifying `application/zip`
+-   A `.tar.gz` file by specifying `application/gzip`
 
 You might also need to specify the `Contained-Content-Type` header depending on the format of the files that you are adding:
 

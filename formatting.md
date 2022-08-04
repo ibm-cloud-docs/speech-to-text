@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-02-11"
+lastupdated: "2022-08-01"
 
 subcollection: speech-to-text
 
@@ -40,14 +40,14 @@ Smart formatting impacts some transcription results and not others:
 
 -   Smart formatting affects only words in the `transcript` field of final results, those results for which the `final` field is `true`. It does not affect interim results, for which `final` is `false`.
 -   Smart formatting does not affect words in other fields of the response. For example, smart formatting is not applied to response data in the `timestamps` or `alternatives` fields.
--   Hesitation markers and disfluencies, such as "uhm" and "uh", can adversely impact the conversion of phrases and strings by smart formatting for some languages.
+-  Speech hesitations, such as "uhm" and "uh", can adversely impact the conversion of phrases and strings by smart formatting for some languages. Previous-generation models produce hesitation markers to replace such hesitations in a transcript. Smart formatting has the following effect on hesitation markers for previous-generation models:
+
     -   *For US English,* smart formatting suppresses hesitation markers from the `transcript` field for final results.
     -   *For Japanese,* hesitation markers continue to appear in final results.
     -   *For both US English and Japanese,* hesitation markers continue to appear in interim results.
     -   *For Spanish,* the service does not produce hesitation markers for any results.
 
-    Only previous-generation models can produce hesitation markers in a transcript. Next-generation models do not produce hesitation markers. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
-    {: note}
+    Next-generation models do not produce hesitation markers. They instead include the actual hesitations in transcription results. Smart formatting has no effect on hesitations that are included by next-generation models. For more information, see [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 
 ### Language differences
 {: #smart-formatting-differences}

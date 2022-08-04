@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-07-12"
+lastupdated: "2022-08-01"
 
 subcollection: speech-to-text
 
@@ -191,86 +191,107 @@ The following examples show responses with two final results from the HTTP and W
 Silence of 30 seconds in streamed audio can result in an inactivity timeout. For more information, see [Timeouts](/docs/speech-to-text?topic=speech-to-text-input#timeouts).
 {: note}
 
-## Hesitation markers
+## Speech hesitations and hesitation markers
 {: #response-hesitation}
 
-Hesitation markers are produced only by previous-generation models. Next-generation models do not produce hesitation markers.
-{: note}
+Speech often includes hesitations or verbal pauses, which are also referred to as disfluencies. Hesitations occur when the user inserts fillers such as  "uhm", "uh", "hmm", and related non-lexical utterances while speaking. The service handles hesitations differently for previous- and next-generation models.
 
-For most languages, the service can include hesitation markers in transcription results when it discovers brief fillers or pauses in speech. Also referred to as disfluencies, such pauses can include fillers such as "uhm", "uh", "hmm", and related non-lexical utterances. Unless you need to use them for your application, you can safely filter hesitation markers from a transcript.
+-   *For previous-generation models,* the service includes hesitation markers in transcription results for most languages. Different languages can use different hesitation markers or not indicate hesitations at all:
 
-Different languages can use different hesitation markers or not indicate hesitation at all:
+    -   *For US English,* hesitation markers are indicated by the token `%HESITATION`.
+    -   *For Japanese,* hesitation markers typically begin with `D_`.
+    -   *For Spanish,* the service does not produce hesitation markers.
 
--   *For Spanish,* the service does not produce hesitation markers.
--   *For Japanese,* hesitation markers typically begin with `D_`.
--   *For US English,* hesitation markers are indicated by the token `%HESITATION`.
+    The following example shows the token `%HESITATION` for a US English transcript:
 
-The following example shows the token `%HESITATION` for a US English transcript:
-
-```json
-{
-  "result_index": 0,
-  "results": [
+    ```json
     {
-      "alternatives": [
+      "result_index": 0,
+      "results": [
         {
-          "confidence": 0.99,
-          "transcript": ". . . that %HESITATION that's a . . ."
-        }
-      ],
-      "final": true
-    }
-  ]
-}
-```
-{: codeblock}
-
-Hesitation markers can appear in both interim and final results. Enabling smart formatting prevents hesitation markers from appearing in final results for US English. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting).
-{: note}
-
-Hesitation markers can also appear in other fields of a transcript. For example, if you request [Word timestamps](/docs/speech-to-text?topic=speech-to-text-metadata#word-timestamps) for the individual words of a transcript, the service reports the start and end time of each hesitation marker.
-
-```json
-{
-  "result_index": 0,
-  "results": [
-    {
-      "alternatives": [
-        {
-          "timestamps": [
-            . . .
-            [
-              "that",
-              7.31,
-              7.69
-            ],
-            [
-              "%HESITATION",
-              7.69,
-              7.98
-            ],
-            [
-              "that's",
-              7.98,
-              8.41
-            ],
-            [
-              "a",
-              8.41,
-              8.48
-            ],
-            . . .
+          "alternatives": [
+            {
+              "confidence": 0.99,
+              "transcript": ". . . that %HESITATION that's a . . ."
+            }
           ],
-          "confidence": 0.99,
-          "transcript": ". . . that %HESITATION that's a . . ."
+          "final": true
         }
-      ],
-      "final": true
+      ]
     }
-  ]
-}
-```
-{: codeblock}
+    ```
+    {: codeblock}
+
+    Hesitation markers can appear in both interim and final results. Enabling smart formatting prevents hesitation markers from appearing in final results for US English. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting).
+
+    Hesitation markers can also appear in other fields of a transcript. For example, if you request [Word timestamps](/docs/speech-to-text?topic=speech-to-text-metadata#word-timestamps) for the individual words of a transcript, the service reports the start and end time of each hesitation marker.
+
+    ```json
+    {
+      "result_index": 0,
+      "results": [
+        {
+          "alternatives": [
+            {
+              "timestamps": [
+                . . .
+                [
+                  "that",
+                  7.31,
+                  7.69
+                ],
+                [
+                  "%HESITATION",
+                  7.69,
+                  7.98
+                ],
+                [
+                  "that's",
+                  7.98,
+                  8.41
+                ],
+                [
+                  "a",
+                  8.41,
+                  8.48
+                ],
+                . . .
+              ],
+              "confidence": 0.99,
+              "transcript": ". . . that %HESITATION that's a . . ."
+            }
+          ],
+          "final": true
+        }
+      ]
+    }
+    ```
+    {: codeblock}
+
+    Unless you need to use them for your application, you can safely filter hesitation markers from a transcript.
+    {: note}
+
+-   *For next-generation models,* the service includes the actual hesitations in all transcription results. Next-generation models treat hesitations as words, so hesitations can appear in interim results, final results, and other fields such as the results for word timestamps. Next-generation models do not produce hesitation markers, and enabling smart formatting does not cause hesitations to be removed from final results.
+
+    The following example shows the hesitation "uhm" in a US English transcript:
+
+    ```json
+    {
+      "result_index": 0,
+      "results": [
+        {
+          "alternatives": [
+            {
+              "confidence": 0.99,
+              "transcript": ". . . that uhm that's a . . ."
+            }
+          ],
+          "final": true
+        }
+      ]
+    }
+    ```
+    {: codeblock}
 
 ## Capitalization
 {: #response-capitalization}

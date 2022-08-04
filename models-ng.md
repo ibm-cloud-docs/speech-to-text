@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-06-22"
+lastupdated: "2022-08-01"
 
 subcollection: speech-to-text
 
@@ -131,5 +131,5 @@ Next-generation models also support the following parameters, which are not avai
 
 Next-generation models also differ from previous-generation models with respect to the following additional features:
 
--   Next-generation models do not produce hesitation markers. Only previous-generation models can return hesitation markers. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
+-   Next-generation models do not produce hesitation markers. They instead include the actual hesitations in transcription results. For more information, see [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 -   Next-generation models support automatic capitalization only for German models. Previous-generation models support automatic customization only for US English models. For more information, see [Capitalization](/docs/speech-to-text?topic=speech-to-text-basic-response#response-capitalization).

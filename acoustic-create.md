@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2021
-lastupdated: "2021-11-17"
+  years: 2017, 2022
+lastupdated: "2021-08-01"
 
 subcollection: speech-to-text
 
@@ -87,13 +87,13 @@ The example returns the customization ID of the new model. Each custom model is 
 Once you create your custom acoustic model, the next step is to add audio resources to it. You use the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method to add an audio resource to a custom model. You can add
 
 -   An individual audio file in any format that is supported for speech recognition. For more information, see [Supported audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats).
--   An archive file (a **.zip** or **.tar.gz** file) that includes multiple audio files. Gathering multiple audio files into a single archive file and loading that single file is significantly more efficient than adding audio files individually.
+-   An archive file (a `.zip` or `.tar.gz` file) that includes multiple audio files. Gathering multiple audio files into a single archive file and loading that single file is significantly more efficient than adding audio files individually.
 
 You pass the audio resource as the body of the request and assign the resource an `audio_name`. For more information, see [Working with audio resources](/docs/speech-to-text?topic=speech-to-text-audioResources).
 
 The following examples show the addition of both audio- and archive-type resources:
 
--   This example adds an audio-type resource to the custom acoustic model with the specified `customization_id`. The `Content-Type` header identifies the type of the audio as `audio/wav`. The audio file, **audio1.wav**, is passed as the body of the request, and the resource is given the name `audio1`.
+-   This example adds an audio-type resource to the custom acoustic model with the specified `customization_id`. The `Content-Type` header identifies the type of the audio as `audio/wav`. The audio file, `audio1.wav`, is passed as the body of the request, and the resource is given the name `audio1`.
 
     ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
@@ -116,7 +116,7 @@ The following examples show the addition of both audio- and archive-type resourc
     ```
     {: pre}
 
--   This example adds an archive-type resource to the specified custom acoustic model. The `Content-Type` header identifies the type of the archive as `application/zip`. The `Contained-Contented-Type` header indicates that all files that are contained in the archive have the format `audio/l16` and are sampled at a rate of 16 kHz. The archive file, **audio2.zip**, is passed as the body of the request, and the resource is given the name `audio2`.
+-   This example adds an archive-type resource to the specified custom acoustic model. The `Content-Type` header identifies the type of the archive as `application/zip`. The `Contained-Contented-Type` header indicates that all files that are contained in the archive have the format `audio/l16` and are sampled at a rate of 16 kHz. The archive file, `audio2.zip`, is passed as the body of the request, and the resource is given the name `audio2`.
 
     ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
