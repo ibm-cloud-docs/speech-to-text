@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-08-01"
+lastupdated: "2022-08-04"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -125,10 +125,45 @@ Defect fix for speech hesitations and hesitation markers documentation
     -   [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation)
     -   [What results does smart formatting affect?](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-effects)
 
-<!--
 Security vulnerabilities addressed
 :   The following security vulnerabilities have been fixed:
--->
+    - [ Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in rsyslog (CVE-2022-24903)](https://www.ibm.com/support/pages/node/6610096){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to an HTTP request smuggling issue in Twisted (CVE-2022-24801)](https://www.ibm.com/support/pages/node/6610098){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service, caused by a buffer overflow in Twisted (CVE-2022-21716)](https://www.ibm.com/support/pages/node/6610100){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service, caused by incomplete string comparison in NumPy (CVE-2021-34141)](https://www.ibm.com/support/pages/node/6610102){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service, caused by a buffer overflow in NumPy (CVE-2021-41496)](https://www.ibm.com/support/pages/node/6610104){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to cookie and authorization header exposure in Twisted (CVE-2022-21712)](https://www.ibm.com/support/pages/node/6605065){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in Perl (CVE-2018-18311)](https://www.ibm.com/support/pages/node/6610118){: external}
+    - [ Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in Perl (CVE-2018-18312)](https://www.ibm.com/support/pages/node/6610122){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in Perl (CVE-2018-18313)](https://www.ibm.com/support/pages/node/6610124){: external}
+    - [ Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in Perl (CVE-2018-18314)](https://www.ibm.com/support/pages/node/6610126){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in Perl (CVE-2018-6913)](https://www.ibm.com/support/pages/node/6610128){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to CRLF injection in Python (CVE-2019-11236)](https://www.ibm.com/support/pages/node/6610234){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in GNU Tar (CVE-2019-9923)](https://www.ibm.com/support/pages/node/6610238){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in Perl (CVE-2020-10543)](https://www.ibm.com/support/pages/node/6610240){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to an integer overflow in Perl (CVE-2020-10878)](https://www.ibm.com/support/pages/node/6610242){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a buffer overflow in Perl (CVE-2020-12723)](https://www.ibm.com/support/pages/node/6610283){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in urllib3 (CVE-2021-33503)](https://www.ibm.com/support/pages/node/6610285){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to injection attacks in Ansible (CVE-2021-3583)](https://www.ibm.com/support/pages/node/6610287){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in Golang Go (CVE-2022-23772)](https://www.ibm.com/support/pages/node/6610289){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to incorrect access control in Golang Go (CVE-2022-23773)](https://www.ibm.com/support/pages/node/6610291){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in Golang Go (CVE-2022-23806)](https://www.ibm.com/support/pages/node/6610293){: external}
+    - [ Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in Golang Go (CVE-2022-24675)](https://www.ibm.com/support/pages/node/6610295){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in Golang Go (CVE-2022-24921)](https://www.ibm.com/support/pages/node/6610297){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in Golang Go (CVE-2022-28327)](https://www.ibm.com/support/pages/node/6610299){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in libssh, caused by improper bounds checking (CVE-2021-3634)](https://www.ibm.com/support/pages/node/6610303){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in Python (CVE-2021-3737)](https://www.ibm.com/support/pages/node/6610329){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a possible sensitive information exposure in Python (CVE-2021-4189)](https://www.ibm.com/support/pages/node/6610339){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a security restrictions bypass in lxml (CVE-2021-43818)](https://www.ibm.com/support/pages/node/6610341){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to arbitrary code execution in MS Visual Studio (CVE-2021-21300)](https://www.ibm.com/support/pages/node/6610343){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a security restrictions bypass in Git (CVE-2021-40330)](https://www.ibm.com/support/pages/node/6610345){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to arbitrary code execution in MS Visual Studio (CVE-2022-24765)](https://www.ibm.com/support/pages/node/6610347){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to arbitrary command execution in Git (CVE-2018-1000021)](https://www.ibm.com/support/pages/node/6610349){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to cross-site scripting in jQuery (CVE-2015-9251)](https://www.ibm.com/support/pages/node/6610351){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to cross-site scripting in jQuery (CVE-2019-11358)](https://www.ibm.com/support/pages/node/6610361){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to cross-site scripting in jQuery (CVE-2020-11022)](https://www.ibm.com/support/pages/node/6610363){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to cross-site scripting in jQuery (CVE-2020-11023)](https://www.ibm.com/support/pages/node/6610365){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a data binding rules security weakness in Spring Framework (CVE-2022-22968)](https://www.ibm.com/support/pages/node/6610371){: external}
 
 ## 29 June 2022 (Version 4.5.0)
 {: #speech-to-text-data-29june2022}
