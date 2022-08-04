@@ -125,8 +125,10 @@ Defect fix for speech hesitations and hesitation markers documentation
     -   [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation)
     -   [What results does smart formatting affect?](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-effects)
 
+<!--
 Security vulnerabilities addressed
 :   The following security vulnerabilities have been fixed:
+-->
 
 ## 29 June 2022 (Version 4.5.0)
 {: #speech-to-text-data-29june2022}
