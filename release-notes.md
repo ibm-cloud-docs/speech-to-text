@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-06-13"
+lastupdated: "2022-08-01"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -107,6 +107,17 @@ The service has the following known limitations:
     However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
+
+## 3 August 2022
+{: #speech-to-text-3august2022}
+{: release-note}
+
+Defect fix for speech hesitations and hesitation markers documentation
+:   **Defect fix:** Documentation for speech hesitations and hesitation markers has been updated. Previous-generation models include hesitation markers in place of speech hesitations in transcription results for most languages; smart formatting removes hesitation markers from US English final transcripts. Next-generation models include the actual speech hesitations in transcription results; smart formatting has no effect on their inclusion in final transcription results.
+
+    For more information, see:
+    -   [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation)
+    -   [What results does smart formatting affect?](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-effects)
 
 ## 1 June 2022
 {: #speech-to-text-1june2022}
@@ -473,7 +484,7 @@ Updates to beta US English next-generation model for improved speech recognition
 :   The next-generation US English `en-US_Telephony` model has been updated for improved speech recognition. The updated model continues to be beta functionality.
 
 Defect fix for documentation
-:   **Defect fix:** The documentation failed to state that next-generation models do not produce hesitation markers. The documentation has been updated to note that only previous-generation models produce hesitation markers. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
+:   **Defect fix:** The documentation failed to state that next-generation models do not produce hesitation markers. The documentation has been updated to note that only previous-generation models produce hesitation markers. Next-generation models include the actual hesitations in transcription results. For more information, see [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 
 ## 15 June 2021
 {: #speech-to-text-15june2021}
@@ -677,7 +688,7 @@ Updates to multiple models for improved speech recognition
     For more information, see [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade).
 
 Hesitation marker for German changed
-:   The hesitation marker that is used for the updated German broadband and narrowband models has changed from `[hesitation]` to `%HESITATION`. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
+:   The hesitation marker that is used for the updated German broadband and narrowband models has changed from `[hesitation]` to `%HESITATION`. For more information, see [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 
 ## 4 June 2020
 {: #speech-to-text-4june2020}

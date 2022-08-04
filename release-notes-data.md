@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-06-29"
+lastupdated: "2022-08-01"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -105,6 +105,30 @@ The service has the following known limitations:
     However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
 
     For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
+
+## 3 August 2022 (Version 4.5.1)
+{: #speech-to-text-data-3august2022}
+
+Version 4.5.1 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.5.1 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.5.x and Red Hat OpenShift versions 4.6, 4.8, and 4.10.
+
+Support for FIPS-enabled clusters
+:   Both {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} and {{site.data.keyword.texttospeechshort}} for {{site.data.keyword.icp4dfull_notm}} now support running on Federal Information Processing Standard (FIPS)-enabled clusters. For more information, see [Services that support FIPS](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=considerations-services-that-support-fips){: external}.
+
+Defect fix for fixed ephemeral storage calculations to prevent occasional pod evictions
+:   **Defect fix:** A defect was fixed and calculation of ephemeral storage limits is now more precise for the {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} and {{site.data.keyword.texttospeechshort}} for {{site.data.keyword.icp4dfull_notm}} runtimes. These changes prevent occasional pod evictions when the services' runtimes are under heavy load.
+
+Defect fix for speech hesitations and hesitation markers documentation
+:   **Defect fix:** Documentation for speech hesitations and hesitation markers has been updated. Previous-generation models include hesitation markers in place of speech hesitations in transcription results for most languages; smart formatting removes hesitation markers from US English final transcripts. Next-generation models include the actual speech hesitations in transcription results; smart formatting has no effect on their inclusion in final transcription results.
+
+    For more information, see:
+    -   [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation)
+    -   [What results does smart formatting affect?](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-effects)
+
+<!--
+Security vulnerabilities addressed
+:   The following security vulnerabilities have been fixed:
+-->
 
 ## 29 June 2022 (Version 4.5.0)
 {: #speech-to-text-data-29june2022}
@@ -350,7 +374,7 @@ Next-generation models now support audio-parsing parameters
     -   `split_transcript_at_phrase_end` directs the service to split the transcript into multiple final results based on semantic features of the input. For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-parsing#split-transcript).
 
 Defect fix for speaker labels documentation
-:   **Defect fix:**   Documentation of speaker labels included the following erroneous statement in multiple places: *For next-generation models, speaker labels are not supported for use with interim results or low latency.* Speaker labels are supported for use with interim results and low latency for next-generation models. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
+:   **Defect fix:**  Documentation of speaker labels included the following erroneous statement in multiple places: *For next-generation models, speaker labels are not supported for use with interim results or low latency.* Speaker labels are supported for use with interim results and low latency for next-generation models. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
 ## 23 February 2022 (Version 4.0.6)
 {: #speech-to-text-data-23february2022}
@@ -793,9 +817,8 @@ Unified {{site.data.keyword.speechtotextshort}} documentation
 
 Defect fixes for documentation
 :   **Defect fixes:**  The documentation has been updated to correct the following information:
-
+    -   The documentation failed to state that next-generation models do *not* produce hesitation markers. The documentation has been updated to note that only previous-generation models produce hesitation markers. Next-generation models include the actual hesitations in transcription results. For more information, see [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
     -   The documentation incorrectly stated that using the `smart_formatting` parameter causes the service to remove hesitation markers from final transcription results for Japanese. Smart formatting does not remove hesitation markers from final results for Japanese, only for US English. For more information, see [What results does smart formatting affect?](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-effects)
-    -   The documentation failed to state that next-generation models do *not* produce hesitation markers. The documentation has been updated to note that only previous-generation models produce hesitation markers. For more information, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 
 Version 1.1.x is going out of service
 :   {{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}} for {{site.data.keyword.icp4dfull_notm}} version 1.1.x go out of service on **30 September 2021**. You must upgrade to a later version of the services on {{site.data.keyword.icp4dfull_notm}} before that date. As of 1 October 2021, the documentation for version 1.1.4 will no longer be available.
@@ -908,7 +931,7 @@ The `split_transcript_at_phrase_end` parameter is now generally available for al
 :   The speech recognition parameter `split_transcript_at_phrase_end` is now generally available for all languages. Previously, it was generally available only for US and UK English. For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-parsing#split-transcript).
 
 Hesitation marker for German has changed
-:   The hesitation marker that is used for the updated German broadband and narrowband models has changed from `[hesitation]` to `%HESITATION`. For more information about hesitation markers, see [Hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
+:   The hesitation marker that is used for the updated German broadband and narrowband models has changed from `[hesitation]` to `%HESITATION`. For more information about hesitation markers, see [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 
 Defect fix to address latency issue for models with large numbers of grammars
 :   **Defect fix:** The service no longer has a latency issue for custom language models that contain a large number of grammars. When initially used for speech recognition, such custom models could take multiple seconds to load. The custom models now load much faster, greatly reducing latency when they are used for recognition.
