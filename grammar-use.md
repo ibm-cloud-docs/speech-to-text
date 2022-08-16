@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-03-25"
+lastupdated: "2022-08-04"
 
 subcollection: speech-to-text
 
@@ -16,7 +16,7 @@ subcollection: speech-to-text
 Once you create and train your custom language model with your grammar, you can use the grammar in speech recognition requests:
 {: shortdesc}
 
--   Use the `language_customization_id` query parameter to specify the customization ID (GUID) of the custom language model for which the grammar is defined. A custom model can be used only with the base model for which it is created. If your custom model is based on a model other than the default, you must also specify that base model with the `model` query parameter. For more information, see [The default model](/docs/speech-to-text?topic=speech-to-text-models-use#models-use-default). You must issue the request with credentials for the instance of the service that owns the model.
+-   Use the `language_customization_id` query parameter to specify the customization ID (GUID) of the custom language model for which the grammar is defined. A custom model can be used only with the base model for which it is created. If your custom model is based on a model other than the default, you must also specify that base model with the `model` query parameter. For more information, see [Using the default model](/docs/speech-to-text?topic=speech-to-text-models-use#models-use-default). You must issue the request with credentials for the instance of the service that owns the model.
 -   Use the `grammar_name` parameter to specify the name of the grammar. You can specify only a single grammar with a request.
 
 When you use a grammar, the service recognizes only words from the specified grammar. The service does not use custom words that were added from corpora, that were added or modified individually, or that are recognized by other grammars.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-08-01"
+lastupdated: "2022-08-10"
 
 subcollection: speech-to-text
 
@@ -99,14 +99,14 @@ Smart formatting is based on the presence of obvious keywords in the transcript.
 {: #smart-formatting-japanese}
 
 -   Phone numbers must be 10 or 11 digits and begin with valid prefixes for telephone numbers in Japan. For example, valid prefixes include `03` and `090`.
--   English words are converted to ASCII (*hankaku*) characters. For example, <code>&#65321;&#65314;&#65325;</code> is converted to `IBM`.
--   Ambiguous terms might not be converted if sufficient context is unavailable. For example, it is unclear whether <code>&#19968;&#26178;</code> and <code>&#21313;&#20998;</code> refer to times.
--   Punctuation is handled in the same way with or without smart formatting. For example, based on probability calculations, one of <code>&#12459;&#12531;&#12510;</code> or `,` is selected.
+-   English words are converted to ASCII (*hankaku*) characters. For example, `ＩＢＭ` is converted to `IBM`.
+-   Ambiguous terms might not be converted if sufficient context is unavailable. For example, it is unclear whether `一時` and `十分` refer to times.
+-   Punctuation is handled in the same way with or without smart formatting. For example, based on probability calculations, one of `カンマ` or `,` is selected.
 -   Strings that describe yen values are not replaced with the yen currency symbol.
 -   Internet email and web addresses in any form are not converted.
 -   The Japanese narrowband model (`ja-JP_NarrowbandModel`) includes some multigram word units for digits and decimal fractions. The service returns these multigram units regardless of whether you enable smart formatting. The following examples show the units that the service returns. The numbers in parentheses show the equivalent Arabic numeric expression for each unit.
-    -   *Digits:* <code>&#12295;&#19968;</code> (01), ..., <code>&#12295;&#20061;</code> (09), <code>&#19968;&#12295;</code> (10), ..., <code>&#20061;&#12295;</code> (90)
-    -   *Decimal fractions:* <code>&#12295;&#12539;</code> (0.), <code>&#19968;&#12539;</code> (1.), ..., <code>&#21313;&#12539;</code> (10.)
+    -   *Digits:* `〇一` (01), ..., `〇九` (09), `一〇` (10), ..., `九〇` (90)
+    -   *Decimal fractions:* `〇・` (0.), `一・` (1.), ..., `十・` (10.)
 
     The smart formatting feature understands and returns the multigram units that the model generates. If you apply your own post-processing to transcription results, you need to handle these units appropriately.
 
@@ -203,7 +203,7 @@ Japanese redaction has the following differences:
 -   In addition to masking strings of three or more consecutive digits, redaction also masks street addresses and numbers, regardless of whether they contain fewer than three digits.
 -   Similarly, redaction also masks date information in Japanese-style birth dates. In Japanese, date information is usually presented in Common Era format but sometimes follows Japanese style, particularly for birth dates. In this case, the year and month are masked even though they contain just one or two digits.
 
-    For example, a Japanese-style birth date without redaction is <code>&#24179;&#25104; 30&#24180; 2&#26376;</code>. With redaction, the date becomes <code>&#24179;&#25104; XX&#24180; X&#26376;</code>.
+    For example, a Japanese-style birth date without redaction is `平成 30年 2月`. With redaction, the date becomes `平成 XX年 X月`.
 
 #### Korean
 {: #numeric-redaction-korean}
@@ -211,11 +211,11 @@ Japanese redaction has the following differences:
 Korean redaction has the following differences:
 
 -   The smart formatting feature is not supported. The service still performs numeric redaction for Korean, but it performs no other smart formatting.
--   Isolated digit characters are reduced, but possible digit characters that are included as part of Korean phrases are not. For example, the character <code>&#51060;</code> in the following phrase is not replaced by an `X` because it is adjacent to the following character:
+-   Isolated digit characters are reduced, but possible digit characters that are included as part of Korean phrases are not. For example, the character `이`in the following phrase is not replaced by an `X` because it is adjacent to the following character:
 
-    <code>&#51060;&#51077;&#45768;&#45796;</code>
+    `이입니다`
 
-    If the <code>&#51060;</code> character were separated from the following character by a space, it would be replaced by an `X`, as described in [Numeric redaction results](#numeric-redaction-results).
+    If the `이` character were separated from the following character by a space, it would be replaced by an `X`, as described in [Numeric redaction results](#numeric-redaction-results).
 
 ### Numeric redaction results
 {: #numeric-redaction-results}
@@ -225,8 +225,8 @@ The following table shows examples of final transcripts both with and without nu
 | Language | Without redaction | With redaction |
 |----------|-------------------|----------------|
 | US English | my credit card number is four one four seven two | my credit card number is XXXXX |
-| Japanese | &#31169; &#12398;&#12463;&#12524;&#12472;&#12483;&#12488; &#12459;&#12540;&#12489; &#30058;&#21495; &#12399; &#22235; &#19968; &#22235; &#19971; &#20108;&#12391;&#12377; | &#31169; &#12398;&#12463;&#12524;&#12472;&#12483;&#12488; &#12459;&#12540;&#12489; &#30058;&#21495; &#12399; XXXXX &#12391;&#12377; |
-| Korean | &#45236; &#49888;&#50857; &#52852;&#46300; &#48264;&#54840;&#45716; &#49324; &#51068; &#49324; &#52832; &#51060; &#48264;&#51077;&#45768;&#45796; | &#45236; &#49888;&#50857; &#52852;&#46300; &#48264;&#54840;&#45716; XXXXX &#48264;&#51077;&#45768;&#45796; |
+| Japanese | 私 のクレジット カード 番号 は 四 一 四 七 二です | 私 のクレジット カード 番号 は XXXXX です |
+| Korean | 내 신용 카드 번호는 사 일 사 칠 이 번입니다 | 내 신용 카드 번호는 XXXXX 번입니다 |
 {: caption="Table 5. Numeric redaction example transcripts"}
 
 ### Numeric redaction example

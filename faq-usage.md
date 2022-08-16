@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-08-23"
+  years: 2015, 2022
+lastupdated: "2022-08-15"
 
 keywords: faqs,frequently asked questions,question,Speech to Text
 
@@ -62,6 +62,13 @@ The amount of audio that you can submit with a single speech recognition request
 -   The asynchronous HTTP interface accepts a maximum of 1 GB of audio data.
 
 For more information, see [Recognizing speech with the service](/docs/speech-to-text?topic=speech-to-text-service-features#features-recognition).
+
+## Can I transcribe speech from video files?
+{: #faq-usage-video}
+{: faq}
+{: support}
+
+You cannot transcribe speech from a multimedia file that contains both audio and video. To transcribe speech from a video file, you must separate the audio data from the video data. For more information, see [Transcribing speech from video files](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-video).
 
 ## How can I improve transcription accuracy?
 {: #faq-usage-three}

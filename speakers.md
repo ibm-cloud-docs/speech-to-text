@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-03-04"
+lastupdated: "2022-08-12"
 
 subcollection: speech-to-text
 
@@ -176,7 +176,7 @@ As a result, speaker IDs might not be sequential, contiguous, or ordered. For in
 ## Requesting interim results for speaker labels
 {: #speaker-labels-interim}
 
-When you use speaker labels with interim results, the service duplicates the final speaker label object. For more information, see the known limitations in the [Release notes for IBM Cloud](/docs/speech-to-text?topic=speech-to-text-release-notes) or the [Release notes for IBM Cloud Pak for Data](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
+When you use speaker labels with interim results, the service duplicates the final speaker label object. For more information, see [Known limitations](/docs/speech-to-text?topic=speech-to-text-known-limitations#limitation-interim-results).
 {: important}
 
 With the WebSocket interface, you can request interim results as well as speaker labels (for more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results)). Final results are generally better than interim results. But interim results can help identify the evolution of a transcript and the assignment of speaker labels. Interim results can indicate where transient speakers and IDs appeared or disappeared. However, the service can reuse the IDs of speakers that it initially identifies and later reconsiders and omits. Therefore, an ID might refer to two different speakers in interim and final results.

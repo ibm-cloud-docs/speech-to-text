@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-04-05"
+lastupdated: "2022-08-04"
 
 subcollection: speech-to-text
 
@@ -18,7 +18,7 @@ content-type: troubleshoot
 Once you create and train your custom language model, you can use it in speech recognition requests by using the `language_customization_id` query parameter. By default, no custom language model is used with a request. You can create multiple custom language models for the same or different domains. But you can specify only one custom language model at a time for a speech recognition request. You must issue the request with credentials for the instance of the service that owns the custom model.
 {: shortdesc}
 
-A custom model can be used only with the base model for which it is created. If your custom model is based on a model other than the default, you must also specify that base model with the `model` query parameter. For more information, see [The default model](/docs/speech-to-text?topic=speech-to-text-models-use#models-use-default).
+A custom model can be used only with the base model for which it is created. If your custom model is based on a model other than the default, you must also specify that base model with the `model` query parameter. For more information, see [Using the default model](/docs/speech-to-text?topic=speech-to-text-models-use#models-use-default).
 
 For information about telling the service how much weight to give to words from a custom model, see [Using customization weight](#weight). For examples that use a grammar with a custom language model, see [Using a grammar for speech recognition](/docs/speech-to-text?topic=speech-to-text-grammarUse).
 

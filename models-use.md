@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-03-25"
+lastupdated: "2022-08-04"
 
 subcollection: speech-to-text
 
@@ -73,7 +73,7 @@ curl -X POST \
 ```
 {: pre}
 
-## The default model
+## Using the default model
 {: #models-use-default}
 
 If you omit the `model` parameter from a speech recognition request, the service uses the US English `en-US_BroadbandModel` by default. This default applies to all speech recognition requests.

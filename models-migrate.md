@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-05-25"
+lastupdated: "2022-08-10"
 
 subcollection: speech-to-text
 
@@ -21,7 +21,7 @@ You must migrate your use of any deprecated previous-generation models to the eq
 This topic provides an overview of the steps that you need to take to migrate from previous- to next-generation models. For more information about migrating, you can also see [Watson Speech to Text: How to Plan Your Migration to the Next-Generation Models](https://medium.com/ibm-data-ai/watson-speech-to-text-how-to-plan-your-migration-to-the-next-generation-models-6b10605b3bc5){: external}.
 
 ## Step 1: Identify the next-generation model to which to migrate
-{: models-migrate-step1}
+{: #models-migrate-step1}
 
 The following topics describe all previous- and next-generation models:
 -   [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models)
@@ -54,7 +54,7 @@ curl -X POST -u "apikey:{apikey}" \
 {: pre}
 
 ## Step 2: Identify the features that are available with next-generation models
-{: models-migrate-step2}
+{: #models-migrate-step2}
 
 Next-generation models support slightly fewer features and parameters than previous-generation models. However, although they lack full parity, most features are available with both types of models. And where a feature is limited to a subset of languages, the limitations apply equally to both types of models.
 
@@ -88,7 +88,7 @@ curl -X POST -u "apikey:{apikey}" \
 {: pre}
 
 ## Step 3: Re-create any custom language models that you use
-{: models-migrate-step3}
+{: #models-migrate-step3}
 
 You must re-create any custom language models that are based on previous-generation models by basing them on the equivalent next-generation models. This requires that you create a new custom language model and add your corpora, grammars, and custom words from the old model to the new model.
 
@@ -118,7 +118,7 @@ curl -X POST -u "apikey:{apikey}" \
 {: pre}
 
 ## Step 4: Evaluate the results of the next-generation model
-{: models-migrate-step4}
+{: #models-migrate-step4}
 
 Once you have updated your speech recognition requests to use next-generation models, eliminated unsupported parameters, and re-created any custom language models, you can experiment with speech recognition based on previous- and next-generation models. Compare the resulting transcripts to determine whether the next-generation model produces equivalent or better results. Also consider the performance of requests that use next-generation to determine how much faster you receive results.
 

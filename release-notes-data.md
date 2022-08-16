@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-08-04"
+lastupdated: "2022-08-12"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -17,94 +17,13 @@ subcollection: speech-to-text
 
 ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}} only**
 
-The following features and changes were included for each release and update of installed or on-premises instances of {{site.data.keyword.speechtotextfull}} for {{site.data.keyword.icp4dfull_notm}}. The information includes known limitations.  Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
+The following features and changes were included for each release and update of installed or on-premises instances of {{site.data.keyword.speechtotextfull}} for {{site.data.keyword.icp4dfull_notm}}. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
 {: shortdesc}
+
+For information about known limitations of the service, see [Known limitations](/docs/speech-to-text?topic=speech-to-text-known-limitations).
 
 For information about releases and updates of the service for {{site.data.keyword.cloud_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes).
 {: note}
-
-## Known limitations
-{: #release-notes-data-limitations}
-
-The service has the following known limitations:
-
--   **29 July 2021:** When you use previous-generation models with the WebSocket interface, if you request both speaker labels and interim results, the speaker labels response includes an extra object. The final results duplicate the object for the last speaker label. Instead of appearing once with `"final": true`, the object appears twice: once with `"final": false` and once with `"final": true`.
-
-    For example, a WebSocket request that includes both speaker labels and interim results sends a `start` message like the following:
-
-    ```json
-    var message = {
-      action: 'start',
-      speaker_labels: true,
-      interim_results: true
-    };
-    websocket.send(JSON.stringify(message));
-    ```
-    {: codeblock}
-
-    To indicate final results for speaker labels, the service is supposed to return a response of the following form:
-
-    ```json
-    {
-      "speaker_labels": [
-        . . .
-        {
-          "from": 1.01,
-          "to": 1.75,
-          "speaker": 0,
-          "confidence": 0.75,
-          "final": false
-        },
-        {
-          "from": 1.76,
-          "to": 2.50,
-          "speaker": 1,
-          "confidence": 0.80,
-          "final": true
-        }
-      ]
-    }
-    ```
-    {: codeblock}
-
-    Instead, the service returns final results like the following. Note that the object for the last speaker label, which begins at `1.76` and ends at `2.50`, is returned twice. The `"final": true` indication is associated with the second instance of the label.
-
-    ```json
-    {
-      "speaker_labels": [
-        . . .
-        {
-          "from": 1.01,
-          "to": 1.75,
-          "speaker": 0,
-          "confidence": 0.75,
-          "final": false
-        },
-        {
-          "from": 1.76,
-          "to": 2.50,
-          "speaker": 1,
-          "confidence": 0.80,
-          "final": false
-        }
-      ]
-    }{
-      "from": 1.76,
-      "to": 2.50,
-      "speaker": 1,
-      "confidence": 0.80,
-      "final": true
-    }
-    ```
-    {: codeblock}
-
-    For more information about using speaker labels with interim results, see [Requesting interim results for speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels#speaker-labels-interim).
-
--   **9 December 2020:** The `GET /v1/models` and `GET /v1/models/{model_id}` methods list information about language models. Under `supported_features`, the `speaker_labels` field indicates whether you can use the `speaker_labels` parameter with a model. At this time, the field returns `true` for all models.
-
-    However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
-
-    For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
 ## 3 August 2022 (Version 4.5.1)
 {: #speech-to-text-data-3august2022}
@@ -127,16 +46,16 @@ Defect fix for speech hesitations and hesitation markers documentation
 
 Security vulnerabilities addressed
 :   The following security vulnerabilities have been fixed:
-    - [ Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in rsyslog (CVE-2022-24903)](https://www.ibm.com/support/pages/node/6610096){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in rsyslog (CVE-2022-24903)](https://www.ibm.com/support/pages/node/6610096){: external}
     - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to an HTTP request smuggling issue in Twisted (CVE-2022-24801)](https://www.ibm.com/support/pages/node/6610098){: external}
     - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service, caused by a buffer overflow in Twisted (CVE-2022-21716)](https://www.ibm.com/support/pages/node/6610100){: external}
     - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service, caused by incomplete string comparison in NumPy (CVE-2021-34141)](https://www.ibm.com/support/pages/node/6610102){: external}
     - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service, caused by a buffer overflow in NumPy (CVE-2021-41496)](https://www.ibm.com/support/pages/node/6610104){: external}
     - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to cookie and authorization header exposure in Twisted (CVE-2022-21712)](https://www.ibm.com/support/pages/node/6605065){: external}
     - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in Perl (CVE-2018-18311)](https://www.ibm.com/support/pages/node/6610118){: external}
-    - [ Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in Perl (CVE-2018-18312)](https://www.ibm.com/support/pages/node/6610122){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in Perl (CVE-2018-18312)](https://www.ibm.com/support/pages/node/6610122){: external}
     - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in Perl (CVE-2018-18313)](https://www.ibm.com/support/pages/node/6610124){: external}
-    - [ Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in Perl (CVE-2018-18314)](https://www.ibm.com/support/pages/node/6610126){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in Perl (CVE-2018-18314)](https://www.ibm.com/support/pages/node/6610126){: external}
     - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in Perl (CVE-2018-6913)](https://www.ibm.com/support/pages/node/6610128){: external}
     - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to CRLF injection in Python (CVE-2019-11236)](https://www.ibm.com/support/pages/node/6610234){: external}
     - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in GNU Tar (CVE-2019-9923)](https://www.ibm.com/support/pages/node/6610238){: external}
@@ -148,7 +67,7 @@ Security vulnerabilities addressed
     - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in Golang Go (CVE-2022-23772)](https://www.ibm.com/support/pages/node/6610289){: external}
     - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to incorrect access control in Golang Go (CVE-2022-23773)](https://www.ibm.com/support/pages/node/6610291){: external}
     - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in Golang Go (CVE-2022-23806)](https://www.ibm.com/support/pages/node/6610293){: external}
-    - [ Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in Golang Go (CVE-2022-24675)](https://www.ibm.com/support/pages/node/6610295){: external}
+    - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in Golang Go (CVE-2022-24675)](https://www.ibm.com/support/pages/node/6610295){: external}
     - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in Golang Go (CVE-2022-24921)](https://www.ibm.com/support/pages/node/6610297){: external}
     - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in Golang Go (CVE-2022-28327)](https://www.ibm.com/support/pages/node/6610299){: external}
     - [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in libssh, caused by improper bounds checking (CVE-2021-3634)](https://www.ibm.com/support/pages/node/6610303){: external}
@@ -207,10 +126,8 @@ Updates to multiple next-generation telephony models
 Defect fix: Confidence scores are now reported for all transcription results
 :   **Defect fix:** Confidence scores are now reported for all transcription results. Previously, when the service returned multiple transcripts for a single speech recognition request, confidence scores might not be returned for all transcripts.
 
-<!--
 Security vulnerabilities addressed
-:   The following security vulnerabilities have been fixed:
--->
+:   No security vulnerabilities were fixed for version 4.5.0.
 
 ## 25 May 2022 (Version 4.0.9)
 {: #speech-to-text-data-25may2022}
@@ -292,7 +209,7 @@ Security vulnerabilities addressed
     -   [Security Bulletin: A vulnerability in ISC BIND affects IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data (CVE-2018-5741)](https://www.ibm.com/support/pages/node/6575493){: external}
     -   [Security Bulletin: A vulnerability in Python affects IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data (CVE-2019-20916)](https://www.ibm.com/support/pages/node/6575495){: external}
     -   [Security Bulletin: A vulnerability with ISC BIND affects IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data (CVE-2021-25214)](https://www.ibm.com/support/pages/node/6575497){: external}
-    -   [ Security Bulletin: A vulnerability in ISC BIND affects IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data (CVE-2021-25215)](https://www.ibm.com/support/pages/node/6575499){: external}
+    -   [Security Bulletin: A vulnerability in ISC BIND affects IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data (CVE-2021-25215)](https://www.ibm.com/support/pages/node/6575499){: external}
     -   [Security Bulletin: A vulnerability in ISC BIND affects IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data (CVE-2021-25216)](https://www.ibm.com/support/pages/node/6575503){: external}
     -   [Security Bulletin: A vulnerability in ISC BIND affects IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data (CVE-2021-25219)](https://www.ibm.com/support/pages/node/6575505){: external}
     -   [Security Bulletin: A vulnerability in PostgreSQL JDBC Driver (PgJDBC) affects IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data (CVE-2022-21724)](https://www.ibm.com/support/pages/node/6575507){: external}

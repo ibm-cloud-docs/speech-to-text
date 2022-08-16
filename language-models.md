@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-04-05"
+lastupdated: "2022-08-12"
 
 subcollection: speech-to-text
 
@@ -52,6 +52,9 @@ The method also returns a `status` field that indicates the state of the custom 
 -   `failed` indicates that training of the model failed. Examine the words in the model's words resource to determine the errors that prevented the model from being trained.
 
 Additionally, the output includes a `progress` field that indicates the status of a custom model's training. If you used the `POST /v1/customizations/{customization_id}/train` method to successfully train the model, this field has a value of `100`. If the model is not completely trained and `available`, the field has a value of `0`.
+
+When you monitor the training or upgrading of a custom model, poll the value of the `status` field, not the value of the `progress` field. If the operation fails for any reason, the value of the `status` field changes to reflect the failure; the value of the `progress` field remains `0`.
+{: tip}
 
 ### List all custom language models example
 {: #listExample-language-all}
