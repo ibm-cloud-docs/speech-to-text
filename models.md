@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-04-01"
+lastupdated: "2022-08-10"
 
 subcollection: speech-to-text
 
@@ -46,7 +46,7 @@ The following sections list the previous-generation models of each type that are
 All models are available for both product versions, {{site.data.keyword.cloud_notm}} and {{site.data.keyword.icp4dfull_notm}}.
 
 ### Narrowband models
-{: models-pg-narrowband}
+{: #models-pg-narrowband}
 
 Table 1 lists the previous-generation narrowband models that are available.
 
@@ -74,7 +74,7 @@ Table 1 lists the previous-generation narrowband models that are available.
 {: caption="Table 1. Supported previous-generation narrowband models"}
 
 ### Broadband models
-{: models-pg-broadband}
+{: #models-pg-broadband}
 
 Table 2 lists the previous-generation broadband models that are available.
 
@@ -86,10 +86,10 @@ Table 2 lists the previous-generation broadband models that are available.
 | English (Australian) | `en-AU_BroadbandModel` | GA  \n Deprecated | `en-AU_Multimedia` |
 | English (United Kingdom) | `en-GB_BroadbandModel` | GA  \n Deprecated | `en-GB_Multimedia` |
 | English (United States) | `en-US_BroadbandModel` | GA  \n Deprecated | `en-US_Multimedia` |
-| French (Canadian) | `fr-CA_BroadbandModel` | GA  \n Deprecated | `fr-CA_Telephony` |
+| French (Canadian) | `fr-CA_BroadbandModel` | GA  \n Deprecated | `fr-CA_Multimedia` |
 | French (France) | `fr-FR_BroadbandModel` | GA  \n Deprecated | `fr-FR_Multimedia` |
 | German | `de-DE_BroadbandModel` | GA  \n Deprecated | `de-DE_Multimedia` |
-| Italian | `it-IT_BroadbandModel` | GA  \n Deprecated | `it-IT_Telephony` |
+| Italian | `it-IT_BroadbandModel` | GA  \n Deprecated | `it-IT_Multimedia` |
 | Japanese | `ja-JP_BroadbandModel` | GA | `ja-JP_Multimedia` |
 | Korean | `ko-KR_BroadbandModel` | GA  \n Deprecated | `ko-KR_Multimedia`|
 | Portuguese (Brazilian) | `pt-BR_BroadbandModel` | GA  \n Deprecated | `pt-BR_Multimedia` |

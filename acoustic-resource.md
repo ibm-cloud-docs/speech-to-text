@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2022
-lastupdated: "2021-08-01"
+lastupdated: "2021-08-06"
 
 subcollection: speech-to-text
 
@@ -107,14 +107,14 @@ curl -X POST \
 ```
 {: pre}
 
-## Guidelines for adding audio resources
+## Guidelines for adding audio
 {: #audioGuidelines}
 
 The improvement in recognition accuracy that you can expect from using a custom acoustic model depends on a number of factors. These factors include how much audio data the custom acoustic model contains and how similar that data is to the audio that is being transcribed. The improvement also depends on whether the custom acoustic model is trained with a corresponding custom language model.
 
 Follow these guidelines when you add audio resources to a custom acoustic model:
 
--   Add at least 10 minutes and no more than 200 hours of audio to a custom acoustic model. The audio must include speech, not silence.
+-   Add at least 10 minutes of audio that includes speech, not silence.
 
     The quality of the audio makes a difference when you are determining how much to add. The better the model's audio reflects the characteristics of the audio that is to be recognized, the better the quality of the custom model for speech recognition. If the audio is of good quality, adding more can improve transcription accuracy. But adding even five to ten hours of good quality audio can make a positive difference.
 -   Add audio resources that are no larger than 100 MB. All audio- and archive-type resources are limited to a maximum size of 100 MB.
@@ -134,3 +134,29 @@ Follow these guidelines when you add audio resources to a custom acoustic model:
     -   If your audio is domain-specific and contains unique words that are not found in the service's base vocabulary, use language model customization to expand the service's base vocabulary. Acoustic model customization alone cannot produce those words during transcription.
 
     For more information, see [Using custom acoustic and custom language models together](/docs/speech-to-text?topic=speech-to-text-useBoth).
+
+## Maximum hours of audio
+{: #audioMaximum}
+
+The maximum hour of audio that you can add to a custom acoustic model depend on the version of the service that you are using:
+
+-   ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}** - Add a maximum of 200 hours of audio data.
+-   ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}** - Add a maximum of approximately 50 hours of audio data. You might be able to add 10 or 20 hours of additional audio data per model. However, it is safer to assume a maximum of 50 hours of audio data per custom acoustic model and plan accordingly.
+
+    The maximum amount of audio per custom acoustic model was previously 200 hours. The limit is being reduced by location according to the schedule in Table 1.
+
+    | Location | Planned date of new limit | Actual date of new limit |
+    |----------|:-------------------------:|:------------------------:|
+    | `eu-gb` (London) | 11 August 2022 | TBD |
+    | `jp-tok` (Tokyo) | 31 August 2022 | TBD |
+    | `us-east` (Washington, DC) | 9 September 2022 | TBD |
+    | `us-south` (Dallas) | 16 September 2022 | TBD |
+    | `au-syd` (Sydney) | 21 September 2022 | TBD |
+    | `eu-de` (Frankfurt) | 23 September 2022 | TBD |
+    {: caption="Table 1. Schedule of 50-hour limit per location"}
+
+    If you currently have a custom acoustic model with more than 50 hours of audio data, you can do one of the following:
+
+    -   Leave the model alone. The model will continue to work with speech recognition requests. However, you cannot add more audio to the model or retrain the model.
+    -   Reduce the amount of audio that the model contains. Maintain the audio that makes the most difference, meaning the audio that is most representative of the characteristics that you wish to address with the model. Remove audio that is less characteristics of the audio you plan to recognize. By using only better quality audio, you can reduce the amount audio the you need for the model.
+    -   If possible, separate the audio into multiple models. Create new, smaller models that address specific characteristics that the original model addressed. For example, you might be using the same model to represent multiple audio characteristics. Instead of relying on a single large model, create multiple smaller models that represent more refined characteristics. This might not be possible for all models. But because you can specify only a single custom acoustic model with a speech recognition request, it can help if your data accommodates such refinement.

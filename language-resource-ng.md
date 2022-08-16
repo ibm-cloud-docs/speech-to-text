@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-04-07"
+lastupdated: "2022-08-06"
 
 subcollection: speech-to-text
 
@@ -157,24 +157,24 @@ The following descriptions apply to all supported dialects of Dutch, English, Fr
 {: #corpusLanguages-jaJP-ng}
 
 -   Converts all characters to full-width characters.
--   Converts numbers to their equivalent words, for example, `500` becomes <code>&#20116;&#30334;</code>, and `0.15` becomes <code>&#12295;&#12539;&#19968;&#20116;</code>.
--   Does not convert tokens that include symbols to equivalent strings, for example, `100%` becomes <code>&#30334;&#65285;</code>.
+-   Converts numbers to their equivalent words, for example, `500` becomes `五百`, and `0.15` becomes `〇・一五`.
+-   Does not convert tokens that include symbols to equivalent strings, for example, `100%` becomes `百％`.
 -   Does not automatically remove punctuation. {{site.data.keyword.IBM_notm}} highly recommends that you remove punctuation if your application is transcription-based as opposed to dictation-based.
 
 #### Parsing of Korean
 {: #corpusLanguages-koKR-ng}
 
--   Converts numbers to their equivalent words, for example, `10` becomes <code>&#49901;</code>.
+-   Converts numbers to their equivalent words, for example, `10` becomes `십`.
 -   Removes the following punctuation and special characters: `- ( ) * : . , ' "`. However, not all punctuation and special characters that are removed for other languages are removed for Korean, for example:
     -   Removes a period (`.`) symbol only when it occurs at the end of a line of input.
     -   Does not remove a tilde (`~`) symbol.
-    -   Does not remove or otherwise process Unicode wide-character symbols, for example, <code>&#8230;</code> (triple dot or ellipsis).
+    -   Does not remove or otherwise process Unicode wide-character symbols, for example, `…` (triple dot or ellipsis).
 
     In general, {{site.data.keyword.IBM_notm}} recommends that you remove punctuation, special characters, and Unicode wide-characters before you process a corpus file.
 -   Does not remove or ignore phrases that are enclosed in `( )` (parentheses), `< >` (angle brackets), `[ ]` (square brackets), or `{ }` (curly braces).
 -   Converts tokens that include certain symbols to meaningful string representations, for example:
-    -   `24%` becomes <code>&#51060;&#49901;&#49324;&#54140;&#49468;&#53944;</code>.
-    -   `$10` becomes <code>&#49901;&#45804;&#47084;</code>.
+    -   `24%` becomes `이십사퍼센트`.
+    -   `$10` becomes `십달러`.
 
     This list is not exhaustive. The service makes similar adjustments for other characters as needed.
 -   For phrases that consist of Latin (English) characters or a mix of Hangul and Latin characters, the service uses the phrases exactly as they appear in the corpus file.
@@ -244,35 +244,35 @@ Follow these guidelines when specifying a sounds-like for any language:
 #### Guidelines for Japanese
 {: #wordLanguages-jaJP-ng}
 
--   Use only full-width Katakana characters by using the <code>&#8213;</code> lengthen symbol (*chou-on*, or &#38263;&#38899;, in Japanese). Do not use half-width characters.
--   Use contracted sounds (*yoh-on*, or &#25303;&#38899;, in Japanese) only in the following syllable contexts:
+-   Use only full-width Katakana characters by using the `―` lengthen symbol (*chou-on*, or 長音, in Japanese). Do not use half-width characters.
+-   Use contracted sounds (*yoh-on*, or 拗音, in Japanese) only in the following syllable contexts:
 
-    <code>&#12452;&#12455;</code>, <code>&#12454;&#12451;</code>, <code>&#12454;&#12455;</code>, <code>&#12454;&#12457;</code>, <code>&#12461;&#12451;</code>, <code>&#12461;&#12515;</code>, <code>&#12461;&#12517;</code>, <code>&#12461;&#12519;</code>, <code>&#12462;&#12515;</code>, <code>&#12462;&#12517;</code>, <code>&#12462;&#12519;</code>, <code>&#12463;&#12449;</code>, <code>&#12463;&#12451;</code>, <code>&#12463;&#12455;</code>, <code>&#12463;&#12457;</code>
+    `イェ`, `ウィ`, `ウェ`, `ウォ`, `キィ`, `キャ`, `キュ`, `キョ`, `ギャ`, `ギュ`, `ギョ`, `クァ`, `クィ`, `クェ`, `クォ`
 
-    <code>&#12464;&#12449;</code>, <code>&#12464;&#12457;</code>, <code>&#12471;&#12451;</code>, <code>&#12471;&#12455;</code>, <code>&#12471;&#12515;</code>, <code>&#12471;&#12517;</code>, <code>&#12471;&#12519;</code>, <code>&#12472;&#12451;</code>, <code>&#12472;&#12455;</code>, <code>&#12472;&#12515;</code>, <code>&#12472;&#12517;</code>, <code>&#12472;&#12519;</code>, <code>&#12473;&#12451;</code>, <code>&#12474;&#12451;</code>, <code>&#12481;&#12455;</code>
+    `グァ`, `グォ`, `シィ`, `シェ`, `シャ`, `シュ`, `ショ`, `ジィ`, `ジェ`, `ジャ`, `ジュ`, `ジョ`, `スィ`, `ズィ`, `チェ`
 
-    <code>&#12481;&#12515;</code>, <code>&#12481;&#12517;</code>, <code>&#12481;&#12519;</code>, <code>&#12482;&#12455;</code>, <code>&#12482;&#12515;</code>, <code>&#12482;&#12517;</code>, <code>&#12482;&#12519;</code>, <code>&#12484;&#12449;</code>, <code>&#12484;&#12451;</code>, <code>&#12484;&#12455;</code>, <code>&#12484;&#12457;</code>, <code>&#12486;&#12451;</code>, <code>&#12486;&#12517;</code>, <code>&#12487;&#12451;</code>, <code>&#12487;&#12515;</code>
+    `チャ`, `チュ`, `チョ`, `ヂェ`, `ヂャ`, `ヂュ`, `ヂョ`, `ツァ`, `ツィ`, `ツェ`, `ツォ`, `ティ`, `テュ`, `ディ`, `デャ`
 
-    <code>&#12487;&#12517;</code>, <code>&#12487;&#12519;</code>, <code>&#12488;&#12453;</code>, <code>&#12489;&#12453;</code>, <code>&#12491;&#12455;</code>, <code>&#12491;&#12515;</code>, <code>&#12491;&#12517;</code>, <code>&#12491;&#12519;</code>, <code>&#12498;&#12515;</code>, <code>&#12498;&#12517;</code>, <code>&#12498;&#12519;</code>, <code>&#12499;&#12515;</code>, <code>&#12499;&#12517;</code>, <code>&#12499;&#12519;</code>, <code>&#12500;&#12451;</code>
+    `デュ`, `デョ`, `トゥ`, `ドゥ`, `ニェ`, `ニャ`, `ニュ`, `ニョ`, `ヒャ`, `ヒュ`, `ヒョ`, `ビャ`, `ビュ`, `ビョ`, `ピィ`
 
-    <code>&#12500;&#12515;</code>, <code>&#12500;&#12517;</code>, <code>&#12500;&#12519;</code>, <code>&#12501;&#12449;</code>, <code>&#12501;&#12451;</code>, <code>&#12501;&#12455;</code>, <code>&#12501;&#12457;</code>, <code>&#12501;&#12517;</code>, <code>&#12511;&#12515;</code>, <code>&#12511;&#12517;</code>, <code>&#12511;&#12519;</code>, <code>&#12522;&#12451;</code>, <code>&#12522;&#12455;</code>, <code>&#12522;&#12515;</code>, <code>&#12522;&#12517;</code>
+    `ピャ`, `ピュ`, `ピョ`, `ファ`, `フィ`, `フェ`, `フォ`, `フュ`, `ミャ`, `ミュ`, `ミョ`, `リィ`, `リェ`, `リャ`, `リュ`
 
-    <code>&#12522;&#12519;</code>, <code>&#12532;&#12449;</code>, <code>&#12532;&#12451;</code>, <code>&#12532;&#12455;</code>, <code>&#12532;&#12457;</code>, <code>&#12532;&#12517;</code>
+    `リョ`, `ヴァ`, `ヴィ`, `ヴェ`, `ヴォ`, `ヴュ`
 
--   Use only the following syllables after an assimilated sound (*soku-on*, or &#20419;&#38899;, in Japanese):
+-   Use only the following syllables after an assimilated sound (*soku-on*, or 促音, in Japanese):
 
-    <code>&#12496;</code>, <code>&#12499;</code>, <code>&#12502;</code>, <code>&#12505;</code>, <code>&#12508;</code>, <code>&#12481;</code>, <code>&#12481;&#12455;</code>, <code>&#12481;&#12515;</code>, <code>&#12481;&#12517;</code>, <code>&#12481;&#12519;</code>, <code>&#12480;</code>, <code>&#12487;</code>, <code>&#12487;&#12451;</code>, <code>&#12489;</code>, <code>&#12489;&#12453;</code>, <code>&#12501;</code>
+    `バ`, `ビ`, `ブ`, `ベ`, `ボ`, `チ`, `チェ`, `チャ`, `チュ`, `チョ`, `ダ`, `デ`, `ディ`, `ド`, `ドゥ`, `フ`
 
-    <code>&#12501;&#12449;</code>, <code>&#12501;&#12451;</code>, <code>&#12501;&#12455;</code>, <code>&#12501;&#12457;</code>, <code>&#12460;</code>, <code>&#12462;</code>, <code>&#12464;</code>, <code>&#12466;</code>, <code>&#12468;</code>, <code>&#12495;</code>, <code>&#12498;</code>, <code>&#12504;</code>, <code>&#12507;</code>, <code>&#12472;</code>, <code>&#12472;&#12455;</code>, <code>&#12472;&#12515;</code>
+    `ファ`, `フィ`, `フェ`, `フォ`, `ガ`, `ギ`, `グ`, `ゲ`, `ゴ`, `ハ`, `ヒ`, `ヘ`, `ホ`, `ジ`, `ジェ`, `ジャ`
 
-    <code>&#12472;&#12517;</code>, <code>&#12472;&#12519;</code>, <code>&#12459;</code>, <code>&#12461;</code>, <code>&#12463;</code>, <code>&#12465;</code>, <code>&#12467;</code>, <code>&#12461;&#12515;</code>, <code>&#12461;&#12517;</code>, <code>&#12461;&#12519;</code>, <code>&#12497;</code>, <code>&#12500;</code>, <code>&#12503;</code>, <code>&#12506;</code>, <code>&#12509;</code>, <code>&#12500;&#12515;</code>
+    `ジュ`, `ジョ`, `カ`, `キ`, `ク`, `ケ`, `コ`, `キャ`, `キュ`, `キョ`, `パ`, `ピ`, `プ`, `ペ`, `ポ`, `ピャ`
 
-    <code>&#12500;&#12517;</code>, <code>&#12500;&#12519;</code>, <code>&#12469;</code>, <code>&#12473;</code>, <code>&#12475;</code>, <code>&#12477;</code>, <code>&#12471;</code>, <code>&#12471;&#12455;</code>, <code>&#12471;&#12515;</code>, <code>&#12471;&#12517;</code>, <code>&#12471;&#12519;</code>, <code>&#12479;</code>, <code>&#12486;</code>, <code>&#12488;</code>, <code>&#12484;</code>, <code>&#12470;</code>>
+    `ピュ`, `ピョ`, `サ`, `ス`, `セ`, `ソ`, `シ`, `シェ`, `シャ`, `シュ`, `ショ`, `タ`, `テ`, `ト`, `ツ`, `ザ`
 
-    <code>&#12474;</code>, <code>&#12476;</code>, <code>&#12478;</code>
+    `ズ`, `ゼ`, `ゾ`
 
--   Do not use <code>&#12531;</code> as the first character of a word. For example, use <code>&#12454;&#12540;&#12531;&#12488;</code> instead of <code>&#12531;&#12540;&#12488;</code>, the latter of which is invalid.
--   Many compound words consist of *prefix+noun* or *noun+suffix*. The service's base vocabulary covers most compound words that occur frequently (for example, <code>&#x9577;&#x96FB;&#x8A71;</code> and <code>&#x53E4;&#x65B0;&#x805E;</code>) but not those compound words that occur infrequently. If your corpus commonly contains compound words, add them as one word as the first step of your customization. For example, <code>&#x53E4;&#x925B;&#x7B46;</code> is not common in general Japanese text; if you use it often, add it to your custom model to improve transcription accuracy.
+-   Do not use `ン` as the first character of a word. For example, use `ウーント` instead of `ンート`, the latter of which is invalid.
+-   Many compound words consist of *prefix+noun* or *noun+suffix*. The service's base vocabulary covers most compound words that occur frequently (for example, `長電話` and `古新聞`) but not those compound words that occur infrequently. If your corpus commonly contains compound words, add them as one word as the first step of your customization. For example, `古鉛筆` is not common in general Japanese text; if you use it often, add it to your custom model to improve transcription accuracy.
 -   Do not use a trailing assimilated sound.
 
 #### Guidelines for Korean

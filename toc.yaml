@@ -153,6 +153,7 @@ toc:
   - navgroup:
       id: help
       topics:
+      - known-limitations.md
       - faq-usage.md
       - faq-pricing.md
       - topicgroup:

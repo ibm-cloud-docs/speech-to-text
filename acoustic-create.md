@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2022
-lastupdated: "2021-08-01"
+lastupdated: "2021-08-06"
 
 subcollection: speech-to-text
 
@@ -147,7 +147,10 @@ The method is asynchronous. It can take several seconds or minutes to complete d
 
 You can add any number of audio resources to a custom model by calling the method once for each audio or archive file. You can make multiple requests to add different audio resources simultaneously.
 
-You must add a minimum of 10 minutes and a maximum of 200 hours of audio that includes speech, not silence, to a custom model before you can train it. No audio- or archive-type resource can be larger than 100 MB. For more information, see [Guidelines for adding audio resources](/docs/speech-to-text?topic=speech-to-text-audioResources#audioGuidelines).
+You must add a minimum of 10 minutes of audio that includes speech, not silence, to a custom acoustic model before you can train it. No audio- or archive-type resource can be larger than 100 MB.
+
+-   For general guidance about adding audio to a custom acoustic model, see [Guidelines for adding audio](/docs/speech-to-text?topic=speech-to-text-audioResources#audioGuidelines).
+-   For more information about the maximum amount of audio that you can add to a custom acoustic model, see [Maximum hours of audio](/docs/speech-to-text?topic=speech-to-text-audioResources#audioMaximum).
 
 ### Monitoring the add audio request
 {: #monitorAudio}

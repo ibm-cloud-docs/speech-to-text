@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-08-01"
+lastupdated: "2022-08-15"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -19,94 +19,41 @@ content-type: release-note
 
 ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
 
-The following features and changes were included for each release and update of managed instances of {{site.data.keyword.speechtotextfull}} that are hosted on {{site.data.keyword.cloud_notm}} or for instances that are hosted on [{{site.data.keyword.icp4dfull_notm}} as a Service](https://dataplatform.cloud.ibm.com/docs/content/wsj/landings/wstt.html){: external}. The information includes known limitations. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
+The following features and changes were included for each release and update of managed instances of {{site.data.keyword.speechtotextfull}} that are hosted on {{site.data.keyword.cloud_notm}} or for instances that are hosted on [{{site.data.keyword.icp4dfull_notm}} as a Service](https://dataplatform.cloud.ibm.com/docs/content/wsj/landings/wstt.html){: external}. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
 {: shortdesc}
+
+For information about known limitations of the service, see [Known limitations](/docs/speech-to-text?topic=speech-to-text-known-limitations).
 
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
 
-## Known limitations
-{: #release-notes-limitations}
+## 15 August 2022
+{: #speech-to-text-15august2022}
+{: release-note}
 
-The service has the following known limitations:
+New French Canadian next-generation multimedia model
+:   The service now offers a next-generation multimedia model for French Canadian: `fr-CA_Multimedia`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about next-generation models and low latency, see
+    -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
 
--   **27 April 2021:** When you use previous-generation models with the WebSocket interface, if you request both speaker labels and interim results, the speaker labels response includes an extra object. The final results duplicate the object for the last speaker label. Instead of appearing once with `"final": true`, the object appears twice: once with `"final": false` and once with `"final": true`.
+Updates to English next-generation telephony models
+:   The English next-generation telephony models have been updated for improved speech recognition:
+    -   `en-AU_Telephony`
+    -   `en-GB_Telephony`
+    -   `en-IN_Telephony`
+    -   `en-US_Telephony`
 
-    For example, a WebSocket request that includes both speaker labels and interim results sends a `start` message like the following:
+    All of these models continue to support low latency. You do not need to upgrade custom models that are based on these models. For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 
-    ```javascript
-    var message = {
-      action: 'start',
-      speaker_labels: true,
-      interim_results: true
-    };
-    websocket.send(JSON.stringify(message));
-    ```
-    {: codeblock}
+Italian next-generation multimedia model now supports low latency
+:   The Italian next-generation multimedia model, `it-IT_Multimedia`, now supports low latency. For more information about next-generation models and low latency, see
+    -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
 
-    To indicate final results for speaker labels, the service is supposed to return a response of the following form:
-
-    ```json
-    {
-      "speaker_labels": [
-        . . .
-        {
-          "from": 1.01,
-          "to": 1.75,
-          "speaker": 0,
-          "confidence": 0.75,
-          "final": false
-        },
-        {
-          "from": 1.76,
-          "to": 2.50,
-          "speaker": 1,
-          "confidence": 0.80,
-          "final": true
-        }
-      ]
-    }
-    ```
-    {: codeblock}
-
-    Instead, the service returns final results like the following. Note that the object for the last speaker label, which begins at `1.76` and ends at `2.50`, is returned twice. The `"final": true` indication is associated with the second instance of the label.
-
-    ```json
-    {
-      "speaker_labels": [
-        . . .
-        {
-          "from": 1.01,
-          "to": 1.75,
-          "speaker": 0,
-          "confidence": 0.75,
-          "final": false
-        },
-        {
-          "from": 1.76,
-          "to": 2.50,
-          "speaker": 1,
-          "confidence": 0.80,
-          "final": false
-        }
-      ]
-    }{
-      "from": 1.76,
-      "to": 2.50,
-      "speaker": 1,
-      "confidence": 0.80,
-      "final": true
-    }
-    ```
-    {: codeblock}
-
-    For more information about using speaker labels with interim results, see [Requesting interim results for speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels#speaker-labels-interim).
-
--   **6 August 2020:** The `GET /v1/models` and `GET /v1/models/{model_id}` methods list information about language models. Under `supported_features`, the `speaker_labels` field indicates whether you can use the `speaker_labels` parameter with a model. At this time, the field returns `true` for all models.
-
-    However, speaker labels are supported as beta functionality only for US English, Australian English, German, Japanese, Korean, and Spanish (both broadband and narrowband models) and UK English (narrowband model only). Speaker labels are not supported for any other models. Do not rely on the field to identify which models support speaker labels.
-
-    For more information about speaker labels and supported models, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
+Important: Maximum hours of audio data being reduced for custom acoustic models
+:   **Important:** The maximum amount of audio data that you can add to a custom acoustic model is being reduced from 200 hours to 50 hours. This change is being phased into different locations from August to September 2022. For information about the schedule for the limit reduction and what it means for existing custom acoustic models that contain more than 50 hours of audio, see [Maximum hours of audio](https://test.cloud.ibm.com/docs/speech-to-text?topic=speech-to-text-audioResources#audioMaximum).
 
 ## 3 August 2022
 {: #speech-to-text-3august2022}
@@ -165,7 +112,7 @@ Defect fix: Confidence scores are now reported for all transcription results
 {: release-note}
 
 New Brazilian Portuguese `pt-BR_Multimedia` next-generation model
-:   The service now offers a next-generation multimedia model for Brazilian Portuguese: `pt-BR_Multimedia`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about the next-generation models and low latency, see
+:   The service now offers a next-generation multimedia model for Brazilian Portuguese: `pt-BR_Multimedia`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about next-generation models and low latency, see
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
     -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
     -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)

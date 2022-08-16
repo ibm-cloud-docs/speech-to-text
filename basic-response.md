@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-08-01"
+lastupdated: "2022-08-15"
 
 subcollection: speech-to-text
 
@@ -292,6 +292,8 @@ Speech often includes hesitations or verbal pauses, which are also referred to a
     }
     ```
     {: codeblock}
+
+    To increase the likelihood of seeing hesitations in your response, you can use a custom language model. In the custom model, add corpora that include the hesitations or create custom words whose sounds-likes capture the way users say the disfluencies. For more information about custom language models, see [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate).
 
 ## Capitalization
 {: #response-capitalization}
