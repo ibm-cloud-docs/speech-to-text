@@ -67,7 +67,7 @@ Italian next-generation multimedia model now supports low latency
     -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
 
 Important: Maximum hours of audio data being reduced for custom acoustic models
-:   **Important:** The maximum amount of audio data that you can add to a custom acoustic model is being reduced from 200 hours to 50 hours. This change is being phased into different locations from August to September 2022. For information about the schedule for the limit reduction and what it means for existing custom acoustic models that contain more than 50 hours of audio, see [Maximum hours of audio](https://test.cloud.ibm.com/docs/speech-to-text?topic=speech-to-text-audioResources#audioMaximum).
+:   **Important:** The maximum amount of audio data that you can add to a custom acoustic model is being reduced from 200 hours to 50 hours. This change is being phased into different locations from August to September 2022. For information about the schedule for the limit reduction and what it means for existing custom acoustic models that contain more than 50 hours of audio, see [Maximum hours of audio](/docs/speech-to-text?topic=speech-to-text-audioResources#audioMaximum).
 
 ## 3 August 2022
 {: #speech-to-text-3august2022}
