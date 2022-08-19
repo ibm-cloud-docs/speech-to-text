@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-08-10"
+lastupdated: "2022-08-19"
 
 subcollection: speech-to-text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 # Migrating to next-generation models
 {: #models-migrate}
 
-The {{site.data.keyword.speechtotextfull}} service supports speech recognition with both previous-generation and next-generation models.  Effective **15 March 2022**, previous-generation models for all languages other than Arabic and Japanese are deprecated.  The deprecated models remain available until **15 September 2022**, when they will be removed from the service and the documentation.
+The {{site.data.keyword.speechtotextfull}} service supports speech recognition with both previous-generation and next-generation models.  Effective **15 March 2022**, previous-generation models for all languages other than Arabic and Japanese are deprecated.  The deprecated models remain available until **3 March 2023**, when they will be removed from the service and the documentation.
 {: shortdesc}
 
 You must migrate your use of any deprecated previous-generation models to the equivalent next-generation models by the end of service date. Next-generation models provide appreciably better transcription accuracy and throughput. But they currently provide slightly fewer features than previous-generation models.
