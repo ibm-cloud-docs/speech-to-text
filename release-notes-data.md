@@ -257,7 +257,7 @@ Version 4.0.7 is now available
 Custom resource property for specifying a default model
 :   The default voice for speech recognition requests is `en-US_BroadbandModel`. If you do not install the `en-US_BroadbandModel`, you must either
     -   Use the `model` parameter to pass the voice that is to be used with each request.
-    -   Specify a new default model for your installation of {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} by using the `defaultSTTModel` property in the Speech services custom resource. For more information, see  [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
+    -   Specify a new default model for your installation of {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} by using the `defaultSTTModel` property in the Speech services custom resource. For more information, see  [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external} and [Using the default model](/docs/speech-to-text?topic=speech-to-text-models-use#models-use-default).
 
 Updates to English and French next-generation multimedia models to support low latency
 :   The following multimedia models have been updated to support low latency:
