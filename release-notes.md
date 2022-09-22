@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-08-19"
+lastupdated: "2022-09-21"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -26,6 +26,22 @@ For information about known limitations of the service, see [Known limitations](
 
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
+
+## 21 September 2022
+{: #speech-to-text-21september2022}
+{: release-note}
+
+New Activity Tracker event for GDPR deletion of user information
+:   The service now returns an Activity Tracker event when you use the `DELETE /v1/user_data` method to delete all information about a user. The event is named `speech-to-text.gdpr-user-data.delete`. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-at-events).
+
+Defect fix: Some next-generation models were updated to improve low-latency response time
+:   **Defect fix:** The following next-generation models were updated to improve their response time when the `low_latency` parameter is used:
+    -   `en-IN_Telephony`
+    -   `hi-IN_Telephony`
+    -   `it-IT_Multimedia`
+    -   `nl-NL_Telephony`
+
+    Previously, these models did not return recognition results as quickly as expected when the `low_latency` parameter was used. You do not need to upgrade custom models that are based on these models. For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 
 ## 19 August 2022
 {: #speech-to-text-19august2022}

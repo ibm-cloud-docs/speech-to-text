@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2022
-lastupdated: "2022-01-25"
+lastupdated: "2022-09-21"
 
 keywords: IBM,activity tracker,event,security,speech to text
 
@@ -157,7 +157,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 
 | Action            | Description                         |
 |-------------------|-------------------------------------|
-| `speech-to-text.async-recognition-job.create`              | Create an asynchronous recognition job (`POST /v1/recognitions`).                   |
+| `speech-to-text.async-recognition-job.create` | Create an asynchronous recognition job (`POST /v1/recognitions`). |
 | `speech-to-text.async-recognition-notification-url.create` | Create an asynchronous recognition notification URL (`POST /v1/register_callback`). |
 {: caption="Table 13. Asynchronous HTTP recognition .create actions that generate events"}
 
@@ -175,9 +175,19 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 
 | Action            | Description                         |
 |-------------------|-------------------------------------|
-| `speech-to-text.async-recognition-job.delete`              | Delete an asynchronous recognition job (`DELETE /v1/recognitions/{id}`).              |
+| `speech-to-text.async-recognition-job.delete` | Delete an asynchronous recognition job (`DELETE /v1/recognitions/{id}`). |
 | `speech-to-text.async-recognition-notification-url.delete` | Delete an asynchronous recognition notification URL (`POST /v1/unregister_callback`). |
 {: caption="Table 15. Asynchronous HTTP recognition .delete actions that generate events"}
+
+## GDPR event
+{: #at-events-gdpr}
+
+The following table lists the {{site.data.keyword.speechtotextshort}} action for General Data Protection Regulation (GDPR) that generates an event.
+
+| Action | Description |
+|--------|-------------|
+| `speech-to-text.gdpr-user-data.delete` | Delete information for a user (`DELETE /v1/user_data`). |
+{: caption="Table 16. GDPR .delete action that generates an event"}
 
 ## Where to view events
 {: #at-ui}
