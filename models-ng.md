@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-08-05"
+lastupdated: "2022-09-30"
 
 subcollection: speech-to-text
 
@@ -22,6 +22,7 @@ With the additional information and context afforded by bidirectional analysis, 
 
 In addition to providing greater transcription accuracy, the models have the ability to hypothesize words that are not in the base language model and that it has not encountered in training. This capability can decrease the need for customization of domain-specific terms. A model does not need to contain a specific vocabulary term to predict that word.
 
+-   For an overview of the next-generation models and their technology, see [Next-Generation Watson Speech to Text](https://medium.com/ibm-watson-speech-services/next-generation-watson-speech-to-text-650fd66d95d0){: external}.
 -   For more information about the technology that underlies the next-generation models, see [Advancing RNN Transducer Technology for Speech Recognition](https://arxiv.org/abs/2103.09935){: external}.
 -   For information about migrating from previous-generation to next-generation models, see [Migrating to next-generation models](/docs/speech-to-text?topic=speech-to-text-models-migrate).
 
