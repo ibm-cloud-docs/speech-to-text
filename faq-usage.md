@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-08-15"
+lastupdated: "2022-10-07"
 
 keywords: faqs,frequently asked questions,question,Speech to Text
 
@@ -27,9 +27,8 @@ FAQs for {{site.data.keyword.speechtotextfull}} include questions about speech r
 How you access your service credentials depends on whether you are using {{site.data.keyword.speechtotextshort}} with {{site.data.keyword.cloud}} or {{site.data.keyword.icp4dfull}}. For more information about obtaining your credentials for both versions, see [Before you begin](/docs/speech-to-text?topic=speech-to-text-gettingStarted#getting-started-before-you-begin) in the getting started tutorial.
 
 Once you have your service credentials, see the following topics for information about authenticating to the service:
-
--   [Authenticating to {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-data-security#data-security-authentication-cloud)
--   [Authenticating to {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-data-security#data-security-authentication-icpd)
+-   [Authenticating to {{site.data.keyword.cloud_notm}}](/docs/watson?topic=watson-iam#gs-credential-cloud)
+-   [Authenticating to {{site.data.keyword.icp4dfull_notm}}](/docs/watson?topic=watson-iam#gs-credential-cpd)
 
 ## What languages does the service support?
 {: #faq-language-support}
@@ -37,7 +36,6 @@ Once you have your service credentials, see the following topics for information
 {: support}
 
 The {{site.data.keyword.speechtotextshort}} service supports both previous-generation and next-generation languages and models. Most languages support both broadband/multimedia and narrowband/telephony models, which have minimum sampling rates of 16 kHz and 8 kHz, respectively. For more information about the available models and the features they support for all languages, see the following topics:
-
 -   [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models)
 -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
 

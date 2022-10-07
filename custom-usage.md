@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2021
-lastupdated: "2021-11-17"
+  years: 2015, 2022
+lastupdated: "2022-10-03"
 
 subcollection: speech-to-text
 
@@ -53,6 +53,6 @@ For more information, see [Information security](/docs/speech-to-text?topic=spee
 How the service handles request logging for calls to the customization interface depends on the request:
 
 -   The service *does not* log data that is used to build custom models. For example, when working with corpora and words in a custom language model, you do not need to set the `X-Watson-Learning-Opt-Out` request header. Your training data is never used to improve the service's base models.
--   The service *does* log data when a custom model is used with a recognition request. You must set the `X-Watson-Learning-Opt-Out` request header to `true` to prevent logging for recognition requests.
+-   The service *does* log data when a custom model is used with a recognition request. You can opt out of request logging at the account level or by setting the `X-Watson-Learning-Opt-Out` request header to `true`.
 
 For more information, see [Request logging](/docs/speech-to-text?topic=speech-to-text-data-security#data-security-request-logging).

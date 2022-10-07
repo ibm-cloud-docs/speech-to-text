@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022
-lastupdated: "2022-07-25"
+lastupdated: "2022-10-07"
 
 subcollection: speech-to-text
 
@@ -20,59 +20,14 @@ The {{site.data.keyword.speechtotextshort}} service provides the following secur
 
 ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
 
-You authenticate to the service by using {{site.data.keyword.cloud_notm}} Identity and Access Management (IAM). You can either pass an API key or pass a bearer token in an `Authorization` header.
-
--   For testing and development, you can pass an API key directly. API keys use basic authentication. If you pass an API key, use `apikey` for the `{username}` and the value of the API key as the `{password}` with the `-u` option of the `curl` command. For example, if your API key is `f5sAznhrKQyvBFFaZbtF60m5tzLbqWhyALQawBg5TjRI` in the service credentials, include the credentials to authenticate a request to the service.
-
-    ```sh
-    curl -u "apikey:f5sAznhrKQyvBFFaZbtF60m5tzLbqWhyALQawBg5TjRI" \
-    "{url}/v1/{method}"
-    ```
-    {: pre}
-
--   For production use, unless you use the {{site.data.keyword.watson}} SDKs, use an IAM token. Tokens support authenticated requests without embedding service credentials in every call. Use the following request to generate an IAM access token, replacing `{apikey}` with the value of your API key.
-
-    ```sh
-    curl -X POST \
-    -header "Content-Type: application/x-www-form-urlencoded" \
-    -data "grant_type=urn:ibm:params:oauth:grant-type:apikey&apikey={apikey}" \
-    "https://iam.cloud.ibm.com/identity/token"
-    ```
-    {: pre}
-
-    The response includes an `access_token` property. To authenticate a request to the service, replace `{access_token}` with the token from the response.
-
-    ```sh
-    curl -header "Authorization: Bearer {access_token}" \
-    "{url}/v1/{method}"
-    ```
-    {: pre}
-
-For more information, see [Authenticating to Watson services](/docs/watson?topic=watson-iam).
+You authenticate to the service by using {{site.data.keyword.cloud_notm}} Identity and Access Management (IAM). You can pass either an API key or a bearer token in an `Authorization` header. For more information, see [Authenticating to {{site.data.keyword.cloud_notm}}](/docs/watson?topic=watson-iam#gs-credential-cloud).
 
 ## Authenticating to {{site.data.keyword.icp4dfull_notm}}
 {: #data-security-authentication-icpd}
 
 ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}} only**
 
-You authenticate to the service by passing an access token with each request. You pass a bearer token in an `Authorization` header to authenticate. The token is associated with a username.
-
--   For testing and development, you can use the bearer token that is displayed in the {{site.data.keyword.icp4dfull_notm}} web client. To find this token, view the details for the provisioned service instance. The details also include the service endpoint URL. Do not use this token in production because it does not expire.
--   For production use, create a user in the {{site.data.keyword.icp4dfull_notm}} web client to use for authentication. Generate a token from that user's credentials by using the `POST preauth/validateAuth` method. This access token is a temporary credential that expires after no longer than one hour. In the following request, replace `{username}` and `{password}` with your {{site.data.keyword.icp4dfull_notm}} credentials, and replace `{cpd_cluster_host}` and `{port}` with the details for your service instance.
-
-    ```sh
-    curl -k -u "{username}:{password}" \
-    "https://{cpd_cluster_host}{:port}/v1/preauth/validateAuth"
-    ```
-    {: pre}
-
-    The response includes an `accessToken` property. To authenticate a request to the service, replace `{access_token}` with the token from the response.
-
-    ```sh
-    curl -header "Authorization: Bearer {access_token}" \
-    "{url}/v1/{method}"
-    ```
-    {: pre}
+You authenticate to the service by passing an access token with each request. You pass a bearer token in an `Authorization` header to authenticate. Several methods exist to generate the token, including by using an API key or by username. For more information, see [Authenticating to {{site.data.keyword.icp4dfull_notm}}](/docs/watson?topic=watson-iam#gs-credential-cpd).
 
 {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} is a multi-tenant cloud solution. Your credentials provide access to your data only, and your data is isolated from other users.
 

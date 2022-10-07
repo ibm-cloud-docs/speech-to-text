@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-09-30"
+lastupdated: "2022-10-06"
 
 subcollection: speech-to-text
 
@@ -73,6 +73,7 @@ Table 1 lists the available next-generation telephony models.
 | Portuguese  \n (Brazilian) | `pt-BR_Telephony` | Yes | GA |
 | Spanish  \n (Castilian) | `es-ES_Telephony` | Yes | GA |
 | Spanish  \n (Argentinian, Chilean,  \n Colombian, Mexican,  \n and Peruvian) | `es-LA_Telephony` | Yes | GA |
+| Swedish | `sv-SE_Telephony`  \n {{site.data.keyword.cloud_notm}} only | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
 {: caption="Table 1. Next-generation telephony models"}
 
 The Latin American Spanish model, `es-LA_Telephony`, applies to all Latin American dialects. It is the equivalent of the previous-generation models that are available for the Argentinian, Chilean, Colombian, Mexican, and Peruvian dialects. If you used a previous-generation model for any of these Latin American dialects, use the `es-LA_Telephony` model to migrate to the equivalent next-generation model.
