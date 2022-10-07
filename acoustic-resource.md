@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2022
-lastupdated: "2021-09-12"
+lastupdated: "2021-10-05"
 
 subcollection: speech-to-text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 # Working with audio resources
 {: #audioResources}
 
-Acoustic model customization is available only for previous-generation models. It is not available for next-generation models.
+Acoustic model customization is available only for previous-generation models.  It is not available for next-generation models.
 {: note}
 
 You can add individual audio files or archive files that contain multiple audio files to a custom acoustic model. The recommended means of adding audio resources is by adding archive files. Creating and adding a single archive file is considerably more efficient than adding multiple audio files individually. You can also submit requests to add multiple different audio resources at the same time.
@@ -149,10 +149,10 @@ The maximum hour of audio that you can add to a custom acoustic model depend on 
     |----------|:-------------------------:|:------------------------:|
     | `eu-gb` (London) | 11 August 2022 | 11 August 2022 |
     | `jp-tok` (Tokyo) | 31 August 2022 | 24 August 2022 |
-    | `us-east` (Washington, DC) | 22 September 2022 | TBD |
-    | `us-south` (Dallas) | 22 September 2022 | TBD |
-    | `au-syd` (Sydney) | 28 September 2022 | TBD |
-    | `eu-de` (Frankfurt) | 5 October 2022 | TBD |
+    | `au-syd` (Sydney) | 19 October 2022 | TBD |
+    | `us-east` (Washington, DC) | First-quarter 2023 | TBD |
+    | `us-south` (Dallas) | First-quarter 2023 | TBD |
+    | `eu-de` (Frankfurt) | First-quarter 2023 | TBD |
     {: caption="Table 1. Schedule of 50-hour limit per location"}
 
     If you currently have a custom acoustic model with more than 50 hours of audio data, you can do one of the following:

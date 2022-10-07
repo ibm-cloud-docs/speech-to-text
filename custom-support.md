@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-08-19"
+lastupdated: "2022-10-06"
 
 subcollection: speech-to-text
 
@@ -108,4 +108,5 @@ Table 2 lists the next-generation models that are supported for language model c
 | Spanish  \n (Castilian) | `es-ES_Telephony` | GA | GA | Not supported |
 | | `es-ES_Multimedia` | GA | GA | Not supported |
 | Spanish  \n (Argentinian, Chilean,  \n Colombian, Mexican,  \n and Peruvian) | `es-LA_Telephony` | GA | GA | Not supported |
+| Swedish | `sv-SE_Telephony` | GA | GA | Not supported |
 {: caption="Table 2. Next-generation language support for customization"}

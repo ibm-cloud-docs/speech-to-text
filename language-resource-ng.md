@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-08-06"
+lastupdated: "2022-10-06"
 
 subcollection: speech-to-text
 
@@ -116,7 +116,7 @@ Follow these guidelines to prepare a corpus text file:
 
 When you add a corpus file, the service analyzes the file's contents. To distill the most meaning from the content, the service tokenizes and parses the data that it reads from a corpus file. The following sections describe how the service parses a corpus file for each supported language.
 
-Information for the following languages is not yet available: Arabic, Chinese, Czech, and Hindi. If you need this information for your custom language model, contact your IBM Support representative.
+Information for the following languages is not yet available: Arabic, Chinese, Czech, Hindi, and Swedish. If you need this information for your custom language model, contact your IBM Support representative.
 {: note}
 
 #### Parsing of Dutch, English, French, German, Italian, Portuguese, and Spanish
