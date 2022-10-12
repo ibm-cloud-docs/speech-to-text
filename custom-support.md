@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-10-06"
+lastupdated: "2022-10-12"
 
 subcollection: speech-to-text
 
@@ -81,7 +81,7 @@ Table 2 lists the next-generation models that are supported for language model c
 |------------------------|:-----------:|:----------------------------------------:|:----------------------------------------:|:----------------------------------------:|
 | Arabic  \n (Modern Standard) | `ar-MS_Telephony` | GA | GA | Not supported |
 | Chinese  \n (Mandarin) | `zh-CN_Telephony` | GA | GA | Not supported |
-| Czech | `cz-CZ_Telephony` | GA | GA | Not supported |
+| Czech | `cs-CZ_Telephony` | GA | GA | Not supported |
 | Dutch  \n (Belgian) | `nl-BE_Telephony` | GA | GA | Not supported |
 | Dutch  \n (Netherlands) | `nl-NL_Telephony` | GA | GA | Not supported |
 | English  \n (Australian) | `en-AU_Telephony` | GA | GA | Not supported |
