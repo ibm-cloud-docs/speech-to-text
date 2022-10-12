@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-10-06"
+lastupdated: "2022-10-12"
 
 subcollection: speech-to-text
 
@@ -56,7 +56,7 @@ Table 1 lists the available next-generation telephony models.
 |----------|:----------:|:-------------------:|:------:|
 | Arabic  \n (Modern Standard) | `ar-MS_Telephony` | Yes | GA |
 | Chinese  \n (Mandarin) | `zh-CN_Telephony` | Yes | GA |
-| Czech | `cz-CZ_Telephony` | Yes | GA |
+| Czech | `cs-CZ_Telephony` | Yes | GA |
 | Dutch  \n (Belgian) | `nl-BE_Telephony` | Yes | GA |
 | Dutch  \n (Netherlands) | `nl-NL_Telephony` | Yes | GA |
 | English  \n (Australian) | `en-AU_Telephony` | Yes | GA |
