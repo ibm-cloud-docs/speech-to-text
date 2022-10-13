@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-08-19"
+lastupdated: "2022-10-13"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -25,6 +25,83 @@ For information about known limitations of the service, see [Known limitations](
 For information about releases and updates of the service for {{site.data.keyword.cloud_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes).
 {: note}
 
+## 13 October 2022 (Version 4.5.3)
+{: #speech-to-text-data-13october2022}
+
+Version 4.5.3 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.5.3 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.5.x and Red Hat OpenShift versions 4.6, 4.8, and 4.10. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=services-watson-speech){: external}.
+
+Audit events are available for the Speech services
+:   The {{site.data.keyword.icp4dfull_notm}} Audit Logging Service generates and forwards audit events for both the {{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}} services. The audit events match those that are available for [Activity Tracker](/docs/speech-to-text?topic=speech-to-text-at-events) with the public service. For more information, see [Audit events](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=2-audit-events){: external}.
+
+You cannot uninstall individual Speech service components
+:   The documentation now notes that you cannot uninstall individual service components (microservices) once they are installed. To remove any of the following components, you must uninstall the Watson Speech services in their entirety and reinstall only the components that you need: {{site.data.keyword.speechtotextshort}} runtime, {{site.data.keyword.speechtotextshort}} asynchronous HTTP, {{site.data.keyword.speechtotextshort}} customization, {{site.data.keyword.texttospeechshort}} runtime, and {{site.data.keyword.texttospeechshort}} customization. For more information about installing the Speech services, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=services-watson-speech){: external}.
+
+New French Canadian next-generation multimedia model
+:   The service now offers a next-generation multimedia model for French Canadian: `fr-CA_Multimedia`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about next-generation models and low latency, see
+    -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
+
+Updates to English next-generation telephony models
+:   The English next-generation telephony models have been updated for improved speech recognition:
+    -   `en-AU_Telephony`
+    -   `en-GB_Telephony`
+    -   `en-IN_Telephony`
+    -   `en-US_Telephony`
+
+    All of these models continue to support low latency. You do not need to upgrade custom models that are based on these models. For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+
+Italian next-generation multimedia model now supports low latency
+:   The Italian next-generation multimedia model, `it-IT_Multimedia`, now supports low latency. For more information about next-generation models and low latency, see
+    -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
+
+Troubleshooting upgrade from version 4.0.x to version 4.5.x
+:   When you upgrade the Speech services from version 4.0.x to version 4.5.x, you might encounter an issue where the PostgreSQL pods become stuck in the `Terminating` state. If this problem occurs during your upgrade, perform the following steps to resolve the problem. The information and steps are also documented in *Upgrading Watson Speech services from Version 4.0 to Version 4.5* in the *Upgrading* topic of [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=services-watson-speech){: external}.
+
+    1.  Use the following command to identify pods that remain in the `Terminating` state:
+
+    ```sh
+    oc get pods -n ${PROJECT_CPD_INSTANCE} -o wide | awk {'print $1'}
+    ```
+    {: codeblock}
+
+    1.  Use the following command to set the environment variable `pods` to include the list of pods that remain in the `Terminating` state:
+
+    ```sh
+    pods=$(oc get pods -n ${PROJECT_CPD_INSTANCE} -o wide | awk {'print $1'})
+    ```
+    {: codeblock}
+
+    1.  Use the following command to delete the stuck pods so that the upgrade process can continue:
+
+    ```sh
+    pods=$(oc get pods -n ${PROJECT_CPD_INSTANCE} -o wide | grep Terminating | awk {'print $1'})
+    ```
+    {: codeblock}
+
+Defect fix for custom resource entries in documentation
+:   **Defect fix:** The documentation for the Speech services custom resource now includes colons after the names of the models `koKrTelephony` and `nlNlTelephony`. Previously, the documentation for these two entries omitted the colons.
+
+Security vulnerabilities addressed
+:   The following security vulnerabilities have been fixed:
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a buffer over-read flaw in Linux Kernel (CVE-2020-28915)](https://www.ibm.com/support/pages/node/6829133){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a security bypass in GNU Gzip (CVE-2022-1271)](https://www.ibm.com/support/pages/node/6829139){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to elevated privileges in Apple macOS Monterey and macOS Big Sur (CVE-2022-26691)](https://www.ibm.com/support/pages/node/6829141){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to elevated privileges in Linux Kernel (CVE-2022-27666)](https://www.ibm.com/support/pages/node/6829143){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to cross-site scripting in Apache Tomcat (CVE-2022-34305)](https://www.ibm.com/support/pages/node/6829145){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a security restrictions bypass in GNU C Library (CVE-2019-19126)](https://www.ibm.com/support/pages/node/6829149){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in GNU C Library ( CVE-2020-10029)](https://www.ibm.com/support/pages/node/6829151){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in GNU glibc (CVE-2020-1751)](https://www.ibm.com/support/pages/node/6829155){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in GNU glibc (CVE-2020-1752)](https://www.ibm.com/support/pages/node/6829157){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to information disclosure or denial of service in GNU glibc (CVE-2021-35942)](https://www.ibm.com/support/pages/node/6829159){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to buffer overflow in OpenSSL (CVE-2021-3711)](https://www.ibm.com/support/pages/node/6829161){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to information disclosure or denial of service in OpenSSL (CVE-2021-3712)](https://www.ibm.com/support/pages/node/6829165){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to weakened security in OpenSSL (CVE-2021-4160)](https://www.ibm.com/support/pages/node/6829167){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in OpenSSL (CVE-2022-0778)](https://www.ibm.com/support/pages/node/6829175){: external}
+
 ## 19 August 2022 (Version 4.5.1)
 {: #speech-to-text-data-19august2022}
 
@@ -42,7 +119,7 @@ Important: Deprecation date for most previous-generation models is now 3 March 2
 {: #speech-to-text-data-3august2022}
 
 Version 4.5.1 is now available
-:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.5.1 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.5.x and Red Hat OpenShift versions 4.6, 4.8, and 4.10.
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.5.1 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.5.x and Red Hat OpenShift versions 4.6, 4.8, and 4.10. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=services-watson-speech){: external}.
 
 Support for FIPS-enabled clusters
 :   Both {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} and {{site.data.keyword.texttospeechshort}} for {{site.data.keyword.icp4dfull_notm}} now support running on Federal Information Processing Standard (FIPS)-enabled clusters. For more information, see [Services that support FIPS](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=considerations-services-that-support-fips){: external}.
@@ -101,7 +178,7 @@ Security vulnerabilities addressed
 {: #speech-to-text-data-29june2022}
 
 Version 4.5.0 is now available
-:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.5.0 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.5.x and Red Hat OpenShift versions 4.6, 4.8, and 4.10.
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.5.0 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.5.x and Red Hat OpenShift versions 4.6, 4.8, and 4.10. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=services-watson-speech){: external}.
 
 Unified Speech services for {{site.data.keyword.icp4dfull_notm}} documentation
 :   The installation and administration documentation for both {{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}} is now combined in the {{site.data.keyword.icp4dfull_notm}} documentation. For more information about installing and managing the Speech services, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=services-watson-speech){: external}.
