@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2022
-lastupdated: "2021-10-05"
+lastupdated: "2021-10-19"
 
 subcollection: speech-to-text
 
@@ -149,7 +149,7 @@ The maximum hour of audio that you can add to a custom acoustic model depend on 
     |----------|:-------------------------:|:------------------------:|
     | `eu-gb` (London) | 11 August 2022 | 11 August 2022 |
     | `jp-tok` (Tokyo) | 31 August 2022 | 24 August 2022 |
-    | `au-syd` (Sydney) | 19 October 2022 | TBD |
+    | `au-syd` (Sydney) | 19 October 2022 | 19 October 2022 |
     | `us-east` (Washington, DC) | First-quarter 2023 | TBD |
     | `us-south` (Dallas) | First-quarter 2023 | TBD |
     | `eu-de` (Frankfurt) | First-quarter 2023 | TBD |
