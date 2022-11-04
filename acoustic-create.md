@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2022
-lastupdated: "2021-08-06"
+lastupdated: "2021-11-04"
 
 subcollection: speech-to-text
 
@@ -41,9 +41,19 @@ You can create a maximum of 1024 custom acoustic models per owning credentials. 
 
 A new custom acoustic model has the following attributes:
 
--   `name` (*required* string) - A user-defined name for the new custom acoustic model. Use a name that describes the acoustic environment of the custom model, such as `Mobile custom model` or `Noisy car custom model`. Use a name that is unique among all custom acoustic models that you own. Use a localized name that matches the language of the custom model.
--   `base_model_name` (*required* string) - The name of the base model that is to be customized by the new model. You must use the name of a model that is returned by the `GET /v1/models` method. The new custom model can be used only with the base model that it customizes.
--   `description` (*optional* string) - A description of the new model. Use a localized description that matches the language of the custom model.
+`name` (*required* string)
+:   A user-defined name for the new custom acoustic model. Use a localized name that matches the language of the custom model and reflects the acoustic environment of the model, such as `Mobile custom model` or `Noisy car custom model`.
+    -   Include a maximum of 256 characters in the name.
+    -   Do not use backslashes, slashes, colons, equal signs, ampersands, or question marks in the name.
+    -   Use a name that is unique among all custom acoustic models that you own.
+
+`base_model_name` (*required* string)
+:   The name of the base language model that is to be customized by the new model. You must use the name of a model that is returned by the `GET /v1/models` method. The new custom model can be used only with the base model that it customizes.
+
+`description` (*optional* string)
+:   A recommended description of the new custom model.
+    -   Use a localized description that matches the language of the custom model.
+    -   Include a maximum of 128 characters in the description.
 
 The following example creates a new custom acoustic model named `Example acoustic model`. The model is created for the base model `en-US_BroadbandModel` and has the description `Example custom acoustic model`. The `Content-Type` header specifies that JSON data is being passed to the method.
 

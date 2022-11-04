@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-04-05"
+lastupdated: "2022-11-04"
 
 subcollection: speech-to-text
 
@@ -38,9 +38,17 @@ You can create a maximum of 1024 custom language models per owning credentials. 
 
 A new custom language model has the following attributes:
 
--   `name` (*required* string) - A user-defined name for the new custom model. Use a name that describes the domain of the custom model, such as `Medical custom model` or `Legal custom model`. Use a name that is unique among all custom language models that you own. Use a localized name that matches the language of the custom model.
--   `base_model_name` (*required* string) - The name of the language model that is to be customized by the new custom model. The new model can be used only with the base model that it customizes.
--   `dialect` (*optional* string) - The dialect of the specified language that is to be used with the new custom model. *For all languages, it is always safe to omit this field.* The service automatically uses the language identifier from the name of the base model. For example, the service automatically uses `en-US` for all US English models.
+`name` (*required* string)
+:   A user-defined name for the new custom model. Use a localized name that matches the language of the custom model and describes the domain of the model, such as `Medical custom model` or `Legal custom model`.
+    -   Include a maximum of 256 characters in the name.
+    -   Do not use backslashes, slashes, colons, equal signs, ampersands, or question marks in the name.
+    -   Use a name that is unique among all custom language models that you own.
+
+`base_model_name` (*required* string)
+:   The name of the base language model that is to be customized by the new custom model. You must use the name of a model that is returned by the `GET /v1/models` method. The new custom model can be used only with the base model that it customizes.
+
+`dialect` (*optional* string)
+:   The dialect of the specified language that is to be used with the new custom model. *For all languages, it is always safe to omit this field.* The service automatically uses the language identifier from the name of the base model. For example, the service automatically uses `en-US` for all US English models.
 
     If you specify the `dialect` for a new custom model, follow these guidelines:
     -   For non-Spanish previous-generation models and for next-generation models, you must specify a value that matches the five-character language identifier from the name of the base model.
@@ -50,9 +58,13 @@ A new custom language model has the following attributes:
         -   `es-US` for Mexican (North American) Spanish (`es-MX` models)
 
     All values that you pass for the `dialect` field are case-insensitive.
--   `description` (*optional* string) - A recommended description of the new model. Use a localized description that matches the language of the custom model.
 
-The following example creates a new custom language model named `Example model`. The model is created for the base model `en-US-BroadbandModel` and has the description `Example custom language model`. The `Content-Type` header specifies that JSON data is being passed to the method.
+`description` (*optional* string)
+:   A recommended description of the new custom model.
+    -   Use a localized description that matches the language of the custom model.
+    -   Include a maximum of 128 characters in the description.
+
+The following example creates a new custom language model named `Example model`. The model is created for the base model `en-US-BroadbandModel` and has the description `Example custom language model`. The required `Content-Type` header specifies that JSON data is being passed to the method.
 
 ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
@@ -101,16 +113,18 @@ By providing sentences that include domain-specific words, corpora allow the ser
 
 You use the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method to add a corpus to a custom model:
 
--   Specify the customization ID of the custom model with the `customization_id` path parameter.
--   Specify a name for the corpus with the `corpus_name` path parameter. Use a localized name that matches the language of the custom model and reflects the contents of the corpus.
+`customization_id` (*required* string)
+:   Specify the customization ID of the custom model to which the corpus is to be added.
+
+`corpus_name` (*required* string)
+:   Specify a name for the corpus. Use a localized name that matches the language of the custom model and reflects the contents of the corpus.
     -   Include a maximum of 128 characters in the name.
     -   Do not use characters that need to be URL-encoded. For example, do not use spaces, slashes, backslashes, colons, ampersands, double quotes, plus signs, equals signs, questions marks, and so on in the name. (The service does not prevent the use of these characters. But because they must be URL-encoded wherever used, their use is strongly discouraged.)
     -   Do not use the name of a corpus or grammar that has already been added to the custom model.
     -   Do not use the name `user`, which is reserved by the service to denote custom words that are added or modified by the user.
     -   Do not use the name `base_lm` or `default_lm`. Both names are reserved for future use by the service.
--   Pass the corpus text file as the body of the request.
 
-The following example adds the corpus text file `healthcare.txt` to the custom model with the specified ID. The example names the corpus `healthcare`.
+Pass the corpus text file as the required body of the request. The following example adds the corpus text file `healthcare.txt` to the custom model with the specified ID. The example names the corpus `healthcare`.
 
 ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
@@ -195,7 +209,7 @@ If you have only one or a few words to add to a model, using corpora to add the 
 
 You can use the following methods to add words to a custom model:
 
--   The `POST /v1/customizations/{customization_id}/words` method adds multiple words at one time. You pass a JSON object that provides information about each word via the body of the request. The following example adds two custom words, `HHonors` and `IEEE`, to the custom model with the specified ID. The `Content-Type` header specifies that JSON data is being passed to the method.
+-   The `POST /v1/customizations/{customization_id}/words` method adds multiple words at one time. You pass a JSON object that provides information about each word via the body of the request. The following example adds two custom words, `HHonors` and `IEEE`, to the custom model with the specified ID. The required `Content-Type` header specifies that JSON data is being passed to the method.
 
     ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
@@ -258,7 +272,7 @@ You can use the following methods to add words to a custom model:
     {: pre}
 
     This method is asynchronous. It can take on the order of minutes to complete. The time that it takes to complete depends on the number of words that you add and the current load on the service. For more information about checking the status of the operation, see [Monitoring the add words request](#monitorWords).
--   The `PUT /v1/customizations/{customization_id}/words/{word_name}` method adds individual words. You pass a JSON object that provides information about the word. The following example adds the word `NCAA` to the model with the specified ID. The `Content-Type` header again indicates that JSON data is being passed to the method.
+-   The `PUT /v1/customizations/{customization_id}/words/{word_name}` method adds individual words. You pass a JSON object that provides information about the word. The following example adds the word `NCAA` to the model with the specified ID. The required `Content-Type` header again indicates that JSON data is being passed to the method.
 
     ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
 
