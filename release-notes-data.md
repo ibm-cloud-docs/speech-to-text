@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-10-13"
+lastupdated: "2022-11-10"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -24,6 +24,63 @@ For information about known limitations of the service, see [Known limitations](
 
 For information about releases and updates of the service for {{site.data.keyword.cloud_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes).
 {: note}
+
+## 10 November 2022 (Versions 4.0.x and 4.5.x)
+{: #speech-to-text-data-10november2022}
+
+Defect fix: Updated Network Policy needed for PostgreSQL operator
+:   **Defect fix:** For Speech services version 4.0.x (not including version 4.0.0) and 4.5.x, if the PostgreSQL operator and the Speech services are installed in different namespaces, the PostgreSQL operator is not able to monitor the PostgreSQL operands for the Speech services. The operator is prevented from monitoring the operands by the Network Policy that is in place for the Speech services.
+
+    This problem does not prevent the PostgreSQL cluster from functioning properly. The cluster remains active and fully functional. However, the operator is not able to update the operands when you upgrade to new versions of the Speech services.
+
+    The solution for the problem is to create an additional Network Policy for the PostgreSQL operator, as shown in the following steps. You can perform the steps regardless of whether the PostgreSQL operator is installed in the same namespace as the Speech services or in a different namespace.
+
+    1.  Log in as an administrator of the Red Hat® OpenShift® project where the Speech services are installed.
+    2.  Enter the following command to update the Network Policy for the Speech services:
+
+        ```sh
+        cat << EOF | oc apply -f -
+        apiVersion: networking.k8s.io/v1
+        kind: NetworkPolicy
+        metadata:
+          labels:
+            app.kubernetes.io/component: stt
+            app.kubernetes.io/instance: {{ <custom-resource-name> }}
+            app.kubernetes.io/name: speech-to-text
+            release: {{ <custom-resource-name> }}
+          name: <custom-resource-name>-postgres-network-policy
+          namespace: {{ <cpd-instance-namespace> }}
+        spec:
+          ingress:
+          - from:
+            - namespaceSelector: {}
+              podSelector:
+                matchLabels:
+                  app.kubernetes.io/name: cloud-native-postgresql
+        EOF
+        ```
+        {: pre}
+
+        where
+        -   `<custom-resource-name>` is the name of the Speech services custom resource. The recommended name for version 4.0.x is `speech-prod-cr`; the recommended name for version 4.5.x is `speech-cr`.
+        -   `<cpd-instance-name>` is the name of the project (namespace) in which the Speech services are installed. The documentation uses the environment variable `${PROJECT_CPD_INSTANCE}` to identity the namespace.
+
+    3.  To verify that the updated Network Policy allows the operator to monitor the operands and that that PostgreSQL cluster is in a healthy state, enter the following command, where `<custom-resource-name>` and `<cpd-instance-name>` are the values you used in the previous step:
+
+        ```text
+        oc -get cluster {{ <custom-resource-name> }}-postgres -n {{ <cpd-instance-namespace> }}
+        ```
+        {: codeblock}
+
+        If the PostgreSQL cluster is functioning properly, the command produces output similar to the following:
+
+        ```text
+        NAME                 AGE   INSTANCES   READY   STATUS                     PRIMARY
+        speech-cr-postgres   14d   3           3       Cluster in healthy state   speech-cr-postgres-1
+        ```
+        {: codeblock}
+
+    These steps do not cause operator to update the operands to the latest versions. However, the operands are upgraded as expected when you next upgrade the Speech services software.
 
 ## 13 October 2022 (Version 4.5.3)
 {: #speech-to-text-data-13october2022}
