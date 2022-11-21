@@ -128,9 +128,9 @@ toc:
           label: Security topics
           topics:
           - information-security.md
-          - /watson/watson-keyservice
-          - /watson/watson-public-private-endpoints
-          - /watson/watson-virtual-private-endpoints
+          - include: ../watson/getting-started-keyservice.md
+          - include: ../watson/service-endpoints.md
+          - include: ../watson/virtual-endpoints.md
       - topicgroup:
           label: Service background
           topics:
@@ -145,7 +145,7 @@ toc:
           href: https://{DomainName}/apidocs/speech-to-text
       - ha-dr.md
       - at-events.md
-      - /watson/watson-using-sdks
+      - include: ../watson/getting-started-sdks.md
       - link:
           label: Watson GitHub repos
           href: https://github.com/watson-developer-cloud/
@@ -162,3 +162,5 @@ toc:
           - link:
               label: StackOverflow
               href: http://stackoverflow.com/questions/tagged/ibm-watson-cognitive+speech-to-text
+      - include: ../overview/accessibility/accessibility_features.md
+        navtitle: Accessibility
