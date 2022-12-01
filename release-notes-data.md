@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2022
-lastupdated: "2022-11-10"
+lastupdated: "2022-11-30"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -25,11 +25,71 @@ For information about known limitations of the service, see [Known limitations](
 For information about releases and updates of the service for {{site.data.keyword.cloud_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes).
 {: note}
 
+## 30 November 2022 (Version 4.6.0)
+{: #speech-to-text-data-30november2022}
+
+Version 4.6.0 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.6.0 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.6.x and Red Hat OpenShift versions 4.8 and 4.10. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
+
+Amazon Web Services (AWS) is now supported
+:   {{site.data.keyword.watson}} Speech services for {{site.data.keyword.icp4dfull_notm}} are now supported on Amazon Web Services™ (AWS™). The services support Amazon Elastic Block Store, which you specify for by setting the `blockStorageClass` property of the Speech services custom resource to `gp2-csi` or `gp3-csi`.
+
+New storage classes are now supported
+:   {{site.data.keyword.watson}} Speech services for {{site.data.keyword.icp4dfull_notm}} now support two additional storage classes:
+    -   IBM Cloud Block Storage (`ibmc-block-gold`)
+    -   NetApp Trident (`ontap-nas`)
+
+    You specify the storage class with the `blockStorageClass` property of the Speech services custom resource. For more information about all supported storage classes, see the following topics in [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}:
+    -   *Before you begin* in *Installing Watson Speech services*
+    -   *Specifying a storage class* in *Using the Watson Speech services custom resource*
+
+Known issue: Some Watson Speech services pods do not have annotations that are used for scheduling
+:   **Known issue:** Some Watson Speech services pods are missing the `cloudpakInstanceId` annotation. If you use the {{site.data.keyword.icp4dfull_notm}} scheduling service, any Watson Speech services pods without the `cloudpakInstanceId` annotation are
+    -   Scheduled by the default Kubernetes scheduler rather than the scheduling service
+    -   Not included in the quota enforcement
+
+Monitoring of the PostgreSQL datastore is now available
+:   You can now enable monitoring of the PostgreSQL datastore to receive updates on its usage and status by the Watson Speech services. The events can be consumed by Prometheus monitoring software or whatever application you use for monitoring. By enabling monitoring for user-defined projects in addition to the default platform monitoring, you can monitor your own projects with the Red Hat® OpenShift® Container Platform monitoring stack. This capability includes an additional property, `spec.global.datastores.postgressql.enablePodMonitor`, in the Speech services custom resource.
+
+    For more information, see the topic *Monitoring the PostgreSQL datastore for Watson Speech services* in the *Administering* section of [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
+
+Defect fix: PostgreSQL datastore is no longer installed if only runtime microservices are enabled
+:   **Defect fix:** The PostgreSQL datastore is no longer installed if only the runtime microservices are enabled. The datastore is now installed only if at least one of the `sttAsync`, `sttCustomization`, or `ttsCustomization` microservices is installed. PostgreSQL is not uninstalled if at a later date these microservices are disabled.
+
+    Prior to version 4.6.0, PostgreSQL was always installed with the Speech services. If you are an existing customer who used only the runtime microservices of the Speech services prior to version 4.6.0, PostgreSQL remains installed but is not used. In this case, installation of PostgreSQL persists across upgrades.
+
+    The MinIO datastore is always installed because the runtime microservices depend on it. The RabbitMQ datastore is installed only if the `sttAsync` microservice is installed.
+
+    For more information, see *Datastore properties* in *Using the Watson Speech services custom resource* in [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
+
+Defect fix: Creation of a Network Policy is no longer necessary for the PostgreSQL operator to monitor its operands
+:   **Defect fix:** For version 4.6.0, it is not necessary to create a Network Policy to allow the PostgreSQL operator to monitor its operands, as described in the [10 November 2022 (Versions 4.0.x and 4.5.x)](#speech-to-text-data-10november2022) service update. As of version 4.6.0, the service handles this situation automatically.
+
+Defect fix: Some next-generation models were updated to improve low-latency response time
+:   **Defect fix:** The following next-generation models were updated to improve their response time when the `low_latency` parameter is used:
+    -   `en-IN_Telephony`
+    -   `hi-IN_Telephony`
+    -   `it-IT_Multimedia`
+    -   `nl-NL_Telephony`
+
+    Previously, these models did not return recognition results as quickly as expected when the `low_latency` parameter was used. You do not need to upgrade custom models that are based on these models. For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+
+Defect fix for custom model naming documentation
+:   **Defect fix:** The documentation now provides detailed rules for naming custom language models and custom acoustic models. For more information, see
+    -   [Create a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#createModel-language)
+    -   [Create a custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acoustic#createModel-acoustic)
+    -   [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}
+
+<!--
+Security vulnerabilities addressed
+:   The following security vulnerabilities have been fixed:
+-->
+
 ## 10 November 2022 (Versions 4.0.x and 4.5.x)
 {: #speech-to-text-data-10november2022}
 
-Defect fix: Updated Network Policy needed for PostgreSQL operator
-:   **Defect fix:** For Speech services version 4.0.x (not including version 4.0.0) and 4.5.x, if the PostgreSQL operator and the Speech services are installed in different namespaces, the PostgreSQL operator is not able to monitor the PostgreSQL operands for the Speech services. The operator is prevented from monitoring the operands by the Network Policy that is in place for the Speech services.
+Known issue: Updated Network Policy needed for PostgreSQL operator
+:   **Known issue:** For Speech services version 4.0.x (not including version 4.0.0) and 4.5.x, if the PostgreSQL operator and the Speech services are installed in different namespaces, the PostgreSQL operator is not able to monitor the PostgreSQL operands for the Speech services. The operator is prevented from monitoring the operands by the Network Policy that is in place for the Speech services.
 
     This problem does not prevent the PostgreSQL cluster from functioning properly. The cluster remains active and fully functional. However, the operator is not able to update the operands when you upgrade to new versions of the Speech services.
 
@@ -65,7 +125,7 @@ Defect fix: Updated Network Policy needed for PostgreSQL operator
         -   `<custom-resource-name>` is the name of the Speech services custom resource. The recommended name for version 4.0.x is `speech-prod-cr`; the recommended name for version 4.5.x is `speech-cr`.
         -   `<cpd-instance-name>` is the name of the project (namespace) in which the Speech services are installed. The documentation uses the environment variable `${PROJECT_CPD_INSTANCE}` to identity the namespace.
 
-    3.  To verify that the updated Network Policy allows the operator to monitor the operands and that that PostgreSQL cluster is in a healthy state, enter the following command, where `<custom-resource-name>` and `<cpd-instance-name>` are the values you used in the previous step:
+    3.  To verify that the updated Network Policy allows the operator to monitor the operands and that the PostgreSQL cluster is in a healthy state, enter the following command, where `<custom-resource-name>` and `<cpd-instance-name>` are the values you used in the previous step:
 
         ```text
         oc -get cluster {{ <custom-resource-name> }}-postgres -n {{ <cpd-instance-namespace> }}
@@ -163,7 +223,7 @@ Security vulnerabilities addressed
 {: #speech-to-text-data-19august2022}
 
 Important: Deprecation date for most previous-generation models is now 3 March 2023
-:   **Important:** On 15 March 2022, the previous-generation models for all languages other than Arabic and Japanese were deprecated. At that time, the deprecated models were to remain available until 15 September 2022. To allow users more time to migrate to the appropriate next-generation models, the deprecated models will now remain available until **3 March 2023**. As with the initial deprecation notice, the Arabic and Japanese previous-generation models are *not* deprecated.
+:   **Important:** On 15 March 2022, the previous-generation models for all languages other than Arabic and Japanese were deprecated. At that time, the deprecated models were to remain available until 15 September 2022. To allow users more time to migrate to the appropriate next-generation models, the deprecated models will now remain available until **3 March 2023**. As with the initial deprecation notice, the Arabic and Japanese previous-generation models are *not* deprecated. For complete list of all deprecated models, see the [15 March 2022 (Version 4.0.6) service update](#speech-to-text-data-15march2022).
 
     On 3 March 2023, the deprecated models will be removed from the service and the documentation. If you use any of the deprecated models, you must migrate to the equivalent next-generation model by the 3 March 2023.
     -   For more information about the next-generation models to which you can migrate from each of the deprecated models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models)
