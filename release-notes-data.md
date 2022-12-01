@@ -32,7 +32,7 @@ Version 4.6.0 is now available
 :   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.6.0 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.6.x and Red Hat OpenShift versions 4.8 and 4.10. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
 
 Amazon Web Services (AWS) is now supported
-:   {{site.data.keyword.watson}} Speech services for {{site.data.keyword.icp4dfull_notm}} are now supported on Amazon Web Services™ (AWS™). The services support Amazon Elastic Block Store, which you specify for by setting the `blockStorageClass` property of the Speech services custom resource to `gp2-csi` or `gp3-csi`.
+:   {{site.data.keyword.watson}} Speech services for {{site.data.keyword.icp4dfull_notm}} are now supported on Amazon Web Services™ (AWS™). The services support Amazon Elastic Block Store, which you specify by setting the `blockStorageClass` property of the Speech services custom resource to `gp2-csi` or `gp3-csi`.
 
 New storage classes are now supported
 :   {{site.data.keyword.watson}} Speech services for {{site.data.keyword.icp4dfull_notm}} now support two additional storage classes:
