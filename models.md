@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-08-19"
+lastupdated: "2022-11-15"
 
 subcollection: speech-to-text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 # Previous-generation languages and models
 {: #models}
 
-Effective **15 March 2022**, previous-generation models for all languages other than Arabic and Japanese are deprecated. The deprecated models remain available until **3 March 2023**, when they will be removed from the service and the documentation. You must migrate to the equivalent next-generation model by the end of service date. For more information, see [Migrating to next-generation models](/docs/speech-to-text?topic=speech-to-text-models-migrate).
+Effective **15 March 2022**, previous-generation models for all languages other than Arabic and Japanese are deprecated. The deprecated models remain available until **3 March 2023**, when they will be removed from the service and the documentation. You must migrate to the equivalent next-generation model by the end of service date.  For more information, see [Migrating to next-generation models](/docs/speech-to-text?topic=speech-to-text-models-migrate).
 {: deprecated}
 
 The {{site.data.keyword.speechtotextfull}} service supports speech recognition with previous-generation models in many languages. The model indicates the language in which the audio is spoken and the rate at which it is sampled.
@@ -82,7 +82,7 @@ Table 2 lists the previous-generation broadband models that are available.
 |----------|:----------------:|:------:|:---------------------------------:|
 | Arabic (Modern Standard) | `ar-MS_BroadbandModel` | GA | `ar-MS_Telephony` |
 | Chinese (Mandarin) | `zh-CN_BroadbandModel` | GA  \n Deprecated | `zh-CN_Telephony` |
-| Dutch (Netherlands) | `nl-NL_BroadbandModel` | GA  \n Deprecated | `nl-NL_Telephony` |
+| Dutch (Netherlands) | `nl-NL_BroadbandModel` | GA  \n Deprecated | `nl-NL_Multimedia` |
 | English (Australian) | `en-AU_BroadbandModel` | GA  \n Deprecated | `en-AU_Multimedia` |
 | English (United Kingdom) | `en-GB_BroadbandModel` | GA  \n Deprecated | `en-GB_Multimedia` |
 | English (United States) | `en-US_BroadbandModel` | GA  \n Deprecated | `en-US_Multimedia` |

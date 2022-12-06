@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-10-12"
+lastupdated: "2022-11-14"
 
 subcollection: speech-to-text
 
@@ -84,6 +84,7 @@ Table 2 lists the next-generation models that are supported for language model c
 | Czech | `cs-CZ_Telephony` | GA | GA | Not supported |
 | Dutch  \n (Belgian) | `nl-BE_Telephony` | GA | GA | Not supported |
 | Dutch  \n (Netherlands) | `nl-NL_Telephony` | GA | GA | Not supported |
+| | `nl-NL_Multimedia` | GA | GA | Not supported |
 | English  \n (Australian) | `en-AU_Telephony` | GA | GA | Not supported |
 | | `en-AU_Multimedia` | GA | GA | Not supported |
 | English  \n (Indian) | `en-IN_Telephony` | GA | GA | Not supported |

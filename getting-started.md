@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-02-02"
+lastupdated: "2022-12-06"
 
 keywords: speech to text,IBM cloud,getting started,tutorial,transcribe audio,speech recognition
 
@@ -38,25 +38,37 @@ The {{site.data.keyword.speechtotextfull}} service transcribes audio to text to 
 
 -   Create an instance of the service: {: hide-dashboard}
 
-    1.  Go to the [{{site.data.keyword.speechtotextshort}}](https://{DomainName}/catalog/services/speech-to-text){: external} page in the {{site.data.keyword.cloud_notm}} Catalog. {: hide-dashboard}
-    1.  Sign up for a free {{site.data.keyword.cloud_notm}} account or log in. {: hide-dashboard}
-    1.  Click **Create**. {: hide-dashboard}
+    1.  Go to the [{{site.data.keyword.speechtotextshort}}](https://{DomainName}/catalog/services/speech-to-text){: external} page in the {{site.data.keyword.cloud_notm}} catalog.
+    1.  Sign up for a free {{site.data.keyword.cloud_notm}} account or log in.
+    1.  Read and agree to the terms of the license agreement.
+    1.  Click **Create**.
 
 -   Copy the credentials to authenticate to your service instance:
 
-    1.  From the [{{site.data.keyword.cloud_notm}} Resource list](https://{DomainName}/resources){: external}, click on your {{site.data.keyword.speechtotextshort}} service instance to go to the {{site.data.keyword.speechtotextshort}} service dashboard page. {: hide-dashboard}
-    1.  On the **Manage** page, click **Show Credentials** to view your credentials.
-    1.  Copy the `API Key` and `URL` values.
+
+    1.  View the **Manage** page for the service instance:
+
+        -   If you are on the **Getting started** page for your service instance, click the **Manage** entry in the list of topics.
+        -   If you are on the **Resource list** page, expand the **AI / Machine Learning** grouping in the **Name** column, and click the name of your service instance.
+
+    1.  On the **Manage** page, click **Show Credentials** in the **Credentials** box.
+    1.  Copy the `API Key` and `URL` values for the service instance.
+
+This tutorial uses an API key to authenticate. In production, use an IAM token. For more information see [Authenticating to IBM Cloud](/docs/watson?topic=watson-iam#gs-credential-cloud).
+{: tip}
 
 ### {{site.data.keyword.icp4dfull_notm}}
 {: #getting-started-before-you-begin-icpd}
 
 ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}} only**
 
-1.  Provision an instance of {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}. For more information about provisioning, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}} version 1.2](/docs/speech-to-text?topic=speech-to-text-speech-install-12).
+1.  Provision an instance of {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}.  For more information about installing the service and provisioning a service instance, see [Installing and managing {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-speech-install-data).
 1.  From the {{site.data.keyword.icp4dfull_notm}} web client menu, choose **My Instances**.
 1.  Click the {{site.data.keyword.speechtotextshort}} instance to open the overview page.
 1.  Copy the `{token}` and `{URL}` values.
+
+This tutorial uses a Bearer token to authenticate. For more information see [Authenticating to IBM Cloud Pak for Data](/docs/watson?topic=watson-iam#gs-credential-cpd).
+{: tip}
 
 ### Using the curl examples
 {: #getting-started-curl}
