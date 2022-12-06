@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2022
-lastupdated: "2022-10-12"
+lastupdated: "2022-11-14"
 
 subcollection: speech-to-text
 
@@ -86,6 +86,7 @@ Table 2 lists the available next-generation multimedia models.
 
 | Language | Model name | Low-latency support | Status |
 |----------|:----------:|:-------------------:|:------:|
+| Dutch  \n (Netherlands) | `nl-NL_Multimedia`  \n {{site.data.keyword.cloud_notm}} only | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
 | English  \n (Australian) | `en-AU_Multimedia` | Yes | GA |
 | English  \n (United Kingdom) | `en-GB_Multimedia` | Yes | GA |
 | English  \n (United States) | `en-US_Multimedia` | Yes | GA |

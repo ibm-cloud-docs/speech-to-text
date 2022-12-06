@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-10-19"
+lastupdated: "2022-12-05"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -26,6 +26,28 @@ For information about known limitations of the service, see [Known limitations](
 
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
+
+## 5 December 2022
+{: #speech-to-text-5december2022}
+{: release-note}
+
+New Netherlands Dutch next-generation multimedia model
+:   The service now offers a next-generation multimedia model for Netherlands Dutch: `nl-NL_Multimedia`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about next-generation models and low latency, see
+    -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
+
+Defect fix for custom word recognition in transcription results
+:   **Defect fix:** For language model customization with next-generation models, custom words are now recognized and used in all transcripts. Previously, custom words sometimes failed to be recognized and used in transcription results.
+
+Defect fix for use of `display_as` field in transcription results
+:   **Defect fix:** For language model customization with next-generation models, the value of the `display_as` field for a custom word now appears in all transcripts. Previously, the value of the `word` field sometimes appeared in transcription results.
+
+Defect fix for custom model naming documentation
+:   **Defect fix:** The documentation now provides detailed rules for naming custom language models and custom acoustic models. For more information, see
+    -   [Create a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#createModel-language)
+    -   [Create a custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acoustic#createModel-acoustic)
+    -   [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}
 
 ## 20 October 2022
 {: #speech-to-text-20october2022}
@@ -85,7 +107,7 @@ Defect fix: Some next-generation models were updated to improve low-latency resp
 {: release-note}
 
 Important: Deprecation date for most previous-generation models is now 3 March 2023
-:   **Important:** On 15 March 2022, the previous-generation models for all languages other than Arabic and Japanese were deprecated. At that time, the deprecated models were to remain available until 15 September 2022. To allow users more time to migrate to the appropriate next-generation models, the deprecated models will now remain available until **3 March 2023**. As with the initial deprecation notice, the Arabic and Japanese previous-generation models are *not* deprecated.
+:   **Important:** On 15 March 2022, the previous-generation models for all languages other than Arabic and Japanese were deprecated. At that time, the deprecated models were to remain available until 15 September 2022. To allow users more time to migrate to the appropriate next-generation models, the deprecated models will now remain available until **3 March 2023**. As with the initial deprecation notice, the Arabic and Japanese previous-generation models are *not* deprecated. For a complete list of all deprecated models, see the [15 March 2022 service update](#speech-to-text-15march2022).
 
     On 3 March 2023, the deprecated models will be removed from the service and the documentation. If you use any of the deprecated models, you must migrate to the equivalent next-generation model by the 3 March 2023.
     -   For more information about the next-generation models to which you can migrate from each of the deprecated models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models)
@@ -238,7 +260,7 @@ Important: Deprecation of most previous-generation models
     -   Chinese (Mandarin): `zh-CN_NarrowbandModel` and `zh-CN_BroadbandModel`
     -   Dutch (Netherlands): `nl-NL_NarrowbandModel` and `nl-NL_BroadbandModel`
     -   English (Australian): `en-AU_NarrowbandModel` and `en-AU_BroadbandModel`
-    -   English (United Kingdom): `en-UK_NarrowbandModel` and `en-UK_BroadbandModel`
+    -   English (United Kingdom): `en-GB_NarrowbandModel` and `en-GB_BroadbandModel`
     -   English (United States): `en-US_NarrowbandModel`, `en-US_BroadbandModel`, and `en-US_ShortForm_NarrowbandModel`
     -   French (Canadian): `fr-CA_NarrowbandModel` and `fr-CA_BroadbandModel`
     -   French (France): `fr-FR_NarrowbandModel` and `fr-FR_BroadbandModel`
