@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-12-06"
+lastupdated: "2022-12-09"
 
 keywords: speech to text,IBM cloud,getting started,tutorial,transcribe audio,speech recognition
 
@@ -23,6 +23,9 @@ completion-time: 10m
 
 The {{site.data.keyword.speechtotextfull}} service transcribes audio to text to enable speech transcription capabilities for applications. This `curl`-based tutorial can help you get started quickly with the service. The examples show you how to call the service's `POST /v1/recognize` method to request a transcript.
 {: shortdesc}
+
+The tutorial uses the `curl` command-line utility to demonstrate REST API calls. For more information about `curl`, see [Using curl with Watson examples](/docs/watson?topic=watson-using-curl).
+{: note}
 
 ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only.** Watch the following video for a visual summary of getting started with the {{site.data.keyword.speechtotextshort}} service.
 
@@ -69,26 +72,6 @@ This tutorial uses an API key to authenticate. In production, use an IAM token. 
 
 This tutorial uses a Bearer token to authenticate. For more information see [Authenticating to IBM Cloud Pak for Data](/docs/watson?topic=watson-iam#gs-credential-cpd).
 {: tip}
-
-### Using the curl examples
-{: #getting-started-curl}
-
-This tutorial uses the `curl` command to call methods of the service's HTTP interface. Make sure that you have the `curl` command installed on your system.
-
-1.  To test whether `curl` is installed, run the following command on the command line. If the output lists the `curl` version that supports Secure Sockets Layer (SSL), you are set for the tutorial.
-
-    ```bash
-    curl -V
-    ```
-    {: pre}
-
-1.  If necessary, install the version of `curl` with SSL enabled for your operating system from [curl.haxx.se](https://curl.haxx.se/){: external}.
-
-### Tips
-{: #getting-started-tips}
-
--   Omit the braces (`{ }`) from the examples. They indicate variable values.
--   *Windows users,* replace the backslash (`\`) at the end of each line with a caret (`^`). Make sure there are no trailing spaces.
 
 ## Transcribe audio with no options
 {: #getting-started-transcribe}
