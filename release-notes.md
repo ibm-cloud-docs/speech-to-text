@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-12-05"
+lastupdated: "2022-12-08"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -39,6 +39,8 @@ New Netherlands Dutch next-generation multimedia model
 
 Defect fix for custom word recognition in transcription results
 :   **Defect fix:** For language model customization with next-generation models, custom words are now recognized and used in all transcripts. Previously, custom words sometimes failed to be recognized and used in transcription results.
+
+    **Important:** This problem persists and is being investigated further.
 
 Defect fix for use of `display_as` field in transcription results
 :   **Defect fix:** For language model customization with next-generation models, the value of the `display_as` field for a custom word now appears in all transcripts. Previously, the value of the `word` field sometimes appeared in transcription results.
