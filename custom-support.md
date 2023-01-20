@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2022
-lastupdated: "2022-11-14"
+  years: 2015, 2023
+lastupdated: "2023-01-18"
 
 subcollection: speech-to-text
 
@@ -94,6 +94,7 @@ Table 2 lists the next-generation models that are supported for language model c
 | | `en-US_Multimedia` | GA | GA | Not supported |
 | English  \n (all supported dialects) | `en-WW_Medical_Telephony` | Beta | Beta | Not supported |
 | French  \n (Canadian) | `fr-CA_Telephony` | GA | GA | Not supported |
+| | `fr-CA_Multimedia` | GA | GA | Not supported |
 | French  \n (France) | `fr-FR_Telephony` | GA | GA | Not supported |
 | | `fr-FR_Multimedia` | GA | GA | Not supported |
 | German | `de-DE_Telephony` | GA | GA | Not supported |

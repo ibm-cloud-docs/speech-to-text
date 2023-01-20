@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2022
-lastupdated: "2022-10-03"
+  years: 2015, 2023
+lastupdated: "2023-01-11"
 
 subcollection: speech-to-text
 
@@ -251,7 +251,7 @@ An optional integer that specifies the maximum number of alternative hypotheses 
 | Availability and usage | Description |
 |------------------------|-------------|
 | Previous-generation models | Generally available for all languages. |
-| Next-generation models     | Not available. |
+| Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |

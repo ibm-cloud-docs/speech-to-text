@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2022
-lastupdated: "2022-11-15"
+  years: 2015, 2023
+lastupdated: "2023-01-17"
 
 subcollection: speech-to-text
 
@@ -62,7 +62,7 @@ Table 1 lists the previous-generation narrowband models that are available.
 | French (France) | `fr-FR_NarrowbandModel` | GA  \n Deprecated | `fr-FR_Telephony` |
 | German | `de-DE_NarrowbandModel` | GA  \n Deprecated | `de-DE_Telephony` |
 | Italian | `it-IT_NarrowbandModel` | GA  \n Deprecated | `it-IT_Telephony` |
-| Japanese | `ja-JP_NarrowbandModel` | GA | No current alternative |
+| Japanese | `ja-JP_NarrowbandModel` | GA  \n Deprecated | No current alternative |
 | Korean | `ko-KR_NarrowbandModel` | GA  \n Deprecated | `ko-KR_Telephony` |
 | Portuguese (Brazilian) | `pt-BR_NarrowbandModel` | GA  \n Deprecated | `pt-BR_Telephony` |
 | Spanish (Argentinian, Beta) | `es-AR_NarrowbandModel` | Beta  \n Deprecated | `es-LA_Telephony` |

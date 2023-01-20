@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2022
-lastupdated: "2022-08-19"
+  years: 2015, 2023
+lastupdated: "2023-01-17"
 
 subcollection: speech-to-text
 
@@ -169,8 +169,6 @@ SDKs are available for the {{site.data.keyword.speechtotextshort}} service to si
 ## Learning more about application development
 {: #features-learn}
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
-
 For more information about working with {{site.data.keyword.watson}} services and {{site.data.keyword.cloud_notm}}:
 
 -   For an introduction, see [Getting started with {{site.data.keyword.watson}} and {{site.data.keyword.cloud_notm}}](/docs/watson?topic=watson-about).
@@ -186,4 +184,4 @@ Explore the features introduced in this topic to gain a more in-depth understand
 -   [Using speech recognition parameters](#features-parameters) introduces the many parameters that you can use to tailor speech recognition requests and transcription responses to your needs. The service's WebSocket and HTTP interfaces support an impressive array of capabilities, most of which are common to all supported interfaces. Use the links to find the parameters that are right for you.
 -   [Customizing the service](#features-customization) describes the more advanced topics of language model and acoustic model customization, which can help you gain the most from the service's capabilities. The section also presents grammars, which you can use with language models to limit possible responses to precise strings and phrases.
 -   [Using software development kits](#features-sdks) provide links to the SDKs that are available to simplify application development in many programming languages.
--   ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only.** [Learning more about application development](#features-learn) provides links to help you get started with {{site.data.keyword.watson}} services and understand authentication.
+-   [Learning more about application development](#features-learn) provides links to help you get started with {{site.data.keyword.watson}} services and understand authentication.

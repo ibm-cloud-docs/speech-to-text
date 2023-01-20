@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2022
-lastupdated: "2022-11-14"
+  years: 2021, 2023
+lastupdated: "2023-01-11"
 
 subcollection: speech-to-text
 
@@ -124,7 +124,6 @@ Next-generation models support all speech recognition parameters and headers *ex
 
 -   `acoustic_customization_id` (Next-generation models do not support acoustic model customization.)
 -   `keywords` and `keywords_threshold`
--   `max_alternatives`
 -   `processing_metrics` and `processing_metrics_interval`
 -   `word_alternatives_threshold`
 
