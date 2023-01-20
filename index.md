@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2022
-lastupdated: "2022-12-05"
+  years: 2015, 2023
+lastupdated: "2023-01-20"
 
 subcollection: speech-to-text
 
@@ -23,11 +23,11 @@ The service is ideal for clients who need to extract high-quality speech transcr
 ## Product versions
 {: #about-version}
 
-{{site.data.keyword.speechtotextshort}} can be deployed as a managed cloud service or can be installed on premises. This documentation describes how to use both versions of the product. Information that applies exclusively to one version is denoted by the appropriate icon or clearly labeled with the version to which it applies:
+{{site.data.keyword.speechtotextshort}} can be deployed as a managed cloud service or can be installed on premises. This documentation describes how to use both versions of the product. Information such as topics, paragraphs, and examples that applies exclusively to one version is clearly denoted:
 
 -   ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}** for managed instances of {{site.data.keyword.speechtotextshort}} that are hosted on {{site.data.keyword.cloud_notm}} or for instances that are hosted on [IBM Cloud Pak for Data as a Service](https://dataplatform.cloud.ibm.com/docs/content/wsj/landings/wstt.html){: external}.
     -   For information about all service updates, see the [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes).
-    -   For information about the latest service update, see the [5 December 2022](/docs/speech-to-text?topic=speech-to-text-release-notes#speech-to-text-5december2022) update in the release notes.
+    -   For information about the latest service update, see the [20 January 2023](/docs/speech-to-text?topic=speech-to-text-release-notes#speech-to-text-20january2023) update in the release notes.
 -   ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}** for installed or on-premises instances of {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}. For links to information about installing and managing {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}, see [Installing {{site.data.keyword.ibmwatson_notm}} {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-speech-install-data).
     -   For information about all service updates, see the [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
     -   For information about the latest service update, see [30 November 2022 (Version 4.6.0)](/docs/speech-to-text?topic=speech-to-text-release-notes-data#speech-to-text-data-30november2022) in the release notes.

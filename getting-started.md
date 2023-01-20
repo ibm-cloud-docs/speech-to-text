@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2022
-lastupdated: "2022-12-09"
+  years: 2015, 2023
+lastupdated: "2023-01-16"
 
 keywords: speech to text,IBM cloud,getting started,tutorial,transcribe audio,speech recognition
 
@@ -97,8 +97,7 @@ Call the `POST /v1/recognize` method to request a basic transcript of a FLAC aud
 
     ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
 
-    -   Replace `{token}` with the access token for your service instance.
-    -   Replace `{url}` with the URL for your service instance.
+    -   Replace `{token}` and `{url}` with the access token and URL for your service instance.
     -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
 
     ```bash
@@ -154,8 +153,7 @@ Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but
 
     ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
 
-    -   Replace `{token}` with the access token for your service instance.
-    -   Replace `{url}` with the URL for your service instance.
+    -   Replace `{token}` and `{url}` with the access token and URL for your service instance.
     -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
 
     ```bash

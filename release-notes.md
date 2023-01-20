@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2022
-lastupdated: "2022-12-08"
+  years: 2015, 2023
+lastupdated: "2023-01-20"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -27,6 +27,54 @@ For information about known limitations of the service, see [Known limitations](
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
 
+## 20 January 2023
+{: #speech-to-text-20january2023}
+{: release-note}
+
+Deprecated Arabic and United Kingdom model names are no longer available
+:   The following Arabic and United Kingdom model names are no longer accepted by the service:
+    -   `ar-AR_BroadbandModel` - Use `ar-MS_BroadbandModel` instead.
+    -   `en-UK_NarrowbandModel` - Use `en-GB_NarrowbandModel` instead.
+    -   `en-UK_BroadbandModel` - Use `en-GB_BroadbandModel` instead.
+
+    The Arabic model name was deprecated on 2 December 2020. The UK English model names were deprecated on 14 July 2017.
+
+Cloud Foundry deprecation and migration to resource groups
+:   {{site.data.keyword.IBM_notm}} announced the deprecation of IBM Cloud Foundry on 31 May 2022. As of 30 November 2022, new {{site.data.keyword.IBM_notm}} Cloud Foundry applications cannot be created and only existing users are able to deploy applications. {{site.data.keyword.IBM_notm}} Cloud Foundry reaches end of support on 1 June 2023. At that time, any {{site.data.keyword.IBM_notm}} Cloud Foundry application runtime instances running {{site.data.keyword.IBM_notm}} Cloud Foundry applications will be permanently disabled, deprovisioned, and deleted. For more information about the deprecation, see [Deprecation of {{site.data.keyword.IBM_notm}} Cloud Foundry](/docs/cloud-foundry-public?topic=cloud-foundry-public-deprecation).
+
+    To continue to use your {{site.data.keyword.cloud_notm}} applications beyond 1 June 2023, you must migrate to resource groups before that date. Resource groups are conceptually similar to Cloud Foundry spaces. They include several extra benefits, such as finer-grained access control by using IBM Cloud Identity and Access Management (IAM), the ability to connect service instances to apps and service across different regions, and an easy way to view usage per group. For more information about migration, see [Migrating Cloud Foundry service instances and apps to a resource group](/docs/account?topic=account-migrate).
+
+New Japanese next-generation telephony model
+:   The service now offers a next-generation telephony model for Japanese: `ja-JP_Telephony`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about next-generation models and low latency, see
+    -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
+
+    **Note:** With the availability of the new `ja-JP_Telephony` model, the `ja-JP_NarrowbandModel` is now scheduled for deprecation along with most of the other previous-generation models. It is currently scheduled for removal on **3 March 2023**.
+
+The `max_alternatives` parameter is now available for use with next-generation models
+:   The `max_alternatives` parameter is now available for use with all next-generation models. The parameter is generally available for all next-generation models. For more information, see [Maximum alternatives](/docs/speech-to-text?topic=speech-to-text-metadata#max-alternatives).
+
+Defect fix: Allow use of both `max_alternatives` and `end_of_phrase_silence_time` parameters with next-generation models
+
+:   **Defect fix:** When you use both the `max_alternatives` and `end_of_phrase_silence_time` parameters with next-generation models, the service now returns multiple alternative transcripts while also respecting the indicated pause interval. Previously, use of the two parameters in a single request generated a failure. (Use of the `max_alternatives` parameter with next-generation models was previously available as an experimental feature to a limited number of customers.)
+
+Defect fix: Update French Canadian next-generation telephony model (upgrade required)
+:   **Defect fix:** The French Canadian next-generation telephony model, `fr-CA_Telephony`, was updated to address an internal inconsistency that could cause an error during speech recognition. *You need to upgrade any custom models that are based on the `fr-CA_Telephony` model.* For more information about upgrading custom models, see
+    -   [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade)
+    -   [Using upgraded custom models for speech recognition](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use)
+
+Defect fix: Add documentation guidelines for creating Japanese sounds-likes based on next-generation models
+:   **Defect fix:** In sounds-likes for Japanese custom language models that are based on next-generation models, the character-sequence `ウー` is ambiguous in some left contexts. Do not use characters (syllables) that end with the phoneme `/o/`, such as `ロ` and `ト`. In such cases, use `ウウ` or just `ウ` instead of `ウー`. For example, use `ロウウマン` or `ロウマン` instead of `ロウーマン`. For more information, see [Guidelines for Japanese](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordLanguages-jaJP-ng).
+
+Adding words directly to custom models that are based on next-generation models increases the training time
+:   Adding custom words directly to a custom model that is based on a next-generation model causes training of a model to take a few minutes longer than it otherwise would. If you are training a model with custom words that you added by using the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method, allow for some minutes of extra training time for the model. For more information, see
+    -   [Add words to the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#addWords)
+    -   [Monitoring the train model request](/docs/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language)
+
+Maximum hours of audio resources for custom acoustic models in the Tokyo location has been increased
+:   The maximum hours of audio resources that you can add to custom acoustic models in the Tokyo location is again 200 hours. Previously, the maximum was reduced to 50 hours for the Tokyo region. That reduction has been rescinded and postponed until next year. For more more information, see [Maximum hours of audio](/docs/speech-to-text?topic=speech-to-text-audioResources#audioMaximum).
+
 ## 5 December 2022
 {: #speech-to-text-5december2022}
 {: release-note}
@@ -37,15 +85,15 @@ New Netherlands Dutch next-generation multimedia model
     -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
     -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
 
-Defect fix for custom word recognition in transcription results
+Defect fix: Correct custom word recognition in transcription results for next-generation models
 :   **Defect fix:** For language model customization with next-generation models, custom words are now recognized and used in all transcripts. Previously, custom words sometimes failed to be recognized and used in transcription results.
 
     **Important:** This problem persists and is being investigated further.
 
-Defect fix for use of `display_as` field in transcription results
+Defect fix: Correct use of `display_as` field in transcription results for next-generation models
 :   **Defect fix:** For language model customization with next-generation models, the value of the `display_as` field for a custom word now appears in all transcripts. Previously, the value of the `word` field sometimes appeared in transcription results.
 
-Defect fix for custom model naming documentation
+Defect fix: Update custom model naming documentation
 :   **Defect fix:** The documentation now provides detailed rules for naming custom language models and custom acoustic models. For more information, see
     -   [Create a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#createModel-language)
     -   [Create a custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acoustic#createModel-acoustic)
@@ -64,7 +112,7 @@ Updates to English next-generation telephony models
 
     All of these models continue to support low latency. You do not need to upgrade custom models that are based on these models. For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 
-Defect fix: Update to Japanese next-generation multimedia model (upgrade required)
+Defect fix: Update Japanese next-generation multimedia model (upgrade required)
 :   **Defect fix:** The Japanese next-generation multimedia model, `ja-JP_Multimedia`, was updated to address an internal inconsistency that could cause an error during speech recognition with low latency. *You need to upgrade any custom models that are based on the `ja-JP_Multimedia` model.* For more information about upgrading custom models, see
     -   [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade)
     -   [Using upgraded custom models for speech recognition](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use)
@@ -95,7 +143,7 @@ Updates to English next-generation telephony models
 New Activity Tracker event for GDPR deletion of user information
 :   The service now returns an Activity Tracker event when you use the `DELETE /v1/user_data` method to delete all information about a user. The event is named `speech-to-text.gdpr-user-data.delete`. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-at-events).
 
-Defect fix: Some next-generation models were updated to improve low-latency response time
+Defect fix: Update some next-generation models to improve low-latency response time
 :   **Defect fix:** The following next-generation models were updated to improve their response time when the `low_latency` parameter is used:
     -   `en-IN_Telephony`
     -   `hi-IN_Telephony`
@@ -150,7 +198,7 @@ Important: Maximum hours of audio data being reduced for custom acoustic models
 {: #speech-to-text-3august2022}
 {: release-note}
 
-Defect fix for speech hesitations and hesitation markers documentation
+Defect fix: Update speech hesitations and hesitation markers documentation
 :   **Defect fix:** Documentation for speech hesitations and hesitation markers has been updated. Previous-generation models include hesitation markers in place of speech hesitations in transcription results for most languages; smart formatting removes hesitation markers from US English final transcripts. Next-generation models include the actual speech hesitations in transcription results; smart formatting has no effect on their inclusion in final transcription results.
 
     For more information, see:
@@ -290,7 +338,7 @@ Next-generation models now support audio-parsing parameters
     -   `end_of_phrase_silence_time` specifies the duration of the pause interval at which the service splits a transcript into multiple final results. For more information, see [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-parsing#silence-time).
     -   `split_transcript_at_phrase_end` directs the service to split the transcript into multiple final results based on semantic features of the input. For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-parsing#split-transcript).
 
-Defect fix for speaker labels documentation
+Defect fix: Correct speaker labels documentation
 :   **Defect fix:** Documentation of speaker labels included the following erroneous statement in multiple places: *For next-generation models, speaker labels are not supported for use with interim results or low latency.* Speaker labels are supported for use with interim results and low latency for next-generation models. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
 ## 28 February 2022
@@ -319,14 +367,14 @@ New Castilian Spanish next-generation multimedia model
 {: #speech-to-text-11february2022}
 {: release-note}
 
-Defect fix for custom model upgrade and base model version documentation
+Defect fix: Correct custom model upgrade and base model version documentation
 :   **Defect fix:** The documentation that describes the upgrade of custom models and the version strings that are used for different versions of base models has been updated. The documentation now states that upgrade for language model customization also applies to next-generation models. Also, the version strings that represent different versions of base models have been updated. And the `base_model_version` parameter can also be used with upgraded next-generation models.
 
     For more information about custom model upgrade, when upgrade is necessary, and how to use older versions of custom models, see
     -   [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade)
     -   [Using upgraded custom models for speech recognition](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use)
 
-Defect fix for capitalization documentation
+Defect fix: Update capitalization documentation
 :   **Defect fix:** The documentation that describes the service's automatic capitalization of transcripts has been updated. The service capitalizes appropriate nouns only for the following languages and models:
     -   All previous-generation US English models
     -   The next-generation German model
@@ -427,7 +475,7 @@ New `custom_acoustic_model` field for supported features
 {: #speech-to-text-22october2021}
 {: release-note}
 
-Defect fix for asynchronous HTTP failures
+Defect fix: Address asynchronous HTTP failures
 :   **Defect fix:** The asynchronous HTTP interface failed to transcribe some audio. In addition, the callback for the request returned status `recognitions.completed_with_results` instead of `recognitions.failed`. This error has been resolved.
 
 ## 6 October 2021
@@ -461,12 +509,12 @@ Updates to Korean and Brazilian Portuguese next-generation models
     -   The Korean model `ko-KR_Telephony` now supports low latency.
     -   The Brazilian Portuguese model `pt-BR_Telephony` has been updated for improved speech recognition.
 
-Defect fix for interim results and low-latency documentation
+Defect fix: Correct interim results and low-latency documentation
 :   **Defect fix:** Documentation that describes the interim results and low-latency features with next-generation models has been rewritten for clarity and correctness. For more information, see the following topics:
     -   [Interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim), especially [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency)
     -   [How the service sends recognition results](/docs/speech-to-text?topic=speech-to-text-websockets#ws-results)
 
-Defect fix for speakers labels
+Defect fix: Improve speakers labels results
 :   **Defect fix:** When you use speakers labels with next-generation models, the service now identifies the speaker for all words of the input audio, including very short words that have the same start and end timestamps.
 
 ## 31 August 2021
@@ -521,7 +569,7 @@ New beta French next-generation model
 Updates to beta US English next-generation model for improved speech recognition
 :   The next-generation US English `en-US_Telephony` model has been updated for improved speech recognition. The updated model continues to be beta functionality.
 
-Defect fix for documentation
+Defect fix: Update documentation for hesitation markers
 :   **Defect fix:** The documentation failed to state that next-generation models do not produce hesitation markers. The documentation has been updated to note that only previous-generation models produce hesitation markers. Next-generation models include the actual hesitations in transcription results. For more information, see [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 
 ## 15 June 2021
@@ -556,8 +604,8 @@ New beta support for `audio_metrics` parameter for next-generation models
 New beta support for `word_confidence` parameter for next-generation models
 :   The `word_confidence` parameter is now supported as beta functionality for use with all next-generation languages and models. For more information, see [Word confidence](/docs/speech-to-text?topic=speech-to-text-metadata#word-confidence).
 
-Defect fixes for documentation
-:   **Defect fixes:** The documentation has been updated to correct the following information:
+Defect fix: Update documentation for next-generation models
+:   **Defect fix:** The documentation has been updated to correct the following information:
     -   When you use a next-generation model for speech recognition, final transcription results now include the `confidence` field. The field was always included in final transcription results when you use a previous-generation model. This fix addresses a limitation that was reported for the 12 April 2021 release of the next-generation models.
     -   The documentation incorrectly stated that using the `smart_formatting` parameter causes the service to remove hesitation markers from final transcription results for Japanese. Smart formatting does not remove hesitation markers from final results for Japanese, only for US English. For more information, see [What results does smart formatting affect?](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-effects)
 
@@ -618,7 +666,7 @@ New beta next-generation language models and `low_latency` parameter
 {: #speech-to-text-17march2021}
 {: release-note}
 
-Defect fix for asynchronous HTTP interface
+Defect fix: Fix limitation for asynchronous HTTP interface
 :   **Defect fix:** The limitation that was reported with the asynchronous HTTP interface in the Dallas (`us-south`) location on 16 December 2020 has been addressed. Previously, a small percentage of jobs were entering infinite loops that prevented their execution. Asynchronous HTTP requests in the Dallas data center no longer experience this limitation.
 
 ## 2 December 2020
@@ -732,7 +780,7 @@ Hesitation marker for German changed
 {: #speech-to-text-4june2020}
 {: release-note}
 
-Defect fix to improve latency for custom language models with many grammars
+Defect fix: Improve latency for custom language models with many grammars
 :   **Defect fix:** The latency issue for custom language models that contain a large number of grammars has been resolved. When initially used for speech recognition, such custom models could take multiple seconds to load. The custom models now load much faster, greatly reducing latency when they are used for recognition.
 
 ## 28 April 2020
@@ -825,7 +873,7 @@ New speech activity detection and background audio suppression parameters for sp
 Activity Tracker now supported for customization interfaces
 :   The service now supports the use of Activity Tracker events for all customization operations. {{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. You can use this service to investigate abnormal activity and critical actions and to comply with regulatory audit requirements. In addition, you can be alerted about actions as they happen. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-at-events).
 
-Defect fix for generating processing metrics with WebSocket interface
+Defect fix: Correct generation of processing metrics with WebSocket interface
 :   **Defect fix:** The WebSocket interface now works seamlessly when generating processing metrics. Previously, processing metrics could continue to be delivered after the client sent a `stop` message to the service.
 
 ## 18 December 2019
@@ -938,7 +986,7 @@ New US HIPAA support for Premium plans in Washington, DC, location
 {: #speech-to-text-22august2019}
 {: release-note}
 
-Defect fixes and improvements
+Defect fix: Multiple small improvements
 :   The service was updated for small defect fixes and improvements.
 
 ## 30 July 2019
@@ -1276,8 +1324,8 @@ Keyword spotting and word alternatives features now generally available
     -   [Keyword spotting](/docs/speech-to-text?topic=speech-to-text-spotting#keyword-spotting)
     -   [Word alternatives](/docs/speech-to-text?topic=speech-to-text-spotting#word-alternatives)
 
-Defect fixes for customization interface
-:   **Defect fixes:**  The following known issues that were associated with the customization interface have been resolved and are fixed in production. The following information is preserved for users who may have encountered the problems in the past.
+Defect fix: Improve documentation for customization interface
+:   **Defect fix:** The following known issues that were associated with the customization interface have been resolved and are fixed in production. The following information is preserved for users who may have encountered the problems in the past.
 
     -   If you add data to a custom language or custom acoustic model, you must retrain the model before using it for speech recognition. The problem shows up in the following scenario:
 
@@ -1607,7 +1655,7 @@ New support for Cross-Origin Resource Sharing
 New method to unregister a callback URL with asynchronous HTTP interface
 :   The asynchronous HTTP interface now offers a `POST /v1/unregister_callback` method that removes the registration for an allowlisted callback URL. For more information, see [Unregistering a callback URL](/docs/speech-to-text?topic=speech-to-text-async#unregister).
 
-Defect fix to eliminate timeouts for long audio with WebSocket interface
+Defect fix: Eliminate timeouts for long audio with WebSocket interface
 :   **Defect fix:** The WebSocket interface no longer times out for recognition requests for especially long audio files. You no longer need to request interim results with the JSON `start` message to avoid the timeout. (This issue was described in the [update for 10 March 2016](#speech-to-text-10march2016).)
 
 New HTTP error codes

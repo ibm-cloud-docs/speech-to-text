@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2022
-lastupdated: "2021-10-19"
+lastupdated: "2021-10-16"
 
 subcollection: speech-to-text
 
@@ -148,11 +148,11 @@ The maximum hour of audio that you can add to a custom acoustic model depend on 
     | Location | Planned date of new limit | Actual date of new limit |
     |----------|:-------------------------:|:------------------------:|
     | `eu-gb` (London) | 11 August 2022 | 11 August 2022 |
-    | `jp-tok` (Tokyo) | 31 August 2022 | 24 August 2022 |
     | `au-syd` (Sydney) | 19 October 2022 | 19 October 2022 |
     | `us-east` (Washington, DC) | First-quarter 2023 | TBD |
     | `us-south` (Dallas) | First-quarter 2023 | TBD |
     | `eu-de` (Frankfurt) | First-quarter 2023 | TBD |
+    | `jp-tok` (Tokyo) | First-quarter 2023 | TBD |
     {: caption="Table 1. Schedule of 50-hour limit per location"}
 
     If you currently have a custom acoustic model with more than 50 hours of audio data, you can do one of the following:

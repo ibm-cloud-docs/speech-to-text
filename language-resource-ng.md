@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2022
-lastupdated: "2022-10-06"
+  years: 2015, 2023
+lastupdated: "2023-01-12"
 
 subcollection: speech-to-text
 
@@ -272,6 +272,7 @@ Follow these guidelines when specifying a sounds-like for any language:
     `ズ`, `ゼ`, `ゾ`
 
 -   Do not use `ン` as the first character of a word. For example, use `ウーント` instead of `ンート`, the latter of which is invalid.
+-   The character-sequence `ウー` is ambiguous in some left contexts. Do not use characters (syllables) that end with the phoneme `/o/`, such as `ロ` and `ト`. In such cases, use `ウウ` or just `ウ` instead of `ウー`. For example, use `ロウウマン` or `ロウマン` instead of `ロウーマン`.
 -   Many compound words consist of *prefix+noun* or *noun+suffix*. The service's base vocabulary covers most compound words that occur frequently (for example, `長電話` and `古新聞`) but not those compound words that occur infrequently. If your corpus commonly contains compound words, add them as one word as the first step of your customization. For example, `古鉛筆` is not common in general Japanese text; if you use it often, add it to your custom model to improve transcription accuracy.
 -   Do not use a trailing assimilated sound.
 
