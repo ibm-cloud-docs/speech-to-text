@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-20"
+lastupdated: "2023-01-27"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -43,14 +43,6 @@ Cloud Foundry deprecation and migration to resource groups
 :   {{site.data.keyword.IBM_notm}} announced the deprecation of IBM Cloud Foundry on 31 May 2022. As of 30 November 2022, new {{site.data.keyword.IBM_notm}} Cloud Foundry applications cannot be created and only existing users are able to deploy applications. {{site.data.keyword.IBM_notm}} Cloud Foundry reaches end of support on 1 June 2023. At that time, any {{site.data.keyword.IBM_notm}} Cloud Foundry application runtime instances running {{site.data.keyword.IBM_notm}} Cloud Foundry applications will be permanently disabled, deprovisioned, and deleted. For more information about the deprecation, see [Deprecation of {{site.data.keyword.IBM_notm}} Cloud Foundry](/docs/cloud-foundry-public?topic=cloud-foundry-public-deprecation).
 
     To continue to use your {{site.data.keyword.cloud_notm}} applications beyond 1 June 2023, you must migrate to resource groups before that date. Resource groups are conceptually similar to Cloud Foundry spaces. They include several extra benefits, such as finer-grained access control by using IBM Cloud Identity and Access Management (IAM), the ability to connect service instances to apps and service across different regions, and an easy way to view usage per group. For more information about migration, see [Migrating Cloud Foundry service instances and apps to a resource group](/docs/account?topic=account-migrate).
-
-New Japanese next-generation telephony model
-:   The service now offers a next-generation telephony model for Japanese: `ja-JP_Telephony`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about next-generation models and low latency, see
-    -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
-    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
-    -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
-
-    **Note:** With the availability of the new `ja-JP_Telephony` model, the `ja-JP_NarrowbandModel` is now scheduled for deprecation along with most of the other previous-generation models. It is currently scheduled for removal on **3 March 2023**.
 
 The `max_alternatives` parameter is now available for use with next-generation models
 :   The `max_alternatives` parameter is now available for use with all next-generation models. The parameter is generally available for all next-generation models. For more information, see [Maximum alternatives](/docs/speech-to-text?topic=speech-to-text-metadata#max-alternatives).
