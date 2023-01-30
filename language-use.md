@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2022
-lastupdated: "2022-08-04"
+  years: 2015, 2023
+lastupdated: "2023-01-23"
 
 subcollection: speech-to-text
 
@@ -41,7 +41,7 @@ The following examples show the use of a custom language model with each speech 
 
 -   For the [synchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-http), use the `POST /v1/recognize` method. The specified custom model is used for that request.
 
-    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+    [IBM Cloud]{: tag-ibm-cloud}
 
     ```bash
     curl -X POST -u "apikey:{apikey}" \
@@ -51,7 +51,7 @@ The following examples show the use of a custom language model with each speech 
     ```
     {: pre}
 
-    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+    [IBM Cloud Pak for Data]{: tag-cp4d}
 
     ```bash
     curl -X POST \
@@ -64,7 +64,7 @@ The following examples show the use of a custom language model with each speech 
 
 -   For the [asynchronous HTTP interface](/docs/speech-to-text?topic=speech-to-text-async), use the `POST /v1/recognitions` method. The specified custom model is used for that request.
 
-    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+    [IBM Cloud]{: tag-ibm-cloud}
 
     ```bash
     curl -X POST -u "apikey:{apikey}" \
@@ -74,7 +74,7 @@ The following examples show the use of a custom language model with each speech 
     ```
     {: pre}
 
-    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+    [IBM Cloud Pak for Data]{: tag-cp4d}
 
     ```bash
     curl -X POST \
@@ -98,7 +98,7 @@ You specify a customization weight by using the `customization_weight` parameter
 
 -   For a training request, the following example specifies a customization weight of `0.5` with the `POST /v1/customizations/{customization_id}/train` method:
 
-    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+    [IBM Cloud]{: tag-ibm-cloud}
 
     ```bash
     curl -X POST -u "apikey:{apikey}" \
@@ -106,7 +106,7 @@ You specify a customization weight by using the `customization_weight` parameter
     ```
     {: pre}
 
-    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+    [IBM Cloud Pak for Data]{: tag-cp4d}
 
     ```bash
     curl -X POST \
@@ -119,7 +119,7 @@ You specify a customization weight by using the `customization_weight` parameter
 
 -   For a recognition request, the following example specifies a customization weight of `0.7` with the `POST /v1/recognize` method:
 
-    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+    [IBM Cloud]{: tag-ibm-cloud}
 
     ```bash
     curl -X POST -u "apikey:{apikey}" \
@@ -129,7 +129,7 @@ You specify a customization weight by using the `customization_weight` parameter
     ```
     {: pre}
 
-    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+    [IBM Cloud Pak for Data]{: tag-cp4d}
 
     ```bash
     curl -X POST \

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2022
-lastupdated: "2022-04-05"
+  years: 2017, 2023
+lastupdated: "2023-01-23"
 
 subcollection: speech-to-text
 
@@ -52,7 +52,7 @@ Follow these steps to upgrade a custom language model:
 
 1.  Upgrade the custom language model by using the `POST /v1/customizations/{customization_id}/upgrade_model` method:
 
-    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+    [IBM Cloud]{: tag-ibm-cloud}
 
     ```bash
     curl -X POST -u "apikey:{apikey}" \
@@ -60,7 +60,7 @@ Follow these steps to upgrade a custom language model:
     ```
     {: pre}
 
-    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+    [IBM Cloud Pak for Data]{: tag-cp4d}
 
     ```bash
     curl -X POST \
@@ -88,7 +88,7 @@ Follow these steps to upgrade a custom acoustic model. If the custom acoustic mo
 
 1.  Upgrade the custom acoustic model by using the `POST /v1/acoustic_customizations/{customization_id}/upgrade_model` method:
 
-    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+    [IBM Cloud]{: tag-ibm-cloud}
 
     ```bash
     curl -X POST -u "apikey:{apikey}" \
@@ -96,7 +96,7 @@ Follow these steps to upgrade a custom acoustic model. If the custom acoustic mo
     ```
     {: pre}
 
-    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+    [IBM Cloud Pak for Data]{: tag-cp4d}
 
     ```bash
     curl -X POST \
@@ -109,7 +109,7 @@ Follow these steps to upgrade a custom acoustic model. If the custom acoustic mo
 
 1.  *If the custom acoustic model was trained with a custom language model,* upgrade the custom acoustic model again, this time with the previously upgraded custom language model. Use the `custom_language_model_id` query parameter to specify the customization ID of the custom language model.
 
-    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+    [IBM Cloud]{: tag-ibm-cloud}
 
     ```bash
     curl -X POST -u "apikey:{apikey}" \
@@ -117,7 +117,7 @@ Follow these steps to upgrade a custom acoustic model. If the custom acoustic mo
     ```
     {: pre}
 
-    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+    [IBM Cloud Pak for Data]{: tag-cp4d}
 
     ```bash
     curl -X POST \

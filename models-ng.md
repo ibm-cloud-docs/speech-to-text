@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-01-11"
+lastupdated: "2023-01-17"
 
 subcollection: speech-to-text
 
@@ -73,7 +73,7 @@ Table 1 lists the available next-generation telephony models.
 | Portuguese  \n (Brazilian) | `pt-BR_Telephony` | Yes | GA |
 | Spanish  \n (Castilian) | `es-ES_Telephony` | Yes | GA |
 | Spanish  \n (Argentinian, Chilean,  \n Colombian, Mexican,  \n and Peruvian) | `es-LA_Telephony` | Yes | GA |
-| Swedish | `sv-SE_Telephony`  \n {{site.data.keyword.cloud_notm}} only | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
+| Swedish | `sv-SE_Telephony` | Yes | GA |
 {: caption="Table 1. Next-generation telephony models"}
 
 The Latin American Spanish model, `es-LA_Telephony`, applies to all Latin American dialects. It is the equivalent of the previous-generation models that are available for the Argentinian, Chilean, Colombian, Mexican, and Peruvian dialects. If you used a previous-generation model for any of these Latin American dialects, use the `es-LA_Telephony` model to migrate to the equivalent next-generation model.
@@ -86,7 +86,7 @@ Table 2 lists the available next-generation multimedia models.
 
 | Language | Model name | Low-latency support | Status |
 |----------|:----------:|:-------------------:|:------:|
-| Dutch  \n (Netherlands) | `nl-NL_Multimedia`  \n {{site.data.keyword.cloud_notm}} only | Yes  \n {{site.data.keyword.cloud_notm}} only | GA |
+| Dutch  \n (Netherlands) | `nl-NL_Multimedia` | Yes | GA |
 | English  \n (Australian) | `en-AU_Multimedia` | Yes | GA |
 | English  \n (United Kingdom) | `en-GB_Multimedia` | Yes | GA |
 | English  \n (United States) | `en-US_Multimedia` | Yes | GA |

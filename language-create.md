@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2022
-lastupdated: "2022-12-14"
+  years: 2015, 2023
+lastupdated: "2023-01-23"
 
 subcollection: speech-to-text
 
@@ -66,7 +66,7 @@ A new custom language model has the following attributes:
 
 The following example creates a new custom language model named `Example model`. The model is created for the base model `en-US-BroadbandModel` and has the description `Example custom language model`. The required `Content-Type` header specifies that JSON data is being passed to the method.
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+[IBM Cloud]{: tag-ibm-cloud}
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
@@ -78,7 +78,7 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+[IBM Cloud Pak for Data]{: tag-cp4d}
 
 ```bash
 curl -X POST \
@@ -126,7 +126,7 @@ You use the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` m
 
 Pass the corpus text file as the required body of the request. The following example adds the corpus text file `healthcare.txt` to the custom model with the specified ID. The example names the corpus `healthcare`.
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+[IBM Cloud]{: tag-ibm-cloud}
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
@@ -135,7 +135,7 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+[IBM Cloud Pak for Data]{: tag-cp4d}
 
 ```bash
 curl -X POST \
@@ -160,7 +160,7 @@ The service returns a 201 response code if the corpus is valid. It then asynchro
 
 To determine the status of the analysis, use the `GET /v1/customizations/{customization_id}/corpora/{corpus_name}` method to poll the status of the corpus. The method accepts the ID of the model and the name of the corpus, as shown in the following example:
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+[IBM Cloud]{: tag-ibm-cloud}
 
 ```bash
 curl -X GET -u "apikey:{apikey}" \
@@ -168,7 +168,7 @@ curl -X GET -u "apikey:{apikey}" \
 ```
 {: pre}
 
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+[IBM Cloud Pak for Data]{: tag-cp4d}
 
 ```bash
 curl -X GET \
@@ -207,23 +207,33 @@ If you have only one or a few words to add to a model, using corpora to add the 
 -   For more information about adding words to a custom model that is based on a *previous-generation model*, see [Working with custom words for previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords#workingWords).
 -   For more information about adding words to a custom model that is based on *next-generation model*, see [Working with custom words for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#workingWords-ng).
 
-You can use the following methods to add words to a custom model:
+After you add words to a custom model, examine the new custom words to check for typographical and other errors. This check is especially important when you add multiple words at one time.
 
--   The `POST /v1/customizations/{customization_id}/words` method adds multiple words at one time. You pass a JSON object that provides information about each word via the body of the request. The following example adds two custom words, `HHonors` and `IEEE`, to the custom model with the specified ID. The required `Content-Type` header specifies that JSON data is being passed to the method.
+-   *For custom models that are based on previous-generation models,* see [Validating a words resource for previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
+-   *For custom models that are based on next-generation models,* see [Validating a words resource for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#validateModel-ng).
 
-    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+### Add words with the POST method
+{: #add-words-push}
+
+The `POST /v1/customizations/{customization_id}/words` method adds one or more words at one time. You pass the words to be added as JSON data via the body of the request or from a file. In either case, the required `Content-Type` header specifies that JSON data is being passed to the method.
+
+The following examples add two custom words, `HHonors` and `IEEE`, to the custom model with the specified ID:
+
+-   The first example passes the information about each word via the body of the request:
+
+    [IBM Cloud]{: tag-ibm-cloud}
 
     ```bash
     curl -X POST -u "apikey:{apikey}" \
     --header "Content-Type: application/json" \
     --data "{\"words\": [ \
-      {\"word\": \"HHonors\", \"sounds_like\": [\"hilton honors\", \"H. honors\"], \"display_as\": \"HHonors\"}, \
-      {\"word\": \"IEEE\", \"sounds_like\": [\"I. triple E.\"]}]}" \
+       {\"word\": \"HHonors\", \"sounds_like\": [\"hilton honors\", \"H. honors\"], \"display_as\": \"HHonors\"}, \
+       {\"word\": \"IEEE\", \"sounds_like\": [\"I. triple E.\"]}]}" \
     "{url}/v1/customizations/{customization_id}/words"
     ```
     {: pre}
 
-    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+    [IBM Cloud Pak for Data]{: tag-cp4d}
 
     ```bash
     curl -X POST \
@@ -236,7 +246,7 @@ You can use the following methods to add words to a custom model:
     ```
     {: pre}
 
-    You can also add the words from a file. For example, the file `words.json` defines the same two custom words.
+-   The second example adds the same words from a file named `words.json`:
 
     ```javascript
     {
@@ -248,9 +258,9 @@ You can use the following methods to add words to a custom model:
     ```
     {: codeblock}
 
-    The following command adds the words from the file:
+    The following request adds the words from the file:
 
-    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+    [IBM Cloud]{: tag-ibm-cloud}
 
     ```bash
     curl -X POST -u "apikey:{apikey}" \
@@ -260,7 +270,7 @@ You can use the following methods to add words to a custom model:
     ```
     {: pre}
 
-    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+    [IBM Cloud Pak for Data]{: tag-cp4d}
 
     ```bash
     curl -X POST \
@@ -271,36 +281,37 @@ You can use the following methods to add words to a custom model:
     ```
     {: pre}
 
-    This method is asynchronous. It can take on the order of minutes to complete. The time that it takes to complete depends on the number of words that you add and the current load on the service. For more information about checking the status of the operation, see [Monitoring the add words request](#monitorWords).
--   The `PUT /v1/customizations/{customization_id}/words/{word_name}` method adds individual words. You pass a JSON object that provides information about the word. The following example adds the word `NCAA` to the model with the specified ID. The required `Content-Type` header again indicates that JSON data is being passed to the method.
+The `POST` method is asynchronous. It can take on the order of minutes to complete. The time that it takes to complete depends on the number of words that you add and the current load on the service. For more information about checking the status of the operation, see [Monitoring the add words request](#monitorWords).
 
-    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+### Add a word with the PUT method
+{: #add-words-pull}
 
-    ```bash
-    curl -X PUT -u "apikey:{apikey}" \
-    --header "Content-Type: application/json" \
-    --data "{\"sounds_like\": [\"N. C. A. A.\", \"N. C. double A.\"]}" \
-    "{url}/v1/customizations/{customization_id}/words/NCAA"
-    ```
-    {: pre}
+The `PUT /v1/customizations/{customization_id}/words/{word_name}` method adds individual words. You pass a JSON object that provides information about the word as the body of the request.
 
-    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+The following example adds the word `NCAA` to the model with the specified ID. The required `Content-Type` header again indicates that JSON data is being passed to the method.
 
-    ```bash
-    curl -X PUT \
-    --header "Authorization: Bearer {token}" \
-    --header "Content-Type: application/json" \
-    --data "{\"sounds_like\": [\"N. C. A. A.\", \"N. C. double A.\"]}" \
-    "{url}/v1/customizations/{customization_id}/words/NCAA"
-    ```
-    {: pre}
+[IBM Cloud]{: tag-ibm-cloud}
 
-    This method is synchronous. The service returns a response code that reports the success or failure of the request immediately.
+```bash
+curl -X PUT -u "apikey:{apikey}" \
+--header "Content-Type: application/json" \
+--data "{\"sounds_like\": [\"N. C. A. A.\", \"N. C. double A.\"]}" \
+"{url}/v1/customizations/{customization_id}/words/NCAA"
+```
+{: pre}
 
-Examine the new custom words to check for typographical and other errors. This check is especially important when you add multiple words at one time.
+[IBM Cloud Pak for Data]{: tag-cp4d}
 
--   *For custom models that are based on previous-generation models,* see [Validating a words resource for previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
--   *For custom models that are based on next-generation models,* see [Validating a words resource for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#validateModel-ng).
+```bash
+curl -X PUT \
+--header "Authorization: Bearer {token}" \
+--header "Content-Type: application/json" \
+--data "{\"sounds_like\": [\"N. C. A. A.\", \"N. C. double A.\"]}" \
+"{url}/v1/customizations/{customization_id}/words/NCAA"
+```
+{: pre}
+
+The `PUT` method is synchronous. The service returns a response code that reports the success or failure of the request immediately.
 
 ### Monitoring the add words request
 {: #monitorWords}
@@ -309,7 +320,7 @@ When you use the `POST /v1/customizations/{customization_id}/words` method, the 
 
 To determine the status of the request, use the `GET /v1/customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the model, as in the following example:
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+[IBM Cloud]{: tag-ibm-cloud}
 
 ```bash
 curl -X GET -u "apikey:{apikey}" \
@@ -317,7 +328,7 @@ curl -X GET -u "apikey:{apikey}" \
 ```
 {: pre}
 
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+[IBM Cloud Pak for Data]{: tag-cp4d}
 
 ```bash
 curl -X GET \
@@ -361,7 +372,7 @@ Once you populate a custom language model with new words (by adding corpora, by 
 
 You use the `POST /v1/customizations/{customization_id}/train` method to train a custom model. You pass the method the customization ID of the model that you want to train, as in the following example:
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+[IBM Cloud]{: tag-ibm-cloud}
 
 ```bash
 curl -X POST -u "apikey:{apikey}" \
@@ -369,7 +380,7 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+[IBM Cloud Pak for Data]{: tag-cp4d}
 
 ```bash
 curl -X POST \
@@ -402,7 +413,7 @@ Adding custom words directly to a custom model that is based on a next-generatio
 
 To determine the status of a training request, use the `GET /v1/customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the model:
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+[IBM Cloud]{: tag-ibm-cloud}
 
 ```bash
 curl -X GET -u "apikey:{apikey}" \
@@ -410,7 +421,7 @@ curl -X GET -u "apikey:{apikey}" \
 ```
 {: pre}
 
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+[IBM Cloud Pak for Data]{: tag-cp4d}
 
 ```bash
 curl -X GET \

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2022
-lastupdated: "2022-10-03"
+  years: 2015, 2023
+lastupdated: "2023-01-23"
 
 subcollection: speech-to-text
 
@@ -48,7 +48,7 @@ For more information, see [Information security](/docs/speech-to-text?topic=spee
 ## Request logging and data privacy
 {: #custom-logging}
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
+[IBM Cloud]{: tag-ibm-cloud}
 
 How the service handles request logging for calls to the customization interface depends on the request:
 

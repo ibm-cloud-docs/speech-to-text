@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2022
-lastupdated: "2022-10-07"
+  years: 2022, 2023
+lastupdated: "2023-01-23"
 
 subcollection: speech-to-text
 
@@ -18,14 +18,14 @@ The {{site.data.keyword.speechtotextshort}} service provides the following secur
 ## Authenticating to {{site.data.keyword.cloud_notm}}
 {: #data-security-authentication-cloud}
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
+[IBM Cloud]{: tag-ibm-cloud}
 
 You authenticate to the service by using {{site.data.keyword.cloud_notm}} Identity and Access Management (IAM). You can pass either an API key or a bearer token in an `Authorization` header. For more information, see [Authenticating to {{site.data.keyword.cloud_notm}}](/docs/watson?topic=watson-iam#gs-credential-cloud).
 
 ## Authenticating to {{site.data.keyword.icp4dfull_notm}}
 {: #data-security-authentication-icpd}
 
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}} only**
+[IBM Cloud Pak for Data]{: tag-cp4d}
 
 You authenticate to the service by passing an access token with each request. You pass a bearer token in an `Authorization` header to authenticate. Several methods exist to generate the token, including by using an API key or by username. For more information, see [Authenticating to {{site.data.keyword.icp4dfull_notm}}](/docs/watson?topic=watson-iam#gs-credential-cpd).
 
@@ -44,16 +44,14 @@ For more information about data security for cloud applications, see [Security a
 ## Information security
 {: #data-security-info-security}
 
-The service supports the European Union General Data Protection Regulation (GDPR) to manage user data. You can pass the `X-Watson-Metadata` header with a request to associate a customer ID with data that the request passes to the service. If necessary, you can then delete the data by using the `DELETE /v1/user_data` method.
+The service supports the European Union General Data Protection Regulation (GDPR) to manage user data. You can pass the `X-Watson-Metadata` header with a request to associate a customer ID with data that the request passes to the service. If necessary, you can then delete the data by using the `DELETE /v1/user_data` method. For more information about these features and their use, see [Information security](/docs/speech-to-text?topic=speech-to-text-information-security).
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only.** For Premium plans, the service also offers US Health Insurance Portability and Accountability Act (HIPAA) readiness in the Washington, DC, (`us-east`) and Dallas (`us-south`) regions.
-
-For more information about these features and their use, see [Information security](/docs/speech-to-text?topic=speech-to-text-information-security).
+[IBM Cloud]{: tag-ibm-cloud} For Premium plans, the service also offers US Health Insurance Portability and Accountability Act (HIPAA) readiness in the Washington, DC, (`us-east`) and Dallas (`us-south`) regions.
 
 ## Request logging
 {: #data-security-request-logging}
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
+[IBM Cloud]{: tag-ibm-cloud}
 
 The service lets you control the default request logging that is performed for all {{site.data.keyword.watson}} services. The service logs request and response data only to improve the service for future users. The logged data is never shared or made public. No data can be exported from the service. For example, users must retain the data that they use for training custom models because it cannot be retrieved from the service.
 
@@ -74,7 +72,7 @@ You can also use the `DELETE /v1/recognitions/{id}` method to delete the results
 ## Data separation and encryption
 {: #data-security-encryption}
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
+[IBM Cloud]{: tag-ibm-cloud}
 
 The service's Plus and Premium pricing plans offer different levels of data separation and encryption for users:
 
@@ -86,7 +84,7 @@ Users of Premium plans can also integrate with {{site.data.keyword.keymanagement
 ## Network endpoints
 {: #data-security-network-endpoints}
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
+[IBM Cloud]{: tag-ibm-cloud}
 
 {{site.data.keyword.cloud_notm}} supports both public and private network endpoints with certain plans. Connections to private network endpoints do not require public internet access. Private network endpoints support routing services over the {{site.data.keyword.cloud_notm}} private network instead of the public network. A private network endpoint provides a unique IP address that is accessible to you without a VPN connection.
 
@@ -95,7 +93,7 @@ Private network endpoints are supported only for paid plans. Check the plan info
 ## Virtual private endpoints
 {: #data-security-virtual-endpoints}
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
+[IBM Cloud]{: tag-ibm-cloud}
 
 {{site.data.keyword.cloud}} Virtual Private Endpoints for Virtual Private Cloud (VPC) are available with certain plans. Virtual private endpoints enable you to connect to supported {{site.data.keyword.cloud_notm}} services from your VPC network by using the IP addresses of your choosing, allocated from a subnet within your VPC. Virtual private endpoints are an evolution of the private connectivity to {{site.data.keyword.cloud_notm}} services. They are virtual IP interfaces that are bound to an endpoint gateway created on a per service or service instance basis.
 
@@ -111,13 +109,13 @@ For instance, a web page that is loaded from a server in {{site.data.keyword.clo
 ## FISMA support
 {: #data-security-fisma}
 
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}} only**
+[IBM Cloud Pak for Data]{: tag-cp4d}
 
 Federal Information Security Management Act (FISMA) support is available for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} offerings as of version 1.0.1. {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} is FISMA High Ready.
 
 ## FIPS support
 {: #data-security-fips}
 
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}} only**
+[IBM Cloud Pak for Data]{: tag-cp4d}
 
 {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} supports running on Federal Information Processing Standard (FIPS)-enabled clusters as of version 4.5.1.

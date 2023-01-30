@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018, 2022
-lastupdated: "2022-12-01"
+  years: 2018, 2023
+lastupdated: "2023-01-30"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -15,7 +15,7 @@ subcollection: speech-to-text
 # Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}
 {: #release-notes-data}
 
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}} only**
+[IBM Cloud Pak for Data]{: tag-cp4d}
 
 The following features and changes were included for each release and update of installed or on-premises instances of {{site.data.keyword.speechtotextfull}} for {{site.data.keyword.icp4dfull_notm}}. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
 {: shortdesc}
@@ -24,6 +24,70 @@ For information about known limitations of the service, see [Known limitations](
 
 For information about releases and updates of the service for {{site.data.keyword.cloud_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes).
 {: note}
+
+## 30 January 2023 (Version 4.6.2)
+{: #speech-to-text-data-30january2023}
+
+Version 4.6.2 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.6.2 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.6.x and Red Hat OpenShift versions 4.8 and 4.10. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
+
+The custom resource now includes a new `fileStorageClass` property
+:   The custom resource for the Watson Speech services now includes a `fileStorageClass` property in addition to the existing `blockStorageClass` property. You specify both block and file storage classes when you install or upgrade a service. During upgrade from a previous version, the new property is added automatically to the custom resource by the `--file_storage_class` option on `cli manage apply-cr` command.
+
+    For more information about the available block and file storage classes you use with each of the supported storage solutions, see the table of *Storage requirements* under *Information you need to complete this task* on the page "Installing Watson Speech services" in [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
+
+Additional information about provisioning a service instance
+:   The documentation now includes information about creating a service instance programmatically. It also includes examples of listing service instances and deleting a service instance. For more information, see *Provisioning a Watson Speech services instance* in the *Post-installation setup* documentation in [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
+
+Server-side encryption is enabled for the MinIO datastore
+:   The Speech services have now enabled server-side encryption for object storage in the MinIO datastore. No action is required on your part.
+
+Change to audit webhooks
+:  The Speech services have now removed the audit webhook dependency. The services now write audit events directly to the server. After upgrading to version 4.6.2, some webhook resources might remain until all services can remove the dependency. The remaining resources will be removed in a future release. No action is required on your part.
+
+New Netherlands Dutch next-generation multimedia model
+:   The service now offers a next-generation multimedia model for Netherlands Dutch: `nl-NL_Multimedia`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about next-generation models and low latency, see
+    -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
+
+New Swedish next-generation telephony model
+:   The service now offers a next-generation telephony model for Swedish: `sv-SE_Telephony`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about next-generation models and low latency, see
+    -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
+
+Updates to English next-generation telephony models
+:   The English next-generation telephony models have been updated for improved speech recognition:
+    -   `en-AU_Telephony`
+    -   `en-GB_Telephony`
+    -   `en-IN_Telephony`
+    -   `en-US_Telephony`
+
+    All of these models continue to support low latency. You do not need to upgrade custom models that are based on these models. For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+
+The `max_alternatives` parameter is now available for use with next-generation models
+:   The `max_alternatives` parameter is now available for use with all next-generation models. The parameter is generally available for all next-generation models. For more information, see [Maximum alternatives](/docs/speech-to-text?topic=speech-to-text-metadata#max-alternatives).
+
+Defect fix: Allow use of both `max_alternatives` and `end_of_phrase_silence_time` parameters with next-generation models
+
+:   **Defect fix:** When you use both the `max_alternatives` and `end_of_phrase_silence_time` parameters with next-generation models, the service now returns multiple alternative transcripts while also respecting the indicated pause interval. Previously, use of the two parameters in a single request generated a failure. (Use of the `max_alternatives` parameter with next-generation models was previously available as an experimental feature to a limited number of customers.)
+
+Defect fix: Update to Japanese next-generation multimedia model (upgrade required)
+:   **Defect fix:** The Japanese next-generation multimedia model, `ja-JP_Multimedia`, was updated to address an internal inconsistency that could cause an error during speech recognition with low latency. *You need to upgrade any custom models that are based on the `ja-JP_Multimedia` model.* For more information about upgrading custom models, see
+    -   [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade)
+    -   [Using upgraded custom models for speech recognition](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use)
+
+Defect fix: Add documentation guidelines for creating Japanese sounds-likes based on next-generation models
+:   **Defect fix:** In sounds-likes for Japanese custom language models that are based on next-generation models, the character-sequence `ウー` is ambiguous in some left contexts. Do not use characters (syllables) that end with the phoneme `/o/`, such as `ロ` and `ト`. In such cases, use `ウウ` or just `ウ` instead of `ウー`. For example, use `ロウウマン` or `ロウマン` instead of `ロウーマン`. For more information, see [Guidelines for Japanese](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordLanguages-jaJP-ng).
+
+Defect fix: Correct use of `display_as` field in transcription results
+:   **Defect fix:** For language model customization with next-generation models, the value of the `display_as` field for a custom word now appears in all transcripts. Previously, the value of the `word` field sometimes appeared in transcription results.
+
+<!--
+Security vulnerabilities addressed
+:   The following security vulnerabilities have been fixed:
+-->
 
 ## 30 November 2022 (Version 4.6.0)
 {: #speech-to-text-data-30november2022}
@@ -74,7 +138,7 @@ Defect fix: Some next-generation models were updated to improve low-latency resp
 
     Previously, these models did not return recognition results as quickly as expected when the `low_latency` parameter was used. You do not need to upgrade custom models that are based on these models. For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 
-Defect fix for custom model naming documentation
+Defect fix: Improve custom model naming documentation
 :   **Defect fix:** The documentation now provides detailed rules for naming custom language models and custom acoustic models. For more information, see
     -   [Create a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#createModel-language)
     -   [Create a custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acoustic#createModel-acoustic)
@@ -84,7 +148,7 @@ Security vulnerabilities addressed
 :   The following security vulnerabilities have been fixed:
     -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a cross-configuration attack against OpenPGP (CVE-2021-40528)](https://www.ibm.com/support/pages/node/6843867){: external}
     -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to arbitrary code execution in PCRE2 (CVE-2022-1586)](https://www.ibm.com/support/pages/node/6843869){: external}
-    -   [ Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in Vim (CVE-2022-1621)](https://www.ibm.com/support/pages/node/6843871){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in Vim (CVE-2022-1621)](https://www.ibm.com/support/pages/node/6843871){: external}
     -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a buffer overflow in Vim (CVE-2022-1629)](https://www.ibm.com/support/pages/node/6843873){: external}
     -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to arbitrary code execution in Vim (CVE-2022-1785, CVE-2022-1897, CVE-2022-1927)](https://www.ibm.com/support/pages/node/6843875){: external}
     -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a security restrictions bypass in cURL libcurl (CVE-2022-22576)](https://www.ibm.com/support/pages/node/6843877){: external}
@@ -210,7 +274,7 @@ Troubleshooting upgrade from version 4.0.x to version 4.5.x
     ```
     {: codeblock}
 
-Defect fix for custom resource entries in documentation
+Defect fix: Fix custom resource entries documentation
 :   **Defect fix:** The documentation for the Speech services custom resource now includes colons after the names of the models `koKrTelephony` and `nlNlTelephony`. Previously, the documentation for these two entries omitted the colons.
 
 Security vulnerabilities addressed
@@ -252,10 +316,10 @@ Version 4.5.1 is now available
 Support for FIPS-enabled clusters
 :   Both {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} and {{site.data.keyword.texttospeechshort}} for {{site.data.keyword.icp4dfull_notm}} now support running on Federal Information Processing Standard (FIPS)-enabled clusters. For more information, see [Services that support FIPS](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=considerations-services-that-support-fips){: external}.
 
-Defect fix for fixed ephemeral storage calculations to prevent occasional pod evictions
+Defect fix: Fix ephemeral storage calculations to prevent occasional pod evictions
 :   **Defect fix:** A defect was fixed and calculation of ephemeral storage limits is now more precise for the {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} and {{site.data.keyword.texttospeechshort}} for {{site.data.keyword.icp4dfull_notm}} runtimes. These changes prevent occasional pod evictions when the services' runtimes are under heavy load.
 
-Defect fix for speech hesitations and hesitation markers documentation
+Defect fix: Update speech hesitations and hesitation markers documentation
 :   **Defect fix:** Documentation for speech hesitations and hesitation markers has been updated. Previous-generation models include hesitation markers in place of speech hesitations in transcription results for most languages; smart formatting removes hesitation markers from US English final transcripts. Next-generation models include the actual speech hesitations in transcription results; smart formatting has no effect on their inclusion in final transcription results.
 
     For more information, see:
@@ -543,8 +607,8 @@ Next-generation models now support audio-parsing parameters
     -   `end_of_phrase_silence_time` specifies the duration of the pause interval at which the service splits a transcript into multiple final results. For more information, see [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-parsing#silence-time).
     -   `split_transcript_at_phrase_end` directs the service to split the transcript into multiple final results based on semantic features of the input. For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-parsing#split-transcript).
 
-Defect fix for speaker labels documentation
-:   **Defect fix:**  Documentation of speaker labels included the following erroneous statement in multiple places: *For next-generation models, speaker labels are not supported for use with interim results or low latency.* Speaker labels are supported for use with interim results and low latency for next-generation models. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
+Defect fix: Correct speaker labels documentation
+:   **Defect fix:** Documentation of speaker labels included the following erroneous statement in multiple places: *For next-generation models, speaker labels are not supported for use with interim results or low latency.* Speaker labels are supported for use with interim results and low latency for next-generation models. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
 ## 23 February 2022 (Version 4.0.6)
 {: #speech-to-text-data-23february2022}
@@ -605,14 +669,14 @@ Update to Japanese `ja-JP_Multimedia` model to support low latency
 ## 11 February 2022 (Version 4.0.5)
 {: #speech-to-text-data-11february2022}
 
-Defect fix for custom model upgrade and base model version documentation
+Defect fix: Improve custom model upgrade and base model version documentation
 :   **Defect fix:** The documentation that describes the upgrade of custom models and the version strings that are used for different versions of base models has been updated. The documentation now states that upgrade for language model customization also applies to next-generation models. Also, the version strings that represent different versions of base models have been updated. And the `base_model_version` parameter can also be used with upgraded next-generation models.
 
     For more information about custom model upgrade, when upgrade is necessary, and how to use older versions of custom models, see
     -   [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade)
     -   [Using upgraded custom models for speech recognition](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use)
 
-Defect fix for capitalization documentation
+Defect fix: Update capitalization documentation
 :   **Defect fix:** The documentation that describes the service's automatic capitalization of transcripts has been updated. The service capitalizes appropriate nouns only for the following languages and models:
     -   All previous-generation US English models
     -   The next-generation German model
@@ -797,7 +861,7 @@ New support for IBM Spectrum Scale Container Native storage class
 Interaction of Speech services with MinIO datastore during installation
 :   The Speech services runtime components, `sttRuntime` and `ttsRuntime`, cannot start until the models and voices for the services are fully uploaded into the MinIO datastore. During installation, the services might fail and automatically restart themselves one or more times until upload of the models and voices is complete. They then start properly. No user action is required.
 
-Defect fix for upgrade documentation
+Defect fix: Correct upgrade documentation
 :   **Defect fix:** Documentation for upgrading the Speech services to new versions of {{site.data.keyword.icp4dfull_notm}} version 4.0.x included incorrect references in some commands. These references are now correct:
     -   The strings `watsonSpeechToTextStatus` and `watsonTextToSpeechStatus` have been changed to `speechStatus` in both cases.
     -   The strings `status.watsonSpeechToTextVersion` and `status.watsonTextToSpeechVersion` have been changed to `.spec.version` in both cases.
@@ -903,20 +967,19 @@ Updates to next-generation models
 
     For more information about all next-generation models and about low latency, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng) and [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
 
-Defect fix for asynchronous HTTP failures
+Defect fix: Address asynchronous HTTP failures
 :   **Defect fix:** The asynchronous HTTP interface failed to transcribe some audio. In addition, the callback for the request returned status `recognitions.completed_with_results` instead of `recognitions.failed`. This error has been resolved.
 
-Defect fix for speakers labels
+Defect fix: Improve speakers labels results
 :   **Defect fix:** When you use speakers labels with next-generation models, the service now identifies the speaker for all words of the input audio, including very short words that have the same start and end timestamps.
 
-Defect fix for interim results and low-latency documentation
+Defect fix: Update interim results and low-latency documentation
 :   **Defect fix:** Documentation that describes the interim results and low-latency features with next-generation models has been rewritten for clarity and correctness. For more information, see the following topics:
     -   [Interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim), especially [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency)
     -   [How the service sends recognition results](/docs/speech-to-text?topic=speech-to-text-websockets#ws-results)
 
-Defect fix for multitenancy documentation
-:   The {{site.data.keyword.icp4dfull_notm}} topic [Multitenancy support](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=planning-multitenancy-support){: external} incorrectly stated that the Speech services do not support multitenancy. The topic has been updated to state that the Speech services support the following operations:
-
+Defect fix: Correct multitenancy documentation
+:   **Defect fix:** The {{site.data.keyword.icp4dfull_notm}} topic [Multitenancy support](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=planning-multitenancy-support){: external} incorrectly stated that the Speech services do not support multitenancy. The topic has been updated to state that the Speech services support the following operations:
     -   Install the service in separate projects
     -   Install the service multiple times in the same project
     -   Install the service once and deploy multiple instances in the same project
@@ -985,8 +1048,8 @@ Unified {{site.data.keyword.speechtotextshort}} documentation
 
     For more information about identifying information that pertains to only one version of the product, see [About {{site.data.keyword.speechtotextshort}}](/docs/speech-to-text?topic=speech-to-text-about#about-version).
 
-Defect fixes for documentation
-:   **Defect fixes:**  The documentation has been updated to correct the following information:
+Defect fix: Improve documentation
+:   **Defect fix:** The documentation has been updated to correct the following information:
     -   The documentation failed to state that next-generation models do *not* produce hesitation markers. The documentation has been updated to note that only previous-generation models produce hesitation markers. Next-generation models include the actual hesitations in transcription results. For more information, see [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
     -   The documentation incorrectly stated that using the `smart_formatting` parameter causes the service to remove hesitation markers from final transcription results for Japanese. Smart formatting does not remove hesitation markers from final results for Japanese, only for US English. For more information, see [What results does smart formatting affect?](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-effects)
 
@@ -1103,7 +1166,7 @@ The `split_transcript_at_phrase_end` parameter is now generally available for al
 Hesitation marker for German has changed
 :   The hesitation marker that is used for the updated German broadband and narrowband models has changed from `[hesitation]` to `%HESITATION`. For more information about hesitation markers, see [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 
-Defect fix to address latency issue for models with large numbers of grammars
+Defect fix: Address latency issue for models with large numbers of grammars
 :   **Defect fix:** The service no longer has a latency issue for custom language models that contain a large number of grammars. When initially used for speech recognition, such custom models could take multiple seconds to load. The custom models now load much faster, greatly reducing latency when they are used for recognition.
 
 ## 15 July 2020 (Version 1.1.4)
