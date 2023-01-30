@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2022
-lastupdated: "2022-03-08"
+  years: 2015, 2023
+lastupdated: "2023-01-23"
 
 subcollection: speech-to-text
 
@@ -28,7 +28,7 @@ Regardless of whether you list information about all available models or about a
 -   `description` provides a brief description of the model.
 -   `supported_features` describes the additional service features that are supported with the model:
     -   `custom_language_model` is a boolean that indicates whether you can create custom language models that are based on the model.
-    -   ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only.** `custom_acoustic_model` is a boolean that indicates whether you can create custom acoustic models that are based on the model.
+    -   [IBM Cloud]{: tag-ibm-cloud} `custom_acoustic_model` is a boolean that indicates whether you can create custom acoustic models that are based on the model.
     -   `low_latency` is a boolean that indicates whether you can use the `low_latency` parameter with a next-generation model. The service includes this field only for next-generation models. Previous-generation models do not support the `low_latency` parameter.
     -   `speaker_labels` indicates whether you can use the `speaker_labels` parameter with the model.
 
@@ -47,7 +47,7 @@ The order in which the service returns models can change from call to call. So, 
 
 The following example lists all models that are supported by the service:
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+[IBM Cloud]{: tag-ibm-cloud}
 
 ```bash
 curl -X GET -u "apikey:{apikey}" \
@@ -55,7 +55,7 @@ curl -X GET -u "apikey:{apikey}" \
 ```
 {: pre}
 
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+[IBM Cloud Pak for Data]{: tag-cp4d}
 
 ```bash
 curl -X GET \
@@ -121,7 +121,7 @@ You use the HTTP `GET /v1/models/{model_id}` method to list information about a 
 
 The following example shows information about the previous-generation US English broadband model, `en-US_BroadbandModel`:
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+[IBM Cloud]{: tag-ibm-cloud}
 
 ```bash
 curl -X GET -u "apikey:{apikey}" \
@@ -129,7 +129,7 @@ curl -X GET -u "apikey:{apikey}" \
 ```
 {: pre}
 
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+[IBM Cloud Pak for Data]{: tag-cp4d}
 
 ```bash
 curl -X GET \
@@ -161,7 +161,7 @@ The model supports language model customization, acoustic model customization, a
 
 The following example shows information about the next-generation US English telephony model, `en-US_Telephony`:
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+[IBM Cloud]{: tag-ibm-cloud}
 
 ```bash
 curl -X GET -u "apikey:{apikey}" \
@@ -169,7 +169,7 @@ curl -X GET -u "apikey:{apikey}" \
 ```
 {: pre}
 
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+[IBM Cloud Pak for Data]{: tag-cp4d}
 
 ```bash
 curl -X GET \

@@ -17,7 +17,7 @@ content-type: release-note
 # Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.cloud_notm}}
 {: #release-notes}
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
+[IBM Cloud]{: tag-ibm-cloud}
 
 The following features and changes were included for each release and update of managed instances of {{site.data.keyword.speechtotextfull}} that are hosted on {{site.data.keyword.cloud_notm}} or for instances that are hosted on [{{site.data.keyword.icp4dfull_notm}} as a Service](https://dataplatform.cloud.ibm.com/docs/content/wsj/landings/wstt.html){: external}. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
 {: shortdesc}

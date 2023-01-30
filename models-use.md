@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2022
-lastupdated: "2022-08-04"
+  years: 2022, 2023
+lastupdated: "2023-01-23"
 
 subcollection: speech-to-text
 
@@ -26,7 +26,7 @@ For more information about the models that are available for speech recognition,
 
 The following example HTTP request uses the previous-generation model `en-US_NarrowbandModel` for speech recognition:
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+[IBM Cloud]{: tag-ibm-cloud}
 
 ```sh
 curl -X POST -u "apikey:{apikey}" \
@@ -36,7 +36,7 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+[IBM Cloud Pak for Data]{: tag-cp4d}
 
 ```sh
 curl -X POST \
@@ -52,7 +52,7 @@ curl -X POST \
 
 The following example HTTP request uses the next-generation `en-US_Telephony` model for speech recognition:
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+[IBM Cloud]{: tag-ibm-cloud}
 
 ```sh
 curl -X POST -u "apikey:{apikey}" \
@@ -62,7 +62,7 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+[IBM Cloud Pak for Data]{: tag-cp4d}
 
 ```sh
 curl -X POST \
@@ -78,7 +78,7 @@ curl -X POST \
 
 If you omit the `model` parameter from a speech recognition request, the service uses the US English `en-US_BroadbandModel` by default. This default applies to all speech recognition requests.
 
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}} only** If you do not install the `en-US_BroadbandModel`, it cannot serve as the default model. In this case, you must either
+[IBM Cloud Pak for Data]{: tag-cp4d} If you do not install the `en-US_BroadbandModel`, it cannot serve as the default model. In this case, you must either
 
 -   Use the `model` parameter to pass the model that is to be used with each request.
 -   Specify a new default model for your installation of {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} by using the `defaultSTTModel` property in the Speech services custom resource. For more information, see  [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-12"
+lastupdated: "2023-01-23"
 
 subcollection: speech-to-text
 
@@ -198,7 +198,7 @@ You can provide as many as five alternative pronunciations for a word that is di
 
 -   *Provide different pronunciations for acronyms.* For example, the acronym `NCAA` can be pronounced as it is spelled or colloquially as *N C double A* The following example adds both of these sounds-like pronunciations for the word `NCAA`:
 
-    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+    [IBM Cloud]{: tag-ibm-cloud}
 
     ```bash
     curl -X PUT -u "apikey:{apikey}" \
@@ -208,7 +208,7 @@ You can provide as many as five alternative pronunciations for a word that is di
     ```
     {: pre}
 
-    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+    [IBM Cloud Pak for Data]{: tag-cp4d}
 
     ```bash
     curl -X PUT \
@@ -288,7 +288,7 @@ Follow these guidelines when specifying a sounds-like for any language:
 
 The `display_as` field specifies how a word is displayed in a transcript. By default, the service sets the field to match the spelling of the custom word. The field is intended for cases where you want the service to display a string that is different from the word's spelling. For example, you can indicate that the word `hhonors` is to be displayed as `HHonors`.
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+[IBM Cloud]{: tag-ibm-cloud}
 
 ```bash
 curl -X PUT -u "apikey:{apikey}" \
@@ -298,7 +298,7 @@ curl -X PUT -u "apikey:{apikey}" \
 ```
 {: pre}
 
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+[IBM Cloud Pak for Data]{: tag-cp4d}
 
 ```bash
 curl -X PUT \
@@ -311,7 +311,7 @@ curl -X PUT \
 
 As another example, you can indicate that the word `IBM` is to be displayed as `IBM™`.
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+[IBM Cloud]{: tag-ibm-cloud}
 
 ```bash
 curl -X PUT -u "apikey:{apikey}" \
@@ -321,7 +321,7 @@ curl -X PUT -u "apikey:{apikey}" \
 ```
 {: pre}
 
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+[IBM Cloud Pak for Data]{: tag-cp4d}
 
 ```bash
 curl -X PUT \

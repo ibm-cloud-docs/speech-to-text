@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2022
-lastupdated: "2022-10-24"
+  years: 2021, 2023
+lastupdated: "2023-01-22"
 
 subcollection: speech-to-text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 # Installing and managing {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}
 {: #speech-install-data}
 
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}} only**
+[IBM Cloud Pak for Data]{: tag-cp4d}
 
 To install {{site.data.keyword.speechtotextfull}} for {{site.data.keyword.icp4dfull}}, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}. That page provides an overview of the {{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}} and includes links to all installation and management topics for version 4.6.x of the services:
 {: shortdesc}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-16"
+lastupdated: "2023-01-22"
 
 keywords: speech to text,IBM cloud,getting started,tutorial,transcribe audio,speech recognition
 
@@ -27,7 +27,7 @@ The {{site.data.keyword.speechtotextfull}} service transcribes audio to text to 
 The tutorial uses the `curl` command-line utility to demonstrate REST API calls. For more information about `curl`, see [Using curl with Watson examples](/docs/watson?topic=watson-using-curl).
 {: note}
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only.** Watch the following video for a visual summary of getting started with the {{site.data.keyword.speechtotextshort}} service.
+[IBM Cloud]{: tag-ibm-cloud} Watch the following video for a visual summary of getting started with the {{site.data.keyword.speechtotextshort}} service.
 
 ![Getting started with the {{site.data.keyword.speechtotextshort}} service](https://video.ibm.com/embed/channel/23952663/video/speech-to-text-get-started){: video output="iframe" data-script="none" id="watsonmediaplayer" width="560" height="315" scrolling="no" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" style="border: 0 none transparent;"}
 
@@ -37,7 +37,7 @@ The tutorial uses the `curl` command-line utility to demonstrate REST API calls.
 ### {{site.data.keyword.cloud_notm}}
 {: #getting-started-before-you-begin-cloud}
 
-![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}} only**
+[IBM Cloud]{: tag-ibm-cloud}
 
 -   Create an instance of the service: {: hide-dashboard}
 
@@ -47,7 +47,6 @@ The tutorial uses the `curl` command-line utility to demonstrate REST API calls.
     1.  Click **Create**.
 
 -   Copy the credentials to authenticate to your service instance:
-
 
     1.  View the **Manage** page for the service instance:
 
@@ -63,7 +62,7 @@ This tutorial uses an API key to authenticate. In production, use an IAM token. 
 ### {{site.data.keyword.icp4dfull_notm}}
 {: #getting-started-before-you-begin-icpd}
 
-![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}} only**
+[IBM Cloud Pak for Data]{: tag-cp4d}
 
 1.  Provision an instance of {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}.  For more information about installing the service and provisioning a service instance, see [Installing and managing {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-speech-install-data).
 1.  From the {{site.data.keyword.icp4dfull_notm}} web client menu, choose **My Instances**.
@@ -82,7 +81,7 @@ Call the `POST /v1/recognize` method to request a basic transcript of a FLAC aud
 1.  Download the sample audio file [audio-file.flac](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac){: external}.
 1.  Issue the following command to call the service's `/v1/recognize` method for basic transcription with no parameters. The example uses the `Content-Type` header to indicate the type of the audio, `audio/flac`. The example uses the default language model, `en-US_BroadbandModel`, for transcription.
 
-    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+    [IBM Cloud]{: tag-ibm-cloud}
 
     -   Replace `{apikey}` and `{url}` with your API key and URL. {: hide-dashboard}
     -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
@@ -95,7 +94,7 @@ Call the `POST /v1/recognize` method to request a basic transcript of a FLAC aud
     ```
     {: pre}
 
-    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+    [IBM Cloud Pak for Data]{: tag-cp4d}
 
     -   Replace `{token}` and `{url}` with the access token and URL for your service instance.
     -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
@@ -138,7 +137,7 @@ Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but
 1.  If necessary, download the sample audio file [audio-file.flac](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/audio-file.flac){: external}.
 1.  Issue the following command to call the service's `/v1/recognize` method with two extra parameters. Set the `timestamps` parameter to `true` to indicate the beginning and end of each word in the audio stream. Set the `max_alternatives` parameter to `3` to receive the three most likely alternatives for the transcription. The example uses the `Content-Type` header to indicate the type of the audio, `audio/flac`, and the request uses the default model, `en-US_BroadbandModel`.
 
-    ![IBM Cloud only](images/ibm-cloud.png) **{{site.data.keyword.cloud}}**
+    [IBM Cloud]{: tag-ibm-cloud}
 
     -   Replace `{apikey}` and `{url}` with your API key and URL. {: hide-dashboard}
     -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
@@ -151,7 +150,7 @@ Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but
     ```
     {: pre}
 
-    ![Cloud Pak for Data only](images/cloud-pak.png) **{{site.data.keyword.icp4dfull}}**
+    [IBM Cloud Pak for Data]{: tag-cp4d}
 
     -   Replace `{token}` and `{url}` with the access token and URL for your service instance.
     -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
