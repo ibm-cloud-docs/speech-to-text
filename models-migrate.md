@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2023
-lastupdated: "2023-01-18"
+lastupdated: "2023-02-16"
 
 subcollection: speech-to-text
 
@@ -13,10 +13,10 @@ subcollection: speech-to-text
 # Migrating to next-generation models
 {: #models-migrate}
 
-The {{site.data.keyword.speechtotextfull}} service supports speech recognition with both previous-generation and next-generation models.  Effective **15 March 2022**, previous-generation models for all languages other than Arabic and Japanese are deprecated.  The deprecated models remain available until **3 March 2023**, when they will be removed from the service and the documentation.
+The {{site.data.keyword.speechtotextfull}} service supports speech recognition with both previous-generation and next-generation models. Effective **31 July 2023**, all previous-generation models will reach their end of service date. On that date, they will be removed from the service and the documentation. Most previous-generation models were deprecated on 15 March 2022.
 {: shortdesc}
 
-You must migrate your use of any deprecated previous-generation models to the equivalent next-generation models by the end of service date. Next-generation models provide appreciably better transcription accuracy and throughput. But they currently provide slightly fewer features than previous-generation models.
+You must migrate your use of any deprecated previous-generation models to the equivalent next-generation models by the 31 July 2023 end of service date. Next-generation models provide appreciably better transcription accuracy and throughput. But they currently provide slightly fewer features than previous-generation models.
 
 This topic provides an overview of the steps that you need to take to migrate from previous- to next-generation models. For more information about migrating, you can also see [Watson Speech to Text: How to Plan Your Migration to the Next-Generation Models](https://medium.com/ibm-data-ai/watson-speech-to-text-how-to-plan-your-migration-to-the-next-generation-models-6b10605b3bc5){: external}.
 
