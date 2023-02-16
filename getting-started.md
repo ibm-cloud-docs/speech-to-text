@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-22"
+lastupdated: "2023-02-10"
 
 keywords: speech to text,IBM cloud,getting started,tutorial,transcribe audio,speech recognition
 
@@ -64,7 +64,7 @@ This tutorial uses an API key to authenticate. In production, use an IAM token. 
 
 [IBM Cloud Pak for Data]{: tag-cp4d}
 
-1.  Provision an instance of {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}.  For more information about installing the service and provisioning a service instance, see [Installing and managing {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-speech-install-data).
+1.  Create an instance of {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}. For more information about installing the service and provisioning a service instance, see [Installing and managing {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-speech-install-data).
 1.  From the {{site.data.keyword.icp4dfull_notm}} web client menu, choose **My Instances**.
 1.  Click the {{site.data.keyword.speechtotextshort}} instance to open the overview page.
 1.  Copy the `{token}` and `{URL}` values.

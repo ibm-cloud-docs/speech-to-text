@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-18"
+lastupdated: "2023-02-16"
 
 subcollection: speech-to-text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 # Previous-generation languages and models
 {: #models}
 
-Effective **15 March 2022**, previous-generation models for all languages other than Arabic and Japanese are deprecated. The deprecated models remain available until **3 March 2023**, when they will be removed from the service and the documentation. You must migrate to the equivalent next-generation model by the end of service date.  For more information, see [Migrating to next-generation models](/docs/speech-to-text?topic=speech-to-text-models-migrate).
+Effective **31 July 2023**, all previous-generation models will be removed from the service and the documentation. Most previous-generation models were deprecated on 15 March 2022. You must migrate to the equivalent next-generation model by 31 July 2023. For more information, see [Migrating to next-generation models](/docs/speech-to-text?topic=speech-to-text-models-migrate).
 {: deprecated}
 
 The {{site.data.keyword.speechtotextfull}} service supports speech recognition with previous-generation models in many languages. The model indicates the language in which the audio is spoken and the rate at which it is sampled.
@@ -80,7 +80,7 @@ Table 2 lists the previous-generation broadband models that are available.
 
 | Language | Model name       | Status | Recommended next-generation model |
 |----------|:----------------:|:------:|:---------------------------------:|
-| Arabic (Modern Standard) | `ar-MS_BroadbandModel` | GA | `ar-MS_Telephony` |
+| Arabic (Modern Standard) | `ar-MS_BroadbandModel` | GA  \n Deprecated | `ar-MS_Telephony` |
 | Chinese (Mandarin) | `zh-CN_BroadbandModel` | GA  \n Deprecated | `zh-CN_Telephony` |
 | Dutch (Netherlands) | `nl-NL_BroadbandModel` | GA  \n Deprecated | `nl-NL_Multimedia` |
 | English (Australian) | `en-AU_BroadbandModel` | GA  \n Deprecated | `en-AU_Multimedia` |
@@ -90,7 +90,7 @@ Table 2 lists the previous-generation broadband models that are available.
 | French (France) | `fr-FR_BroadbandModel` | GA  \n Deprecated | `fr-FR_Multimedia` |
 | German | `de-DE_BroadbandModel` | GA  \n Deprecated | `de-DE_Multimedia` |
 | Italian | `it-IT_BroadbandModel` | GA  \n Deprecated | `it-IT_Multimedia` |
-| Japanese | `ja-JP_BroadbandModel` | GA | `ja-JP_Multimedia` |
+| Japanese | `ja-JP_BroadbandModel` | GA  \n Deprecated | `ja-JP_Multimedia` |
 | Korean | `ko-KR_BroadbandModel` | GA  \n Deprecated | `ko-KR_Multimedia`|
 | Portuguese (Brazilian) | `pt-BR_BroadbandModel` | GA  \n Deprecated | `pt-BR_Multimedia` |
 | Spanish (Argentinian, Beta) | `es-AR_BroadbandModel` | Beta  \n Deprecated | `es-LA_Telephony` |

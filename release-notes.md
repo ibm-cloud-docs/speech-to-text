@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-27"
+lastupdated: "2023-02-16"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -27,6 +27,26 @@ For information about known limitations of the service, see [Known limitations](
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
 
+## 15 February 2023
+{: #speech-to-text-15february2023}
+{: release-note}
+
+Important: All previous-generation models are deprecated and will reach end of service on 31 July 2023
+:   **Important:** All previous-generation models are deprecated and will reach end of service effective **31 July 2023**. On that date, all previous-generation models will be removed from the service and the documentation. The previous deprecation date was 3 March 2023. The new date allows users more time to migrate to the appropriate next-generation models. But users must migrate to the equivalent next-generation model by 31 July 2023.
+
+    Most previous-generation models were deprecated on 15 March 2022. Previously, the Arabic and Japanese models were not deprecated. Deprecation now applies to *all* previous-generation models.
+    -   For more information about the next-generation models to which you can migrate from each of the deprecated models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models)
+    -   For more information about migrating from previous-generation to next-generation models, see [Migrating to next-generation models](/docs/speech-to-text?topic=speech-to-text-models-migrate).
+    -   For more information about all next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+
+    **Note:** When the previous-generation `en-US_BroadbandModel` is removed from service, the next-generation `en-US_Multimedia` model will become the default model for speech recognition requests.
+
+Defect fix: Improved training time for next-generation custom language models
+:   **Defect fix:** Training time for next-generation custom language models is now significantly improved. Previously, training time took much longer than necessary, as reported for training of Japanese custom language models. The problem was corrected by an internal fix.
+
+Defect fix: Dynamically generated grammar files now work properly
+:   **Defect fix:** Dynamically generated grammar files now work properly. Previously, dynamic grammar files could cause internal failures, as reported for integration of {{site.data.keyword.speechtotextshort}} with {{site.data.keyword.conversationfull}}. The problem was corrected by an internal fix.
+
 ## 20 January 2023
 {: #speech-to-text-20january2023}
 {: release-note}
@@ -49,7 +69,7 @@ The `max_alternatives` parameter is now available for use with next-generation m
 
 Defect fix: Allow use of both `max_alternatives` and `end_of_phrase_silence_time` parameters with next-generation models
 
-:   **Defect fix:** When you use both the `max_alternatives` and `end_of_phrase_silence_time` parameters with next-generation models, the service now returns multiple alternative transcripts while also respecting the indicated pause interval. Previously, use of the two parameters in a single request generated a failure. (Use of the `max_alternatives` parameter with next-generation models was previously available as an experimental feature to a limited number of customers.)
+:   **Defect fix:** When you use both the `max_alternatives` and `end_of_phrase_silence_time` parameters in the same request with next-generation models, the service now returns multiple alternative transcripts while also respecting the indicated pause interval. Previously, use of the two parameters in a single request generated a failure. (Use of the `max_alternatives` parameter with next-generation models was previously available as an experimental feature to a limited number of customers.)
 
 Defect fix: Update French Canadian next-generation telephony model (upgrade required)
 :   **Defect fix:** The French Canadian next-generation telephony model, `fr-CA_Telephony`, was updated to address an internal inconsistency that could cause an error during speech recognition. *You need to upgrade any custom models that are based on the `fr-CA_Telephony` model.* For more information about upgrading custom models, see
@@ -79,8 +99,6 @@ New Netherlands Dutch next-generation multimedia model
 
 Defect fix: Correct custom word recognition in transcription results for next-generation models
 :   **Defect fix:** For language model customization with next-generation models, custom words are now recognized and used in all transcripts. Previously, custom words sometimes failed to be recognized and used in transcription results.
-
-    **Important:** This problem persists and is being investigated further.
 
 Defect fix: Correct use of `display_as` field in transcription results for next-generation models
 :   **Defect fix:** For language model customization with next-generation models, the value of the `display_as` field for a custom word now appears in all transcripts. Previously, the value of the `word` field sometimes appeared in transcription results.
