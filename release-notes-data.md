@@ -42,7 +42,7 @@ Important: All previous-generation models are deprecated and will reach end of s
     **Note:** When the previous-generation `en-US_BroadbandModel` is removed from service, the next-generation `en-US_Multimedia` model will become the default model for speech recognition requests.
 
 Known issue: You cannot change the installed models and voices with the advanced installation options
-:   **Known issue:** You currently cannot specify different models or voices with the advanced installation options. The service always installs the defaults models and voices. For information about changing the models after installation, see *Updating models and voices for your Watson Speech services* in the *Administration* topic of [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
+:   **Known issue:** You currently cannot specify different models or voices with the advanced installation options. The service always installs the default models and voices. For information about changing the models after installation, see *Updating models and voices for your Watson Speech services* in the *Administration* topic of [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
 
 Known issue: Upgrade to version 4.6.3 can fail to complete
 :   **Known issue:**  When upgrading to version 4.6.3, the MinIO backup job can fail to be deleted upon completion. If this happens, the solution is to delete the job, after which the upgrade proceeds normally. Perform the following steps to resolve the problem.
