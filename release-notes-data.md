@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2023
-lastupdated: "2023-02-02"
+lastupdated: "2023-02-24"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -25,6 +25,74 @@ For information about known limitations of the service, see [Known limitations](
 For information about releases and updates of the service for {{site.data.keyword.cloud_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes).
 {: note}
 
+## 23 February 2023 (Version 4.6.3)
+{: #speech-to-text-data-23february2023}
+
+Version 4.6.3 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.6.3 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.6.x and Red Hat OpenShift version 4.10. Red Hat OpenShift version 4.8 is no longer supported. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
+
+Important: All previous-generation models are deprecated and will reach end of service on 31 July 2023
+:   **Important:** All previous-generation models are deprecated and will reach end of service effective **31 July 2023**. On that date, all previous-generation models will be removed from the service and the documentation. The previous deprecation date was 3 March 2023. The new date allows users more time to migrate to the appropriate next-generation models. But users must migrate to the equivalent next-generation model by 31 July 2023.
+
+    Most previous-generation models were deprecated on 15 March 2022. Previously, the Arabic and Japanese models were not deprecated. Deprecation now applies to *all* previous-generation models.
+    -   For more information about the next-generation models to which you can migrate from each of the deprecated models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models)
+    -   For more information about migrating from previous-generation to next-generation models, see [Migrating to next-generation models](/docs/speech-to-text?topic=speech-to-text-models-migrate).
+    -   For more information about all next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+
+    **Note:** When the previous-generation `en-US_BroadbandModel` is removed from service, the next-generation `en-US_Multimedia` model will become the default model for speech recognition requests.
+
+Known issue: You cannot change the installed models and voices with the advanced installation options
+:   **Known issue:** You currently cannot specify different models or voices with the advanced installation options. The service always installs the defaults models and voices. For information about changing the models after installation, see *Updating models and voices for your Watson Speech services* in the *Administration* topic of [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
+
+Known issue: Upgrade to version 4.6.3 can fail to complete
+:   **Known issue:**  When upgrading to version 4.6.3, the MinIO backup job can fail to be deleted upon completion. If this happens, the solution is to delete the job, after which the upgrade proceeds normally. Perform the following steps to resolve the problem.
+
+    1.  To determine whether the MinIO backup job remains undeleted, issue the following command:
+
+        ```sh
+        oc get job --namespace {${PROJECT_CPD_INSTANCE} | grep speech-cr-ibm-minio-backup
+        ```
+        {: pre}
+
+        The MinIO job that is not deleted is identified by an entry of the following form:
+
+        ```text
+        speech-cr-ibm-minio-backup   1/1   3m25s   1d
+        ```
+        {: codeblock}
+
+    1.  To delete the MinIO backup job, issue the following command:
+
+        ```sh
+        oc delete job speech-cr-ibm-minio-backup --namespace ${PROJECT_CPD_INSTANCE}
+        ```
+        {: pre}
+
+    Once the backup job is deleted, upgrade continues and completes.
+
+Defect fix: Update French Canadian next-generation telephony model (upgrade required)
+:   **Defect fix:** The French Canadian next-generation telephony model, `fr-CA_Telephony`, was updated to address an internal inconsistency that could cause an error during speech recognition. *You need to upgrade any custom models that are based on the `fr-CA_Telephony` model.* For more information about upgrading custom models, see
+    -   [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade)
+    -   [Using upgraded custom models for speech recognition](/docs/speech-to-text?topic=speech-to-text-custom-upgrade-use)
+
+Defect fix: The next-generation Brazilian Portuguese multimedia model is now available
+:   **Defect fix:** The next-generation Brazilian Portuguese multimedia model is now available for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}. Previously, the model was unavailable.
+
+Adding words directly to custom models that are based on next-generation models increases the training time
+:   Adding custom words directly to a custom model that is based on a next-generation model causes training of a model to take a few minutes longer than it otherwise would. If you are training a model with custom words that you added by using the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method, allow for some minutes of extra training time for the model. For more information, see
+    -   [Add words to the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#addWords)
+    -   [Monitoring the train model request](/docs/speech-to-text?topic=speech-to-text-languageCreate#monitorTraining-language)
+
+Additional information about working with service instances
+:   The documentation now includes information about creating a service instance with the command-line interface (`cpl-cli`) and about managing service instances. For more information, see the following topics of [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}:
+    -   *Creating a Watson Speech services instance* under *Post-installation setup*
+    -   *Managing your Watson Speech services instances* under *Administering*
+
+<!--
+Security vulnerabilities addressed
+:   The following security vulnerabilities have been fixed:
+-->
+
 ## 30 January 2023 (Version 4.6.2)
 {: #speech-to-text-data-30january2023}
 
@@ -37,7 +105,7 @@ The custom resource now includes a new `fileStorageClass` property
     For more information about the available block and file storage classes you use with each of the supported storage solutions, see the table of *Storage requirements* under *Information you need to complete this task* on the page "Installing Watson Speech services" in [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
 
 Additional information about provisioning a service instance
-:   The documentation now includes information about creating a service instance programmatically. It also includes examples of listing service instances and deleting a service instance. For more information, see *Provisioning a Watson Speech services instance* in the *Post-installation setup* documentation in [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
+:   The documentation now includes information about creating a service instance programmatically. It also includes examples of listing service instances and deleting a service instance. For more information, see *Creating a Watson Speech services instance* in the *Post-installation setup* documentation in [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
 
 Server-side encryption is enabled for the MinIO datastore
 :   The Speech services have now enabled server-side encryption for object storage in the MinIO datastore. No action is required on your part.
@@ -48,13 +116,13 @@ Change to audit webhooks
 New Netherlands Dutch next-generation multimedia model
 :   The service now offers a next-generation multimedia model for Netherlands Dutch: `nl-NL_Multimedia`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about next-generation models and low latency, see
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
-    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
     -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
 
 New Swedish next-generation telephony model
 :   The service now offers a next-generation telephony model for Swedish: `sv-SE_Telephony`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about next-generation models and low latency, see
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
-    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
     -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
 
 Updates to English next-generation telephony models
@@ -71,7 +139,7 @@ The `max_alternatives` parameter is now available for use with next-generation m
 
 Defect fix: Allow use of both `max_alternatives` and `end_of_phrase_silence_time` parameters with next-generation models
 
-:   **Defect fix:** When you use both the `max_alternatives` and `end_of_phrase_silence_time` parameters with next-generation models, the service now returns multiple alternative transcripts while also respecting the indicated pause interval. Previously, use of the two parameters in a single request generated a failure. (Use of the `max_alternatives` parameter with next-generation models was previously available as an experimental feature to a limited number of customers.)
+:   **Defect fix:** When you use both the `max_alternatives` and `end_of_phrase_silence_time` parameters in the same request with next-generation models, the service now returns multiple alternative transcripts while also respecting the indicated pause interval. Previously, use of the two parameters in a single request generated a failure. (Use of the `max_alternatives` parameter with next-generation models was previously available as an experimental feature to a limited number of customers.)
 
 Defect fix: Update to Japanese next-generation multimedia model (upgrade required)
 :   **Defect fix:** The Japanese next-generation multimedia model, `ja-JP_Multimedia`, was updated to address an internal inconsistency that could cause an error during speech recognition with low latency. *You need to upgrade any custom models that are based on the `ja-JP_Multimedia` model.* For more information about upgrading custom models, see
@@ -241,7 +309,7 @@ You cannot uninstall individual Speech service components
 New French Canadian next-generation multimedia model
 :   The service now offers a next-generation multimedia model for French Canadian: `fr-CA_Multimedia`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about next-generation models and low latency, see
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
-    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
     -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
 
 Updates to English next-generation telephony models
@@ -256,7 +324,7 @@ Updates to English next-generation telephony models
 Italian next-generation multimedia model now supports low latency
 :   The Italian next-generation multimedia model, `it-IT_Multimedia`, now supports low latency. For more information about next-generation models and low latency, see
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
-    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
     -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
 
 Troubleshooting upgrade from version 4.0.x to version 4.5.x
@@ -429,7 +497,7 @@ Version 4.0.9 is now available
 New Brazilian Portuguese `pt-BR_Multimedia` next-generation model
 :   The service now offers a next-generation multimedia model for Brazilian Portuguese: `pt-BR_Multimedia`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about the next-generation models and low latency, see
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
-    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
     -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
 
 Update to German `de-DE_Multimedia` next-generation model to support low latency
@@ -481,7 +549,7 @@ New German next-generation multimedia model
 
     For more information about all available next-generation models and their customization support, see
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
-    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
 
 Beta next-generation `en-WW_Medical_Telephony` model now supports low latency
 :   The beta next-generation `en-WW_Medical_Telephony` model now supports low latency. For more information about all next-generation models and low latency, see
@@ -553,7 +621,7 @@ New Castilian Spanish next-generation multimedia model
 
     For more information about all available next-generation models and their customization support, see
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
-    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
 
 Beta next-generation `en-WW_Medical_Telephony` model now supports smart formatting
 :   The beta next-generation `en-WW_Medical_Telephony` model now supports the `smart_formatting` parameter for US English audio. For more information about all next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
@@ -575,7 +643,7 @@ Grammar support for next-generation models is now generally available
     -   The models support language model customization.
 
     For more information, see the following topics:
-    -   For more information about the status of grammar support for next-generation models, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
+    -   For more information about the status of grammar support for next-generation models, see [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
     -   For more information about grammars, see [Grammars](/docs/speech-to-text?topic=speech-to-text-customization#grammars-intro).
 
 ## 15 March 2022 (Version 4.0.6)
@@ -794,7 +862,7 @@ New next-generation models
     -   **Important:** If you are performing a mirrored installation (for example, in an air-gapped environment) and plan to install any of the new next-generation models for {{site.data.keyword.speechtotextshort}}, you must perform additional steps *before* mirroring the images. For more information, see the earlier release note.
     -   For more information about using the custom resource to install models, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
     -   For more information about all available next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
-    -   For more information about customization support for next-generation models, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
+    -   For more information about customization support for next-generation models, see [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
 
 Next-generation US English models are now installed by default
 :    The next-generation US English models, `en-US_Multimedia` and `en-US_Telephony`, are now installed by default with {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}. These models join `en-US_BroadbandModel`, `en-US_NarrowbandModel`, `en-US_ShortForm_NarrowbandModel` as the models that are installed by default. The models now have the following entries in the Speech services custom resource:
@@ -902,7 +970,7 @@ Updates to multiple next-generation models for improved speech recognition
 
 New beta grammar support for next-generation models
 :   Grammar support is now available as beta functionality for all available next-generation models. All next-generation models are generally available (GA) and support language model customization. For more information, see the following topics:
-    -   For more information about the status of grammar support for next-generation models, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
+    -   For more information about the status of grammar support for next-generation models, see [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
     -   For more information about grammars, see [Grammars](/docs/speech-to-text?topic=speech-to-text-customization#grammars-intro).
 
 New `custom_acoustic_model` field for supported features

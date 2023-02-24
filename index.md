@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-02-14"
+lastupdated: "2023-02-24"
 
 subcollection: speech-to-text
 
@@ -30,7 +30,7 @@ The service is ideal for clients who need to extract high-quality speech transcr
     -   For information about the latest service update, see the [15 February 2023](/docs/speech-to-text?topic=speech-to-text-release-notes#speech-to-text-15february2023) update in the release notes.
 -   [IBM Cloud Pak for Data]{: tag-cp4d} for installed or on-premises instances of {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}. For links to information about installing and managing {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}, see [Installing {{site.data.keyword.ibmwatson_notm}} {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-speech-install-data).
     -   For information about all service updates, see the [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
-    -   For information about the latest service update, see [30 January 2023 (Version 4.6.2)](/docs/speech-to-text?topic=speech-to-text-release-notes-data#speech-to-text-data-30january2023) in the release notes.
+    -   For information about the latest service update, see [23 February 2023 (Version 4.6.3)](/docs/speech-to-text?topic=speech-to-text-release-notes-data#speech-to-text-data-23february2023) in the release notes.
 
 ## Speech recognition
 {: #about-interfaces}
