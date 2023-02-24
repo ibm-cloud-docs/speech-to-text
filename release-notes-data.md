@@ -88,10 +88,9 @@ Additional information about working with service instances
     -   *Creating a Watson Speech services instance* under *Post-installation setup*
     -   *Managing your Watson Speech services instances* under *Administering*
 
-<!--
-Security vulnerabilities addressed
-:   The following security vulnerabilities have been fixed:
--->
+Security vulnerability addressed
+:   The following security vulnerability has been fixed:
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to denial of service in Pypa Setuptools (CVE-2022-40897)](https://www.ibm.com/support/pages/node/6958142){: external}
 
 ## 30 January 2023 (Version 4.6.2)
 {: #speech-to-text-data-30january2023}
