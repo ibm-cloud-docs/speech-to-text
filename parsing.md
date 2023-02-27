@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2023-02-27"
 
 subcollection: speech-to-text
 
@@ -291,14 +291,14 @@ The service returns three final results, adding a result for the semantic stop a
 ## Character insertion bias
 {: #insertion-bias}
 
-The `character_insertion_bias` parameter is beta functionality that is available for all next-generation models. The parameter is not available with previous-generation models.
+The `character_insertion_bias` parameter is beta functionality that is available for all next-generation models. The parameter is not available for previous-generation models.
 {: beta}
 
 The `character_insertion_bias` parameter controls the service's bias for competing strings of different lengths during speech recognition. With next-generation models, the service parses audio character by character. As it does, it establishes hypotheses of previous character strings to help determine viable next characters. During this process, it collects candidate strings of different lengths.
 
-By default, each individual model is optimized to produce the best balance between hypotheses with different numbers of characters. The optimization is model-specific and can differ from model to model. Each model's default bias is represented as the value 0.0. The default is typically adequate for most speech recognition. However, certain use cases might benefit from favoring hypotheses with shorter or longer strings of characters. In such cases, specifying a change from the default can improve speech recognition.
+By default, each model uses a default `character_insertion_bias` of 0.0. This value is optimized to produce the best balance between hypotheses with different numbers of characters. The default is typically adequate for most speech recognition. However, certain use cases might benefit from favoring hypotheses with shorter or longer strings of characters. In such cases, specifying a change from the default can improve speech recognition.
 
-You can use the `character_insertion_bias` parameter to indicate that the service is to favor shorter or longer strings as it considers subsequent characters for its hypotheses. The value you provide depends on the next-generation model that you are using for speech recognition and the characteristics of your audio. The range of acceptable values is from -1.0 to 1.0:
+You can use the `character_insertion_bias` parameter to indicate that the service is to favor shorter or longer strings as it considers subsequent characters for its hypotheses. The value you provide depends on the characteristics of your audio. The range of acceptable values is from -1.0 to 1.0:
 
 -   *Negative values* cause the service to prefer hypotheses with shorter strings of characters.
 -   *Positive values* cause the service to prefer hypotheses with longer strings of characters.

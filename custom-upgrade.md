@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2023-02-27"
 
 subcollection: speech-to-text
 
@@ -31,6 +31,9 @@ All updates to base models and whether they require upgrades are announced in th
 -   [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data)
 
 As with all customization operations, you must use credentials for the instance of the service that owns a custom model to upgrade it.
+
+The {{site.data.keyword.speechtotextshort}} service released new language model customization technology on 27 February 2023. How you upgrade to the new technology is different from traditional custom model upgrades. For more information about the new technology and about upgrading, see the [27 February 2023](/docs/speech-to-text?topic=speech-to-text-release-notes#speech-to-text-27february2023) service update in the release notes.
+{: important}
 
 ## How upgrading works
 {: #custom-upgrade-how}

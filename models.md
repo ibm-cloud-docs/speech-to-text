@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-02-16"
+lastupdated: "2023-02-22"
 
 subcollection: speech-to-text
 
@@ -37,7 +37,7 @@ Choosing the correct model for your application is important. Use the model that
 The following sections list the previous-generation models of each type that are available for each language. The tables in the sections provide the following information:
 
 -   The *Model name* column indicates the name of the model.
--   The *Status* column indicates whether the model is generally available (*GA*) or *Beta*. Models that have been deprecated are labeled *Deprecated*.
+-   The *Status* column indicates whether the model is generally available (*GA*) or *Beta*.
 -   The *Recommended next-generation model* identifies the next-generation model that you can use instead of a deprecated model.
 
     Currently, not all broadband models have equivalent multimedia models. In such cases, consider using the telephony model for that language. The service downsamples the audio to the rate of the model that you use. So sending broadband audio to a telephony model might prove a sufficient alternative in cases where no equivalent multimedia model is currently available.
@@ -62,7 +62,7 @@ Table 1 lists the previous-generation narrowband models that are available.
 | French (France) | `fr-FR_NarrowbandModel` | GA  \n Deprecated | `fr-FR_Telephony` |
 | German | `de-DE_NarrowbandModel` | GA  \n Deprecated | `de-DE_Telephony` |
 | Italian | `it-IT_NarrowbandModel` | GA  \n Deprecated | `it-IT_Telephony` |
-| Japanese | `ja-JP_NarrowbandModel` | GA  \n Deprecated | No current alternative |
+| Japanese | `ja-JP_NarrowbandModel` | GA  \n Deprecated | `ja-JP_Telephony`  \n [IBM Cloud]{: tag-ibm-cloud} |
 | Korean | `ko-KR_NarrowbandModel` | GA  \n Deprecated | `ko-KR_Telephony` |
 | Portuguese (Brazilian) | `pt-BR_NarrowbandModel` | GA  \n Deprecated | `pt-BR_Telephony` |
 | Spanish (Argentinian, Beta) | `es-AR_NarrowbandModel` | Beta  \n Deprecated | `es-LA_Telephony` |
@@ -121,6 +121,6 @@ Previous-generation models are supported for use with almost all of the service'
 
 -   Features such as speaker labels, numeric redaction, and profanity filtering are limited to certain languages and models. Such restrictions are noted with the descriptions of the individual features. For more information about all available speech recognition parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
 -   The `low_latency` parameter is supported only for next-generation models. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
--   For more information about previous-generation models' support for customization, see [Language support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg).
+-   For more information about previous-generation models' support for customization, see [Customization support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg).
 
 Otherwise, when a feature is described as being available in general or available for a specific language or languages, it supports the previous-generation models.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2023-02-27"
 
 subcollection: speech-to-text
 
@@ -90,7 +90,13 @@ The following examples show the use of a custom language model with each speech 
 
 A custom language model is a combination of the custom model and the base model that it customizes. You can tell the service how much weight to give to words from the custom language model compared to words from the base model for speech recognition. The weight that is assigned to a custom model is referred to as its *customization weight*.
 
-You specify the relative weight for a custom language model as a double between 0.0 to 1.0. By default, each custom language model has a weight of 0.3. The default weight yields the best performance in the general case. It allows both words from the custom model and words from the base vocabulary to be recognized.
+You specify the relative weight for a custom language model as a double between 0.0 to 1.0:
+
+-   For previous-generation models, the default customization weight is 0.3.
+-   For most next-generation models, the default customization weight is 0.2.
+-   For English and Japanese base language models, the default customization weight is 0.1.
+
+The default weight yields the best performance in the general case. It allows both words from the custom model and words from the base vocabulary to be recognized.
 
 However, in cases where the audio to be transcribed makes frequent use of words from the custom model, increasing the customization weight can improve the accuracy of transcription results. Exercise caution when you set the customization weight. Although a higher weight can improve the accuracy of phrases from the domain of the custom model, it can also negatively impact performance on non-domain phrases. (Even if you set the weight to 0.0, a small probability exists that the transcription can include custom words due to the implementation of language model customization.)
 

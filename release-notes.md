@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-02-16"
+lastupdated: "2023-02-27"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -26,6 +26,57 @@ For information about known limitations of the service, see [Known limitations](
 
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
+
+## 27 February 2023
+{: #speech-to-text-27february2023}
+{: release-note}
+
+New Japanese next-generation telephony model
+:   The service now offers a next-generation telephony model for Japanese: `ja-JP_Telephony`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about next-generation models and low latency, see
+
+    -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+    -   [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
+
+Improved language model customization for next-generation English and Japanese models
+:   The service now provides improved language model customization for next-generation English and Japanese models:
+    -   `en-AU_Multimedia`
+    -   `en-AU_Telephony`
+    -   `en-IN_Telephony`
+    -   `en-GB_Multimedia`
+    -   `en-GB_Telephony`
+    -   `en-US_Multimedia`
+    -   `en-US_Telephony`
+    -   `ja-JP_Multimedia`
+    -   `ja-JP_Telephony`
+
+    **Visible improvements to the models:** The new technology improves the default behavior of the new English and Japanese models. Among other changes, the new technology optimizes the default behavior for the following parameters:
+    -   The default `customization_weight` for custom models that are based on the new versions of these models changes from `0.2` to `0.1`.
+    -   The default `character_insertion_bias` for custom models that are based on the new versions of these models remains `0.0`, but the models have changed in a manner that makes use of the parameters for speech recognition less necessary.
+
+    **Upgrading to the new models:** To take advantage of the improved technology, you must upgrade any custom language models that are based on the new models. To upgrade to the new version of one of these base models, do the following:
+    1.  Change your custom model by adding or modifying a custom word, corpus, or grammar that the model contains. Any change that you make moves the model to the `ready` state.
+    1.  Use the `POST /v1/customizations/{customization_id}/train` method to retrain the model. Retraining upgrades the custom model to the new technology and moves the model to the `available` state. **Note:** You cannot use the `POST /v1/customizations/{customization_id}/upgrade_model` method to upgrade a custom model to one of these new base models.
+
+    **Using the new models:** Following the upgrade to the new base model, you are advised to evaluate the performance of the upgraded custom model by paying special attention to the `customization_weight` and `character_insertion_bias` parameters for speech recognition. When you retrain your custom model:
+    -   The custom model uses the new default `customization_weight` of `0.1` for your custom model. A non-default `customization_weight` that you had associated with your custom model is removed.
+    -   The custom model might no longer require use of the `character_insertion_bias` parameter for optimal speech recognition.
+
+    Improvements to language model customization render these parameters less important for high-quality speech recognition:
+    -   If you use the default values for these parameters, continue to do so after the upgrade. The default values will likely continue to offer the best results for speech recognition.
+    -   If you specify non-default values for these parameters, experiment with the default values following upgrade. Your custom model might work well for speech recognition with the default values.
+
+    If you feel that using different values for these parameters might improve speech recognition with your custom model, experiment with incremental changes to determine whether the parameters are needed to improve speech recognition.
+
+    **Note:** At this time, the improvements to language model customization apply only to custom models that are based on the next-generation English or Japanese base language models listed earlier. Over time, the improvements will be made available for other next-generation language models.
+
+    **More information:** For more information about upgrading and about speech recognition with these parameters, see
+    -   [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade)
+    -   [Using customization weight](/docs/speech-to-text?topic=speech-to-text-languageUse#weight)
+    -   [Character insertion bias](/docs/speech-to-text?topic=speech-to-text-parsing#insertion-bias)
+
+Defect fix: Grammar files now handle strings of digits correctly
+:   **Defect fix:** When grammars are used, the service now handles longer strings of digits correctly. Previously, it was failing to complete recognition or returning incorrect results.
 
 ## 15 February 2023
 {: #speech-to-text-15february2023}
@@ -94,7 +145,7 @@ Maximum hours of audio resources for custom acoustic models in the Tokyo locatio
 New Netherlands Dutch next-generation multimedia model
 :   The service now offers a next-generation multimedia model for Netherlands Dutch: `nl-NL_Multimedia`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about next-generation models and low latency, see
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
-    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
     -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
 
 Defect fix: Correct custom word recognition in transcription results for next-generation models
@@ -134,7 +185,7 @@ Defect fix: Update Japanese next-generation multimedia model (upgrade required)
 New Swedish next-generation telephony model
 :   The service now offers a next-generation telephony model for Swedish: `sv-SE_Telephony`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about next-generation models and low latency, see
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
-    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
     -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
 
 Updates to English next-generation telephony models
@@ -183,7 +234,7 @@ Important: Deprecation date for most previous-generation models is now 3 March 2
 New French Canadian next-generation multimedia model
 :   The service now offers a next-generation multimedia model for French Canadian: `fr-CA_Multimedia`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about next-generation models and low latency, see
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
-    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
     -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
 
 Updates to English next-generation telephony models
@@ -198,7 +249,7 @@ Updates to English next-generation telephony models
 Italian next-generation multimedia model now supports low latency
 :   The Italian next-generation multimedia model, `it-IT_Multimedia`, now supports low latency. For more information about next-generation models and low latency, see
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
-    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
     -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
 
 Important: Maximum hours of audio data being reduced for custom acoustic models
@@ -263,7 +314,7 @@ Defect fix: Confidence scores are now reported for all transcription results
 New Brazilian Portuguese `pt-BR_Multimedia` next-generation model
 :   The service now offers a next-generation multimedia model for Brazilian Portuguese: `pt-BR_Multimedia`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about next-generation models and low latency, see
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
-    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
     -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
 
 Update to German `de-DE_Multimedia` next-generation model to support low latency
@@ -294,7 +345,7 @@ Grammar support for next-generation models is now generally available
     -   The models support language model customization.
 
     For more information, see the following topics:
-    -   For more information about the status of grammar support for next-generation models, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
+    -   For more information about the status of grammar support for next-generation models, see [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
     -   For more information about grammars, see [Grammars](/docs/speech-to-text?topic=speech-to-text-customization#grammars-intro).
 
 New German next-generation multimedia model
@@ -302,7 +353,7 @@ New German next-generation multimedia model
 
     For more information about all available next-generation models and their customization support, see
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
-    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
 
 Beta next-generation `en-WW_Medical_Telephony` model now supports low latency
 :   The beta next-generation `en-WW_Medical_Telephony` model now supports low latency. For more information about all next-generation models and low latency, see
@@ -371,7 +422,7 @@ New Castilian Spanish next-generation multimedia model
 
     For more information about all available next-generation models and their customization support, see
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
-    -   [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
 
 ## 11 February 2022
 {: #speech-to-text-11february2022}
@@ -466,12 +517,12 @@ Grammar support for previous-generation models is now generally available
     -   The models support language model customization.
 
     For more information, see the following topics:
-    -   For more information about the status of grammar support for previous-generation models, see [Language support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg).
+    -   For more information about the status of grammar support for previous-generation models, see [Customization support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg).
     -   For more information about grammars, see [Grammars](/docs/speech-to-text?topic=speech-to-text-customization#grammars-intro).
 
 New beta grammar support for next-generation models
 :   Grammar support is now available as beta functionality for all next-generation models. All next-generation models are generally available (GA) and support language model customization. For more information, see the following topics:
-    -   For more information about the status of grammar support for next-generation models, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
+    -   For more information about the status of grammar support for next-generation models, see [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
     -   For more information about grammars, see [Grammars](/docs/speech-to-text?topic=speech-to-text-customization#grammars-intro).
 
     **Note:** Beta support for grammars by next-generation models is available for the {{site.data.keyword.speechtotextshort}} service on {{site.data.keyword.cloud_notm}} only. Grammars are not yet supported for next-generation models on {{site.data.keyword.icp4dfull_notm}}.

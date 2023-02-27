@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-01-17"
+lastupdated: "2023-02-22"
 
 subcollection: speech-to-text
 
@@ -69,6 +69,7 @@ Table 1 lists the available next-generation telephony models.
 | German | `de-DE_Telephony` | Yes | GA |
 | Hindi  \n (Indian) | `hi-IN_Telephony` | Yes | GA |
 | Italian | `it-IT_Telephony` | Yes | GA |
+| Japanese | `ja-JP_Telephony` | Yes | GA  \n [IBM Cloud]{: tag-ibm-cloud} |
 | Korean | `ko-KR_Telephony` | Yes | GA |
 | Portuguese  \n (Brazilian) | `pt-BR_Telephony` | Yes | GA |
 | Spanish  \n (Castilian) | `es-ES_Telephony` | Yes | GA |
@@ -118,7 +119,7 @@ The new model is available for all supported English dialects: Australian, India
 The next-generation models are supported for use with a large subset of the service's speech recognition features. In cases where a supported feature is restricted to certain languages, the same language restrictions usually apply to both previous- and next-generation models.
 
 -   For more information about the parameters that you can use with next-generation models, including their language support and whether the parameters are GA or beta, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
--   For more information about next-generation models' support for customization, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
+-   For more information about next-generation models' support for customization, see [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
 
 Next-generation models support all speech recognition parameters and headers *except* for the following:
 
