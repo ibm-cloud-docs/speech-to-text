@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2023-02-22"
 
 subcollection: speech-to-text
 
@@ -131,7 +131,7 @@ The response includes a single utterance with no pauses.
 The `low_latency` parameter is available for most next-generation models. The parameter is not available with previous-generation models.
 {: note}
 
-The next-generation multimedia and telephony models have generally faster response times than the previous-generation models. But there may be cases where you want to receive results even more quickly. With next-generation models that support low latency, you can set the `low_latency` parameter to `true` to receive results more quickly. For more information about the next-generation models that support low latency, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
+The next-generation multimedia and telephony models have generally faster response times than the previous-generation models. But there might be cases where you want to receive results even more quickly. With next-generation models that support low latency, you can set the `low_latency` parameter to `true` to receive results more quickly. For more information about the next-generation models that support low latency, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
 
 With low latency, the service achieves faster results at the possible expense of transcription accuracy. When low latency is enabled, the service segments the audio into smaller chunks to optimize for speed over accuracy. This trade-off might be acceptable if your application needs lower response time more than it does the highest possible accuracy. For example, low latency is ideal for use cases such as closed captioning, conversational applications, and live customer service in the voice channel of the {{site.data.keyword.conversationfull}} service.
 

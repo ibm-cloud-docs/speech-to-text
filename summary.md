@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2023-02-27"
 
 subcollection: speech-to-text
 
@@ -40,7 +40,7 @@ An optional customization ID for a custom acoustic model that is adapted for the
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Previous-generation models | Generally available or beta for all models that support acoustic model customization. For more information, see [Language support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
+| Previous-generation models | Generally available or beta for all models that support acoustic model customization. For more information, see [Customization support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
 | Next-generation models | Not available. |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
@@ -92,7 +92,7 @@ An optional version of a base model. The parameter is intended primarily for use
 ## character_insertion_bias
 {: #summary-character-insertion-bias}
 
-An optional float between -1.0 and 1.0 that indicates whether the service is biased to recognize shorter (negative values) or longer (positive values) strings of characters when developing transcription hypotheses. By default, the service is optimized for each individual model to balance its recognition of strings of different lengths. The model-specific bias is equivalent to 0.0. The value that you specify represents a change from a model's default bias. For more information, see [Character insertion bias](/docs/speech-to-text?topic=speech-to-text-parsing#insertion-bias).
+An optional float between -1.0 and 1.0 that indicates whether the service is biased to recognize shorter (negative values) or longer (positive values) strings of characters when developing transcription hypotheses. By default, the service uses a default bias of 0.0. The value that you specify represents a change from a model's default. For more information, see [Character insertion bias](/docs/speech-to-text?topic=speech-to-text-parsing#insertion-bias).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -120,12 +120,12 @@ An optional audio format (MIME type) that specifies the format of the audio data
 ## customization_weight
 {: #summary-customization-weight}
 
-An optional double between 0.0 and 1.0 that indicates the relative weight that the service gives to words from a custom language model versus words from the base vocabulary. The default is 0.3 unless a different weight was specified when the custom language model was trained. For more information, see [Using customization weight](/docs/speech-to-text?topic=speech-to-text-languageUse#weight).
+An optional double between 0.0 and 1.0 that indicates the relative weight that the service gives to words from a custom language model versus words from the base vocabulary. The default differs for different types of models. You can specify a value either when a custom model is trained or when it is used for speech recognition. For more information, see [Using customization weight](/docs/speech-to-text?topic=speech-to-text-languageUse#weight).
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Previous-generation models | Generally available or beta for all models that support language model customization. For more information, see [Language support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
-| Next-generation models     | Generally available for all languages. |
+| Previous-generation models | Generally available or beta for all models that support language model customization. The default value is 0.3. For more information, see [Customization support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
+| Next-generation models     | Generally available or beta for all models that support language model customization. The default value is 0.2 for most next-generation models; it is 0.1 for models that are based on new language model customization technology. For more information, see [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -152,8 +152,8 @@ An optional string that identifies a grammar that is to be used for speech recog
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Previous-generation models | Generally available or beta for all models that support language model customization. For more information, see [Language support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
-| Next-generation models     | Beta for all models that support language model customization. For more information, see [Language support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). |
+| Previous-generation models | Generally available or beta for all models that support language model customization. For more information, see [Customization support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
+| Next-generation models     | Generally available or beta for all models that support language model customization. For more information, see [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -222,8 +222,8 @@ An optional customization ID for a custom language model that includes terminolo
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Previous-generation models | Generally available or beta for all models that support language model customization. For more information, see [Language support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
-| Next-generation models     | Generally available for all languages. |
+| Previous-generation models | Generally available or beta for all models that support language model customization. For more information, see [Customization support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
+| Next-generation models     | Generally available or beta for all models that support language model customization. For more information, see [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |

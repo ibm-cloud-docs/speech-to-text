@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-02-16"
+lastupdated: "2023-02-22"
 
 subcollection: speech-to-text
 
@@ -22,7 +22,7 @@ The {{site.data.keyword.speechtotextfull}} service supports language model custo
 
 Where applicable, customization features are also identified as specific to {{site.data.keyword.cloud}} or {{site.data.keyword.icp4dfull}}. Unless otherwise indicated, a feature is available for both versions of the service.
 
-## Language support for previous-generation models
+## Customization support for previous-generation models
 {: #custom-language-support-pg}
 
 Effective **31 July 2023**, all previous-generation models will be removed from the service and the documentation. Most previous-generation models were deprecated on 15 March 2022. You must migrate to the equivalent next-generation model by 31 July 2023. For more information, see [Migrating to next-generation models](/docs/speech-to-text?topic=speech-to-text-models-migrate).
@@ -72,7 +72,7 @@ Table 1 lists the previous-generation models that are supported for language mod
 | | `es-PE_BroadbandModel`  \n Deprecated | Beta | Beta | Beta |
 {: caption="Table 1. Previous-generation language support for customization"}
 
-## Language support for next-generation models
+## Customization support for next-generation models
 {: #custom-language-support-ng}
 
 Table 2 lists the next-generation models that are supported for language model customization, grammars, and acoustic model customization. To learn which models are supported for speech recognition for {{site.data.keyword.cloud}}, {{site.data.keyword.icp4dfull}}, or both, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
@@ -102,7 +102,8 @@ Table 2 lists the next-generation models that are supported for language model c
 | Hindi | `hi-IN_Telephony` | GA | GA | Not supported |
 | Italian | `it-IT_Telephony` | GA | GA | Not supported |
 |  | `it-IT_Multimedia` | GA | GA | Not supported |
-| Japanese | `ja-JP_Multimedia` | GA | GA | Not supported |
+| Japanese | `ja-JP_Telephony`  \n [IBM Cloud]{: tag-ibm-cloud} | GA | GA | Not supported |
+| | `ja-JP_Multimedia` | GA | GA | Not supported |
 | Korean | `ko-KR_Telephony` | GA | GA | Not supported |
 | | `ko-KR_Multimedia` | GA | GA | Not supported |
 | Portuguese  \n (Brazilian) | `pt-BR_Telephony` | GA | GA | Not supported |
