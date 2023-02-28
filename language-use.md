@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-02-27"
+lastupdated: "2023-02-28"
 
 subcollection: speech-to-text
 
@@ -94,7 +94,7 @@ You specify the relative weight for a custom language model as a double between 
 
 -   For previous-generation models, the default customization weight is 0.3.
 -   For most next-generation models, the default customization weight is 0.2.
--   For English and Japanese base language models, the default customization weight is 0.1.
+-   For next-generation English and Japanese models, the default customization weight is 0.1.
 
 The default weight yields the best performance in the general case. It allows both words from the custom model and words from the base vocabulary to be recognized.
 
