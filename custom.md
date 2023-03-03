@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2023-03-03"
 
 subcollection: speech-to-text
 
@@ -38,6 +38,30 @@ Language model customization is available for both previous-generation and next-
 
 -   [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate)
 -   [Using a custom language model for speech recognition](/docs/speech-to-text?topic=speech-to-text-languageUse)
+
+### Improved language model customization for next-generation models
+{: #customLanguage-intro-ng}
+
+Language model customization for next-generation models is being enhanced. The improvements to language model customization are being applied to next-generation models incrementally, starting with a few models. Over time, the improvements will be made available for other next-generation language models. To identify models that use the improved technology, look for an *(improved)* date in the *Language model customization* column of table 2 in [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
+
+To take advantage of the improved technology, you must upgrade any custom language models that are based on the improved next-generation models. To upgrade to the new version of a base model:
+
+1.  Change your custom model by adding or modifying a custom word, corpus, or grammar that the model contains. Any change that you make moves the model to the `ready` state.
+1.  Use the `POST /v1/customizations/{customization_id}/train` method to retrain the model. Retraining upgrades the custom model to the new technology and moves the model to the `available` state.
+
+You cannot currently use the `POST /v1/customizations/{customization_id}/upgrade_model` method to upgrade a custom model to one of these new base models. This is a known issue that will be addressed in a future release.
+{: note}
+
+For models that are based on the new technology, the following parameters have been optimized for improved speech recognition:
+
+-   The default `customization_weight` has changed from `0.2` to `0.1`. A non-default `customization_weight` that you had previously associated with your custom models is removed. For more information, see [Using customization weight](/docs/speech-to-text?topic=speech-to-text-languageUse#weight).
+-   The default `character_insertion_bias` remains `0.0`, but the models have changed in a manner that makes use of the parameter for speech recognition less necessary. For more information, see [Character insertion bias](/docs/speech-to-text?topic=speech-to-text-parsing#insertion-bias).
+
+Use the following guidelines when working with these parameters:
+
+-   If you use the default values for these parameters, continue to do so. The default values will likely continue to offer the best results for speech recognition.
+-   If you specify non-default values for these parameters, experiment with the default values. Your custom model might work well for speech recognition with the default values.
+-   If you feel that using different values for these parameters might improve speech recognition with your custom model, experiment with incremental changes to determine whether the parameters are needed to improve speech recognition.
 
 ## Acoustic model customization
 {: #customAcoustic-intro}
