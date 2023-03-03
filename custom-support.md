@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-02-22"
+lastupdated: "2023-03-03"
 
 subcollection: speech-to-text
 
@@ -32,7 +32,7 @@ Table 1 lists the previous-generation models that are supported for language mod
 
 | Language (dialect) | Models | Language model customization | Grammars | Acoustic model customization |
 |------------------------|:-----------:|:----------------------------------------:|:----------------------------------------:|:----------------------------------------:|
-| Arabic  \n (Modern Standard) | `ar-MS_BroadbandModel` | Not supported | Not supported | GA |
+| Arabic  \n (Modern Standard) | `ar-MS_BroadbandModel`  \n Deprecated | Not supported | Not supported | GA |
 | Chinese  \n (Mandarin) | `zh-CN_NarrowbandModel`  \n Deprecated | Not supported | Not supported | GA |
 |  | `zh-CN_BroadbandModel`  \n Deprecated | Not supported | Not supported | GA |
 | Dutch  \n (Netherlands) | `nl-NL_NarrowbandModel`  \n Deprecated | GA | GA | GA |
@@ -52,8 +52,8 @@ Table 1 lists the previous-generation models that are supported for language mod
 | | `de-DE_BroadbandModel`  \n Deprecated | GA | GA | GA |
 | Italian | `it-IT_NarrowbandModel`  \n Deprecated | GA | GA | GA |
 | | `it-IT_BroadbandModel`  \n Deprecated | GA | GA | GA |
-| Japanese | `ja-JP_NarrowbandModel` | GA | GA | GA |
-| | `ja-JP_BroadbandModel` | GA | GA | GA |
+| Japanese | `ja-JP_NarrowbandModel`  \n Deprecated | GA | GA | GA |
+| | `ja-JP_BroadbandModel`  \n Deprecated | GA | GA | GA |
 | Korean | `ko-KR_NarrowbandModel`  \n Deprecated | GA | GA | GA |
 | | `ko-KR_BroadbandModel`  \n Deprecated | GA | GA | GA |
 | Portuguese  \n (Brazilian) | `pt-BR_NarrowbandModel`  \n Deprecated | GA | GA | GA |
@@ -77,7 +77,10 @@ Table 1 lists the previous-generation models that are supported for language mod
 
 Table 2 lists the next-generation models that are supported for language model customization, grammars, and acoustic model customization. To learn which models are supported for speech recognition for {{site.data.keyword.cloud}}, {{site.data.keyword.icp4dfull}}, or both, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
 
-| Language (dialect) |  Models | Language model customization | Grammars | Acoustic model customization |
+In the *Language model customization* column, an *(improved)* date indicates when a model was migrated to the new language model customization technology. Models that do not include an *(improved)* date are not yet migrated to the new technology. For more information about the improved technology, see [Improved language model customization for next-generation models](/docs/speech-to-text?topic=speech-to-text-customization#customLanguage-intro-ng).
+{: note}
+
+| Language (dialect) |  Models | Language model customization (improved) | Grammars | Acoustic model customization |
 |------------------------|:-----------:|:----------------------------------------:|:----------------------------------------:|:----------------------------------------:|
 | Arabic  \n (Modern Standard) | `ar-MS_Telephony` | GA | GA | Not supported |
 | Chinese  \n (Mandarin) | `zh-CN_Telephony` | GA | GA | Not supported |
@@ -85,13 +88,13 @@ Table 2 lists the next-generation models that are supported for language model c
 | Dutch  \n (Belgian) | `nl-BE_Telephony` | GA | GA | Not supported |
 | Dutch  \n (Netherlands) | `nl-NL_Telephony` | GA | GA | Not supported |
 | | `nl-NL_Multimedia` | GA | GA | Not supported |
-| English  \n (Australian) | `en-AU_Telephony` | GA | GA | Not supported |
-| | `en-AU_Multimedia` | GA | GA | Not supported |
-| English  \n (Indian) | `en-IN_Telephony` | GA | GA | Not supported |
-| English  \n (United Kingdom) | `en-GB_Telephony` | GA | GA | Not supported |
-| | `en-GB_Multimedia` | GA | GA  | Not supported |
-| English  \n (United States) | `en-US_Telephony` | GA | GA | Not supported |
-| | `en-US_Multimedia` | GA | GA | Not supported |
+| English  \n (Australian) | `en-AU_Telephony` | GA  \n (27 February 2023) | GA | Not supported |
+| | `en-AU_Multimedia` | GA  \n (27 February 2023) | GA | Not supported |
+| English  \n (Indian) | `en-IN_Telephony` | GA  \n (27 February 2023) | GA | Not supported |
+| English  \n (United Kingdom) | `en-GB_Telephony` | GA  \n (27 February 2023) | GA | Not supported |
+| | `en-GB_Multimedia` | GA  \n (27 February 2023) | GA  | Not supported |
+| English  \n (United States) | `en-US_Telephony` | GA  \n (27 February 2023) | GA | Not supported |
+| | `en-US_Multimedia` | GA  \n (27 February 2023) | GA | Not supported |
 | English  \n (all supported dialects) | `en-WW_Medical_Telephony` | Beta | Beta | Not supported |
 | French  \n (Canadian) | `fr-CA_Telephony` | GA | GA | Not supported |
 | | `fr-CA_Multimedia` | GA | GA | Not supported |
@@ -102,8 +105,8 @@ Table 2 lists the next-generation models that are supported for language model c
 | Hindi | `hi-IN_Telephony` | GA | GA | Not supported |
 | Italian | `it-IT_Telephony` | GA | GA | Not supported |
 |  | `it-IT_Multimedia` | GA | GA | Not supported |
-| Japanese | `ja-JP_Telephony`  \n [IBM Cloud]{: tag-ibm-cloud} | GA | GA | Not supported |
-| | `ja-JP_Multimedia` | GA | GA | Not supported |
+| Japanese | `ja-JP_Telephony`  \n [IBM Cloud]{: tag-ibm-cloud} | GA  \n (27 February 2023) | GA | Not supported |
+| | `ja-JP_Multimedia` | GA  \n (27 February 2023) | GA | Not supported |
 | Korean | `ko-KR_Telephony` | GA | GA | Not supported |
 | | `ko-KR_Multimedia` | GA | GA | Not supported |
 | Portuguese  \n (Brazilian) | `pt-BR_Telephony` | GA | GA | Not supported |
