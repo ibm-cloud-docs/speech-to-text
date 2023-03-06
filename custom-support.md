@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-03-03"
+lastupdated: "2023-03-06"
 
 subcollection: speech-to-text
 
@@ -77,7 +77,7 @@ Table 1 lists the previous-generation models that are supported for language mod
 
 Table 2 lists the next-generation models that are supported for language model customization, grammars, and acoustic model customization. To learn which models are supported for speech recognition for {{site.data.keyword.cloud}}, {{site.data.keyword.icp4dfull}}, or both, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
 
-In the *Language model customization* column, an *(improved)* date indicates when a model was migrated to the new language model customization technology. Models that do not include an *(improved)* date are not yet migrated to the new technology. For more information about the improved technology, see [Improved language model customization for next-generation models](/docs/speech-to-text?topic=speech-to-text-customization#customLanguage-intro-ng).
+In the *Language model customization* column, an *(improved)* date indicates when a model was migrated to the new language model customization technology. Make sure to check for a date for the version of the service that you use, *{{site.data.keyword.cloud_notm}}* or *{{site.data.keyword.icp4dfull_notm}}*. Models that do not include an *(improved)* date are not yet migrated to the new technology. For more information about the improved technology, see [Improved language model customization for next-generation models](/docs/speech-to-text?topic=speech-to-text-customization#customLanguage-intro-ng).
 {: note}
 
 | Language (dialect) |  Models | Language model customization (improved) | Grammars | Acoustic model customization |
@@ -88,13 +88,13 @@ In the *Language model customization* column, an *(improved)* date indicates whe
 | Dutch  \n (Belgian) | `nl-BE_Telephony` | GA | GA | Not supported |
 | Dutch  \n (Netherlands) | `nl-NL_Telephony` | GA | GA | Not supported |
 | | `nl-NL_Multimedia` | GA | GA | Not supported |
-| English  \n (Australian) | `en-AU_Telephony` | GA  \n (27 February 2023) | GA | Not supported |
-| | `en-AU_Multimedia` | GA  \n (27 February 2023) | GA | Not supported |
-| English  \n (Indian) | `en-IN_Telephony` | GA  \n (27 February 2023) | GA | Not supported |
-| English  \n (United Kingdom) | `en-GB_Telephony` | GA  \n (27 February 2023) | GA | Not supported |
-| | `en-GB_Multimedia` | GA  \n (27 February 2023) | GA  | Not supported |
-| English  \n (United States) | `en-US_Telephony` | GA  \n (27 February 2023) | GA | Not supported |
-| | `en-US_Multimedia` | GA  \n (27 February 2023) | GA | Not supported |
+| English  \n (Australian) | `en-AU_Telephony` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023 | GA | Not supported |
+| | `en-AU_Multimedia` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023 | GA | Not supported |
+| English  \n (Indian) | `en-IN_Telephony` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023 | GA | Not supported |
+| English  \n (United Kingdom) | `en-GB_Telephony` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023 | GA | Not supported |
+| | `en-GB_Multimedia` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023 | GA  | Not supported |
+| English  \n (United States) | `en-US_Telephony` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023 | GA | Not supported |
+| | `en-US_Multimedia` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023 | GA | Not supported |
 | English  \n (all supported dialects) | `en-WW_Medical_Telephony` | Beta | Beta | Not supported |
 | French  \n (Canadian) | `fr-CA_Telephony` | GA | GA | Not supported |
 | | `fr-CA_Multimedia` | GA | GA | Not supported |
@@ -105,8 +105,8 @@ In the *Language model customization* column, an *(improved)* date indicates whe
 | Hindi | `hi-IN_Telephony` | GA | GA | Not supported |
 | Italian | `it-IT_Telephony` | GA | GA | Not supported |
 |  | `it-IT_Multimedia` | GA | GA | Not supported |
-| Japanese | `ja-JP_Telephony`  \n [IBM Cloud]{: tag-ibm-cloud} | GA  \n (27 February 2023) | GA | Not supported |
-| | `ja-JP_Multimedia` | GA  \n (27 February 2023) | GA | Not supported |
+| Japanese | `ja-JP_Telephony`  \n [IBM Cloud]{: tag-ibm-cloud} | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023 | GA | Not supported |
+| | `ja-JP_Multimedia` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023 | GA | Not supported |
 | Korean | `ko-KR_Telephony` | GA | GA | Not supported |
 | | `ko-KR_Multimedia` | GA | GA | Not supported |
 | Portuguese  \n (Brazilian) | `pt-BR_Telephony` | GA | GA | Not supported |
