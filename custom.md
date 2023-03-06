@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-03-03"
+lastupdated: "2023-03-06"
 
 subcollection: speech-to-text
 
@@ -42,7 +42,9 @@ Language model customization is available for both previous-generation and next-
 ### Improved language model customization for next-generation models
 {: #customLanguage-intro-ng}
 
-Language model customization for next-generation models is being enhanced. The improvements to language model customization are being applied to next-generation models incrementally, starting with a few models. Over time, the improvements will be made available for other next-generation language models. To identify models that use the improved technology, look for an *(improved)* date in the *Language model customization* column of table 2 in [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng).
+Language model customization for next-generation models is being enhanced. The improvements to language model customization are being applied to next-generation models incrementally, starting with a few models. Over time, the improvements will be made available for other next-generation language models.
+
+To identify models that use the improved technology, look for an *(improved)* date in the *Language model customization* column of table 2 in [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). Make sure to check for a date for the version of the service that you use, *{{site.data.keyword.cloud_notm}}* or *{{site.data.keyword.icp4dfull_notm}}*.
 
 To take advantage of the improved technology, you must upgrade any custom language models that are based on the improved next-generation models. To upgrade to the new version of a base model:
 
