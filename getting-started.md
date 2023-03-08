@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-02-10"
+lastupdated: "2023-03-08"
 
 keywords: speech to text,IBM cloud,getting started,tutorial,transcribe audio,speech recognition
 
@@ -64,13 +64,10 @@ This tutorial uses an API key to authenticate. In production, use an IAM token. 
 
 [IBM Cloud Pak for Data]{: tag-cp4d}
 
-1.  Create an instance of {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}. For more information about installing the service and provisioning a service instance, see [Installing and managing {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-speech-install-data).
-1.  From the {{site.data.keyword.icp4dfull_notm}} web client menu, choose **My Instances**.
-1.  Click the {{site.data.keyword.speechtotextshort}} instance to open the overview page.
-1.  Copy the `{token}` and `{URL}` values.
+The {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} must be installed and configured before beginning this tutorial. For more information, see [Watson Speech services on Cloud Pak for Data](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech).
 
-This tutorial uses a Bearer token to authenticate. For more information see [Authenticating to IBM Cloud Pak for Data](/docs/watson?topic=watson-iam#gs-credential-cpd).
-{: tip}
+1.  Create an instance of the service by using the web client, the API, or the command-line interface. For more information about creating a service instance, see [Creating a Watson Speech services instance](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=setup-creating-service-instance){: external}.
+1.  Follow the instructions in *Creating a Watson Speech services instance* to obtain a Bearer token for the instance. This tutorial uses a Bearer token to authenticate to the service.
 
 ## Transcribe audio with no options
 {: #getting-started-transcribe}
