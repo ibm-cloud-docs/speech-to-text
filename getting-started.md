@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-03-08"
+lastupdated: "2023-03-14"
 
 keywords: speech to text,IBM cloud,getting started,tutorial,transcribe audio,speech recognition
 
@@ -64,7 +64,7 @@ This tutorial uses an API key to authenticate. In production, use an IAM token. 
 
 [IBM Cloud Pak for Data]{: tag-cp4d}
 
-The {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} must be installed and configured before beginning this tutorial. For more information, see [Watson Speech services on Cloud Pak for Data](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech).
+The {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} must be installed and configured before beginning this tutorial. For more information, see [Watson Speech services on Cloud Pak for Data](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
 
 1.  Create an instance of the service by using the web client, the API, or the command-line interface. For more information about creating a service instance, see [Creating a Watson Speech services instance](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=setup-creating-service-instance){: external}.
 1.  Follow the instructions in *Creating a Watson Speech services instance* to obtain a Bearer token for the instance. This tutorial uses a Bearer token to authenticate to the service.
@@ -198,6 +198,6 @@ The service returns the following results, which include timestamps and three al
 ## Next steps
 {: #getting-started-next-steps}
 
--   To try an example application that transcribes text from streaming audio input or from a file that you upload, see the [{{site.data.keyword.speechtotextshort}} demo (all languages)](https://speech-to-text-demo.ng.bluemix.net/){: external} or the [{{site.data.keyword.speechtotextshort}} demo (US English)](https://www.ibm.com/demos/live/speech-to-text/self-service/home){: external}.
+-   To try an example application that transcribes text from streaming audio input or from a file that you upload, see the [{{site.data.keyword.speechtotextshort}} demo](https://www.ibm.com/demos/live/speech-to-text/sales/home){: external}.
 -   For more information about the service's interfaces and features, see [Service features](/docs/speech-to-text?topic=speech-to-text-service-features).
 -   For more information about all methods of the service's interfaces, see the [API & SDK reference](/apidocs/speech-to-text){: external}.

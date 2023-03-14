@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2023-03-14"
 
 subcollection: speech-to-text
 
@@ -30,7 +30,7 @@ Although language model customization is similar in usage and intent for previou
 
 When you develop a custom language model based on a next-generation model, you must still provide corpora and custom words to train the model on domain-specific terminology. So the process of creating and training a custom model is largely the same for next-generation and previous-generation models.
 
-The following sections describe the rules for providing corpora and custom words for a custom language model that is based on a next-generation model. The rules are similar to those for working with a custom model based on a previous-generation model, but some important differences do exist.
+The following topics describe the rules for providing corpora and custom words for a custom language model that is based on a next-generation model. The rules are similar to those for working with a custom model based on a previous-generation model, but some important differences do exist.
 
 ## The words resource
 {: #wordsResource-ng}
@@ -114,7 +114,7 @@ Follow these guidelines to prepare a corpus text file:
 ### What happens when I add a corpus file?
 {: #parseCorpus-ng}
 
-When you add a corpus file, the service analyzes the file's contents. To distill the most meaning from the content, the service tokenizes and parses the data that it reads from a corpus file. The following sections describe how the service parses a corpus file for each supported language.
+When you add a corpus file, the service analyzes the file's contents. To distill the most meaning from the content, the service tokenizes and parses the data that it reads from a corpus file. The following topics describe how the service parses a corpus file for each supported language.
 
 Information for the following languages is not yet available: Arabic, Chinese, Czech, Hindi, and Swedish. If you need this information for your custom language model, contact your IBM Support representative.
 {: note}
@@ -122,7 +122,7 @@ Information for the following languages is not yet available: Arabic, Chinese, C
 #### Parsing of Dutch, English, French, German, Italian, Portuguese, and Spanish
 {: #corpusLanguages-ng}
 
-The following descriptions apply to all supported dialects of Dutch, English, French, German, Italian, Portuguese, and Spanish.
+The following information applies to all supported dialects of Dutch, English, French, German, Italian, Portuguese, and Spanish:
 
 -   Converts numbers to their equivalent words.
 
@@ -156,6 +156,8 @@ The following descriptions apply to all supported dialects of Dutch, English, Fr
 #### Parsing of Japanese
 {: #corpusLanguages-jaJP-ng}
 
+The following information applies to Japanese:
+
 -   Converts all characters to full-width characters.
 -   Converts numbers to their equivalent words, for example, `500` becomes `五百`, and `0.15` becomes `〇・一五`.
 -   Does not convert tokens that include symbols to equivalent strings, for example, `100%` becomes `百％`.
@@ -163,6 +165,8 @@ The following descriptions apply to all supported dialects of Dutch, English, Fr
 
 #### Parsing of Korean
 {: #corpusLanguages-koKR-ng}
+
+The following information applies to Korean:
 
 -   Converts numbers to their equivalent words, for example, `10` becomes `십`.
 -   Removes the following punctuation and special characters: `- ( ) * : . , ' "`. However, not all punctuation and special characters that are removed for other languages are removed for Korean, for example:
@@ -223,7 +227,7 @@ You can provide as many as five alternative pronunciations for a word that is di
 
 -   *Handle foreign words.* For example, the French word `garçon` contains a character that is not found in the English language. You can specify a sounds-like of `gaarson`, replacing `ç` with `s`, to tell the service how English speakers would pronounce the word.
 
-The following sections provide guidelines for specifying a sounds-like pronunciation. Speech recognition uses statistical algorithms to analyze audio, so adding a word does not guarantee that the service transcodes it with complete accuracy. When you add a word, consider how it might be pronounced. Use the `sounds_like` field to provide various pronunciations that reflect how a word can be spoken.
+The following topics provide guidelines for specifying a sounds-like pronunciation. Speech recognition uses statistical algorithms to analyze audio, so adding a word does not guarantee that the service transcodes it with complete accuracy. When you add a word, consider how it might be pronounced. Use the `sounds_like` field to provide various pronunciations that reflect how a word can be spoken.
 
 Information for the Chinese language is not yet available. If you need this information for your custom language model, contact your IBM Support representative.
 {: note}
@@ -244,7 +248,9 @@ Follow these guidelines when specifying a sounds-like for any language:
 #### Guidelines for Japanese
 {: #wordLanguages-jaJP-ng}
 
--   Use only full-width Katakana characters by using the `―` lengthen symbol (*chou-on*, or 長音, in Japanese). Do not use half-width characters.
+Follow these guidelines when specifying a sounds-like for Japanese:
+
+-   Use only full-width Katakana characters by using the `―` lengthen symbol (*chou-on*, or 長音, in Japanese). Do not use half-width characters. (For the `display_as` field, if you enter a half-width character, it is rendered as a half-width character in transcription results.)
 -   Use contracted sounds (*yoh-on*, or 拗音, in Japanese) only in the following syllable contexts:
 
     `イェ`, `ウィ`, `ウェ`, `ウォ`, `キィ`, `キャ`, `キュ`, `キョ`, `ギャ`, `ギュ`, `ギョ`, `クァ`, `クィ`, `クェ`, `クォ`
@@ -278,6 +284,8 @@ Follow these guidelines when specifying a sounds-like for any language:
 
 #### Guidelines for Korean
 {: #wordLanguages-koKR-ng}
+
+Follow these guidelines when specifying a sounds-like for Korean:
 
 -   Use Korean Hangul characters, symbols, and syllables.
 -   You can also use Latin (English) alphabetic characters: `a-z` and `A-Z`.
