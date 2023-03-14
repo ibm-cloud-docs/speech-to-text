@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-02-11"
+lastupdated: "2023-03-14"
 
 subcollection: speech-to-text
 
@@ -194,104 +194,113 @@ Silence of 30 seconds in streamed audio can result in an inactivity timeout. For
 
 Speech often includes hesitations or verbal pauses, which are also referred to as disfluencies. Hesitations occur when the user inserts fillers such as  "uhm", "uh", "hmm", and related non-lexical utterances while speaking. The service handles hesitations differently for previous- and next-generation models.
 
--   *For previous-generation models,* the service includes hesitation markers in transcription results for most languages. Different languages can use different hesitation markers or not indicate hesitations at all:
+### Hesitations for previous-generation models
+{: #response-hesitation-prev}
 
-    -   *For US English,* hesitation markers are indicated by the token `%HESITATION`.
-    -   *For Japanese,* hesitation markers typically begin with `D_`.
-    -   *For Spanish,* the service does not produce hesitation markers.
+For previous-generation models, the service includes hesitation markers in transcription results for most languages. Different languages can use different hesitation markers or not indicate hesitations at all:
 
-    The following example shows the token `%HESITATION` for a US English transcript:
+-   *For US English,* hesitation markers are indicated by the token `%HESITATION`. Words that generate hesitation markers are `aah`, `ah`, `hm`, `hmm`, `huh`, `huh-uh`, `hum`, `ohh`, `ugh`, `uh`, `uh-huh`, `uh-oh`, `uh-uh`, `um`, and `um-hum`.
+-   *For Japanese,* hesitation markers typically begin with `D_`.
+-   *For Spanish,* the service does not produce hesitation markers.
 
-    ```json
+The following example shows the token `%HESITATION` for a US English transcript:
+
+```json
+{
+  "result_index": 0,
+  "results": [
     {
-      "result_index": 0,
-      "results": [
+      "alternatives": [
         {
-          "alternatives": [
-            {
-              "confidence": 0.99,
-              "transcript": ". . . that %HESITATION that's a . . ."
-            }
-          ],
-          "final": true
+          "confidence": 0.99,
+          "transcript": ". . . that %HESITATION that's a . . ."
         }
-      ]
+      ],
+      "final": true
     }
-    ```
-    {: codeblock}
+  ]
+}
+```
+{: codeblock}
 
-    Hesitation markers can appear in both interim and final results. Enabling smart formatting prevents hesitation markers from appearing in final results for US English. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting).
+Hesitation markers can appear in both interim and final results. Enabling smart formatting prevents hesitation markers from appearing in final results for US English. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting).
 
-    Hesitation markers can also appear in other fields of a transcript. For example, if you request [Word timestamps](/docs/speech-to-text?topic=speech-to-text-metadata#word-timestamps) for the individual words of a transcript, the service reports the start and end time of each hesitation marker.
+Hesitation markers can also appear in other fields of a transcript. For example, if you request [Word timestamps](/docs/speech-to-text?topic=speech-to-text-metadata#word-timestamps) for the individual words of a transcript, the service reports the start and end time of each hesitation marker.
 
-    ```json
+```json
+{
+  "result_index": 0,
+  "results": [
     {
-      "result_index": 0,
-      "results": [
+      "alternatives": [
         {
-          "alternatives": [
-            {
-              "timestamps": [
-                . . .
-                [
-                  "that",
-                  7.31,
-                  7.69
-                ],
-                [
-                  "%HESITATION",
-                  7.69,
-                  7.98
-                ],
-                [
-                  "that's",
-                  7.98,
-                  8.41
-                ],
-                [
-                  "a",
-                  8.41,
-                  8.48
-                ],
-                . . .
-              ],
-              "confidence": 0.99,
-              "transcript": ". . . that %HESITATION that's a . . ."
-            }
+          "timestamps": [
+            . . .
+            [
+              "that",
+              7.31,
+              7.69
+            ],
+            [
+              "%HESITATION",
+              7.69,
+              7.98
+            ],
+            [
+              "that's",
+              7.98,
+              8.41
+            ],
+            [
+              "a",
+              8.41,
+              8.48
+            ],
+            . . .
           ],
-          "final": true
+          "confidence": 0.99,
+          "transcript": ". . . that %HESITATION that's a . . ."
         }
-      ]
+      ],
+      "final": true
     }
-    ```
-    {: codeblock}
+  ]
+}
+```
+{: codeblock}
 
-    Unless you need to use them for your application, you can safely filter hesitation markers from a transcript.
-    {: note}
+Unless you need to use them for your application, you can safely filter hesitation markers from a transcript.
+{: note}
 
--   *For next-generation models,* the service includes the actual hesitations in all transcription results. Next-generation models treat hesitations as words, so hesitations can appear in interim results, final results, and other fields such as the results for word timestamps. Next-generation models do not produce hesitation markers, and enabling smart formatting does not cause hesitations to be removed from final results.
+### Hesitations for next-generation models
+{: #response-hesitation-next}
 
-    The following example shows the hesitation "uhm" in a US English transcript:
+For next-generation models, the service includes the actual hesitations words in all transcription results. Next-generation models treat hesitations as words, so hesitations can appear in interim results, final results, and other fields such as the results for word timestamps. Next-generation models do not produce hesitation markers, and enabling smart formatting does not cause hesitations to be removed from final results. Different languages can identify different hesitation words:
 
-    ```json
+-   *For US English,* common hesitation words, as for previous-generation models, are `aah`, `ah`, `hm`, `hmm`, `huh`, `huh-uh`, `hum`, `ohh`, `ugh`, `uh`, `uh-huh`, `uh-oh`, `uh-uh`, `um`, and `um-hum`. Not all of these hesitation words might appear in transcripts.
+-   *For Japanese,* hesitation words typically consist of half-width characters such as `ｱ`, `ｱﾉｰ`, `ｳｰﾝ`, `ｴｰﾄ`, `ﾏ`, `ﾃ`, `ﾏ`, and `ﾝｰﾄ`. Some hesitations might be recognized as full-width characters.
+
+To increase the likelihood of seeing hesitations in your response, you can use a custom language model. In the custom model, add corpora that include the hesitations or create custom words whose sounds-likes capture the way users say the disfluencies. For more information about custom language models, see [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate).
+
+The following example shows the hesitation "uhm" in a US English transcript:
+
+```json
+{
+  "result_index": 0,
+  "results": [
     {
-      "result_index": 0,
-      "results": [
+      "alternatives": [
         {
-          "alternatives": [
-            {
-              "confidence": 0.99,
-              "transcript": ". . . that uhm that's a . . ."
-            }
-          ],
-          "final": true
+          "confidence": 0.99,
+          "transcript": ". . . that uhm that's a . . ."
         }
-      ]
+      ],
+      "final": true
     }
-    ```
-    {: codeblock}
-
-    To increase the likelihood of seeing hesitations in your response, you can use a custom language model. In the custom model, add corpora that include the hesitations or create custom words whose sounds-likes capture the way users say the disfluencies. For more information about custom language models, see [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate).
+  ]
+}
+```
+{: codeblock}
 
 ## Capitalization
 {: #response-capitalization}

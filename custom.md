@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-03-06"
+lastupdated: "2023-03-09"
 
 subcollection: speech-to-text
 
@@ -50,6 +50,8 @@ To take advantage of the improved technology, you must upgrade any custom langua
 
 1.  Change your custom model by adding or modifying a custom word, corpus, or grammar that the model contains. Any change that you make moves the model to the `ready` state.
 1.  Use the `POST /v1/customizations/{customization_id}/train` method to retrain the model. Retraining upgrades the custom model to the new technology and moves the model to the `available` state.
+
+Once a custom model is based on an improved next-generation model, the service continues to perform any necessary upgrades when the custom model is retrained. For more information, see [Upgrading custom language models that are based on improved next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade#custom-upgrade-language-ng).
 
 You cannot currently use the `POST /v1/customizations/{customization_id}/upgrade_model` method to upgrade a custom model to one of these new base models. This is a known issue that will be addressed in a future release.
 {: note}
