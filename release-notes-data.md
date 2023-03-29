@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2023
-lastupdated: "2023-02-24"
+lastupdated: "2023-03-29"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -24,6 +24,95 @@ For information about known limitations of the service, see [Known limitations](
 
 For information about releases and updates of the service for {{site.data.keyword.cloud_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes).
 {: note}
+
+<!-- Service-specific fixes deferred to 4.6.5
+## 26 April 2023 (Version 4.6.5)
+{: #speech-to-text-data-26april2023}
+
+Version 4.6.5 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.6.5 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.6.x and Red Hat OpenShift versions 4.10 and 4.12. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
+
+New Japanese next-generation telephony model
+:   The service now offers a next-generation telephony model for Japanese: `ja-JP_Telephony`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about next-generation models and low latency, see
+
+    -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+    -   [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
+    -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency)
+
+Improved language model customization for next-generation English and Japanese models
+:   The service now provides improved language model customization for next-generation English and Japanese models:
+    -   `en-AU_Multimedia`
+    -   `en-AU_Telephony`
+    -   `en-IN_Telephony`
+    -   `en-GB_Multimedia`
+    -   `en-GB_Telephony`
+    -   `en-US_Multimedia`
+    -   `en-US_Telephony`
+    -   `ja-JP_Multimedia`
+    -   `ja-JP_Telephony`
+
+    **Visible improvements to the models:** The new technology improves the default behavior of the new English and Japanese models. Among other changes, the new technology optimizes the default behavior for the following parameters:
+    -   The default `customization_weight` for custom models that are based on the new versions of these models changes from `0.2` to `0.1`.
+    -   The default `character_insertion_bias` for custom models that are based on the new versions of these models remains `0.0`, but the models have changed in a manner that makes use of the parameters for speech recognition less necessary.
+
+    **Upgrading to the new models:** To take advantage of the improved technology, you must upgrade any custom language models that are based on the new models. To upgrade to the new version of one of these base models, do the following:
+    1.  Change your custom model by adding or modifying a custom word, corpus, or grammar that the model contains. Any change that you make moves the model to the `ready` state.
+    1.  Use the `POST /v1/customizations/{customization_id}/train` method to retrain the model. Retraining upgrades the custom model to the new technology and moves the model to the `available` state.
+
+        **Known issue:** At this time, you cannot use the `POST /v1/customizations/{customization_id}/upgrade_model` method to upgrade a custom model to one of the new base models. This issue will be addressed in a future release.
+
+    **Using the new models:** Following the upgrade to the new base model, you are advised to evaluate the performance of the upgraded custom model by paying special attention to the `customization_weight` and `character_insertion_bias` parameters for speech recognition. When you retrain your custom model:
+    -   The custom model uses the new default `customization_weight` of `0.1` for your custom model. A non-default `customization_weight` that you had associated with your custom model is removed.
+    -   The custom model might no longer require use of the `character_insertion_bias` parameter for optimal speech recognition.
+
+    Improvements to language model customization render these parameters less important for high-quality speech recognition:
+    -   If you use the default values for these parameters, continue to do so after the upgrade. The default values will likely continue to offer the best results for speech recognition.
+    -   If you specify non-default values for these parameters, experiment with the default values following upgrade. Your custom model might work well for speech recognition with the default values.
+
+    If you feel that using different values for these parameters might improve speech recognition with your custom model, experiment with incremental changes to determine whether the parameters are needed to improve speech recognition.
+
+    **Note:** At this time, the improvements to language model customization apply only to custom models that are based on the next-generation English or Japanese base language models listed earlier. Over time, the improvements will be made available for other next-generation language models.
+
+    **More information:** For more information about upgrading and about speech recognition with these parameters, see
+    -   [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade)
+    -   [Using customization weight](/docs/speech-to-text?topic=speech-to-text-languageUse#weight)
+    -   [Character insertion bias](/docs/speech-to-text?topic=speech-to-text-parsing#insertion-bias)
+
+Defect fix: Improved training time for next-generation custom language models
+:   **Defect fix:** Training time for next-generation custom language models is now significantly improved. Previously, training time took much longer than necessary, as reported for training of Japanese custom language models. The problem was corrected by an internal fix.
+
+Defect fix: Grammar files now handle strings of digits correctly
+:   **Defect fix:** When grammars are used, the service now handles longer strings of digits correctly. Previously, it was failing to complete recognition or returning incorrect results.
+
+Defect fix: Dynamically generated grammar files now work properly
+:   **Defect fix:** Dynamically generated grammar files now work properly. Previously, dynamic grammar files could cause internal failures, as reported for integration of {{site.data.keyword.speechtotextshort}} with {{site.data.keyword.conversationfull}}. The problem was corrected by an internal fix.
+
+Security vulnerabilities addressed
+:   The following security vulnerabilities have been fixed:
+-->
+
+## 29 March 2023 (Version 4.6.4)
+{: #speech-to-text-data-29march2023}
+
+Version 4.6.4 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.6.4 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.6.x and Red Hat OpenShift versions 4.10 and 4.12. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
+
+Important: Back up your data before upgrading to version 4.6.3 or 4.6.4
+:   **Important:** Before upgrading to Watson Speech services version 4.6.3 or 4.6.4, you must make a backup of your data. Preserve the backup in a safe location. For more information about backing up your Watson Speech services data, see *Backing up and restoring Watson Speech services data* in [Administering Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-administering){: external}. That topic also includes information about restoring your data if that becomes necessary.
+
+Known issue: The Swedish telephony and Italian multimedia models are not yet available
+:   **Known issue:** The Swedish telephony (`sv-SE_Telephony`) and Italian multimedia (`it-IT_Multimedia`) models are not yet available. They will be made available with version 4.6.5.
+
+Defect fix: You can now change the installed models and voices with the advanced installation options
+:   **Defect fix:** During installation, you can now specify different models or voices with the advanced installation options of the command-line interface. Previously, the service always installed the default models and voices. The limitation continues to apply for Watson Speech services versions 4.6.0, 4.6.2, and 4.6.3. For information about installing models and voices, see *Specifying additional installation options* in [Installing Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-installing){: external}.
+
+Setting load balancer timeouts
+:   Watson Speech services require that you change the load balancer timeout settings for both the server and client to 300 seconds. These settings ensure that long-running speech recognition requests, those with long or difficult audio, have sufficient time to complete. For more information, see *Information you need to complete this task* in [Installing Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-installing){: external}.
+
+<!--
+Security vulnerabilities addressed
+:   The following security vulnerabilities have been fixed:
+-->
 
 ## 23 February 2023 (Version 4.6.3)
 {: #speech-to-text-data-23february2023}

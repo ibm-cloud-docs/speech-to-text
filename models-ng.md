@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-02-22"
+lastupdated: "2023-03-27"
 
 subcollection: speech-to-text
 
@@ -74,7 +74,7 @@ Table 1 lists the available next-generation telephony models.
 | Portuguese  \n (Brazilian) | `pt-BR_Telephony` | Yes | GA |
 | Spanish  \n (Castilian) | `es-ES_Telephony` | Yes | GA |
 | Spanish  \n (Argentinian, Chilean,  \n Colombian, Mexican,  \n and Peruvian) | `es-LA_Telephony` | Yes | GA |
-| Swedish | `sv-SE_Telephony` | Yes | GA |
+| Swedish | `sv-SE_Telephony` | Yes | GA  \n [IBM Cloud]{: tag-ibm-cloud} |
 {: caption="Table 1. Next-generation telephony models"}
 
 The Latin American Spanish model, `es-LA_Telephony`, applies to all Latin American dialects. It is the equivalent of the previous-generation models that are available for the Argentinian, Chilean, Colombian, Mexican, and Peruvian dialects. If you used a previous-generation model for any of these Latin American dialects, use the `es-LA_Telephony` model to migrate to the equivalent next-generation model.
@@ -94,7 +94,7 @@ Table 2 lists the available next-generation multimedia models.
 | French  \n (Canadian) | `fr-CA_Multimedia` | Yes | GA |
 | French  \n (France) | `fr-FR_Multimedia` | Yes | GA |
 | German | `de-DE_Multimedia` | Yes | GA |
-| Italian | `it-IT_Multimedia`| Yes | GA |
+| Italian | `it-IT_Multimedia`| Yes | GA  \n [IBM Cloud]{: tag-ibm-cloud} |
 | Japanese | `ja-JP_Multimedia` | Yes | GA |
 | Korean | `ko-KR_Multimedia` | Yes | GA |
 | Portuguese  \n (Brazilian) | `pt-BR_Multimedia` | Yes | GA |

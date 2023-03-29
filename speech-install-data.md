@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-01-22"
+lastupdated: "2023-03-20"
 
 subcollection: speech-to-text
 
@@ -18,12 +18,12 @@ subcollection: speech-to-text
 To install {{site.data.keyword.speechtotextfull}} for {{site.data.keyword.icp4dfull}}, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}. That page provides an overview of the {{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}} and includes links to all installation and management topics for version 4.6.x of the services:
 {: shortdesc}
 
--   Preparing to install
--   Installing
--   Post-installation setup
--   Upgrading
--   Administering
--   Uninstalling
+-   [Preparing to install Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-preparing-install){: external}
+-   [Installing Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-installing){: external}
+-   [Post-installation setup for Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-post-installation-setup){: external}
+-   [Upgrading Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-upgrading){: external}
+-   [Administering Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-administering){: external}
+-   [Uninstalling Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-uninstalling){: external}
 
 ## Installing and managing previous versions
 {: #speech-install-previous}
