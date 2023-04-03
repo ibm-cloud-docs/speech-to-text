@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2023-04-03"
 
 subcollection: speech-to-text
 
@@ -104,3 +104,9 @@ The Premium plan offers developers and organizations all of the capabilities and
 -   Your first 150,000 minutes of speech recognition each month at no charge.
 
 To learn more or to make a purchase, [contact an {{site.data.keyword.IBM_notm}} representative](https://ibm.biz/contact-wdc-premium){: external}.
+
+## Can I provision a premium instance right now?
+{: #faq-pricing-premium-provision}
+{: faq}
+
+No, you must first contact your IBM sales representative to purchase an entitlement and share your requirements. To make a purchase, [contact an {{site.data.keyword.IBM_notm}} representative](https://ibm.biz/contact-wdc-premium){: external}.
