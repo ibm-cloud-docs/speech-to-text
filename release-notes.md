@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-03-13"
+lastupdated: "2023-04-06"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -26,6 +26,33 @@ For information about known limitations of the service, see [Known limitations](
 
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
+
+## 6 April 2023
+{: #speech-to-text-6april2023}
+{: release-note}
+
+Defect fix: Limits to allow completion of training for next-generation Japanese custom models
+:   **Defect fix:** Successful training of a next-generation Japanese custom language model requires that custom words and sounds-likes added to the model each contain no more than 25 characters. For the most effective training, it is recommended that custom words and sounds-likes contain no more than 20 characters. Training of Japanese custom models with longer custom words and sounds-likes fails to complete after multiple hours of training.
+
+   If you need to add the equivalent of a long word or sounds-like to a next-generation Japanese custom model, take these steps:
+   1.  Add a shorter word or sounds-like that captures the essence of the longer word or sounds-like to the custom model.
+   1.  Add one or more sentences that use the longer word or sounds-like to a corpus.
+   1.  Consider adding sentences to the corpus that provide more context for the word or sounds-like. Greater context gives the service more information with which to recognize the word and apply the correct sounds-like.
+   1.  Add the corpus to the custom model.
+   1.  Retrain the custom model on the combination of the shorter word or sounds-like and the corpus that contains the longer string.
+
+   The limits and steps just described allow next-generation Japanese custom models to complete training. Keep in mind that adding large numbers of new custom words to a custom language model increases the training time of the model. But the increased training time occurs only when the custom model is initially trained on the new words. Once the custom model has been trained on the new words, training time returns to normal.
+
+    For more information, see
+    -   [Add a corpus to the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#addCorpus)
+    -   [Add words to the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#addWords)
+    -   [Train the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language)
+    -   [Working with corpora and custom words for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng)
+
+Further improvements to updated next-generation language model customization
+:   Language model customization for English and Japanese next-generation models was recently improved. This service update includes further internal improvements. For more information about improved next-generation customization, see
+    -   [27 February 2023 service update](#speech-to-text-27february2023) and
+    -   [Improved language model customization for next-generation models](/docs/speech-to-text?topic=speech-to-text-customization#customLanguage-intro-ng)
 
 ## 13 March 2023
 {: #speech-to-text-13march2023}
@@ -83,6 +110,7 @@ Improved language model customization for next-generation English and Japanese m
     **Note:** At this time, the improvements to language model customization apply only to custom models that are based on the next-generation English or Japanese base language models listed earlier. Over time, the improvements will be made available for other next-generation language models.
 
     **More information:** For more information about upgrading and about speech recognition with these parameters, see
+    -   [Improved language model customization for next-generation models](/docs/speech-to-text?topic=speech-to-text-customization#customLanguage-intro-ng)
     -   [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade)
     -   [Using customization weight](/docs/speech-to-text?topic=speech-to-text-languageUse#weight)
     -   [Character insertion bias](/docs/speech-to-text?topic=speech-to-text-parsing#insertion-bias)

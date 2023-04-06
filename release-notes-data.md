@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2023
-lastupdated: "2023-03-31"
+lastupdated: "2023-04-06"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -136,13 +136,13 @@ Security vulnerabilities addressed
     -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in Freedesktop D-Bus (CVE-2022-42012)](https://www.ibm.com/support/pages/node/6967695){: external}
     -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in MIT krb5 (CVE-2022-42898)](https://www.ibm.com/support/pages/node/6967697){: external}
     -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in libexpat (CVE-2022-43680)](https://www.ibm.com/support/pages/node/6967699){: external}
-    -   CVE-2015-20107 (published security bulletin pending)
-    -   CVE-2020-35527 (published security bulletin pending)
-    -   CVE-2021-46848 (published security bulletin pending)
-    -   CVE-2022-23521 (published security bulletin pending)
-    -   CVE-2022-3515 (published security bulletin pending)
-    -   CVE-2022-40674 (published security bulletin pending)
-    -   CVE-2022-41903 (published security bulletin pending)
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to an arbitrary commands execution in Python (CVE-2015-20107)](https://www.ibm.com/support/pages/node/6981849){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to arbitrary code execution in SQlite (CVE-2020-35527)](https://www.ibm.com/support/pages/node/6981851){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a security restrictions bypass in GNU Libtasn1 (CVE-2021-46848)](https://www.ibm.com/support/pages/node/6981853){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to arbitrary code execution in Git (CVE-2022-23521)](https://www.ibm.com/support/pages/node/6981857){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to arbitrary code execution in GnuPG Libksba (CVE-2022-3515)](https://www.ibm.com/support/pages/node/6981855){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to an arbitrary code execution in libexpat (CVE-2022-40674)](https://www.ibm.com/support/pages/node/6981859){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to arbitrary code execution in Git (CVE-2022-41903)](https://www.ibm.com/support/pages/node/6981861){: external}
 
 ## 23 February 2023 (Version 4.6.3)
 {: #speech-to-text-data-23february2023}
