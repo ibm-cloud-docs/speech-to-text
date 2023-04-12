@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-04-06"
+lastupdated: "2023-04-12"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -26,6 +26,13 @@ For information about known limitations of the service, see [Known limitations](
 
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
+
+## 12 April 2023
+{: #speech-to-text-12april2023}
+{: release-note}
+
+Defect fix: The WebSocket interface now times out as expected when using next-generation models
+:   **Defect fix:** When used for speech recognition with next-generation models, the WebSocket interface now times out as expected after long periods of silence. Previously, when used for speech recognition of short audio files, the WebSocket session could fail to time out. When the session failed to time out, the service did not return a final hypothesis to the waiting client application, and the client instead timed while waiting for the results.
 
 ## 6 April 2023
 {: #speech-to-text-6april2023}
