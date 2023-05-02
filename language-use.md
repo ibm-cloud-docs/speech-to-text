@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-02-28"
+lastupdated: "2023-04-19"
 
 subcollection: speech-to-text
 
@@ -92,9 +92,12 @@ A custom language model is a combination of the custom model and the base model 
 
 You specify the relative weight for a custom language model as a double between 0.0 to 1.0:
 
--   For previous-generation models, the default customization weight is 0.3.
--   For most next-generation models, the default customization weight is 0.2.
--   For next-generation English and Japanese models, the default customization weight is 0.1.
+-   For custom models that are based on previous-generation models, the default customization weight is 0.3.
+-   For custom models that are based on most next-generation models, the default customization weight is 0.2.
+-   For custom models that are based on improved next-generation models, the default customization weight is 0.1.
+
+To identify models that use improved language model customization, look for an *(improved)* date in the *Language model customization* column of table 2 in [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). Make sure to check for a date for the version of the service that you use, *{{site.data.keyword.cloud_notm}}* or *{{site.data.keyword.icp4dfull_notm}}*.
+{: tip}
 
 The default weight yields the best performance in the general case. It allows both words from the custom model and words from the base vocabulary to be recognized.
 

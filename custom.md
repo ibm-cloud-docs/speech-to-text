@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-03-09"
+lastupdated: "2023-04-28"
 
 subcollection: speech-to-text
 
@@ -42,21 +42,12 @@ Language model customization is available for both previous-generation and next-
 ### Improved language model customization for next-generation models
 {: #customLanguage-intro-ng}
 
-Language model customization for next-generation models is being enhanced. The improvements to language model customization are being applied to next-generation models incrementally, starting with a few models. Over time, the improvements will be made available for other next-generation language models.
+Language model customization for next-generation models is being enhanced. The improvements to language model customization are being applied to next-generation models incrementally, starting with the models for a few languages. Over time, other next-generation language models will be migrated to the improved technology.
 
-To identify models that use the improved technology, look for an *(improved)* date in the *Language model customization* column of table 2 in [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). Make sure to check for a date for the version of the service that you use, *{{site.data.keyword.cloud_notm}}* or *{{site.data.keyword.icp4dfull_notm}}*.
+-   *To identify models that use the improved technology,* look for a date in the *Language model customization (improved)* column of table 2 in [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). Check for a date for the version of the service that you use, [IBM Cloud]{: tag-ibm-cloud} or [IBM Cloud Pak for Data]{: tag-cp4d}. That date indicates when the next-generation model was migrated to the improved technology.
+-   *To take advantage of the improved technology,* you must upgrade any custom language models that are based on an improved next-generation model. Once a custom model is based on an improved next-generation model, the service continues to perform any necessary upgrades when the custom model is retrained. For more information, see [Upgrading a custom language model based on an improved next-generation model](/docs/speech-to-text?topic=speech-to-text-custom-upgrade#custom-upgrade-language-ng).
 
-To take advantage of the improved technology, you must upgrade any custom language models that are based on the improved next-generation models. To upgrade to the new version of a base model:
-
-1.  Change your custom model by adding or modifying a custom word, corpus, or grammar that the model contains. Any change that you make moves the model to the `ready` state.
-1.  Use the `POST /v1/customizations/{customization_id}/train` method to retrain the model. Retraining upgrades the custom model to the new technology and moves the model to the `available` state.
-
-Once a custom model is based on an improved next-generation model, the service continues to perform any necessary upgrades when the custom model is retrained. For more information, see [Upgrading custom language models that are based on improved next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade#custom-upgrade-language-ng).
-
-You cannot currently use the `POST /v1/customizations/{customization_id}/upgrade_model` method to upgrade a custom model to one of these new base models. This is a known issue that will be addressed in a future release.
-{: note}
-
-For models that are based on the new technology, the following parameters have been optimized for improved speech recognition:
+For language models that are based on the new technology, the following parameters have been optimized for improved speech recognition:
 
 -   The default `customization_weight` has changed from `0.2` to `0.1`. A non-default `customization_weight` that you had previously associated with your custom models is removed. For more information, see [Using customization weight](/docs/speech-to-text?topic=speech-to-text-languageUse#weight).
 -   The default `character_insertion_bias` remains `0.0`, but the models have changed in a manner that makes use of the parameter for speech recognition less necessary. For more information, see [Character insertion bias](/docs/speech-to-text?topic=speech-to-text-parsing#insertion-bias).

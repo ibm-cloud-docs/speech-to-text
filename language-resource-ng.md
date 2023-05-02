@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-03-14"
+lastupdated: "2023-04-26"
 
 subcollection: speech-to-text
 
@@ -24,7 +24,7 @@ Although language model customization is similar in usage and intent for previou
 
 -   When you create and use a custom language model that is based on a *previous-generation model*, the service relies on words from the custom model to create transcripts that contain domain-specific terms. In combination with words from its base vocabulary, the service uses these words from the custom model to predict and transcribe speech from audio. You provide the information for a custom language model in the form of corpora, custom words, and grammars. The service stores this information in the words resource for the custom model.
 
--   When you create a custom language model that is based on a *next-generation model*, the services relies on sequences of characters from the custom model to create transcripts that reflect domain-specific terms. In combination with character sequences from its base vocabulary, the service uses these extended series of characters from the custom model to predict and transcribe speech from audio.
+-   When you create a custom language model that is based on a *next-generation model*, the services relies on sequences of characters from the custom model to create transcripts that reflect domain-specific terms. In combination with character sequences from the base model, the service uses these series of characters from the custom model to predict and transcribe speech from audio.
 
     You provide the information for a custom language model in the form of corpora, custom words, and grammars. But rather than rely on a words resource that contains these words, the service extracts and stores character sequences from the corpora and custom words. The service does not extract and calculate out-of-vocabulary (OOV) words from corpora and custom words. The words resource is simply where it stores custom words that you add directly to the model.
 
@@ -44,7 +44,7 @@ The *words resource* includes custom words that you add directly to the custom m
 
 After adding or modifying a custom word, it is important that you verify the correctness of the word's definition; for more information, see [Validating a words resource for next-generation models](#validateModel-ng). You must also train the model for the changes to take effect during transcription; for more information, see [Train the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
 
-You can add custom words that already exist in the service's base vocabulary, for example, to add more sounds-like pronunciations. Otherwise, there is no reason to duplicate common words from the base vocabulary. Such words remain in the model's words resource, but they are harmless and unnecessary.
+You can add custom words that already exist, for example, to add more sounds-like pronunciations for common words. Otherwise, there is no reason to duplicate common words. Such words remain in the model's words resource, but they are harmless and unnecessary.
 {: note}
 
 ## How much data do I need?
@@ -55,6 +55,48 @@ Many factors contribute to the amount of data that you need for an effective cus
 You can add a maximum of 10 million total words to a custom model from all sources. This figure includes all words that are included in corpora and that you add directly. The service uses all of the words from a corpus to learn the context in which sequences of characters can occur, which is why corpora are a more effective means of improving recognition accuracy.
 
 Adding a large number of corpora and words can increase the latency of speech recognition, but the exact effect is difficult to quantify or predict. As with the amount of data that is needed to produce an effective custom model, the performance impact of a large amount of data depends on many factors. Test your custom model with different amounts of data to determine the performance of your models.
+
+### Guidelines for adding words to custom models based on improved next-generation models
+{: #wordsResourceAmount-words-ng}
+
+For custom models that are based on next-generation language models that use improved customization, limit the number of custom words that you add directly to the model with the following methods:
+
+-   `POST /v1/customizations/{customization_id}/words`
+-   `PUT /v1/customizations/{customization_id}/words/{word_name}`
+
+Using these methods to add custom words to a custom model can significantly increase the training time of the model. Training time increases linearly with the total number of words that you add. However, the training time increases only when the model is first trained on the new custom words. The time required for subsequent training requests, without new custom words, returns to normal.
+
+Training a custom model with words added only via corpora with the following method is typically quick:
+
+-   `POST /v1/customizations/{customization_id}/corpora/{corpus_name}`
+
+For more information about improved customization for next-generation models, see [Improved language model customization for next-generation models](/docs/speech-to-text?topic=speech-to-text-customization#customLanguage-intro-ng).
+
+### Guidelines for adding words to Japanese models based on improved next-generation models
+{: #wordsResourceAmount-japanese-ng}
+
+Do not add custom words for known words, words that are commonly recognized and have a general correspondence between the word and how it is pronounced. Use custom words to create a mapping between how less common words are spelled and how they are pronounced. Also use custom words to add unknown words, those that lack a correspondence between the word and its pronunciation or that are not commonly recognized as words. Adding such words to a corpus is equally effective.
+
+The service enforces a maximum limit of 25 total characters, not including leading or trailing spaces, for custom words and sounds-likes. If you add a custom word or sounds-like that exceeds this limit, the service automatically treats the word as if it were added by a corpus. The word does not appear as a custom word for the model. For the most effective training, it is recommended that Japanese custom words and sounds-likes contain no more than 20 characters. Add long words such as `ＩＢＭクラウド音声認識サービス` to a corpus.
+
+For example, the pronunciation `アイビーエム` for the word `ＩＢＭ` is recognized without customization, so there is no need to add it as a custom word. Because `ＩＢＭ`, `クラウド`, `音声認識`, and `サービス` are common words, adding them as custom words has no effect.
+
+For a custom word, enter a commonly used notation that reflects the word's usage and pronunciation. This allows for more efficient customization. For instance, the following example does not reliably produce the string `Artificial_Intelligence` in response to the utterance `エーアイ` because `Artificial_Intelligence` and `人工知能` are not generally uttered as `AI`:
+
+```json
+{\"word\": \"Artificial_Intelligence\", \"sounds_like\": [\"エーアイ\"], \"display_as\": \"Artificial_Intelligence\"},
+{\"word\": \"人工知能\", \"sounds_like\": [\"エーアイ\"], \"display_as\": \"Artificial_Intelligence\"}
+```
+{: codeblock}
+
+Because the context is typically something like `これからＡＩはますます発展してきます`, `ＡＩ` is the most appropriate notation for the sounds-like `エーアイ`. The following example is therefore likely to yield better results:
+
+```json
+{\"word\": \"ＡＩ\", \"sounds_like\": [\"エーアイ\"], \"display_as\": \"Artificial_Intelligence\"}
+```
+{: codeblock}
+
+Finally, in custom words, half-width alphabetic characters are converted to full-width characters. English uppercase and lowercase characters are treated as different characters.
 
 ## Working with corpora for next-generation models
 {: #workingCorpora-ng}
@@ -78,7 +120,7 @@ What is Osteogenesis imperfecta OI?
 ```
 {: codeblock}
 
-Words from a custom model are in competition with words in the service's base vocabulary as well as other words of the model. (Factors such as audio noise and speaker accents also affect the quality of transcription.)
+Character sequences in words from a custom model are in competition with character sequences from the base model, as well as sequences from other words of the model. (Factors such as audio noise and speaker accents also affect the quality of transcription.)
 
 The accuracy of transcription can depend largely on the data that you add to a model and how speakers say words in audio. To improve the service's accuracy, use corpora to provide as many examples as possible of how words are used in a domain. Repeating the words in corpora can improve the quality of a custom language model. How you duplicate the words in corpora depends on how you expect users to say them in the audio that is to be recognized. The more sentences that you add that represent the context in which speakers use words from the domain, the better the service's recognition accuracy.
 
@@ -229,7 +271,7 @@ You can provide as many as five alternative pronunciations for a word that is di
 
 The following topics provide guidelines for specifying a sounds-like pronunciation. Speech recognition uses statistical algorithms to analyze audio, so adding a word does not guarantee that the service transcodes it with complete accuracy. When you add a word, consider how it might be pronounced. Use the `sounds_like` field to provide various pronunciations that reflect how a word can be spoken.
 
-Information for the Chinese language is not yet available. If you need this information for your custom language model, contact your IBM Support representative.
+Information for the following languages is not yet available: Arabic, Chinese, Czech, Hindi, and Swedish. If you need this information for your custom language model, contact your IBM Support representative.
 {: note}
 
 #### General guidelines for all languages
@@ -243,7 +285,9 @@ Follow these guidelines when specifying a sounds-like for any language:
 -   *Use real or made-up words that are pronounceable for words that are difficult to pronounce.* For example, in English you can use the sounds-like `shuchesnie` for the word `Sczcesny`.
 -   *Use the spelling of numbers without dashes.* For example, for the number `75`, use `seventy five` in English, `setenta y cinco` in Spanish, and `soixante quinze` in French.
 -   *To pronounce a single letter, use the letter followed by a space.* For example, use `N C A A`, *not* `N. C. A. A.`, `N.C.A.A.`, or `NCAA`.
--   *You can include multiple words that are separated by spaces.* The service enforces a maximum of 40 total characters not including spaces.
+-   *You can include multiple words that are separated by spaces.*
+    -   For most languages, the service enforces a maximum of 40 total characters, not including leading or trailing spaces.
+    -   For Japanese, the service enforces a maximum limit of 25 total characters, not including leading or trailing spaces. If you add a custom word or sounds-like that exceeds this limit, the service automatically treats the word as if it were added by a corpus. The word does not appear as a custom word for the model. For the most effective training, it is recommended that Japanese custom words and sounds-likes contain no more than 20 characters.
 
 #### Guidelines for Japanese
 {: #wordLanguages-jaJP-ng}
@@ -279,7 +323,7 @@ Follow these guidelines when specifying a sounds-like for Japanese:
 
 -   Do not use `ン` as the first character of a word. For example, use `ウーント` instead of `ンート`, the latter of which is invalid.
 -   The character-sequence `ウー` is ambiguous in some left contexts. Do not use characters (syllables) that end with the phoneme `/o/`, such as `ロ` and `ト`. In such cases, use `ウウ` or just `ウ` instead of `ウー`. For example, use `ロウウマン` or `ロウマン` instead of `ロウーマン`.
--   Many compound words consist of *prefix+noun* or *noun+suffix*. The service's base vocabulary covers most compound words that occur frequently (for example, `長電話` and `古新聞`) but not those compound words that occur infrequently. If your corpus commonly contains compound words, add them as one word as the first step of your customization. For example, `古鉛筆` is not common in general Japanese text; if you use it often, add it to your custom model to improve transcription accuracy.
+-   Many compound words consist of *prefix+noun* or *noun+suffix*. The character sequences of the base model cover most compound words that occur frequently (for example, `長電話` and `古新聞`) but not those compound words that occur infrequently. If your corpus commonly contains compound words, add them as one word as the first step of your customization. For example, `古鉛筆` is not common in general Japanese text; if you use it often, add it to your custom model to improve transcription accuracy.
 -   Do not use a trailing assimilated sound.
 
 #### Guidelines for Korean
@@ -352,7 +396,7 @@ For more information about working with these features, see [Smart formatting](/
 ### What happens when I add or modify a custom word?
 {: #parseWord-ng}
 
-How the service responds to a request to add or modify a custom word depends on the fields and values that you specify. It also depends on whether the word exists in the service's base vocabulary.
+How the service responds to a request to add or modify a custom word depends on the fields and values that you specify. It also depends on whether the character sequences of the word exist in the base model's character sequences.
 
 -   **Omit both the `sounds_like` and `display_as` fields:**
     -   The service sets the `display_as` field to the value of the `word` field. The service does not attempt to set the `sounds_like` field to a pronunciation of the word.

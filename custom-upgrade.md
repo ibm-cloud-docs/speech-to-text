@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2023
-lastupdated: "2023-03-06"
+lastupdated: "2023-04-27"
 
 subcollection: speech-to-text
 
@@ -24,7 +24,7 @@ When a base model is updated, you might need to upgrade any custom models that a
     The service released new language model customization technology on 27 February 2023. How you upgrade to the new technology is different from traditional custom model upgrades. For more information about the new technology and about upgrading, see
 
     -   [Improved language model customization for next-generation models](/docs/speech-to-text?topic=speech-to-text-customization#customLanguage-intro-ng)
-    -   [Upgrading custom language models that are based on improved next-generation models](#custom-upgrade-language-ng)
+    -   [Upgrading a custom language model based on an improved next-generation model](#custom-upgrade-language-ng)
 
 If an upgrade is required, your custom models continue to use the older version of the base model until you complete the upgrade. Upgrade to the latest version of an updated base model as soon as possible. The sooner you upgrade a custom model, the sooner you can experience the improved speech recognition of the new model.
 
@@ -82,20 +82,50 @@ While it is being upgraded, the custom model has the status `upgrading`. When th
 
 The service cannot accept requests to modify the model in any way until the upgrade request completes. However, you can continue to issue recognition requests with the existing version of the model during the upgrade.
 
-### Upgrading custom language models that are based on improved next-generation models
+### Upgrading a custom language model based on an improved next-generation model
 {: #custom-upgrade-language-ng}
 
-For custom language models that are based on improved next-generation base models, upgrade is performed automatically when you retrain the custom model. You do not need to use the `POST /v1/customizations/{customization_id}/upgrade_model` method.
+For custom language models that are based on improved next-generation models, upgrade is performed automatically when you retrain the custom model. And once a custom model is based on an improved next-generation model, the service continues to perform any necessary upgrades when the custom model is retrained.
 
-To upgrade a custom model that is based on an improved base language model, you can instead do the following:
+You cannot use the `POST /v1/customizations/{customization_id}/upgrade_model` method to upgrade a custom model to an improved next-generation base model.
+{: note}
 
-1.  Change your custom model by adding or modifying a custom word, corpus, or grammar that the model contains. Any change that you make moves the model to the `ready` state.
-1.  Use the `POST /v1/customizations/{customization_id}/train` method to retrain the model. Retraining upgrades the custom model and moves the model to the `available` state.
+To upgrade a custom model that is based on an improved next-generation model, perform one of the following procedures:
 
-For more information, see the following topics:
+-   Change the custom model and then train it.
 
--   To identify models that use improved language model customization, look for an *(improved)* date in the *Language model customization* column of table 2 in [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). Make sure to check for a date for the version of the service that you use, *{{site.data.keyword.cloud_notm}}* or *{{site.data.keyword.icp4dfull_notm}}*.
--   For more information about training a custom model and about monitoring a training request, see [Train the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
+    1.  Change your custom model by adding or modifying a custom word, corpus, or grammar that the model contains. Any change that you make moves the model to the `ready` state.
+    1.  Use the `POST /v1/customizations/{customization_id}/train` method to retrain the model. Retraining upgrades the custom model and moves it to the `available` state.
+
+-   [IBM Cloud]{: tag-ibm-cloud} Train the custom model by using the `force` query parameter.
+
+    If you include the parameter `force=true` with the `POST /v1/customizations/{customization_id}/train` request, you do not need to change the model's custom words, corpora, or grammars to enable upgrading. The parameter forces the training, and thus the upgrade, of the custom model regardless of whether it is in the `ready` or `available` state. The following example shows the use of the `force` parameter:
+
+    [IBM Cloud]{: tag-ibm-cloud}
+
+    ```bash
+    curl -X POST -u "apikey:{apikey}" \
+    "{url}/v1/customizations/{customization_id}/train?force=true"
+    ```
+    {: pre}
+
+<!-- COMMENTED UNTIL PARAMETER IS AVAILABLE ON CP4D.
+
+    [IBM Cloud Pak for Data]{: tag-cp4d}
+
+    ```bash
+    curl -X POST \
+    --header "Authorization: Bearer {token}" \
+    "{url}/v1/customizations/{customization_id}/train?force=true"
+    ```
+    {: pre}
+
+-->
+
+For more information about training a custom model and about monitoring a training request, see [Train the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
+
+To identify models that use improved language model customization, look for an *(improved)* date in the *Language model customization* column of table 2 in [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). Make sure to check for a date for the version of the service that you use, *{{site.data.keyword.cloud_notm}}* or *{{site.data.keyword.icp4dfull_notm}}*.
+{: tip}
 
 ## Upgrading a custom acoustic model
 {: #custom-upgrade-acoustic}

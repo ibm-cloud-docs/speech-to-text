@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2023
-lastupdated: "2023-03-27"
+lastupdated: "2023-04-29"
 
 subcollection: speech-to-text
 
@@ -45,7 +45,8 @@ The following sections list the next-generation models of each type that are ava
 -   The *Low-latency support* column indicates whether the model supports the `low_latency` parameter for speech recognition. For more information, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
 -   The *Status* column indicates whether the model is generally available (GA) or beta.
 
-The *Model name* and *Low-latency support* columns indicate the product versions for which the model and low-latency are supported. Unless otherwise labeled as *{{site.data.keyword.cloud_notm}} only* or *{{site.data.keyword.icp4dfull_notm}} only*, a model and low latency are supported for both versions of the service.
+The *Model name* and *Low-latency support* columns indicate the product versions for which the model and low-latency are supported. Unless otherwise labeled as
+[IBM Cloud]{: tag-ibm-cloud} or [IBM Cloud Pak for Data]{: tag-cp4d}, a model and low latency are supported for both versions of the service.
 
 ### Telephony models
 {: #models-ng-telephony}
@@ -69,12 +70,12 @@ Table 1 lists the available next-generation telephony models.
 | German | `de-DE_Telephony` | Yes | GA |
 | Hindi  \n (Indian) | `hi-IN_Telephony` | Yes | GA |
 | Italian | `it-IT_Telephony` | Yes | GA |
-| Japanese | `ja-JP_Telephony` | Yes | GA  \n [IBM Cloud]{: tag-ibm-cloud} |
+| Japanese | `ja-JP_Telephony` | Yes | GA |
 | Korean | `ko-KR_Telephony` | Yes | GA |
 | Portuguese  \n (Brazilian) | `pt-BR_Telephony` | Yes | GA |
 | Spanish  \n (Castilian) | `es-ES_Telephony` | Yes | GA |
 | Spanish  \n (Argentinian, Chilean,  \n Colombian, Mexican,  \n and Peruvian) | `es-LA_Telephony` | Yes | GA |
-| Swedish | `sv-SE_Telephony` | Yes | GA  \n [IBM Cloud]{: tag-ibm-cloud} |
+| Swedish | `sv-SE_Telephony` | Yes | GA |
 {: caption="Table 1. Next-generation telephony models"}
 
 The Latin American Spanish model, `es-LA_Telephony`, applies to all Latin American dialects. It is the equivalent of the previous-generation models that are available for the Argentinian, Chilean, Colombian, Mexican, and Peruvian dialects. If you used a previous-generation model for any of these Latin American dialects, use the `es-LA_Telephony` model to migrate to the equivalent next-generation model.
@@ -94,7 +95,7 @@ Table 2 lists the available next-generation multimedia models.
 | French  \n (Canadian) | `fr-CA_Multimedia` | Yes | GA |
 | French  \n (France) | `fr-FR_Multimedia` | Yes | GA |
 | German | `de-DE_Multimedia` | Yes | GA |
-| Italian | `it-IT_Multimedia`| Yes | GA  \n [IBM Cloud]{: tag-ibm-cloud} |
+| Italian | `it-IT_Multimedia` | Yes | GA |
 | Japanese | `ja-JP_Multimedia` | Yes | GA |
 | Korean | `ko-KR_Multimedia` | Yes | GA |
 | Portuguese  \n (Brazilian) | `pt-BR_Multimedia` | Yes | GA |
