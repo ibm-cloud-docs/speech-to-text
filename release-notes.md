@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-04-12"
+lastupdated: "2023-05-02"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -26,6 +26,25 @@ For information about known limitations of the service, see [Known limitations](
 
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
+
+## 2 May 2023
+{: #speech-to-text-2may2023}
+{: release-note}
+
+New procedure for upgrading a custom model that is based on an improved next-generation model
+:   Two approaches are now available to upgrade a custom language model to an improved next-generation base model. You can still modify and then retrain the custom model, as already documented. But now, you can also upgrade the custom model by including the query parameter `force=true` with the `POST /v1/customizations/{customization_id}/train` request. The `force` parameter upgrades the custom model regardless of whether it contains changes (is in the `ready` or `available` state).
+
+    For more information, see [Upgrading a custom language model based on an improved next-generation model](/docs/speech-to-text?topic=speech-to-text-custom-upgrade#custom-upgrade-language-ng).
+
+Guidance for adding words to custom models that are based on improved next-generation models
+:   The documentation now offers more guidance about adding words to custom models that are based on improved next-generation models. For performance reasons during training, the guidance encourages the use of corpora rather than the direct addition of custom words whenever possible.
+
+    For more information, see [Guidelines for adding words to custom models based on improved next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordsResourceAmount-words-ng).
+
+Japanese custom words for custom models that are based on improved next-generation models are handled differently
+:   For Japanese custom models that are based on next-generation models, custom words are handled differently from other languages. For Japanese, you can add a custom word or sounds-like that does not exceed 25 characters in length. If your custom word or sounds-like exceeds that limit, the service adds the word to the custom model as if it were added by a corpus. The word does not appear as a custom word for the model.
+
+    For more information, see [Guidelines for adding words to Japanese models based on improved next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordsResourceAmount-japanese-ng).
 
 ## 12 April 2023
 {: #speech-to-text-12april2023}
@@ -96,7 +115,7 @@ Improved language model customization for next-generation English and Japanese m
 
     **Visible improvements to the models:** The new technology improves the default behavior of the new English and Japanese models. Among other changes, the new technology optimizes the default behavior for the following parameters:
     -   The default `customization_weight` for custom models that are based on the new versions of these models changes from `0.2` to `0.1`.
-    -   The default `character_insertion_bias` for custom models that are based on the new versions of these models remains `0.0`, but the models have changed in a manner that makes use of the parameters for speech recognition less necessary.
+    -   The default `character_insertion_bias` for custom models that are based on the new versions of these models remains `0.0`, but the models have changed in a manner that makes use of the parameter for speech recognition less necessary.
 
     **Upgrading to the new models:** To take advantage of the improved technology, you must upgrade any custom language models that are based on the new models. To upgrade to the new version of one of these base models, do the following:
     1.  Change your custom model by adding or modifying a custom word, corpus, or grammar that the model contains. Any change that you make moves the model to the `ready` state.
@@ -265,7 +284,9 @@ Defect fix: Update some next-generation models to improve low-latency response t
 {: release-note}
 
 Important: Deprecation date for most previous-generation models is now 3 March 2023
-:   **Important:** On 15 March 2022, the previous-generation models for all languages other than Arabic and Japanese were deprecated. At that time, the deprecated models were to remain available until 15 September 2022. To allow users more time to migrate to the appropriate next-generation models, the deprecated models will now remain available until **3 March 2023**. As with the initial deprecation notice, the Arabic and Japanese previous-generation models are *not* deprecated. For a complete list of all deprecated models, see the [15 March 2022 service update](#speech-to-text-15march2022).
+:   **Superseded:** This deprecation notice is superseded by the [15 February 2023 service update](#speech-to-text-15february2023). The end of service date for *all* previous-generation models is now **31 July 2023**.
+
+    On 15 March 2022, the previous-generation models for all languages other than Arabic and Japanese were deprecated. At that time, the deprecated models were to remain available until 15 September 2022. To allow users more time to migrate to the appropriate next-generation models, the deprecated models will now remain available until 3 March 2023. As with the initial deprecation notice, the Arabic and Japanese previous-generation models are *not* deprecated. For a complete list of all deprecated models, see the [15 March 2022 service update](#speech-to-text-15march2022).
 
     On 3 March 2023, the deprecated models will be removed from the service and the documentation. If you use any of the deprecated models, you must migrate to the equivalent next-generation model by the 3 March 2023.
     -   For more information about the next-generation models to which you can migrate from each of the deprecated models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models)
@@ -412,7 +433,9 @@ Beta next-generation `en-WW_Medical_Telephony` model now supports low latency
 {: release-note}
 
 Important: Deprecation of most previous-generation models
-:   **Important:** Effective **15 March 2022**, previous-generation models for all languages other than Arabic and Japanese are deprecated. The deprecated models remain available until **15 September 2022**, when they will be removed from the service and the documentation. The Arabic and Japanese previous-generation models are *not* deprecated.
+:   **Superseded:** This deprecation notice is superseded by the [15 February 2023 service update](#speech-to-text-15february2023). The end of service date for *all* previous-generation models is now **31 July 2023**.
+
+    Effective 15 March 2022, previous-generation models for all languages other than Arabic and Japanese are deprecated. The deprecated models remain available until 15 September 2022, when they will be removed from the service and the documentation. The Arabic and Japanese previous-generation models are *not* deprecated.
 
     The following previous-generation models are now deprecated:
     -   Chinese (Mandarin): `zh-CN_NarrowbandModel` and `zh-CN_BroadbandModel`

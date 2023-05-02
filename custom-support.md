@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-03-08"
+lastupdated: "2023-04-27"
 
 subcollection: speech-to-text
 
@@ -88,13 +88,13 @@ In the *Language model customization* column, an *(improved)* date indicates whe
 | Dutch  \n (Belgian) | `nl-BE_Telephony` | GA | GA |
 | Dutch  \n (Netherlands) | `nl-NL_Telephony` | GA | GA |
 | | `nl-NL_Multimedia` | GA | GA |
-| English  \n (Australian) | `en-AU_Telephony` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023 | GA |
-| | `en-AU_Multimedia` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023 | GA |
-| English  \n (Indian) | `en-IN_Telephony` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023 | GA |
-| English  \n (United Kingdom) | `en-GB_Telephony` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023 | GA |
-| | `en-GB_Multimedia` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023 | GA |
-| English  \n (United States) | `en-US_Telephony` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023 | GA |
-| | `en-US_Multimedia` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023 | GA |
+| English  \n (Australian) | `en-AU_Telephony` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023  \n  [IBM Cloud Pak for Data]{: tag-cp4d} 1 May 2023 | GA |
+| | `en-AU_Multimedia` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023  \n  [IBM Cloud Pak for Data]{: tag-cp4d} 1 May 2023 | GA | GA |
+| English  \n (Indian) | `en-IN_Telephony` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023  \n  [IBM Cloud Pak for Data]{: tag-cp4d} 1 May 2023 | GA | GA |
+| English  \n (United Kingdom) | `en-GB_Telephony` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023  \n  [IBM Cloud Pak for Data]{: tag-cp4d} 1 May 2023 | GA | GA |
+| | `en-GB_Multimedia` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023  \n  [IBM Cloud Pak for Data]{: tag-cp4d} 1 May 2023 | GA | GA |
+| English  \n (United States) | `en-US_Telephony` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023  \n  [IBM Cloud Pak for Data]{: tag-cp4d} 1 May 2023 | GA | GA |
+| | `en-US_Multimedia` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023  \n  [IBM Cloud Pak for Data]{: tag-cp4d} 1 May 2023 | GA | GA |
 | English  \n (all supported dialects) | `en-WW_Medical_Telephony` | Beta | Beta |
 | French  \n (Canadian) | `fr-CA_Telephony` | GA | GA |
 | | `fr-CA_Multimedia` | GA | GA |
@@ -105,8 +105,8 @@ In the *Language model customization* column, an *(improved)* date indicates whe
 | Hindi | `hi-IN_Telephony` | GA | GA |
 | Italian | `it-IT_Telephony` | GA | GA |
 |  | `it-IT_Multimedia` | GA | GA |
-| Japanese | `ja-JP_Telephony`  \n [IBM Cloud]{: tag-ibm-cloud} | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023 | GA |
-| | `ja-JP_Multimedia` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023 | GA |
+| Japanese | `ja-JP_Telephony` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023  \n  [IBM Cloud Pak for Data]{: tag-cp4d} 1 May 2023 | GA | GA |
+| | `ja-JP_Multimedia` | GA  \n [IBM Cloud]{: tag-ibm-cloud} 27 February 2023  \n  [IBM Cloud Pak for Data]{: tag-cp4d} 1 May 2023 | GA | GA |
 | Korean | `ko-KR_Telephony` | GA | GA |
 | | `ko-KR_Multimedia` | GA | GA |
 | Portuguese  \n (Brazilian) | `pt-BR_Telephony` | GA | GA |

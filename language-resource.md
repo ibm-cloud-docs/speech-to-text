@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2023-04-24"
 
 subcollection: speech-to-text
 
@@ -232,7 +232,7 @@ The following sections provide language-specific guidelines for specifying a sou
 -   Use real or made-up words that are pronounceable in English for words that are difficult to pronounce, for example, `shuchesnie` for the word `Sczcesny`.
 -   Substitute equivalent English letters for non-English letters, for example, `s` for `ç` or `ny` for `ñ`.
 -   Substitute non-accented letters for accented letters, for example, `a` for `à` or `e` for `è`.
--   You can include multiple words that are separated by spaces, but the service enforces a maximum of 40 total characters not including spaces.
+-   You can include multiple words that are separated by spaces. The service enforces a maximum of 40 total characters, not including leading or trailing spaces.
 
 *Guidelines for Australian and United States English only:*
 
@@ -261,7 +261,7 @@ The following sections provide language-specific guidelines for specifying a sou
     -   *Italian:* `settantacinque`
     -   *Portuguese (Brazilian):* `setenta e cinco`
     -   *Spanish:* `setenta y cinco`
--   You can include multiple words that are separated by spaces, but the service enforces a maximum of 40 total characters not including spaces.
+-   You can include multiple words that are separated by spaces. The service enforces a maximum of 40 total characters, not including leading or trailing spaces.
 
 #### Guidelines for Japanese
 {: #wordLanguages-jaJP}

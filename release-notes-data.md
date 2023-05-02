@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2023
-lastupdated: "2023-04-06"
+lastupdated: "2023-05-02"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -25,9 +25,8 @@ For information about known limitations of the service, see [Known limitations](
 For information about releases and updates of the service for {{site.data.keyword.cloud_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes).
 {: note}
 
-<!-- Service-specific fixes deferred to 4.6.5
-## 26 April 2023 (Version 4.6.5)
-{: #speech-to-text-data-26april2023}
+## 2 May 2023 (Version 4.6.5)
+{: #speech-to-text-data-2may2023}
 
 Version 4.6.5 is now available
 :   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.6.5 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.6.x and Red Hat OpenShift versions 4.10 and 4.12. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
@@ -53,7 +52,7 @@ Improved language model customization for next-generation English and Japanese m
 
     **Visible improvements to the models:** The new technology improves the default behavior of the new English and Japanese models. Among other changes, the new technology optimizes the default behavior for the following parameters:
     -   The default `customization_weight` for custom models that are based on the new versions of these models changes from `0.2` to `0.1`.
-    -   The default `character_insertion_bias` for custom models that are based on the new versions of these models remains `0.0`, but the models have changed in a manner that makes use of the parameters for speech recognition less necessary.
+    -   The default `character_insertion_bias` for custom models that are based on the new versions of these models remains `0.0`, but the models have changed in a manner that makes use of the parameter for speech recognition less necessary.
 
     **Upgrading to the new models:** To take advantage of the improved technology, you must upgrade any custom language models that are based on the new models. To upgrade to the new version of one of these base models, do the following:
     1.  Change your custom model by adding or modifying a custom word, corpus, or grammar that the model contains. Any change that you make moves the model to the `ready` state.
@@ -74,9 +73,16 @@ Improved language model customization for next-generation English and Japanese m
     **Note:** At this time, the improvements to language model customization apply only to custom models that are based on the next-generation English or Japanese base language models listed earlier. Over time, the improvements will be made available for other next-generation language models.
 
     **More information:** For more information about upgrading and about speech recognition with these parameters, see
+    -   [Improved language model customization for next-generation models](/docs/speech-to-text?topic=speech-to-text-customization#customLanguage-intro-ng)
     -   [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade)
     -   [Using customization weight](/docs/speech-to-text?topic=speech-to-text-languageUse#weight)
     -   [Character insertion bias](/docs/speech-to-text?topic=speech-to-text-parsing#insertion-bias)
+
+New environment variable for Speech services custom resource
+:   The documentation now includes instructions to create an environment variable named `${CUSTOM_RESOURCE_SPEECH}`. You append the new variable to the `cpd_vars.sh` script, and source the script to use the variable in your environment. For more information, see *Information you need to complete this task* in [Installing Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-installing){: external}, or refer to any of the upgrade topics for the Speech services.
+
+Defect fix: The Swedish telephony and Italian multimedia models are now available
+:   **Defect fix:** The Swedish telephony (`sv-SE_Telephony`) and Italian multimedia (`it-IT_Multimedia`) models are now available for installation. Previously, they were not available.
 
 Defect fix: Improved training time for next-generation custom language models
 :   **Defect fix:** Training time for next-generation custom language models is now significantly improved. Previously, training time took much longer than necessary, as reported for training of Japanese custom language models. The problem was corrected by an internal fix.
@@ -87,6 +93,13 @@ Defect fix: Grammar files now handle strings of digits correctly
 Defect fix: Dynamically generated grammar files now work properly
 :   **Defect fix:** Dynamically generated grammar files now work properly. Previously, dynamic grammar files could cause internal failures, as reported for integration of {{site.data.keyword.speechtotextshort}} with {{site.data.keyword.conversationfull}}. The problem was corrected by an internal fix.
 
+Defect fix: Smart formatting for US English dates is now correct
+:   **Defect fix:** Smart formatting now correctly includes days of the week and dates when both are present in the spoken audio, for example, `Tuesday February 28`. Previously, in some cases the day of the week was omitted and the date was presented incorrectly. Note that smart formatting is beta functionality.
+
+Defect fix: Update documentation for speech hesitation words for next-generation models
+:   **Defect fix:** Documentation for speech hesitation words for next-generation models has been updated. More details are provided about US English and Japanese hesitation words. Next-generation models include the actual hesitation words in transcription results, unlike previous-generation models, which include only hesitation markers. For more information, see [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
+
+<!--
 Security vulnerabilities addressed
 :   The following security vulnerabilities have been fixed:
 -->
@@ -493,7 +506,9 @@ Security vulnerabilities addressed
 {: #speech-to-text-data-19august2022}
 
 Important: Deprecation date for most previous-generation models is now 3 March 2023
-:   **Important:** On 15 March 2022, the previous-generation models for all languages other than Arabic and Japanese were deprecated. At that time, the deprecated models were to remain available until 15 September 2022. To allow users more time to migrate to the appropriate next-generation models, the deprecated models will now remain available until **3 March 2023**. As with the initial deprecation notice, the Arabic and Japanese previous-generation models are *not* deprecated. For complete list of all deprecated models, see the [15 March 2022 (Version 4.0.6) service update](#speech-to-text-data-15march2022).
+:   **Superseded:** This deprecation notice is superseded by the [23 February 2023 service update](#speech-to-text-data-23february2023). The end of service date for *all* previous-generation models is now **31 July 2023**.
+
+    On 15 March 2022, the previous-generation models for all languages other than Arabic and Japanese were deprecated. At that time, the deprecated models were to remain available until 15 September 2022. To allow users more time to migrate to the appropriate next-generation models, the deprecated models will now remain available until 3 March 2023. As with the initial deprecation notice, the Arabic and Japanese previous-generation models are *not* deprecated. For complete list of all deprecated models, see the [15 March 2022 (Version 4.0.6) service update](#speech-to-text-data-15march2022).
 
     On 3 March 2023, the deprecated models will be removed from the service and the documentation. If you use any of the deprecated models, you must migrate to the equivalent next-generation model by the 3 March 2023.
     -   For more information about the next-generation models to which you can migrate from each of the deprecated models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models)
@@ -768,7 +783,9 @@ Grammar support for next-generation models is now generally available
 {: #speech-to-text-data-15march2022}
 
 Important: Deprecation of most previous-generation models
-:   **Important:** Effective **15 March 2022**, previous-generation models for all languages other than Arabic and Japanese are deprecated. The deprecated models remain available until **15 September 2022**, when they will be removed from the service and the documentation. The Arabic and Japanese previous-generation models are *not* deprecated.
+:   **Superseded:** This deprecation notice is superseded by the [23 February 2023 service update](#speech-to-text-data-23february2023). The end of service date for *all* previous-generation models is now **31 July 2023**.
+
+    Effective 15 March 2022, previous-generation models for all languages other than Arabic and Japanese are deprecated. The deprecated models remain available until 15 September 2022, when they will be removed from the service and the documentation. The Arabic and Japanese previous-generation models are *not* deprecated.
 
     The following previous-generation models are now deprecated:
     -   Chinese (Mandarin): `zh-CN_NarrowbandModel` and `zh-CN_BroadbandModel`
