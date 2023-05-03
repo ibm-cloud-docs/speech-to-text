@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2023
-lastupdated: "2023-05-02"
+lastupdated: "2023-05-03"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -99,10 +99,19 @@ Defect fix: Smart formatting for US English dates is now correct
 Defect fix: Update documentation for speech hesitation words for next-generation models
 :   **Defect fix:** Documentation for speech hesitation words for next-generation models has been updated. More details are provided about US English and Japanese hesitation words. Next-generation models include the actual hesitation words in transcription results, unlike previous-generation models, which include only hesitation markers. For more information, see [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 
-<!--
 Security vulnerabilities addressed
 :   The following security vulnerabilities have been fixed:
--->
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in Python (CVE-2020-10735)](https://www.ibm.com/support/pages/node/6988073){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to phishing attacks in Python (CVE-2021-28861)](https://www.ibm.com/support/pages/node/6988075){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in Pypa Setuptools (CVE-2022-40897)](https://www.ibm.com/support/pages/node/6988077){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a sensitive information exposure in systemd (CVE-2022-4415)](https://www.ibm.com/support/pages/node/6988079){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in Python (CVE-2022-45061)](https://www.ibm.com/support/pages/node/6988081){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to arbitrary code execution in Libksba (CVE-2022-47629)](https://www.ibm.com/support/pages/node/6988083){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a heap-based buffer overflow in GNU Tar (CVE-2022-48303)](https://www.ibm.com/support/pages/node/6988085){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in FasterXML jackson-databind (CVE-2022-42003)](https://www.ibm.com/support/pages/node/6988087){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to arbitrary code execution in Perl (CVE-2020-10878)](https://www.ibm.com/support/pages/node/6988089){: external}
+    -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a security restrictions bypass in Apache Tomcat (CVE-2022-45143)](https://www.ibm.com/support/pages/node/6988091){: external}
+    -   CVE-2020-10543: Publication of the security bulletin is pending.
 
 ## 29 March 2023 (Version 4.6.4)
 {: #speech-to-text-data-29march2023}
