@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-05-02"
+lastupdated: "2023-05-19"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -26,6 +26,29 @@ For information about known limitations of the service, see [Known limitations](
 
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
+
+## 19 May 2023
+{: #speech-to-text-19may2023}
+{: release-note}
+
+Updates to English next-generation Medical telephony model
+:   The English next-generation Medical telephony model has been updated for improved speech recognition:
+
+    -   `en-WW_Medical_Telephony`
+
+Added support for French and German on new improved next-generation language model customization
+:   Language model customization for French and German next-generation models was recently added. This service update includes further internal improvements.
+
+    For more information about improved next-generation customization, see
+
+    -   [February 27, 2023 service update](/docs/speech-to-text?topic=speech-to-text-release-notes#speech-to-text-27february2023)
+    -   [Improved language model customization for next-generation models](/docs/speech-to-text?topic=speech-to-text-customization#customLanguage-intro-ng)
+
+Defect fix: Custom words containing half-width Katakana characters now return a clear error message with Japanese Telephony model
+:   **Defect fix:** Per the [documentation](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordLanguages-jaJP-ng), only full-width Katakana characters are accepted in custom words and the next generation models now show an error message to explain that it's not supported. Previously, when creating custom words containing half-width Katakana characters, no error message was provided.
+
+Defect fix: Japanese Telephony language model no longer fails due to long training time
+:   **Defect fix:** When training a custom language model with Japanese Telephony, the service now effectively handles large numbers of custom words without failing.
 
 ## 2 May 2023
 {: #speech-to-text-2may2023}
