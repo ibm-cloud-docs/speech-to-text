@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-05-19"
+lastupdated: "2023-06-09"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -26,6 +26,16 @@ For information about known limitations of the service, see [Known limitations](
 
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
+
+## 9 June 2023
+{: #speech-to-text-09june2023}
+{: release-note}
+
+Defect fix: Creating and training a custom Language Model is now optimal for both standard and low-latency Next-Generation models
+:   **Defect fix:** When creating and training a custom Language Model with corpora text files and / or custom words using a Next-generation low-latency model, it is now performing the 	same way as with a standard model. Previously, it was not optimal only when using a Next-Generation low-latency model.
+
+Defect fix: STT Websockets sessions no longer fail due to tensor error message
+:   **Defect fix:** When using STT websockets, sessions no longer fail due to an error message “STT returns the error: Sizes of tensors must match except in dimension 0”. 
 
 ## 19 May 2023
 {: #speech-to-text-19may2023}
