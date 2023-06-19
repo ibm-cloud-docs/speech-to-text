@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-04-26"
+lastupdated: "2023-06-19"
 
 subcollection: speech-to-text
 
@@ -38,6 +38,10 @@ The following topics describe the rules for providing corpora and custom words f
 The *words resource* includes custom words that you add directly to the custom model. The words resource contains the following information about each custom word:
 
 -   `word` - The spelling of the word as added by you.
+
+    Do not use characters that need to be URL-encoded. For example, do not use spaces, slashes, backslashes, colons, ampersands, double quotes, plus signs, equals signs, question marks, etc. in the name. The service does not prevent the use of these characters, but because they must be URL-encoded wherever they are used, it is strongly discouraged.
+    {: important}
+
 -   `sounds_like` - The pronunciation of the word. You can use the `sounds_like` field to add one or more pronunciations for the word. For more information, see [Using the sounds_like field](#sounds-like-ng).
 -   `display_as` - The spelling of the word that the service uses in transcripts. Unless you specify an alternative representation, the spelling matches the value of the `word` field. For more information, see [Using the display_as field](#display-as-ng).
 -   `source` - How the word was added to the words resource. The field always contains the string `user` to indicate that it was added directly as a custom word.
