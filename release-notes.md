@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-06-09"
+lastupdated: "2023-07-27"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -26,6 +26,13 @@ For information about known limitations of the service, see [Known limitations](
 
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
+
+## 27 July 2023
+{: #speech-to-text-27july2023}
+{: release-note}
+
+Important: All previous-generation models are discontinued starting August 1, 2023
+:   **Important:** All previous-generation models are now discontinued from the service. New clients must now only use the next-generation models. All existing clients must now migrate to the equivalent next-generation model. For more information about all next-generation models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng). For more information on how to migrate to the next-generation models, see [Migrating to next-generation models](/docs/speech-to-text?topic=speech-to-text-models-migrate).
 
 ## 9 June 2023
 {: #speech-to-text-09june2023}
