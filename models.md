@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-02-22"
+lastupdated: "2023-07-27"
 
 subcollection: speech-to-text
 
@@ -13,8 +13,8 @@ subcollection: speech-to-text
 # Previous-generation languages and models
 {: #models}
 
-Effective **31 July 2023**, all previous-generation models will be removed from the service and the documentation. Most previous-generation models were deprecated on 15 March 2022. You must migrate to the equivalent next-generation model by 31 July 2023. For more information, see [Migrating to next-generation models](/docs/speech-to-text?topic=speech-to-text-models-migrate).
-{: deprecated}
+Starting **August 1, 2023**, all previous-generation models are now **discontinued** from the service. New clients must now only use the next-generation models. All existing clients must now migrate to the equivalent next-generation model. For more information, see [Migrating to next-generation models](/docs/speech-to-text?topic=speech-to-text-models-migrate).
+{: attention}
 
 The {{site.data.keyword.speechtotextfull}} service supports speech recognition with previous-generation models in many languages. The model indicates the language in which the audio is spoken and the rate at which it is sampled.
 {: shortdesc}
@@ -52,25 +52,25 @@ Table 1 lists the previous-generation narrowband models that are available.
 
 | Language | Model name       | Status | Recommended next-generation model |
 |----------|:----------------:|:------:|:---------------------------------:|
-| Chinese (Mandarin) | `zh-CN_NarrowbandModel` | GA  \n Deprecated | `zh-CN_Telephony` |
-| Dutch (Netherlands) | `nl-NL_NarrowbandModel` | GA  \n Deprecated | `nl-NL_Telephony` |
-| English (Australian) | `en-AU_NarrowbandModel` | GA  \n Deprecated | `en-AU_Telephony` |
-| English (United Kingdom) | `en-GB_NarrowbandModel` | GA  \n Deprecated | `en-GB_Telephony` |
-| English (United States) | `en-US_NarrowbandModel` | GA  \n Deprecated | `en-US_Telephony` |
-| | `en-US_ShortForm_NarrowbandModel` | GA  \n Deprecated | `en-US_Telephony` |
-| French (Canadian) | `fr-CA_NarrowbandModel` | GA  \n Deprecated | `fr-CA_Telephony` |
-| French (France) | `fr-FR_NarrowbandModel` | GA  \n Deprecated | `fr-FR_Telephony` |
-| German | `de-DE_NarrowbandModel` | GA  \n Deprecated | `de-DE_Telephony` |
-| Italian | `it-IT_NarrowbandModel` | GA  \n Deprecated | `it-IT_Telephony` |
-| Japanese | `ja-JP_NarrowbandModel` | GA  \n Deprecated | `ja-JP_Telephony`  \n [IBM Cloud]{: tag-ibm-cloud} |
-| Korean | `ko-KR_NarrowbandModel` | GA  \n Deprecated | `ko-KR_Telephony` |
-| Portuguese (Brazilian) | `pt-BR_NarrowbandModel` | GA  \n Deprecated | `pt-BR_Telephony` |
-| Spanish (Argentinian, Beta) | `es-AR_NarrowbandModel` | Beta  \n Deprecated | `es-LA_Telephony` |
-| Spanish (Castilian) | `es-ES_NarrowbandModel` | GA  \n Deprecated | `es-ES_Telephony` |
-| Spanish (Chilean, Beta) | `es-CL_NarrowbandModel` | Beta  \n Deprecated | `es-LA_Telephony` |
-| Spanish (Colombian, Beta) | `es-CO_NarrowbandModel` | Beta  \n Deprecated | `es-LA_Telephony` |
-| Spanish (Mexican, Beta) | `es-MX_NarrowbandModel` | Beta  \n Deprecated | `es-LA_Telephony` |
-| Spanish (Peruvian, Beta) | `es-PE_NarrowbandModel` | Beta  \n Deprecated | `es-LA_Telephony` |
+| Chinese (Mandarin) | `zh-CN_NarrowbandModel` | GA  \n Discontinued | `zh-CN_Telephony` |
+| Dutch (Netherlands) | `nl-NL_NarrowbandModel` | GA  \n Discontinued | `nl-NL_Telephony` |
+| English (Australian) | `en-AU_NarrowbandModel` | GA  \n Discontinued | `en-AU_Telephony` |
+| English (United Kingdom) | `en-GB_NarrowbandModel` | GA  \n Discontinued | `en-GB_Telephony` |
+| English (United States) | `en-US_NarrowbandModel` | GA  \n Discontinued | `en-US_Telephony` |
+| | `en-US_ShortForm_NarrowbandModel` | GA  \n Discontinued | `en-US_Telephony` |
+| French (Canadian) | `fr-CA_NarrowbandModel` | GA  \n Discontinued | `fr-CA_Telephony` |
+| French (France) | `fr-FR_NarrowbandModel` | GA  \n Discontinued | `fr-FR_Telephony` |
+| German | `de-DE_NarrowbandModel` | GA  \n Discontinued | `de-DE_Telephony` |
+| Italian | `it-IT_NarrowbandModel` | GA  \n Discontinued | `it-IT_Telephony` |
+| Japanese | `ja-JP_NarrowbandModel` | GA  \n Discontinued | `ja-JP_Telephony`  \n [IBM Cloud]{: tag-ibm-cloud} |
+| Korean | `ko-KR_NarrowbandModel` | GA  \n Discontinued | `ko-KR_Telephony` |
+| Portuguese (Brazilian) | `pt-BR_NarrowbandModel` | GA  \n Discontinued | `pt-BR_Telephony` |
+| Spanish (Argentinian, Beta) | `es-AR_NarrowbandModel` | Beta  \n Discontinued | `es-LA_Telephony` |
+| Spanish (Castilian) | `es-ES_NarrowbandModel` | GA  \n Discontinued | `es-ES_Telephony` |
+| Spanish (Chilean, Beta) | `es-CL_NarrowbandModel` | Beta  \n Discontinued | `es-LA_Telephony` |
+| Spanish (Colombian, Beta) | `es-CO_NarrowbandModel` | Beta  \n Discontinued | `es-LA_Telephony` |
+| Spanish (Mexican, Beta) | `es-MX_NarrowbandModel` | Beta  \n Discontinued | `es-LA_Telephony` |
+| Spanish (Peruvian, Beta) | `es-PE_NarrowbandModel` | Beta  \n Discontinued | `es-LA_Telephony` |
 {: caption="Table 1. Supported previous-generation narrowband models"}
 
 ### Broadband models
@@ -80,25 +80,25 @@ Table 2 lists the previous-generation broadband models that are available.
 
 | Language | Model name       | Status | Recommended next-generation model |
 |----------|:----------------:|:------:|:---------------------------------:|
-| Arabic (Modern Standard) | `ar-MS_BroadbandModel` | GA  \n Deprecated | `ar-MS_Telephony` |
-| Chinese (Mandarin) | `zh-CN_BroadbandModel` | GA  \n Deprecated | `zh-CN_Telephony` |
-| Dutch (Netherlands) | `nl-NL_BroadbandModel` | GA  \n Deprecated | `nl-NL_Multimedia` |
-| English (Australian) | `en-AU_BroadbandModel` | GA  \n Deprecated | `en-AU_Multimedia` |
-| English (United Kingdom) | `en-GB_BroadbandModel` | GA  \n Deprecated | `en-GB_Multimedia` |
-| English (United States) | `en-US_BroadbandModel` | GA  \n Deprecated | `en-US_Multimedia` |
-| French (Canadian) | `fr-CA_BroadbandModel` | GA  \n Deprecated | `fr-CA_Multimedia` |
-| French (France) | `fr-FR_BroadbandModel` | GA  \n Deprecated | `fr-FR_Multimedia` |
-| German | `de-DE_BroadbandModel` | GA  \n Deprecated | `de-DE_Multimedia` |
-| Italian | `it-IT_BroadbandModel` | GA  \n Deprecated | `it-IT_Multimedia` |
-| Japanese | `ja-JP_BroadbandModel` | GA  \n Deprecated | `ja-JP_Multimedia` |
-| Korean | `ko-KR_BroadbandModel` | GA  \n Deprecated | `ko-KR_Multimedia`|
-| Portuguese (Brazilian) | `pt-BR_BroadbandModel` | GA  \n Deprecated | `pt-BR_Multimedia` |
-| Spanish (Argentinian, Beta) | `es-AR_BroadbandModel` | Beta  \n Deprecated | `es-LA_Telephony` |
-| Spanish (Castilian) | `es-ES_BroadbandModel` | GA  \n Deprecated | `es-ES_Multimedia` |
-| Spanish (Chilean, Beta) | `es-CL_BroadbandModel` | Beta  \n Deprecated | `es-LA_Telephony` |
-| Spanish (Colombian, Beta) | `es-CO_BroadbandModel` | Beta  \n Deprecated | `es-LA_Telephony` |
-| Spanish (Mexican, Beta) | `es-MX_BroadbandModel` | Beta  \n Deprecated | `es-LA_Telephony` |
-| Spanish (Peruvian, Beta) | `es-PE_BroadbandModel` | Beta  \n Deprecated | `es-LA_Telephony` |
+| Arabic (Modern Standard) | `ar-MS_BroadbandModel` | GA  \n Discontinued | `ar-MS_Telephony` |
+| Chinese (Mandarin) | `zh-CN_BroadbandModel` | GA  \n Discontinued | `zh-CN_Telephony` |
+| Dutch (Netherlands) | `nl-NL_BroadbandModel` | GA  \n Discontinued | `nl-NL_Multimedia` |
+| English (Australian) | `en-AU_BroadbandModel` | GA  \n Discontinued | `en-AU_Multimedia` |
+| English (United Kingdom) | `en-GB_BroadbandModel` | GA  \n Discontinued | `en-GB_Multimedia` |
+| English (United States) | `en-US_BroadbandModel` | GA  \n Discontinued | `en-US_Multimedia` |
+| French (Canadian) | `fr-CA_BroadbandModel` | GA  \n Discontinued | `fr-CA_Multimedia` |
+| French (France) | `fr-FR_BroadbandModel` | GA  \n Discontinued | `fr-FR_Multimedia` |
+| German | `de-DE_BroadbandModel` | GA  \n Discontinued | `de-DE_Multimedia` |
+| Italian | `it-IT_BroadbandModel` | GA  \n Discontinued | `it-IT_Multimedia` |
+| Japanese | `ja-JP_BroadbandModel` | GA  \n Discontinued | `ja-JP_Multimedia` |
+| Korean | `ko-KR_BroadbandModel` | GA  \n Discontinued | `ko-KR_Multimedia`|
+| Portuguese (Brazilian) | `pt-BR_BroadbandModel` | GA  \n Discontinued | `pt-BR_Multimedia` |
+| Spanish (Argentinian, Beta) | `es-AR_BroadbandModel` | Beta  \n Discontinued | `es-LA_Telephony` |
+| Spanish (Castilian) | `es-ES_BroadbandModel` | GA  \n Discontinued | `es-ES_Multimedia` |
+| Spanish (Chilean, Beta) | `es-CL_BroadbandModel` | Beta  \n Discontinued | `es-LA_Telephony` |
+| Spanish (Colombian, Beta) | `es-CO_BroadbandModel` | Beta  \n Discontinued | `es-LA_Telephony` |
+| Spanish (Mexican, Beta) | `es-MX_BroadbandModel` | Beta  \n Discontinued | `es-LA_Telephony` |
+| Spanish (Peruvian, Beta) | `es-PE_BroadbandModel` | Beta  \n Discontinued | `es-LA_Telephony` |
 {: caption="Table 2. Supported previous-generation broadband models"}
 
 ## The US English short-form model (Deprecated)
