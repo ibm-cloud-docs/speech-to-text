@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-04-27"
+lastupdated: "2023-07-27"
 
 subcollection: speech-to-text
 
@@ -25,51 +25,51 @@ Where applicable, customization features are also identified as specific to {{si
 ## Customization support for previous-generation models
 {: #custom-language-support-pg}
 
-Effective **31 July 2023**, all previous-generation models will be removed from the service and the documentation. Most previous-generation models were deprecated on 15 March 2022. You must migrate to the equivalent next-generation model by 31 July 2023. For more information, see [Migrating to next-generation models](/docs/speech-to-text?topic=speech-to-text-models-migrate).
-{: deprecated}
+Starting **August 1, 2023**, all previous-generation models are now **discontinued** from the service. New clients must now only use the next-generation models. All existing clients must now migrate to the equivalent next-generation model. For more information, see [Migrating to next-generation models](/docs/speech-to-text?topic=speech-to-text-models-migrate).
+{: attention}
 
 Table 1 lists the previous-generation models that are supported for language model customization, grammars, and acoustic model customization. To learn which models are supported for speech recognition for {{site.data.keyword.cloud}}, {{site.data.keyword.icp4dfull}}, or both, see [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported).
 
 | Language (dialect) | Models | Language model customization | Grammars | Acoustic model customization |
 |------------------------|:-----------:|:----------------------------------------:|:----------------------------------------:|:----------------------------------------:|
-| Arabic  \n (Modern Standard) | `ar-MS_BroadbandModel`  \n Deprecated | Not supported | Not supported | GA |
-| Chinese  \n (Mandarin) | `zh-CN_NarrowbandModel`  \n Deprecated | Not supported | Not supported | GA |
-|  | `zh-CN_BroadbandModel`  \n Deprecated | Not supported | Not supported | GA |
-| Dutch  \n (Netherlands) | `nl-NL_NarrowbandModel`  \n Deprecated | GA | GA | GA |
-|  | `nl-NL_BroadbandModel`  \n Deprecated | GA | GA | GA |
-| English  \n (Australian) | `en-AU_NarrowbandModel`  \n Deprecated | GA | GA | GA |
-|  | `en-AU_BroadbandModel`  \n Deprecated | GA | GA | GA |
-| English  \n (United Kingdom) | `en-GB_NarrowbandModel`  \n Deprecated | GA | GA | GA |
-|  | `en-GB_BroadbandModel`  \n Deprecated | GA | GA | GA |
-| English  \n (United States) | `en-US_NarrowbandModel`  \n Deprecated | GA | GA | GA |
-| | `en-US_BroadbandModel`  \n Deprecated | GA | GA | GA |
-| | `en-US_ShortForm_NarrowbandModel`  \n Deprecated | GA | GA | GA |
-| French  \n (Canadian) | `fr-CA_NarrowbandModel`  \n Deprecated | GA | GA | GA |
-| | `fr-CA_BroadbandModel`  \n Deprecated | GA | GA | GA |
-| French  \n (France) | `fr-FR_NarrowbandModel`  \n Deprecated | GA | GA | GA |
-| | `fr-FR_BroadbandModel`  \n Deprecated | GA | GA | GA |
-| German | `de-DE_NarrowbandModel`  \n Deprecated | GA | GA | GA |
-| | `de-DE_BroadbandModel`  \n Deprecated | GA | GA | GA |
-| Italian | `it-IT_NarrowbandModel`  \n Deprecated | GA | GA | GA |
-| | `it-IT_BroadbandModel`  \n Deprecated | GA | GA | GA |
-| Japanese | `ja-JP_NarrowbandModel`  \n Deprecated | GA | GA | GA |
-| | `ja-JP_BroadbandModel`  \n Deprecated | GA | GA | GA |
-| Korean | `ko-KR_NarrowbandModel`  \n Deprecated | GA | GA | GA |
-| | `ko-KR_BroadbandModel`  \n Deprecated | GA | GA | GA |
-| Portuguese  \n (Brazilian) | `pt-BR_NarrowbandModel`  \n Deprecated | GA | GA | GA |
-| | `pt-BR_BroadbandModel`  \n Deprecated | GA | GA | GA |
-| Spanish  \n (Argentinian) | `es-AR_NarrowbandModel`  \n Deprecated | Beta | Beta | Beta |
-| | `es-AR_BroadbandModel`  \n Deprecated | Beta | Beta | Beta |
-| Spanish  \n (Castilian) | `es-ES_NarrowbandModel`  \n Deprecated | GA | GA | GA |
-| | `es-ES_BroadbandModel`  \n Deprecated | GA | GA | GA |
-| Spanish  \n (Chilean) | `es-CL_NarrowbandModel`  \n Deprecated | Beta | Beta | Beta |
-| | `es-CL_BroadbandModel`  \n Deprecated | Beta | Beta | Beta |
-| Spanish  \n (Colombian) | `es-CO_NarrowbandModel`  \n Deprecated | Beta | Beta | Beta |
-| | `es-CO_BroadbandModel`  \n Deprecated | Beta | Beta | Beta |
-| Spanish  \n (Mexican) | `es-MX_NarrowbandModel`  \n Deprecated | Beta | Beta | Beta |
-| | `es-MX_BroadbandModel`  \n Deprecated | Beta | Beta | Beta |
-| Spanish  \n (Peruvian) | `es-PE_NarrowbandModel`  \n Deprecated | Beta | Beta | Beta |
-| | `es-PE_BroadbandModel`  \n Deprecated | Beta | Beta | Beta |
+| Arabic  \n (Modern Standard) | `ar-MS_BroadbandModel`  \n Discontinued | Not supported | Not supported | GA |
+| Chinese  \n (Mandarin) | `zh-CN_NarrowbandModel`  \n Discontinued | Not supported | Not supported | GA |
+|  | `zh-CN_BroadbandModel`  \n Discontinued | Not supported | Not supported | GA |
+| Dutch  \n (Netherlands) | `nl-NL_NarrowbandModel`  \n Discontinued | GA | GA | GA |
+|  | `nl-NL_BroadbandModel`  \n Discontinued | GA | GA | GA |
+| English  \n (Australian) | `en-AU_NarrowbandModel`  \n Discontinued | GA | GA | GA |
+|  | `en-AU_BroadbandModel`  \n Discontinued | GA | GA | GA |
+| English  \n (United Kingdom) | `en-GB_NarrowbandModel`  \n Discontinued | GA | GA | GA |
+|  | `en-GB_BroadbandModel`  \n Discontinued | GA | GA | GA |
+| English  \n (United States) | `en-US_NarrowbandModel`  \n Discontinued | GA | GA | GA |
+| | `en-US_BroadbandModel`  \n Discontinued | GA | GA | GA |
+| | `en-US_ShortForm_NarrowbandModel`  \n Discontinued | GA | GA | GA |
+| French  \n (Canadian) | `fr-CA_NarrowbandModel`  \n Discontinued | GA | GA | GA |
+| | `fr-CA_BroadbandModel`  \n Discontinued | GA | GA | GA |
+| French  \n (France) | `fr-FR_NarrowbandModel`  \n Discontinued | GA | GA | GA |
+| | `fr-FR_BroadbandModel`  \n Discontinued | GA | GA | GA |
+| German | `de-DE_NarrowbandModel`  \n Discontinued | GA | GA | GA |
+| | `de-DE_BroadbandModel`  \n Discontinued | GA | GA | GA |
+| Italian | `it-IT_NarrowbandModel`  \n Discontinued | GA | GA | GA |
+| | `it-IT_BroadbandModel`  \n Discontinued | GA | GA | GA |
+| Japanese | `ja-JP_NarrowbandModel`  \n Discontinued | GA | GA | GA |
+| | `ja-JP_BroadbandModel`  \n Discontinued | GA | GA | GA |
+| Korean | `ko-KR_NarrowbandModel`  \n Discontinued | GA | GA | GA |
+| | `ko-KR_BroadbandModel`  \n Discontinued | GA | GA | GA |
+| Portuguese  \n (Brazilian) | `pt-BR_NarrowbandModel`  \n Discontinued | GA | GA | GA |
+| | `pt-BR_BroadbandModel`  \n Discontinued | GA | GA | GA |
+| Spanish  \n (Argentinian) | `es-AR_NarrowbandModel`  \n Discontinued | Beta | Beta | Beta |
+| | `es-AR_BroadbandModel`  \n Discontinued | Beta | Beta | Beta |
+| Spanish  \n (Castilian) | `es-ES_NarrowbandModel`  \n Discontinued | GA | GA | GA |
+| | `es-ES_BroadbandModel`  \n Discontinued | GA | GA | GA |
+| Spanish  \n (Chilean) | `es-CL_NarrowbandModel`  \n Discontinued | Beta | Beta | Beta |
+| | `es-CL_BroadbandModel`  \n Discontinued | Beta | Beta | Beta |
+| Spanish  \n (Colombian) | `es-CO_NarrowbandModel`  \n Discontinued | Beta | Beta | Beta |
+| | `es-CO_BroadbandModel`  \n Discontinued | Beta | Beta | Beta |
+| Spanish  \n (Mexican) | `es-MX_NarrowbandModel`  \n Discontinued | Beta | Beta | Beta |
+| | `es-MX_BroadbandModel`  \n Discontinued | Beta | Beta | Beta |
+| Spanish  \n (Peruvian) | `es-PE_NarrowbandModel`  \n Discontinued | Beta | Beta | Beta |
+| | `es-PE_BroadbandModel`  \n Discontinued | Beta | Beta | Beta |
 {: caption="Table 1. Previous-generation language support for customization"}
 
 ## Customization support for next-generation models
