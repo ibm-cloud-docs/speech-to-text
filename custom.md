@@ -58,6 +58,27 @@ Use the following guidelines when working with these parameters:
 -   If you specify non-default values for these parameters, experiment with the default values. Your custom model might work well for speech recognition with the default values.
 -   If you feel that using different values for these parameters might improve speech recognition with your custom model, experiment with incremental changes to determine whether the parameters are needed to improve speech recognition.
 
+Supported next-generation language models:
+
+- RNNT_CUSTOMIZATION_SUPPORTED_LANGS = 
+    -  en-US_Multimedia
+    -  en-GB_Multimedia 
+    -  en-AU_Multimedia 
+    -  en-IN_Multimedia 
+    -  en-US_Telephony
+    -  en-GB_Telephony
+    -  en-AU_Telephony
+    -  en-IN_Telephony 
+    -  ja-JP_Multimedia
+    -  ja-JP_Telephony
+    -  fr-FR_Multimedia 
+    -  fr-FR_Telephony
+    -  de-DE_Multimedia
+    -  de-DE_Telephony
+    -  fr-CA_Multimedia 
+    -  pt-BR_Multimedia
+    -  pt-BR_Telephony
+
 ## Acoustic model customization
 {: #customAcoustic-intro}
 
