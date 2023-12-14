@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-07-27"
+lastupdated: "2023-12-14"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -26,6 +26,29 @@ For information about known limitations of the service, see [Known limitations](
 
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
+
+## 30 Nov 2023
+{: #speech-to-text-30nov2023}
+{: release-note}
+
+Parameter 'mapping_only' for custom words 
+:   By using the 'mapping_only' paremeter, you can use custom words directly to map 'sounds_like' (or word) to 'display_as' value as post-processing instead of training. For more information, see [The words resource](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordsResource-ng). 
+
+:   See the guidlines for [Non-Japanese](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordsResourceAmount-words-ng) and [Japanese](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordsResourceAmount-japanese-ng). 
+
+Support for Brazilian-Portuguese and French-Canadian on new improved next-generation language model customization 
+:   Language model customization for Brazilian-Portuguese and French-Canadian next-generation models is recently added. This service update includes further internal improvements. 
+
+New Smart Formatting Feature
+:   A new smart formatting feature for next-generation models is supported in US English, Brazilian Portuguese, French and German languages. See [Smart formatting Version](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-version) for details.
+
+Support for Castilian Spanish and LATAM Spanish on new improved next-generation language model customization 
+:   The language model customization for Castilian Spanish and LATAM Spanish next-generation models are added. This service update includes further internal improvements.
+
+Large Speech Models for English, Japanese and French - for early access 
+:   For early access feature, Large Speech Models are available for English, Japanese and French languages for you in IBM Watson Speech-to-Text and IBM watsonx Assistant. The feature set for these Large Speech Models is limited, but more accurate than Next-Generation models and are faster and cheaper to run due to smaller size and better streaming mode capability.
+
+If you are interested in testing these base models, and sharing results and feedback, contact our Product Management team by filling out this [form](https://form.asana.com/?k=ElxhxG66qgc1CJDsehfKYQ&d=8612789739828).
 
 ## 27 July 2023
 {: #speech-to-text-27july2023}
