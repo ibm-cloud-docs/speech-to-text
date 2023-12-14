@@ -341,6 +341,18 @@ An optional boolean that indicates whether the service converts dates, times, nu
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
 {: caption="Table 23. The smart_formatting parameter"}
 
+## smart_formatting_version
+{: #summary-smart-formatting_version}
+
+An optional boolean that indicates whether the service converts dates, times, numbers, currency, and similar values into more conventional representations in the final transcript. For more information, see [Smart formatting version](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-version).
+
+| Availability and usage | Description |
+|------------------------|-------------|
+| Previous-generation models | Not supported.|
+| Next-generation models | Available for US English (including en-WW_Medical_Telephony), Brazilian Portuguese, French and German. |
+| WebSocket              | The service disables interim results. |
+{: caption="Table 23a. The smart_formatting_version parameter"}
+
 ## speaker_labels
 {: #summary-speaker-labels}
 
