@@ -51,6 +51,31 @@ After adding or modifying a custom word, it is important that you verify the cor
 You can add custom words that already exist, for example, to add more sounds-like pronunciations for common words. Otherwise, there is no reason to duplicate common words. Such words remain in the model's words resource, but they are harmless and unnecessary.
 {: note}
 
+-   `mapping_only` - Parameter for custom words. 
+You can use the 'mapping_only' key in custom words as a form of post processing. This key parameter has a boolean value to determine whether 'sounds_like' (for non-Japanese models) or word (for Japanese) is not used for the model fine-tuning, but for the replacement for 'display_as'. This feature helps you when you use custom words exclusively to map 'sounds_like' (or word) to 'display_as' value. When you use custom words solely for post-processing purposes that does not need fine-tuning.
+
+Use case examples,
+
+Before using 'mapping_only':
+Speech to Text machine output is 'hilton honors' as its ASR transcript. However, you want it to be displayed as 'HHonors' as final output. So, you can use the following custom word to map 'hilton honors' to 'HHonors'.
+
+```json
+{"word": "HHonors", "sounds_like": ["hilton honors"], "display_as": "HHonors"}
+```
+{: codeblock}
+
+While this maps any word 'hilton honors' in ASR transcript to 'HHonors', it fine-tunes the model with 'sounds_like' (hilton honors) by default, even if the model has no problem with recognizing the word 'hilton honors'. This is the example of words that do not need to be fine-tuned but need to be mapped to 'display_as'.
+
+After using 'mapping_only':
+Since Speech to Text model is recognizing the word 'hilton honors' very well, it does not have to be fine-tuned on that word. Thus, you can use the following custom words to skip training and mapping the 'sounds_like' to 'display_as'.
+
+```json
+{"word": "HHonors", "sounds_like": ["hilton honors"], "display_as": "HHonors", "mapping_only": true}
+```
+{: codeblock}
+
+This parameter is applicable for the next-generation models that support the enhanced customization (English models, ja-Jp models and so on). See [the list of supported models](/docs/speech-to-text?topic=speech-to-text-customization#customLanguage-intro-ng).
+
 ## How much data do I need?
 {: #wordsResourceAmount-ng}
 
