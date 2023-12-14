@@ -101,6 +101,9 @@ Training a custom model with words added only via corpora with the following met
 
 For more information about improved customization for next-generation models, see [Improved language model customization for next-generation models](/docs/speech-to-text?topic=speech-to-text-customization#customLanguage-intro-ng).
 
+The non-Japanese models use 'sounds_like' for mapping ('sounds_like' -> 'display_as'). 
+{: note}
+
 ### Guidelines for adding words to Japanese models based on improved next-generation models
 {: #wordsResourceAmount-japanese-ng}
 
