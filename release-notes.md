@@ -31,6 +31,9 @@ For information about releases and updates of the service for {{site.data.keywor
 {: #speech-to-text-30nov2023}
 {: release-note}
 
+Speech to Text parameter speech_begin_event
+:   This parameter would enable client application to know that some words or speech is detected and Speech to Text is in the process of decoding. For more details, see [Using speech recognition parameters](/docs/speech-to-text?topic=speech-to-text-service-features#features-parameters). 
+
 Parameter 'mapping_only' for custom words 
 :   By using the 'mapping_only' paremeter, you can use custom words directly to map 'sounds_like' (or word) to 'display_as' value as post-processing instead of training. For more information, see [The words resource](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordsResource-ng). 
 
