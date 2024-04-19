@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2022-10-07"
+lastupdated: "2024-04-19"
 
 keywords: faqs,frequently asked questions,question,Speech to Text
 
@@ -75,7 +75,7 @@ You cannot transcribe speech from a multimedia file that contains both audio and
 
 The {{site.data.keyword.speechtotextshort}} service offers a customization interface that provides many features and options to improve the speech recognition capabilities of the supported base language models:
 
--   If you are transcribing audio for a specific domain, you can create custom language models to expand and tailor a base model's vocabulary to include domain-specific terminology. When you use custom language models, you can also create and incorporate custom grammars to restrict the words that the service can recognize from your model's vocabulary. Language model customization is supported for both previous- and next-generation models. For more information, see [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate) and [Adding a grammar to a custom language model](/docs/speech-to-text?topic=speech-to-text-grammarAdd).
+-   If you are transcribing audio for a specific domain, you can create custom language models to expand and tailor a base model's vocabulary to include domain-specific terminology. When you use custom language models, you can also create and incorporate custom grammars to restrict the words that the service can recognize from your model's vocabulary. Language model customization is supported for large speech models,  previous- and next-generation models. For more information, see [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate) and [Adding a grammar to a custom language model](/docs/speech-to-text?topic=speech-to-text-grammarAdd).
 -   If you are transcribing audio with unique characteristics (such as speaker accents, telephone conversations, or background noise), you can create a custom acoustic model to adapt a base model for your environment and speakers. Acoustic model customization is supported only for previous-generation models. For more information, see [Creating a custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acoustic).
 -   You can also use custom acoustic and custom language models together. If transcriptions or related corpora are available for your audio, you can use that data to create a complementary custom language model to further improve the quality of speech recognition based on your custom acoustic model. Grammars are supported only for previous-generation models. For more information, see [Using custom acoustic and custom language models together](/docs/speech-to-text?topic=speech-to-text-useBoth).
 
