@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-04-28"
+lastupdated: "2024-04-19"
 
 subcollection: speech-to-text
 
@@ -34,7 +34,7 @@ The *language model customization* interface can improve the accuracy of speech 
 
 You create a custom language model and add corpora and words specific to your domain. Once you train the custom language model on your enhanced vocabulary, you can use it for customized speech recognition. The service can typically train any custom model in a matter of minutes. The time and effort that are needed to create a custom model depend on the data that you have available for the model.
 
-Language model customization is available for both previous-generation and next-generation models, but customization works differently for previous- and next-generation models. The documentation describes the differences. For more information about getting started with language model customization, see
+Language model customization is available for large speech models, previous-generation and next-generation models, but customization works differently for large speech models, previous- and next-generation models. The documentation describes the differences. For more information about getting started with language model customization, see
 
 -   [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate)
 -   [Using a custom language model for speech recognition](/docs/speech-to-text?topic=speech-to-text-languageUse)
