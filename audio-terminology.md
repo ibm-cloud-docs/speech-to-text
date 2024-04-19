@@ -46,7 +46,7 @@ The service does not accept audio that is sampled at a rate that is less than th
 {: #audio-terminology-sampling-rate-more}
 
 -   For more information about sampling rates, see [Sampling (signal processing)](https://wikipedia.org/wiki/Sampling_%28signal_processing%29){: external}.
--   For more information about the models that the service offers for each supported language, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models) and [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+-   For more information about the models that the service offers for each supported language, see [Large speech languages and models](docs/speech-to-text?topic=speech-to-text-models-large-speech-languages), [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models) and [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 
 ## Bit rate
 {: #audio-terminology-bit-rate}
