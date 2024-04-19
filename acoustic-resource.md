@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2024-04-19"
 
 subcollection: speech-to-text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 # Working with audio resources
 {: #audioResources}
 
-Acoustic model customization is available only for previous-generation models.  It is not available for next-generation models.
+Acoustic model customization is available only for previous-generation models.  It is not available for next-generation and large speech models.
 {: note}
 
 You can add individual audio files or archive files that contain multiple audio files to a custom acoustic model. The recommended means of adding audio resources is by adding archive files. Creating and adding a single archive file is considerably more efficient than adding multiple audio files individually. You can also submit requests to add multiple different audio resources at the same time.
