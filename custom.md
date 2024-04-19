@@ -82,7 +82,7 @@ Supported next-generation language models:
 ## Acoustic model customization
 {: #customAcoustic-intro}
 
-Acoustic model customization is available only for previous-generation models. It is not available for next-generation models.
+Acoustic model customization is available only for previous-generation models. It is not available for large speech models and next-generation models.
 {: note}
 
 The service was developed with base acoustic models that work well for various audio characteristics. But in cases like the following, adapting a base model to suit your audio can improve speech recognition:
