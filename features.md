@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-07-27"
+lastupdated: "2024-04-22"
 
 subcollection: speech-to-text
 
@@ -76,7 +76,7 @@ The WebSocket interface has a number of advantages over the HTTP interface. The 
 -   Reduces latency. Recognition results arrive faster because the service sends them directly to the client. The HTTP interface requires four distinct requests and connections to achieve the same results.
 -   Reduces network utilization. The WebSocket protocol is lightweight. It requires only a single connection to perform live-speech recognition.
 -   Enables audio to be streamed directly from browsers (HTML5 WebSocket clients) to the service.
--   Returns results as soon as they are available when you use a next-generation model or request interim results.
+-   Returns results as soon as they are available when you use a large speech model, next-generation model or request interim results.
 
 ## Using speech recognition parameters
 {: #features-parameters}
