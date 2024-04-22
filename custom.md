@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2024-04-19"
+lastupdated: "2024-04-22"
 
 subcollection: speech-to-text
 
@@ -109,6 +109,9 @@ For more information about the languages and models that support grammars and th
 Custom language models allow you to expand the service's base vocabulary. *Grammars* enable you to restrict the words that the service can recognize from that vocabulary. When you use a grammar with a custom language model for speech recognition, the service can recognize only words, phrases, and strings that are recognized by the grammar. Because the grammar defines a limited search space for valid matches, the service can deliver results faster and more accurately.
 
 You add a grammar to a custom language model and train the model just as you do for a corpus. Unlike a corpus, however, you must explicitly specify that a grammar is to be used with a custom model during speech recognition.
+
+*Grammars* is available only for previous- and next-generation models. It is not available for large speech models.
+{: note}
 
 For more information about getting started with grammars, see
 
