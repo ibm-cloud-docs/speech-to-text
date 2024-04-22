@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2024-04-19"
+lastupdated: "2024-04-22"
 
 keywords: faqs,frequently asked questions,question,Speech to Text
 
@@ -101,4 +101,6 @@ When a new version of a previous-generation base model is released to improve th
 {: faq}
 {: support}
 
-For US English, Japanese, and Spanish audio, you can use smart formatting to convert certain strings, such as digits and numbers, to more conventional representations. Smart formatting is beta functionality. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting).
+For US English, Brazilian Portuguese, French, German and the US English Medical model, you can use the new version of smart formatting feature available. For more information, see [New Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-version).
+
+For Japanese, and Spanish audio, you can use smart formatting to convert certain strings, such as digits and numbers, to more conventional representations. Smart formatting is beta functionality. For more information, see [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting).
