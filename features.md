@@ -131,6 +131,9 @@ Use the new parameter speech_begin_event to receive a notification event the mom
 -   [Keyword spotting](/docs/speech-to-text?topic=speech-to-text-spotting#keyword-spotting) identifies spoken phrases that match specified keyword strings with a user-defined level of confidence. Keyword spotting is especially useful when individual phrases from the audio are more important than the full transcription. For example, a customer support system might identify keywords to determine how to route user requests.
 -   [Word alternatives](/docs/speech-to-text?topic=speech-to-text-spotting#word-alternatives) request alternative words that are acoustically similar to the words of a transcript. The words that it identifies must meet a minimum confidence threshold that is specified by the user. The service identifies similar-sounding words and provides their start and end times, as well as its confidence in the possible alternatives.
 
+These features are only supported for previous-generation models. They are not supported for large speech models and next-generation models. 
+{: note}
+
 ### Response formatting and filtering
 {: #features-response-formatting}
 
