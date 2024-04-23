@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2022
-lastupdated: "2024-04-22"
+lastupdated: "2024-04-23"
 
 keywords: faqs,frequently asked questions,question,Speech to Text
 
@@ -35,7 +35,8 @@ Once you have your service credentials, see the following topics for information
 {: faq}
 {: support}
 
-The {{site.data.keyword.speechtotextshort}} service supports both previous-generation and next-generation languages and models. Most languages support both broadband/multimedia and narrowband/telephony models, which have minimum sampling rates of 16 kHz and 8 kHz, respectively. For more information about the available models and the features they support for all languages, see the following topics:
+The {{site.data.keyword.speechtotextshort}} service supports large speech models, previous-generation and next-generation languages and models. Most languages support both broadband/multimedia and narrowband/telephony models, which have minimum sampling rates of 16 kHz and 8 kHz, respectively. For more information about the available models and the features they support for all languages, see the following topics:
+-   [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages)
 -   [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models)
 -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
 
