@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2024-04-23"
+lastupdated: "2024-04-24"
 
 subcollection: speech-to-text
 
@@ -137,6 +137,7 @@ These features are only supported for previous-generation models. They are not s
 ### Response formatting and filtering
 {: #features-response-formatting}
 
+-   [Smart formatting version 2](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-version) is the new improved feature that converts dates, times, numbers, alphanumerical sequences, currency values, measures, emails, URLs, IP addresses, credit card numbers and dictated punctuations into more readable, conventional forms in final transcripts. This is only supported for large speech models and next generation models in US English, Brazilian Portuguese, French and German. It is also available for the en-WW_Medical_Telephony model when US English audio is recognized.
 -   [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting) converts dates, times, numbers, currency values, phone numbers, and internet addresses into more readable, conventional forms in final transcripts. For US English, you can also provide keyword phrases to include certain punctuation symbols in final transcripts. Smart formatting is beta functionality.
 -   [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-formatting#numeric-redaction) redacts, or masks, numeric data from a final transcript. Redaction is intended to remove sensitive personal information, such as credit card numbers, from final transcripts. Numeric redaction is beta functionality.
 -   [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-formatting#profanity-filtering) censors profanity from transcripts and metadata.
