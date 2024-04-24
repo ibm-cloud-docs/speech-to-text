@@ -149,6 +149,9 @@ These features are only supported for previous-generation models. They are not s
 -   [Word confidence](/docs/speech-to-text?topic=speech-to-text-metadata#word-confidence) returns confidence levels for each word of a transcript.
 -   [Word timestamps](/docs/speech-to-text?topic=speech-to-text-metadata#word-timestamps) return timestamps for the start and end of each word of a transcript.
 
+These features are only supported for previous- and next-generation models. They are not supported for large speech models. 
+{: note}
+
 ### Processing and audio metrics
 {: #features-metrics}
 
