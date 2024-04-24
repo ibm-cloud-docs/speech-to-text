@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2024-04-24"
 
 subcollection: speech-to-text
 
@@ -122,7 +122,7 @@ The corpus, which is based on a previous-generation model, is fully analyzed and
 
 Use the `DELETE /v1/customizations/{customization_id}/corpora/{corpus_name}` method to remove an existing corpus from a custom language model.
 
--   *If the custom model is based on a next-generation model,* the service deletes the corpus from the model.
+-   *If the custom model is based on a large speech model or next-generation model,* the service deletes the corpus from the model.
 -   *If the custom model is based on a previous-generation model,* the service deletes the corpus from the model *and* removes OOV words that are associated with the corpus from the custom model's words resource. The service removes an OOV word from a custom model unless
     -   The word was also added by another corpus or by a grammar.
     -   The word was modified in some way with the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method.
