@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-05-02"
+lastupdated: "2024-04-24"
 
 subcollection: speech-to-text
 
@@ -69,7 +69,7 @@ The service supports many languages and dialects:
 -   Spanish (Castilian and Latin American)
 -   Swedish
 
-For more information about the supported languages and about using previous- and next-generation models for speech recognition, see [Using languages and models](/docs/speech-to-text?topic=speech-to-text-service-features#features-languages).
+For more information about the supported languages and about using large speech models, previous- and next-generation models for speech recognition, see [Using languages and models](/docs/speech-to-text?topic=speech-to-text-service-features#features-languages).
 
 ## Audio support
 {: #about-formats}
