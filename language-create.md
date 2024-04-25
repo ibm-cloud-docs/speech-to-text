@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2024-04-24"
+lastupdated: "2024-04-25"
 
 subcollection: speech-to-text
 
@@ -408,7 +408,7 @@ The method includes the following optional query parameters:
 
 The service returns a 200 response code if it initiates the training process successfully. The service cannot accept subsequent training requests, or requests to add new corpora, words, or grammars, until the existing request completes.
 
-Adding custom words directly to a custom model that is based on a next-generation model, as described in [Add words to the custom language model](#addWords), causes training of a model to take a few minutes longer than it otherwise would. If you are training a model with custom words that you added by using the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method, allow for some minutes of extra training time for the model.
+Adding custom words directly to a custom model that is based on a large speech model or next-generation model, as described in [Add words to the custom language model](#addWords), causes training of a model to take a few minutes longer than it otherwise would. If you are training a model with custom words that you added by using the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method, allow for some minutes of extra training time for the model.
 {: note}
 
 To determine the status of a training request, use the `GET /v1/customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the model:
