@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2024-04-25"
 
 subcollection: speech-to-text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 # Listing information about models
 {: #models-list}
 
-The {{site.data.keyword.speechtotextfull}} service provides methods for listing information about all of its available models or about a specific previous- or next-generation model.
+The {{site.data.keyword.speechtotextfull}} service provides methods for listing information about all of its available models or about a specific large speech model, previous- or next-generation model.
 {: shortdesc}
 
 ## Model information
