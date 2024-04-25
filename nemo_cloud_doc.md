@@ -3,8 +3,7 @@
 ## Smart formatting Version 2
 {: #smart-formatting}
 
-The new version of smart formatting feature is available for US English, Brazilian Portuguese, French and German. It is also available for the `en-WW_Medical_Telephony` model when US English audio is recognized. Support for other languages would be added soon.
-The new version provides more flexibility in adding new languages and patterns compared to older smart formatting. The newer version uses a more sophisticated machine learning technique (Weighted Finite State Transducers) to identify entities in texts compared to the older version which was rule-based approach. The new approach provides more accurate entity classification and formatting and also adds capability to define hierarchies using weights when same text can be identified as two different entity type.
+The new version of smart formatting feature is available for US English, Brazilian Portuguese, French and German. It is also available for the `en-WW_Medical_Telephony` model when US English audio is recognized. The new version provides more flexibility in adding new languages and patterns compared to older smart formatting. The newer version uses a more sophisticated machine learning technique (Weighted Finite State Transducers) to identify entities in texts compared to the older version which was rule-based approach. The new approach provides more accurate entity classification and formatting and also adds capability to define hierarchies using weights when same text can be identified as two different entity type.
 
 The `smart_formatting` feature directs the service to convert the following strings into more conventional representations:
 
@@ -18,7 +17,7 @@ The `smart_formatting` feature directs the service to convert the following stri
 -   Credit Card Numbers (formatted as groups of 4 digits)
 -   Punctuations (as spoken in dictations)
 
-To use the new smart formatting feature for US English, Brazilian Portuguese, French and German ; set the parameter smart_formatting=true and smart_formatting_version=2.
+To use the new smart formatting feature for US English, Brazilian Portuguese, French and German; set the parameter smart_formatting=true and smart_formatting_version=2.
 
 ### Entity Patterns and Examples
 {: #smart-formatting-differences}
