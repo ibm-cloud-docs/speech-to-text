@@ -70,7 +70,7 @@ Large speech models support slightly fewer features and parameters than previous
 For information about the features that are supported with the different model types, see
 -   [Supported features for previous-generation models](/docs/speech-to-text?topic=speech-to-text-models#models-features)
 -   [Supported features for next-generation models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-features)
--   [Supported features for large speech models](/docs/speech-to-text?topic=speech-to-text-models#models-lsm-supported-features)
+-   [Supported features for large speech models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-lsm-supported-features)
 -   [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary)
 
 The service continues to make new features available with next-generation models. All updates to feature support are documented in the release notes and in the documentation for the model types.
