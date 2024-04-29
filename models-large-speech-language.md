@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-04-25"
+lastupdated: "2024-04-29"
 
 subcollection: speech-to-text
 
@@ -33,7 +33,7 @@ Draft: The following sections list the large speech models that are available fo
 {: caption="Table 1. Large speech models"}
 
 ## Supported features for large speech models
-{: #models-supported-languages}
+{: #models-lsm-supported-features}
 
 The large speech models are supported for use with a large subset of the service's speech recognition features. In cases where a supported feature is restricted to certain languages, the same language restrictions usually apply to large speech models, previous- and next-generation models.
 
