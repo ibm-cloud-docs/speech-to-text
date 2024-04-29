@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2024-04-25"
+lastupdated: "2024-04-29"
 
 subcollection: speech-to-text
 
@@ -193,6 +193,43 @@ The model supports low latency, speakers labels, and language model customizatio
       "speaker_labels": true
    },
    "url": "{url}/v1/models/en-US_Telephony"
+}
+```
+{: codeblock}
+
+### List a specific large speech model example
+{: #models-large-speech-list-specific-example}
+
+The following example shows information about the English large speech model, `en-US`:
+
+[IBM Cloud]{: tag-ibm-cloud}
+```bash
+curl -X GET -u "apikey:{apikey}"
+"{url}/v1/models/en-US"
+```
+{: pre}
+
+[IBM Cloud Pak for Data]{: tag-cp4d}
+```bash
+curl -X GET--header "Authorization: Bearer {token}"
+"{url}/v1/models/en-US"
+```
+{: pre}
+
+The model supports speakers labels, and language model customization. It does not support acoustic model customization and low latency.
+```javascript
+{
+  "name": "en-US",
+  "rate": 8000,
+  "language": "en-US",
+  "description": "Large US English model",
+  "supported_features": {
+    "custom_language_model": true,
+    "custom_acoustic_model": false,
+    "low_latency": false,
+    "speaker_labels": true
+    },
+  "url": "{url}/v1/models/en-US"
 }
 ```
 {: codeblock}
