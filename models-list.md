@@ -204,14 +204,15 @@ The following example shows information about the English large speech model, `e
 
 [IBM Cloud]{: tag-ibm-cloud}
 ```bash
-curl -X GET -u "apikey:{apikey}"
+curl -X GET -u "apikey:{apikey}" \
 "{url}/v1/models/en-US"
 ```
 {: pre}
 
 [IBM Cloud Pak for Data]{: tag-cp4d}
 ```bash
-curl -X GET--header "Authorization: Bearer {token}"
+curl -X GET \
+--header "Authorization: Bearer {token}" \
 "{url}/v1/models/en-US"
 ```
 {: pre}
