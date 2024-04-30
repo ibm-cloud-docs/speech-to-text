@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-02-27"
+lastupdated: "2024-04-30"
 
 subcollection: speech-to-text
 
@@ -18,7 +18,7 @@ The {{site.data.keyword.speechtotextfull}} service provides multiple features th
 
 -   End of phrase silence time specifies the duration of the pause interval at which the service splits a transcript into multiple final results.
 -   Split transcript at phrase end directs the services to split a transcript into multiple final results for semantic features such as sentences.
--   Character insertion bias directs the service to favor character sequences of shorter or greater length as it develops transcription hypotheses with next-generation models.
+-   Character insertion bias directs the service to favor character sequences of shorter or greater length as it develops transcription hypotheses with large speech models and next-generation models.
 
 ## End of phrase silence time
 {: #silence-time}
@@ -291,10 +291,10 @@ The service returns three final results, adding a result for the semantic stop a
 ## Character insertion bias
 {: #insertion-bias}
 
-The `character_insertion_bias` parameter is beta functionality that is available for all next-generation models. The parameter is not available for previous-generation models.
+The `character_insertion_bias` parameter is beta functionality that is available for all large speech models and next-generation models. The parameter is not available for previous-generation models.
 {: beta}
 
-The `character_insertion_bias` parameter controls the service's bias for competing strings of different lengths during speech recognition. With next-generation models, the service parses audio character by character. As it does, it establishes hypotheses of previous character strings to help determine viable next characters. During this process, it collects candidate strings of different lengths.
+The `character_insertion_bias` parameter controls the service's bias for competing strings of different lengths during speech recognition. With large speech models and next-generation models, the service parses audio character by character. As it does, it establishes hypotheses of previous character strings to help determine viable next characters. During this process, it collects candidate strings of different lengths.
 
 By default, each model uses a default `character_insertion_bias` of 0.0. This value is optimized to produce the best balance between hypotheses with different numbers of characters. The default is typically adequate for most speech recognition. However, certain use cases might benefit from favoring hypotheses with shorter or longer strings of characters. In such cases, specifying a change from the default can improve speech recognition.
 
@@ -316,7 +316,7 @@ The following example request directs the service to marginally favor longer str
 curl -X POST -u "apikey:{apikey}" \
 --header "Content-Type: audio/wav" \
 --data-binary @{path}audio-file.wav \
-"{url}/v1/recognize?model=en-US_Telephony&character_insertion_bias=0.1"
+"{url}/v1/recognize?model=en-US&character_insertion_bias=0.1"
 ```
 {: pre}
 
@@ -327,6 +327,6 @@ curl -X POST \
 --header "Authorization: Bearer {token}" \
 --header "Content-Type: audio/wav" \
 --data-binary @{path}audio-file.wav \
-"{url}/v1/recognize?model=en-US_Telephony&character_insertion_bias=0.1"
+"{url}/v1/recognize?model=en-US&character_insertion_bias=0.1"
 ```
 {: pre}
