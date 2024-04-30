@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2024-04-30"
 
 subcollection: speech-to-text
 
@@ -37,7 +37,7 @@ An example is the best way to show how speaker labels work. The following exampl
 curl -X POST -u "apikey:{apikey}" \
 --header "Content-Type: audio/flac" \
 --data-binary @{path}audio-multi.flac \
-"{url}/v1/recognize?model=en-US_NarrowbandModel&speaker_labels=true"
+"{url}/v1/recognize?model=en-US&speaker_labels=true"
 ```
 {: pre}
 
@@ -48,7 +48,7 @@ curl -X POST \
 --header "Authorization: Bearer {token}" \
 --header "Content-Type: audio/flac" \
 --data-binary @{path}audio-multi.flac \
-"{url}/v1/recognize?model=en-US_NarrowbandModel&speaker_labels=true"
+"{url}/v1/recognize?model=en-US&speaker_labels=true"
 ```
 {: pre}
 
