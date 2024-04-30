@@ -291,8 +291,7 @@ The service returns three final results, adding a result for the semantic stop a
 ## Character insertion bias
 {: #insertion-bias}
 
-The `character_insertion_bias` parameter is beta functionality that is available for all large speech models and next-generation models. The parameter is not available for previous-generation models.
-{: beta}
+The `character_insertion_bias` parameter is a functionality that is available for all large speech models and next-generation models. The parameter is not available for previous-generation models.
 
 The `character_insertion_bias` parameter controls the service's bias for competing strings of different lengths during speech recognition. With large speech models and next-generation models, the service parses audio character by character. As it does, it establishes hypotheses of previous character strings to help determine viable next characters. During this process, it collects candidate strings of different lengths.
 
