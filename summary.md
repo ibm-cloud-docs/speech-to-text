@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-02-27"
+lastupdated: "2024-04-30"
 
 subcollection: speech-to-text
 
@@ -13,11 +13,12 @@ subcollection: speech-to-text
 # Parameter summary
 {: #summary}
 
-The following sections provide a summary of all of the parameters that are available for speech recognition. The information includes availability for previous- and next-generation models, and support and usage for speech recognition interfaces.
+The following sections provide a summary of all of the parameters that are available for speech recognition. The information includes availability for large speech models, previous- and next-generation models, and support and usage for speech recognition interfaces.
 {: shortdesc}
 
 -   For more information about previous-generation languages and models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
 -   For more information about next-generation languages and models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+-   For more information about large speech languages and models, see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages);
 
 ## access_token
 {: #summary-access-token}
@@ -26,6 +27,7 @@ A required access token that you use to establish an authenticated connection wi
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
@@ -40,6 +42,7 @@ An optional customization ID for a custom acoustic model that is adapted for the
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models    | Not available. |
 | Previous-generation models | Generally available or beta for all models that support acoustic model customization. For more information, see [Customization support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
 | Next-generation models | Not available. |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
@@ -54,6 +57,7 @@ An optional boolean that indicates whether the service returns metrics about the
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -68,6 +72,7 @@ An optional float between 0.0 and 1.0 that indicates the level to which backgrou
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all language models except for `ar-MS_BroadbandModel`, `pt-BR_BroadbandModel`, `zh-CN_BroadbandModel`, `zh-CN_NarrowbandModel`, and `de-DE_BroadbandModel`. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -82,6 +87,7 @@ An optional version of a base model. The parameter is intended primarily for use
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
