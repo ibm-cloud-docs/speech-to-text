@@ -75,7 +75,7 @@ curl -X POST \
 {: pre}
 
 ## Specify a large speech model example
-{: #models-ng-specify-example}
+{: #models-lsm-specify-example}
 
 The following example HTTP request uses the large speech model `en-US` for speech recognition:
 
