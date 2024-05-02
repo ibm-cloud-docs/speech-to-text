@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2024-04-30"
+lastupdated: "2024-05-02"
 
 subcollection: speech-to-text
 
@@ -102,8 +102,9 @@ An optional float between -1.0 and 1.0 that indicates whether the service is bia
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Not available. |
-| Next-generation models     | Beta for all models. |
+| Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -116,6 +117,7 @@ An optional audio format (MIME type) that specifies the format of the audio data
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | `content-type` parameter of JSON `start` message |
@@ -130,6 +132,7 @@ An optional double between 0.0 and 1.0 that indicates the relative weight that t
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available or beta for all models that support language model customization. The default value is 0.3. For more information, see [Customization support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
 | Next-generation models     | Generally available or beta for all models that support language model customization. The default value is 0.2 for most next-generation models; it is 0.1 for models that are based on new language model customization technology. For more information, see [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). |
 | WebSocket              | Parameter of JSON `start` message |
@@ -144,6 +147,7 @@ An optional double between 0.0 and 120.0 that indicates the pause interval at wh
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -158,6 +162,7 @@ An optional string that identifies a grammar that is to be used for speech recog
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Not available. |
 | Previous-generation models | Generally available or beta for all models that support language model customization. For more information, see [Customization support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
 | Next-generation models     | Generally available or beta for all models that support language model customization. For more information, see [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). |
 | WebSocket              | Parameter of JSON `start` message |
