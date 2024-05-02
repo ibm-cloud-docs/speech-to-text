@@ -417,6 +417,7 @@ An optional boolean that indicates whether the service splits a transcript into 
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Not available. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -431,6 +432,7 @@ An optional boolean that indicates whether the service produces timestamps for t
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -445,6 +447,7 @@ An optional value of `chunked` that causes the audio to be streamed to the servi
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Not applicable; always streamed |
@@ -459,6 +462,7 @@ An optional double between 0.0 and 1.0 that specifies the threshold at which the
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Not available. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -473,6 +477,7 @@ An optional boolean that indicates whether the service provides confidence measu
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -489,6 +494,7 @@ An optional boolean that indicates whether you opt out of the default request lo
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | `x-watson-learning-opt-out` query parameter of `/v1/recognize` connection request |
@@ -503,6 +509,7 @@ An optional string that associates a customer ID with data that is passed for re
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | `x-watson-metadata` query parameter of `/v1/recognize` connection request. (You must URL-encode the argument, for example, `customer_id%3dmy_customer_ID`.) |
