@@ -252,6 +252,7 @@ An optional boolean that indicates whether the service is to produce results mor
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Not available. |
 | Previous-generation models | Not available. |
 | Next-generation models     | Generally available or beta for next-generation models that support low latency. For more information, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported). |
 | WebSocket              | Parameter of JSON `start` message |
@@ -266,6 +267,7 @@ An optional integer that specifies the maximum number of alternative hypotheses 
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Not available. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -280,6 +282,7 @@ An optional model that specifies the language in which the audio is spoken and t
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
@@ -294,6 +297,7 @@ An optional boolean that indicates whether the service returns metrics about its
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Not available. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -308,6 +312,7 @@ An optional float of at least 0.1 that indicates the interval at which the servi
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Not available. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
