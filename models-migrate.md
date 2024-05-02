@@ -2,11 +2,7 @@
 
 copyright:
   years: 2022, 2023
-<<<<<<< HEAD
-lastupdated: "2023-07-27"
-=======
-lastupdated: "2024-04-29"
->>>>>>> e671f6ce (LSM feature link update, migrating to lsm)
+lastupdated: "2024-05-02"
 
 subcollection: speech-to-text
 
@@ -17,11 +13,7 @@ subcollection: speech-to-text
 # Migrating to large speech models
 {: #models-migrate}
 
-<<<<<<< HEAD
-Starting **August 1, 2023**, all previous-generation models are now **discontinued** from the service. New clients must now only use the next-generation models. All existing clients must now migrate to the equivalent next-generation model. For more information, please consult the information on this page.
-=======
 Starting **August 1, 2023**, all previous-generation models are now **discontinued** from the service. New clients must now only use the large speech models or next-generation models. All existing clients must now migrate to the equivalent large speech model or next-generation model. For more information, see [Migrating to large speech models](/docs/speech-to-text?topic=speech-to-text-models-migrate).
->>>>>>> e671f6ce (LSM feature link update, migrating to lsm)
 {: attention}
 
 You must migrate your use of any deprecated previous-generation models to the equivalent large speech models or next-generation models by the 31 July 2023 end of service date. Next-generation models provide appreciably better transcription accuracy and throughput. But they currently provide slightly fewer features than previous-generation models.
@@ -127,7 +119,7 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-## Step 4: Evaluate the results of the next-generation model
+## Step 4: Evaluate the results of the large speech model
 {: #models-migrate-step4}
 
 Once you have updated your speech recognition requests to use large speech models, eliminated unsupported parameters, and re-created any custom language models, you can experiment with speech recognition based on previous- and next-generation models. Compare the resulting transcripts to determine whether the large speech model produces equivalent or better results. Also consider the performance of requests that use large speech model to determine how much faster you receive results.
