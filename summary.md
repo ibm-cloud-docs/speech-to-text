@@ -375,7 +375,9 @@ An optional boolean that indicates whether the service converts dates, times, nu
 | Large speech models | Generally available for all languages except Japanese. |
 | Previous-generation models | Not supported.|
 | Next-generation models | Generally available only for US English (including en-WW_Medical_Telephony), Brazilian Portuguese, France French, German, Canadian French and Spanish. |
-| WebSocket              | The service disables interim results. |
+| WebSocket              | Parameter of JSON `start` message. The service disables interim results.  |
+| Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
+| Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
 {: caption="Table 23a. The smart_formatting_version parameter"}
 
 ## speaker_labels
