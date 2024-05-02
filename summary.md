@@ -177,6 +177,7 @@ An optional integer that specifies the number of seconds for the service's inact
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -191,6 +192,7 @@ An optional boolean that directs the service to return intermediate hypotheses t
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for next-generation models that support low latency, but only if both the `interim_results` and `low_latency` parameters are set to `true`. For more information, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency). |
 | WebSocket              | Parameter of JSON `start` message |
@@ -205,6 +207,7 @@ An optional array of keyword strings that the service spots in the input audio. 
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Not available. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -219,6 +222,7 @@ An optional double between 0.0 and 1.0 that indicates the minimum threshold for 
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Not available. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -233,6 +237,7 @@ An optional customization ID for a custom language model that includes terminolo
 
 | Availability and usage | Description |
 |------------------------|-------------|
+Large speech models          | Generally available for all languages. |
 | Previous-generation models | Generally available or beta for all models that support language model customization. For more information, see [Customization support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
 | Next-generation models     | Generally available or beta for all models that support language model customization. For more information, see [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
