@@ -327,8 +327,9 @@ An optional boolean that indicates whether the service censors profanity from a 
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Previous-generation models | Generally available for US English and Japanese. |
-| Next-generation models     | Generally available for US English and Japanese. |
+| Large speech models        | Generally available for all languages. |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -341,6 +342,7 @@ An optional boolean that indicates whether the service redacts numeric data with
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Beta for English and Japanese. |
 | Previous-generation models | Beta for US English, Japanese, and Korean. |
 | Next-generation models     | Beta for US English, Japanese, and Korean. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -355,8 +357,9 @@ An optional boolean that indicates whether the service converts dates, times, nu
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Previous-generation models | Beta for US English, Japanese, and Spanish (all dialects). |
-| Next-generation models     | Beta for US English, Japanese, and Spanish (all dialects). It also also available for the `en-WW_Medical_Telephony` model when US English audio is recognized. |
+| Large speech models        | Generally available for all languages. |
+| Previous-generation models | Generally available for US English, Japanese, and Spanish (all dialects). |
+| Next-generation models     | Generally available for US English, Japanese, and Spanish (all dialects). It also also available for the `en-WW_Medical_Telephony` model when US English audio is recognized. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -369,8 +372,9 @@ An optional boolean that indicates whether the service converts dates, times, nu
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models | Generally available for all languages except Japanese. |
 | Previous-generation models | Not supported.|
-| Next-generation models | Available for US English (including en-WW_Medical_Telephony), Brazilian Portuguese, French and German. |
+| Next-generation models | Generally available only for US English (including en-WW_Medical_Telephony), Brazilian Portuguese, France French, German, Canadian French and Spanish. |
 | WebSocket              | The service disables interim results. |
 {: caption="Table 23a. The smart_formatting_version parameter"}
 
@@ -381,8 +385,9 @@ An optional boolean that indicates whether the service identifies which individu
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Previous-generation models | Beta for US English, Australian English, German, Japanese, Korean, and Spanish (broadband and narrowband models) and UK English (narrowband model only). |
-| Next-generation models     | Beta for Czech, English (Australian, Indian, UK, and US), German, Japanese, Korean, and Spanish. |
+| Large speech models        | Beta for all languages. |
+| Previous-generation models | Beta for all languages. |
+| Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -395,6 +400,7 @@ An optional float between 0.0 and 1.0 that indicates the sensitivity of speech r
 
 | Availability and usage | Description |
 |------------------------|-------------|
+Large speech models          | Generally available for all languages. |         
 | Previous-generation models | Generally available for all language models except for `ar-MS_BroadbandModel`, `pt-BR_BroadbandModel`, `zh-CN_BroadbandModel`, `zh-CN_NarrowbandModel`, and `de-DE_BroadbandModel`. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
