@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2024-05-09"
 
 subcollection: speech-to-text
 
@@ -19,7 +19,7 @@ The {{site.data.keyword.speechtotextfull}} service provides three features that 
 ## Smart formatting Version 2
 {: #smart-formatting-version}
 
-The new version of smart formatting feature is available for US English, Brazilian Portuguese, French and German. It is also available for the en-WW_Medical_Telephony model when US English audio is recognized. 
+The new version of smart formatting feature is available for US English, Brazilian Portuguese, French, German, Castilian Spanish, Spanish Latin American, and French Canadian. It is also available for the en-WW_Medical_Telephony model when US English audio is recognized. 
 
 The new version:
 -	provides more flexibility in adding new languages and patterns compared to older smart formatting. 
