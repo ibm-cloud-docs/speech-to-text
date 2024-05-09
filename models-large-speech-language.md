@@ -49,12 +49,8 @@ Large speech models support all speech recognition parameters and headers *excep
 -   `word_alternatives_threshold`
 -   `grammar_name` (Large speech models do not support grammar customization.)
 -   `low_latency` (Large speech models natively support low latency out of the box.)
-
-Large speech models also support the following parameters, which are not available with previous-generation models:
-
--   `character_insertion_bias`, which is supported by all large speech models. For more information, see [Character insertion bias](/docs/speech-to-text?topic=speech-to-text-parsing#insertion-bias).
+-   `character_insertion_bias`
 
 Large speech models also differ from previous-generation models with respect to the following additional features:
 
 -   Large speech models do not produce hesitation markers. They instead include the actual hesitations in transcription results. For more information, see [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
--   Large speech models support automatic capitalization and punctuation only for the English model. For more information, see [Capitalization](/docs/speech-to-text?topic=speech-to-text-basic-response#response-capitalization).
