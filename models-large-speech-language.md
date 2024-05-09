@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-04-29"
+lastupdated: "2024-05-09"
 
 subcollection: speech-to-text
 
@@ -13,13 +13,15 @@ subcollection: speech-to-text
 #  Large speech languages and models
 {: #models-large-speech-languages}
 
-Draft: The {{site.data.keyword.speechtotextfull}} service supports a growing collection of next-generation models that improve upon the speech recognition capabilities of the service's previous-generation models. The model indicates the language in which the audio is spoken and the rate at which it is sampled. Next-generation models have higher throughput than the previous-generation models, so the service can return transcriptions more quickly.  Next-generation models also provide noticeably better transcription accuracy.
+The {{site.data.keyword.speechtotextfull}} service supports a growing collection of Large Speech Models (LSMs) that improve upon the speech recognition capabilities of the service's previous-generation models. The model name is the locale, which consists of the language code and the region/country code separated by dash. For example `en-US` is for English spoken in the United states. LSMs are large models, they have a large number of trainable parameters and are trained on very large amounts of audio. Because of their large size, the large amounts of training material they are built on, and the state of the art architecture and training recipe used to build them, these models deliver exceptional transcription accuracy, far superior to previous models available.
+
+These models can be used both for Telephony use cases and Broadband use cases. 
 {: shortdesc}
 
 ## Supported large speech model languages
 {: #models-supported-languages}
 
-Draft: The following sections list the large speech models that are available for each language. The tables in the sections provide the following information:
+The following sections list the large speech models that are available for each language. The tables in the sections provide the following information:
 
 | Language |  Model name | Status | 
 |------------------------|:-----------:|:----------------------------------------|
