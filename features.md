@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2024-05-02"
+lastupdated: "2024-05-09"
 
 subcollection: speech-to-text
 
@@ -104,7 +104,11 @@ Use the new parameter speech_begin_event to receive a notification event the mom
 {: #features-interim-results}
 
 -   [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results) are intermediate hypotheses that the service returns as transcription progresses. They are available only with the WebSocket interface. The service returns final results when a transcript is complete. With the HTTP interfaces, the service always transcribes the entire audio stream before sending any results.
+
+Interim results are not available with large speech models. {: note}
 -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency), when used with certain next-generation models, directs the service to produce final results even more quickly than the models usually do. Low latency is available with the WebSocket and HTTP interfaces. Although low latency further enhances the already improved response times of the models, it might reduce transcription accuracy. When you use the next-generation models with the WebSocket interface, low latency is required to obtain interim results.
+
+Low latency is not available with large speech models. {: note}
 
 ### Speech activity detection
 {: #features-detection}
