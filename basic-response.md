@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2024-04-19"
+lastupdated: "2024-05-09"
 
 subcollection: speech-to-text
 
@@ -192,7 +192,7 @@ Silence of 30 seconds in streamed audio can result in an inactivity timeout. For
 ## Speech hesitations and hesitation markers
 {: #response-hesitation}
 
-Speech often includes hesitations or verbal pauses, which are also referred to as disfluencies. Hesitations occur when the user inserts fillers such as  "uhm", "uh", "hmm", and related non-lexical utterances while speaking. The service handles hesitations differently for previous- and next-generation models.
+Speech often includes hesitations or verbal pauses, which are also referred to as disfluencies. Hesitations occur when the user inserts fillers such as  "uhm", "uh", "hmm", and related non-lexical utterances while speaking. The service handles hesitations differently for large speech models, previous- and next-generation models.
 
 ### Hesitations for previous-generation models
 {: #response-hesitation-prev}
