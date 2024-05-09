@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2024-04-22"
+lastupdated: "2024-05-09"
 
 subcollection: speech-to-text
 
@@ -135,12 +135,12 @@ For more information, see [Using custom acoustic and custom language models toge
 ## Upgrading custom models
 {: #upgrading-intro}
 
-To improve the quality of speech recognition, the service occasionally updates base previous- and next-generation models. An update to a base model affects only that model. The update does not affect any other models of the same or different languages.
+To improve the quality of speech recognition, the service occasionally updates base large speech models, previous- and next-generation models. An update to a base model affects only that model. The update does not affect any other models of the same or different languages.
 
 An update to a base model can require that you upgrade any custom models that are built on that base model to take advantage of the improvements. An update to a base model that requires an upgrade produces a new version of the base model. An update that does not require an upgrade does not produce a new version.
 
 -   *For previous-generation models,* all updates to a base model produce a new version of the model. When a new version of a base model is released, you must upgrade any custom language and custom acoustic models that are built on the updated base model to take advantage of the improvements.
--   *For next-generation models,* most updates do not produce a new version of the model. These updates do not require that you upgrade your custom models. Some updates, however, do generate a new version of a base model. You must upgrade any custom language models that are built on the updated base model to take advantage of the improvements.
+-   *For large speech models and next-generation models,* most updates do not produce a new version of the model. These updates do not require that you upgrade your custom models. Some updates, however, do generate a new version of a base model. You must upgrade any custom language models that are built on the updated base model to take advantage of the improvements.
 
 All updates to base models and whether they require upgrades are announced in the release notes:
 
