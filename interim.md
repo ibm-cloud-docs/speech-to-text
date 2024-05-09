@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-02-22"
+lastupdated: "2024-05-09"
 
 subcollection: speech-to-text
 
@@ -21,7 +21,7 @@ When you use next-generation models that support low latency with the WebSocket 
 ## Interim results
 {: #interim-results}
 
-The interim results feature is available only with the WebSocket interface.
+The interim results feature is available only with the WebSocket interface. The parameter is not available with large speech models. 
 {: note}
 
 Interim results are intermediate transcription hypotheses that are likely to change before the service returns its final results. The service returns interim results as soon as it generates them. Interim results are useful for interactive applications and real-time transcription, and for long audio streams, which can take a while to transcribe.
