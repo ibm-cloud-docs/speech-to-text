@@ -132,7 +132,7 @@ An optional double between 0.0 and 1.0 that indicates the relative weight that t
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Large speech models        | Generally available for all languages. The default value is 0.5. For more information, see [Customization support for large speech models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-lsm). |
+| Large speech models        | Generally available for all languages. The default value is 0.5. |
 | Previous-generation models | Generally available or beta for all models that support language model customization. The default value is 0.3. For more information, see [Customization support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
 | Next-generation models     | Generally available or beta for all models that support language model customization. The default value is 0.2 for most next-generation models; it is 0.1 for models that are based on new language model customization technology. For more information, see [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). |
 | WebSocket              | Parameter of JSON `start` message |
