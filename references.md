@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2022
-lastupdated: "2022-09-29"
+lastupdated: "2024-05-10"
 
 subcollection: speech-to-text
 
@@ -37,3 +37,4 @@ For more information about the research behind the {{site.data.keyword.speechtot
 1.  Soltau, Hagen, George Saon, and Tara N. Sainath. [*Joint Training of Convolutional and Non-Convolutional Neural Networks.*](https://ieeexplore.ieee.org/document/6854669){: external} Proceedings of the IEEE International Conference on Acoustic, Speech and Signal Processing (ICASSP), Florence, Italy (May 2014): pp. 5572-5576. {: #soltau2014}
 1.  Suzuki, Masayuki, Nobuyasu Itoh, Tohru Nagano, Gakuto Kurata, and Samuel Thomas. [*Improvements to N-gram Language Model Using Text Generated from Neural Language Model.*](https://ieeexplore.ieee.org/document/8683481){: external} Proceedings of the IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP) (May 2019). {: #suzuki2019}
 1.  Thomas, Samuel, Masayuki Suzuki, Yinghui Huang, Gakuto Kurata, Zoltan Tuske, George Saon, Brian Kingsbury, and Michael Picheny. [*English Broadcast News Speech Recognition by Humans and Machines.*](https://arxiv.org/pdf/1904.13258.pdf){: external} Proceedings of the IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP) (2019). {: #thomas2019}
+1.  Kartik Audhkhasi, George Saon, Zoltán Tüsky, Brian Kingsbury and Michael Picheny. [*Forget a Bit to Learn Better: Soft Forgetting for CTC-Based Automatic Speech Recognition.*](https://www.isca-archive.org/interspeech_2019/audhkhasi19_interspeech.pdf){: external} Proceedings of Interspeech 2019 (September 2019): pp. 2618-2622.  {: #audhkhasi2019}
