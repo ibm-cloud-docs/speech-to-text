@@ -207,12 +207,12 @@ Although adding corpora is the recommended means of adding words to a custom lan
 If you have only one or a few words to add to a model, using corpora to add the words might not be practical or even viable. The simplest approach is to add a word with only its spelling. But you can also indicate how the word is to be displayed and one or more pronunciations for the word.
 
 -   For more information about adding words to a custom model that is based on a *previous-generation model*, see [Working with custom words for previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords#workingWords).
--   For more information about adding words to a custom model that is based on *next-generation model*, see [Working with custom words for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#workingWords-ng).
+-   For more information about adding words to a custom model that is based on * large speech models and next-generation models*, see [Working with custom words for large speech models and next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#workingWords-ng).
 
 After you add words to a custom model, examine the new custom words to check for typographical and other errors. This check is especially important when you add multiple words at one time.
 
 -   *For custom models that are based on previous-generation models,* see [Validating a words resource for previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
--   *For custom models that are based on next-generation models,* see [Validating a words resource for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#validateModel-ng).
+-   *For custom models that are based on large speech models and next-generation models,* see [Validating a words resource for large speech models and next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#validateModel-ng).
 
 ### Add words with the POST method
 {: #add-words-push}
