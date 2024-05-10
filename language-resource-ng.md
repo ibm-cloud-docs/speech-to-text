@@ -2,7 +2,11 @@
 
 copyright:
   years: 2015, 2023
+<<<<<<< HEAD
 lastupdated: "2023-06-19"
+=======
+lastupdated: "2024-05-10"
+>>>>>>> 8531dee8 (Custom models, corpora LSM updates)
 
 subcollection: speech-to-text
 
@@ -12,25 +16,25 @@ content-type: troubleshoot
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Working with corpora and custom words for next-generation models
+# Working with corpora and custom words for large speech models and next-generation models
 {: #corporaWords-ng}
 
-This information is specific to custom models that are based on *next-generation models*. For information about corpora and custom words for custom models that are based on *previous-generation models*, see [Working with corpora and custom words for previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords).
+This information is specific to custom models that are based on *large speech models and next-generation models*. For information about corpora and custom words for custom models that are based on *previous-generation models*, see [Working with corpora and custom words for previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords).
 {: note}
 
-You populate a custom language model with words by adding corpora to the model or by adding custom words directly to the model. You use the same methods and operations for both previous- and next-generation models. For more information about adding corpora and custom words to a model, see [Working with corpora for next-generation models](#workingCorpora-ng) and [Working with custom words for next-generation models](#workingWords-ng).
+You populate a custom language model with words by adding corpora to the model or by adding custom words directly to the model. You use the same methods and operations for large speech models, previous- and next-generation models. For more information about adding corpora and custom words to a model, see [Working with corpora for large speech models and next-generation models](#workingCorpora-ng) and [Working with custom words for large speech models and next-generation models](#workingWords-ng).
 
-Although language model customization is similar in usage and intent for previous- and next-generation models, there are differences between the two types of models at the implementation level. To understand how language model customization works for next-generation models, and how you can make the best use of customization, you need a high-level understanding of the differences.
+Although language model customization is similar in usage and intent for large speech models, previous- and next-generation models, there are differences between the three types of models at the implementation level. To understand how language model customization works for large speech models and next-generation models, and how you can make the best use of customization, you need a high-level understanding of the differences.
 
 -   When you create and use a custom language model that is based on a *previous-generation model*, the service relies on words from the custom model to create transcripts that contain domain-specific terms. In combination with words from its base vocabulary, the service uses these words from the custom model to predict and transcribe speech from audio. You provide the information for a custom language model in the form of corpora, custom words, and grammars. The service stores this information in the words resource for the custom model.
 
--   When you create a custom language model that is based on a *next-generation model*, the services relies on sequences of characters from the custom model to create transcripts that reflect domain-specific terms. In combination with character sequences from the base model, the service uses these series of characters from the custom model to predict and transcribe speech from audio.
+-   When you create a custom language model that is based on a *large speech model or next-generation model*, the services relies on sequences of characters from the custom model to create transcripts that reflect domain-specific terms. In combination with character sequences from the base model, the service uses these series of characters from the custom model to predict and transcribe speech from audio.
 
     You provide the information for a custom language model in the form of corpora, custom words, and grammars. But rather than rely on a words resource that contains these words, the service extracts and stores character sequences from the corpora and custom words. The service does not extract and calculate out-of-vocabulary (OOV) words from corpora and custom words. The words resource is simply where it stores custom words that you add directly to the model.
 
-When you develop a custom language model based on a next-generation model, you must still provide corpora and custom words to train the model on domain-specific terminology. So the process of creating and training a custom model is largely the same for next-generation and previous-generation models.
+When you develop a custom language model based on a large speech model or next-generation model, you must still provide corpora and custom words to train the model on domain-specific terminology. So the process of creating and training a custom model is largely the same for large speech models, next-generation and previous-generation models.
 
-The following topics describe the rules for providing corpora and custom words for a custom language model that is based on a next-generation model. The rules are similar to those for working with a custom model based on a previous-generation model, but some important differences do exist.
+The following topics describe the rules for providing corpora and custom words for a custom language model that is based on large speech models and next-generation models. The rules are similar to those for working with a custom model based on a previous-generation model, but some important differences do exist.
 
 ## The words resource
 {: #wordsResource-ng}
@@ -46,7 +50,7 @@ The *words resource* includes custom words that you add directly to the custom m
 -   `display_as` - The spelling of the word that the service uses in transcripts. Unless you specify an alternative representation, the spelling matches the value of the `word` field. For more information, see [Using the display_as field](#display-as-ng).
 -   `source` - How the word was added to the words resource. The field always contains the string `user` to indicate that it was added directly as a custom word.
 
-After adding or modifying a custom word, it is important that you verify the correctness of the word's definition; for more information, see [Validating a words resource for next-generation models](#validateModel-ng). You must also train the model for the changes to take effect during transcription; for more information, see [Train the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
+After adding or modifying a custom word, it is important that you verify the correctness of the word's definition; for more information, see [Validating a words resource for large speech models and next-generation models](#validateModel-ng). You must also train the model for the changes to take effect during transcription; for more information, see [Train the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
 
 You can add custom words that already exist, for example, to add more sounds-like pronunciations for common words. Otherwise, there is no reason to duplicate common words. Such words remain in the model's words resource, but they are harmless and unnecessary.
 {: note}
@@ -130,7 +134,14 @@ Because the context is typically something like `これからＡＩはますま�
 
 Finally, in custom words, half-width alphabetic characters are converted to full-width characters. English uppercase and lowercase characters are treated as different characters.
 
+<<<<<<< HEAD
 ## Working with corpora for next-generation models
+=======
+Japanese models use word for mapping ('word' -> 'display_as').
+{: note}
+
+## Working with corpora for large speech models and next-generation models
+>>>>>>> 8531dee8 (Custom models, corpora LSM updates)
 {: #workingCorpora-ng}
 
 You use the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method to add a corpus to a custom model. A corpus is a plain text file that contains sample sentences from your domain. The following example shows an abbreviated corpus for the healthcare domain. A corpus file is typically much longer.
@@ -257,7 +268,7 @@ The following information applies to Korean:
     This list is not exhaustive. The service makes similar adjustments for other characters as needed.
 -   For phrases that consist of Latin (English) characters or a mix of Hangul and Latin characters, the service uses the phrases exactly as they appear in the corpus file.
 
-## Working with custom words for next-generation models
+## Working with custom words for large speech models and next-generation models
 {: #workingWords-ng}
 
 You can use the `POST /v1/customizations/{customization_id}/words` and `PUT /v1/customizations/{customization_id}/words/{word_name}` methods to add new words to a custom model. You can also use the methods to modify or augment a custom word.
@@ -270,7 +281,7 @@ You are likely to add most custom words from corpora. Make sure that you know th
 ### Using the sounds_like field
 {: #sounds-like-ng}
 
-The `sounds_like` field specifies how a word is pronounced by speakers in audio. By default, the service does not automatically attempt to generate a sounds-like pronunciation for a word for which you do not provide one. You can add sounds-likes for any words that do not have them. After adding or modifying words, you must validate the words resource to ensure that each word's definition is complete and valid. For more information, see [Validating a words resource for next-generation models](#validateModel-ng).
+The `sounds_like` field specifies how a word is pronounced by speakers in audio. By default, the service does not automatically attempt to generate a sounds-like pronunciation for a word for which you do not provide one. You can add sounds-likes for any words that do not have them. After adding or modifying words, you must validate the words resource to ensure that each word's definition is complete and valid. For more information, see [Validating a words resource for large speech models and next-generation models](#validateModel-ng).
 
 You can provide as many as five alternative pronunciations for a word that is difficult to pronounce or that can be pronounced in different ways. Some possible uses of the field follow:
 
@@ -449,14 +460,14 @@ How the service responds to a request to add or modify a custom word depends on 
 ### Additional transcription efforts
 {: #parseWord-additional-ng}
 
-For custom language models that are based on next-generation models, the service makes additional efforts to ensure the most effective transcription:
+For custom language models that are based on large speech models and next-generation models, the service makes additional efforts to ensure the most effective transcription:
 
 -   For sounds-like pronunciations for custom words, the service uses the reverse of the sounds-like as well as its definition in a custom word. For example, given a `sounds_like` field of `I triple E` for the word `IEEE`, the service also effectively uses a reverse sounds-like of `IEEE` for the "word" `I triple E`. This enhances the application of sounds-like pronunciations for speech recognition. (Note that it is not possible for users to create custom words that contain spaces.)
 -   For acronyms that are parsed from corpora or defined as custom words, the service makes additional speech recognition efforts. An acronym is any word that consists of two or more consecutive uppercase letters. If the acronym contains one or more vowels, the service attempts to recognize the acronym as a series of individual characters *and* as a pronounced word.
 
     For example, the acronym `NASA` can be read as four individual letters or pronounced as a word that sounds like `nassa`. The service checks for both during speech recognition. This enhances its ability to represent acronyms correctly in a transcript.
 
-## Validating a words resource for next-generation models
+## Validating a words resource for large speech models and next-generation models
 {: #validateModel-ng}
 {: troubleshoot}
 {: support}
@@ -472,5 +483,5 @@ Typographical errors have the unintended consequence of modifying a custom model
 To validate and, if necessary, correct a custom word for a custom model, use the following methods:
 
 -   List all of the words from a custom model by using the `GET /v1/customizations/{customization_id}/words` method or query an individual word with the `GET /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Listing custom words from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageWords#listWords).
--   Modify words in a custom model to correct errors or to add display-as values by using the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Working with custom words for next-generation models](#workingWords).
+-   Modify words in a custom model to correct errors or to add display-as values by using the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Working with custom words for large speech models and next-generation models](#workingWords).
 -   Delete extraneous words that are introduced in error (for example, by typographical or other mistakes) by using the `DELETE /v1/customizations/{customization_id}/words/{word_name}` method. For more information, see [Deleting a word from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageWords#deleteWord).

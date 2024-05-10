@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2024-04-25"
+lastupdated: "2024-05-10"
 
 subcollection: speech-to-text
 
@@ -105,8 +105,10 @@ The example returns the customization ID of the new model. Each custom model is 
 
 Once you create your custom language model, the next step is to add domain-specific data to the model. The recommended means of populating a custom model is to add one or more corpora. A corpus is a plain text file that ideally contains sample sentences from your domain.
 
+-   *For custom models that are based on large speech models,* the service parses and extracts word sequences from one or multiple corpora files. The characters help the service learn and predict character sequences from audio. For more information about using corpora with custom models that are based on large speech models, see [Working with corpora for large speech models and next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#workingCorpora-ng).
+
 -   *For custom models that are based on previous-generation models,* the service parses a corpus file and extracts any words that are not in its base vocabulary. Such words are referred to out-of-vocabulary (OOV) words. For more information about using corpora with custom models that are based on previous-generation models, see [Working with corpora for previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords#workingCorpora).
--   *For custom models that are based on next-generation models,* the service parses and extracts character sequences from a corpus file. The characters help the service learn and predict character sequences from audio. For more information about using corpora with custom models that are based on next-generation models, see [Working with corpora for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#workingCorpora-ng).
+-   *For custom models that are based on next-generation models,* the service parses and extracts character sequences from a corpus file. The characters help the service learn and predict character sequences from audio. For more information about using corpora with custom models that are based on next-generation models, see [Working with corpora for large speech models and next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#workingCorpora-ng).
 
 By providing sentences that include domain-specific words, corpora allow the service to learn the words and character sequences in context. You can also augment and modify a model's words individually. Training a model only on individual words as opposed to words added from corpora is more time-consuming and can produce less effective results.
 {: tip}
