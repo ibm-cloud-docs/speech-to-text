@@ -489,6 +489,6 @@ If the training request fails with a status code of 400, the service sets the cu
 
     For more information about validating the words in a custom language model, see
     -   [Validating a words resource for previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel)
-    -   [Validating a words resource for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#validateModel-ng).
+    -   [Validating a words resource for large speech models and next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#validateModel-ng).
 
 -   Set the `strict` parameter of the `POST /v1/customizations/{customization_id}/train` method to `false` to exclude invalid resources from the training. The model must contain at least one valid resource (corpus, word, or grammar) for training to succeed. The `strict` parameter is useful for training a custom model that contains a mix of valid and invalid resources.
