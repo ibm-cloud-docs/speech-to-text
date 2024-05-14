@@ -27,6 +27,23 @@ For information about known limitations of the service, see [Known limitations](
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
 
+## 15 May 2024
+{: #speech-to-text-15may2024}
+{: release-note}
+
+Large Speech Model for English is now generally available
+:   The large speech model for English, which includes the United States, Australian, Indian, and United Kingdom dialects, is now generally available (GA). It is supported for use in production environments and applications. 
+
+    - For more information about large speech models, see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages).
+    - For more information about the features that are supported for large speech models, see [Supported features for large speech models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-lsm-supported-features).
+
+## 07 Mar 2024
+{: #speech-to-text-07mar2024}
+{: release-note}
+
+Large Speech Model for US English in Open Beta
+:   The new Large speech model for US English in open beta. See [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages) for more details with supported features (beta).
+
 ## 30 Nov 2023
 {: #speech-to-text-30nov2023}
 {: release-note}

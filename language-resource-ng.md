@@ -2,11 +2,7 @@
 
 copyright:
   years: 2015, 2023
-<<<<<<< HEAD
-lastupdated: "2023-06-19"
-=======
 lastupdated: "2024-05-10"
->>>>>>> 8531dee8 (Custom models, corpora LSM updates)
 
 subcollection: speech-to-text
 
@@ -26,9 +22,9 @@ You populate a custom language model with words by adding corpora to the model o
 
 Although language model customization is similar in usage and intent for large speech models, previous- and next-generation models, there are differences between the three types of models at the implementation level. To understand how language model customization works for large speech models and next-generation models, and how you can make the best use of customization, you need a high-level understanding of the differences.
 
--   When you create and use a custom language model that is based on a *large speech model or previous-generation model*, the service relies on words from the custom model to create transcripts that contain domain-specific terms. In combination with words from its base vocabulary, the service uses these words from the custom model to predict and transcribe speech from audio. You provide the information for a custom language model in the form of corpora, custom words, and grammars. The service stores this information in the words resource for the custom model.
+-   When you create and use a custom language model that is based on a *previous-generation model*, the service relies on words from the custom model to create transcripts that contain domain-specific terms. In combination with words from its base vocabulary, the service uses these words from the custom model to predict and transcribe speech from audio. You provide the information for a custom language model in the form of corpora, custom words, and grammars. The service stores this information in the words resource for the custom model.
 
--   When you create a custom language model that is based on a *next-generation model*, the services relies on sequences of characters from the custom model to create transcripts that reflect domain-specific terms. In combination with character sequences from the base model, the service uses these series of characters from the custom model to predict and transcribe speech from audio.
+-   When you create a custom language model that is based on a *large speech model or next-generation model*, the services relies on sequences of characters from the custom model to create transcripts that reflect domain-specific terms. In combination with character sequences from the base model, the service uses these series of characters from the custom model to predict and transcribe speech from audio.
 
     You provide the information for a custom language model in the form of corpora, custom words, and grammars. But rather than rely on a words resource that contains these words, the service extracts and stores character sequences from the corpora and custom words. The service does not extract and calculate out-of-vocabulary (OOV) words from corpora and custom words. The words resource is simply where it stores custom words that you add directly to the model.
 
@@ -134,14 +130,10 @@ Because the context is typically something like `これからＡＩはますま�
 
 Finally, in custom words, half-width alphabetic characters are converted to full-width characters. English uppercase and lowercase characters are treated as different characters.
 
-<<<<<<< HEAD
-## Working with corpora for next-generation models
-=======
 Japanese models use word for mapping ('word' -> 'display_as').
 {: note}
 
 ## Working with corpora for large speech models and next-generation models
->>>>>>> 8531dee8 (Custom models, corpora LSM updates)
 {: #workingCorpora-ng}
 
 You use the `POST /v1/customizations/{customization_id}/corpora/{corpus_name}` method to add a corpus to a custom model. A corpus is a plain text file that contains sample sentences from your domain. The following example shows an abbreviated corpus for the healthcare domain. A corpus file is typically much longer.
