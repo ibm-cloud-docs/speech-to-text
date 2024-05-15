@@ -50,6 +50,7 @@ toc:
           topics:
           - models.md
           - models-ng.md
+          - models-large-speech-language.md
           - models-migrate.md
           - models-use.md
           - models-list.md
