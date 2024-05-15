@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2024-04-19"
 
 subcollection: speech-to-text
 
@@ -15,7 +15,7 @@ content-type: troubleshoot
 # Creating a custom acoustic model
 {: #acoustic}
 
-Acoustic model customization is available only for previous-generation models. It is not available for next-generation models.
+Acoustic model customization is available only for previous-generation models. It is not available for next-generation and large speech models.
 {: note}
 
 Follow these steps to create a custom acoustic model for the {{site.data.keyword.speechtotextfull}} service:

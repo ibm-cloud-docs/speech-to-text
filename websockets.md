@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2024-05-02"
 
 subcollection: speech-to-text
 
@@ -73,6 +73,7 @@ A WebSocket client calls the `/v1/recognize` method with the following query par
 
 `model` (*optional* string)
 :   Specifies the language model to be used for transcription. If you do not specify a model, the service uses `en-US_BroadbandModel` by default. For more information, see
+    -   [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages)
     -   [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models)
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
     -   [Using the default model](/docs/speech-to-text?topic=speech-to-text-models-use#models-use-default)

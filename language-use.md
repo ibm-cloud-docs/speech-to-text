@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-04-19"
+lastupdated: "2024-05-10"
 
 subcollection: speech-to-text
 
@@ -92,6 +92,7 @@ A custom language model is a combination of the custom model and the base model 
 
 You specify the relative weight for a custom language model as a double between 0.0 to 1.0:
 
+-   For custom models that are based on large speech models, the default customization weight is 0.5.
 -   For custom models that are based on previous-generation models, the default customization weight is 0.3.
 -   For custom models that are based on most next-generation models, the default customization weight is 0.2.
 -   For custom models that are based on improved next-generation models, the default customization weight is 0.1.
@@ -162,4 +163,4 @@ If you apply a custom language model to speech recognition but find that the ser
 -   Make sure that the status of the custom model is `available`, meaning that it is fully trained and ready to use. For more information, see [Listing custom language models](/docs/speech-to-text?topic=speech-to-text-manageLanguageModels#listModels-language).
 -   Check the pronunciations that were generated for the new words to make sure that they are correct. For more information, see
     -   [Validating a words resource for previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel)
-    -   [Validating a words resource for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#validate-model-ng)
+    -   [Validating a words resource for large speech models and next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#validateModel-ng)

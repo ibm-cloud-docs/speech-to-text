@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-04-03"
+lastupdated: "2024-04-19"
 
 subcollection: speech-to-text
 
@@ -100,7 +100,6 @@ Yes, all audio that you send to the service contributes to your cumulative minut
 The Premium plan offers developers and organizations all of the capabilities and features of the Plus plan. The plan also offers these additional features:
 
 -   The ability to use {{site.data.keyword.ibmwatson}} services in the {{site.data.keyword.cloud}} with data isolation and added security features such as {{site.data.keyword.keymanagementservicefull}} (also referred to as *Bring your own keys* (BYOK)), Service Endpoints, Mutual Authentication, and US Health Insurance Portability and Accountability Act (HIPAA) readiness.
--   Significantly greater capacity of up to 500 concurrent transcriptions with the option to add more, far above the limit of 100 concurrent transcriptions for the Plus plan.
 -   Your first 150,000 minutes of speech recognition each month at no charge.
 
 To learn more or to make a purchase, [contact an {{site.data.keyword.IBM_notm}} representative](https://ibm.biz/contact-wdc-premium){: external}.

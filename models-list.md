@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2024-04-29"
 
 subcollection: speech-to-text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 # Listing information about models
 {: #models-list}
 
-The {{site.data.keyword.speechtotextfull}} service provides methods for listing information about all of its available models or about a specific previous- or next-generation model.
+The {{site.data.keyword.speechtotextfull}} service provides methods for listing information about all of its available models or about a specific large speech model, previous- or next-generation model.
 {: shortdesc}
 
 ## Model information
@@ -29,7 +29,7 @@ Regardless of whether you list information about all available models or about a
 -   `supported_features` describes the additional service features that are supported with the model:
     -   `custom_language_model` is a boolean that indicates whether you can create custom language models that are based on the model.
     -   [IBM Cloud]{: tag-ibm-cloud} `custom_acoustic_model` is a boolean that indicates whether you can create custom acoustic models that are based on the model.
-    -   `low_latency` is a boolean that indicates whether you can use the `low_latency` parameter with a next-generation model. The service includes this field only for next-generation models. Previous-generation models do not support the `low_latency` parameter.
+    -   `low_latency` is a boolean that indicates whether you can use the `low_latency` parameter with a next-generation model. The service includes this field only for next-generation models. Large speech models and previous-generation models do not support the `low_latency` parameter.
     -   `speaker_labels` indicates whether you can use the `speaker_labels` parameter with the model.
 
     The `speaker_labels` field returns `true` for all models. However, speaker labels are supported as beta functionality for only a limited number of languages. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
@@ -193,6 +193,44 @@ The model supports low latency, speakers labels, and language model customizatio
       "speaker_labels": true
    },
    "url": "{url}/v1/models/en-US_Telephony"
+}
+```
+{: codeblock}
+
+### List a specific large speech model example
+{: #models-large-speech-list-specific-example}
+
+The following example shows information about the English large speech model, `en-US`:
+
+[IBM Cloud]{: tag-ibm-cloud}
+```bash
+curl -X GET -u "apikey:{apikey}" \
+"{url}/v1/models/en-US"
+```
+{: pre}
+
+[IBM Cloud Pak for Data]{: tag-cp4d}
+```bash
+curl -X GET \
+--header "Authorization: Bearer {token}" \
+"{url}/v1/models/en-US"
+```
+{: pre}
+
+The model supports speakers labels, and language model customization. It does not support acoustic model customization and low latency.
+```javascript
+{
+  "name": "en-US",
+  "rate": 8000,
+  "language": "en-US",
+  "description": "Large US English model",
+  "supported_features": {
+    "custom_language_model": true,
+    "custom_acoustic_model": false,
+    "low_latency": false,
+    "speaker_labels": true
+    },
+  "url": "{url}/v1/models/en-US"
 }
 ```
 {: codeblock}

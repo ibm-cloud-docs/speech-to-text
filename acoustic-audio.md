@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2024-04-19"
 
 subcollection: speech-to-text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 # Managing audio resources
 {: #manageAudio}
 
-Acoustic model customization is available only for previous-generation models. It is not available for next-generation models.
+Acoustic model customization is available only for previous-generation models. It is not available for next-generation and large speech models.
 {: note}
 
 The customization interface includes the `POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}` method, which is used to add an audio resource to a custom acoustic model. For more information, see [Add audio to the custom acoustic model](/docs/speech-to-text?topic=speech-to-text-acoustic#addAudio). The interface also includes the following methods for listing and deleting audio resources for a custom acoustic model.

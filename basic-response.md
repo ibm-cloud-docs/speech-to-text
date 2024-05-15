@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-03-14"
+lastupdated: "2024-05-09"
 
 subcollection: speech-to-text
 
@@ -67,7 +67,7 @@ The `final` field indicates whether the transcript shows final transcription res
 -   The field is `true` for final results, which are guaranteed not to change. The service sends no further updates for final results.
 -   The field is `false` for interim results, which are subject to change. If you use the `interim_results` parameter with the WebSocket interface, the service returns evolving hypotheses in the form of multiple `results` fields as it transcribes the audio. For interim results, the `final` field is always `false` and the `confidence` field is always omitted.
 
-For more information about using the WebSocket interface to obtain interim results with previous- and next-generation models, see the following topics:
+For more information about using the WebSocket interface to obtain interim results with large speech models, previous- and next-generation models, see the following topics:
 
 -   [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results)
 -   [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency)
@@ -180,7 +180,7 @@ The following examples show responses with two final results from the HTTP and W
     ```
     {: codeblock}
 
-    With the WebSocket interface, responses for interim results contain more JSON objects. For more information about using the WebSocket interface to obtain interim results with previous- and next-generation models, see the following topics:
+    With the WebSocket interface, responses for interim results contain more JSON objects. For more information about using the WebSocket interface to obtain interim results with large speech models, previous- and next-generation models, see the following topics:
 
     -   [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results)
     -   [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency)
@@ -192,7 +192,7 @@ Silence of 30 seconds in streamed audio can result in an inactivity timeout. For
 ## Speech hesitations and hesitation markers
 {: #response-hesitation}
 
-Speech often includes hesitations or verbal pauses, which are also referred to as disfluencies. Hesitations occur when the user inserts fillers such as  "uhm", "uh", "hmm", and related non-lexical utterances while speaking. The service handles hesitations differently for previous- and next-generation models.
+Speech often includes hesitations or verbal pauses, which are also referred to as disfluencies. Hesitations occur when the user inserts fillers such as  "uhm", "uh", "hmm", and related non-lexical utterances while speaking. The service handles hesitations differently for large speech models, previous- and next-generation models.
 
 ### Hesitations for previous-generation models
 {: #response-hesitation-prev}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-02-27"
+lastupdated: "2024-05-10"
 
 subcollection: speech-to-text
 
@@ -13,11 +13,12 @@ subcollection: speech-to-text
 # Parameter summary
 {: #summary}
 
-The following sections provide a summary of all of the parameters that are available for speech recognition. The information includes availability for previous- and next-generation models, and support and usage for speech recognition interfaces.
+The following sections provide a summary of all of the parameters that are available for speech recognition. The information includes availability for large speech models, previous- and next-generation models, and support and usage for speech recognition interfaces.
 {: shortdesc}
 
 -   For more information about previous-generation languages and models, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
 -   For more information about next-generation languages and models, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+-   For more information about large speech languages and models, see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages);
 
 ## access_token
 {: #summary-access-token}
@@ -26,6 +27,7 @@ A required access token that you use to establish an authenticated connection wi
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
@@ -40,6 +42,7 @@ An optional customization ID for a custom acoustic model that is adapted for the
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models    | Not available. |
 | Previous-generation models | Generally available or beta for all models that support acoustic model customization. For more information, see [Customization support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
 | Next-generation models | Not available. |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
@@ -54,6 +57,7 @@ An optional boolean that indicates whether the service returns metrics about the
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -68,6 +72,7 @@ An optional float between 0.0 and 1.0 that indicates the level to which backgrou
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all language models except for `ar-MS_BroadbandModel`, `pt-BR_BroadbandModel`, `zh-CN_BroadbandModel`, `zh-CN_NarrowbandModel`, and `de-DE_BroadbandModel`. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -82,6 +87,7 @@ An optional version of a base model. The parameter is intended primarily for use
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
@@ -96,8 +102,9 @@ An optional float between -1.0 and 1.0 that indicates whether the service is bia
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Not available. |
 | Previous-generation models | Not available. |
-| Next-generation models     | Beta for all models. |
+| Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -110,6 +117,7 @@ An optional audio format (MIME type) that specifies the format of the audio data
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | `content-type` parameter of JSON `start` message |
@@ -124,6 +132,7 @@ An optional double between 0.0 and 1.0 that indicates the relative weight that t
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. The default value is 0.5. |
 | Previous-generation models | Generally available or beta for all models that support language model customization. The default value is 0.3. For more information, see [Customization support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
 | Next-generation models     | Generally available or beta for all models that support language model customization. The default value is 0.2 for most next-generation models; it is 0.1 for models that are based on new language model customization technology. For more information, see [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). |
 | WebSocket              | Parameter of JSON `start` message |
@@ -138,6 +147,7 @@ An optional double between 0.0 and 120.0 that indicates the pause interval at wh
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -152,6 +162,7 @@ An optional string that identifies a grammar that is to be used for speech recog
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Not available. |
 | Previous-generation models | Generally available or beta for all models that support language model customization. For more information, see [Customization support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
 | Next-generation models     | Generally available or beta for all models that support language model customization. For more information, see [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). |
 | WebSocket              | Parameter of JSON `start` message |
@@ -166,6 +177,7 @@ An optional integer that specifies the number of seconds for the service's inact
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -180,6 +192,7 @@ An optional boolean that directs the service to return intermediate hypotheses t
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Not available. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for next-generation models that support low latency, but only if both the `interim_results` and `low_latency` parameters are set to `true`. For more information, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency). |
 | WebSocket              | Parameter of JSON `start` message |
@@ -194,6 +207,7 @@ An optional array of keyword strings that the service spots in the input audio. 
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Not available. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -208,6 +222,7 @@ An optional double between 0.0 and 1.0 that indicates the minimum threshold for 
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Not available. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -222,6 +237,7 @@ An optional customization ID for a custom language model that includes terminolo
 
 | Availability and usage | Description |
 |------------------------|-------------|
+Large speech models          | Generally available for all languages. |
 | Previous-generation models | Generally available or beta for all models that support language model customization. For more information, see [Customization support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
 | Next-generation models     | Generally available or beta for all models that support language model customization. For more information, see [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
@@ -236,6 +252,7 @@ An optional boolean that indicates whether the service is to produce results mor
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Not available. |
 | Previous-generation models | Not available. |
 | Next-generation models     | Generally available or beta for next-generation models that support low latency. For more information, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported). |
 | WebSocket              | Parameter of JSON `start` message |
@@ -250,6 +267,7 @@ An optional integer that specifies the maximum number of alternative hypotheses 
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Not available. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -264,6 +282,7 @@ An optional model that specifies the language in which the audio is spoken and t
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
@@ -278,6 +297,7 @@ An optional boolean that indicates whether the service returns metrics about its
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Not available. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -292,6 +312,7 @@ An optional float of at least 0.1 that indicates the interval at which the servi
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Not available. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -306,8 +327,9 @@ An optional boolean that indicates whether the service censors profanity from a 
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Previous-generation models | Generally available for US English and Japanese. |
-| Next-generation models     | Generally available for US English and Japanese. |
+| Large speech models        | Generally available for all languages. |
+| Previous-generation models | Generally available for all languages. |
+| Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -320,6 +342,7 @@ An optional boolean that indicates whether the service redacts numeric data with
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Beta for English and Japanese. |
 | Previous-generation models | Beta for US English, Japanese, and Korean. |
 | Next-generation models     | Beta for US English, Japanese, and Korean. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -334,8 +357,9 @@ An optional boolean that indicates whether the service converts dates, times, nu
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Previous-generation models | Beta for US English, Japanese, and Spanish (all dialects). |
-| Next-generation models     | Beta for US English, Japanese, and Spanish (all dialects). It also also available for the `en-WW_Medical_Telephony` model when US English audio is recognized. |
+| Large speech models        | Generally available for all languages. |
+| Previous-generation models | Generally available for US English, Japanese, and Spanish (all dialects). |
+| Next-generation models     | Generally available for US English, Japanese, and Spanish (all dialects). It also also available for the `en-WW_Medical_Telephony` model when US English audio is recognized. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -348,9 +372,12 @@ An optional boolean that indicates whether the service converts dates, times, nu
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models | Generally available for all languages except Japanese. |
 | Previous-generation models | Not supported.|
-| Next-generation models | Available for US English (including en-WW_Medical_Telephony), Brazilian Portuguese, French and German. |
-| WebSocket              | The service disables interim results. |
+| Next-generation models | Generally available only for US English (including en-WW_Medical_Telephony), Brazilian Portuguese, France French, German, Canadian French and Spanish. |
+| WebSocket              | Parameter of JSON `start` message. The service disables interim results.  |
+| Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
+| Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
 {: caption="Table 23a. The smart_formatting_version parameter"}
 
 ## speaker_labels
@@ -360,8 +387,9 @@ An optional boolean that indicates whether the service identifies which individu
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Previous-generation models | Beta for US English, Australian English, German, Japanese, Korean, and Spanish (broadband and narrowband models) and UK English (narrowband model only). |
-| Next-generation models     | Beta for Czech, English (Australian, Indian, UK, and US), German, Japanese, Korean, and Spanish. |
+| Large speech models        | Beta for all languages. |
+| Previous-generation models | Beta for all languages. |
+| Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -374,6 +402,7 @@ An optional float between 0.0 and 1.0 that indicates the sensitivity of speech r
 
 | Availability and usage | Description |
 |------------------------|-------------|
+Large speech models          | Generally available for all languages. |         
 | Previous-generation models | Generally available for all language models except for `ar-MS_BroadbandModel`, `pt-BR_BroadbandModel`, `zh-CN_BroadbandModel`, `zh-CN_NarrowbandModel`, and `de-DE_BroadbandModel`. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -388,6 +417,7 @@ An optional boolean that indicates whether the service splits a transcript into 
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Not available. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -402,6 +432,7 @@ An optional boolean that indicates whether the service produces timestamps for t
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -416,6 +447,7 @@ An optional value of `chunked` that causes the audio to be streamed to the servi
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Not applicable; always streamed |
@@ -430,6 +462,7 @@ An optional double between 0.0 and 1.0 that specifies the threshold at which the
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Not available. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Not available. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -444,6 +477,7 @@ An optional boolean that indicates whether the service provides confidence measu
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
@@ -460,6 +494,7 @@ An optional boolean that indicates whether you opt out of the default request lo
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | `x-watson-learning-opt-out` query parameter of `/v1/recognize` connection request |
@@ -474,6 +509,7 @@ An optional string that associates a customer ID with data that is passed for re
 
 | Availability and usage | Description |
 |------------------------|-------------|
+| Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | `x-watson-metadata` query parameter of `/v1/recognize` connection request. (You must URL-encode the argument, for example, `customer_id%3dmy_customer_ID`.) |

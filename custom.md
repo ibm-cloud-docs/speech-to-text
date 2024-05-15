@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-04-28"
+lastupdated: "2024-05-09"
 
 subcollection: speech-to-text
 
@@ -34,7 +34,7 @@ The *language model customization* interface can improve the accuracy of speech 
 
 You create a custom language model and add corpora and words specific to your domain. Once you train the custom language model on your enhanced vocabulary, you can use it for customized speech recognition. The service can typically train any custom model in a matter of minutes. The time and effort that are needed to create a custom model depend on the data that you have available for the model.
 
-Language model customization is available for both previous-generation and next-generation models, but customization works differently for previous- and next-generation models. The documentation describes the differences. For more information about getting started with language model customization, see
+Language model customization is available for large speech models, previous-generation and next-generation models, but customization works differently for large speech models, previous- and next-generation models. The documentation describes the differences. For more information about getting started with language model customization, see
 
 -   [Creating a custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate)
 -   [Using a custom language model for speech recognition](/docs/speech-to-text?topic=speech-to-text-languageUse)
@@ -82,7 +82,7 @@ Supported next-generation language models:
 ## Acoustic model customization
 {: #customAcoustic-intro}
 
-Acoustic model customization is available only for previous-generation models. It is not available for next-generation models.
+Acoustic model customization is available only for previous-generation models. It is not available for large speech models and next-generation models.
 {: note}
 
 The service was developed with base acoustic models that work well for various audio characteristics. But in cases like the following, adapting a base model to suit your audio can improve speech recognition:
@@ -110,6 +110,9 @@ Custom language models allow you to expand the service's base vocabulary. *Gramm
 
 You add a grammar to a custom language model and train the model just as you do for a corpus. Unlike a corpus, however, you must explicitly specify that a grammar is to be used with a custom model during speech recognition.
 
+*Grammars* is available only for previous- and next-generation models. It is not available for large speech models.
+{: note}
+
 For more information about getting started with grammars, see
 
 -   [Using grammars with custom language models](/docs/speech-to-text?topic=speech-to-text-grammars)
@@ -132,12 +135,12 @@ For more information, see [Using custom acoustic and custom language models toge
 ## Upgrading custom models
 {: #upgrading-intro}
 
-To improve the quality of speech recognition, the service occasionally updates base previous- and next-generation models. An update to a base model affects only that model. The update does not affect any other models of the same or different languages.
+To improve the quality of speech recognition, the service occasionally updates base large speech models, previous- and next-generation models. An update to a base model affects only that model. The update does not affect any other models of the same or different languages.
 
 An update to a base model can require that you upgrade any custom models that are built on that base model to take advantage of the improvements. An update to a base model that requires an upgrade produces a new version of the base model. An update that does not require an upgrade does not produce a new version.
 
 -   *For previous-generation models,* all updates to a base model produce a new version of the model. When a new version of a base model is released, you must upgrade any custom language and custom acoustic models that are built on the updated base model to take advantage of the improvements.
--   *For next-generation models,* most updates do not produce a new version of the model. These updates do not require that you upgrade your custom models. Some updates, however, do generate a new version of a base model. You must upgrade any custom language models that are built on the updated base model to take advantage of the improvements.
+-   *For large speech models and next-generation models,* most updates do not produce a new version of the model. These updates do not require that you upgrade your custom models. Some updates, however, do generate a new version of a base model. You must upgrade any custom language models that are built on the updated base model to take advantage of the improvements.
 
 All updates to base models and whether they require upgrades are announced in the release notes:
 

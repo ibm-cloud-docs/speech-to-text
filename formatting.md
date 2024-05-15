@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2024-05-09"
 
 subcollection: speech-to-text
 
@@ -19,7 +19,7 @@ The {{site.data.keyword.speechtotextfull}} service provides three features that 
 ## Smart formatting Version 2
 {: #smart-formatting-version}
 
-The new version of smart formatting feature is available for US English, Brazilian Portuguese, French and German. It is also available for the en-WW_Medical_Telephony model when US English audio is recognized. 
+The new version of smart formatting feature is available for US English, Brazilian Portuguese, French, German, Castilian Spanish, Spanish Latin American, and French Canadian. It is also available for the en-WW_Medical_Telephony model when US English audio is recognized. 
 
 The new version:
 -	provides more flexibility in adding new languages and patterns compared to older smart formatting. 
@@ -182,6 +182,86 @@ The following table shows examples of final transcripts both with and without sm
 |                 | deux cents kilomètres heure                                  | 200 km/h                  |
 | Sequences       | le document numéro zéro deux trente-six vingt-quatre         | le document numéro 023624 |
 |                 | r t x dix-huit t i                                           | rtx18ti                   |
+{: caption="Table 2. Smart formatting example transcripts"}
+
+#### French-Canadian
+{: #smart-formatting-fr-ca}
+-   In dates, the ordinal`premier` is considered 1st of the month. The dates are formatted as `DD/MM/YYYY`. 
+-   Times are identified by keywords and prefix e.g. `heures`, `de l'après-midi` or `du soir`, `du matin`, `midi`. Times are formatted as 24H clock : `HH h MM`
+-   Phone numbers must be either `911` or a number that contains 10 digits and/or starts with the number `[+]1`.
+-   Internet email addresses with common format ( e.g. `[alphanumeric+symbols]+ arobase [alphanumeric point]+ domainname` ) are smart formatted. `@` can be represented by any of these: `arobase`, `chez`, `at`, `à`.
+-   Cardinals below nine are not converted if they occur in midst of other text(in order to avoid `j'ai un pomme` -> `j'ai 1 pomme` and any other odd conversions). They are still formatted if they occur in isolation with no other text.
+-   Formatting of Fractions is supported. e.g.`un onzième` -> `1/11`
+-   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken/dictated punctuation symbols for the keyword strings.
+    - `virgule` (`,`), `point` (`.`), `point d'interrogation` (`?`), `point d'exclamation` (`!`), `point-virgule` (`;`), `trait d'union` (`-`), etc.
+
+### Smart formatting Examples
+{: #smart-formatting-examples}
+
+The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
+
+| Entity Type     | Without smart formatting                                     | With smart formatting     |
+|-----------------|--------------------------------------------------------------|---------------------------|
+| Dates           | vingt-quatre juillet deux-mille-treize                       | 24/7/2013                 |
+|                 | dix-huit mai dix-neuf cent trente                            | 18/5/1930                 |
+| Times           | huit heures du matin                                         | 8 h                       |
+|                 | onze heures cinquante-sept                                   | 11 h 57                   |
+|                 | deux heures de l'après-midi                                  | 14 h                      |
+| Numbers         | cent quarante-sept mille quatre cent cinquante et une        | 147451                    |
+|                 | moins vingt-cinq-mille-trente-sept                           | 25037                     |
+|                 | vingt-troisièmes                                             | 23es                      |
+|                 | quatre et deux quatrièmes                                    | 4 2/4                     |
+| Phone numbers   | plus un cinq un quatre cinq cinq cinq un deux trois quatre   | +1 (514) 555-1234         |
+|                 | cinq un quatre quatre six neuf deux un zéro zéro             | 02 12 32 30 30            |
+| Currency values | deux dollars vingt                                           | 2,20 $                    |
+|                 | vingt dollars cinq                                           | 20,05 $                    |
+|                 | quatre virgule quatre-vingt milliards d'euros                | 4,80 milliards d'euros    |
+| Email, URL, IP  | a b trois point s d d point trois arobase g mail point com   | ab3.sdd.3@gmail.com       |
+|                 | w w w point web point c o point f r                          | www.web.co.fr             |
+|                 | double neuf dot trente-deux dot trente dot trente            | (514) 469-210             |
+| Measures        | quarante-deux-mille-deux-cent-cinquante-neuf par mètre carré | 42 259 /m²                |
+|                 | deux cents kilomètres heure                                  | 200 km/h                  |
+| Sequences       | le document numéro zéro deux trente-six vingt-quatre         | le document numéro 023624 |
+|                 | r t x dix-huit t i                                           | rtx18ti                   |
+{: caption="Table 2. Smart formatting example transcripts"}
+
+#### Spanish
+{: #smart-formatting-es-es}
+-   In dates, the ordinal`primero` is considered 1st of the month. The dates are formatted as `DD/MM/YYYY`. 
+-   Times on the hour or time without an article followed by a suffix (indicating 'a.m.' or 'p.m.'), it will be converted .e.g `las dos pe eme`. Times are formatted as 24H clock : `HH h MM` or as 12H clock with a.m./p.m.
+-   Telephone numbers must have 8, 9 or 10 digits. Numbers are formatted as `NNNN NNNN` or `NNN NNN NNN` or `NNN NNN NNNN`
+-   Internet email addresses with common format ( e.g. `[alphanumeric+symbols]+ arroba [alphanumeric punto]+ domainname` ) are smart formatted.
+-   Cardinals below nine are not converted if they occur in midst of other text(in order to avoid `un gato en el camino` -> `1 gato en el camino` and any other odd conversions). They are still formatted if they occur in isolation with no other text.
+-   Formatting of Fractions is supported. e.g.`un décimo` -> `1/10`
+-   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken/dictated punctuation symbols for the keyword strings.
+    - `punto` (`.`), `interrogación` (`?`), `exclamación` (`!`), `punto y coma` (`;`), `guion medio` (`-`), etc.
+
+### Smart formatting Examples
+{: #smart-formatting-examples}
+
+The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
+
+| Entity Type     | Without smart formatting                                     | With smart formatting     |
+|-----------------|--------------------------------------------------------------|---------------------------|
+| Dates           | treinta y uno de diciembre de mil novecientos noventa y dos  | 31/12/1992                |
+|                 | dieciséis de septiembre dos mil dieciocho                    | 16/09/2018                |
+| Times           | las dieciséis cincuenta                                      | las 16:50                 |
+|                 | las dos a eme                                                | las 2:00 a.m.             |
+| Numbers         | mil novecientos cincuenta y ocho                             | 1958                      |
+|                 | once mil novecientos cincuenta y ocho                        | 11958                     |
+|                 | décima primera                                               | 11ª                       |
+|                 | un cuarentiunavo                                             | 1/41                      |
+| Phone numbers   | nueve uno cuatro cinco cinco seis ocho tres tres uno         | 914 556 8331              |
+|                 | uno dos tres cuatro cinco seis siete ocho                    | 1234 5678                 |
+| Currency values | dos euros noventa centavos                                   | €2,90                     |
+|                 | doce euros y cinco centavos                                  | €12,05                    |
+|                 | nueve punto cinco millones de pesos                          | $9.5 millones             |
+| Email, URL      | a b c arroba g mail punto a b c                              | abc@gmail.abc             |
+|                 | doble uve doble uve doble uve punto nvidia punto com         | www.nvidia.com            |
+| Measures        | tres metros cúbicos                                          | 3 m³                      |
+|                 | dos kilómetros por hora                                      | 2 kph                     |
+| Sequences       | cero dos tres seis dos cuatro                                | 023624                    |
+|                 | r t x cero dos tres w                                        | rtx023w                   |
 {: caption="Table 2. Smart formatting example transcripts"}
 
 #### German

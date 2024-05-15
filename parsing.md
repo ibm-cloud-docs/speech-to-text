@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-02-27"
+lastupdated: "2024-05-13"
 
 subcollection: speech-to-text
 
@@ -157,6 +157,8 @@ However, the degree to which custom language models and grammars influence the s
 
 Regardless, the service can still produce multiple final results in response to pauses and silence. If you omit the `split_transcript_at_phrase_end` parameter or set it to `false`, the service splits transcripts based solely on the pause interval. The pause interval has precedence over splitting due to semantic features. And if used together on a single request, the `end_of_phrase_silence_time` parameter has precedence over the `split_transcript_at_phrase_end` parameter. For more information, see [End of phrase silence time](#silence-time).
 
+Split transcript at phrase end is not available with large speech models. {: note}
+
 ### Split transcript at phrase end results
 {: #split-transcript-results}
 
@@ -291,10 +293,9 @@ The service returns three final results, adding a result for the semantic stop a
 ## Character insertion bias
 {: #insertion-bias}
 
-The `character_insertion_bias` parameter is beta functionality that is available for all next-generation models. The parameter is not available for previous-generation models.
-{: beta}
+The `character_insertion_bias` parameter is a functionality that is available for all next-generation models. The parameter is not available for large speech models and previous-generation models.
 
-The `character_insertion_bias` parameter controls the service's bias for competing strings of different lengths during speech recognition. With next-generation models, the service parses audio character by character. As it does, it establishes hypotheses of previous character strings to help determine viable next characters. During this process, it collects candidate strings of different lengths.
+The `character_insertion_bias` parameter controls the service's bias for competing strings of different lengths during speech recognition. With large speech models and next-generation models, the service parses audio character by character. As it does, it establishes hypotheses of previous character strings to help determine viable next characters. During this process, it collects candidate strings of different lengths.
 
 By default, each model uses a default `character_insertion_bias` of 0.0. This value is optimized to produce the best balance between hypotheses with different numbers of characters. The default is typically adequate for most speech recognition. However, certain use cases might benefit from favoring hypotheses with shorter or longer strings of characters. In such cases, specifying a change from the default can improve speech recognition.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2024-04-30"
 
 subcollection: speech-to-text
 
@@ -13,13 +13,14 @@ subcollection: speech-to-text
 # Using a model for speech recognition
 {: #models-use}
 
-You use the `model` parameter of a speech recognition request to indicate the model that is to be used with the request. You can specify a previous- or next-generation model with the parameter.
+You use the `model` parameter of a speech recognition request to indicate the model that is to be used with the request. You can specify a large speech model, previous- or next-generation model with the parameter.
 {: shortdesc}
 
 For more information about the models that are available for speech recognition, see
 
 -   [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models)
 -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
+-   [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages)
 
 ## Specify a previous-generation model example
 {: #models-pg-specify-example}
@@ -70,6 +71,32 @@ curl -X POST \
 --header "Content-Type: audio/wav" \
 --data-binary @{path}audio-file.wav \
 "{url}/v1/recognize?model=en-US_Telephony"
+```
+{: pre}
+
+## Specify a large speech model example
+{: #models-lsm-specify-example}
+
+The following example HTTP request uses the large speech model `en-US` for speech recognition:
+
+[IBM Cloud]{: tag-ibm-cloud}
+
+```sh
+curl -X POST -u "apikey:{apikey}" \
+--header "Content-Type: audio/wav" \
+--data-binary @{path}audio-file.wav \
+"{url}/v1/recognize?model=en-US"
+```
+{: pre}
+
+[IBM Cloud Pak for Data]{: tag-cp4d}
+
+```sh
+curl -X POST \
+--header "Authorization: Bearer {token}" \
+--header "Content-Type: audio/wav" \
+--data-binary @{path}audio-file.wav \
+"{url}/v1/recognize?model=en-US"
 ```
 {: pre}
 

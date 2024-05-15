@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2024-04-19"
 
 subcollection: speech-to-text
 
@@ -110,7 +110,7 @@ curl -X POST \
 
 The `speech_detector_sensitivity` and `background_audio_suppression` parameters are supported for use with the following language models:
 
--   *For next-generation models,* the parameters are supported with all models.
+-   *For large speech models and next-generation models,* the parameters are supported with all models.
 -   *For previous-generation models,* the parameters are supported with most models. The following models do *not* support speech activity detection at this time. The parameters are ignored if used with these models.
     -   Arabic broadband model (`ar-MS_BroadbandModel`)
     -   Brazilian Portuguese broadband model (`pt-BR_BroadbandModel`)

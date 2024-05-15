@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-07-27"
+lastupdated: "2024-04-22"
 
 subcollection: speech-to-text
 
@@ -116,3 +116,22 @@ In the *Language model customization* column, an *(improved)* date indicates whe
 | Spanish  \n (Argentinian, Chilean,  \n Colombian, Mexican,  \n and Peruvian) | `es-LA_Telephony` | GA | GA |
 | Swedish | `sv-SE_Telephony` | GA | GA |
 {: caption="Table 2. Next-generation language support for customization"}
+
+## Customization support for large speech models
+{: #custom-language-support-lsm}
+
+Table 3 lists the large speech models that are supported for language model customization and grammars. Large speech models do not support acoustic model customization. To learn which models are supported for speech recognition for {{site.data.keyword.cloud}}, {{site.data.keyword.icp4dfull}}, or both, see [Supported large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-supported-languages).
+
+Make sure to check for a date for the version of the service that you use, {{site.data.keyword.cloud_notm}} or {{site.data.keyword.icp4dfull_notm}}.
+{: note}
+
+| Language (dialect) |  Models | Language model customization | Grammars |
+|------------------------|:-----------:|:----------------------------------------:|:----------------------------------------:|
+| English  \n (Australian) | `en-AU` | GA \n [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | N/A |
+| English  \n (Indian) | `en-IN` | GA \n [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | N/A |
+| English \n (United Kingdom) | `en-GB` | GA \n [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | N/A |
+| English \n (United States) | `en-US` | GA \n [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | N/A |
+| French \n (Canadian) | `fr-CA` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | N/A |
+| French \n (France) | `fr-FR` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | N/A |
+| Japanese | `ja-JP` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | N/A |
+{: caption="Table 3. Large speech models language support for customization"}

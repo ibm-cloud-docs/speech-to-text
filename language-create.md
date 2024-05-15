@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2024-05-10"
 
 subcollection: speech-to-text
 
@@ -18,7 +18,7 @@ content-type: troubleshoot
 Follow these steps to create, add contents to, and train a custom language model for the {{site.data.keyword.speechtotextfull}} service:
 {: shortdesc}
 
-1.  [Create a custom language model](#createModel-language). You can create multiple custom models for the same or different domains. The process is the same for any model that you create. Language model customization is available for most previous-generation models and for all next-generation models. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
+1.  [Create a custom language model](#createModel-language). You can create multiple custom models for the same or different domains. The process is the same for any model that you create. Language model customization is available for all large speech models, most previous-generation models and for all next-generation models. For more information, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
 1.  [Add a corpus to the custom language model](#addCorpus). A corpus is a plain text document that uses terminology from the domain in context. You can add multiple corpora serially, one at a time, to a custom model. *For custom models that are based on previous-generation models,* the service builds a vocabulary for a custom model by extracting terms from corpora that do not exist in its base vocabulary. *For custom models that are based on next-generation models,* the service extracts character sequences rather than words from corpora.
 1.  [Add words to the custom language model](#addWords). You can also add custom words to a model individually. You can specify how the words from a custom model are to be displayed in a speech transcript and how they are pronounced in audio. *For custom models that are based on previous-generation models,* you can also modify custom words that are extracted from corpora.
 1.  [Train the custom language model](#trainModel-language). After you add corpora and words to the custom model, you must train the model. Training prepares the custom model for use in speech recognition. The model does not use new or modified corpora or words until you train it.
@@ -105,8 +105,10 @@ The example returns the customization ID of the new model. Each custom model is 
 
 Once you create your custom language model, the next step is to add domain-specific data to the model. The recommended means of populating a custom model is to add one or more corpora. A corpus is a plain text file that ideally contains sample sentences from your domain.
 
+-   *For custom models that are based on large speech models,* the service parses and extracts word sequences from one or multiple corpora files. The characters help the service learn and predict character sequences from audio. For more information about using corpora with custom models that are based on large speech models, see [Working with corpora for large speech models and next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#workingCorpora-ng).
+
 -   *For custom models that are based on previous-generation models,* the service parses a corpus file and extracts any words that are not in its base vocabulary. Such words are referred to out-of-vocabulary (OOV) words. For more information about using corpora with custom models that are based on previous-generation models, see [Working with corpora for previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords#workingCorpora).
--   *For custom models that are based on next-generation models,* the service parses and extracts character sequences from a corpus file. The characters help the service learn and predict character sequences from audio. For more information about using corpora with custom models that are based on next-generation models, see [Working with corpora for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#workingCorpora-ng).
+-   *For custom models that are based on next-generation models,* the service parses and extracts character sequences from a corpus file. The characters help the service learn and predict character sequences from audio. For more information about using corpora with custom models that are based on next-generation models, see [Working with corpora for large speech models and next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#workingCorpora-ng).
 
 By providing sentences that include domain-specific words, corpora allow the service to learn the words and character sequences in context. You can also augment and modify a model's words individually. Training a model only on individual words as opposed to words added from corpora is more time-consuming and can produce less effective results.
 {: tip}
@@ -205,12 +207,12 @@ Although adding corpora is the recommended means of adding words to a custom lan
 If you have only one or a few words to add to a model, using corpora to add the words might not be practical or even viable. The simplest approach is to add a word with only its spelling. But you can also indicate how the word is to be displayed and one or more pronunciations for the word.
 
 -   For more information about adding words to a custom model that is based on a *previous-generation model*, see [Working with custom words for previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords#workingWords).
--   For more information about adding words to a custom model that is based on *next-generation model*, see [Working with custom words for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#workingWords-ng).
+-   For more information about adding words to a custom model that is based on *large speech models and next-generation models*, see [Working with custom words for large speech models and next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#workingWords-ng).
 
 After you add words to a custom model, examine the new custom words to check for typographical and other errors. This check is especially important when you add multiple words at one time.
 
 -   *For custom models that are based on previous-generation models,* see [Validating a words resource for previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel).
--   *For custom models that are based on next-generation models,* see [Validating a words resource for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#validateModel-ng).
+-   *For custom models that are based on large speech models and next-generation models,* see [Validating a words resource for large speech models and next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#validateModel-ng).
 
 ### Add words with the POST method
 {: #add-words-push}
@@ -399,7 +401,7 @@ The method includes the following optional query parameters:
 
     *For custom models that are based on previous-generation models,* this option is useful if you add corpora with noisy data, such as words that contain typographical errors. Before training the model on such data, you can use the `word_type` query parameter of the `GET /v1/customizations/{customization_id}/words` method to review words that are extracted from corpora and grammars. For more information, see [Listing custom words from a custom language model](/docs/speech-to-text?topic=speech-to-text-manageWords#listWords).
 
-    *For custom models that are based on next-generation models,*  the service ignores the `word_type_to_add` parameter. The words resource contains only custom words that the user adds or modifies directly, so the parameter is unnecessary.
+    *For custom models that are based on large speech models and next-generation models,*  the service ignores the `word_type_to_add` parameter. The words resource contains only custom words that the user adds or modifies directly, so the parameter is unnecessary.
 -   The `customization_weight` parameter specifies the relative weight that is given to words from the custom model as opposed to words from the base vocabulary when the custom model is used for speech recognition. You can also specify a customization weight with any recognition request that uses the custom model. For more information, see [Using customization weight](/docs/speech-to-text?topic=speech-to-text-languageUse#weight).
 -   The `strict` parameter indicates whether training is to proceed if the custom model contains a mix of valid and invalid resources (corpora, words, and grammars). By default, training fails if the model contains one or more invalid resources. Set the parameter to `false` to allow training to proceed as long as the model contains at least one valid resource. The service excludes invalid resources from the training. For more information, see [Training failures for custom language models](#failedTraining-language).
 
@@ -408,7 +410,7 @@ The method includes the following optional query parameters:
 
 The service returns a 200 response code if it initiates the training process successfully. The service cannot accept subsequent training requests, or requests to add new corpora, words, or grammars, until the existing request completes.
 
-Adding custom words directly to a custom model that is based on a next-generation model, as described in [Add words to the custom language model](#addWords), causes training of a model to take a few minutes longer than it otherwise would. If you are training a model with custom words that you added by using the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method, allow for some minutes of extra training time for the model.
+Adding custom words directly to a custom model that is based on a large speech model or next-generation model, as described in [Add words to the custom language model](#addWords), causes training of a model to take a few minutes longer than it otherwise would. If you are training a model with custom words that you added by using the `POST /v1/customizations/{customization_id}/words` or `PUT /v1/customizations/{customization_id}/words/{word_name}` method, allow for some minutes of extra training time for the model.
 {: note}
 
 To determine the status of a training request, use the `GET /v1/customizations/{customization_id}` method to poll the model's status. The method accepts the customization ID of the model:
@@ -487,6 +489,6 @@ If the training request fails with a status code of 400, the service sets the cu
 
     For more information about validating the words in a custom language model, see
     -   [Validating a words resource for previous-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords#validateModel)
-    -   [Validating a words resource for next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#validateModel-ng).
+    -   [Validating a words resource for large speech models and next-generation models](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#validateModel-ng).
 
 -   Set the `strict` parameter of the `POST /v1/customizations/{customization_id}/train` method to `false` to exclude invalid resources from the training. The model must contain at least one valid resource (corpus, word, or grammar) for training to succeed. The `strict` parameter is useful for training a custom model that contains a mix of valid and invalid resources.

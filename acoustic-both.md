@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2024-04-19"
 
 subcollection: speech-to-text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 # Using custom acoustic and custom language models together
 {: #useBoth}
 
-Acoustic model customization is available only for previous-generation models.  It is not available for next-generation models.
+Acoustic model customization is available only for previous-generation models.  It is not available for next-generation and large speech models.
 {: note}
 
 You can improve speech recognition accuracy by using complementary custom language and custom acoustic models. You can use both types of model during training of your acoustic model, during speech recognition, or both. The custom language and custom acoustic models must be owned by the same service instance, and both must customize the same base language model.

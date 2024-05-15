@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-07-27"
+lastupdated: "2024-05-09"
 
 subcollection: speech-to-text
 
@@ -21,15 +21,16 @@ The {{site.data.keyword.speechtotextfull}} service offers many advanced features
 
 The service supports speech recognition for the many languages listed in [Language support](/docs/speech-to-text?topic=speech-to-text-about#about-languages). The service provides different models for the languages that it supports. Most language models are generally available (GA) for production use; a few are beta and subject to change.
 
--   For most languages, the service offers previous-generation *Broadband* and *Narrowband* models. Most previous-generation models are GA. For more information, see [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models).
--   For a growing set of languages, the service offers next-generation *Multimedia* and *Telephony* models that improve upon the speech recognition capabilities of the previous-generation models. All next-generation models are GA. Next-generation models return results with greater throughput and higher accuracy than previous-generation models. For more information, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
+-   For some languages, the service offers large speech models. For more information, see [Supported large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages).
+-   The service also offers next-generation *Multimedia* and *Telephony* models that improve upon the speech recognition capabilities of the previous-generation models. All next-generation models are GA. Next-generation models return results with greater throughput and higher accuracy than previous-generation models. For more information, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 
 For most languages, you can transcribe audio at one of two sampling rates:
 
 -   Use *Broadband* or *Multimedia* models for audio that is sampled at a minimum sampling rate of 16 kHz.
 -   Use *Narrowband* or *Telephony* models for audio that is sampled at a minimum sampling rate of 8 kHz.
+-   Large speech models supports both audio sampled at sampling rates of either 8 kHz or 16 kHz.
 
-Starting **August 1, 2023**, all previous-generation models are now **discontinued** from the service. New clients must now only use the next-generation models. All existing clients must now migrate to the equivalent next-generation model. For more information, see [Migrating to next-generation models](/docs/speech-to-text?topic=speech-to-text-models-migrate).
+Starting **August 1, 2023**, all previous-generation models are now **discontinued** from the service. New clients must now only use the large speech models or next-generation models. All existing clients must now migrate to the equivalent large speech model or next-generation model. For more information, see [Migrating to large speech models](/docs/speech-to-text?topic=speech-to-text-models-migrate).
 {: attention}
 
 ## Using audio formats
@@ -76,7 +77,7 @@ The WebSocket interface has a number of advantages over the HTTP interface. The 
 -   Reduces latency. Recognition results arrive faster because the service sends them directly to the client. The HTTP interface requires four distinct requests and connections to achieve the same results.
 -   Reduces network utilization. The WebSocket protocol is lightweight. It requires only a single connection to perform live-speech recognition.
 -   Enables audio to be streamed directly from browsers (HTML5 WebSocket clients) to the service.
--   Returns results as soon as they are available when you use a next-generation model or request interim results.
+-   Returns results as soon as they are available when you use a large speech model, next-generation model or request interim results.
 
 ## Using speech recognition parameters
 {: #features-parameters}
@@ -103,7 +104,11 @@ Use the new parameter speech_begin_event to receive a notification event the mom
 {: #features-interim-results}
 
 -   [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results) are intermediate hypotheses that the service returns as transcription progresses. They are available only with the WebSocket interface. The service returns final results when a transcript is complete. With the HTTP interfaces, the service always transcribes the entire audio stream before sending any results.
+
+Interim results are not available with large speech models. {: note}
 -   [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency), when used with certain next-generation models, directs the service to produce final results even more quickly than the models usually do. Low latency is available with the WebSocket and HTTP interfaces. Although low latency further enhances the already improved response times of the models, it might reduce transcription accuracy. When you use the next-generation models with the WebSocket interface, low latency is required to obtain interim results.
+
+Low latency is not available with large speech models. {: note}
 
 ### Speech activity detection
 {: #features-detection}
@@ -116,7 +121,11 @@ Use the new parameter speech_begin_event to receive a notification event the mom
 
 -   [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-parsing#silence-time) specifies the duration of the pause interval at which the service splits a transcript into multiple final results in response to silence. If the service detects pauses or extended silence before it reaches the end of the audio stream, its response can include multiple final results. You can increase or decrease the pause interval to affect the results that you receive.
 -   [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-parsing#split-transcript) directs the services to split a transcript into multiple final results for semantic features such as sentences. The service bases its understanding of semantic features on the base language model that you use with a request. Custom language models and grammars can also influence how and where the service splits a transcript.
--   [Character insertion bias](/docs/speech-to-text?topic=speech-to-text-parsing#insertion-bias) specifies whether a next-generation model is to favor shorter or longer strings as it develops hypotheses during speech recognition. As it develops transcription hypotheses, the service optimizes how it parses audio to balance between competing strings of different lengths. You can indicate that the service is to bias its analysis toward shorter or longer strings.
+
+Split transcript at phrase end is not available with large speech models. {: note}
+-   [Character insertion bias](/docs/speech-to-text?topic=speech-to-text-parsing#insertion-bias) specifies whether a large speech model or next-generation model is to favor shorter or longer strings as it develops hypotheses during speech recognition. As it develops transcription hypotheses, the service optimizes how it parses audio to balance between competing strings of different lengths. You can indicate that the service is to bias its analysis toward shorter or longer strings.
+
+Character insertion bias is not available with large speech models. {: note}
 
 ### Speaker labels
 {: #features-speaker-labels}
@@ -129,9 +138,13 @@ Use the new parameter speech_begin_event to receive a notification event the mom
 -   [Keyword spotting](/docs/speech-to-text?topic=speech-to-text-spotting#keyword-spotting) identifies spoken phrases that match specified keyword strings with a user-defined level of confidence. Keyword spotting is especially useful when individual phrases from the audio are more important than the full transcription. For example, a customer support system might identify keywords to determine how to route user requests.
 -   [Word alternatives](/docs/speech-to-text?topic=speech-to-text-spotting#word-alternatives) request alternative words that are acoustically similar to the words of a transcript. The words that it identifies must meet a minimum confidence threshold that is specified by the user. The service identifies similar-sounding words and provides their start and end times, as well as its confidence in the possible alternatives.
 
+These features are only supported for previous-generation models. They are not supported for large speech models and next-generation models. 
+{: note}
+
 ### Response formatting and filtering
 {: #features-response-formatting}
 
+-   [Smart formatting version 2](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-version) is the new improved feature that converts dates, times, numbers, alphanumerical sequences, currency values, measures, emails, URLs, IP addresses, credit card numbers and dictated punctuations into more readable, conventional forms in final transcripts. This is only supported for large speech models and next generation models in US English, Brazilian Portuguese, French, German, Castilian Spanish, Spanish Latin American, and French Canadian. It is also available for the en-WW_Medical_Telephony model when US English audio is recognized.
 -   [Smart formatting](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting) converts dates, times, numbers, currency values, phone numbers, and internet addresses into more readable, conventional forms in final transcripts. For US English, you can also provide keyword phrases to include certain punctuation symbols in final transcripts. Smart formatting is beta functionality.
 -   [Numeric redaction](/docs/speech-to-text?topic=speech-to-text-formatting#numeric-redaction) redacts, or masks, numeric data from a final transcript. Redaction is intended to remove sensitive personal information, such as credit card numbers, from final transcripts. Numeric redaction is beta functionality.
 -   [Profanity filtering](/docs/speech-to-text?topic=speech-to-text-formatting#profanity-filtering) censors profanity from transcripts and metadata.
@@ -142,6 +155,9 @@ Use the new parameter speech_begin_event to receive a notification event the mom
 -   [Maximum alternatives](/docs/speech-to-text?topic=speech-to-text-metadata#max-alternatives) provide possible alternative transcripts. The service indicates final results in which it has the greatest confidence.
 -   [Word confidence](/docs/speech-to-text?topic=speech-to-text-metadata#word-confidence) returns confidence levels for each word of a transcript.
 -   [Word timestamps](/docs/speech-to-text?topic=speech-to-text-metadata#word-timestamps) return timestamps for the start and end of each word of a transcript.
+
+These features are only supported for previous- and next-generation models. They are not supported for large speech models. 
+{: note}
 
 ### Processing and audio metrics
 {: #features-metrics}
@@ -154,9 +170,9 @@ Use the new parameter speech_begin_event to receive a notification event the mom
 
 The customization interface lets you create custom models to improve the service's speech recognition capabilities:
 
--   [Custom language models](/docs/speech-to-text?topic=speech-to-text-languageCreate) let you define domain-specific words for a base model. Custom language models can expand the service's base vocabulary with terminology specific to domains such as medicine and law. Language model customization is available for both previous- and next-generation models, though it works differently for the two types of models.
+-   [Custom language models](/docs/speech-to-text?topic=speech-to-text-languageCreate) let you define domain-specific words for a base model. Custom language models can expand the service's base vocabulary with terminology specific to domains such as medicine and law. Language model customization is available for large speech models, previous- and next-generation models, though it works differently for the three types of models.
 -   [Custom acoustic models](/docs/speech-to-text?topic=speech-to-text-acoustic) let you adapt a base model for the acoustic characteristics of your environment and speakers. Custom acoustic models improve the service's ability to recognize speech with distinctive acoustic characteristics. Acoustic model customization is available only for previous-generation models.
--   [Grammars](/docs/speech-to-text?topic=speech-to-text-grammars) let you restrict the phrases that the service can recognize to those defined in a grammar's rules. By limiting the search space for valid strings, the service can deliver results faster and more accurately. Grammars are created for and used with custom language models. The service generally supports grammars for languages and models for which it supports language model customization.
+-   [Grammars](/docs/speech-to-text?topic=speech-to-text-grammars) let you restrict the phrases that the service can recognize to those defined in a grammar's rules. By limiting the search space for valid strings, the service can deliver results faster and more accurately. Grammars are created for and used with custom language models. The service generally supports grammars for languages and models for which it supports language model customization. Grammars is available only for previous- and next-generation models.
 
 You can use a custom language model (with or without a grammar), a custom acoustic model, or both for speech recognition with any of the service's interfaces.
 

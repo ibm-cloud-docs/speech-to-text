@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-01-23"
+lastupdated: "2024-05-10"
 
 subcollection: speech-to-text
 
@@ -61,7 +61,7 @@ In addition to a `word` field that identifies the word, both methods return the 
     -   *For custom models that are based on next-generation models,* this field shows only `user` for custom words that were added directly to the custom model. Words from corpora and grammars are not added to the words resource for custom models that are based on next-generation models.
 -   A `count` field that indicates the number of times the word is found across all corpora and grammars.
     -   *For custom models that are based on previous-generation models,* for example, if the word occurs five times in one corpus and seven times in another, its count is `12`. If you add a custom word to a model before it is added by any corpora or grammars, the count begins at `1`. If the word is added from a corpus or grammar first and later modified, the count reflects only the number of times it is found in corpora and grammars.
-    -   *For custom models that are based on next-generation models,* the `count` field for any word is always `1`.
+    -   *For custom models that are based on large speech models and next-generation models,* the `count` field for any word is always `1`.
 
 If the service discovers one or more problems with a custom word's definition, the output includes an `error` field. The field provides an array that lists each problem element from the definition and a message that describes the problem.
 
@@ -187,7 +187,7 @@ The user added the word initially. The service then found the word twice in `cor
 
 Use the `DELETE /v1/customizations/{customization_id}/words/{word_name}` method to delete a word from a custom language model.
 
--   *For custom models that are based previous-generation models,* use the method to remove words that were added in error, for example, from a corpus with faulty data. You can remove any word that you added to the custom model's words resource via any means (for example, from corpora, from grammars, or directly.)
+-   *For custom models that are based on large speech models, previous-generation models,* use the method to remove words that were added in error, for example, from a corpus with faulty data. You can remove any word that you added to the custom model's words resource via any means (for example, from corpora, from grammars, or directly.)
 -   *For custom models that are based on next-generation models,* you can delete only words that were added directly to the model. Words are not added to the model from corpora or grammars.
 
 You cannot delete a word from the service's base vocabulary. If you delete a word that is also present in the service's base vocabulary, deleting the word from a custom model deletes only the custom pronunciation for the word. The word remains in the base vocabulary.
