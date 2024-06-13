@@ -109,18 +109,7 @@ To upgrade a custom model that is based on an improved next-generation model, pe
     ```
     {: pre}
 
-<!-- COMMENTED UNTIL PARAMETER IS AVAILABLE ON CP4D.
 
-    [IBM Cloud Pak for Data]{: tag-cp4d}
-
-    ```bash
-    curl -X POST \
-    --header "Authorization: Bearer {token}" \
-    "{url}/v1/customizations/{customization_id}/train?force=true"
-    ```
-    {: pre}
-
--->
 
 For more information about training a custom model and about monitoring a training request, see [Train the custom language model](/docs/speech-to-text?topic=speech-to-text-languageCreate#trainModel-language).
 

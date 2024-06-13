@@ -89,7 +89,7 @@ The following sections introduce the speech recognition parameters and their fun
 ### Speech or word detection
 {: #features-speech-word-detection}
 
-Use the new parameter speech_begin_event to receive a notification event the moment speech is detected in the audio stream. This feature allows real time applications to learn when you start speaking. A common use case for this feature is implementing barge-in in automated agent systems. Barge-in consists of interrupting audio playback when the caller starts speaking. Set the value to true to make the Speech to Text service send back a speech_begin_event response, which contains the time when speech activity is first detected within the audio stream. You can use this parameter in both standard and low latency mode.
+ Use the new parameter speech_begin_event to receive a notification event the moment speech is detected in the audio stream. This feature allows real time applications to learn when you start speaking. A common use case for this feature is implementing barge-in in automated agent systems. Barge-in consists of interrupting audio playback when the caller starts speaking. Set the value to true to make the Speech to Text service send back a speech_begin_event response, which contains the time when speech activity is first detected within the audio stream. You can use this parameter in both standard and low latency mode.
 - Parameter name: speech_begin_event
 - Request parameter: speech_begin_event = true/false (boolean)
 - Response object: "speech_begin_event.begin", for example: {"speech_begin_event": { "begin": }}

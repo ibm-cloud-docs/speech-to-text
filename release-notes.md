@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2023-12-14"
+lastupdated: "2024-03-07"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -28,11 +28,11 @@ For information about releases and updates of the service for {{site.data.keywor
 {: note}
 
 ## 15 May 2024
-{: #speech-to-text-15may2024}
+{: #speech-to-text-20may2024}
 {: release-note}
 
 Large Speech Model for English is now generally available
-:   The large speech model for English, which includes the Australian, Indian, United Kingdom, and United States dialects, is now generally available (GA). It is supported for use in production environments and applications. 
+:   The large speech model for English, which includes the United States, Australian, Indian, and United Kingdom dialects, is now generally available (GA). It is supported for use in production environments and applications. 
 
     - For more information about large speech models, see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages).
     - For more information about the features that are supported for large speech models, see [Supported features for large speech models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-lsm-supported-features).
@@ -70,8 +70,8 @@ Large Speech Models for English, Japanese and French - for early access
 
 If you are interested in testing these base models, and sharing results and feedback, contact our Product Management team by filling out this [form](https://form.asana.com/?k=ElxhxG66qgc1CJDsehfKYQ&d=8612789739828).
 
-## 27 July 2023
-{: #speech-to-text-27july2023}
+## 28 July 2023
+{: #speech-to-text-28july2023}
 {: release-note}
 
 Important: All previous-generation models are discontinued starting August 1, 2023
@@ -82,13 +82,13 @@ Important: All previous-generation models are discontinued starting August 1, 20
 {: release-note}
 
 Defect fix: Creating and training a custom Language Model is now optimal for both standard and low-latency Next-Generation models
-:   **Defect fix:** When creating and training a custom Language Model with corpora text files and / or custom words using a Next-generation low-latency model, it is now performing the 	same way as with a standard model. Previously, it was not optimal only when using a Next-Generation low-latency model.
+:   **Defect fix:** When creating and training a custom Language Model with corpora text files and / or custom words using a Next-generation low-latency model, it is now performing the same way as with a standard model. Previously, it was not optimal only when using a Next-Generation low-latency model.
 
 Defect fix: STT Websockets sessions no longer fail due to tensor error message
 :   **Defect fix:** When using STT websockets, sessions no longer fail due to an error message “STT returns the error: Sizes of tensors must match except in dimension 0”. 
 
-## 19 May 2023
-{: #speech-to-text-19may2023}
+## 18 May 2023
+{: #speech-to-text-18may2023}
 {: release-note}
 
 Updates to English next-generation Medical telephony model

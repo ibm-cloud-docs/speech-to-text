@@ -16,6 +16,7 @@ subcollection: speech-to-text
 The {{site.data.keyword.speechtotextfull}} service provides three features that you can use to parse transcription results. You can format a final transcript to include more conventional representations of certain strings and to include punctuation. You can redact sensitive numeric information from a final transcript, and you can filter profanity from most transcription results. All of these features are beta functionality and are restricted to certain languages.
 {: shortdesc}
 
+
 ## Smart formatting Version 2
 {: #smart-formatting-version}
 
@@ -331,7 +332,6 @@ curl -X POST \
 "{url}/v1/recognize?model=en-US_Telephony&smart_formatting=true&smart_formatting_version=2"
 ```
 {: pre}
-
 
 
 ## Smart formatting
