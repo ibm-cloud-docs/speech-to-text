@@ -32,6 +32,13 @@ The following sections list the large speech models that are available for each 
 | French \n (Canadian) | `fr-CA` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
 | French \n (France) | `fr-FR` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
 | Japanese | `ja-JP` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
+| Portuguese (Brazilian) | `pt-BR` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 | 
+| Spanish (Castilian) | `es-ES` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 | 
+| Spanish (Argentinian) | `es-AR` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 | 
+| Spanish (Chilean) | `es-CL` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 | 
+| Spanish (Colombian) | `es-CO` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 | 
+| Spanish (Mexican) | `es-MX` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 | 
+| Spanish (Peruvian) | `es-PE` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 | 
 {: caption="Table 1. Large speech models"}
 
 ## Supported features for large speech models

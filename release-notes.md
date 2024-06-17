@@ -27,6 +27,16 @@ For information about known limitations of the service, see [Known limitations](
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
 
+## 18 June 2024
+{: #speech-to-text-18jun2024}
+{: release-note}
+
+New large speech models for Brazilian Portuguese and Spanish are now in open beta
+:   The large speech models for Brazilian Portuguese and Spanish are now in open beta. Spanish includes the Castilian, Argentinian, Chilean, Colombian, Mexican and Peruvian dialects.
+
+    - For more information about large speech models, see see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages).
+    - For more information about the features that are supported for large speech models, see [Supported features for large speech models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-lsm-supported-features).
+
 ## 15 May 2024
 {: #speech-to-text-20may2024}
 {: release-note}
