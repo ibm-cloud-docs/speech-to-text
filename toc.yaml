@@ -9,7 +9,6 @@ toc:
     product-page: https://www.ibm.com/cloud/watson-speech-to-text
     path: speech-to-text
     label: Speech to Text
-
   entries:
   - navgroup:
       id: learn
@@ -41,7 +40,6 @@ toc:
           - link:
               label: Webinars
               href: https://www.ibm.com/watson/webinars/
-
   - navgroup:
       id: howto
       topics:
@@ -132,7 +130,6 @@ toc:
           topics:
           - science.md
           - references.md
-
   - navgroup:
       id: reference
       topics:
@@ -145,7 +142,6 @@ toc:
       - link:
           label: Watson GitHub repos
           href: https://github.com/watson-developer-cloud/
-
   - navgroup:
       id: help
       topics:

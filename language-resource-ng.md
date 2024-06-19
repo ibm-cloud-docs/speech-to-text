@@ -22,9 +22,9 @@ You populate a custom language model with words by adding corpora to the model o
 
 Although language model customization is similar in usage and intent for large speech models, previous- and next-generation models, there are differences between the three types of models at the implementation level. To understand how language model customization works for large speech models and next-generation models, and how you can make the best use of customization, you need a high-level understanding of the differences.
 
--   When you create and use a custom language model that is based on a *previous-generation model*, the service relies on words from the custom model to create transcripts that contain domain-specific terms. In combination with words from its base vocabulary, the service uses these words from the custom model to predict and transcribe speech from audio. You provide the information for a custom language model in the form of corpora, custom words, and grammars. The service stores this information in the words resource for the custom model.
+-   When you create and use a custom language model that is based on a *large speech model or previous-generation model*, the service relies on words from the custom model to create transcripts that contain domain-specific terms. In combination with words from its base vocabulary, the service uses these words from the custom model to predict and transcribe speech from audio. You provide the information for a custom language model in the form of corpora, custom words, and grammars. The service stores this information in the words resource for the custom model.
 
--   When you create a custom language model that is based on a *large speech model or next-generation model*, the services relies on sequences of characters from the custom model to create transcripts that reflect domain-specific terms. In combination with character sequences from the base model, the service uses these series of characters from the custom model to predict and transcribe speech from audio.
+-   When you create a custom language model that is based on a *next-generation model*, the services relies on sequences of characters from the custom model to create transcripts that reflect domain-specific terms. In combination with character sequences from the base model, the service uses these series of characters from the custom model to predict and transcribe speech from audio.
 
     You provide the information for a custom language model in the form of corpora, custom words, and grammars. But rather than rely on a words resource that contains these words, the service extracts and stores character sequences from the corpora and custom words. The service does not extract and calculate out-of-vocabulary (OOV) words from corpora and custom words. The words resource is simply where it stores custom words that you add directly to the model.
 
@@ -39,7 +39,7 @@ The *words resource* includes custom words that you add directly to the custom m
 
 -   `word` - The spelling of the word as added by you.
 
-    Do not use characters that need to be URL-encoded. For example, do not use spaces, slashes, backslashes, colons, ampersands, double quotes, plus signs, equals signs, question marks, etc. in the name. The service does not prevent the use of these characters, but because they must be URL-encoded wherever they are used, it is strongly discouraged.
+    Do not use characters that need to be URL-encoded. For example, do not use spaces, slashes, backslashes, colons, ampersands, double quotes, plus signs, equals signs, question marks, etc. in the name. The service does not prevent the use of these characters, but because they must be URL-encoded wherever used, it is strongly discouraged.
     {: important}
 
 -   `sounds_like` - The pronunciation of the word. You can use the `sounds_like` field to add one or more pronunciations for the word. For more information, see [Using the sounds_like field](#sounds-like-ng).
@@ -309,6 +309,9 @@ The following topics provide guidelines for specifying a sounds-like pronunciati
 Information for the following languages is not yet available: Arabic, Chinese, Czech, Hindi, and Swedish. If you need this information for your custom language model, contact your IBM Support representative.
 {: note}
 
+The non-Japanese models use 'sounds_like' for mapping ('sounds_like' -> 'display_as'). Japanese models use word for mapping ('word' -> 'display_as').
+{: note}
+
 #### General guidelines for all languages
 {: #sounds-like-general-ng}
 
@@ -418,6 +421,9 @@ curl -X PUT \
 "{url}/v1/customizations/{customization_id}/words/IBM"
 ```
 {: pre}
+
+The non-Japanese models use 'sounds_like' for mapping ('sounds_like' -> 'display_as'). Japanese models use word for mapping ('word' -> 'display_as').
+{: note}
 
 #### Interaction with smart formatting and numeric redaction
 {: #display-smart-ng}
