@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2023
-lastupdated: "2024-08-12"
+lastupdated: "2024-08-14"
 
 keywords: IBM,activity tracker,event,security,speech to text
 
@@ -24,6 +24,47 @@ As a security officer, auditor, or manager, you can use the Activity Tracker ser
 {: shortdesc}
 
 {{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. You can use this service to investigate abnormal activity and critical actions and to comply with regulatory audit requirements. In addition, you can be alerted about actions as they happen. The events that are collected comply with the Cloud Auditing Data Federation (CADF) standard.  For more information, see the tutorial [Getting started with {{site.data.keyword.at_full_notm}}](/docs/activity-tracker?topic=activity-tracker-getting-started).
+
+## Locations where activity tracking events are generated
+{: #at-locations}
+
+### Locations where activity tracking events are sent to {{site.data.keyword.at_full_notm}} hosted event search
+{: #at-legacy-locations}
+
+{{site.data.keyword.speechtotextfull}} in {{site.data.keyword.cloud}} sends activity tracking events to {{site.data.keyword.at_full_notm}} hosted event search in the regions that are indicated in the following table.
+
+| Dallas (us-south)            | Washington (us-east)                         | Toronto (ca-tor)      | Sao Paulo (br-sao) |
+|-------------------|-------------------------------------|------------------------------------|------------------------------------|
+| [No]{: tag-red}          | [No]{: tag-red}  | [No]{: tag-red} | [No]{: tag-red}|                                                             |
+| {: caption="Regions where activity tracking events are sent in Americas locations" caption-side="top"} |                 | | |
+| {: #at-table-1}     |              | | |
+| {: tab-title="Americas"}   |    | | |
+| {: tab-group="at"} |  | | |
+| {: class="simple-tab-table"} | | | |
+| {: row-headers} | | | |
+{: caption="Regions where activity tracking events are sent in Americas locations" caption-side="top"}
+
+| Tokyo (jp-tok)           | Sydney (au-syd)                    |  Osaka (jp-osa)     | Chennai (in-che) |
+|-------------------|-------------------------------------|------------------------------------|------------------------------------|
+| [No]{: tag-red}          | [No]{: tag-red}  | [No]{: tag-red} | [No]{: tag-red}|                                                             |
+| {: caption="Regions where activity tracking events are sent in Asia Pacific locations" caption-side="top"} |                 | | |
+| {: #at-table-2}    |              | | |
+| {: tab-title="Asia Pacific"}   |    | | |
+| {: tab-group="at"} |  | | |
+| {: class="simple-tab-table"} | | | |
+| {: row-headers} | | | |
+{: caption="Regions where activity tracking events are sent in Asia Pacific locations" caption-side="top"} 
+
+| Frankfurt (eu-de)        | London (eu-gb)                 |  Madrid (eu-es)    | 
+|-------------------|-------------------------------------|------------------------------------|
+| [Yes]{: tag-green}       | [No]{: tag-red}  | [No]{: tag-red} |                              |
+| {: caption="Regions where activity tracking events are sent in Europe locations" caption-side="top"}|  | |
+| {: #at-table-3}   |  | | 
+| {: tab-title="Europe"}  |  | | 
+| {: tab-group="at"} |  | | 
+| {: class="simple-tab-table"} | | | 
+| {: row-headers} | | | 
+{: caption="Regions where activity tracking events are sent in Europe locations" caption-side="top"}
 
 ## Language model customization events
 {: #at-lm-events}
