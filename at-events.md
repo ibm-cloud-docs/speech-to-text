@@ -35,36 +35,33 @@ As a security officer, auditor, or manager, you can use the Activity Tracker ser
 
 | Dallas (us-south)            | Washington (us-east)                         | Toronto (ca-tor)      | Sao Paulo (br-sao) |
 |-------------------|-------------------------------------|------------------------------------|------------------------------------|
-| [No]{: tag-red}          | [No]{: tag-red}  | [No]{: tag-red} | [No]{: tag-red}|                                                             |
-| {: caption="Regions where activity tracking events are sent in Americas locations" caption-side="top"} |                 | | |
-| {: #at-table-1}     |              | | |
-| {: tab-title="Americas"}   |    | | |
-| {: tab-group="at"} |  | | |
-| {: class="simple-tab-table"} | | | |
-| {: row-headers} | | | |
+| [No]{: tag-red}          | [No]{: tag-red}  | [No]{: tag-red} | [No]{: tag-red}|                                                  |
 {: caption="Regions where activity tracking events are sent in Americas locations" caption-side="top"}
+{: #at-table-1} 
+{: tab-title="Americas"}
+{: tab-group="at"}
+{: class="simple-tab-table"} 
+{: row-headers}
 
 | Tokyo (jp-tok)           | Sydney (au-syd)                    |  Osaka (jp-osa)     | Chennai (in-che) |
 |-------------------|-------------------------------------|------------------------------------|------------------------------------|
-| [No]{: tag-red}          | [No]{: tag-red}  | [No]{: tag-red} | [No]{: tag-red}|                                                             |
-| {: caption="Regions where activity tracking events are sent in Asia Pacific locations" caption-side="top"} |                 | | |
-| {: #at-table-2}    |              | | |
-| {: tab-title="Asia Pacific"}   |    | | |
-| {: tab-group="at"} |  | | |
-| {: class="simple-tab-table"} | | | |
-| {: row-headers} | | | |
+| [No]{: tag-red}          | [No]{: tag-red}  | [No]{: tag-red} | [No]{: tag-red}|                                                  |
 {: caption="Regions where activity tracking events are sent in Asia Pacific locations" caption-side="top"} 
+{: #at-table-2} 
+{: tab-title="Asia Pacific"}
+{: tab-group="at"}
+{: class="simple-tab-table"}
+{: row-headers}
 
 | Frankfurt (eu-de)        | London (eu-gb)                 |  Madrid (eu-es)    | 
 |-------------------|-------------------------------------|------------------------------------|
 | [Yes]{: tag-green}       | [No]{: tag-red}  | [No]{: tag-red} |                              |
-| {: caption="Regions where activity tracking events are sent in Europe locations" caption-side="top"}|  | |
-| {: #at-table-3}   |  | | 
-| {: tab-title="Europe"}  |  | | 
-| {: tab-group="at"} |  | | 
-| {: class="simple-tab-table"} | | | 
-| {: row-headers} | | | 
 {: caption="Regions where activity tracking events are sent in Europe locations" caption-side="top"}
+{: #at-table-3}  
+{: tab-title="Europe"}
+{: tab-group="at"} 
+{: class="simple-tab-table"} 
+{: row-headers}
 
 ## Language model customization events
 {: #at-lm-events}
@@ -81,7 +78,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 | `speech-to-text.custom-language-model-word.create`      | Create a word for a custom language model (`PUT /v1/customizations/{customization_id}/words/{word_name}`).              |
 | `speech-to-text.custom-language-model-corpus.create`    | Create a corpus for a custom language model (`POST /v1/customizations/{customization_id}/corpora/{corpus_name}`).       |
 | `speech-to-text.custom-language-model-grammar.create`   | Create a grammar for a custom language model (`POST /v1/customizations/{customization_id}/grammars/{grammar_name}`).    |
-{: caption="Table 1. Language model customization .create actions that generate events"}
+{: caption="Table 4. Language model customization .create actions that generate events"}
 
 ### Read events
 {: #at-lm-events-read}
@@ -96,7 +93,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 | `speech-to-text.custom-language-model-corpus.read`       | Read a corpus of a custom language model (`GET /v1/customizations/{customization_id}/corpora/{corpus_name}`).       |
 | `speech-to-text.custom-language-model-grammar-list.read` | Read a grammar list of a custom language model (`GET /v1/customizations/{customization_id}/grammars`).              |
 | `speech-to-text.custom-language-model-grammar.read`      | Read a grammar of a custom language model (`GET /v1/customizations/{customization_id}/grammars/{grammar_name}`).    |
-{: caption="Table 2. Language model customization .read actions that generate events"}
+{: caption="Table 5. Language model customization .read actions that generate events"}
 
 ### Delete events
 {: #at-lm-events-delete}
@@ -107,7 +104,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 | `speech-to-text.custom-language-model-word.delete`    | Delete a word from a custom language model (`DELETE /v1/customizations/{customization_id}/words/{word_name}`).             |
 | `speech-to-text.custom-language-model-corpus.delete`  | Delete a corpus from a custom language model (`DELETE /v1/customizations/{customization_id}/corpora/{corpus_name}`).       |
 | `speech-to-text.custom-language-model-grammar.delete` | Delete a grammar from a custom language model (`DELETE /v1/customizations/{customization_id}/grammars/{grammar_name}`).    |
-{: caption="Table 3. Language model customization .delete actions that generate events"}
+{: caption="Table 6. Language model customization .delete actions that generate events"}
 
 ### Train event
 {: #at-lm-events-train}
@@ -115,7 +112,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 | Action            | Description                         |
 |-------------------|-------------------------------------|
 | `speech-to-text.custom-language-model.train` | Train a custom language model (`POST /v1/customizations/{customization_id}/train`).          |
-{: caption="Table 4. Language model customization .train action that generates an event"}
+{: caption="Table 7. Language model customization .train action that generates an event"}
 
 ### Reset event
 {: #at-lm-events-reset}
@@ -123,7 +120,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 | Action            | Description                         |
 |-------------------|-------------------------------------|
 | `speech-to-text.custom-language-model.reset` | Reset a custom language model (`POST /v1/customizations/{customization_id}/reset`).          |
-{: caption="Table 5. Language model customization .reset action that generates an event"}
+{: caption="Table 8. Language model customization .reset action that generates an event"}
 
 ### Upgrade event
 {: #at-lm-events-upgrade}
@@ -131,7 +128,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 | Action            | Description                         |
 |-------------------|-------------------------------------|
 | `speech-to-text.custom-language-model.upgrade` | Upgrade a custom language model (`POST /v1/customizations/{customization_id}/upgrade_model`).          |
-{: caption="Table 6. Language model customization .upgrade action that generates an event"}
+{: caption="Table 9. Language model customization .upgrade action that generates an event"}
 
 ## Acoustic model customization events
 {: #at_am_events}
@@ -145,7 +142,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 |-------------------|-------------------------------------|
 | `speech-to-text.custom-acoustic-model.create`           | Create a custom acoustic model (`POST /v1/acoustic_customizations`).                                                    |
 | `speech-to-text.custom-acoustic-model-audio.create`     | Create an audio for a custom acoustic model (`POST /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`). |
-{: caption="Table 7. Acoustic model customization .create actions that generate events"}
+{: caption="Table 10. Acoustic model customization .create actions that generate events"}
 
 ### Read events
 {: #at-am-events-read}
@@ -156,7 +153,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 | `speech-to-text.custom-acoustic-model.read`              | Read a custom acoustic model (`GET /v1/acoustic_customizations/{customization_id}`).                                |
 | `speech-to-text.custom-acoustic-model-audio-list.read`   | Read an audio list of a custom acoustic model (`GET /v1/acoustic_customizations/{customization_id}/audio`).         |
 | `speech-to-text.custom-acoustic-model-audio.read`        | Read an audio of a custom acoustic model (`GET /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`). |
-{: caption="Table 8. Acoustic model customization .read actions that generate events"}
+{: caption="Table 11. Acoustic model customization .read actions that generate events"}
 
 ### Delete events
 {: #at-am-events-delete}
@@ -165,7 +162,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 |-------------------|-------------------------------------|
 | `speech-to-text.custom-acoustic-model.delete`         | Delete a custom acoustic model (`DELETE /v1/acoustic_customizations/{customization_id}`).                                  |
 | `speech-to-text.custom-acoustic-model-audio.delete`   | Delete an audio from a custom acoustic model (`DELETE /v1/acoustic_customizations/{customization_id}/audio/{audio_name}`). |
-{: caption="Table 9. Acoustic model customization .delete actions that generate events"}
+{: caption="Table 12. Acoustic model customization .delete actions that generate events"}
 
 ### Train event
 {: #at-am-events-train}
@@ -173,7 +170,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 | Action            | Description                         |
 |-------------------|-------------------------------------|
 | `speech-to-text.custom-acoustic-model.train` | Train a custom acoustic model (`POST /v1/acoustic_customizations/{customization_id}/train`). |
-{: caption="Table 10. Acoustic model customization .train action that generates an event"}
+{: caption="Table 13. Acoustic model customization .train action that generates an event"}
 
 ### Reset event
 {: #at-am-events-reset}
@@ -181,7 +178,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 | Action            | Description                         |
 |-------------------|-------------------------------------|
 | `speech-to-text.custom-acoustic-model.reset` | Reset a custom acoustic model (`POST /v1/acoustic_customizations/{customization_id}/reset`). |
-{: caption="Table 11. Acoustic model customization .reset action that generates an event"}
+{: caption="Table 14. Acoustic model customization .reset action that generates an event"}
 
 ### Upgrade event
 {: #at-am-events-upgrade}
@@ -189,7 +186,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 | Action            | Description                         |
 |-------------------|-------------------------------------|
 | `speech-to-text.custom-acoustic-model.upgrade` | Upgrade a custom acoustic model (`POST /v1/acoustic_customizations/{customization_id}/upgrade_model`). |
-{: caption="Table 12. Acoustic model customization .upgrade action that generates an event"}
+{: caption="Table 15. Acoustic model customization .upgrade action that generates an event"}
 
 ## Asynchronous HTTP interface events
 {: #at-async-events}
@@ -203,7 +200,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 |-------------------|-------------------------------------|
 | `speech-to-text.async-recognition-job.create` | Create an asynchronous recognition job (`POST /v1/recognitions`). |
 | `speech-to-text.async-recognition-notification-url.create` | Create an asynchronous recognition notification URL (`POST /v1/register_callback`). |
-{: caption="Table 13. Asynchronous HTTP recognition .create actions that generate events"}
+{: caption="Table 16. Asynchronous HTTP recognition .create actions that generate events"}
 
 ### Read events
 {: #at-async-events-read}
@@ -212,7 +209,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 |-------------------|-------------------------------------|
 | `speech-to-text.async-recognition-job-list.read` | Read an asynchronous recognition job list (`GET /v1/recognitions`). |
 | `speech-to-text.async-recognition-job.read`      | Read an asynchronous recognition job (`GET /v1/recognitions/{id}`). |
-{: caption="Table 14. Asynchronous HTTP recognition .read actions that generate events"}
+{: caption="Table 17. Asynchronous HTTP recognition .read actions that generate events"}
 
 ### Delete events
 {: #at-async-events-delete}
@@ -221,7 +218,7 @@ The following tables list the {{site.data.keyword.speechtotextshort}} actions fo
 |-------------------|-------------------------------------|
 | `speech-to-text.async-recognition-job.delete` | Delete an asynchronous recognition job (`DELETE /v1/recognitions/{id}`). |
 | `speech-to-text.async-recognition-notification-url.delete` | Delete an asynchronous recognition notification URL (`POST /v1/unregister_callback`). |
-{: caption="Table 15. Asynchronous HTTP recognition .delete actions that generate events"}
+{: caption="Table 18. Asynchronous HTTP recognition .delete actions that generate events"}
 
 ## GDPR event
 {: #at-events-gdpr}
@@ -231,7 +228,7 @@ The following table lists the {{site.data.keyword.speechtotextshort}} action for
 | Action | Description |
 |--------|-------------|
 | `speech-to-text.gdpr-user-data.delete` | Delete information for a user (`DELETE /v1/user_data`). |
-{: caption="Table 16. GDPR .delete action that generates an event"}
+{: caption="Table 19. GDPR .delete action that generates an event"}
 
 ## Where to view events
 {: #at-ui}
