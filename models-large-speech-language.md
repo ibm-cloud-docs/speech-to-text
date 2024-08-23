@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2024
-lastupdated: "2024-05-09"
+lastupdated: "2024-08-23"
 
 subcollection: speech-to-text
 
@@ -25,20 +25,21 @@ The following sections list the large speech models that are available for each 
 
 | Language |  Model name | Status | 
 |------------------------|:-----------:|:----------------------------------------|
-| English  \n (Australian) | `en-AU` | GA \n [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
-| English  \n (Indian) | `en-IN` | GA \n [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
-| English \n (United Kingdom) | `en-GB` | GA \n [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
-| English \n (United States) | `en-US` | GA \n [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
-| French \n (Canadian) | `fr-CA` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
-| French \n (France) | `fr-FR` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
-| Japanese | `ja-JP` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
-| Portuguese (Brazilian) | `pt-BR` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 | 
-| Spanish (Castilian) | `es-ES` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 | 
-| Spanish (Argentinian) | `es-AR` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 | 
-| Spanish (Chilean) | `es-CL` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 | 
-| Spanish (Colombian) | `es-CO` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 | 
-| Spanish (Mexican) | `es-MX` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 | 
-| Spanish (Peruvian) | `es-PE` | Beta \n [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 | 
+| English  \n (Australian) | `en-AU` | [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
+| English  \n (Indian) | `en-IN` | [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
+| English \n (United Kingdom) | `en-GB` | [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
+| English \n (United States) | `en-US` | [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
+| French \n (Canadian) | `fr-CA` | [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
+| French \n (France) | `fr-FR` | [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
+| Japanese | `ja-JP` | [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
+| Portuguese (Brazilian) | `pt-BR` | [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 23 August 2024  | 
+| Portuguese (Portugal) | `pt-PT` | [IBM Cloud]{: tag-ibm-cloud} 23 August 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 23 August 2024 |
+| Spanish (Castilian) | `es-ES` | [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 23 August 2024 | 
+| Spanish (Argentinian) | `es-AR` | [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 23 August 2024 | 
+| Spanish (Chilean) | `es-CL` | [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 23 August 2024 | 
+| Spanish (Colombian) | `es-CO` | [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 23 August 2024 | 
+| Spanish (Mexican) | `es-MX` | [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 23 August 2024 | 
+| Spanish (Peruvian) | `es-PE` | [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 23 August 2024 | 
 {: caption="Table 1. Large speech models"}
 
 ## Supported features for large speech models
