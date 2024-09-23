@@ -882,7 +882,7 @@ New beta next-generation language models and `low_latency` parameter
 
     -   For more information about the next-generation models and their capabilities, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
     -   For more information about language support for next-generation models and about which next-generation models support low latency, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
-    -   For more information about feature support for next-generation models, see [Supported features for next-generation models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-features) and [Unsupported features for next-generation models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-unsupported).
+    -   For more information about feature support for next-generation models, see [Supported features for next-generation models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-features).
     -   For more information about the `low_latency` parameter, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
     -   For more information about the interaction between the `low_latency` and `interim_results` parameters for next-generation models, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
 
@@ -969,7 +969,7 @@ New Canadian French models
     -   `fr-CA_BroadbandModel`
     -   `fr-CA_NarrowbandModel`
 
-    The new models do not support language model or acoustic model customization, speaker labels, or smart formatting. For more information about these and all supported models, see [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported).
+    The new models do not support language model or acoustic model customization, speaker labels, or smart formatting. For more information about these and all supported models, see [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#model-pg-supported).
 
 ## 5 August 2020
 {: #speech-to-text-5august2020}
@@ -981,7 +981,7 @@ New Australian English models
     -   `en-AU_NarrowbandModel`
 
     The new models do not support language model or acoustic model customization, or smart formatting. The new models do support speakers labels. For more information, see
-    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
+    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#model-pg-supported)
     -   [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels)
 
 Updates to multiple models for improved speech recognition
@@ -1026,7 +1026,7 @@ Dutch and Italian models now generally available
     -   Italian narrowband model (`it-IT_NarrowbandModel`)
 
     For more information about all available language models, see
-    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
+    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#model-pg-supported)
     -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
 
 ## 1 April 2020
@@ -1114,7 +1114,7 @@ New beta Italian models available
 
     For more information, see the following sections:
 
-    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
+    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#model-pg-supported)
     -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
 
 New `end_of_phrase_silence_time` parameter for speech recognition
@@ -1175,7 +1175,7 @@ New beta Netherlands Dutch models available
 
     For more information, see the following sections:
 
-    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
+    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#model-pg-supported)
     -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
 
 ## 25 November 2019
@@ -1197,7 +1197,7 @@ New Seoul location now available
 {: release-note}
 
 New limits on maximum number of custom models
-:   You can create no more than 1024 custom language models and no more than 1024 custom acoustic models per owning credentials. For more information, see [Maximum number of custom models](/docs/speech-to-text?topic=speech-to-text-customization#customMaximum).
+:   You can create no more than 1024 custom language models and no more than 1024 custom acoustic models per owning credentials. For more information, see [Maximum number of custom models](/docs/speech-to-text?topic=speech-to-text-custom-usage#custom-maximum).
 
 ## 1 October 2019
 {: #speech-to-text-1october2019}
@@ -1233,7 +1233,7 @@ New models for Spanish dialects now available
 
     For more information, see the following sections:
 
-    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
+    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#model-pg-supported)
     -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
 
 ## 24 June 2019

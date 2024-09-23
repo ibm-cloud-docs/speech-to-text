@@ -130,7 +130,7 @@ Using a custom acoustic model alone can improve the service's recognition capabi
 
 By creating a custom language model that complements your custom acoustic model, you can enhance speech recognition by using the two models together. When you train a custom acoustic model, you can specify a custom language model that includes transcriptions of the audio resources or a vocabulary of domain-specific words from the resources. Similarly, when you transcribe audio, the service accepts a custom language model, a custom acoustic model, or both. And if your custom language model includes a grammar, you can use that model and grammar with a custom acoustic model for speech recognition.
 
-For more information, see [Using custom acoustic and custom language models together](/docs/speech-to-text?topic=speech-to-text-
+For more information, see [Using custom acoustic and custom language models together](/docs/speech-to-text?topic=speech-to-text-acoustic-both)
 
 ## Upgrading custom models
 {: #upgrading-intro}
