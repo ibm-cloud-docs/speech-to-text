@@ -1874,7 +1874,7 @@ New support for Web Media (WebM) audio format
 :   The service now supports the Web Media (WebM) audio format with the Opus or Vorbis codec. The service now also supports the Ogg audio format with the Vorbis codec in addition to the Opus codec. For more information about supported audio formats, see [audio/webm format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-webm).
 
 New support for Cross-Origin Resource Sharing
-:   The service now supports Cross-Origin Resource Sharing (CORS) to allow browser-based clients to call the service directly. For more information, see [Leveraging CORS support](/docs/speech-to-text?topic=speech-to-text-service-features#features-cors).
+:   The service now supports Cross-Origin Resource Sharing (CORS) to allow browser-based clients to call the service directly. For more information, see [CORS support](/docs/speech-to-text?topic=speech-to-text-data-security#data-security-cors).
 
 New method to unregister a callback URL with asynchronous HTTP interface
 :   The asynchronous HTTP interface now offers a `POST /v1/unregister_callback` method that removes the registration for an allowlisted callback URL. For more information, see [Unregistering a callback URL](/docs/speech-to-text?topic=speech-to-text-async#unregister).
