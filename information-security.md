@@ -31,7 +31,7 @@ If you need to request GDPR support for {{site.data.keyword.cloud}} {{site.data.
 
 {{site.data.keyword.IBM_notm}} is committed to providing our clients and partners with innovative data privacy, security and governance solutions to assist them on their journey to GDPR compliance.
 
-Learn more about {{site.data.keyword.IBM_notm}}'s own GDPR readiness journey and our GDPR capabilities and offerings to support your compliance journey [here](http://www.ibm.com/gdpr){: external}.
+Learn more about {{site.data.keyword.IBM_notm}}'s own GDPR readiness journey and our GDPR capabilities and offerings to support your compliance journey [here](https://www.ibm.com/cloud/compliance/gdpr-eu){: external}.
 
 ## Health Insurance Portability and Accountability Act (HIPAA)
 {: #hipaa}

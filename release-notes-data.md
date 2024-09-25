@@ -925,7 +925,7 @@ Version 4.0.5 is now available
 :   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.0.5 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.x and Red Hat OpenShift versions 4.6 and 4.8. For more information about installing and managing the service, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
 
 Important: Additional step for performing a mirrored installation of Minio datastore
-:   **Important:** These steps are no longer needed if you install case package 4.0.6. For more information, see [28 January 2022 (Version 4.0.5)](#speech-to-text-data-28january2022).
+:   **Important:** These steps are no longer needed if you install case package 4.0.6. For more information, see [31 January 2022 (Version 4.0.5)](#speech-to-text-data-31january2022).
 
     If you are performing a mirrored installation (for example, in an air-gapped environment), you need to perform an additional step *before* completing either of the following steps:
 
@@ -943,7 +943,7 @@ Important: Additional step for performing a mirrored installation of Minio datas
     Failure to perform this step will cause installation errors for both {{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}}.
 
 Important: Additional steps for performing a mirrored installation of new next-generation models
-:   **Important:** These steps are no longer needed if you install case package 4.0.6. For more information, see [28 January 2022 (Version 4.0.5)](#speech-to-text-data-28january2022).
+:   **Important:** These steps are no longer needed if you install case package 4.0.6. For more information, see [31 January 2022 (Version 4.0.5)](#speech-to-text-data-31january2022).
 
     If you are performing a mirrored installation (for example, for an air-gapped environment) and plan to install any of the new next-generation models for {{site.data.keyword.speechtotextshort}} (for more information, see the later release note), you must perform an additional step *before* completing either of the following steps:
 
@@ -1456,7 +1456,7 @@ New `split_transcript_at_phrase_end` parameter
     For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-parsing#split-transcript).
 
 Improved `speaker_labels` parameter
-:   For speech recognition, the `speaker_labels` parameter has been updated to improve the identification of individual speakers for further analysis of your audio sample. For more information about the speaker labels feature, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels). For more information about the improvements to the feature, see [IBM Research AI Advances Speaker Diarization in Real Use Cases](https://www.ibm.com/blogs/research/2020/07/speaker-diarization-in-real-use-cases/){: external}.
+:   For speech recognition, the `speaker_labels` parameter has been updated to improve the identification of individual speakers for further analysis of your audio sample. For more information about the speaker labels feature, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels). For more information about the improvements to the feature, see [IBM Research AI Advances Speaker Diarization in Real Use Cases](https://research.ibm.com/blog){: external}.
 
 ## 27 November 2019 (Version 1.1.2)
 {: #speech-to-text-data-27november2019}

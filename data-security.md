@@ -39,7 +39,7 @@ The service provides security for all user data both in motion and at rest:
 -   Transport Layer Security (TLS) 1.2 is used to secure data in transit.
 -   Advanced Encryption Standard (AES)-256 with Secure Hash Algorithm (SHA)-256 is used to secure data at rest.
 
-For more information about data security for cloud applications, see [Security architecture for cloud applications](https://www.ibm.com/cloud/architecture/architectures/securityArchitecture/security-for-data){: external}.
+For more information about data security for cloud applications, see [Security architecture for cloud applications](https://www.ibm.com/topics/data-security){: external}.
 
 ## Information security
 {: #data-security-info-security}

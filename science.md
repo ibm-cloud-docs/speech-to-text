@@ -20,10 +20,10 @@ As [Pioneering Speech Recognition](https://www.ibm.com/ibm/history/ibm100/us/en/
 
 The following announcements summarize {{site.data.keyword.IBM_notm}}'s recent speech recognition accomplishments:
 
--   [Reaching new records in speech recognition](https://www.ibm.com/blogs/watson/2017/03/reaching-new-records-in-speech-recognition/){: external}
--   [{{site.data.keyword.IBM_notm}} Breaks Industry Record for Conversational Speech Recognition by Extending Deep Learning Technologies](https://www-03.ibm.com/press/us/en/pressrelease/51790.wss){: external}
--   [{{site.data.keyword.IBM_notm}} Sets New Transcription Performance Milestone on Automatic Broadcast News Captioning](https://www.ibm.com/blogs/research/2019/05/automatic-broadcast-news-captioning/){: external}
--   [IBM Research AI Advances Speaker Diarization in Real Use Cases](https://www.ibm.com/blogs/research/2020/07/speaker-diarization-in-real-use-cases/){: external}
+-   [Reaching new records in speech recognition](https://www.ibm.com/products/speech-to-text){: external}
+-   [{{site.data.keyword.IBM_notm}} Breaks Industry Record for Conversational Speech Recognition by Extending Deep Learning Technologies](https://newsroom.ibm.com/){: external}
+-   [{{site.data.keyword.IBM_notm}} Sets New Transcription Performance Milestone on Automatic Broadcast News Captioning](https://research.ibm.com/blog){: external}
+-   [IBM Research AI Advances Speaker Diarization in Real Use Cases](https://research.ibm.com/blog){: external}
 -   [Advancing RNN Transducer Technology for Speech Recognition](https://arxiv.org/abs/2103.09935){: external}
 
 These accomplishments contribute to further advance {{site.data.keyword.IBM_notm}}'s speech services. Recent ideas that best fit the cloud-based {{site.data.keyword.speechtotextshort}} service include
