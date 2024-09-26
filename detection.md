@@ -16,7 +16,7 @@ subcollection: speech-to-text
 The {{site.data.keyword.speechtotextfull}} service offers two speech activity detection parameters to control what audio is used for speech recognition. The parameters specify the service's sensitivity to non-speech events and to background noise. The parameters are independent: You can use them individually or together.
 {: shortdesc}
 
-Speech activity detection is supported for most language models. For more information, see [Language model support](/docs/speech-to-text?topic=speech-to-text-input#detection-support).
+Speech activity detection is supported for most language models. For more information, see [Language model support](/docs/speech-to-text?topic=speech-to-text-detection#detection-support).
 {: note}
 
 ## How speech activity detection works

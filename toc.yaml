@@ -33,13 +33,13 @@ toc:
           links:
           - link:
               label: Pricing
-              href: https://www.ibm.com/cloud/watson-speech-to-text/pricing
+              href: https://www.ibm.com/products/speech-to-text
           - link:
               label: Blogs
               href: https://developer.ibm.com/blogs/
           - link:
               label: Webinars
-              href: https://www.ibm.com/watson/webinars/
+              href: https://www.ibm.com/watson
   - navgroup:
       id: howto
       topics:

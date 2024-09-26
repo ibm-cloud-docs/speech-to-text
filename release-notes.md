@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2024-03-07"
+lastupdated: "2024-09-26"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -27,14 +27,24 @@ For information about known limitations of the service, see [Known limitations](
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
 
+## 23 August 2024
+{: #speech-to-text-23aug2024}
+{: release-note}
+
+All Large Speech Models are now generally available
+:   The large speech models for all languages are now generally available (GA). They are supported for use in production environments and applications.
+
+    - For more information about large speech models, see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages).
+    - For more information about the features that are supported for large speech models, see [Supported features for large speech models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-lsm-supported-features).
+
 ## 18 June 2024
 {: #speech-to-text-18jun2024}
 {: release-note}
 
 New large speech models for Brazilian Portuguese and Spanish are now in open beta
-:   The large speech models for Brazilian Portuguese and Spanish are now in open beta. Spanish includes the Castilian, Argentinian, Chilean, Colombian, Mexican and Peruvian dialects.
+:   The large speech models for Brazilian Portuguese and Spanish are now in open beta. Spanish includes the Castilian, Argentinian, Chilean, Colombian, Mexican, and Peruvian dialects.
 
-    - For more information about large speech models, see see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages).
+    - For more information about large speech models, see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages).
     - For more information about the features that are supported for large speech models, see [Supported features for large speech models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-lsm-supported-features).
 
 ## 15 May 2024
@@ -47,24 +57,24 @@ Large Speech Model for English is now generally available
     - For more information about large speech models, see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages).
     - For more information about the features that are supported for large speech models, see [Supported features for large speech models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-lsm-supported-features).
 
-## 07 Mar 2024
+## 07 March 2024
 {: #speech-to-text-07mar2024}
 {: release-note}
 
 Large Speech Model for US English in Open Beta
-:   The new Large speech model for US English in open beta. See [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages) for more details with supported features (beta).
+:   The new Large speech model for US English is in open beta. See [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages) for more details with supported features (beta).
 
-## 30 Nov 2023
+## 30 November 2023
 {: #speech-to-text-30nov2023}
 {: release-note}
 
 Speech to Text parameter speech_begin_event
-:   This parameter would enable client application to know that some words or speech is detected and Speech to Text is in the process of decoding. For more details, see [Using speech recognition parameters](/docs/speech-to-text?topic=speech-to-text-service-features#features-parameters). 
+:   This parameter would enable the client application to know that some words or speech is detected and Speech to Text is in the process of decoding. For more details, see [Using speech recognition parameters](/docs/speech-to-text?topic=speech-to-text-service-features#features-parameters). 
 
 Parameter 'mapping_only' for custom words 
-:   By using the 'mapping_only' paremeter, you can use custom words directly to map 'sounds_like' (or word) to 'display_as' value as post-processing instead of training. For more information, see [The words resource](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordsResource-ng). 
+:   By using the 'mapping_only' parameter, you can use custom words directly to map 'sounds_like' (or word) to 'display_as' value as post-processing instead of training. For more information, see [The words resource](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordsResource-ng). 
 
-:   See the guidlines for [Non-Japanese](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordsResourceAmount-words-ng) and [Japanese](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordsResourceAmount-japanese-ng). 
+:   See the guidelines for [Non-Japanese](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordsResourceAmount-words-ng) and [Japanese](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordsResourceAmount-japanese-ng). 
 
 Support for Brazilian-Portuguese and French-Canadian on new improved next-generation language model customization 
 :   Language model customization for Brazilian-Portuguese and French-Canadian next-generation models is recently added. This service update includes further internal improvements. 
@@ -75,7 +85,7 @@ New Smart Formatting Feature
 Support for Castilian Spanish and LATAM Spanish on new improved next-generation language model customization 
 :   The language model customization for Castilian Spanish and LATAM Spanish next-generation models are added. This service update includes further internal improvements.
 
-Large Speech Models for English, Japanese and French - for early access 
+Large Speech Models for English, Japanese, and French - for early access 
 :   For early access feature, Large Speech Models are available for English, Japanese and French languages for you in IBM Watson Speech-to-Text and IBM watsonx Assistant. The feature set for these Large Speech Models is limited, but more accurate than Next-Generation models and are faster and cheaper to run due to smaller size and better streaming mode capability.
 
 If you are interested in testing these base models, and sharing results and feedback, contact our Product Management team by filling out this [form](https://form.asana.com/?k=ElxhxG66qgc1CJDsehfKYQ&d=8612789739828).
@@ -882,7 +892,7 @@ New beta next-generation language models and `low_latency` parameter
 
     -   For more information about the next-generation models and their capabilities, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
     -   For more information about language support for next-generation models and about which next-generation models support low latency, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
-    -   For more information about feature support for next-generation models, see [Supported features for next-generation models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-features) and [Unsupported features for next-generation models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-unsupported).
+    -   For more information about feature support for next-generation models, see [Supported features for next-generation models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-features).
     -   For more information about the `low_latency` parameter, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
     -   For more information about the interaction between the `low_latency` and `interim_results` parameters for next-generation models, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
 
@@ -969,7 +979,7 @@ New Canadian French models
     -   `fr-CA_BroadbandModel`
     -   `fr-CA_NarrowbandModel`
 
-    The new models do not support language model or acoustic model customization, speaker labels, or smart formatting. For more information about these and all supported models, see [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported).
+    The new models do not support language model or acoustic model customization, speaker labels, or smart formatting. For more information about these and all supported models, see [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#model-pg-supported).
 
 ## 5 August 2020
 {: #speech-to-text-5august2020}
@@ -981,7 +991,7 @@ New Australian English models
     -   `en-AU_NarrowbandModel`
 
     The new models do not support language model or acoustic model customization, or smart formatting. The new models do support speakers labels. For more information, see
-    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
+    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#model-pg-supported)
     -   [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels)
 
 Updates to multiple models for improved speech recognition
@@ -1026,7 +1036,7 @@ Dutch and Italian models now generally available
     -   Italian narrowband model (`it-IT_NarrowbandModel`)
 
     For more information about all available language models, see
-    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
+    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#model-pg-supported)
     -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
 
 ## 1 April 2020
@@ -1039,7 +1049,7 @@ Acoustic model customization now generally available
     Using a custom language model, a custom acoustic model, or both types of model for transcription incurs an add-on charge of $0.03 (USD) per minute. This charge is in addition to the standard usage charge of $0.02 (USD) per minute, and it applies to all languages supported by the customization interface. So the total charge for using one or more custom models for speech recognition is $0.05 (USD) per minute.
 
     -   For more information about support for individual language models, see [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support).
-    -   For more information about pricing, see the [pricing page](https://www.ibm.com/cloud/watson-speech-to-text/pricing){: external} for the {{site.data.keyword.speechtotextshort}} service or the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
+    -   For more information about pricing, see the [pricing page](https://www.ibm.com/products/speech-to-text){: external} for the {{site.data.keyword.speechtotextshort}} service or the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
 
 ## 16 March 2020
 {: #speech-to-text-16march2020}
@@ -1114,7 +1124,7 @@ New beta Italian models available
 
     For more information, see the following sections:
 
-    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
+    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#model-pg-supported)
     -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
 
 New `end_of_phrase_silence_time` parameter for speech recognition
@@ -1175,7 +1185,7 @@ New beta Netherlands Dutch models available
 
     For more information, see the following sections:
 
-    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
+    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#model-pg-supported)
     -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
 
 ## 25 November 2019
@@ -1183,7 +1193,7 @@ New beta Netherlands Dutch models available
 {: release-note}
 
 Updates to speaker labels for improved identification of individual speakers
-:   Speaker labels are updated to improve the identification of individual speakers for further analysis of your audio sample. For more information about the speaker labels feature, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels). For more information about the improvements to the feature, see [IBM Research AI Advances Speaker Diarization in Real Use Cases](https://www.ibm.com/blogs/research/2020/07/speaker-diarization-in-real-use-cases/){: external}.
+:   Speaker labels are updated to improve the identification of individual speakers for further analysis of your audio sample. For more information about the speaker labels feature, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels). For more information about the improvements to the feature, see [IBM Research AI Advances Speaker Diarization in Real Use Cases](https://research.ibm.com/blog){: external}.
 
 ## 12 November 2019
 {: #speech-to-text-12november2019}
@@ -1197,7 +1207,7 @@ New Seoul location now available
 {: release-note}
 
 New limits on maximum number of custom models
-:   You can create no more than 1024 custom language models and no more than 1024 custom acoustic models per owning credentials. For more information, see [Maximum number of custom models](/docs/speech-to-text?topic=speech-to-text-customization#customMaximum).
+:   You can create no more than 1024 custom language models and no more than 1024 custom acoustic models per owning credentials. For more information, see [Maximum number of custom models](/docs/speech-to-text?topic=speech-to-text-custom-usage#custom-maximum).
 
 ## 1 October 2019
 {: #speech-to-text-1october2019}
@@ -1233,7 +1243,7 @@ New models for Spanish dialects now available
 
     For more information, see the following sections:
 
-    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
+    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#model-pg-supported)
     -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
 
 ## 24 June 2019
@@ -1874,7 +1884,7 @@ New support for Web Media (WebM) audio format
 :   The service now supports the Web Media (WebM) audio format with the Opus or Vorbis codec. The service now also supports the Ogg audio format with the Vorbis codec in addition to the Opus codec. For more information about supported audio formats, see [audio/webm format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-webm).
 
 New support for Cross-Origin Resource Sharing
-:   The service now supports Cross-Origin Resource Sharing (CORS) to allow browser-based clients to call the service directly. For more information, see [Leveraging CORS support](/docs/speech-to-text?topic=speech-to-text-service-features#features-cors).
+:   The service now supports Cross-Origin Resource Sharing (CORS) to allow browser-based clients to call the service directly. For more information, see [CORS support](/docs/speech-to-text?topic=speech-to-text-data-security#data-security-cors).
 
 New method to unregister a callback URL with asynchronous HTTP interface
 :   The asynchronous HTTP interface now offers a `POST /v1/unregister_callback` method that removes the registration for an allowlisted callback URL. For more information, see [Unregistering a callback URL](/docs/speech-to-text?topic=speech-to-text-async#unregister).
@@ -1983,7 +1993,7 @@ HTTP and WebSocket interfaces can now return warnings
 :   The JSON response for a recognition request can now include an array of warning messages for invalid query parameters or JSON fields that are included with a request. Each element of the array is a string that describes the nature of the warning followed by an array of invalid argument strings. For example, `"warnings": [ "Unknown arguments: [u'{invalid_arg_1}', u'{invalid_arg_2}']." ]`. For more information, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 Beta Apple iOS SDK is deprecated
-:   The beta *{{site.data.keyword.watson}} Speech Software Development Kit (SDK) for the Apple® iOS operating system* is deprecated. Use the *{{site.data.keyword.watson}} SDK for the Apple® iOS operating system* instead. The new SDK is available from the [ios-sdk repository](https://github.com/watson-developer-cloud/ios-sdk){: external} in the `watson-developer-cloud` namespace on GitHub.
+:   The beta *{{site.data.keyword.watson}} Speech Software Development Kit (SDK) for the Apple® iOS operating system* is deprecated. Use the *{{site.data.keyword.watson}} SDK for the Apple® iOS operating system* instead. The new SDK is available from the [ios-sdk repository](https://github.com/watson-developer-cloud/swift-sdk){: external} in the `watson-developer-cloud` namespace on GitHub.
 
 WebSocket interface can produce delayed results
 :   The WebSocket interface can take minutes to produce final results for a recognition request for an especially long audio file. For the WebSocket interface, the underlying TCP connection remains idle while the service prepares the response. Therefore, the connection can close due to a timeout. To avoid the timeout with the WebSocket interface, request interim results (`\"interim_results\": \"true\"`) in the JSON for the `start` message to initiate the request. You can discard the interim results if you do not need them. This issue will be resolved in a future update.
@@ -2012,9 +2022,9 @@ New `session_closed` field for session-based methods
 :   In the JSON responses that it returns for errors with session-based methods, the service now also includes a new `session_closed` field. The field is set to `true` if the session is closed as a result of the error. For more information about possible return codes for any method, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 HTTP platform timeout no longer applies
-:   HTTP recognition requests are no longer subject to a 10-minute platform timeout. The service now keeps the connection alive by sending a space character in the response JSON object every 20 seconds as long as recognition is ongoing. For more information, see [Timeouts](/docs/speech-to-text?topic=speech-to-text-input#timeouts).
+:   HTTP recognition requests are no longer subject to a 10-minute platform timeout. The service now keeps the connection alive by sending a space character in the response JSON object every 20 seconds while recognition is ongoing. For more information, see [Timeouts](/docs/speech-to-text?topic=speech-to-text-input#timeouts).
 
-Rate limiting with curl command no longer needed
+Rate limiting with curl command is no longer needed
 :   When you use the `curl` command to transcribe audio with the service, you no longer need to use the `--limit-rate` option to transfer data at a rate no faster than 40,000 bytes per second.
 
 Changes to HTTP error codes
@@ -2027,7 +2037,7 @@ Changes to HTTP error codes
 New mobile SDKs available
 :   Two new beta mobile SDKs are available for the speech services. The SDKs enable mobile applications to interact with both the {{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}} services.
     -   The *{{site.data.keyword.watson}} Speech SDK for the Google Android™ platform* supports streaming audio to the {{site.data.keyword.speechtotextshort}} service in real time and receiving a transcript of the audio as you speak. The project includes an example application that showcases interaction with both of the speech services. The SDK is available from the [speech-android-sdk repository](https://github.com/watson-developer-cloud/speech-android-sdk){: external} in the `watson-developer-cloud` namespace on GitHub.
-    -   The *{{site.data.keyword.watson}} Speech SDK for the Apple® iOS operating system* supports streaming audio to the {{site.data.keyword.speechtotextshort}} service and receiving a transcript of the audio in response. The SDK is available from the [speech-ios-sdk repository](https://github.com/watson-developer-cloud/speech-ios-sdk){: external} in the `watson-developer-cloud` namespace on GitHub.
+    -   The *{{site.data.keyword.watson}} Speech SDK for the Apple® iOS operating system* supports streaming audio to the {{site.data.keyword.speechtotextshort}} service and receiving a transcript of the audio in response. The SDK is available from the [speech-ios-sdk repository](https://github.com/germanattanasio/speech-ios-sdk){: external} in the `watson-developer-cloud` namespace on GitHub.
 
     Both SDKs support authenticating with the speech services by using either your {{site.data.keyword.cloud_notm}} service credentials or an authentication token. Because the SDKs are beta, they are subject to change in the future.
 
@@ -2048,10 +2058,10 @@ New `sequence_id` parameter for long polling of sessions
 :   The service now supports overcoming timeouts when you transcribe long audio files with the HTTP interface. When you use sessions, you can employ a long polling pattern by specifying sequence IDs with the `GET /v1/sessions/{session_id}/observe_result` and `POST /v1/sessions/{session_id}/recognize` methods for long-running recognition tasks. By using the new `sequence_id` parameter of these methods, you can request results before, during, or after you submit a recognition request.
 
 New capitalization feature for US English transcription
-:   For the US English language models, `en_US_BroadbandModel` and `en_US_NarrowbandModel`, the service now correctly capitalizes many proper nouns. For example, the service would new return text that reads "Barack Obama graduated from Columbia University" instead of "barack obama graduated from columbia university." This change might be of interest to you if your application is sensitive in any way to the case of proper nouns.
+:   For the US English language models, `en_US_BroadbandModel` and `en_US_NarrowbandModel`, the service now correctly capitalizes many proper nouns. For example, the service would return new text that reads "Barack Obama graduated from Columbia University" instead of "barack obama graduated from columbia university". This change might be of interest to you if your application is sensitive in any way to the case of proper nouns.
 
 New HTTP error code
-:   The HTTP `DELETE /v1/sessions/{session_id}` request does not return status code 415 "Unsupported Media Type." This return code is removed from the documentation for the method.
+:   The HTTP `DELETE /v1/sessions/{session_id}` request does not return status code 415 "Unsupported Media Type". This return code is removed from the documentation for the method.
 
 ## 1 July 2015
 {: #speech-to-text-1july2015}
@@ -2067,7 +2077,7 @@ The {{site.data.keyword.speechtotextshort}} service is now generally available
     ```
     {: codeblock}
 
-    This line specified the default model, `WatsonModel`, for the beta version of the service. If your application also specified this model, you need to change it to use one of the new models that are supported by the GA version. For more information, see the next bullet.
+    This line specified the default model `WatsonModel`, for the beta version of the service. If your application also specified this model, you need to change it to use one of the new models that are supported by the GA version. For more information, see the next bullet.
 
 New token-based programming model
 :   The service now supports a new programming model for direct interaction between a client and the service over a WebSocket connection. By using this model, a client can obtain an authentication token for communicating directly with the service. The token bypasses the need for a server-side proxy application in {{site.data.keyword.cloud_notm}} to call the service on the client's behalf. Tokens are the preferred means for clients to interact with the service.
@@ -2101,7 +2111,7 @@ New support for Waveform Audio File (WAV) audio format
 :   The `Content-Type` header of the `recognize` methods now supports `audio/wav` for Waveform Audio File (WAV) files, in addition to `audio/flac` and `audio/l16`. For more information, see [audio/wav format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-wav).
 
 Limits on maximum amount of audio for speech recognition
-:   The service now has a limit of 100 MB of data per session in streaming mode. You specify streaming mode by specifying the value `chunked` with the header `Transfer-Encoding`. One-shot delivery of an audio file still imposes a size limit of 4 MB on the data that is sent. For more information, see [Audio transmission](/docs/speech-to-text?topic=speech-to-text-input#transmission).
+:   The service now has a limit of 100 MB of data per session in streaming mode. You can specify streaming mode by specifying the value `chunked` with the header `Transfer-Encoding`. One-shot delivery of an audio file still imposes a size limit of 4 MB on the data that is sent. For more information, see [Audio transmission](/docs/speech-to-text?topic=speech-to-text-input#transmission).
 
 New header to opt out of contributing to service improvements
 :   The `GET /v1/sessions/{session_id}/observe_result`, `POST /v1/sessions/{session_id}/recognize`, and `POST /v1/recognize` methods now include the header parameter `X-WDC-PL-OPT-OUT` to control whether the service uses the audio and transcription data from a request to improve future results. The WebSocket interface includes an equivalent query parameter. Specify a value of `1` to prevent the service from using the audio and transcription results. The parameter applies only to the current request. The new header replaces the `X-logging` header from the beta API. See [Controlling request logging for {{site.data.keyword.watson}} services](/docs/watson?topic=watson-gs-logging-overview).
@@ -2110,7 +2120,7 @@ Changes to HTTP error codes
 :   The service can now respond with the following HTTP error codes:
 
     -   For the `/v1/models`, `/v1/models/{model_id}`, `/v1/sessions`, `/v1/sessions/{session_id}`, `/v1/sessions/{session_id}/observe_result`, `/v1/sessions/{session_id}/recognize`, and `/v1/recognize` methods, error code 415 ("Unsupported Media Type") is added.
-    -   For `POST` and `GET` requests to the `/v1/sessions/{session_id}/recognize` method, the following error codes have been modified:
+    -   For `POST` and `GET` requests to the `/v1/sessions/{session_id}/recognize` method, the following error codes are modified:
         -   Error code 404 ("Session_id not found") has a more descriptive message (`POST` and `GET`).
         -   Error code 503 ("Session is already processing a request. Concurrent requests are not allowed on the same session. Session remains alive after this error.") has a more descriptive message (`POST` only).
-        -   For HTTP `POST` requests to the `/v1/sessions` and `/v1/recognize` methods, error code 503 ("Service Unavailable") can be returned. The error code can also be returned when creating a WebSocket connection with the `/v1/recognize` method.
+        -   For HTTP `POST` requests to the `/v1/sessions` and `/v1/recognize` methods, error code 503 ("Service Unavailable") can be returned. The error code can also be returned when you create a WebSocket connection with the `/v1/recognize` method.

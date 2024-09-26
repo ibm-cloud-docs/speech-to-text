@@ -925,7 +925,7 @@ Version 4.0.5 is now available
 :   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.0.5 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.x and Red Hat OpenShift versions 4.6 and 4.8. For more information about installing and managing the service, see [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
 
 Important: Additional step for performing a mirrored installation of Minio datastore
-:   **Important:** These steps are no longer needed if you install case package 4.0.6. For more information, see [28 January 2022 (Version 4.0.5)](#speech-to-text-data-28january2022).
+:   **Important:** These steps are no longer needed if you install case package 4.0.6. For more information, see [31 January 2022 (Version 4.0.5)](#speech-to-text-data-31january2022).
 
     If you are performing a mirrored installation (for example, in an air-gapped environment), you need to perform an additional step *before* completing either of the following steps:
 
@@ -943,7 +943,7 @@ Important: Additional step for performing a mirrored installation of Minio datas
     Failure to perform this step will cause installation errors for both {{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}}.
 
 Important: Additional steps for performing a mirrored installation of new next-generation models
-:   **Important:** These steps are no longer needed if you install case package 4.0.6. For more information, see [28 January 2022 (Version 4.0.5)](#speech-to-text-data-28january2022).
+:   **Important:** These steps are no longer needed if you install case package 4.0.6. For more information, see [31 January 2022 (Version 4.0.5)](#speech-to-text-data-31january2022).
 
     If you are performing a mirrored installation (for example, for an air-gapped environment) and plan to install any of the new next-generation models for {{site.data.keyword.speechtotextshort}} (for more information, see the later release note), you must perform an additional step *before* completing either of the following steps:
 
@@ -1257,7 +1257,7 @@ New next-generation language models
 
     -   For more information about the next-generation models and their capabilities, see [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
     -   For more information about language support for next-generation models and about which next-generation models support low latency, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
-    -   For more information about feature support for next-generation models, see [Supported features for next-generation models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-features) and [Unsupported features for next-generation models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-unsupported).
+    -   For more information about feature support for next-generation models, see [Supported features for next-generation models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-features).
     -   For more information about the `low_latency` parameter, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
     -   For more information about the interaction between the `low_latency` and `interim_results` parameters for next-generation models, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
 
@@ -1417,7 +1417,7 @@ New broadband and narrowband models for Dutch and Italian
     -   Italian narrowband model (`it-IT_NarrowbandModel`)
 
     Dutch and Italian language models are generally available (GA) for speech recognition and for language model and acoustic model customization. For more information about all available language models, see
-    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
+    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#model-pg-supported)
     -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
 
 Support for `speaker_labels` parameter for German and Korean
@@ -1456,7 +1456,7 @@ New `split_transcript_at_phrase_end` parameter
     For more information, see [Split transcript at phrase end](/docs/speech-to-text?topic=speech-to-text-parsing#split-transcript).
 
 Improved `speaker_labels` parameter
-:   For speech recognition, the `speaker_labels` parameter has been updated to improve the identification of individual speakers for further analysis of your audio sample. For more information about the speaker labels feature, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels). For more information about the improvements to the feature, see [IBM Research AI Advances Speaker Diarization in Real Use Cases](https://www.ibm.com/blogs/research/2020/07/speaker-diarization-in-real-use-cases/){: external}.
+:   For speech recognition, the `speaker_labels` parameter has been updated to improve the identification of individual speakers for further analysis of your audio sample. For more information about the speaker labels feature, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels). For more information about the improvements to the feature, see [IBM Research AI Advances Speaker Diarization in Real Use Cases](https://research.ibm.com/blog){: external}.
 
 ## 27 November 2019 (Version 1.1.2)
 {: #speech-to-text-data-27november2019}
@@ -1465,7 +1465,7 @@ Version 1.1.2 is available
 :   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 1.1.2 is now available.
 
 Maximum number of custom models
-:   You can create no more than 1024 custom language models and no more than 1024 custom acoustic models per owning credentials. For more information, see [Maximum number of custom models](/docs/speech-to-text?topic=speech-to-text-customization#customMaximum).
+:   You can create no more than 1024 custom language models and no more than 1024 custom acoustic models per owning credentials. For more information, see [Maximum number of custom models](/docs/speech-to-text?topic=speech-to-text-custom-usage#custom-maximum).
 
 ## 30 August 2019 (Version 1.0.1)
 {: #speech-to-text-data-30august2019}
@@ -1489,7 +1489,7 @@ New broadband and narrowband models for Spanish dialects
 
     For more information, see the following sections:
 
-    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#models-supported)
+    -   [Supported previous-generation language models](/docs/speech-to-text?topic=speech-to-text-models#model-pg-supported)
     -   [Language support for customization](/docs/speech-to-text?topic=speech-to-text-custom-support)
 
 FISMA support
