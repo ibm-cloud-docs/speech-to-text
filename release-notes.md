@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2023
-lastupdated: "2024-03-07"
+lastupdated: "2024-09-26"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -27,44 +27,54 @@ For information about known limitations of the service, see [Known limitations](
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
 
+## 23 August 2024
+{: #speech-to-text-23aug2024}
+{: release-note}
+
+All Large Speech Models are now generally available
+:   The large speech models for all languages are now generally available (GA). They are supported for use in production environments and applications.
+
+    - For more information about large speech models, see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages).
+    - For more information about the features that are supported for large speech models, see [Supported features for large speech models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-lsm-supported-features).
+
 ## 18 June 2024
 {: #speech-to-text-18jun2024}
 {: release-note}
 
 New large speech models for Brazilian Portuguese and Spanish are now in open beta
-:   The large speech models for Brazilian Portuguese and Spanish are now in open beta. Spanish includes the Castilian, Argentinian, Chilean, Colombian, Mexican and Peruvian dialects.
+:   The large speech models for Brazilian Portuguese and Spanish are now in open beta. Spanish includes the Castilian, Argentinian, Chilean, Colombian, Mexican, and Peruvian dialects.
 
-    - For more information about large speech models, see see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages).
+    - For more information about large speech models, see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages).
     - For more information about the features that are supported for large speech models, see [Supported features for large speech models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-lsm-supported-features).
 
 ## 15 May 2024
 {: #speech-to-text-20may2024}
 {: release-note}
 
-Large Speech Model for English is now generally available
+The large Speech Model for English is now generally available
 :   The large speech model for English, which includes the United States, Australian, Indian, and United Kingdom dialects, is now generally available (GA). It is supported for use in production environments and applications. 
 
     - For more information about large speech models, see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages).
     - For more information about the features that are supported for large speech models, see [Supported features for large speech models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-lsm-supported-features).
 
-## 07 Mar 2024
+## 07 March 2024
 {: #speech-to-text-07mar2024}
 {: release-note}
 
 Large Speech Model for US English in Open Beta
-:   The new Large speech model for US English in open beta. See [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages) for more details with supported features (beta).
+:   The new Large speech model for US English is in open beta. See [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages) for more details with supported features (beta).
 
-## 30 Nov 2023
+## 30 November 2023
 {: #speech-to-text-30nov2023}
 {: release-note}
 
 Speech to Text parameter speech_begin_event
-:   This parameter would enable client application to know that some words or speech is detected and Speech to Text is in the process of decoding. For more details, see [Using speech recognition parameters](/docs/speech-to-text?topic=speech-to-text-service-features#features-parameters). 
+:   This parameter would enable the client application to know that some words or speech is detected and Speech to Text is in the process of decoding. For more details, see [Using speech recognition parameters](/docs/speech-to-text?topic=speech-to-text-service-features#features-parameters). 
 
 Parameter 'mapping_only' for custom words 
-:   By using the 'mapping_only' paremeter, you can use custom words directly to map 'sounds_like' (or word) to 'display_as' value as post-processing instead of training. For more information, see [The words resource](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordsResource-ng). 
+:   By using the 'mapping_only' parameter, you can use custom words directly to map 'sounds_like' (or word) to 'display_as' value as post-processing instead of training. For more information, see [The words resource](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordsResource-ng). 
 
-:   See the guidlines for [Non-Japanese](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordsResourceAmount-words-ng) and [Japanese](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordsResourceAmount-japanese-ng). 
+:   See the guidelines for [Non-Japanese](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordsResourceAmount-words-ng) and [Japanese](/docs/speech-to-text?topic=speech-to-text-corporaWords-ng#wordsResourceAmount-japanese-ng). 
 
 Support for Brazilian-Portuguese and French-Canadian on new improved next-generation language model customization 
 :   Language model customization for Brazilian-Portuguese and French-Canadian next-generation models is recently added. This service update includes further internal improvements. 
@@ -75,7 +85,7 @@ New Smart Formatting Feature
 Support for Castilian Spanish and LATAM Spanish on new improved next-generation language model customization 
 :   The language model customization for Castilian Spanish and LATAM Spanish next-generation models are added. This service update includes further internal improvements.
 
-Large Speech Models for English, Japanese and French - for early access 
+Large Speech Models for English, Japanese, and French - for early access 
 :   For early access feature, Large Speech Models are available for English, Japanese and French languages for you in IBM Watson Speech-to-Text and IBM watsonx Assistant. The feature set for these Large Speech Models is limited, but more accurate than Next-Generation models and are faster and cheaper to run due to smaller size and better streaming mode capability.
 
 If you are interested in testing these base models, and sharing results and feedback, contact our Product Management team by filling out this [form](https://form.asana.com/?k=ElxhxG66qgc1CJDsehfKYQ&d=8612789739828).
@@ -2012,9 +2022,9 @@ New `session_closed` field for session-based methods
 :   In the JSON responses that it returns for errors with session-based methods, the service now also includes a new `session_closed` field. The field is set to `true` if the session is closed as a result of the error. For more information about possible return codes for any method, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 HTTP platform timeout no longer applies
-:   HTTP recognition requests are no longer subject to a 10-minute platform timeout. The service now keeps the connection alive by sending a space character in the response JSON object every 20 seconds as long as recognition is ongoing. For more information, see [Timeouts](/docs/speech-to-text?topic=speech-to-text-input#timeouts).
+:   HTTP recognition requests are no longer subject to a 10-minute platform timeout. The service now keeps the connection alive by sending a space character in the response JSON object every 20 seconds while recognition is ongoing. For more information, see [Timeouts](/docs/speech-to-text?topic=speech-to-text-input#timeouts).
 
-Rate limiting with curl command no longer needed
+Rate limiting with curl command is no longer is needed
 :   When you use the `curl` command to transcribe audio with the service, you no longer need to use the `--limit-rate` option to transfer data at a rate no faster than 40,000 bytes per second.
 
 Changes to HTTP error codes
@@ -2048,10 +2058,10 @@ New `sequence_id` parameter for long polling of sessions
 :   The service now supports overcoming timeouts when you transcribe long audio files with the HTTP interface. When you use sessions, you can employ a long polling pattern by specifying sequence IDs with the `GET /v1/sessions/{session_id}/observe_result` and `POST /v1/sessions/{session_id}/recognize` methods for long-running recognition tasks. By using the new `sequence_id` parameter of these methods, you can request results before, during, or after you submit a recognition request.
 
 New capitalization feature for US English transcription
-:   For the US English language models, `en_US_BroadbandModel` and `en_US_NarrowbandModel`, the service now correctly capitalizes many proper nouns. For example, the service would new return text that reads "Barack Obama graduated from Columbia University" instead of "barack obama graduated from columbia university." This change might be of interest to you if your application is sensitive in any way to the case of proper nouns.
+:   For the US English language models, `en_US_BroadbandModel` and `en_US_NarrowbandModel`, the service now correctly capitalizes many proper nouns. For example, the service would return new text that reads "Barack Obama graduated from Columbia University" instead of "barack obama graduated from columbia university". This change might be of interest to you if your application is sensitive in any way to the case of proper nouns.
 
 New HTTP error code
-:   The HTTP `DELETE /v1/sessions/{session_id}` request does not return status code 415 "Unsupported Media Type." This return code is removed from the documentation for the method.
+:   The HTTP `DELETE /v1/sessions/{session_id}` request does not return status code 415 "Unsupported Media Type". This return code is removed from the documentation for the method.
 
 ## 1 July 2015
 {: #speech-to-text-1july2015}
@@ -2067,7 +2077,7 @@ The {{site.data.keyword.speechtotextshort}} service is now generally available
     ```
     {: codeblock}
 
-    This line specified the default model, `WatsonModel`, for the beta version of the service. If your application also specified this model, you need to change it to use one of the new models that are supported by the GA version. For more information, see the next bullet.
+    This line specified the default model `WatsonModel`, for the beta version of the service. If your application also specified this model, you need to change it to use one of the new models that are supported by the GA version. For more information, see the next bullet.
 
 New token-based programming model
 :   The service now supports a new programming model for direct interaction between a client and the service over a WebSocket connection. By using this model, a client can obtain an authentication token for communicating directly with the service. The token bypasses the need for a server-side proxy application in {{site.data.keyword.cloud_notm}} to call the service on the client's behalf. Tokens are the preferred means for clients to interact with the service.
@@ -2101,7 +2111,7 @@ New support for Waveform Audio File (WAV) audio format
 :   The `Content-Type` header of the `recognize` methods now supports `audio/wav` for Waveform Audio File (WAV) files, in addition to `audio/flac` and `audio/l16`. For more information, see [audio/wav format](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-wav).
 
 Limits on maximum amount of audio for speech recognition
-:   The service now has a limit of 100 MB of data per session in streaming mode. You specify streaming mode by specifying the value `chunked` with the header `Transfer-Encoding`. One-shot delivery of an audio file still imposes a size limit of 4 MB on the data that is sent. For more information, see [Audio transmission](/docs/speech-to-text?topic=speech-to-text-input#transmission).
+:   The service now has a limit of 100 MB of data per session in streaming mode. You can specify streaming mode by specifying the value `chunked` with the header `Transfer-Encoding`. One-shot delivery of an audio file still imposes a size limit of 4 MB on the data that is sent. For more information, see [Audio transmission](/docs/speech-to-text?topic=speech-to-text-input#transmission).
 
 New header to opt out of contributing to service improvements
 :   The `GET /v1/sessions/{session_id}/observe_result`, `POST /v1/sessions/{session_id}/recognize`, and `POST /v1/recognize` methods now include the header parameter `X-WDC-PL-OPT-OUT` to control whether the service uses the audio and transcription data from a request to improve future results. The WebSocket interface includes an equivalent query parameter. Specify a value of `1` to prevent the service from using the audio and transcription results. The parameter applies only to the current request. The new header replaces the `X-logging` header from the beta API. See [Controlling request logging for {{site.data.keyword.watson}} services](/docs/watson?topic=watson-gs-logging-overview).
@@ -2110,7 +2120,7 @@ Changes to HTTP error codes
 :   The service can now respond with the following HTTP error codes:
 
     -   For the `/v1/models`, `/v1/models/{model_id}`, `/v1/sessions`, `/v1/sessions/{session_id}`, `/v1/sessions/{session_id}/observe_result`, `/v1/sessions/{session_id}/recognize`, and `/v1/recognize` methods, error code 415 ("Unsupported Media Type") is added.
-    -   For `POST` and `GET` requests to the `/v1/sessions/{session_id}/recognize` method, the following error codes have been modified:
+    -   For `POST` and `GET` requests to the `/v1/sessions/{session_id}/recognize` method, the following error codes are modified:
         -   Error code 404 ("Session_id not found") has a more descriptive message (`POST` and `GET`).
         -   Error code 503 ("Session is already processing a request. Concurrent requests are not allowed on the same session. Session remains alive after this error.") has a more descriptive message (`POST` only).
-        -   For HTTP `POST` requests to the `/v1/sessions` and `/v1/recognize` methods, error code 503 ("Service Unavailable") can be returned. The error code can also be returned when creating a WebSocket connection with the `/v1/recognize` method.
+        -   For HTTP `POST` requests to the `/v1/sessions` and `/v1/recognize` methods, error code 503 ("Service Unavailable") can be returned. The error code can also be returned when you create a WebSocket connection with the `/v1/recognize` method.
