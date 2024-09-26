@@ -28,7 +28,7 @@ The {{site.data.keyword.speechtotextfull}} service lets you pass audio to the se
 
     For more information about streaming chunked audio with the `Transfer-Encoding` header, see
     -   [Chunked transfer encoding](https://wikipedia.org/wiki/Chunked_transfer_encoding){: external}
-    -   [Transfer Codings](https://tools.ietf.org/html/rfc7230#section-4){: external} in *IETF RFC 7320 HTTP/1.1: Message Syntax and Routing*
+    -   [Transfer Codings](https://datatracker.ietf.org/doc/html/rfc7230#section-4){: external} in *IETF RFC 7320 HTTP/1.1: Message Syntax and Routing*
 
 With the HTTP interfaces, the service always transcribes the entire audio stream before sending any results. The results can include multiple `transcript` elements to indicate phrases that are separated by pauses. Concatenate the `transcript` elements to assemble the complete transcript.
 
