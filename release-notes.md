@@ -51,7 +51,7 @@ New large speech models for Brazilian Portuguese and Spanish are now in open bet
 {: #speech-to-text-20may2024}
 {: release-note}
 
-The large Speech Model for English is now generally available
+Large Speech Model for English is now generally available
 :   The large speech model for English, which includes the United States, Australian, Indian, and United Kingdom dialects, is now generally available (GA). It is supported for use in production environments and applications. 
 
     - For more information about large speech models, see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages).
@@ -2024,7 +2024,7 @@ New `session_closed` field for session-based methods
 HTTP platform timeout no longer applies
 :   HTTP recognition requests are no longer subject to a 10-minute platform timeout. The service now keeps the connection alive by sending a space character in the response JSON object every 20 seconds while recognition is ongoing. For more information, see [Timeouts](/docs/speech-to-text?topic=speech-to-text-input#timeouts).
 
-Rate limiting with curl command is no longer is needed
+Rate limiting with curl command is no longer needed
 :   When you use the `curl` command to transcribe audio with the service, you no longer need to use the `--limit-rate` option to transfer data at a rate no faster than 40,000 bytes per second.
 
 Changes to HTTP error codes
