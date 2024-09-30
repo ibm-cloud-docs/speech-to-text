@@ -29,7 +29,7 @@ The tutorial uses the `curl` command-line utility to demonstrate REST API calls.
 
 [IBM Cloud]{: tag-ibm-cloud} Watch the following video for a visual summary of getting started with the {{site.data.keyword.speechtotextshort}} service.
 
-![Getting started with the {{site.data.keyword.speechtotextshort}} service](https://video.ibm.com/embed/channel/23952663/video/speech-to-text-get-started){: video output="iframe" data-script="none" id="watsonmediaplayer" width="560" height="315" scrolling="no" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" style="border: 0 none transparent;"}
+![Getting started with the {{site.data.keyword.speechtotextshort}} service](https://video.ibm.com/embed/recorded/129758027){: video output="iframe" data-script="none" id="watsonmediaplayer" width="560" height="315" scrolling="no" allowfullscreen webkitallowfullscreen mozAllowFullScreen frameborder="0" style="border: 0 none transparent;"}
 
 ## Before you begin
 {: #getting-started-before-you-begin}

@@ -45,7 +45,7 @@ The service does not accept audio that is sampled at a rate that is less than th
 ### More information
 {: #audio-terminology-sampling-rate-more}
 
--   For more information about sampling rates, see [Sampling (signal processing)](https://wikipedia.org/wiki/Sampling_%28signal_processing%29){: external}.
+-   For more information about sampling rates, see [Sampling (signal processing)](https://en.wikipedia.org/wiki/Sampling_(signal_processing)){: external}.
 -   For more information about the models that the service offers for each supported language, see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages), [Previous-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models) and [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng).
 
 ## Bit rate
@@ -58,7 +58,7 @@ For example, audio that uses a broadband sampling rate of 16 kHz and 16 bits per
 ### More information
 {: #audio-terminology-bit-rate-more}
 
--   For more information about bit rates, see [Bit rate](https://wikipedia.org/wiki/Bit_rate){: external}.
+-   For more information about bit rates, see [Bit rate](https://en.wikipedia.org/wiki/Bit_rate){: external}.
 -   For a general discussion of sampling rates and bit rates, see [What are bit rates?](http://www.richardfarrar.com/what-are-bit-rates/){: external} and [Choosing bit rates for podcasts](http://www.richardfarrar.com/choosing-bit-rates-for-podcasts/){: external}.
 
 ## Compression
@@ -80,7 +80,7 @@ You can use compression to accommodate more audio data with your speech recognit
 ### More information
 {: #audio-terminology-compression-more}
 
--   For more information about audio compression, see [Data compression (Audio)](https://wikipedia.org/wiki/Data_compression#Audio){: external}.
+-   For more information about audio compression, see [Data compression (Audio)](https://en.m.wikipedia.org/wiki/Data_compression#Audio){: external}.
 -   For more information about the compression that is available with the audio formats that the service supports, see [Audio formats](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-list).
 -   For more information about using data compression to increase the amount of audio that you can send with a request, see [Data limits and compression](/docs/speech-to-text?topic=speech-to-text-audio-formats#audio-formats-limits).
 
@@ -103,7 +103,7 @@ The {{site.data.keyword.speechtotextshort}} service accepts audio with a maximum
 ### More information
 {: #audio-terminology-channels-more}
 
--   For more information about audio channels, see [Audio signal](https://wikipedia.org/wiki/Audio_signal){: external}.
+-   For more information about audio channels, see [Audio signal](https://en.wikipedia.org/wiki/Audio_signal){: external}.
 
 ## Endianness
 {: #audio-terminology-endianness}
@@ -123,7 +123,7 @@ The {{site.data.keyword.speechtotextshort}} service automatically detects the en
 ### More information
 {: #audio-terminology-endianness-more}
 
--   For more information about endianness, see [Endianness](https://wikipedia.org/wiki/Endianness){: external}.
+-   For more information about endianness, see [Endianness](https://en.wikipedia.org/wiki/Endianness){: external}.
 
 ## Audio frequency
 {: #audio-terminology-frequency}
@@ -144,7 +144,7 @@ The training data for the models is derived from different channels (telephony f
 
 The information in audio that is originally sampled at a narrowband frequency is limited to the 0-4 kHz range. Upsampling narrowband audio to a higher sampling rate is unlikely to improve speech recognition accuracy. If you upsample narrowband audio, it lacks information in the range that the broadband models expect. Furthermore, the information that is found in the expected range of a narrowband sample is qualitatively different from the information that is found in the same range of a broadband sample. So upsampling actually results in degraded recognition accuracy.
 
-For a broadband sampling rate of 16 kHz, the maximum frequency present in the sampled audio signal is expected to be 8 kHz. Therefore, you must filter the original signal at 8 kHz before you sample it with a rate of 16 kHz. Otherwise, degradation occurs due to the phenomenon known as *aliasing*. To understand why, see [Nyquist frequency](https://wikipedia.org/wiki/Nyquist_frequency){: external}.
+For a broadband sampling rate of 16 kHz, the maximum frequency present in the sampled audio signal is expected to be 8 kHz. Therefore, you must filter the original signal at 8 kHz before you sample it with a rate of 16 kHz. Otherwise, degradation occurs due to the phenomenon known as *aliasing*. To understand why, see [Nyquist frequency](https://en.wikipedia.org/wiki/Nyquist_frequency){: external}.
 
 A useful comparison might be to imagine viewing a VHS tape on a large flat-screen HDTV. The image is blurry because playing the tape on a high-definition device cannot really add new information to the stream. It simply makes the format compatible with the better device. The same is true of upsampling audio.
 
@@ -158,6 +158,6 @@ Downsampling your audio can be effective in some cases. For example, if the samp
 ### More information
 {: #audio-terminology-frequency-more}
 
--   For more information about audio frequency, see [Audio frequency](https://wikipedia.org/wiki/Audio_frequency){: external}.
--   For more information about upsampling, see [Upsampling](https://wikipedia.org/wiki/Upsampling){: external}.
--   For more information about downsampling, see [Downsampling](https://wikipedia.org/wiki/Downsampling_%28signal_processing%29){: external}.
+-   For more information about audio frequency, see [Audio frequency](https://en.wikipedia.org/wiki/Audio_frequency){: external}.
+-   For more information about upsampling, see [Upsampling](https://en.wikipedia.org/wiki/Upsampling){: external}.
+-   For more information about downsampling, see [Downsampling](https://en.m.wikipedia.org/wiki/Downsampling_(signal_processing)){: external}.

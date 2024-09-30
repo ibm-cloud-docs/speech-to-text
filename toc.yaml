@@ -153,6 +153,6 @@ toc:
           links:
           - link:
               label: StackOverflow
-              href: http://stackoverflow.com/questions/tagged/ibm-watson-cognitive+speech-to-text
+              href: https://stackoverflow.com/questions/tagged/ibm-watson+speech-to-text
       - include: ../overview/accessibility/accessibility_features.md
         navtitle: Accessibility
