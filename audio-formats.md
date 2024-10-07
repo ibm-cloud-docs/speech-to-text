@@ -53,7 +53,7 @@ The final columns identify additional *Required parameters* and *Optional parame
 | `rate`  \n *Required* | An integer that specifies the sampling rate at which the audio is captured. For example, specify the following parameter for audio data that is captured at 8 kHz:  \n   \n `audio/alaw;rate=8000` |
 {: caption="Table 2. Parameter for audio/alaw format"}
 
-For more information, see [A-law algorithm](https://en.m.wikipedia.org/wiki/A-law_algorithm){: external}.
+For more information, see [A-law algorithm](https://en.wikipedia.org/wiki/A-law_algorithm){: external}.
 
 ### audio/basic format
 {: #audio-formats-basic}
@@ -65,7 +65,7 @@ For more information, see the Internet Engineering Task Force (IETF) [Request fo
 ### audio/flac format
 {: #audio-formats-flac}
 
-*Free Lossless Audio Codec (FLAC)* (`audio/flac`) is a lossless audio format. For more information, see [FLAC](https://en.m.wikipedia.org/wiki/FLAC){: external}.
+*Free Lossless Audio Codec (FLAC)* (`audio/flac`) is a lossless audio format. For more information, see [FLAC](https://en.wikipedia.org/wiki/FLAC){: external}.
 
 ### audio/g729 format
 {: #audio-formats-g729}
@@ -89,7 +89,7 @@ For more information, see the IETF [Request for Comment (RFC) 2586](https://data
 ### audio/mp3 and audio/mpeg formats
 {: #audio-formats-mp3}
 
-*MP3* (`audio/mp3`) or *Motion Picture Experts Group (MPEG)* (`audio/mpeg`) is a lossy audio format. (MP3 and MPEG refer to the same format.) For more information, see [MP3](https://en.wikipedia.org/wiki/MP3){: external}.
+*MP3* (`audio/mp3`) or *Motion Picture Experts Group (MPEG)* (`audio/mpeg`) is a lossy audio format. (MP3 and MPEG refer to the same format.) For more information, see [MP3](https://en.m.wikipedia.org/wiki/MP3){: external}.
 
 ### audio/mulaw format
 {: #audio-formats-mulaw}
@@ -101,7 +101,7 @@ For more information, see the IETF [Request for Comment (RFC) 2586](https://data
 | `rate`  \n *Required* | An integer that specifies the sampling rate at which the audio is captured. For example, specify the following parameter for audio data that is captured at 8 kHz:  \n   \n `audio/mulaw;rate=8000` |
 {: caption="Table 4. Parameter for audio/mulaw format"}
 
-For more information, see [M-law algorithm](https://en.m.wikipedia.org/wiki/%CE%9C-law_algorithm){: external}.
+For more information, see [M-law algorithm](https://en.wikipedia.org/wiki/M-law_algorithm){: external}.
 
 ### audio/ogg format
 {: #audio-formats-ogg}
