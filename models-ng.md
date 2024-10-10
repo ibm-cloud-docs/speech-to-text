@@ -76,7 +76,7 @@ Table 1 lists the available next-generation telephony models.
 | Spanish  \n (Castilian) | `es-ES_Telephony` | Yes | GA |
 | Spanish  \n (Argentinian, Chilean,  \n Colombian, Mexican,  \n and Peruvian) | `es-LA_Telephony` | Yes | GA |
 | Swedish | `sv-SE_Telephony` | Yes | GA |
-{: caption="Table 1. Next-generation telephony models"}
+{: caption="Next-generation telephony models"}
 
 The Latin American Spanish model, `es-LA_Telephony`, applies to all Latin American dialects. It is the equivalent of the previous-generation models that are available for the Argentinian, Chilean, Colombian, Mexican, and Peruvian dialects. If you used a previous-generation model for any of these Latin American dialects, use the `es-LA_Telephony` model to migrate to the equivalent next-generation model.
 {: note}
@@ -100,7 +100,7 @@ Table 2 lists the available next-generation multimedia models.
 | Korean | `ko-KR_Multimedia` | Yes | GA |
 | Portuguese  \n (Brazilian) | `pt-BR_Multimedia` | Yes | GA |
 | Spanish  \n (Castilian) | `es-ES_Multimedia` | Yes | GA |
-{: caption="Table 2. Next-generation multimedia models"}
+{: caption="Next-generation multimedia models"}
 
 ### The English medical telephony model
 {: #models-medical}

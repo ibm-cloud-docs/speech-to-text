@@ -70,7 +70,7 @@ Table 1 lists the previous-generation models that are supported for language mod
 | | `es-MX_BroadbandModel`  \n Discontinued | Beta | Beta | Beta |
 | Spanish  \n (Peruvian) | `es-PE_NarrowbandModel`  \n Discontinued | Beta | Beta | Beta |
 | | `es-PE_BroadbandModel`  \n Discontinued | Beta | Beta | Beta |
-{: caption="Table 1. Previous-generation language support for customization"}
+{: caption="Previous-generation language support for customization"}
 
 ## Customization support for next-generation models
 {: #custom-language-support-ng}
@@ -115,7 +115,7 @@ In the *Language model customization* column, an *(improved)* date indicates whe
 | | `es-ES_Multimedia` | GA | GA |
 | Spanish  \n (Argentinian, Chilean,  \n Colombian, Mexican,  \n and Peruvian) | `es-LA_Telephony` | GA | GA |
 | Swedish | `sv-SE_Telephony` | GA | GA |
-{: caption="Table 2. Next-generation language support for customization"}
+{: caption="Next-generation language support for customization"}
 
 ## Customization support for large speech models
 {: #custom-language-support-lsm}
@@ -142,4 +142,4 @@ Make sure to check for a date for the version of the service that you use, {{sit
 | Spanish (Colombian) | `es-CO` | [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 23 August 2024 | N/A |
 | Spanish (Mexican) | `es-MX` | [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 23 August 2024 | N/A | 
 | Spanish (Peruvian) | `es-PE` | [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 23 August 2024 | N/A |
-{: caption="Table 3. Large speech models language support for customization"}
+{: caption="Large speech models language support for customization"}

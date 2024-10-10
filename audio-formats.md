@@ -41,7 +41,7 @@ The final columns identify additional *Required parameters* and *Optional parame
 | [audio/ogg](#audio-formats-ogg) | Lossy | Optional | None | `codecs=opus`  \n `codecs=vorbis` |
 | [audio/wav](#audio-formats-wav) | None, lossless, or lossy | Optional | None | None |
 | [audio/webm](#audio-formats-webm) | Lossy | Optional | None | `codecs=opus`  \n `codecs=vorbis` |
-{: caption="Table 1. Summary of supported audio formats"}
+{: caption="Summary of supported audio formats"}
 
 ### audio/alaw format
 {: #audio-formats-alaw}
@@ -51,7 +51,7 @@ The final columns identify additional *Required parameters* and *Optional parame
 | Parameter | Description |
 |-----------|-------------|
 | `rate`  \n *Required* | An integer that specifies the sampling rate at which the audio is captured. For example, specify the following parameter for audio data that is captured at 8 kHz:  \n   \n `audio/alaw;rate=8000` |
-{: caption="Table 2. Parameter for audio/alaw format"}
+{: caption="Parameter for audio/alaw format"}
 
 For more information, see [A-law algorithm](https://en.wikipedia.org/wiki/A-law_algorithm){: external}.
 
@@ -82,7 +82,7 @@ For more information, see the Internet Engineering Task Force (IETF) [Request fo
 | `rate`  \n *Required* | An integer that specifies the sampling rate at which the audio is captured. For example, specify the following parameter for audio data that is captured at 16 kHz:  \n   \n `audio/l16;rate=16000` |
 | `channels`  \n *Optional* | By default, the service treats the audio as if it has a single channel. *If the audio has more than one channel,* you must specify an integer that identifies the number of channels. For example, specify the following parameter for two-channel audio data that is captured at 16 kHz:  \n   \n `audio/l16;rate=16000;channels=2`  \n   \n The service accepts a maximum of 16 channels. It downmixes the audio to one channel during transcoding. |
 | `endianness`  \n *Optional* | By default, the service auto-detects the endianness of incoming audio. But its auto-detection can sometimes fail and drop the connection for short audio in `audio/l16` format. Specifying the endianness disables auto-detection. Specify either `big-endian` or `little-endian`. For example, specify the following parameter for audio data that is captured at 16 kHz in little-endian format:  \n   \n `audio/l16;rate=16000;endianness=little-endian`  \n   \n Section 5.1 of [Request for Comment (RFC) 2045](https://datatracker.ietf.org/doc/html/rfc2045#section-5.1) specifies big-endian format for `audio/l16` data, but many people use little-endian format. |
-{: caption="Table 3. Parameters for audio/l16 format"}
+{: caption="Parameters for audio/l16 format"}
 
 For more information, see the IETF [Request for Comment (RFC) 2586](https://datatracker.ietf.org/doc/html/rfc2586){: external} and [Pulse-code modulation](https://en.m.wikipedia.org/wiki/Pulse-code_modulation){: external}.
 
@@ -99,7 +99,7 @@ For more information, see the IETF [Request for Comment (RFC) 2586](https://data
 | Parameter | Description |
 |-----------|-------------|
 | `rate`  \n *Required* | An integer that specifies the sampling rate at which the audio is captured. For example, specify the following parameter for audio data that is captured at 8 kHz:  \n   \n `audio/mulaw;rate=8000` |
-{: caption="Table 4. Parameter for audio/mulaw format"}
+{: caption="Parameter for audio/mulaw format"}
 
 For more information, see [M-law algorithm](https://en.wikipedia.org/wiki/M-law_algorithm){: external}.
 
@@ -175,7 +175,7 @@ The following table approximates the maximum duration of audio that can be sent 
 | `audio/flac` | 1 hour 40 minutes |
 | `audio/mp3` | 3 hours 20 minutes |
 | `audio/ogg` | 8 hours 40 minutes |
-{: caption="Table 5. Maximum duration of audio in different formats"}
+{: caption="Maximum duration of audio in different formats"}
 
 In testing to compare the different audio formats, {{site.data.keyword.IBM}} determined that the WAV and FLAC formats delivered the best word error rate (WER). These formats can serve as a baseline for transcription accuracy because they maintain the audio intact with no data loss. The Ogg format with the Opus coded showed a slight degradation of 2% WER relative to the baseline. The MP3 format delivered the worst results, with a 10% degradation of WER relative to the baseline.
 

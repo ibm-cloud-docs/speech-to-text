@@ -137,7 +137,7 @@ The following descriptions apply to all supported dialects of Dutch, English, Fr
     | Italian    | `500` becomes `cinquecento` | `0,15` becomes `zero virgola quindici` |
     | Portuguese | `500` becomes `quinhentos` | `0,15` becomes `zero ponto quinze` |
     | Spanish    | `500` becomes `quinientos` | `0,15` becomes `cero coma quince` |
-    {: caption="Table 1. Examples of number conversion"}
+    {: caption="Examples of number conversion"}
 
 -   Converts tokens that include certain symbols to meaningful string representations. These examples are not exhaustive. The service makes similar adjustments for other characters as needed. (For Spanish, if the dialect is `es-LA`, `$100` and `100$` become `cien pesos`.)
 
@@ -150,7 +150,7 @@ The following descriptions apply to all supported dialects of Dutch, English, Fr
     | Italian    | `$100` becomes `cento dollari` | `€100` becomes `cento euro` | `100%` becomes `cento per cento` |
     | Portuguese | `$100` and `100$` become `cem dólares` | `€100` and `100€` become `cem euros` | `100%` becomes `cem por cento` |
     | Spanish    | `$100` and `100$` become `cien dólares` | `€100` and `100€` become `cien euros` | `100%` becomes `cien por ciento` |
-    {: caption="Table 2. Examples of symbol conversion"}
+    {: caption="Examples of symbol conversion"}
 
 -   Processes non-alphanumeric, punctuation, and special characters depending on their context. For example, the service removes a `$` (dollar sign) or `€` (euro symbol) unless it is followed by a number. Processing is context-dependent and consistent across the supported languages.
 -   Ignores phrases that are enclosed in `( )` (parentheses), `< >` (angle brackets), `[ ]` (square brackets), or `{ }` (curly braces).

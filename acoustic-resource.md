@@ -153,7 +153,7 @@ The maximum hour of audio that you can add to a custom acoustic model depend on 
     | `us-south` (Dallas) | First-quarter 2023 | TBD |
     | `eu-de` (Frankfurt) | First-quarter 2023 | TBD |
     | `jp-tok` (Tokyo) | First-quarter 2023 | TBD |
-    {: caption="Table 1. Schedule of 50-hour limit per location"}
+    {: caption="Schedule of 50-hour limit per location"}
 
     If you currently have a custom acoustic model with more than 50 hours of audio data, you can do one of the following:
 

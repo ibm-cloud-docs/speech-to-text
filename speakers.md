@@ -154,7 +154,7 @@ The `transcript` field shows the final transcript of the audio, which lists the 
 | `0.28,`  \n `0.79`  \n `"hello",` | `"from": 0.28,`  \n `"to": 0.79,`  \n `"speaker": 2,`  \n `"confidence": 0.52,`  \n `"final": false` | `2.15,`  \n `2.44`  \n `"how's",` | `"from": 2.15,`  \n `"to": 2.44,`  \n `"speaker": 2,`  \n `"confidence": 0.51,`  \n `"final": false` |
 | `1.07,`  \n `1.53`  \n `"yeah",` | `"from": 1.07,`  \n `"to": 1.53,`  \n `"speaker": 1,`  \n `"confidence": 0.63,`  \n `"final": false` | `2.45,`  \n `3.03`  \n `"Billy",` | `"from": 2.45,`  \n `"to": 3.03,`  \n `"speaker": 2,`  \n `"confidence": 0.55,`  \n `"final": false`|
 | `1.66,`  \n `2.02`  \n `"yeah",` | `"from": 1.66,`  \n `"to": 2.02,`  \n `"speaker": 2,`  \n `"confidence": 0.54,`  \n `"final": false` | `3.57,`  \n `3.95`  \n  `"good",` | `"from": 3.57,`  \n `"to": 3.95,`  \n `"speaker": 1,`  \n `"confidence": 0.63,`  \n `"final": true` |
-{: caption="Table 1. Speaker labels example"}
+{: caption="Speaker labels example"}
 
 The results clearly capture the brief two-person exchange:
 
