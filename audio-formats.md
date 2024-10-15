@@ -41,7 +41,7 @@ The final columns identify additional *Required parameters* and *Optional parame
 | [audio/ogg](#audio-formats-ogg) | Lossy | Optional | None | `codecs=opus`  \n `codecs=vorbis` |
 | [audio/wav](#audio-formats-wav) | None, lossless, or lossy | Optional | None | None |
 | [audio/webm](#audio-formats-webm) | Lossy | Optional | None | `codecs=opus`  \n `codecs=vorbis` |
-{: caption="Table 1. Summary of supported audio formats"}
+{: caption="Summary of supported audio formats"}
 
 ### audio/alaw format
 {: #audio-formats-alaw}
@@ -51,26 +51,26 @@ The final columns identify additional *Required parameters* and *Optional parame
 | Parameter | Description |
 |-----------|-------------|
 | `rate`  \n *Required* | An integer that specifies the sampling rate at which the audio is captured. For example, specify the following parameter for audio data that is captured at 8 kHz:  \n   \n `audio/alaw;rate=8000` |
-{: caption="Table 2. Parameter for audio/alaw format"}
+{: caption="Parameter for audio/alaw format"}
 
-For more information, see [A-law algorithm](https://wikipedia.org/wiki/A-law_algorithm){: external}.
+For more information, see [A-law algorithm](https://en.wikipedia.org/wiki/A-law_algorithm){: external}.
 
 ### audio/basic format
 {: #audio-formats-basic}
 
 *Basic audio* (`audio/basic`) is a single-channel, lossy audio format that is encoded by using 8-bit u-law (or mu-law) data that is sampled at 8 kHz. This format provides a lowest-common denominator for indicating the media type of audio. The service supports the use of files in `audio/basic` format only with narrowband models.
 
-For more information, see the Internet Engineering Task Force (IETF) [Request for Comment (RFC) 2046](https://tools.ietf.org/html/rfc2046){: external} and [iana.org/assignments/media-types/audio/basic](http://www.iana.org/assignments/media-types/audio/basic){: external}.
+For more information, see the Internet Engineering Task Force (IETF) [Request for Comment (RFC) 2046](https://datatracker.ietf.org/doc/html/rfc2046){: external} and [iana.org/assignments/media-types/audio/basic](http://www.iana.org/assignments/media-types/audio/basic){: external}.
 
 ### audio/flac format
 {: #audio-formats-flac}
 
-*Free Lossless Audio Codec (FLAC)* (`audio/flac`) is a lossless audio format. For more information, see [FLAC](https://wikipedia.org/wiki/FLAC){: external}.
+*Free Lossless Audio Codec (FLAC)* (`audio/flac`) is a lossless audio format. For more information, see [FLAC](https://en.wikipedia.org/wiki/FLAC){: external}.
 
 ### audio/g729 format
 {: #audio-formats-g729}
 
-*G.729* (`audio/g729`) is a lossy audio format that supports data that is encoded at 8 kHz. The service supports only G.729 Annex D, not Annex J. The service supports the use of files in `audio/g729` format only with narrowband models. For more information, see [G.729](https://wikipedia.org/wiki/G.729){: external}.
+*G.729* (`audio/g729`) is a lossy audio format that supports data that is encoded at 8 kHz. The service supports only G.729 Annex D, not Annex J. The service supports the use of files in `audio/g729` format only with narrowband models. For more information, see [G.729](https://en.m.wikipedia.org/wiki/G.729){: external}.
 
 ### audio/l16 format
 {: #audio-formats-l16}
@@ -81,15 +81,15 @@ For more information, see the Internet Engineering Task Force (IETF) [Request fo
 |-----------|-------------|
 | `rate`  \n *Required* | An integer that specifies the sampling rate at which the audio is captured. For example, specify the following parameter for audio data that is captured at 16 kHz:  \n   \n `audio/l16;rate=16000` |
 | `channels`  \n *Optional* | By default, the service treats the audio as if it has a single channel. *If the audio has more than one channel,* you must specify an integer that identifies the number of channels. For example, specify the following parameter for two-channel audio data that is captured at 16 kHz:  \n   \n `audio/l16;rate=16000;channels=2`  \n   \n The service accepts a maximum of 16 channels. It downmixes the audio to one channel during transcoding. |
-| `endianness`  \n *Optional* | By default, the service auto-detects the endianness of incoming audio. But its auto-detection can sometimes fail and drop the connection for short audio in `audio/l16` format. Specifying the endianness disables auto-detection. Specify either `big-endian` or `little-endian`. For example, specify the following parameter for audio data that is captured at 16 kHz in little-endian format:  \n   \n `audio/l16;rate=16000;endianness=little-endian`  \n   \n Section 5.1 of [Request for Comment (RFC) 2045](https://tools.ietf.org/html/rfc2045#section-5.1) specifies big-endian format for `audio/l16` data, but many people use little-endian format. |
-{: caption="Table 3. Parameters for audio/l16 format"}
+| `endianness`  \n *Optional* | By default, the service auto-detects the endianness of incoming audio. But its auto-detection can sometimes fail and drop the connection for short audio in `audio/l16` format. Specifying the endianness disables auto-detection. Specify either `big-endian` or `little-endian`. For example, specify the following parameter for audio data that is captured at 16 kHz in little-endian format:  \n   \n `audio/l16;rate=16000;endianness=little-endian`  \n   \n Section 5.1 of [Request for Comment (RFC) 2045](https://datatracker.ietf.org/doc/html/rfc2045#section-5.1) specifies big-endian format for `audio/l16` data, but many people use little-endian format. |
+{: caption="Parameters for audio/l16 format"}
 
-For more information, see the IETF [Request for Comment (RFC) 2586](https://tools.ietf.org/html/rfc2586){: external} and [Pulse-code modulation](https://wikipedia.org/wiki/Pulse-code_modulation){: external}.
+For more information, see the IETF [Request for Comment (RFC) 2586](https://datatracker.ietf.org/doc/html/rfc2586){: external} and [Pulse-code modulation](https://en.m.wikipedia.org/wiki/Pulse-code_modulation){: external}.
 
 ### audio/mp3 and audio/mpeg formats
 {: #audio-formats-mp3}
 
-*MP3* (`audio/mp3`) or *Motion Picture Experts Group (MPEG)* (`audio/mpeg`) is a lossy audio format. (MP3 and MPEG refer to the same format.) For more information, see [MP3](https://wikipedia.org/wiki/MP3){: external}.
+*MP3* (`audio/mp3`) or *Motion Picture Experts Group (MPEG)* (`audio/mpeg`) is a lossy audio format. (MP3 and MPEG refer to the same format.) For more information, see [MP3](https://en.m.wikipedia.org/wiki/MP3){: external}.
 
 ### audio/mulaw format
 {: #audio-formats-mulaw}
@@ -99,19 +99,19 @@ For more information, see the IETF [Request for Comment (RFC) 2586](https://tool
 | Parameter | Description |
 |-----------|-------------|
 | `rate`  \n *Required* | An integer that specifies the sampling rate at which the audio is captured. For example, specify the following parameter for audio data that is captured at 8 kHz:  \n   \n `audio/mulaw;rate=8000` |
-{: caption="Table 4. Parameter for audio/mulaw format"}
+{: caption="Parameter for audio/mulaw format"}
 
-For more information, see [M-law algorithm](https://wikipedia.org/wiki/M-law_algorithm){: external}.
+For more information, see [M-law algorithm](https://en.wikipedia.org/wiki/M-law_algorithm){: external}.
 
 ### audio/ogg format
 {: #audio-formats-ogg}
 
 *Ogg* (`audio/ogg`) is an open container format that is maintained by the Xiph.org Foundation ([xiph.org/ogg](https://www.xiph.org/ogg){: external}). You can use audio streams that are compressed with the following lossy codecs:
 
--   *Opus* (`audio/ogg;codecs=opus`). For more information, see [opus-codec.org](https://www.opus-codec.org/){: external} and [Opus (audio format)](https://wikipedia.org/wiki/Opus_%28audio_format%29){: external}. Look especially at the *Containers* section.
--   *Vorbis* (`audio/ogg;codecs=vorbis`). For more information, see [xiph.org/vorbis](https://xiph.org/vorbis/){: external} and [Vorbis](https://wikipedia.org/wiki/Vorbis){: external}.
+-   *Opus* (`audio/ogg;codecs=opus`). For more information, see [opus-codec.org](https://www.opus-codec.org/){: external} and [Opus (audio format)](https://en.wikipedia.org/wiki/Opus_(audio_format)){: external}. Look especially at the *Containers* section.
+-   *Vorbis* (`audio/ogg;codecs=vorbis`). For more information, see [xiph.org/vorbis](https://xiph.org/vorbis/){: external} and [Vorbis](https://en.m.wikipedia.org/wiki/Vorbis){: external}.
 
-OGG Opus is the preferred codec. It is the logical successor to OGG Vorbis because of its low latency, high audio quality, and reduced size. It is standardized by the Internet Engineering Task Force (IETF) as [Request for Comment (RFC) 6716](https://tools.ietf.org/html/rfc6716){: external}.
+OGG Opus is the preferred codec. It is the logical successor to OGG Vorbis because of its low latency, high audio quality, and reduced size. It is standardized by the Internet Engineering Task Force (IETF) as [Request for Comment (RFC) 6716](https://datatracker.ietf.org/doc/html/rfc6716){: external}.
 
 If you omit the codec from the content type, the service automatically detects it from the input audio.
 
@@ -120,15 +120,15 @@ If you omit the codec from the content type, the service automatically detects i
 
 *Waveform Audio File Format (WAV)* (`audio/wav`) is a container format that is often used for uncompressed audio streams, but it can contain compressed audio, as well. The service supports WAV audio that uses any encoding. It accepts WAV audio with a maximum of nine channels (due to an FFmpeg limitation).
 
-For more information about the WAV format, see [WAV](https://wikipedia.org/wiki/WAV){: external}. For more information about reducing the size of WAV audio by converting it to the Opus codec, see [Converting to audio/ogg with the Opus codec](#audio-formats-conversion-ogg).
+For more information about the WAV format, see [WAV](https://en.wikipedia.org/wiki/WAV){: external}. For more information about reducing the size of WAV audio by converting it to the Opus codec, see [Converting to audio/ogg with the Opus codec](#audio-formats-conversion-ogg).
 
 ### audio/webm format
 {: #audio-formats-webm}
 
 *Web Media (WebM)* (`audio/webm`) is an open container format that is maintained by the WebM project ([webmproject.org](https://www.webmproject.org/){: external}). You can use audio streams that are compressed with the following lossy codecs:
 
--   *Opus* (`audio/webm;codecs=opus`). For more information, see [opus-codec.org](https://www.opus-codec.org/){: external} and [Opus (audio format)](https://wikipedia.org/wiki/Opus_%28audio_format%29){: external}. Look especially at the *Containers* section.
--   *Vorbis* (`audio/webm;codecs=vorbis`). For more information, see [xiph.org/vorbis](https://xiph.org/vorbis/){: external} and [Vorbis](https://wikipedia.org/wiki/Vorbis){: external}.
+-   *Opus* (`audio/webm;codecs=opus`). For more information, see [opus-codec.org](https://www.opus-codec.org/){: external} and [Opus (audio format)](https://en.wikipedia.org/wiki/Opus_(audio_format)){: external}. Look especially at the *Containers* section.
+-   *Vorbis* (`audio/webm;codecs=vorbis`). For more information, see [xiph.org/vorbis](https://xiph.org/vorbis/){: external} and [Vorbis](https://en.m.wikipedia.org/wiki/Vorbis){: external}.
 
 If you omit the codec, the service automatically detects it from the input audio.
 
@@ -175,7 +175,7 @@ The following table approximates the maximum duration of audio that can be sent 
 | `audio/flac` | 1 hour 40 minutes |
 | `audio/mp3` | 3 hours 20 minutes |
 | `audio/ogg` | 8 hours 40 minutes |
-{: caption="Table 5. Maximum duration of audio in different formats"}
+{: caption="Maximum duration of audio in different formats"}
 
 In testing to compare the different audio formats, {{site.data.keyword.IBM}} determined that the WAV and FLAC formats delivered the best word error rate (WER). These formats can serve as a baseline for transcription accuracy because they maintain the audio intact with no data loss. The Ogg format with the Opus coded showed a slight degradation of 2% WER relative to the baseline. The MP3 format delivered the worst results, with a 10% degradation of WER relative to the baseline.
 
@@ -201,7 +201,7 @@ You can use various tools to convert your audio to a different format. The tools
 
 The following freeware tools are available to convert your audio from one format to another:
 
--   Sound eXchange (SoX) ([sox.sourceforge.net](http://sox.sourceforge.net){: external}).
+-   Sound eXchange (SoX) ([sox.sourceforge.net](https://sourceforge.net/projects/sox/){: external}).
 -   FFmpeg ([ffmpeg.org](https://www.ffmpeg.org){: external}). You can also use FFmpeg to separate audio from a multimedia file that contains both audio and video data. For more information, see [Transcribing speech from video files](#audio-formats-video).
 -   Audacity® ([audacityteam.org](https://www.audacityteam.org/){: external}).
 -   For Ogg format with the Opus codec, [opus-tools](https://opus-codec.org/release/dev/2018/09/18/opus-tools-0_2.html){: external}.

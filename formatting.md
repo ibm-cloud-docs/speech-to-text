@@ -91,7 +91,7 @@ The following table shows examples of final transcripts both with and without sm
 |                 | two kilo watt hours                                                           | 2 kWh                            |
 | Sequences       | H F H nine nine three dot seven B                                             | HFH993.7B                        |
 |                 | a ten eighty p display                                                        | a 1080p display                  |
-{: caption="Table 2. Smart formatting example transcripts"}
+{: caption="Smart formatting example transcripts"}
 
 #### Brazilian-Portuguese
 {: #smart-formatting-pt-br}
@@ -139,7 +139,7 @@ The following table shows examples of final transcripts both with and without sm
 |                 | duzentos e quarenta e cinco metros por segundo                           | 245 m/s               |
 | Sequences       | d dezesseis três nove c hífen f noventa e oito                           | d1639c-f98            |
 |                 | Modelo f t doze x                                                        | Modelo ft12x          |
-{: caption="Table 2. Smart formatting example transcripts"}
+{: caption="Smart formatting example transcripts"}
 
 #### French
 {: #smart-formatting-fr-fr}
@@ -183,7 +183,7 @@ The following table shows examples of final transcripts both with and without sm
 |                 | deux cents kilomètres heure                                  | 200 km/h                  |
 | Sequences       | le document numéro zéro deux trente-six vingt-quatre         | le document numéro 023624 |
 |                 | r t x dix-huit t i                                           | rtx18ti                   |
-{: caption="Table 2. Smart formatting example transcripts"}
+{: caption="Smart formatting example transcripts"}
 
 #### French-Canadian
 {: #smart-formatting-fr-ca}
@@ -224,7 +224,7 @@ The following table shows examples of final transcripts both with and without sm
 |                 | deux cents kilomètres heure                                  | 200 km/h                  |
 | Sequences       | le document numéro zéro deux trente-six vingt-quatre         | le document numéro 023624 |
 |                 | r t x dix-huit t i                                           | rtx18ti                   |
-{: caption="Table 2. Smart formatting example transcripts"}
+{: caption="Smart formatting example transcripts"}
 
 #### Spanish
 {: #smart-formatting-es-es}
@@ -263,7 +263,7 @@ The following table shows examples of final transcripts both with and without sm
 |                 | dos kilómetros por hora                                      | 2 kph                     |
 | Sequences       | cero dos tres seis dos cuatro                                | 023624                    |
 |                 | r t x cero dos tres w                                        | rtx023w                   |
-{: caption="Table 2. Smart formatting example transcripts"}
+{: caption="Smart formatting example transcripts"}
 
 #### German
 {: #smart-formatting-de-de}
@@ -305,7 +305,7 @@ The following table shows examples of final transcripts both with and without sm
 |                 | vier hundert vierzig milliliter                                              | 440 ml                  |
 | Sequences       | c b vier drei bindestrich fünf drei fünf zwei vier zwei punkt vier drei fünf | cb43-535242.435         |
 |                 | teilenummer f t strich zwölf p                                               | teilenummer ft-12p      |
-{: caption="Table 2. Smart formatting example transcripts"}
+{: caption="Smart formatting example transcripts"}
 
 ### Smart formatting V2 examples
 {: #smart-formatting-example}
@@ -451,7 +451,7 @@ The following table shows examples of final transcripts both with and without sm
 |                                  | I saw the story on yahoo dot com | I saw the story on yahoo.com |
 | Combinations | The code is zero two four eight one and the date of service is May fifth two thousand and one | The code is 02481 and the date of service is 5/5/2001 |
 |              | There are forty seven links on Yahoo dot com now | There are 47 links on Yahoo.com now |
-{: caption="Table 2. Smart formatting example transcripts"}
+{: caption="Smart formatting example transcripts"}
 
 ### Smart formatting results for long pauses
 {: #smart-formatting-long-pauses}
@@ -462,7 +462,7 @@ In cases where an utterance contains long enough pauses of silence, the service 
 |--------------|---------------------------------|
 | My phone number is nine one four five five seven three three nine two | "My phone number is 914-557-3392" |
 | My phone number is nine one four ...*pause*... five five seven three three nine two | "My phone number is 914"  \n "5573392" |
-{: caption="Table 3. Smart formatting example transcripts for long pauses"}
+{: caption="Smart formatting example transcripts for long pauses"}
 
 For more information about specifying a pause interval that affects the service's response, see [End of phrase silence time](/docs/speech-to-text?topic=speech-to-text-parsing#silence-time).
 
@@ -545,7 +545,7 @@ The following table shows examples of final transcripts both with and without nu
 | US English | my credit card number is four one four seven two | my credit card number is XXXXX |
 | Japanese | 私 のクレジット カード 番号 は 四 一 四 七 二です | 私 のクレジット カード 番号 は XXXXX です |
 | Korean | 내 신용 카드 번호는 사 일 사 칠 이 번입니다 | 내 신용 카드 번호는 XXXXX 번입니다 |
-{: caption="Table 5. Numeric redaction example transcripts"}
+{: caption="Numeric redaction example transcripts"}
 
 ### Numeric redaction example
 {: #numeric-redaction-example}

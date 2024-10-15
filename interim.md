@@ -208,7 +208,7 @@ The following table describes the interaction between the `interim_results` and 
 | `interim_results=false` | `low_latency=true`  | The service sends only final results. It returns a single JSON object that includes results for all utterances when transcription is complete. But because `low_latency` is `true`, the service returns the final results more quickly. See [Example 2: Interim results is false and low latency is true](#interim-low-latency-examples-two). |
 | `interim_results=true`  | `low_latency=false` | The service sends only final results. It returns multiple JSON objects for individual utterances as it performs transcription. The advantage of setting `interim_results` to `true` is that results for utterances arrive as they become complete. You do not need to wait for all utterances to be transcribed. See [Example 3: Interim results is true and low latency is false](#interim-low-latency-examples-three). |
 | `interim_results=true`  | `low_latency=true`  | The service returns interim results as it develops transcription hypotheses, and it sends final results for utterances as they become complete. The service delivers one or more interim results for each final result. The quality of interim results is identical to what you receive with previous-generation models. But because `low_latency` is `true`, the service returns interim and final results more quickly. See [Example 4: Interim results and low latency are both true](#interim-low-latency-examples-four). |
-{: caption="Table 1. Interaction of interim_results and low_latency parameters"}
+{: caption="Interaction of interim_results and low_latency parameters"}
 
 ### Interim results and low-latency examples
 {: #interim-low-latency-examples}

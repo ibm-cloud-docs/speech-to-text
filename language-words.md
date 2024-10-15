@@ -29,7 +29,7 @@ For example, the following table shows what looks like the same letter in two di
 |:------:|:--------:|:-----:|
 | z | ASCII | `0x7a` (`7a`) |
 | &#xff5a; | UTF-8 hexadecimal | `0xEF 0xBD 0x9A` (`efbd9a`) |
-{: caption="Table 1. Examples of character encoding"}
+{: caption="Examples of character encoding"}
 
 ## Listing custom words from a custom language model
 {: #listWords}

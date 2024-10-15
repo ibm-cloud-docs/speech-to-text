@@ -71,7 +71,7 @@ Table 1 lists the previous-generation narrowband models that are available.
 | Spanish (Colombian, Beta) | `es-CO_NarrowbandModel` | Beta  \n Discontinued | `es-LA_Telephony` |
 | Spanish (Mexican, Beta) | `es-MX_NarrowbandModel` | Beta  \n Discontinued | `es-LA_Telephony` |
 | Spanish (Peruvian, Beta) | `es-PE_NarrowbandModel` | Beta  \n Discontinued | `es-LA_Telephony` |
-{: caption="Table 1. Supported previous-generation narrowband models"}
+{: caption="Supported previous-generation narrowband models"}
 
 ### Broadband models
 {: #models-pg-broadband}
@@ -99,7 +99,7 @@ Table 2 lists the previous-generation broadband models that are available.
 | Spanish (Colombian, Beta) | `es-CO_BroadbandModel` | Beta  \n Discontinued | `es-LA_Telephony` |
 | Spanish (Mexican, Beta) | `es-MX_BroadbandModel` | Beta  \n Discontinued | `es-LA_Telephony` |
 | Spanish (Peruvian, Beta) | `es-PE_BroadbandModel` | Beta  \n Discontinued | `es-LA_Telephony` |
-{: caption="Table 2. Supported previous-generation broadband models"}
+{: caption="Supported previous-generation broadband models"}
 
 ## The US English short-form model (Deprecated)
 {: #modelsShortform}

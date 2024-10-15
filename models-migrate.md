@@ -18,7 +18,7 @@ Starting **August 1, 2023**, all previous-generation models are now **discontinu
 
 You must migrate your use of any deprecated previous-generation models to the equivalent large speech models or next-generation models by the 31 July 2023 end of service date. Next-generation models provide appreciably better transcription accuracy and throughput. But they currently provide slightly fewer features than previous-generation models.
 
-This topic provides an overview of the steps that you need to take to migrate from previous- to next-generation models. For more information about migrating, you can also see [Watson Speech to Text: How to Plan Your Migration to the Next-Generation Models](https://medium.com/ibm-data-ai/watson-speech-to-text-how-to-plan-your-migration-to-the-next-generation-models-6b10605b3bc5){: external}.
+This topic provides an overview of the steps that you need to take to migrate from previous- to next-generation models. For more information about migrating, you can also see [Watson Speech to Text: How to Plan Your Migration to the Next-Generation Models](https://medium.com/ibm-watson-speech-services/watson-speech-to-text-how-to-plan-your-migration-to-the-next-generation-models-6b10605b3bc5){: external}.
 
 ## Step 1: Identify the large speech model or next-generation model to which to migrate
 {: #models-migrate-step1}

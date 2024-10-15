@@ -40,7 +40,7 @@ The following table lists the large speech models that are available for each la
 | Spanish (Colombian) | `es-CO` | [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 23 August 2024 | 
 | Spanish (Mexican) | `es-MX` | [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 23 August 2024 | 
 | Spanish (Peruvian) | `es-PE` | [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 23 August 2024 | 
-{: caption="Table 1. Large speech models"}
+{: caption="Large speech models"}
 
 ## Supported features for large speech models
 {: #models-lsm-supported-features}

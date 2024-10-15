@@ -68,7 +68,7 @@ The following table shows examples of final transcripts both with and without sm
 |                 | two kilo watt hours                                                           | 2 kWh                            |
 | Sequences       | H F H nine nine three dot seven B                                             | HFH993.7B                        |
 |                 | a ten eighty p display                                                        | a 1080p display                  |
-{: caption="Table 2. Smart formatting example transcripts"}
+{: caption="Smart formatting example transcripts"}
 
 #### Brazilian-Portuguese
 {: #smart-formatting-pt-br}
@@ -115,7 +115,7 @@ The following table shows examples of final transcripts both with and without sm
 |                 | duzentos e quarenta e cinco metros por segundo                           | 245 m/s               |
 | Sequences       | d dezesseis três nove c hífen f noventa e oito                           | d1639c-f98            |
 |                 | Modelo f t doze x                                                        | Modelo ft12x          |
-{: caption="Table 2. Smart formatting example transcripts"}
+{: caption="Smart formatting example transcripts"}
 
 #### French
 {: #smart-formatting-fr-fr}
@@ -158,7 +158,7 @@ The following table shows examples of final transcripts both with and without sm
 |                 | deux cents kilomètres heure                                  | 200 km/h                  |
 | Sequences       | le document numéro zéro deux trente-six vingt-quatre         | le document numéro 023624 |
 |                 | r t x dix-huit t i                                           | rtx18ti                   |
-{: caption="Table 2. Smart formatting example transcripts"}
+{: caption="Smart formatting example transcripts"}
 
 #### French-Canadian
 {: #smart-formatting-fr-ca}
@@ -199,7 +199,7 @@ The following table shows examples of final transcripts both with and without sm
 |                 | deux cents kilomètres heure                                  | 200 km/h                  |
 | Sequences       | le document numéro zéro deux trente-six vingt-quatre         | le document numéro 023624 |
 |                 | r t x dix-huit t i                                           | rtx18ti                   |
-{: caption="Table 2. Smart formatting example transcripts"}
+{: caption="Smart formatting example transcripts"}
 
 #### Spanish
 {: #smart-formatting-es-es}
@@ -238,7 +238,7 @@ The following table shows examples of final transcripts both with and without sm
 |                 | dos kilómetros por hora                                      | 2 kph                     |
 | Sequences       | cero dos tres seis dos cuatro                                | 023624                    |
 |                 | r t x cero dos tres w                                        | rtx023w                   |
-{: caption="Table 2. Smart formatting example transcripts"}
+{: caption="Smart formatting example transcripts"}
 
 #### German
 {: #smart-formatting-de-de}
@@ -280,7 +280,7 @@ The following table shows examples of final transcripts both with and without sm
 |                 | vier hundert vierzig milliliter                                              | 440 ml                  |
 | Sequences       | c b vier drei bindestrich fünf drei fünf zwei vier zwei punkt vier drei fünf | cb43-535242.435         |
 |                 | teilenummer f t strich zwölf p                                               | teilenummer ft-12p      |
-{: caption="Table 2. Smart formatting example transcripts"}
+{: caption="Smart formatting example transcripts"}
 
 ### Smart formatting V2 examples
 {: #smart-formatting-example}

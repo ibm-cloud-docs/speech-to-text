@@ -1,43 +1,47 @@
 {
-  "title": "Speech to Text docs",
-  "lastupdated": "2021-06-09",
+  "version": 2,
+  "title": "IBM Watson Speech to Text service",
   "introduction": "Use the IBM Watson Speech to Text service to transcribe spoken audio to written text. The documentation describes the Speech to Text service for IBM Cloud, IBM Cloud Pak for Data, and IBM Cloud Pak for Data as a Service.",
+  "product_page": "https://www.ibm.com/products/speech-to-text",
+  "console_page": "/catalog/services/speech-to-text",
+  "section_topics": {
+    "links": [
+      {
+        "title": "Getting started with Speech to Text",
+        "href": "/docs/speech-to-text?topic=speech-to-text-gettingStarted"
+      },
+      {
+        "title": "Using languages and models",
+        "href": "/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages"
+      },
+      {
+        "title": "Tracking events for Speech to Text",
+        "href": "/docs/speech-to-text?topic=speech-to-text-at-events"
+      },
+      {
+        "title": "Usage FAQs",
+        "href": "/docs/speech-to-text?topic=speech-to-text-faq-usage"
+      }
+    ]
+  },
+  "section_highlights": [
+    {
+      "title": "Medium.com blogs",
+      "description": "Watson Speech to Text blogs on Mediuim",
+      "href": "https://medium.com/ibm-data-ai/search?q=Watson+Speech+to+Text",
+      "type": "blog"
+    },
+    {
+      "title": "IBM watsonx large speech model brings generative AI to the phone",
+      "description": "This blog describes IBM's Large Speech Models (LSMs) and the performance benefits that they offer.",
+      "href": "https://www.ibm.com/blog/ibms-new-watson-large-speech-model-brings-generative-ai-to-the-phone",
+      "type": "blog"
+    }
+  ],
   "section_devtools": {
     "api": "/apidocs/speech-to-text"
   },
-  "section_recommended": [
-    {
-      "title": "About",
-      "description": "A brief introduction to the service and its capabilities.",
-      "href": "/docs/speech-to-text?topic=speech-to-text-about"
-    },
-    {
-      "title": "Service features",
-      "description": "A more detailed description of the service and its capabilities.",
-      "href": "/docs/speech-to-text?topic=speech-to-text-service-features"
-    },
-    {
-      "title": "Getting started with Speech to Text",
-      "description": "A brief tutorial that demonstrates speech recognition.",
-      "href": "/docs/speech-to-text?topic=speech-to-text-gettingStarted"
-    },
-    {
-      "title": "Release notes for IBM Cloud",
-      "description": "A summary of the latest releases and updates for IBM Watson Speech to Text for IBM Cloud.",
-      "href": "/docs/speech-to-text?topic=speech-to-text-release-notes"
-    },
-    {
-      "title": "Release notes for IBM Cloud Pak for Data",
-      "description": "A summary of the latest releases and updates for IBM Watson Speech to Text for IBM Cloud Pak for Data.",
-      "href": "/docs/speech-to-text?topic=speech-to-text-release-notes-data"
-    }
-  ],
-  "section_videos": [
-    {
-      "title": "Getting started with the Speech to Text service for IBM Cloud",
-      "href": "/docs/speech-to-text?topic=speech-to-text-gettingStarted",
-      "thumbnail": "/images/getting-started-thumbnail.png"
-    }
-  ]
+  "section_updates": {
+    "view_more": "/docs/speech-to-text?topic=speech-to-text-release-notes"
+  }
 }
-
