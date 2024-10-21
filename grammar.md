@@ -35,12 +35,6 @@ The {{site.data.keyword.speechtotextshort}} service supports grammars that are d
 
 Both grammar formats have the expressive power of a Context-Free Grammar (CFG). However, the service can decode only Type-3 Regular grammars in the Chomsky hierarchy. Such grammars represent finite state automata.
 
-For general information about grammars, see the following Wikipedia pages:
-
--   [Speech Recognition Grammar Specification](https://en.m.wikipedia.org/wiki/Speech_Recognition_Grammar_Specification){: external}
--   [Augmented Backus-Naur form](https://en.wikipedia.org/wiki/Augmented_Backus%e2%80%93Naur_form){: external}
--   [Chomsky hierarchy](https://en.m.wikipedia.org/wiki/Chomsky_hierarchy){: external}
-
 ## The Speech Recognition Grammar Specification
 {: #grammarSpecification}
 

@@ -98,7 +98,7 @@ The following table shows examples of final transcripts both with and without sm
 
 -   For dates, `do` and `de` in the transcript is used as separators for day, month and year. `primeiro` is considered as 1st of the month. The dates are formatted as `DD/MM/YYYY`. 
 -   Times are identified by keywords and prefix, for example, `às` `ao`, `à`, `da tarde` (`p.m.`), `da madrugada` (`a.m.`), `meia noite`, `meio dia`. Prefixes  `às` `ao`, `à` are optional.
--   Landline numbers must have 10 digits (2 digits country code and 8 digits number), mobile numbers are 9 digits with first digit as `9` with optional country code. Area codes are optional. Numbers are formatted as `+NN (NN) NNNN-NNNN and +NN (NN) 9NNNN-NNNN `.
+-   Landline numbers must have 10 digits (2 digits country code and 8 digits number), mobile numbers are 9 digits with first digit as `9` with optional country code. Area codes are optional. Numbers are formatted as `+NN (NN) NNNN-NNNN` and `+NN (NN) 9NNNN-NNNN`.
 -   Brazilian real currency symbol is `R$`. Other Currency symbols are substituted for strings in appropriate contexts, for example, `dollar`, `cent`, `euro`, `yen`. `centavos` is optional after `reais` for example, `setenta e cinco dólares e sessenta e três` and `setenta e cinco dólares e sessenta e três centavos` formatted as `R$75,63`
 -   Internet email addresses with common format (for example, `[alphanumeric+symbols]+ arroba [alphanumeric ponto]+ domainname` ) are smart formatted.
 -   Web URLs, both short and long form, are formatted. It includes protocol (`http/s`), subdomain (`www`), ports (`443,80`) and paths (`/help/abc`).

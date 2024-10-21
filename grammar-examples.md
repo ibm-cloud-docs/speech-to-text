@@ -55,8 +55,6 @@ The following grammars recognize Honda VIN codes. They are more complex than the
 -   **ABNF** - [vins.abnf](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/vins.abnf){: external}
 -   **XML** - [vins.xml](https://watson-developer-cloud.github.io/doc-tutorial-downloads/speech-to-text/grammars/vins.xml){: external}
 
-For more information about the VIN format, see [Vehicle identification number](https://en.wikipedia.org/wiki/Vehicle_identification_number){: external}.
-
 ## Grammars with optional elements
 {: #optionalElements}
 

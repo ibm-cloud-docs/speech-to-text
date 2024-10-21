@@ -1,4 +1,14 @@
+---
 
+copyright:
+  years: 2021, 2024
+lastupdated: "2024-08-23"
+
+subcollection: speech-to-text
+
+---
+
+{{site.data.keyword.attribute-definition-list}}
 
 ## Smart formatting Version 2
 {: #smart-formatting}
@@ -24,6 +34,7 @@ To use the new smart formatting feature for US English, Brazilian Portuguese, Fr
 
 #### US English
 {: #smart-formatting-english}
+
 -   Different spoken forms of dates are accepted, including dates just as numbers or names of months and use of `the` and `of` (`the twenty fifth of july twenty twelve`). The dates are formatted as `m/d/yyyy`. 
 -   Times are identified by keywords or suffix e.g. timezones (e.g. `est`, `eastern`), `am`, `pm`, `hours`, `o'clock`, `minutes past hour`.
 -   Phone numbers must be either `911` or a number that contains 10 digits and/or starts with the number `[+]1`.
@@ -72,9 +83,10 @@ The following table shows examples of final transcripts both with and without sm
 
 #### Brazilian-Portuguese
 {: #smart-formatting-pt-br}
+
 -   For dates, `do` and `de` in the transcript is used as separators for day, month and year. `primeiro` is considered as 1st of the month. The dates are formatted as `DD/MM/YYYY`. 
 -   Times are identified by keywords and prefix e.g. `às` `ao`, `à`, `da tarde` (`p.m.`), `da madrugada` (`a.m.`), `meia noite`, `meio dia`. Prefixes  `às` `ao`, `à` are optional.
--   Landline numbers must have 10 digits (2 digits country code and 8 digits number), mobile numbers are 9 digits with first digit as `9` with optional country code. Area codes are optional. Numbers are formatted as `+NN (NN) NNNN-NNNN and +NN (NN) 9NNNN-NNNN `
+-   Landline numbers must have 10 digits (2 digits country code and 8 digits number), mobile numbers are 9 digits with first digit as `9` with optional country code. Area codes are optional. Numbers are formatted as `+NN (NN) NNNN-NNNN` and `+NN (NN) 9NNNN-NNNN`.
 -   Brazilian real currency symbol is `R$`. Other Currency symbols are substituted for strings in appropriate contexts e.g. `dollar`, `cent`, `euro`, `yen`. `centavos` is optional after `reais` e.g. `setenta e cinco dólares e sessenta e três` and `setenta e cinco dólares e sessenta e três centavos` formatted as `R$75,63`
 -   Internet email addresses with common format ( e.g. `[alphanumeric+symbols]+ arroba [alphanumeric ponto]+ domainname` ) are smart formatted.
 -   Web URLs, both short and long form, are formatted. It includes protocol (`http/s`), subdomain (`www`), ports (`443,80`) and paths (`/help/abc`)
@@ -119,6 +131,7 @@ The following table shows examples of final transcripts both with and without sm
 
 #### French
 {: #smart-formatting-fr-fr}
+
 -   In dates, the ordinal`premier` is considered 1st of the month. The dates are formatted as `DD/MM/YYYY`. 
 -   Times are identified by keywords and prefix e.g. `heures`, `de l'après-midi` or `du soir`, `du matin`, `midi`. Times are formatted as 24H clock : `HH h MM`
 -   Telephone numbers must have 9 or 10 digits (5 pairs of two digits). In cases where only one digit of the first pairing is admitted, assumes that the 0 was skipped. Numbers are formatted as `NN NN NN NN NN`
@@ -162,6 +175,7 @@ The following table shows examples of final transcripts both with and without sm
 
 #### French-Canadian
 {: #smart-formatting-fr-ca}
+
 -   In dates, the ordinal`premier` is considered 1st of the month. The dates are formatted as `DD/MM/YYYY`. 
 -   Times are identified by keywords and prefix e.g. `heures`, `de l'après-midi` or `du soir`, `du matin`, `midi`. Times are formatted as 24H clock : `HH h MM`
 -   Phone numbers must be either `911` or a number that contains 10 digits and/or starts with the number `[+]1`.
@@ -203,6 +217,7 @@ The following table shows examples of final transcripts both with and without sm
 
 #### Spanish
 {: #smart-formatting-es-es}
+
 -   In dates, the ordinal`primero` is considered 1st of the month. The dates are formatted as `DD/MM/YYYY`. 
 -   Times on the hour or time without an article followed by a suffix (indicating 'a.m.' or 'p.m.'), it will be converted .e.g `las dos pe eme`. Times are formatted as 24H clock : `HH h MM` or as 12H clock with a.m./p.m.
 -   Telephone numbers must have 8, 9 or 10 digits. Numbers are formatted as `NNNN NNNN` or `NNN NNN NNN` or `NNN NNN NNNN`
@@ -242,9 +257,10 @@ The following table shows examples of final transcripts both with and without sm
 
 #### German
 {: #smart-formatting-de-de}
+
 -   Date formatting has support for both numeric and name for months ( e.g. `zweiter` is same as `februar`). The dates are formatted as `DD.MM.YYYY`. 
 -   Times are identified by keywords e.g. `nach` `uhr`, `vor`, `minuten`. Time is formatted as 24-hr clock : `HH:MM:SS`
--   Telephone numbers should have 3-4 digit area code starting with `0` followed by 8-digit number. Country code (+49) is optional. Area code should not start with `0` if country code is used. Numbers are formatted as `+49 [N]NN NNNNNNNN or 0[N]NN NNNNNNNN `
+-   Telephone numbers should have 3-4 digit area code starting with `0` followed by 8-digit number. Country code (+49) is optional. Area code should not start with `0` if country code is used. Numbers are formatted as `+49 [N]NN NNNNNNNN` or `0[N]NN NNNNNNNN`.
 -   Most Currency symbols are substituted for strings in appropriate contexts e.g. `dollar`, `cent`, `euro`, `yen`.
 -   Internet email addresses with common format ( e.g. `[alphanumeric+symbols]+ ät [alphanumeric punkt]+ domainname` ) are formatted
 -   Web URLs, both short and long form, are formatted. It includes protocol (`http/s`), subdomain (`www`), ports (`443,80`) and paths (`/help/abc`)
