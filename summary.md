@@ -237,7 +237,7 @@ An optional customization ID for a custom language model that includes terminolo
 
 | Availability and usage | Description |
 |------------------------|-------------|
-Large speech models          | Generally available for all languages. |
+|Large speech models          | Generally available for all languages. |
 | Previous-generation models | Generally available or beta for all models that support language model customization. For more information, see [Customization support for previous-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-pg). |
 | Next-generation models     | Generally available or beta for all models that support language model customization. For more information, see [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). |
 | WebSocket              | Query parameter of `/v1/recognize` connection request |
@@ -402,7 +402,7 @@ An optional float between 0.0 and 1.0 that indicates the sensitivity of speech r
 
 | Availability and usage | Description |
 |------------------------|-------------|
-Large speech models          | Generally available for all languages. |         
+|Large speech models          | Generally available for all languages. |         
 | Previous-generation models | Generally available for all language models except for `ar-MS_BroadbandModel`, `pt-BR_BroadbandModel`, `zh-CN_BroadbandModel`, `zh-CN_NarrowbandModel`, and `de-DE_BroadbandModel`. |
 | Next-generation models     | Generally available for all languages. |
 | WebSocket              | Parameter of JSON `start` message |
