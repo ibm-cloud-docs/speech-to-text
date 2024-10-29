@@ -112,4 +112,4 @@ Beta features might not provide the same level of performance or compatibility a
 The service offers multiple pricing plans to suit your usage and application needs:
 
 -   For general information about the pricing plans and answers to common questions, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
--   For more information about the pricing plans or to purchase a plan, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://cloud.ibm.com/catalog/services/speech-to-text){: external}.
+-   For more information about the pricing plans or to purchase a plan, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/services/speech-to-text){: external}.
