@@ -17,7 +17,7 @@ content-type: faq
 
 [IBM Cloud]{: tag-ibm-cloud}
 
-The {{site.data.keyword.speechtotextfull}} service is available at three pricing plans: Lite, Plus, and Premium. The following FAQs provide an overview of the pricing plans. For more information, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}.
+The {{site.data.keyword.speechtotextfull}} service is available at three pricing plans: Lite, Plus, and Premium. The following FAQs provide an overview of the pricing plans. For more information, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://cloud.ibm.com/catalog/services/speech-to-text){: external}.
 
 The Standard plan is no longer available for purchase by users. The Standard plan continues to be available to its existing users indefinitely. For more information, see [Can I continue to use the {{site.data.keyword.speechtotextshort}} Standard plan?](#faq-pricing-standard) For new users, read about the new Plus and Premium plans below.
 {: note}
@@ -28,7 +28,7 @@ The Standard plan is no longer available for purchase by users. The Standard pla
 
 The Lite plan lets you get started with 500 minutes per month of speech recognition at no cost. You can use any available model for speech recognition. The Lite plan does not provide access to customization. You must use a paid plan to use customization.
 
-The Lite plan is intended for any user who wants to try out the service before committing to a purchase. For more information, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}.
+The Lite plan is intended for any user who wants to try out the service before committing to a purchase. For more information, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://cloud.ibm.com/catalog/services/speech-to-text){: external}.
 Services that are created with the Lite plan are deleted after 30 days of inactivity.
 
 ## What is the price for using the {{site.data.keyword.speechtotextshort}} Plus plan?
@@ -46,7 +46,7 @@ The plan uses a simple tiered pricing model to give high-volume users further di
 -   Users who recognize 1 to 999,999 minutes of audio in a given month pay $0.02 (USD) per minute of audio for that month.
 -   Users who recognize at least 1,000,000 minutes of audio in a given month pay $0.01 (USD) per minute of audio for that month.
 
-The Plus plan is intended for small businesses. It is also a good choice for large enterprises that want to develop and test larger applications before considering moving to a Premium plan. For more information, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}.
+The Plus plan is intended for small businesses. It is also a good choice for large enterprises that want to develop and test larger applications before considering moving to a Premium plan. For more information, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://cloud.ibm.com/catalog/services/speech-to-text){: external}.
 
 ## Can I continue to use the {{site.data.keyword.speechtotextshort}} Standard plan?
 {: #faq-pricing-standard}
@@ -54,7 +54,7 @@ The Plus plan is intended for small businesses. It is also a good choice for lar
 
 The Standard plan is no longer available for purchase by new users. But existing users of the Standard plan can continue to use the plan indefinitely with no change in their pricing. Their API settings and custom models remain unaffected.
 
-Existing users can also choose to upgrade to the new Plus plan by visiting the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}. They will continue to have access to all of their settings and custom models after upgrading. And, if they find that the Plus plan does not meet their needs for any reason, they can always downgrade back to their Standard plan.
+Existing users can also choose to upgrade to the new Plus plan by visiting the [{{site.data.keyword.cloud}} Catalog](https://cloud.ibm.com/catalog/services/speech-to-text){: external}. They will continue to have access to all of their settings and custom models after upgrading. And, if they find that the Plus plan does not meet their needs for any reason, they can always downgrade back to their Standard plan.
 
 ## What pricing plan do I need to use the service's customization interface?
 {: #faq-pricing-customization}
@@ -79,7 +79,7 @@ You can upgrade from the Lite plan to the Plus plan, for example, to gain access
 
 For the Plus plan, pricing is based on the cumulative amount (number of minutes) of audio that you send to the service in any one month. The per-minute price of all audio that you recognize in a month is reduced once you reach the threshold of one million minutes of audio for that month. The price does not depend on how long the service takes to process the audio. (Per-minute pricing is different for the Standard plan.)
 
-For information about pricing for the Plus and Standard plans, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}.
+For information about pricing for the Plus and Standard plans, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://cloud.ibm.com/catalog/services/speech-to-text){: external}.
 
 ## Do you round up to the nearest minute for every call to the API?
 {: #faq-pricing-rounding}
