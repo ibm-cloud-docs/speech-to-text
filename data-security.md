@@ -79,7 +79,7 @@ The service's Plus and Premium pricing plans offer different levels of data sepa
 -   Plus plans are multi-tenant solutions that provide logical separation of data by using common encryption keys.
 -   Premium plans are single-tenant solutions that provide physical separation of data. Premium plans provide dedicated data storage accounts that use unique encryption keys.
 
-Users of Premium plans can also integrate with {{site.data.keyword.keymanagementservicefull}} to create, import, and manage their encryption keys. This process is commonly referred to as *Bring your own keys* (BYOK). For more information about using {{site.data.keyword.keymanagementservicefull}}, see [Protecting sensitive information in your Watson service](/docs/watson-knowledge-studio?topic=watson-keyservice).
+Users of Premium plans can also integrate with {{site.data.keyword.keymanagementservicefull}} to create, import, and manage their encryption keys. This process is commonly referred to as *Bring your own keys* (BYOK). For more information about using {{site.data.keyword.keymanagementservicefull}}, see [Protecting sensitive information in your Watson service](/docs/speech-to-text?topic=speech-to-text-keyservice).
 
 ## Network endpoints
 {: #data-security-network-endpoints}
@@ -88,7 +88,7 @@ Users of Premium plans can also integrate with {{site.data.keyword.keymanagement
 
 {{site.data.keyword.cloud_notm}} supports both public and private network endpoints with certain plans. Connections to private network endpoints do not require public internet access. Private network endpoints support routing services over the {{site.data.keyword.cloud_notm}} private network instead of the public network. A private network endpoint provides a unique IP address that is accessible to you without a VPN connection.
 
-Private network endpoints are supported only for paid plans. Check the plan information for your service to learn about the plans that support private network endpoints. For more information, see [Public and private network endpoints](/docs/watson?topic=watson-public-private-endpoints).
+Private network endpoints are supported only for paid plans. Check the plan information for your service to learn about the plans that support private network endpoints. For more information, see [Public and private network endpoints](/docs/speech-to-text?topic=speech-to-text-public-private-endpoints).
 
 ## Virtual private endpoints
 {: #data-security-virtual-endpoints}
@@ -97,7 +97,7 @@ Private network endpoints are supported only for paid plans. Check the plan info
 
 {{site.data.keyword.cloud}} Virtual Private Endpoints for Virtual Private Cloud (VPC) are available with certain plans. Virtual private endpoints enable you to connect to supported {{site.data.keyword.cloud_notm}} services from your VPC network by using the IP addresses of your choosing, allocated from a subnet within your VPC. Virtual private endpoints are an evolution of the private connectivity to {{site.data.keyword.cloud_notm}} services. They are virtual IP interfaces that are bound to an endpoint gateway created on a per service or service instance basis.
 
-Virtual private endpoints are supported only for paid plans. Check the plan information for your service to learn about the plans that support virtual private endpoints. For more information, see [Virtual Private Endpoints](/docs/watson?topic=watson-virtual-private-endpoints).
+Virtual private endpoints are supported only for paid plans. Check the plan information for your service to learn about the plans that support virtual private endpoints. For more information, see [Virtual Private Endpoints](/docs/speech-to-text?topic=speech-to-text-virtual-private-endpoints).
 
 ## CORS support
 {: #data-security-cors}
