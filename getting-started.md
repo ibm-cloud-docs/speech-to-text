@@ -198,6 +198,6 @@ The service returns the following results, which include timestamps and three al
 ## Next steps
 {: #getting-started-next-steps}
 
--   To try an example application that transcribes text from streaming audio input or from a file that you upload, see the [{{site.data.keyword.speechtotextshort}} demo](https://www.ibm.com/demos/live/speech-to-text/sales/home){: external}.
+-   To try an example application that transcribes text from streaming audio input or from a file that you upload, see the [{{site.data.keyword.speechtotextshort}} demo](https://www.ibm.com/products){: external}.
 -   For more information about the service's interfaces and features, see [Service features](/docs/speech-to-text?topic=speech-to-text-service-features).
 -   For more information about all methods of the service's interfaces, see the [API & SDK reference](/apidocs/speech-to-text){: external}.

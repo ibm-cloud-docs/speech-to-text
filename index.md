@@ -25,7 +25,7 @@ The service is ideal for clients who need to extract high-quality speech transcr
 
 {{site.data.keyword.speechtotextshort}} can be deployed as a managed cloud service or can be installed on premises. This documentation describes how to use both versions of the product. Information such as topics, paragraphs, and examples that applies exclusively to one version is clearly denoted:
 
--   [IBM Cloud]{: tag-ibm-cloud} for managed instances of {{site.data.keyword.speechtotextshort}} that are hosted on {{site.data.keyword.cloud_notm}} or for instances that are hosted on [IBM Cloud Pak for Data as a Service](https://dataplatform.cloud.ibm.com/docs/content/wsj/landings/wstt.html){: external}.
+-   [IBM Cloud]{: tag-ibm-cloud} for managed instances of {{site.data.keyword.speechtotextshort}} that are hosted on {{site.data.keyword.cloud_notm}} or for instances that are hosted on [IBM Cloud Pak for Data as a Service](https://dataplatform.cloud.ibm.com/docs/content/svc-welcome/wstt.html){: external}.
     -   For information about all service updates, see the [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes).
     -   For information about the latest service update, see the [2 May 2023](/docs/speech-to-text?topic=speech-to-text-release-notes#speech-to-text-2may2023) service update in the release notes.
 -   [IBM Cloud Pak for Data]{: tag-cp4d} for installed or on-premises instances of {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}. For links to information about installing and managing {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}, see [Installing {{site.data.keyword.ibmwatson_notm}} {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-speech-install-data).
@@ -112,4 +112,4 @@ Beta features might not provide the same level of performance or compatibility a
 The service offers multiple pricing plans to suit your usage and application needs:
 
 -   For general information about the pricing plans and answers to common questions, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
--   For more information about the pricing plans or to purchase a plan, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}.
+-   For more information about the pricing plans or to purchase a plan, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/services/speech-to-text){: external}.

@@ -19,7 +19,7 @@ content-type: release-note
 
 [IBM Cloud]{: tag-ibm-cloud}
 
-The following features and changes were included for each release and update of managed instances of {{site.data.keyword.speechtotextfull}} that are hosted on {{site.data.keyword.cloud_notm}} or for instances that are hosted on [{{site.data.keyword.icp4dfull_notm}} as a Service](https://dataplatform.cloud.ibm.com/docs/content/wsj/landings/wstt.html){: external}. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
+The following features and changes were included for each release and update of managed instances of {{site.data.keyword.speechtotextfull}} that are hosted on {{site.data.keyword.cloud_notm}} or for instances that are hosted on [{{site.data.keyword.icp4dfull_notm}} as a Service](https://dataplatform.cloud.ibm.com/docs/content/svc-welcome/wstt.html){: external}. Unless otherwise noted, all changes are compatible with earlier releases and are automatically and transparently available to all new and existing applications.
 {: shortdesc}
 
 For information about known limitations of the service, see [Known limitations](/docs/speech-to-text?topic=speech-to-text-known-limitations).
@@ -967,7 +967,7 @@ Updates to pricing plans for the service
     For more information about the available pricing plans, see the following resources:
 
     -   For general information about the pricing plans and answers to common questions, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
-    -   For more information about the pricing plans or to purchase a plan, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/speech-to-text){: external}.
+    -   For more information about the pricing plans or to purchase a plan, see the {{site.data.keyword.speechtotextshort}} service in the [{{site.data.keyword.cloud}} Catalog](https://{DomainName}/catalog/services/speech-to-text){: external}.
 
 ## 20 August 2020
 {: #speech-to-text-20august2020}
@@ -1166,10 +1166,10 @@ New network and data security features available
 :   Support for the following new network and data security features is now available:
     -   *Support for private network endpoints*
 
-        Users of Premium plans can create private network endpoints to connect to the {{site.data.keyword.speechtotextshort}} service over a private network. Connections to private network endpoints do not require public internet access. For more information, see [Public and private network endpoints](/docs/text-to-speech/?topic=watson-public-private-endpoints).
+        Users of Premium plans can create private network endpoints to connect to the {{site.data.keyword.speechtotextshort}} service over a private network. Connections to private network endpoints do not require public internet access. For more information, see [Public and private network endpoints](/docs/watson?topic=watson-public-private-endpoints).
     -   *Support for data encryption with customer-managed keys*
 
-        Users of new Premium and Dedicated instances can integrate {{site.data.keyword.keymanagementservicefull}} with the {{site.data.keyword.speechtotextshort}} service to encrypt your data and manage encryption keys. For more information, see [Protecting sensitive information in your Watson service](/docs/watson?topic=watson-keyservice).
+        Users of new Premium and Dedicated instances can integrate {{site.data.keyword.keymanagementservicefull}} with the {{site.data.keyword.speechtotextshort}} service to encrypt your data and manage encryption keys. For more information, see [Protecting sensitive information in your Watson service](/docs/watson-knowledge-studio?topic=watson-keyservice).
 
 ## 10 December 2019
 {: #speech-to-text-10december2019}

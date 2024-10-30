@@ -665,7 +665,7 @@ Security vulnerabilities addressed
 {: #speech-to-text-data-1may2022}
 
 Important: End of service for {{site.data.keyword.speechtotextshort}} version 1.2.x on {{site.data.keyword.icp4dfull_notm}} version 3.5
-:   **Important:** {{site.data.keyword.speechtotextshort}} version 1.2.x on {{site.data.keyword.icp4dfull_notm}} version 3.5 is out of service as of 1 May 2022. {{site.data.keyword.speechtotextshort}} version 1.2.x is no longer supported, available, or documented. For more information about End of Service for {{site.data.keyword.speechtotextshort}}, which is part of the {{site.data.keyword.watson}} API Kit, see [Software support discontinuance: IBM Watson API Kit for IBM Cloud Pak for Data 1.2.x](https://www.ibm.com/common/ssi/cgi-bin/ssialias?subtype=ca&infotype=an&appname=iSource&supplier=897&letternum=ENUS922-038).
+:   **Important:** {{site.data.keyword.speechtotextshort}} version 1.2.x on {{site.data.keyword.icp4dfull_notm}} version 3.5 is out of service as of 1 May 2022. {{site.data.keyword.speechtotextshort}} version 1.2.x is no longer supported, available, or documented. For more information about End of Service for {{site.data.keyword.speechtotextshort}}, which is part of the {{site.data.keyword.watson}} API Kit, see [Software support discontinuance: IBM Watson API Kit for IBM Cloud Pak for Data 1.2.x](https://www.ibm.com/us-en).
 
 ## 27 April 2022 (Version 4.0.8)
 {: #speech-to-text-data-27april2022}
@@ -1211,7 +1211,7 @@ Defect fix: Correct multitenancy documentation
 {: #speech-to-text-data-1october2021}
 
 Version 1.1.x is out of service
-:   {{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}} for {{site.data.keyword.icp4dfull_notm}} version 1.1.x went out of service on 30 September 2021. As of 1 October 2021, the documentation for version 1.1.x is no longer available. For more information, see [Software withdrawal and support discontinuance](https://www.ibm.com/common/ssi/ShowDoc.wss?docURL=/common/ssi/rep_ca/9/899/ENUSLP21-0099/index.html&request_locale=en){: external}.
+:   {{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}} for {{site.data.keyword.icp4dfull_notm}} version 1.1.x went out of service on 30 September 2021. As of 1 October 2021, the documentation for version 1.1.x is no longer available. For more information, see [Software withdrawal and support discontinuance](https://www.ibm.com/us-en){: external}.
 
 ## 31 August 2021 (Version 4.0.0)
 {: #speech-to-text-data-31august2021}

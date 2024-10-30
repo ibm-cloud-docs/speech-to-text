@@ -47,7 +47,7 @@ To use the new smart formatting feature for US English, Brazilian Portuguese, Fr
     - `comma` (`,`), `period` (`.`), `question mark` (`?`), `exclamation point` (`!`), `semicolon` (`;`), `hyphen` (`-`), etc.
 
 ### Smart formatting Examples
-{: #smart-formatting-examples}
+{: #smart-formatting-examples-en}
 
 The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
 
@@ -95,8 +95,8 @@ The following table shows examples of final transcripts both with and without sm
 -   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken/dictated punctuation symbols for the keyword strings.
     - `vírgula` (`,`), `ponto` (`.`), `ponto de interrogação` (`?`), `ponto de exclamação` (`!`), `ponto e vírgula` (`;`), `hífen` (`-`), etc.
 
-### Smart formatting Examples
-{: #smart-formatting-examples}
+### Smart formatting Examples for Brazilian-Portuguese
+{: #smart-formatting-examples-pt-br}
 
 The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
 
@@ -143,8 +143,8 @@ The following table shows examples of final transcripts both with and without sm
 -   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken/dictated punctuation symbols for the keyword strings.
     - `virgule` (`,`), `point` (`.`), `point d'interrogation` (`?`), `point d'exclamation` (`!`), `point-virgule` (`;`), `trait d'union` (`-`), etc.
 
-### Smart formatting Examples
-{: #smart-formatting-examples}
+### Smart formatting Examples for French
+{: #smart-formatting-examples-fr-fr}
 
 The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
 
@@ -185,8 +185,8 @@ The following table shows examples of final transcripts both with and without sm
 -   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken/dictated punctuation symbols for the keyword strings.
     - `virgule` (`,`), `point` (`.`), `point d'interrogation` (`?`), `point d'exclamation` (`!`), `point-virgule` (`;`), `trait d'union` (`-`), etc.
 
-### Smart formatting Examples
-{: #smart-formatting-examples}
+### Smart formatting Examples for French-Canadian
+{: #smart-formatting-examples-fr-ca}
 
 The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
 
@@ -227,8 +227,8 @@ The following table shows examples of final transcripts both with and without sm
 -   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken/dictated punctuation symbols for the keyword strings.
     - `punto` (`.`), `interrogación` (`?`), `exclamación` (`!`), `punto y coma` (`;`), `guion medio` (`-`), etc.
 
-### Smart formatting Examples
-{: #smart-formatting-examples}
+### Smart formatting Examples for Spanish
+{: #smart-formatting-examples-es-es}
 
 The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
 
@@ -269,8 +269,8 @@ The following table shows examples of final transcripts both with and without sm
 -   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken/dictated punctuation symbols for the keyword strings.
     - `komma` (`,`), `punkt` (`.`), `fragezeichen` (`?`), `ausrufezeichen` (`!`), `semikolon` (`;`), `bindestrich` (`-`), etc.
 
-### Smart formatting Examples
-{: #smart-formatting-examples}
+### Smart formatting Examples for German
+{: #smart-formatting-examples-de-de}
 
 The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
 

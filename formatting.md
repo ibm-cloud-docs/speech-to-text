@@ -59,7 +59,7 @@ To use the new smart formatting feature for US English, Brazilian Portuguese, Fr
     - `comma` (`,`), `period` (`.`), `question mark` (`?`), `exclamation point` (`!`), `semicolon` (`;`), `hyphen` (`-`).
 
 ### Smart formatting Examples
-{: #smart-formatting-examples}
+{: #smart-formatting-examples-en}
 
 The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
 
@@ -107,8 +107,8 @@ The following table shows examples of final transcripts both with and without sm
 -   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken/dictated punctuation symbols for the keyword strings.
     - `vírgula` (`,`), `ponto` (`.`), `ponto de interrogação` (`?`), `ponto de exclamação` (`!`), `ponto e vírgula` (`;`), `hífen` (`-`).
 
-### Smart formatting Examples
-{: #smart-formatting-examples}
+### Smart formatting Examples for Brazilian-Portuguese
+{: #smart-formatting-examples-pt-br}
 
 The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
 
@@ -155,8 +155,8 @@ The following table shows examples of final transcripts both with and without sm
 -   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken/dictated punctuation symbols for the keyword strings.
     - `virgule` (`,`), `point` (`.`), `point d'interrogation` (`?`), `point d'exclamation` (`!`), `point-virgule` (`;`), `trait d'union` (`-`).
 
-### Smart formatting Examples
-{: #smart-formatting-examples}
+### Smart formatting Examples for French
+{: #smart-formatting-examples-fr-fr}
 
 The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
 
@@ -187,6 +187,7 @@ The following table shows examples of final transcripts both with and without sm
 
 #### French-Canadian
 {: #smart-formatting-fr-ca}
+
 -   In dates, the ordinal`premier` is considered 1st of the month. The dates are formatted as `DD/MM/YYYY`. 
 -   Times are identified by keywords and prefix e.g. `heures`, `de l'après-midi` or `du soir`, `du matin`, `midi`. Times are formatted as 24H clock : `HH h MM`
 -   Phone numbers must be either `911` or a number that contains 10 digits and/or starts with the number `[+]1`.
@@ -196,8 +197,8 @@ The following table shows examples of final transcripts both with and without sm
 -   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken/dictated punctuation symbols for the keyword strings.
     - `virgule` (`,`), `point` (`.`), `point d'interrogation` (`?`), `point d'exclamation` (`!`), `point-virgule` (`;`), `trait d'union` (`-`), etc.
 
-### Smart formatting Examples
-{: #smart-formatting-examples}
+### Smart formatting Examples for French-Canadian
+{: #smart-formatting-examples-fr-ca}
 
 The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
 
@@ -228,6 +229,7 @@ The following table shows examples of final transcripts both with and without sm
 
 #### Spanish
 {: #smart-formatting-es-es}
+
 -   In dates, the ordinal`primero` is considered 1st of the month. The dates are formatted as `DD/MM/YYYY`. 
 -   Times on the hour or time without an article followed by a suffix (indicating 'a.m.' or 'p.m.'), it will be converted .e.g `las dos pe eme`. Times are formatted as 24H clock : `HH h MM` or as 12H clock with a.m./p.m.
 -   Telephone numbers must have 8, 9 or 10 digits. Numbers are formatted as `NNNN NNNN` or `NNN NNN NNN` or `NNN NNN NNNN`
@@ -237,8 +239,8 @@ The following table shows examples of final transcripts both with and without sm
 -   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken/dictated punctuation symbols for the keyword strings.
     - `punto` (`.`), `interrogación` (`?`), `exclamación` (`!`), `punto y coma` (`;`), `guion medio` (`-`), etc.
 
-### Smart formatting Examples
-{: #smart-formatting-examples}
+### Smart formatting Examples for Spanish
+{: #smart-formatting-examples-es-es}
 
 The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
 
@@ -267,9 +269,10 @@ The following table shows examples of final transcripts both with and without sm
 
 #### German
 {: #smart-formatting-de-de}
+
 -   Date formatting has support for both numeric and name for months (for example, `zweiter` is same as `februar`). The dates are formatted as `DD.MM.YYYY`. 
 -   Times are identified by keywords, for example, `nach` `uhr`, `vor`, `minuten`. Time is formatted as 24-hr clock : `HH:MM:SS`.
--   Telephone numbers should have 3-4 digit area code starting with `0` followed by 8-digit number. Country code (+49) is optional. Area code should not start with `0` if country code is used. Numbers are formatted as `+49 [N]NN NNNNNNNN or 0[N]NN NNNNNNNN `.
+-   Telephone numbers should have 3-4 digit area code starting with `0` followed by 8-digit number. Country code (+49) is optional. Area code should not start with `0` if country code is used. Numbers are formatted as `+49 [N]NN NNNNNNNN` or `0[N]NN NNNNNNNN`.
 -   Most Currency symbols are substituted for strings in appropriate contexts, for example, `dollar`, `cent`, `euro`, `yen`.
 -   Internet email addresses with common format ( for example, `[alphanumeric+symbols]+ ät [alphanumeric punkt]+ domainname` ) are formatted.
 -   Web URLs, both short and long form, are formatted. It includes protocol (`http/s`), subdomain (`www`), ports (`443,80`) and paths (`/help/abc`)
@@ -278,8 +281,8 @@ The following table shows examples of final transcripts both with and without sm
 -   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken/dictated punctuation symbols for the keyword strings.
     - `komma` (`,`), `punkt` (`.`), `fragezeichen` (`?`), `ausrufezeichen` (`!`), `semikolon` (`;`), `bindestrich` (`-`).
 
-### Smart formatting Examples
-{: #smart-formatting-examples}
+### Smart formatting Examples for German
+{: #smart-formatting-examples-de-de}
 
 The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
 
