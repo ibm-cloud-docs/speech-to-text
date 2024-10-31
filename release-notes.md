@@ -1166,10 +1166,10 @@ New network and data security features available
 :   Support for the following new network and data security features is now available:
     -   *Support for private network endpoints*
 
-        Users of Premium plans can create private network endpoints to connect to the {{site.data.keyword.speechtotextshort}} service over a private network. Connections to private network endpoints do not require public internet access. For more information, see [Public and private network endpoints](/docs/watson?topic=watson-public-private-endpoints).
+        Users of Premium plans can create private network endpoints to connect to the {{site.data.keyword.speechtotextshort}} service over a private network. Connections to private network endpoints do not require public internet access. For more information, see [Public and private network endpoints](/docs/speech-to-text?topic=speech-to-text-public-private-endpoints).
     -   *Support for data encryption with customer-managed keys*
 
-        Users of new Premium and Dedicated instances can integrate {{site.data.keyword.keymanagementservicefull}} with the {{site.data.keyword.speechtotextshort}} service to encrypt your data and manage encryption keys. For more information, see [Protecting sensitive information in your Watson service](/docs/watson-knowledge-studio?topic=watson-keyservice).
+        Users of new Premium and Dedicated instances can integrate {{site.data.keyword.keymanagementservicefull}} with the {{site.data.keyword.speechtotextshort}} service to encrypt your data and manage encryption keys. For more information, see [Protecting sensitive information in your Watson service](/docs/speech-to-text?topic=speech-to-text-keyservice).
 
 ## 10 December 2019
 {: #speech-to-text-10december2019}

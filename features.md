@@ -187,7 +187,7 @@ You can use a custom language model (with or without a grammar), a custom acoust
 
 SDKs are available for the {{site.data.keyword.speechtotextshort}} service to simplify the development of speech applications. The SDKs support many popular programming languages and platforms.
 
--   For a complete list of SDKs and links to the SDKs on GitHub, see [{{site.data.keyword.watson}} SDKs](/docs/watson?topic=watson-using-sdks).
+-   For a complete list of SDKs and links to the SDKs on GitHub, see [{{site.data.keyword.watson}} SDKs](/docs/speech-to-text?topic=speech-to-text-using-sdks).
 -   For more information about all methods of the SDKs for the {{site.data.keyword.speechtotextshort}} service, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text){: external}.
 
 ## Learning more about application development
