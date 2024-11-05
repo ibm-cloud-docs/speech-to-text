@@ -282,7 +282,7 @@ Deprecated Arabic and United Kingdom model names are no longer available
 Cloud Foundry deprecation and migration to resource groups
 :   {{site.data.keyword.IBM_notm}} announced the deprecation of IBM Cloud Foundry on 31 May 2022. As of 30 November 2022, new {{site.data.keyword.IBM_notm}} Cloud Foundry applications cannot be created and only existing users are able to deploy applications. {{site.data.keyword.IBM_notm}} Cloud Foundry reaches end of support on 1 June 2023. At that time, any {{site.data.keyword.IBM_notm}} Cloud Foundry application runtime instances running {{site.data.keyword.IBM_notm}} Cloud Foundry applications will be permanently disabled, deprovisioned, and deleted. For more information about the deprecation, see [Deprecation of {{site.data.keyword.IBM_notm}} Cloud Foundry](/docs/cloud-foundry-public?topic=cloud-foundry-public-deprecation).
 
-    To continue to use your {{site.data.keyword.cloud_notm}} applications beyond 1 June 2023, you must migrate to resource groups before that date. Resource groups are conceptually similar to Cloud Foundry spaces. They include several extra benefits, such as finer-grained access control by using IBM Cloud Identity and Access Management (IAM), the ability to connect service instances to apps and service across different regions, and an easy way to view usage per group. For more information about migration, see [Migrating Cloud Foundry service instances and apps to a resource group](/docs/account?topic=account-migrate).
+    To continue to use your {{site.data.keyword.cloud_notm}} applications beyond 1 June 2023, you must migrate to resource groups before that date. Resource groups are conceptually similar to Cloud Foundry spaces. They include several extra benefits, such as finer-grained access control by using IBM Cloud Identity and Access Management (IAM), the ability to connect service instances to apps and service across different regions, and an easy way to view usage per group. For more information about migration, see [Migrating Cloud Foundry service instances and apps to a resource group](/docs/resources?topic=resources-migrate).
 
 The `max_alternatives` parameter is now available for use with next-generation models
 :   The `max_alternatives` parameter is now available for use with all next-generation models. The parameter is generally available for all next-generation models. For more information, see [Maximum alternatives](/docs/speech-to-text?topic=speech-to-text-metadata#max-alternatives).
@@ -504,7 +504,7 @@ Important: Deprecated `customization_id` parameter removed from the documentatio
     -   `POST /v1/recognize` for synchronous HTTP requests (including multipart requests)
     -   `POST /v1/recognitions` for asynchronous HTTP requests
 
-    **Note:** If you use the {{site.data.keyword.watson}} SDKs, make sure that you have updated any application code to use the `language_customization_id` parameter instead of the `customization_id` parameter. The `customization_id` parameter will no longer be available from the equivalent methods of the SDKs as of their next major release. For more information about the speech recognition methods, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text/speech-to-text#service-endpoint){: external}.
+    **Note:** If you use the {{site.data.keyword.watson}} SDKs, make sure that you have updated any application code to use the `language_customization_id` parameter instead of the `customization_id` parameter. The `customization_id` parameter will no longer be available from the equivalent methods of the SDKs as of their next major release. For more information about the speech recognition methods, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text#service-endpoint){: external}.
 
 ## 17 March 2022
 {: #speech-to-text-17march2022}
@@ -1158,7 +1158,7 @@ Full support for IBM Cloud IAM
 
         `wss://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/6bbda3b3-d572-45e1-8c54-22d6ed9e52c2`
 
-    For more information about the URLs, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text/speech-to-text#service-endpoint){: external}.
+    For more information about the URLs, see the [API & SDK reference](https://{DomainName}/apidocs/speech-to-text#service-endpoint){: external}.
 
     These URLs do not constitute a breaking change. The new URLs work for both your existing service instances and for new instances. The original URLs continue to work on your existing service instances for at least one year, until December 2020.
 
@@ -1481,7 +1481,7 @@ New support for token-based IBM Cloud IAM
     The migration to IAM authentication affects new and existing service instances differently:
 
     -   *All new service instances that you create in any location* now use IAM authentication to access the service. You can pass either a bearer token or an API key: Tokens support authenticated requests without embedding service credentials in every call; API keys use HTTP basic authentication. When you use any of the {{site.data.keyword.watson}} SDKs, you can pass the API key and let the SDK manage the lifecycle of the tokens.
-    -   *Existing service instances that you created in a location before the indicated migration date* continue to use the `{username}` and `{password}` from their previous Cloud Foundry service credentials for authentication until you migrate them to use IAM authentication. For more information about migrating to IAM authentication, see [Migrating {{site.data.keyword.watson}} services from Cloud Foundry](/docs/text-to-speech?topic=watson-migrate).
+    -   *Existing service instances that you created in a location before the indicated migration date* continue to use the `{username}` and `{password}` from their previous Cloud Foundry service credentials for authentication until you migrate them to use IAM authentication. 
 
     For more information, see the following documentation:
 
