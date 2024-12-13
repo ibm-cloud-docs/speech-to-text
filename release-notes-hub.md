@@ -24,7 +24,7 @@ Learn about features and changes that were included for each release and update 
 This information applies only to instances of {{site.data.keyword.watson}} Speech services that are installed on {{site.data.keyword.IBM}} Software Hub. For information about releases and updates for managed deployments, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes).
 {: note}
 
-For the list of known issues, see [Limitations and known issues in {{site.data.keyword.watson}} Speech services](https://www.ibm.com/docs/en/software-hub/5.1.x?topic=issues-watson-speech-services){: external}.
+For the list of known issues, see [Known issues and limitations for {{site.data.keyword.watson}} Speech services](https://www.ibm.com/docs/en/software-hub/5.1.x?topic=issues-watson-speech-services){: external}.
 
 ## 5.1.0 release, 11 December 2024
 {: #speech-services-hub-510-11december2024}
