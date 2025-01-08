@@ -359,7 +359,7 @@ An optional boolean that indicates whether the service converts dates, times, nu
 |------------------------|-------------|
 | Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for US English, Japanese, and Spanish (all dialects). |
-| Next-generation models     | Generally available for US English, Japanese, and Spanish (all dialects). It also also available for the `en-WW_Medical_Telephony` model when US English audio is recognized. |
+| Next-generation models     | Generally available for US English, Japanese, and Spanish (all dialects). It is also available for the `en-WW_Medical_Telephony` model when US English audio is recognized. |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Query parameter of `POST /v1/recognize` method |
 | Asynchronous HTTP      | Query parameter of `POST /v1/recognitions` method |
@@ -368,7 +368,7 @@ An optional boolean that indicates whether the service converts dates, times, nu
 ## smart_formatting_version
 {: #summary-smart-formatting_version}
 
-An optional boolean that indicates whether the service converts dates, times, numbers, currency, and similar values into more conventional representations in the final transcript. For more information, see [Smart formatting version](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-version).
+An optional integer that indicates whether the service converts dates, times, numbers, currency, and similar values into more conventional representations in the final transcript. For more information, see [Smart formatting version](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-version).
 
 | Availability and usage | Description |
 |------------------------|-------------|
@@ -512,7 +512,7 @@ An optional string that associates a customer ID with data that is passed for re
 | Large speech models        | Generally available for all languages. |
 | Previous-generation models | Generally available for all languages. |
 | Next-generation models     | Generally available for all languages. |
-| WebSocket              | `x-watson-metadata` query parameter of `/v1/recognize` connection request. (You must URL-encode the argument, for example, `customer_id%3dmy_customer_ID`.) |
+| WebSocket              | `x-watson-metadata` query parameter of `/v1/recognize` connection request. (You must URL-encode the argument. For example, `customer_id%3dmy_customer_ID`.) |
 | Synchronous HTTP       | Request header of POST `/v1/recognize` request |
 | Asynchronous HTTP      | Request header of `POST /v1/register_callback` and `POST /v1/recognitions` requests |
 {: caption="The X-Watson-Metadata parameter"}

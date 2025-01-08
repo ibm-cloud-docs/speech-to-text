@@ -20,12 +20,12 @@ The {{site.data.keyword.speechtotextfull}} service provides three features that 
 ## Smart formatting Version 2
 {: #smart-formatting-version}
 
-The new version of smart formatting feature is available for US English, Brazilian Portuguese, French, German, Castilian Spanish, Spanish Latin American, and French Canadian. It is also available for the en-WW_Medical_Telephony model when US English audio is recognized. 
+The new version of the smart formatting feature is available for US English, Brazilian Portuguese, French, German, Castilian Spanish, Spanish Latin American, and French Canadian. It is also available for the en-WW_Medical_Telephony model when US English audio is recognized. 
 
 The new version:
 -	provides more flexibility in adding new languages and patterns compared to older smart formatting. 
--	uses a more sophisticated machine learning technique (Weighted Finite State Transducers) to identify entities in texts compared to the older version, which was rule-based approach. 
--	provides more accurate entity classification and formatting and also adds capability to define hierarchies using weights when same text can be identified as two different entity type.
+-	uses a more sophisticated machine learning technique (Weighted Finite State Transducers) to identify entities in texts compared to the older version, which was a rule-based approach. 
+-	provides more accurate entity classification and formatting and also adds the capability to define hierarchies by using weights when same text can be identified as two different entity types.
 
 The `smart_formatting` feature directs the service to convert the following strings into more conventional representations:
 
@@ -34,12 +34,12 @@ The `smart_formatting` feature directs the service to convert the following stri
 -   Alphanumeric sequences (of length > 2)
 -   Phone numbers
 -   Currency values
--   Measures (`/km²`, `kg`, `mph`, `m³`, etc)
--   Emails, URLs and IP addresses
+-   Measures (`/km²`, `kg`, `mph`, `m³`, and so on)
+-   Emails, URLs, and IP addresses
 -   Credit Card Numbers (formatted as groups of 4 digits)
 -   Punctuations (as spoken in dictations)
 
-To use the new smart formatting feature for US English, Brazilian Portuguese, French and German; set the parameter smart_formatting=true and smart_formatting_version=2.
+To use the new smart formatting feature for US English, Brazilian Portuguese, French, German, Castilian Spanish, Spanish Latin American, and French Canadian; set the parameter smart_formatting=true and smart_formatting_version=2.
 
 ### Entity Patterns and Examples
 {: #smart-formatting-differences}
@@ -48,13 +48,13 @@ To use the new smart formatting feature for US English, Brazilian Portuguese, Fr
 {: #smart-formatting-english}
 
 -   Different spoken forms of dates are accepted, including dates just as numbers or names of months and use of `the` and `of` (`the twenty fifth of july twenty twelve`). The dates are formatted as `m/d/yyyy`. 
--   Times are identified by keywords or suffix, for example, timezones (for example, `est`, `eastern`), `am`, `pm`, `hours`, `o'clock`, `minutes past hour`.
+-   Times are identified by keywords or suffix, for example, time zones (for example, `est`, `eastern`), `am`, `pm`, `hours`, `o'clock`, `minutes past hour`.
 -   Phone numbers must be either `911` or a number that contains 10 digits and/or starts with the number `[+]1`.
--   Currency symbols are substituted for strings in appropriate contextsfor, for example, `dollar`, `cent`, `euro`, `yen`. `cent` is optional after `dollar`, for example, `twelve dollars twenty five` and `twelve dollars twenty five cents` formatted as `$12.25`.
+-   Currency symbols are substituted for strings in appropriate contexts for, for example, `dollar`, `cent`, `euro`, `yen`. `cent` is optional after `dollar`, for example, `twelve dollars twenty five` and `twelve dollars twenty five cents` formatted as `$12.25`.
 -   Internet email addresses with common format (for example, `[alphanumeric+symbols]+ at [alphanumeric dot]+ domainname` ) are smart formatted.
--   Web URLs, both short and long form are formatted. It includes protocol (`http/s`), subdomain (`www`), ports (`443,80`) and paths (`/help/abc`).
--   Most large integers are formatted as numeric sequences. When large numbers (million, billions) are spoken with a single group integers, quantity word `million/billion` is not converted for readability, for example, `fifty nine million` -> `59 million` but when the number is more complex, it is formatted as numeric digits, for example, `fifty nine million and one` -> `59000001`.
--   Numbers less than 10 are not converted to digit to avoid odd formatting, for example, `You are one of them` -> `You are 1 of them`. But in other context like expressing currency, they are converted appropriately, for example, `Give me one dollar` -> `Give me $1`.
+-   Web URLs, both short and long form are formatted. It includes protocol (`http/s`), subdomain (`www`), ports (`443`, `80`) and paths (`/help/abc`).
+-   Most large integers are formatted as numeric sequences. When large numbers (million, billions) are spoken as single group integers, quantity word `million/billion` is not converted for readability, for example, `fifty nine million` -> `59 million` but when the number is more complex, it is formatted as numeric digits, for example, `fifty nine million and one` -> `59000001`.
+-   Numbers less than 10 are not converted to digit to avoid odd formatting, for example, `You are one of them` -> `You are 1 of them`. But in other context like expressing currency, they are converted, for example, `Give me one dollar` -> `Give me $1`.
 -   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken or dictated punctuation symbols for the keyword strings.
     - `comma` (`,`), `period` (`.`), `question mark` (`?`), `exclamation point` (`!`), `semicolon` (`;`), `hyphen` (`-`).
 
@@ -68,7 +68,7 @@ The following table shows examples of final transcripts both with and without sm
 | Dates           | july twenty fifth two thousand twelve                                         | 7/25/2012                        |
 |                 | the twenty fifth of july twenty twelve                                        | 7/25/2012                        |
 |                 | january the thirty first two thousand                                         | 1/31/2000                        |
-|                 | zero five zero five nineteen eighty three                                     | 6/20/2014                        |
+|                 | zero five zero five nineteen eighty three                                     | 5/5/1983                        |
 |                 | second quarter of twenty twenty two                                           | Q2 2022                          |
 | Times           | it is two eleven eastern                                                      | it is 02:11 est                  |
 |                 | we begin at oh seven hundred hours                                            | we begin at 07:00                |
@@ -96,21 +96,21 @@ The following table shows examples of final transcripts both with and without sm
 #### Brazilian-Portuguese
 {: #smart-formatting-pt-br}
 
--   For dates, `do` and `de` in the transcript is used as separators for day, month and year. `primeiro` is considered as 1st of the month. The dates are formatted as `DD/MM/YYYY`. 
--   Times are identified by keywords and prefix, for example, `às` `ao`, `à`, `da tarde` (`p.m.`), `da madrugada` (`a.m.`), `meia noite`, `meio dia`. Prefixes  `às` `ao`, `à` are optional.
+-   For dates, `do` and `de` in the transcript is used as separators for day, month, and year. `primeiro` is considered as 1st of the month. The dates are formatted as `DD/MM/YYYY`. 
+-   Times are identified by keywords and prefix, for example, `às` `ao`, `à`, `da tarde` (`p.m.`), `da madrugada` (`a.m.`), `meia noite`, `meio dia`. Prefixes `às` `ao`, `à` are optional.
 -   Landline numbers must have 10 digits (2 digits country code and 8 digits number), mobile numbers are 9 digits with first digit as `9` with optional country code. Area codes are optional. Numbers are formatted as `+NN (NN) NNNN-NNNN` and `+NN (NN) 9NNNN-NNNN`.
 -   Brazilian real currency symbol is `R$`. Other Currency symbols are substituted for strings in appropriate contexts, for example, `dollar`, `cent`, `euro`, `yen`. `centavos` is optional after `reais` for example, `setenta e cinco dólares e sessenta e três` and `setenta e cinco dólares e sessenta e três centavos` formatted as `R$75,63`
 -   Internet email addresses with common format (for example, `[alphanumeric+symbols]+ arroba [alphanumeric ponto]+ domainname` ) are smart formatted.
--   Web URLs, both short and long form, are formatted. It includes protocol (`http/s`), subdomain (`www`), ports (`443,80`) and paths (`/help/abc`).
--   Most large integer are formatted as numeric sequences. When large numbers (milhões, bilhões, etc) are spoken with a single group integers, quantity word `milhões/bilhões` is not converted for readability for example, `doze milhões` -> `12 milhões` but when the number is more complex, it's formatted as numeric digits for example, `doze milhões e um` -> `12000001`.
+-   Web URLs, both short and long form, are formatted. It includes protocol (`http/s`), subdomain (`www`), ports (`443`, `80`) and paths (`/help/abc`).
+-   Most large integers are formatted as numeric sequences. When large numbers (milhões, bilhões, and so on) are spoken as single group integers, quantity word `milhões/bilhões` is not converted for readability for example, `doze milhões` -> `12 milhões` but when the number is more complex, it is formatted as numeric digits for example, `doze milhões e um` -> `12000001`.
 -   Numbers less than 10 are not formatted to digits to avoid odd conversions, for example, `vivo em uma casa` --> `vivo em 1 casa`.
--   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken/dictated punctuation symbols for the keyword strings.
+-   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken or dictated punctuation symbols for the keyword strings.
     - `vírgula` (`,`), `ponto` (`.`), `ponto de interrogação` (`?`), `ponto de exclamação` (`!`), `ponto e vírgula` (`;`), `hífen` (`-`).
 
 ### Smart formatting Examples for Brazilian-Portuguese
 {: #smart-formatting-examples-pt-br}
 
-The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
+The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on Brazilian-Portuguese audio.
 
 | Entity Type     | Without smart formatting                                                 | With smart formatting |
 |-----------------|--------------------------------------------------------------------------|-----------------------|
@@ -144,21 +144,21 @@ The following table shows examples of final transcripts both with and without sm
 #### French
 {: #smart-formatting-fr-fr}
 
--   In dates, the ordinal`premier` is considered 1st of the month. The dates are formatted as `DD/MM/YYYY`. 
+-   In dates, the ordinal `premier` is considered as 1st of the month. The dates are formatted as `DD/MM/YYYY`. 
 -   Times are identified by keywords and prefix, for example, `heures`, `de l'après-midi` or `du soir`, `du matin`, `midi`. Times are formatted as 24H clock : `HH h MM`
 -   Telephone numbers must have 9 or 10 digits (5 pairs of two digits). In cases where only one digit of the first pairing is admitted, assumes that the 0 was skipped. Numbers are formatted as `NN NN NN NN NN`.
 -   When the `de` or `d'` preposition is used to express currency, the currency symbol is not used to format. This usually occurs with large round numbers, for example, `un milliard d'euro` formatted as `1 milliard d'euro`.
--   Internet email addresses with common format ( for example, `[alphanumeric+symbols]+ arobase [alphanumeric point]+ domainname` ) are smart formatted. `@` can be represented by any of these: `arobase`, `chez`, `at`, `à`.
--   Cardinals less than nine are not converted (in order to avoid `j'ai un pomme` -> `j'ai 1 pomme` and any other odd conversions.
--   For ordinals, 'siècles' are rendered in roman numerals when given an ordinal adjective. e `dix-neuvième siècle` -> `XIXᵉ siècle`.
+-   Internet email addresses with common format (for example, `[alphanumeric+symbols]+ arobase [alphanumeric point]+ domainname` ) are smart formatted. `@` can be represented by any of these: `arobase`, `chez`, `at`, `à`.
+-   Cardinals less than nine are not converted (to avoid `j'ai un pomme` -> `j'ai 1 pomme` and any other odd conversions.)
+-   For ordinals, 'siècles' are rendered in roman numerals when given an ordinal adjective. `dix-neuvième siècle` -> `XIXᵉ siècle`.
 -   Formatting of Fractions is supported. For example,`un onzième` -> `1/11`.
--   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken/dictated punctuation symbols for the keyword strings.
+-   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken or dictated punctuation symbols for the keyword strings.
     - `virgule` (`,`), `point` (`.`), `point d'interrogation` (`?`), `point d'exclamation` (`!`), `point-virgule` (`;`), `trait d'union` (`-`).
 
 ### Smart formatting Examples for French
 {: #smart-formatting-examples-fr-fr}
 
-The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
+The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on French audio.
 
 | Entity Type     | Without smart formatting                                     | With smart formatting     |
 |-----------------|--------------------------------------------------------------|---------------------------|
@@ -192,7 +192,7 @@ The following table shows examples of final transcripts both with and without sm
 -   Times are identified by keywords and prefix e.g. `heures`, `de l'après-midi` or `du soir`, `du matin`, `midi`. Times are formatted as 24H clock : `HH h MM`
 -   Phone numbers must be either `911` or a number that contains 10 digits and/or starts with the number `[+]1`.
 -   Internet email addresses with common format ( e.g. `[alphanumeric+symbols]+ arobase [alphanumeric point]+ domainname` ) are smart formatted. `@` can be represented by any of these: `arobase`, `chez`, `at`, `à`.
--   Cardinals below nine are not converted if they occur in midst of other text(in order to avoid `j'ai un pomme` -> `j'ai 1 pomme` and any other odd conversions). They are still formatted if they occur in isolation with no other text.
+-   Cardinals less than nine are not converted if they occur in midst of other text (to avoid `j'ai un pomme` -> `j'ai 1 pomme` and any other odd conversions). They are still formatted if they occur in isolation with no other text.
 -   Formatting of Fractions is supported. e.g.`un onzième` -> `1/11`
 -   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken/dictated punctuation symbols for the keyword strings.
     - `virgule` (`,`), `point` (`.`), `point d'interrogation` (`?`), `point d'exclamation` (`!`), `point-virgule` (`;`), `trait d'union` (`-`), etc.
@@ -200,7 +200,7 @@ The following table shows examples of final transcripts both with and without sm
 ### Smart formatting Examples for French-Canadian
 {: #smart-formatting-examples-fr-ca}
 
-The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
+The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on French-Canadian audio.
 
 | Entity Type     | Without smart formatting                                     | With smart formatting     |
 |-----------------|--------------------------------------------------------------|---------------------------|
@@ -230,19 +230,19 @@ The following table shows examples of final transcripts both with and without sm
 #### Spanish
 {: #smart-formatting-es-es}
 
--   In dates, the ordinal`primero` is considered 1st of the month. The dates are formatted as `DD/MM/YYYY`. 
--   Times on the hour or time without an article followed by a suffix (indicating 'a.m.' or 'p.m.'), it will be converted .e.g `las dos pe eme`. Times are formatted as 24H clock : `HH h MM` or as 12H clock with a.m./p.m.
+-   In dates, the ordinal `primero` is considered 1st of the month. The dates are formatted as `DD/MM/YYYY`. 
+-   Times on the hour or time without an article followed by a suffix (indicating 'a.m.' or 'p.m.'), is converted.e.g `las dos pe eme`. Times are formatted as 24H clock : `HH h MM` or as 12H clock with a.m./p.m.
 -   Telephone numbers must have 8, 9 or 10 digits. Numbers are formatted as `NNNN NNNN` or `NNN NNN NNN` or `NNN NNN NNNN`
--   Internet email addresses with common format ( e.g. `[alphanumeric+symbols]+ arroba [alphanumeric punto]+ domainname` ) are smart formatted.
--   Cardinals below nine are not converted if they occur in midst of other text(in order to avoid `un gato en el camino` -> `1 gato en el camino` and any other odd conversions). They are still formatted if they occur in isolation with no other text.
--   Formatting of Fractions is supported. e.g.`un décimo` -> `1/10`
--   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken/dictated punctuation symbols for the keyword strings.
-    - `punto` (`.`), `interrogación` (`?`), `exclamación` (`!`), `punto y coma` (`;`), `guion medio` (`-`), etc.
+-   Internet email addresses with common format (For example, `[alphanumeric+symbols]+ arroba [alphanumeric punto]+ domainname` ) are smart formatted.
+-   Cardinals less than nine are not converted if they occur in the midst of other text (to avoid `un gato en el camino` -> `1 gato en el camino` and any other odd conversions). They are still formatted if they occur in isolation with no other text.
+-   Formatting of Fractions is supported. For example, `un décimo` -> `1/10`
+-   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken or dictated punctuation symbols for the keyword strings.
+    - `punto` (`.`), `interrogación` (`?`), `exclamación` (`!`), `punto y coma` (`;`), `guion medio` (`-`), and so on.
 
 ### Smart formatting Examples for Spanish
 {: #smart-formatting-examples-es-es}
 
-The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
+The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on Spanish audio.
 
 | Entity Type     | Without smart formatting                                     | With smart formatting     |
 |-----------------|--------------------------------------------------------------|---------------------------|
@@ -270,21 +270,21 @@ The following table shows examples of final transcripts both with and without sm
 #### German
 {: #smart-formatting-de-de}
 
--   Date formatting has support for both numeric and name for months (for example, `zweiter` is same as `februar`). The dates are formatted as `DD.MM.YYYY`. 
+-   Date formatting has support for both numbers and name for months (for example, `zweiter` is same as `februar`). The dates are formatted as `DD.MM.YYYY`. 
 -   Times are identified by keywords, for example, `nach` `uhr`, `vor`, `minuten`. Time is formatted as 24-hr clock : `HH:MM:SS`.
--   Telephone numbers should have 3-4 digit area code starting with `0` followed by 8-digit number. Country code (+49) is optional. Area code should not start with `0` if country code is used. Numbers are formatted as `+49 [N]NN NNNNNNNN` or `0[N]NN NNNNNNNN`.
+-   Telephone numbers must have a 3-4 digit area code starting with `0` followed by a 8-digit number. Country code (+49) is optional. Area code must not start with `0` if country code is used. Numbers are formatted as `+49 [N]NN NNNNNNNN` or `0[N]NN NNNNNNNN`.
 -   Most Currency symbols are substituted for strings in appropriate contexts, for example, `dollar`, `cent`, `euro`, `yen`.
--   Internet email addresses with common format ( for example, `[alphanumeric+symbols]+ ät [alphanumeric punkt]+ domainname` ) are formatted.
--   Web URLs, both short and long form, are formatted. It includes protocol (`http/s`), subdomain (`www`), ports (`443,80`) and paths (`/help/abc`)
--   Cardinals less than nine are not converted in order to avoid odd or ambiguous conversions.
--   Ordinals and fractions formatting are supported.
--   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken/dictated punctuation symbols for the keyword strings.
+-   Internet email addresses with common format (for example, `[alphanumeric+symbols]+ ät [alphanumeric punkt]+ domainname` ) are formatted.
+-   Web URLs, both short and long form, are formatted. It includes protocol (`http/s`), subdomain (`www`), ports (`443`, `80`) and paths (`/help/abc`)
+-   Cardinals less than nine are not converted to avoid odd or ambiguous conversions.
+-   Formatting of ordinals and fractions are supported.
+-   Most of the punctuation symbols are added for special keywords that occur in appropriate places. When you use smart formatting, the service substitutes spoken or dictated punctuation symbols for the keyword strings.
     - `komma` (`,`), `punkt` (`.`), `fragezeichen` (`?`), `ausrufezeichen` (`!`), `semikolon` (`;`), `bindestrich` (`-`).
 
 ### Smart formatting Examples for German
 {: #smart-formatting-examples-de-de}
 
-The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on US English audio.
+The following table shows examples of final transcripts both with and without smart formatting. The transcripts are based on German audio.
 
 | Entity Type     | Without smart formatting                                                     | With smart formatting   |
 |-----------------|------------------------------------------------------------------------------|-------------------------|
@@ -340,7 +340,7 @@ curl -X POST \
 ## Smart formatting
 {: #smart-formatting}
 
-The smart formatting feature is beta functionality that is available for US English, Japanese, and Spanish (all dialects). It also also available for the `en-WW_Medical_Telephony` model when US English audio is recognized.
+The smart formatting feature is beta functionality that is available for US English, Japanese, and Spanish (all dialects). It is also available for the `en-WW_Medical_Telephony` model when US English audio is recognized.
 {: beta}
 
 The `smart_formatting` parameter directs the service to convert the following strings into more conventional representations:
@@ -410,7 +410,7 @@ Smart formatting is based on the presence of obvious keywords in the transcript.
     -   `Question mark` (`?`)
     -   `Exclamation point` (`!`)
 
-    The service converts these keyword strings to symbols only in appropriate positions of a transcript. In the following example, the speaker says the word `period` at the end of the sentence:
+    The service converts these keyword strings to symbols only in the appropriate positions of a transcript. In the following example, the speaker says the word `period` at the end of the sentence:
 
     -   `the warranty period is short period` becomes `the warranty period is short.`
 
@@ -459,7 +459,7 @@ The following table shows examples of final transcripts both with and without sm
 ### Smart formatting results for long pauses
 {: #smart-formatting-long-pauses}
 
-In cases where an utterance contains long enough pauses of silence, the service can split the transcript into two or more final results. This affects the contents of the response, as shown in the following examples.
+In cases where an utterance contains long enough pauses of silence, the service can split the transcript into two or more final results. This affects the content of the response, as shown in the following examples.
 
 | Audio speech | Formatted transcription results |
 |--------------|---------------------------------|
@@ -532,11 +532,11 @@ Japanese redaction has the following differences:
 Korean redaction has the following differences:
 
 -   The smart formatting feature is not supported. The service still performs numeric redaction for Korean, but it performs no other smart formatting.
--   Isolated digit characters are reduced, but possible digit characters that are included as part of Korean phrases are not. For example, the character `이`in the following phrase is not replaced by an `X` because it is adjacent to the following character:
+-   Isolated digit characters are reduced, but possible digit characters that are included as part of Korean phrases are not. For example, the character `이`in the following phrase is not replaced by an `X` because it is next to the following character:
 
     `이입니다`
 
-    If the `이` character were separated from the following character by a space, it would be replaced by an `X`, as described in [Numeric redaction results](#numeric-redaction-results).
+    If the `이` character was separated from the following character by a space, it would be replaced by an `X`, as described in [Numeric redaction results](#numeric-redaction-results).
 
 ### Numeric redaction results
 {: #numeric-redaction-results}
