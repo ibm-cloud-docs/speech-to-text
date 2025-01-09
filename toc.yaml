@@ -25,6 +25,8 @@ toc:
             navtitle: Release notes for IBM Cloud
           - topic: release-notes-data.md
             navtitle: Release notes for IBM Cloud Pak for Data
+          - topic: release-notes-hub.md
+            navtitle: Release notes for IBM Software Hub
       - link:
           label: Demo
           href: https://www.ibm.com/products
