@@ -25,6 +25,90 @@ For information about known limitations of the service, see [Known limitations](
 For information about releases and updates of the service for {{site.data.keyword.cloud_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes).
 {: note}
 
+## 25 September 2024 (Version 5.0.3)
+{: #speech-to-text-data-25september2024}
+
+Version 5.0.3 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 5.0.3 is now available. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/5.0.x?topic=new-watson-speech-services#fixlist__title__3){: external}.
+
+## 28 August 2024 (Version 5.0.2)
+{: #speech-to-text-data-28augustt2024}
+
+Version 5.0.2 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 5.0.2 is now available. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/5.0.x?topic=new-watson-speech-services#fixlist__title__4){: external}.
+
+## 31 July 2024 (Version 5.0.1)
+{: #speech-to-text-data-31july2024}
+
+Version 5.0.1 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 5.0.1 is now available. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/5.0.x?topic=new-watson-speech-services#fixlist__title__5){: external}.
+
+## 19 June 2024 (Version 5.0.0)
+{: #speech-to-text-data-19june2024}
+
+Version 5.0.0 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 5.0.0 is now available. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/5.0.x?topic=new-watson-speech-services#fixlist__title__6){: external}.
+
+## 30 October 2024 (Version 4.8.7)
+{: #speech-to-text-data-30october2024}
+
+Version 4.8.7 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.8.7 is now available. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.8.x?topic=new-watson-speech-services#fixlist__title__3){: external}.
+
+## 28 August 2024 (Version 4.8.6)
+{: #speech-to-text-data-28august2024}
+
+Version 4.8.6 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.8.6 is now available. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.8.x?topic=new-watson-speech-services#fixlist__title__4){: external}.
+
+## 24 April 2024 (Version 4.8.5)
+{: #speech-to-text-data-24april2024}
+
+Version 4.8.5 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.8.5 is now available. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.8.x?topic=new-watson-speech-services#fixlist__title__5){: external}.
+
+## 27 March 2024 (Version 4.8.4)
+{: #speech-to-text-data-27march2024}
+
+Version 4.8.4 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.8.4 is now available. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.8.x?topic=new-watson-speech-services#fixlist__title__6){: external}.
+
+## 28 February 2024 (Version 4.8.3)
+{: #speech-to-text-data-28february2024}
+
+Version 4.8.3 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.8.3 is now available. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.8.x?topic=new-watson-speech-services#fixlist__title__7){: external}.
+
+## 31 January 2024 (Version 4.8.2)
+{: #speech-to-text-data-31january2024}
+
+Version 4.8.2 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.8.2 is now available. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.8.x?topic=new-watson-speech-services#fixlist__title__8){: external}.
+
+## 30 November 2023 (Version 4.8.0)
+{: #speech-to-text-data-30november2023}
+
+Version 4.8.0 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.8.0 is now available. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.8.x?topic=new-watson-speech-services#fixlist__title__9){: external}.
+
+## 27 September 2023 (Version 4.7.3)
+{: #speech-to-text-data-27september2023}
+
+Version 4.7.3 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.7.3 is now available. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.7.x?topic=new-watson-speech-services#fixlist__title__3){: external}.
+
+## 28 July 2023 (Version 4.7.1)
+{: #speech-to-text-data-28july2023}
+
+Version 4.7.1 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.7.1 is now available. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.7.x?topic=new-watson-speech-services#fixlist__title__4){: external}.
+
+## 9 June 2023 (Version 4.7.0)
+{: #speech-to-text-data-9june2023}
+
+Version 4.7.0 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.7.0 is now available. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.7.x?topic=new-watson-speech-services#fixlist__title__5){: external}.
+
 ## 2 May 2023 (Version 4.6.5)
 {: #speech-to-text-data-2may2023}
 
@@ -32,7 +116,7 @@ Version 4.6.5 is now available
 :   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.6.5 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.6.x and Red Hat OpenShift versions 4.10 and 4.12. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
 
 New Japanese next-generation telephony model
-:   The service now offers a next-generation telephony model for Japanese: `ja-JP_Telephony`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about next-generation models and low latency, see
+:   The service now offers a next-generation telephony model for Japanese: `ja-JP_Telephony`. The new model supports low latency and is generally available. It also supports language model customization and grammars. For more information about next-generation models and low latency, see:
 
     -   [Next-generation languages and models](/docs/speech-to-text?topic=speech-to-text-models-ng)
     -   [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng)
@@ -52,27 +136,27 @@ Improved language model customization for next-generation English and Japanese m
 
     **Visible improvements to the models:** The new technology improves the default behavior of the new English and Japanese models. Among other changes, the new technology optimizes the default behavior for the following parameters:
     -   The default `customization_weight` for custom models that are based on the new versions of these models changes from `0.2` to `0.1`.
-    -   The default `character_insertion_bias` for custom models that are based on the new versions of these models remains `0.0`, but the models have changed in a manner that makes use of the parameter for speech recognition less necessary.
+    -   The default `character_insertion_bias` for custom models that are based on the new versions of these models remains `0.0`, but the models have changed which makes the parameter for speech recognition less necessary.
 
-    **Upgrading to the new models:** To take advantage of the improved technology, you must upgrade any custom language models that are based on the new models. To upgrade to the new version of one of these base models, do the following:
+    **Upgrading to the new models:** To take advantage of the improved technology, you must upgrade any custom language models that are based on the new models. To upgrade to the new version of one of these base models:
     1.  Change your custom model by adding or modifying a custom word, corpus, or grammar that the model contains. Any change that you make moves the model to the `ready` state.
     1.  Use the `POST /v1/customizations/{customization_id}/train` method to retrain the model. Retraining upgrades the custom model to the new technology and moves the model to the `available` state.
 
-        **Known issue:** At this time, you cannot use the `POST /v1/customizations/{customization_id}/upgrade_model` method to upgrade a custom model to one of the new base models. This issue will be addressed in a future release.
+        **Known issue:** Currently, you cannot use the `POST /v1/customizations/{customization_id}/upgrade_model` method to upgrade a custom model to one of the new base models. This issue will be addressed in a future release.
 
     **Using the new models:** Following the upgrade to the new base model, you are advised to evaluate the performance of the upgraded custom model by paying special attention to the `customization_weight` and `character_insertion_bias` parameters for speech recognition. When you retrain your custom model:
-    -   The custom model uses the new default `customization_weight` of `0.1` for your custom model. A non-default `customization_weight` that you had associated with your custom model is removed.
-    -   The custom model might no longer require use of the `character_insertion_bias` parameter for optimal speech recognition.
+    -   The custom model uses the new default `customization_weight` of `0.1` for your custom model. A non-default `customization_weight` that was associated with your custom model is removed.
+    -   The custom model might no longer require the use of the `character_insertion_bias` parameter for optimal speech recognition.
 
     Improvements to language model customization render these parameters less important for high-quality speech recognition:
-    -   If you use the default values for these parameters, continue to do so after the upgrade. The default values will likely continue to offer the best results for speech recognition.
-    -   If you specify non-default values for these parameters, experiment with the default values following upgrade. Your custom model might work well for speech recognition with the default values.
+    -   If you use the default values for these parameters, continue to do so after the upgrade. The default values will continue to offer the best results for speech recognition.
+    -   If you specify nondefault values for these parameters, experiment with the default values following upgrade. Your custom model might work well for speech recognition with the default values.
 
     If you feel that using different values for these parameters might improve speech recognition with your custom model, experiment with incremental changes to determine whether the parameters are needed to improve speech recognition.
 
-    **Note:** At this time, the improvements to language model customization apply only to custom models that are based on the next-generation English or Japanese base language models listed earlier. Over time, the improvements will be made available for other next-generation language models.
+    **Note:** Currently, the improvements to language model customization apply only to custom models that are based on the next-generation English or Japanese base language models listed earlier. Over time, the improvements will be made available for other next-generation language models.
 
-    **More information:** For more information about upgrading and about speech recognition with these parameters, see
+    **More information:** For more information about upgrading and about speech recognition with these parameters, see:
     -   [Improved language model customization for next-generation models](/docs/speech-to-text?topic=speech-to-text-customization#customLanguage-intro-ng)
     -   [Upgrading custom models](/docs/speech-to-text?topic=speech-to-text-custom-upgrade)
     -   [Using customization weight](/docs/speech-to-text?topic=speech-to-text-languageUse#weight)
@@ -94,13 +178,13 @@ Defect fix: Dynamically generated grammar files now work properly
 :   **Defect fix:** Dynamically generated grammar files now work properly. Previously, dynamic grammar files could cause internal failures, as reported for integration of {{site.data.keyword.speechtotextshort}} with {{site.data.keyword.conversationfull}}. The problem was corrected by an internal fix.
 
 Defect fix: Smart formatting for US English dates is now correct
-:   **Defect fix:** Smart formatting now correctly includes days of the week and dates when both are present in the spoken audio, for example, `Tuesday February 28`. Previously, in some cases the day of the week was omitted and the date was presented incorrectly. Note that smart formatting is beta functionality.
+:   **Defect fix:** Smart formatting now correctly includes days of the week and dates when both are present in the spoken audio, for example, `Tuesday February 28`. Previously, in some cases the day of the week was omitted and the date was presented incorrectly. Smart formatting is beta functionality.
 
 Defect fix: Update documentation for speech hesitation words for next-generation models
-:   **Defect fix:** Documentation for speech hesitation words for next-generation models has been updated. More details are provided about US English and Japanese hesitation words. Next-generation models include the actual hesitation words in transcription results, unlike previous-generation models, which include only hesitation markers. For more information, see [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
+:   **Defect fix:** Documentation for speech hesitation words for next-generation models is updated. More details are provided about US English and Japanese hesitation words. Next-generation models include the actual hesitation words in transcription results, unlike previous-generation models, which include only hesitation markers. For more information, see [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 
 Security vulnerabilities addressed
-:   The following security vulnerabilities have been fixed:
+:   The following security vulnerabilities are fixed:
     -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in Python (CVE-2020-10735)](https://www.ibm.com/support/pages/node/6988073){: external}
     -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to phishing attacks in Python (CVE-2021-28861)](https://www.ibm.com/support/pages/node/6988075){: external}
     -   [Security Bulletin: IBM Watson Speech Services Cartridge for IBM Cloud Pak for Data is vulnerable to a denial of service in Pypa Setuptools (CVE-2022-40897)](https://www.ibm.com/support/pages/node/6988077){: external}
@@ -119,11 +203,11 @@ Security vulnerabilities addressed
 Version 4.6.4 is now available
 :   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.6.4 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.6.x and Red Hat OpenShift versions 4.10 and 4.12. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
 
-Important: Back up your data before upgrading to version 4.6.3 or 4.6.4
-:   **Important:** Before upgrading to Watson Speech services version 4.6.3 or 4.6.4, you must make a backup of your data. Preserve the backup in a safe location. For more information about backing up your Watson Speech services data, see *Backing up and restoring Watson Speech services data* in [Administering Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-administering){: external}. That topic also includes information about restoring your data if that becomes necessary.
+Important: Back up your data before you upgrade to version 4.6.3 or 4.6.4
+:   **Important:** Before you upgrade to Watson Speech services version 4.6.3 or 4.6.4, you must make a backup of your data. Preserve the backup in a safe location. For more information about backing up your Watson Speech services data, see *Backing up and restoring Watson Speech services data* in [administering Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-administering){: external}. That topic also includes information about restoring your data if that becomes necessary.
 
 Known issue: The Swedish telephony and Italian multimedia models are not yet available
-:   **Known issue:** The Swedish telephony (`sv-SE_Telephony`) and Italian multimedia (`it-IT_Multimedia`) models are not yet available. They will be made available with version 4.6.5.
+:   **Known issues:** The Swedish telephony (`sv-SE_Telephony`) and Italian multimedia (`it-IT_Multimedia`) models are not yet available. They are made available with version 4.6.5.
 
 Defect fix: You can now change the installed models and voices with the advanced installation options
 :   **Defect fix:** During installation, you can now specify different models or voices with the advanced installation options of the command-line interface. Previously, the service always installed the default models and voices. The limitation continues to apply for Watson Speech services versions 4.6.0, 4.6.2, and 4.6.3. For information about installing models and voices, see *Specifying additional installation options* in [Installing Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-installing){: external}.
