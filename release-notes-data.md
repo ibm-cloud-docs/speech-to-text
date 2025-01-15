@@ -25,17 +25,17 @@ For information about known limitations of the service, see [Known limitations](
 For information about releases and updates of the service for {{site.data.keyword.cloud_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes).
 {: note}
 
-## 25 September 2024 (Version 5.0.3)
-{: #speech-to-text-data-25september2024}
-
-Version 5.0.3 is now available
-:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 5.0.3 is now available. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/5.0.x?topic=new-watson-speech-services#fixlist__title__3){: external}.
-
 ## 30 October 2024 (Version 4.8.7)
 {: #speech-to-text-data-30october2024}
 
 Version 4.8.7 is now available
 :   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.8.7 is now available. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.8.x?topic=new-watson-speech-services#fixlist__title__3){: external}.
+
+## 25 September 2024 (Version 5.0.3)
+{: #speech-to-text-data-25september2024}
+
+Version 5.0.3 is now available
+:   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 5.0.3 is now available. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/5.0.x?topic=new-watson-speech-services#fixlist__title__3){: external}.
 
 ## 28 August 2024 (Version 4.8.6)
 {: #speech-to-text-data-28august2024}
