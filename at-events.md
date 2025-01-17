@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2020, 2023
-lastupdated: "2024-08-14"
+  years: 2020, 2025
+lastupdated: "2025-01-17"
 
 keywords: IBM,activity tracker,event,security,speech to text
 
@@ -35,7 +35,7 @@ As a security officer, auditor, or manager, you can use the Activity Tracker ser
 
 | Dallas (us-south)            | Washington (us-east)                         | Toronto (ca-tor)      | Sao Paulo (br-sao) |
 |-------------------|-------------------------------------|------------------------------------|------------------------------------|
-| [No]{: tag-red}          | [No]{: tag-red}  | [No]{: tag-red} | [No]{: tag-red}|                                                  |
+| [Yes]{: tag-green}          | [Yes]{: tag-green}  | [No]{: tag-red} | [No]{: tag-red}|                                                  |
 {: caption="Regions where activity tracking events are sent in Americas locations" caption-side="top"}
 {: #at-table-1} 
 {: tab-title="Americas"}
@@ -45,7 +45,7 @@ As a security officer, auditor, or manager, you can use the Activity Tracker ser
 
 | Tokyo (jp-tok)           | Sydney (au-syd)                    |  Osaka (jp-osa)     | Chennai (in-che) |
 |-------------------|-------------------------------------|------------------------------------|------------------------------------|
-| [No]{: tag-red}          | [No]{: tag-red}  | [No]{: tag-red} | [No]{: tag-red}|                                                  |
+| [Yes]{: tag-green}          | [Yes]{: tag-green}  | [No]{: tag-red} | [No]{: tag-red}|                                                  |
 {: caption="Regions where activity tracking events are sent in Asia Pacific locations" caption-side="top"} 
 {: #at-table-2} 
 {: tab-title="Asia Pacific"}
@@ -55,7 +55,7 @@ As a security officer, auditor, or manager, you can use the Activity Tracker ser
 
 | Frankfurt (eu-de)        | London (eu-gb)                 |  Madrid (eu-es)    | 
 |-------------------|-------------------------------------|------------------------------------|
-| [Yes]{: tag-green}       | [No]{: tag-red}  | [No]{: tag-red} |                              |
+| [Yes]{: tag-green}       | [Yes]{: tag-green}  | [No]{: tag-red} |                              |
 {: caption="Regions where activity tracking events are sent in Europe locations" caption-side="top"}
 {: #at-table-3}  
 {: tab-title="Europe"}
