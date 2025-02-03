@@ -124,7 +124,7 @@ toc:
           label: Security topics
           topics:
           - information-security.md
-          - include: ../watson/getting-started-logging.md
+          - include: ../watson/getting-started-keyservice.md
           - include: ../watson/service-endpoints.md
           - include: ../watson/virtual-endpoints.md
       - topicgroup:
