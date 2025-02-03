@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2020
-lastupdated: "2020-07-29"
+  years: 2015, 2025
+lastupdated: "2025-02-03"
 
 subcollection: speech-to-text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 # The science behind the service
 {: #science}
 
-As [Pioneering Speech Recognition](https://www.ibm.com/ibm/history/ibm100/us/en/icons/speechreco/){: external} describes, {{site.data.keyword.IBM}} has been at the forefront of speech recognition research since the early 1960s. For example, [Bahl, Jelinek, and Mercer (1983)](/docs/speech-to-text?topic=speech-to-text-references#bahl1983) describes the basic mathematical approach to speech recognition that is employed in essentially all modern speech recognition systems. And [Jelinek (1985)](/docs/speech-to-text?topic=speech-to-text-references#jelinek1985) describes the creation of the first real-time large vocabulary speech recognition system for dictation. This paper also describes problems that are still unsolved research topics today.
+{{site.data.keyword.IBM}} has been at the forefront of speech recognition research since the early 1960s. For example, [Bahl, Jelinek, and Mercer (1983)](/docs/speech-to-text?topic=speech-to-text-references#bahl1983) describes the basic mathematical approach to speech recognition that is employed in essentially all modern speech recognition systems. And [Jelinek (1985)](/docs/speech-to-text?topic=speech-to-text-references#jelinek1985) describes the creation of the first real-time large vocabulary speech recognition system for dictation. This paper also describes problems that are still unsolved research topics today.
 {: shortdesc}
 
 {{site.data.keyword.IBM_notm}} continues this rich tradition of research and development with the {{site.data.keyword.speechtotextfull}} service. {{site.data.keyword.IBM_notm}} has demonstrated industry-record speech recognition accuracy on the public benchmark data sets for Conversational Telephone Speech (CTS) ([Saon and others, 2017](/docs/speech-to-text?topic=speech-to-text-references#saon2017)) and Broadcast News (BN) transcription ([Thomas and others, 2019](/docs/speech-to-text?topic=speech-to-text-references#thomas2019)). {{site.data.keyword.IBM_notm}} leveraged neural networks for language modeling ([Kurata and others, 2017a](/docs/speech-to-text?topic=speech-to-text-references#kurata2017a), and [Kurata and others, 2017b](/docs/speech-to-text?topic=speech-to-text-references#kurata2017a)), in addition to demonstrating the effectiveness of acoustic modeling.
