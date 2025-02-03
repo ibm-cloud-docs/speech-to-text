@@ -131,7 +131,6 @@ toc:
           label: Service background
           topics:
           - science.md
-          - references.md
   - navgroup:
       id: reference
       topics:
