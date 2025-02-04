@@ -17,7 +17,13 @@ toc:
       - index.md
       - features.md
       - data-security.md
-      - speech-install-data.md
+      - topicgroup:
+          label: Installing
+          topics:
+          - topic: speech-install-data.md
+            navtitle: Installation overview
+          - topic: known-limitations.md
+            navtitle: Known issues
       - topicgroup:
           label: Release notes
           topics:
@@ -145,7 +151,6 @@ toc:
   - navgroup:
       id: help
       topics:
-      - known-limitations.md
       - faq-usage.md
       - faq-pricing.md
       - topicgroup:

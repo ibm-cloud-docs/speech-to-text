@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2023
-lastupdated: "2023-03-28"
+  years: 2015, 2025
+lastupdated: "2025-02-04"
 
 keywords: known limitations,known issues
 
@@ -12,11 +12,32 @@ subcollection: speech-to-text
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Known limitations
+# Known issues
 {: #known-limitations}
 
-The {{site.data.keyword.speechtotextshort}} service has the following known limitations. These issues apply to service functionality that spans releases for all platforms. For information about known limitations specific to {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.6.x, see [Limitations and known issues in Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=issues-watson-speech-services){: external}.
-{: shortdesc}
+[IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
+
+Known issues are listed by the release in which they were identified.
+
+## 5.1.x releases
+[Limitations and known issues in Watson Speech services](https://www.ibm.com/docs/en/software-hub/5.1.x?topic=issues-watson-speech-services){: external}.
+
+## 5.0.x releases
+[Limitations and known issues in Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/5.0.x?topic=issues-watson-speech-services){: external}.
+
+## 4.8.x releases
+[Limitations and known issues in Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.8.x?topic=limitations-watson-speech-services){: external}.
+
+## 4.7.x releases
+[Limitations and known issues in Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.7.x?topic=limitations-watson-speech-services){: external}.
+
+## 4.6.x releases
+[Limitations and known issues in Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=issues-watson-speech-services){: external}.
+
+## 4.5.x releases
+[Limitations and known issues in Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=issues-watson-speech-services){: external}.
+
+The following known issues apply to service functionality that spans releases for all platforms. 
 
 ## Issue: Interim results for previous-generation models
 {: #limitation-interim-results}
