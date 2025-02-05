@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-02-04"
+lastupdated: "2025-02-05"
 
 keywords: known limitations,known issues
 
@@ -20,21 +20,27 @@ subcollection: speech-to-text
 Known issues are listed by the release in which they were identified.
 
 ## 5.1.x releases
+{: #51-release-issues}
 [Limitations and known issues in Watson Speech services](https://www.ibm.com/docs/en/software-hub/5.1.x?topic=issues-watson-speech-services){: external}.
 
 ## 5.0.x releases
+{: #50-release-issues}
 [Limitations and known issues in Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/5.0.x?topic=issues-watson-speech-services){: external}.
 
 ## 4.8.x releases
+{: #48-release-issues}
 [Limitations and known issues in Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.8.x?topic=limitations-watson-speech-services){: external}.
 
 ## 4.7.x releases
+{: #47-release-issues}
 [Limitations and known issues in Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.7.x?topic=limitations-watson-speech-services){: external}.
 
 ## 4.6.x releases
+{: #46-release-issues}
 [Limitations and known issues in Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=issues-watson-speech-services){: external}.
 
 ## 4.5.x releases
+{: #45-release-issues}
 [Limitations and known issues in Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=issues-watson-speech-services){: external}.
 
 The following known issues apply to service functionality that spans releases for all platforms. 

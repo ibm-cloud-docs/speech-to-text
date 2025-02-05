@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-02-04"
+lastupdated: "2025-02-05"
 
 subcollection: speech-to-text
 
@@ -18,6 +18,7 @@ subcollection: speech-to-text
 Find information about how to install {{site.data.keyword.watson}} Speech services.
 
 ## Full installation instructions
+{: #speech-install-instructions}
 
 -   [5.1.0](https://www.ibm.com/docs/en/software-hub/5.1.x?topic=services-installing){: external}
 -   [5.0.0](https://www.ibm.com/docs/en/cloud-paks/cp-data/5.0.x?topic=services-installing){: external}
