@@ -36,6 +36,7 @@ Known issues are listed by the release in which they were identified.
 
 ## 4.7.x releases
 {: #47-release-issues}
+
 [Limitations and known issues in Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.7.x?topic=limitations-watson-speech-services){: external}.
 
 ## 4.6.x releases
