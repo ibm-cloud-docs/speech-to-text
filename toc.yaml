@@ -127,15 +127,11 @@ toc:
               - custom-upgrade.md
               - custom-upgrade-use.md
       - topicgroup:
-          label: Security topics
+          label: IBM Cloud security
           topics:
           - information-security.md
           - include: ../watson/service-endpoints.md
           - include: ../watson/virtual-endpoints.md
-      - topicgroup:
-          label: Service background
-          topics:
-          - science.md
   - navgroup:
       id: reference
       topics:
