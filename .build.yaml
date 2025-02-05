@@ -1,4 +1,5 @@
 includes:
   - https://github.ibm.com/cloud-docs/watson
+  - https://github.ibm.com/cloud-docs/vpc
   - https://github.ibm.com/cloud-docs/overview
   - https://github.ibm.com/cloud-docs/account

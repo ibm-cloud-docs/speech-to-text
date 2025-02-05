@@ -17,7 +17,13 @@ toc:
       - index.md
       - features.md
       - data-security.md
-      - speech-install-data.md
+      - topicgroup:
+          label: Installing
+          topics:
+          - topic: speech-install-data.md
+            navtitle: Installation overview
+          - topic: known-limitations.md
+            navtitle: Known issues
       - topicgroup:
           label: Release notes
           topics:
@@ -121,17 +127,15 @@ toc:
               - custom-upgrade.md
               - custom-upgrade-use.md
       - topicgroup:
-          label: Security topics
+          label: IBM Cloud security
           topics:
           - information-security.md
-          - include: ../watson/getting-started-keyservice.md
           - include: ../watson/service-endpoints.md
           - include: ../watson/virtual-endpoints.md
       - topicgroup:
           label: Service background
           topics:
           - science.md
-          - references.md
   - navgroup:
       id: reference
       topics:
@@ -147,7 +151,6 @@ toc:
   - navgroup:
       id: help
       topics:
-      - known-limitations.md
       - faq-usage.md
       - faq-pricing.md
       - topicgroup:

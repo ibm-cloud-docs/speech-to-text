@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2023
-lastupdated: "2024-09-26"
+  years: 2015, 2025
+lastupdated: "2025-02-03"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -1173,13 +1173,10 @@ Full support for IBM Cloud IAM
     These URLs do not constitute a breaking change. The new URLs work for both your existing service instances and for new instances. The original URLs continue to work on your existing service instances for at least one year, until December 2020.
 
 New network and data security features available
-:   Support for the following new network and data security features is now available:
+:   Support for the following new network and data security feature is now available:
     -   *Support for private network endpoints*
 
         Users of Premium plans can create private network endpoints to connect to the {{site.data.keyword.speechtotextshort}} service over a private network. Connections to private network endpoints do not require public internet access. For more information, see [Public and private network endpoints](/docs/speech-to-text?topic=speech-to-text-public-private-endpoints).
-    -   *Support for data encryption with customer-managed keys*
-
-        Users of new Premium and Dedicated instances can integrate {{site.data.keyword.keymanagementservicefull}} with the {{site.data.keyword.speechtotextshort}} service to encrypt your data and manage encryption keys. For more information, see [Protecting sensitive information in your Watson service](/docs/speech-to-text?topic=speech-to-text-keyservice).
 
 ## 10 December 2019
 {: #speech-to-text-10december2019}
