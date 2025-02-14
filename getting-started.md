@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2023
-lastupdated: "2023-03-14"
+  years: 2015, 2025
+lastupdated: "2025-02-14"
 
 keywords: speech to text,IBM cloud,getting started,tutorial,transcribe audio,speech recognition
 
@@ -56,7 +56,7 @@ The tutorial uses the `curl` command-line utility to demonstrate REST API calls.
     1.  On the **Manage** page, click **Show Credentials** in the **Credentials** box.
     1.  Copy the `API Key` and `URL` values for the service instance.
 
-This tutorial uses an API key to authenticate. In production, use an IAM token. For more information see [Authenticating to IBM Cloud](/docs/watson?topic=watson-iam#gs-credential-cloud).
+This tutorial uses an API key to authenticate. In production, use an IAM token. For more information, see [Authenticating to IBM Cloud](/docs/watson?topic=watson-iam#gs-credential-cloud).
 {: tip}
 
 ### {{site.data.keyword.icp4dfull_notm}}
@@ -64,9 +64,19 @@ This tutorial uses an API key to authenticate. In production, use an IAM token. 
 
 [IBM Cloud Pak for Data]{: tag-cp4d}
 
-The {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} must be installed and configured before beginning this tutorial. For more information, see [Watson Speech services on Cloud Pak for Data](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-watson-speech){: external}.
+The {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} must be installed and configured before beginning this tutorial. For more information, see [Watson Speech services on Cloud Pak for Data](https://www.ibm.com/docs/en/cloud-paks/cp-data/5.0.x?topic=services-watson-speech){: external}.
 
-1.  Create an instance of the service by using the web client, the API, or the command-line interface. For more information about creating a service instance, see [Creating a Watson Speech services instance](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=setup-creating-service-instance){: external}.
+1.  Create an instance of the service by using the web client, the API, or the command-line interface. For more information about creating a service instance, see [Creating a service instance for Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/5.0.x?topic=setup-creating-service-instance){: external}.
+1.  Follow the instructions in *Creating a Watson Speech services instance* to obtain a Bearer token for the instance. This tutorial uses a Bearer token to authenticate to the service.
+
+### {{site.data.keyword.IBM}} Software Hub
+{: #getting-started-before-you-begin-swh}
+
+[IBM Software Hub]{: tag-teal}
+
+The {{site.data.keyword.speechtotextshort}} service must be installed and configured before beginning this tutorial. For more information, see [Watson Speech services](https://www.ibm.com/docs/en/software-hub/5.1.x?topic=services-watson-speech){: external}.
+
+1.  Create an instance of the service by using the web client, the API, or the command-line interface. For more information about creating a service instance, see [Creating a service instance for Watson Speech services](https://www.ibm.com/docs/en/software-hub/5.1.x?topic=setup-creating-service-instance){: external}.
 1.  Follow the instructions in *Creating a Watson Speech services instance* to obtain a Bearer token for the instance. This tutorial uses a Bearer token to authenticate to the service.
 
 ## Transcribe audio with no options
@@ -91,7 +101,7 @@ Call the `POST /v1/recognize` method to request a basic transcript of a FLAC aud
     ```
     {: pre}
 
-    [IBM Cloud Pak for Data]{: tag-cp4d}
+    [IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
     -   Replace `{token}` and `{url}` with the access token and URL for your service instance.
     -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
@@ -147,7 +157,7 @@ Call the `POST /v1/recognize` method to transcribe the same FLAC audio file, but
     ```
     {: pre}
 
-    [IBM Cloud Pak for Data]{: tag-cp4d}
+    [IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
     -   Replace `{token}` and `{url}` with the access token and URL for your service instance.
     -   Modify `{path_to_file}` to specify the location of the `audio-file.flac` file.
