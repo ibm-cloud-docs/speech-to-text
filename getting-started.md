@@ -69,7 +69,7 @@ The {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_no
 1.  Create an instance of the service by using the web client, the API, or the command-line interface. For more information about creating a service instance, see [Creating a service instance for Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/5.0.x?topic=setup-creating-service-instance){: external}.
 1.  Follow the instructions in *Creating a Watson Speech services instance* to obtain a Bearer token for the instance. This tutorial uses a Bearer token to authenticate to the service.
 
-### {{site.data.keyword.IBM}} Software Hub
+### {{site.data.keyword.IBM_notm}} Software Hub
 {: #getting-started-before-you-begin-swh}
 
 [IBM Software Hub]{: tag-teal}

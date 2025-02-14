@@ -27,8 +27,8 @@ The service is ideal for clients who need to extract high-quality speech transcr
 
 -   [IBM Cloud]{: tag-ibm-cloud} for managed instances of {{site.data.keyword.speechtotextshort}} that are hosted on {{site.data.keyword.cloud_notm}} or for instances that are hosted on [IBM Cloud Pak for Data as a Service](https://dataplatform.cloud.ibm.com/docs/content/svc-welcome/wstt.html){: external}.
     -   For information about all service updates, see the [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes).
--   [IBM Cloud Pak for Data]{: tag-cp4d} and [IBM Software Hub]{: tag-teal} for installed or on-premises instances of {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} and {{site.data.keyword.IBM}} Software Hub. For links to information about installing and managing {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} and and {{site.data.keyword.IBM}} Software Hub, see [Installation overview](/docs/speech-to-text?topic=speech-to-text-speech-install-data).
-    -   For information about all service updates, see the [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
+-   [IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal} for installed or on-premises instances of {{site.data.keyword.watson}} Speech services. For more information about installing and managing {{site.data.keyword.watson}} Speech services, see [Installation overview](/docs/speech-to-text?topic=speech-to-text-speech-install-data).
+    -   For information about all service updates, see the [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data) and [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.IBM_notm}} Software Hub](/docs/speech-to-text?topic=speech-to-text-release-notes-hub).
 
 ## Speech recognition
 {: #about-interfaces}
