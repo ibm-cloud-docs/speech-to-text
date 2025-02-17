@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-02-14"
+lastupdated: "2025-02-17"
 
 subcollection: speech-to-text
 
@@ -25,10 +25,8 @@ The service is ideal for clients who need to extract high-quality speech transcr
 
 {{site.data.keyword.speechtotextshort}} can be deployed as a managed cloud service or can be installed on premises. This documentation describes how to use both versions of the product. Information such as topics, paragraphs, and examples that applies exclusively to one version is clearly denoted:
 
--   [IBM Cloud]{: tag-ibm-cloud} for managed instances of {{site.data.keyword.speechtotextshort}} that are hosted on {{site.data.keyword.cloud_notm}} or for instances that are hosted on [IBM Cloud Pak for Data as a Service](https://dataplatform.cloud.ibm.com/docs/content/svc-welcome/wstt.html){: external}.
-    -   For information about all service updates, see the [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes).
--   [IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal} for installed or on-premises instances of {{site.data.keyword.watson}} Speech services. For more information about installing and managing {{site.data.keyword.watson}} Speech services, see [Installation overview](/docs/speech-to-text?topic=speech-to-text-speech-install-data).
-    -   For information about all service updates, see the [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data) and [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.IBM_notm}} Software Hub](/docs/speech-to-text?topic=speech-to-text-release-notes-hub).
+-   [IBM Cloud]{: tag-ibm-cloud} for managed instances of {{site.data.keyword.speechtotextshort}} that are hosted on {{site.data.keyword.cloud_notm}} or for instances that are hosted on [IBM Cloud Pak for Data as a Service](https://dataplatform.cloud.ibm.com/docs/content/svc-welcome/wstt.html){: external}. For information about all service updates, see the [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes).
+-   [IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal} for installed or on-premises instances of {{site.data.keyword.watson}} Speech services. For more information about installing and managing {{site.data.keyword.watson}} Speech services, see [Installation overview](/docs/speech-to-text?topic=speech-to-text-speech-install-data). For information about all service updates, see the [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data) and [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.IBM_notm}} Software Hub](/docs/speech-to-text?topic=speech-to-text-release-notes-hub).
 
 ## Speech recognition
 {: #about-interfaces}

@@ -65,8 +65,8 @@ This tutorial uses an API key to authenticate. In production, use an IAM token. 
 The {{site.data.keyword.speechtotextshort}} service must be installed and configured before beginning this tutorial. For more information, see [Watson Speech services on Cloud Pak for Data](https://www.ibm.com/docs/en/cloud-paks/cp-data/5.0.x?topic=services-watson-speech){: external} and [Watson Speech services](https://www.ibm.com/docs/en/software-hub/5.1.x?topic=services-watson-speech){: external}.
 
 1.  Create an instance of the service by using the web client, the API, or the command-line interface. 
-    -   For more information about creating a service instance on {{site.data.keyword.icp4dfull_notm}}, see [Creating a service instance for Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/5.0.x?topic=setup-creating-service-instance){: external}.
-    -   For more information about creating a service instance on {{site.data.keyword.IBM_notm}} Software Hub, see [Creating a service instance for Watson Speech services](https://www.ibm.com/docs/en/software-hub/5.1.x?topic=setup-creating-service-instance){: external}.
+    -   [IBM Cloud Pak for Data]{: tag-cp4d} For more information about creating a service instance on {{site.data.keyword.icp4dfull_notm}}, see [Creating a service instance for Watson Speech services](https://www.ibm.com/docs/en/cloud-paks/cp-data/5.0.x?topic=setup-creating-service-instance){: external}.
+    -   [IBM Software Hub]{: tag-teal} For more information about creating a service instance on {{site.data.keyword.IBM_notm}} Software Hub, see [Creating a service instance for Watson Speech services](https://www.ibm.com/docs/en/software-hub/5.1.x?topic=setup-creating-service-instance){: external}.
 1.  Follow the instructions in *Creating a Watson Speech services instance* to obtain a Bearer token for the instance. This tutorial uses a Bearer token to authenticate to the service.
 
 ## Transcribe audio with no options
