@@ -105,7 +105,7 @@ curl -X POST \
 
 If you omit the `model` parameter from a speech recognition request, the service uses the US English `en-US_BroadbandModel` by default. This default applies to all speech recognition requests.
 
-[IBM Cloud Pak for Data]{: tag-cp4d} If you do not install the `en-US_BroadbandModel`, it cannot serve as the default model. In this case, you must either
+[IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal} If you do not install the `en-US_BroadbandModel`, it cannot serve as the default model. In this case, you must either
 
 -   Use the `model` parameter to pass the model that is to be used with each request.
 -   Specify a new default model for your installation of {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} by using the `defaultSTTModel` property in the Speech services custom resource. For more information, see  [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/5.0.x?topic=services-installing){: external}.
