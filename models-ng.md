@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2023
-lastupdated: "2023-04-29"
+  years: 2021, 2025
+lastupdated: "2025-02-17"
 
 subcollection: speech-to-text
 
@@ -46,7 +46,7 @@ The following sections list the next-generation models of each type that are ava
 -   The *Status* column indicates whether the model is generally available (GA) or beta.
 
 The *Model name* and *Low-latency support* columns indicate the product versions for which the model and low-latency are supported. Unless otherwise labeled as
-[IBM Cloud]{: tag-ibm-cloud} or [IBM Cloud Pak for Data]{: tag-cp4d}, a model and low latency are supported for both versions of the service.
+[IBM Cloud]{: tag-ibm-cloud}, [IBM Cloud Pak for Data]{: tag-cp4d} or [IBM Software Hub]{: tag-teal}, a model and low latency are supported for all versions of the service.
 
 ### Telephony models
 {: #models-ng-telephony}

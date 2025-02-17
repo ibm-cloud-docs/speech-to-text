@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2022, 2023
-lastupdated: "2024-04-30"
+  years: 2022, 2025
+lastupdated: "2025-02-17"
 
 subcollection: speech-to-text
 
@@ -37,7 +37,7 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-[IBM Cloud Pak for Data]{: tag-cp4d}
+[IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
 ```sh
 curl -X POST \
@@ -63,7 +63,7 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-[IBM Cloud Pak for Data]{: tag-cp4d}
+[IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
 ```sh
 curl -X POST \
@@ -89,7 +89,7 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-[IBM Cloud Pak for Data]{: tag-cp4d}
+[IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
 ```sh
 curl -X POST \
@@ -108,4 +108,4 @@ If you omit the `model` parameter from a speech recognition request, the service
 [IBM Cloud Pak for Data]{: tag-cp4d} If you do not install the `en-US_BroadbandModel`, it cannot serve as the default model. In this case, you must either
 
 -   Use the `model` parameter to pass the model that is to be used with each request.
--   Specify a new default model for your installation of {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} by using the `defaultSTTModel` property in the Speech services custom resource. For more information, see  [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}.
+-   Specify a new default model for your installation of {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} by using the `defaultSTTModel` property in the Speech services custom resource. For more information, see  [Installing {{site.data.keyword.watson}} {{site.data.keyword.speechtotextshort}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/5.0.x?topic=services-installing){: external}.

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2023
-lastupdated: "2024-05-13"
+  years: 2015, 2025
+lastupdated: "2025-02-17"
 
 subcollection: speech-to-text
 
@@ -61,7 +61,7 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-[IBM Cloud Pak for Data]{: tag-cp4d}
+[IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
 ```bash
 curl -X POST \
@@ -115,7 +115,7 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-[IBM Cloud Pak for Data]{: tag-cp4d}
+[IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
 ```bash
 curl -X POST \
@@ -186,7 +186,7 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-[IBM Cloud Pak for Data]{: tag-cp4d}
+[IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
 ```bash
 curl -X POST \
@@ -238,7 +238,7 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-[IBM Cloud Pak for Data]{: tag-cp4d}
+[IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
 ```bash
 curl -X POST \
@@ -321,7 +321,7 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-[IBM Cloud Pak for Data]{: tag-cp4d}
+[IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
 ```bash
 curl -X POST \

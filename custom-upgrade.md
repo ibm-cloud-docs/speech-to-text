@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2023
-lastupdated: "2023-04-27"
+  years: 2017, 2025
+lastupdated: "2025-02-17"
 
 subcollection: speech-to-text
 
@@ -34,6 +34,7 @@ All updates to base models and whether they require upgrades are announced in th
 
 -   [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.cloud_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes)
 -   [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data)
+-   [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.IBM_notm}} Software Hub](/docs/speech-to-text?topic=speech-to-text-release-notes-hub)
 
 As with all customization operations, you must use credentials for the instance of the service that owns a custom model to upgrade it.
 
@@ -65,7 +66,7 @@ Follow these steps to upgrade a custom language model:
     ```
     {: pre}
 
-    [IBM Cloud Pak for Data]{: tag-cp4d}
+    [IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
     ```bash
     curl -X POST \
@@ -135,7 +136,7 @@ Follow these steps to upgrade a custom acoustic model. If the custom acoustic mo
     ```
     {: pre}
 
-    [IBM Cloud Pak for Data]{: tag-cp4d}
+    [IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
     ```bash
     curl -X POST \
@@ -156,7 +157,7 @@ Follow these steps to upgrade a custom acoustic model. If the custom acoustic mo
     ```
     {: pre}
 
-    [IBM Cloud Pak for Data]{: tag-cp4d}
+    [IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
     ```bash
     curl -X POST \

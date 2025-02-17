@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2023
-lastupdated: "2024-05-09"
+  years: 2015, 2025
+lastupdated: "2025-02-17"
 
 subcollection: speech-to-text
 
@@ -44,7 +44,7 @@ Language model customization is available for large speech models, previous-gene
 
 Language model customization for next-generation models is being enhanced. The improvements to language model customization are being applied to next-generation models incrementally, starting with the models for a few languages. Over time, other next-generation language models will be migrated to the improved technology.
 
--   *To identify models that use the improved technology,* look for a date in the *Language model customization (improved)* column of table 2 in [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). Check for a date for the version of the service that you use, [IBM Cloud]{: tag-ibm-cloud} or [IBM Cloud Pak for Data]{: tag-cp4d}. That date indicates when the next-generation model was migrated to the improved technology.
+-   *To identify models that use the improved technology,* look for a date in the *Language model customization (improved)* column of table 2 in [Customization support for next-generation models](/docs/speech-to-text?topic=speech-to-text-custom-support#custom-language-support-ng). Check for a date for the version of the service that you use, [IBM Cloud]{: tag-ibm-cloud}, [IBM Software Hub]{: tag-teal} or [IBM Cloud Pak for Data]{: tag-cp4d}. That date indicates when the next-generation model was migrated to the improved technology.
 -   *To take advantage of the improved technology,* you must upgrade any custom language models that are based on an improved next-generation model. Once a custom model is based on an improved next-generation model, the service continues to perform any necessary upgrades when the custom model is retrained. For more information, see [Upgrading a custom language model based on an improved next-generation model](/docs/speech-to-text?topic=speech-to-text-custom-upgrade#custom-upgrade-language-ng).
 
 For language models that are based on the new technology, the following parameters have been optimized for improved speech recognition:

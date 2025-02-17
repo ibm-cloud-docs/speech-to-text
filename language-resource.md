@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2023
-lastupdated: "2023-06-16"
+  years: 2015, 2025
+lastupdated: "2025-02-17"
 
 subcollection: speech-to-text
 
@@ -212,7 +212,7 @@ You can provide as many as five alternative pronunciations for a word that is di
     ```
     {: pre}
 
-    [IBM Cloud Pak for Data]{: tag-cp4d}
+    [IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
     ```bash
     curl -X PUT \
@@ -323,7 +323,7 @@ curl -X PUT -u "apikey:{apikey}" \
 ```
 {: pre}
 
-[IBM Cloud Pak for Data]{: tag-cp4d}
+[IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
 ```bash
 curl -X PUT \
@@ -346,7 +346,7 @@ curl -X PUT -u "apikey:{apikey}" \
 ```
 {: pre}
 
-[IBM Cloud Pak for Data]{: tag-cp4d}
+[IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
 ```bash
 curl -X PUT \

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2023
-lastupdated: "2024-04-19"
+  years: 2017, 2025
+lastupdated: "2025-02-17"
 
 subcollection: speech-to-text
 
@@ -69,7 +69,7 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-[IBM Cloud Pak for Data]{: tag-cp4d}
+[IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
 ```bash
 curl -X POST \
@@ -115,7 +115,7 @@ The following examples show the addition of both audio- and archive-type resourc
     ```
     {: pre}
 
-    [IBM Cloud Pak for Data]{: tag-cp4d}
+    [IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
     ```bash
     curl -X POST \
@@ -139,7 +139,7 @@ The following examples show the addition of both audio- and archive-type resourc
     ```
     {: pre}
 
-    [IBM Cloud Pak for Data]{: tag-cp4d}
+    [IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
     ```bash
     curl -X POST \
@@ -185,7 +185,7 @@ The content of the response and location of the `status` field depend on the typ
     ```
     {: pre}
 
-    [IBM Cloud Pak for Data]{: tag-cp4d}
+    [IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
     ```bash
     curl -X GET \
@@ -220,7 +220,7 @@ The content of the response and location of the `status` field depend on the typ
     ```
     {: pre}
 
-    [IBM Cloud Pak for Data]{: tag-cp4d}
+    [IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
     ```bash
     curl -X GET \
@@ -264,7 +264,7 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-[IBM Cloud Pak for Data]{: tag-cp4d}
+[IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
 ```bash
 curl -X POST \
@@ -297,7 +297,7 @@ curl -X GET -u "apikey:{apikey}" \
 ```
 {: pre}
 
-[IBM Cloud Pak for Data]{: tag-cp4d}
+[IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
 ```bash
 curl -X GET \
