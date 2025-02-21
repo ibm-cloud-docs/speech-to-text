@@ -2,7 +2,7 @@
 
 copyright:
   years: 2022, 2025
-lastupdated: "2025-02-03"
+lastupdated: "2025-02-21"
 
 subcollection: speech-to-text
 
@@ -109,16 +109,9 @@ For instance, a web page that is loaded from a server in {{site.data.keyword.clo
 
 Signed URLs provide authentication information as a query string. Although signed URLs provide access for a limited time and with limited permissions, they allow any user with such a URL to access the service, regardless of whether that user has an account. The {{site.data.keyword.speechtotextshort}} service does not support signed URLs.
 
-## FISMA support
-{: #data-security-fisma}
-
-[IBM Cloud Pak for Data]{: tag-cp4d}
-
-Federal Information Security Management Act (FISMA) support is available for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} offerings as of version 1.0.1. {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} is FISMA High Ready.
-
 ## FIPS support
 {: #data-security-fips}
 
-[IBM Cloud Pak for Data]{: tag-cp4d}
+[IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
 {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} supports running on Federal Information Processing Standard (FIPS)-enabled clusters as of version 4.5.1.
