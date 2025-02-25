@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2023
-lastupdated: "2024-04-19"
+  years: 2017, 2025
+lastupdated: "2025-02-17"
 
 subcollection: speech-to-text
 
@@ -54,7 +54,7 @@ The following examples show the use of a custom acoustic model with each speech 
     ```
     {: pre}
 
-    [IBM Cloud Pak for Data]{: tag-cp4d}
+    [IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
     ```bash
     curl -X POST \
@@ -77,7 +77,7 @@ The following examples show the use of a custom acoustic model with each speech 
     ```
     {: pre}
 
-    [IBM Cloud Pak for Data]{: tag-cp4d}
+    [IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
     ```bash
     curl -X POST \

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2023
-lastupdated: "2024-04-19"
+  years: 2017, 2025
+lastupdated: "2025-02-17"
 
 subcollection: speech-to-text
 
@@ -53,7 +53,7 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-[IBM Cloud Pak for Data]{: tag-cp4d}
+[IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
 ```bash
 curl -X POST \
@@ -95,7 +95,7 @@ curl -X POST -u "apikey:{apikey}" \
 ```
 {: pre}
 
-[IBM Cloud Pak for Data]{: tag-cp4d}
+[IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal}
 
 ```bash
 curl -X POST \
@@ -140,7 +140,7 @@ Follow these guidelines when you add audio resources to a custom acoustic model:
 
 The maximum hour of audio that you can add to a custom acoustic model depend on the version of the service that you are using:
 
--   [IBM Cloud Pak for Data]{: tag-cp4d} Add a maximum of 200 hours of audio data.
+-   [IBM Cloud Pak for Data]{: tag-cp4d} [IBM Software Hub]{: tag-teal} Add a maximum of 200 hours of audio data.
 -   [IBM Cloud]{: tag-ibm-cloud} Add a maximum of approximately 50 hours of audio data. You might be able to add 10 or 20 hours of additional audio data per model. However, it is safer to assume a maximum of 50 hours of audio data per custom acoustic model and plan accordingly.
 
     The maximum amount of audio per custom acoustic model was previously 200 hours. The limit is being reduced by location according to the schedule in Table 1.
