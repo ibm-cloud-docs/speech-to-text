@@ -2,7 +2,7 @@
 
 copyright:
   years: 2021, 2025
-lastupdated: "2025-02-05"
+lastupdated: "2025-04-04"
 
 subcollection: speech-to-text
 
@@ -26,4 +26,4 @@ Find information about how to install {{site.data.keyword.watson}} Speech servic
 -   [4.7.x](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.7.x?topic=services-installing){: external}
 -   [4.6.x](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.6.x?topic=services-installing){: external}
 -   [4.5.x](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=services-installing){: external}
--   [4.0.x](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=text-installing-watson-speech){: external}
+-   [4.0.x](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0.0?topic=text-installing-watson-speech){: external}
