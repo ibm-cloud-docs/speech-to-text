@@ -2,7 +2,7 @@
 
 copyright:
   years: 2020, 2025
-lastupdated: "2025-02-05"
+lastupdated: "2025-05-02"
 
 keywords: IBM,activity tracker,event,security,speech to text
 
@@ -13,25 +13,26 @@ subcollection: speech-to-text
 {{site.data.keyword.attribute-definition-list}}
 
 # Activity tracking events for {{site.data.keyword.speechtotextshort}}
-{: #at-events}
+{: #at_events}
 
 [IBM Cloud]{: tag-ibm-cloud}
 
-As of 28 March 2024, the {{site.data.keyword.at_full_notm}} service is deprecated and will no longer be supported as of 30 March 2025. Customers will need to migrate to {{site.data.keyword.logs_full_notm}} before 30 March 2025. During the migration period, customers can use {{site.data.keyword.at_full_notm}} along with {{site.data.keyword.logs_full_notm}}. Activity tracking events are the same for both services. For information about migrating from {{site.data.keyword.at_full_notm}} to {{site.data.keyword.logs_full_notm}} and running the services in parallel, see [migration planning](/docs/cloud-logs?topic=cloud-logs-migration-intro).
-{: important}
-
-As a security officer, auditor, or manager, you can use the Activity Tracker service to track how users and applications interact with {{site.data.keyword.speechtotextfull}} in {{site.data.keyword.cloud}}.
+{{site.data.keyword.cloud_notm}} services, such as {{site.data.keyword.speechtotextshort}}, generate activity tracking events.
 {: shortdesc}
 
-{{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. You can use this service to investigate abnormal activity and critical actions and to comply with regulatory audit requirements. In addition, you can be alerted about actions as they happen. The events that are collected comply with the Cloud Auditing Data Federation (CADF) standard.  For more information, see the tutorial [Getting started with {{site.data.keyword.at_full_notm}}](/docs/activity-tracker?topic=activity-tracker-getting-started).
+Activity tracking events report on activities that change the state of a service in {{site.data.keyword.cloud_notm}}. You can use the events to investigate abnormal activity and critical actions and to comply with regulatory audit requirements.
+
+You can use {{site.data.keyword.atracker_full_notm}}, a platform service, to route auditing events in your account to destinations of your choice by configuring targets and routes that define where activity tracking events are sent. For more information, see [About {{site.data.keyword.atracker_full_notm}}](/docs/atracker?topic=atracker-about).
+
+You can use {{site.data.keyword.logs_full_notm}} to visualize and alert on events that are generated in your account and routed by {{site.data.keyword.atracker_full_notm}} to an {{site.data.keyword.logs_full_notm}} instance.
 
 ## Locations where activity tracking events are generated
 {: #at-locations}
 
-### Locations where activity tracking events are sent to {{site.data.keyword.at_full_notm}} hosted event search
-{: #at-legacy-locations}
+### Locations where activity tracking events are sent to {{site.data.keyword.atracker_full_notm}}
+{: #atracker-locations}
 
-{{site.data.keyword.speechtotextfull}} in {{site.data.keyword.cloud}} sends activity tracking events to {{site.data.keyword.at_full_notm}} hosted event search in the regions that are indicated in the following table.
+{{site.data.keyword.speechtotextfull}} sends activity tracking events by {{site.data.keyword.atracker_full_notm}} in the regions that are indicated in the following table.
 
 | Dallas (us-south)            | Washington (us-east)                         | Toronto (ca-tor)      | Sao Paulo (br-sao) |
 |-------------------|-------------------------------------|------------------------------------|------------------------------------|
@@ -62,6 +63,16 @@ As a security officer, auditor, or manager, you can use the Activity Tracker ser
 {: tab-group="at"} 
 {: class="simple-tab-table"} 
 {: row-headers}
+
+## Viewing activity tracking events for {{site.data.keyword.speechtotextshort}}
+{: #at-viewing}
+
+You can use {{site.data.keyword.logs_full_notm}} to visualize and alert on events that are generated in your account and routed by {{site.data.keyword.atracker_full_notm}} to an {{site.data.keyword.logs_full_notm}} instance.
+
+### Launching {{site.data.keyword.logs_full_notm}} from the Observability page
+{: #log-launch-standalone}
+
+For information on launching the {{site.data.keyword.logs_full_notm}} UI, see [Launching the UI in the {{site.data.keyword.logs_full_notm}} documentation.](/docs/cloud-logs?topic=cloud-logs-instance-launch).
 
 ## Language model customization events
 {: #at-lm-events}
@@ -229,10 +240,3 @@ The following table lists the {{site.data.keyword.speechtotextshort}} action for
 |--------|-------------|
 | `speech-to-text.gdpr-user-data.delete` | Delete information for a user (`DELETE /v1/user_data`). |
 {: caption="GDPR .delete action that generates an event"}
-
-## Where to view events
-{: #at-ui}
-
-Events that are generated by an instance of the {{site.data.keyword.speechtotextshort}} service are automatically forwarded to the {{site.data.keyword.at_full_notm}} service instance that is available in the same location.
-
-{{site.data.keyword.at_full_notm}} can have only one instance per location. To view events, you must access the web user interface (UI) of the {{site.data.keyword.at_full_notm}} service in the same location where your service instance is available. For more information, see [Navigating to the UI](/docs/activity-tracker?topic=activity-tracker-launch).
