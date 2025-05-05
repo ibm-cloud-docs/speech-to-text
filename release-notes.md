@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-02-03"
+lastupdated: "2025-05-05"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -381,7 +381,7 @@ Updates to English next-generation telephony models
 {: release-note}
 
 New Activity Tracker event for GDPR deletion of user information
-:   The service now returns an Activity Tracker event when you use the `DELETE /v1/user_data` method to delete all information about a user. The event is named `speech-to-text.gdpr-user-data.delete`. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-at-events).
+:   The service now returns an Activity Tracker event when you use the `DELETE /v1/user_data` method to delete all information about a user. The event is named `speech-to-text.gdpr-user-data.delete`. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-at_events).
 
 Defect fix: Update some next-generation models to improve low-latency response time
 :   **Defect fix:** The following next-generation models were updated to improve their response time when the `low_latency` parameter is used:
@@ -1069,7 +1069,7 @@ Speaker labels now supported for German and Korean
 :   The service now supports speaker labels (the `speaker_labels` parameter) for German and Korean language models. Speaker labels identify which individuals spoke which words in a multi-participant exchange. For more information, see [Speaker labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels).
 
 Activity Tracker now supported for asynchronous HTTP interface
-:   The service now supports the use of Activity Tracker events for all operations of the asynchronous HTTP interface. {{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud}}. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-at-events).
+:   The service now supports the use of Activity Tracker events for all operations of the asynchronous HTTP interface. {{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud}}. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-at_events).
 
 ## 24 February 2020
 {: #speech-to-text-25february2020}
@@ -1115,7 +1115,7 @@ New speech activity detection and background audio suppression parameters for sp
     You can use the parameters individually or together. They are available for all interfaces and for most language models. For more information about the parameters, their allowable values, and their effect on the quality and latency of speech recognition, see [Speech activity detection](/docs/speech-to-text?topic=speech-to-text-detection).
 
 Activity Tracker now supported for customization interfaces
-:   The service now supports the use of Activity Tracker events for all customization operations. {{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. You can use this service to investigate abnormal activity and critical actions and to comply with regulatory audit requirements. In addition, you can be alerted about actions as they happen. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-at-events).
+:   The service now supports the use of Activity Tracker events for all customization operations. {{site.data.keyword.at_full_notm}} records user-initiated activities that change the state of a service in {{site.data.keyword.cloud_notm}}. You can use this service to investigate abnormal activity and critical actions and to comply with regulatory audit requirements. In addition, you can be alerted about actions as they happen. For more information, see [Activity Tracker events](/docs/speech-to-text?topic=speech-to-text-at_events).
 
 Defect fix: Correct generation of processing metrics with WebSocket interface
 :   **Defect fix:** The WebSocket interface now works seamlessly when generating processing metrics. Previously, processing metrics could continue to be delivered after the client sent a `stop` message to the service.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2025
-lastupdated: "2025-04-04"
+lastupdated: "2025-05-05"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -525,7 +525,7 @@ Version 4.5.3 is now available
 :   {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}} version 4.5.3 is now available. This version supports {{site.data.keyword.icp4dfull_notm}} version 4.5.x and Red Hat OpenShift versions 4.6, 4.8, and 4.10. For more information, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=services-watson-speech){: external}.
 
 Audit events are available for the Speech services
-:   The {{site.data.keyword.icp4dfull_notm}} Audit Logging Service generates and forwards audit events for both the {{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}} services. The audit events match those that are available for [Activity Tracker](/docs/speech-to-text?topic=speech-to-text-at-events) with the public service. For more information, see [Audit events](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=2-audit-events){: external}.
+:   The {{site.data.keyword.icp4dfull_notm}} Audit Logging Service generates and forwards audit events for both the {{site.data.keyword.speechtotextshort}} and {{site.data.keyword.texttospeechshort}} services. The audit events match those that are available for [Activity Tracker](/docs/speech-to-text?topic=speech-to-text-at_events) with the public service. For more information, see [Audit events](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=2-audit-events){: external}.
 
 You cannot uninstall individual Speech service components
 :   The documentation now notes that you cannot uninstall individual service components (microservices) once they are installed. To remove any of the following components, you must uninstall the Watson Speech services in their entirety and reinstall only the components that you need: {{site.data.keyword.speechtotextshort}} runtime, {{site.data.keyword.speechtotextshort}} asynchronous HTTP, {{site.data.keyword.speechtotextshort}} customization, {{site.data.keyword.texttospeechshort}} runtime, and {{site.data.keyword.texttospeechshort}} customization. For more information about installing the Speech services, see [{{site.data.keyword.watson}} Speech services on {{site.data.keyword.icp4dfull_notm}}](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.5.x?topic=services-watson-speech){: external}.
