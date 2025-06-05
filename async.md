@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-02-17"
+lastupdated: "2025-06-05"
 
 subcollection: speech-to-text
 
@@ -46,7 +46,7 @@ The two approaches can be used together. You can still poll the service to obtai
 
 You register a callback URL by calling the `POST /v1/register_callback` method. Once you register a callback URL, you can use it to receive notifications for an indefinite number of jobs. The registration process comprises four steps:
 
-1.  You call the `POST /v1/register_callback` method and pass a callback URL. Optionally, you can also specify a user-specified secret. The service uses the secret to compute keyed-hash message authentication code (HMAC) Secure Hash Algorithm 1 (SHA1) signatures for authentication and data integrity. The following example registers a user callback that responds at the URL `http://{user_callback_path}/results`. The call includes a user secret of `ThisIsMySecret`.
+1.  You call the `POST /v1/register_callback` method and pass a callback URL. Optionally, you can also specify a user-specified secret. The service uses the secret to compute keyed-hash message authentication code (HMAC) Secure Hash Algorithm (SHA-256) signatures for authentication and data integrity. The following example registers a user callback that responds at the URL `http://{user_callback_path}/results`. The call includes a user secret of `ThisIsMySecret`.
 
     [IBM Cloud]{: tag-ibm-cloud}
 
@@ -67,17 +67,17 @@ You register a callback URL by calling the `POST /v1/register_callback` method. 
 
 1.  The service attempts to validate, or allowlist, the callback URL if it is not already registered by sending a `GET` request to the callback URL. The service passes a random alphanumeric challenge string via the `challenge_string` query parameter of the request. The request includes an `Accept` header that specifies `text/plain` as the required response type.
 
-    If the call to the `register_callback` method included a user secret, the `GET` request from the service also includes an `X-Callback-Signature` header that specifies the HMAC-SHA1 signature of the challenge string. The service calculates the signature by using the user secret as the key.
+    If the call to the `register_callback` method included a user secret, the `GET` request from the service also includes an `X-Callback-Signature` header that specifies the HMAC-SHA256 signature of the challenge string. The service calculates the signature by using the user secret as the key.
 
     ```text
     GET http://{user_callback_path}/results?challenge_string=n9ArPGMQ36Hiu7QC
-    header: X-Callback-Signature {HMAC-SHA1_signature}
+    header: X-Callback-Signature {HMAC-SHA256_signature}
     ```
     {: codeblock}
 
 1.  You respond to the `GET` request from the service with status code 200. Include the challenge string that was sent by the service in the response. Include the string in plain text in the body of the response, and set the `Content-Type` response header to `text/plain`.
 
-    If the initial `POST` request included a user secret, you can calculate an HMAC-SHA1 signature of the challenge string by using the secret as the key. If the `GET` request was sent by the service, the signature matches the value specified by the `X-Callback-Signature` header.
+    If the initial `POST` request included a user secret, you can calculate an HMAC-256 signature of the challenge string by using the secret as the key. If the `GET` request was sent by the service, the signature matches the value specified by the `X-Callback-Signature` header.
 
     ```text
     response code: 200 OK
@@ -103,7 +103,7 @@ The service sends only a single `GET` request to a callback URL during the regis
 
 When you successfully use the `POST /v1/register_callback` method to register a callback URL, the service allowlists the URL to indicate that it is verified for use with callback notifications. If you specify a user secret with the registration call, allowlisting also means that the URL has been validated for added security. Specifying a user secret provides authentication and data integrity for requests that use the callback URL with the asynchronous HTTP interface.
 
-The service uses the user secret to compute an HMAC-SHA1 signature over the payload of every callback notification that it sends to the URL. The service sends the signature via the `X-Callback-Signature` header with each notification. The client can use the secret to compute its own signature of each notification payload. If its signature matches the value of the `X-Callback-Signature` header, the client knows that the notification was sent by the service and that its contents have not been altered during transmission. This knowledge guarantees that the client is not the victim of a man-in-middle-attack.
+The service uses the user secret to compute an HMAC-SHA256 signature over the payload of every callback notification that it sends to the URL. The service sends the signature via the `X-Callback-Signature` header with each notification. The client can use the secret to compute its own signature of each notification payload. If its signature matches the value of the `X-Callback-Signature` header, the client knows that the notification was sent by the service and that its contents have not been altered during transmission. This knowledge guarantees that the client is not the victim of a man-in-middle-attack.
 
 HTTPS is ideal for production applications. But during application development and prototyping, the HTTP-based callback notifications that are supported by the service can simplify and accelerate the development process by avoiding the expense of HTTPS.
 
@@ -164,13 +164,15 @@ If the job is created with a callback URL, the service sends an HTTP `POST` call
 
 The `id` field identifies the ID of the job that generated the callback, and the `event` field identifies the event that triggered the callback. The `user_token` field includes the user token for the job if one was specified. Otherwise, the field is an empty string. If the event is `recognitions.completed_with_results`, the object includes a `results` field that provides the results of the recognition request. The client can respond to the callback notification with status code 200.
 
-If the callback URL was registered with a user secret, the service also sends the `X-Callback-Signature` header with the callback notification. The header specifies the HMAC-SHA1 signature of the body of the request. The service calculates the signature by using the user secret as a key. The client can calculate the signature of the payload for the callback notification to be sure that it matches the signature in the header. For example, the following simple Python code computes the signature on the string `notification_payload`:
+If the callback URL was registered with a user secret, the service also sends the `X-Callback-Signature` header with the callback notification. The header specifies the HMAC-SHA256 signature of the body of the request. The service calculates the signature by using the user secret as a key. The client can calculate the signature of the payload for the callback notification to be sure that it matches the signature in the header. For example, the following simple Python code computes the signature on the string `notification_payload`:
 
 ```python
-from hashlib import sha1
 import hmac
-hashed = hmac.new(user_secret, notification_payload, sha1)
-signature = hashed.digest().encode("base64").rstrip('\n')
+import base64
+from hashlib import sha256
+# 'user_secret' and 'notification_payload' must be bytes
+hashed = hmac.new(user_secret, notification_payload, sha256)
+signature = base64.b64encode(hashed.digest()).decode().rstrip('\n')
 ```
 {: codeblock}
 
