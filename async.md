@@ -77,7 +77,7 @@ You register a callback URL by calling the `POST /v1/register_callback` method. 
 
 1.  You respond to the `GET` request from the service with status code 200. Include the challenge string that was sent by the service in the response. Include the string in plain text in the body of the response, and set the `Content-Type` response header to `text/plain`.
 
-    If the initial `POST` request included a user secret, you can calculate an HMAC-256 signature of the challenge string by using the secret as the key. If the `GET` request was sent by the service, the signature matches the value specified by the `X-Callback-Signature` header.
+    If the initial `POST` request included a user secret, you can calculate an HMAC-SHA256 signature of the challenge string by using the secret as the key. If the `GET` request was sent by the service, the signature matches the value specified by the `X-Callback-Signature` header.
 
     ```text
     response code: 200 OK
