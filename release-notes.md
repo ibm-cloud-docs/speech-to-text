@@ -129,7 +129,7 @@ Defect fix: Up-sampling logic (8khz to 16khz) improvement for multi-band English
 {: #speech-to-text-05nov2024}
 {: release-note}
 
-Defect fix: Speaker Labels disables interim results for LSMs and RNNTs 
+Defect fix: Speaker Labels disable interim results for LSMs and RNNTs 
 :   **Defect fix:** An issue was found where interim results stop arriving when Speaker Labels were enabled. The issue is fixed, and the service now returns interim results immediately when speaker labels are used.  
 
 ## 23 August 2024
