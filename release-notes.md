@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-05-05"
+lastupdated: "2025-08-18"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -27,6 +27,91 @@ For information about known limitations of the service, see [Known limitations](
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
 
+## 22 July 2025
+{: #speech-to-text-22jul2025}
+{: release-note}
+
+**Defect fix:** The `ja-JP` custom model error, which was caused by full-width space character (U+3000) is now corrected. 
+
+**Defect fix:** The Smart Formatter Portuguese Email formatting issue, where extra spaces were being introduced into email addresses, is now corrected. For more information, see [Smart Formatter for Portuguese](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-examples-pt-br). 
+
+## 08 July 2025
+{: #speech-to-text-08jul2025}
+{: release-note}
+
+Named entities recognition improvements for English Large Speech Model
+:   Includes recognition improvements to cities, addresses, street names, alphanumerics, dates, and first and last names.
+
+    - For more information about large speech models, see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages).
+    - For more information about the features that are supported for large speech models, see [Supported features for large speech models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-lsm-supported-features).
+
+Defect fix: Smart Formatter Spanish Large Speech Model (`es-ES`) date formatting
+:   **Defect fix:** `el primero de enero de dos mil` -> `el 01/01/2000` must be formatted as `01/01/2000`. This issue is corrected. For more information, see [Smart Formatter for Spanish](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting-examples-es-es).
+
+## 17 June 2025
+{: #speech-to-text-17jun2025}
+{: release-note}
+
+**Defect fix:** The value assignment for the Smart Formatter Version, which was causing an insertion error, resulting in failed processing of specific requests. This issue is fixed. [Smart Formatter](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting) requests now respond as expected. 
+
+**Defect fix:** In Smart Formatter, unwanted spaces were observed in alphanumeric characters. For example, `l k k one one five zero zero four two l e` -> `lkk1 150042le`. This issue is fixed. [Smart Formatter](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting) requests now respond as expected.
+
+## 28 May 2025
+{: #speech-to-text-28may2025}
+{: release-note}
+
+New large speech model for Japanese is now generally available
+:   The large speech model for Japanese is now generally available.
+
+    - For more information about large speech models, see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages).
+    - For more information about the features that are supported for large speech models, see [Supported features for large speech models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-lsm-supported-features).
+
+**Improvment:** Better [Smart Formatter](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting) handling is added for spoken letter phrases - `a as in alpha` -> `a`. 
+
+## 29 April 2025
+{: #speech-to-text-29apr2025}
+{: release-note}
+
+Defect fix: Various letter or digit or symbol disambiguation issues are corrected in [Smart Formatter](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting)  
+:   **Defect fix:** The following issues are fixed:
+
+    - 'O' was formatted as the digit 0
+    - 'a real' was formatted as 'r1'
+    - 'colonoscopy' was formatted as ':oscopy'
+
+## 07 April 2025
+{: #speech-to-text-07apr2025}
+{: release-note}
+
+Defect fix: An unexpected source was detected in OOV  
+:   **Defect fix:** When a corpus is added to a custom model, previously deleted OOV words would be unintentionally restored from the previous source. This issue is corrected.
+
+## 18 March 2025
+{: #speech-to-text-18mar2025}
+{: release-note}
+
+Defect fix: The [Smart Formatter](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting) issues with dates and additional numbers in the `en-us` model are corrected.  
+:   **Defect fix:** Formatting is disabled when total digits are more than the required formatted date. For example, `five twelve fifteen eleven` -> `5 1/2/1511` must be: `5121511`.
+
+## 11 February 2025
+{: #speech-to-text-11feb2025}
+{: release-note}
+
+**Defect fix:** A large number of 503’s were observed, specifically for the `ja-JP_NarrowbandModel`. Service improvements were made to increase the availability of this model. 
+
+**Defect fix:** An STT customization memory allocation error was found for the `en-US_Telephony` model. This issue is fixed.
+
+**Defect fix:** A [Smart Formatter](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting) issue was observed with abbreviations in the `en-us` model (`Dr.` was corrected to `Doctor`). This issue is fixed.
+
+## 14 January 2025
+{: #speech-to-text-14jan2025}
+{: release-note}
+
+**Improvment:** Alphanumerics for instances were updated where [Smart Formatter](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting) was combining some combinations of individually spoken numbers - `1 Z. 3 7 8 9 A. Y. 0 1 0 0 0 0 0 2 0 3`  -> `1 z 3789 a y 0100000203`. This issue is fixed.  
+
+Defect fix: Runtime failing to send all hypotheses  
+:   **Defect fix:** Some words were missing in transcriptions due to an issue with transcription timestamps in cases where keywords have different confidence scores from the hypothesis. The result was that the transcription was returning a single word `yes`, even if the audio contains two words `yes`. A timestamp deletion logic improvement was made to correct this issue. 
+
 ## 19 November 2024
 {: #speech-to-text-19nov2024}
 {: release-note}
@@ -36,6 +121,16 @@ New large speech model for German is now generally available
 
     - For more information about large speech models, see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages).
     - For more information about the features that are supported for large speech models, see [Supported features for large speech models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-lsm-supported-features).
+
+Defect fix: Up-sampling logic (8khz to 16khz) improvement for multi-band English Large Speech Model 
+:   **Defect fix:** Up-sampling logic in service is required for the model to handle both 8khz and 16khz. 
+
+## 05 November 2024
+{: #speech-to-text-05nov2024}
+{: release-note}
+
+Defect fix: Speaker Labels disable interim results for LSMs and RNNTs 
+:   **Defect fix:** An issue was found where interim results stop arriving when Speaker Labels were enabled. The issue is fixed, and the service now returns interim results immediately when speaker labels are used.  
 
 ## 23 August 2024
 {: #speech-to-text-23aug2024}
