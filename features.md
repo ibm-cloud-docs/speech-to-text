@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2023
-lastupdated: "2024-05-09"
+  years: 2015, 2025
+lastupdated: "2025-09-15"
 
 subcollection: speech-to-text
 
@@ -181,6 +181,8 @@ You can use a custom language model (with or without a grammar), a custom acoust
 
 [IBM Cloud]{: tag-ibm-cloud} You must have the Plus, Standard, or Premium pricing plan to use language model or acoustic model customization. Users of the Lite plan cannot use the customization interface, but they can upgrade to the Plus plan to gain access to customization. For more information, see the [Pricing FAQs](/docs/speech-to-text?topic=speech-to-text-faq-pricing).
 {: note}
+
+
 
 ## Using software development kits
 {: #features-sdks}
