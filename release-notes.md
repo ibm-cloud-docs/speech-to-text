@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-09-15"
+lastupdated: "2025-09-19"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -28,6 +28,20 @@ For information about releases and updates of the service for {{site.data.keywor
 {: note}
 
 
+
+## 09 September 2025
+{: #speech-to-text-09sep2025}
+{: release-note}
+
+**Defect fix:** Fixed an issue in Smart Formatter for the `Fr-CA` language model where 8-digit numbers were incorrectly formatted with extra zeros. [Smart Formatter](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting) now returns the correct transcription.
+
+## 19 August 2025
+{: #speech-to-text-19aug2025}
+{: release-note}
+
+**Defect fix:** Fixed an issue in Smart Formatter where spoken numerical values in transactions were transcribed incorrectly. For example, `one hundred and ninety-nine and twelve cents` should be transcribed as `$199.12`, but was incorrectly appearing as `199 e R$ 0,12`. [Smart Formatter](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting) now returns the correct transcription.
+
+**Defect fix:** Fixed an issue in Smart Formatter for French language models where the word “cent” was formatted incorrectly. For example, `quatre-vingt-neuf quarante-cinq zéro trois deux huit cent seize soixante-dix-huit` was transcribed as `89450328 100 1678` instead of the expected `8945032811678`. [Smart Formatter](/docs/speech-to-text?topic=speech-to-text-formatting#smart-formatting) now returns the correct transcription.
 
 ## 22 July 2025
 {: #speech-to-text-22jul2025}
