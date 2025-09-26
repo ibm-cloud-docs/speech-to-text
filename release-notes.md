@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-09-19"
+lastupdated: "2025-09-26"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -27,7 +27,14 @@ For information about known limitations of the service, see [Known limitations](
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
 
+## 26 September 2025
+{: #speech-to-text-26sep2025}
+{: release-note}
 
+Speech transcript enrichment is now generally available
+:   The speech transcript enrichment is now generally available.
+
+    - Speech Transcript Enrichment feature improves the readability and usability of raw Automatic Speech Recognition (ASR) transcripts. This post-processing service automatically adds punctuation and applies intelligent capitalization to enhance the structure and clarity of spoken content. For more information, see [Speech transcript enrichment](/docs/speech-to-text?topic=speech-to-text-speech-transcript-enrichment).
 
 ## 09 September 2025
 {: #speech-to-text-09sep2025}
