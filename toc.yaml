@@ -127,6 +127,10 @@ toc:
               - custom-upgrade.md
               - custom-upgrade-use.md
       - topicgroup:
+          label: Using speech for post-processing
+          topics:
+          - speech-transcript-enrichment.md
+      - topicgroup:
           label: IBM Cloud security
           topics:
           - information-security.md
