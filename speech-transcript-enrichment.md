@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-09-26"
+lastupdated: "2025-09-30"
 
 subcollection: speech-to-text
 
@@ -25,7 +25,7 @@ By using Speech Transcript Enrichment, you can produce clean, professional trans
 To enable enrichment in API calls:
 
 1. Add `enrichments=punctuation` parameter to the recognition request. For more details, see [Update the recognition request](#ste-update-request).
-2. Process the enhanced response from `enriched_results` object. For more details, see [Process enriched response](#ste-handle-enriched-response}).
+2. Process the enhanced response from `enriched_results` object. For more details, see [Process enriched response](#ste-handle-enriched-response).
 3. Access the confidence metrics for quality assessment.
 
 ### Update the recognition request

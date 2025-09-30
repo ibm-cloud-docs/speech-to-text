@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-09-26"
+lastupdated: "2025-09-30"
 
 subcollection: speech-to-text
 
@@ -186,6 +186,8 @@ You can use a custom language model (with or without a grammar), a custom acoust
 {: #features-ste}
 
 The speech transcript enrichment feature improves the readability and usability of raw Automatic Speech Recognition (ASR) transcripts. This post-processing service automatically adds punctuation and applies intelligent capitalization to enhance the structure and clarity of spoken content. For more information, see [Speech transcript enrichment](/docs/speech-to-text?topic=speech-to-text-speech-transcript-enrichment).
+
+
 
 ## Using software development kits
 {: #features-sdks}

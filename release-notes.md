@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-09-26"
+lastupdated: "2025-09-30"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -26,6 +26,8 @@ For information about known limitations of the service, see [Known limitations](
 
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
+
+
 
 ## 26 September 2025
 {: #speech-to-text-26sep2025}
