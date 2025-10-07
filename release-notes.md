@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-09-26"
+lastupdated: "2025-10-07"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -26,6 +26,17 @@ For information about known limitations of the service, see [Known limitations](
 
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
+
+
+
+## 07 October 2025
+{: #speech-to-text-07oct2025}
+{: release-note}
+
+`hints` parameter is now generally available
+:   The `hints` parameter is now generally available.
+
+    - `hints` parameter improves post-processing with Smart Formatter. This parameter helps the formatter interpret user intent more accurately and return results that better match expectations. For more information, see [Hints parameter](/docs/speech-to-text?topic=speech-to-text-hints-parameter).
 
 ## 26 September 2025
 {: #speech-to-text-26sep2025}
