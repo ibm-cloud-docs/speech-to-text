@@ -130,6 +130,7 @@ toc:
           label: Using speech for post-processing
           topics:
           - speech-transcript-enrichment.md
+          - hints-parameter.md
       - topicgroup:
           label: IBM Cloud security
           topics:
