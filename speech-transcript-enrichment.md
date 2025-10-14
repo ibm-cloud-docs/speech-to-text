@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2025
-lastupdated: "2025-09-30"
+  years: 2025
+lastupdated: "2025-10-14"
 
 subcollection: speech-to-text
 
@@ -13,11 +13,11 @@ subcollection: speech-to-text
 # Speech transcript enrichment
 {: #speech-transcript-enrichment}
 
-Use the Speech Transcript Enrichment feature to improve the readability and usability of raw Automatic Speech Recognition (ASR) transcripts. This post-processing service automatically adds punctuation and applies intelligent capitalization to enhance the structure and clarity of spoken content.
+Use the speech transcript enrichment feature to improve the readability and usability of raw Automatic Speech Recognition (ASR) transcripts. This post-processing service automatically adds punctuation and applies intelligent capitalization to enhance the structure and clarity of spoken content.
 
 The service inserts punctuation marks such as periods, commas, question marks, and exclamation points. It also capitalizes sentence beginnings, proper nouns, acronyms, and brand names based on context. Confidence scoring help ensure accurate and reliable enrichment.
 
-By using Speech Transcript Enrichment, you can produce clean, professional transcripts that are ready for review, publication, or integration into downstream applications.
+By using speech transcript enrichment, you can produce clean, professional transcripts that are ready for review, publication, or integration into downstream applications.
 
 ## Integrate Speech transcript enrichment through API
 {: #ste-api-integration}
@@ -75,24 +75,17 @@ Example response:
 ```
 {: codeblock}
 
-For more information about speaker lables and timestamps, see [Speaker Labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels) and [Word timestamps](/docs/speech-to-text?topic=speech-to-text-metadata#word-timestamps).
+For more information about speaker labels and timestamps, see [Speaker Labels](/docs/speech-to-text?topic=speech-to-text-speaker-labels) and [Word timestamps](/docs/speech-to-text?topic=speech-to-text-metadata#word-timestamps).
 
-## Limitations
-{: #ste-limitations}
+## Supported languages
+{: #ste-supported languages}
 
-Speech transcript enrichment has the following limitations:
+Speech transcript enrichment currently supports the following languages:
 
--   Currently, it supports only the following languages:
-    -   English (US, UK, Australia, India)
-    -   French (France, Canada)
-    -   German
-    -   Italian
-    -   Portuguese (Brazil, Portugal)
-    -   Spanish (Spain, Latin America, Argentina, Chile, Colombia, Mexico, Peru)
-    -   Japanese
-
--   Performs best with conversational speech.
-
--   Requires clear audio for optimal results.
-
--   Processing adds minimal latency (typically <1 second).
+-   English (US, UK, Australia, India)
+-   French (France, Canada)
+-   German
+-   Italian
+-   Portuguese (Brazil, Portugal)
+-   Spanish (Spain, Latin America, Argentina, Chile, Colombia, Mexico, Peru)
+-   Japanese
