@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-02-17"
+lastupdated: "2025-10-27"
 
 subcollection: speech-to-text
 
@@ -69,6 +69,39 @@ curl -X POST \
 "{url}/v1/recognize?speech_detector_sensitivity=0.6"
 ```
 {: pre}
+
+## Speech Activity Detection (SAD)
+{: #sad}
+
+Speech Activity Detection (SAD), is now upgraded to include a new improved method in addition to the existing method in the Speech To Text `recognize` API. The new method increases accuracy and performance in detecting speech boundaries within the audio stream. It can be used by setting `sad_module:2`.
+
+### Enhanced features
+{: #sad-features}
+
+SAD has the following enhanced features:
+
+- Better performance in detecting speech start and end.
+- Improved noise suppression.
+- Faster response time in identifying segments with speech.
+- Increased recognition accuracy for noisy environments.
+
+### Recommended usage
+{: #recommended-usage}
+
+SAD can use both the existing method and the new improved method:
+
+- `sad_module: 1` : Uses the existing SAD model (default).
+- `sad_module: 2` : Uses the new SAD model. It is used for applications that require real-time responsiveness, background noise handling, or applications that depend on speech activity, such as `speech_ begin_event`.
+
+For example:
+
+```curl
+curl -X POST -u "apikey:<apikey>" \
+  -H "Content-Type: audio/wav" \
+  --data-binary @{path}New_Recording.wav \
+  "{url}/v1/detect_language/sad_module:2"
+```
+{: codeblock}
 
 ## Background audio suppression
 {: #detection-parameters-suppression}
