@@ -23,8 +23,8 @@ The `hints` parameter supports the following values:
 
 | Hint |  Description | Resolves Ambiguity In | Example |
 |------|--------------|------------------------|---------|
-| `date` | Formats input as a date. | Differentiates between numeric expressions and date references. For example, spoken input like `six twenty seven twenty fourteen` might be interpreted either as a number or a date. When the date hint is specified, it is correctly formatted as a date. | `six twenty seven twenty fourteen` is formatted as `06/27/2014`. |
-| `alphanum` | Formats input as an alphanumeric string (letters and numbers combined). | In an audio input, when a speaker says `o`, it might refer to either the letter `o` or the digit `0`. By specifying the alphanum hint, the Smart Formatter preserves `o` as a letter instead of being converted to zero.  | `A o 5 B` is formatted as `Ao5B`. |
+| `date` | Formats input as a date. | Differentiates between numeric expressions and date references. For example, spoken input like `six twenty seven twenty fourteen` might be interpreted either as a number or a date. When the `date` hint is specified, it is correctly formatted as a date. | `six twenty seven twenty fourteen` is formatted as `06/27/2014`. |
+| `alphanum` | Formats input as an alphanumeric string (letters and numbers combined). | In an audio input, when a speaker says `o`, it might refer to either the letter `o` or the digit `0`. By specifying the `alphanum` hint, the Smart Formatter preserves `o` as a letter instead of converting it to zero.  | `A o 5 B` is formatted as `Ao5B`. |
 {: caption="Supported values for hints parameter"}
 
 In addition to `date` and `alphanum`, `hints` parameter also supports the following values:
@@ -89,9 +89,7 @@ curl -X POST -u "apikey:"
 ```
 {: codeblock}
 
-For example, if the input is `My Birthday is on June twenty seven two thousand fourteen`, the output with `date` attribute is `My Birthday is on 06/27/2014`. The output with both `date` and `strict` attributes is `06/27/2014`.
-
-The `strict` attribute help ensure that only the essential formatted value is returned, removing surrounding context if present. 
+For example, if the input is `My Birthday is on June twenty seven two thousand fourteen`, the output with `date` attribute is `My Birthday is on 06/27/2014`. The output with both `date` and `strict` attributes is `06/27/2014`. The `strict` attribute help ensure that only the essential formatted value is returned, removing surrounding context if present. 
 
 ## Supported languages
 {: #hints-supported-languages}
