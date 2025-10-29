@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-10-27"
+lastupdated: "2025-10-29"
 
 subcollection: speech-to-text
 
@@ -86,7 +86,7 @@ SAD has the following enhanced features:
 - Increased recognition accuracy for noisy environments.
 
 ### Recommended usage
-{: #recommended-usage}
+{: #sad-recommended-usage}
 
 SAD can use both the existing method and the new improved method:
 
@@ -102,6 +102,8 @@ curl -X POST -u "apikey:<apikey>" \
   "{url}/v1/detect_language/sad_module:2"
 ```
 {: codeblock}
+
+
 
 ## Background audio suppression
 {: #detection-parameters-suppression}

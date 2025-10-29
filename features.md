@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-10-07"
+lastupdated: "2025-10-29"
 
 subcollection: speech-to-text
 
@@ -93,6 +93,8 @@ The following sections introduce the speech recognition parameters and their fun
 - Parameter name: speech_begin_event
 - Request parameter: speech_begin_event = true/false (boolean)
 - Response object: "speech_begin_event.begin", for example: {"speech_begin_event": { "begin": }}
+
+
 
 ### Audio transmission and timeouts
 {: #features-input}

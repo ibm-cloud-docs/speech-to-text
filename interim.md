@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-10-27"
+lastupdated: "2025-10-29"
 
 subcollection: speech-to-text
 
@@ -21,14 +21,16 @@ When you use next-generation models that support low latency with the WebSocket 
 ## Interim results
 {: #interim-results}
 
-The interim results feature is available only with the WebSocket interface.  
+The interim results feature is available only with the WebSocket interface. The parameter is not available with large speech models.
 {: note}
+
+
 
 Interim results are intermediate transcription hypotheses that are likely to change before the service returns its final results. The service returns interim results as soon as it generates them. Interim results are useful for interactive applications and real-time transcription, and for long audio streams, which can take a while to transcribe.
 
 Interim results evolve as the service's processing of an utterance progresses. They arrive more often and more quickly than final results. You can use them to enable your application to respond more quickly or to gauge the progress of transcription. When the processing of an utterance is complete, the service sends final results that represent its best transcription of the audio for that utterance.
 
-Interim results enable feature parity between old and new models. It also reduces the latency by the users as the intermediate results start coming sooner than they used to.
+
 
 -   *Interim results* are identified in a transcript with the field `"final": false`. The service can update interim results with more accurate transcriptions as it processes further audio. The service delivers one or more interim results for each final result.
 -   *Final results* are identified with the field `"final": true`. The service makes no further updates to final results.
@@ -37,14 +39,12 @@ How you request interim results depend on the type of model that you are using:
 
 -   *For a previous-generation model,* set the `interim_results` parameter to `true` in the JSON `start` message. Interim results are available for all previous-generation models.
 -   *For a next-generation model,* set the `interim_results` and `low_latency` parameters to `true` in the JSON `start` message. Interim results are available only for next-generation models that support low latency, and only if both interim results and low latency are enabled. For more information, see [Requesting interim results and low latency](#interim-low-latency).
--   *For a large speech model,* set the `interim_results` to `true` in the JSON `start` message. `low_latency` is not currently supported by LSMs. 
+
+
 
 To disable interim results for any model, omit the `interim_results` parameter or set it to `false`. Disable interim results if you are doing offline or batch transcription.
 
-### Interim results restrictions
-{: #interim-results-restrictions}
 
-Currently, LSMs do not support low latency. You can see the results without enabling the low latency mode.
 
 ### Interim results example
 {: #interim-results-example}
@@ -366,6 +366,8 @@ This example sets `interim_results` to `false` and `low_latency` to `true`. The 
 {: #interim-low-latency-examples-three}
 
 This example sets `interim_results` to `true` and `low_latency` to `false`. The service returns only final results, but it returns each result as a separate JSON object.
+
+
 
 ```javascript
   var message = {
