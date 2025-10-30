@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-10-29"
+lastupdated: "2025-10-30"
 
 subcollection: speech-to-text
 
@@ -22,13 +22,13 @@ Speech activity detection is supported for most language models. For more inform
 ## How speech activity detection works
 {: #detection-works}
 
-Speech activity detection consumes the input audio stream and determines which parts of the stream to pass for speech recognition. Speech recognition is adversely affected by background speech and noise, causing the service to transcribe the wrong words, to produce words where none are present, or to omit words that are part of the input audio. The speech activity detection feature can help ensure that only relevant audio is processed for speech recognition.
+Speech activity detection uses the input audio stream and determines which parts of the stream to pass for speech recognition. Background speech and noise can cause speech recognition errors, including incorrect transcriptions, extra words, or missing words from the input audio. The speech activity detection feature can help ensure that only relevant audio is processed for speech recognition.
 
 You can use the feature to control the following aspects of speech recognition:
 
--   *Suppress background speech.* Call-center data often contains cross-talk ("overhearing") from other agents. You can set a volume threshold below which such background speech is ignored.
--   *Suppress background noise.* Some audio, such as speech recorded in a factory, can contain a high level of background noise. You can set a threshold below which such background noise is ignored.
--   *Suppress non-speech audio events.* Background music and tone events, such as audio played to a client who is waiting on hold on a telephone line, can cause inaccurate recognition. Silence can also result in unnecessary recognition or transcription errors. You can set a threshold below which such events are ignored.
+-   *Suppress background speech.* Call-center data often contains cross-talk ("overhearing") from other agents. You can set a volume threshold that causes the service to ignore background speech quieter than the specified level.
+-   *Suppress background noise.* Some audio, such as speech recorded in a factory, can contain a high level of background noise. You can set a threshold that causes the system to ignore background noise quieter than the specified level.
+-   *Suppress non-speech audio events.* Background music and tone events, such as audio played to a client who is waiting on hold on a telephone line, can cause inaccurate recognition. Silence can also result in unnecessary recognition or transcription errors. You can set a threshold that causes the system to ignore such events quieter than the specified level.
 
 By default, speech activity detection is configured to provide optimal performance for the general case for each model. For specific cases, the default settings might not be optimal and can lead either to slow transcription or to word insertions and deletions. You are encouraged to experiment with different settings to determine which values work best for your audio.
 
@@ -41,8 +41,8 @@ Specify a float value between 0.0 and 1.0. The default value is 0.5, which provi
 
 This parameter can affect both the quality and the latency of speech recognition:
 
--   Lower values can decrease latency because less audio is potentially passed for speech recognition. However, a low setting might discard chunks of audio that contain actual speech, losing viable content from the transcript.
--   Higher values can increase latency because more audio is potentially passed for speech recognition. However, a high setting might pass chunks of audio that contain non-speech events, adding spurious content to the transcript.
+-   Smaller values can decrease latency because less audio is potentially passed for speech recognition. However, setting a small value might discard chunks of audio that contain actual speech, losing viable content from the transcript.
+-   Higher values can increase latency because more audio is potentially passed for speech recognition. However, setting a high value might pass chunks of audio that contain non-speech events, adding spurious content to the transcript.
 
 ### Speech detector sensitivity example
 {: #detection-parameters-sensitivity-example}
@@ -93,7 +93,7 @@ SAD can use both the existing method and the new improved method:
 - `sad_module: 1` : Uses the existing SAD model (default).
 - `sad_module: 2` : Uses the new SAD model. It is used for applications that require real-time responsiveness, background noise handling, or applications that depend on speech activity, such as `speech_ begin_event`.
 
-For example:
+For example,
 
 ```curl
 curl -X POST -u "apikey:<apikey>" \
@@ -108,11 +108,11 @@ curl -X POST -u "apikey:<apikey>" \
 ## Background audio suppression
 {: #detection-parameters-suppression}
 
-Use the `background_audio_suppression` parameter to suppress background audio based on its volume to prevent it from being transcribed as speech. Use the parameter to suppress side conversations or background noise. For example, use this parameter when there is a relatively steady and quiet (low signal energy) background sound. Because such noise can interfere with transcription, it can produce content where no actual speech occurs in the audio.
+Use the `background_audio_suppression` parameter to suppress background audio based on its volume to prevent it from being transcribed as speech. Use the parameter to suppress side conversations or background noise. For example, use this parameter to manage steady, quiet background sounds, such as weak audio signals. Because such noise can interfere with transcription, it can produce content where no actual speech occurs in the audio.
 
 Specify a float value in the range of 0.0 to 1.0. The default value is 0.0, which provides no suppression (background audio suppression is disabled). A value of 0.5 provides a reasonable level of audio suppression for general usage. A value of 1.0 suppresses all audio (no speech is transcribed). The values increase on a monotonic curve. Specifying one or two decimal places of precision (for example, `0.55`) is typically more than sufficient.
 
-This  parameter can also affect both the quality and the latency of speech recognition. However, because background noise suppression is disabled by default, setting the parameter to a value greater than zero can only improve latency. But higher values can gradually reduce the audio that is passed for speech recognition, which can cause valid content to be lost from the transcript.
+This parameter can also affect both the quality and the latency of speech recognition. However, because background noise suppression is disabled by default, setting the parameter to a value greater than zero can only improve latency. But higher values can gradually reduce the audio that is passed for speech recognition, which can cause valid content to be lost from the transcript.
 
 ### Background audio suppression example
 {: #detection-parameters-suppression-example}
@@ -145,8 +145,8 @@ curl -X POST \
 
 The `speech_detector_sensitivity` and `background_audio_suppression` parameters are supported for use with the following language models:
 
--   *For large speech models and next-generation models,* the parameters are supported with all models.
--   *For previous-generation models,* the parameters are supported with most models. The following models do *not* support speech activity detection at this time. The parameters are ignored if used with these models.
+-   *For large speech models and next-generation models,* the parameters are supported by all models.
+-   *For previous-generation models,* the parameters are supported by most models. The following models do *not* support speech activity detection now. The parameters are ignored if used with these models.
     -   Arabic broadband model (`ar-MS_BroadbandModel`)
     -   Brazilian Portuguese broadband model (`pt-BR_BroadbandModel`)
     -   Chinese broadband model (`zh-CN_BroadbandModel`)
