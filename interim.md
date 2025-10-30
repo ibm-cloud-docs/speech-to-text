@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-10-29"
+lastupdated: "2025-10-30"
 
 subcollection: speech-to-text
 
@@ -21,8 +21,11 @@ When you use next-generation models that support low latency with the WebSocket 
 ## Interim results
 {: #interim-results}
 
+
 The interim results feature is available only with the WebSocket interface. The parameter is not available with large speech models.
 {: note}
+
+
 
 
 
@@ -365,7 +368,11 @@ This example sets `interim_results` to `false` and `low_latency` to `true`. The 
 #### Example 3: Interim results is true and low latency is false
 {: #interim-low-latency-examples-three}
 
+
+
 This example sets `interim_results` to `true` and `low_latency` to `false`. The service returns only final results, but it returns each result as a separate JSON object.
+
+
 
 
 
