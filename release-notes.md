@@ -33,6 +33,11 @@ For information about releases and updates of the service for {{site.data.keywor
 {: #speech-to-text-03nov2025}
 {: release-note}
 
+Speech begin event detection is now available for STT models.
+:   The Speech begin event detection is now available for STT models.
+
+    - By using speech begin event detection, you can now receive an early notification with the `recognize` API which detects the start of speech in the incoming audio stream and sends a notification to the user. For more information, see [Speech Begin Event Detection](/docs/speech-to-text?topic=speech-to-text-detection#speech-begin-event-detection).
+
 Speech Activity Detection improvements for faster responsiveness, improved accuracy, and better performance in noisy environments.
 :   The Speech Activity Detection (SAD) is now upgraded to include a new improved method in addition to the existing method in the Speech To Text `recognize` API.
 
