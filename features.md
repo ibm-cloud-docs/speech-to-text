@@ -94,7 +94,7 @@ The following sections introduce the speech recognition parameters and their fun
 - Request parameter: speech_begin_event = true/false (boolean)
 - Response object: "speech_begin_event.begin", for example: {"speech_begin_event": { "begin": }}
 
-
+For more information, see [Speech Begin Event Detection](/docs/speech-to-text?topic=speech-to-text-detection#speech-begin-event-detection).
 
 ### Audio transmission and timeouts
 {: #features-input}

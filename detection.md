@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-10-30"
+lastupdated: "2025-11-03"
 
 subcollection: speech-to-text
 
@@ -103,7 +103,53 @@ curl -X POST -u "apikey:<apikey>" \
 ```
 {: codeblock}
 
+## Speech Begin Event Detection
+{: #speech-begin-event-detection}
 
+By using speech begin event detection, you can now receive an early notification with the `recognize` API. It detects the start of speech in the incoming audio stream and sends a notification to the user. When the `speech_begin_event: true` is set in the request, a new response object is sent that indicates the start of a speech segment. It can be useful for real-time transcription or voice-activity-driven applications. It can be used by client applications to trigger downstream action, for example, showing `speech started` or `active` indicators and preparing real-time processing pipelines.
+
+A speech begin event is generated in two scenarios:
+
+1. When a speech is detected first in an audio stream
+1. After each `end_of_phrase_silence_timeout` period, if a new speech is detected
+
+The sensitivity of the detection can be adjusted by using the `speech_event_sensitivity` (default 0.5) parameter, which is a measure of the intensity of the speech signal that triggers the speech begin event. 
+
+Greater values indicate that it is more sensitive to speech. Values closer to `0` make detection less sensitive to background noise. Values closer to 1 increase the chances of detecting a speech begin event but might trigger false alerts in noisy environments.
+
+By using `speech_event_sensitivity`, you can control the sensitivity of the speech begin event separately from STT transcript, which is controlled by the `speech_detector_sensitivity` parameter. `speech_event_sensitivity` ignores noise for `speech_begin_event`, which can give false barge-in events.
+{: note}
+
+### Recommended usage
+{: #sbe-recommended-usage}
+
+It is recommended to use `sad_module:2` when you use `speech_begin_event`.
+
+For example,
+
+```curl
+curl -X POST "[URL]/v1/recognize?model=en-US&speech_begin_event=true&sad_module=2" \
+-u "apikey:[APIKEY] " \
+--header "content-type:audio/wav" \
+--data-binary @example.wav 
+```
+{: codeblock}
+
+Example response:
+
+```JSON
+{
+   "result_index": 0,
+   "results": [
+      {
+         "speech_begin_event": {
+            "begin": 2.5
+         }
+      }
+   ]
+}
+```
+{: codeblock}
 
 ## Background audio suppression
 {: #detection-parameters-suppression}
