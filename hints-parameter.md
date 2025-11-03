@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-10-27"
+lastupdated: "2025-11-03"
 
 subcollection: speech-to-text
 
@@ -48,9 +48,9 @@ Currently, `date` and `alphanum` are the supported hints.
 Example request:
 
 ```curl
-curl -X POST -u "apikey:"  
--H "Content-Type: audio/wav"  
---data-binary @ {path} New_Recording.wav  
+curl -X POST -u "apikey:<apikey>"
+-H "Content-Type: audio/wav"
+--data-binary @{path}New_Recording.wav  
 "{URL}/v1/recognize?model=en-US&hints=date&smart_formatting=true&smart_formatting_version=2.0" 
 ```
 {: codeblock}
@@ -82,9 +82,9 @@ The `strict` attribute can be used along with any hint to remove unwanted or ext
 
 Example request:
 ```curl
-curl -X POST -u "apikey:"  
+curl -X POST -u "apikey:<apikey>"  
 -H "Content-Type: audio/wav"  
---data-binary @ {path}New_Recording.wav  
+--data-binary @{path}New_Recording.wav  
 "{URL}/v1/recognize?model=en-US&hints=date,strict&smart_formatting=true&smart_formatting_version=2.0" 
 ```
 {: codeblock}

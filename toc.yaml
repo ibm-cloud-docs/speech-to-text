@@ -132,6 +132,10 @@ toc:
           - speech-transcript-enrichment.md
           - hints-parameter.md
       - topicgroup:
+          label: Using speech for language identification
+          topics:
+          - speech-language-identification.md
+      - topicgroup:
           label: IBM Cloud security
           topics:
           - information-security.md

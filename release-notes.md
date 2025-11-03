@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-10-07"
+lastupdated: "2025-11-03"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -28,6 +28,20 @@ For information about releases and updates of the service for {{site.data.keywor
 {: note}
 
 
+
+## 03 November 2025
+{: #speech-to-text-03nov2025}
+{: release-note}
+
+Speech Activity Detection improvements for faster responsiveness, improved accuracy, and better performance in noisy environments.
+:   The Speech Activity Detection (SAD) is now upgraded to include a new improved method in addition to the existing method in the Speech To Text `recognize` API.
+
+    - The new method increases accuracy and performance in detecting speech boundaries within the audio stream. It can be used by setting `sad_module:2`. For more information, see [Speech Activity Detection (SAD)](/docs/speech-to-text?topic=speech-to-text-detection#sad).
+
+Spoken language identification is now generally available
+:   The spoken language identification is now generally available.
+
+    - Language identification (LID) automatically detects the spoken language in audio streams. The model continuously processes incoming audio and returns the identified language when it reaches a confidence level higher than the specified threshold (0.99 by default). For more information, see [Spoken language identification](/docs/speech-to-text?topic=speech-to-text-speech-language-identification).
 
 ## 07 October 2025
 {: #speech-to-text-07oct2025}
