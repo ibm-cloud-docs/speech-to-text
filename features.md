@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-10-07"
+lastupdated: "2025-11-03"
 
 subcollection: speech-to-text
 
@@ -93,6 +93,8 @@ The following sections introduce the speech recognition parameters and their fun
 - Parameter name: speech_begin_event
 - Request parameter: speech_begin_event = true/false (boolean)
 - Response object: "speech_begin_event.begin", for example: {"speech_begin_event": { "begin": }}
+
+
 
 ### Audio transmission and timeouts
 {: #features-input}
@@ -192,7 +194,10 @@ The speech transcript enrichment feature improves the readability and usability 
 
 The `hints` parameter improves post-processing with Smart Formatter. This parameter helps the formatter interpret user intent more accurately and return results that better match expectations. For more information, see [Hints parameter](/docs/speech-to-text?topic=speech-to-text-hints-parameter).
 
+## Spoken language identification
+{: #features-lid}
 
+Language identification (LID) automatically detects the spoken language in audio streams. The model continuously processes incoming audio and returns the identified language when it reaches a confidence level higher than the specified threshold (0.99 by default). This feature quickly detects the spoken language and helps client applications switch languages for downstream processing. It is especially useful in environments such as call centers or other applications that support multiple languages. For more information, see [Spoken language identification](/docs/speech-to-text?topic=speech-to-text-speech-language-identification).
 
 ## Using software development kits
 {: #features-sdks}

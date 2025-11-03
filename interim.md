@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-02-17"
+lastupdated: "2025-11-03"
 
 subcollection: speech-to-text
 
@@ -16,27 +16,35 @@ subcollection: speech-to-text
 With the WebSocket interface, the {{site.data.keyword.speechtotextfull}} service supports interim results, which are intermediate transcription hypotheses that arrive before final results. For the WebSocket and HTTP interfaces, most next-generation models also offer low latency to return results even more quickly than they already do, though transcription accuracy might be reduced.
 {: shortdesc}
 
-When you use next-generation models that support low latency with the WebSocket interface, you must enable both interim results and low latency to get interim results. Only next-generation models that support low latency can return interim results. Note that previous- and next-generation models return slightly different results in certain cases.
+When you use next-generation models that support low latency with the WebSocket interface, you must enable both interim results and low latency to get interim results. Only next-generation models that support low latency can return interim results. Previous- and next-generation models return slightly different results in certain cases.
 
 ## Interim results
 {: #interim-results}
 
-The interim results feature is available only with the WebSocket interface. The parameter is not available with large speech models. 
+The interim results feature is available only with the WebSocket interface. The parameter is not available with large speech models.
 {: note}
+
+
 
 Interim results are intermediate transcription hypotheses that are likely to change before the service returns its final results. The service returns interim results as soon as it generates them. Interim results are useful for interactive applications and real-time transcription, and for long audio streams, which can take a while to transcribe.
 
-Interim results evolve as the service's processing of an utterance progresses. They arrive more often and more quickly than final results. You can use them to enable your application to respond more quickly or to gauge the progress of transcription. Once its processing of an utterance is complete, the service sends final results that represent its best transcription of the audio for that utterance.
+Interim results evolve as the service's processing of an utterance progresses. They arrive more often and more quickly than final results. You can use them to enable your application to respond more quickly or to gauge the progress of transcription. When the processing of an utterance is complete, the service sends final results that represent its best transcription of the audio for that utterance.
+
+
 
 -   *Interim results* are identified in a transcript with the field `"final": false`. The service can update interim results with more accurate transcriptions as it processes further audio. The service delivers one or more interim results for each final result.
 -   *Final results* are identified with the field `"final": true`. The service makes no further updates to final results.
 
-How you request interim results depends on the type of model that you are using:
+How you request interim results depend on the type of model that you are using:
 
 -   *For a previous-generation model,* set the `interim_results` parameter to `true` in the JSON `start` message. Interim results are available for all previous-generation models.
 -   *For a next-generation model,* set the `interim_results` and `low_latency` parameters to `true` in the JSON `start` message. Interim results are available only for next-generation models that support low latency, and only if both interim results and low latency are enabled. For more information, see [Requesting interim results and low latency](#interim-low-latency).
 
+
+
 To disable interim results for any model, omit the `interim_results` parameter or set it to `false`. Disable interim results if you are doing offline or batch transcription.
+
+
 
 ### Interim results example
 {: #interim-results-example}
@@ -131,16 +139,16 @@ The response includes a single utterance with no pauses.
 The `low_latency` parameter is available for most next-generation models. The parameter is not available with large speech models and previous-generation models.
 {: note}
 
-The next-generation multimedia and telephony models have generally faster response times than the previous-generation models. But there might be cases where you want to receive results even more quickly. With next-generation models that support low latency, you can set the `low_latency` parameter to `true` to receive results more quickly. For more information about the next-generation models that support low latency, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
+The next-generation multimedia and telephony models have generally faster response times than the previous-generation models. But in some situations, you might want to receive results more quickly. With next-generation models that support low latency, you can set the `low_latency` parameter to `true` to receive results more quickly. For more information about the next-generation models that support low latency, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
 
-With low latency, the service achieves faster results at the possible expense of transcription accuracy. When low latency is enabled, the service segments the audio into smaller chunks to optimize for speed over accuracy. This trade-off might be acceptable if your application needs lower response time more than it does the highest possible accuracy. For example, low latency is ideal for use cases such as closed captioning, conversational applications, and live customer service in the voice channel of the {{site.data.keyword.conversationfull}} service.
+With low latency, the service achieves faster results at the possible expense of transcription accuracy. When low latency is enabled, the service segments the audio into smaller chunks to optimize for speed over accuracy. This tradeoff might be acceptable if your application needs less response time than the highest possible accuracy. For example, low latency is ideal for use cases such as closed captioning, conversational applications, and live customer service in the voice channel of the {{site.data.keyword.conversationfull}} service.
 
 Omitting the `low_latency` parameter can produce more accurate results and is the recommended approach for most use cases. The `low_latency` parameter is `false` by default.
 
 The nature of the response to a request that includes low latency depends on the interface that is used:
 
--   With the HTTP interfaces, the service waits for all of the audio to arrive before sending a response. It then sends a single stream of bytes in response. The response can include multiple transcription elements with multiple final results, and it can be sent incrementally. But it is a single stream of data.
--   With the WebSocket interface, the service sends final results as they become available. It can send multiple independent responses in the form of different streams of bytes. The connection is bidirectional and full duplex, and requests and responses can continue to flow back and forth over a single connection for as long as it remains active.
+-   With the HTTP interfaces, the service waits until it receives the entire audio input and then sends a response. It then sends a single stream of bytes in response. The response can include multiple transcription elements with multiple final results, and it can be sent incrementally. But it is a single stream of data.
+-   With the WebSocket interface, the service sends final results as they become available. It can send multiple independent responses in the form of different streams of bytes. The connection is bidirectional and full duplex, requests, and responses can continue to flow back and forth over a single connection while it remains active.
 
 ### Low-latency restrictions
 {: #low-latency-restrictions}
@@ -359,6 +367,8 @@ This example sets `interim_results` to `false` and `low_latency` to `true`. The 
 
 This example sets `interim_results` to `true` and `low_latency` to `false`. The service returns only final results, but it returns each result as a separate JSON object.
 
+
+
 ```javascript
   var message = {
     action: 'start',
@@ -417,7 +427,7 @@ This example sets `interim_results` to `true` and `low_latency` to `false`. The 
 #### Example 4: Interim results and low latency are both true
 {: #interim-low-latency-examples-four}
 
-This example sets both `interim_results` and `low_latency` to `true`. The service returns both interim and final results, and it returns each results as a separate JSON object.
+This example sets both `interim_results` and `low_latency` to `true`. The service returns both interim and final results, and it returns each result as a separate JSON object.
 
 ```javascript
   var message = {
