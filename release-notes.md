@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-11-03"
+lastupdated: "2025-11-24"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -27,7 +27,14 @@ For information about known limitations of the service, see [Known limitations](
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
 
+## 25 November 2025
+{: #speech-to-text-25nov2025}
+{: release-note}
 
+Interim results are now available for Large Speech Models
+:   The interim results are now available for large speech models (LSMs).
+
+    - `interim_results` parameter was earlier enabled only for next-generation models. Now, it is enabled for LSMs as well. For more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results).
 
 ## 03 November 2025
 {: #speech-to-text-03nov2025}
