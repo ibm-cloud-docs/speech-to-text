@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-11-03"
+lastupdated: "2025-11-25"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -27,7 +27,14 @@ For information about known limitations of the service, see [Known limitations](
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
 
+## 25 November 2025
+{: #speech-to-text-25nov2025}
+{: release-note}
 
+Interim results are now available for Large Speech Models
+:   The interim results are now available for large speech models (LSMs).
+
+    - `interim_results` parameter was earlier enabled only for next-generation models. Now, it is enabled for LSMs as well. For more information, see [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results).
 
 ## 03 November 2025
 {: #speech-to-text-03nov2025}
@@ -903,7 +910,7 @@ Updates to Korean and Brazilian Portuguese next-generation models
 
 Defect fix: Correct interim results and low-latency documentation
 :   **Defect fix:** Documentation that describes the interim results and low-latency features with next-generation models has been rewritten for clarity and correctness. For more information, see the following topics:
-    -   [Interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim), especially [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency)
+    -   [Interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim)
     -   [How the service sends recognition results](/docs/speech-to-text?topic=speech-to-text-websockets#ws-results)
 
 Defect fix: Improve speakers labels results
@@ -1052,7 +1059,6 @@ New beta next-generation language models and `low_latency` parameter
     -   For more information about language support for next-generation models and about which next-generation models support low latency, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
     -   For more information about feature support for next-generation models, see [Supported features for next-generation models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-features).
     -   For more information about the `low_latency` parameter, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
-    -   For more information about the interaction between the `low_latency` and `interim_results` parameters for next-generation models, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
 
 ## 17 March 2021
 {: #speech-to-text-17march2021}

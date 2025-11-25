@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2023
-lastupdated: "2024-05-09"
+  years: 2015, 2025
+lastupdated: "2025-11-25"
 
 subcollection: speech-to-text
 
@@ -70,7 +70,6 @@ The `final` field indicates whether the transcript shows final transcription res
 For more information about using the WebSocket interface to obtain interim results with large speech models, previous- and next-generation models, see the following topics:
 
 -   [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results)
--   [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency)
 -   [How the service sends recognition results](/docs/speech-to-text?topic=speech-to-text-websockets#ws-results)
 
 ### The result_index field
@@ -183,7 +182,6 @@ The following examples show responses with two final results from the HTTP and W
     With the WebSocket interface, responses for interim results contain more JSON objects. For more information about using the WebSocket interface to obtain interim results with large speech models, previous- and next-generation models, see the following topics:
 
     -   [Interim results](/docs/speech-to-text?topic=speech-to-text-interim#interim-results)
-    -   [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency)
     -   [How the service sends recognition results](/docs/speech-to-text?topic=speech-to-text-websockets#ws-results)
 
 Silence of 30 seconds in streamed audio can result in an inactivity timeout. For more information, see [Timeouts](/docs/speech-to-text?topic=speech-to-text-input#timeouts).
