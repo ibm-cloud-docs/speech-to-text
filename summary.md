@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2023
-lastupdated: "2024-05-10"
+  years: 2015, 2025
+lastupdated: "2025-11-25"
 
 subcollection: speech-to-text
 
@@ -194,7 +194,7 @@ An optional boolean that directs the service to return intermediate hypotheses t
 |------------------------|-------------|
 | Large speech models        | Not available. |
 | Previous-generation models | Generally available for all languages. |
-| Next-generation models     | Generally available for next-generation models that support low latency, but only if both the `interim_results` and `low_latency` parameters are set to `true`. For more information, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency). |
+| Next-generation models     | Generally available for next-generation models that support low latency, but only if both the `interim_results` and `low_latency` parameters are set to `true`.  |
 | WebSocket              | Parameter of JSON `start` message |
 | Synchronous HTTP       | Not supported |
 | Asynchronous HTTP      | Not supported |

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2025
-lastupdated: "2025-11-24"
+lastupdated: "2025-11-25"
 
 subcollection: speech-to-text
 
@@ -35,16 +35,12 @@ Interim results enable feature parity between old and new models. It also reduce
 
 How you request interim results depend on the type of model that you are using:
 
+-   *For interim results,* set `end_of_phrase_silence_time` parameter to a value other than `None`.
 -   *For a previous-generation model,* set the `interim_results` parameter to `true` in the JSON `start` message. Interim results are available for all previous-generation models.
--   *For a next-generation model,* set the `interim_results` and `low_latency` parameters to `true` in the JSON `start` message. Interim results are available only for next-generation models that support low latency, and only if both interim results and low latency are enabled. For more information, see [Requesting interim results and low latency](#interim-low-latency).
--   *For a large speech model,* set the `interim_results` to `true` in the JSON `start` message. `low_latency` is not currently supported by LSMs. To turn on `interim results`, set `end_of_phrase_silence_time` parameter to a value other than `None`.
+-   *For a next-generation model,* set the `interim_results` parameter to `true` in the JSON start message. You can also set `low_latency` to `true` to enable both interim results and low latency together for the models. 
+-   *For a large speech model,* set the `interim_results` to `true` in the JSON `start` message. `low_latency` is not currently supported by LSMs. 
 
 To disable interim results for any model, omit the `interim_results` parameter or set it to `false`. Disable interim results if you are doing offline or batch transcription.
-
-### Interim results restrictions
-{: #interim-results-restrictions}
-
-Currently, LSMs do not support low latency. You can see the results without enabling the low latency mode.
 
 ### Interim results example
 {: #interim-results-example}
@@ -63,6 +59,7 @@ function onOpen(evt) {
     action: 'start',
     content-type: 'audio/l16;rate=22050',
     interim_results: true
+    end_of_phrase_silence_time:1.3
   };
   websocket.send(JSON.stringify(message));
   websocket.send(blob);
@@ -199,24 +196,6 @@ curl -X POST \
 "{url}/v1/recognize?model=en-US_Telephony&low_latency=true"
 ```
 {: pre}
-
-## Requesting interim results and low latency
-{: #interim-low-latency}
-
-To receive interim results with a next-generation model, the model must support low latency and both the `interim_results` and `low_latency` parameters must be set to `true`. The service does not support interim results for next-generation models that do not support low latency.
-{: note}
-
-When you use next-generation models that support low latency, you can request both interim results and low latency with the WebSocket interface. However, the `interim_results` parameter behaves differently when it is used with next-generation models.
-
-The following table describes the interaction between the `interim_results` and `low_latency` parameters and the results that you receive depending on their settings. The default values for both the `interim_results` and `low_latency` parameters are `false`.
-
-| `interim_results` | `low_latency` | Results |
-|:-----------------:|:-------------:|---------|
-| `interim_results=false` | `low_latency=false` | The service sends only final results. It returns a single JSON object that includes results for all utterances when transcription is complete. See [Example 1: Interim results and low latency are both false](#interim-low-latency-examples-one). |
-| `interim_results=false` | `low_latency=true`  | The service sends only final results. It returns a single JSON object that includes results for all utterances when transcription is complete. But because `low_latency` is `true`, the service returns the final results more quickly. See [Example 2: Interim results is false and low latency is true](#interim-low-latency-examples-two). |
-| `interim_results=true`  | `low_latency=false` | The service sends only final results. It returns multiple JSON objects for individual utterances as it performs transcription. The advantage of setting `interim_results` to `true` is that results for utterances arrive as they become complete. You do not need to wait for all utterances to be transcribed. See [Example 3: Interim results is true and low latency is false](#interim-low-latency-examples-three). |
-| `interim_results=true`  | `low_latency=true`  | The service returns interim results as it develops transcription hypotheses, and it sends final results for utterances as they become complete. The service delivers one or more interim results for each final result. The quality of interim results is identical to what you receive with previous-generation models. But because `low_latency` is `true`, the service returns interim and final results more quickly. See [Example 4: Interim results and low latency are both true](#interim-low-latency-examples-four). |
-{: caption="Interaction of interim_results and low_latency parameters"}
 
 ### Interim results and low-latency examples
 {: #interim-low-latency-examples}

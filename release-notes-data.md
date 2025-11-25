@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2025
-lastupdated: "2025-05-05"
+lastupdated: "2025-11-25"
 
 keywords: speech to text release notes,speech to text for IBM cloud pak for data release notes
 
@@ -1280,7 +1280,7 @@ Defect fix: Improve speakers labels results
 
 Defect fix: Update interim results and low-latency documentation
 :   **Defect fix:** Documentation that describes the interim results and low-latency features with next-generation models has been rewritten for clarity and correctness. For more information, see the following topics:
-    -   [Interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim), especially [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency)
+    -   [Interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim)
     -   [How the service sends recognition results](/docs/speech-to-text?topic=speech-to-text-websockets#ws-results)
 
 Defect fix: Correct multitenancy documentation
@@ -1343,7 +1343,6 @@ New next-generation language models
     -   For more information about language support for next-generation models and about which next-generation models support low latency, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
     -   For more information about feature support for next-generation models, see [Supported features for next-generation models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-features).
     -   For more information about the `low_latency` parameter, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
-    -   For more information about the interaction between the `low_latency` and `interim_results` parameters for next-generation models, see [Requesting interim results and low latency](/docs/speech-to-text?topic=speech-to-text-interim#interim-low-latency).
 
 Arabic language broadband model renamed
 :   The Arabic language broadband model is now named `ar-MS_BroadbandModel`. The former name, `ar-AR_BroadbandModel`, is deprecated. It will continue to function for at least one year but might be removed at a future date. You are encouraged to migrate to the new name at your earliest convenience.
