@@ -13,10 +13,8 @@ subcollection: speech-to-text
 # Interim results and low latency
 {: #interim}
 
-With the WebSocket interface, the {{site.data.keyword.speechtotextfull}} service supports interim results, which are intermediate transcription hypotheses that arrive before final results. For the WebSocket and HTTP interfaces, most next-generation models also offer low latency to return results even more quickly than they already do, though transcription accuracy might be reduced.
+With the WebSocket interface, the {{site.data.keyword.speechtotextfull}} service supports interim results, which are intermediate transcription hypotheses that arrive before final results. For the WebSocket and HTTP interfaces, most next-generation models also offer low latency to return results even more quickly than they already do, though transcription accuracy might be reduced. Interim results are available for all large speech models. Accuracy may be slightly lower, and low latency is not yet supported for these models.
 {: shortdesc}
-
-When you use next-generation models that support low latency with the WebSocket interface, you must enable both interim results and low latency to get interim results. Only next-generation models that support low latency can return interim results. Previous- and next-generation models return slightly different results in certain cases.
 
 ## Interim results
 {: #interim-results}
@@ -38,7 +36,7 @@ How you request interim results depend on the type of model that you are using:
 -   *For interim results,* set `end_of_phrase_silence_time` parameter to a value other than `None`.
 -   *For a previous-generation model,* set the `interim_results` parameter to `true` in the JSON `start` message. Interim results are available for all previous-generation models.
 -   *For a next-generation model,* set the `interim_results` parameter to `true` in the JSON start message. You can also set `low_latency` to `true` to enable both interim results and low latency together for the models. 
--   *For a large speech model,* set the `interim_results` to `true` in the JSON `start` message. `low_latency` is not currently supported by LSMs. 
+-   *For a large speech model,* set the `interim_results` to `true` in the JSON `start` message. `low_latency` is not currently supported by large speech models. 
 
 To disable interim results for any model, omit the `interim_results` parameter or set it to `false`. Disable interim results if you are doing offline or batch transcription.
 
@@ -248,7 +246,8 @@ This example sets both `interim_results` and `low_latency` to `false`. The servi
     content-type: 'audio/wav',
     inactivity_timeout: -1,
     interim_results: false,
-    low_latency: false
+    low_latency: false,
+    end_of_phrase_silence_time: 1.4
   };
 ```
 {: codeblock}
@@ -300,7 +299,8 @@ This example sets `interim_results` to `false` and `low_latency` to `true`. The 
     content-type: 'audio/wav',
     inactivity_timeout: -1,
     interim_results: false,
-    low_latency: true
+    low_latency: true,
+    end_of_phrase_silence_time: 1.4
   };
 ```
 {: codeblock}
@@ -344,9 +344,7 @@ This example sets `interim_results` to `false` and `low_latency` to `true`. The 
 #### Example 3: Interim results is true and low latency is false
 {: #interim-low-latency-examples-three}
 
-This example sets `interim_results` to `true` and `low_latency` to `false`. For next-generation models, the service returns only final results and no interim results, similar to when both `interim_results` and `low_latency` are set to `false`. However, it returns each result as a separate JSON object. For large speech models, set `interim_results` to `true` because `low_latency` is not required and is currently not supported.
-
-Alternatively, you can set only `interim_results` to true. In this case, each `interim_results` is still sent as a separate JSON object. Large speech models do not support `low_latency`.
+This example sets `interim_results` to `true` and `low_latency` to false. This returns the interim results using non low-latency mode.
 
 ```javascript
   var message = {
@@ -354,7 +352,8 @@ Alternatively, you can set only `interim_results` to true. In this case, each `i
     content-type: 'audio/wav',
     inactivity_timeout: -1,
     interim_results: true,
-    low_latency: false
+    low_latency: false,
+    end_of_phrase_silence_time: 1.4
   };
 ```
 {: codeblock}
@@ -364,11 +363,47 @@ Alternatively, you can set only `interim_results` to true. In this case, each `i
   "result_index": 0,
   "results": [
     {
+      "final": false,
+      "alternatives": [
+        {
+          "transcript": "thunderstorms "
+        }
+      ]
+    }
+  ]
+}{
+  "result_index": 0,
+  "results": [
+    {
+      "final": false,
+      "alternatives": [
+        {
+          "transcript": "thunderstorms could produce "
+        }
+      ]
+    }
+  ]
+}{
+  "result_index": 0,
+  "results": [
+    {
       "final": true,
       "alternatives": [
         {
           "transcript": "thunderstorms could produce ",
           "confidence": 0.94
+        }
+      ]
+    }
+  ]
+}{
+  "result_index": 1,
+  "results": [
+    {
+      "final": false,
+      "alternatives": [
+        {
+          "transcript": "large "
         }
       ]
     }
@@ -414,7 +449,8 @@ This example sets both `interim_results` and `low_latency` to `true`. The servic
     content-type: 'audio/wav',
     inactivity_timeout: -1,
     interim_results: true,
-    low_latency: true
+    low_latency: true,
+    end_of_phrase_silence_time: 1.4
   };
 ```
 {: codeblock}
