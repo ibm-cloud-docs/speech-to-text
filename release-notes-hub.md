@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2024, 2025
-lastupdated: "2025-09-08"
+  years: 2024, 2026
+lastupdated: "2026-01-05"
 
 keywords: speech to text release notes,speech to text software hub release notes
 
@@ -26,19 +26,33 @@ This information applies only to instances of {{site.data.keyword.watson}} Speec
 
 For the list of known issues, see [Known issues and limitations for {{site.data.keyword.watson}} Speech services](https://www.ibm.com/docs/en/software-hub/5.2.x?topic=issues-watson-speech-services){: external}.
 
+## 16 December 2025 (Version 5.3.0)
+{: #speech-services-hub-530-16dec2025}
+
+{{site.data.keyword.watson}} Speech services for IBM Software Hub is now available.
+
+For a list of new features and fixes, see [What's new and changed in {{site.data.keyword.watson}} Speech services](https://www.ibm.com/docs/en/software-hub/5.3.x?topic=new-watson-speech-services#fixlist__title__3){: external}
+
+## 29 October 2025 (Version 5.2.2)
+{: #speech-services-hub-522-29oct2025}
+
+{{site.data.keyword.watson}} Speech services for IBM Software Hub is now available.
+
+For a list of new features and fixes, see [What's new and changed in {{site.data.keyword.watson}} Speech services](https://www.ibm.com/docs/en/software-hub/5.2.x?topic=new-watson-speech-services#fixlist__title__3){: external}
+
 ## 27 August 2025 (Version 5.2.1)
 {: #speech-services-hub-521-27aug2025}
 
 {{site.data.keyword.watson}} Speech services for IBM Software Hub is now available.
 
-For a list of new features and fixes, see [What's new and changed in {{site.data.keyword.watson}} Speech services](https://www.ibm.com/docs/en/software-hub/5.2.x?topic=new-watson-speech-services#fixlist__title__3){: external}
+For a list of new features and fixes, see [What's new and changed in {{site.data.keyword.watson}} Speech services](https://www.ibm.com/docs/en/software-hub/5.2.x?topic=new-watson-speech-services#fixlist__title__4){: external}
 
 ## 11 June 2025 (Version 5.2.0)
 {: #speech-services-hub-520-11june2025}
 
 {{site.data.keyword.watson}} Speech services for IBM Software Hub is now available.
 
-For a list of new features and fixes, see [What's new and changed in {{site.data.keyword.watson}} Speech services](https://www.ibm.com/docs/en/software-hub/5.2.x?topic=new-watson-speech-services#fixlist__title__4){: external}
+For a list of new features and fixes, see [What's new and changed in {{site.data.keyword.watson}} Speech services](https://www.ibm.com/docs/en/software-hub/5.2.x?topic=new-watson-speech-services#fixlist__title__5){: external}
 
 ## 30 April 2025 (Version 5.1.3)
 {: #speech-services-hub-513-30april2025}

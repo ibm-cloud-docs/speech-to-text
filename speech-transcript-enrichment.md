@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2025-10-14"
+lastupdated: "2026-01-05"
 
 subcollection: speech-to-text
 
@@ -13,7 +13,7 @@ subcollection: speech-to-text
 # Speech transcript enrichment
 {: #speech-transcript-enrichment}
 
-Use the speech transcript enrichment feature to improve the readability and usability of raw Automatic Speech Recognition (ASR) transcripts. This post-processing service automatically adds punctuation and applies intelligent capitalization to enhance the structure and clarity of spoken content.
+Use the speech transcript enrichment feature to improve the readability and usability of raw Automatic Speech Recognition (ASR) transcripts. This post-processing service adds punctuation and applies intelligent capitalization to enhance the structure and clarity of spoken content.
 
 The service inserts punctuation marks such as periods, commas, question marks, and exclamation points. It also capitalizes sentence beginnings, proper nouns, acronyms, and brand names based on context. Confidence scoring help ensure accurate and reliable enrichment.
 
