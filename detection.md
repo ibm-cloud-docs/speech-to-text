@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2025
-lastupdated: "2025-11-03"
+  years: 2015, 2026
+lastupdated: "2026-01-15"
 
 subcollection: speech-to-text
 
@@ -111,7 +111,7 @@ By using speech begin event detection, you can now receive an early notification
 A speech begin event is generated in two scenarios:
 
 1. When a speech is detected first in an audio stream
-1. After each `end_of_phrase_silence_timeout` period, if a new speech is detected
+1. After each `end_of_phrase_silence_time` period, if a new speech is detected
 
 The sensitivity of the detection can be adjusted by using the `speech_event_sensitivity` (default 0.5) parameter, which is a measure of the intensity of the speech signal that triggers the speech begin event. 
 
