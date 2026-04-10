@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2021, 2024
-lastupdated: "2024-08-23"
+  years: 2024, 2026
+lastupdated: "2026-04-10"
 
 subcollection: speech-to-text
 
@@ -21,10 +21,12 @@ You can use these models for both Telephony use cases and Broadband use cases.
 ## Supported large speech model languages
 {: #models-supported-languages}
 
-The following table lists the large speech models that are available for each language. 
+The table lists the large speech models that are available for each language. Unless otherwise labeled as
+[IBM Cloud]{: tag-ibm-cloud}, [IBM Cloud Pak for Data]{: tag-cp4d} or [IBM Software Hub]{: tag-teal}, a model is supported for all versions of the service.
 
 | Language |  Model name | Status | 
 |------------------------|:-----------:|:----------------------------------------|
+| Dutch (Netherlands) | `nl-NL` | [IBM Cloud]{: tag-ibm-cloud} 10 April 2026 \n [IBM Software Hub]{: tag-teal} 10 April 2026 | 
 | English (Australian) | `en-AU` | [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
 | English (Indian) | `en-IN` | [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
 | English (United Kingdom) | `en-GB` | [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
