@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2026
-lastupdated: "2026-04-10"
+lastupdated: "2026-04-17"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -32,10 +32,76 @@ For information about releases and updates of the service for {{site.data.keywor
 {: release-note}
 
 Large Speech Model for Dutch is now generally available
-:   The large speech model for Dutch is now generally available (GA). It is supported for use in production environments and applications. 
+:   The large speech model for Dutch, `nl-NL` is now generally available (GA) in all data centers supporting both 8kHz and 16kHz audio sampling rates.
 
     - For more information about large speech models, see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages).
     - For more information about the features that are supported for large speech models, see [Supported features for large speech models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-lsm-supported-features).
+
+## 07 April 2026
+{: #speech-to-text-07apr2026}
+{: release-note}
+
+**Defect fix:** Fixed an issue where fille is incorrectly recognized in French alphanumeric sequence recognition with the smart formatting feature.
+
+## 17 March 2026
+{: #speech-to-text-17mar2026}
+{: release-note}
+
+Improvement of French Large Language Model
+:   Improvements in French Large Language Models (LSM) `fr-FR` and `fr-CA` are now available for increased accuracy in alphanumeric sequence recognition.
+
+**Defect fix:** Fixed an issue in language identification (LID) where intermittent 5xx errors are observed when a `/v1/recognize?language_identification=true` request is immediately followed by a regular `/v1/recognize` request.
+
+**Defect fix:** Fixed an issue where internal server errors are observed with `max_active` parameter.
+
+**Defect fix:** Fixed an issue where internal server errors are erroneously returned when `include_transparent_words` is set to `true`.
+
+## 04 March 2026
+{: #speech-to-text-04mar2026}
+{: release-note}
+
+Improvement of German and Dutch Speech-to-Text Models
+
+    - Improvements of German Large Speech Model (LSM) `de-DE` are now available for alphanumeric sequence recognition and general use cases.
+    - Improvements of Dutch Telephony `nl-NL_Telephony` are now available for alphanumeric sequence recognition and salience handling.
+
+## 16 February 2026
+{: #speech-to-text-16feb2026}
+{: release-note}
+
+Large Speech Model for German is now generally available
+:   The large speech model for German, `de-DE` is now generally available (GA) in all data centers supporting both 8kHz and 16kHz audio sampling rates.
+
+    - For more information about large speech models, see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages).
+    - For more information about the features that are supported for large speech models, see [Supported features for large speech models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-lsm-supported-features).
+
+Enhancements of Speech Transcript Enrichment
+:   Enhancements in speech transcript enrichment are now available for named entities including dates, time, currency, numbers and measurements. These entities are now handled correctly according to the language locale.
+
+## 22 January 2026
+{: #speech-to-text-22jan2026}
+{: release-note}
+
+**Defect fix:** Fixed an issue where speech transcript enrichment fails when model parameter is absent in requests.
+
+**Defect fix:** Fixed an issue where longer speech-to-text (STT) customization training time is observed due to internal out-of-memory failures.
+
+## 08 January 2026
+{: #speech-to-text-08jan2026}
+{: release-note}
+
+**Defect fix:** Fixed an issue in speech transcript enrichment in the Frankfurt data center.
+
+**Defect fix:** Fixed an issue in `interim_results` where final speech transcripts are not sent when `interim_results` is set to `false`.
+
+## 10 December 2025
+{: #speech-to-text-10dec2025}
+{: release-note}
+
+Input field validation for `sounds_like` feature
+:   The input field validation for `sounds_like` feature is now enabled for additional languages.
+
+    - Input field validation for `sounds_like` feature is enabled for additional languages, including models of `en-US`, `en-AU`, `en-GB`, `en-IN`, `es-ES`, `es-AR`, `es-CL`, `es-CO`, `es-MX`, `es-PE`, `fr-FR_Telephony`, `fr-FR_Multimedia`, `de-DE_Telephony`, `de-DE_Multimedia`, `it-IT_Telephony`, `it-IT_Multimedia` and `nl-NL_Telephony`.
 
 ## 25 November 2025
 {: #speech-to-text-25nov2025}
