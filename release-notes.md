@@ -60,10 +60,11 @@ Improvement of French Large Language Model
 {: #speech-to-text-04mar2026}
 {: release-note}
 
-Improvement of German and Dutch Speech-to-Text Models
+Improvements of German and Dutch Speech-to-Text models
+:   Improvements of German and Dutch Speech-to-Text models are now available.
 
-- Improvements of German Large Speech Model (LSM) `de-DE` are now available for alphanumeric sequence recognition and general use cases.
-- Improvements of Dutch Telephony `nl-NL_Telephony` are now available for alphanumeric sequence recognition and salience handling.
+    - Improvements of German Large Speech Model (LSM) `de-DE` are now available for alphanumeric sequence recognition and general use cases.
+    - Improvements of Dutch Telephony `nl-NL_Telephony` are now available for alphanumeric sequence recognition and salience handling.
 
 ## 16 February 2026
 {: #speech-to-text-16feb2026}
