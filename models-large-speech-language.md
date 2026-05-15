@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-04-10"
+lastupdated: "2026-05-15"
 
 subcollection: speech-to-text
 
@@ -34,6 +34,7 @@ The table lists the large speech models that are available for each language. Un
 | French (Canadian) | `fr-CA` | [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
 | French (France) | `fr-FR` | [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
 | German | `de-DE` | [IBM Cloud]{: tag-ibm-cloud} 19 November 2024 | 
+| Italian (Italy) | `it-IT` | [IBM Cloud]{: tag-ibm-cloud} 15 May 2026 \n [IBM Software Hub]{: tag-teal} 15 May 2026 | 
 | Japanese | `ja-JP` | [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
 | Portuguese (Brazilian) | `pt-BR` | [IBM Cloud]{: tag-ibm-cloud} 18 June 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 23 August 2024  | 
 | Portuguese (Portugal) | `pt-PT` | [IBM Cloud]{: tag-ibm-cloud} 23 August 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 23 August 2024 |

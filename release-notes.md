@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2026
-lastupdated: "2026-04-17"
+lastupdated: "2026-05-15"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -26,6 +26,16 @@ For information about known limitations of the service, see [Known limitations](
 
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
+
+## 15 May 2026
+{: #speech-to-text-15may2026}
+{: release-note}
+
+Large Speech Model for Italian is now generally available
+:   The large speech model for Italian, `it-IT` is now generally available (GA) in all data centers supporting both 8kHz and 16kHz audio sampling rates.
+
+    - For more information about large speech models, see [Large speech languages and models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages).
+    - For more information about the features that are supported for large speech models, see [Supported features for large speech models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-lsm-supported-features).
 
 ## 10 April 2026
 {: #speech-to-text-10april2026}
