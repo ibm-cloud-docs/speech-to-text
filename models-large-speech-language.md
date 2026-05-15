@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-04-10"
+lastupdated: "2026-05-15"
 
 subcollection: speech-to-text
 
@@ -26,6 +26,7 @@ The table lists the large speech models that are available for each language. Un
 
 | Language |  Model name | Status | 
 |------------------------|:-----------:|:----------------------------------------|
+| Italian (Italy) | `it-IT` | [IBM Cloud]{: tag-ibm-cloud} 15 May 2026 \n [IBM Software Hub]{: tag-teal} 15 May 2026 | 
 | Dutch (Netherlands) | `nl-NL` | [IBM Cloud]{: tag-ibm-cloud} 10 April 2026 \n [IBM Software Hub]{: tag-teal} 10 April 2026 | 
 | English (Australian) | `en-AU` | [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
 | English (Indian) | `en-IN` | [IBM Cloud]{: tag-ibm-cloud} 20 May 2024 \n [IBM Cloud Pak for Data]{: tag-cp4d} 12 June 2024 | 
