@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-05-15"
+lastupdated: "2026-05-19"
 
 subcollection: speech-to-text
 
@@ -66,3 +66,134 @@ Large speech models support all speech recognition parameters and headers *excep
 Large speech models also differ from previous-generation models with respect to the following additional feature:
 
 -   Large speech models do not produce hesitation markers. They instead include the actual hesitations in transcription results. For more information, see [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
+
+### Recommended query parameters for large speech models
+{: #models-lsm-recommended-parameters}
+
+Large speech models support a wide range of configurable query parameters that can be tuned to optimize performance across different languages and use cases. While default parameter values provide strong baseline performance, adjusting specific parameters can significantly improve:
+
+- Transcription stability
+- Speech segmentation and endpointing behavior
+- Recognition accuracy, especially in noisy or variable environments
+
+#### Target use cases
+{: #models-lsm-target-use-cases}
+
+The following recommendations are designed for conversational and interactive applications, including:
+
+- Virtual assistants
+- Healthcare voice interfaces
+- Banking and insurance systems
+- Customer support and contact center automation
+
+These use cases typically involve short to medium-length utterances, frequent turn-taking interactions, and variable background noise conditions.
+
+#### Supported parameters
+{: #models-lsm-supported-tuning-parameters}
+
+The following parameters are commonly tuned with large speech models:
+
+- `speech_detector_sensitivity` - Controls how aggressively speech is detected. Higher values increase sensitivity to speech onset.
+- `end_of_phrase_silence_time` - Defines the duration of silence (in seconds) required to finalize an utterance.
+- `sad_module` - Selects the Speech Activity Detection (SAD) module.
+- `background_audio_suppression` - Controls noise suppression.
+- `character_insertion_bias` - Controls the balance between insertion and deletion errors.
+
+For more information about these parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
+
+#### Recommended parameter configurations
+{: #models-lsm-recommended-configs}
+
+The following configurations provide recommended baseline settings across supported languages.
+
+**English (en-*)**
+
+```json
+{
+  "speech_detector_sensitivity": 0.8,
+  "end_of_phrase_silence_time": 0.8,
+  "sad_module": 2
+}
+```
+
+**French (fr-FR)**
+
+```json
+{
+  "speech_detector_sensitivity": 0.8,
+  "end_of_phrase_silence_time": 0.8,
+  "sad_module": 2
+}
+```
+
+**Spanish (es-*)**
+
+```json
+{
+  "speech_detector_sensitivity": 0.6,
+  "end_of_phrase_silence_time": 0.8,
+  "sad_module": 2
+}
+```
+
+**Brazilian Portuguese (pt-BR)**
+
+```json
+{
+  "speech_detector_sensitivity": 0.8,
+  "end_of_phrase_silence_time": 0.8,
+  "sad_module": 2,
+  "background_audio_suppression": 0.1
+}
+```
+
+**German (de-DE)**
+
+```json
+{
+  "speech_detector_sensitivity": 0.7,
+  "end_of_phrase_silence_time": 0.8,
+  "sad_module": 2
+}
+```
+
+#### Parameter guidelines
+{: #models-lsm-parameter-guidelines}
+
+**sad_module**
+
+- Recommended: `2` (default is `1`)
+- Provides improved speech/silence segmentation compared to the default CNN-based SAD
+- Helps reduce timeout issues caused by misclassification of noise as speech
+
+**speech_detector_sensitivity**
+
+- Higher values lead to more aggressive speech detection
+- Large speech models generally benefit from higher sensitivity
+- Recommended range: `0.6` to `0.8` depending on language and noise conditions
+
+**end_of_phrase_silence_time**
+
+- Recommended: `0.7` to `0.8` (default is `0.0`)
+- Improves segmentation for conversational applications
+- Particularly beneficial for short structured utterances
+
+**background_audio_suppression**
+
+- Helps improve recognition accuracy for speech in background noise
+- Should be tuned conservatively to avoid suppressing speech energy
+- Example: `0.1` for moderate noise environments
+
+**character_insertion_bias**
+
+- Default: `-0.22`
+- Slight increase (for example, `-0.1` to `0.0`) can help reduce deletion errors
+- Use caution: Positive values may introduce insertion errors
+
+#### Best practices
+{: #models-lsm-parameter-best-practices}
+
+- Always test with representative audio samples when tuning parameters
+- Ensure consistent input formats when comparing results
+- For timeout-related issues, prioritize tuning `sad_module` and `end_of_phrase_silence_time`
+- For deletion-related issues, prioritize tuning `sad_module` and `speech_detector_sensitivity`
