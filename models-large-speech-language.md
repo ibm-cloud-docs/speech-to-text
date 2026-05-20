@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-05-19"
+lastupdated: "2026-05-20"
 
 subcollection: speech-to-text
 
@@ -72,9 +72,9 @@ Large speech models also differ from previous-generation models with respect to 
 
 Large speech models support a wide range of configurable query parameters that can be tuned to optimize performance across different languages and use cases. While default parameter values provide strong baseline performance, adjusting specific parameters can significantly improve:
 
-- Transcription stability
-- Speech segmentation and endpointing behavior
-- Recognition accuracy, especially in noisy or variable environments
+- transcription stability
+- speech segmentation and endpointing behavior
+- recognition accuracy, especially in noisy or variable environments
 
 #### Target use cases
 {: #models-lsm-target-use-cases}
@@ -160,31 +160,33 @@ The following configurations provide recommended baseline settings across suppor
 #### Parameter guidelines
 {: #models-lsm-parameter-guidelines}
 
-**sad_module**
+The following guidelines provide recommended parameter values and tuning strategies to help you achieve better speech recognition accuracy, reduce timeout issues, and improve overall model performance.
+
+1. **sad_module**
 
 - Recommended: `2` (default is `1`)
 - Provides improved speech/silence segmentation compared to the default CNN-based SAD
 - Helps reduce timeout issues caused by misclassification of noise as speech
 
-**speech_detector_sensitivity**
+2. **speech_detector_sensitivity**
 
 - Higher values lead to more aggressive speech detection
 - Large speech models generally benefit from higher sensitivity
 - Recommended range: `0.6` to `0.8` depending on language and noise conditions
 
-**end_of_phrase_silence_time**
+3. **end_of_phrase_silence_time**
 
 - Recommended: `0.7` to `0.8` (default is `0.0`)
 - Improves segmentation for conversational applications
 - Particularly beneficial for short structured utterances
 
-**background_audio_suppression**
+4. **background_audio_suppression**
 
 - Helps improve recognition accuracy for speech in background noise
 - Should be tuned conservatively to avoid suppressing speech energy
 - Example: `0.1` for moderate noise environments
 
-**character_insertion_bias**
+5. **character_insertion_bias**
 
 - Default: `-0.22`
 - Slight increase (for example, `-0.1` to `0.0`) can help reduce deletion errors
@@ -193,7 +195,10 @@ The following configurations provide recommended baseline settings across suppor
 #### Best practices
 {: #models-lsm-parameter-best-practices}
 
-- Always test with representative audio samples when tuning parameters
-- Ensure consistent input formats when comparing results
-- For timeout-related issues, prioritize tuning `sad_module` and `end_of_phrase_silence_time`
-- For deletion-related issues, prioritize tuning `sad_module` and `speech_detector_sensitivity`
+Follow these best practices to ensure effective parameter tuning and consistent results when working with large speech models:
+
+- Always test with representative audio samples when tuning parameters.
+- Ensure consistent input formats when comparing results.
+- Parameters work consistently across platform versions, but results may vary based on your environment and input data.
+- For timeout-related issues, prioritize tuning `sad_module` and `end_of_phrase_silence_time`.
+- For deletion-related issues, prioritize tuning `sad_module` and `speech_detector_sensitivity`.
