@@ -106,7 +106,7 @@ For more information about these parameters, see the [Parameter summary](/docs/s
 
 The following configurations provide recommended baseline settings across supported languages.
 
-**English (en-*)**
+- **English (en-*)**
 
 ```json
 {
@@ -116,7 +116,7 @@ The following configurations provide recommended baseline settings across suppor
 }
 ```
 
-**French (fr-FR)**
+- **French (fr-FR)**
 
 ```json
 {
@@ -126,7 +126,7 @@ The following configurations provide recommended baseline settings across suppor
 }
 ```
 
-**Spanish (es-*)**
+- **Spanish (es-*)**
 
 ```json
 {
@@ -136,7 +136,7 @@ The following configurations provide recommended baseline settings across suppor
 }
 ```
 
-**Brazilian Portuguese (pt-BR)**
+- **Brazilian Portuguese (pt-BR)**
 
 ```json
 {
@@ -147,7 +147,7 @@ The following configurations provide recommended baseline settings across suppor
 }
 ```
 
-**German (de-DE)**
+- **German (de-DE)**
 
 ```json
 {
@@ -164,33 +164,33 @@ The following guidelines provide recommended parameter values and tuning strateg
 
 1. **sad_module**
 
-- Recommended: `2` (default is `1`)
-- Provides improved speech/silence segmentation compared to the default CNN-based SAD
-- Helps reduce timeout issues caused by misclassification of noise as speech
+    - Recommended: `2` (default is `1`)
+    - Provides improved speech/silence segmentation compared to the default CNN-based SAD
+    - Helps reduce timeout issues caused by misclassification of noise as speech
 
 2. **speech_detector_sensitivity**
 
-- Higher values lead to more aggressive speech detection
-- Large speech models generally benefit from higher sensitivity
-- Recommended range: `0.6` to `0.8` depending on language and noise conditions
+    - Higher values lead to more aggressive speech detection
+    - Large speech models generally benefit from higher sensitivity
+    - Recommended range: `0.6` to `0.8` depending on language and noise conditions
 
 3. **end_of_phrase_silence_time**
 
-- Recommended: `0.7` to `0.8` (default is `0.0`)
-- Improves segmentation for conversational applications
-- Particularly beneficial for short structured utterances
+    - Recommended: `0.7` to `0.8` (default is `0.0`)
+    - Improves segmentation for conversational applications
+    - Particularly beneficial for short structured utterances
 
 4. **background_audio_suppression**
 
-- Helps improve recognition accuracy for speech in background noise
-- Should be tuned conservatively to avoid suppressing speech energy
-- Example: `0.1` for moderate noise environments
+    - Helps improve recognition accuracy for speech in background noise
+    - Should be tuned conservatively to avoid suppressing speech energy
+    - Example: `0.1` for moderate noise environments
 
 5. **character_insertion_bias**
 
-- Default: `-0.22`
-- Slight increase (for example, `-0.1` to `0.0`) can help reduce deletion errors
-- Use caution: Positive values may introduce insertion errors
+    - Default: `-0.22`
+    - Slight increase (for example, `-0.1` to `0.0`) can help reduce deletion errors
+    - Use caution: Positive values may introduce insertion errors
 
 #### Best practices
 {: #models-lsm-parameter-best-practices}
