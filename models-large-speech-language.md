@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-05-20"
+lastupdated: "2026-06-04"
 
 subcollection: speech-to-text
 
@@ -202,3 +202,52 @@ Follow these best practices to ensure effective parameter tuning and consistent 
 - Parameters work consistently across platform versions, but results may vary based on your environment and input data.
 - For timeout-related issues, prioritize tuning `sad_module` and `end_of_phrase_silence_time`.
 - For deletion-related issues, prioritize tuning `sad_module` and `speech_detector_sensitivity`.
+
+## The parameter_set request parameter
+{: #models-lsm-parameter-set}
+
+Large speech models support a `parameter_set` request parameter that applies a curated set of tuned values in a single call. You can pass `parameter_set=enhanced` to opt in to improved recognition quality without setting individual parameters manually.
+
+When `parameter_set` is omitted or set to `default`, the service behaves exactly as it did before this parameter existed. No values are overridden.
+
+### Supported values
+{: #models-lsm-parameter-set-values}
+
+| Value | Behavior |
+|---|---|
+| (Omitted) | Default behavior. No tuned values are applied. |
+| `default` | Same as omitted. |
+| `enhanced` | Applies the recommended tuning per language. |
+{: caption="Supported values for the parameter_set request parameter"}
+
+### Availability and usage
+{: #models-lsm-parameter-set-availability}
+
+| Description | Support |
+|---|---|
+| Previous-generation models | Not available |
+| Next-generation models | Not available |
+| WebSocket | Parameter of JSON `start` message |
+{: caption="Availability and usage support for the parameter_set request parameter"}
+
+#### Example WebSocket `start` message
+{: #models-lsm-parameter-set-example}
+
+```json
+{
+  "action": "start",
+  "content-type": "audio/wav",
+  "parameter_set": "enhanced"
+}
+```
+
+### Notes
+{: #models-lsm-parameter-set-notes}
+
+- Only large speech models support `parameter_set`. Sending it to a non-LSM model is silently ignored.
+- Five base models cover thirteen locale codes through Watson language alias chain:
+   - English: `en-AU`, `en-GB`, `en-IN`
+   - Spanish: `es-AR`, `es-CL`, `es-CO`, `es-ES`, `es-MX`, `es-PE`
+   - French: `fr-CA`, `fr-FR`
+   - Portuguese: `pt-BR`, `pt-PT`
+   - German: `de-DE`
