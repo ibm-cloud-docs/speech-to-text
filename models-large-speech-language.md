@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-06-04"
+lastupdated: "2026-06-08"
 
 subcollection: speech-to-text
 
@@ -219,6 +219,86 @@ When `parameter_set` is omitted or set to `default`, the service behaves exactly
 | `default` | Same as omitted. |
 | `enhanced` | Applies the recommended tuning per language. |
 {: caption="Supported values for the parameter_set request parameter"}
+
+### Combining parameter_set with other parameters
+{: #models-lsm-parameter-set-behavior}
+
+When you specify `parameter_set=enhanced`, the preset values take precedence over any values you set individually for the parameters that the preset tunes.
+
+The `enhanced` preset tunes the following parameters:
+
+- `sad_module`
+- `speech_detector_sensitivity`
+- `background_audio_suppression`
+- `character_insertion_bias`
+- `end_of_phrase_silence_time`
+
+#### Values applied by parameter_set=enhanced
+{: #models-lsm-parameter-set-enhanced-values}
+
+The following tables show the parameter values that are applied for each supported language when `parameter_set=enhanced` is specified. You can use these values as a starting point if you want to tune individual parameters without using the preset.
+
+##### English (en-*)
+{: #models-lsm-parameter-set-enhanced-english}
+
+| Parameter | Value |
+|---|---|
+| `sad_module` | `2` |
+| `speech_detector_sensitivity` | `0.9` |
+| `background_audio_suppression` | `0.1` |
+| `character_insertion_bias` | `-1.0` |
+| `end_of_phrase_silence_time` | `1.0` |
+{: caption="Parameter values for English when parameter_set=enhanced"}
+
+##### Portuguese (pt-BR)
+{: #models-lsm-parameter-set-enhanced-portuguese}
+
+| Parameter | Value |
+|---|---|
+| `sad_module` | `2` |
+| `speech_detector_sensitivity` | `0.8` |
+| `background_audio_suppression` | `0.0` |
+| `character_insertion_bias` | `-0.3` |
+| `end_of_phrase_silence_time` | `1.0` |
+{: caption="Parameter values for Portuguese when parameter_set=enhanced"}
+
+##### French (fr-FR)
+{: #models-lsm-parameter-set-enhanced-french}
+
+| Parameter | Value |
+|---|---|
+| `sad_module` | `2` |
+| `speech_detector_sensitivity` | `0.8` |
+| `background_audio_suppression` | `0.0` |
+| `character_insertion_bias` | `0.0` |
+| `end_of_phrase_silence_time` | `1.0` |
+{: caption="Parameter values for French when parameter_set=enhanced"}
+
+##### Spanish (es-*)
+{: #models-lsm-parameter-set-enhanced-spanish}
+
+| Parameter | Value |
+|---|---|
+| `sad_module` | `1` |
+| `speech_detector_sensitivity` | `0.2` |
+| `background_audio_suppression` | `0.0` |
+| `character_insertion_bias` | `0.0` |
+| `end_of_phrase_silence_time` | `1.0` |
+{: caption="Parameter values for Spanish when parameter_set=enhanced"}
+
+##### German (de-DE)
+{: #models-lsm-parameter-set-enhanced-german}
+
+| Parameter | Value |
+|---|---|
+| `sad_module` | `1` |
+| `speech_detector_sensitivity` | `0.5` |
+| `background_audio_suppression` | `0.0` |
+| `character_insertion_bias` | `-0.2` |
+| `end_of_phrase_silence_time` | `1.0` |
+{: caption="Parameter values for German when parameter_set=enhanced"}
+
+To tune any of these parameters individually, omit `parameter_set` (or set `parameter_set=default`) and configure them directly. For general parameter tuning guidance, see [Recommended query parameters for large speech models](#models-lsm-recommended-parameters).
 
 ### Availability and usage
 {: #models-lsm-parameter-set-availability}
