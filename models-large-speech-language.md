@@ -222,6 +222,8 @@ When `parameter_set` is omitted or set to `default`, the service behaves exactly
 ### Supported values
 {: #models-lsm-parameter-set-values}
 
+The table lists the supported values that can be used with the `parameter_set` request parameter.
+
 | Value | Behavior |
 |---|---|
 | (Omitted) | Default behavior. No tuned values are applied. |
@@ -247,6 +249,8 @@ Use `parameter_set=enhanced` to apply recommendations for the specified language
 ### Availability and usage
 {: #models-lsm-parameter-set-availability}
 
+The table lists the availability based on model and Websocket usage.
+
 | Description | Support |
 |---|---|
 | Previous-generation models | Not available |
@@ -267,6 +271,8 @@ Use `parameter_set=enhanced` to apply recommendations for the specified language
 
 ### Notes
 {: #models-lsm-parameter-set-notes}
+
+Consider the following when you use `parameter_set` request parameter:
 
 - Only large speech models support `parameter_set`. Sending it to a non-LSM model is silently ignored.
 - Five base models cover thirteen locale codes through Watson language alias chain:
