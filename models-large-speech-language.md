@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-06-08"
+lastupdated: "2026-06-09"
 
 subcollection: speech-to-text
 
@@ -67,7 +67,7 @@ Large speech models also differ from previous-generation models with respect to 
 
 -   Large speech models do not produce hesitation markers. They instead include the actual hesitations in transcription results. For more information, see [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 
-### Recommended query parameters for large speech models
+## Recommended query parameters for large speech models
 {: #models-lsm-recommended-parameters}
 
 Large speech models support a wide range of configurable query parameters that can be tuned to optimize performance across different languages and use cases. While default parameter values provide strong baseline performance, adjusting specific parameters can significantly improve:
@@ -76,7 +76,7 @@ Large speech models support a wide range of configurable query parameters that c
 - speech segmentation and endpointing behavior
 - recognition accuracy, especially in noisy or variable environments
 
-#### Target use cases
+### Target use cases
 {: #models-lsm-target-use-cases}
 
 The following recommendations are designed for conversational and interactive applications, including:
@@ -88,20 +88,20 @@ The following recommendations are designed for conversational and interactive ap
 
 These use cases typically involve short to medium-length utterances, frequent turn-taking interactions, and variable background noise conditions.
 
-#### Supported parameters
+### Supported parameters
 {: #models-lsm-supported-tuning-parameters}
 
 The following parameters are commonly tuned with large speech models:
 
-- `speech_detector_sensitivity` - Controls how aggressively speech is detected. Higher values increase sensitivity to speech onset.
-- `end_of_phrase_silence_time` - Defines the duration of silence (in seconds) required to finalize an utterance.
 - `sad_module` - Selects the Speech Activity Detection (SAD) module.
+- `speech_detector_sensitivity` - Controls how aggressively speech is detected. Higher values increase sensitivity to speech onset.
 - `background_audio_suppression` - Controls noise suppression.
 - `character_insertion_bias` - Controls the balance between insertion and deletion errors.
+- `end_of_phrase_silence_time` - Defines the duration of silence (in seconds) required to finalize an utterance.
 
 For more information about these parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
 
-#### Recommended parameter configurations
+### Recommended parameter configurations
 {: #models-lsm-recommended-configs}
 
 The following configurations provide recommended baseline settings across supported languages.
@@ -110,9 +110,11 @@ The following configurations provide recommended baseline settings across suppor
 
 ```json
 {
-  "speech_detector_sensitivity": 0.8,
-  "end_of_phrase_silence_time": 0.8,
-  "sad_module": 2
+  "sad_module": 2,
+  "speech_detector_sensitivity": 0.9,
+  "background_audio_suppression": 0.1,
+  "character_insertion_bias": -1.0,
+  "end_of_phrase_silence_time": 1.0
 }
 ```
 
@@ -120,9 +122,11 @@ The following configurations provide recommended baseline settings across suppor
 
 ```json
 {
+  "sad_module": 2,
   "speech_detector_sensitivity": 0.8,
-  "end_of_phrase_silence_time": 0.8,
-  "sad_module": 2
+  "background_audio_suppression": 0.0,
+  "character_insertion_bias": 0.0,
+  "end_of_phrase_silence_time": 1.0
 }
 ```
 
@@ -130,9 +134,11 @@ The following configurations provide recommended baseline settings across suppor
 
 ```json
 {
-  "speech_detector_sensitivity": 0.6,
-  "end_of_phrase_silence_time": 0.8,
-  "sad_module": 2
+  "sad_module": 1,
+  "speech_detector_sensitivity": 0.2,
+  "background_audio_suppression": 0.0,
+  "character_insertion_bias": 0.0,
+  "end_of_phrase_silence_time": 1.0
 }
 ```
 
@@ -140,10 +146,11 @@ The following configurations provide recommended baseline settings across suppor
 
 ```json
 {
-  "speech_detector_sensitivity": 0.8,
-  "end_of_phrase_silence_time": 0.8,
   "sad_module": 2,
-  "background_audio_suppression": 0.1
+  "speech_detector_sensitivity": 0.8,
+  "background_audio_suppression": 0.0,
+  "character_insertion_bias": -0.3,
+  "end_of_phrase_silence_time": 1.0
 }
 ```
 
@@ -151,13 +158,15 @@ The following configurations provide recommended baseline settings across suppor
 
 ```json
 {
-  "speech_detector_sensitivity": 0.7,
-  "end_of_phrase_silence_time": 0.8,
-  "sad_module": 2
+  "sad_module": 1,
+  "speech_detector_sensitivity": 0.5,
+  "background_audio_suppression": 0.0,
+  "character_insertion_bias": -0.2,
+  "end_of_phrase_silence_time": 1.0
 }
 ```
 
-#### Parameter guidelines
+### Parameter guidelines
 {: #models-lsm-parameter-guidelines}
 
 The following guidelines provide recommended parameter values and tuning strategies to help you achieve better speech recognition accuracy, reduce timeout issues, and improve overall model performance.
@@ -192,7 +201,7 @@ The following guidelines provide recommended parameter values and tuning strateg
     - Slight increase (for example, `-0.1` to `0.0`) can help reduce deletion errors
     - Use caution: Positive values may introduce insertion errors
 
-#### Best practices
+### Best practices
 {: #models-lsm-parameter-best-practices}
 
 Follow these best practices to ensure effective parameter tuning and consistent results when working with large speech models:
@@ -223,7 +232,7 @@ When `parameter_set` is omitted or set to `default`, the service behaves exactly
 ### Combining parameter_set with other parameters
 {: #models-lsm-parameter-set-behavior}
 
-When you specify `parameter_set=enhanced`, the preset values take precedence over any values you set individually for the parameters that the preset tunes.
+When you specify `parameter_set=enhanced`, the preset values take precedence over any values you set individually for the parameters that the preset tunes. To set the parameters individually, omit `parameter_set` (or set `parameter_set=default`) and configure them directly. 
 
 The `enhanced` preset tunes the following parameters:
 
@@ -233,72 +242,12 @@ The `enhanced` preset tunes the following parameters:
 - `character_insertion_bias`
 - `end_of_phrase_silence_time`
 
+For general parameter tuning guidance, see [Recommended query parameters for large speech models](#models-lsm-recommended-parameters).
+
 #### Values applied by parameter_set=enhanced
 {: #models-lsm-parameter-set-enhanced-values}
 
-The following tables show the parameter values that are applied for each supported language when `parameter_set=enhanced` is specified. You can use these values as a starting point if you want to tune individual parameters without using the preset.
-
-##### English (en-*)
-{: #models-lsm-parameter-set-enhanced-english}
-
-| Parameter | Value |
-|---|---|
-| `sad_module` | `2` |
-| `speech_detector_sensitivity` | `0.9` |
-| `background_audio_suppression` | `0.1` |
-| `character_insertion_bias` | `-1.0` |
-| `end_of_phrase_silence_time` | `1.0` |
-{: caption="Parameter values for English when parameter_set=enhanced"}
-
-##### Portuguese (pt-BR)
-{: #models-lsm-parameter-set-enhanced-portuguese}
-
-| Parameter | Value |
-|---|---|
-| `sad_module` | `2` |
-| `speech_detector_sensitivity` | `0.8` |
-| `background_audio_suppression` | `0.0` |
-| `character_insertion_bias` | `-0.3` |
-| `end_of_phrase_silence_time` | `1.0` |
-{: caption="Parameter values for Portuguese when parameter_set=enhanced"}
-
-##### French (fr-FR)
-{: #models-lsm-parameter-set-enhanced-french}
-
-| Parameter | Value |
-|---|---|
-| `sad_module` | `2` |
-| `speech_detector_sensitivity` | `0.8` |
-| `background_audio_suppression` | `0.0` |
-| `character_insertion_bias` | `0.0` |
-| `end_of_phrase_silence_time` | `1.0` |
-{: caption="Parameter values for French when parameter_set=enhanced"}
-
-##### Spanish (es-*)
-{: #models-lsm-parameter-set-enhanced-spanish}
-
-| Parameter | Value |
-|---|---|
-| `sad_module` | `1` |
-| `speech_detector_sensitivity` | `0.2` |
-| `background_audio_suppression` | `0.0` |
-| `character_insertion_bias` | `0.0` |
-| `end_of_phrase_silence_time` | `1.0` |
-{: caption="Parameter values for Spanish when parameter_set=enhanced"}
-
-##### German (de-DE)
-{: #models-lsm-parameter-set-enhanced-german}
-
-| Parameter | Value |
-|---|---|
-| `sad_module` | `1` |
-| `speech_detector_sensitivity` | `0.5` |
-| `background_audio_suppression` | `0.0` |
-| `character_insertion_bias` | `-0.2` |
-| `end_of_phrase_silence_time` | `1.0` |
-{: caption="Parameter values for German when parameter_set=enhanced"}
-
-To tune any of these parameters individually, omit `parameter_set` (or set `parameter_set=default`) and configure them directly. For general parameter tuning guidance, see [Recommended query parameters for large speech models](#models-lsm-recommended-parameters).
+Use `parameter_set=enhanced` to apply recommendations for the specified language in a single setting rather than configuring each parameter individually. For more information on recommended parameter configurations, see [Recommended parameter configurations](#models-lsm-recommended-configs).
 
 ### Availability and usage
 {: #models-lsm-parameter-set-availability}
