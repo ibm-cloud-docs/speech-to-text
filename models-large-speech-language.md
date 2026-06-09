@@ -242,12 +242,7 @@ The `enhanced` preset tunes the following parameters:
 - `character_insertion_bias`
 - `end_of_phrase_silence_time`
 
-For general parameter tuning guidance, see [Recommended query parameters for large speech models](#models-lsm-recommended-parameters).
-
-#### Values applied by parameter_set=enhanced
-{: #models-lsm-parameter-set-enhanced-values}
-
-Use `parameter_set=enhanced` to apply recommendations for the specified language in a single setting rather than configuring each parameter individually. For more information on recommended parameter configurations, see [Recommended parameter configurations](#models-lsm-recommended-configs).
+Use `parameter_set=enhanced` to apply recommendations for the specified language in a single setting rather than configuring each parameter individually. For more information on recommended parameter configurations and general parameter tuning guidance, see [Recommended parameter configurations](#models-lsm-recommended-configs) and [Recommended query parameters for large speech models](#models-lsm-recommended-parameters).
 
 ### Availability and usage
 {: #models-lsm-parameter-set-availability}
