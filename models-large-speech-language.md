@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-06-09"
+lastupdated: "2026-06-12"
 
 subcollection: speech-to-text
 
@@ -67,39 +67,75 @@ Large speech models also differ from previous-generation models with respect to 
 
 -   Large speech models do not produce hesitation markers. They instead include the actual hesitations in transcription results. For more information, see [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
 
-## Recommended query parameters for large speech models
-{: #models-lsm-recommended-parameters}
+## The parameter_set request parameter
+{: #models-lsm-parameter-set}
 
-Large speech models support a wide range of configurable query parameters that can be tuned to optimize performance across different languages and use cases. While default parameter values provide strong baseline performance, adjusting specific parameters can significantly improve:
+Large speech models support a `parameter_set` request parameter that applies a curated set of tuned values in a single call. You can pass `parameter_set=enhanced` to opt in to improved recognition quality without setting individual parameters manually.
 
-- transcription stability
-- speech segmentation and endpointing behavior
-- recognition accuracy, especially in noisy or variable environments
+When `parameter_set` is omitted or set to `default`, the service behaves exactly as it did before this parameter existed. No values are overridden.
 
-### Target use cases
-{: #models-lsm-target-use-cases}
+### Supported values
+{: #models-lsm-parameter-set-values}
 
-The following recommendations are designed for conversational and interactive applications, including:
+The table lists the supported values that can be used with the `parameter_set` request parameter.
 
-- Virtual assistants
-- Healthcare voice interfaces
-- Banking and insurance systems
-- Customer support and contact center automation
+| Value | Behavior |
+|---|---|
+| (Omitted) | Default behavior. No tuned values are applied. |
+| `default` | Same as omitted. |
+| `enhanced` | Applies the recommended tuning per language. |
+{: caption="Supported values for the parameter_set request parameter"}
 
-These use cases typically involve short to medium-length utterances, frequent turn-taking interactions, and variable background noise conditions.
+### Combining parameter_set with other parameters
+{: #models-lsm-parameter-set-behavior}
 
-### Supported parameters
-{: #models-lsm-supported-tuning-parameters}
+When you specify `parameter_set=enhanced`, the preset values take precedence over any values you set individually for the parameters that the preset tunes. To set the parameters individually, omit `parameter_set` (or set `parameter_set=default`) and configure them directly. 
 
-The following parameters are commonly tuned with large speech models:
+The `enhanced` preset tunes the following parameters:
 
-- `sad_module` - Selects the Speech Activity Detection (SAD) module.
-- `speech_detector_sensitivity` - Controls how aggressively speech is detected. Higher values increase sensitivity to speech onset.
-- `background_audio_suppression` - Controls noise suppression.
-- `character_insertion_bias` - Controls the balance between insertion and deletion errors.
-- `end_of_phrase_silence_time` - Defines the duration of silence (in seconds) required to finalize an utterance.
+- `sad_module`
+- `speech_detector_sensitivity`
+- `background_audio_suppression`
+- `character_insertion_bias`
+- `end_of_phrase_silence_time`
 
-For more information about these parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
+Use `parameter_set=enhanced` to apply recommendations for the specified language in a single setting rather than configuring each parameter individually. For more information on recommended parameter configurations and general parameter tuning guidance, see [Recommended parameter configurations](#models-lsm-recommended-configs) and [Recommended query parameters for large speech models](#models-lsm-recommended-parameters).
+
+### Availability and usage
+{: #models-lsm-parameter-set-availability}
+
+The table lists the availability based on model and Websocket usage.
+
+| Description | Support |
+|---|---|
+| Previous-generation models | Not available |
+| Next-generation models | Not available |
+| WebSocket | Parameter of JSON `start` message |
+{: caption="Availability and usage support for the parameter_set request parameter"}
+
+#### Example WebSocket `start` message
+{: #models-lsm-parameter-set-example}
+
+```json
+{
+  "action": "start",
+  "content-type": "audio/wav",
+  "parameter_set": "enhanced"
+}
+```
+
+### Notes
+{: #models-lsm-parameter-set-notes}
+
+Consider the following when you use `parameter_set` request parameter:
+
+- Only large speech models support `parameter_set`. Sending it to a non-LSM model is silently ignored.
+- Five base models cover thirteen locale codes through Watson language alias chain:
+   - English: `en-AU`, `en-GB`, `en-IN`
+   - Spanish: `es-AR`, `es-CL`, `es-CO`, `es-ES`, `es-MX`, `es-PE`
+   - French: `fr-CA`, `fr-FR`
+   - Portuguese: `pt-BR`, `pt-PT`
+   - German: `de-DE`
 
 ### Recommended parameter configurations
 {: #models-lsm-recommended-configs}
@@ -201,83 +237,36 @@ The following guidelines provide recommended parameter values and tuning strateg
     - Slight increase (for example, `-0.1` to `0.0`) can help reduce deletion errors
     - Use caution: Positive values may introduce insertion errors
 
-### Best practices
-{: #models-lsm-parameter-best-practices}
+## Recommended query parameters for large speech models
+{: #models-lsm-recommended-parameters}
 
-Follow these best practices to ensure effective parameter tuning and consistent results when working with large speech models:
+Large speech models support a wide range of configurable query parameters that can be tuned to optimize performance across different languages and use cases. While default parameter values provide strong baseline performance, adjusting specific parameters can significantly improve:
 
-- Always test with representative audio samples when tuning parameters.
-- Ensure consistent input formats when comparing results.
-- Parameters work consistently across platform versions, but results may vary based on your environment and input data.
-- For timeout-related issues, prioritize tuning `sad_module` and `end_of_phrase_silence_time`.
-- For deletion-related issues, prioritize tuning `sad_module` and `speech_detector_sensitivity`.
+- transcription stability
+- speech segmentation and endpointing behavior
+- recognition accuracy, especially in noisy or variable environments
 
-## The parameter_set request parameter
-{: #models-lsm-parameter-set}
+### Target use cases
+{: #models-lsm-target-use-cases}
 
-Large speech models support a `parameter_set` request parameter that applies a curated set of tuned values in a single call. You can pass `parameter_set=enhanced` to opt in to improved recognition quality without setting individual parameters manually.
+The following recommendations are designed for conversational and interactive applications, including:
 
-When `parameter_set` is omitted or set to `default`, the service behaves exactly as it did before this parameter existed. No values are overridden.
+- Virtual assistants
+- Healthcare voice interfaces
+- Banking and insurance systems
+- Customer support and contact center automation
 
-### Supported values
-{: #models-lsm-parameter-set-values}
+These use cases typically involve short to medium-length utterances, frequent turn-taking interactions, and variable background noise conditions.
 
-The table lists the supported values that can be used with the `parameter_set` request parameter.
+### Supported parameters
+{: #models-lsm-supported-tuning-parameters}
 
-| Value | Behavior |
-|---|---|
-| (Omitted) | Default behavior. No tuned values are applied. |
-| `default` | Same as omitted. |
-| `enhanced` | Applies the recommended tuning per language. |
-{: caption="Supported values for the parameter_set request parameter"}
+The following parameters are commonly tuned with large speech models:
 
-### Combining parameter_set with other parameters
-{: #models-lsm-parameter-set-behavior}
+- `sad_module` - Selects the Speech Activity Detection (SAD) module.
+- `speech_detector_sensitivity` - Controls how aggressively speech is detected. Higher values increase sensitivity to speech onset.
+- `background_audio_suppression` - Controls noise suppression.
+- `character_insertion_bias` - Controls the balance between insertion and deletion errors.
+- `end_of_phrase_silence_time` - Defines the duration of silence (in seconds) required to finalize an utterance.
 
-When you specify `parameter_set=enhanced`, the preset values take precedence over any values you set individually for the parameters that the preset tunes. To set the parameters individually, omit `parameter_set` (or set `parameter_set=default`) and configure them directly. 
-
-The `enhanced` preset tunes the following parameters:
-
-- `sad_module`
-- `speech_detector_sensitivity`
-- `background_audio_suppression`
-- `character_insertion_bias`
-- `end_of_phrase_silence_time`
-
-Use `parameter_set=enhanced` to apply recommendations for the specified language in a single setting rather than configuring each parameter individually. For more information on recommended parameter configurations and general parameter tuning guidance, see [Recommended parameter configurations](#models-lsm-recommended-configs) and [Recommended query parameters for large speech models](#models-lsm-recommended-parameters).
-
-### Availability and usage
-{: #models-lsm-parameter-set-availability}
-
-The table lists the availability based on model and Websocket usage.
-
-| Description | Support |
-|---|---|
-| Previous-generation models | Not available |
-| Next-generation models | Not available |
-| WebSocket | Parameter of JSON `start` message |
-{: caption="Availability and usage support for the parameter_set request parameter"}
-
-#### Example WebSocket `start` message
-{: #models-lsm-parameter-set-example}
-
-```json
-{
-  "action": "start",
-  "content-type": "audio/wav",
-  "parameter_set": "enhanced"
-}
-```
-
-### Notes
-{: #models-lsm-parameter-set-notes}
-
-Consider the following when you use `parameter_set` request parameter:
-
-- Only large speech models support `parameter_set`. Sending it to a non-LSM model is silently ignored.
-- Five base models cover thirteen locale codes through Watson language alias chain:
-   - English: `en-AU`, `en-GB`, `en-IN`
-   - Spanish: `es-AR`, `es-CL`, `es-CO`, `es-ES`, `es-MX`, `es-PE`
-   - French: `fr-CA`, `fr-FR`
-   - Portuguese: `pt-BR`, `pt-PT`
-   - German: `de-DE`
+For more information about these parameters, see the [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary).
