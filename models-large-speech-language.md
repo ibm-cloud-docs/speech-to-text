@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-06-09"
+lastupdated: "2026-06-12"
 
 subcollection: speech-to-text
 
@@ -66,6 +66,8 @@ Large speech models support all speech recognition parameters and headers *excep
 Large speech models also differ from previous-generation models with respect to the following additional feature:
 
 -   Large speech models do not produce hesitation markers. They instead include the actual hesitations in transcription results. For more information, see [Speech hesitations and hesitation markers](/docs/speech-to-text?topic=speech-to-text-basic-response#response-hesitation).
+
+
 
 ## Recommended query parameters for large speech models
 {: #models-lsm-recommended-parameters}
@@ -211,73 +213,3 @@ Follow these best practices to ensure effective parameter tuning and consistent 
 - Parameters work consistently across platform versions, but results may vary based on your environment and input data.
 - For timeout-related issues, prioritize tuning `sad_module` and `end_of_phrase_silence_time`.
 - For deletion-related issues, prioritize tuning `sad_module` and `speech_detector_sensitivity`.
-
-## The parameter_set request parameter
-{: #models-lsm-parameter-set}
-
-Large speech models support a `parameter_set` request parameter that applies a curated set of tuned values in a single call. You can pass `parameter_set=enhanced` to opt in to improved recognition quality without setting individual parameters manually.
-
-When `parameter_set` is omitted or set to `default`, the service behaves exactly as it did before this parameter existed. No values are overridden.
-
-### Supported values
-{: #models-lsm-parameter-set-values}
-
-The table lists the supported values that can be used with the `parameter_set` request parameter.
-
-| Value | Behavior |
-|---|---|
-| (Omitted) | Default behavior. No tuned values are applied. |
-| `default` | Same as omitted. |
-| `enhanced` | Applies the recommended tuning per language. |
-{: caption="Supported values for the parameter_set request parameter"}
-
-### Combining parameter_set with other parameters
-{: #models-lsm-parameter-set-behavior}
-
-When you specify `parameter_set=enhanced`, the preset values take precedence over any values you set individually for the parameters that the preset tunes. To set the parameters individually, omit `parameter_set` (or set `parameter_set=default`) and configure them directly. 
-
-The `enhanced` preset tunes the following parameters:
-
-- `sad_module`
-- `speech_detector_sensitivity`
-- `background_audio_suppression`
-- `character_insertion_bias`
-- `end_of_phrase_silence_time`
-
-Use `parameter_set=enhanced` to apply recommendations for the specified language in a single setting rather than configuring each parameter individually. For more information on recommended parameter configurations and general parameter tuning guidance, see [Recommended parameter configurations](#models-lsm-recommended-configs) and [Recommended query parameters for large speech models](#models-lsm-recommended-parameters).
-
-### Availability and usage
-{: #models-lsm-parameter-set-availability}
-
-The table lists the availability based on model and Websocket usage.
-
-| Description | Support |
-|---|---|
-| Previous-generation models | Not available |
-| Next-generation models | Not available |
-| WebSocket | Parameter of JSON `start` message |
-{: caption="Availability and usage support for the parameter_set request parameter"}
-
-#### Example WebSocket `start` message
-{: #models-lsm-parameter-set-example}
-
-```json
-{
-  "action": "start",
-  "content-type": "audio/wav",
-  "parameter_set": "enhanced"
-}
-```
-
-### Notes
-{: #models-lsm-parameter-set-notes}
-
-Consider the following when you use `parameter_set` request parameter:
-
-- Only large speech models support `parameter_set`. Sending it to a non-LSM model is silently ignored.
-- Five base models cover thirteen locale codes through Watson language alias chain:
-   - English: `en-AU`, `en-GB`, `en-IN`
-   - Spanish: `es-AR`, `es-CL`, `es-CO`, `es-ES`, `es-MX`, `es-PE`
-   - French: `fr-CA`, `fr-FR`
-   - Portuguese: `pt-BR`, `pt-PT`
-   - German: `de-DE`
