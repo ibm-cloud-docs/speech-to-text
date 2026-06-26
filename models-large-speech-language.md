@@ -62,7 +62,7 @@ Large speech models support all speech recognition parameters and headers *excep
 -   `grammar_name` (Large speech models do not support grammar customization.)
 -   `character_insertion_bias`
 
-`en-US` large speech models now support `low_latency`.
+`en-US` large speech model now supports `low_latency`.
 
 Large speech models also differ from previous-generation models with respect to the following additional feature:
 
