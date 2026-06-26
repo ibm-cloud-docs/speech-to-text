@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2025
-lastupdated: "2025-11-25"
+  years: 2015, 2026
+lastupdated: "2026-06-26"
 
 subcollection: speech-to-text
 
@@ -252,7 +252,7 @@ An optional boolean that indicates whether the service is to produce results mor
 
 | Availability and usage | Description |
 |------------------------|-------------|
-| Large speech models        | Not available. |
+| Large speech models        | Generally available (for `en-US` only). |
 | Previous-generation models | Not available. |
 | Next-generation models     | Generally available or beta for next-generation models that support low latency. For more information, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported). |
 | WebSocket              | Parameter of JSON `start` message |

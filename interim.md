@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2015, 2025
-lastupdated: "2025-11-25"
+  years: 2015, 2026
+lastupdated: "2026-06-26"
 
 subcollection: speech-to-text
 
@@ -36,7 +36,7 @@ How you request interim results depend on the type of model that you are using:
 -   *For interim results,* set `end_of_phrase_silence_time` parameter to a value other than `None`.
 -   *For a previous-generation model,* set the `interim_results` parameter to `true` in the JSON `start` message. Interim results are available for all previous-generation models.
 -   *For a next-generation model,* set the `interim_results` parameter to `true` in the JSON start message. You can also set `low_latency` to `true` to enable both interim results and low latency together for the models. 
--   *For a large speech model,* set the `interim_results` to `true` in the JSON `start` message. `low_latency` is not currently supported by large speech models. 
+-   *For a large speech model,* set the `interim_results` to `true` in the JSON `start` message. `low_latency` is currently supported by `en-US` large speech model only. 
 
 To disable interim results for any model, omit the `interim_results` parameter or set it to `false`. Disable interim results if you are doing offline or batch transcription.
 
@@ -131,7 +131,7 @@ The response includes a single utterance with no pauses.
 ## Low latency
 {: #low-latency}
 
-The `low_latency` parameter is available for most next-generation models. The parameter is not available with large speech models and previous-generation models.
+The `low_latency` parameter is available for most next-generation models and `en-US` large speech model. The parameter is not available with previous-generation models.
 {: note}
 
 The next-generation multimedia and telephony models have generally faster response times than the previous-generation models. But in some situations, you might want to receive results more quickly. With next-generation models that support low latency, you can set the `low_latency` parameter to `true` to receive results more quickly. For more information about the next-generation models that support low latency, see [Supported next-generation language models](/docs/speech-to-text?topic=speech-to-text-models-ng#models-ng-supported).
