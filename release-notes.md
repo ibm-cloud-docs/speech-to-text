@@ -34,8 +34,8 @@ For information about releases and updates of the service for {{site.data.keywor
 `low_latency` mode is now available for US English Large Speech Model
 :   The US English Large Speech Model `en-US` now includes `low_latency` mode for faster speech processing.
 
-    - For more information about `low_latency`, see [low_latency](/docs/speech-to-text?topic=speech-to-text-summary#summary-low-latency).
-    - For more information about Interim results and low latency, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#ow-latency).
+    - For more information about `low_latency`, see [Parameter summary](/docs/speech-to-text?topic=speech-to-text-summary#summary-low-latency).
+    - For more information about Interim results and low latency, see [Low latecy](/docs/speech-to-text?topic=speech-to-text-interim#low-latency).
     - For more information about the features that are supported for large speech models, see [Supported features for large speech models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-lsm-supported-features).
 
 ## 15 May 2026
