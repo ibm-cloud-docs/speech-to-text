@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2026
-lastupdated: "2026-05-15"
+lastupdated: "2026-06-26"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -26,6 +26,17 @@ For information about known limitations of the service, see [Known limitations](
 
 For information about releases and updates of the service for {{site.data.keyword.icp4dfull_notm}}, see [Release notes for {{site.data.keyword.speechtotextshort}} for {{site.data.keyword.icp4dfull_notm}}](/docs/speech-to-text?topic=speech-to-text-release-notes-data).
 {: note}
+
+## 26 June 2026
+{: #speech-to-text-26june2026}
+{: release-note}
+
+`low_latency` mode is now available for US English Large Speech Model
+:   The US English Large Speech Model `en-US` now includes `low_latency` mode for faster speech processing.
+
+    - For more information about `low_latency`, see [low_latency](/docs/speech-to-text?topic=speech-to-text-summary#summary-low-latency).
+    - For more information about Interim results and low latency, see [Low latency](/docs/speech-to-text?topic=speech-to-text-interim#ow-latency).
+    - For more information about the features that are supported for large speech models, see [Supported features for large speech models](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-lsm-supported-features).
 
 ## 15 May 2026
 {: #speech-to-text-15may2026}

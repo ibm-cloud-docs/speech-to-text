@@ -2,7 +2,7 @@
 
 copyright:
   years: 2024, 2026
-lastupdated: "2026-06-12"
+lastupdated: "2026-06-26"
 
 subcollection: speech-to-text
 
@@ -60,8 +60,9 @@ Large speech models support all speech recognition parameters and headers *excep
 -   `keywords` and `keywords_threshold`
 -   `word_alternatives_threshold`
 -   `grammar_name` (Large speech models do not support grammar customization.)
--   `low_latency` (Large speech models natively support low latency out of the box.)
 -   `character_insertion_bias`
+
+`en-US` large speech models now support `low_latency`.
 
 Large speech models also differ from previous-generation models with respect to the following additional feature:
 
