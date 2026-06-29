@@ -238,7 +238,7 @@ The following guidelines provide recommended parameter values and tuning strateg
     - Slight increase (for example, `-0.1` to `0.0`) can help reduce deletion errors
     - Use caution: Positive values may introduce insertion errors
 
-### Recommended query parameters for large speech models
+## Recommended query parameters for large speech models
 {: #models-lsm-recommended-parameters}
 
 Large speech models support a wide range of configurable query parameters that can be tuned to optimize performance across different languages and use cases. While default parameter values provide strong baseline performance, adjusting specific parameters can significantly improve:
