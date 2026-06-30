@@ -2,7 +2,7 @@
 
 copyright:
   years: 2015, 2026
-lastupdated: "2026-06-29"
+lastupdated: "2026-06-30"
 
 keywords: speech to text release notes,speech to text for IBM cloud release notes
 
@@ -32,9 +32,9 @@ For information about releases and updates of the service for {{site.data.keywor
 {: release-note}
 
 New `parameter_set` parameter for Large Speech Models
-:   Large Speech Models now support a `parameter_set` request parameter that applies optimized settings in a single call. Use `parameter_set=enhanced` to improve recognition quality without manually configuring individual parameters.
+:   Large Speech Models now include a `parameter_set` request parameter that applies optimized settings in a single call. Use `parameter_set=enhanced` to improve recognition quality without manually configuring individual parameters.
 
-    - For more information, see [The parameter_set request parameter](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-lsm-parameter-set).
+    - For more information, see [The parameter_set request parameter](/docs/speech-to-text?topic=speech-to-text-models-large-speech-languages#models-lsm-parameter-set). 
 
 ## 26 June 2026
 {: #speech-to-text-26june2026}
